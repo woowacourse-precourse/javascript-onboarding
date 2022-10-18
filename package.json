@@ -1,0 +1,28 @@
+{
+  "name": "javascript-onboarding-precourse",
+  "version": "1.0.0",
+  "description": "우아한테크코스 프리코스 온보딩 미션",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woowacourse/javascript-onboarding-precourse.git"
+  },
+  "keywords": [],
+  "author": "woowacourse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woowacourse/javascript-onboarding-precourse/issues"
+  },
+  "homepage": "https://github.com/woowacourse/javascript-onboarding-precourse#readme",
+  "engineStrict": true,
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=14.0.0"
+  }
+}
