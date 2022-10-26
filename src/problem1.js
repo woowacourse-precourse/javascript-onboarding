@@ -35,16 +35,24 @@ const maxScore = (leftPage, rightPage) => {
 // 최종 승자를 구하는 기능
 function problem1(pobi, crong) {
   var answer;
-
-  const pobiMax = maxScore(pobi[0], pobi[1]);
-  const crongMax = maxScore(crong[0], crong[1]);
-
-  if (pobiMax > crongMax) {
-    answer = 1;
-  } else if (pobiMax < crongMax) {
-    answer = 2;
-  } else if (pobiMax == crongMax) {
-    answer = 0;
+  for (i = 0; i < 2; i++) {
+    // 예외 처리
+    if (pobi[i] == 1 || pobi[i] == 400 || crong[i] == 1 || crong[i] == 400) {
+      answer = -1;
+      // 예외 처리
+    } else if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
+      answer = -1;
+    } else {
+      const pobiMax = maxScore(pobi[0], pobi[1]);
+      const crongMax = maxScore(crong[0], crong[1]);
+      if (pobiMax > crongMax) {
+        answer = 1;
+      } else if (pobiMax < crongMax) {
+        answer = 2;
+      } else if (pobiMax == crongMax) {
+        answer = 0;
+      }
+    }
   }
 
   return answer;
