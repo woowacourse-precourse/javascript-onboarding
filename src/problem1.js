@@ -4,6 +4,14 @@
 // 3. 곱하기 점수 확인
 // 4. 결과값을 결정
 
+// 결과값을 결정
+function checkResult(pobi_score, crong_score) {
+  // pobi, crong 점수에 따라 결과값 반환
+  if (pobi_score > crong_score) return 1;
+  if (pobi_score < crong_score) return 2;
+  return 0;
+}
+
 // 정수를 한 자 기준으로 리스트화 시키는 함수
 function listing(page) {
   // 정수를 문자열로 변경후 ''기준으로 리스트로 변환, 변환된 문자열을 다시 정수형으로 변환
@@ -58,6 +66,8 @@ function problem1(pobi, crong) {
     // pobi 점수와 crong 점수를 결정
     const pobi_score = checkScore(pobi);
     const crong_score = checkScore(crong);
+    // 결과값 재할당
+    answer = checkResult(pobi_score, crong_score);
   }
   return answer;
 }
