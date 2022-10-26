@@ -7,15 +7,9 @@ function problem1(pobi, crong) {
 }
 
 function pointCompare(pobiPoint, crongPoint) {
-  if (pobiPoint == crongPoint) {
-    return 0;
-  }
-  if (pobiPoint > crongPoint) {
-    return 1;
-  }
-  if (pobiPoint < crongPoint) {
-    return 2;
-  }
+  if (pobiPoint == crongPoint) return 0;
+  if (pobiPoint > crongPoint) return 1;
+  if (pobiPoint < crongPoint) return 2;
 }
 
 function digitSum(...Arr) {
