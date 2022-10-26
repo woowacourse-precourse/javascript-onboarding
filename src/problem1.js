@@ -22,7 +22,10 @@ class PageError {
   }
 
   checkAllError() {
-    if (!(this.checkLimit() && this.checkNext() && this.checkNext())) {
+    if (!this.checkLength())
+      throw new Error("input 양식에 에러가 발생하였습니다!");
+
+    if (!(this.checkLimit() && this.checkNext())) {
       return false;
     }
 
