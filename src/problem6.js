@@ -30,6 +30,12 @@ function checkNickNameLength(forms) {
   return true;
 }
 
+function selectModelNickName(forms, ans) {
+  for (let i = 0; i < forms.length; i++) {
+    const modelNickName = forms[i][1];
+  }
+}
+
 function problem6(forms) {
   if (
     !checkEmailLength(forms) ||
@@ -38,5 +44,9 @@ function problem6(forms) {
   ) {
     return;
   }
+
+  let ans = [];
+
+  selectModelNickName(forms, ans);
 }
 module.exports = problem6;
