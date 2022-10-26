@@ -22,5 +22,4 @@ function problem1(pobi, crong) {
   else if (MaxPobi < MaxCrong) return 2;
   else return 0;
 }
-console.log(problem1([1, 2], [100, 101]));
 module.exports = problem1;
