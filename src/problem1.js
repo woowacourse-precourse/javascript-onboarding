@@ -12,9 +12,10 @@ function isInvalidArgument(pobi, crong) {
 }
 
 function calculMax(page) {
-  var sum = 0;
-  var mul = 1;
-  var max = [];
+  let sum = 0;
+  let mul = 1;
+  let max = [];
+
   for (i = 0; i < 2; i++) {
     page[i] = page[i].toString();
     for (j = 0; j < page[i].length; j++) {
@@ -31,8 +32,8 @@ function calculMax(page) {
 }
 
 function problem1(pobi, crong) {
-  var p_max = 0;
-  var c_max = 0;
+  let p_max = 0;
+  let c_max = 0;
 
   if (isInvalidArgument(pobi, crong)) return -1;
 
