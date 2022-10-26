@@ -8,6 +8,9 @@ const add = (a, b) => a + b;
  */
 const multiply = (a, b) => a * b;
 
+/**
+ * @type {(a: number, b: number) => number}
+ */
 const minus = (a, b) => a - b;
 
 /**
