@@ -13,4 +13,10 @@ const multiplyAllDigit = (num) => {
   return stringDigitArray.reduce((prev, current) => +prev * +current);
 };
 
+const pageValidCheck = (pageArray) => {
+  const [leftPage, rightPage] = pageArray;
+  if (rightPage - leftPage === 1) return true;
+  return false;
+};
+
 module.exports = problem1;
