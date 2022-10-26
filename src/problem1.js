@@ -1,5 +1,17 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+
+  if (exceptionCheck(pobi, crong) === false) {
+    answer = -1;
+  } else {
+    let pobiMax = maxNumber(pobi[0], pobi[1]);
+    let crongMax = maxNumber(crong[0], crong[1]);
+    console.log(pobiMax + " " + crongMax);
+    if (pobiMax === crongMax) answer = 0;
+    else if (pobiMax > crongMax) answer = 1;
+    else answer = 2;
+  }
+
   return answer;
 }
 
