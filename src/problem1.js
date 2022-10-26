@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+
   return answer;
 }
 
@@ -34,6 +35,11 @@ function calculateDigits(pages) {
   });
 
   return resultPages;
+}
+
+function pickBigNumber(user) {
+  const calculatedPages = calculateDigits(user);
+  return Math.max(calculatedPages);
 }
 
 module.exports = problem1;
