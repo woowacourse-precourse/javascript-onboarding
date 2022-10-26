@@ -19,9 +19,25 @@ function problem1(pobi, crong) {
     .split("")
     .reduce((acc, cur) => acc * cur);
 
+  const [c, d] = crong;
 
+  const addCrOdd = c
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc + cur);
+  const addCrEven = d
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc + cur);
 
-
+  const mulCrOdd = c
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc * cur);
+  const mulCrEven = d
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc * cur);
 }
 
 module.exports = problem1;
