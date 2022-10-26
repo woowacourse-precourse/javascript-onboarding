@@ -51,21 +51,26 @@ class Password {
 
     this.stack = new Stack();
     this.cryptogramList = cryptogram.split("");
+    this.prevPopValue = "";
   }
 
-  decrypt() {
-    let prevPopValue = "";
+  decrypt(char) {
+    if (!this.stack.isEmpty() && this.stack.peek() === char) {
+      this.stack.pop();
+      this.prevPopValue = char;
+    } else if (this.prevPopValue === char) {
+      /*
+        do Nothing
+      */
+    } else {
+      this.stack.push(char);
+      this.prevPopValue = "";
+    }
+  }
 
+  getDecryption() {
     for (let char of this.cryptogramList) {
-      if (!this.stack.isEmpty() && this.stack.peek() === char) {
-        this.stack.pop();
-        prevPopValue = char;
-      } else if (prevPopValue === char) {
-        continue;
-      } else {
-        this.stack.push(char);
-        prevPopValue = "";
-      }
+      this.decrypt(char);
     }
 
     return this.stack.toString();
@@ -74,7 +79,7 @@ class Password {
 
 function problem2(cryptogram) {
   const password = new Password(cryptogram);
-  return password.decrypt();
+  return password.getDecryption();
 }
 
 module.exports = problem2;
