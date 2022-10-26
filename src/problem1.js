@@ -123,6 +123,11 @@ function problem1(pobi, crong) {
     return -1;
   }
 
+  const pobiMax = pageNumCalc(pobi);
+  const crongMax = pageNumCalc(crong);
+
+  const ans = whoIsWinner(pobiMax, crongMax);
+
   return ans;
 }
 
