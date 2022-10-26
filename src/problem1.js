@@ -25,10 +25,15 @@ function problem1(pobi, crong) {
   }
 
   function isInvalidInput(pobi, crong) {
-    return true;
+    const condition1 = hasBothEndsPage(pobi, crong);
+    return condition1;
+  }
+
+  function hasBothEndsPage(pobiPage, crongPage) {
+    return !!BOTHENDPAGES.filter((v) => (pobiPage.concat(crongPage).includes(v))).length;
   }
 
 }
-console.log(problem1([97, 98], [199, 200]));
+console.log(problem1([1, 2], [199, 200]));
 
 // module.exports = problem1;
