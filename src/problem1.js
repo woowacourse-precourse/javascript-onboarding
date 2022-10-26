@@ -45,6 +45,17 @@ function problem1(pobi, crong) {
     return answer;
   }
 
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) {
+    answer = 1;
+  } else if (crongScore > pobiScore) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
+
   return answer;
 }
 
