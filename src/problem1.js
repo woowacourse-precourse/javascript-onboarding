@@ -4,7 +4,7 @@
  * @returns {boolean}
  */
 function checkValidation(pages) {
-  if (pages.length === 2 
+  if ((Array.isArray(pages) && pages.length === 2)
       && (Number.isInteger(pages[0]) && Number.isInteger(pages[1]))
       && (pages[0] % 2 === 1 && pages[0] + 1 === pages[1])
       && pages[1] <= 400)
@@ -12,9 +12,9 @@ function checkValidation(pages) {
   return false;
 }
 
-
 function calculateTotalScore() {
   //펼친 페이지의 score 계산
+  
 }
 
 function problem1(pobi, crong) {
