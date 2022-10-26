@@ -6,7 +6,7 @@ function removeDuplicates(str) {
       if (i > 1) {
         i -= 2;
       } else {
-        i--;
+        i = -1;
       }
     }
   }
