@@ -1,8 +1,12 @@
 function problem3(number) {
   var answer;
+
+  for(var num=3;num<=number;num++){
+    claps(num);
+  }
+
   return answer;
 
-  //2. 반복문을 사용해 3부터 number까지 기능1 함수 동작하도록 작성.
   //3. 반환값들을 전부 더해 리턴.
 }
 
