@@ -55,7 +55,23 @@ function problem1(pobi, crong) {
   const crongMax = findPageValues(crong);
 
   let answer;
-  return answer;
+
+  if (check == true) {
+    answer = -1;
+    return answer;
+  }
+  if (pobiMax > crongMax) {
+    answer = 1;
+    return answer;
+  }
+  if (pobiMax < crongMax) {
+    answer = 2;
+    return answer;
+  }
+  if (pobiMax == crongMax) {
+    answer = 0;
+    return answer;
+  }
 }
 
 module.exports = problem1;
