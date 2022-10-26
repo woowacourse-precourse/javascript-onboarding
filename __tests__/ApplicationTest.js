@@ -37,6 +37,7 @@ describe("problem1", () => {
 });
 */
 
+/*
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
@@ -51,8 +52,8 @@ describe("problem2", () => {
     expect(problem2("aaaaaaaabbb")).toEqual("");
   });
 });
+*/
 
-/*
 describe("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
@@ -60,8 +61,18 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
+  test("my test1", () => {
+    expect(problem3(39)).toEqual(22);
+  });
+  test("my test2", () => {
+    expect(problem3(100)).toEqual(60);
+  });
+  test("my test3", () => {
+    expect(problem3(399)).toEqual(280);
+  });
 });
 
+/*
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
