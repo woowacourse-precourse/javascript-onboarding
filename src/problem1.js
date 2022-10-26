@@ -6,6 +6,15 @@ function problem1(pobi, crong) {
   var pobichoose = pobiadd > pobimulti ? pobiadd : pobimulti; 
   var crongchoose = crongadd > crongmulti ? crongadd : crongmulti; 
   var answer;
+  if (pobichoose > crongchoose){
+    answer = 1
+  }
+  else if(pobichoose < crongchoose){
+    answer = 2
+  }
+  else if (pobichoose == crongchoose){
+    answer = 0
+  }
   return answer;
 }
 function Add(n){
