@@ -35,6 +35,10 @@ const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
 function problem1(pobi, crong) {
   const pobiScore = calculateMyScore(pobi);
   const crongScore = calculateMyScore(crong);
+
+  if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return 0;
 }
 
 module.exports = problem1;
