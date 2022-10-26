@@ -35,7 +35,14 @@ const getLargeNum = (num) => {
   const mul = mulPageNum(num);
   return Math.max(add, mul);
 };
+
 // 포비와 크롱 큰값 생성
+const compareLeftRight = ([left, right]) => {
+  const leftNum = getLargeNum(left);
+  const rightNum = getLargeNum(right);
+  return Math.max(leftNum, rightNum);
+};
+
 // 포비와 크롱 값 비교
 const whoIsWin = (pobi, crong) => {
   if (pobi > crong) return POBI_WIN;
@@ -48,5 +55,6 @@ exports.addPageNum = addPageNum;
 exports.mulPageNum = mulPageNum;
 exports.getLargeNum = getLargeNum;
 exports.whoIsWin = whoIsWin;
+exports.compareLeftRight = compareLeftRight;
 exports.returnNum = returnNum;
 exports.ERROR = ERROR;

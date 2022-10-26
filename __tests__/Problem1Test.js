@@ -5,6 +5,7 @@ const {
   getLargeNum,
   whoIsWin,
   returnNum,
+  compareLeftRight,
 } = require("../src/problem1.util");
 
 describe("checkInputError", () => {
@@ -86,5 +87,11 @@ describe("whoIsWin", () => {
   });
   it("is Nobody win pobi 5 crong 5", () => {
     expect(whoIsWin(5, 5)).toEqual(returnNum.NOBODY_WIN);
+  });
+});
+
+describe("compareLeftRight", () => {
+  it("is input [130,131] output 5", () => {
+    expect(compareLeftRight([130, 131])).toEqual(5);
   });
 });
