@@ -45,11 +45,16 @@ function problem6(forms) {
     if (value > 1) overLappingWords.push(key);
   });
 
-  forms = forms.filter(([_, nickName]) => {
-    return isOverLapping(overLappingWords, nickName);
-  });
+  forms = forms
+    .filter(([_, nickName]) => {
+      return isOverLapping(overLappingWords, nickName);
+    })
+    .map(([email, _]) => email);
 
-  return answer;
+  forms = [...new Set([...forms])];
+  forms.sort((a, b) => (a > b ? 1 : -1));
+
+  return forms;
 }
 
 module.exports = problem6;
