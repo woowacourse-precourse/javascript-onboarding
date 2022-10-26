@@ -1,12 +1,17 @@
 function problem3(number) {
   var answer = 0;
-  for (let i = 1; i <= number; i++) {
-    i = i.toString();
-    if (i.includes(3) || i.includes(6) || i.includes(9)) {
-      answer++;
-    }
-  }
   return answer;
 }
+
+function includesNumbers(number, compareNumbers) {
+  for (let compareNumber of compareNumbers) {
+    if (String(number).includes(compareNumber)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(problem3(13));
 
 module.exports = problem3;
