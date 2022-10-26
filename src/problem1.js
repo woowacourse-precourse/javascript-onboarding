@@ -36,14 +36,7 @@ function problem1(pobi, crong) {
     return b - a;
   });
 
-  if (pobi[0] <= 1 || crong[1] >= 400 || 
-      pobi[0] * crong[0] % 2 !== 1 || 
-      pobi[1] - pobi[0] !== 1 || 
-      crong[1] - crong[0] !== 1 ||
-      pobi.length > 3 || pobi.lenth < 2 ||
-      crong.length > 3 || crong.lenth < 2) {
-    answer = -1;
-  } else if (pobiNumArr[0] > crongNumArr[0]) {
+  if (pobiNumArr[0] > crongNumArr[0]) {
     answer = 1;
   } else if (crongNumArr[0] > pobiNumArr[0]) {
     answer = 2;
@@ -55,3 +48,12 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
+
+const inputExecption = (arr1, arr2) => {
+  let inputCheck = true;
+  if (arr1[0] <= 1 || arr2[1] >= 400) inputCheck = false;
+  else if (arr1[0] * arr2[0] % 2 !== 1) inputCheck = false;
+  else if (arr1[1] - arr1[0] !== 1 || arr2[1] - arr2[0] !== 1) inputCheck = false;
+  else if (arr1.length != 2 || arr2.length != 2) inputCheck = false;
+  return inputCheck;
+}
