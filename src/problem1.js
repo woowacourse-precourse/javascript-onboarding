@@ -39,29 +39,16 @@ function problem1(pobi, crong) {
   console.log(pobiArr[0]);
   console.log(crongArr[0]);
 
+  if (pobiArr[0] > crongArr[0]) {
+    answer = 1;
+  } else if (crongArr[0] > pobiArr[0]) {
+    answer = 2;
+  } else if (crongArr[0] === pobiArr[0]) {
+    answer = 0;
+  }
 
-  // const leftNumtoStr = pobi[0].toString();
-  // let sum = 0;
-  // let multiply = 1;
 
-  // for (let i = 0; i < leftNumtoStr.length; i++) {
-  //   sum += parseInt(leftNumtoStr[i]);
-  //   multiply *= parseInt(leftNumtoStr[i]);
-  // }
 
-  // pobiArr.push(sum, multiply);
-
-  // let rightNumtoStr = pobi[1].toString();
-  // sum = 0;
-  // multiply = 1;
-
-  // for (let i = 0; i < rightNumtoStr.length; i++) {
-  //   sum += parseInt(rightNumtoStr[i]);
-  //   multiply *= parseInt(rightNumtoStr[i]);
-  // }
-  
-  // pobiArr.push(sum, multiply);
-  // console.log(pobiArr);
 
 
   return answer;
