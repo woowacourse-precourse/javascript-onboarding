@@ -1,7 +1,8 @@
 function problem1(pobi, crong) {
+  if (exception(pobi) || exception(crong)) return -1;
+  
   const pobiPoint = Math.max(digitSum(pobi),digitMul(pobi));
   const crongPoint = Math.max(digitSum(crong),digitMul(crong));
-
 
   return pointCompare(pobiPoint, crongPoint);
 }
@@ -12,31 +13,33 @@ function pointCompare(pobiPoint, crongPoint) {
   if (pobiPoint < crongPoint) return 2;
 }
 
-function digitSum(...Arr) {
-  const firstArr = Arr[0][0].toString().split("").map(x => parseInt(x));
+function digitSum(...arr) {
+  const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
   const firstNum = firstArr.reduce((a,b) => (a+b));
 
-  const secondArr = Arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondArr = arr[0][1].toString().split("").map(x => parseInt(x));
   const secondNum = secondArr.reduce((a,b) => (a+b));
 
   return Math.max(firstNum, secondNum);
 }
 
-function digitMul(...Arr) {
-  const firstArr = Arr[0][0].toString().split("").map(x => parseInt(x));
+function digitMul(...arr) {
+  const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
   const firstNum = firstArr.reduce((a,b) => (a*b));
 
-  const secondArr = Arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondArr = arr[0][1].toString().split("").map(x => parseInt(x));
   const secondNum = secondArr.reduce((a,b) => (a*b));
 
   return Math.max(firstNum, secondNum);
 }
 
-function exception() {
-
+function exception(arr) {
+  if (arr[0] == 1 || arr[1] == 400) return true;
+  if (arr[0] !== arr[1] - 1) return true;
+  if (arr.length !== 2) return true;
+  
+  return false;
 }
-
-problem1([111, 112], [97, 98]);
 
 module.exports = problem1;
 
