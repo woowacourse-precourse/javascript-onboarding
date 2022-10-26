@@ -1,6 +1,14 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
+  if (!isSequenceNumber(pobi) || !isSequenceNumber(crong)) return -1;
+
+  const pobiMaxNumber = getMaxNumber(pobi);
+  const crongMaxNumber = getMaxNumber(crong);
+
+  if (pobiMaxNumber > crongMaxNumber) return 1;
+  else if (pobiMaxNumber < crongMaxNumber) return 2;
+  else if (pobiMaxNumber === crongMaxNumber) return 0;
+  else return -1;
 }
 
 function isValidPage(numbers) {
