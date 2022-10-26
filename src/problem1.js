@@ -12,6 +12,13 @@ function problem1(pobi, crong) {
   function multiply(num) {
     return String(num).split("").reduce((n,i) => n*i);
     }
+    function compare(num1,num2){
+        if(num1>num2) {
+            return num1;
+        }else {
+            return num2;
+        }
+    }
   return answer;
 }
 module.exports = problem1;
