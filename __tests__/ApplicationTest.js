@@ -20,14 +20,14 @@ describe('problem1', () => {
   });
 });
 
-// describe("problem2", () => {
-//   test("case1", () => {
-//     expect(problem2("browoanoommnaon")).toEqual("brown");
-//   });
-//   test("case2", () => {
-//     expect(problem2("zyelleyz")).toEqual("");
-//   });
-// });
+describe('problem2', () => {
+  test('case1', () => {
+    expect(problem2('browoanoommnaon')).toEqual('brown');
+  });
+  test('case2', () => {
+    expect(problem2('zyelleyz')).toEqual('');
+  });
+});
 
 // describe("problem3", () => {
 //   test("case1", () => {
