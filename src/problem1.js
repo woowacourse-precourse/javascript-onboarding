@@ -102,6 +102,22 @@ function problem1(pobi, crong) {
   }
 
   //!3.페이지 수가 1 차이가 나지 않을 경우.
+    //#7 배열의 숫자 차이가 number 만큼 차이나는지 확인하는 함수
+
+  function CHECK_LIST_DIFFERENCE(list,number=1){
+
+    const diffrenceNumber = number;
+    const inputList = list.slice();
+    const leftNum = Number(inputList[0])
+    const rightNum = Number(inputList[1])
+
+    if(Math.abs(leftNum - rightNum) === diffrenceNumber){
+      return true
+    } else {
+      return false;
+    }
+
+  }
 
   // 실행
   let answer;
