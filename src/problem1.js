@@ -14,6 +14,9 @@
 
 var isExceptions = false;
 
+const compareNumWithNum = (num1, num2) => {
+  return num1 >= num2 ? num1 : num2;
+}
 
 // 기능 1, 2: 숫자를 받아 각 자릿 수의 합, 곱을 구한 후, 대소 비교 후 반환
 const getMaxValOnPage = page => {
@@ -25,7 +28,7 @@ const getMaxValOnPage = page => {
     mulVal *= Number(num);
   })
 
-  return sumVal >= mulVal ? sumVal : mulVal;
+  return compareNumWithNum(sumVal, mulVal);
 }
 
 // 기능 3 구현: 펼친 책의 왼쪽 점수와 오른쪽 점수를 구해 대소 비교 후 반환 
@@ -43,7 +46,7 @@ const getMaxValOnPages = pages => {
     isExceptions = true;
   }
 
-  return leftScore >= rightScore ? leftScore : rightScore;
+  return compareNumWithNum(leftScore, rightScore);
 }
 
 function problem1(pobi, crong) {
@@ -55,7 +58,6 @@ function problem1(pobi, crong) {
   if (pobi.length !== 2 || crong.length !== 2) {
     isExceptions = true;
   }
-
 
   if (pobiScore > crongScore) {
     answer = 1;
