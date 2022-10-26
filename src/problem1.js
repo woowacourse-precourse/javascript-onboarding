@@ -31,7 +31,8 @@ function problem1(pobi, crong) {
   if (exception(pobi, crong) === -1) return -1;
   getMaxNumber(pobi, pobi);
   getMaxNumber(crong, pobi);
-  return undefined;
+  if (Math.max(...pobiMax) === Math.max(...crongMax)) return 0;
+  return Math.max(...pobiMax) > Math.max(...crongMax) ? 1 : 2;
 }
 
 module.exports = problem1;
