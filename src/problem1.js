@@ -70,7 +70,7 @@ function calcPage(arr) {
 
 //페이지의 길이검사, 페이지의 연속성검사 , 페이지 범위 검사
 function vaildate(page) {
-  if (page.length !== 2 || page[1] - page[0] > 1 || page[1] - page[0] < 0) {
+  if (page.length !== 2 || page[0] + 1 !== page[1]) {
     return true;
   }
   if (page[0] < PAGE_START || page[0] > PAGE_END || isEven(page[0])) {
