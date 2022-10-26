@@ -1,6 +1,6 @@
 /*
 [x] 페이지가 올바른 페이지인지 확인하는 기능을 구현한다.
-[ ] 페이지가 첫 페이지인지 확인하는 기능을 구현한다.
+[x] 페이지가 첫 페이지인지 확인하는 기능을 구현한다.
 [ ] 페이지가 마지막 페이지인지 확인하는 기능을 구현한다.
 [ ] 페이지 각 자리를 더하는 기능을 구현한다.
 [ ] 페이지 각 자리를 곱하는 기능을 구현한다.
@@ -30,6 +30,14 @@ function isValidPage(page) {
     return false;
   }
   return true;
+}
+
+function isFirstPage(page) {
+  const [left, right] = page;
+  if (left === 1 && right === 2) {
+    return true;
+  }
+  return false;
 }
 
 function problem1(pobi, crong) {
