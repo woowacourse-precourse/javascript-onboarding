@@ -34,10 +34,13 @@ const maxNum = (book) => {
   return max;
 };
 
+// 결과 값 출력
+function problem1(pobi, crong) {
+  if (!isValidInput(pobi, crong)) return -1;
+  if (maxNum(pobi) === maxNum(crong)) return 0;
+  if (maxNum(pobi) > maxNum(crong)) return 1;
+  if (maxNum(pobi) < maxNum(crong)) return 2;
+}
 
-// function problem1(pobi, crong) {
-//   var answer;
-//   return answer;
-// }
 
-// module.exports = problem1;
+module.exports = problem1;
