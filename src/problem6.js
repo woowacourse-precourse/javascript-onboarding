@@ -28,7 +28,7 @@ function checkNickname(forms, map, rejectIndex){
   for(let i = 0; i < forms.length; i++){
     for(let j = 0; j < forms[i][1].length - 1; j++){
       let tmp = forms[i][1].substr(j,2);
-      if(map.has(tmp)){
+      if(map.get(tmp) > 1){
         rejectIndex.push(i);
         break;
       }
