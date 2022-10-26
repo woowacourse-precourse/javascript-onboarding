@@ -13,6 +13,12 @@ const sumAllDigit = (num) => {
   return numArr.reduce((acc, cur) => acc + cur, 0);
 }
 
+// 각 자리 숫자를 곱하는 기능
+const multiplyAllDigit = (num) => {
+  let numArr = String(num).split("").map(x=>+x);
+  return numArr.reduce((acc, cur) => acc * cur, 1);
+}
+
 function problem1(pobi, crong) {
   let result;
   if(!checkValid(pobi, crong)) result = -1;
