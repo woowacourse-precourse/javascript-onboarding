@@ -7,8 +7,17 @@ function checkInvalidity(pageList) {
   return false;
 }
 
+function caculateScore(page) {
+  const numArr = String(page).split("");
+  const addScore = numArr.reduce((acc, cur) => (acc += parseInt(cur)), 0);
+  const multiplyScore = numArr.reduce((acc, cur) => (acc *= parseInt(cur)), 1);
+  return Math.max(addScore, multiplyScore);
+}
+
 function problem1(pobi, crong) {
   if (checkInvalidity(pobi) | checkInvalidity(crong)) return -1;
+  const pobiScore = Math.max(caculateScore(pobi[0]), caculateScore(pobi[1]));
+  const crongScore = Math.max(caculateScore(crong[0]), caculateScore(crong[1]));
   var answer;
   return answer;
 }
