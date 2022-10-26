@@ -4,7 +4,7 @@
 // left right 구분
 // - [x] left right 배열을 입력받고 둘을 나누어준다.
 
-// findPageValue
+// findPageIndex
 // - [x] 페이지값의 length를 알아낸다
 // - [x] 페이지값의 각 length값을 이용하여 자릿수의 값을 알아낸다
 
@@ -28,7 +28,7 @@
 // - [x] 마지막 면이 나오지 않게한다. - 400제외
 
 function problem1(pobi, crong) {
-  const findPageValues = (pages) => {
+  const dividePageValues = (pages) => {
     const leftpage = pages[0];
     const rightpage = pages[1];
 
@@ -41,5 +41,17 @@ function problem1(pobi, crong) {
   var answer;
   return answer;
 }
+const findPageIndex = (page) => {
+  const stringvalue = String(page);
+  let sum = 0;
+  let mul = 1;
+
+  for (let index = 0; index < stringvalue.length; index++) {
+    sum += Number(stringvalue[index]);
+    mul *= Number(stringvalue[index]);
+  }
+
+  return sum > mul ? sum : mul;
+};
 
 module.exports = problem1;
