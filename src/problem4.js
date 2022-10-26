@@ -1,21 +1,19 @@
-function lowerFlog(letterCode) {
-  const mid = "m".charCodeAt(0);
+function getOpposite(letterCode, mid) {
   if (letterCode <= mid) {
     return letterCode + (mid - letterCode) * 2 + 1;
-  }
-  if (letterCode > mid) {
+  } else {
     return letterCode - (letterCode - mid) * 2 + 1;
   }
 }
 
+function lowerFlog(letterCode) {
+  const mid = "m".charCodeAt(0);
+  return getOpposite(letterCode, mid);
+}
+
 function upperFlog(letterCode) {
   const mid = "M".charCodeAt(0);
-  if (letterCode <= mid) {
-    return letterCode + (mid - letterCode) * 2 + 1;
-  }
-  if (letterCode > mid) {
-    return letterCode - (letterCode - mid) * 2 + 1;
-  }
+  return getOpposite(letterCode, mid);
 }
 
 function problem4(word) {
