@@ -1,6 +1,5 @@
 function problem1(pobi, crong) {
-  const answer = 0;
-  return answer;
+  return getWinner(pobi, crong);
 }
 
 const getNumberArray = (number) => {
@@ -23,6 +22,18 @@ const getLargestNumber = (pages) => {
     numbers.push(getSumPage(page), getMulPage(page));
   });
   return Math.max(...numbers);
+};
+
+const getWinner = (pobi, crong) => {
+  let winner = 0;
+  const pobiScore = getLargestNumber(pobi);
+  const crongScore = getLargestNumber(crong);
+  if (pobiScore > crongScore) {
+    winner = 1;
+  } else if (pobiScore < crongScore) {
+    winner = 2;
+  }
+  return winner;
 };
 
 module.exports = problem1;
