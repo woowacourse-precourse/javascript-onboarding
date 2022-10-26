@@ -39,10 +39,19 @@ const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
  */
 function problem1(pobi, crong) {
   const ARR_LENGTH = 2;
+  const MIN_PAGE = 2;
+  const MAX_PAGE = 399;
 
   if (pobi === undefined || crong === undefined) return -1;
   if (pobi.length !== ARR_LENGTH || crong.length !== ARR_LENGTH) return -1;
   if (minus(pobi[0], pobi[1]) !== -1 || minus(crong[0], crong[1]) !== -1)
+    return -1;
+  if (
+    pobi[0] < MIN_PAGE ||
+    pobi[1] > MAX_PAGE ||
+    crong[0] < MIN_PAGE ||
+    crong[1] > MAX_PAGE
+  )
     return -1;
 
   const pobiScore = calculateMyScore(pobi);
