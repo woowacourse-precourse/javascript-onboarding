@@ -3,6 +3,14 @@ function problem1(pobi, crong) {
   const pobiScore = Math.max.apply(null,pobi.map(pageNumber => getMaxNumber(pageNumber)));
   const crongScore = Math.max.apply(null,crong.map(pageNumber => getMaxNumber(pageNumber)));
 
+  if (pobiScore > crongScore){
+    answer = 1
+  } else if (pobiScore < crongScore){
+    answer = 2
+  } else if (pobiScore === crongScore){
+    answer = 0
+  } 
+
   return answer;
 }
 
