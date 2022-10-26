@@ -6,14 +6,17 @@
  * 4. 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1 
  *  
  * Exceptions
- * 1. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. => 범위 3~398 check
- * 2. pobi와 crong의 길이는 2이다. => length: 2 check
+ * 1. pobi와 crong의 길이는 2이다. => length: 2 check
+ * 2. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. => 범위 3~398 check
  * 3. pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 => 오른쪽 페이지 = 왼쪽페이지 + 1
  * 4. 왼쪽 페이지는 무조건 홀수 => 왼쪽페이지 % 2 === 1
  */
 
+var isExceptions = false;
+
+
 // 기능 1, 2: 숫자를 받아 각 자릿 수의 합, 곱을 구한 후, 대소 비교 후 반환
-const getMaxValOnPage = (page) => {
+const getMaxValOnPage = page => {
   var sumVal = 0;
   var mulVal = 1;
 
@@ -26,9 +29,19 @@ const getMaxValOnPage = (page) => {
 }
 
 // 기능 3 구현: 펼친 책의 왼쪽 점수와 오른쪽 점수를 구해 대소 비교 후 반환 
-const getMaxValOnPages = (pages) => {
+const getMaxValOnPages = pages => {
   var leftScore = getMaxValOnPage(pages[0]);
   var rightScore = getMaxValOnPage(pages[1]);
+  
+  // Exception 2 || Exception 3 || Exception 4
+  if (
+    (pages[1] !== pages[0] + 1) || 
+    (pages[0] % 2 !== 1) || 
+    (!(2 < pages[0] < 399)) ||
+    (!(2 < pages[1] < 399))
+  ) {
+    isExceptions = true;
+  }
 
   return leftScore >= rightScore ? leftScore : rightScore;
 }
@@ -38,6 +51,12 @@ function problem1(pobi, crong) {
   var pobiScore = getMaxValOnPages(pobi);
   var crongScore = getMaxValOnPages(crong);
 
+  // Exception 1
+  if (pobi.length !== 2 || crong.length !== 2) {
+    isExceptions = true;
+  }
+
+
   if (pobiScore > crongScore) {
     answer = 1;
   } else if (pobiScore < crongScore) {
@@ -46,9 +65,9 @@ function problem1(pobi, crong) {
     answer = 0;
   }
 
+  if(isExceptions) return -1;
+
   return answer;
 }
-
-console.log(problem1([97, 98], [197, 198]))
 
 module.exports = problem1;
