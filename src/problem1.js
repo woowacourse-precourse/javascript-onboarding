@@ -43,13 +43,14 @@ function verifyPage(pages) {
 // 두 개의 페이지로부터 나올 수 있는 모든 합/곱의 경우의 수에서 최대 값을 반환
 function getMaxNumber(pages) {
   let numbers = [];
-  pages.map((page) => {
+  pages.forEach((page) => {
+    // 고민 1. 단순 반복의 용도와 성능을 고려했을때, map 보다는 forEach가 우세
     let sum = 0;
     let multiply = 1;
     let arr = page
       .toString()
       .split("")
-      .forEach((el) => +el); // 고민 1. 단순 반복의 용도와 성능을 고려했을때, map 보다는 forEach가 우세
+      .map((el) => +el);
 
     arr.map((el) => {
       sum += el;
