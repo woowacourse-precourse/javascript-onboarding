@@ -5,8 +5,12 @@ function problem1(pobi, crong) {
 }
 
 function getMaxNumber(oddNumber, evenNumber) {
-  // 모두 곱해서 나온결과  와 모두 더해서 나온 결과를 비교하기
-  // 더 큰값을 반환한다
+  return Math.max(
+    sumNumber(oddNumber),
+    multiNumber(oddNumber),
+    sumNumber(evenNumber),
+    multiNumber(evenNumber)
+  );
 }
 
 function sumNumber(number) {
