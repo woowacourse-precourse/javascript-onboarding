@@ -8,7 +8,20 @@ function problem6(forms) {
   return answer;
 }
 
-function handelException(){}
+function handleExcept(forms, rejectIndex){
+  for(let i = 0; i < forms.length; i++){
+    const emailForm = "email.com";
+    if(forms[i][0].indexOf(emailForm) == -1){
+      rejectIndex.push(i);
+    }
+  }
+}
+
+function handleFormSize(forms){
+  if(forms.length > 10000){
+    forms.slice(0, 9999);
+  }
+}
 
 function setMap(forms, map){
   for(let i = 0; i < forms.length; i++){
