@@ -1,5 +1,8 @@
 function problem2(cryptogram) {
-  return removeDuplicateWord(cryptogram);
+  if (validWord(cryptogram)) {
+    return removeDuplicateWord(cryptogram);
+  }
+  return -1;
 }
 
 const removeDuplicateWord = (words) => {
@@ -15,6 +18,17 @@ const removeDuplicateWord = (words) => {
     }
   });
   return stack.join('');
+};
+
+const validWord = (word) => {
+  const wordLength = word.legnth;
+  if (wordLength === 0 || wordLength > 1000) {
+    return false;
+  }
+  if (!/^[a-z]+$/.test(word)) {
+    return false;
+  }
+  return true;
 };
 
 module.exports = problem2;
