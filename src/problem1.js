@@ -67,8 +67,12 @@ const bookPage = {
 function problem1(pobi, crong) {
   let pobiBookPage = new bookPage();
   let crongBookPage = new bookPage();
-  pobiBookPage.inputPages(pobi);
-  crongBookPage.inputPages(crong);
+  if (!pobiBookPage.inputPages(pobi)) {
+    return -1;
+  }
+  if (!crongBookPage.inputPages(crong)) {
+    return -1;
+  }
   let pobiBigestNumber = pobiBookPage.getBiggestNumber();
   let crongBigestNumber = crongBookPage.getBiggestNumber();
 
