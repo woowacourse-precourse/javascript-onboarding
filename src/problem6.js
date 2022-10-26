@@ -6,8 +6,29 @@ function problem6(forms) {
    * 4. 남은 닉네임은 중복되는 것이므로 includes를 통해 중복되는 닉네임 찾기
    * 5. 닉네임으로 이메일을 찾아서 이메일 정렬
    */
-  var answer;
-  return answer;
+  const twoLettersArray = forms
+    .map((info) =>
+      info[1]
+        .split("")
+        .map((string, i, array) => {
+          return string + array[i + 1];
+        })
+        .filter((unit) => !unit.includes("undefined"))
+    )
+    .flat();
+  const removeIntersection = [...new Set(twoLettersArray)];
+
+  return removeIntersection;
 }
+
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
