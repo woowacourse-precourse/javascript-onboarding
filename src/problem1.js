@@ -19,6 +19,20 @@ function compareMaxBySumAndMultiply(person) {
   return Math.max(sum(left), sum(right), multiply(left), multiply(right));
 }
 
+function compareResult(pobiMax, crongMax) {
+  if (pobiMax > crongMax) {
+    return 1;
+  }
+
+  if (crongMax > pobiMax) {
+    return 2;
+  }
+
+  if (crongMax === pobiMax) {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   var answer;
 
