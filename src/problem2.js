@@ -5,15 +5,22 @@
 
 function problem2(cryptogram) {
   var answer;
-
+  let flag = true;
   // List 화
   let cryptoList = cryptogram.split("");
 
   // 값 비교 for문
-  for (let i = 0; i < cryptoList.length; i++) {
-    if (cryptoList[i] === cryptoList[i + 1]) {
-      cryptoList.splice(i, 2);
-      break;
+  while (flag) {
+    // 원소가 없음
+    if (cryptoList.length === 0) flag = false;
+
+    for (let i = 0; i < cryptoList.length; i++) {
+      if (cryptoList[i] === cryptoList[i + 1]) {
+        cryptoList.splice(i, 2);
+        break;
+      }
+      // 중복이 없음
+      if (i === cryptoList.length - 1) flag = false;
     }
   }
   return answer;
