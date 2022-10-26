@@ -8,6 +8,7 @@ function problem2(cryptogram) {
       duplicatedChar = stack.pop();
     else if (duplicatedChar === cryptogram[i]) continue;
   }
+
   return stack.join("");
 }
 
