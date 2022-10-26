@@ -9,7 +9,9 @@ function problem1(pobi, crong) {
   function add(num) {
       return String(num).split("").reduce((n,i) => n + parseInt(i),0);
   }
-  
+  function multiply(num) {
+    return String(num).split("").reduce((n,i) => n*i);
+    }
   return answer;
 }
 module.exports = problem1;
