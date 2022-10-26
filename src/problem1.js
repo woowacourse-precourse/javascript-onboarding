@@ -43,6 +43,7 @@ function problem1(pobi, crong) {
       if (crongPlus < crongPlusTmp) crongPlus = crongPlusTmp;
       if (crongMulti < crongMultiTmp) crongMulti = crongMultiTmp;
     }
+    // console.log(pobiPlus, pobiMulti);
     pobiMax = pobiPlus > pobiMulti ? pobiPlus : pobiMulti;
     // console.log(pobiMax);
     crongMax = crongPlus > crongMulti ? crongPlus : crongMulti;
@@ -55,7 +56,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-// let pobi = [131, 132];
-// let crong = [211, 212];
-// console.log(problem1(pobi, crong));
 module.exports = problem1;
