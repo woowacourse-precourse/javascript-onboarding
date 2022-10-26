@@ -25,10 +25,36 @@ function getFinalScore(pages) {
 /* 하나의 페이지에 대한 최대 점수를 구하는 함수 */
 
 /* 하나의 페이지에 대해 각 자리의 숫자 배열을 만들어 주는 함수 */
+function breakPageNumbers(page) {
+  const numberArr = [];
+
+  while (page > 0) {
+    const number = page % 10;
+    numberArr.push(number);
+    page -= number;
+    page = page / 10;
+  }
+
+  return numberArr;
+}
 
 /* 자릿수를 모두 더한 점수를 구하는 함수 */
+function getSumScore(numberArr) {
+  let sumScore = 0;
+  numberArr.forEach((number) => {
+    sumScore += number;
+  });
+  return sumScore;
+}
 
 /* 자릿수를 모두 곱한 점수를 구하는 함수 */
+function getMultipliedScore(numberArr) {
+  let multipliedScore = 1;
+  numberArr.forEach((number) => {
+    multipliedScore *= number;
+  });
+  return multipliedScore;
+}
 
 
 /* 예외 처리 */
