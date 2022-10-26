@@ -31,6 +31,18 @@ function problem1(pobi, crong) {
   }
 
   //#3. 두 개의 숫자를 비교해 큰 수를 도출하는 함수
+    //숫자가 같다면 첫번째 수를 return합니다.
+  function RETURN_LARGE_COMPARED_TWO_NUMBER(number1, number2) {
+    const inputNumber1 = Number(number1);
+    const inputNumber2 = Number(number2);
+
+    if (inputNumber1 >= inputNumber2) {
+      return inputNumber1;
+    } else {
+      return inputNumber2;
+    }
+  }
+
   //#4. 두 숫자를 비교해 게임의 승자를 알려주는 함수
 
   //특이사항
