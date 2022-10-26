@@ -14,8 +14,8 @@ function getKeys(nickname) {
 
 function problem6(forms) {
   const duplicates = {};
-  forms.map((form) => {
-    getKeys(form[1]).map((key) => {
+  forms.forEach((form) => {
+    getKeys(form[1]).forEach((key) => {
       if (!duplicates[key]) duplicates[key] = [];
       duplicates[key].push(form[0]);
     });

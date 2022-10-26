@@ -134,5 +134,6 @@
 - refactor
   - if문 가독성 좋게 변경
   - 하위 스코프에 상위 스코프와 동일한 이름으로 선언된 변수명 변경
+  - return 없는 map을 forEach로 변경
 
 ## 🔖 PROBLEM 7
