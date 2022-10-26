@@ -21,6 +21,4 @@ function problem4(word) {
   return answer;
 }
 
-// let word = "I love you";
-// console.log(problem4(word));
 module.exports = problem4;

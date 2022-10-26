@@ -43,7 +43,6 @@ function problem1(pobi, crong) {
       if (crongPlus < crongPlusTmp) crongPlus = crongPlusTmp;
       if (crongMulti < crongMultiTmp) crongMulti = crongMultiTmp;
     }
-    // console.log(pobiPlus, pobiMulti);
     pobiMax = pobiPlus > pobiMulti ? pobiPlus : pobiMulti;
     // console.log(pobiMax);
     crongMax = crongPlus > crongMulti ? crongPlus : crongMulti;

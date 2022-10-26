@@ -12,6 +12,4 @@ function problem3(number) {
   return answer;
 }
 
-// let number = 33;
-// console.log(problem3(number));
 module.exports = problem3;

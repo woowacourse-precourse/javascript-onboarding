@@ -10,6 +10,4 @@ function problem5(money) {
   return answer;
 }
 
-// money = 15000;
-// console.log(problem5(money));
 module.exports = problem5;
