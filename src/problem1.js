@@ -3,4 +3,13 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function digitSum(number) {
+  let result = 0;
+  while (number != 0) {
+    result += Math.trunc(number % 10);
+    number = Math.trunc(number / 10);
+  }
+  return result;
+}
+
 module.exports = problem1;
