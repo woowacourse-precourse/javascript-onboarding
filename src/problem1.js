@@ -29,6 +29,33 @@ function checkIsPageValid(pobi, crong) {
   return isValid;
 }
 
+function calcSum(array) {
+  return Number(array.reduce((sum, currentValue) => sum + currentValue, 0));
+}
+function calcMul(array) {
+  return Number(array.reduce((mul, currentValue) => mul * currentValue, 1));
+}
+
+// 최댓값 계산 함수
+function calcMaxValue(pageArray) {
+  let maxValue = 0;
+  let leftPageSplit = String(pageArray[0])
+    .split("")
+    .map((v) => Number(v));
+  let rightPageSplit = String(pageArray[1])
+    .split("")
+    .map((v) => Number(v));
+
+  maxValue = Math.max(
+    calcSum(leftPageSplit),
+    calcMul(leftPageSplit),
+    calcSum(rightPageSplit),
+    calcMul(rightPageSplit)
+  );
+
+  return maxValue;
+}
+
 module.exports = problem1;
 
 // pobi, crong: 길이가 2인 배열
