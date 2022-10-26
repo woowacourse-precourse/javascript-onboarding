@@ -17,43 +17,31 @@ function problem1(pobi,crong) {
   return answer
 }
 
+// 포비 검사
 function check_pobi(pobi) {
   val1 = pobi[0].toString()
   val2 = pobi[1].toString()
   left_tmp = 0;
   right_tmp = 0
-  if(sum(val1) >= mul(val1)) {
-      left_tmp = sum(val1)
-  } else {
-      left_tmp = mul(val1)
-  }
-  if(sum(val2) >= mul(val2)) {
-      right_tmp = sum(val2)
-  } else {
-      right_tmp = mul(val2)
-  }
+  sum(val1) >= mul(val1) ? left_tmp = sum(val1) : left_tmp = mul(val1)
+  sum(val2) >= mul(val2) ? right_tmp = sum(val2) : right_tmp = mul(val2)
   
   return Math.max(left_tmp, right_tmp)
 }
 
+// 크롱이 검사
 function check_crong(crong) {
   val1 = crong[0].toString()
   val2 = crong[1].toString()
   left_tmp = 0;
   right_tmp = 0
-  if(sum(val1) >= mul(val1)) {
-      left_tmp = sum(val1)
-  } else {
-      left_tmp = mul(val1)
-  }
-  if(sum(val2) >= mul(val2)) {
-      right_tmp = sum(val2)
-  } else {
-      right_tmp = mul(val2)
-  }
+  sum(val1) >= mul(val1) ? left_tmp = sum(val1) : left_tmp = mul(val1)
+  sum(val2) >= mul(val2) ? right_tmp = sum(val2) : right_tmp = mul(val2)
   
   return Math.max(left_tmp, right_tmp)
 }
+
+// 더하기 함수 
 
 function sum(num) {
   tmp = 0
@@ -63,6 +51,7 @@ function sum(num) {
   return tmp
 }
 
+// 곱셈에 대한 함수
 function mul(num) {
   tmp = 1
   for(let i=0; i<num.length; i++) {
@@ -70,6 +59,8 @@ function mul(num) {
   }
   return tmp
 }
+
+// 예외처리 
 
 function check(pobi, crong) {
   if(1 != Math.abs(pobi[0] - pobi[1])) {
