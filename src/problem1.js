@@ -13,7 +13,7 @@
 function problem1(pobi, crong) {
 
   // 입력값에 따른 예외처리
-  if (pobi[0] === 1 || pobi[1] === 1 || crong[0] === 1 || crong[1] === 1) return -1;
+  if (pobi[0] === 1 || pobi[1] === 400 || crong[0] === 1 || crong[1] === 400) return -1;
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
 
   // 포비 점수 배열
