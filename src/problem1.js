@@ -27,10 +27,26 @@ function getScore(pages) {
   return Math.max(calcScore(left), calcScore(right));
 }
 
-function problem1(pobi, crong) {ㅌㅈ
+function problem1(pobi, crong) {
+  const EXCEPT = -1;
+  const TIE = 0;
+  const POBI_WIN = 1;
+  const CRONG_WIN = 2;
+  
   if (!isValid(pobi) || !isValid(crong)) {
     return EXCEPT;
   }
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) {
+    return POBI_WIN;
+  }
+  if (crongScore > pobiScore) {
+    return CRONG_WIN;
+  }
+  return TIE;
 }
 
 module.exports = problem1;
