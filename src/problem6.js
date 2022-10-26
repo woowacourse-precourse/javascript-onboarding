@@ -11,18 +11,18 @@ function problem6(forms) {
       log[pattern] += 1;
     }
   }
-  let result = [];
+  let result = new Set();
   for (let i = 0; i < forms.length; i++) {
     const [email, nickname] = forms[i];
     for (let j = 0; j < nickname.length - 1; j++) {
       const pattern = nickname[j] + nickname[j+1];
       if (log[pattern] >= 2) {
-        result.push(email);
+        result.add(email);
         break;
       }
     }
   }
-  result.sort();
+  result = [...result].sort();
 
   return result;
 }
