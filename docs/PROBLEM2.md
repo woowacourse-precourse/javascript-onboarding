@@ -2,9 +2,9 @@
 
 - [x] feat1. `deleteRepeatedChars()`: 연속하는 중복 문자들을 삭제한 결과를 반환하는 함수 (한 번)
   - [x] 연속하는 중복 문자들이 없으면 기존 문자열 반환
-- [ ] feat2. `deleteRepeatedChars()` 반환 값이 기존 문자열과 같은지 확인
-- [ ] feat3. while문 isDeleted() 가 false 가 나올때까지 도는 while문
-  - [ ] 빈 문자열도 확인해야 함
+- [x] feat2. `deleteRepeatedChars()` 반환 값이 기존 문자열과 같은지 확인
+- [x] feat3. feat2가 false 나올때까지 도는 while문
+  - [x] 빈 문자열도 확인해야 함
 
 ## 🚀 기능 요구 사항
 

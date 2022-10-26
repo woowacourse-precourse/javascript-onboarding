@@ -1,6 +1,12 @@
 // 01:21 ~
 function problem2(cryptogram) {
   let currentCryptogram = cryptogram;
+  while (currentCryptogram) {
+    let deletedCryptogram = deleteRepeatedChars(currentCryptogram);
+    if (deletedCryptogram === currentCryptogram) break;
+    currentCryptogram = deletedCryptogram;
+  }
+  return currentCryptogram;
 }
 
 function deleteRepeatedChars(cryptogram) {
@@ -12,5 +18,4 @@ function deleteRepeatedChars(cryptogram) {
     .join("");
 }
 
-deleteRepeatedChars("browoanoommnaon");
 module.exports = problem2;
