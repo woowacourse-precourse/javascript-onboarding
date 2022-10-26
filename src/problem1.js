@@ -1,5 +1,14 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+
+  if (!checkIsPageValid(pobi, crong)) return -1;
+  let pobiMax = calcMaxValue(pobi);
+  let crongMax = calcMaxValue(crong);
+
+  if (pobiMax > crongMax) answer = 1;
+  if (pobiMax < crongMax) answer = 2;
+  if (pobiMax === crongMax) answer = 0;
+
   return answer;
 }
 
