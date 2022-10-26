@@ -4,7 +4,7 @@ function problem1(pobi, crong) {
   var answer;
   var PobiCheck = pobi[1]-pobi[0];
   var CrongCheck = crong[1]-crong[0];
-  if(PobiCheck>2 || CrongCheck>2){
+  if(PobiCheck>1 || CrongCheck>1){
     return -1;
   };
   if(pobi[0]===1 || pobi[1]===400 || crong[0]===1 || pobi[1]===400){
@@ -78,6 +78,5 @@ function mulproblem1(num1,num2){
     return sum2;
   }
 }
-
 
 module.exports = problem1;
