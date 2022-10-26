@@ -4,13 +4,13 @@ function problem2(cryptogram) {
 }
 
 function getNoRepeat(cryptogram) {
-  let nonRepeat = [];
+  const noRepeat = [];
   cryptogram.split("").forEach((char) => {
-    const prevChar = nonRepeat.pop();
+    const prevChar = noRepeat.pop();
     if (prevChar === char) return;
-    nonRepeat.push(prevChar, char);
+    noRepeat.push(prevChar, char);
   });
-  return nonRepeat.join("");
+  return noRepeat.join("");
 }
 
 module.exports = problem2;
