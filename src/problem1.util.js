@@ -24,9 +24,16 @@ const mulPageNum = (num) =>
     .padStart(3, "1")
     .split("")
     .reduce((acc, cur) => acc * Number(cur), 1);
+
+const getLargeNum = (num) => {
+  const add = addPageNum(num);
+  const mul = mulPageNum(num);
+  return Math.max(add, mul);
+};
 // 포비와 크롱 큰값 생성
 // 포비와 크롱 값 비교
 
 exports.checkInputError = checkInputError;
 exports.addPageNum = addPageNum;
 exports.mulPageNum = mulPageNum;
+exports.getLargeNum = getLargeNum;

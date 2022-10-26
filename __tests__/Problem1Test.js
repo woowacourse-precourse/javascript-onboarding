@@ -2,6 +2,7 @@ const {
   checkInputError,
   addPageNum,
   mulPageNum,
+  getLargeNum,
 } = require("../src/problem1.util");
 
 describe("checkInputError", () => {
@@ -56,5 +57,17 @@ describe("mulPageNum", () => {
   });
   it("is input 333 output 27", () => {
     expect(mulPageNum(333)).toEqual(27);
+  });
+});
+
+describe("getLargeNum", () => {
+  it("is input 35 output 15 by mulPageNum", () => {
+    expect(getLargeNum(35)).toEqual(15);
+  });
+  it("is input 10 output 1 by addPageNum", () => {
+    expect(getLargeNum(10)).toEqual(1);
+  });
+  it("is input 123 output 6", () => {
+    expect(getLargeNum(123)).toEqual(6);
   });
 });
