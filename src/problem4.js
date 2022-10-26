@@ -8,7 +8,15 @@ function lowerFlog(letterCode) {
   }
 }
 
-function upperFlog(letterCode) {}
+function upperFlog(letterCode) {
+  const mid = "M".charCodeAt(0);
+  if (letterCode <= mid) {
+    return letterCode + (mid - letterCode) * 2 + 1;
+  }
+  if (letterCode > mid) {
+    return letterCode - (letterCode - mid) * 2 + 1;
+  }
+}
 
 function problem4(word) {
   const result = word
