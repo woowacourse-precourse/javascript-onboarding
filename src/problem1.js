@@ -1,8 +1,15 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
 
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
+
+  if (
+    pobiLeftPage + 1 !== pobiRightPage ||
+    crongLeftPage + 1 !== crongRightPage
+  ) {
+    return -1;
+  }
 
   const pobiLeftPageArray = splitNumber(pobiLeftPage);
   const pobiRightPageArray = splitNumber(pobiRightPage);
@@ -32,6 +39,10 @@ function problem1(pobi, crong) {
     crongLeftMaxNumber,
     crongRightMaxNumber
   );
+
+  if (pobiMaxNumber == crongMaxNumber) return 0;
+
+  pobiMaxNumber > crongMaxNumber ? (answer = 1) : (answer = 2);
 
   return answer;
 }
