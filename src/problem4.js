@@ -19,33 +19,28 @@ function reverseAlphabet(letter) {
   if (isUpperCase(letter)) {
     reversePoint = 155;
     reverseAscii = reversePoint - letterAscii;
+
     return String.fromCharCode(reverseAscii);
   }
 
   reversePoint = 219;
   reverseAscii = reversePoint - letterAscii;
+
   return String.fromCharCode(reverseAscii);
 }
 
 function problem4(word) {
-  var answer;
+  const letters = [...word];
+  const reverseLetters = letters.map((letter) => {
+    if (!isAlphabet(letter)) {
+      return letter;
+    }
+
+    return reverseAlphabet(letter);
+  });
+  const answer = reverseLetters.join('');
+
   return answer;
 }
 
 module.exports = problem4;
-
-function test() {
-  console.log(isAlphabet('A'));
-  console.log(isAlphabet('a'));
-  console.log(isAlphabet('/'));
-  console.log(isAlphabet(' '));
-
-  console.log(reverseAlphabet('A'));
-  console.log(reverseAlphabet('a'));
-  console.log(reverseAlphabet('B'));
-  console.log(reverseAlphabet('b'));
-  console.log(reverseAlphabet('Z'));
-  console.log(reverseAlphabet('z'));
-}
-
-test();
