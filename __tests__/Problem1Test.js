@@ -1,4 +1,8 @@
-const { checkInputError, addPageNum } = require("../src/problem1.util");
+const {
+  checkInputError,
+  addPageNum,
+  mulPageNum,
+} = require("../src/problem1.util");
 
 describe("checkInputError", () => {
   it("is return false by correct input", () => {
@@ -28,5 +32,17 @@ describe("addPageNum", () => {
   });
   it("is input 333 output 9", () => {
     expect(addPageNum(333)).toEqual(9);
+  });
+});
+
+describe("mulPageNum", () => {
+  it("is input 35 output 15", () => {
+    expect(mulPageNum(35)).toEqual(15);
+  });
+  it("is input 3 output 3", () => {
+    expect(mulPageNum(3)).toEqual(3);
+  });
+  it("is input 333 output 27", () => {
+    expect(mulPageNum(333)).toEqual(27);
   });
 });

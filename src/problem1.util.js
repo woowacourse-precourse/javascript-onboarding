@@ -18,8 +18,14 @@ const addPageNum = (num) =>
     .split("")
     .reduce((acc, cur) => acc + Number(cur), 0);
 // - 페이지 곱하기
+const mulPageNum = (num) =>
+  String(num)
+    .padStart(3, "1")
+    .split("")
+    .reduce((acc, cur) => acc * Number(cur), 1);
 // 포비와 크롱 큰값 생성
 // 포비와 크롱 값 비교
 
 exports.checkInputError = checkInputError;
 exports.addPageNum = addPageNum;
+exports.mulPageNum = mulPageNum;
