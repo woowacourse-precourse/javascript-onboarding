@@ -1,5 +1,13 @@
 function problem3(number) {
-  var answer;
+  let clapCount = 0;
+
+  for (let i = 1; i <= number; i++) {
+    clapCount += getClapCount(i);
+  }
+
+  return clapCount;
+}
+
 function getClapCount(number) {
   let count = 0;
   number
