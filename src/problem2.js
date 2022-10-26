@@ -13,4 +13,6 @@ function problem2(cryptogram) {
   return answer;
 }
 
+// let cryptogram = "zyelleyz";
+// console.log(problem2(cryptogram));
 module.exports = problem2;

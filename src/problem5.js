@@ -9,6 +9,6 @@ function problem5(money) {
   return wallet;
 }
 
-// money = 15000;
+// money = 50237;
 // console.log(problem5(money));
 module.exports = problem5;
