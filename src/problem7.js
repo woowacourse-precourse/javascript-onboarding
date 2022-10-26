@@ -13,4 +13,15 @@ function setMap(map, mapIndex, user, friends, visitors){
   setMapVisitors(map, mapIndex, visitors);
 }
 
+function setMapFriends(map, mapIndex, friends){
+  for(let i = 0; i < friends.length; i++){
+    for(let j = 0; j < 2; j++){
+      if(!map.has(friends[i][j])){
+        map.set(friends[i][j]);
+        mapIndex++;
+      }
+    }
+  }
+}
+
 module.exports = problem7;
