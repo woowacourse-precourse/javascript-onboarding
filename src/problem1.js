@@ -6,11 +6,30 @@ function problem1(pobi, crong) {
   if (hasException(pobi) || hasException(crong)) {
     answer = -1;
   } else {
-    // TODO
+    const pobiScore = getFinalScore(pobi);
+    const crongScore = getFinalScore(crong);
   }
 
   return answer;
 }
+
+/***** 게임 규칙 *****/
+
+function getFinalScore(pages) {
+  const [leftPage, rightPage] = pages;
+  /* 왼쪽, 오른쪽 페이지에 대한 각각의 최대 점수 구하기 */
+
+  /* 왼쪽, 오른쪽 페이지로 만든 점수 중 가장 큰 점수 return */ 
+}
+
+/* 하나의 페이지에 대한 최대 점수를 구하는 함수 */
+
+/* 하나의 페이지에 대해 각 자리의 숫자 배열을 만들어 주는 함수 */
+
+/* 자릿수를 모두 더한 점수를 구하는 함수 */
+
+/* 자릿수를 모두 곱한 점수를 구하는 함수 */
+
 
 /* 예외 처리 */
 function hasException(pages) { 
