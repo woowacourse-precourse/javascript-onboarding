@@ -1,8 +1,6 @@
 function problem1(pobi, crong) {
-  const leftValues = calculatePageNumber(pobi[0]);
-  const leftScore = compareNumber(leftValues);
-  const rightValues = calculatePageNumber(pobi[1]);
-  const rightScore = compareNumber(rightValues);
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
 }
 
 function calculatePageNumber(page) {
@@ -29,6 +27,15 @@ function compareNumber(values) {
   }
 
   return values.second;
+}
+
+function getScore(person) {
+  const leftValues = calculatePageNumber(person[0]);
+  const leftScore = compareNumber(leftValues);
+  const rightValues = calculatePageNumber(person[1]);
+  const rightScore = compareNumber(rightValues);
+
+  return compareNumber({ first: leftScore, second: rightScore });
 }
 
 module.exports = problem1;
