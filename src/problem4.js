@@ -34,6 +34,11 @@ function problem4(word) {
       continue;
     }
     let char = wordsObject[x.toUpperCase()];
+    if (x === x.toUpperCase()) {
+      answer += char;
+    } else {
+      answer += char.toLowerCase();
+    }
   }
   return answer;
 }
