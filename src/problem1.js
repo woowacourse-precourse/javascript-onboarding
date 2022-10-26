@@ -13,6 +13,23 @@ function problem1(pobi, crong) {
   }
 
   //#2. 각 자리의 숫자를 모두 곱하는 함수
+
+  function RETURN_EACH_DIGIT_MULTIPLIED(number) {
+    let output = 1;
+    const inputNumberToString = String(number);
+    const inputNumberList = inputNumberToString.split("").map((i) => +i);
+    for (let i = 0; i < inputNumberList.length; i++) {
+      if (inputNumberList[i] === 0) {
+        output = 0;
+        break;
+      } else {
+        output *= inputNumberList[i];
+      }
+    }
+
+    return output;
+  }
+
   //#3. 두 개의 숫자를 비교해 큰 수를 도출하는 함수
   //#4. 두 숫자를 비교해 게임의 승자를 알려주는 함수
 
