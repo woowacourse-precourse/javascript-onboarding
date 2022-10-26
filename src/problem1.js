@@ -20,6 +20,16 @@ function maxFromNumber(number) {
   return Math.max(plus, multiple);
 }
 
+function maxFromArray(arr) {
+  const odd = arr[0];
+  const even = arr[1];
+
+  const oddMax = maxFromNumber(odd);
+  const evenMax = maxFromNumber(even);
+
+  return Math.max(oddMax, evenMax);
+}
+
 function problem1(pobi, crong) {
   var answer;
 
