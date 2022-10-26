@@ -60,6 +60,24 @@ function eachSideCalc(eachSideNum) {
 }
 
 /**
+ * 왼쪽, 오른쪽 페이지의 자릿수 합,곱 연산 결과 중 더 큰 값을 반환하는 함수
+ * @param {array} who 펼친 페이지 번호가 들어있는 배열
+ * @returns 펼친 페이지의 두 번호의 각 자릿수의 합,곱 중 가장 큰 값을 반환하는 함수
+ */
+function pageNumCalc(who) {
+  // 왼쪽 페이지 연산
+  const leftMax = eachSideCalc(who[0]);
+
+  // 오른쪽 페이지 연산
+  const rightMax = eachSideCalc(who[1]);
+
+  // 왼쪽 가장 큰 수와 오른쪽 가장 큰 수 비교
+  const finalMax = Math.max(leftMax, rightMax);
+
+  return finalMax;
+}
+
+/**
  * 예외 상황을 판별하는 함수
  * @param {array} who 펼친 페이지 번호가 들어있는 배열
  * @returns 예외상황이 맞다면 true, 아니라면 false 반환
