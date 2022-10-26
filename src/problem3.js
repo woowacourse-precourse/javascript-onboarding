@@ -1,5 +1,8 @@
 function problem3(number) {
-  return playGame(number);
+  if (validNumber(number)) {
+    return playGame(number);
+  }
+  return -1;
 }
 
 const playGame = (number) => {
@@ -20,6 +23,16 @@ const search369 = (currentValue) => {
       }
     });
   return clap;
+};
+
+const validNumber = (number) => {
+  if (typeof number !== 'number') {
+    return false;
+  }
+  if (number < 1 || number > 10000) {
+    return false;
+  }
+  return true;
 };
 
 module.exports = problem3;
