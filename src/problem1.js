@@ -33,10 +33,24 @@ function compareResult(pobiMax, crongMax) {
   }
 }
 
+function validatePage(pages) {
+  const [left, right] = pages;
+  if (left + 1 === right) {
+    return true;
+  }
+  return false;
+}
+
 function problem1(pobi, crong) {
   var answer;
+  if (validatePage(pobi) && validatePage(crong)) {
+    const pobiMax = compareMaxBySumAndMultiply(pobi);
+    const crongMax = compareMaxBySumAndMultiply(crong);
+    answer = compareResult(pobiMax, crongMax);
+    return answer;
+  }
 
-  return answer;
+  return -1;
 }
 
 module.exports = problem1;
