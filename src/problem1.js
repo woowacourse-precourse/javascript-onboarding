@@ -16,6 +16,16 @@ function isOdd(num) {
   return num % 2 === 1;
 }
 
+function isBoundRange(min, max, arr) {
+  const firstPage = arr[0];
+  const secondPage = arr[arr.length - 1];
+  return (
+    min <= firstPage &&
+    firstPage <= max &&
+    min <= secondPage &&
+    secondPage <= max
+  );
+}
 function problem1(pobi, crong) {
   var answer;
   return answer;
