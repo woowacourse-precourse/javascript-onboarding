@@ -47,8 +47,11 @@ function isSerialBoth(pobi, crong) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  // 포비와 크롱의 페이지 중 하나라도 정상적이지 않으면 예외사항 -1
+  if (!isSerialBoth(pobi, crong)) return -1;
+  
+  // 승자 구하기: 포비가 이기면 1, 크롱이 이기면 1, 무승부면 0
+  return winner(pobi, crong);
 }
 
 module.exports = problem1;
