@@ -7,6 +7,7 @@
  */
 function problem1(pobi, crong) {
 
+  if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return -1;
 
   /** main logic */
   let pobiPoints = getPoints(pobi);
@@ -40,6 +41,7 @@ function problem1(pobi, crong) {
           .map(num =>
             +num));
   }
+
   /**
    * 
    * @param {number} a 
@@ -56,6 +58,44 @@ function problem1(pobi, crong) {
   function multiply(a, b) { return a * b; }
 
 
+  /**
+   * 주언 배열이 유효한 지 검사한다. 
+   * @param {Array<number[]>} users 
+   * @param {Array<(...)=>(a,b)=> boolean>} errorCase 
+   * @returns 
+   */
+  function isValid(users, errorCase) {
+    for (const user of users) {
+      for (fn of errorCase) {
+        if (fn(...user) === false) return false;
+      }
+    }
+    return true;
+  }
 
+  /**
+     * @param {number} a
+     * @param {number} b
+     * @return {boolean} validation
+     */
+  function isOddEven(a, b) {
+    if (a % 2 === 1 && a % 2 === 0) return true;
+    else false;
+  }
+
+  function isDiff(diff) {
+    return function (a, b) {
+      if (b - a === diff) return true;
+      else return false;
+    }
+  }
+
+  function isArea(min, max) {
+    return function (start, end) {
+      if (start >= min && end <= max) return true;
+      console.log(min, start, end, max);
+      return false;
+    }
+  }
 }
 module.exports = problem1;
