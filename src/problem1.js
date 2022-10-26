@@ -1,7 +1,3 @@
-const problem1 = (pobi, crong) => {
-  if (checkException(pobi, crong)) return -1;
-};
-
 const checkException = (player1, player2) => {
   return (player1[1] - player1[0] !== 1) || (player2[1] - player2[0] !== 1);
 };
@@ -18,6 +14,15 @@ const getPlayerScore = (player) => {
   const leftPageScore = getPageScore(leftPageNum);
   const rightPageScore = getPageScore(rightPageNum);
   return leftPageScore >= rightPageScore ? leftPageScore : rightPageScore;
+};
+
+const problem1 = (pobi, crong) => {
+  if (checkException(pobi, crong)) return -1;
+  const pobiScore = getPlayerScore(pobi);
+  const crongScore = getPlayerScore(crong);
+
+  if (pobiScore === crongScore) return 0;
+  return pobiScore > crongScore ? 1 : 2;
 };
 
 module.exports = problem1;
