@@ -1,3 +1,11 @@
+## 기능 목록
+
+- [x] feat1. `deleteRepeatedChars()`: 연속하는 중복 문자들을 삭제한 결과를 반환하는 함수 (한 번)
+  - [x] 연속하는 중복 문자들이 없으면 기존 문자열 반환
+- [ ] feat2. `deleteRepeatedChars()` 반환 값이 기존 문자열과 같은지 확인
+- [ ] feat3. while문 isDeleted() 가 false 가 나올때까지 도는 while문
+  - [ ] 빈 문자열도 확인해야 함
+
 ## 🚀 기능 요구 사항
 
 암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
@@ -21,4 +29,3 @@
 | ----------------- | ------- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
-
