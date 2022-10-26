@@ -5,6 +5,10 @@ function problem3(number) {
       allDigits.push(Number(digit));
     });
   }
+  const result = allDigits.filter(
+    (digit) => digit === 3 || digit === 6 || digit === 9
+  ).length;
+  return result;
 }
 
 module.exports = problem3;
