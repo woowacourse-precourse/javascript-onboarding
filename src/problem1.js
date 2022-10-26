@@ -44,6 +44,9 @@ function problem1(pobi, crong) {
 
   const pbScore = [addPbOdd, addPbEven, mulPbOdd, mulPbEven];
   const crScore = [addCrOdd, addCrEven, mulCrOdd, mulCrEven];
+
+  const pbMaxScore = Math.max.apply(null, pbScore);
+  const crMaxScore = Math.max.apply(null, crScore);
 }
 
 module.exports = problem1;
