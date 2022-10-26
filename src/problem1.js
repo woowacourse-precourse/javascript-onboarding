@@ -37,6 +37,13 @@ function getPageScores(pages) {
   return pageScores;
 }
 
+function getPlayerScore(pages) {
+  const pageScores = getPageScores(pages);
+  const playerScore = Math.max(...pageScores);
+
+  return playerScore;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
