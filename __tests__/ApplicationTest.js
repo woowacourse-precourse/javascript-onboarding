@@ -18,6 +18,10 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  test("case2 - flipped", () => {
+    expect(problem1([211, 212], [131, 132])).toEqual(2);
+  });
 });
 
 describe("problem2", () => {
