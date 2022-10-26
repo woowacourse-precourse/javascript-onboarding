@@ -45,8 +45,18 @@ function getPlayerScore(pages) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = getPlayerScore(pobi);
+  const crongScore = getPlayerScore(crong);
+
+  if (pobiScore > crongScore) {
+    return 1;
+  }
+
+  if (pobiScore < crongScore) {
+    return 2;
+  }
+
+  return 0;
 }
 
 module.exports = problem1;
