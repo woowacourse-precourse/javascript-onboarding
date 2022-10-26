@@ -47,10 +47,22 @@ function findMax(num) {
   return summation > product ? summation : product;
 }
 
+function findMaxScore(arr) {
+  const firstPage = arr[0];
+  const secondPage = arr[arr.length - 1];
+  const firstPageMaxScore = findMax(firstPage);
+  const secondPageMaxScore = findMax(secondPage);
+  return firstPageMaxScore > secondPageMaxScore
+    ? firstPageMaxScore
+    : secondPageMaxScore;
+}
+
 function problem1(pobi, crong) {
   const EXCEPTION_COOE = -1;
   var answer = EXCEPTION_COOE;
   if (!isRightInput(pobi) || !isRightInput(crong)) return answer;
+  const pobiMaxScore = findMaxScore(pobi);
+  const crongMaxScore = findMaxScore(crong);
 
   return answer;
 }
