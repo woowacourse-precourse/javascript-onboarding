@@ -16,6 +16,28 @@ function problem1(pobi, crong) {
   if (pobi[0] === 1 || pobi[1] === 1 || crong[0] === 1 || crong[1] === 1) return -1;
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
 
+  // 포비 점수 배열
+  const pobiScore = [];
+
+  pobi.forEach(page => {
+    const pageSplit = page.toString().split('');
+    const add = pageSplit.reduce((fir, idx) => fir + idx/1, 0);
+    const mul = pageSplit.reduce((fir, idx) => fir * idx/1, 1);
+
+    pobiScore.push(Math.max(add, mul));
+  });
+
+  // 크롱 점수 배열
+  const crongScore = [];
+  
+  crong.forEach(page => {
+    const pageSplit = page.toString().split('');
+    const add = pageSplit.reduce((fir, idx) => fir + idx/1, 0);
+    const mul = pageSplit.reduce((fir, idx) => fir * idx/1, 1);
+
+    crongScore.push(Math.max(add, mul));
+  });
+
 }
 
 module.exports = problem1;
