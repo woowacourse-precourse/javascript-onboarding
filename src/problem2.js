@@ -6,7 +6,7 @@ function problem2(cryptogram) {
     words[i] === words[i + 1] ? i++ : answer += words[i];
   }
 
-  return answer === words.join('') ? answer : problem2(answer);
+  return answer === cryptogram ? answer : problem2(answer);
 }
 
 module.exports = problem2;
