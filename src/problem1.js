@@ -3,6 +3,10 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function getMaxScore(num) {
+  return Math.max(sumPage(num), multiPage(num));
+}
+
 function sumPage(num) {
   const numArr = num.toString().split("");
   const result = numArr.reduce((prev, cur) => prev + Number(cur), 0);
