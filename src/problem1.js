@@ -3,6 +3,9 @@
  */
 const add = (a, b) => a + b;
 
+/**
+ * @type {(a: number, b: number) => number}
+ */
 const multiply = (a, b) => a * b;
 
 /**
