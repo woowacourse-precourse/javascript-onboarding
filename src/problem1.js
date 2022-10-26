@@ -8,14 +8,25 @@ const isValidPage = (book1, book2) => {
 };
 
 // 각 자리수를 더해서 반환하는 함수
-const sum = (book) => {
-  const bookToString = book.toString().split("");
+const sum = (num) => {
+  const numToString = num.toString().split("");
   let sum = 0;
-  bookToString.forEach((num) => {
-    sum += Number(num);
+  numToString.forEach((n) => {
+    sum += Number(n);
   });
 
   return sum;
+};
+
+const mul = (num) => {
+  const numToString = num.toString().split("");
+  let mul = 1;
+
+  numToString.forEach((n) => {
+    mul *= Number(n);
+  });
+
+  return mul;
 };
 
 function problem1(pobi, crong) {
@@ -23,9 +34,6 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-// // 여기에 테스트
-// let page = ;
+// 여기에 테스트
 
-// console.log(sum(page));
-
-// module.exports = problem1;
+module.exports = problem1;
