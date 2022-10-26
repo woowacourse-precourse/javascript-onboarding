@@ -1,7 +1,7 @@
 const A_CHAR_CODE = "A".charCodeAt();
 const Z_CHAR_CODE = "Z".charCodeAt();
 
-const convert = (alphabet) => {
+const reverseAlphabet = (alphabet) => {
   const result = String.fromCharCode(
     A_CHAR_CODE + (Z_CHAR_CODE - alphabet.toUpperCase().charCodeAt())
   );
