@@ -18,8 +18,14 @@ function removeDuplication(cryptogram) {
   return answer;
 }
 
+function decryption(cryptogram) {
+  if (checkDuplication(cryptogram) === false) return cryptogram;
+  cryptogram = removeDuplication(cryptogram);
+  return decryption(cryptogram);
+}
+
 function problem2(cryptogram) {
-  var answer;
+  const answer = decryption(cryptogram);
   return answer;
 }
 module.exports = problem2;
