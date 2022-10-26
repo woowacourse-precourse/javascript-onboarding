@@ -5,9 +5,18 @@ const bookPage = {
     if (!this.checkPages(pages)) {
       return false;
     }
+    if (!this.checkPagesRage(pages)) {
+      return false;
+    }
+
+    return true;
   },
   checkPages: function (...pages) {
     return pages.length == 2;
+  },
+  checkPagesRage: function (...pages) {
+    let passPages = pages.filter((page) => page < 1 && page > 400);
+    return passPages.length == 0;
   },
 };
 
