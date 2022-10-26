@@ -6,7 +6,15 @@
 // 5. 3, 6, 9 문자가 나올 때마다 세기 
 
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  let connectStr = Array(number).fill().map((val, idx) => idx + 1).join("");
+
+  connectStr.split("").forEach(el => {
+    if (el === '3' || el === '6' || el === '9') {
+      answer += 1;
+    } 
+  });
+
   return answer;
 }
 
