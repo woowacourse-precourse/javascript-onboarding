@@ -1,6 +1,12 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!exceptionCheck(pobi) || !exceptionCheck(crong)) return -1;
+
+  let pobiScore = Math.max(pageScore(pobi[0]), pageScore(pobi[1]));
+  let crongScore = Math.max(pageScore(crong[0]), pageScore(crong[1]));
+
+  if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return 0;
 }
 
 function pageScore(page) {
