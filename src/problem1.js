@@ -61,4 +61,19 @@ const getSeparatedNumericArrays = numericArrays => {
   return resultArray;
 };
 
+/**
+ * @param {[number, number]} numberArray 첫번째 요소는 홀수, 두번째 요소는 짝수를 기대한다.
+ * @param {Function} behaviorFunc 기능함수를 전달한다.
+ * @returns {[number, number]} 홀수와 짝수를 각 기능에 맞게 값을 반환한다.
+ */
+const calculateEachElement = (numberArray, behaviorFunc) => {
+  const copyNumberArray = copyArray(numberArray);
+  const separatedNumericArrays = getSeparatedNumericArrays(copyNumberArray);
+  const resultArray = map(separatedNumericArrays, numberArray => {
+    return numberArray.reduce(behaviorFunc);
+  });
+
+  return resultArray;
+};
+
 module.exports = problem1;
