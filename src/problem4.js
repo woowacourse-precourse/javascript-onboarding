@@ -20,6 +20,13 @@ const convertChar = (char) => {
 
 function problem4(word) {
   let answer = "";
+  [...word].forEach((char) => {
+    if (!isAlphabet(char)) {
+      answer += char;
+      return;
+    }
+    answer += convertChar(char);
+  });
   return answer;
 }
 
