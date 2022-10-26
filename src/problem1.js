@@ -17,4 +17,12 @@ const getMulPage = (page) => {
   return getNumberArray(page).reduce((accumulator, currentValue) => accumulator * currentValue, 1);
 };
 
+const getLargestNumber = (pages) => {
+  const numbers = [];
+  pages.forEach((page) => {
+    numbers.push(getSumPage(page), getMulPage(page));
+  });
+  return Math.max(...numbers);
+};
+
 module.exports = problem1;
