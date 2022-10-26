@@ -5,10 +5,15 @@
 
 function problem4(word) {
   let answer = "";
+  let reverseWord = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
 
   for (let i = 0; i < word.length; i++) {
     // 공백 예외 처리
     if (word[i] === " ") answer += " ";
+    // 대문자일 때
+    else if (word[i] === word[i].toUpperCase()) {
+      answer += reverseWord[word[i].charCodeAt() - 65];
+    }
   }
 
   return answer;
