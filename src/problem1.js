@@ -9,6 +9,19 @@ function problem1(pobi, crong) {
     .toString()
     .split("")
     .reduce((acc, cur) => acc + cur);
+
+  const mulPbOdd = a
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc * cur);
+  const mulPbEven = b
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc * cur);
+
+
+
+
 }
 
 module.exports = problem1;
