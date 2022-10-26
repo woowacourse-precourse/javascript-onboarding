@@ -31,7 +31,7 @@ function problem1(pobi, crong) {
   }
 
   //#3. 두 개의 숫자를 비교해 큰 수를 도출하는 함수
-    //숫자가 같다면 첫번째 수를 return합니다.
+  //숫자가 같다면 첫번째 수를 return합니다.
   function RETURN_LARGE_COMPARED_TWO_NUMBER(number1, number2) {
     const inputNumber1 = Number(number1);
     const inputNumber2 = Number(number2);
@@ -49,9 +49,29 @@ function problem1(pobi, crong) {
     const inputNumber1 = Number(number1);
     const inputNumber2 = Number(number2);
 
-    if(inputNumber1 > inputNumber2){return 1}
-    if(inputNumber1 === inputNumber2){return 0}
-    if(inputNumber1 < inputNumber2){return -1}
+    if (inputNumber1 > inputNumber2) {
+      return 1;
+    }
+    if (inputNumber1 === inputNumber2) {
+      return 0;
+    }
+    if (inputNumber1 < inputNumber2) {
+      return -1;
+    }
+  }
+
+  //#5. 배열 중 가장 큰 숫자를 도출하는 함수
+
+  function RETURN_MAX_NUM_IN_LIST(list) {
+    let tempMaxNumber = 0;
+    const inputList = list.slice();
+
+    for (let i of inputList) {
+      if (Number(i) > tempMaxNumber) {
+        tempMaxNumber = Number(i);
+      }
+    }
+    return tempMaxNumber;
   }
 
   //특이사항
@@ -61,8 +81,24 @@ function problem1(pobi, crong) {
   // 처리방법 1. __test__에서 해당 예시가 들어가지 않게끔 변경
   // 처리방법 2. problem1.js에서 해당 숫자가 들어온다면 곧바로 에러를 return
 
-  // var answer;
-  // return answer;
+  // 실행
+  let answer;
+
+  const pobiNumList = pobi.slice();
+  const pobiNumCalculList = [];
+  let pobiMaxNum;
+
+  pobiNumList.forEach((number) =>
+    pobiNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
+  );
+  pobiNumList.forEach((number) =>
+    pobiNumCalculList.push(RETURN_WINNER_COMPARED_TWO_NUMBER(number))
+  );
+
+  const crongNumList = crong.slice();
+  const CrongNumCalculList = [];
+
+  return answer;
 }
 
 module.exports = problem1;
