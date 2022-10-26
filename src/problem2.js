@@ -19,16 +19,36 @@ class ErrorCase {
   }
 }
 
-function problem2(cryptogram) {
-  new ErrorCase(cryptogram);
-  return;
+class Password {
+  constructor(cryptogram) {
+    new ErrorCase(cryptogram);
+
+    this.cryptogramList = cryptogram.split("");
+  }
+
+  decrypt() {
+    let prevPopValue = "";
+    const stack = [];
+
+    for (let char of this.cryptogramList) {
+      if (stack.length > 0 && stack[stack.length - 1] === char) {
+        stack.pop();
+        prevPopValue = char;
+      } else if (prevPopValue === char) {
+        continue;
+      } else {
+        stack.push(char);
+        prevPopValue = "";
+      }
+    }
+
+    return stack.join("");
+  }
 }
 
-/*
-  console.log(problem2("Aasdfasdf")); // 알파벳 대문자가 있을 때
-  console.log(problem2("1dsakjfas")); // 문자열에 숫자가 있을 때
-  console.log(problem2("dsak akds")); // 문자열에 띄어쓰기가 있을 때
-  console.log(problem2("#$!aaa")); // 문자열에 소문자 외 문자가 있을 때
-*/
+function problem2(cryptogram) {
+  const password = new Password(cryptogram);
+  return password.decrypt();
+}
 
 module.exports = problem2;
