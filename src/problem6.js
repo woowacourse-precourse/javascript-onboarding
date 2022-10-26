@@ -16,14 +16,13 @@ function problem6(forms) {
   const duplicates = {};
   forms.map((form) => {
     getKeys(form[1]).map((key) => {
-      if (key in duplicates) {
-        duplicates[key].push(form[0]);
-      } else duplicates[key] = [form[0]];
+      if (!duplicates[key]) duplicates[key] = [];
+      duplicates[key].push(form[0]);
     });
   });
-  const result = Object.values(duplicates).reduce((result, duplicate) => {
-    if (duplicate.length > 1) return result.concat(duplicate);
-    return result;
+  const result = Object.values(duplicates).reduce((resultList, duplicate) => {
+    if (duplicate.length > 1) return resultList.concat(duplicate);
+    return resultList;
   }, []);
   return [...new Set(result.sort())];
 }
