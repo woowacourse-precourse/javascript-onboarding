@@ -4,6 +4,8 @@ function problem1(pobi, crong) {
   const scoresToCompare = [pobiScore, crongScore];
   const pobiPageError = isPageError(pobi);
   const crongPageError = isPageError(crong);
+  const pobiNumberOfPages = countNumberOfPages(pobi);
+  const crongNumberOfPages = countNumberOfPages(crong);
   const result = getResult(scoresToCompare, error);
 
   return result;
@@ -61,6 +63,14 @@ function isPageError(person) {
   const LAST_PAGE = 400;
 
   if (person[0] <= 1 || person[1] >= 400) {
+    return "error";
+  }
+
+  return 0;
+}
+
+function countNumberOfPages(person) {
+  if (person.length !== 2) {
     return "error";
   }
 
