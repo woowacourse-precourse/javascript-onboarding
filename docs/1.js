@@ -78,4 +78,3 @@ function check(pobi, crong) {
         return true
     }
 }
-console.log(solution([99,102], [211,212]))
