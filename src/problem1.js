@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
-  let answer = 0;
+  let pobimax = 0;
+  let crongmax = 0;
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
 
   function check(num) {
@@ -24,8 +25,9 @@ function problem1(pobi, crong) {
     let num = check(String(i));
     num > crongmax ? (crongmax = num) : num;
   }
-
-  return answer;
+  if (pobimax > crongmax) return 1;
+  if (pobimax < crongmax) return 2;
+  if (pobimax === crongmax) return 0;
 }
 
 module.exports = problem1;
