@@ -1,4 +1,4 @@
-const { checkInputError } = require("../src/problem3.util");
+const { checkInputError, countClapOfNum } = require("../src/problem3.util");
 
 describe("checkInputError", () => {
   it("is return true by small", () => {
@@ -11,5 +11,21 @@ describe("checkInputError", () => {
 
   it("is return false", () => {
     expect(checkInputError(500)).toEqual(false);
+  });
+});
+
+describe("countClapOfNum", () => {
+  it('is input "35" output "1"', () => {
+    expect(countClapOfNum(35)).toEqual(1);
+  });
+
+  it('is input "369" output "3"', () => {
+    expect(countClapOfNum(369)).toEqual(3);
+  });
+  it('is input "3" output "1"', () => {
+    expect(countClapOfNum(3)).toEqual(1);
+  });
+  it('is input "33" output "2"', () => {
+    expect(countClapOfNum(33)).toEqual(2);
   });
 });
