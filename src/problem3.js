@@ -18,10 +18,7 @@ function countOf369(num) {
   return num
     .toString()
     .split("")
-    .reduce((acc, cur) => {
-      const n = parseInt(cur);
-      return acc + (n % 3 === 0 && n !== 0 ? 1 : 0);
-    }, 0);
+    .reduce((acc, cur) => acc + ("369".includes(cur) ? 1 : 0), 0);
 }
 
 function problem3(num) {
