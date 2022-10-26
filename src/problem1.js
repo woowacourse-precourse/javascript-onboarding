@@ -19,6 +19,16 @@ function problem1(pobi, crong) {
             return num2;
         }
     }
+    var pobiLeft = compare(add(a),multiply(a));
+  var pobiRight = compare(add(b),multiply(b));
+  var crongLeft = compare(add(c),multiply(c));
+  var crongRight = compare(add(d),multiply(d));
+  pobiNum = compare(pobiLeft,pobiRight);
+  crongNum = compare(crongLeft,crongRight);
+  // console.log(a,b,c,d);
+  // console.log(pobiLeft,pobiRight,crongLeft,crongRight);
+  // console.log(`'pobiNum: ${pobiNum}`);
+  // console.log(`'crongNum: ${crongNum}`);
   return answer;
 }
 module.exports = problem1;
