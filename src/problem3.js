@@ -1,17 +1,15 @@
 function problem3(number) {
-  var answer;
+  var answer=0;
 
   for(var num=3;num<=number;num++){
-    claps(num);
+    answer+=claps(num.toString().split(''));
   }
 
   return answer;
-
-  //3. 반환값들을 전부 더해 리턴.
 }
 
 function claps(number){
-  const nums = [3,6,9];
+  const nums = ['3','6','9'];
   var clap=0;
   number.forEach((el)=>{if(nums.includes(el))clap++;});
   return clap;
