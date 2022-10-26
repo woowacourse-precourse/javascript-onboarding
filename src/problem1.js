@@ -57,6 +57,18 @@ function isInRange(pages) {
   return resultData;
 }
 
+function isOdd(page) {
+  let resultData;
+
+  if (page % 2 === 1) {
+    resultData = true;
+  } else {
+    resultData = false;
+  }
+
+  return false;
+}
+
 /*
 왼쪽 홀수, 오른쪽 짝수.
 모든 페이지에 번호가 할당.
