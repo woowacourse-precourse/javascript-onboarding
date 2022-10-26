@@ -19,6 +19,26 @@ function problem1(pobi, crong) {
     isOddOrEven(pobi[1]) !== "even"
   )
     return -1;
+
+  const compareSumAndMultiply = (array) => {
+    const convertArray = String(array).split("").map(Number);
+    const sum = convertArray.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    );
+    const multiply = convertArray.reduce(
+      (previousValue, currentValue) => previousValue * currentValue
+    );
+    return sum >= multiply ? sum : multiply;
+  };
+
+  const pobiValue =
+    compareSumAndMultiply(pobi[0]) > compareSumAndMultiply(pobi[1])
+      ? compareSumAndMultiply(pobi[0])
+      : compareSumAndMultiply(pobi[1]);
+  const crongValue =
+    compareSumAndMultiply(crong[0]) > compareSumAndMultiply(crong[1])
+      ? compareSumAndMultiply(crong[0])
+      : compareSumAndMultiply(crong[1]);
 }
 
 module.exports = problem1;
