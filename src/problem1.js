@@ -8,6 +8,12 @@ function problem1(pobi, crong) {
   } else {
     const pobiScore = getFinalScore(pobi);
     const crongScore = getFinalScore(crong);
+
+    if (pobiScore === crongScore) {
+      answer = 0;
+    } else {
+      answer = pobiScore > crongScore ? 1 : 2;
+    }
   }
 
   return answer;
@@ -18,11 +24,20 @@ function problem1(pobi, crong) {
 function getFinalScore(pages) {
   const [leftPage, rightPage] = pages;
   /* 왼쪽, 오른쪽 페이지에 대한 각각의 최대 점수 구하기 */
+  const leftScore = getScore(leftPage);
+  const rightScore = getScore(rightPage);
 
   /* 왼쪽, 오른쪽 페이지로 만든 점수 중 가장 큰 점수 return */ 
+  return leftScore > rightScore ? leftScore : rightScore;
 }
 
 /* 하나의 페이지에 대한 최대 점수를 구하는 함수 */
+function getScore(page) {
+  const numberArr = breakPageNumbers(page);
+  const sumScore = getSumScore(numberArr);
+  const multipliedScore = getMultipliedScore(numberArr);
+  return sumScore > multipliedScore ? sumScore : multipliedScore;
+}
 
 /* 하나의 페이지에 대해 각 자리의 숫자 배열을 만들어 주는 함수 */
 function breakPageNumbers(page) {
