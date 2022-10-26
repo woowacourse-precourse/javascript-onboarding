@@ -13,6 +13,17 @@ function problem2(cryptogram) {
     return splicedArray;
   };
 
+  const overlapElementDeleter = array => {
+  
+    array.map((element, index) => {
+      if(element[index] === element[index-1]) {
+        array = indexDeleter(array, index);
+      }
+    })
+
+    return array;
+  };
+
   return answer;
 }
 
