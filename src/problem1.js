@@ -46,3 +46,11 @@ function createPage() {
   if (isOdd(page)) return [page - 1, page];
   else return [page, page + 1];
 }
+
+//숫자 리터럴을 배열로 변환하는 함수
+function numToArr(num) {
+  origin = num.toString().split("");
+  arr = origin.map(Number);
+  return arr;
+}
+
