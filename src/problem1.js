@@ -1,8 +1,5 @@
 function problem1(pobi, crong) {
   var answer;
-  
-  let pobiScore;
-  let crongScore;
 
   const getScoreNumberArr = score => {
     const scoreNumbersArr = (score + '').split('');
@@ -29,8 +26,8 @@ function problem1(pobi, crong) {
     return numberMultiple;
   };
 
-  const getBiggestNumber = (numberSum, numberMultiple) => {
-    return numberSum > numberMultiple ? numberSum : numberMultiple;
+  const getBiggestNumber = (number1, number2) => {
+    return number1 > number2 ? number1 : number2;
   }
 
   const getPageScore = (score) => {
@@ -45,7 +42,6 @@ function problem1(pobi, crong) {
     return biggestNumber;
   };
 
-  getPageScore(pobi[0]);
   
   return answer;
 }
