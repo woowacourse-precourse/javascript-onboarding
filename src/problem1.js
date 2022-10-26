@@ -10,7 +10,13 @@ function getMaxNumber(oddNumber, evenNumber) {
 }
 
 function sumNumber(number) {
-  // number의 모두 더한 값을 반환
+  let sum = 0;
+  number
+    .toString()
+    .split("")
+    .map((num) => (sum += Number(num)));
+
+  return sum;
 }
 function multiNumber(number) {
   // number의 모두 곱한 값을 반환
