@@ -1,8 +1,8 @@
 function problem1(pobi, crong) {
-  if (!invalid(pobi) || !invalid(crong)) {
+  if (!valid(pobi) || !valid(crong)) {
     return -1;
   }
-  
+
   let answer = -1;
   const pobiPoint = getPoint(pobi);
   const crongPoint = getPoint(crong);
@@ -19,7 +19,7 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-function invalid([left, right]) {
+function valid([left, right]) {
   return right - left === 1 && left % 2 === 1 && right % 2 === 0
 }
 
