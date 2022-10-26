@@ -4,6 +4,15 @@ function problem1(pobi, crong) {
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
 
+  if (pobi.length !== 2 || crong.length !== 2) {
+    alert('유효한 페이지 번호를 입력해주세요');
+    return;
+  }
+
+  if (pobiLeftPage % 2 === 0 || crongLeftPage % 2 === 0) {
+    alert('왼쪽 페이지는 홀수입니다');
+  }
+
   if (
     pobiLeftPage + 1 !== pobiRightPage ||
     crongLeftPage + 1 !== crongRightPage
