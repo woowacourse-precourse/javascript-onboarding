@@ -110,6 +110,10 @@ describe("problem1", () => {
   test("case26", () => {
     expect(problem1([111, 112], [211, 212])).toEqual(2);
   });
+
+  test("case27", () => {
+    expect(problem1([201, 202], [197, 198])).toEqual(2);
+  });
 });
 
 describe("problem2", () => {
