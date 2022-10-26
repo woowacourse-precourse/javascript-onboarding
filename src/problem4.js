@@ -1,10 +1,11 @@
 const DICTIONARY = new Map();
+initMap();
 
 function problem4(word) {
   let answer = "";
   let len = word.length;
 
-  initMap();
+  
 
   for(let i = 0; i < len; i++) {
     
