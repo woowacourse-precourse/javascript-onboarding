@@ -10,6 +10,11 @@ const ASCII_LOWER_Z = 122;
 function problem4(word) {
   let reverseStr = "";
 
+  for (let i = 0; i < word.length; i++) {
+    if (!isAlphabet(word[i])) reverseStr += word[i];
+    else reverseStr += reverseAlphabet(word[i]);
+  }
+
   return reverseStr;
 }
 
