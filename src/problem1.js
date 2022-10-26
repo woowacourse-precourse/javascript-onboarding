@@ -8,6 +8,11 @@ const add = (a, b) => a + b;
  */
 const multiply = (a, b) => a * b;
 
+/**
+ * calculatePageScore
+ * Calculate max value between multiplication and sum of page number
+ * @type {(page: number) => number}
+ */
 const calculatePageScore = (page) => {
   const splittedPage = page.toString().split("").map(Number);
   return Math.max(
