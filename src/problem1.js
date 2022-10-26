@@ -18,6 +18,3 @@ function findMaxScore(num) {
 }
 
 module.exports = problem1
-
-// 풀이
-// https://natural-earwig-334.notion.site/1-43ad81823fb74892a77cfbf60a88dd26
