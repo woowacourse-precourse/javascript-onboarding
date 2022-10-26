@@ -22,6 +22,21 @@ function multiplyDigits(number) {
   return result;
 }
 
+function getPageScores(pages) {
+  const pageScores = pages.map((number) => {
+    const addResult = addDigits(number);
+    const multiplyResult = multiplyDigits(number);
+
+    if (addResult > multiplyResult) {
+      return addResult;
+    }
+
+    return multiplyResult;
+  });
+
+  return pageScores;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
