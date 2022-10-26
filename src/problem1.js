@@ -24,6 +24,9 @@ function problem1(pobi, crong) {
       arr.reduce((a, b) => (a += b))
     );
   });
+  if (pobiPnt > crongPnt) answer = 1;
+  else if (pobiPnt < crongPnt) answer = 2;
+  else answer = 0;
   return answer;
 }
 
