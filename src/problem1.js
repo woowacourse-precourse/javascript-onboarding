@@ -26,8 +26,23 @@ function isBoundRange(min, max, arr) {
     secondPage <= max
   );
 }
+
+function isRightInput(arr) {
+  const CORRECT_LENGTH = 2;
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 400;
+  return (
+    isFitLength(arr, CORRECT_LENGTH) &&
+    isRightOrder(arr) &&
+    isBoundRange(MIN_PAGE, MAX_PAGE, arr)
+  );
+}
+
 function problem1(pobi, crong) {
-  var answer;
+  const EXCEPTION_COOE = -1;
+  var answer = EXCEPTION_COOE;
+  if (!isRightInput(pobi) || !isRightInput(crong)) return answer;
+
   return answer;
 }
 
