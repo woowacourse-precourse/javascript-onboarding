@@ -36,9 +36,11 @@ function problem1(pobi, crong) {
       return -1;
     }
   }
-  var answer;
-
-  return answer;
+  const pobiValue = getBiggestValue(pobi);
+  const crongValue = getBiggestValue(crong);
+  if (pobiValue > crongValue) return 1;
+  if (pobiValue < crongValue) return 2;
+  if (pobiValue === crongValue) return 0;
 }
 
 module.exports = problem1;
