@@ -1,8 +1,17 @@
 const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+
 function problem4(word) {
-  var answer;
-  return answer;
+  let result = "";
+
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === " ") result += " ";
+    else result += changeLetter(word[i]);
+  }
+
+  return result;
+}
+
 function changeLetter(letter) {
   if (isUpperCase(letter)) {
     const index = UPPERCASE.split("").findIndex((upper) => upper === letter);
