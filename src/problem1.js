@@ -2,6 +2,16 @@
 // 2. pobi와 crong의 각 페이지의 합, 곱 계산
 // 3. pobi와 crong의 각각 최대값 계산
 // 4. 비교
+function calValue(page) {
+  const data = page
+    .toString()
+    .split("")
+    .map((x) => parseInt(x));
+  const sum = data.reduce((acc, cur) => parseInt(acc) + parseInt(cur));
+  const times = data.reduce((acc, cur) => acc * cur);
+  return sum >= times ? sum : times;
+}
+
 function problem1(pobi, crong) {
   var answer;
 
