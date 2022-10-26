@@ -6,6 +6,11 @@ function problem3(number) {
    * 4. 0은 3으로 나누어도 나머지가 0이므로 0일 때는 그대로 놔둠
    * 5. 이중 배열 속 합을 구해 맵핑하고 배열의 합을 구해 결과 반환
    */
+  let countArray = [];
+
+  for (let i = 1; i <= number; i++) {
+    countArray.push(String(i).split(""));
+  }
   var answer;
   return answer;
 }
