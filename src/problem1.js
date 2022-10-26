@@ -38,22 +38,23 @@ function largestNum(pages) {
 /* Validation Function */
 function isValidPage(pages) {
   isInRange(pages); //pages 값이 1~400의 값인지 판단.
-  //isOdd(pages[0]); //배열의 0번째 인덱스가 홀수인지 판단.
+  isOdd(pages[0]); //배열의 0번째 인덱스가 홀수인지 판단.
   //isEven(pages[1]) //배열의 1번째 인덱스가 짝수인지 판단.
   //isNeighboringValue(pages) //배열에 담긴 두 값의 차이가 1인지 판단.
 }
 
 function isInRange(pages) {
+  let resultData;
   const leftValue = pages[0];
   const rightValue = pages[1];
 
-  if (leftValue <= 1) {
-    return false;
-  } else if (rightValue >= 400) {
-    return false;
+  if (leftValue <= 1 || rightValue >= 400) {
+    resultData = false;
+  } else {
+    resultData = true;
   }
 
-  return true;
+  return resultData;
 }
 
 /*
