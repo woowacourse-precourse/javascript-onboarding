@@ -2,6 +2,7 @@ function problem6(forms) {
   var answer = [];
   let map = new Map();
   let rejectIndex = [];
+  handleExcept(forms, rejectIndex);
   setMap(forms, map);
   checkNickname(forms, map, rejectIndex);
   pushAnswer(answer, forms, rejectIndex);
@@ -10,6 +11,7 @@ function problem6(forms) {
 
 function handleExcept(forms, rejectIndex){
   handleFormSize(forms);
+  handleString(forms, rejectIndex);
 }
 
 function handleFormSize(forms){
