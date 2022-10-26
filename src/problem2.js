@@ -2,12 +2,12 @@ function problem2(cryptogram) {
   const [top, ...rest] = cryptogram.split("");
   const temp = [top];
 
-  for (let char of rest) {
+  for (let nextChar of rest) {
     if (temp.length < 1) {
-      temp.push(char);
+      temp.push(nextChar);
     } else {
-      if (temp[temp.length - 1] === char) temp.pop();
-      else temp.push(char);
+      if (temp[temp.length - 1] === nextChar) temp.pop();
+      else temp.push(nextChar);
     }
   }
 
