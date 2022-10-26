@@ -1,5 +1,5 @@
 function book () { 
-  let bookNumber = Math.floor(Math.random()*396)+3;  // 3~398 까지 펼치기
+  let bookNumber = Math.floor(Math.random()*396)+3;  // 3~398 까지 펼치기 , 시작 면&마지막 면 X
   return bookNumber
 }
 function leftRightPage() {
@@ -25,13 +25,30 @@ function addMultiNumber(side) { // 각 자리수 더하기 , 곱하기
   let multiNum = 0;
   for (let i = 0; i<side.length; i++){
     multiNum *= parseInt(numberStr[i]);
+  }  
+  if (addNum <= multiNum){
+    return multiNum;
   }
-  return addNum , multiNum
+  else if (addNum > multiNum){
+    return addNum;
+  }
+}
+function bigNumber(){ // 큰 숫자를 본인의 점수로 하기
+  let leftNum = addMultiNumber(left);
+  let rightNum = addMultiNumber(right);
+  if (leftNum <= rightNum){
+    return rightNum;
+  } 
+  else if (leftNum > rightNum){
+    return leftNum;
+  }
 }
 
+
+
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  let pobi = bigNumber();
+  let crong = bigNumber();
 }
 
 module.exports = problem1;
