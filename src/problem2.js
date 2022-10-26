@@ -10,9 +10,9 @@ function problem2(cryptogram) {
   let cryptoList = cryptogram.split("");
 
   // 값 비교 for문
-  for (let i = 0; i < alpa.length; i++) {
-    if (alpa[i] === alpa[i + 1]) {
-      alpa.splice(i, 2);
+  for (let i = 0; i < cryptoList.length; i++) {
+    if (cryptoList[i] === cryptoList[i + 1]) {
+      cryptoList.splice(i, 2);
       break;
     }
   }
