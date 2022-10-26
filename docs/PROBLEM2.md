@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능 목록 구현
+
+중복된 문자열 삭제
+최종값이 비어있으면 "" 반환
