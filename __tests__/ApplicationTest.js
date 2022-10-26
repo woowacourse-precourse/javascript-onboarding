@@ -30,6 +30,10 @@ describe("problem1", () => {
   test("case6", () => {
     expect(problem1([211, 212], [399, 400])).toEqual(-1);
   });
+
+  test("case7", () => {
+    expect(problem1([399, 400], [211, 212])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
