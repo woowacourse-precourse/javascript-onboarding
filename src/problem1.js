@@ -51,6 +51,17 @@ const bookPage = {
     let splitedNumber = String(number).split();
     return splitedNumber.reduce((a, b) => +a + +b);
   },
+  getBiggestNumber: function () {
+    let getLeftBiggestNumber = Math.max(
+      this.getMulDigits(this.left),
+      this.getAddDigits(this.left)
+    );
+    let getRightBiggestNumber = Math.max(
+      this.getMulDigits(this.left),
+      this.getAddDigits(this.left)
+    );
+    return Math.max(getLeftBiggestNumber, getRightBiggestNumber);
+  },
 };
 
 function problem1(pobi, crong) {
