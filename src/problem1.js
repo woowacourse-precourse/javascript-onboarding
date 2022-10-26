@@ -8,6 +8,17 @@ function problem1(pobi, crong) {
   const subtractBookPage = (array) =>
     array.reduce((previousValue, currentValue) => currentValue - previousValue);
   if (subtractBookPage(pobi) !== 1 || subtractBookPage(crong) !== 1) return -1;
+
+  // 책의 좌측페이지는 홀수, 우측페이지는 짝수여야 한다.
+  const isOddOrEven = (number) => (number % 2 === 0 ? "even" : "odd");
+
+  if (
+    isOddOrEven(pobi[0]) !== "odd" ||
+    isOddOrEven(crong[0]) !== "odd" ||
+    isOddOrEven(pobi[1]) !== "even" ||
+    isOddOrEven(pobi[1]) !== "even"
+  )
+    return -1;
 }
 
 module.exports = problem1;
