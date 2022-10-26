@@ -5,7 +5,7 @@ function problem1(pobi, crong) {
     if (arr[1] > 400) return false;
     if (arr[0] + 1 !== arr[1]) return false;
     if (arr[0] % 2 !== 1) return false;
-    if (arr[0] % 2 !== 0) return false;
+    if (arr[1] % 2 !== 0) return false;
     return true;
   };
 
