@@ -38,14 +38,14 @@ function problem1(pobi, crong) {
   let pobiMax = findMax(pobi);
   let crongMax = findMax(crong);
 
-  if (pobiException == -1 || crongException == -1) {
-    answer = -1
+  if (pobiException === -1 || crongException === -1) {
+    answer = -1;
   } else if (pobiMax > crongMax) {
-    answer = 1
+    answer = 1;
   } else if (pobiMax < crongMax) {
-    answer = 2
-  } else if (pobiMax == crongMax) {
-    answer = 0
+    answer = 2;
+  } else if (pobiMax === crongMax) {
+    answer = 0;
   }
 
   return answer;
