@@ -29,6 +29,19 @@ function problem1(pobi, crong) {
   }
 
   var answer;
+  if (pobi[1] - pobi[0] == 1 && crong[1] - crong[0] == 1) {
+    let pobiPoint = choosePoint(pobi);
+    let crongPoint = choosePoint(crong);
+    if (pobiPoint > crongPoint) {
+      answer = 1;
+    } else if (pobiPoint < crongPoint) {
+      answer = 2;
+    } else if (pobiPoint == crongPoint) {
+      answer = 0;
+    }
+  } else {
+    answer = -1;
+  }
   return answer;
 }
 
