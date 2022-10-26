@@ -27,6 +27,16 @@ function problem1(pobi, crong) {
     }
     return Math.max(...result);
   };
+
+  // 비교를 통해 result 반환
+  if (findBiggestNumber(pobi) > findBiggestNumber(crong)) {
+    answer = 1;
+  } else if (findBiggestNumber(pobi) < findBiggestNumber(crong)) {
+    answer = 2;
+  } else if (findBiggestNumber(pobi) === findBiggestNumber(crong)) {
+    answer = 0;
+  }
+
   return answer;
 }
 
