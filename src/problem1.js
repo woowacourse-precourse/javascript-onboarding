@@ -13,16 +13,16 @@ function isInvalidPageNumbers(pageNumbers) {
   return false;
 }
 
+function isOutOfBound(pageNumbers) {
+  return pageNumbers.some(
+    (pn) => pn < START_PAGE_NUMBER || pn > END_PAGE_NUMBER,
+  );
+}
+
 function hasBoundaryPageNumber(pageNumbers) {
   return (
     pageNumbers.includes(START_PAGE_NUMBER) ||
     pageNumbers.includes(END_PAGE_NUMBER)
-  );
-}
-
-function isOutOfBound(pageNumbers) {
-  return pageNumbers.some(
-    (pn) => pn < START_PAGE_NUMBER || pn > END_PAGE_NUMBER,
   );
 }
 
