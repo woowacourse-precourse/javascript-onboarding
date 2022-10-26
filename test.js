@@ -1,19 +1,17 @@
-function getMaxNumber(pages) {
-  let numbers = [];
-  pages.map((page) => {
-    let arr = page
-      .toString()
+function problem3(number) {
+  var answer = 0;
+
+  for (let i = 1; i <= number; i++) {
+    let cnt = 0;
+    i.toString()
       .split("")
-      .map((el) => +el);
-    let sum = 0;
-    let multiply = 1;
-    arr.map((el) => {
-      sum += el;
-      multiply *= el;
-    });
-    numbers.push(sum, multiply);
-  });
-  return Math.max(...numbers);
+      .forEach((el) => {
+        if (el === "3" || el === "6" || el === "9") cnt += 1;
+      });
+    answer += cnt;
+  }
+  return answer;
 }
 
-console.log(getMaxNumber([99, 100]));
+console.log(problem3(13));
+console.log(problem3(33));

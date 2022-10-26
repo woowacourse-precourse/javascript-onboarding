@@ -44,7 +44,7 @@ function verifyPage(pages) {
 function getMaxNumber(pages) {
   let numbers = [];
   pages.forEach((page) => {
-    // 고민 1. 단순 반복의 용도와 성능을 고려했을때, map 보다는 forEach가 우세
+    // 고민 1. 단순 반복의 용도와 성능을 고려했을때, map 보다는 forEach가 적합
     let sum = 0;
     let multiply = 1;
     let arr = page
