@@ -1,13 +1,4 @@
-/*
-구현할 기능 목록
-[O] 1. 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구하는 함수
-[O] 2. 왼쪽 페이지 번호의 결과와 오른쪽 페이지 번호의 결과 중 큰 수를 구하는 함수
-[O] 3. 포비와 크롱의 점수를 비교해 더 큰 사람을 구하는 함수
-[O] 4. 왼쪽 페이지와 오른쪽 페이지가 연속되는지 확인하는 함수
-[O] 5. 포비와 크롱의 페이지가 정상적인지 확인하는 함수
-*/
-
-// 1. 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구하는 함수
+// 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구하는 함수
 function pageMax(page_num) {
   let sum = 0, 
       multi = 1,
@@ -20,12 +11,12 @@ function pageMax(page_num) {
   return Math.max(sum, multi);
 }
 
-// 2. 왼쪽 페이지 번호의 결과와 오른쪽 페이지 번호의 결과 중 큰 수를 구하는 함수
+// 왼쪽 페이지 번호의 결과와 오른쪽 페이지 번호의 결과 중 큰 수를 구하는 함수
 function pageScore(page) {
   return Math.max(pageMax(page[0]), pageMax(page[1]));
 }
 
-// 3. 포비와 크롱의 점수를 비교해 더 큰 사람을 구하는 함수
+// 포비와 크롱의 점수를 비교해 더 큰 사람을 구하는 함수
 function winner(pobi, crong) {
   const pobi_score = pageScore(pobi),
       crong_score = pageScore(crong);
@@ -36,12 +27,12 @@ function winner(pobi, crong) {
   if (pobi_score === crong_score) return 0;
 }
 
-// 4. 왼쪽 페이지와 오른쪽 페이지가 연속되는지 확인하는 함수
+// 왼쪽 페이지와 오른쪽 페이지가 연속되는지 확인하는 함수
 function isSerialPage(page){
   return (Math.abs(page[0] - page[1]) === 1)? true: false;
 }
 
-// 5. 포비와 크롱의 페이지가 둘 다 정상적인지 확인하는 함수
+// 포비와 크롱의 페이지가 둘 다 정상적인지 확인하는 함수
 function isSerialBoth(pobi, crong) {
   return (isSerialPage(pobi) && isSerialPage(crong))? true: false;
 }
@@ -49,7 +40,7 @@ function isSerialBoth(pobi, crong) {
 function problem1(pobi, crong) {
   // 포비와 크롱의 페이지 중 하나라도 정상적이지 않으면 예외사항 -1
   if (!isSerialBoth(pobi, crong)) return -1;
-  
+
   // 승자 구하기: 포비가 이기면 1, 크롱이 이기면 1, 무승부면 0
   return winner(pobi, crong);
 }
