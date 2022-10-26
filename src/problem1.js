@@ -21,11 +21,8 @@ function problem1(pobi, crong) {
   const pobiMax = Math.max(...pobiScore),
     crongMax = Math.max(...crongScore)
 
-  if (pobiMax > crongMax) {
-    answer = 1
-  } else if (pobiMax < crongMax) {
-    answer = 2
-  }
+  if (pobiMax > crongMax) answer = 1
+  else answer = 2
 
   return answer
 }
