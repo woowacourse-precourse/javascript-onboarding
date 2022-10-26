@@ -5,8 +5,12 @@ function countTargetNumber(targets, number) {
 
 function problem3(number) {
   const clapTargets = [3, 6, 9];
-  for (let i = 1; i <= number; i++) {
+  let clapTotal = 0;
+  
+  for (let num = 1; num <= number; num++) {
+    clapTotal += countTargetNumber(clapTargets, num);
   }
+  return clapTotal;
 }
 
 module.exports = problem3;
