@@ -28,41 +28,22 @@ function problem1(pobi, crong) {
     return (num % 10) * multiplyAllNums(parseInt(num / 10));
   };
 
-  const findMax = (num1, num2) => {
+  const findMaxOfTwo = (num1, num2) => {
     return Math.max(num1, num2);
   };
 
-  const maxNumOfPobi = () => {
-    let leftMax_of_pobi = findMax(
-      addAllNums(pobi[0]),
-      multiplyAllNums(pobi[0])
-    );
-    let rightMax_of_pobi = findMax(
-      addAllNums(pobi[1]),
-      multiplyAllNums(pobi[1])
-    );
-    return findMax(leftMax_of_pobi, rightMax_of_pobi);
+  const findMaxNum = (num1, num2) => {
+    let leftMax = findMaxOfTwo(addAllNums(num1), multiplyAllNums(num1));
+    let rightMax = findMaxOfTwo(addAllNums(num2), multiplyAllNums(num2));
+    return findMaxOfTwo(leftMax, rightMax);
   };
 
-  const maxNumOfCrong = () => {
-    let leftMax_of_crong = findMax(
-      addAllNums(crong[0]),
-      multiplyAllNums(crong[0])
-    );
-    let rightMax_of_crong = findMax(
-      addAllNums(crong[1]),
-      multiplyAllNums(crong[1])
-    );
-    return findMax(leftMax_of_crong, rightMax_of_crong);
-  };
-
-  let pobi_score = maxNumOfPobi();
-  let crong_score = maxNumOfCrong();
-
-  const solution = (pobi_score, crong_score) => {
+  const solution = (pobi, crong) => {
     if (!isRightInput(pobi, crong)) {
       return -1;
     }
+    let pobi_score = findMaxNum(pobi[0], pobi[1]);
+    let crong_score = findMaxNum(crong[0], crong[1]);
     if (pobi_score === crong_score) {
       return 0;
     }
@@ -72,10 +53,9 @@ function problem1(pobi, crong) {
     if (pobi_score < crong_score) {
       return 2;
     }
-    return -1;
   };
 
-  answer = solution(pobi_score, crong_score);
+  answer = solution(pobi, crong);
   return answer;
 }
 
