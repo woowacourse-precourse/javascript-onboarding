@@ -4,8 +4,19 @@
 // 3. 65 이상 90 이하, 97 이상 122 이하의 범위에 없는 문자는 변환하지 않도록 설정
 
 function problem4(word) {
-  var answer;
-  return answer;
+  const array = [...word];
+
+  let reverseArray = array.map(el => {
+    if (el >= 'a' && el <= 'z') {
+      return String.fromCharCode(97 + 122 - el.charCodeAt()); 
+    } else if (el >= 'A' && el <= 'Z') {
+      return String.fromCharCode(65 + 90 - el.charCodeAt());
+    } else {
+      return el;
+    }
+  });
+
+  return reverseArray.join('');
 }
 
 module.exports = problem4;
