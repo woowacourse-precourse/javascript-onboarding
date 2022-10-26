@@ -7,10 +7,10 @@ function problem7(user, friends, visitors) {
 }
 
 function setMap(map, mapIndex, user, friends, visitors){
-  map.set(user);
+  map.set(user, mapIndex);
   mapIndex++;
-  setMapFriends(map, mapIndex, friends);
-  setMapVisitors(map, mapIndex, visitors);
+  mapIndex = setMapFriends(map, mapIndex, friends);
+  mapIndex = setMapVisitors(map, mapIndex, visitors);
 }
 
 function setMapFriends(map, mapIndex, friends){
@@ -22,6 +22,7 @@ function setMapFriends(map, mapIndex, friends){
       }
     }
   }
+  return mapIndex;
 }
 
 function setMapVisitors(map, mapIndex, visitors){
@@ -31,6 +32,7 @@ function setMapVisitors(map, mapIndex, visitors){
       mapIndex++;
     }
   }
+  return mapIndex;
 }
 
 module.exports = problem7;
