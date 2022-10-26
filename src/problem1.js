@@ -54,3 +54,26 @@ function numToArr(num) {
   return arr;
 }
 
+//배열의 숫자를 계산해서 높은값을 리턴하는 함수
+function pageResult(arr) {
+  const sumResult = arr.reduce((a, b) => a + b);
+  const multipleResult = arr.reduce((a, b) => a * b);
+
+  if (sumResult > multipleResult) return sumResult;
+  else return multipleResult; // sum 값이 높은지 확인하여 sum과 multi 중 반환값을 결정.
+}
+
+//배열의 숫자를 처리 하는 함수 // 숫자나 문자를 배열로 만들어아하는데?
+//리듀스 사용(누산값, 현재값)
+function calcPage(arr) {
+  [start, next] = [...arr];
+
+  const startPage = numToArr(start);
+  const nextPage = numToArr(next); //페이지 숫자를 숫자 배열로 변환
+
+  const startResult = pageResult(startPage);
+  const nextResult = pageResult(nextPage); //숫자 배열에서 계산된 값중 높은값을 반환
+
+  if (startResult > nextResult) return startResult; // 높은 숫자를 리턴
+  else return nextResult; //
+}
