@@ -25,6 +25,10 @@ function countOf369(num) {
 }
 
 function problem3(num) {
+  if (!checkValidation(num))
+    return -1;
+  return Array.from({length: num})
+    .reduce((acc, _, idx) => acc + countOf369(idx + 1), 0);
 }
 
 module.exports = problem3;
