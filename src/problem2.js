@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
   var answer;
-  answer = decodeCryptogram(cryptogram)
+  answer = decodeCryptogram(cryptogram);
   return answer;
 }
 
@@ -15,7 +15,7 @@ function decodeCryptogram(cryptogram){
   decoded = decoded.join('');
 
   if(decoded === []){
-    decoded = ""
+    decoded = "";
   }
 
   return decoded;
