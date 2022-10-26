@@ -14,7 +14,9 @@ function pageMaxScore(page) {
 // 왼쪽페이지 오른쪽 페이지의 값 비교해서 큰 값 반환
 function myMaxScore(user) {
     const [leftPage, rightPage] = user;
-
+    if (rightPage - leftPage !== 1) {
+        return -1;
+    }
     const leftMax = pageMaxScore(leftPage);
     const rightMax = pageMaxScore(rightPage);
 
@@ -22,19 +24,22 @@ function myMaxScore(user) {
 }
 
 function problem1(pobi, crong) {
-    var answer = 1;
-    return answer;
+    const pobiScore = myMaxScore(pobi);
+    const crongScore = myMaxScore(crong);
+
+    if ((pobiScore || crongScore) === -1) {
+        return -1;
+    }
+
+    if (pobiScore > crongScore) {
+        return 1;
+    }
+    if (pobiScore < crongScore) {
+        return 2;
+    }
+    if (pobiScore === crongScore) {
+        return 0;
+    }
 }
 
 module.exports = problem1;
-
-// 1. 왼쪽페이지, 오른쪽페이지 계산.
-//  1-1. 덧셈값
-//  1-2. 곱셈값
-
-// 2. 결과값으로 큰 값 구하기
-
-// 3. 값 비교하여 결과 반환
-
-// 예외 처리할 것
-// 연속하지 않은 숫자, 왼쪽 짝수, 오른쪽홀수, 첫페이지 마지막페이지
