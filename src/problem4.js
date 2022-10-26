@@ -9,4 +9,8 @@ function frogDictionary(alphabet) {
     : String.fromCharCode(219 - alphabet.charCodeAt(0));
 }
 
+function alphabetCheck(alphabet) {
+  return /[a-zA-Z]/.test(alphabet);
+}
+
 module.exports = problem4;
