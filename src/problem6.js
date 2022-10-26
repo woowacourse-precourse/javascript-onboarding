@@ -29,11 +29,15 @@ function problem6(forms) {
   });
 
   const nickNameMap = new Map();
-
   forms.forEach(([_, nickname]) => {
     setNickNameMap(nickNameMap, splitTwoLetters(nickname));
   });
-  var answer;
+
+  const overLappingWords = [];
+  nickNameMap.forEach((value, key) => {
+    if (value > 1) overLappingWords.push(key);
+  });
+
   return answer;
 }
 
