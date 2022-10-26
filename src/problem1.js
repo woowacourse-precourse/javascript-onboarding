@@ -5,4 +5,24 @@ function checkContinousPage(pages) {
   return false;
 }
 
+function calculateNumber(pageNumber) {
+  let plusNum, multiplyNum;
+  let digit1 = parseInt(pageNumber % 10);
+  let digit2 = parseInt((pageNumber % 100) / 10);
+  let digit3 = parseInt((pageNumber % 1000) / 100);
+
+  if (pageNumber.toString().length == 1) {
+    plusNum = digit1;
+    multiplyNum = digit1;
+  } else if (pageNumber.toString().length == 2) {
+    plusNum = digit1 + digit2;
+    multiplyNum = digit1 * digit2;
+  } else {
+    plusNum = digit1 + digit2 + digit3;
+    multiplyNum = digit1 * digit2 * digit3;
+  }
+
+  return plusNum >= multiplyNum ? plusNum : multiplyNum;
+}
+
 module.exports = problem1;
