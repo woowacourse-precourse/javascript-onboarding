@@ -1,6 +1,7 @@
 const {
   checkInputError,
   deleteDuplicateWord,
+  infinityDeleteDuplicateWord,
 } = require("../src/problem2.util");
 
 describe("checkInputError", () => {
@@ -35,5 +36,14 @@ describe("deleteDuplicateWord", () => {
   });
   it("is input 'o' output 'o'", () => {
     expect(deleteDuplicateWord("o")).toEqual("o");
+  });
+});
+
+describe("infinityDeleteDuplicateWord", () => {
+  it("case1", () => {
+    expect(infinityDeleteDuplicateWord("browoanoommnaon")).toEqual("brown");
+  });
+  it("case2", () => {
+    expect(infinityDeleteDuplicateWord("zyelleyz")).toEqual("");
   });
 });

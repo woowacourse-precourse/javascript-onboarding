@@ -18,7 +18,19 @@ const deleteDuplicateWord = (str) => {
   }
   return temp.join("");
 };
+
 // 재귀 호출
+const infinityDeleteDuplicateWord = (str) => {
+  let flag = true;
+  let temp = str;
+  while (flag) {
+    const prev = temp;
+    temp = deleteDuplicateWord(prev);
+    if (temp === prev) flag = false;
+  }
+  return temp;
+};
 
 exports.checkInputError = checkInputError;
 exports.deleteDuplicateWord = deleteDuplicateWord;
+exports.infinityDeleteDuplicateWord = infinityDeleteDuplicateWord;
