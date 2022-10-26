@@ -1,1 +1,0 @@
-duplicatedChar === cur)
