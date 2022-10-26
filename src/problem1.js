@@ -12,6 +12,16 @@ function digitSum(...arr) {
   return Math.max(firstNum, secondNum);
 }
 
+function digitMul(...arr) {
+  const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
+  const firstNum = firstArr.reduce((a,b) => (a*b));
+
+  const secondArr = arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondNum = secondArr.reduce((a,b) => (a*b));
+
+  return Math.max(firstNum, secondNum);
+}
+
 module.exports = problem1;
 
 // 기능들
