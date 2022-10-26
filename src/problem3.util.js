@@ -10,6 +10,11 @@ const countClapOfNum = (n) =>
     .filter((n) => n !== "0" && Number(n) % 3 === 0).length;
 
 // 1 부터 n 까지 count 구해서 더하기
+const totalCountClap = (n) =>
+  Array.from({ length: n }, (x, i) => i + 1)
+    .map(countClapOfNum)
+    .reduce((acc, cur) => acc + cur, 0);
 
 exports.checkInputError = checkInputError;
 exports.countClapOfNum = countClapOfNum;
+exports.totalCountClap = totalCountClap;
