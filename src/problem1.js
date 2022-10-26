@@ -19,8 +19,14 @@ function getScore(pages) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (isInvalidInput(pobi) || isInvalidInput(crong)) {
+    return -1;
+  }
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+  if (pobiScore === crongScore) return 0;
+  if (pobiScore > crongScore) return 1;
+  return 2;
 }
 
 module.exports = problem1;
