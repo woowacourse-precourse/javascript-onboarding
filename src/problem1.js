@@ -11,6 +11,16 @@ function pageMaxScore(page) {
     return sumResult > multipleResult ? sumResult : multipleResult;
 }
 
+// 왼쪽페이지 오른쪽 페이지의 값 비교해서 큰 값 반환
+function myMaxScore(user) {
+    const [leftPage, rightPage] = user;
+
+    const leftMax = pageMaxScore(leftPage);
+    const rightMax = pageMaxScore(rightPage);
+
+    return leftMax > rightMax ? leftMax : rightMax;
+}
+
 function problem1(pobi, crong) {
     var answer = 1;
     return answer;
