@@ -43,12 +43,19 @@ npm test
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
 
 1. [문제 1](docs/PROBLEM1.md)
-2. [문제 2](docs/PROBLEM2.md)
-3. [문제 3](docs/PROBLEM3.md)
-4. [문제 4](docs/PROBLEM4.md)
-5. [문제 5](docs/PROBLEM5.md)
-6. [문제 6](docs/PROBLEM6.md)
-7. [문제 7](docs/PROBLEM7.md)
+
+- 기능 구현 목록
+- [x] 각 자리의 모든 숫자 더하는 기능
+- [x] 각 자리 숫자를 모두 곱하는 기능
+- [x] 가장 큰 수를 구하는 기능
+- [x] 점수를 비교하고 결과를 판정하는 기능
+
+1. [문제 2](docs/PROBLEM2.md)
+2. [문제 3](docs/PROBLEM3.md)
+3. [문제 4](docs/PROBLEM4.md)
+4. [문제 5](docs/PROBLEM5.md)
+5. [문제 6](docs/PROBLEM6.md)
+6. [문제 7](docs/PROBLEM7.md)
 
 ---
 
