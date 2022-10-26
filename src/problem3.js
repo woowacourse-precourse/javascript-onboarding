@@ -1,5 +1,5 @@
 function problem3(number) {
-  const arr = Array(number).fill().map((_, i) => String(i + 1));
+  const arr = Array.from(new Array(number), (_, i) => String(i + 1));
 
   const answer = arr.map(v => [...v]).flat(Infinity);
 
