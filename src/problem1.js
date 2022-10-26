@@ -3,24 +3,12 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  let pobiNumber = {
-    odd: pobi[0],
-    even: pobi[1],
-    max: 0,
-  };
+  const pobiMaxNumber = getMaxNumber(pobi[0], pobi[1]);
+  const crongMaxNumber = getMaxNumber(crong[0], crong[1]);
 
-  let crongNumber = {
-    odd: crong[0],
-    even: crong[1],
-    max: 0,
-  };
-
-  pobiNumber.max = getMaxNumber(pobiNumber.odd, pobiNumber.even);
-  crongNumber.max = getMaxNumber(crongNumber.odd, crongNumber.even);
-
-  if (pobiNumber.max === crongNumber.max) return 0;
-  else if (pobiNumber.max > crongNumber.max) return 1;
-  else if (pobiNumber.max < crongNumber.max) return 2;
+  if (pobiMaxNumber === crongMaxNumber) return 0;
+  else if (pobiMaxNumber > crongMaxNumber) return 1;
+  else if (pobiMaxNumber < crongMaxNumber) return 2;
 }
 function checkProblem(numbers) {
   if (numbers.length !== 2) return true;
@@ -58,4 +46,7 @@ function multiNumber(number) {
   return multi;
 }
 
+console.log(problem1([97, 98], [197, 198]));
+console.log(problem1([131, 132], [211, 212]));
+console.log(problem1([99, 102], [211, 212]));
 module.exports = problem1;
