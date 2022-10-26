@@ -8,7 +8,7 @@ function decryption(cryptogram) {
   for (let chr of cryptogram) {
     // 첫 번째 값 추가
     if (result.length === 0) result.push(chr); 
-    // 첫 번째 값과 같으면 스택에서 맨 위의 값 제거(연속되는 값 제거) 후 이전 값 변수에 저장
+    // 이전 값과 같으면 스택에서 맨 위의 값 제거(연속되는 값 제거) 후 이전 값 변수에 저장
     else if (chr === result.at(-1)) prev = result.pop();
     // 이전에 제거된 값과 같으면 다음 반복문으로 넘어가기(두 개 이상 연속되는 값 제거)
     else if (chr === prev) continue;
