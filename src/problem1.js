@@ -30,18 +30,52 @@ class PageError {
   }
 }
 
+class Calculator {
+  constructor(pobi, crong) {
+    this.pobi = pobi;
+    this.crong = crong;
+  }
+
+  compareTwoBook() {
+    const pobiBigestNumber = this.getBigestNumber(this.pobi);
+    const crongBigestNumber = this.getBigestNumber(this.crong);
+
+    if (pobiBigestNumber > crongBigestNumber) {
+      return 1;
+    } else if (pobiBigestNumber < crongBigestNumber) {
+      return 2;
+    } else {
+      return 0;
+    }
+  }
+
+  splitNum(page) {
+    return String(page)
+      .split("")
+      .map((num) => Number(num));
+  }
+
+  plusPage(page) {
+    return this.splitNum(page).reduce((acc, cur) => acc + cur, 0);
+  }
+
+  multiPage(page) {
+    return this.splitNum(page).reduce((acc, cur) => acc * cur, 1);
+  }
+
+  getBigestNumber(book) {
+    return Math.max(
+      ...book.flatMap((page) => [this.plusPage(page), this.multiPage(page)])
+    );
+  }
+}
+
 function problem1(pobi, crong) {
   const pageError = new PageError(pobi, crong);
   if (!pageError.checkAllError()) return -1;
 
-  return 0;
+  const calculator = new Calculator(pobi, crong);
+  return calculator.compareTwoBook();
 }
-
-// 에러 테스트
-console.log(problem1([1, 2], [3, 4])); // 시작이 1일 때 에러
-console.log(problem1([3, 4], [399, 400])); // 끝이 400일 때
-console.log(problem1([-1, 0], [3, 4])); // 0미만의 값이 있을 때
-console.log(problem1([22, 23], [33, 34])); // 왼쪽 페이지가 짝수 일 때
-console.log(problem1([23, 28], [33, 34])); // 왼쪽 오른쪽 페이지가 2이상 차이날 때
 
 module.exports = problem1;
