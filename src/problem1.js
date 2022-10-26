@@ -14,6 +14,15 @@ function digitSum(...Arr) {
   return Math.max(firstNum, secondNum);
 }
 
+function digitMul(...Arr) {
+  let firstArr = Arr[0][0].toString().split("").map(x => parseInt(x));
+  const firstNum = firstArr.reduce((a,b) => (a*b));
+
+  let secondArr = Arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondNum = secondArr.reduce((a,b) => (a*b));
+
+  return Math.max(firstNum, secondNum);
+}
 
 problem1([97, 98], [111, 112]);
 
