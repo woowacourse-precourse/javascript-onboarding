@@ -81,7 +81,26 @@ function problem1(pobi, crong) {
   // 처리방법 1. __test__에서 해당 예시가 들어가지 않게끔 변경
   // 처리방법 2. problem1.js에서 해당 숫자가 들어온다면 곧바로 에러를 return
 
+
   //!2.페이지 수가 홀,짝으로 시작되지 않을 경우
+    // #6 배열의 숫자가 홀수, 짝수 순서대로 진행되는지 확인하는 함수
+  function CHECK_LIST_ODD_TO_EVEN (list) {
+    
+
+    const inputList = list.slice();
+    const leftNum = Number(inputList[0])
+    const rightNum = Number(inputList[1])
+
+    if(leftNum % 2 !== 1){
+      return false;
+    } else if (rightNum %2 !== 0){
+      return false;
+    } else {
+      return true;
+    }
+
+  }
+
   //!3.페이지 수가 1 차이가 나지 않을 경우.
 
   // 실행
