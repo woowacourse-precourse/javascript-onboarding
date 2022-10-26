@@ -5,6 +5,7 @@ function problem1(pobi, crong) {
 
 module.exports = problem1;
 
+/* numberHandler */
 function addPageNumbers(page) {
   const pageArray = page.toString().split("");
   const addValue = pageArray.reduce((prev, value) => prev + parseInt(value), 0);
@@ -32,6 +33,27 @@ function largestNum(pages) {
   const largestValue = Math.max(addLeft, addRight, multipleLeft, multipleRight);
 
   return largestValue;
+}
+
+/* Validation Function */
+function isValidPage(pages) {
+  isInRange(pages); //pages 값이 1~400의 값인지 판단.
+  //isOdd(pages[0]); //배열의 0번째 인덱스가 홀수인지 판단.
+  //isEven(pages[1]) //배열의 1번째 인덱스가 짝수인지 판단.
+  //isNeighboringValue(pages) //배열에 담긴 두 값의 차이가 1인지 판단.
+}
+
+function isInRange(pages) {
+  const leftValue = pages[0];
+  const rightValue = pages[1];
+
+  if (leftValue <= 1) {
+    return false;
+  } else if (rightValue >= 400) {
+    return false;
+  }
+
+  return true;
 }
 
 /*
@@ -90,7 +112,7 @@ const crong = [leftValue, rightValue];
 
 ### 함수화 할 기능
 페이지 검증하는 함수.
-function isValidResult = (result) => {
+function isValid = (result) => {
     //1. hasValue(result) //각 페이지에 번호가 할당되어있는지 확인. [null, 4]
     //2. isInRange(result) //result 값이 1~400의 값인지 판단.
     //3. isOdd(result[0]) //배열의 0번째 인덱스가 홀수인지 판단.
