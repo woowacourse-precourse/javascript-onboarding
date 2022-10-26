@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   var answer;
-  let pobiArr = [];
-  let crongArr = [];
+  let pobiNumArr = [];
+  let crongNumArr = [];
   let pobiNumtoStr;
   let crongNumtoStr;
   let sum;
@@ -17,7 +17,7 @@ function problem1(pobi, crong) {
       sum += parseInt(pobiNumtoStr[i]);
       multiply *= parseInt(pobiNumtoStr[i]);
       }
-    pobiArr.push(sum, multiply);
+    pobiNumArr.push(sum, multiply);
     sum = 0;
     multiply =1;
 
@@ -25,35 +25,33 @@ function problem1(pobi, crong) {
       sum += parseInt(crongNumtoStr[i]);
       multiply *= parseInt(crongNumtoStr[i]);
       }
-    crongArr.push(sum, multiply);
+    crongNumArr.push(sum, multiply);
   }
-
-  pobiArr.sort((a, b) => {
+  //sort()를 이용해서 배열을 내림차순으로 정리
+  pobiNumArr.sort((a, b) => {
     return b - a;
   });
 
-  crongArr.sort((a, b) => {
+  crongNumArr.sort((a, b) => {
     return b - a;
   });
 
-  console.log(pobiArr[0]);
-  console.log(crongArr[0]);
-
-  if (pobiArr[0] > crongArr[0]) {
+  if (pobi[0] <= 1 || crong[1] >= 400 || 
+      pobi[0] * crong[0] % 2 !== 1 || 
+      pobi[1] - pobi[0] !== 1 || 
+      crong[1] - crong[0] !== 1 ||
+      pobi.length > 3 || pobi.lenth < 2 ||
+      crong.length > 3 || crong.lenth < 2) {
+    answer = -1;
+  } else if (pobiNumArr[0] > crongNumArr[0]) {
     answer = 1;
-  } else if (crongArr[0] > pobiArr[0]) {
+  } else if (crongNumArr[0] > pobiNumArr[0]) {
     answer = 2;
-  } else if (crongArr[0] === pobiArr[0]) {
+  } else if (crongNumArr[0] === pobiNumArr[0]) {
     answer = 0;
   }
-
-
-
-
 
   return answer;
 }
 
 module.exports = problem1;
-
-console.log(problem1([97, 98], [197, 198]));
