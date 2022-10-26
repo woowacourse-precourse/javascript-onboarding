@@ -13,4 +13,15 @@ function isSequenceNumber(numbers) {
   return false;
 }
 
+function getMaxNumber(numbers) {
+  let max = 0;
+  numbers.forEach((number) => {
+    const numberArr = number.toString().split("");
+    const plus = numberArr.reduce((acc, cur) => acc + parseInt(cur), 0);
+    const multi = numberArr.reduce((acc, cur) => acc * parseInt(cur), 1);
+    max = Math.max(max, plus, multi);
+  });
+  return max;
+}
+
 module.exports = problem1;
