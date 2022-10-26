@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "test1": "jest __tests__/Problem1Test.js",
-    "test2": "jest __tests__/Problem2Test.js"
+    "test2": "jest __tests__/Problem2Test.js",
+    "test3": "jest __tests__/Problem3Test.js"
   },
   "repository": {
     "type": "git",
