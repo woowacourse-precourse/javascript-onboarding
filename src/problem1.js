@@ -16,4 +16,11 @@ const getSumNumber = (pageNumber) => {
   );
 };
 
+const getMulNumber = (pageNumber) => {
+  return getNumberArray(pageNumber).reduce(
+    (accumulator, currentValue) => accumulator * currentValue,
+    1
+  );
+};
+
 module.exports = problem1;
