@@ -25,10 +25,9 @@ function problem1(pobi, crong) {
     const pobiScore = myMaxScore(pobi);
     const crongScore = myMaxScore(crong);
 
-    if ((pobiScore || crongScore) === -1) {
+    if (pobiScore === -1 || crongScore === -1) {
         return -1;
     }
-
     if (pobiScore > crongScore) {
         return 1;
     }
