@@ -17,6 +17,15 @@ function problem1(pobi, crong) {
   if (checkPages(pobi) || checkPages(crong)) {
     return -1;
   } else {
+    const pobiBest =
+      calcNum(pobi[0]) >= calcNum(pobi[1])
+        ? calcNum(pobi[0])
+        : calcNum(pobi[1]);
+    const crongBest =
+      calcNum(crong[0]) >= calcNum(crong[1])
+        ? calcNum(crong[0])
+        : calcNum(crong[1]);
+    return pobiBest >= crongBest ? (pobiBest === crongBest ? 0 : 1) : 2;
   }
 }
 
