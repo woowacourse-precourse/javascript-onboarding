@@ -8,9 +8,7 @@ function problem3(number) {
 }
 
 function getInclude369(number) {
-  const includes = number.toString().match(/3|6|9/gi);
-  if (includes) return includes;
-  return includes;
+  return number.toString().match(/3|6|9/gi);
 }
 
 module.exports = problem3;
