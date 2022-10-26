@@ -2,19 +2,16 @@ const START_PAGE_NUMBER = 1;
 const END_PAGE_NUMBER = 400;
 
 function isInvalidPageNumbers(pageNumbers) {
-  if (isOutOfBound(pageNumbers)) {
-    return true;
+  switch (true) {
+    case isOutOfBound(pageNumbers):
+      return true;
+    case isImpossiblePage(pageNumbers):
+      return true;
+    case hasBoundaryPageNumber(pageNumbers):
+      return true;
+    default:
+      return false;
   }
-
-  if (isImpossiblePage(pageNumbers)) {
-    return true;
-  }
-
-  if (hasBoundaryPageNumber(pageNumbers)) {
-    return true;
-  }
-
-  return false;
 }
 
 function isOutOfBound(pageNumbers) {
