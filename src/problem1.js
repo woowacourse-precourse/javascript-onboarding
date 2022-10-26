@@ -14,6 +14,21 @@ function getSum(pageNumber) {
   return numbers.reduce((prevSum, number) => prevSum + number, 0);
 }
 
+function getMaxMultiplication(pageNumbers) {
+  const multiplications = pageNumbers.map((pn) => getMultiplication(pn));
+
+  return Math.max(...multiplications);
+}
+
+function getMultiplication(pageNumber) {
+  const numbers = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
+
+  return numbers.reduce(
+    (prevMultiplication, number) => prevMultiplication * number,
+    1,
+  );
+}
+
 function problem1(pobi, crong) {
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
