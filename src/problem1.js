@@ -1,12 +1,12 @@
 function problem1(pobi, crong) {
   var answer;
 
-  const getScoreNumberArr = score => {
+  const getPageNumberArr = score => {
 
-    const scoreNumbersArr = (score + '').split('');
-    scoreNumbersArr.map((scoreNumber, i) => scoreNumbersArr[i] =  scoreNumber * 1);
+    const pageNumberArr = (score + '').split('');
+    pageNumberArr.map((pageNumber, i) => pageNumberArr[i] =  pageNumber * 1);
 
-    return scoreNumbersArr;
+    return pageNumberArr;
   }
 
   const getNumberSumForPage = scoreNumbersArr => {
@@ -34,7 +34,7 @@ function problem1(pobi, crong) {
 
   const getPageScore = (score) => {
 
-    const scoreNumbersArr = getScoreNumberArr(score);
+    const scoreNumbersArr = getPageNumberArr(score);
 
     const numbersSum = getNumberSumForPage(scoreNumbersArr);
     const numbersMultiple = getNumberMultipleForPage(scoreNumbersArr);
@@ -52,7 +52,12 @@ function problem1(pobi, crong) {
 
   const getError = pagesArr => {
 
-    const isError = pagesArr[1] - pagesArr[0] !== 1 ? -1 : 1;
+    const isError1 = pagesArr[1] - pagesArr[0] !== 1 ? -1 : 1;
+    const isError2 = pagesArr[0]%2 === 1 ? 1 : -1; 
+    const isError3 = pagesArr[1]%2 === 0 ? 1 : -1;
+    
+    const isError = isError1 * isError2 * isError3;
+
     return isError;
   }
 
