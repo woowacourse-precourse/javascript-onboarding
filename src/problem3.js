@@ -1,5 +1,4 @@
 function problem3(number) {
-  const count = 0;
   const container369 = ['3', '6', '9'];
   const count369 = (number, count) => {
     if (number === 0) {
