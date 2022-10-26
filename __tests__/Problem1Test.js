@@ -58,6 +58,9 @@ describe("mulPageNum", () => {
   it("is input 333 output 27", () => {
     expect(mulPageNum(333)).toEqual(27);
   });
+  it("is input 20 output 0", () => {
+    expect(mulPageNum(20)).toEqual(0);
+  });
 });
 
 describe("getLargeNum", () => {
