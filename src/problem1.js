@@ -5,6 +5,10 @@ function problem1(pobi, crong) {
    * 3. 비교를 통해 result 반환
    */
   let answer;
+  // exception handling
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
+    return -1;
+  }
   return answer;
 }
 
