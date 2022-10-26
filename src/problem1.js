@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  if ((pobi[1] - pobi[0] > 1) || (crong[1] - crong[0] > 1)) return -1;
+  if (!checkGapPages(pobi, crong) || !checkOverPages(pobi, crong)) return -1;
 
   const maxPobi = Math.max.apply(null, pobi.map(v => getMax(v)));
   const maxCrong = Math.max.apply(null, crong.map(v => getMax(v)));
@@ -15,6 +15,22 @@ function getMax(v) {
   const max = Math.max(add, multiply);
 
   return max;
+}
+
+function checkGapPages(pobi, crong) {
+  if ((pobi[1] - pobi[0] > 1) || (crong[1] - crong[0] > 1)) return false;
+
+  return true;
+}
+
+function checkOverPages(pobiPages, crongPages) {
+  if (
+    pobiPages.every((page) => page >= 1 && page <= 400) &&
+    crongPages.every((page) => page >= 1 && page <= 400)
+  ) {
+    return true;
+  }
+  return false;
 }
 
 module.exports = problem1;
