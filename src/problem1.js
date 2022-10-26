@@ -13,7 +13,7 @@ function problem1(pobi, crong) {
     sum = 0;
     multiply =1;
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < pobiNumtoStr.length; i++) {
       sum += parseInt(pobiNumtoStr[i]);
       multiply *= parseInt(pobiNumtoStr[i]);
       }
@@ -21,16 +21,23 @@ function problem1(pobi, crong) {
     sum = 0;
     multiply =1;
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < crongNumtoStr.length; i++) {
       sum += parseInt(crongNumtoStr[i]);
       multiply *= parseInt(crongNumtoStr[i]);
       }
     crongArr.push(sum, multiply);
   }
-  console.log(pobiArr);
-  console.log(crongArr);
 
+  pobiArr.sort((a, b) => {
+    return b - a;
+  });
 
+  crongArr.sort((a, b) => {
+    return b - a;
+  });
+
+  console.log(pobiArr[0]);
+  console.log(crongArr[0]);
 
 
   // const leftNumtoStr = pobi[0].toString();
