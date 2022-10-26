@@ -12,9 +12,24 @@ function exceptionChecker(array) {
   return true;
 }
 
+function getScore([leftPage, rightPage]) {
+  const leftPageNumber = leftPage.toString().split("");
+  const rightPageNumber = rightPage.toString().split("");
+
+  return Math.max(
+    leftPageNumber.reduce((prev, current) => prev + Number(current), 0),
+    leftPageNumber.reduce((prev, current) => prev * Number(current), 1),
+    rightPageNumber.reduce((prev, current) => prev + Number(current), 0),
+    rightPageNumber.reduce((prev, current) => prev * Number(current), 1),
+    );
+}
+
 function problem1(pobi, crong) {
   var answer;
   if(!exceptionChecker(pobi) || !exceptionChecker(crong)) return -1;
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
 
   return answer;
 }
