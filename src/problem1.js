@@ -6,6 +6,10 @@ function isInvalidPageNumbers(pageNumbers) {
     return true;
   }
 
+  if (isImpossiblePage(pageNumbers)) {
+    return true;
+  }
+
   if (hasBoundaryPageNumber(pageNumbers)) {
     return true;
   }
@@ -16,6 +20,16 @@ function isInvalidPageNumbers(pageNumbers) {
 function isOutOfBound(pageNumbers) {
   return pageNumbers.some(
     (pn) => pn < START_PAGE_NUMBER || pn > END_PAGE_NUMBER,
+  );
+}
+
+function isImpossiblePage(pageNumbers) {
+  const [leftPageNumber, rightPageNumber] = pageNumbers;
+
+  return (
+    leftPageNumber % 2 !== 1 ||
+    rightPageNumber % 2 !== 0 ||
+    leftPageNumber + 1 !== rightPageNumber
   );
 }
 
