@@ -2,6 +2,9 @@ function problem1(pobi, crong) {
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
 
+  if (Math.abs(pobiLeftPage - pobiRightPage) !== 1) return -1;
+  if (Math.abs(crongLeftPage - crongRightPage) !== 1) return -1;
+
   const getSum = (page) => {
     return page
       .toString()
