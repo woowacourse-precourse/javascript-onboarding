@@ -7,7 +7,6 @@ const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
-  /*
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
   });
@@ -17,7 +16,6 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
-  */
 
   /*
   ** Exception Test
@@ -42,6 +40,8 @@ describe("problem1", () => {
   });
   */
 
+  /*
+  ** Calculate Score Test
   test("calculate score test1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual([72, 72]);
   });
@@ -49,6 +49,7 @@ describe("problem1", () => {
   test("calculate score test2", () => {
     expect(problem1([131, 132], [211, 212])).toEqual([6, 5]);
   });
+  */
 });
 
 /*

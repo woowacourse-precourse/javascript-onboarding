@@ -7,8 +7,10 @@ function problem1(pobi, crong) {
 
   let pobiScore = calculateScore(pobi);
   let crongScore = calculateScore(crong);
-  return [pobiScore, crongScore];
-  // return answer;
+
+  answer = compareScore(pobiScore, crongScore);
+
+  return answer;
 }
 
 function isInvalidInput(pobi, crong) {
@@ -55,13 +57,10 @@ function multiplicationEachDigit(number) {
   return multiplicationEachDigit(parseInt(number / 10)) * (number % 10);
 }
 
-module.exports = problem1;
+function compareScore(pobiScore, crongScore) {
+  if (pobiScore === crongScore) return 0;
+  else if (pobiScore > crongScore) return 1;
+  return 2;
+}
 
-/*
-1. 입력 값 예외 처리 구현
-  - 시작 면, 마지막 면 금지
-  - [nbr(홀), nbr + 1(짝)] 포맷만 가능
-2. 각 자리 수 '더하기, 곱하기' 기능 구현
-3. 더한 값, 곱한 값 중 큰 값 중 점수 선택
-4. 포비 vs 크롱 대결, 결과 값 반환
-*/
+module.exports = problem1;
