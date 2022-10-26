@@ -30,29 +30,42 @@ ex)
 */
 
 function problem1(pobi, crong) {
-  // 페이지 번호의 각 숫자를 더해서 return 해주는 함수.
   function pageNumEachPlus(num) {
     let numList = String(num).split("").map(Number);
     let plusResult = numList.reduce((pre, cur) => pre + cur);
     return plusResult;
   }
 
-  // 페이지 번호의 각 숫자를 모두 곱해서 return 해주는 함수.
   function pageNumEachMultiply(num) {
     let numList = String(num).split("").map(Number);
     let multiplyResult = numList.reduce((pre, cur) => pre * cur);
     return multiplyResult;
   }
 
-  // 예외사항 체크 함수.
   function except(pageNums) {
     let pageDiff = pageNums[0] - pageNums[1];
     return pageDiff === -1 ? false : true;
   }
 
-  // 예외상황 체크.
   if (except(pobi)) return -1;
   if (except(crong)) return -1;
+
+  let [pobiScore, crongScore] = [0, 0];
+  let result = 0;
+
+  pobi.map((pageNum) => {
+    pobiScore = Math.max(pobiScore, pageNumEachPlus(pageNum));
+    pobiScore = Math.max(pobiScore, pageNumEachMultiply(pageNum));
+  });
+
+  crong.map((pageNum) => {
+    crongScore = Math.max(crongScore, pageNumEachPlus(pageNum));
+    crongScore = Math.max(crongScore, pageNumEachMultiply(pageNum));
+  });
+
+  result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+
+  return result;
 }
 
 module.exports = problem1;
