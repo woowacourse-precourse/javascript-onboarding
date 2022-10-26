@@ -1,6 +1,6 @@
 const VALIDITT = {
   length: 2,
-  number: "number",
+  number: 'number',
   minPage: 3,
   maxPage: 398,
 };
