@@ -8,4 +8,9 @@ function isValidPage(numbers) {
   return false;
 }
 
+function isSequenceNumber(numbers) {
+  if (numbers.reduce((acc, cur) => Math.abs(acc - cur), 0) === 1) return true;
+  return false;
+}
+
 module.exports = problem1;
