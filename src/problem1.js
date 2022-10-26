@@ -49,6 +49,7 @@ function problem1(pobi, crong) {
     // 3-2. pobi,crong 각각 최종 큰 수 구하기(Math.max() 함수 사용)
     var bigger_pobi = Math.max(cal_arr(left_pobi),cal_arr(right_pobi))
     var bigger_crong = Math.max(cal_arr(left_crong),cal_arr(right_crong))
+    
   }
   return answer;
 }
