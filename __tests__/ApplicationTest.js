@@ -6,6 +6,7 @@ const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
+/*
 describe("problem1", () => {
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
@@ -34,8 +35,8 @@ describe("problem1", () => {
     expect(problem1([11, 101], [3, 4])).toEqual(-1);
   });
 });
+*/
 
-/*
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
@@ -43,8 +44,15 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("my test1", () => {
+    expect(problem2("aaaaaaaa")).toEqual("");
+  });
+  test("my test2", () => {
+    expect(problem2("aaaaaaaabbb")).toEqual("");
+  });
 });
 
+/*
 describe("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
