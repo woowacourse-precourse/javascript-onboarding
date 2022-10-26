@@ -1,8 +1,5 @@
 function checkContinousPage(pages) {
-  if (pages[0] + 1 == pages[1]) {
-    return true;
-  }
-  return false;
+  return pages[0] + 1 == pages[1];
 }
 
 function calculateNumber(pageNumber) {
@@ -26,26 +23,19 @@ function calculateNumber(pageNumber) {
 }
 
 function compareTwoNumbers(pages) {
-  let maxNum = calculateNumber(pages[0]);
-  if (calculateNumber(pages[0]) <= calculateNumber(pages[1])) {
-    maxNum = calculateNumber(pages[1]);
+  if (calculateNumber(pages[0]) >= calculateNumber(pages[1])) {
+    return calculateNumber(pages[0]);
   }
-  return maxNum;
+  return calculateNumber(pages[1]);
 }
 
 function problem1(pobi, crong) {
-  if (!(checkContinousPage(pobi) && checkContinousPage(crong))) {
-    return -1;
-  }
-  if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) {
-    return 1;
-  } else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) {
-    return 2;
-  } else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) {
-    return 0;
-  } else {
-    return -1;
-  }
+  if (!(checkContinousPage(pobi) && checkContinousPage(crong))) return -1;
+
+  if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
+  else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
+  else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) return 0;
+  else return -1;
 }
 
 module.exports = problem1;
