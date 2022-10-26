@@ -15,4 +15,9 @@ function isLowerCase(char) {
   return false;
 }
 
+function isAlphabet(char) {
+  if (isUpperCase(char) || isLowerCase(char)) return true;
+  return false;
+}
+
 module.exports = problem4;
