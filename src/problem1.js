@@ -3,6 +3,8 @@ function problem1(pobi, crong) {
   var crongadd = Add(crong[1]);
   var pobimulti = Multi(pobi[1]);
   var crongmulti = Multi(crong[1]);
+  var pobichoose = pobiadd > pobimulti ? pobiadd : pobimulti; 
+  var crongchoose = crongadd > crongmulti ? crongadd : crongmulti; 
   var answer;
   return answer;
 }
