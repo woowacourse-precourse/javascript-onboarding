@@ -1,5 +1,5 @@
 function addPageResult(pageNumArr) {
-  const result = numArr.map((num) => {
+  const result = pageNumArr.map((num) => {
     const str = String(num);
 
     return str.split('').reduce((acc, str) => {
@@ -10,7 +10,17 @@ function addPageResult(pageNumArr) {
   return Math.max(...result);
 }
 
-function mulPageResult(pageNumArr) {}
+function mulPageResult(pageNumArr) {
+  const result = pageNumArr.map((num) => {
+    const str = String(num);
+
+    return str.split('').reduce((acc, str) => {
+      return Number(str) * acc;
+    }, 1);
+  });
+
+  return Math.max(...result);
+}
 
 function getScore(pageNumArr) {}
 
