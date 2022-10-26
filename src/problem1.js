@@ -21,6 +21,11 @@ const calculatePageScore = (page) => {
   );
 };
 
+/**
+ * calculateMyScore
+ * Calculate max value between left page score and right page score
+ * @type {(pages: number[]) => number}
+ */
 const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
 
 /**
