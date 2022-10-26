@@ -37,3 +37,22 @@ function error(person){
   }
   return true;
 }
+
+function play(pobi,crong){
+  const pobiWin = 1; 
+  const crongWin = 2;         
+  const tie = 0;
+
+  if(!error(pobi) || !error(crong)){
+      return -1
+  }
+  if(bigNumbers(pobi)===bigNumbers(crong)){
+      return tie;
+  }
+  if(bigNumbers(pobi)>bigNumbers(crong)){
+      return pobiWin;
+  }
+  if(bigNumbers(pobi)<bigNumbers(crong)){
+      return crongWin;
+  }
+}
