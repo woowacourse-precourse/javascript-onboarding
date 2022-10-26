@@ -1,5 +1,5 @@
 function removeDuplicates(str) {
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length - 1; i++) {
     if (str[i] === str[i + 1]) {
       str = str.slice(0, i) + str.slice(i + 2);
 
