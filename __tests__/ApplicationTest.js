@@ -1,3 +1,5 @@
+/* eslint-disable no-tabs */
+/* eslint-disable quotes */
 const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
 const problem3 = require("../src/problem3");
