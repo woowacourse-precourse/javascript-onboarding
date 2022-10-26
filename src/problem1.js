@@ -34,6 +34,13 @@ function problem1(pobi, crong) {
     pScore = Math.max(pScore, makeNum(pobi[i]));
     cScore = Math.max(cScore, makeNum(crong[i]));
   }
+
+  //출력값 구하기
+  //기능목록 3-1 구현
+  if (pScore > cScore) answer = 1;
+  else if (pScore < cScore) answer = 2;
+  else answer = 0;
+
   return answer;
 }
 
