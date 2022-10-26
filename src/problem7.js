@@ -42,7 +42,7 @@ function problem7(user, friends, visitors) {
   for (var friend in friendsDict) {
     sortedFriends.push([friend, friendsDict[friend]]);
   }
-  console.log(sortedFriends);
+  // console.log(sortedFriends);
   sortedFriends.sort(function (a, b) {
     if (a[1] > b[1]) return -1;
     else if (a[1] < b[1]) return 1;
