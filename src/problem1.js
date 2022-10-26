@@ -8,7 +8,18 @@ module.exports = problem1;
 function addPageNumbers(page) {
   const pageArray = page.toString().split("");
   const addValue = pageArray.reduce((prev, value) => prev + parseInt(value), 0);
+
   return addValue;
+}
+
+function multiplyPageNumbers(page) {
+  const pageArray = page.toString().split("");
+  const multiplyValue = pageArray.reduce(
+    (prev, value) => prev * parseInt(value),
+    1
+  );
+
+  return multiplyValue;
 }
 
 /*
