@@ -25,4 +25,12 @@ function calculateNumber(pageNumber) {
   return plusNum >= multiplyNum ? plusNum : multiplyNum;
 }
 
+function compareTwoNumbers(pages) {
+  let maxNum = calculateNumber(pages[0]);
+  if (calculateNumber(pages[0]) <= calculateNumber(pages[1])) {
+    maxNum = calculateNumber(pages[1]);
+  }
+  return maxNum;
+}
+
 module.exports = problem1;
