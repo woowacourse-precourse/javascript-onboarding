@@ -4,7 +4,7 @@
 
 - [x] feat: 문제 1 구현
   - [ ] refactor: 문제 1 리팩토링
-- [ ] feat: 문제 2 구현
+- [x] feat: 문제 2 구현
   - [ ] refactor: 문제 2 리팩토링
 - [ ] feat: 문제 3 구현
   - [ ] refactor: 문제 3 리팩토링

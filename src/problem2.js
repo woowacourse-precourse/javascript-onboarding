@@ -1,5 +1,16 @@
+const isOverlap = (answer, char) => {
+  return answer[answer.length - 1] === char;
+};
+
 function problem2(cryptogram) {
-  var answer;
+  let answer = "";
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (isOverlap(answer, cryptogram[i])) {
+      answer = answer.slice(0, answer.length - 1);
+      continue;
+    }
+    answer += cryptogram[i];
+  }
   return answer;
 }
 
