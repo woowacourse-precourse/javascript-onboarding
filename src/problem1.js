@@ -32,8 +32,21 @@ const maxScore = (leftPage, rightPage) => {
   );
 };
 
+// 최종 승자를 구하는 기능
 function problem1(pobi, crong) {
   var answer;
+
+  const pobiMax = maxScore(pobi[0], pobi[1]);
+  const crongMax = maxScore(crong[0], crong[1]);
+
+  if (pobiMax > crongMax) {
+    answer = 1;
+  } else if (pobiMax < crongMax) {
+    answer = 2;
+  } else if (pobiMax == crongMax) {
+    answer = 0;
+  }
+
   return answer;
 }
 
