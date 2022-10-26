@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   if (!isPagesCorrect(pobi) || !isPagesCorrect(crong)) return -1;
   let pobiMaxNum = getMaxNum(pobi);
   let crongMaxNum = getMaxNum(crong);
-  console.log(pobiMaxNum, crongMaxNum);
+  return pobiMaxNum > crongMaxNum ? 1 : pobiMaxNum < crongMaxNum ? 2 : 0;
 }
 
 function getMaxNum(pages) {
@@ -35,5 +35,4 @@ function isPagesCorrect(pages) {
     ? false
     : true;
 }
-problem1([97, 98], [197, 198]);
 module.exports = problem1;
