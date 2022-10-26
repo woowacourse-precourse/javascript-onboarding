@@ -5,6 +5,11 @@ function problem1(pobi, crong) {
     return answer;
   } 
   
+  if (pobi[0] % 2 === 0 || pobi[1] % 2 === 1 || crong[0] % 2 === 0 || pobi[1] % 22 === 1) {
+    answer = -1;
+    return answer;
+  }
+
   answer = 1;
   return answer;
 }
