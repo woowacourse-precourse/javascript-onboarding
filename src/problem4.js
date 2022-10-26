@@ -1,5 +1,10 @@
 function problem4(word) {
-  var answer;
+  let answer;
+
+  answer = word.replace(/[a-z|A-Z]/g, (char) => {
+    return changeWordToGreenFrogWord(char);
+  });
+
   return answer;
 }
 
