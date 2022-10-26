@@ -39,10 +39,22 @@ function getLocalMax(arr) {
   return Math.max(left_Max, right_Max);
 }
 
+function getAnswer(pobi_Max, crong_Max) {
+  if (pobi_Max > crong_Max) {
+    return 1;
+  } else if (pobi_Max < crong_Max) {
+    return 2;
+  } else {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   if (!handleExceptions(pobi, crong)) {
     return -1;
   }
+
+  const answer = getAnswer(getLocalMax(pobi), getLocalMax(crong));
 
   return answer;
 }
