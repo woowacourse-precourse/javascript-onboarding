@@ -8,3 +8,11 @@
    2. 각 자리 수 '더하기, 곱하기' 기능 구현
    3. 더한 값, 곱한 값 중 큰 값 중 점수 선택
    4. 포비 vs 크롱 대결, 결과 값 반환
+
+2. 문제 2
+   1. 반복 돌면서 연속되는 문자열 제거
+      1. browoanoommnaon
+      2. browoannaon
+      3. browoaaon
+      4. browoon
+      5. brown
