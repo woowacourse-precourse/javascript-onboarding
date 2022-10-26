@@ -19,6 +19,11 @@ const multiplyAllDigit = (num) => {
   return numArr.reduce((acc, cur) => acc * cur, 1);
 }
 
+// 4가지 값 중에서 가장 큰 값을 구하는 기능
+const calcMaxNum = (arr) => {
+  return Math.max(sumAllDigit(arr[0]), sumAllDigit(arr[1]), multiplyAllDigit(arr[0]), multiplyAllDigit(arr[1]));
+}
+
 function problem1(pobi, crong) {
   let result;
   if(!checkValid(pobi, crong)) result = -1;
