@@ -20,4 +20,13 @@ const getAlphabetArray = (size) => {
   return upperCaseAlphabetArray;
 };
 
+const getReverseAlphabet = (alphabet) => {
+  const size = /[A-Z]/.test(alphabet) ? "large" : "small";
+  const alphabetArray = getAlphabetArray(size);
+
+  const alphabetIndex = alphabetArray.indexOf(alphabet);
+  const reverseAlphabetArray = alphabetArray.reverse();
+  return reverseAlphabetArray[alphabetIndex];
+};
+
 module.exports = problem4;
