@@ -1,9 +1,8 @@
 function getOpposite(letterCode, mid) {
   if (letterCode <= mid) {
     return letterCode + (mid - letterCode) * 2 + 1;
-  } else {
-    return letterCode - (letterCode - mid) * 2 + 1;
   }
+  return letterCode - (letterCode - mid) * 2 + 1;
 }
 
 function lowerFrog(letterCode) {
