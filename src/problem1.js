@@ -21,6 +21,18 @@ function problem1(pobi, crong) {
     pobiArr.push(pobiPlus, pobiTimes);
     crongArr.push(crongPlus, crongTimes);
   }
+
+  for (let i of pobiArr) {
+    if (pobiMax < i) {
+      pobiMax = i;
+    }
+  }
+
+  for (let i of crongArr) {
+    if (crongMax < i) {
+      crongMax = i;
+    }
+  }
 }
 
 module.exports = problem1;
