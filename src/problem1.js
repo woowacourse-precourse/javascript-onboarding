@@ -1,3 +1,20 @@
+const START_PAGE_NUMBER = 1;
+const END_PAGE_NUMBER = 400;
+
+function isInvalidPageNumbers(pageNumbers) {
+  if (isOutOfBound(pageNumbers)) {
+    return true;
+  }
+
+  return false;
+}
+
+function isOutOfBound(pageNumbers) {
+  return pageNumbers.some(
+    (pn) => pn < START_PAGE_NUMBER || pn > END_PAGE_NUMBER,
+  );
+}
+
 function getMaxScore(pageNumbers) {
   return Math.max(getMaxSum(pageNumbers), getMaxMultiplication(pageNumbers));
 }
@@ -30,13 +47,12 @@ function getMultiplication(pageNumber) {
 }
 
 function problem1(pobi, crong) {
+  if (isInvalidPageNumbers(pobi) || isInvalidPageNumbers(crong)) {
+    return -1;
+  }
+
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
-
-  /**
-   * TODO: 예외 처리
-   * if (예외) return -1;
-   */
 
   if (pobiScore > crongScore) {
     return 1;
