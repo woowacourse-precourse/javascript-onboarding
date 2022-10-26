@@ -1,4 +1,3 @@
-// 덧셈과 곱셈중 큰 값 반환
 function pageMaxScore(page) {
     const a = page
         .toString()
@@ -11,10 +10,9 @@ function pageMaxScore(page) {
     return sumResult > multipleResult ? sumResult : multipleResult;
 }
 
-// 왼쪽페이지 오른쪽 페이지의 값 비교해서 큰 값 반환
 function myMaxScore(user) {
     const [leftPage, rightPage] = user;
-    if (rightPage - leftPage !== 1) {
+    if (rightPage - leftPage !== 1 || leftPage === 1 || rightPage === 400) {
         return -1;
     }
     const leftMax = pageMaxScore(leftPage);
