@@ -4,7 +4,7 @@ function problem5(money) {
     const result = withdraw(unit, money);
     money = result.change;
     return result.count;
-    });
+  });
   return answer;
 }
 
