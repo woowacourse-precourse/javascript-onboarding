@@ -3,6 +3,26 @@ function problem4(word) {
   return answer;
 }
 
+// A-Z 아스키 코드 -> 65 ~ 90
+// a-z 아스키 코드 -> 97 ~ 122
+
+// 97이상이면 소문자 처리, 이하면 대문자 처리
+// 대문자 처리: "155 - 현재 아스키 코드" 한 값을 문자로 변환하여 리턴
+// 소문자 처리: "219 - 현재 아스키 코드" 한 값을 문자로 변환하여 리턴
+function changeWordToGreenFrogWord(char) {
+  let ASCII = char.charCodeAt(0);
+
+  if (ASCII >= 97) {
+    // 소문자 처리
+    ASCII = 219 - ASCII;
+    return String.fromCharCode(ASCII);
+  } else {
+    // 대문자 처리
+    ASCII = 155 - ASCII;
+    return String.fromCharCode(ASCII);
+  }
+}
+
 module.exports = problem4;
 
 // 입력값 : 문자열
