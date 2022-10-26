@@ -1,12 +1,21 @@
-function getNumbersArr(number) {
+/**
+ *
+ * @param {number} num
+ * @returns {number[]} array of digits number
+ */
+function getNumbersArr(num) {
   let numbers = [];
-  let numString = number.toString();
+  let numString = num.toString();
   for (let i = 0; i < numString.length; i++) {
     numbers.push(parseInt(numString.charAt(i)));
   }
   return numbers;
 }
-
+/**
+ *
+ * @param {number} pageNum
+ * @returns {number} maximum value between sum and multiple
+ */
 function getMaxNum(pageNum) {
   let max = 0;
   let numbers = getNumbersArr(pageNum);

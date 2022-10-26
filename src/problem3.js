@@ -1,7 +1,7 @@
 /**
  *
  * @param {number} num
- * @returns {number[]} numbers
+ * @returns {number[]}
  */
 function getNumbersArr(num) {
   let numbers = [];
@@ -15,6 +15,7 @@ function getNumbersArr(num) {
 function problem3(number) {
   var answer = 0;
 
+  // Search 3, 6, 9 for each num (<=number)
   for (let i = 1; i <= number; i++) {
     let numbersArr = getNumbersArr(i);
     numbersArr = numbersArr.filter((v) => v === 3 || v === 6 || v === 9);

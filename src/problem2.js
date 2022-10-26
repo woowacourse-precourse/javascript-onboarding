@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {string} string
+ * @returns {string} formatted string
+ */
 function deleteDuplicate(string) {
   let prevString = string;
   let char = string[0];
