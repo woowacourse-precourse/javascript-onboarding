@@ -18,6 +18,7 @@ const sum = (num) => {
   return sum;
 };
 
+// 각 자리수를 곱해서 반환하는 함수
 const mul = (num) => {
   const numToString = num.toString().split("");
   let mul = 1;
@@ -27,6 +28,20 @@ const mul = (num) => {
   });
 
   return mul;
+};
+
+// 2, 3번의 최대 값을 반환하는 함수
+const maxNum = (book) => {
+  let max = 0;
+
+  book.forEach((page) => {
+    let sumResult = sum(page);
+    let mulResult = mul(page);
+    if (sumResult >= mulResult) max = sumResult;
+    if (sumResult < mulResult) max = mulResult;
+  });
+
+  return max;
 };
 
 function problem1(pobi, crong) {
