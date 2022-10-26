@@ -44,7 +44,12 @@ function problem1(pobi, crong) {
       crongNums[n] = Math.max(crongSum, crongMult);
     }
 
-    
+    pobiMax = Math.max(pobiNums[0], pobiNums[1]);
+    crongMax = Math.max(crongNums[0], crongNums[1]);
+
+    if(pobiMax > crongMax) answer = 1; // 포비 승
+    else if(pobiMax < crongMax) answer = 2; // 크롱 승
+    else answer = 0;
   }
   return answer;
 }
