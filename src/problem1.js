@@ -1,7 +1,12 @@
 function problem1(pobi, crong) {
-  let pobiMaxV = getMaxV(pobi);
-  let crongMaxV = getMaxV(crong);
+  const LENGTHLIMIT = 2;
+  const RIGHTPAGE = 1;
+  const LEFTPAGE = 0;
+  const BOTHENDPAGES = [1, 2, 399, 400];
+  const pobiMaxV = getMaxV(pobi);
+  const crongMaxV = getMaxV(crong);
 
+  if (isInvalidInput(pobi, crong)) return -1;
   if(pobiMaxV === crongMaxV) return 0;
   switch (pobiMaxV > crongMaxV) {
     case true:
@@ -17,6 +22,10 @@ function problem1(pobi, crong) {
       return Math.max(sum, mul)
     })
     return Math.max(...values);
+  }
+
+  function isInvalidInput(pobi, crong) {
+    return true;
   }
 
 }
