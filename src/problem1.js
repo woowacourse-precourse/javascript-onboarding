@@ -3,6 +3,7 @@ function pageMax(page_num) {
   let sum = 0, 
       multi = 1,
       mod;
+
   for (let num = page_num; num > 0; num = parseInt(num / 10)) {
     mod = num % 10;
     sum += mod;
@@ -19,9 +20,8 @@ function pageScore(page) {
 // 포비와 크롱의 점수를 비교해 더 큰 사람을 구하는 함수
 function winner(pobi, crong) {
   const pobi_score = pageScore(pobi),
-      crong_score = pageScore(crong);
+        crong_score = pageScore(crong);
 
-  // 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0
   if (pobi_score > crong_score) return 1;
   if (pobi_score < crong_score) return 2;
   if (pobi_score === crong_score) return 0;
@@ -38,10 +38,7 @@ function isSerialBoth(pobi, crong) {
 }
 
 function problem1(pobi, crong) {
-  // 포비와 크롱의 페이지 중 하나라도 정상적이지 않으면 예외사항 -1
   if (!isSerialBoth(pobi, crong)) return -1;
-
-  // 승자 구하기: 포비가 이기면 1, 크롱이 이기면 1, 무승부면 0
   return winner(pobi, crong);
 }
 
