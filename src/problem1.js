@@ -68,14 +68,7 @@ function getMultiplication(pageNumber) {
   );
 }
 
-function problem1(pobi, crong) {
-  if (isInvalidPageNumbers(pobi) || isInvalidPageNumbers(crong)) {
-    return -1;
-  }
-
-  const pobiScore = getMaxScore(pobi);
-  const crongScore = getMaxScore(crong);
-
+function getWinner(pobiScore, crongScore) {
   if (pobiScore > crongScore) {
     return 1;
   }
@@ -85,6 +78,17 @@ function problem1(pobi, crong) {
   }
 
   return 0;
+}
+
+function problem1(pobi, crong) {
+  if (isInvalidPageNumbers(pobi) || isInvalidPageNumbers(crong)) {
+    return -1;
+  }
+
+  const pobiScore = getMaxScore(pobi);
+  const crongScore = getMaxScore(crong);
+
+  return getWinner(pobiScore, crongScore);
 }
 
 module.exports = problem1;
