@@ -11,6 +11,16 @@ function problem1(pobi, crong) {
     return -1;
   }
 
+  if (pobiLeftPage === 1 || crongLeftPage === 1) {
+    alert('시작 면을 제외하고 펼쳐주세요');
+    return;
+  }
+
+  if (pobiRightPage === 400 || crongRightPage === 400) {
+    alert('마지막 면을 제외하고 펼쳐주세요');
+    return;
+  }
+
   const pobiLeftPageArray = splitNumber(pobiLeftPage);
   const pobiRightPageArray = splitNumber(pobiRightPage);
   const crongLeftPageArray = splitNumber(crongLeftPage);
@@ -40,7 +50,7 @@ function problem1(pobi, crong) {
     crongRightMaxNumber
   );
 
-  if (pobiMaxNumber == crongMaxNumber) return 0;
+  if (pobiMaxNumber === crongMaxNumber) return 0;
 
   pobiMaxNumber > crongMaxNumber ? (answer = 1) : (answer = 2);
 
