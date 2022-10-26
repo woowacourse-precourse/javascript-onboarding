@@ -1,3 +1,16 @@
+function getClapCount(number) {
+  const array369 = [3, 6, 9];
+  const digits = `${number}`.split('').map((n) => parseInt(n, 10));
+
+  return digits.reduce((prevClapCount, digit) => {
+    if (array369.includes(digit)) {
+      return prevClapCount + 1;
+    }
+
+    return prevClapCount;
+  }, 0);
+}
+
 function problem3(number) {
   let answer = 0;
   const regex369 = /[369]{1}/;
