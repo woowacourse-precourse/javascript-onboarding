@@ -18,12 +18,32 @@ function handleExceptions(pobi, crong) {
   return true;
 }
 
+function getPlus(str) {
+  const result = str.split('').reduce((acc, cur) => acc + parseInt(cur, 10), 0);
+
+  return result;
+}
+
+function getMultiple(str) {
+  const result = str.split('').reduce((acc, cur) => acc * parseInt(cur, 10), 1);
+
+  return result;
+}
+
+function getLocalMax(arr) {
+  const [left_Num, right_Num] = arr.map((el) => String(el));
+
+  left_Max = Math.max(getPlus(left_Num), getMultiple(left_Num));
+  right_Max = Math.max(getPlus(right_Num), getMultiple(right_Num));
+
+  return Math.max(left_Max, right_Max);
+}
+
 function problem1(pobi, crong) {
   if (!handleExceptions(pobi, crong)) {
     return -1;
   }
 
-  var answer;
   return answer;
 }
 
