@@ -7,10 +7,21 @@ function problem2(cryptogram) {
    */
   let answer = cryptogram.split("");
   function removeString() {
+    let count = 1;
+    let startPoint;
     for (let i = 0; i < answer.length; i++) {
       if (answer[i] === answer[i + 1]) {
-        answer.splice(i, 2);
-        removeString();
+        if (count === 1) {
+          startPoint = i;
+        }
+        count++;
+        // console.log(count);
+        if (answer[i + 1] !== answer[i + 2]) {
+          // console.log("count:", count, "i:", i, "answer:", answer.join(""));
+          answer.splice(startPoint, count);
+          // console.log("answer:", answer.join(""));
+          removeString();
+        }
       }
     }
   }
