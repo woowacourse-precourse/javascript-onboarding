@@ -17,6 +17,11 @@ function problem1(pobi, crong) {
 }
 
 function calFromPage(page) {
+  let numbers = extractDigits(page)
+  return Math.max(sumWithNumbers(numbers), mulWithNumbers(numbers))
+}
+
+function extractDigits(page) {
   let numbers = []
   while (page > 0) {
     number = page % 10
@@ -24,8 +29,7 @@ function calFromPage(page) {
     page /= 10
     page = Math.floor(page)
   }
-  return Math.max(sumWithNumbers(numbers), mulWithNumbers(numbers))
-
+  return numbers
 }
 
 function sumWithNumbers(numbers) {
