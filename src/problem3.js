@@ -1,5 +1,10 @@
 function problem3(number) {
   var answer = 0;
+  for (let i = 1; i <= number; i++) {
+    if (includesNumbers(i, [3, 6, 9])) {
+      answer++;
+    }
+  }
   return answer;
 }
 
