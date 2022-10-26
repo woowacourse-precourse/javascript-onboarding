@@ -6,6 +6,8 @@ function problem1(pobi, crong) {
   const crongPageError = isPageError(crong);
   const pobiNumberOfPages = countNumberOfPages(pobi);
   const crongNumberOfPages = countNumberOfPages(crong);
+  const pobiLeftPage = isLeftPageNumber(pobi);
+  const crongLeftPage = isLeftPageNumber(crong);
   const result = getResult(scoresToCompare, error);
 
   return result;
@@ -71,6 +73,14 @@ function isPageError(person) {
 
 function countNumberOfPages(person) {
   if (person.length !== 2) {
+    return "error";
+  }
+
+  return 0;
+}
+
+function isLeftPageNumber(person) {
+  if (person[0] % 2 == 0) {
     return "error";
   }
 
