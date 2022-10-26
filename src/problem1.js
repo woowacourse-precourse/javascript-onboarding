@@ -22,11 +22,19 @@ function problem1(pobi, crong) {
    * @return {number} points
    */
   function getPoints(numbers) {
-    return 0;
+    let possibleCases = numberToDigits(numbers)
+      .map((digitsOfPage) => [digitsOfPage.reduce(add), digitsOfPage.reduce(multiply)])
+      .flat();
+
+    return Math.max(...possibleCases)
+  }
+
+  function numberToDigits(pages) {
+    return [[1, 3], [1, 4]]
   }
 
 
 
-}
 
+}
 module.exports = problem1;
