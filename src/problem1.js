@@ -1,8 +1,17 @@
 function problem1(pobi, crong) {
-  
   //필요함수
 
   //#1. 각 자리의 숫자를 모두 더하는 함수
+
+  function RETURN_EACH_DIGIT_ADDED(number) {
+    let output = 0;
+    const inputNumberToString = String(number);
+    const inputNumberList = inputNumberToString.split("").map((i) => +i);
+    inputNumberList.forEach((number) => (output += number));
+
+    return output;
+  }
+
   //#2. 각 자리의 숫자를 모두 곱하는 함수
   //#3. 두 개의 숫자를 비교해 큰 수를 도출하는 함수
   //#4. 두 숫자를 비교해 게임의 승자를 알려주는 함수
@@ -10,12 +19,12 @@ function problem1(pobi, crong) {
   //특이사항
 
   //!1. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않음
-    // [1] 혹은 [400]의 숫자는 주어지는 예시에 포함되어서는 안됨
-      // 처리방법 1. __test__에서 해당 예시가 들어가지 않게끔 변경
-      // 처리방법 2. problem1.js에서 해당 숫자가 들어온다면 곧바로 에러를 return
+  // [1] 혹은 [400]의 숫자는 주어지는 예시에 포함되어서는 안됨
+  // 처리방법 1. __test__에서 해당 예시가 들어가지 않게끔 변경
+  // 처리방법 2. problem1.js에서 해당 숫자가 들어온다면 곧바로 에러를 return
 
-  var answer;
-  return answer;
+  // var answer;
+  // return answer;
 }
 
 module.exports = problem1;
