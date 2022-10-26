@@ -14,9 +14,14 @@ const bookPage = {
     return passPages.length == 0;
   },
   checkPagesForm: function (...pages) {
-    let leftPage = pages[0];
-    let rightPage = pages[pages.length - 1];
-    return +leftPage % 2 == 1 && +rightPage % 2 == 0;
+    let leftPage = +pages[0];
+    let rightPage = +pages[pages.length - 1];
+    return leftPage % 2 == 1 && rightPage % 2 == 0;
+  },
+  checkPagesDistance: function (...pages) {
+    let leftPage = +pages[0];
+    let rightPage = +pages[pages.length - 1];
+    return leftPage - rightPage == 1;
   },
   checkPages: function (...pages) {
     if (!this.checkPagesLength(pages)) {
@@ -26,6 +31,9 @@ const bookPage = {
       return false;
     }
     if (!this.checkPagesForm(pages)) {
+      return false;
+    }
+    if (!this.checkPagesDistance(pages)) {
       return false;
     }
 
