@@ -10,6 +10,15 @@ function problem1(pobi, crong) {
   return result;
 }
 
+function getScore(person) {
+  const leftValues = calculatePageNumber(person[0]);
+  const leftScore = compareNumber(leftValues);
+  const rightValues = calculatePageNumber(person[1]);
+  const rightScore = compareNumber(rightValues);
+
+  return compareNumber({ first: leftScore, second: rightScore });
+}
+
 function calculatePageNumber(page) {
   const hundredNumber = Math.floor(page / 100);
   const tenNumber = Math.floor((page / 10) % 10);
@@ -36,29 +45,22 @@ function compareNumber(values) {
   return values.second;
 }
 
-function getScore(person) {
-  const leftValues = calculatePageNumber(person[0]);
-  const leftScore = compareNumber(leftValues);
-  const rightValues = calculatePageNumber(person[1]);
-  const rightScore = compareNumber(rightValues);
+function isError(person) {
+  const pageError = isPageError(person);
+  const numberOfPages = countNumberOfPages(person);
+  const leftPage = isLeftPageNumber(person);
+  const pageOrdered = orderPageNumber(person);
 
-  return compareNumber({ first: leftScore, second: rightScore });
-}
-
-function getResult(score, error) {
-  if (error[0] === 0 && error[1] === 0) {
-    if (score[0] > score[1]) {
-      return 1;
-    }
-    if (score[0] === score[1]) {
-      return 0;
-    }
-    if (score[0] < score[1]) {
-      return 2;
-    }
+  if (
+    pageError === 0 &&
+    numberOfPages === 0 &&
+    leftPage === 0 &&
+    pageOrdered === 0
+  ) {
+    return 0;
   }
 
-  return -1;
+  return "error";
 }
 
 function isPageError(person) {
@@ -96,22 +98,20 @@ function orderPageNumber(person) {
   return 0;
 }
 
-function isError(person) {
-  const pageError = isPageError(person);
-  const numberOfPages = countNumberOfPages(person);
-  const leftPage = isLeftPageNumber(person);
-  const pageOrdered = orderPageNumber(person);
-
-  if (
-    pageError === 0 &&
-    numberOfPages === 0 &&
-    leftPage === 0 &&
-    pageOrdered === 0
-  ) {
-    return 0;
+function getResult(score, error) {
+  if (error[0] === 0 && error[1] === 0) {
+    if (score[0] > score[1]) {
+      return 1;
+    }
+    if (score[0] === score[1]) {
+      return 0;
+    }
+    if (score[0] < score[1]) {
+      return 2;
+    }
   }
 
-  return "error";
+  return -1;
 }
 
 module.exports = problem1;
