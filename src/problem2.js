@@ -3,17 +3,15 @@ function problem2(cryptogram) {
   function checkString(cryptogram){
     for(let i=0;i<cryptogram.length-1;i++){    
       if(cryptogram[i]===cryptogram[i+1]){
-        console.log(i);
         cryptogram = (cryptogram.slice(0,i)+cryptogram.slice(i+2)); 
-        console.log(cryptogram);
+        console.log(answer);
+        answer.push(cryptogram);
+        checkString(cryptogram);
       }
     }
   }
   checkString(cryptogram);
- 
-  return answer;
+  return answer.pop();
 }
 
 module.exports = problem2;
-cryptogram="browoanoommnaon";
-problem2(cryptogram);
