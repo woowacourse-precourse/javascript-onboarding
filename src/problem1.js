@@ -10,8 +10,15 @@ const isValidInput = (leftPage, rightPage) => {
 // 페이지의 각 자리 숫자를 더한 값 함수 생성
 const sum = (number) => {
   const numberToString = number.toString().split("");
-  let sumNum = numberToString.reduce((acc, cur) => x + Number(cur), 0);
+  let sumNum = numberToString.reduce((acc, cur) => acc + Number(cur), 0);
   return sumNum
+}
+
+// 페이지의 각 자리 숫자를 곱한 값 함수 생성
+const mul = (number) => {
+  const numberToString = number.toString().split("");
+  let mulNum = numberToString.reduce((acc, cur) => acc * Number(cur), 1);
+  return mulNum
 }
 
 // function problem1(pobi, crong) {
