@@ -13,6 +13,10 @@ function decodePassword(password){
   }
   decoded = decoded.join('');
 
+  if(decoded === []){
+    decoded = ""
+  }
+
   return decoded;
 }
 
