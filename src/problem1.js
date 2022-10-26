@@ -26,14 +26,20 @@ function problem1(pobi, crong) {
 
   function isInvalidInput(pobi, crong) {
     const condition1 = hasBothEndsPage(pobi, crong);
-    return condition1;
+    const condition2 = hasWrongLength(pobi, crong);
+    return condition1 | condition2;
   }
 
   function hasBothEndsPage(pobiPage, crongPage) {
     return !!BOTHENDPAGES.filter((v) => (pobiPage.concat(crongPage).includes(v))).length;
   }
 
+  function hasWrongLength(pobiPage, crongPage) {
+    const TOTALPAGES = pobiPage.concat(crongPage);
+    return TOTALPAGES.length !== LENGTHLIMIT * 2;
+  }
+
 }
-console.log(problem1([1, 2], [199, 200]));
+console.log(problem1([3, 4], [199, 200]));
 
 // module.exports = problem1;
