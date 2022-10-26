@@ -1,9 +1,11 @@
+const PAGE_DIFF = 1;
 const MIN_PAGE = 1;
 const MAX_PAGE = 400;
 
 const isValidPages = (randomPages) => {
   const [leftPage, rightPage] = randomPages;
   if (leftPage < MIN_PAGE || rightPage > MAX_PAGE) return false;
+  if (rightPage - leftPage !== PAGE_DIFF) return false;
   return true;
 };
 
