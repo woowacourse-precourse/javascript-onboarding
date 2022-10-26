@@ -1,14 +1,22 @@
 function problem1(pobi, crong) {
-  //시작하는 면이나 끝나는 면은 예외처리 -1 반환
-  //제한 길이가 2 이므로 99~102 범위는 4이므로 -1 반환
   const PobiCheck = pobi[1]-pobi[0];
   const CrongCheck = crong[1]-crong[0];
-  if(PobiCheck>2 || CrongCheck>2){
+  //pobi,crong의 배열의 길이가 2가 넘어가면 -1 반환
+  if(pobi.legnth>2 ||crong.legnth>2){
+    return -1
+  }
+  //시작하는 면이나 끝나는 면은 예외처리 -1 반환
+  if(PobiCheck>1 || CrongCheck>1){
     return -1;
   };
-  if((pobi[0]===1 || pobi[1]===400) || (crong[0]===1 || pobi[1]===400)){
+  //시작하는 면 1 , 끝나는 면 400 이 나오면 -1 을 반환
+  if((pobi[0]===1 || pobi[1]===400) || (crong[0]===1 || crong[1]===400)){
     return -1;
   };
+  // 왼쪽 페이지가 오른쪽 페이지와 같거나 크면 -1 반환
+  if((pobi[0]>=pobi[1]) || (crong[0]>=crong[1])){
+    return -1;
+  }
   const MaxPobiNum = ()=>{
     const addpobi = addproblem1(pobi[0],pobi[1]);
     const mulpobi = mulproblem1(pobi[0],pobi[1]);
