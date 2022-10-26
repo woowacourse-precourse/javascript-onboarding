@@ -10,11 +10,11 @@ function problem2(cryptogram) {
       if (left === right) right++
       else if (cryptogram[left] !== cryptogram[right]) left = right
       else if (cryptogram[left] === cryptogram[right]) {
-        for (let i = left; i <= right; i++) duplicatedSection.push(i)
+        duplicatedSection.push(left)
+        duplicatedSection.push(right)
         right += 1
         left = right
       }
-      console.log(duplicatedSection)
     }
 
     if (duplicatedSection.length === 0) return cryptogram
