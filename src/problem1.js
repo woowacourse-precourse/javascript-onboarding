@@ -14,18 +14,24 @@ function checkValidation(pages) {
 
 /**
  * 각 자리 숫자를 모두 더한 점수
- * @param {number} page
+ * @param {number} num
  * @returns {number} score
  */
-function calculateAddScore(page) {
+function calculateAddScore(num) {
+  return num.toString()
+    .split("")
+    .reduce((acc, cur) => acc + parseInt(cur), 0)
 }
 
 /**
  * 각 자리 숫자를 모두 곱한 점수
- * @param {number} page
+ * @param {number} num
  * @returns {number} score
  */
-function calculateMulScore(page) {
+ function calculateMulScore(num) {
+  return num.toString()
+    .split("")
+    .reduce((acc, cur) => acc * parseInt(cur), 1)
 }
 
 /**
@@ -42,12 +48,13 @@ function calculateTotalScore(pages) {
   );
 }
 
-
 function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong))
     return -1;
   const score1 = calculateTotalScore(pobi);
+  console.log(score1);
   const score2 = calculateTotalScore(crong);
+  console.log(score2);
   return score1 > score2 ? 1 : (score1 < score2 ? 2 : 0);
 }
 
