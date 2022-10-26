@@ -19,6 +19,20 @@ function problem1(pobi, crong) {
   const crongLeftMultiply = multiplyOfPage(crongLeftPageArray);
   const crongRightMultiply = multiplyOfPage(crongRightPageArray);
 
+  const pobiLeftMaxNumber = getBiggerNumber(pobiLeftSum, pobiLeftMultiply);
+  const pobiRightMaxNumber = getBiggerNumber(pobiRightSum, pobiRightMultiply);
+  const pobiMaxNumber = getBiggerNumber(pobiLeftMaxNumber, pobiRightMaxNumber);
+
+  const crongLeftMaxNumber = getBiggerNumber(crongLeftSum, crongLeftMultiply);
+  const crongRightMaxNumber = getBiggerNumber(
+    crongRightSum,
+    crongRightMultiply
+  );
+  const crongMaxNumber = getBiggerNumber(
+    crongLeftMaxNumber,
+    crongRightMaxNumber
+  );
+
   return answer;
 }
 
@@ -32,6 +46,10 @@ function sumOfPage(arr) {
 
 function multiplyOfPage(arr) {
   return arr.reduce((prev, curr) => Number(prev) * Number(curr));
+}
+
+function getBiggerNumber(num1, num2) {
+  return num1 >= num2 ? num1 : num2;
 }
 
 module.exports = problem1;
