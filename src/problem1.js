@@ -21,6 +21,28 @@ const calcMul = (num) => {
 
 function problem1(pobi, crong) {
   var answer;
+  let scorePobi, scoreCrong;
+
+  scorePobi = Math.max(
+    calcSum(pobi[0]),
+    calcSum(pobi[1]),
+    calcMul(pobi[0]),
+    calcMul(pobi[1])
+  );
+
+  scoreCrong = Math.max(
+    calcSum(crong[0]),
+    calcSum(crong[1]),
+    calcMul(crong[0]),
+    calcMul(crong[1])
+  );
+
+  answer =
+    scorePobi >= scoreCrong
+      ? scorePobi === scoreCrong
+        ? DRAW
+        : POBIWIN
+      : CRONGWIN;
   return answer;
 }
 
