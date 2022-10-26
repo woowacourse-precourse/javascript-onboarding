@@ -18,4 +18,14 @@ function deleteDuplicatedWord(wordsArray) {
   return wordsArray;
 }
 
+function isUniqueWords(wordsArray) {
+  let flag = true;
+  wordsArray.map((words, index) => {
+    if (wordsArray[index] == wordsArray[index + 1]) {
+      flag = false;
+    }
+  });
+  return flag;
+}
+
 module.exports = problem2;
