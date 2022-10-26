@@ -14,6 +14,11 @@ function problem7(user, friends, visitors) {
       }
     });
   });
+  visitors.forEach(visitor => {
+    if(userFriends.includes(visitor)) return;
+    if(recommends.has(visitor)) recommends.set(visitor, recommends.get(visitor) + 1);
+    else recommends.set(visitor, 1);
+  });
 }
 function isfriend(user, relationship) {
   if(relationship[0] === user) return relationship[1];
