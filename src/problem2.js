@@ -1,13 +1,31 @@
 function problem2(cryptogram) {
-  var answer
-  return answer
-}
+  while (1) {
+    let left = 0,
+      right = 0,
+      duplicatedSection = []
 
-// test("case1", () => {
-//   expect(problem2("browoanoommnaon")).toEqual("brown");
-// });
-// test("case2", () => {
-//   expect(problem2("zyelleyz")).toEqual("");
-// });
+    while (left <= cryptogram.length && right <= cryptogram.length) {
+      if (left === right) right++
+      else if (cryptogram[left] !== cryptogram[right]) left = right
+      else if (cryptogram[left] === cryptogram[right]) {
+        for (let i = left; i <= right; i++) duplicatedSection.push(i)
+        right += 1
+        left = right
+      }
+      console.log(duplicatedSection)
+    }
+
+    if (duplicatedSection.length === 0) return cryptogram
+
+    let tempCryptogram = ""
+
+    for (let i = 0; i < cryptogram.length; i++) {
+      if (!duplicatedSection.includes(i)) tempCryptogram += cryptogram[i]
+    }
+
+    cryptogram = tempCryptogram
+  }
+  return cryptogram
+}
 
 module.exports = problem2
