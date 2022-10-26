@@ -1,13 +1,12 @@
 function problem1(pobi, crong) {
   //시작하는 면이나 끝나는 면은 예외처리 -1 반환
   //제한 길이가 2 이므로 99~102 범위는 4이므로 -1 반환
-  var answer;
   var PobiCheck = pobi[1]-pobi[0];
   var CrongCheck = crong[1]-crong[0];
   if(PobiCheck>1 || CrongCheck>1){
     return -1;
   };
-  if(pobi[0]===1 || pobi[1]===400 || crong[0]===1 || pobi[1]===400){
+  if((pobi[0]===1 || pobi[1]===400) || (crong[0]===1 || pobi[1]===400)){
     return -1;
   };
   const MaxPobiNum = ()=>{
