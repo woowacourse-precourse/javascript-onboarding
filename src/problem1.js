@@ -145,8 +145,21 @@ function problem1(pobi, crong) {
   const crongNumCalculList = [];
   let crongMaxNum;
 
+  // 예외사항 처리
 
+  if(!CHECK_LIST_ODD_TO_EVEN(pobiNumList) || !CHECK_LIST_ODD_TO_EVEN(crongNumList)){
+    return -1
+  }
 
+  if(!CHECK_LIST_DIFFERENCE(pobiNumList,1) || !CHECK_LIST_DIFFERENCE(crongNumList,1)){
+    return -1
+  }
+
+  if(!CHECK_FIRST_OR_END(pobiNumList,1,400) || !CHECK_FIRST_OR_END(crongNumList,1,400)){
+    return -1
+  }
+
+  // 예외 통과시 처리
 
   pobiNumList.forEach((number) =>
     pobiNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
@@ -165,8 +178,6 @@ function problem1(pobi, crong) {
   );
 
   crongMaxNum = RETURN_MAX_NUM_IN_LIST(crongNumCalculList);
-
-  console.log(pobiMaxNum,crongMaxNum)
 
   answer = RETURN_WINNER_COMPARED_TWO_NUMBER(pobiMaxNum, crongMaxNum);
 
