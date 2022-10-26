@@ -2,15 +2,10 @@ function problem1(pobi, crong) {
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
   const scoresToCompare = [pobiScore, crongScore];
-  const pobiPageError = isPageError(pobi);
-  const crongPageError = isPageError(crong);
-  const pobiNumberOfPages = countNumberOfPages(pobi);
-  const crongNumberOfPages = countNumberOfPages(crong);
-  const pobiLeftPage = isLeftPageNumber(pobi);
-  const crongLeftPage = isLeftPageNumber(crong);
-  const pobiPageOrdered = orderPageNumber(pobi);
-  const crongPageOrdered = orderPageNumber(crong);
-  const result = getResult(scoresToCompare, error);
+  const pobiError = isError(pobi);
+  const crongError = isError(crong);
+  const errors = [pobiError, crongError];
+  const result = getResult(scoresToCompare, errors);
 
   return result;
 }
@@ -50,16 +45,20 @@ function getScore(person) {
   return compareNumber({ first: leftScore, second: rightScore });
 }
 
-function getResult([pobi, crong], error) {
-  if (pobi > crong) {
-    return 1;
+function getResult(score, error) {
+  if (error[0] === 0 && error[1] === 0) {
+    if (score[0] > score[1]) {
+      return 1;
+    }
+    if (score[0] === score[1]) {
+      return 0;
+    }
+    if (score[0] < score[1]) {
+      return 2;
+    }
   }
-  if (pobi === crong) {
-    return 0;
-  }
-  if (pobi < crong) {
-    return 2;
-  }
+
+  return -1;
 }
 
 function isPageError(person) {
@@ -95,6 +94,24 @@ function orderPageNumber(person) {
   }
 
   return 0;
+}
+
+function isError(person) {
+  const pageError = isPageError(person);
+  const numberOfPages = countNumberOfPages(person);
+  const leftPage = isLeftPageNumber(person);
+  const pageOrdered = orderPageNumber(person);
+
+  if (
+    pageError === 0 &&
+    numberOfPages === 0 &&
+    leftPage === 0 &&
+    pageOrdered === 0
+  ) {
+    return 0;
+  }
+
+  return "error";
 }
 
 module.exports = problem1;
