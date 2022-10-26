@@ -1,6 +1,8 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  return word
+    .split('')
+    .map((x) => (alphabetCheck(x) ? frogDictionary(x) : x))
+    .join('');
 }
 
 function frogDictionary(alphabet) {
