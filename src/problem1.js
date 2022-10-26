@@ -65,14 +65,17 @@ const bookPage = {
 };
 
 function problem1(pobi, crong) {
-  var answer;
-
   let pobiBookPage = new bookPage();
   let crongBookPage = new bookPage();
   pobiBookPage.inputPages(pobi);
   crongBookPage.inputPages(crong);
+  let pobiBigestNumber = pobiBookPage.getBiggestNumber();
+  let crongBigestNumber = crongBookPage.getBiggestNumber();
 
-  return answer;
+  if (pobiBigestNumber == crongBigestNumber) {
+    return 0;
+  }
+  return pobiBigestNumber > crongBigestNumber ? 1 : 2;
 }
 
 module.exports = problem1;
