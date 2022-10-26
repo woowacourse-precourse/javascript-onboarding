@@ -38,6 +38,15 @@ function isRightInput(arr) {
   );
 }
 
+function findMax(num) {
+  const numString = num + "";
+  const digits = numString.split("").map((e) => +e);
+  const summation = digits.reduce((acc, cur) => acc + cur);
+  const product = digits.reduce((acc, cur) => acc * cur);
+
+  return summation > product ? summation : product;
+}
+
 function problem1(pobi, crong) {
   const EXCEPTION_COOE = -1;
   var answer = EXCEPTION_COOE;
