@@ -33,4 +33,19 @@ function compareTwoNumbers(pages) {
   return maxNum;
 }
 
+function problem1(pobi, crong) {
+  if (!(checkContinousPage(pobi) && checkContinousPage(crong))) {
+    return -1;
+  }
+  if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) {
+    return 1;
+  } else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) {
+    return 2;
+  } else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+
 module.exports = problem1;
