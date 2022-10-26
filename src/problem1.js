@@ -22,6 +22,18 @@ function multiplyPageNumbers(page) {
   return multiplyValue;
 }
 
+function largestNum(pages) {
+  const leftPage = pages[0];
+  const rightPage = pages[1];
+  const addLeft = addPageNumbers(leftPage);
+  const addRight = addPageNumbers(rightPage);
+  const multipleLeft = multiplyPageNumbers(leftPage);
+  const multipleRight = multiplyPageNumbers(rightPage);
+  const largestValue = Math.max(addLeft, addRight, multipleLeft, multipleRight);
+
+  return largestValue;
+}
+
 /*
 왼쪽 홀수, 오른쪽 짝수.
 모든 페이지에 번호가 할당.
