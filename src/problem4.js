@@ -1,16 +1,23 @@
 function problem4(word) {
-  var answer;
+  var answer = "";
   for (let i=0; i<word.length;i++){
-    if (word.charCodeAt(i)==32){
-      continue;
+    let ascii = word.charCodeAt(i)
+    if (ascii==32){
+      answer += word[i]
     }
-    else if (65<=word.charCodeAt(i)<=90){
-
+    else if (65<=ascii && ascii<=90){
+      changeAlpha = UppertoAsCii(ascii)
+      answer += changeAlpha
     }
-    else if (97<=word.charCodeAt(i)<=122){
+    else if (97<=ascii && ascii<=122){
 
     }
   } 
   return answer;
+}
+function UppertoAsCii(n){
+  var changeAscii = 155 - n
+  var changeAlpha = String.fromCharCode(changeAscii)
+  return changeAlpha
 }
 module.exports = problem4;
