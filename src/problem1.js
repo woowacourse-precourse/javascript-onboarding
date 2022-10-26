@@ -23,6 +23,37 @@ function isRightPage(arr1, arr2) {
   return true;
 }
 
+function addorMulNum(arr) {
+  let left = arr[0];
+  let right = arr[1];
+  //왼쪽 페이지 합
+  let addLeft = left
+    .toString()
+    .split("")
+    .map((item) => parseInt(item))
+    .reduce((acc, curr) => acc + curr, 0);
+  //오른쪽 페이지 합
+  let addRight = right
+    .toString()
+    .split("")
+    .map((item) => parseInt(item))
+    .reduce((acc, curr) => acc + curr, 0);
+  //왼쪽 페이지 곱
+  let mulLeft = left
+    .toString()
+    .split("")
+    .map((item) => parseInt(item))
+    .reduce((acc, curr) => acc * curr, 1);
+  //오른쪽 페이지 곱
+  let mulRight = right
+    .toString()
+    .split("")
+    .map((item) => parseInt(item))
+    .reduce((acc, curr) => acc * curr, 1);
+  //4개 중 제일 큰 숫자 return
+  return Math.max(addLeft, addRight, mulLeft, mulRight);
+}
+
 function problem1(pobi, crong) {}
 
 module.exports = problem1;
