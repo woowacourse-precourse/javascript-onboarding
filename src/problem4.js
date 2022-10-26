@@ -1,12 +1,16 @@
+function checkSpaceBar(ans, word) {
+  if (word === " ") {
+    ans.push(word);
+  }
+}
+
 function problem4(word) {
   let wordArr = word.split("");
 
   let ans = [];
 
   for (let i = 0; i < wordArr.length; i++) {
-    if (wordArr[i] === " ") {
-      ans.push(wordArr[i]);
-    }
+    checkSpaceBar(ans, wordArr[i]);
 
     const oneWordASCII = wordArr[i].charCodeAt();
 
