@@ -12,6 +12,17 @@ function problem1(pobi, crong) {
 
   var answer;
 
+  var pobiBiggest = isBigger(sumOrMultipy(pobi[0]), sumOrMultipy(pobi[1]));
+  var crongBiggest = isBigger(sumOrMultipy(crong[0]), sumOrMultipy(crong[1]));
+
+  if (pobiBiggest > crongBiggest) {
+    answer = 1;
+  } else if (crongBiggest > pobiBiggest) {
+    answer = 2;
+  } else if (crongBiggest === pobiBiggest) {
+    answer = 0;
+  }
+  
   return answer;
 }
 
