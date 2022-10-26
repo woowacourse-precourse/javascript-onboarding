@@ -8,6 +8,10 @@ const reverseAlphabet = (alphabet) => {
   return result;
 };
 
+const checkLetterCase = (oldAlpha, newAlpha) => {
+  return oldAlpha.match(/a-z/) ? newAlpha.toLowerCase() : newAlpha;
+};
+
 function problem4(word) {
   var answer;
   return answer;
