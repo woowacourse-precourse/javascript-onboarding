@@ -35,6 +35,7 @@ function pushAnswer(answer, forms, rejectIndex){
   for(let i = 0; i < rejectIndex.length; i++){
     answer.push(forms[rejectIndex[i]][0]);
   }
+  answer.sort();
 }
 
 module.exports = problem6;
