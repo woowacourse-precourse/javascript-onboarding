@@ -29,6 +29,16 @@ function problem1(pobi, crong) {
   // console.log(pobiLeft,pobiRight,crongLeft,crongRight);
   // console.log(`'pobiNum: ${pobiNum}`);
   // console.log(`'crongNum: ${crongNum}`);
+  if(b!= a+1 || d!=c+1){
+    answer = -1;
+}else if(pobiNum > crongNum) {
+    answer = 1;
+}else if(pobiNum < crongNum) {
+    answer = 2;
+}else if (pobiNum == crongNum){
+    answer = 0
+}else answer = -1;
+console.log(answer);
   return answer;
 }
 module.exports = problem1;
