@@ -3,7 +3,7 @@ function getMaxPageValue(pageNum){
   const pageArr = pageStr.split('')
   
   let sum = 0
-  let multi = 0
+  let multi = 1
 
   pageArr.forEach(num => {
     const parsedNum = parseInt(num, 10)
@@ -22,14 +22,13 @@ function problem1(pobi, crong) {
   if(pobiLeft % 2 !== 1 || crongLeft % 2 !== 1 || pobiRight % 2 !== 0 || crongRight % 2 !== 0) return -1
   if(pobiRight-pobiLeft !== 1 || crongRight - crongLeft !== 1)return -1
 
-  const pobiMax = math.Max(getMaxPageValue(pobiLeft), getMaxPageValue(pobiRight))
-  const crongMax = math.Max(getMaxPageValue(crongLeft), getMaxPageValue(crongRight))
+  const pobiMax = Math.max(getMaxPageValue(pobiLeft), getMaxPageValue(pobiRight))
+  const crongMax = Math.max(getMaxPageValue(crongLeft), getMaxPageValue(crongRight))
 
   if(pobiMax === crongMax)return 0
   if(pobiMax > crongMax) return 1
   if(pobiMax < crongMax) return 2
   return -1;
 }
-
 
 module.exports = problem1;
