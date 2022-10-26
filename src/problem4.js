@@ -11,6 +11,22 @@ function isAlphabet(letter) {
   return false;
 }
 
+function reverseAlphabet(letter) {
+  const letterAscii = letter.charCodeAt(0);
+  let reversePoint = 0;
+  let reverseAscii = 0;
+
+  if (isUpperCase(letter)) {
+    reversePoint = 155;
+    reverseAscii = reversePoint - letterAscii;
+    return String.fromCharCode(reverseAscii);
+  }
+
+  reversePoint = 219;
+  reverseAscii = reversePoint - letterAscii;
+  return String.fromCharCode(reverseAscii);
+}
+
 function problem4(word) {
   var answer;
   return answer;
@@ -23,6 +39,13 @@ function test() {
   console.log(isAlphabet('a'));
   console.log(isAlphabet('/'));
   console.log(isAlphabet(' '));
+
+  console.log(reverseAlphabet('A'));
+  console.log(reverseAlphabet('a'));
+  console.log(reverseAlphabet('B'));
+  console.log(reverseAlphabet('b'));
+  console.log(reverseAlphabet('Z'));
+  console.log(reverseAlphabet('z'));
 }
 
 test();
