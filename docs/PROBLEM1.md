@@ -25,9 +25,9 @@
 | [99, 102]  | [211, 212] | -1     |
 
 ### 기능 목록 작성
-- [x] 1. 조건에 안 맞는 경우 answer값에 -1을 넣는다.
-- [x] 2. pobi가 뽑은 두 페이지수의 합과 곱을 저장한다.
-- [x] 3. pobi 페이지수의 합과 곱 중 가장 큰 값을 pobiMax에 넣는다.
-- [x] 4. crong이 뽑은 두 페이지수의 합과 곱을 저장한다.
-- [x] 5. crong 페이지수의 합과 곱 중 가장 큰 값을 crongMax에 넣는다.
-- [x] 6. pobiMax와 crongMax를 비교하는 switch문을 만들어 answer값을 저장하고 return한다.
+- [ ] 1. 조건에 안 맞는 경우 answer값에 -1을 넣는다.
+- [ ] 2. pobi가 뽑은 두 페이지수의 합과 곱을 저장한다.
+- [ ] 3. pobi 페이지수의 합과 곱 중 가장 큰 값을 pobiMax에 넣는다.
+- [ ] 4. crong이 뽑은 두 페이지수의 합과 곱을 저장한다.
+- [ ] 5. crong 페이지수의 합과 곱 중 가장 큰 값을 crongMax에 넣는다.
+- [ ] 6. pobiMax와 crongMax를 비교하는 switch문을 만들어 answer값을 저장하고 return한다.
