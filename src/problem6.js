@@ -9,17 +9,33 @@ function problem6(forms) {
 }
 
 function handleExcept(forms, rejectIndex){
-  for(let i = 0; i < forms.length; i++){
-    const emailForm = "email.com";
-    if(forms[i][0].indexOf(emailForm) == -1){
-      rejectIndex.push(i);
-    }
-  }
+  handleFormSize(forms);
 }
 
 function handleFormSize(forms){
   if(forms.length > 10000){
     forms.slice(0, 9999);
+  }
+}
+
+function handleString(forms, rejectIndex){
+  for(let i = 0; i < forms.length; i++){
+    const emailForm = "email.com";
+    const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    let crueEmail = forms[i][0];
+    let crueNickname = forms[i][1];
+    if((crueEmail.indexOf(emailForm) == -1)){
+      rejectIndex.push(i);
+    }
+    else if((crueEmail.length < 11) || (crueEmail.length >= 20)){
+      rejectIndex.push(i);
+    }
+    else if((crueNickname.length == 0) || (crueNickname.length >= 20)){
+      rejectIndex.push(i);
+    }
+    else if(!(isKorean.test(crueNickname))){
+      rejectIndex.push(i);
+    }
   }
 }
 
