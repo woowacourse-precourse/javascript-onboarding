@@ -4,6 +4,16 @@ function problem1(pobi, crong) {
       ? true
       : false;
   };
+  const calcNum = (num) => {
+    const add = (num + "")
+      .split("")
+      .reduce((acc, curr) => acc + parseInt(curr), 0);
+    const mutli = (num + "")
+      .split("")
+      .reduce((acc, curr) => acc * parseInt(curr));
+    return add >= mutli ? add : mutli;
+  };
+
   if (checkPages(pobi) || checkPages(crong)) {
     return -1;
   } else {
