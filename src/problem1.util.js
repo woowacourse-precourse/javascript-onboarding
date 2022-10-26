@@ -3,6 +3,11 @@ const CRONG_WIN = 2;
 const NOBODY_WIN = 0;
 const ERROR = -1;
 
+const returnNum = {
+  POBI_WIN,
+  CRONG_WIN,
+  NOBODY_WIN,
+};
 // 입력값 에러 체크
 const checkInputError = ([left, right]) => {
   if (left > 400 || right > 400 || left < 0 || right < 0) return true;
@@ -32,8 +37,16 @@ const getLargeNum = (num) => {
 };
 // 포비와 크롱 큰값 생성
 // 포비와 크롱 값 비교
+const whoIsWin = (pobi, crong) => {
+  if (pobi > crong) return POBI_WIN;
+  if (pobi === crong) return NOBODY_WIN;
+  return CRONG_WIN;
+};
 
 exports.checkInputError = checkInputError;
 exports.addPageNum = addPageNum;
 exports.mulPageNum = mulPageNum;
 exports.getLargeNum = getLargeNum;
+exports.whoIsWin = whoIsWin;
+exports.returnNum = returnNum;
+exports.ERROR = ERROR;

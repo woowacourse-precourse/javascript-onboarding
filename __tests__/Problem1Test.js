@@ -3,6 +3,8 @@ const {
   addPageNum,
   mulPageNum,
   getLargeNum,
+  whoIsWin,
+  returnNum,
 } = require("../src/problem1.util");
 
 describe("checkInputError", () => {
@@ -72,5 +74,17 @@ describe("getLargeNum", () => {
   });
   it("is input 123 output 6", () => {
     expect(getLargeNum(123)).toEqual(6);
+  });
+});
+
+describe("whoIsWin", () => {
+  it("is pobi win pobi 5 crong 1", () => {
+    expect(whoIsWin(5, 1)).toEqual(returnNum.POBI_WIN);
+  });
+  it("is crong win pobi 5 crong 10", () => {
+    expect(whoIsWin(5, 10)).toEqual(returnNum.CRONG_WIN);
+  });
+  it("is Nobody win pobi 5 crong 5", () => {
+    expect(whoIsWin(5, 5)).toEqual(returnNum.NOBODY_WIN);
   });
 });
