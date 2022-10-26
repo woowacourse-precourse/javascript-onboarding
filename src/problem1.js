@@ -13,7 +13,6 @@ function problem1(pobi, crong) {
   } else {
     answer = -1
   }
-  console.log(pobiMaxNumber, crongMaxNumber, answer)
   return answer;
 }
 
