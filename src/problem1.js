@@ -19,4 +19,19 @@ function isPageError({ leftPage, rightPage }) {
   return false;
 }
 
+function sumDigits(pages) {
+  const resultPages = [];
+
+  pages.forEach((page) => {
+    let sumDigit = 0;
+    do {
+      sumDigit += page % 10;
+      page = Math.floor(page / 10);
+    } while (page > 0);
+    resultPages.push(sumDigit);
+  });
+
+  return resultPages;
+}
+
 module.exports = problem1;
