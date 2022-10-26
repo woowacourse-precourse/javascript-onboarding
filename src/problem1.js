@@ -1,4 +1,6 @@
 function problem1(pobi, crong) {
+  let pobiValue = Math.max(sumArrayNumber(stringToNumberArray(pobi[0])), sumArrayNumber(stringToNumberArray(pobi[1])), multiplyArrayNumber(stringToNumberArray(pobi[0])), multiplyArrayNumber(stringToNumberArray(pobi[1])))
+
   }
 }
 module.exports = problem1;
