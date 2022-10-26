@@ -23,3 +23,74 @@
 | [97, 98]   | [197, 198] | 0      |
 | [131, 132] | [211, 212] | 1      |
 | [99, 102]  | [211, 212] | -1     |
+
+### 요구사항 분석(기능 목록)
+
+- 주어진 기능 요구사항을 정리하면, 다음의 과정을 거쳐 구할수 있다.
+
+1. 입력받기 (외부에서 주어진다)
+2. 유저의 최댓값 구하기
+3. 승자 구하기
+4. 예외 처리
+
+#### 1. 입력받기(생략)
+
+#### 2. 유저의 최댓값 구하기
+
+- 유저의 입력값을 받아 각각의 자리수를 배열로 만든다.
+  - `numberToDigits(pages :Number[])`
+  - ex)`[12, 34] => [[1,2], [3,4]]`
+
+- 주어진 쪽수를 각각 더하기 거나 곱하는 계산을 수행한다.
+  - `pages.map((page) => [page.reduce(add), page.reduce(multiply)])`
+  - helper 함수로 더하기, 곱하기 함수를 사용한다.
+  - ex)`[[1,2],[3,4]] => [[3,3],[7,12]]`
+- 더하기 계산과 곱하기 계산을 수행한 결과를 비교하여 더 큰 값을 반환한다.
+  - `max`함수를 사용하여 더 큰 값을 반환한다.
+  - `Math.max()`를 사용할지, `reduce`를 사용할지 고민했는데, `reduce`를 사용하면 체이닝을 이용하여 코드를 간결하게 작성할 수 있을 것 같아서 reduce를 사용할 것 이다.
+  - `max(iter): number`
+  - ex)`[[3,3],[7,12]] => 12`
+
+#### 3. 승자 구하기
+
+- 이 함수의 **가장 추상적인 레벨**이 되어야 한다고 생각한다. 이 로직을 함수로 감싸진 않되 이 부분이 다른 함수들를 다루는 형태로 값을 반환하도록 한다.
+- 예상되는 핵심 이 함수의 메인 코드는 아래와 같다.
+
+```js
+
+  if(pobiPoints === crongPoints) return 0;
+  if(pobiPoints> crongPoints) return 1;
+  else return 2;
+```
+
+#### 3. 예외 케이스
+
+- `isValid(numbers:Array<Number[]>, errorcases:Array<Function(number)>):Boolean` 함수를 만들어 예외 케이스를 먼저 거르는 방향으로 구현해보려고한다.
+
+1. 입력받은 페이지가 [홀수, 짝수] 순으로 주어지지 않은 경우
+2. 오른쪽 페이지 - 왼쪽 페이지가 1이 아닌 경우
+3. 첫번째 페이지가 짝수인 경우(1번과 같이 처리가능)
+4. 두번째 페이지가 홀수인 경우(2번과 같이 처리가능)
+5. 왼쪽 페이지가 1보다 작은 경우
+6. 오른쪽 페이지가 400보다 큰 경우
+
+#### 4. 정리
+
+- 로직을 정리하면 핵심적인 부분은 아래와 같은 코드가 되야한다
+
+```js
+//입력받기
+function(pobi, crong){
+  //예외 케이스 처리
+  if(!isCorrect([pobi,crong], [isOddEven(1,2), isDiff(1), isArea(1,400)])) return -1;
+
+  let pobiPoints = getPoints(pobi);
+  let crongPoints = getPoints(crong);
+  
+  if(pobiPoints === crongPoints) return 0;
+  if(pobiPoints> crongPoints) return 1;
+  else return 2;
+
+  //... function
+}
+```
