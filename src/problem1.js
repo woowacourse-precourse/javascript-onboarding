@@ -22,7 +22,9 @@ function mulPageResult(pageNumArr) {
   return Math.max(...result);
 }
 
-function getScore(pageNumArr) {}
+function getScore(pageNumArr) {
+  return Math.max(addPageResult(pageNumArr), mulPageResult(pageNumArr));
+}
 
 function isExceptionCase(pageNumArr) {
   if (pageNumArr[0] >= pageNumArr[1]) {
