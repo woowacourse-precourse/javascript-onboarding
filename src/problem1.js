@@ -1,6 +1,13 @@
 function problem1(pobi, crong) {
   var answer;
 
+  const isRightInput = (num1, num2, num3, num4) => {
+    if (num2 - num1 != 1 || num4 - num3 != 1) {
+      return false;
+    }
+    return true;
+  };
+
   const addAllNums = (num) => {
     if (num < 10) {
       return num;
@@ -47,6 +54,9 @@ function problem1(pobi, crong) {
   let crong_score = maxNumOfCrong();
 
   const solution = (pobi_score, crong_score) => {
+    if (!isRightInput(pobi[0], pobi[1], crong[0], crong[1])) {
+      return -1;
+    }
     if (pobi_score === crong_score) {
       return 0;
     }
@@ -60,7 +70,6 @@ function problem1(pobi, crong) {
   };
 
   answer = solution(pobi_score, crong_score);
-
   return answer;
 }
 
