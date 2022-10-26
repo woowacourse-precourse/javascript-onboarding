@@ -1,5 +1,6 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer;  
+  if(cryptogram.length === 1) return cryptogram;
   return answer;
 }
 
