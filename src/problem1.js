@@ -5,9 +5,19 @@ const exception = (pobi, crong) => {
   if (crong.reduce((a, b) => Math.abs(a) - b) !== -1) return -1;
 };
 
+const getMaxNumber = (array, pobi) => {
+  array.forEach((page) => {
+    let plus = Object.values(String(page)).reduce((a, b) => +a + +b);
+    let multiplication = Object.values(String(page)).reduce((a, b) => +a * +b);
+    calulateMax(array, plus, multiplication, pobi);
+  });
+};
+
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (exception(pobi, crong) === -1) return -1;
+  getMaxNumber(pobi, pobi);
+  getMaxNumber(crong, pobi);
+  return undefined;
 }
 
 module.exports = problem1;
