@@ -21,6 +21,8 @@ const calculatePageScore = (page) => {
   );
 };
 
+const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
+
 /**
  * problem 1
  * @type {(pobi: number[], crong: number[]) => (-1 | 0 | 1 | 2)}
