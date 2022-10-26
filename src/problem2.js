@@ -3,6 +3,9 @@
 // 2. 배열에 원소가 없거나 더이상 중복이 없을때까지 반복
 function problem2(cryptogram) {
   var answer;
+
+  // List 화
+  let cryptoList = cryptogram.split("");
   return answer;
 }
 
