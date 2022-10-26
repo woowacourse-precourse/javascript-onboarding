@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   let pobiValue = Math.max(sumArrayNumber(stringToNumberArray(pobi[0])), sumArrayNumber(stringToNumberArray(pobi[1])), multiplyArrayNumber(stringToNumberArray(pobi[0])), multiplyArrayNumber(stringToNumberArray(pobi[1])))
+  let crongValue = Math.max(sumArrayNumber(stringToNumberArray(crong[0])), sumArrayNumber(stringToNumberArray(crong[1])), multiplyArrayNumber(stringToNumberArray(crong[0])), multiplyArrayNumber(stringToNumberArray(crong[1])))
 
   }
 }
