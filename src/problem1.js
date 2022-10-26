@@ -15,11 +15,32 @@ function calcMaxNumber(num) {
   );
 }
 
+function isValidPage(pages) {
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 400;
+
+  const [leftPage, rightPage] = pages;
+
+  if (rightPage - leftPage !== 1) {
+    return false;
+  }
+
+  if (leftPage % 2 === 0 || rightPage % 2 === 1) {
+    return false;
+  }
+
+  return pages.every((page) => page > MIN_PAGE && page < MAX_PAGE);
+}
+
 function problem1(pobi, crong) {
   const POBI_WIN = 1;
   const CRONG_WIN = 2;
   const DRAW = 0;
   const EXCEPTION = -1;
+
+  if (!isValidPage(pobi) || !isValidPage(crong)) {
+    return EXCEPTION;
+  }
 
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
