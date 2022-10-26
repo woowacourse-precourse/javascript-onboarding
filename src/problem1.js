@@ -2,6 +2,10 @@ function problem1(pobi, crong) {
   const [a, b] = pobi;
   const [c, d] = crong;
 
+  if(pobi.length > 2 || crong.length > 2 || b-a !== 1 || d-c !==1){
+    return -1
+  }
+  
   const addPbOdd = a
     .toString()
     .split("")
