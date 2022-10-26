@@ -6,10 +6,13 @@ function problem1(pobi, crong) {
   var pobichoose = pobiadd > pobimulti ? pobiadd : pobimulti; 
   var crongchoose = crongadd > crongmulti ? crongadd : crongmulti; 
   var answer;
-  if (pobichoose > crongchoose){
+  if (Exception(pobi, crong) == false){
+    answer = -1
+  }
+  else if (pobichoose > crongchoose){
     answer = 1
   }
-  else if(pobichoose < crongchoose){
+  else if (pobichoose < crongchoose){
     answer = 2
   }
   else if (pobichoose == crongchoose){
@@ -34,4 +37,19 @@ function Multi(n){
   }while(n > 0);
   return sum;
 }
+function Exception(pobi, crong){
+  if (pobi[1]-pobi[0]!=1){
+    return false
+  }
+  else if (crong[1]-crong[0]!=1){
+    return false
+  }
+  else if (pobi[0]==1 || pobi[1] ==400 || crong[0]==1 || crong[1] ==400){
+    return false
+  }
+  else{
+    return true
+  }
+}
+console.log(problem1([131, 132]	,[211,212]))
 module.exports = problem1;
