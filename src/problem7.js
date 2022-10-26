@@ -14,6 +14,11 @@ function problem7(user, friends, visitors) {
       score[knowTogether] += 10;
     });
   });
+  visitors.forEach((visit) => {
+    if (relation[user].includes(visit)) return;
+    if (!score[visit]) score[visit] = 0;
+    score[visit] += 1;
+  });
 }
 
 module.exports = problem7;
