@@ -28,6 +28,14 @@ function getBiggestValue(arr) {
 }
 
 function problem1(pobi, crong) {
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
+    return -1;
+  }
+  for (let i = 0; i < ARR_LENGTH; i++) {
+    if (pobi[i] < 1 || pobi[i] > 400 || crong[i] < 1 || crong[i] > 400) {
+      return -1;
+    }
+  }
   var answer;
 
   return answer;
