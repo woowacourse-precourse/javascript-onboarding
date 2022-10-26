@@ -78,3 +78,5 @@ function check(pobi, crong) {
         return true
     }
 }
+
+module.exports = problem1
