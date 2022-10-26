@@ -18,6 +18,26 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  // 시작 면
+  test("exception test1", () => {
+    expect(problem1([1, 2], [211, 212])).toEqual(-1);
+  });
+
+  // 마지막 면
+  test("exception test2", () => {
+    expect(problem1([99, 100], [399, 400])).toEqual(-1);
+  });
+
+  // 홀짝 안맞음
+  test("exception test3", () => {
+    expect(problem1([100, 101], [397, 398])).toEqual(-1);
+  });
+
+  // 이상한 페이지 입력
+  test("exception test4", () => {
+    expect(problem1([11, 101], [3, 4])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
