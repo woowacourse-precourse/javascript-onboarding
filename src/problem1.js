@@ -43,7 +43,7 @@ function isSerialPage(page){
 
 // 5. 포비와 크롱의 페이지가 둘 다 정상적인지 확인하는 함수
 function isSerialBoth(pobi, crong) {
-  return (!isSerialPage(pobi) || !isSerialPage(crong))? true: false;
+  return (isSerialPage(pobi) && isSerialPage(crong))? true: false;
 }
 
 function problem1(pobi, crong) {
