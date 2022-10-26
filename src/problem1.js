@@ -31,8 +31,6 @@ function problem1(pobi, crong) {
       return mulcrong;
     }
   }
-  console.log(MaxPobiNum());
-  console.log(MaxCrongiNum());
   if(MaxPobiNum()>MaxCrongiNum()){
     return 1;
   }
