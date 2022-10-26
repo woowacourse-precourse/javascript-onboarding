@@ -34,7 +34,7 @@ function problem7(user, friends, visitors) {
     }
   }
   scores.sort((a, b) => b.score - a.score);
-  scores = scores.filter((item) => item.score > 1);
+  scores = scores.filter((item) => item.score > 0);
 
   let count = 0;
   for (let i = 0; i < scores.length; i++) {
