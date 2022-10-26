@@ -21,6 +21,18 @@ describe("checkInputError", () => {
   it("is return true then by wrong input because of right is odd num", () => {
     expect(checkInputError([1, 3])).toEqual(true);
   });
+  it("is return true then by wrong input because of left large then 400", () => {
+    expect(checkInputError([401, 3])).toEqual(true);
+  });
+  it("is return true then by wrong input because of right large then 400", () => {
+    expect(checkInputError([3, 401])).toEqual(true);
+  });
+  it("is return true then by wrong input because of left small then 0", () => {
+    expect(checkInputError([-1, 5])).toEqual(true);
+  });
+  it("is return true then by wrong input because of right small then 0", () => {
+    expect(checkInputError([5, -1])).toEqual(true);
+  });
 });
 
 describe("addPageNum", () => {

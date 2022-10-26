@@ -5,6 +5,7 @@ const ERROR = -1;
 
 // 입력값 에러 체크
 const checkInputError = ([left, right]) => {
+  if (left > 400 || right > 400 || left < 0 || right < 0) return true;
   if (left % 2 === 0) return true;
   if (right % 2 === 1) return true;
   return right - left !== 1;
