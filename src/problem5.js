@@ -21,6 +21,11 @@ function problem5(money) {
     }
     return total;
   }
+
+  for (let i = 0; i < coinBox.length; i++) {
+    money = coinChanger(money, units[i], i);
+  }
+  return coinBox;
 }
 
 module.exports = problem5;
