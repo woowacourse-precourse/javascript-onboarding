@@ -42,6 +42,11 @@ function problem1(pobi, crong) {
         cur.reduce((acc, cur) => Number(acc) * Number(cur))
       );
     });
+
+  // 승패 결과 처리하기 (포비 1, 크롱 2, 무승부 0, 예외사항 -1)
+  if (pobiMax > crongMax) return 1;
+  else if (pobiMax < crongMax) return 2;
+  else return 0;
 }
 
 module.exports = problem1;
