@@ -1,10 +1,32 @@
+const isPagesOddAndEven = (pages) => pages[0] % 2 === 1 && pages[1] % 2 === 0;
+const isContinuous = (pages) => pages[0] + 1 === pages[1];
+const isStartPage = (page) => page === 1;
+const isLastPage = (page) => page === 400;
+
+function isValidPages(pages) {
+  if (!Array.isArray(pages)) {
+    return false;
+  }
+
+  if (
+    !isPagesOddAndEven(pages) ||
+    !isContinuous(pages) ||
+    isStartPage(pages[0]) ||
+    isLastPage(pages[1])
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
 function addDigits(number) {
   let digits = number;
   let result = 0;
 
   while (digits > 0) {
-    result += a % 10;
-    digits = parseInt(a / 10);
+    result += digits % 10;
+    digits = parseInt(digits / 10);
   }
 
   return result;
@@ -15,8 +37,8 @@ function multiplyDigits(number) {
   let result = 1;
 
   while (digits > 0) {
-    result *= a % 10;
-    digits = parseInt(a / 10);
+    result *= digits % 10;
+    digits = parseInt(digits / 10);
   }
 
   return result;
@@ -45,6 +67,10 @@ function getPlayerScore(pages) {
 }
 
 function problem1(pobi, crong) {
+  if (!isValidPages(pobi) || !isValidPages(crong)) {
+    return -1;
+  }
+
   const pobiScore = getPlayerScore(pobi);
   const crongScore = getPlayerScore(crong);
 
