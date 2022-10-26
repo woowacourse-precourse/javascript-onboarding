@@ -1,4 +1,7 @@
-const { checkInputError } = require("../src/problem2.util");
+const {
+  checkInputError,
+  deleteDuplicateWord,
+} = require("../src/problem2.util");
 
 describe("checkInputError", () => {
   it("is return true by short", () => {
@@ -11,5 +14,26 @@ describe("checkInputError", () => {
   });
   it("is return false", () => {
     expect(checkInputError("browoanoommnaon")).toEqual(false);
+  });
+});
+
+describe("deleteDuplicateWord", () => {
+  it("is input 'oppa' output 'oa'", () => {
+    expect(deleteDuplicateWord("oppa")).toEqual("oa");
+  });
+  it("is input 'opp' output 'o'", () => {
+    expect(deleteDuplicateWord("opp")).toEqual("o");
+  });
+  it("is input 'oppaao' output 'oo'", () => {
+    expect(deleteDuplicateWord("oppaao")).toEqual("oo");
+  });
+  it("is input 'oppoaao' output 'ooo'", () => {
+    expect(deleteDuplicateWord("oppoaao")).toEqual("ooo");
+  });
+  it("is input 'oppp' output 'o'", () => {
+    expect(deleteDuplicateWord("oppp")).toEqual("o");
+  });
+  it("is input 'o' output 'o'", () => {
+    expect(deleteDuplicateWord("o")).toEqual("o");
   });
 });
