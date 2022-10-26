@@ -7,16 +7,25 @@
 
 let letter = "browoanoommnaon";
 
-function crypto(letter) {
+function decipher(letter) {
   letter.toLowerCase();
   const arr = letter.split("");
 
-  arr.map((char, index) => {
-    if (char === arr[index + 1]) {
-      arr.splice(index, index + 1);
-      console.log(arr);
-    }
-  });
+  const charArray = decrypto(arr);
+  const key = charArray.join("");
+
+  return key;
 }
 
-crypto(letter);
+function decrypto(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      arr.splice(i, 2);
+      i = -1;
+    }
+  }
+
+  return arr;
+}
+
+
