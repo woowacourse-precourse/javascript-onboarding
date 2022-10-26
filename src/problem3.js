@@ -1,13 +1,11 @@
 function problem3(number) {
-  const allDigits = [];
-  for (let cur = 1; cur <= number; cur++) {
-    const digits = Array.from(String(cur)).forEach((digit) => {
-      allDigits.push(Number(digit));
-    });
+  let result = 0;
+  let current = 1;
+  while (current <= number) {
+    const currentString = String(current);
+    result += currentString.match(/[369]/g)?.length || 0;
+    current++;
   }
-  const result = allDigits.filter(
-    (digit) => digit === 3 || digit === 6 || digit === 9
-  ).length;
   return result;
 }
 

@@ -64,8 +64,13 @@
 - [o] 1부터 number까지 모든 수의 자릿수를 한 배열에 넣는다.
 - [o] 배열에서 3,6,9만 filter해준다.
 - [o] filter를 거친 배열의 length를 리턴한다.
+- refactor
+  - for문 while 문으로 대체
+  - filter 제거 후 match를 이용한 정규표현식으로 대체
 
 ### 학습메모
+
+조금 더 간단한 로직을 구현하기 위해 고민을 했다.
 
 ## PROBLEM 4
 
