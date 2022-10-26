@@ -2,6 +2,12 @@ function problem1(pobi, crong) {
 
 }
 
+function pointCompare(pobiPoint, crongPoint) {
+  if (pobiPoint == crongPoint) return 0;
+  if (pobiPoint > crongPoint) return 1;
+  if (pobiPoint < crongPoint) return 2;
+}
+
 function digitSum(...arr) {
   const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
   const firstNum = firstArr.reduce((a,b) => (a+b));
