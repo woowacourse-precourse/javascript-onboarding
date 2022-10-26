@@ -29,8 +29,8 @@ function decryption(s) {
 }
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  // 암호화된 문자 해독(중복 문자 제거)
+  return decryption(cryptogram);
 }
 
 module.exports = problem2;
