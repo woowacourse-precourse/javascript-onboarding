@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
+  const pobiScore = Math.max.apply(null,pobi.map(pageNumber => getMaxNumber(pageNumber)));
+  const crongScore = Math.max.apply(null,crong.map(pageNumber => getMaxNumber(pageNumber)));
+
   return answer;
 }
 
