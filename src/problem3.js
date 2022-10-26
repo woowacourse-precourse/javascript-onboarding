@@ -9,14 +9,17 @@
  * 1. 1 ~ 10000 이하의 자연수
  */
 
+// 정수를 digit 단위로 쪼개서 배열로 반횐
+const getNumToDigitArr = num => String(num).split("")
+
 function problem3(number) {
   var answer = 0;
   var i;
-  var targets = ['3', '6', '9']
+  var targets = [3, 6, 9]
 
   for (i = 1; i <= number; i++) {
-    String(i).split("").map((digit) => {
-      if(targets.includes(digit)) answer += 1
+    getNumToDigitArr(i).map((digit) => {
+      if(targets.includes(Number(digit))) answer += 1
     })
   }
   return answer;
