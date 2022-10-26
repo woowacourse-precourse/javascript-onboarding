@@ -6,7 +6,7 @@ function problem7(user, friends, visitors) {
   });
   userFriends.forEach(recommendUser => {
     friends.forEach(relationship => {
-      const friend = isfriend(recommendUser, relationship)
+      friend = isfriend(recommendUser, relationship)
       if(friend) {
         if(friend === user) return;
         if(recommends.has(friend)) recommends.set(friend, recommends.get(friend) + 10);
@@ -20,14 +20,33 @@ function problem7(user, friends, visitors) {
     else recommends.set(visitor, 1);
   });
   recommends = [...recommends];
-  recommends.sort((a, b) => {
-    return b[1] - a[1];
-  });
+  recommends = sortFriends(recommends);
+  recommends = recommends.splice(0,5);
+  return recommends;
 }
 function isfriend(user, relationship) {
   if(relationship[0] === user) return relationship[1];
   if(relationship[1] === user) return relationship[0];
   return false;
+}
+function sortFriends(friends) {
+  let sortedArray = [];
+  let stack = [];
+  friends.sort((a,b) => {
+    return b[1] - a[1];
+  });
+  for(let i = 0; i < friends.length; i++) {
+    if(friends[i][1] === friends[i - 1]?.[1] || friends[i][1] === friends[i + 1]?.[1]) {
+      stack.push(friends[i][0]);
+    } else {
+      if(stack.length > 0) {
+        sortedArray.push(...stack.sort());
+        stack = [];
+      }
+      sortedArray.push(friends[i][0]);
+    }
+  }
+  return sortedArray;
 }
 
 module.exports = problem7;
