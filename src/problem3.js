@@ -3,6 +3,15 @@ function problem3(number) {
   return answer;
 }
 
+function calcClapCount(number) {
+  let numberArray = String(number).split("");
+  let clapCount = 0;
+  for (let i = 0; i < numberArray.length; i++) {
+    if (["3", "6", "9"].includes(numberArray[i])) clapCount += 1;
+  }
+  return clapCount;
+}
+
 module.exports = problem3;
 
 // 입력값: 숫자
