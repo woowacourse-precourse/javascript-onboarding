@@ -19,6 +19,13 @@ function problem7(user, friends, visitors) {
     if (!score[visit]) score[visit] = 0;
     score[visit] += 1;
   });
+  return Object.entries(score)
+    .sort(([user1Name, user1Score], [user2Name, user2Score]) => {
+      if (user2Score === user1Score) return user2Name > user1Name ? -1 : 1;
+      return user2Score - user1Score;
+    })
+    .reduce((result, recommand) => result.concat(recommand[0]), [])
+    .slice(0, 5);
 }
 
 module.exports = problem7;
