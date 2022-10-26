@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "test1": "jest __tests__/Problem1Test.js"
+    "test1": "jest __tests__/Problem1Test.js",
+    "test2": "jest __tests__/Problem2Test.js"
   },
   "repository": {
     "type": "git",
