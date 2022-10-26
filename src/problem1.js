@@ -13,6 +13,11 @@ const bookPage = {
     let passPages = pages.filter((page) => page < 1 && page > 400);
     return passPages.length == 0;
   },
+  checkPagesForm: function (...pages) {
+    let leftPage = pages[0];
+    let rightPage = pages[pages.length - 1];
+    return +leftPage % 2 == 1 && +rightPage % 2 == 0;
+  },
   checkPages: function (...pages) {
     if (!this.checkPagesLength(pages)) {
       return false;
@@ -20,6 +25,10 @@ const bookPage = {
     if (!this.checkPagesRage(pages)) {
       return false;
     }
+    if (!this.checkPagesForm(pages)) {
+      return false;
+    }
+
     return true;
   },
 };
