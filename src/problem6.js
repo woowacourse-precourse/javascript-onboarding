@@ -16,12 +16,11 @@ function problem6(forms) {
   const duplicates = {};
   forms.forEach((form) => {
     getKeys(form[1]).forEach((key) => {
-      if (!duplicates[key]) duplicates[key] = [];
-      duplicates[key].push(form[0]);
+      duplicates[key] = [...(duplicates[key] || []), form[0]];
     });
   });
   const result = Object.values(duplicates).reduce((resultList, duplicate) => {
-    if (duplicate.length > 1) return resultList.concat(duplicate);
+    if (duplicate.length > 1) return [...resultList, ...duplicate];
     return resultList;
   }, []);
   return [...new Set(result.sort())];
