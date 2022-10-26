@@ -1,14 +1,17 @@
 function problem1(pobi, crong) {
   var answer;
 
-  const isRightInput = (pobi, crong) => {
-    if (!(pobi.length == 2 && crong.length == 2)) {
+  const isRightInput = (arr) => {
+    if (!(arr.length == 2)) {
       return false;
     }
-    if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+    if (arr[1] - arr[0] != 1) {
       return false;
     }
-    if (pobi[0] == 1 || pobi[1] == 400 || crong[0] == 1 || crong[1] == 400) {
+    if (arr[0] == 1 || arr[1] == 400) {
+      return false;
+    }
+    if (arr[0] % 2 == 0 || arr[1] % 2 == 1) {
       return false;
     }
     return true;
@@ -39,7 +42,7 @@ function problem1(pobi, crong) {
   };
 
   const solution = (pobi, crong) => {
-    if (!isRightInput(pobi, crong)) {
+    if (!isRightInput(pobi) || !isRightInput(crong)) {
       return -1;
     }
     let pobi_score = findMaxNum(pobi[0], pobi[1]);
