@@ -22,3 +22,9 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 구현 목록
+
+- stack으로 구현 가능할 듯
+- 세개 이상의 중복문자는 어떻게 해결하지?
+- stack에 cryptogram[i]를 push 해야할지를 반환하는 함수 [✅]
+- 다음으로 확인해야 할 cryptogram의 index를 반환하는 함수 []
