@@ -10,6 +10,19 @@ function listing(page) {
   return String(page).split('').map(Number);
 }
 
+// 곱하기 함수 구현
+function checkMultiply(page) {
+  // 정수를 리스트로 변환
+  const num_list = listing(page);
+  // 값을 곱할 변수
+  let multiply_result = 1;
+  // 리스트를 순회하며 값을 곱하기
+  num_list.map((x) => {
+    multiply_result *= x;
+  })
+  return multiply_result;
+}
+
 // 더하기 점수 확인
 function checkSum(page) {
   // 정수를 리스트로 변환
@@ -21,7 +34,7 @@ function checkSum(page) {
 // 점수를 확인하는 함수
 function checkScore([page_left, page_right]) {
   // 왼쪽, 오른쪽 페이지 각각의 더하기 점수와 곱하기 점수를 저장할 리스트 리스트
-  const socre_list = [checkSum(page_left), checkSum(page_right)]; // 곱하기 함수 추가 예정
+  const socre_list = [checkSum(page_left), checkSum(page_right), checkMultiply(page_left), checkMultiply(page_right)];
   // 점수 리스트 중 가장 큰 값을 반환
   return Math.max(...socre_list);
 }
