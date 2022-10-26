@@ -32,7 +32,7 @@ function checkNickname(forms, map, rejectIndex){
 }
 
 function pushAnswer(answer, forms, rejectIndex){
-  for(let i = 0; i < rejectIndex.size(); i++){
+  for(let i = 0; i < rejectIndex.length; i++){
     answer.push(forms[rejectIndex[i]][0]);
   }
 }
