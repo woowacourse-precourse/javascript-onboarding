@@ -11,8 +11,11 @@
 */
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+
+  // 입력값에 따른 예외처리
+  if (pobi[0] === 1 || pobi[1] === 1 || crong[0] === 1 || crong[1] === 1) return -1;
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+
 }
 
 module.exports = problem1;
