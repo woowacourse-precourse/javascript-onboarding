@@ -3,7 +3,17 @@ function isFitLength(arr, length) {
 }
 
 function isRightOrder(arr) {
-  return arr[arr.length - 1] - arr[0] === 1;
+  const firstPage = arr[0];
+  const secondPage = arr[arr.length - 1];
+  return secondPage - firstPage === 1 && isEven(secondPage) && isOdd(firstPage);
+}
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+function isOdd(num) {
+  return num % 2 === 1;
 }
 
 function problem1(pobi, crong) {
