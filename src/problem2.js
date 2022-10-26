@@ -11,6 +11,8 @@ function problem2(cryptogram) {
   while (patt.test(cryptogram)) {
     cryptogram = cryptogram.replace(patt, "");
   }
+
+  return cryptogram;
 }
 
 module.exports = problem2;
