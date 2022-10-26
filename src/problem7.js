@@ -19,6 +19,10 @@ function problem7(user, friends, visitors) {
     if(recommends.has(visitor)) recommends.set(visitor, recommends.get(visitor) + 1);
     else recommends.set(visitor, 1);
   });
+  recommends = [...recommends];
+  recommends.sort((a, b) => {
+    return b[1] - a[1];
+  });
 }
 function isfriend(user, relationship) {
   if(relationship[0] === user) return relationship[1];
