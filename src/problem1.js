@@ -48,9 +48,9 @@ function getMaxSum(pageNumbers) {
 }
 
 function getSum(pageNumber) {
-  const numbers = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
+  const digits = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
 
-  return numbers.reduce((prevSum, number) => prevSum + number, 0);
+  return digits.reduce((prevSum, digit) => prevSum + digit, 0);
 }
 
 function getMaxMultiplication(pageNumbers) {
@@ -60,10 +60,10 @@ function getMaxMultiplication(pageNumbers) {
 }
 
 function getMultiplication(pageNumber) {
-  const numbers = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
+  const digits = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
 
-  return numbers.reduce(
-    (prevMultiplication, number) => prevMultiplication * number,
+  return digits.reduce(
+    (prevMultiplication, digit) => prevMultiplication * digit,
     1,
   );
 }
