@@ -5,7 +5,12 @@ const decrypt = (code) => {
 };
 
 function problem2(cryptogram) {
-  var answer;
+  var answer = "";
+  let code = cryptogram;
+  while (answer !== decrypt(code)) {
+    answer = decrypt(code);
+    code = answer;
+  }
   return answer;
 }
 
