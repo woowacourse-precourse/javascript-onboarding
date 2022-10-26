@@ -1,5 +1,6 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  for (let i = 3; i <= number; i++) answer += clapCounter(i);
   return answer;
 }
 
