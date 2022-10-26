@@ -19,7 +19,13 @@ function sumNumber(number) {
   return sum;
 }
 function multiNumber(number) {
-  // number의 모두 곱한 값을 반환
+  let multi = 1;
+  number
+    .toString()
+    .split("")
+    .map((num) => (multi *= Number(num)));
+
+  return multi;
 }
 
 module.exports = problem1;
