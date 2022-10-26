@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
   const [top, ...rest] = cryptogram.split("");
   const temp = [top];
+
   for (let char of rest) {
     if (temp.length < 1) {
       temp.push(char);
@@ -9,8 +10,8 @@ function problem2(cryptogram) {
       else temp.push(char);
     }
   }
-  var answer;
-  return answer;
+
+  return temp.join("");
 }
 
 module.exports = problem2;
