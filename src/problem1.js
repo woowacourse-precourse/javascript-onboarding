@@ -9,18 +9,12 @@ const getNumberArray = (number) => {
     .map((number) => Number(number));
 };
 
-const getSumNumber = (pageNumber) => {
-  return getNumberArray(pageNumber).reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0,
-  );
+const getSumPage = (page) => {
+  return getNumberArray(page).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 };
 
-const getMulNumber = (pageNumber) => {
-  return getNumberArray(pageNumber).reduce(
-    (accumulator, currentValue) => accumulator * currentValue,
-    1,
-  );
+const getMulPage = (page) => {
+  return getNumberArray(page).reduce((accumulator, currentValue) => accumulator * currentValue, 1);
 };
 
 module.exports = problem1;
