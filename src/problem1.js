@@ -13,6 +13,9 @@ const multiply = (a, b) => a * b;
  */
 const minus = (a, b) => a - b;
 
+/**
+ * @type {(n: number) => boolean}
+ */
 const isEven = (n) => (n % 2 == 0 ? true : false);
 
 /**
