@@ -32,6 +32,20 @@ function problem1(pobi, crong) {
     calcMaxNumber(crongLeftPage),
     calcMaxNumber(crongRightPage)
   );
+
+  if (pobiMaxNum > crongMaxNum) {
+    return POBI_WIN;
+  }
+
+  if (pobiMaxNum < crongMaxNum) {
+    return CRONG_WIN;
+  }
+
+  if (pobiMaxNum === crongMaxNum) {
+    return DRAW;
+  }
+
+  return EXCEPTION;
 }
 
 module.exports = problem1;
