@@ -28,12 +28,18 @@
 // - [x] 마지막 면이 나오지 않게한다. - 400제외
 
 function problem1(pobi, crong) {
+  let check = false;
+
   const dividePageValues = (pages) => {
     const leftpage = pages[0];
     const rightpage = pages[1];
 
     let leftvalue = findPageIndex(leftpage);
     let rightvalue = findPageIndex(rightpage);
+
+    if (leftpage - rightpage > 1 || rightpage - leftpage > 1) {
+      check = true;
+    }
 
     return leftvalue > rightvalue ? leftvalue : rightvalue;
   };
@@ -51,8 +57,8 @@ function problem1(pobi, crong) {
     return sum > mul ? sum : mul;
   };
 
-  const pobiMax = findPageValues(pobi);
-  const crongMax = findPageValues(crong);
+  const pobiMax = dividePageValues(pobi);
+  const crongMax = dividePageValues(crong);
 
   let answer;
 
