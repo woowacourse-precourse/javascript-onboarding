@@ -15,6 +15,19 @@ function makeSplitedArr(eachSideNum) {
 }
 
 /**
+ * 페이지 각 자릿수의 총 합을 계산하는 함수
+ * @param {array} eachSide 한쪽 페이지 숫자를 쪼개 만든 배열
+ * @returns 각 자릿수의 총 합
+ */
+function sumCalc(eachSide) {
+  let eachSideSum = eachSide.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
+
+  return eachSideSum;
+}
+
+/**
  * 예외 상황을 판별하는 함수
  * @param {array} who 펼친 페이지 번호가 들어있는 배열
  * @returns 예외상황이 맞다면 true, 아니라면 false 반환
