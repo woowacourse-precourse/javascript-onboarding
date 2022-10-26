@@ -50,6 +50,11 @@ function problem1(pobi, crong) {
   // - 게임 시작 (최대값 구하는 함수 구현)
   p_max = calculMax(pobi);
   c_max = calculMax(crong);
+
+  // - 게임 결과
+  if (p_max > c_max) return 1;
+  if (c_max > p_max) return 2;
+  return 0;
 }
 
 module.exports = problem1;
