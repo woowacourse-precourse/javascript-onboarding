@@ -18,6 +18,8 @@ function calculator(remain, cash, ans) {
 }
 
 function problem5(money) {
+  // 큰 금액부터 나눗셈 연산을 진행하게 되므로
+  // 큰 금액이 정답 배열 앞쪽에 위치하게 된다.
   const cash = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
   let ans = [];
