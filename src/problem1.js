@@ -38,6 +38,14 @@ function problem1(pobi, crong) {
     crongScore.push(Math.max(add, mul));
   });
 
+  // 포비와 크롱의 점수를 비교하여 결과 값 return
+  if (Math.max(...pobiScore) > Math.max(...crongScore)) {
+    return 1;
+  } else if (Math.max(...pobiScore) < Math.max(...crongScore)) {
+    return 2;
+  } else if (Math.max(...pobiScore) === Math.max(...crongScore)) {
+    return 0;
+  }        
 }
 
 module.exports = problem1;
