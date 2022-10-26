@@ -1,5 +1,10 @@
 function problem1(pobi, crong) {
+  if (exception(pobi) || exception(crong)) return -1;
 
+  const pobiPoint = Math.max(digitSum(pobi),digitMul(pobi));
+  const crongPoint = Math.max(digitSum(crong),digitMul(crong));
+
+  return pointCompare(pobiPoint, crongPoint);
 }
 
 function pointCompare(pobiPoint, crongPoint) {
@@ -26,6 +31,15 @@ function digitMul(...arr) {
   const secondNum = secondArr.reduce((a,b) => (a*b));
 
   return Math.max(firstNum, secondNum);
+}
+
+function exception(arr) {
+  if (arr[0] == 1 || arr[1] == 400) return true;
+  if (arr[0] !== arr[1] - 1) return true;
+  if (arr.length !== 2) return true;
+  if (arr[0] % 2 === 0) return true;
+  
+  return false;
 }
 
 module.exports = problem1;
