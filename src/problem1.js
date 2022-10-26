@@ -1,7 +1,22 @@
 function problem1(pobi, crong) {
-  // 포비와 크롱의 가장 큰값을 찾는다. getMaxNumber
-  // pobiMaxNum  , crongMaxNum 비교
-  // 비교후 결과를 반환한다
+  let pobiNumber = {
+    odd: pobi[0],
+    even: pobi[1],
+    max: 0,
+  };
+
+  let crongNumber = {
+    odd: crong[0],
+    even: crong[1],
+    max: 0,
+  };
+
+  pobiNumber.max = getMaxNumber(pobiNumber.odd, pobiNumber.even);
+  crongNumber.max = getMaxNumber(crongNumber.odd, crongNumber.even);
+
+  if (pobiNumber.max === crongNumber.max) return 0;
+  else if (pobiNumber.max > crongNumber.max) return 1;
+  else if (pobiNumber.max < crongNumber.max) return 2;
 }
 
 function getMaxNumber(oddNumber, evenNumber) {
