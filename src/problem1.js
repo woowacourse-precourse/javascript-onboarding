@@ -28,6 +28,21 @@ function sumCalc(eachSide) {
 }
 
 /**
+ * 페이지 각 자릿수를 모두 곱하는 연산을 진행하는 함수
+ * @param {array} eachSide 한쪽 페이지 숫자를 쪼개 만든 배열
+ * @returns 각 자릿수의 곱
+ */
+function multipleCalc(eachSide) {
+  let eachSideMultiple = 1;
+
+  for (let i = 0; i < eachSide.length; i++) {
+    eachSideMultiple *= eachSide[i];
+  }
+
+  return eachSideMultiple;
+}
+
+/**
  * 예외 상황을 판별하는 함수
  * @param {array} who 펼친 페이지 번호가 들어있는 배열
  * @returns 예외상황이 맞다면 true, 아니라면 false 반환
