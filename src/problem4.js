@@ -5,14 +5,12 @@ const Z_ASCII = 90,
 
 function getLowerCaseConvert(code) {
   const newCode = z_ASCII - Math.abs(code - a_ASCII);
-  console.log(newCode);
 
   return String.fromCharCode(newCode);
 }
 
 function getUpperCaseConvert(code) {
   const newCode = Z_ASCII - Math.abs(code - A_ASCII);
-  console.log(newCode);
 
   return String.fromCharCode(newCode);
 }
@@ -37,11 +35,15 @@ function problem4(word) {
 
   for (ch of word) {
     if (regex.test(ch)) {
-      getConvert(ch);
+      answer += getConvert(ch);
+    } else {
+      answer += ch;
     }
   }
+
+  return answer;
 }
 
-problem4('I love you');
+console.log(problem4('I love you'));
 
 module.exports = problem4;
