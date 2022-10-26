@@ -13,3 +13,9 @@ function add(number){
 function multiply(number){
   return number.toString().split('').reduce((a,b)=>Number(a)*Number(b));
 }
+
+function bigNumbers(person){
+  return Math.max(...person.map((el)=>{
+      return Math.max(add(el),multiply(el))
+  }));
+}
