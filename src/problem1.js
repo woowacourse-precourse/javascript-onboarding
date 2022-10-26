@@ -5,6 +5,7 @@ function problem1(pobi, crong) {
   const crongScore = Math.max(
     ...crong.map(pageNum => Math.max(sumEachDigit(pageNum), multiplyEachDigit(pageNum)))
   )
+  return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0
 }
 
 const sumEachDigit = pageNum => {
