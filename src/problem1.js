@@ -27,7 +27,8 @@ function problem1(pobi, crong) {
   function isInvalidInput(pobi, crong) {
     const condition1 = hasBothEndsPage(pobi, crong);
     const condition2 = hasWrongLength(pobi, crong);
-    return condition1 | condition2;
+    const condition3 = hasWrongPage(pobi, crong);
+    return condition1 || condition2 || condition3;
   }
 
   function hasBothEndsPage(pobiPage, crongPage) {
@@ -39,7 +40,11 @@ function problem1(pobi, crong) {
     return TOTALPAGES.length !== LENGTHLIMIT * 2;
   }
 
+  function hasWrongPage(pobi, crong) {
+    const rightOrder = 2 !== (pobi[RIGHTPAGE] - pobi[LEFTPAGE]) + (crong[RIGHTPAGE] - crong[LEFTPAGE]);
+    const evenCheck = 0 !== pobi[RIGHTPAGE]%2 + crong[RIGHTPAGE]%2;
+    return rightOrder || evenCheck
+  }
 }
-console.log(problem1([3, 4], [199, 200]));
 
 // module.exports = problem1;
