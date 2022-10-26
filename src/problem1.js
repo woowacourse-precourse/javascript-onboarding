@@ -16,8 +16,22 @@ function calcMaxNumber(num) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const POBI_WIN = 1;
+  const CRONG_WIN = 2;
+  const DRAW = 0;
+  const EXCEPTION = -1;
+
+  const [pobiLeftPage, pobiRightPage] = pobi;
+  const [crongLeftPage, crongRightPage] = crong;
+
+  const pobiMaxNum = Math.max(
+    calcMaxNumber(pobiLeftPage),
+    calcMaxNumber(pobiRightPage)
+  );
+  const crongMaxNum = Math.max(
+    calcMaxNumber(crongLeftPage),
+    calcMaxNumber(crongRightPage)
+  );
 }
 
 module.exports = problem1;
