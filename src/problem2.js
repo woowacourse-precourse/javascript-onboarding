@@ -1,24 +1,38 @@
 function decrypt(cryptogram) {
-  let encryptedString = cryptogram;
-  let decryptedString = "";
+  let result = "";
 
-  for (let i = 0; i < encryptedString.length; i++) {
-    const currentChar = encryptedString[i];
-    const nextChar = encryptedString[i + 1];
+  for (let i = 0; i < cryptogram.length; i++) {
+    const currentChar = cryptogram[i];
+    const nextChar = cryptogram[i + 1];
 
     if (currentChar === nextChar) {
       i++;
       continue;
     }
 
-    decryptedString += currentChar;
+    result += currentChar;
   }
 
-  return decryptedString;
+  return result;
 }
 
 function problem2(cryptogram) {
-  return decrypt(cryptogram);
+  let encryptedString = cryptogram;
+  let decryptedString = "";
+  let isNeedDecryption = true;
+
+  while (isNeedDecryption) {
+    decryptedString = decrypt(encryptedString);
+
+    if (decryptedString === encryptedString) {
+      return decryptedString;
+    }
+
+    encryptedString = decryptedString;
+    decryptedString = "";
+  }
+
+  return decryptedString;
 }
 
 module.exports = problem2;
