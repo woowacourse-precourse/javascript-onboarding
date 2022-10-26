@@ -33,8 +33,8 @@ const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
  * @type {(pobi: number[], crong: number[]) => (-1 | 0 | 1 | 2)}
  */
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = calculateMyScore(pobi);
+  const crongScore = calculateMyScore(crong);
 }
 
 module.exports = problem1;
