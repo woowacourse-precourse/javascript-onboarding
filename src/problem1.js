@@ -16,6 +16,15 @@ const calcProduct = (num) => {
   return product;
 }
 
+const getMaxNum = (odd, even) => {
+  return Math.max(
+    calcSum(odd), 
+    calcSum(even), 
+    calcProduct(odd), 
+    calcProduct(even)
+  );
+}
+
 function problem1(pobi, crong) {
   return answer;
 }
