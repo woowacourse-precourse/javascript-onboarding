@@ -1,14 +1,15 @@
 function countClap(numbers) {
-  return numbers
-    .map(
-      (number) =>
-        number
-          .toString()
-          .split("")
-          .map(Number)
-          .filter((el) => el === 3 || el === 6 || el === 9).length
-    )
-    .reduce((a, b) => a + b, 0);
+  let count = 0;
+
+  numbers.forEach((number) =>
+    number
+      .toString()
+      .split("")
+      .map(Number)
+      .forEach((num) => (num === 3 || num === 6 || num === 9 ? count++ : count))
+  );
+
+  return count;
 }
 
 function problem3(number) {
@@ -16,4 +17,5 @@ function problem3(number) {
 
   return countClap(gameNumbers);
 }
+
 module.exports = problem3;
