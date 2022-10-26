@@ -1,14 +1,28 @@
 function isValid(pages) {
-  let [left, right] = pages;
-  // 왼쪽 페이지는 홀수
+  const FIRST_PAGE = 1;
+  const LAST_PAGE = 400;
+
+  if (pages.length > 2) {
+    return false;
+  }
+
+  const [left, right] = pages;
+  // 페이지가 범위를 넘어가면 오류
+  if (left < FIRST_PAGE || LAST_PAGE < left) {
+    return false;
+  }
+  if (right < FIRST_PAGE || LAST_PAGE < right) {
+    return false;
+  }
+  // 왼쪽 페이지는 홀수가 아니면 오류
   if (left % 2 !== 1) {
     return false;
   }
-  // 오른쪽 페이지는 짝수
+  // 오른쪽 페이지는 짝수가 아니면 오류
   if (right % 2 !== 0) {
     return false;
   }
-  // 연속된 수인지 확인
+  // 연속된 수가 아니면 오류
   if (Math.abs(right - left) !== 1) {
     return false;
   }
@@ -16,7 +30,7 @@ function isValid(pages) {
 }
 
 function calcScore(page) {
-  const numbers = page.toString().split('').map(str => parseInt(str));
+  const numbers = [...page.toString()].map(str => parseInt(str));
   const added = numbers.reduce((acc, cur) => acc + cur, 0);
   const multiplied = numbers.reduce((acc, cur) => acc * cur, 1);
   return Math.max(added, multiplied);
