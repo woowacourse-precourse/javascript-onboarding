@@ -1,4 +1,3 @@
-
 //페이지 숫자의 합
 function sumScore(score){
   let sum_score = 0;
@@ -39,21 +38,24 @@ function problem1(pobi, crong) {
   //예외사항 if문으로 제외하기
   if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
     return answer = -1;
-  }else if((pobi[1] <= 2 && pobi[0] >= 399)&&(crong[1] <= 2 && crong[0] >= 399)){
+  }
+  if((pobi[1] <= 2 && pobi[0] >= 399)&&(crong[1] <= 2 && crong[0] >= 399)){
     return answer = -1;
-  }else if(pobi.length != 2 && crong.length != 2){
+  }
+  if(pobi.length != 2 && crong.length != 2){
     return answer = -1;
-  }else{
-    //점수 비교
-    let pobi_score = maxScore(pobi);
-    let crong_score = maxScore(crong);
-    if(pobi_score > crong_score){
-      return answer = 1;
-    }else if(pobi_score == crong_score){
-      return amswer = 0;
-    }else if(pobi_score < crong_score){
-      return answer = 2;
-    }
-}
+  }
+  //점수 비교
+  let pobi_score = maxScore(pobi);
+  let crong_score = maxScore(crong);
+  if(pobi_score > crong_score){
+    return answer = 1;
+  }
+  if(pobi_score == crong_score){
+    return amswer = 0;
+  }
+  if(pobi_score < crong_score){
+    return answer = 2;
+  }
 }
 module.exports = problem1;
