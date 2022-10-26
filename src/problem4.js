@@ -13,13 +13,13 @@ const isUpperCase = (char) => {
 };
 
 const convertChar = (char) => {
-  char = char.toLowerCase();
-  const idx = CHAR_ARR.indexOf(char);
-  return CHAR_ARR[CHAR_LNEGTH - idx - 1];
+  const idx = CHAR_ARR.indexOf(char.toLowerCase());
+  const convertedChar = CHAR_ARR[CHAR_LNEGTH - idx - 1];
+  return isUpperCase(char) ? convertedChar.toUpperCase() : convertedChar;
 };
 
 function problem4(word) {
-  var answer;
+  let answer = "";
   return answer;
 }
 
