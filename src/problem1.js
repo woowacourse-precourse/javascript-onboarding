@@ -17,6 +17,11 @@ function problem1(pobi, crong) {
 
   //except
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+
+  //Calculate Max Value
+  let pobiMax = Math.max(calMax(pobi[0]), calMax(pobi[1]));
+  let crongMax = Math.max(calMax(crong[0]), calMax(crong[1]));
+
   return answer;
 }
 
