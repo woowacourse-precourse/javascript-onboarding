@@ -6,6 +6,14 @@ function problem2(cryptogram) {
 
   // List 화
   let cryptoList = cryptogram.split("");
+
+  // 값 비교 for문
+  for (let i = 0; i < alpa.length; i++) {
+    if (alpa[i] === alpa[i + 1]) {
+      alpa.splice(i, 2);
+      break;
+    }
+  }
   return answer;
 }
 
