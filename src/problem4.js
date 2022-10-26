@@ -4,21 +4,23 @@ function problem4(words) {
       return character;
     }
 
+    const asciiCharacter = character.char.CodeAt(0);
+
     if (isUpperCase(character)) {
-      return String.fromCharCode(155 - character.charCodeAt(0));
+      return String.fromCharCode(155 - asciiCharacter);
     }
 
     if (isLowerCase(character)) {
-      return String.fromCharCode(219 - character.charCodeAt(0));
+      return String.fromCharCode(219 - asciiCharacter);
     }
   };
 
   const isUpperCase = (character) => {
-    return character.charCodeAt(0) >= 65 && character.charCodeAt(0) <= 90;
+    return asciiCharacter >= 65 && asciiCharacter <= 90;
   };
 
   const isLowerCase = (character) => {
-    return character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122;
+    return asciiCharacter >= 97 && asciiCharacter <= 122;
   };
 
   if (typeof words !== 'string' || words.length < 1 || words.length > 1000) {
