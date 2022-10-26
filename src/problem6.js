@@ -1,9 +1,10 @@
 function problem6(forms) {
-  var answer;
+  var answer = [];
   let map = new Map();
   let rejectIndex = [];
   setMap(forms, map);
   checkNickname(forms, map, rejectIndex);
+  pushAnswer(answer, forms, rejectIndex);
   return answer;
 }
 
@@ -27,6 +28,12 @@ function checkNickname(forms, map, rejectIndex){
         break;
       }
     }
+  }
+}
+
+function pushAnswer(answer, forms, rejectIndex){
+  for(let i = 0; i < rejectIndex.size(); i++){
+    answer.push(forms[rejectIndex[i]][0]);
   }
 }
 
