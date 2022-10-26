@@ -42,14 +42,16 @@ function problem1(pobi, crong) {
     return biggestNumber;
   };
 
-  console.log('pobi : ', pobi);
-  console.log('crong : ', crong);
+  const getWinner = (pobiScore, crongScore) => {
+    const result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+    return result;
+  }
 
   const pobiScore = getBiggestNumber(getPageScore(pobi[0]), getPageScore(pobi[1]));
   const crongScore = getBiggestNumber(getPageScore(crong[0]), getPageScore(crong[1]));
 
-  console.log('pobiScore : ', pobiScore);
-  console.log('crongScore : ', crongScore);
+  answer = getWinner(pobiScore, crongScore);
+
   return answer;
 }
 
