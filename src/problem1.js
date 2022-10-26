@@ -43,6 +43,16 @@ function problem1(pobi, crong) {
     let multiplyResult = numList.reduce((pre, cur) => pre * cur);
     return multiplyResult;
   }
+
+  // 예외사항 체크 함수.
+  function except(pageNums) {
+    let pageDiff = pageNums[0] - pageNums[1];
+    return pageDiff === -1 ? false : true;
+  }
+
+  // 예외상황 체크.
+  if (except(pobi)) return -1;
+  if (except(crong)) return -1;
 }
 
 module.exports = problem1;
