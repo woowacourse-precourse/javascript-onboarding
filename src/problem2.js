@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  if (cryptogram.length <= 1) return cryptogram;
+  return getNoRepeat(cryptogram);
 }
 
 function getNoRepeat(cryptogram) {
