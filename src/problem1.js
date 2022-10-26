@@ -22,6 +22,12 @@ function problem1(pobi, crong) {
   let pobiMax = Math.max(calValue(pobi[0]), calValue(pobi[1]));
   let crongMax = Math.max(calValue(crong[0]), calValue(crong[1]));
 
+  //Compare
+  if (pobiMax === crongMax) {
+    answer = 0;
+  } else {
+    pobiMax > crongMax ? (answer = 1) : (answer = 2);
+  }
   return answer;
 }
 
