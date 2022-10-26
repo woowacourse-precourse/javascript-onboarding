@@ -1,5 +1,4 @@
 function problem1(pobi, crong) {
-  let answer = 0;
   function findBiggest(arr) {
     let biggest = 0;
     const numToString = arr.map(x => x.toString().split(''))
@@ -12,8 +11,14 @@ function problem1(pobi, crong) {
     return biggest;
   }
 
+  if (findBiggest(pobi) > findBiggest(crong)){
+    return 1;
+  }else if (findBiggest(pobi) < findBiggest(crong)){
+    return 2
+  }else{
+    return 0;
+  }
 
-  return answer;
 }
 
 module.exports = problem1;
