@@ -21,4 +21,14 @@ function digitMultiply(number) {
   return result;
 }
 
+function maxNumber(number1, number2) {
+  let result = Math.max(
+    digitSum(number1),
+    digitMultiply(number1),
+    digitSum(number2),
+    digitMultiply(number2)
+  );
+  return result;
+}
+
 module.exports = problem1;
