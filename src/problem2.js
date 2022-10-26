@@ -5,6 +5,8 @@ function removeDuplicates(str) {
 
       if (i > 1) {
         i -= 2;
+      } else {
+        i--;
       }
     }
   }
@@ -15,13 +17,13 @@ function removeDuplicates(str) {
 function problem2(cryptogram) {
   let answer = removeDuplicates(cryptogram);
 
-  if (answer.length > 2) {
-    return answer;
+  if (answer.length === 2) {
+    const [firstCharacter, lastCharacter] = answer;
+
+    return firstCharacter === lastCharacter ? '' : answer;
   }
 
-  const [firstCharacter, lastCharacter] = answer;
-
-  return firstCharacter === lastCharacter ? '' : answer;
+  return answer;
 }
 
 module.exports = problem2;
