@@ -34,7 +34,11 @@ function problem7(user, friends, visitors) {
     setUserScoreMap(userScoreMap, item, 1);
   });
 
-  console.log(userScoreMap);
+  const recommendedFrieds = [];
+  userScoreMap.forEach((value, key) => {
+    if (userMap.get(user).includes(key)) return;
+    recommendedFrieds.push([key, value]);
+  });
 }
 
 module.exports = problem7;
