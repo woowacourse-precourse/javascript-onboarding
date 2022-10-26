@@ -1,20 +1,30 @@
 const A_CHAR_CODE = "A".charCodeAt();
 const Z_CHAR_CODE = "Z".charCodeAt();
 
-const reverseAlphabet = (alphabet) => {
+const convert = (alpha) => {
+  const oldAlpha = alpha;
+  const newAlpha = reverseAlphabet(alpha);
+
+  return isLowerCase(oldAlpha) ? newAlpha.toLowerCase() : newAlpha;
+};
+
+const reverseAlphabet = (alpha) => {
   const result = String.fromCharCode(
-    A_CHAR_CODE + (Z_CHAR_CODE - alphabet.toUpperCase().charCodeAt())
+    A_CHAR_CODE + (Z_CHAR_CODE - alpha.toUpperCase().charCodeAt())
   );
   return result;
 };
 
-const isLowerCase = (oldAlpha) => {
-  return oldAlpha.match(/a-z/) ? true : false;
+const isLowerCase = (alpha) => {
+  return alpha.match(/[a-z]/) ? true : false;
 };
 
 function problem4(word) {
   var answer;
-  return answer;
+  answer = word.split("").map((item) => {
+    return item.match(/[a-zA-Z]/) ? convert(item) : item;
+  });
+  return answer.join("");
 }
 
 module.exports = problem4;
