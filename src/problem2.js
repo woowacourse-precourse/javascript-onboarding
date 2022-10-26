@@ -19,30 +19,56 @@ class ErrorCase {
   }
 }
 
+class Stack {
+  constructor() {
+    this._arr = [];
+  }
+
+  toString() {
+    return this._arr.join("");
+  }
+
+  isEmpty() {
+    return this._arr.length === 0;
+  }
+
+  peek() {
+    return this._arr[this._arr.length - 1];
+  }
+
+  pop() {
+    return this._arr.pop();
+  }
+
+  push(value) {
+    this._arr.push(value);
+  }
+}
+
 class Password {
   constructor(cryptogram) {
     new ErrorCase(cryptogram);
 
+    this.stack = new Stack();
     this.cryptogramList = cryptogram.split("");
   }
 
   decrypt() {
     let prevPopValue = "";
-    const stack = [];
 
     for (let char of this.cryptogramList) {
-      if (stack.length > 0 && stack[stack.length - 1] === char) {
-        stack.pop();
+      if (!this.stack.isEmpty() && this.stack.peek() === char) {
+        this.stack.pop();
         prevPopValue = char;
       } else if (prevPopValue === char) {
         continue;
       } else {
-        stack.push(char);
+        this.stack.push(char);
         prevPopValue = "";
       }
     }
 
-    return stack.join("");
+    return this.stack.toString();
   }
 }
 
