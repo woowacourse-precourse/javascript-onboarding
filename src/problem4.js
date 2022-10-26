@@ -3,6 +3,18 @@ function problem4(word) {
   return answer;
 }
 
+function getUpperReverseWord(char) {
+  return String.fromCharCode(
+    Math.abs(char.charCodeAt() - "Z".charCodeAt()) + "A".charCodeAt()
+  );
+}
+
+function getLowerReverseWord(char) {
+  return String.fromCharCode(
+    Math.abs(char.charCodeAt() - "z".charCodeAt()) + "a".charCodeAt()
+  );
+}
+
 function isUpperCase(char) {
   const ascii = char.charCodeAt();
   if (ascii >= 65 && ascii <= 90) return true;
