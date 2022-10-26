@@ -14,8 +14,12 @@ const getScore = (pages) => {
 };
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
 }
 
 module.exports = problem1;
