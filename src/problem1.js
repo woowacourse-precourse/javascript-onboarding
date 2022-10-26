@@ -7,6 +7,8 @@ function problem1(pobi, crong) {
   const crongScore = Math.max(...crong.map((num) => findMaxScore(num)))
 
   if (pobiScore > crongScore) answer = 1
+  else if (pobiScore < crongScore) answer = 2
+
   return answer
 }
 
