@@ -8,6 +8,8 @@ const add = (a, b) => a + b;
  */
 const multiply = (a, b) => a * b;
 
+const minus = (a, b) => a - b;
+
 /**
  * calculatePageScore
  * Calculate max value between multiplication and sum of page number
@@ -37,6 +39,8 @@ function problem1(pobi, crong) {
 
   if (pobi === undefined || crong === undefined) return -1;
   if (pobi.length !== ARR_LENGTH || crong.length !== ARR_LENGTH) return -1;
+  if (minus(pobi[0], pobi[1]) !== -1 || minus(crong[0], crong[1]) !== -1)
+    return -1;
 
   const pobiScore = calculateMyScore(pobi);
   const crongScore = calculateMyScore(crong);
