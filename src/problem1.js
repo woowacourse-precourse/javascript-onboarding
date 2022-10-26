@@ -1,5 +1,6 @@
-// 페이지 차이 확인 (ex. 99, 102)
+// 페이지 차이 확인 (ex. [99, 102], [96, 97])
 function checkGapPages(pobi, crong) {
+  if (pobi[0] % 2 !== 1 || crong[0] % 2 !== 1) return false;
   if ((pobi[1] - pobi[0] > 1) || (crong[1] - crong[0] > 1)) return false;
 
   return true;
