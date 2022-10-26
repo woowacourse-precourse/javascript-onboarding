@@ -56,7 +56,7 @@ function problem1(pobi, crong) {
       return 0;
     }
     if (inputNumber1 < inputNumber2) {
-      return -1;
+      return 2;
     }
   }
 
@@ -95,8 +95,24 @@ function problem1(pobi, crong) {
     pobiNumCalculList.push(RETURN_WINNER_COMPARED_TWO_NUMBER(number))
   );
 
+  pobiMaxNum = RETURN_MAX_NUM_IN_LIST(pobiNumCalculList);
+
   const crongNumList = crong.slice();
-  const CrongNumCalculList = [];
+  const crongNumCalculList = [];
+  let crongMaxNum;
+
+  crongNumList.forEach((number) =>
+    crongNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
+  );
+  crongNumList.forEach((number) =>
+    crongNumCalculList.push(RETURN_WINNER_COMPARED_TWO_NUMBER(number))
+  );
+
+  crongMaxNum = RETURN_MAX_NUM_IN_LIST(crongNumCalculList);
+
+  console.log(pobiMaxNum,crongMaxNum)
+
+  answer = RETURN_WINNER_COMPARED_TWO_NUMBER(pobiMaxNum, crongMaxNum);
 
   return answer;
 }
