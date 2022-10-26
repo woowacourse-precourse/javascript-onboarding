@@ -17,9 +17,18 @@ function setMapFriends(map, mapIndex, friends){
   for(let i = 0; i < friends.length; i++){
     for(let j = 0; j < 2; j++){
       if(!map.has(friends[i][j])){
-        map.set(friends[i][j]);
+        map.set(friends[i][j], mapIndex);
         mapIndex++;
       }
+    }
+  }
+}
+
+function setMapVisitors(map, mapIndex, visitors){
+  for(let i = 0; i < visitors.length; i++){
+    if(!map.has(visitors[i])){
+      map.set(visitors[i], mapIndex);
+      mapIndex++;
     }
   }
 }
