@@ -1,4 +1,4 @@
-function problem2(cryptogram) {
+function decrypt(cryptogram) {
   let encryptedString = cryptogram;
   let decryptedString = "";
 
@@ -15,6 +15,10 @@ function problem2(cryptogram) {
   }
 
   return decryptedString;
+}
+
+function problem2(cryptogram) {
+  return decrypt(cryptogram);
 }
 
 module.exports = problem2;
