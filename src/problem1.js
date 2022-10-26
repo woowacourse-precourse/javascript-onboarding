@@ -19,3 +19,21 @@ function bigNumbers(person){
       return Math.max(add(el),multiply(el))
   }));
 }
+
+function error(person){
+  const left = person[0];
+  const rigth = person[1];
+  if((rigth-left)!==1){
+      return false;
+  }
+  if(left > rigth){
+      return false;
+  }
+  if(left<1 || rigth>400){
+      return false;
+  }
+  if((left%2)!==1 || (rigth%2)!==0){
+      return false;
+  }
+  return true;
+}
