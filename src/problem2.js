@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const arr = cryptogram.split("");
+  if (arr[cnt] === arr[cnt + 1]) {
+    arr.splice(cnt, 2);
+  }
 }
 
 module.exports = problem2;
