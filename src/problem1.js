@@ -45,6 +45,15 @@ function problem1(pobi, crong) {
 
   //#4. 두 숫자를 비교해 게임의 승자를 알려주는 함수
 
+  function RETURN_WINNER_COMPARED_TWO_NUMBER(number1, number2) {
+    const inputNumber1 = Number(number1);
+    const inputNumber2 = Number(number2);
+
+    if(inputNumber1 > inputNumber2){return 1}
+    if(inputNumber1 === inputNumber2){return 0}
+    if(inputNumber1 < inputNumber2){return -1}
+  }
+
   //특이사항
 
   //!1. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않음
