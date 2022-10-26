@@ -10,10 +10,7 @@ const isValidPage = (book1, book2) => {
 // 각 자리수를 더해서 반환하는 함수
 const sum = (num) => {
   const numToString = num.toString().split("");
-  let sum = 0;
-  numToString.forEach((n) => {
-    sum += Number(n);
-  });
+  let sum = numToString.reduce((m, n) => m + Number(n), 0);
 
   return sum;
 };
@@ -21,11 +18,7 @@ const sum = (num) => {
 // 각 자리수를 곱해서 반환하는 함수
 const mul = (num) => {
   const numToString = num.toString().split("");
-  let mul = 1;
-
-  numToString.forEach((n) => {
-    mul *= Number(n);
-  });
+  let mul = numToString.reduce((m, n) => m * Number(n), 1);
 
   return mul;
 };
@@ -37,8 +30,7 @@ const maxNum = (book) => {
   book.forEach((page) => {
     let sumResult = sum(page);
     let mulResult = mul(page);
-    if (sumResult >= mulResult) max = sumResult;
-    if (sumResult < mulResult) max = mulResult;
+    max = Math.max(sumResult, mulResult);
   });
 
   return max;
