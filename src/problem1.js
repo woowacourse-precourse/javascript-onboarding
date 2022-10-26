@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   //제한 길이가 2 이므로 99~102 범위는 4이므로 -1 반환
   const PobiCheck = pobi[1]-pobi[0];
   const CrongCheck = crong[1]-crong[0];
-  if(PobiCheck>1 || CrongCheck>1){
+  if(PobiCheck>2 || CrongCheck>2){
     return -1;
   };
   if((pobi[0]===1 || pobi[1]===400) || (crong[0]===1 || pobi[1]===400)){
@@ -31,9 +31,9 @@ function problem1(pobi, crong) {
       return mulcrong;
     }
   }
+  console.log(MaxPobiNum());
+  console.log(MaxCrongiNum());
   if(MaxPobiNum()>MaxCrongiNum()){
-      console.log(MaxPobiNum);
-      console.log(MaxCrongiNum);
     return 1;
   }
   else if(MaxPobiNum<MaxCrongiNum){
@@ -46,14 +46,15 @@ function problem1(pobi, crong) {
 
 function addproblem1(num1,num2){
   var sum1=0,sum2=0;
-  while(sum1>0){
+  while(num1>0){
     sum1 += num1%10;
-    num1 = Math.floor(sum1/10);
-  }
-  while(sum2>0){
+    num1 = Math.floor(num1/10);
+  };
+  while(num2>0){
     sum2 += num2%10;
-    num2 = Math.floor(sum2/10);
-  }
+    num2 = Math.floor(num2/10);
+  };
+
   if(sum1>sum2){
     return sum1;
   }
@@ -63,14 +64,14 @@ function addproblem1(num1,num2){
 }
 
 function mulproblem1(num1,num2){
-  var mul1=0,mul2=0;
-  while(mul1>0){
+  var mul1=1,mul2=1;
+  while(num1!=0){
     mul1 *= num1%10;
-    num1 = Math.floor(mul1/10);
+    num1 = Math.floor(num1/10);
   }
-  while(mul2>0){
+  while(num2!=0){
     mul2 *= num2%10;
-    num2 = Math.floor(mul2/10);
+    num2 = Math.floor(num2/10);
   }
   if(mul1>mul2){
     return mul1;
@@ -79,5 +80,6 @@ function mulproblem1(num1,num2){
     return mul2;
   }
 }
+
 
 module.exports = problem1;
