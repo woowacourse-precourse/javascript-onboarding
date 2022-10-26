@@ -1,6 +1,7 @@
+const { infinityDeleteDuplicateWord } = require("./problem2.util");
+
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  return infinityDeleteDuplicateWord(cryptogram);
 }
 
 module.exports = problem2;
