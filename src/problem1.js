@@ -1,3 +1,7 @@
+function getMaxScore(pageNumbers) {
+  return Math.max(getMaxSum(pageNumbers), getMaxMultiplication(pageNumbers));
+}
+
 function problem1(pobi, crong) {
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
