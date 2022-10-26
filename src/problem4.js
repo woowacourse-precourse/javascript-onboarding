@@ -1,5 +1,8 @@
 function problem4(word) {
-  return replaceWord(word);
+  if (validWord(word)) {
+    return replaceWord(word);
+  }
+  return -1;
 }
 
 const replaceWord = (word) => {
@@ -14,6 +17,16 @@ const replaceWord = (word) => {
     result.push(String.fromCharCode(asciiCode));
   }
   return result.join('');
+};
+
+const validWord = (word) => {
+  if (typeof word !== 'string') {
+    return false;
+  }
+  if (word.length === 0 || word.length > 1000) {
+    return false;
+  }
+  return true;
 };
 
 module.exports = problem4;
