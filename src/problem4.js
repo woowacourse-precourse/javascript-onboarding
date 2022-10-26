@@ -1,6 +1,20 @@
 function problem4(word) {
-  var answer;
+  var answer = '';
   return answer;
+}
+
+function convertLetterByDictionary(letter, dictionary) {
+  if (letter === ' ') {
+    return ' ';
+  }
+
+  if (isLower(letter)) {
+    return dictionary[letter.toUpperCase()].toLowerCase();
+  }
+
+  if (isUpper(letter)) {
+    return dictionary[letter];
+  }
 }
 
 function isUpper(string) {
