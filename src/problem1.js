@@ -3,6 +3,32 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+// 예외 처리 함수
+function checkIsPageValid(pobi, crong) {
+  let isValid = true;
+
+  // 왼쪽 페이지와 오른쪽 페이지의 차이가 1이 아닌 경우
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) isValid = false;
+
+  // 페이지의 홀수/짝수가 맞지 않는 경우
+  if (
+    pobi[0] % 2 !== 1 ||
+    pobi[1] % 2 !== 0 ||
+    crong[0] % 2 !== 1 ||
+    crong[1] % 2 !== 0
+  )
+    isValid = false;
+
+  // 페이지가 1 ~ 400 사이에 있지 않은 경우
+  if (
+    pobi.filter((v) => v > 400 || v < 1).length > 0 ||
+    crong.filter((v) => v > 400 || v < 1).length > 0
+  )
+    isValid = false;
+
+  return isValid;
+}
+
 module.exports = problem1;
 
 // pobi, crong: 길이가 2인 배열
