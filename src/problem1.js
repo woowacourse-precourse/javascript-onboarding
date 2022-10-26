@@ -4,10 +4,24 @@
 // 3. 곱하기 점수 확인
 // 4. 결과값을 결정
 
+// 정수를 한 자 기준으로 리스트화 시키는 함수
+function listing(page) {
+  // 정수를 문자열로 변경후 ''기준으로 리스트로 변환, 변환된 문자열을 다시 정수형으로 변환
+  return String(page).split('').map(Number);
+}
+
+// 더하기 점수 확인
+function checkSum(page) {
+  // 정수를 리스트로 변환
+  const num_list = listing(page);
+  // 합계를 전환
+  return num_list.reduce((a, b) => a + b);
+}
+
 // 점수를 확인하는 함수
-function checkScore([page_left, page_right]){
+function checkScore([page_left, page_right]) {
   // 왼쪽, 오른쪽 페이지 각각의 더하기 점수와 곱하기 점수를 저장할 리스트 리스트
-  const socre_list = [];
+  const socre_list = [checkSum(page_left), checkSum(page_right)]; // 곱하기 함수 추가 예정
   // 점수 리스트 중 가장 큰 값을 반환
   return Math.max(...socre_list);
 }
