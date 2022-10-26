@@ -1,6 +1,21 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = getMaxScore(pobi);
+  const crongScore = getMaxScore(crong);
+
+  /**
+   * TODO: 예외 처리
+   * if (예외) return -1;
+   */
+
+  if (pobiScore > crongScore) {
+    return 1;
+  }
+
+  if (pobiScore < crongScore) {
+    return 2;
+  }
+
+  return 0;
 }
 
 module.exports = problem1;
