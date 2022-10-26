@@ -16,19 +16,24 @@ function problem6(forms) {
         .filter((unit) => !unit.includes("undefined"))
     )
     .flat();
-  const removeIntersection = [...new Set(twoLettersArray)];
 
-  return removeIntersection;
+  const removeDuplication = [...new Set(twoLettersArray)];
+
+  for (let i = 0; i < removeDuplication.length; i++) {
+    const intersectionIndex = twoLettersArray.indexOf(removeDuplication[i]);
+    if (intersectionIndex !== -1) {
+      twoLettersArray.splice(intersectionIndex, 1);
+    }
+  }
+
+  const duplication = [...new Set(twoLettersArray)];
+
+  const answer = forms
+    .filter((info) => duplication.some((v) => info[1].includes(v)))
+    .map((info) => info[0])
+    .sort();
+
+  return answer;
 }
-
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
 
 module.exports = problem6;
