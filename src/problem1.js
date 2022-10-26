@@ -23,4 +23,9 @@ const getMaxPointOfPage = (pageNum) => {
   return Math.max(sumAllDigit(pageNum), multiplyAllDigit(pageNum));
 };
 
+const getMyPoint = (pageArray) => {
+  const [leftPage, rightPage] = pageArray;
+  return Math.max(getMaxPointOfPage(leftPage), getMaxPointOfPage(rightPage));
+};
+
 module.exports = problem1;
