@@ -15,6 +15,20 @@ function problem1(pobi, crong) {
       .split('')
       .reduce((acc, cur) => acc * Number(cur), 1);
   };
+
+  const pobiScore = Math.max(
+    getSum(pobiLeftPage),
+    getSum(pobiRightPage),
+    getMultiplication(pobiLeftPage),
+    getMultiplication(pobiRightPage)
+  );
+
+  const crongScore = Math.max(
+    getSum(crongLeftPage),
+    getSum(crongRightPage),
+    getMultiplication(crongLeftPage),
+    getMultiplication(crongRightPage)
+  );
 }
 
 module.exports = problem1;
