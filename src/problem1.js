@@ -1,6 +1,9 @@
 function problem1(pobi, crong) {
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
+  const result = getResult(pobiScore, crongScore);
+
+  return result;
 }
 
 function calculatePageNumber(page) {
@@ -36,6 +39,18 @@ function getScore(person) {
   const rightScore = compareNumber(rightValues);
 
   return compareNumber({ first: leftScore, second: rightScore });
+}
+
+function getResult(pobi, crong) {
+  if (pobi > crong) {
+    return 1;
+  }
+  if (pobi === crong) {
+    return 0;
+  }
+  if (pobi < crong) {
+    return 2;
+  }
 }
 
 module.exports = problem1;
