@@ -1,5 +1,6 @@
 function problem2(cryptogram) {
   var answer;
+  answer = decodePassword(cryptogram)
   return answer;
 }
 
