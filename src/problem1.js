@@ -49,4 +49,16 @@ const detachEachNumeric = numericItem => {
   return resultArray;
 };
 
+/**
+ * @param {number[]} numericArrays
+ * @returns {number[][]} 각 숫자 배열을 순회하며 숫자의 요소를 분리시킨 뒤 배열로 반환한다.
+ */
+const getSeparatedNumericArrays = numericArrays => {
+  const resultArray = map(numericArrays, numericElement => {
+    return detachEachNumeric(numericElement);
+  });
+
+  return resultArray;
+};
+
 module.exports = problem1;
