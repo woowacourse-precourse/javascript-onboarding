@@ -46,7 +46,6 @@ function problem1(pobi,crong){
   if(pobi_score==crong_score){
       return 0;
   }  
-  return answer; 
 }
 
 
