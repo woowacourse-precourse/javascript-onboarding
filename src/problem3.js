@@ -1,6 +1,15 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let count = 0;
+  for (let i = 2; i <= number; i++) {
+    let num = i;
+    while (num > 2) {
+      if (num % 10 === 3 || num % 10 === 6 || num % 10 === 9) {
+        count++;
+      }
+    }
+  }
+
+  return count;
 }
 
 module.exports = problem3;
