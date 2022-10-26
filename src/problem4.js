@@ -19,6 +19,7 @@ function reverseCharacter(char) {
 }
 
 function isAlphabet(char) {
+  const index = 0;
   const A = "A".charCodeAt(index);
   const Z = "Z".charCodeAt(index);
   const a = "a".charCodeAt(index);
@@ -32,7 +33,16 @@ function isAlphabet(char) {
 }
 
 function problem4(word) {
-  var answer;
+  let answer = "";
+
+  for (const char of word) {
+    if (!isAlphabet(char)) {
+      answer += char;
+      continue;
+    }
+
+    answer += reverseCharacter(char);
+  }
 
   return answer;
 }
