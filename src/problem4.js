@@ -18,6 +18,8 @@ function problem4(word) {
     else if (word[i] === word[i].toLowerCase()) {
       answer += reverseWord[word[i].charCodeAt() - 97].toLowerCase();
     }
+    // 제한 사항 처리
+    else answer += word[i];
   }
 
   return answer;
