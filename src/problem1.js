@@ -16,7 +16,7 @@ function getScore(pages) {
     page = ('' + page).split('');
     let multiplyAll = page.reduce((pre,cur) => +pre * +cur);
     let plusAll = page.reduce((pre,cur) => +pre + +cur);
-    if(score < multiplyAll) score = multiplyAll;
+    if(score <= multiplyAll) score = multiplyAll;
     if(score < plusAll) score = plusAll;
   });
   return score;
