@@ -7,6 +7,12 @@ const isValidInput = (leftPage, rightPage) => {
   else return true;
 };
 
+// 페이지의 각 자리 숫자를 더한 값 함수 생성
+const sum = (number) => {
+  const numberToString = number.toString().split("");
+  let sumNum = numberToString.reduce((acc, cur) => x + Number(cur), 0);
+  return sumNum
+}
 
 // function problem1(pobi, crong) {
 //   var answer;
