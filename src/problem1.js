@@ -48,5 +48,13 @@ function problem1(pobi, crong) {
     Mul(crong[0]),
     Mul(crong[1])
   );
+
+  if (pobiNum > crongNum) {
+    return 1;
+  } else if (pobiNum < crongNum) {
+    return 2;
+  } else if (pobiNum === crongNum) {
+    return 0;
+  }
 }
 module.exports = problem1;
