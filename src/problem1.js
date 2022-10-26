@@ -3,7 +3,7 @@
 [x] 페이지가 첫 페이지인지 확인하는 기능을 구현한다.
 [x] 페이지가 마지막 페이지인지 확인하는 기능을 구현한다.
 [x] 페이지 각 자리를 더하는 기능을 구현한다.
-[ ] 페이지 각 자리를 곱하는 기능을 구현한다.
+[x] 페이지 각 자리를 곱하는 기능을 구현한다.
 [ ] 유저의 점수를 구하는 기능을 구현한다.
 [ ] 포비나 크롱의 페이지가 올바르지 않은 페이지면 -1을 반환한다.
 [ ] 포비나 크롱의 페이지가 첫 페이지면 -1을 반환한다.
@@ -53,6 +53,16 @@ function sumEachPageNumbers(page) {
   for (const eachPage of page) {
     for (const eachDigitString of String(eachPage)) {
       total += parseInt(eachDigitString, 10);
+    }
+  }
+  return total;
+}
+
+function multiplyEachPageNumbers(page) {
+  let total = 1;
+  for (const eachPage of page) {
+    for (const eachDigitString of String(eachPage)) {
+      total *= parseInt(eachDigitString, 10);
     }
   }
   return total;
