@@ -5,21 +5,21 @@ function problem1(pobi, crong) {
 
 const getNumberArray = (number) => {
   return String(number)
-    .split("")
+    .split('')
     .map((number) => Number(number));
 };
 
 const getSumNumber = (pageNumber) => {
   return getNumberArray(pageNumber).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
-    0
+    0,
   );
 };
 
 const getMulNumber = (pageNumber) => {
   return getNumberArray(pageNumber).reduce(
     (accumulator, currentValue) => accumulator * currentValue,
-    1
+    1,
   );
 };
 
