@@ -25,6 +25,12 @@ function handleExcept(pobi, crong){
   if(((pobi[0] + 1 != pobi[1])) || ((crong[0] + 1) != crong[1])){
     return false;
   }
+  if(!((Number.isInteger(pobi[0])) && (Number.isInteger(pobi[1])) && (Number.isInteger(crong[0])) && (Number.isInteger(crong[1])))){
+    return false;
+  }
+  if((pobi[0] < 1 || pobi[0] > 399) || (pobi[1] < 2 || pobi[1] > 400) || (crong[0] < 1 || crong[1] > 399) || (crong[1] < 2 || crong[1] > 400)){
+    return false;
+  }
 }
 
 function getMaxNum(player){
