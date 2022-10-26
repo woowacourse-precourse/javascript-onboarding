@@ -1,3 +1,27 @@
+function addDigits(number) {
+  let digits = number;
+  let result = 0;
+
+  while (digits > 0) {
+    result += a % 10;
+    digits = parseInt(a / 10);
+  }
+
+  return result;
+}
+
+function multiplyDigits(number) {
+  let digits = number;
+  let result = 1;
+
+  while (digits > 0) {
+    result *= a % 10;
+    digits = parseInt(a / 10);
+  }
+
+  return result;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
