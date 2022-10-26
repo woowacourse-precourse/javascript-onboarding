@@ -9,6 +9,16 @@ function check_valid(arr){
   }
   return isValid
 }
+function div_num(num){
+  // 넘겨받은 숫자를 자릿수로 나누어 배열로 return하는 함수
+  var arr = []
+  while (num>0){
+    now_num = num%10
+    arr.push(now_num)
+    num = parseInt(num/10)
+  }
+  return arr
+}
 function problem1(pobi, crong) {
   var answer;
   // 1. 예외사항인 경우(페이지 번호 규칙이 안맞는 경우)
@@ -16,7 +26,12 @@ function problem1(pobi, crong) {
     answer = -1
   }
   else{
-    
+    // 2-1.pobi,crong 각각 왼쪽페이지 번호 자릿수 나누기
+    var left_pobi = div_num(pobi[0])
+    var left_crong = div_num(crong[0])
+    // 2-2.pobi,crong 각각 오른쪽 페이지 번호 자릿수 나누기
+    var right_pobi = div_num(pobi[1])
+    var right_crong = div_num(crong[1])
   }
   return answer;
 }
