@@ -5,7 +5,6 @@ function problem2(cryptogram) {
   
   for (let index = 0; index < cryptogram.length; index++) {
     const char = cryptogram[index];
-    console.log(char, stack[stack.length-1])
     if(char === stack[stack.length-1]){
       stack.pop()
     }else{
