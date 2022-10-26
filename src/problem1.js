@@ -14,12 +14,17 @@ function caculateScore(page) {
   return Math.max(addScore, multiplyScore);
 }
 
+function decideWinner(pobiScore, crongScore) {
+  if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return 0;
+}
+
 function problem1(pobi, crong) {
   if (checkInvalidity(pobi) | checkInvalidity(crong)) return -1;
   const pobiScore = Math.max(caculateScore(pobi[0]), caculateScore(pobi[1]));
   const crongScore = Math.max(caculateScore(crong[0]), caculateScore(crong[1]));
-  var answer;
-  return answer;
+  return decideWinner(pobiScore, crongScore);
 }
 
 module.exports = problem1;
