@@ -4,7 +4,16 @@
 
 function problem3(number) {
   var answer;
+  let count = 0;
+  let j = 0;
 
+  for (let i = 1; i <= number; i++) {
+    j = i;
+    while (j > 0) {
+      if (j % 10 == 3 || j % 10 == 6 || j % 10 == 9) count++;
+      j = Math.floor((j /= 10));
+    }
+  }
   return answer;
 }
 
