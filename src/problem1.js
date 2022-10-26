@@ -12,11 +12,33 @@
  *   [X] - 배열의 총합을 구하는 함수 만들기
  *   [X] - 배열의 총곱을 구하는 함수 만들기
  *   [X] - 네개의 숫자 중 더 큰 수를 구하는 함수 만들기
- * [ ] - 포비와 크롱의 큰 수들을 비교하여 결과를 반환하는 함수 만들기
- *   [ ] - 포비 승: 1
- *   [ ] - 크롱 승: 2
- *   [ ] - 무승부: 0
+ * [X] - 포비와 크롱의 큰 수들을 비교하여 결과를 반환하는 함수 만들기
+ *   [X] - 포비 승: 1
+ *   [X] - 크롱 승: 2
+ *   [X] - 무승부: 0
  */
+
+/**
+ * 두 수를 비교해 결과를 반환한다.
+ * @param {Array} pobi 비교할 배열1
+ * @param {Array} crong 비교할 배열2
+ * @returns 비교 결과
+ */
+function compareScore(pobiScore, crongScore) {
+	if (pobiScore === crongScore) {
+		return 0;
+	}
+
+	const winner = Math.max(pobiScore, crongScore);
+	switch (winner) {
+		case pobiScore:
+			return 1;
+		case crongScore:
+			return 2;
+		default:
+			return -1;
+	}
+}
 
 /**
  * 배열 원소들의 합을 반환한다.
@@ -107,21 +129,21 @@ function isValidArgument(arr) {
  * @returns 게임의 결과를 반환한다.
  */
 function problem1(pobi, crong) {
-	var answer;
-
 	if (!isValidArgument(pobi) || !isValidArgument(crong)) {
 		return -1;
 	}
 
-	return answer;
+	const pobiScore = getScore(pobi);
+	const crongScore = getScore(crong);
+	return compareScore(pobiScore, crongScore);
 }
 
 module.exports = problem1;
 
 function Test() {
-	const pobi = [333, 334];
+	const pobi = [3, 4];
 	const crong = [3, 4];
-	problem1(pobi, crong);
+	console.log(problem1(pobi, crong));
 }
 
 Test();
