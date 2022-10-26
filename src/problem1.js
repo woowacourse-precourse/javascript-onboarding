@@ -38,20 +38,24 @@ function problem1(pobi, crong) {
     return leftvalue > rightvalue ? leftvalue : rightvalue;
   };
 
-  var answer;
+  const findPageIndex = (page) => {
+    const stringvalue = String(page);
+    let sum = 0;
+    let mul = 1;
+
+    for (let index = 0; index < stringvalue.length; index++) {
+      sum += Number(stringvalue[index]);
+      mul *= Number(stringvalue[index]);
+    }
+
+    return sum > mul ? sum : mul;
+  };
+
+  const pobiMax = findPageValues(pobi);
+  const crongMax = findPageValues(crong);
+
+  let answer;
   return answer;
 }
-const findPageIndex = (page) => {
-  const stringvalue = String(page);
-  let sum = 0;
-  let mul = 1;
-
-  for (let index = 0; index < stringvalue.length; index++) {
-    sum += Number(stringvalue[index]);
-    mul *= Number(stringvalue[index]);
-  }
-
-  return sum > mul ? sum : mul;
-};
 
 module.exports = problem1;
