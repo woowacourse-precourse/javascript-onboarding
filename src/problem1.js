@@ -1,23 +1,23 @@
 function problem1(pobi, crong) {
-  let answer;
-
+  const answer = solution(pobi, crong);
   return answer;
 }
 
-function isPageError({ leftPage, rightPage }) {
+function isPageError([leftPage, rightPage]) {
+  let isError = false;
   if (rightPage - leftPage !== 1) {
-    return true;
+    isError = true;
   }
 
   if (!(1 <= leftPage && leftPage <= 399)) {
-    return true;
+    isError = true;
   }
 
   if (!(2 <= rightPage && rightPage <= 400)) {
-    return true;
+    isError = true;
   }
 
-  return false;
+  return isError;
 }
 
 function calculateDigits(pages) {
@@ -40,6 +40,21 @@ function calculateDigits(pages) {
 function pickBigNumber(user) {
   const calculatedPages = calculateDigits(user);
   return Math.max(calculatedPages);
+}
+
+function solution(pobi, crong) {
+  if (isPageError(pobi) || isPageError(crong)) {
+    return -1;
+  }
+
+  const [pobiScore, crongScore] = [pickBigNumber(pobi), pickBigNumber(crong)];
+  if (pobiScore > crongScore) {
+    return 1;
+  } else if (pobiScore < crongScore) {
+    return 2;
+  } else if (pobiScore == crongScore) {
+    return 0;
+  }
 }
 
 module.exports = problem1;
