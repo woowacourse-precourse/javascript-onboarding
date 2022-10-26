@@ -52,7 +52,7 @@ function solution(pobi, crong) {
     return 1;
   } else if (pobiScore < crongScore) {
     return 2;
-  } else if (pobiScore == crongScore) {
+  } else if (pobiScore === crongScore) {
     return 0;
   }
 }
