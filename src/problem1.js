@@ -67,7 +67,7 @@ function isPageError(person) {
   const FIRST_PAGE = 1;
   const LAST_PAGE = 400;
 
-  if (person[0] <= 1 || person[1] >= 400) {
+  if (person[0] <= FIRST_PAGE || person[1] >= LAST_PAGE) {
     return "error";
   }
 
