@@ -17,12 +17,14 @@ function problem4(word) {
   return answer;
 }
 function UppertoAsCii(n){
-  var changeAscii = 155 - n
+  const converseUpper = 155
+  var changeAscii = converseUpper - n
   var changeAlpha = String.fromCharCode(changeAscii)
   return changeAlpha
 }
 function lowertoAsCii(n){
-  var changeAscii = 219 - n
+  const converseLower = 219
+  var changeAscii = converseLower - n
   var changeAlpha = String.fromCharCode(changeAscii)
   return changeAlpha
 }
