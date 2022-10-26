@@ -14,6 +14,13 @@ const maxScore = (page) => {
 
 function problem1(pobi, crong) {
   let answer;
+  const pobiScore = Math.max(maxScore(pobi[0]), maxScore(pobi[1]));
+  const crongScore = Math.max(maxScore(crong[0]), maxScore(crong[1]));
+
+  if (pobiScore > crongScore) answer = 1;
+  if (pobiScore < crongScore) answer = 2;
+  if (pobiScore === crongScore) answer = 0;
+
   return answer;
 }
 
