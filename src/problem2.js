@@ -7,6 +7,11 @@ function problem2(cryptogram) {
     return stringArr;
   };
 
+  const indexDeleter = (splicedArray, index) => {
+
+    splicedArray.splice(index, 1);
+    return splicedArray;
+  };
 
   return answer;
 }
