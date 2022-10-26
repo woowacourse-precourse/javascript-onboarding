@@ -1,8 +1,9 @@
+const ARRAY_369 = [3, 6, 9];
+
 function getClapCount(numberStr) {
-  const array369 = [3, 6, 9];
   const digits = numberStr.split('').map((n) => parseInt(n, 10));
 
-  return digits.filter((digit) => array369.includes(digit)).length;
+  return digits.filter((digit) => ARRAY_369.includes(digit)).length;
 }
 
 function problem3(number) {
