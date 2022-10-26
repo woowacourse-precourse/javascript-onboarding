@@ -2,6 +2,7 @@ function problem1(pobi, crong) {
   var answer;
 
   const getScoreNumberArr = score => {
+
     const scoreNumbersArr = (score + '').split('');
     scoreNumbersArr.map((scoreNumber, i) => scoreNumbersArr[i] =  scoreNumber * 1);
 
@@ -27,6 +28,7 @@ function problem1(pobi, crong) {
   };
 
   const getBiggestNumber = (number1, number2) => {
+
     return number1 > number2 ? number1 : number2;
   }
 
@@ -43,14 +45,26 @@ function problem1(pobi, crong) {
   };
 
   const getWinner = (pobiScore, crongScore) => {
+
     const result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
     return result;
   }
 
+  const getError = pagesArr => {
+
+    const isError = pagesArr[1] - pagesArr[0] !== 1 ? -1 : 1;
+    return isError;
+  }
+
+  const getTotalError = (pobi, crong) => {
+    return getError(pobi) * getError(crong);
+  }
+
   const pobiScore = getBiggestNumber(getPageScore(pobi[0]), getPageScore(pobi[1]));
   const crongScore = getBiggestNumber(getPageScore(crong[0]), getPageScore(crong[1]));
+  const pageError = getTotalError(pobi, crong);
 
-  answer = getWinner(pobiScore, crongScore);
+  answer = pageError === -1 ? pageError :  getWinner(pobiScore, crongScore);
 
   return answer;
 }
