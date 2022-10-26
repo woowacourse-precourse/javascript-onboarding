@@ -36,21 +36,21 @@ function compareScore(pobiScore, crongScore) {
 	}
 }
 
-function getMaxAddtionScore(numArr) {
+function getBigAddtionScore(numArr) {
 	const arr = numArr.map(v => {
 		return v.reduce((acc, cur) => {
-			return acc += cur, REDUCING.additionInit
-		});
+			return acc += cur;
+		}, REDUCING.additionInit);
 	});
-	
+
 	return Math.max(...arr);
 }
 
-function getMaxMultiplicationScore(numArr) {
+function getBigMultiplicationScore(numArr) {
 	const arr = numArr.map(v => {
 		return v.reduce((acc, cur) => {
-			return acc *= (cur ? cur : 1), REDUCING.multiplicationInit
-		});
+			return acc *= (cur ? cur : 1);
+		}, REDUCING.multiplicationInit);
 	});
 
 	return Math.max(...arr);
@@ -60,9 +60,9 @@ function splitNum(arr) {
 	return arr.map(v => Array.from(String(v), Number));
 }
 
-function getScore(arr) {
-	const addtionScore = getMaxAddtionScore(splitNum(arr));
-	const multiplicationScore = getMaxMultiplicationScore(splitNum(arr));
+function getBigScore(arr) {
+	const addtionScore = getBigAddtionScore(splitNum(arr));
+	const multiplicationScore = getBigMultiplicationScore(splitNum(arr));
 
 	return Math.max(addtionScore, multiplicationScore);
 }
@@ -100,7 +100,7 @@ function problem1(pobi, crong) {
 	if (!isValidArgument(pobi) || !isValidArgument(crong)) {
 		return RESULT.exception;
 	}
-	return compareScore(getScore(pobi), getScore(crong));
+	return compareScore(getBigScore(pobi), getBigScore(crong));
 }
 
 module.exports = problem1;
