@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
     const maxScoreArr = [];
+    if (exception(pobi, crong)) {
+        return -1;
+    }
     maxScoreArr.push(maxNumber(pobi));
     maxScoreArr.push(maxNumber(crong));
     let answer = compScore(maxScoreArr);
@@ -26,5 +29,9 @@ function compScore(scoreArr) {
         result = 0;
     }
     return result;
+}
+
+function exception(pobi, crong) {
+    return (pobi[1] !== pobi[0] + 1) || (crong[1] !== crong[0] + 1);
 }
 module.exports = problem1;
