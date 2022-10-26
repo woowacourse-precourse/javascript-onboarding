@@ -80,6 +80,21 @@ function problem1(pobi, crong) {
   // [1] 혹은 [400]의 숫자는 주어지는 예시에 포함되어서는 안됨
   // 처리방법 1. __test__에서 해당 예시가 들어가지 않게끔 변경
   // 처리방법 2. problem1.js에서 해당 숫자가 들어온다면 곧바로 에러를 return
+    // 예외사항은 1로 return 하기 때문에 [처리방법2]로 진행
+
+  function CHECK_FIRST_OR_END (list,startNum,endNum){
+
+    const inputList = list.slice();
+    const leftNum = Number(inputList[0])
+    const rightNum = Number(inputList[1])
+
+    if(leftNum <= startNum || rightNum >= endNum){
+      return false;
+    } else {
+      return true;
+    }
+
+  }
 
 
   //!2.페이지 수가 홀,짝으로 시작되지 않을 경우
@@ -104,7 +119,7 @@ function problem1(pobi, crong) {
   //!3.페이지 수가 1 차이가 나지 않을 경우.
     //#7 배열의 숫자 차이가 number 만큼 차이나는지 확인하는 함수
 
-  function CHECK_LIST_DIFFERENCE(list,number=1){
+  function CHECK_LIST_DIFFERENCE(list,number){
 
     const diffrenceNumber = number;
     const inputList = list.slice();
@@ -126,6 +141,13 @@ function problem1(pobi, crong) {
   const pobiNumCalculList = [];
   let pobiMaxNum;
 
+  const crongNumList = crong.slice();
+  const crongNumCalculList = [];
+  let crongMaxNum;
+
+
+
+
   pobiNumList.forEach((number) =>
     pobiNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
   );
@@ -134,10 +156,6 @@ function problem1(pobi, crong) {
   );
 
   pobiMaxNum = RETURN_MAX_NUM_IN_LIST(pobiNumCalculList);
-
-  const crongNumList = crong.slice();
-  const crongNumCalculList = [];
-  let crongMaxNum;
 
   crongNumList.forEach((number) =>
     crongNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
