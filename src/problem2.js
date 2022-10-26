@@ -17,12 +17,6 @@ function removeDuplicates(str) {
 function problem2(cryptogram) {
   let answer = removeDuplicates(cryptogram);
 
-  if (answer.length === 2) {
-    const [firstCharacter, lastCharacter] = answer;
-
-    return firstCharacter === lastCharacter ? '' : answer;
-  }
-
   return answer;
 }
 
