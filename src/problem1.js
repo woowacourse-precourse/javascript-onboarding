@@ -7,7 +7,7 @@
  *   [X] - 배열은 홀수, 짝수 순의 데이터를 저장한다. ex) [23, 24]
  *   [X] - 배열은 연속된 숫자의 데이터를 저장한다.
  *   [X] - 배열은 3~398 범위의 숫자 데이터를 저장한다.
- * [ ] - 인자의 각 자리수를 1의 자리로 만들어, 배열로 반환하는 함수를 작성한다.
+ * [X] - 인자의 각 자리수를 1의 자리로 만들어, 배열로 반환하는 함수를 작성한다.
  * [ ] - 배열의 총합을 구하는 함수 만들기
  * [ ] - 배열의 총곱을 구하는 함수 만들기
  * [ ] - 포비의 큰 수를 구하는 함수 만들기
@@ -19,7 +19,16 @@
  */
 
 /**
- * 
+ * 인자의 각 자리수를 1의 자리로 만들어, 배열로 반환한다.
+ * @param {*} num 스플릿할 숫자
+ * @returns 스플릿된 숫자를 가진 배열 반환
+ */
+ function splitNum(num) {
+	return Array.from(String(num), Number);;
+}
+
+/**
+ * 전달인자 예외처리
  * @param {Array} arr 검사하려는 배열
  * @returns 올바른 인자라면 true, 아니라면 false
  */
@@ -61,7 +70,6 @@ function isValidArgument(arr) {
 function problem1(pobi, crong) {
 	var answer;
 
-	// 배열 예외처리하기
 	if (!isValidArgument(pobi) || !isValidArgument(crong)) {
 		return -1;
 	}
@@ -72,7 +80,7 @@ function problem1(pobi, crong) {
 module.exports = problem1;
 
 function Test() {
-	const pobi = [399, 400];
+	const pobi = [387, 388];
 	const crong = [3, 4];
 	problem1(pobi, crong);
 }
