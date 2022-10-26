@@ -30,7 +30,7 @@ function problem4(word) {
   };
 
   for (let letter of word) {
-    answer += convertLetter(letter, dictionary);
+    answer += convertLetterByDictionary(letter, dictionary);
   }
 
   return answer;
