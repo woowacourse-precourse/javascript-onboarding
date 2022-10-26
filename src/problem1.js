@@ -39,6 +39,11 @@ function problem1(pobi, crong) {
     compareSumAndMultiply(crong[0]) > compareSumAndMultiply(crong[1])
       ? compareSumAndMultiply(crong[0])
       : compareSumAndMultiply(crong[1]);
+
+  answer = pobiValue - crongValue;
+  if (answer > 0) return 1;
+  if (answer < 0) return 2;
+  if (answer === 0) return 0;
 }
 
 module.exports = problem1;
