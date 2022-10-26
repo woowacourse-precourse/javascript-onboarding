@@ -9,8 +9,8 @@ function problem7(user, friends, visitors) {
       const friend = isfriend(recommendUser, relationship)
       if(friend) {
         if(friend === user) return;
-        if(recommends.has(friend)) recommends.set(friend, recommends.get(friend) + 1);
-        else recommends.set(friend, 1);
+        if(recommends.has(friend)) recommends.set(friend, recommends.get(friend) + 10);
+        else recommends.set(friend, 10);
       }
     });
   });
