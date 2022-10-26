@@ -39,7 +39,7 @@ function calculateDigits(pages) {
 
 function pickBigNumber(user) {
   const calculatedPages = calculateDigits(user);
-  return Math.max(calculatedPages);
+  return Math.max(...calculatedPages);
 }
 
 function solution(pobi, crong) {
