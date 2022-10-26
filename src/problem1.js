@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer = null
+
+  
+
   return answer;
 }
 
