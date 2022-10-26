@@ -6,6 +6,13 @@ const calcMaxValue = (page) => {
   return Math.max(sum, multiple);
 };
 
+const getScore = (pages) => {
+  const [leftPage, rightPage] = pages;
+  const leftPageValue = calcMaxValue(leftPage);
+  const rightPageValue = calcMaxValue(rightPage);
+  return Math.max(leftPageValue, rightPageValue);
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
