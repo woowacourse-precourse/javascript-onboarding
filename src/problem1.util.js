@@ -12,9 +12,14 @@ const checkInputError = ([left, right]) => {
 
 // 페이지 별로 큰값 생성
 // - 페이지 더하기
-
+const addPageNum = (num) =>
+  String(num)
+    .padStart(3, "0")
+    .split("")
+    .reduce((acc, cur) => acc + Number(cur), 0);
 // - 페이지 곱하기
 // 포비와 크롱 큰값 생성
 // 포비와 크롱 값 비교
 
 exports.checkInputError = checkInputError;
+exports.addPageNum = addPageNum;
