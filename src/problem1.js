@@ -51,6 +51,4 @@ function problem1(pobi, crong) {
   if (maxNum(pobi) === maxNum(crong)) return 0;
 }
 
-// 여기에 테스트
-
 module.exports = problem1;
