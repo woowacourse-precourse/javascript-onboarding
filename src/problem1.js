@@ -47,6 +47,10 @@ const bookPage = {
     let splitedNumber = String(number).split();
     return splitedNumber.reduce((a, b) => +a * +b);
   },
+  getAddDigits: function (number) {
+    let splitedNumber = String(number).split();
+    return splitedNumber.reduce((a, b) => +a + +b);
+  },
 };
 
 function problem1(pobi, crong) {
