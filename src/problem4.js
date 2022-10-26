@@ -3,10 +3,18 @@ function problem4(word) {
   let wordArr = [...word];
 
   for (let i = 0; i < wordArr.length; i++) {
-    if (wordArr[i] != " " && wordArr[i] == wordArr[i].toUpperCase()) {
+    if (
+      wordArr[i].charCodeAt() >= 65 &&
+      wordArr[i].charCodeAt() <= 90 &&
+      wordArr[i] == wordArr[i].toUpperCase()
+    ) {
       wordArr[i] = String.fromCharCode(90 - (wordArr[i].charCodeAt() - 65));
     }
-    if (wordArr[i] != " " && wordArr[i] == wordArr[i].toLowerCase()) {
+    if (
+      wordArr[i].charCodeAt() >= 97 &&
+      wordArr[i].charCodeAt() <= 122 &&
+      wordArr[i] == wordArr[i].toLowerCase()
+    ) {
       wordArr[i] = String.fromCharCode(122 - (wordArr[i].charCodeAt() - 97));
     }
   }
