@@ -1,8 +1,8 @@
 function problem1(pobi, crong) {
-  var pobiadd = Add(pobi[1]);
-  var crongadd = Add(crong[1]);
-  var pobimulti = Multi(pobi[1]);
-  var crongmulti = Multi(crong[1]);
+  var pobiadd = pobi[1]%10 == 0 ? Add(pobi[0]) : Add(pobi[1]);
+  var crongadd = crong[1]%10 == 0 ? Add(crong[0]) : Add(crong[1]);
+  var pobimulti = pobi[1]%10 == 0 ? Multi(pobi[0]) : Multi(pobi[1]);
+  var crongmulti = crong[1]%10 == 0 ? Multi(crong[0]) : Multi(crong[1]);
   var pobichoose = pobiadd > pobimulti ? pobiadd : pobimulti; 
   var crongchoose = crongadd > crongmulti ? crongadd : crongmulti; 
   var answer;
@@ -38,18 +38,17 @@ function Multi(n){
   return sum;
 }
 function Exception(pobi, crong){
-  if (pobi[1]-pobi[0]!=1){
+  if (pobi[1]-pobi[0] != 1){
     return false
   }
-  else if (crong[1]-crong[0]!=1){
+  else if (crong[1]-crong[0] != 1){
     return false
   }
-  else if (pobi[0]==1 || pobi[1] ==400 || crong[0]==1 || crong[1] ==400){
+  else if (pobi[0] == 1 || pobi[1] == 400 || crong[0]==1 || crong[1] == 400){
     return false
   }
   else{
     return true
   }
 }
-console.log(problem1([131, 132]	,[211,212]))
 module.exports = problem1;
