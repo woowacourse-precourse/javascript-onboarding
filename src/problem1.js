@@ -21,6 +21,20 @@ const mul = (number) => {
   return mulNum
 }
 
+// 2, 3의 최대값을 받아 비교하는 함수 생성
+const maxNum = (book) => {
+  let max = 0;
+
+  book.forEach((page) => {
+    let sumResult = sum(page);
+    let mulResult = mul(page);
+    max = Math.max(sumResult, mulResult);
+  });
+
+  return max;
+};
+
+
 // function problem1(pobi, crong) {
 //   var answer;
 //   return answer;
