@@ -42,5 +42,4 @@ function problem1(pobi, crong) {
   if (maxNum(pobi) < maxNum(crong)) return 2;
 }
 
-
 module.exports = problem1;
