@@ -4,7 +4,7 @@
 
 - [ ] [문제 1](docs/PROBLEM1.md) solution 함수 작성
 
-  - [ ] 각 자릿수를 더해 return하는 함수
+  - [x] 각 자릿수를 더해 return하는 함수
   - [ ] 각 자릿수를 곱해 return하는 함수
   - [ ] 포비, 크롱의 가장 큰 수를 구하는 로직
   - [ ] 게임 결과값 return 로직
