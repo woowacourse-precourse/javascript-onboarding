@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  const answer = solution(pobi, crong);
+  const answer = startGame(pobi, crong);
   return answer;
 }
 
@@ -42,7 +42,7 @@ function pickBigNumber(user) {
   return Math.max(...calculatedPages);
 }
 
-function solution(pobi, crong) {
+function startGame(pobi, crong) {
   if (isPageError(pobi) || isPageError(crong)) {
     return -1;
   }
