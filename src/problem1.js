@@ -46,6 +46,21 @@ function problem1(pobi, crong) {
   let pobi_score = maxNumOfPobi();
   let crong_score = maxNumOfCrong();
 
+  const solution = (pobi_score, crong_score) => {
+    if (pobi_score === crong_score) {
+      return 0;
+    }
+    if (pobi_score > crong_score) {
+      return 1;
+    }
+    if (pobi_score < crong_score) {
+      return 2;
+    }
+    return -1;
+  };
+
+  answer = solution(pobi_score, crong_score);
+
   return answer;
 }
 
