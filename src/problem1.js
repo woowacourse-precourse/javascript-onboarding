@@ -24,6 +24,25 @@ function userMax(userPages){
 function problem1(pobi, crong) {
   var answer;
 
+  //예외처리 
+  if (Math.abs(pobi[0] - pobi[1]) != 1 || Math.abs(crong[0] - crong[1]) != 1){
+    return -1;
+  }
+  //기능 2: 각 인원의 최대값 비교 및 출력
+  let maxPobi = userMax(pobi);
+  let maxCrong = userMax(crong);
+
+  if (maxPobi > maxCrong){
+    answer = 1;
+  }
+  else if(maxPobi === maxCrong){
+    answer = 0;
+  }
+  else{
+    ansewr = 2;
+  }
+
+
   return answer;
 }
 
