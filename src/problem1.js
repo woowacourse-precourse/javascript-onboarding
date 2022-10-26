@@ -6,6 +6,18 @@ function isInvalidInput(pages) {
   return false;
 }
 
+function getMaxInPage(page) {
+  const digits = Array.from(String(page)).map((digit) => Number(digit));
+  const sum = digits.reduce((acc, cur) => acc + cur, 0);
+  const multiply = digits.reduce((acc, cur) => acc * cur, 1);
+  return Math.max(sum, multiply);
+}
+
+function getScore(pages) {
+  const [leftPage, rightPage] = pages;
+  return Math.max(getMaxInPage(leftPage), getMaxInPage(rightPage));
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
