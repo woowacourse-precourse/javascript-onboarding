@@ -23,6 +23,13 @@ const setNickNameMap = (nickNameMap, lettersArr) => {
   );
 };
 
+const isOverLapping = (arr, nickname) => {
+  const lettersArr = splitTwoLetters(nickname);
+  return lettersArr.some((letter) => {
+    return arr.includes(letter);
+  });
+};
+
 function problem6(forms) {
   forms = forms.filter(([email, nickname]) => {
     return isCorrectEmail(email) && isHangeul(nickname);
@@ -36,6 +43,10 @@ function problem6(forms) {
   const overLappingWords = [];
   nickNameMap.forEach((value, key) => {
     if (value > 1) overLappingWords.push(key);
+  });
+
+  forms = forms.filter(([_, nickName]) => {
+    return isOverLapping(overLappingWords, nickName);
   });
 
   return answer;
