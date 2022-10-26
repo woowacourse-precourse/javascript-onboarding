@@ -4,7 +4,9 @@ function problem1(pobi, crong) {
   const scorePobi = getScore(pobi);
   const scoreCrong = getScore(crong);
 
-
+  if(scorePobi>scoreCrong) return 1;
+  else if(scorePobi<scoreCrong) return 2;
+  else return 0;
 }
 
 function isValid(page){
