@@ -1,18 +1,12 @@
 const isPagesOddAndEven = (pages) => pages[0] % 2 === 1 && pages[1] % 2 === 0;
 const isContinuous = (pages) => pages[0] + 1 === pages[1];
-const isStartPage = (page) => page === 1;
-const isLastPage = (page) => page === 400;
+const isInPageRange = (pages) => pages.every((page) => page > 1 && page < 400);
 
 function isValidPages(pages) {
-  if (!Array.isArray(pages)) {
-    return false;
-  }
-
   if (
     !isPagesOddAndEven(pages) ||
     !isContinuous(pages) ||
-    isStartPage(pages[0]) ||
-    isLastPage(pages[1])
+    !isInPageRange(pages)
   ) {
     return false;
   }
