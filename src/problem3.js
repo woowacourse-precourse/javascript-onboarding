@@ -11,7 +11,16 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     countArray.push(String(i).split(""));
   }
-  var answer;
+  let answer = countArray
+    .map((arr) =>
+      arr
+        .map((number) => {
+          return (Number(number) !== 0 && Number(number) % 3) === 0 ? 1 : 0;
+        })
+        .reduce((a, b) => a + b)
+    )
+    .reduce((a, b) => a + b);
+
   return answer;
 }
 
