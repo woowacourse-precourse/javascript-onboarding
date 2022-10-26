@@ -5,8 +5,10 @@
 // 4. 승패 결과 처리하기
 
 function problem1(pobi, crong) {
-  // 포비의 가장 큰 수
+  // pobi 가장 큰 수
   let pobiMax;
+  // 크롱의 가장 큰 수
+  let crongMax;
 
   // 예외 사항 처리하기
   // 1. 포비나 크롱 배열이 1, 2, 399, 400의 값을 가지고 있을 때
@@ -21,6 +23,19 @@ function problem1(pobi, crong) {
     .map((el) => String(el).split(""))
     .reduce((acc, cur) => {
       pobiMax = Math.max(
+        acc.reduce((acc, cur) => Number(acc) + Number(cur)),
+        acc.reduce((acc, cur) => Number(acc) * Number(cur)),
+        cur.reduce((acc, cur) => Number(acc) + Number(cur)),
+        cur.reduce((acc, cur) => Number(acc) * Number(cur))
+      );
+    });
+
+  // crong의 가장 큰 수 구하기
+  crong
+    // 배열안에 각 자리의 숫자를 담기
+    .map((el) => String(el).split(""))
+    .reduce((acc, cur) => {
+      crongMax = Math.max(
         acc.reduce((acc, cur) => Number(acc) + Number(cur)),
         acc.reduce((acc, cur) => Number(acc) * Number(cur)),
         cur.reduce((acc, cur) => Number(acc) + Number(cur)),
