@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = play(pobi,crong);
   
   return answer;
 }
@@ -56,3 +56,8 @@ function play(pobi,crong){
       return crongWin;
   }
 }
+
+let pobi = [131,132];
+let crong = [211,212];
+
+console.log(problem1(pobi,crong))
