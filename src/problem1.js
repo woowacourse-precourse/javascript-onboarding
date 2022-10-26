@@ -13,6 +13,8 @@ const multiply = (a, b) => a * b;
  */
 const minus = (a, b) => a - b;
 
+const isEven = (n) => (n % 2 == 0 ? true : false);
+
 /**
  * calculatePageScore
  * Calculate max value between multiplication and sum of page number
@@ -53,6 +55,7 @@ function problem1(pobi, crong) {
     crong[1] > MAX_PAGE
   )
     return -1;
+  if (isEven(pobi[0]) || isEven(crong[0])) return -1;
 
   const pobiScore = calculateMyScore(pobi);
   const crongScore = calculateMyScore(crong);
