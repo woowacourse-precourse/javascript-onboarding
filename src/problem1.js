@@ -12,10 +12,36 @@ function checkValidation(pages) {
   return false;
 }
 
-function calculateTotalScore() {
-  //펼친 페이지의 score 계산
-  
+/**
+ * 각 자리 숫자를 모두 더한 점수
+ * @param {number} page
+ * @returns {number} score
+ */
+function calculateAddScore(page) {
 }
+
+/**
+ * 각 자리 숫자를 모두 곱한 점수
+ * @param {number} page
+ * @returns {number} score
+ */
+function calculateMulScore(page) {
+}
+
+/**
+ * 펼친 페이지의 score 계산
+ * @param {Array} pages 
+ * @returns {boolean}
+ */
+function calculateTotalScore(pages) {
+  return Math.max(
+    calculateAddScore(pages[0]),
+    calculateMulScore(pages[0]),
+    calculateAddScore(pages[1]),
+    calculateMulScore(pages[1]),
+  );
+}
+
 
 function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong))
