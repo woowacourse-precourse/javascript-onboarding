@@ -2,7 +2,7 @@ const BookPage = {
   left: 0,
   right: 0,
   inputPages: function (pages) {
-    if (this.checkPages(pages)) {
+    if (!this.checkPages(pages)) {
       return false;
     }
     this.left = pages[0];
@@ -68,10 +68,10 @@ function problem1(pobi, crong) {
   let pobiBookPage = Object.assign({}, BookPage);
   let crongBookPage = Object.assign({}, BookPage);
 
-  if (pobiBookPage.inputPages(pobi)) {
+  if (!pobiBookPage.inputPages(pobi)) {
     return -1;
   }
-  if (crongBookPage.inputPages(crong)) {
+  if (!crongBookPage.inputPages(crong)) {
     return -1;
   }
   let pobiBigestNumber = +pobiBookPage.getBiggestNumber();
