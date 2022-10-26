@@ -4,6 +4,13 @@ function problem1(pobi, crong) {
   let pobiScore;
   let crongScore;
 
+  const getScoreNumberArr = score => {
+    const scoreNumbersArr = (score + '').split('');
+    scoreNumbersArr.map((scoreNumber, i) => scoreNumbersArr[i] =  scoreNumber * 1);
+
+    return scoreNumbersArr;
+  }
+
   const getNumberSumForPage = scoreNumbersArr => {
 
     const numberSum = scoreNumbersArr.reduce((acc, cur) => {
@@ -27,10 +34,8 @@ function problem1(pobi, crong) {
   }
 
   const getPageScore = (score) => {
-    console.log('score : ', score);
 
-    const scoreNumbersArr = (score + '').split('');
-    scoreNumbersArr.map((scoreNumber, i) => scoreNumbersArr[i] =  scoreNumber * 1);
+    const scoreNumbersArr = getScoreNumberArr(score);
 
     const numbersSum = getNumberSumForPage(scoreNumbersArr);
     const numbersMultiple = getNumberMultipleForPage(scoreNumbersArr);
