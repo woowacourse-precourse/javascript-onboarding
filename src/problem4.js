@@ -1,5 +1,5 @@
 /**
- * 
+ * 입력한 문자에 반대 문자를 반환한다.
  * @param {char} char 
  * @returns {char} reversed character
  */
@@ -13,9 +13,16 @@ function getReversedChar(char) {
     return char;
 }
 
+/**
+ * 입력한 문자열의 청개구리 문자열을 반환한다.
+ * @param {string} word
+ * @returns {string} reversed word
+ */
 function problem4(word) {
-  var answer;
-  return answer;
+  return word
+    .split("")
+    .map(getReversedChar)
+    .join("");
 }
 
 module.exports = problem4;
