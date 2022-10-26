@@ -16,6 +16,9 @@ function problem1(pobi, crong) {
   if (pobiPoints > crongPoints) return 1;
   else return 2;
 
+
+  // 계산을 위한 코드들 
+
   /**
    * - 유저 포인트 계산
    * @param {[Number, Number]} numbers 
@@ -30,9 +33,27 @@ function problem1(pobi, crong) {
   }
 
   function numberToDigits(pages) {
-    return [[1, 3], [1, 4]]
+    return pages.map(
+      page =>
+        page.toString()
+          .split('')
+          .map(num =>
+            +num));
   }
-
+  /**
+   * 
+   * @param {number} a 
+   * @param {number} b 
+   * @returns {number} sum
+   */
+  function add(a, b) { return a + b; }
+  /**
+   * 
+   * @param {number} a 
+   * @param {number} b 
+   * @returns {number} mul
+   */
+  function multiply(a, b) { return a * b; }
 
 
 
