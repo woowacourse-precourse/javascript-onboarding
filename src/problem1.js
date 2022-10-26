@@ -1,7 +1,8 @@
 function problem1(pobi, crong) {
   let resultData;
-  const validated = isValidPage(pobi, crong);
-  if (!validated) {
+  const isPobivalidated = isValidPage(pobi);
+  const isCrongvalidated = isValidPage(crong);
+  if (!isPobivalidated || !isCrongvalidated) {
     resultData = -1;
   }
 
