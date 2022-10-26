@@ -8,7 +8,7 @@ function problem1(pobi, crong) {
     if (arr[1] - arr[0] != 1) {
       return false;
     }
-    if (arr[0] == 1 || arr[1] == 400) {
+    if (arr[0] <= 1 || arr[1] >= 400) {
       return false;
     }
     if (arr[0] % 2 == 0 || arr[1] % 2 == 1) {
