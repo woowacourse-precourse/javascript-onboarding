@@ -1,8 +1,14 @@
 function problem1(pobi, crong) {
-  //1. 예외사항 판별 후 -1 리턴.
-  //2. pobi, crong점수 계산.
-  //3. 점수 비교 후 조건에 맞는 값 리턴.
+  if(isValid(pobi) || isValid(crong)) return -1;
 }
 
+
+
+function isValid(page){
+  if(page[0]%2!==1 || page[1]%2!==0) return true;
+  else if(page[1]!==page[0]+1) return true;
+  else if(page[0]===1 || page[1]===400) return true;
+  else return false;
+}
 
 module.exports = problem1;
