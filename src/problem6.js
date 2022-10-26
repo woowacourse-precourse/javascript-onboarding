@@ -66,6 +66,12 @@ function selectModelNickName(forms, ans) {
   }
 }
 
+function deleteOverlapEmail(ans) {
+  let noOverlapAns = Array.from(new Set(ans)).sort();
+
+  return noOverlapAns;
+}
+
 function problem6(forms) {
   if (
     !checkEmailLength(forms) ||
@@ -78,5 +84,7 @@ function problem6(forms) {
   let ans = [];
 
   selectModelNickName(forms, ans);
+
+  return deleteOverlapEmail(ans);
 }
 module.exports = problem6;
