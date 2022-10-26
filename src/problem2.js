@@ -1,4 +1,4 @@
-// 01:21 ~
+// 01:21 ~ 01:44
 function problem2(cryptogram) {
   let currentCryptogram = cryptogram;
   while (currentCryptogram) {
