@@ -14,6 +14,4 @@ function problem3(number) {
   return answer;
 }
 
-console.log(problem3(33));
-
 module.exports = problem3;
