@@ -43,6 +43,23 @@ function multipleCalc(eachSide) {
 }
 
 /**
+ * 각 페이지의 번호의 각 자릿수의 합, 곱 중 가장 큰 수를 반환하는 함수
+ * @param {number} eachSideNum 페이지의 번호
+ * @returns 페이지 각 자리의 합, 곱 중 가장 큰 수
+ */
+function eachSideCalc(eachSideNum) {
+  const eachSide = makeSplitedArr(eachSideNum);
+
+  const eachSideSum = sumCalc(eachSide);
+
+  const eachSideMultiple = multipleCalc(eachSide);
+
+  const eachSideMax = Math.max(eachSideSum, eachSideMultiple);
+
+  return eachSideMax;
+}
+
+/**
  * 예외 상황을 판별하는 함수
  * @param {array} who 펼친 페이지 번호가 들어있는 배열
  * @returns 예외상황이 맞다면 true, 아니라면 false 반환
