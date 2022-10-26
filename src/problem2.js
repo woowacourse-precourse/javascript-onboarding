@@ -1,8 +1,10 @@
 function problem2(cryptogram) {
+  if (cryptogram.length === 1) return cryptogram
+
   while (1) {
+    const duplicatedSection = []
     let left = 0,
-      right = 0,
-      duplicatedSection = []
+      right = 0
 
     while (left <= cryptogram.length && right <= cryptogram.length) {
       if (left === right) right++
