@@ -28,6 +28,16 @@
 // - [x] 마지막 면이 나오지 않게한다. - 400제외
 
 function problem1(pobi, crong) {
+  const findPageValues = (pages) => {
+    const leftpage = pages[0];
+    const rightpage = pages[1];
+
+    let leftvalue = findPageIndex(leftpage);
+    let rightvalue = findPageIndex(rightpage);
+
+    return leftvalue > rightvalue ? leftvalue : rightvalue;
+  };
+
   var answer;
   return answer;
 }
