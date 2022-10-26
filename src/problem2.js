@@ -7,6 +7,10 @@ function checkIsRepeatExist(cryptogram, regexp) {
   return cryptogram.match(regexp) !== null;
 }
 
+function deleteRepeat(cryptogram, regexp) {
+  return cryptogram.replace(regexp, "");
+}
+
 module.exports = problem2;
 
 // 입력값 : 문자열
