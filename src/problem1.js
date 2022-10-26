@@ -17,5 +17,23 @@ function problem1(pobi, crong) {
   if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
   if (pobi[0] === 1 || pobi[1] === 400 || crong[0] === 1 || crong[1] === 400)
     return -1;
+
+  function Sum(num) {
+    let sum = 0;
+    num
+      .toString()
+      .split("")
+      .forEach((x) => (sum += +x));
+    return sum;
+  }
+
+  function Mul(num) {
+    let mul = 1;
+    num
+      .toString()
+      .split("")
+      .forEach((x) => (mul *= +x));
+    return mul;
+  }
 }
 module.exports = problem1;
