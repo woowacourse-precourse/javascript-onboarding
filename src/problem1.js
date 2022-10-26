@@ -1,20 +1,5 @@
-/* 
-구현 기능 목록
-  [v] 각 자리 숫자를 모두 더하는 기능
-  [v] 각 자리 숫자를 모두 곱하는 기능
-  [v] 가장 큰 수를 구하는 기능
-  [ ] 점수를 비교 및 판단하는 기능
-*/
-
 function problem1(pobi, crong) {
-  let answer;
-  const [pobiLeft, pobiRight] = pobi;
-  const [crongLeft, crongRight] = crong;
-
-  console.log('pobi Result', findLargestNumber(pobiLeft, pobiRight));
-  console.log('crong Result', findLargestNumber(crongLeft, crongRight));
-
-  return answer;
+  return judgeResult(pobi, crong);
 }
 
 function sumByEachDigit(pages) {
@@ -41,5 +26,16 @@ function findLargestNumber(firstNumber, secondNumber) {
   return Math.max(sumFirstResult, sumSecondResult, multiplyFirstResult, multiplySecondResult);
 }
 
-problem1([97, 98], [197, 198]); // 0
+function judgeResult(pobi, crong) {
+  if (pobi[0] % 2 !== 1 || crong[0] % 2 !== 1 || pobi[1] % 2 !== 0 || crong[1] % 2 !== 0) return;
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1;
+
+  const pobiScore = findLargestNumber(pobi[0], pobi[1]);
+  const crongScore = findLargestNumber(crong[0], crong[1]);
+
+  if (pobiScore === crongScore) return 0;
+  else if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+}
+
 module.exports = problem1;
