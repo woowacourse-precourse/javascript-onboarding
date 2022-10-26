@@ -29,6 +29,12 @@ function problem7(user, friends, visitors) {
       getKnowEachOtherScore(userMap.get(user), value)
     );
   });
+
+  visitors.forEach((item) => {
+    setUserScoreMap(userScoreMap, item, 1);
+  });
+
+  console.log(userScoreMap);
 }
 
 module.exports = problem7;
