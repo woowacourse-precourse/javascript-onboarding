@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   const [a, b] = pobi;
+  const [c, d] = crong;
 
   const addPbOdd = a
     .toString()
@@ -21,7 +22,6 @@ function problem1(pobi, crong) {
     .split("")
     .reduce((acc, cur) => acc * cur);
 
-  const [c, d] = crong;
   const addCrOdd = c
     .toString()
     .split("")
@@ -47,6 +47,17 @@ function problem1(pobi, crong) {
 
   const pbMaxScore = Math.max.apply(null, pbScore);
   const crMaxScore = Math.max.apply(null, crScore);
+
+  if(pbMaxScore > crMaxScore ) {
+    return 1;
+  }
+  if(pbMaxScore < crMaxScore){
+    return 2;
+  }
+  if(pbMaxScore === crMaxScore){
+    return 0;
+  }
+
 }
 
 module.exports = problem1;
