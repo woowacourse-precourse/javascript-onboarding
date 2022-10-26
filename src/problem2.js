@@ -3,6 +3,10 @@ function problem2(cryptogram) {
   return answer;
 }
 
+function checkIsRepeatExist(cryptogram, regexp) {
+  return cryptogram.match(regexp) !== null;
+}
+
 module.exports = problem2;
 
 // 입력값 : 문자열
