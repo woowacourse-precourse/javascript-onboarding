@@ -17,6 +17,7 @@ function problem6(forms) {
       if (limitTextObj[testText] > 1) answer.push(email);
     }
   });
+  answer.sort();
   return answer;
 }
 

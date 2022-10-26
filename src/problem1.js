@@ -12,9 +12,9 @@ function scoreGenerator(pages) {
   const rightNumArr = ("" + right).split("").map((v) => parseInt(v));
   return Math.max(
     leftNumArr.reduce((acc, cur) => (acc += cur), 0),
-    leftNumArr.reduce((acc, cur) => (acc *= cur), 0),
+    leftNumArr.reduce((acc, cur) => (acc *= cur), 1),
     rightNumArr.reduce((acc, cur) => (acc += cur), 0),
-    rightNumArr.reduce((acc, cur) => (acc *= cur), 0)
+    rightNumArr.reduce((acc, cur) => (acc *= cur), 1)
   );
 }
 
