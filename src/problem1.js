@@ -4,3 +4,5 @@ function problem1(pobi, crong) {
   let crong_1 = crong[0];
   let crong_2 = crong[1];
 }
+
+module.exports = problem1;
