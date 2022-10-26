@@ -1,27 +1,28 @@
 function getKeys(nickname) {
-  const arr = [];
+  const keys = [];
   let num = 2;
   while (num <= nickname.length) {
     let cur = 0;
     while (cur + num <= nickname.length) {
-      arr.push(nickname.substr(cur, num));
+      keys.push(nickname.substr(cur, num));
       cur++;
     }
     num++;
   }
-  return arr;
+  return keys;
 }
 
 function problem6(forms) {
-  const list = {};
+  const duplicates = {};
   forms.map((form) => {
     getKeys(form[1]).map((key) => {
-      if (key in list) list[key].push(form[0]);
-      else list[key] = [form[0]];
+      if (key in duplicates) {
+        duplicates[key].push(form[0]);
+      } else duplicates[key] = [form[0]];
     });
   });
-  const result = Object.values(list).reduce((result, data) => {
-    if (data.length > 1) return result.concat(data);
+  const result = Object.values(duplicates).reduce((result, duplicate) => {
+    if (duplicate.length > 1) return result.concat(duplicate);
     return result;
   }, []);
   return [...new Set(result.sort())];
