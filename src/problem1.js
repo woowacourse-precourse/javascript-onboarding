@@ -9,6 +9,7 @@ function problem1(pobi, crong) {
   let pobiRightPageNum = pageRightSplit(pobi);
   let crongRightPageNum = pageRightSplit(crong);
 
+  // 최대 값 계산기
   const maxValueFn = nums => {
     let multiAllValue = 1;
     let addAllValue = 0;
@@ -29,9 +30,18 @@ function problem1(pobi, crong) {
       return multiAllValue;
     };
 
-    // 페이지 최대 값
     return Math.max(multiNums(nums), addNums(nums));
   };
+
+  // 각 페이지 최대 값
+  let pobiLeftMaxValue = maxValueFn(pobiLeftPageNum);
+  let pobiRightMaxValue = maxValueFn(pobiRightPageNum);
+  let crongLeftMaxValue = maxValueFn(crongLeftPageNum);
+  let crongRightMaxValue = maxValueFn(crongRightPageNum);
+
+  // 유저 점수
+  let pobiScore = Math.max(pobiLeftMaxValue, pobiRightMaxValue);
+  let crongScore = Math.max(crongLeftMaxValue, crongRightMaxValue);
 }
 
 module.exports = problem1;
