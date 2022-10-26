@@ -1,6 +1,5 @@
 function problem1(pobi, crong) {
   const [a, b] = pobi;
-
   const addPbOdd = a
     .toString()
     .split("")
@@ -20,7 +19,6 @@ function problem1(pobi, crong) {
     .reduce((acc, cur) => acc * cur);
 
   const [c, d] = crong;
-
   const addCrOdd = c
     .toString()
     .split("")
@@ -38,6 +36,11 @@ function problem1(pobi, crong) {
     .toString()
     .split("")
     .reduce((acc, cur) => acc * cur);
+  
+  const pbScore =[addPbOdd,addPbEven,mulPbOdd,mulPbEven];
+  const crScore = [ addCrOdd,addCrEven,mulCrOdd,mulCrEven];
+
+
 }
 
 module.exports = problem1;
