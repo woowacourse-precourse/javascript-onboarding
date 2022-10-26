@@ -17,6 +17,14 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+// 기능 3 구현: 펼친 책의 왼쪽 점수와 오른쪽 점수를 구해 대소 비교 후 반환 
+const getMaxValOnPages = (pages) => {
+  var leftScore = getMaxValOnPage(pages[0]);
+  var rightScore = getMaxValOnPage(pages[1]);
+
+  return leftScore >= rightScore ? leftScore : rightScore;
+}
+
 // 기능 1, 2: 숫자를 받아 각 자릿 수의 합, 곱을 구한 후, 대소 비교 후 반환
 const getMaxValOnPage = (page) => {
   var sumVal = 0;
