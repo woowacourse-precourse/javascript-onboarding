@@ -21,7 +21,7 @@ const multiplyAllDigit = (num) => {
 
 const pageValidCheck = (pageArray) => {
   const [leftPage, rightPage] = pageArray;
-  if (rightPage - leftPage === 1) return true;
+  if (rightPage % 2 === 0 && rightPage - leftPage === 1) return true;
   return false;
 };
 
