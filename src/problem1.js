@@ -11,12 +11,12 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  if (pobiScore > crongScore) {
+  if (pobiScore == crongScore) {
+    return 0;
+  } else if (pobiScore > crongScore) {
     return 1;
   } else if (pobiScore < crongScore) {
     return 2;
-  } else if (pobiScore == crongScore) {
-    return 0;
   }
 }
 
