@@ -1,6 +1,14 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const [a, b] = pobi;
+
+  const addPbOdd = a
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc + cur);
+  const addPbEven = b
+    .toString()
+    .split("")
+    .reduce((acc, cur) => acc + cur);
 }
 
 module.exports = problem1;
