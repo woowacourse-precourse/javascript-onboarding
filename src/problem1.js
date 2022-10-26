@@ -15,4 +15,22 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function sumOrMultipy(page){
+  var hundred = Math.floor(page / 100);
+  var ten = Math.floor((page%100) / 10);
+  var one = page % 10;
+  
+  var sum = hundred + ten + one;
+  var multiply = hundred * ten * one;
+  if(sum>multiply){
+    return sum;
+  }
+  else if(multiply > sum){
+    return multiply;
+  }
+  else if(multiply === sum){
+  //sum, multiply 변수 중 아무거나 반환해도 무관
+    return sum;
+  }
+}
 module.exports = problem1;
