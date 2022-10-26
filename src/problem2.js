@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
   let arr = [...cryptogram];
-  let answer = ''
   let i = 0;
   while (i != arr.length) {
       arr[i] == arr[i+1] ? (
