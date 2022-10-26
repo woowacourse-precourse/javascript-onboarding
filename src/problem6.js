@@ -9,7 +9,8 @@ function problem6(forms) {
         j--;
       }
     }
-  }
+  }  
+  answer = [...answer].sort();
   return answer;
 }
 function isDuplicated(name1, name2) {
