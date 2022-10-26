@@ -18,6 +18,11 @@ function pageMax(page_num) {
   return Math.max(sum, multi);
 }
 
+// 2. 왼쪽 페이지 번호의 결과와 오른쪽 페이지 번호의 결과 중 큰 수를 구하는 함수
+function pageScore(page) {
+  return Math.max(pageMax(page[0]), pageMax(page[1]));
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
