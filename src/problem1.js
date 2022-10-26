@@ -8,6 +8,14 @@ const add = (a, b) => a + b;
  */
 const multiply = (a, b) => a * b;
 
+const calculatePageScore = (page) => {
+  const splittedPage = page.toString().split("").map(Number);
+  return Math.max(
+    splittedPage.reduce(add, 0),
+    splittedPage.reduce(multiply, 1)
+  );
+};
+
 /**
  * problem 1
  * @type {(pobi: number[], crong: number[]) => (-1 | 0 | 1 | 2)}
