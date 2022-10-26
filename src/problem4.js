@@ -6,12 +6,12 @@ function getOpposite(letterCode, mid) {
   }
 }
 
-function lowerFlog(letterCode) {
+function lowerFrog(letterCode) {
   const mid = "m".charCodeAt(0);
   return getOpposite(letterCode, mid);
 }
 
-function upperFlog(letterCode) {
+function upperFrog(letterCode) {
   const mid = "M".charCodeAt(0);
   return getOpposite(letterCode, mid);
 }
@@ -19,10 +19,10 @@ function upperFlog(letterCode) {
 function problem4(word) {
   const result = word
     .replace(/[a-z]/g, (letter) =>
-      String.fromCharCode(lowerFlog(letter.charCodeAt(0)))
+      String.fromCharCode(lowerFrog(letter.charCodeAt(0)))
     )
     .replace(/[A-Z]/g, (letter) =>
-      String.fromCharCode(upperFlog(letter.charCodeAt(0)))
+      String.fromCharCode(upperFrog(letter.charCodeAt(0)))
     );
   return result;
 }
