@@ -5,6 +5,12 @@ function problem1(pobi, crong) {
 
 module.exports = problem1;
 
+function addPageNumbers(page) {
+  const pageArray = page.toString().split("");
+  const addValue = pageArray.reduce((prev, value) => prev + parseInt(value), 0);
+  return addValue;
+}
+
 /*
 왼쪽 홀수, 오른쪽 짝수.
 모든 페이지에 번호가 할당.
@@ -87,9 +93,7 @@ function problem1(pobi, crong) {
   } else {
     return 2
   }
-
-
-  
+  //여기도 기능따라 나눠야 할 듯. 가독성 낮음.
 
 }
 
