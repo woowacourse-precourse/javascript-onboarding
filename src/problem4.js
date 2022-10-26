@@ -1,6 +1,14 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  const reverseWordArray = [];
+  for (const str of word) {
+    if (isAlphabet(str)) {
+      const reverseAlphabet = getReverseAlphabet(str);
+      reverseWordArray.push(reverseAlphabet);
+    } else {
+      reverseWordArray.push(str);
+    }
+  }
+  return reverseWordArray.join("");
 }
 
 const isAlphabet = (str) => {
