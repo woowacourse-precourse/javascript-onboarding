@@ -8,8 +8,17 @@
  * Exceptions
  * 1. 1 ~ 10000 이하의 자연수
  */
+
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  var i;
+  var targets = ['3', '6', '9']
+
+  for (i = 1; i <= number; i++) {
+    String(i).split("").map((digit) => {
+      if(targets.includes(digit)) answer += 1
+    })
+  }
   return answer;
 }
 
