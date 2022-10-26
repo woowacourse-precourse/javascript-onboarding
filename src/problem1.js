@@ -12,4 +12,13 @@ function digitSum(number) {
   return result;
 }
 
+function digitMultiply(number) {
+  let result = 1;
+  while (number != 0) {
+    result *= Math.trunc(number % 10);
+    number = Math.trunc(number / 10);
+  }
+  return result;
+}
+
 module.exports = problem1;
