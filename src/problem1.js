@@ -14,16 +14,16 @@ function problem1(pobi, crong) {
 }
 
 function isInvalidInput(pobi, crong) {
-  if (isFirstOrLastPage(pobi, crong)) return true;
+  if (isOverRange(pobi, crong)) return true;
   if (isInvalidPageNumber(pobi, crong)) return true;
   return false;
 }
 
-function isFirstOrLastPage(pobi, crong) {
-  if (pobi[0] === 1) return true;
-  if (pobi[1] === 400) return true;
-  if (crong[0] === 1) return true;
-  if (crong[1] === 400) return true;
+function isOverRange(pobi, crong) {
+  if (pobi[0] <= 1) return true;
+  if (pobi[1] >= 400) return true;
+  if (crong[0] <= 1) return true;
+  if (crong[1] >= 400) return true;
   return false;
 }
 
