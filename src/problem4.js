@@ -14,8 +14,15 @@ function convertGreenFrog(code) {
   return code;
 }
 
+function getGreenFrogWord(word) {
+  const asciiCode = [...word] //
+    .map((x, i) => word.charCodeAt(i))
+    .map(convertGreenFrog);
+  return String.fromCharCode(...asciiCode);
+}
+
 function problem4(word) {
-  var answer;
+  const answer = getGreenFrogWord(word);
   return answer;
 }
 module.exports = problem4;
