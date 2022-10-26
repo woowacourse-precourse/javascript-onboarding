@@ -2,10 +2,6 @@ function problem1(pobi, crong) {
   let resultData;
   const isPobivalidated = isValidPage(pobi);
   const isCrongvalidated = isValidPage(crong);
-  if (!isPobivalidated || !isCrongvalidated) {
-    resultData = -1;
-  }
-
   const pobiResult = largestNum(pobi);
   const crongResult = largestNum(crong);
   if (pobiResult === crongResult) {
@@ -14,6 +10,10 @@ function problem1(pobi, crong) {
     resultData = 1;
   } else {
     resultData = 2;
+  }
+
+  if (!isPobivalidated || !isCrongvalidated) {
+    resultData = -1;
   }
 
   return resultData;
@@ -57,9 +57,9 @@ function isValidPage(pages) {
   const rangeValue = isInRange(pages); //pages 값이 1~400의 값인지 판단.
   const oddValue = isOdd(pages[0]); //배열의 0번째 인덱스가 홀수인지 판단.
   const evenValue = isEven(pages[1]); //배열의 1번째 인덱스가 짝수인지 판단.
-  const neighborValue = isNeighboringValue(pages); //배열에 담긴 두 값의 차이가 1인지 판단.
+  const neighborValue = isNeighboring(pages); //배열에 담긴 두 값의 차이가 1인지 판단.
 
-  if (rangeValue || oddValue || evenValue || neighborValue) {
+  if (rangeValue && oddValue && evenValue && neighborValue) {
     resultData = true;
   } else {
     resultData = false;
@@ -106,7 +106,7 @@ function isEven(page) {
   return resultData;
 }
 
-function isNeighboringValue(pages) {
+function isNeighboring(pages) {
   let resultData;
   const leftValue = pages[0];
   const rightValue = pages[1];
