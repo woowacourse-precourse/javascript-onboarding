@@ -62,6 +62,10 @@ describe("problem1", () => {
   test("case14", () => {
     expect(problem1([211, 212], [99, 102])).toEqual(-1);
   });
+
+  test("case15", () => {
+    expect(problem1([2, 1], [211, 212])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
