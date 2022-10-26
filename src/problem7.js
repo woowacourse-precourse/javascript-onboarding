@@ -39,6 +39,15 @@ function problem7(user, friends, visitors) {
     if (userMap.get(user).includes(key)) return;
     recommendedFrieds.push([key, value]);
   });
+
+  recommendedFrieds.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    else if (a[1] < b[1]) return 1;
+    else if (a[0] > b[0]) return 1;
+    else return -1;
+  });
+
+  console.log(recommendedFrieds);
 }
 
 module.exports = problem7;
