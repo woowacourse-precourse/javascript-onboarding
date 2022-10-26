@@ -5,6 +5,10 @@ const bookPage = {
     if (!this.checkPages(...pages)) {
       return false;
     }
+    this.left = pages[0];
+    this.right = pages[pages.length - 1];
+
+    return true;
   },
   checkPagesLength: function (...pages) {
     return pages.length == 2;
@@ -43,6 +47,12 @@ const bookPage = {
 
 function problem1(pobi, crong) {
   var answer;
+
+  let pobiBookPage = new bookPage();
+  let crongBookPage = new bookPage();
+  pobiBookPage.inputPages(pobi);
+  crongBookPage.inputPages(crong);
+
   return answer;
 }
 
