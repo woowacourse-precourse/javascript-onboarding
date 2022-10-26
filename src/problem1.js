@@ -16,6 +16,17 @@ function mulAllDigitNumber(page) {
   return result;
 }
 
+function getBiggestValue(arr) {
+  const calculatedNums = [];
+  for (let i = 0; i < 2; i++) {
+    const digitSum = sumAllDigitNumber(arr[i] + '');
+    const digitMul = mulAllDigitNumber(arr[i] + '');
+    calculatedNums.push(digitSum);
+    calculatedNums.push(digitMul);
+  }
+  return Math.max(...calculatedNums);
+}
+
 function problem1(pobi, crong) {
   var answer;
 
