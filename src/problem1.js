@@ -54,6 +54,20 @@ function addorMulNum(arr) {
   return Math.max(addLeft, addRight, mulLeft, mulRight);
 }
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (isInPage(pobi, crong) && isRightPage(pobi, crong)) {
+    let maxPobi = addorMulNum(pobi);
+    let maxCrong = addorMulNum(crong);
+
+    if (maxPobi > maxCrong) {
+      return 1;
+    } else if (maxPobi < maxCrong) {
+      return 2;
+    } else if (maxCrong === maxPobi) {
+      return 0;
+    }
+  }
+  return -1;
+}
 
 module.exports = problem1;
