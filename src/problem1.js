@@ -36,6 +36,13 @@ function problem1(pobi, crong) {
     let plusResult = numList.reduce((pre, cur) => pre + cur);
     return plusResult;
   }
+
+  // 페이지 번호의 각 숫자를 모두 곱해서 return 해주는 함수.
+  function pageNumEachMultiply(num) {
+    let numList = String(num).split("").map(Number);
+    let multiplyResult = numList.reduce((pre, cur) => pre * cur);
+    return multiplyResult;
+  }
 }
 
 module.exports = problem1;
