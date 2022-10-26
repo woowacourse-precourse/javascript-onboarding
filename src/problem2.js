@@ -23,6 +23,8 @@ function problem2(cryptogram) {
       if (i === cryptoList.length - 1) flag = false;
     }
   }
+  //문자열 화
+  answer = cryptoList.join("");
   return answer;
 }
 
