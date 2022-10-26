@@ -17,4 +17,17 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+// 기능 1, 2: 숫자를 받아 각 자릿 수의 합, 곱을 구한 후, 대소 비교 후 반환
+const getMaxValOnPage = (page) => {
+  var sumVal = 0;
+  var mulVal = 1;
+
+  String(page).split("").map((num) => {
+    sumVal += Number(num);
+    mulVal *= Number(num);
+  })
+
+  return sumVal >= mulVal ? sumVal : mulVal;
+}
+
 module.exports = problem1;
