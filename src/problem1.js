@@ -102,18 +102,15 @@ function problem1(pobi, crong) {
     out_of_bound(pobi[1]) ||
     out_of_bound(crong[0]) ||
     out_of_bound(crong[1])
-  ) 
-  {
+  ) {
     answer = -1;
   }
   //첫 페이지가 짝수, 다음 페이지가 홀수인 경우 올바르지 않은 케이스
-  else if(is_odd(pobi[0]) == false && is_odd(pobi[1]) == true){
+  else if (is_odd(pobi[0]) === false && is_odd(pobi[1]) === true) {
     answer = -1;
-  }
-  else if(is_odd(crong[0] == false && is_odd(crong[1]) == true){
+  } else if (is_odd(crong[0]) === false && is_odd(crong[1]) === true) {
     answer = -1;
-  }
-  else if (crong_score > pobi_score) {
+  } else if (crong_score > pobi_score) {
     answer = 2;
   } else if (pobi_score > crong_score) {
     answer = 1;
