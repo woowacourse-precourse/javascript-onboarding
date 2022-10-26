@@ -8,18 +8,24 @@ function isValid(pages) {
   if (right % 2 !== 0) {
     return false;
   }
-  if (Math.abs(right - left) > 1) {
+  // 연속된 수인지 확인
+  if (Math.abs(right - left) !== 1) {
     return false;
   }
   return true;
 }
 
-function problem1(pobi, crong) {
-  var answer;
+function calcScore(page) {
+  const numbers = page.toString().split('').map(str => parseInt(str));
+  const added = numbers.reduce((acc, cur) => acc + cur, 0);
+  const multiplied = numbers.reduce((acc, cur) => acc * cur, 1);
+  return Math.max(added, multiplied);
+}
+
+function problem1(pobi, crong) {ㅌㅈ
   if (!isValid(pobi) || !isValid(crong)) {
-    return -1;
+    return EXCEPT;
   }
-  return answer;
 }
 
 module.exports = problem1;
