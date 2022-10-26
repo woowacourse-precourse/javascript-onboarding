@@ -25,7 +25,7 @@ const BookPage = {
   checkPagesDistance: function (pages) {
     let leftPage = +pages[0];
     let rightPage = +pages[pages.length - 1];
-    return leftPage - rightPage == 1;
+    return leftPage - rightPage == -1;
   },
   checkPages: function (pages) {
     if (!this.checkPagesLength(pages)) {
@@ -44,11 +44,11 @@ const BookPage = {
     return true;
   },
   getMulDigits: function (number) {
-    let splitedNumber = String(number).split();
+    let splitedNumber = String(number).split("");
     return splitedNumber.reduce((a, b) => +a * +b);
   },
   getAddDigits: function (number) {
-    let splitedNumber = String(number).split();
+    let splitedNumber = String(number).split("");
     return splitedNumber.reduce((a, b) => +a + +b);
   },
   getBiggestNumber: function () {
@@ -68,10 +68,10 @@ function problem1(pobi, crong) {
   let pobiBookPage = Object.assign({}, BookPage);
   let crongBookPage = Object.assign({}, BookPage);
 
-  if (!pobiBookPage.inputPages(pobi)) {
+  if (pobiBookPage.inputPages(pobi)) {
     return -1;
   }
-  if (!crongBookPage.inputPages(crong)) {
+  if (crongBookPage.inputPages(crong)) {
     return -1;
   }
   let pobiBigestNumber = +pobiBookPage.getBiggestNumber();
