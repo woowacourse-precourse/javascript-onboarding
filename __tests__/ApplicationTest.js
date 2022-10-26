@@ -67,6 +67,7 @@ describe("problem6", () => {
         ["nlom0218@naver.com", "홍동h"],
         ["nlom0218@email.com", "hd"],
         ["nlom0218@email.com", "홍동"],
+        ["nlom0@email.com", "김홍동"],
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
