@@ -10,6 +10,11 @@
 
 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
 
+## 기능 목록
+
+Feat: Find same letters in a row
+Feat: Remove function
+
 ### 제한사항
 
 - cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
