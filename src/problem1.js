@@ -101,6 +101,22 @@ function exceptionCheck(who) {
   return false;
 }
 
+/**
+ * 승자를 판별하는 함수
+ * @param {number} pobi 포비의 최종 결과 값
+ * @param {number} crong 크롱의 최종 결과 값
+ * @returns 포비 승 == 1, 크롱 승 === 2, 무승부 === 0 반환
+ */
+function whoIsWinner(pobi, crong) {
+  if (pobi > crong) {
+    return 1;
+  } else if (pobi < crong) {
+    return 2;
+  } else if (pobi === crong) {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   // 한 명의 입력이라도 예외 상황이라면 -1 반환
   if (exceptionCheck(pobi) || exceptionCheck(crong)) {
