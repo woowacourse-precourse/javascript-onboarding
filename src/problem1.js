@@ -19,4 +19,8 @@ const pageValidCheck = (pageArray) => {
   return false;
 };
 
+const getMaxPointOfPage = (pageNum) => {
+  return Math.max(sumAllDigit(pageNum), multiplyAllDigit(pageNum));
+};
+
 module.exports = problem1;
