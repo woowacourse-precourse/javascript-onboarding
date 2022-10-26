@@ -2,13 +2,13 @@
 
 ## 기능 구현 목록 🎯(구현 과정에서 업데이트)
 
-- [ ] [문제 1](docs/PROBLEM1.md) solution 함수 작성
+- [x] [문제 1](docs/PROBLEM1.md) solution 함수 작성
 
   - [x] 각 자릿수를 더해 return하는 함수
   - [x] 각 자릿수를 곱해 return하는 함수
   - [x] 포비, 크롱의 가장 큰 수를 구하는 로직
   - [x] 게임 결과값 return 로직
-  - [ ] 예외사항 처리 로직
+  - [x] 예외사항 처리 로직
 
 - [ ] [문제 2](docs/PROBLEM2.md) solution 함수 작성
 
