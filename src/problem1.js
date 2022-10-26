@@ -1,6 +1,21 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  let resultData;
+  const validated = isValidPage(pobi, crong);
+  if (!validated) {
+    resultData = -1;
+  }
+
+  const pobiResult = largestNum(pobi);
+  const crongResult = largestNum(crong);
+  if (pobiResult === crongResult) {
+    resultData = 0;
+  } else if (pobiResult > crongResult) {
+    resultData = 1;
+  } else {
+    resultData = 2;
+  }
+
+  return resultData;
 }
 
 module.exports = problem1;
