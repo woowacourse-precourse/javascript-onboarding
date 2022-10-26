@@ -22,6 +22,11 @@ function calcScore(page) {
   return Math.max(added, multiplied);
 }
 
+function getScore(pages) {
+  const [left, right] = pages;
+  return Math.max(calcScore(left), calcScore(right));
+}
+
 function problem1(pobi, crong) {ㅌㅈ
   if (!isValid(pobi) || !isValid(crong)) {
     return EXCEPT;
