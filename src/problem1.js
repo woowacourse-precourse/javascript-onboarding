@@ -24,9 +24,13 @@ const calcMaxNum = (arr) => {
   return Math.max(sumAllDigit(arr[0]), sumAllDigit(arr[1]), multiplyAllDigit(arr[0]), multiplyAllDigit(arr[1]));
 }
 
+// 포비와 크롱의 점수를 비교하는 기능
 function problem1(pobi, crong) {
   let result;
   if(!checkValid(pobi, crong)) result = -1;
+  else if(calcMaxNum(pobi) > calcMaxNum(crong)) result = 1;
+  else if(calcMaxNum(pobi) < calcMaxNum(crong)) result = -1;
+  else result = 0;
   return result;
 }
 
