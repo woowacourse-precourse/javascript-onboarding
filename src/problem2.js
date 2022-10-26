@@ -28,4 +28,15 @@ function isUniqueWords(wordsArray) {
   return flag;
 }
 
+function problem2(cryptogram) {
+  let cryptogramArray = cryptogram.split("");
+  let newCryptogramArray = deleteDuplicatedWord(cryptogramArray);
+
+  while (!isUniqueWords(newCryptogramArray)) {
+    newCryptogramArray = deleteDuplicatedWord(newCryptogramArray);
+  }
+
+  return newCryptogramArray.join("");
+}
+
 module.exports = problem2;
