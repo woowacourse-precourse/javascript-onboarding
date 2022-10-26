@@ -29,6 +29,10 @@ function problem1(pobi, crong) {
     getMultiplication(crongLeftPage),
     getMultiplication(crongRightPage)
   );
+
+  if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return 0;
 }
 
 module.exports = problem1;
