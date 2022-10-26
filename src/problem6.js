@@ -20,13 +20,11 @@ function problem6(forms) {
       else list[key] = [form[0]];
     });
   });
-  console.log(
-    Object.values(list).reduce((result, data) => {
-      if (data.length > 1) return result.concat(data);
-      return result;
-    }, [])
-  );
-  console.log(list);
+  const result = Object.values(list).reduce((result, data) => {
+    if (data.length > 1) return result.concat(data);
+    return result;
+  }, []);
+  return [...new Set(result.sort())];
 }
 
 module.exports = problem6;
