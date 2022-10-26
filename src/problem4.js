@@ -1,34 +1,37 @@
+const CONSTANTS = {
+  FIRST_INDEX: 0,
+  ASCII: {
+    A: "A".charCodeAt(this.FIRST_INDEX), // 65
+    Z: "Z".charCodeAt(this.FIRST_INDEX), // 90
+    a: "a".charCodeAt(this.FIRST_INDEX), // 97
+    z: "z".charCodeAt(this.FIRST_INDEX), // 122
+  },
+};
+
 function isUpperCase(char) {
   return char.toUpperCase() === char;
 }
 
 function reverseCharacter(char) {
-  const index = 0;
-  const A = "A".charCodeAt(index); // 65
-  const Z = "Z".charCodeAt(index); // 90
-  const a = "a".charCodeAt(index); // 97
-  const z = "z".charCodeAt(index); // 122
+  const { FIRST_INDEX, ASCII } = CONSTANTS;
 
-  const asciiChar = char.charCodeAt(index);
+  const asciiChar = char.charCodeAt(FIRST_INDEX);
 
   if (isUpperCase(char)) {
-    return String.fromCharCode(Z - asciiChar + A);
+    return String.fromCharCode(ASCII.Z - asciiChar + ASCII.A);
   }
 
-  return String.fromCharCode(z - asciiChar + a);
+  return String.fromCharCode(ASCII.z - asciiChar + ASCII.a);
 }
 
 function isAlphabet(char) {
-  const index = 0;
-  const A = "A".charCodeAt(index);
-  const Z = "Z".charCodeAt(index);
-  const a = "a".charCodeAt(index);
-  const z = "z".charCodeAt(index);
+  const { FIRST_INDEX, ASCII } = CONSTANTS;
 
-  const asciiChar = char.charCodeAt(index);
+  const asciiChar = char.charCodeAt(FIRST_INDEX);
 
   return (
-    (asciiChar >= A && asciiChar <= Z) || (asciiChar >= a && asciiChar <= z)
+    (asciiChar >= ASCII.A && asciiChar <= ASCII.Z) ||
+    (asciiChar >= ASCII.a && asciiChar <= ASCII.z)
   );
 }
 
