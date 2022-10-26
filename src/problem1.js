@@ -2,7 +2,7 @@ function problem1(pobi, crong) {
     const maxScoreArr = [];
     maxScoreArr.push(maxNumber(pobi));
     maxScoreArr.push(maxNumber(crong));
-    let answer;
+    let answer = compScore(maxScoreArr);
     return answer;
 }
 
@@ -16,5 +16,15 @@ function maxNumber(people) {
         score.push(mult);
     })
     return Math.max(...score);
+}
+
+function compScore(scoreArr) {
+    let result;
+    const maxScore = Math.max(...scoreArr);
+    result = scoreArr.indexOf(maxScore) + 1;
+    if ((scoreArr[0] === scoreArr[1])) {
+        result = 0;
+    }
+    return result;
 }
 module.exports = problem1;
