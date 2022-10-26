@@ -31,7 +31,20 @@ function problem1(pobi, crong) {
     return findMax(leftMax_of_pobi, rightMax_of_pobi);
   };
 
+  const maxNumOfCrong = () => {
+    let leftMax_of_crong = findMax(
+      addAllNums(crong[0]),
+      multiplyAllNums(crong[0])
+    );
+    let rightMax_of_crong = findMax(
+      addAllNums(crong[1]),
+      multiplyAllNums(crong[1])
+    );
+    return findMax(leftMax_of_crong, rightMax_of_crong);
+  };
+
   let pobi_score = maxNumOfPobi();
+  let crong_score = maxNumOfCrong();
 
   return answer;
 }
