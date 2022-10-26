@@ -57,13 +57,22 @@ function findMaxScore(arr) {
     : secondPageMaxScore;
 }
 
+function decideResultByScore(playerA, playerB) {
+  const A_WIN = 1;
+  const B_WIN = 2;
+  const DRAW = 0;
+  if (playerA > playerB) return A_WIN;
+  else if (playerA < playerB) return B_WIN;
+  else return DRAW;
+}
+
 function problem1(pobi, crong) {
   const EXCEPTION_COOE = -1;
   var answer = EXCEPTION_COOE;
   if (!isRightInput(pobi) || !isRightInput(crong)) return answer;
   const pobiMaxScore = findMaxScore(pobi);
   const crongMaxScore = findMaxScore(crong);
-
+  answer = decideResultByScore(pobiMaxScore, crongMaxScore);
   return answer;
 }
 
