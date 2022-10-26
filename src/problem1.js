@@ -1,4 +1,7 @@
 function problem1(pobi, crong) {
+  // 예외처리
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+
   // 페이지 숫자 쪼개기
   const pageLeftSplit = page => (page[0] + "").split("");
   const pageRightSplit = page => (page[1] + "").split("");
