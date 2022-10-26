@@ -35,6 +35,15 @@ function problem2(cryptogram) {
     if (check === true) newWords.pop();
     return [newWords.join(""), nextRepeat];
   }
+
+  let [checkWord, result, repeat] = [cryptogram, "", false];
+
+  while (true) {
+    [result, repeat] = deleteWords(checkWord);
+    if (!repeat) break;
+    checkWord = result;
+  }
+  return result;
 }
 
 module.exports = problem2;
