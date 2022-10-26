@@ -5,10 +5,28 @@ function problem1(pobi, crong) {
    * 3. 비교를 통해 result 반환
    */
   let answer;
+
   // exception handling
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     return -1;
   }
+
+  /**
+   * 가장 큰 수를 도출하는 함수
+   */
+  const findBiggestNumber = (array) => {
+    const result = [];
+    const baseFunction = (index) => {
+      return String(array[index])
+        .split("")
+        .map((string) => Number(string));
+    };
+    for (let i = 0; i < 2; i++) {
+      result.push(baseFunction(i).reduce((a, b) => a * b));
+      result.push(baseFunction(i).reduce((a, b) => a + b));
+    }
+    return Math.max(...result);
+  };
   return answer;
 }
 
