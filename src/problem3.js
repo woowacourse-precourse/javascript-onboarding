@@ -12,8 +12,8 @@ function countClap(numbers) {
 }
 
 function problem3(number) {
-  var answer;
-  return answer;
-}
+  const gameNumbers = Array.from({ length: number }, (_, i) => i + 1);
 
+  return countClap(gameNumbers);
+}
 module.exports = problem3;
