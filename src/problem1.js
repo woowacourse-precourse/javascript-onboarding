@@ -35,5 +35,18 @@ function problem1(pobi, crong) {
       .forEach((x) => (mul *= +x));
     return mul;
   }
+
+  const pobiNum = Math.max(
+    Sum(pobi[0]),
+    Sum(pobi[1]),
+    Mul(pobi[0]),
+    Mul(pobi[1])
+  );
+  const crongNum = Math.max(
+    Sum(crong[0]),
+    Sum(crong[1]),
+    Mul(crong[0]),
+    Mul(crong[1])
+  );
 }
 module.exports = problem1;
