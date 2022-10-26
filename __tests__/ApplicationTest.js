@@ -68,7 +68,16 @@ describe("problem3", () => {
     expect(problem3(100)).toEqual(60);
   });
   test("my test3", () => {
-    expect(problem3(399)).toEqual(280);
+    expect(problem3(399)).toEqual(340);
+  });
+  test("my test4", () => {
+    expect(problem3(1000)).toEqual(900);
+  });
+  test("my test5", () => {
+    expect(problem3(10000)).toEqual(12000);
+  });
+  test("my test6", () => {
+    expect(problem3(1)).toEqual(0);
   });
 });
 
