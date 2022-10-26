@@ -14,6 +14,10 @@ function problem4(word) {
     else if (word[i] === word[i].toUpperCase()) {
       answer += reverseWord[word[i].charCodeAt() - 65];
     }
+    // 소문자일 때
+    else if (word[i] === word[i].toLowerCase()) {
+      answer += reverseWord[word[i].charCodeAt() - 97].toLowerCase();
+    }
   }
 
   return answer;
