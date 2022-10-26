@@ -19,6 +19,19 @@ function div_num(num){
   }
   return arr
 }
+function cal_arr(arr){
+  // 넘겨받은 배열을 순회하며 덧셈, 곱셈 결과 구하고, 최댓값을 return하는 함수
+  var sum = 0
+  var mul = 1
+  var bigger = 0
+  arr.forEach(element => {
+    sum+=element
+    mul*=element
+  });
+  // 결과 값 비교해서 큰 값 return 
+  bigger = Math.max(sum,mul)
+  return bigger
+}
 function problem1(pobi, crong) {
   var answer;
   // 1. 예외사항인 경우(페이지 번호 규칙이 안맞는 경우)
@@ -32,6 +45,10 @@ function problem1(pobi, crong) {
     // 2-2.pobi,crong 각각 오른쪽 페이지 번호 자릿수 나누기
     var right_pobi = div_num(pobi[1])
     var right_crong = div_num(crong[1])
+    // 3-1. 각 자릿수 배열에 대해 덧셈, 곱셈 후 큰 수 구하기 : cal_arr 함수 구현
+    // 3-2. pobi,crong 각각 최종 큰 수 구하기(Math.max() 함수 사용)
+    var bigger_pobi = Math.max(cal_arr(left_pobi),cal_arr(right_pobi))
+    var bigger_crong = Math.max(cal_arr(left_crong),cal_arr(right_crong))
   }
   return answer;
 }
