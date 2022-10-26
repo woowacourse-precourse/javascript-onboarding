@@ -30,9 +30,25 @@ function checkNickNameLength(forms) {
   return true;
 }
 
+function makeTestWord(i, j, modelNickName, forms, ans) {
+  // 중복 판별 단어가 시작되고 끝나는 부분 선정
+  for (let k = 0; k <= modelNickName.length - j; k++) {
+    const testWord = modelNickName.slice(k, j + k);
+  }
+}
+
+function decideTestWordLength(i, modelNickName, forms, ans) {
+  // 길이 2부터 문자열 최대 길이까지 중복 판별 단어 선정
+  for (let j = 2; j <= modelNickName.length; j++) {
+    makeTestWord(i, j, modelNickName, forms, ans);
+  }
+}
+
 function selectModelNickName(forms, ans) {
   for (let i = 0; i < forms.length; i++) {
     const modelNickName = forms[i][1];
+
+    decideTestWordLength(i, modelNickName, forms, ans);
   }
 }
 
