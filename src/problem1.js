@@ -44,7 +44,12 @@ const maxNum = (book) => {
   return max;
 };
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (!isValidPage(pobi, crong)) return -1;
+  if (maxNum(pobi) > maxNum(crong)) return 1;
+  if (maxNum(pobi) < maxNum(crong)) return 2;
+  if (maxNum(pobi) === maxNum(crong)) return 0;
+}
 
 // 여기에 테스트
 
