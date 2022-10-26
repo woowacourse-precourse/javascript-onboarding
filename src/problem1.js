@@ -33,7 +33,10 @@ const calculateMyScore = (pages) => Math.max(...pages.map(calculatePageScore));
  * @type {(pobi: number[], crong: number[]) => (-1 | 0 | 1 | 2)}
  */
 function problem1(pobi, crong) {
+  const ARR_LENGTH = 2;
+
   if (pobi === undefined || crong === undefined) return -1;
+  if (pobi.length !== ARR_LENGTH || crong.length !== ARR_LENGTH) return -1;
 
   const pobiScore = calculateMyScore(pobi);
   const crongScore = calculateMyScore(crong);
