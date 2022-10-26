@@ -3,11 +3,11 @@ function isUpperCase(char) {
 }
 
 function reverseCharacter(char) {
-  let index = 0;
-  const A = 65;
-  const Z = 90;
-  const a = 97;
-  const z = 122;
+  const index = 0;
+  const A = "A".charCodeAt(index); // 65
+  const Z = "Z".charCodeAt(index); // 90
+  const a = "a".charCodeAt(index); // 97
+  const z = "z".charCodeAt(index); // 122
 
   const asciiChar = char.charCodeAt(index);
 
@@ -18,8 +18,22 @@ function reverseCharacter(char) {
   return String.fromCharCode(z - asciiChar + a);
 }
 
+function isAlphabet(char) {
+  const A = "A".charCodeAt(index);
+  const Z = "Z".charCodeAt(index);
+  const a = "a".charCodeAt(index);
+  const z = "z".charCodeAt(index);
+
+  const asciiChar = char.charCodeAt(index);
+
+  return (
+    (asciiChar >= A && asciiChar <= Z) || (asciiChar >= a && asciiChar <= z)
+  );
+}
+
 function problem4(word) {
   var answer;
+
   return answer;
 }
 
