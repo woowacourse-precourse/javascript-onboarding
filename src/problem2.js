@@ -1,22 +1,14 @@
 function problem2(cryptogram) {
   var answer;
-  let resultofC = ``;
-  let storeC = cryptogram[0];
+  let decodeArr = [];
 
-  for (let i of cryptogram) {
-    console.log(i);
-    if (i == storeC && resultofC.length >= 2) {
-      resultofC.slice(0, resultofC.length - 1);    
-      continue;     
-    } 
-      resultofC += i;
-      storeC = i;
-
-    
+  for (let i = 0; i < cryptogram.length; i++) {
+    const char = cryptogram[i];
+    if (decodeArr[decodeArr.length - 1] == char) decodeArr.pop();
+    else decodeArr.push(char);
   }
-   answer = resultofC
-
-
+  
+  answer = decodeArr.join("");
   return answer;
 }
 console.log(problem2('browoanoommnaon'));
