@@ -50,4 +50,21 @@ function violationChk(player1, player2) {
   return lenChk1 && lenChk2 && pageChk1 && pageChk2;
 }
 
+// 페이지 정보를 받아 덧셈과 곱셈 결과 중 가장 큰 숫자를 리턴하는 함수
+function scoreCalulator(page) {
+  var leftNum = page[0];
+  var rightNum = page[1];
+
+  // 각 페이지 숫자의 자리수를 더한 값 계산
+  var leftAddResult = add(leftNum);
+  var rightAddResult = add(rightNum);
+
+  // 각 페이지 숫자의 자리수를 곱한 값 계산
+  var leftMulResult = mul(leftNum);
+  var rightMulResult = mul(rightNum);
+
+  // 네가지 숫자 중 가장 큰 숫자 리턴
+  return Math.max(leftAddResult, rightAddResult, leftMulResult, rightMulResult);
+}
+
 module.exports = problem1;
