@@ -1,9 +1,33 @@
 function problem5(money) {
-  var answer;
+  var answer=[0,0,0,0,0,0,0,0,0];
+  
+  answer[0]=Math.floor(money/50000);
+  money%=50000;
+
+  answer[1]=Math.floor(money/10000);
+  money%=10000;
+
+  answer[2]=Math.floor(money/5000);
+  money%=5000;
+
+  answer[3]=Math.floor(money/1000);
+  money%=1000;
+
+  answer[4]=Math.floor(money/500);
+  money%=500;
+
+  answer[5]=Math.floor(money/100);
+  money%=100;
+
+  answer[6]=Math.floor(money/50);
+  money%=50;
+
+  answer[7]=Math.floor(money/10);
+  money%=10;
+
+  answer[8]=money;
+
   return answer;
-  //1. 크기9, 0으로 이뤄진 배열 생성.
-  //2. money를 5만원, 1만원... 순서대로 나누어 값을 배열에 순서대로 저장, 나머지에 이어 계산.
-  //3. 배열 반환.
 }
 
 module.exports = problem5;
