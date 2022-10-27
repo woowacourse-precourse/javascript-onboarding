@@ -1,9 +1,7 @@
 function problem1(pobi, crong) {
   var answer;
-  let pobiMaxValue, crongMaxValue;
-  pobiMaxValue = leftOrRight(pobi);
-  crongMaxValue = leftOrRight(crong);
-  
+  answer = returnValue(pobi, crong);
+
   return answer;
 }
 
@@ -47,6 +45,33 @@ function leftOrRight(pages) {
   let maxValuePage = compare(leftMaxValue, rightMaxValue);
 
   return maxValuePage;
+}
+
+// 포비와 크롱 비교
+function pobiCrongMaxValue(pobi, crong) {
+  let pobiMaxValue, crongMaxValue, pobiCrongMaxValue;
+  pobiMaxValue = leftOrRight(pobi);
+  crongMaxValue = leftOrRight(crong);
+  pobiCrongMaxValue = [pobiMaxValue, crongMaxValue];
+
+  return(pobiCrongMaxValue);
+}
+
+// 결과값
+function returnValue(pobi, crong) {
+  let [pobiMaxValue, crongMaxValue] = pobiCrongMaxValue(pobi, crong);
+  let result;
+  if(pobiMaxValue > crongMaxValue) {
+    result = 1;
+  } else if(pobiMaxValue < crongMaxValue) {
+    result = 2;
+  } else if (pobiMaxValue === crongMaxValue) {
+    result = 0;
+  } else {
+    result = -1;
+  }
+
+  return result;
 }
 
 module.exports = problem1;
