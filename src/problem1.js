@@ -85,6 +85,18 @@ function problem1(pobi, crong) {
     !checkValidPageNumber(crongLeft, crongRight)
   )
     return -1;
+
+  const pobiBiggestNumber = findBiggestNumber(pobiLeft, pobiRight);
+  const crongBiggestNumber = findBiggestNumber(crongLeft, crongRight);
+
+  if (pobiBiggestNumber > crongBiggestNumber) {
+    answer = 1;
+  } else if (pobiBiggestNumber < crongBiggestNumber) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
+
   return answer;
 }
 
