@@ -39,8 +39,11 @@ function problem6(forms) {
   
   // 기능 3
   answer = makeEmailList(nicknameAnswer, forms);
-  console.log(answer);
+  console.log(answer); // [ 'jason@email.com', 'mj@email.com', 'jm@email.com' ]
   
+  // 이메일 오름차순 정렬
+  answer.sort();
+  console.log(answer); // [ 'jason@email.com', 'jm@email.com', 'mj@email.com' ]
 
   return answer;
 }
