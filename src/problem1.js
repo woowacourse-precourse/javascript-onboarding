@@ -30,5 +30,11 @@ function isInPage(pages) {
 }
 
 //각 페이지 곱하기&더하기 연산 기능
+function calculatePageMaxValue(page) {
+  let pageNumberToString = page.toString().split("");
+  let multyply = pageNumberToString.reduce((acc, cur) => acc * Number(cur), 1);
+  let plus = pageNumberToString.reduce((acc, cur) => acc + Number(cur), 0);
+  return Math.max(multyply, plus);
+}
 
 module.exports = problem1;
