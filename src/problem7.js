@@ -30,12 +30,34 @@ function getUserList(keys, visitors, skip) {
   return [...new Set(list)];
 }
 
+function getScores(user, userList, relation, visitors) {
+  const scores = [];
+  let arr = relation[user];
+
+  if (!arr) arr = [];
+
+  for (const other of userList) {
+    let score = 0;
+    const visitScore = visitors.filter((visitor) => visitor === other).length;
+    score += visitScore;
+    let friendScore = 0;
+    if (!relation[other]) relation[other] = [];
+    for (const one of relation[other]) {
+      if (arr.includes(one)) friendScore += 10;
+    }
+    score += friendScore;
+    scores.push([other, score]);
+  }
+
+  return scores;
+}
+
 function getInfos(user, friends, visitors) {
   const relation = getRelation(friends);
   const skip = getSkip(user, relation);
   const userList = getUserList(Object.keys(relation), visitors, skip);
-
-  console.log(userList);
+  const scores = getScores(user, userList, relation, visitors);
+  console.log(scores);
 }
 getInfos(
   'mrko',
