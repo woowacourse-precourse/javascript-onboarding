@@ -1,6 +1,20 @@
 function problem1(pobi, crong) {
   var answer;
 
+  //예외사항
+  if(pobi[0] >= pobi[1] || crong[0] >= crong[1]){ //왼쪽 >= 오른쪽인 경우
+    answer = -1;
+    return answer;
+  }
+  else if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){ //페이지의 차이가 1이 아닌 경우
+    answer = -1;
+    return answer;
+  }
+  else if(pobi[0]==1 || pobi[0]==399 || crong[0]==1 || crong[0] == 399){ //시작 또는 마지막 면이 나온 경우
+    answer = -1;
+    return answer;
+  }
+
   //pobi 점수 계산
   let pobiSum = 0;
   let pobiMulti = 0;
