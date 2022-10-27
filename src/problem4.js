@@ -61,6 +61,16 @@ function problem4(word) {
   for (const value of word) {
     const lowIndex = arrLow.indexOf(value);
     const upIndex = arrUp.indexOf(value);
+
+    if (lowIndex !== -1) {
+      const num = len - lowIndex;
+      words += arrLow[num];
+    } else if (upIndex !== -1) {
+      const num = len - upIndex;
+      words += arrUp[num];
+    } else {
+      words += ' ';
+    }
   }
 
   return words;
