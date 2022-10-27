@@ -34,6 +34,16 @@ function problem2(cryptogram) {
 
   //!2. 글자는 알파벳 소문자로만 이루어져 있음.
 
+  function CHECK_WORD_IS_ALL_LOWERCASE (word) {
+    for(let i of word){
+      if(i !== i.toLowerCase()){
+        console.log(i)
+        return false;
+      }  
+    }
+    return true;
+  }
+
 
   return RETURN_REMOVE_DUPLICATION_ALPHABET(cryptogram);
 }
