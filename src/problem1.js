@@ -40,23 +40,4 @@ function problem1(pobi, crong) {
   return answer
 }
 
-(function () {
-  const tc = [
-    [[97, 98], [197, 198], 0],
-    [[131, 132], [211, 212], 1],
-    [[99, 102], [211, 212], -1],
-  ];
-
-  tc.forEach(([pobi, crong, answer], index) => {
-    const result = problem1(pobi, crong);
-
-    if (result === answer) {
-      console.log(`${index}: Success`);
-      return;
-    }
-
-    console.log(`${index}: Failed with res: ${result}, ans: ${answer} `);
-  });
-})();
-
 module.exports = problem1;
