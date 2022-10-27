@@ -14,6 +14,12 @@ const badFrog = (word) => {
   return String.fromCharCode(charCode);
 }
 
-const problem4 = (word) => {}
+const problem4 = (word) => {
+  let result = '';
+  [...word].forEach((w) => {
+    result += badFrog(w);
+  })
+  return result;
+}
 
 module.exports = problem4;
