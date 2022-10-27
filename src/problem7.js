@@ -29,6 +29,16 @@ function problem7(user, friends, visitors) {
       myFriend.push(friends[i][0]);
     }
   }
+
+  // 내 친구의 친구 찾기
+  for (let k = 0; k < friends.length; k++) {
+    if (myFriend.some((x) => x === friends[k][0])) {
+      rankMap.set(friends[k][1], rankMap.get(friends[k][1]) + 10);
+    }
+    if (myFriend.some((x) => x === friends[k][1])) {
+      rankMap.set(friends[k][0], rankMap.get(friends[k][0]) + 10);
+    }
+  }
 }
 
 module.exports = problem7;
