@@ -34,7 +34,9 @@ function problem1(pobi, crong) {
   }
   if (!check(pobi) || !check(crong)) return -1;
   else {
-
+    if (pobiMaxScore > crongMaxScore) return 1;
+    else if (pobiMaxScore < crongMaxScore) return 2;
+    else return 0;
   }
 }
 
