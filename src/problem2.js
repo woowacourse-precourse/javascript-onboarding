@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
   const seperate_string = [...cryptogram];
-  for (let i = 0; i < seperate_string.length; i++) {
+  for (let i = 1; i <= 1000; i++) {
     remove_duplication(seperate_string);
     if (seperate_string[0] === seperate_string[1]) return "";
   }
