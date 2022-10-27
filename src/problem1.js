@@ -1,8 +1,6 @@
-console.log(problem1([97, 98],[197, 198]));
-
 function problem1(pobi, crong) {
   if(validationArr(pobi) && validationArr(crong)){  
-    return pageGameApp(pobi, crong);  // 두 값이 같으면 0, A가 크면 1, B가 크면 2
+    return pageGameApp(pobi, crong);
   }
   return -1;
 }
@@ -14,7 +12,7 @@ function validationArr(arr){
 function pageGameApp(numArrA,numArrB){
   let maxNumA = maxValueCalculator([splitNumber(numArrA[0]),splitNumber(numArrA[1])]);
   let maxNumB = maxValueCalculator([splitNumber(numArrB[0]),splitNumber(numArrB[1])]);
-  console.log(maxNumA);
+  console.log(maxNumA, maxNumB);
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
 }
 

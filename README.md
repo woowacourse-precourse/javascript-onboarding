@@ -1,28 +1,30 @@
 ## [문제 1] 구현할 기능 목록
 
-* 입력값 validationArr 함수 생성 
-  + 배열 크기(length)가 2인지 확인
+* 입력값 `validationArr` 함수 생성 
+  + 배열 크기(`array.length`)가 2인지 확인
   + 왼쪽, 오른쪽 값 차이가 1만 나야함
 
-* 전체 프로세서관리 pageGameApp 함수 생성
-  + validationArr 통과 후 전체 프로세스를 관리할 함수로 구현
+* 전체 프로세서관리 `pageGameApp` 함수 생성
+  + `validationArr` 함수 통과 후 전체 프로세스를 관리할 함수로 구현
   + 두 값을 받아서 같으면 0, A가 크면 1, B가 크면 2 를 리턴
 
-* 수를 받아서 각 자리를 배열로 return 하는 splitArr 함수 구현
-  + split() 내부 함수로 구현하는 방법
+* 수를 받아서 각 자리를 배열로 return 하는 `splitNumber` 함수 구현
+  + [ ] `split()` 내부 함수로 구현하는 방법
     - 주의사항: 형이 String으로 바뀌는 문제가 발생할 수 있음.
-  + 10으로 나눈 나머지로 일자리부터 빼서 배열 구현 하는 방법
-    - 일자리부터 처리 되긴하지만 문제없어보임.
+  + [x] 10으로 나눈 나머지로 일자리부터 빼서 배열 구현 하는 방법
+    - ~~일자리부터 처리 되긴 하지만 문제없어보임.~~
+    - 내부함수 `unshift()`로 자리수 대로 index 위치 맞춰서 구현.
+> 변수의 형태가 변형되지 않도록 하기위해 2번째 방법으로 선택함
 
-* 배열 더하기 값 반환 sumArr 함수 구현
-  + 변수 totalSum 에 Arr 값만큼 for문 돌면서 더한 후 totalSum 반환 
+* 배열 더하기 값 반환 `sumArr` 함수 구현
+  + 변수 `totalSum` 에 Arr 값만큼 for문 돌면서 더한 후 totalSum 반환 
 
-* 배열 곱하기 값 반환 mulArr 함수 구현
-  + 변수 totalMul 에 Arr 값만큼 for문 돌면서 곱한 후 totalMul 반환
+* 배열 곱하기 값 반환 `mulArr` 함수 구현
+  + 변수 `totalMul` 에 Arr 값만큼 for문 돌면서 곱한 후 totalMul 반환
 
 * 값을 받아 최대값을 리턴하는 maxValueCalculator 함수 구현
-  + Math.max()로 각 왼쪽/오른쪽에 더하기/곱하기 값에서 최대값 반환
-  + for문을 사용해서 4번 돌면서 변수 maxValue 랑 비교하여 최대값 반환
+  + [x] `Math.max()`로 각 왼쪽/오른쪽에 더하기/곱하기 값에서 최대값 반환
+  + [ ] for문을 사용해서 4번 돌면서 변수 `maxValue` 랑 비교하여 최대값 반환
 
 ***
 # 미션 - 온보딩
