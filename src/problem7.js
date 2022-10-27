@@ -18,6 +18,10 @@ function problem7(user, friends, visitors) {
       .filter((v) => v !== value)
       .sort();
   }
+
+  //찾은 목록들에서 중복을 제거한다
+  const selectFriends = [...new Set(removeMrko)];
+  const selectVisitors = [...new Set(visitors)];
 }
 
 module.exports = problem7;
