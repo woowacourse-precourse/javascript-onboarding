@@ -71,4 +71,23 @@ const validateName = (forms) => {
   return true;
 };
 
+const validateEmail = (forms) => {
+  for (let i = 0; i < forms.length; i += 1) {
+    const email = forms[i][0];
+    if (typeof email !== 'string') {
+      return false;
+    }
+    if (email.length < 11 || email.length > 19) {
+      return false;
+    }
+    if (!(email.includes('@email.com') && email.match(/@email.com/g).length === 1)) {
+      return false;
+    }
+    if (!/^[A-Za-z0-9]+$/.test(email.split('@email.com')[0])) {
+      return false;
+    }
+  }
+  return true;
+};
+
 module.exports = problem6;
