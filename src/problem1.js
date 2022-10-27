@@ -101,4 +101,20 @@ const isExceptions = (additionResult, multiplicationResult, criterion = 0, depth
   return result;
 };
 
+const calculateEachElementByPlus = numberArray => {
+  const resultArray = map(numberArray, numericItms => {
+    return calculateEachElement(numericItms, plusFunction);
+  });
+
+  return resultArray;
+};
+
+const calculateEachElementByMultiplication = numberArray => {
+  const resultArray = map(numberArray, numericItms => {
+    return calculateEachElement(numericItms, multiplicationFunction);
+  });
+
+  return resultArray;
+};
+
 module.exports = problem1;
