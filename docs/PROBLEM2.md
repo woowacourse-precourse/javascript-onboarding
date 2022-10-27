@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 기능 목록
+
+- [x] 제한사항 위반 검사 함수 (violationChk)
+- [ ] 같은 문자가 연속되면 해당 문자를 삭제하는 함수 (decryptor)
