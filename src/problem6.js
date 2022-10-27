@@ -1,12 +1,24 @@
 function problem6(forms) {
   let answer = [];
   let arr = [];
+  let name = /^[ㄱ-ㅎ|가-힣|]+$/;
 
   for (let i = 0; i < forms.length; i++) {
     if (
       forms[i][0].length < 10 ||
       forms[i][0].length >= 20 ||
       forms[i][0].slice(-10) != "@email.com"
+    ) {
+      forms.splice(i, 1);
+      i -= 1;
+    }
+  }
+
+  for (let i = 0; i < forms.length; i++) {
+    if (
+      name.test(forms[i][1]) == false ||
+      forms[i][1].length == 0 ||
+      forms[i][1].length >= 20
     ) {
       forms.splice(i, 1);
       i -= 1;
