@@ -1,4 +1,4 @@
-function error(forms){
+function errorcheck(forms){
   if (forms.length < 1 || forms.length > 10000){
     return false;
   }
@@ -24,10 +24,31 @@ function error(forms){
   
 }
 
+function duplicateWord(nickname){
+  const dupcheck = [];
+  const id = [];
+  nickname.map((user, idx) => {
+    for (let i = 0; i < user.length-1; i++){
+      if (dupcheck.includes(user.substr(i, 2))){
+        id.push(idx);
+      }
+      else{
+        dupcheck.push(user.substr(i, 2));
+      }
+    }
+  })
+  return new Set(id);
+}
 
 function problem6(forms) {
   var answer;
-  return answer;
+  if (!errorcheck(forms)){
+    return '입력 형식을 확인해주세요';
+  }
+  else{
+    
+    return answer;
+  }
 }
 
 module.exports = problem6;
