@@ -1,4 +1,4 @@
-function problem3(number) {
+function problem3(word) {
   var answer;
   return answer;
 }

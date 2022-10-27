@@ -1,4 +1,4 @@
-function problem2(cryptogram) {
+function problem2(word) {
   var answer;
   return answer;
 }
