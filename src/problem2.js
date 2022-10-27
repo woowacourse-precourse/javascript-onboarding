@@ -1,10 +1,10 @@
 function problem2(cryptogram) {
-  answer = removeDuplication([...cryptogram]);
+  const answer = removeDuplication([...cryptogram]);
   return answer;
 }
 
 function removeDuplication(cryptogram) {
-  let duplicatedCryptogram = getDuplicatedCryptogram(cryptogram);
+  const duplicatedCryptogram = getDuplicatedCryptogram(cryptogram);
   if (cryptogram.join('') !== duplicatedCryptogram.join('')) {
     return removeDuplication(duplicatedCryptogram);
   }
@@ -12,7 +12,7 @@ function removeDuplication(cryptogram) {
 }
 
 function getDuplicatedCryptogram(cryptogram) {
-  let isDuplicateArray = [];
+  const isDuplicateArray = [];
   isDuplicateArray.fill(false);
   for (let i = 0; i < cryptogram.length - 1; i++) {
     if (cryptogram[i] === cryptogram[i + 1]) {
