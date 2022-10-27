@@ -23,7 +23,6 @@ function checkInputErr(pobi, crong) {
 }
 
 function findMaxScore(pobi, crong){
-
   const calMaxScore = (array) => {
     let max = -1;
     array.forEach(val =>{
