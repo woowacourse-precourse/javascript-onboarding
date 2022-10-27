@@ -17,6 +17,15 @@ function problem4(word) {
 
   const wordArray = word.split(' ');
 
+  wordArray.forEach((letter) => {
+    const words = [...letter];
+
+    const reversedWord = words.map((w) => {
+      const index = alphabet.indexOf(w);
+      return reversedAlphabet.charAt(index);
+    });
+  });
+
   return answer;
 }
 
