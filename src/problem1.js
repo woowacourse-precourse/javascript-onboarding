@@ -3,9 +3,12 @@ function problem1(pobi, crong) {
   let arr = [];
   let plus;
   let multiply;
-  let pobiLeftRigth = [];
+  let pobiLeftRight = [];
   let pobiMax;
-  let crongMax = [];
+  let crongLeftRight = [];
+  let crongMax;
+
+  // 포비
   pobi.map((index) => {
     arr = index
       .toString()
@@ -13,12 +16,26 @@ function problem1(pobi, crong) {
       .map((x) => parseInt(x));
     plus = arr.reduce((acc, cur) => acc + cur, 0);
     multiply = arr.reduce((acc, cur) => acc * cur, 1);
-    pobiLeftRigth.push(plus > multiply ? plus : multiply);
+    pobiLeftRight.push(plus > multiply ? plus : multiply);
   });
   pobiMax =
-    pobiLeftRigth[0] > pobiLeftRigth[1] ? pobiLeftRigth[0] : pobiLeftRigth[1];
+    pobiLeftRight[0] > pobiLeftRight[1] ? pobiLeftRight[0] : pobiLeftRight[1];
 
-  console.log(pobiMax);
+  // 크롱
+  crong.map((index) => {
+    arr = index
+      .toString()
+      .split("")
+      .map((x) => parseInt(x));
+    plus = arr.reduce((acc, cur) => acc + cur, 0);
+    multiply = arr.reduce((acc, cur) => acc * cur, 1);
+    crongLeftRight.push(plus > multiply ? plus : multiply);
+  });
+  crongMax =
+    crongLeftRight[0] > crongLeftRight[1]
+      ? crongLeftRight[0]
+      : crongLeftRight[1];
+
   return answer;
 }
 
