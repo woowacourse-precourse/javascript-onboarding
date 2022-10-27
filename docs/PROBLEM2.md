@@ -24,8 +24,8 @@
 
 ### 구현 목록
 
-1. 각 index를 확인하며 연속된 중복 문자인지 확인하고 삭제한다.[o]
-2. 연속된 중복 문자 삭제 후 새 문자를 반환한다.[o]
-3. 연속된 중복 문자가 없을때까지 2으로 돌아간다[o]
-4. 마지막 남은 단어를 return 한다.[o]
-5. 마지막으로 남은 단어가 빈 문자열일 경우 빈 문자열을 return한다[o]
+1. 문자열을 한자리로 분리하여 seperate_string배열에 담는다.
+2. 첫번째 index값을 answer(빈 배열)에 push 한다.
+3. answer배열에 push 된 index 값과 seperate_string배열의 첫번째 index 값을 비교한다.
+4. 같다면 pop, 다르다면 answer배열에 push한다.
+5. seperate_string배열의 길이 만큼 반복한다.
