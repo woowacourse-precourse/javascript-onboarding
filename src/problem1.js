@@ -33,6 +33,12 @@ function problem1(pobi, crong) {
     return num1 > num2 ? num1 : num1 < num2 ? num2 : num2;
   }
 
+  // 게임 결과
+  const gameResult = (num1, num2) => {
+    // 중첩 삼항 연산자: num1이 더 크면 1, 거짓인데 num2가 더 크면 2, 같으면 0
+    return num1 > num2 ? 1 : num1 < num2 ? 2 : 0;
+  }
+
   // 왼쪽 페이지 계산
   const calLeft = (num) => {
     let sumLeft = sum(num);
