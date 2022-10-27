@@ -6,9 +6,29 @@
 * 5. 코드 정리
 */
 
-
 function problem2(cryptogram) {
   var crypArr = cryptogram.split("");
+  var decryption = crypArr;
+  
+  let i = 0;
+  while(1){
+    if(decryption[i] == decryption[i+1]){
+      let j = 2;
+      while(1){
+        if(decryption[i] != decryption[i+j]){
+          break;
+        }j++;
+      }
+      decryption.splice(i,j);
+    }else{
+      i++;
+      continue;
+    }
+    break;
+  }
+  console.log(decryption);
 }
 
 module.exports = problem2;
+  
+
