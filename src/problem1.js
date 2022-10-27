@@ -5,6 +5,15 @@
 4. 포비와 크롱의 점수 비교
 */
 function problem1(pobi, crong) {
+  const calValue = (page) => {
+    const data = String(page)
+      .split("")
+      .map((x) => parseInt(x));
+    const pageSum = data.reduce((prev, next) => prev + next);
+    const pageTimes = data.reduce((prev, next) => prev * next);
+    return pageSum > pageTimes ? pageSum : pageTimes;
+  };
+
   const pobiSub = pobi.reduce((prev, next) => next - prev);
   const crongSub = crong.reduce((prev, next) => next - prev);
   if ((pobiSub !== 1) | (crongSub !== 1)) {
