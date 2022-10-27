@@ -30,6 +30,15 @@ function recordArray(tellDuplication, cryptogram) {
   return repeatDelete(tellDuplication, cryptogram);
 }
 
+// 연속하는 중복문자 제거
+function repeatDelete(tellDuplication, cryptogram) {
+  const cryptogramArr = Array.from(cryptogram);
+  for (let i = 0; i < cryptogramArr.length; i++) {
+    if (tellDuplication[i] == 1) cryptogramArr.splice(i, 1);
+  }
+  const result = cryptogramArr.join("");
+  return result;
+}
 
 problem2("browoanoommnaon");
 
