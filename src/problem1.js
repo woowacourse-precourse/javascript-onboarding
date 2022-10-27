@@ -1,4 +1,12 @@
 function problem1(pobi, crong) {
+  //예외처리 (페이지가 서로 안붙어있을 때)
+  const isPageAttached = (book) => {
+    if (book[1] - book[0] !== 1) return false;
+    return true;
+  };
+
+  if (!isPageAttached(pobi) || !isPageAttached(crong)) return -1;
+
   const splitPages = (book) => {
     return book.map((pages) => pages.toString().split('').map(Number));
   };
@@ -22,7 +30,5 @@ function problem1(pobi, crong) {
 
   return -1;
 }
-
-problem1([97, 98], [197, 198]);
 
 module.exports = problem1;
