@@ -9,8 +9,16 @@ function checkDuplication(nickname, forms) {
   return false;
 }
 
+function getDuplicatedList(forms) {
+  const result = forms //
+    .filter(([email, name]) => checkDuplication(name, forms))
+    .map(([email, name]) => email)
+    .sort();
+  return result;
+}
+
 function problem6(forms) {
-  var answer;
+  const answer = getDuplicatedList(forms);
   return answer;
 }
 module.exports = problem6;
