@@ -6,11 +6,12 @@ function problem1(pobi, crong) {
 }
 
 function isExceptional(pages){
-  const isFirstOrLast = pages[0] >= 399 || pages[1] <= 2
+  const isFirstOrLast = pages[0] <= 1 || pages[1] >= 400
   const isFitOddandEven = pages[0] % 2 !== 1 || pages[1] % 2 !== 0
-  const isFitPageOrder = pages[0] + 1 !== pages[1] 
+  const isFitPageOrder = pages[0] + 1 !== pages[1]
+  const isRightPageForm = pages.length !== 2
 
-  if(isFirstOrLast || isFitOddandEven || isFitPageOrder) return true
+  if(isFirstOrLast || isFitOddandEven || isFitPageOrder || isRightPageForm) return true
 }
 
 function getCalculate(pages){
@@ -36,11 +37,5 @@ function getCalculate(pages){
   })
   return biggest;
 }
-
-
-console.log(problem1([99, 102], [211, 212]))
-console.log(problem1([99, 100], [99, 100]))
-console.log(problem1([77, 78], [277, 278]))
-console.log(problem1([77, 78], [177, 178]))
 
 module.exports = problem1;
