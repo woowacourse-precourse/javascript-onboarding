@@ -3,20 +3,19 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  let answer = -1;
   const pobiPoint = getPoint(pobi);
   const crongPoint = getPoint(crong);
   
   if (pobiPoint > crongPoint) {
-    answer = 1;
+    return 1;
   }
-  else if (pobiPoint < crongPoint) {
-    answer = 2;
+  if (pobiPoint < crongPoint) {
+    return 2;
   }
-  else if (pobiPoint === crongPoint) {
-    answer = 0;
+  if (pobiPoint === crongPoint) {
+    return 0;
   }
-  return answer;
+  return -1;
 }
 
 function valid([left, right]) {
@@ -30,10 +29,7 @@ function getPoint([left, right]) {
 
   const add = (acc, cur) => acc + cur;
   const mul = (acc, cur) => acc * cur;
-  const leftPoint = Math.max(leftArr.reduce(add), leftArr.reduce(mul));
-  const rightPoint = Math.max(rightArr.reduce(add), rightArr.reduce(mul));
-
-  return Math.max(leftPoint, rightPoint);
+  return Math.max(leftArr.reduce(add), leftArr.reduce(mul), rightArr.reduce(add), rightArr.reduce(mul));
 }
 
 module.exports = problem1;
