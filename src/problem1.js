@@ -1,10 +1,14 @@
-
+const INPUT = {
+  firstPage: 1,
+  lastPage: 400,
+  length: 2,
+};
 
 //예외상황 판별(첫장 끝장, 페이지가 이상할때, pobi,crong의길이는 2, 왼쪽페이지는 홀수이다.)
 function exception(arr) {
-  if (arr[0] == 1 || arr[1] == 400) return true;
+  if (arr[0] <= INPUT.firstPage || arr[1] >= INPUT.lastPage) return true;
   if (arr[0] !== arr[1] - 1) return true;
-  if (arr.length !== 2) return true;
+  if (arr.length !== INPUT.length) return true;
   if (arr[0] % 2 === 0) return true;
   
   return false;
@@ -51,7 +55,5 @@ function problem1(pobi, crong) {
   const crongPoint = getBigNum(crong);
   return comparePoint(pobiPoint, crongPoint);
 }
-
-problem1([13,14], [17,18])
 
 module.exports = problem1;
