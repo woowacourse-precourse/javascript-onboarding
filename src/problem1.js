@@ -31,6 +31,7 @@ const getWinner = (pobiScore, crongScore) => {
 };
 
 const isValidatePage = (page) => {
+  if (page.length !== 2) return false;
   let leftPage = page[0],
     rightPage = page[1];
   if (leftPage - rightPage !== -1) return -1;
