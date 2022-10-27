@@ -26,6 +26,13 @@ function getMaxScore(score1, score2) {
   return Math.max(score1, score2);
 }
 
+function getPlayerMaxPageScore(pageNumber) {
+  const addedScore = addDigits(pageNumber);
+  const multipliedScore = multiplyDigits(pageNumber);
+
+  return getMaxScore(addedScore, multipliedScore);
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
