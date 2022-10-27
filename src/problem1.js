@@ -1,7 +1,10 @@
 function problem1(pobi, crong) {
   var answer;
-  const pobi2DArray = separateDigit(pobi);
-  const crong2DArray = separateDigit(crong);
+  const pobi2DArray = comparePages(separateDigit(pobi));
+  const crong2DArray = comparePages(separateDigit(crong));
+  if (pobi2DArray > crong2DArray) answer = 1;
+  else if (pobi2DArray < crong2DArray) answer = 2;
+  else if (pobi2DArray === crong2DArray) answer = 0;
   return answer;
 }
 
@@ -27,6 +30,13 @@ function multipleOfPages(pages2D) {
   const multipleOfSecondOne = pages2D[1].reduce((pre, cur) => pre * cur, 1);
   if (multipleOfFirstOne > multipleOfSecondOne) return multipleOfFirstOne;
   else return multipleOfSecondOne;
+}
+
+function comparePages(pages2D) {
+  const maxOfSum = sumOfPages(pages2D);
+  const maxOfMultiple = multipleOfPages(pages2D);
+  if (maxOfSum > maxOfMultiple) return maxOfSum;
+  else return maxOfMultiple;
 }
 
 module.exports = problem1;
