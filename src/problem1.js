@@ -1,4 +1,4 @@
-const checkedValidPage = (page) => {
+const checkValidPage = (page) => {
   const [left, right] = page;
   const isOddNum = left % 2 === 1;
   const isEvenNum = right % 2 === 0;
@@ -11,40 +11,24 @@ const checkedValidPage = (page) => {
   return false;
 };
 
+const calculateAddSum = (array) => array.reduce((acc, curr) => parseInt(acc) + parseInt(curr), 0);
+
+const calculateMultiplySum = (array) => array.reduce((acc, curr) => parseInt(acc) * parseInt(curr), 1);
+
+const calculateScore = (array) => {
+  const [left, right] = array;
+  const leftPageArray = left.toString().split("");
+  const rightPageArray = right.toString().split("");
+
+  return Math.max(calculateAddSum(leftPageArray), calculateAddSum(rightPageArray), calculateMultiplySum(leftPageArray), calculateMultiplySum(rightPageArray));
+};
+
 function problem1(pobi, crong) {
   let answer;
 
-  if (checkedValidPage(pobi) && checkedValidPage(crong)) {
-    const pobiLeftPageArray = pobi[0].toString().split("");
-    const pobiRightPageArray = pobi[1].toString().split("");
-
-    const crongLeftPageArray = crong[0].toString().split("");
-    const crongRightPageArray = crong[1].toString().split("");
-
-    const calculateAddSum = (array) => {
-      return array.reduce((acc, curr) => {
-        return parseInt(acc) + parseInt(curr);
-      }, 0);
-    };
-
-    const calculateMultiplySum = (array) => {
-      return array.reduce((acc, curr) => {
-        return parseInt(acc) * parseInt(curr);
-      }, 1);
-    };
-
-    const pobiLeftPageAddSumValue = calculateAddSum(pobiLeftPageArray);
-    const pobiLeftPageMultiplySumValue = calculateMultiplySum(pobiLeftPageArray);
-    const pobiRightPageAddSumValue = calculateAddSum(pobiRightPageArray);
-    const pobiRightPageMultiplySumValue = calculateMultiplySum(pobiRightPageArray);
-
-    const crongLeftPageAddSumValue = calculateAddSum(crongLeftPageArray);
-    const crongLeftPageMultiplySumValue = calculateMultiplySum(crongLeftPageArray);
-    const crongRightPageAddSumValue = calculateAddSum(crongRightPageArray);
-    const crongRightPageMultiplySumValue = calculateMultiplySum(crongRightPageArray);
-
-    const pobiScore = Math.max(pobiLeftPageAddSumValue, pobiLeftPageMultiplySumValue, pobiRightPageAddSumValue, pobiRightPageMultiplySumValue);
-    const crongScore = Math.max(crongLeftPageAddSumValue, crongLeftPageMultiplySumValue, crongRightPageAddSumValue, crongRightPageMultiplySumValue);
+  if (checkValidPage(pobi) && checkValidPage(crong)) {
+    const pobiScore = calculateScore(pobi);
+    const crongScore = calculateScore(crong);
 
     if (pobiScore === crongScore) answer = 0;
     else if (pobiScore > crongScore) answer = 1;
