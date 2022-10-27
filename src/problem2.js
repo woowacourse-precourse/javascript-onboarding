@@ -45,6 +45,4 @@ function error(cryptogram){
   return true;
 }
 
-let cryptogram="browoanoommnaon"
 
-console.log(error(cryptogram));
