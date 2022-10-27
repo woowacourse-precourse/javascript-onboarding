@@ -22,5 +22,11 @@ const getDigitSum = (num) => {
     .split("")
     .reduce((prev, cur) => prev + Number(cur), 0);
 };
+const getDigitProduct = (num) => {
+  return num
+    .toString()
+    .split("")
+    .reduce((prev, cur) => prev * Number(cur), 1);
+};
 
 module.exports = problem1;
