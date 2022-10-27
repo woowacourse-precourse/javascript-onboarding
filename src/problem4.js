@@ -6,6 +6,16 @@ function problem4(word) {
       continue;
     }
     let ascii = word.charCodeAt([i]);
+    let checkedCase = checkStringCase(ascii);
+  }
+  return result;
+}
+
+function checkStringCase(ascii) {
+  if (ascii >= 65 && ascii <= 90) {
+    return 65;
+  } else if (ascii >= 97 && ascii <= 122) {
+    return 97;
   }
 }
 
