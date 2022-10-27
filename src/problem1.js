@@ -5,15 +5,15 @@ function problem1(pobi, crong) {
   } else if (pobi.length != 2 || crong.length != 2) {
     //pobi와 crong의 길이는 2이다.
     return -1;
-  } else if (pobi[0] % 2, crong[0] % 2 != 1 || pobi[1] % 2, crong[1] % 2 != 0) {
+  } else if (pobi[0] % 2, crong[0] % 2 != 1 || pobi[1] % 2, crong[1] % 2 != 0 || pobi[0]+1 != pobi[1] || crong[0]+1 != crong[1]) {
     //pobi와 crong에는 [왼쪽 페이지 번호(홀수), 오른쪽 페이지 번호(짝수)]가 순서대로 들어있다.
     return -1;
   }
 
   var answer;
 
-  var pobiBiggest = isBigger(sumOrMultipy(pobi[0]), sumOrMultipy(pobi[1]));
-  var crongBiggest = isBigger(sumOrMultipy(crong[0]), sumOrMultipy(crong[1]));
+  let pobiBiggest = isBigger(sumOrMultipy(pobi[0]), sumOrMultipy(pobi[1]));
+  let crongBiggest = isBigger(sumOrMultipy(crong[0]), sumOrMultipy(crong[1]));
 
   if (pobiBiggest > crongBiggest) {
     answer = 1;
@@ -32,7 +32,18 @@ function sumOrMultipy(page) {
   var one = page % 10;
 
   var sum = hundred + ten + one;
-  var multiply = hundred * ten * one;
+  var multiply = 0;
+
+  if(page<100 && page>=10){
+    multiply = ten * one;
+  }
+  else if(page<10){
+    multiply = one;
+  }
+  else{
+    var multiply = hundred * ten * one;
+  }
+
   if (sum > multiply) {
     return sum;
   } else if (multiply > sum) {
