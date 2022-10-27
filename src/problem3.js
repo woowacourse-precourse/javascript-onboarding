@@ -6,7 +6,12 @@ const game369 = (number) => {
     .filter((n) => is369(n)).length;
 };
 
+const isValidNumber = (number) => {
+  return number >= 1 && number <= 10000;
+};
+
 function problem3(number) {
+  if (!isValidNumber(number)) return;
 
   let clap = 0;
 
