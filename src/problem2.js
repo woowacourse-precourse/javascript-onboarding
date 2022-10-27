@@ -5,7 +5,7 @@ function problem2(cryptogram) {
     let isRemove = 0;
     const newCryptogram = new Array(cryptogram.lengt);
     const checkCryptogram = new Array(cryptogram.length).fill(0);
-    console.log(cryptogram.join(""));
+
     for (let i = 1; i < cryptogram.length; i++) {
       if (cryptogram[i] == cryptogram[i - 1]) {
         checkCryptogram[i] = 1;
