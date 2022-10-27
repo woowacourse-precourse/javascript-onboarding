@@ -28,7 +28,7 @@ function isAlreadyFriend({ user, friend, friendsMap }) {
   return false;
 }
 
-function computeFriendsScoreBySerperation({ user, friendsMap }) {
+function computeFriendScoreBySerperation({ user, friendsMap }) {
   const FRIEND_SCORE = 10;
   const friendsHasScore = new Map();
 
@@ -51,7 +51,7 @@ function computeFriendsScoreBySerperation({ user, friendsMap }) {
   return friendsHasScore;
 }
 
-function computeFriendsScoreByVisiting(visitors) {
+function computeFriendScoreByVisiting(visitors) {
   const VISITING_SCORE = 1;
   const friendsHasScore = new Map();
 
@@ -67,14 +67,36 @@ function computeFriendsScoreByVisiting(visitors) {
   return friendsHasScore;
 }
 
+function computeTotalFriendScore(...friendScores) {
+  const friendScore = new Map();
+
+  friendScores.forEach((scores) =>
+    scores.forEach((score, userName) => {
+      friendScore.set(
+        userName,
+        friendScore.has(userName) ? friendScore.get(userName) + score : score
+      );
+    })
+  );
+
+  return friendScore;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
   const friendsMap = createFriendsMap(friends);
-  const friendsScoreMap = computeFriendsScoreBySerperation({
+
+  const friendScoreBySeperation = computeFriendScoreBySerperation({
     user,
     friendsMap,
   });
+  const friendScoreByVisiting = computeFriendScoreByVisiting(visitors);
+
+  const totalFriendScore = computeTotalFriendScore(
+    friendScoreBySeperation,
+    friendScoreByVisiting
+  );
 
   return answer;
 }
