@@ -52,7 +52,6 @@ describe("problem2", () => {
     expect(problem2("aaaaaaaabbb")).toEqual("");
   });
 });
-*/
 
 describe("problem3", () => {
   test("case1", () => {
@@ -80,14 +79,15 @@ describe("problem3", () => {
     expect(problem3(1)).toEqual(0);
   });
 });
+*/
 
-/*
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
 
+/*
 describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
