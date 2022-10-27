@@ -16,5 +16,11 @@ const isValidPages = (pages) => {
     return true;
   }
 };
+const getDigitSum = (num) => {
+  return num
+    .toString()
+    .split("")
+    .reduce((prev, cur) => prev + Number(cur), 0);
+};
 
 module.exports = problem1;
