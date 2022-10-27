@@ -9,7 +9,7 @@ function getAlreadyFriends(user, friends, alreadyFriends) {
   });
 }
 
-function getFriendOfFreinds(user, alreadyFriends, friendOfFreinds) {
+function getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds) {
   friends.forEach((item) => {
     for (let i = 0; i < alreadyFriends.length; i++) {
       if (item.includes(alreadyFriends[i])) {
@@ -67,6 +67,26 @@ function sortScore(score, sortedScore) {
   });
 }
 
+function getFriendsRecommendArray(alreadyFriends, sortedScore, ans) {
+  for (let i = 0; i < sortedScore.length; i++) {
+    if (ans.length === 5) {
+      break;
+    }
+
+    if (sortedScore[i][1] === 0) {
+      continue;
+    }
+
+    if (alreadyFriends.includes(sortedScore[i][0])) {
+      continue;
+    }
+
+    ans.push(sortedScore[i][0]);
+  }
+
+  return ans;
+}
+
 function problem7(user, friends, visitors) {
   let alreadyFriends = [];
 
@@ -74,7 +94,7 @@ function problem7(user, friends, visitors) {
 
   let friendOfFreinds = [];
 
-  getFriendOfFreinds(user, alreadyFriends, friendOfFreinds);
+  getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds);
 
   let score = {};
 
@@ -83,6 +103,10 @@ function problem7(user, friends, visitors) {
   let sortedScore = [];
 
   sortScore(score, sortedScore);
+
+  let ans = [];
+
+  return getFriendsRecommendArray(alreadyFriends, sortedScore, ans);
 }
 
 module.exports = problem7;
