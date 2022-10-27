@@ -34,11 +34,11 @@ function moneyLoop(money) {
   const moneyStep = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   let exchange = [];
 
-  for (let i = 0; i < moneyStep.length; i++) {
-    const result = Math.floor(tempMoney / moneyStep[i]);
-    exchange[i] = result;
-    tempMoney = tempMoney % moneyStep[i];
-  }
+  moneyStep.forEach((compair, index) => {
+    const result = Math.floor(tempMoney / compair);
+    exchange[index] = result;
+    tempMoney = tempMoney % compair;
+  });
 
   return exchange;
 }
