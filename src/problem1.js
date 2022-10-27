@@ -14,7 +14,7 @@ function exception_handler(pages) {
   return false;
 }
 
-function get_digits(num) {
+function get_digits_helper(num) {
   let digits = []; // 1, 10, 100
   for (let i = 0; i < 3; ++i) {
     const temp = num % 10;
@@ -27,6 +27,14 @@ function get_digits(num) {
   return digits;
 }
 
+function get_digits(person) {
+  let page_digits = [[], []];
+  let [left, right] = page_digits;
+  left = get_digits_helper(person[0]); // left page digits
+  right = get_digits_helper(person[1]); // right page digits
+  return page_digits;
+}
+
 function problem1(pobi, crong) {
   // execption
   if (exception_handler(pobi) || exception_handler(crong)) {
@@ -34,14 +42,12 @@ function problem1(pobi, crong) {
   }
 
   // for pobi
-  let pobi_page_digits = [];
-  pobi_page_digits.push(get_digits(pobi[0])); // left page digits
-  pobi_page_digits.push(get_digits(pobi[1])); // right page digits
+  let pobi_page_digits = get_digits(pobi);
+  const [pobi_left, pobi_right] = pobi_page_digits;
 
   // for crong
-  let crong_page_digits = [];
-  crong_page_digits.push(get_digits(crong[0])); // left page digits
-  crong_page_digits.push(get_digits(crong[1])); // right page digits
+  let crong_page_digits = get_digits(crong);
+  const [crong_left, crong_right] = crong_page_digits;
 
   var answer;
   return answer;
