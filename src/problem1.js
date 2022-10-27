@@ -60,6 +60,20 @@ function sumNumberDigits(num) {
   return result;
 }
 
+function findBiggestNumber(left, right) {
+  const leftBiggestNum = Math.max(
+    multiplyNumberDigits(left),
+    sumNumberDigits(left),
+  );
+  const rightBiggestNum = Math.max(
+    multiplyNumberDigits(right),
+    sumNumberDigits(right),
+  );
+
+  return Math.max(leftBiggestNum, rightBiggestNum);
+}
+
+// 메인 함수
 function problem1(pobi, crong) {
   var answer;
 
