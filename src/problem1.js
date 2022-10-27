@@ -34,6 +34,7 @@ const checkValidatePage = (leftPage, rightPage) => {
   if (leftPage - rightPage !== -1) return -1;
   if (leftPage < 1 || leftPage >= 400 || rightPage < 2 || rightPage > 400)
     return -1;
+  if (leftPage % 2 !== 1 || rightPage % 2 !== 0) return -1;
 };
 
 module.exports = problem1;
