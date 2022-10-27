@@ -6,6 +6,8 @@ function problem5(money) {
     if (m / n > 0) {
       arr.push(Math.floor(m / n));
       moneys = m % n;
+    } else {
+      arr.push(0);
     }
   };
   my_function(money, 50000);
@@ -17,7 +19,6 @@ function problem5(money) {
   my_function(moneys, 50);
   my_function(moneys, 10);
   my_function(moneys, 1);
-
   answer = arr;
   return answer;
 }
@@ -27,3 +28,4 @@ module.exports = problem5;
 //기능 목록
 // 1. 큰 지폐로 나눈 몫을 배열에 추가하고, 나머지를 새로운 계좌로서 사용하는 함수를 만든다.
 // 2. 함수를 남은 계좌와 각 지폐를 매개변수로 넣고 호출한다.
+// 3. 예외 : 나누어 떨어지면 배열에 0을 추가
