@@ -30,6 +30,18 @@ function checkNickNameLength(forms) {
   return true;
 }
 
+function checkNickNameOnlyKorean(forms) {
+  const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+
+  for (let i = 0; i < forms.length; i++) {
+    if (!regex.test(forms[i][1])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function checkFormsLength(forms) {
   if (forms.length < 1 || forms.length > 10000) {
     return false;
@@ -85,7 +97,8 @@ function problem6(forms) {
     !checkEmailLength(forms) ||
     !checkEmailForm(forms) ||
     !checkNickNameLength(forms) ||
-    !checkFormsLength(forms)
+    !checkFormsLength(forms) ||
+    !checkNickNameOnlyKorean(forms)
   ) {
     return;
   }
