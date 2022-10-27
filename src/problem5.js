@@ -1,5 +1,6 @@
 function problem5(money) {
-  var answer;
+  let answer = new Array(9).fill(0);
+  
   return answer;
 }
 
