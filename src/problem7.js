@@ -33,6 +33,7 @@ function problem7(user, friends, visitors) {
       scores.push({ id: visitor, score: visitorObj[visitor] });
     }
   }
+  scores.sort();
   scores.sort((a, b) => b.score - a.score);
   scores = scores.filter((item) => item.score > 1);
 
