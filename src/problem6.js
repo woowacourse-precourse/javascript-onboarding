@@ -23,9 +23,28 @@ function checkEmailForm(forms){
   })
   return new_crew_list;
 }
+//닉네임 한글 검사
+function checkNicknameKorean(forms){
+  let check_nickname_korean = new RegExp('^[가-힣]*$');
+  let new_crew_list = [];
+  forms.map((element)=>{
+    let nickname = element[1];
+    if(nickname.length<1 || nickname.length>20){
+      return false;
+    }
+    if(check_nickname_korean.test(nickname)== false){
+      return false;
+    }
+    new_crew_list.push(element);
+  })
+  return new_crew_list;
+}
 
 function problem6(forms) {
   var answer;
+  checkNicknameKorean(forms)
+  checkEmailForm(forms)
+  
   return answer;
 }
 
