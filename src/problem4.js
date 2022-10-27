@@ -12,6 +12,10 @@ function problem4(word) {
       newWord = String.fromCharCode((155-word[i].charCodeAt(0)));
       //console.log(newWord);  
       newSen += newWord;
+    }else if(word[i] === word[i].toLowerCase()){
+      newWord = String.fromCharCode((219-word[i].charCodeAt(0)));
+      //console.log(newWord);
+      newSen += newWord;
     }
   }
   console.log(newSen);
