@@ -5,17 +5,12 @@ function problem5(money) {
 
   for (let i = 0; i < possibleChange.length; i++) {
     while (moneyLeft >= possibleChange[i]) {
-      moneyLeft = changeBill(moneyLeft, possibleChange[i]);
+      moneyLeft = moneyLeft - possibleChange[i];
       answer[i]++;
     }
   }
 
   return answer;
-}
-
-function changeBill(money, bill) {
-  money = money - bill;
-  return money;
 }
 
 module.exports = problem5;
