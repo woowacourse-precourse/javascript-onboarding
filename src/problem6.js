@@ -11,7 +11,8 @@ function extractWord({ nickname, characterLength = 2 }) {
 }
 
 function problem6(forms) {
-  var answer;
+  const UNIQUE_NAME_USER_COUNT = 1;
+  const duplicateNicknameUserEmails = [];
 
   /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
   const nicknameWordMap = new Map();
@@ -34,9 +35,15 @@ function problem6(forms) {
     }
   }
 
-  console.log(nicknameWordMap);
+  for (const [_, { count, users }] of nicknameWordMap) {
+    if (count > UNIQUE_NAME_USER_COUNT) {
+      users.forEach(({ email }) => duplicateNicknameUserEmails.push(email));
+    }
+  }
 
-  return answer;
+  duplicateNicknameUserEmails.sort();
+
+  return duplicateNicknameUserEmails;
 }
 
 console.log(
