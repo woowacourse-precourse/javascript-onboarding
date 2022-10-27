@@ -10,8 +10,18 @@
 function problem1(pobi, crong) {
   if (!(isConsecutiveNumbers(pobi) && isConsecutiveNumbers(crong))) return -1;
 
-  let maxScoreOfPobi = getMaxScore(getSumOfDigits(pobi), getProductOfDigits(pobi));
-  let maxScoreOfCrong = getMaxScore(getSumOfDigits(crong), getProductOfDigits(crong));
+  let maxScoreOfPobi = getMaxScore(
+    getSumOfDigits(pobi[0]),
+    getSumOfDigits(pobi[1]),
+    getProductOfDigits(pobi[0]),
+    getProductOfDigits(pobi[1])
+  );
+  let maxScoreOfCrong = getMaxScore(
+    getSumOfDigits(crong[0]),
+    getSumOfDigits(crong[1]),
+    getProductOfDigits(crong[0]),
+    getProductOfDigits(crong[1])
+  );
 
   return getGameResult(maxScoreOfPobi, maxScoreOfCrong);
 }
