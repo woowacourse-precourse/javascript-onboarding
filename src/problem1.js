@@ -11,6 +11,14 @@ function problem1(pobi, crong) {
     return result;
   }
 
+  function getMaxNum(left, right) {
+    return Math.max(
+      sum(left),
+      sum(right),
+      multiplication(left),
+      multiplication(right)
+    )
+  }
 
 
 }
