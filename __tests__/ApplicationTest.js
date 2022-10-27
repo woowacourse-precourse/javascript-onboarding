@@ -21,10 +21,10 @@ describe("problem1", () => {
 });
 
 describe("problem2", () => {
-  test("case1", () => {
+  test("Problem2_NormalCrypto_Returnbrown", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
-  test("case2", () => {
+  test("Problem2_SymmetricCrypto_ReturnEmptyString", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
 });
