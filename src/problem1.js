@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
-  var answer;
+  const checkExceptions = (pobi[1] - pobi[0]) - (crong[1] - crong[0]);
+  
   return answer;
 }
 
