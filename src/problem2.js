@@ -5,9 +5,12 @@ function problem2(cryptogram) {
     if (prev === cryptogram[i]) {
       answer.pop();
       prev = answer[answer.length - 1];
+    } else {
+      answer.push(cryptogram[i]);
+      prev = cryptogram[i];
     }
   }
-  return answer;
+  return answer.join("");
 }
 
 module.exports = problem2;
