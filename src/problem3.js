@@ -1,5 +1,6 @@
 function problem3(number) {
-  var answer;
+  const makeArray = String([...Array(number+1).keys()]).split("");
+  
   return answer;
 }
 
