@@ -100,7 +100,6 @@ describe("problem4", () => {
     );
   });
 });
-*/
 
 describe("problem5", () => {
   test("case1", () => {
@@ -122,8 +121,8 @@ describe("problem5", () => {
     expect(problem5(999999)).toEqual([19, 4, 1, 4, 1, 4, 1, 4, 9]);
   });
 });
+*/
 
-/*
 describe("problem6", () => {
   test("case1", () => {
     expect(
@@ -136,8 +135,31 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("my test1", () => {
+    expect(
+      problem6([
+        ["happy@email.com", "해피한"],
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["nora@email.com", "노라워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+        ["woniee@email.com", "워니"],
+        ["happyday@email.com", "해피한날"],
+      ])
+    ).toEqual([
+      "happy@email.com",
+      "happyday@email.com",
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nora@email.com",
+      "woniee@email.com",
+    ]);
+  });
 });
 
+/*
 describe("problem7", () => {
   test("case1", () => {
     expect(
