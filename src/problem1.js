@@ -6,15 +6,7 @@ function problem1(pobi, crong) {
   let pobiMaxNum, crongMaxNum;
   pobiMaxNum = getMaxNum(pobi);
   crongMaxNum = getMaxNum(crong);
-  if(pobiMaxNum > crongMaxNum){
-    answer = 1;
-  }
-  else if(pobiMaxNum < crongMaxNum){
-    answer = 2;
-  }
-  else{
-    answer = 0;
-  }
+  answer = getResult(pobiMaxNum, crongMaxNum);
   return answer;
 }
 
@@ -91,6 +83,18 @@ function getMul(num){
     divider /= 10;
   }
   return mul;
+}
+
+function getResult(pobiNum, crongNum){
+  if(pobiNum > crongNum){
+    return(1);
+  }
+  else if(pobiNum < crongNum){
+    return(2);
+  }
+  else{
+    return(0);
+  }
 }
 
 module.exports = problem1;
