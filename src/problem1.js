@@ -11,12 +11,9 @@ function problem1(pobi, crong) {
   // 두 최대값을 비교하여 1 or 2 반환
   if (isInvalidInput(pobi, crong)) return -1;
   if (pobiMaxV === crongMaxV) return 0;
-  switch (pobiMaxV > crongMaxV) {
-    case true:
-      return 1;
-    case false:
-      return 2;
-  }
+  else if(pobiMaxV > crongMaxV) return 1;
+  else if(pobiMaxV < crongMaxV) return 2;
+  
 
   // 페이지값을 받아 최대값을 반환 메소드
   function getMaxV(pages){
@@ -49,7 +46,7 @@ function problem1(pobi, crong) {
 
   // 홀, 짝수 및 페이지 순서 확인 로직
   function hasWrongPage(pobi, crong) {
-    const rightOrder = 2 !== (pobi[RIGHTPAGE] - pobi[LEFTPAGE]) + (crong[RIGHTPAGE] - crong[LEFTPAGE]);
+    const rightOrder = pobi[LEFTPAGE] + 1 !== pobi[RIGHTPAGE] || crong[LEFTPAGE] + 1 !== crong[RIGHTPAGE];
     const evenCheck = 0 !== pobi[RIGHTPAGE]%2 + crong[RIGHTPAGE]%2;
     return rightOrder || evenCheck
   }
