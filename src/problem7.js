@@ -7,36 +7,27 @@ function problem7(user, friends, visitors) {
    * 5. 점수 별로 나열 후 score가 0인 것 제외해서 배열에 이름 반환
    */
   const alreadyFriendList = [...new Set(friends.filter((friend) => friend.includes(user)).flat())];
+
   let answer = {};
-  friends.flat().forEach((name) => (answer[name] = (answer[name] || 0) + 10));
-  visitors.forEach((name) => (answer[name] = (answer[name] || 0) + 1));
+
+  function recordScore(array, score) {
+    return array.forEach((name) => (answer[name] = (answer[name] || 0) + score));
+  }
+
+  recordScore(friends.flat(), 10);
+  recordScore(visitors, 1);
+
   answer = Object.entries(answer)
     .filter(([person, _]) => !alreadyFriendList.includes(person))
     .sort((a, b) => {
       if (a[1] === b[1]) {
         return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
       }
-
       return b[1] - a[1];
-    });
+    })
+    .map((info) => info[1] !== 0 && info[0]);
+
   return answer;
 }
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "bb"],
-      ["donut", "bb"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "bedi"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
 
 module.exports = problem7;
