@@ -49,6 +49,8 @@ function checkScore([page_left, page_right]) {
 
 // 예외 처리
 function exception([page_left, page_right]) {
+  // 형식이 맞지 않는다면, 즉 길이가 2인 리스트가 아니라면 예외처리
+  if(!page_left || !page_right) return false;
   // 왼쪽, 오른쪽 페이지가 1 ~ 400 의 범위가 아닐 경우, 이어지는 페이지가 아닐 경우 예외처리
   if (page_left < 1 || page_right > 400 || page_right < page_left || page_right - 1 !== page_left) {
     return false;
