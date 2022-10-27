@@ -82,9 +82,13 @@ function problem7(user, friends, visitors) {
   const relationScores = getRelationScores(user, friends);
   const visitorScores = getVisitorScores(visitors);
   const crewScores = getCrewScores(relationScores, visitorScores);
-  const sortedCrews = getSortedCrews(crewScores);
+  const answer = getSortedCrews(crewScores);
 
-  return sortedCrews;
+  if (answer.length > 5) {
+    answer.splice(5);
+  }
+
+  return answer;
 }
 
 module.exports = problem7;
@@ -99,7 +103,7 @@ function test() {
     ['shakevan', 'jun'],
     ['shakevan', 'mrko'],
   ];
-  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa'];
+  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa', 'bb'];
 
   console.log(findUserFriends(user, friends));
   console.log(getRelationScores(user, friends));
