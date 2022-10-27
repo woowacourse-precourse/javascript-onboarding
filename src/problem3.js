@@ -1,15 +1,19 @@
 function problem3(number) {
-  var answer;
+  var answer = 0;
 
   const cntOfClap = (num) => {
-    // 포함되는 개수 더해주기
+    let cnt = 0;
+    for (let i = 0; i < num.length; i++) {
+      if (num[i] == "3" || num[i] == "6" || num[i] == "9") {
+        cnt += 1;
+      }
+    }
+    return cnt;
   };
 
   for (let num = 1; num <= number; num++) {
-    num = num.toString();
-    if (num.includes("3" || "6" || "9")) {
-      answer += cntOfClap(num);
-    }
+    changedNum = num.toString();
+    answer += cntOfClap(changedNum);
   }
   return answer;
 }
