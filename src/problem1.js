@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   var answer;
+  console.log(checkValidatePage(null));
   return answer;
 }
 
@@ -27,6 +28,10 @@ const getWinner = (pobiScore, crongScore) => {
   if (pobiScore > crongScore) return 1;
   if (pobiScore === crongScore) return 0;
   return 2;
+};
+
+const checkValidatePage = (leftPage, rightPage) => {
+  if (leftPage - rightPage !== -1) return -1;
 };
 
 module.exports = problem1;
