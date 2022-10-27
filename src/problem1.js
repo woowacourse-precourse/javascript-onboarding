@@ -1,5 +1,17 @@
-// 각 페이지 번호를 가장 큰 점수로 만드는 함수
-function pageToMax(pageNum) {}
+// 페이지 번호의 각 자리 수 연산 과정 거친 후 가장 큰 수 구하는 함수
+function pageToMax(pageNum) {
+  let numArr = [];
+  do {
+    numArr.push(pageNum % 10);
+    pageNum = Math.floor(pageNum / 10);
+  } while (pageNum > 0);
+
+  let add = numArr.reduce((prev, cur) => prev + cur);
+  let multiple = numArr.reduce((prev, cur) => prev * cur);
+
+  let max = Math.max(add, multiple);
+  return max;
+}
 
 // 가장 큰 수 본인의 점수로 만드는 함수
 function getMaxNum(pageArr) {
