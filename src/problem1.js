@@ -48,23 +48,53 @@ function calculation(pageList) {
 
   const leftPage = pageList[0].toString();
   const rightPage = pageList[1].toString();
+  let totalPage = []; // 더하기 또는 곱하기 계산된 결과들
 
   console.log("leftPage, rightPage: ", leftPage, rightPage);
+  // leftPage, rightPage:  97 98
 
   let leftPagePlace = []; // 왼쪽 페이지 자릿수
   let rightPagePlace = []; // 오른쪽 페이지 자릿수
 
   // 기능 2.1 자릿수로 구분하기
   for (let i = 0; i < leftPage.length; i++) {
-    leftPagePlace.push(leftPage[i]);
+    leftPagePlace.push(Number(leftPage[i]));
   }
   for (let i = 0; i < rightPage.length; i++) {
-    rightPagePlace.push(rightPage[i]);
+    rightPagePlace.push(Number(rightPage[i]));
   }
-
   console.log("leftPagePlace, rightPagePlace: ", leftPagePlace, rightPagePlace);
+  // leftPagePlace, rightPagePlace:  [ 9, 7 ] [ 9, 8 ]
 
+  // 기능 2.1.1 자릿수 더하기
+  let leftSum = 0;
+  let rightSum = 0;
 
+  for (let element of leftPagePlace) {
+    leftSum += element;
+  }
+  totalPage.push(leftSum);
+
+  for (let element of rightPagePlace) {
+    rightSum += element;
+  }
+  totalPage.push(rightSum);
+
+  // 기능 2.1.2 자릿수 곱하기
+  let leftMul = 1;
+  let rightMul = 1;
+
+  for (let element of leftPagePlace) {
+    leftMul *= element;
+  }
+  totalPage.push(leftMul);
+
+  for (let element of rightPagePlace) {
+    rightMul *= element;
+  }
+  totalPage.push(rightMul);
+
+  console.log(totalPage);
 
 }
 // 기능 3. 둘의 점수 비교하여 결과 리턴하기
