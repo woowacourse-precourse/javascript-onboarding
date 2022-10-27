@@ -67,4 +67,18 @@ function scoreCalulator(page) {
   return Math.max(leftAddResult, rightAddResult, leftMulResult, rightMulResult);
 }
 
+// 페이지 번호 각 자리수를 더해서 반환하는 함수
+function add(num) {
+  var number = num;
+  var result = 0;
+
+  while (number / 10 != 0) {
+    result += number % 10;
+    number = parseInt(number / 10);
+  }
+  result += number;
+
+  return result;
+}
+
 module.exports = problem1;
