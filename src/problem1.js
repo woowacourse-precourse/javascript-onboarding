@@ -72,11 +72,25 @@ function add(num) {
   var number = num;
   var result = 0;
 
-  while (number / 10 != 0) {
+  while (parseInt(number / 10) != 0) {
     result += number % 10;
     number = parseInt(number / 10);
   }
   result += number;
+
+  return result;
+}
+
+// 페이지 번호 각 자리수를 곱해서 반환하는 함수
+function mul(num) {
+  var number = num;
+  var result = 1;
+
+  while (parseInt(number / 10) != 0) {
+    result *= number % 10;
+    number = parseInt(number / 10);
+  }
+  result *= number;
 
   return result;
 }
