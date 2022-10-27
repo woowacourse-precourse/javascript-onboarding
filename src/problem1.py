@@ -22,6 +22,17 @@ def problem1(pobi, crong):
   crong_left = crong[0]
   crong_right = crong[1]
 
+    # 예외 처리 
+  if pobi_left >= pobi_right:
+    return -1
+  if pobi_left - pobi_right != 1:
+    return -1
+
+  if crong_left >= crong_right:
+    return -1
+  if crong_left - crong_right != 1:
+    return -1
+
   # 각자의 max값 구하기
   pobi_max = max(sum0(pobi_left), sum0(pobi_right), mult0(pobi_left), mult0(pobi_right))
   crong_max = max(sum0(crong_left), sum0(crong_right), mult0(crong_left), mult0(crong_right))
