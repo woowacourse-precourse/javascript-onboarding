@@ -58,5 +58,4 @@ else if(pobimax < crongmax){
   return 2;
 }
 }
-
 module.exports = problem1;
