@@ -1,5 +1,6 @@
 function problem3(number) {
   var answer;
+  answer = count_clap(number);
   return answer;
 }
 
@@ -13,4 +14,11 @@ function check(num) {
   return cnt;
 }
 
+function count_clap(num) {
+  let cnt = 0;
+  for (let i = 1; i <= num; i++) {
+    if (check(i) != 0) cnt += check(i);
+  }
+  return cnt;
+}
 module.exports = problem3;
