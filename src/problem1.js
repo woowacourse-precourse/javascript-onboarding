@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
+  // 3) 플레이어 각각의 점수를 계산하는 과정
+  const pobiScore = calculateScore(pobi);
+  const crongScore = calculateScore(crong);
   return answer;
 }
 
