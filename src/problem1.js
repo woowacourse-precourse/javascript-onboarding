@@ -1,6 +1,4 @@
 function problem1(pobi, crong) {
-  var answer;
-
   const splitPages = (book) => {
     return book.map((pages) => pages.toString().split('').map(Number));
   };
@@ -15,7 +13,14 @@ function problem1(pobi, crong) {
   const pobiBook = splitPages(pobi);
   const crongBook = splitPages(crong);
 
-  return answer;
+  const pobiScore = Math.max(...pobiBook.map((pages) => getMaxPage(pages)));
+  const crongScore = Math.max(...crongBook.map((pages) => getMaxPage(pages)));
+
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
+
+  return -1;
 }
 
 problem1([97, 98], [197, 198]);
