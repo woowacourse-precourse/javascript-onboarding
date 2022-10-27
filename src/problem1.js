@@ -5,6 +5,8 @@ function problem1(pobi, crong) {
     return (answer = -1);
   }
 
+  answer = getWinner([pobi, crong]);
+
   return answer;
 }
 const isValidPages = (pages) => {
@@ -35,6 +37,11 @@ const getMaxScore = (pages) => {
     getDigitProduct(pages[0]),
     getDigitProduct(pages[1])
   );
+};
+const getWinner = (players) => {
+  if (getMaxScore(players[0]) > getMaxScore(players[1])) return 1;
+  if (getMaxScore(players[0]) < getMaxScore(players[1])) return 2;
+  return 0;
 };
 
 module.exports = problem1;
