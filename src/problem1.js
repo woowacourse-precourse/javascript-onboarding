@@ -24,6 +24,13 @@ function problem1(pobi, crong) {
   const pobiMax = Math.max(...pobiArr);
   const crongMax = Math.max(...crongArr);
 
+  if (pobiMax > crongMax) {
+    answer = 1;
+  } else if (pobiMax < crongMax) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
   return answer;
 }
 
