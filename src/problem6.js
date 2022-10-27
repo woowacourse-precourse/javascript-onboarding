@@ -43,23 +43,22 @@ function problem6(forms) {
     return keys;
   }
 
-  let refuseNames = checkValue(nickNameCnt);
-  let refuseList = {};
-  refuseNames.map((refuseNickName) => {
-    refuseList[refuseNickName] = true;
-  });
-  let result = [];
-
   function refuseEmail(accountInfo) {
     accountInfo.map((account) => {
       let email = account[0];
       let nickName = account[1].split("");
-      let key = nickName.join("");
-      if (refuseList[key]) result.push(email);
+      for (let i = 0; i < nickName.length - 1; i++) {
+        let nickNameKey = nickName[i];
+        for (let j = i + 1; j < nickName.length; j++) {
+          nickNameKey += nickName[j];
+          if (refuseList[nickNameKey]) {
+            result.push(email);
+            break;
+          }
+        }
+      }
     });
   }
-  refuseEmail(forms);
-  result.sort();
 }
 
 module.exports = problem6;
