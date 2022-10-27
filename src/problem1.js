@@ -9,7 +9,7 @@ function problem1(pobi, crong) {
     answer = -1;
     return answer;
   }
-  if (pobi[1] !== (pobi[0] + 1) || crong[1] !== (crong[1] + 1)) {
+  if (pobi[1] !== (pobi[0] + 1) || crong[1] !== (crong[0] + 1)) {
     answer = -1;
     return answer;
   }
@@ -58,10 +58,22 @@ function problem1(pobi, crong) {
   let crongRightBig = Math.max(crongRightSum, crongRightMultiply);
 
   let crongResult = Math.max(crongLeftBig, crongRightBig);
-  
+
+  // 승패 나누기
+  if (pobiResult > crongResult) {
+    answer = 1
+  } else if (crongResult > pobiResult) {
+    answer = 2
+  } else {
+    answer = 0
+  }
+
+  return answer;
 }
 
 module.exports = problem1;
 
 
-console.log(problem1([1, 2] , [6, 4]));
+// console.log(problem1([97, 98] , [197, 198])); // 0
+// console.log(problem1([131, 132] , [211, 212])); // 1
+// console.log(problem1([99, 102], [211, 212])); // -1
