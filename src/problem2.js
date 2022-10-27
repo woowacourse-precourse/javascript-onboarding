@@ -1,24 +1,13 @@
 function problem2(cryptogram) {
-  return removeDuplication(cryptogram);
+  return removeDuplicates(cryptogram);
 }
 
-function removeDuplication(cryptogram) {
-  const cryptogramArr = cryptogram.split('');
-  let deduplicatedTemporary = '';
-  let containDuplicates = false;
-
-  for (let i = 0; i < cryptogramArr.length; i++) {
-    for (let j = i + 1; j <= cryptogramArr.length; j++) {
-      if (cryptogramArr[i] !== cryptogramArr[j]) {
-        deduplicatedTemporary += cryptogramArr[i];
-        break;
-      } else if (cryptogramArr[i++] === cryptogramArr[j]) {
-        containDuplicates = true;
-        break;
-      }
-    }
-  }
-  return containDuplicates ? removeDuplication(deduplicatedTemporary) : deduplicatedTemporary;
+function removeDuplicates(cryptogram) {
+  const DEDUPLICATED_PATTERN = /([a-z])\1{1,}/g;
+  const deduplicatedCryptogram = cryptogram.replace(DEDUPLICATED_PATTERN, '');
+  return cryptogram === deduplicatedCryptogram
+    ? cryptogram
+    : removeDuplicates(deduplicatedCryptogram);
 }
 
 module.exports = problem2;
