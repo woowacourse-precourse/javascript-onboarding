@@ -27,6 +27,15 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("case3", () => {
+    expect(problem2("baaaot")).toEqual("bot");
+  });
+  test("case4", () => {
+    expect(problem2("saddaas")).toEqual("sas");
+  });
+  test("case5", () => {
+    expect(problem2("zyelleeyyeyz")).toEqual("");
+  });
 });
 
 describe("problem3", () => {
