@@ -24,7 +24,7 @@ function error(str){
 
 function problem2(cryptogram) {
   if(error(cryptogram) === false){
-    return "암호문의 제한사항을 확인해주세요"
+    return "암호문의 제한사항을 확인해주세요";
   }
   else{
     const answer = findDup(cryptogram);
