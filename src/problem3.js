@@ -1,5 +1,7 @@
 function problem3(number) {
   // 1~number까지 순회 기능
+  let numberArray = Array.from({ length: number }, (_, n) => n + 1);
+  const countThreeSixNine = numberArray.map((n) => isIncludeThreeSixNine(n));
 }
 
 // 3,6,9 포함 판별 기능
