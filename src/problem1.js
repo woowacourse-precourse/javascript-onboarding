@@ -1,12 +1,15 @@
 function exceptionHandle(arr){
   if(arr[1]-arr[0] !== 1) return -1;
   if(arr[0] < 1 || arr[1] > 400) return -1;
+  if(arr[0] % 2 === 0 || arr[1] % 2 === 1) return -1;
 }
 
 function calcNum(pageNum){
+  //* 좋게바꿔보자
   let sum = 0;
   let multi = 1;
   const numbers = Array.from(pageNum.toString(), (num) => Number(num));
+  
   
   numbers.map((num) => {
     sum = sum + num;
@@ -19,6 +22,7 @@ function calcNum(pageNum){
 function getMaxNum(arr){
   let maxNum = -1;
 
+  //*Math.max함수 사용
   arr.map((pageNum)=>{
     const num = calcNum(pageNum);
     maxNum = maxNum < num ? num : maxNum;
