@@ -11,8 +11,17 @@ function divideNum(number) {
   return false;
 }
 
-
-problem3(33);
+// 뒷자리 3, 6, 9에 손뼉치기
+function countClap(number) {
+  let clap = 0;
+  for(let i=1; i<number+1; i++) {
+    if (divideNum(i)) {
+      console.log(i);
+      clap = clap + 1;
+    }
+  }
+  return clap;
+}
 
 module.exports = problem3;
 
