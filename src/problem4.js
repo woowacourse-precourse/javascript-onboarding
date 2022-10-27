@@ -7,6 +7,11 @@ function problem4(word) {
   for(let i=0;i<word.length;i++){
     if(word[i] === ' '){
       newSen += ' ';
+    }else if(word[i] === word[i].toUpperCase()){
+      //console.log(155-word[i].charCodeAt(0));
+      newWord = String.fromCharCode((155-word[i].charCodeAt(0)));
+      //console.log(newWord);  
+      newSen += newWord;
     }
   }
   console.log(newSen);
