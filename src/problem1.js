@@ -14,11 +14,16 @@ function problem1(pobi, crong) {
   // - [x] 책을 펼쳤을때 시작 면이나 마지막 면이 나오지 않는다.
   const getRandomPage = () =>
     Math.floor(Math.random() * (LAST_PAGE - FIRST_PAGE)) + MINIMUM_PAGE;
+  const getOddNumber = (number) => (isEvenNumber(number) ? number + 1 : number);
   if (!pobi) {
-    pobi = [getRandomPage(), getRandomPage()];
+    const leftPage = getOddNumber(getRandomPage());
+    const rightPage = leftPage + 1;
+    pobi = [leftPage, rightPage];
   }
   if (!crong) {
-    crong = [getRandomPage(), getRandomPage()];
+    const leftPage = getOddNumber(getRandomPage());
+    const rightPage = leftPage + 1;
+    crong = [leftPage, rightPage];
   }
 
   // - [x] pobi와 crong의 길이는 2이다.
