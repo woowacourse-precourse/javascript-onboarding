@@ -38,13 +38,7 @@ function checkAlphabet(ans, oneWordASCII, word) {
   return true;
 }
 
-function problem4(word) {
-  if (word.length < 1 || word.length > 1000) {
-    return;
-  }
-
-  let ans = [];
-
+function changeWord(word, ans) {
   for (let i = 0; i < word.length; i++) {
     const oneWordASCII = word[i].charCodeAt();
 
@@ -54,6 +48,16 @@ function problem4(word) {
 
     checkUpperOrLower(oneWordASCII, ans);
   }
+}
+
+function problem4(word) {
+  if (word.length < 1 || word.length > 1000) {
+    return;
+  }
+
+  let ans = [];
+
+  changeWord(word, ans);
 
   return ans.join("");
 }
