@@ -37,7 +37,6 @@ function getMaxNum(pageArr){
     right.toString().split('').reduce((prev,curr)=> Number(prev) + Number(curr)),
     right.toString().split('').reduce((prev,curr)=> Number(prev) * Number(curr)),
   );
-
   return maxNum;
 }
 
@@ -46,6 +45,17 @@ function problem1(pobi, crong) {
 
   if(!isValidInput(pobi) || !isValidInput(crong)){
     return -1;
+  }
+
+  const pobiScore = getMaxNum(pobi);
+  const crongScore = getMaxNum(crong);
+
+  if(pobiScore > crongScore){
+    answer = 1;
+  } else if(pobiScore < crongScore){
+    answer = 2;
+  } else{
+    answer = 0;
   }
 
   return answer;
