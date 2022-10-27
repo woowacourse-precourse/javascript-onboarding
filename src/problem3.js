@@ -1,5 +1,8 @@
 function problem3(number) {
-  var answer;
+  var answer = numberCount(number);
+  if(!error(number)){
+    throw new Error('제한사항을 확인하세요.');
+  }
   return answer;
 }
 
