@@ -1,18 +1,11 @@
-function getOpposite(letterCode, mid) {
-  if (letterCode <= mid) {
-    return letterCode + (mid - letterCode) * 2 + 1;
-  }
-  return letterCode - (letterCode - mid) * 2 + 1;
-}
-
 function lowerFrog(letterCode) {
   const mid = "m".charCodeAt(0);
-  return getOpposite(letterCode, mid);
+  return 2 * mid - letterCode + 1;
 }
 
 function upperFrog(letterCode) {
   const mid = "M".charCodeAt(0);
-  return getOpposite(letterCode, mid);
+  return 2 * mid - letterCode + 1;
 }
 
 function problem4(word) {
