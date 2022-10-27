@@ -5,8 +5,12 @@ function countClap(num) {
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  for (let i = 1; i <= number; i++) {
+    answer += countClap(i);
+  }
   return answer;
 }
 
+console.log(problem3(14));
 module.exports = problem3;
