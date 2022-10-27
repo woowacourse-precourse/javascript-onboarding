@@ -2,17 +2,17 @@ function problem3(number) {
   let answer = 0;
 
   for (let i = 1; i <= number; i++) {
-    answer += calcClapCount(i);
+    answer += getClapCount(i);
   }
 
   return answer;
 }
 
-function calcClapCount(number) {
-  let numberArray = String(number).split("");
+function getClapCount(number) {
+  let numberSplitArray = String(number).split("");
   let clapCount = 0;
-  for (let i = 0; i < numberArray.length; i++) {
-    if (["3", "6", "9"].includes(numberArray[i])) clapCount += 1;
+  for (let i = 0; i < numberSplitArray.length; i++) {
+    if (["3", "6", "9"].includes(numberSplitArray[i])) clapCount += 1;
   }
   return clapCount;
 }
