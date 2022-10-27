@@ -19,7 +19,8 @@ user 정보는 배열 0번째 인덱스에 저장.
 1. friends 를 순회하면서 dict에 각 아이디 인덱스 정보와 배열을 생성해줄 함수 
    =>  createInfo , 파라미터 값: 친구 관계 friends, 인덱스 idx
 2. 각 아이디의 점수를 카운트해줄 함수 =>  cntScore
-3. 결과값을 출력해주고 정렬하여 return 해줄 함수 =>  makeResult
+3. 함께아는 친구의 수에 대한 정보를 점수화 시켜 카운트해줄 함수 =>  cntKnowScore
+4. 결과값을 출력해주고 정렬하여 return 해줄 함수 =>  makeResult
 */
 
 function problem7(user, friends, visitors) {
@@ -51,6 +52,16 @@ function problem7(user, friends, visitors) {
       }
       let num = idIndexInfo[visitor];
       friendsScore[num] += 1;
+    });
+  }
+
+  function cntKnowScore(memberList, target) {
+    let nearFriends = friendsInfo[idIndexInfo[target]];
+    nearFriends.map((nearName) => {
+      let farFriends = friendsInfo[idIndexInfo[nearName]];
+      farFriends.map((farName) => {
+        friendsScore[idIndexInfo[farName]] += 10;
+      });
     });
   }
 }
