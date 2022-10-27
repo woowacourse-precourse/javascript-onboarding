@@ -37,7 +37,7 @@ function compareScore(pobiScore, crongScore) {
 }
 
 function getBigAddtionScore(numArr) {
-  const arr = numArr.map((v) => {
+  const arr = numArr.map(v => {
     return v.reduce((acc, cur) => {
       return (acc += cur);
     }, REDUCING.additionInit);
@@ -47,7 +47,7 @@ function getBigAddtionScore(numArr) {
 }
 
 function getBigMultiplicationScore(numArr) {
-  const arr = numArr.map((v) => {
+  const arr = numArr.map(v => {
     return v.reduce((acc, cur) => {
       return (acc *= cur ? cur : 1);
     }, REDUCING.multiplicationInit);
@@ -57,7 +57,7 @@ function getBigMultiplicationScore(numArr) {
 }
 
 function splitNum(arr) {
-  return arr.map((v) => Array.from(String(v), Number));
+  return arr.map(v => Array.from(String(v), Number));
 }
 
 function getBigScore(arr) {
@@ -71,7 +71,7 @@ function isEven(num) {
   return num % 2 === 0 ? true : false;
 }
 
-function isValidArgument(arr) {
+function isValidInput(arr) {
   if (arr.length !== VALIDITT.length) {
     return false;
   }
@@ -96,7 +96,7 @@ function isValidArgument(arr) {
 }
 
 function problem1(pobi, crong) {
-  if (!isValidArgument(pobi) || !isValidArgument(crong)) {
+  if (!isValidInput(pobi) || !isValidInput(crong)) {
     return RESULT.exception;
   }
   return compareScore(getBigScore(pobi), getBigScore(crong));
