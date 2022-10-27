@@ -7,6 +7,26 @@ function problem1(pobi, crong) {
     return (left + 1) == right ? 1 : -1;
   }
 
+  // 합
+  const sum = (num) => {
+    let total = 0;
+    num = String(num);
+    for (let i = 0; i < num.length; i++) {
+      total += parseInt(num[i]);
+    }
+    return total;
+  }
+
+  // 곱
+  const product = (num) => {
+    let total = 1;
+    num = String(num);
+    for (let i = 0; i < num.length; i++) {
+      total *= parseInt(num[i]);
+    }
+    return total;
+  }
+
   // 왼쪽 페이지 계산
   const calLeft = (num) => {
     let sumLeft = sum(num);
