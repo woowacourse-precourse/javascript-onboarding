@@ -1,11 +1,13 @@
 function problem7(user, friends, visitors) {
   var answer;
-  let userScore = convertFriendsArrayToUserScore(friends, user);
+  let userScore = convertFriendsToUserScore(friends, user);
+  let userList = convertFriendsToNonRepeatUserList(friends, user);
   console.log(userScore);
+  console.log(userList);
   return answer;
 }
 
-function convertFriendsArrayToUserScore(friends, user) {
+function convertFriendsToUserScore(friends, user) {
   let userScore = {};
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
@@ -14,6 +16,17 @@ function convertFriendsArrayToUserScore(friends, user) {
     }
   }
   return userScore;
+}
+
+function convertFriendsToNonRepeatUserList(friends, user) {
+  let userList = [];
+  for (let i = 0; i < friends.length; i++) {
+    for (let j = 0; j < 2; j++) {
+      if (!userList.includes(friends[i][j]) && friends[i][j] !== user)
+        userList.push(friends[i][j]);
+    }
+  }
+  return userList;
 }
 
 module.exports = problem7;
