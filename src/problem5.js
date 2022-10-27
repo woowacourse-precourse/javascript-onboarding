@@ -22,9 +22,27 @@ function problem5(money) {
   return answer;
 }
 
+/**
+ * @name changeMoney
+ * @description
+ * 돈을 변환해주는 함수
+ * @param {number} [money]
+ * @param {number} [changeMoney]
+ * @returns {number}
+ */
+
 function changeMoney(money, changeMoney) {
   return Math.floor(money / changeMoney);
 }
+
+/**
+ * @name moduloMoney
+ * @description
+ * 변환 후 나머지 돈을 주는 함수
+ * @param {number} [money]
+ * @param {number} [changeMoney]
+ * @returns {number}
+ */
 
 function moduloMoney(money, changeMoney) {
   return money % changeMoney;
