@@ -55,5 +55,11 @@ function problem4(word) {
 		'y',
 		'z',
 	]
+
+	const dictionary = {}
+	for (let i = 0; i < upperCase.length; i++) {
+		dictionary[upperCase[i]] = [...upperCase].reverse()[i]
+		dictionary[lowerCase[i]] = [...lowerCase].reverse()[i]
+	}
 }
 module.exports = problem4
