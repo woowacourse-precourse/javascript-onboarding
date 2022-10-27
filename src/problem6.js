@@ -25,4 +25,14 @@ function problem6(forms) {
   return answer;
 }
 
+function vaildateEmailDomain(email) {
+  if (email.match(/email+\.com/)) return true;
+  return false;
+}
+
+function vaildateEmailLength(email) {
+  if (email.length >= 11 && email.length < 20) return true;
+  return false;
+}
+
 module.exports = problem6;
