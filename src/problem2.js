@@ -25,6 +25,4 @@ function getDupIndexs(stringArray) {
   return dupIndexs;
 }
 
-console.log(problem2('browoanoommnaon'))
-
-// module.exports = problem2;
+module.exports = problem2;

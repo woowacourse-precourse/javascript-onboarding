@@ -32,14 +32,20 @@ describe("problem1", () => {
   });
 });
 
-// describe("problem2", () => {
-//   test("case1", () => {
-//     expect(problem2("browoanoommnaon")).toEqual("brown");
-//   });
-//   test("case2", () => {
-//     expect(problem2("zyelleyz")).toEqual("");
-//   });
-// });
+describe("problem2", () => {
+  test("case1", () => {
+    expect(problem2("browoanoommnaon")).toEqual("brown");
+  });
+  test("case2", () => {
+    expect(problem2("zyelleyz")).toEqual("");
+  });
+  test("case3", () => {
+    expect(problem2("baaaoapptii")).toEqual("boat");
+  });
+  test("case4", () => {
+    expect(problem2("saddaas")).toEqual("sas");
+  });
+});
 
 // describe("problem3", () => {
 //   test("case1", () => {
