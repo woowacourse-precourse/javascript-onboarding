@@ -23,49 +23,46 @@ function problem1(pobi, crong) {
     return RESULT.exception;
   }
 
-  const pobiScore = getBigScore(pobi);
-  const crongScore = getBigScore(crong);
-
-  return compareScore(pobiScore, crongScore);
+  return compareScore(getScore(pobi), getScore(crong));
 }
 
 function isWrongInput(arr) {
-  if (isNotObject(arr)) {
+  if (isWrongTypeOfInput(arr)) {
     return true;
   }
 
-  if (isWrongLength(arr)) {
+  if (isWrongLengthOfInput(arr)) {
     return true;
   }
 
-  if (isNotNumber(arr[0], arr[1])) {
+  if (isWrongTypeOfElement(arr[0], arr[1])) {
     return true;
   }
 
-  if (isWrongNum(arr[0], arr[1])) {
+  if (isWrongFormatOfElement(arr[0], arr[1])) {
     return true;
   }
 
-  if (isWrongPageRange(arr[0], arr[1])) {
+  if (isWrongRangeOfElement(arr[0], arr[1])) {
     return true;
   }
 
   return false;
 }
 
-function isNotObject(arr) {
+function isWrongTypeOfInput(arr) {
   return typeof arr !== INPUT.object;
 }
 
-function isWrongLength(arr) {
+function isWrongLengthOfInput(arr) {
   return arr.length !== INPUT.length;
 }
 
-function isNotNumber(num1, num2) {
+function isWrongTypeOfElement(num1, num2) {
   return typeof num1 !== INPUT.number || typeof num2 !== INPUT.number;
 }
 
-function isWrongNum(num1, num2) {
+function isWrongFormatOfElement(num1, num2) {
   return isEven(num1) || isOdd(num2) || num1 !== num2 - 1;
 }
 
@@ -77,23 +74,23 @@ function isOdd(num) {
   return num % 2 === 1;
 }
 
-function isWrongPageRange(num1, num2) {
+function isWrongRangeOfElement(num1, num2) {
   return num1 < INPUT.minPage || num2 > INPUT.maxPage;
 }
 
-function getBigScore(arr) {
+function getScore(arr) {
   const numArr = splitNum(arr);
-  const addtionScoreArr = getBigAddtionScore(numArr);
-  const multiplicationScoreArr = getBigMultiplicationScore(numArr);
+  const addtionScoreArr = getAddtionScore(numArr);
+  const multipleScoreArr = getMultipleScore(numArr);
 
-  return Math.max(...addtionScoreArr, ...multiplicationScoreArr);
+  return Math.max(...addtionScoreArr, ...multipleScoreArr);
 }
 
 function splitNum(arr) {
   return arr.map(v => Array.from(String(v), Number));
 }
 
-function getBigAddtionScore(numArr) {
+function getAddtionScore(numArr) {
   const arr = numArr.map(v => {
     return v.reduce((acc, cur) => {
       return (acc += cur);
@@ -103,7 +100,7 @@ function getBigAddtionScore(numArr) {
   return arr;
 }
 
-function getBigMultiplicationScore(numArr) {
+function getMultipleScore(numArr) {
   const arr = numArr.map(v => {
     return v.reduce((acc, cur) => {
       return (acc *= cur);

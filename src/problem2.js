@@ -8,8 +8,6 @@ const RESULT = {
   exception: -1,
 };
 
-const DUPLICATION = true;
-
 function problem2(cryptogram) {
   if (isWrongInput(cryptogram)) {
     return RESULT.exception;
@@ -19,30 +17,30 @@ function problem2(cryptogram) {
 }
 
 function isWrongInput(input) {
-  if (isWrongLength(input.length)) {
+  if (isWrongLengthOfInput(input.length)) {
     return true;
   }
 
-  if (isNotString(input)) {
+  if (isWrongTypeOfInput(input)) {
     return true;
   }
 
-  if (isUpperCase(input)) {
+  if (isWrongFormatOfInput(input)) {
     return true;
   }
 
   return false;
 }
 
-function isWrongLength(length) {
+function isWrongLengthOfInput(length) {
   return length < INPUT.minLength || length > INPUT.maxLength;
 }
 
-function isNotString(input) {
+function isWrongTypeOfInput(input) {
   return typeof input !== INPUT.string;
 }
 
-function isUpperCase(input) {
+function isWrongFormatOfInput(input) {
   return input === input.toUpperCase();
 }
 
