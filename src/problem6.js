@@ -58,76 +58,60 @@ class ErrorCase {
   }
 }
 
-function problem6(forms) {
-  new ErrorCase(forms);
+class UAHTechCourse {
+  constructor(forms) {
+    new ErrorCase(forms);
+
+    this.forms = forms;
+  }
+
+  changeNameToTwoWord(name) {
+    return name
+      .split("")
+      .slice(1)
+      .map((word, idx) => [name[idx], word].join(""));
+  }
+
+  tieTwoWordsAndEmail() {
+    return this.forms.flatMap(([email, name]) => ({
+      twoWords: this.changeNameToTwoWord(name),
+      email: email,
+    }));
+  }
+
+  makeTwoWordDic() {
+    const resultMap = new Map();
+
+    this.tieTwoWordsAndEmail().forEach(({ twoWords, email }) => {
+      twoWords.forEach((twoWordName) => {
+        const defaultWord = resultMap.get(twoWordName) || [];
+
+        resultMap.set(twoWordName, [...defaultWord, email]);
+      });
+    });
+
+    return resultMap;
+  }
+
+  getResult() {
+    return [
+      ...new Set(
+        [...this.makeTwoWordDic().values()].flatMap((emailList) => {
+          if (emailList.length > 1) {
+            return emailList;
+          }
+
+          return [];
+        })
+      ),
+    ].sort();
+  }
 }
 
-/* 
-  에러 케이스 테스트
-  ok
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
+function problem6(forms) {
+  const uah = new UAHTechCourse(forms);
 
-  영어 이름
-  problem6([
-    ["jm@email.com", "hi"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-
-  problem6([
-    ["jm@email.com", "hi이름"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-
-  다른 도메인
-  problem6([
-    ["jm@naver.com", "제이름"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-
-  No 이름
-  problem6([
-    ["jm@naver.com", ""],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-
-  email 이름 길이 초과
-  problem6([
-    ["jalkdsjfkljaslkdjflasjaslkjasdfljlkasm@naver.com", "하이"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-
-  이름 길이 초과
-  problem6([
-    [
-      "jsm@naver.com",
-      "하이미나얼미나얼미나얼미나얼미나얼미나얼미나얼미나얼미나얼미나얼미나얼",
-    ],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ]);
-*/
+  return uah.getResult();
+}
 
 module.exports = problem6;
