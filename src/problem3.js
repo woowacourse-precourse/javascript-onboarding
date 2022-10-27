@@ -14,4 +14,8 @@ function getMultipleThree(number) {
   return totalNumber;
 }
 
+function problem3(number) {
+  return getMultipleThree(number);
+}
+
 module.exports = problem3;
