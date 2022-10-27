@@ -1,4 +1,5 @@
 function problem1(pobi, crong) {
+
   const pobiArray = []
   const crongArray = []
 
@@ -26,6 +27,20 @@ function problem1(pobi, crong) {
     pobiArray.push(pobiTemp2)
     crongArray.push(crongTemp1)
     crongArray.push(crongTemp2)
+  }
+
+  const answer = []
+  answer.push(Math.max.apply(null, pobiArray))
+  answer.push(Math.max.apply(null, crongArray))
+
+  if(answer[0] > answer[1]){
+    return 1
+  }
+  else if(answer[1] > answer[0]){
+    return 2
+  }
+  else{
+    return 0
   }
 }
 
