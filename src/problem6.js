@@ -18,4 +18,23 @@ function getSameWord(crew1, crew2) {
   return sameWord;
 }
 
+function getAllSameWord(forms) {
+  let index = 0;
+  let sameWordArray = [];
+
+  while (index < forms.length) {
+    let count = index + 1;
+    while (count < forms.length) {
+      if (getSameWord(forms[index][1], forms[count][1]) != "") {
+        sameWordArray.push(getSameWord(forms[index][1], forms[count][1]));
+      }
+      count++;
+    }
+    index++;
+  }
+
+  const uniqueArray = new Set(sameWordArray);
+  return [...uniqueArray];
+}
+
 module.exports = problem6;
