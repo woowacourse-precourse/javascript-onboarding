@@ -11,15 +11,36 @@ class ErrorCase {
   }
 }
 
-function problem5(money) {
-  new ErrorCase(money);
+class Bank {
+  constructor(money) {
+    new ErrorCase(money);
+
+    this.money = money;
+  }
+
+  getMoneyUnitList() {
+    return [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  }
+
+  giveChange() {
+    const result = this.getMoneyUnitList().map(() => 0);
+
+    this.getMoneyUnitList().forEach((unit, index) => {
+      const share = Math.floor(this.money / unit);
+
+      if (share > 0) {
+        result[index] = share;
+        this.money -= share * unit;
+      }
+    });
+
+    return result;
+  }
 }
 
-/*
-  에러 케이스 테스트 예제
-  
-  problem5(0);
-  problem5(1000001);
-*/
+function problem5(money) {
+  const bank = new Bank(money);
+  return bank.giveChange();
+}
 
 module.exports = problem5;
