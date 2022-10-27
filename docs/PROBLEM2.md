@@ -22,3 +22,12 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 내가 적는 기능목록
+
+1. 문자열을 입력받아서 하나씩 나눈다음 배열에 넣는다.
+
+2. 앞의 문자부터 stack 배열안에 넣는다.
+
+3. stack배열 맨뒤 값과 현재 넣을 값이 같다면 stack배열 맨뒤값을 삭제하고 flag를 true로 바꾼다.
+
+4. 모든 문자를 넣었다면 flag값이 true인경우 1번부터 다시시작한다. false일경우 return한다.
