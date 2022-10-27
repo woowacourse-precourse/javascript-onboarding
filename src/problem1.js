@@ -1,4 +1,4 @@
-/**
+/*
  * 기능 목록
  * 1. 게임을 시작하고 페이지 데이터들을 입력 받는다.
  * 2. 포비와 크롱의 페이지가 유효한지 확인한다.
@@ -20,6 +20,10 @@
  * 5. 포비 승: 1, 크롱 승: 2, 무승부: 0, 예외사항: -1 을 return한다. (종료)
  */
 
+/**
+ * @typedef {[number, number]} Player
+ * @typedef {"left" | "right"} Page
+ */
 class Game {
   RESULT = {
     POBI_WIN: 1,
@@ -27,6 +31,10 @@ class Game {
     DRAW: 0,
     EXCEPTION: -1,
   };
+  /**
+   * @param {Player} pobi
+   * @param {Player} crong
+   */
   constructor(pobi, crong) {
     this.pobi = new Pages(pobi);
     this.crong = new Pages(crong);
@@ -63,8 +71,10 @@ class Game {
     return this.pobi.isValid() && this.crong.isValid();
   }
 }
-
 class Pages {
+  /**
+   * @param {Player} player
+   */
   constructor(player) {
     const [left, right] = player;
     this.left = left;
@@ -77,17 +87,25 @@ class Pages {
     }
     return this.left === this.right - 1;
   }
-
+  /**
+   * @param {Page} page
+   */
   contains(page) {
     return Object.keys(this).includes(page);
   }
 
+  /**
+   * @param {Page} page
+   */
   getPage(page) {
     if (this.contains(page)) {
       return this[page];
     }
   }
 
+  /**
+   * @param {Page} page
+   */
   getSumOfAllNumber(page) {
     let result = 0;
     let number = this.getPage(page);
@@ -99,6 +117,9 @@ class Pages {
     return result;
   }
 
+  /**
+   * @param {Page} page
+   */
   getMultiplyOfAllNumber(page) {
     let result = 1;
     let number = this.getPage(page);
@@ -121,8 +142,8 @@ class Pages {
 }
 
 /**
- * @param {[number, number]} pobi
- * @param {[number, number]} crong
+ * @param {Player} pobi
+ * @param {Player} crong
  * @returns {number}
  */
 function problem1(pobi, crong) {
