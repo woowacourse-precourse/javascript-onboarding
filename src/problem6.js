@@ -43,6 +43,13 @@ function problem6(forms) {
     return keys;
   }
 
+  let refuseNames = checkValue(nickNameCnt);
+  let refuseList = {};
+  refuseNames.map((refuseNickName) => {
+    refuseList[refuseNickName] = true;
+  });
+  let result = [];
+
   function refuseEmail(accountInfo) {
     accountInfo.map((account) => {
       let email = account[0];
@@ -59,6 +66,9 @@ function problem6(forms) {
       }
     });
   }
+  refuseEmail(forms);
+  result.sort();
+  return result;
 }
 
 module.exports = problem6;
