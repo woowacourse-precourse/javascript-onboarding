@@ -36,5 +36,4 @@ function solution(pobi, crong) {
       answer = 0;
   } return answer;
 };
-
 module.exports = problem1;
