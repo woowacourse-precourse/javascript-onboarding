@@ -26,9 +26,16 @@ function problem1(pobi, crong) {
     return answer;
   }
 
+  // - [x] 모든 페이지에는 번호가 적혀있다.
+  const isNumber = (pages) =>
+    pages.filter((page) => typeof page === 'number').length > 0;
+  if (!isNumber(pobi) || !isNumber(crong)) {
+    answer = EXCEPTIONS;
+    return answer;
+  }
+
   // 예외사항
   // - [ ] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호다.
-  // - [ ] 모든 페이지에는 번호가 적혀있다.
 
   // - [ ] 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
   // - [ ] 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
