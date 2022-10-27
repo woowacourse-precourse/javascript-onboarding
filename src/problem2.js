@@ -23,9 +23,11 @@ function deleteStr(str) {
     const end = getEndIndex(str, start) + 1;
 
     const dStr = str.split("").slice(start, end).join("");
-    return str.replace(dStr, "");
+    return deleteStr(str.replace(dStr, ""));
 }
 
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+    return deleteStr(cryptogram)
+}
 
 module.exports = problem2;
