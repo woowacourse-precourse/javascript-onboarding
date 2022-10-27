@@ -1,6 +1,8 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = Math.max(pageSum(pobi),pageMul(pobi))
+  const crongScore = Math.max(pageSum(crong),pageMul(crong));
+
+  return ScoreResult(Pobiscore,crongscore);
 }
 
 function pageSum(num){
