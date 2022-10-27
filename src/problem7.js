@@ -23,20 +23,32 @@ function getSkip(user, relation) {
 
   return skip;
 }
-function getInfos(user, friends) {
+
+function getUserList(keys, visitors, skip) {
+  const list = [...keys, ...visitors].filter((el) => !skip.includes(el));
+
+  return [...new Set(list)];
+}
+
+function getInfos(user, friends, visitors) {
   const relation = getRelation(friends);
   const skip = getSkip(user, relation);
+  const userList = getUserList(Object.keys(relation), visitors, skip);
 
-  console.log(skip);
+  console.log(userList);
 }
-getInfos('mrko', [
-  ['donut', 'andole'],
-  ['donut', 'jun'],
-  ['donut', 'mrko'],
-  ['shakevan', 'andole'],
-  ['shakevan', 'jun'],
-  ['shakevan', 'mrko'],
-]);
+getInfos(
+  'mrko',
+  [
+    ['donut', 'andole'],
+    ['donut', 'jun'],
+    ['donut', 'mrko'],
+    ['shakevan', 'andole'],
+    ['shakevan', 'jun'],
+    ['shakevan', 'mrko'],
+  ],
+  ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+);
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
