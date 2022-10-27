@@ -8,6 +8,10 @@ const RESULT = {
   exception: -1,
 };
 
+function getStringFromArray(array) {
+  return array.join('');
+}
+
 function getArrayFromString(string) {
   return Array.from(string);
 }
