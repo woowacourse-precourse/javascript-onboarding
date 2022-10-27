@@ -8,37 +8,22 @@ function problem1(pobi, crong) {
   // 책의 페이지가 연속된 숫자이어야 한다. (예외사항)
   if (pobi[0] !== pobi[1] - 1 || crong[0] !== crong[1] - 1) return EXCEPTIONS;
 
-  // 페이지 번호의 각 자리 숫자를 더한 값을 리턴한다.
-  const getSumPage = (pages) => {
-    return pages.map((page) => {
-      const split = String(page).split("").map(Number);
-      const sum = split.reduce((acc, cur) => acc + cur);
+  // 페이지 번호의 각 자리 숫자를 더한 값과 곱한 값중 큰 값을 리턴한다.
+  const getMaxScore = (pages) => {
+    return Math.max(
+      ...pages.map((page) => {
+        const split = String(page).split("").map(Number);
+        const sum = split.reduce((acc, cur) => acc + cur);
+        const multiply = split.reduce((acc, cur) => acc * cur);
 
-      return sum;
-    });
+        return Math.max(...[sum, multiply]);
+      })
+    );
   };
 
-  // 페이지 번호의 각 자리 숫자를 곱한 값을 리턴한다.
-  const getMultiplyPage = (pages) => {
-    return pages.map((page) => {
-      const split = String(page).split("").map(Number);
-      const multiply = split.reduce((acc, cur) => acc * cur);
-
-      return multiply;
-    });
-  };
-
-  // 포비와 크롱의 왼쪽, 오른쪽 페이지 번호의 각 자리 숫자를 모두 더한 값을 구하여 배열로 할당한다.
-  const sumPagesByPobi = getSumPage(pobi);
-  const sumPagesByCrong = getSumPage(crong);
-
-  // 포비와 크롱의 왼쪽, 오른쪽 페이지 번호의 각 자리 숫자를 모두 곱한 값을 구하여 배열로 할당한다.
-  const multiplyPagesByPobi = getMultiplyPage(pobi);
-  const multiplyPagesByCrong = getMultiplyPage(crong);
-
-  // 총 네가지의 값중 가장 큰 수를 구한다. 그리고 가장 큰 수를 본인의 점수로 한다.
-  const pobiScore = Math.max(...[...sumPagesByPobi, ...multiplyPagesByPobi]);
-  const crongScore = Math.max(...[...sumPagesByCrong, ...multiplyPagesByCrong]);
+  // 가장 큰 수를 본인의 점수로 한다.
+  const pobiScore = getMaxScore(pobi);
+  const crongScore = getMaxScore(crong);
 
   if (pobiScore > crongScore) return POBI_WIN;
   if (pobiScore < crongScore) return CRONG_WIN;
