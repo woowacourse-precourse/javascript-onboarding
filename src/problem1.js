@@ -3,6 +3,9 @@ function problem1(pobi, crong) {
   const FIRST_PAGE = 1;
   const LAST_PAGE = 400;
   const MINIMUM_PAGE = 2;
+  const PAGE_LENGTH = 2;
+
+  const EXCEPTIONS = -1;
 
   // - [x] 책을 임의로 펼친다.
   // - [x] 책을 펼쳤을때 시작 면이나 마지막 면이 나오지 않는다.
@@ -16,8 +19,14 @@ function problem1(pobi, crong) {
     crong = [getRandomPage(), getRandomPage()];
   }
 
+  // - [x] pobi와 crong의 길이는 2이다.
+  const isLengthMatch = (length, pages) => pages.length === length;
+  if (!isLengthMatch(PAGE_LENGTH, pobi) || !isLengthMatch(PAGE_LENGTH, crong)) {
+    answer = EXCEPTIONS;
+    return answer;
+  }
+
   // 예외사항
-  // - [ ] pobi와 crong의 길이는 2이다.
   // - [ ] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호다.
   // - [ ] 모든 페이지에는 번호가 적혀있다.
 
