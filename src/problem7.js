@@ -7,7 +7,13 @@ function problem7(user, friends, visitors) {
    * 5. 점수 별로 나열 후 score가 0인 것 제외해서 배열에 이름 반환
    */
   const alreadyFriendList = [...new Set(friends.filter((friend) => friend.includes(user)).flat())];
-  return alreadyFriendList;
+  let answer = {};
+  friends.flat().forEach((name) => (answer[name] = (answer[name] || 0) + 10));
+  visitors.forEach((name) => (answer[name] = (answer[name] || 0) + 1));
+  for (let person in answer) {
+    console.log(person);
+  }
+  return answer;
 }
 console.log(
   problem7(
