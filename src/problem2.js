@@ -7,8 +7,7 @@
 
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  var crypArr = cryptogram.split("");
 }
 
 module.exports = problem2;
