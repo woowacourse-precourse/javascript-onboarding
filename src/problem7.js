@@ -4,8 +4,6 @@ function problem7(user, friends, visitors) {
   let userList = makeAllUserList(friends, visitors, user);
   let currentUserFriendList = makeUserFriendList(friends, user);
 
-  console.log(userScore, userList);
-
   return answer;
 }
 
@@ -58,6 +56,15 @@ function calcScoreForFriendsKnowTogather(
   );
 
   return friendListKnowTogather.length * 10;
+}
+
+function calcScoreForVisitFrequency(visitors, userInUserList) {
+  let count = 0;
+  visitors.forEach((v) => {
+    if (v === userInUserList) count += 1;
+  });
+
+  return count;
 }
 
 module.exports = problem7;
