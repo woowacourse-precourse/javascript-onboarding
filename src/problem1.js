@@ -6,16 +6,22 @@
  * @returns {number} winner
  */
 function problem1(pobi, crong) {
+  const RESULT = {
+    DRAW: 0,
+    POBI: 1,
+    CRONG: 2,
+    ERROR: -1,
+  }
 
-  if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return -1;
+  if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return RESULT.ERROR;
 
   /** main logic */
   let pobiPoints = getPoints(pobi);
   let crongPoints = getPoints(crong);
 
-  if (pobiPoints === crongPoints) return 0;
-  if (pobiPoints > crongPoints) return 1;
-  else return 2;
+  if (pobiPoints === crongPoints) return RESULT.DRAW;
+  if (pobiPoints > crongPoints) return RESULT.POBI;
+  else return RESULT.CRONG;
 
 
   // 계산을 위한 코드들 
