@@ -1,15 +1,9 @@
 function problem2(cryptogram) {
-  const cryptogramArr = Array.from(cryptogram);
-  const stack = [];
-  while (cryptogramArr.length) {
-    const cur = cryptogramArr.shift();
-    if (stack.length && stack[stack.length - 1] === cur) {
-      stack.pop();
-      continue;
-    }
-    stack.push(cur);
+  let result = cryptogram;
+  while (result.match(/([a-z])\1+/g)) {
+    result = result.replace(/([a-z])\1+/g, "");
   }
-  return stack.join("");
+  return result;
 }
 
 module.exports = problem2;
