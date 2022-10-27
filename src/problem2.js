@@ -1,6 +1,16 @@
 function problem2(cryptogram) {
-  const removedCyptogram = removeDuplicates(cryptogram);
-  return removedCyptogram;
+  const removedAllResult = checkDuplicates(cryptogram);
+
+  return removedAllResult;
+
+  function checkDuplicates(word) {
+    for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
+      if (word[wordIndex] === word[wordIndex + 1]) {
+        return removeDuplicates(word);
+      }
+    }
+    return word;
+  }
 
   function removeDuplicates(word) {
     const wordLength = word.length;
@@ -23,7 +33,7 @@ function problem2(cryptogram) {
       removedResult += word[wordIndex];
     }
 
-    return removedResult;
+    return checkDuplicates(removedResult);
   }
 }
 
