@@ -13,7 +13,7 @@ function removeDuplicates(str) {
       str = str.slice(0, i) + str.slice(sliceIdx);
 
       if (i > 2) {
-        i -= sliceIdx - i;
+        i -= 2;
       } else {
         i = -1;
       }
