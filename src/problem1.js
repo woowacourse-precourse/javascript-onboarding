@@ -11,6 +11,15 @@ function problem1(pobi, crong) {
 
   const pobiScore = compareScore(sumOrMul(pobi[0]), sumOrMul(pobi[1]));
   const crongScore = compareScore(sumOrMul(crong[0]), sumOrMul(crong[1]));
+  if (pobiScore > crongScore) {
+    return 1;
+  }
+  if (pobiScore < crongScore) {
+    return 2;
+  }
+  if (pobiScore === crongScore) {
+    return 0;
+  }
 }
 
 function compareScore(leftPage, rightPage) {
