@@ -10,15 +10,10 @@ function problem1(pobi, crong) {
     crong_score = Math.max(plus(crong[i]), multiple(crong[i]));
   }
 
-  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) {
-    return -1;
-  } else if (pobi_score > crong_score) {
-    return 1;
-  } else if (pobi_score < crong_score) {
-    return 2;
-  } else {
-    return 0;
-  }
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1;
+  else if (pobi_score > crong_score) return 1;
+  else if (pobi_score < crong_score) return 2;
+  else return 0;
 }
 
 function plus(number) {
