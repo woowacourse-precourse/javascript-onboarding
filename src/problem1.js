@@ -2,8 +2,8 @@
 // - [o] 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
 // - [o] 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
 // - [o] 위 과정에서 가장 큰 수를 본인의 점수로 한다.
-// - [] 점수를 비교해 높은 사람이 게임의 승자가 된다.
-//   - [] 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 그 외 -1을 return 한다.
+// - [o] 점수를 비교해 높은 사람이 게임의 승자가 된다.
+//   - [o] 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 그 외 -1을 return 한다.
 // 예외사항
 // - [] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수이다.
 // - [] 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. (덮개-0, 401-덮개)
@@ -12,7 +12,7 @@
 function problem1(pobi, crong) {
   const pobiMax = getMaxValue(pobi);
   const crongMax = getMaxValue(crong);
-  console.log(pobiMax, crongMax);
+  console.log(whoWinner(pobiMax, crongMax));
 }
 
 function getMaxValue(name) {
@@ -34,6 +34,18 @@ function getMaxValue(name) {
     }
   }
   return maxValue;
+}
+
+function whoWinner(pobi, crong) {
+  if (pobi > crong) {
+    return 1
+  } else if (pobi < crong) {
+    return 2;
+  } else if (pobi === crong) {
+    return 0;
+  } else {
+    return -1;
+  }
 }
 
 const pobi = [131, 132];
