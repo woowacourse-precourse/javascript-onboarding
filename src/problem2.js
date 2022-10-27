@@ -11,6 +11,15 @@ function exception(cryptogram) {
   return false;
 }
 
+// 중복 판별
+function duplicateJudgment(cryptogram) {
+  const tellDuplication = new Array(cryptogram.length);
+  tellDuplication.fill(0);
+
+  return recordArray(tellDuplication, cryptogram)
+}
+
+
 
 problem2("browoanoommnaon");
 
