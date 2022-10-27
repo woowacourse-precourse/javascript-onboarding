@@ -28,5 +28,13 @@ const getDigitProduct = (num) => {
     .split("")
     .reduce((prev, cur) => prev * Number(cur), 1);
 };
+const getMaxScore = (pages) => {
+  return Math.max(
+    getDigitSum(pages[0]),
+    getDigitSum(pages[1]),
+    getDigitProduct(pages[0]),
+    getDigitProduct(pages[1])
+  );
+};
 
 module.exports = problem1;
