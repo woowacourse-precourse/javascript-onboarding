@@ -4,13 +4,14 @@ function problem7(user, friends, visitors) {
 
   let recommend = [];
   for (const id in score) {
-    if (!relation[user].includes(id) && !(id === user)) {
-      recommend.push([score[id], id]);
+    if (relation[user].includes(id) || id === user || score[id] === 0) {
+      continue;
     }
+    recommend.push([score[id], id]);
   }
   const answer = recommend.sort().map(([, id]) => id);
 
-  return answer
+  return answer.slice(0, 5);
 }
 
 function getRelation(friends) {
