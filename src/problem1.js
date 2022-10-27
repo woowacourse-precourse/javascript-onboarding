@@ -1,6 +1,9 @@
 function problem1(pobi, crong) {
   if (checkInputErr(pobi, crong)) return -1;
-  return answer;
+
+  const [pobiMax, crongMax] = findMaxScore(pobi,crong);
+
+
 
 }
 
@@ -24,8 +27,10 @@ function findMaxScore(pobi, crong){
   const calMaxScore = (array) => {
     let max = -1;
     array.forEach(val =>{
-      max = Math.max(val, "+");
-      max = Math.max(val, '*');
+      const plusValue = calScore(val, "+");
+      const multiValue = calScore(val, "*");
+
+      max = Math.max(max, plusValue, multiValue);
     })
 
     return max;
