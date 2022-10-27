@@ -9,7 +9,7 @@ function calcNum(pageNum){
   let multi = 1;
   const numbers = Array.from(pageNum.toString(), (num) => Number(num));
   
-  numbers.map((num) => {
+  numbers.forEach((num) => {
     sum = sum + num;
     multi = multi * num;
   });
