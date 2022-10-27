@@ -3,6 +3,14 @@ function problem1(pobi, crong) {
   // 3) 플레이어 각각의 점수를 계산하는 과정
   const pobiScore = calculateScore(pobi);
   const crongScore = calculateScore(crong);
+  // 4) 플레이어 점수를 비교하는 과정
+  if (pobiScore > crongScore) {
+    answer = 1;
+  } else if (pobiScore === crongScore) {
+    answer = 0;
+  } else if (pobiScore < crongScore) {
+    answer = 2;
+  }
   return answer;
 }
 
