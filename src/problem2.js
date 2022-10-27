@@ -1,5 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer=playRemove(cryptogram);
+  if(!error(cryptogram)){
+    throw new Error('제한사항을 확인하세요.')
+  }
   return answer;
 }
 
@@ -31,3 +34,17 @@ function playRemove(cryptogram){
   }
   return cryptogram;
 }
+
+function error(cryptogram){
+  if(cryptogram.length<1 && cryptogram.length>1000){
+    return false;
+  }
+  if(cryptogram.replace(/['a-z']/g,'').length!==0){
+    return false;
+  }
+  return true;
+}
+
+let cryptogram="browoanoommnaon"
+
+console.log(error(cryptogram));
