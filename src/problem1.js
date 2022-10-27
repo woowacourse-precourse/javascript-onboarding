@@ -27,7 +27,6 @@ class Game {
     DRAW: 0,
     EXCEPTION: -1,
   };
-
   constructor(pobi, crong) {
     this.pobi = new Pages(pobi);
     this.crong = new Pages(crong);
@@ -36,6 +35,8 @@ class Game {
 
   start() {
     if (this.checkValidPages()) {
+      console.log(`pobi: ${this.pobi.getBiggestNumber()}`, this.pobi);
+      console.log(`crong: ${this.crong.getBiggestNumber()}`, this.crong);
       return;
     }
     this.result = this.RESULT.EXCEPTION;
@@ -59,6 +60,47 @@ class Pages {
     }
     return this.left === this.right - 1;
   }
+
+  contains(page) {
+    return Object.keys(this).includes(page);
+  }
+
+  getPage(page) {
+    if (this.contains(page)) {
+      return this[page];
+    }
+  }
+
+  getSumOfAllNumber(page) {
+    let result = 0;
+    let number = this.getPage(page);
+    while (number > 0) {
+      const last = number % 10;
+      result += last;
+      number = Math.floor(number / 10);
+    }
+    return result;
+  }
+
+  getMultiplyOfAllNumber(page) {
+    let result = 1;
+    let number = this.getPage(page);
+    while (number > 0 && result > 0) {
+      const last = number % 10;
+      result *= last;
+      number = Math.floor(number / 10);
+    }
+    return result;
+  }
+
+  getBiggestNumber() {
+    return Math.max(
+      this.getSumOfAllNumber("left"),
+      this.getMultiplyOfAllNumber("left"),
+      this.getSumOfAllNumber("right"),
+      this.getMultiplyOfAllNumber("right")
+    );
+  }
 }
 
 /**
@@ -73,12 +115,12 @@ function problem1(pobi, crong) {
   return result;
 }
 
-console.log(problem1([97, 98], [197, 198]));
-console.log(problem1([131, 132], [211, 212]));
-console.log(problem1([99, 102], [211, 212]));
-console.log(problem1([0, 1], [211, 212]));
-console.log(problem1([401, 402], [211, 212]));
-console.log(problem1([99, 100], [211, 212]));
-console.log(problem1(["a", "b"], [211, 212]));
+problem1([97, 98], [197, 198]);
+problem1([131, 132], [211, 212]);
+problem1([99, 102], [211, 212]);
+problem1([0, 1], [211, 212]);
+problem1([401, 402], [211, 212]);
+problem1([99, 100], [211, 212]);
+problem1(["a", "b"], [211, 212]);
 
 module.exports = problem1;
