@@ -23,6 +23,30 @@ function problem1(pobi, crong) {
 
   if (!exceptionHandling(pobi, crong)) return -1;
 
+  const calculateScore = (page) => {
+    const scoreArr = [];
+
+    const getSumMul = (num) => {
+      const numToArr = num.split("").map(Number);
+      let sum = 0;
+      let mul = 0;
+
+      for (let i = 0; i < numToArr.length; i++) {
+        sum += numToArr[i];
+        mul *= numToArr[i];
+      }
+      return [sum, mul];
+    };
+
+    scoreArr.push(...getSumMul(page[LEFT]));
+    scoreArr.push(...getSumMul(page[RIGHT]));
+
+    return Math.max(...scoreArr);
+  };
+
+  const pobiScore = calculateScore(pobi);
+  const crongScore = calculateScore(crong);
+
   var answer;
   return answer;
 }
