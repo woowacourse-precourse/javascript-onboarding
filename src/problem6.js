@@ -35,6 +35,16 @@ function vaildateEmailLength(email) {
   return false;
 }
 
+function validateNicknameType(nickname) {
+  if (nickname.match(/^[ㄱ-ㅎ|가-힣]+$/)) return true;
+  return false;
+}
+
+function validateNicknameLength(nickname) {
+  if (nickname.length >= 1 && nickname.length < 20) return true;
+  return false;
+}
+
 function getSplitNickname(nickname) {
   return nickname
     .split("")
