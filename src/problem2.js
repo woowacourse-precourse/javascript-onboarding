@@ -8,6 +8,10 @@ const RESULT = {
   exception: -1,
 };
 
+function getArrayFromString(string) {
+  return Array.from(string);
+}
+
 function isValidInput(input) {
   if (input.length < VALIDITY.minLength || input.length > VALIDITY.maxLength) {
     return false;
@@ -30,4 +34,4 @@ function problem2(cryptogram) {
   }
 }
 
-module.exports = problem2;
+module.exports = problem2('browoanoommnaon');
