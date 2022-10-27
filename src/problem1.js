@@ -1,3 +1,8 @@
+const ERROR = -1;
+const POBI_WIN = 1;
+const CRONG_WIN = 2;
+const DRAW = 0;
+
 const isCorrectPage = ([left, right]) => {
   if (left % 2 === 0 || right % 2 === 1) return false;
   if (left < 1 || right > 400) return false;
@@ -20,13 +25,13 @@ const getScore = ([left, right]) => {
 };
 
 function problem1(pobi, crong) {
-  if (!isCorrectPage(pobi) || !isCorrectPage(crong)) return -1;
+  if (!isCorrectPage(pobi) || !isCorrectPage(crong)) return ERROR;
 
   const pobiScore = getScore(splitNumber(pobi));
   const crongScore = getScore(splitNumber(crong));
 
-  if (pobiScore > crongScore) return 1;
-  if (pobiScore < crongScore) return 2;
-  return 0;
+  if (pobiScore > crongScore) return POBI_WIN;
+  if (pobiScore < crongScore) return CRONG_WIN;
+  return DRAW;
 }
 module.exports = problem1;
