@@ -76,4 +76,8 @@ const calculateEachElement = (numberArray, behaviorFunc) => {
   return resultArray;
 };
 
+const getMaxNumber = (plus, multiplication) => {
+  return Math.max(...plus, ...multiplication);
+};
+
 module.exports = problem1;
