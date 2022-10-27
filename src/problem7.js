@@ -1,84 +1,97 @@
 function problem7(user, friends, visitors) {
-  let currentUserFriendList = makeUserFriendList(friends, user);
-  let userList = makeAllUserList(
+  let userFriendList = getFriendListByUserId(friends, user);
+  let recommandUserList = getRecommandUserList(
     friends,
     visitors,
     user,
-    currentUserFriendList
+    userFriendList
   );
-  let userScore = makeUserScoreObject(userList);
+  let recommandScoreObject = getUserScoreObject(recommandUserList);
 
-  for (let i = 0; i < userList.length; i++) {
-    let eachUserFriendList = makeUserFriendList(friends, userList[i]);
-    userScore[userList[i]] += calcScoreForFriendsKnowTogather(
-      currentUserFriendList,
-      eachUserFriendList
+  for (let i = 0; i < recommandUserList.length; i++) {
+    const recommandUser = recommandUserList[i];
+
+    const recommandUserFriendList = getFriendListByUserId(
+      friends,
+      recommandUser
     );
-    userScore[userList[i]] += calcScoreForVisitFrequency(visitors, userList[i]);
-  }
-  userList.sort((a, b) => Number(userScore[b]) - Number(userScore[a]));
-  userList = userList.filter((v) => userScore[v] !== 0).filter((v, i) => i < 5);
 
-  return userList;
+    recommandScoreObject[recommandUser] += getScoreByFriendsKnowTogether(
+      userFriendList,
+      recommandUserFriendList
+    );
+
+    recommandScoreObject[recommandUser] += getScoreByVisitFrequency(
+      visitors,
+      recommandUser
+    );
+  }
+
+  recommandUserList.sort(
+    (a, b) => Number(recommandScoreObject[b]) - Number(recommandScoreObject[a])
+  );
+
+  recommandUserList = recommandUserList
+    .filter((v) => recommandScoreObject[v] !== 0)
+    .filter((v, i) => i < 5);
+
+  return recommandUserList;
 }
 
-function makeUserScoreObject(userList) {
-  let userScore = {};
-  for (let i = 0; i < userList.length; i++) {
-    userScore[userList[i]] = 0;
+function getUserScoreObject(recommandUserList) {
+  let recommandScoreObject = {};
+  for (let i = 0; i < recommandUserList.length; i++) {
+    recommandScoreObject[recommandUserList[i]] = 0;
   }
-  return userScore;
+  return recommandScoreObject;
 }
 
-function makeAllUserList(friends, visitors, user, userFriendList) {
-  let userList = [];
+function getRecommandUserList(friends, visitors, user, userFriendList) {
+  let recommandUserList = [];
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
       if (
-        !userList.includes(friends[i][j]) &&
+        !recommandUserList.includes(friends[i][j]) &&
         friends[i][j] !== user &&
         !userFriendList.includes(friends[i][j])
       )
-        userList.push(friends[i][j]);
+        recommandUserList.push(friends[i][j]);
     }
   }
   for (let i = 0; i < visitors.length; i++) {
     if (
-      !userList.includes(visitors[i]) &&
+      !recommandUserList.includes(visitors[i]) &&
       !userFriendList.includes(visitors[i])
     )
-      userList.push(visitors[i]);
+      recommandUserList.push(visitors[i]);
   }
-  return userList.sort();
+  return recommandUserList.sort();
 }
 
-function makeUserFriendList(friends, user) {
+function getFriendListByUserId(friends, userId) {
   let friendList = [];
   for (let i = 0; i < friends.length; i++) {
-    if (friends[i].includes(user)) {
+    if (friends[i].includes(userId)) {
       for (let j = 0; j < 2; j++) {
-        if (friends[i][j] !== user) friendList.push(friends[i][j]);
+        if (friends[i][j] !== userId) friendList.push(friends[i][j]);
       }
     }
   }
   return friendList;
 }
 
-function calcScoreForFriendsKnowTogather(
-  currentUserFriendList,
-  otherUserFriendList
-) {
-  const friendListKnowTogather = currentUserFriendList.filter((friend) =>
+function getScoreByFriendsKnowTogether(userFriendList, otherUserFriendList) {
+  const friendListKnowTogether = userFriendList.filter((friend) =>
     otherUserFriendList.includes(friend)
   );
 
-  return friendListKnowTogather.length * 10;
+  return friendListKnowTogether.length * 10;
 }
 
-function calcScoreForVisitFrequency(visitors, userInUserList) {
+function getScoreByVisitFrequency(visitors, recommandUser) {
   let count = 0;
   visitors.forEach((v) => {
-    if (v === userInUserList) count += 1;
+    if (v === recommandUser) count += 1;
   });
 
   return count;
