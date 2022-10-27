@@ -52,3 +52,8 @@
 - this는 현재의 그 문자열을 의미하는 것 같다. 
 - substring(start, end)는 start부터 end-1 인덱스까지의 문자열을 잘라주는 내장 함수이다.
 - 바꿔준 replacement 앞 뒤로 기존의 문자열을 붙여준다. 인자로 하나(n)만 오면 n-1번째 인덱스(n개) 뒤부터 잘라내어준다는 의미이다.
+
+- 설명 추가:
+  - String.prototype: 모든 String 타입의 값들에게 공통적으로 적용되는 객체. 거기에 replaceAt이라는 함수를 추가해 주는 방식
+  - this: 실행되는 함수가 속해 있는 객체를 가리킴
+  - replaceAt 같은 경우에는 String의 prototype에 추가한 함수이니까, 결과적으로 이 함수가 속해 있는 객체(= this)는 String 타입의 특정한 객체
