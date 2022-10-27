@@ -55,7 +55,7 @@ function problem5(money) {
     coin.splice(8, 1, money);
   }
   let answer;
-  answer = money;
+  answer = coin;
   return answer;
 }
 
