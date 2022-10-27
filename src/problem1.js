@@ -28,6 +28,10 @@ const calculatePageNumber = (page) => {
   return [addLeftNum, addRightNum, mulLeftNum, mulRightNum];
 };
 
+const findMaxNum = (num1, num2, num3, num4) => {
+  return Math.max(num1, num2, num3, num4);
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
