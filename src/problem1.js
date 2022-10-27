@@ -53,7 +53,7 @@ function pageNumCalc(who) {
 }
 
 function exceptionCheck(who) {
-  // 페이지가 1 - 400 사이의 값이 아닌 경우
+  // 페이지가 1 - 400 사이의 값이 아닌 경우.
   if (who[0] < 1 || who[0] > 400 || who[1] < 1 || who[1] > 400) {
     return true;
   }
