@@ -1,17 +1,28 @@
 function problem4(word) {
-  var answer;
-  return answer;
-  //3. 위 두 조건을 만족하는 함수 작성.
-  //4. 문자열을 매핑하며 함수 결과에 따라 문자열 변환.
+  return word.split('').map((el)=>{
+    const alph = el.charCodeAt(0);
+    if(alph>=65 && alph<=90){
+      return lowFrog(alph);
+    }else if(alph>=97 && alph<=122){
+      return upFrog(alph);
+    }else return String.fromCharCode(alph);
+  }).join('');
 }
 
-function frog(alph){
-  const alph = alph.charCodeAt(0);
-  if(alph>=65 && alph<=77){
-    return String.fromCharCode(65+(25-(alph-65)*2));
-  }else if(alph>=78 && alph<=90){
-    return String.fromCharCode(90-(25-(90-alph)*2));
-  }else return alph;
+function lowFrog(alph){
+  if(alph<=77){
+    return String.fromCharCode(90-(alph-65));
+  }else{
+    return String.fromCharCode(65+(90-alph));
+  }
+}
+
+function upFrog(alph){
+  if(alph<=109){
+    return String.fromCharCode(122-(alph-97));
+  }else{
+    return String.fromCharCode(97+(122-alph));
+  }
 }
 
 module.exports = problem4;
