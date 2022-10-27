@@ -31,6 +31,7 @@ function problem2(cryptogram) {
     }
 
     // 3. 없다면 반환
+    answer = text.join("");
     return answer;
 }
 
