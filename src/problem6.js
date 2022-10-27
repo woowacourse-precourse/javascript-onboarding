@@ -16,6 +16,22 @@ function makeTwoLetterArray(forms) {
   return twoLetterArray;
 }
 
+function checkIsNicknameInCludesRepeatWord(
+  nickname,
+  standardArrayForCheckingRepeat
+) {
+  let isNickNameIncludesRepeatWord = false;
+
+  for (let i = 0; i < standardArrayForCheckingRepeat.length; i++) {
+    if (nickname.includes(standardArrayForCheckingRepeat[i])) {
+      isNickNameIncludesRepeatWord = true;
+      break;
+    }
+  }
+
+  return isNickNameIncludesRepeatWord;
+}
+
 module.exports = problem6;
 
 // 입력값 : ["이메일","닉네임"] 형식의 요소들을 가진 배열
