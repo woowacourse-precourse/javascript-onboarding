@@ -1,8 +1,5 @@
-function problem6(forms) {
-  const emailArr = forms.map(([email, _]) => email);
-  let codeArr = forms.map(([_, nickname]) => [...nickname].map(item => item.charCodeAt(0)).join('')); // 닉네임 유니코드로 변경
-  let searchArr = forms.map(([_, nickname]) => [...nickname].map(item => String(item.charCodeAt(0)))); // 닉네임을 한 글자씩 유니코드로 변경하여 배열에 저장
-  searchArr = searchArr.map(item => { // 닉네임을 연속된 두 글자로 자른 배열 형태로 저장 ex) '제이엠' => ['제이', '이엠']
+const getSearchArr = (forms) => { // 닉네임을 연속된 두 글자로 자른 배열 형태로 저장 ex) '제이엠' => ['제이', '이엠']
+  return forms.map(([_, nickname]) => [...nickname]).map(item => { 
     if(item.length === 1) return [];
 
     let array = [];
@@ -11,24 +8,33 @@ function problem6(forms) {
     }
     return array;
   })
+}
 
-  let indexArr = [];
+const getIndexArr = (nicknameArr, searchArr) => { // nicknameArr에서 searchArr로 탐색하여 중복 닉네임 인덱스 구함
+  let arr = [];
   let shiftIndex = 0;
   searchArr.forEach((item, index) => {
-    codeArr.shift();
+    nicknameArr.shift();
     shiftIndex++;
-    codeArr.forEach((element, codeIndex) => { 
+    nicknameArr.forEach((element, codeIndex) => { 
       item.forEach(str => {
         if(element.includes(str)){
-          indexArr.push(index);
-          indexArr.push(codeIndex + shiftIndex);
+          arr.push(index);
+          arr.push(codeIndex + shiftIndex);
         }
-      })
-    })
-  })
+      });
+    });
+  });
+  return [...new Set(arr)];   
+}
+
+function problem6(forms) {
+  const emailArr = forms.map(([email, _]) => email);
+  const nicknameArr = forms.map(([_, nickname]) => nickname);
+  const searchArr = getSearchArr(forms);
+  const indexArr = getIndexArr(nicknameArr, searchArr);
   
-  const uniqueArr = [...new Set(indexArr)];
-  let answer = emailArr.filter((_, index) => uniqueArr.includes(index));
+  let answer = emailArr.filter((_, index) => indexArr.includes(index));
   answer = [...new Set(answer)].sort();
   return answer;
 }
