@@ -1,6 +1,5 @@
-function problem3(number) {
-  var answer;
-  return answer;
-}
+function problem3(number) {}
 
-module.exports = problem3;
+const canClap = numberChar => numberChar === '3' || numberChar === '6' || numberChar === '9'
+
+module.exports = problem3
