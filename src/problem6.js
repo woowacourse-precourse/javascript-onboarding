@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer = [];
+  var answer = new Set();
   let limitTextObj = {};
   forms.map((form) => {
     const [_, nickname] = form;
@@ -14,9 +14,10 @@ function problem6(forms) {
     const [email, nickname] = form;
     for (let i = 0; i < nickname.length - 1; i++) {
       const testText = nickname.substring(i, i + 2);
-      if (limitTextObj[testText] > 1) answer.push(email);
+      if (limitTextObj[testText] > 1) answer.add(email);
     }
   });
+  answer = Array.from(answer);
   answer.sort();
   return answer;
 }
