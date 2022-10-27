@@ -1,5 +1,21 @@
 function problem2(cryptogram) {
   let answer;
+  let stack = [];
+
+  for (let i = 0; i < cryptogram.length; i++) {
+    let duplicate = false;
+
+    while (stack.length && stack[stack.length - 1] === cryptogram[i]) {
+      stack.pop();
+      duplicate = true;
+    }
+
+    if (!duplicate) {
+      stack.push(cryptogram[i]);
+    }
+  }
+
+  answer = stack.join("");
   return answer;
 }
 
