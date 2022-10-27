@@ -1,5 +1,11 @@
 function problem1(pobi, crong) {
   if (isValidCase(pobi, crong) === false) return -1;
+
+  let pobiPoints = pobi.map((page) => pageMaxFinder(page))
+  let crongPoints = crong.map((page) => pageMaxFinder(page))
+
+  let pobiMaxPoint = Math.max(...pobiPoints)
+  let crongMaxPoint = Math.max(...crongPoints)
 }
 
 function isValidCase (case1, case2) {
