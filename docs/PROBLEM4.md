@@ -16,6 +16,6 @@
 
 ### 실행 결과 예시
 
-| word | result |
-| --- | --- |
+| word         | result       |
+| ------------ | ------------ |
 | "I love you" | "R olev blf" |

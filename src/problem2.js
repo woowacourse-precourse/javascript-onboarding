@@ -1,7 +1,7 @@
 const INPUT = {
   minLength: 1,
   maxLength: 1000,
-  string: 'string',
+  stringType: 'string',
 };
 
 const RESULT = {
@@ -17,11 +17,15 @@ function problem2(cryptogram) {
 }
 
 function isWrongInput(input) {
-  if (isWrongLengthOfInput(input.length)) {
+  if (isWrongInputValue(input)) {
     return true;
   }
 
-  if (isWrongTypeOfInput(input)) {
+  if (isWrongTypeOfInput(typeof input)) {
+    return true;
+  }
+
+  if (isWrongLengthOfInput(input.length)) {
     return true;
   }
 
@@ -32,12 +36,16 @@ function isWrongInput(input) {
   return false;
 }
 
-function isWrongLengthOfInput(length) {
-  return length < INPUT.minLength || length > INPUT.maxLength;
+function isWrongInputValue(input) {
+  return !input;
 }
 
-function isWrongTypeOfInput(input) {
-  return typeof input !== INPUT.string;
+function isWrongTypeOfInput(type) {
+  return type !== INPUT.stringType;
+}
+
+function isWrongLengthOfInput(length) {
+  return length < INPUT.minLength || length > INPUT.maxLength;
 }
 
 function isWrongFormatOfInput(input) {

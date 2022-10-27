@@ -1,7 +1,7 @@
 const INPUT = {
   length: 2,
-  object: 'object',
-  number: 'number',
+  objectType: 'object',
+  numberType: 'number',
   minPage: 3,
   maxPage: 398,
 };
@@ -31,11 +31,11 @@ function isWrongInput(input) {
     return true;
   }
 
-  if (isWrongTypeOfInput(input)) {
+  if (isWrongTypeOfInput(typeof input)) {
     return true;
   }
 
-  if (isWrongLengthOfInput(input)) {
+  if (isWrongLengthOfInput(input.length)) {
     return true;
   }
 
@@ -43,7 +43,7 @@ function isWrongInput(input) {
     return true;
   }
 
-  if (isWrongTypeOfElement(input[0], input[1])) {
+  if (isWrongTypeOfElement(typeof input[0], typeof input[1])) {
     return true;
   }
 
@@ -62,16 +62,16 @@ function isWrongInputValue(input) {
   return !input;
 }
 
-function isWrongTypeOfInput(input) {
-  return typeof input !== INPUT.object;
+function isWrongTypeOfInput(type) {
+  return type !== INPUT.objectType;
 }
 
-function isWrongLengthOfInput(input) {
-  return input.length !== INPUT.length;
+function isWrongLengthOfInput(length) {
+  return length !== INPUT.length;
 }
 
-function isWrongTypeOfElement(e1, e2) {
-  return typeof e1 !== INPUT.number || typeof e2 !== INPUT.number;
+function isWrongTypeOfElement(type1, type2) {
+  return type1 !== INPUT.numberType || type2 !== INPUT.numberType;
 }
 
 function isWrongFormatOfElement(e1, e2) {

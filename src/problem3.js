@@ -4,8 +4,8 @@ const RESULT = {
 
 const INPUT = {
   number: 'number',
-  minInput: 1,
-  maxInput: 10000,
+  minRange: 1,
+  maxRange: 10000,
 };
 
 function problem3(number) {
@@ -17,11 +17,15 @@ function problem3(number) {
 }
 
 function isWrongInput(input) {
-  if (isWrongTypeOfInput(input)) {
+  if (isWrongInputValue(input)) {
     return true;
   }
 
-  if (isWrongLengthOfInput(input)) {
+  if (isWrongTypeOfInput(typeof input)) {
+    return true;
+  }
+
+  if (isWrongRangeOfInput(input)) {
     return true;
   }
 
@@ -32,12 +36,16 @@ function isWrongInput(input) {
   return false;
 }
 
-function isWrongTypeOfInput(input) {
-  return typeof input !== INPUT.number;
+function isWrongInputValue(input) {
+  return !input;
 }
 
-function isWrongLengthOfInput(input) {
-  return input < INPUT.minInput || input > INPUT.maxInput;
+function isWrongTypeOfInput(type) {
+  return type !== INPUT.number;
+}
+
+function isWrongRangeOfInput(input) {
+  return input < INPUT.minRange || input > INPUT.maxRange;
 }
 
 function countClap(number) {
