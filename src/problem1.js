@@ -12,4 +12,10 @@ function checkIsContinuous(inputArr) {
   return true;
 }
 
+function checkPageIsInRange(inputArr) {
+  if (inputArr.indexOf(1) === -1 || inputArr.indexOf(400) === -1) {
+    return true;
+  }
+  return false;
+}
 module.exports = problem1;
