@@ -5,7 +5,7 @@ function problem2(cryptogram) {
   let top = '';
 
   for (const alphabet of cryptogram) {
-    if (stack.length === 0) {
+    if (stack.length === 0 || top !== alphabet) {
       stack.push(alphabet);
       top = alphabet;
       continue;
