@@ -27,7 +27,7 @@ function calculateMaxNum(page){
 
 //예외사항(페이지 숫자가 연속된 숫자인지 확인, 1-400페이지에 해당하지 않는 숫자)
 function checkPage(page){
-  if(page[1]-page[0] > 1 || page[0] < 1 || page[1] > 400){
+  if(page[1]-page[0] > 1 || page[0] <= 1 || page[1] >= 400){
     return 1;
   }
   else return 0;
@@ -45,6 +45,11 @@ function problem1(pobi, crong) {
     //합, 곱 계산 후 큰수 리턴
     pobiMaxNum = calculateMaxNum(pobi);
     crongMaxNum = calculateMaxNum(crong);
+
+    //pobi, crong 최종 수 비교
+    if(pobiMaxNum > crongMaxNum) return 1;
+    else if(pobiMaxNum < crongMaxNum) return 2;
+    else return 0;
 
   }
   
