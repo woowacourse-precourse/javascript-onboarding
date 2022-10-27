@@ -19,6 +19,9 @@ class Stack {
   size() {
     return this.__data__.length;
   }
+  reverse() {
+    return this.__data__.reverse();
+  }
 }
 
 const removeDuplicated = (word) => {
@@ -27,6 +30,7 @@ const removeDuplicated = (word) => {
     if (stack.size() > 0 && stack.peek() === alphabet) stack.pop();
     else stack.push(alphabet);
   });
+  return stack.reverse();
 };
 
 module.exports = problem2;
