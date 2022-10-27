@@ -3,7 +3,8 @@ function problem1(pobi, crong) {
   let arr = [];
   let plus;
   let multiply;
-  let pobiMax = [];
+  let pobiLeftRigth = [];
+  let pobiMax;
   let crongMax = [];
   pobi.map((index) => {
     arr = index
@@ -12,8 +13,11 @@ function problem1(pobi, crong) {
       .map((x) => parseInt(x));
     plus = arr.reduce((acc, cur) => acc + cur, 0);
     multiply = arr.reduce((acc, cur) => acc * cur, 1);
-    pobiMax.push(plus > multiply ? plus : multiply);
+    pobiLeftRigth.push(plus > multiply ? plus : multiply);
   });
+  pobiMax =
+    pobiLeftRigth[0] > pobiLeftRigth[1] ? pobiLeftRigth[0] : pobiLeftRigth[1];
+
   console.log(pobiMax);
   return answer;
 }
