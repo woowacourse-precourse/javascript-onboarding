@@ -1,6 +1,6 @@
 function problem1(pobi, crong) {
   var answer;
-  a=11;
+  a=10;
   return answer;
 }
 
