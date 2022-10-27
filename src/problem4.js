@@ -6,14 +6,14 @@
 
 // 알파벳 대문자를 반대로 변환
 function upperConversion(code){
-  const conversion_code = (122 - code) + 97;
+  const conversion_code = (90 - code) + 65;
   return String.fromCharCode(conversion_code);
 }
 
 // 알파벳 소문자를 반대로 변환
 function lowerConversion(code){
   // 코드를 반대의 문자 코드로 변환하여 문자로 변환 후 반환
-  const conversion_code = (90 - code) + 65;
+  const conversion_code = (122 - code) + 97;
   return String.fromCharCode(conversion_code);
 }
 
@@ -45,6 +45,8 @@ function circuitWord(word){
     else if(word_state === 'small'){
       conversion_word = lowerConversion(char_code);
     }
+    // 예외처리
+    else conversion_word = word[i];
 
     result_word += conversion_word;
   }
