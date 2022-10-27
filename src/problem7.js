@@ -1,6 +1,19 @@
 const relations = {};
 const score = {};
 
+function getSortedScoreArr() {
+  const scoreArr = Object.entries(score);
+  scoreArr.sort((a, b) => {
+    if (a[1] < b[1]) return 1;
+    if (a[1] > b[1]) return -1;
+
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+    return 0;
+  });
+  return scoreArr;
+}
+
 function calculateScore(user, visitors) {
   relations[user].forEach((friend) => {
     if (friend in relations) {
@@ -46,7 +59,7 @@ function problem7(user, friends, visitors) {
   const answer = [];
   makeRelations(friends, user);
   calculateScore(user, visitors);
-
+  const sortedScore = getSortedScoreArr();
   return answer;
 }
 
