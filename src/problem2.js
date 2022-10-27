@@ -1,19 +1,13 @@
 function problem2(cryptogram) {
-	cryptogram = [...cryptogram];
-	var i = 0;
-	while (cryptogram.length != 0) {
-		if (cryptogram[i] === cryptogram[i + 1]) {
-			cryptogram.splice(i, 2);
-			i = 0;
-			continue;
-		}
-		i++;
-
-		if (i === cryptogram.length) {
-			break;
+	let result = [cryptogram[0]];
+	for (i = 1; i < cryptogram.length; i++) {
+		if (result.length === 0) result.push(cryptogram[i]);
+		if (result[result.length - 1] === cryptogram[i]) {
+			result.pop();
+		} else {
+			result.push(cryptogram[i]);
 		}
 	}
-	cryptogram = cryptogram.join('');
-	return cryptogram;
+	return result;
 }
 module.exports = problem2;
