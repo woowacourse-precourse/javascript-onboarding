@@ -40,4 +40,8 @@ let crong = [
   [211, 212],
 ];
 
+for (let i = 0; i < pobi.length; i++) {
+  console.log(problem1(pobi[i], crong[i]));
+}
+
 module.exports = problem1;
