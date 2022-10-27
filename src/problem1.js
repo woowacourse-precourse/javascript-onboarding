@@ -44,7 +44,13 @@ const isCorrectPage = ([left, right]) => {
   return true;
 };
 
+const splitNumber = ([left, right]) => {
+  const leftNums = (left + "").split("").map((item) => Number(item));
+  const rightNums = (right + "").split("").map((item) => Number(item));
+  return [leftNums, rightNums];
+};
+
 function problem1(pobi, crong) {
-  if (isCorrectPage(pobi) || isCorrectPage(crong)) return -1;
+  if (!isCorrectPage(pobi) || !isCorrectPage(crong)) return -1;
 }
 module.exports = problem1;
