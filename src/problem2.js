@@ -8,6 +8,6 @@ function problem2(cryptogram) {
 			result.push(cryptogram[i]);
 		}
 	}
-	return result;
+	return result.join('');
 }
 module.exports = problem2;
