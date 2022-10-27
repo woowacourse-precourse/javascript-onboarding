@@ -3,6 +3,7 @@ function problem2(cryptogram) {
 
   const stack = [];
   let top = '';
+  let previous = '';
 
   for (const alphabet of cryptogram) {
     if (stack.length === 0 || top !== alphabet) {
@@ -10,6 +11,9 @@ function problem2(cryptogram) {
       top = alphabet;
       continue;
     }
+    if (previous === alphabet) continue;
+    previous = stack.pop();
+    top = stack[stack.length - 1];
   }
 
   return answer;
