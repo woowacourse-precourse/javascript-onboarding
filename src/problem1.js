@@ -6,6 +6,9 @@ function problem1(pobi, crong) {
   const PAGE_LENGTH = 2;
 
   const EXCEPTIONS = -1;
+  const WINNDER_POBI = 1;
+  const WINNER_CRONG = 2;
+  const DRAW = 0;
 
   // - [x] 책을 임의로 펼친다.
   // - [x] 책을 펼쳤을때 시작 면이나 마지막 면이 나오지 않는다.
@@ -48,11 +51,56 @@ function problem1(pobi, crong) {
     return answer;
   }
 
-  // - [ ] 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
-  // - [ ] 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
-  // - [ ] 5~6의 결과 중 가장 큰 수를 본인의 점수로 한다
-  // - [ ] 점수를 비교해 가장 높은 사람이 게임의 승자다.
+  // - [x] 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
+  // - [x] 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 곱해 가장 큰 수를 구한다.
+  // - [x] 5~6의 결과 중 가장 큰 수를 본인의 점수로 한다
+  // - [x] 점수를 비교해 가장 높은 사람이 게임의 승자다.
+  const splitNumber = (number) => {
+    let splittedNumbers = [];
+    const stringNumber = '' + number;
 
+    for (const oneLetter of stringNumber) {
+      splittedNumbers.push(+oneLetter);
+    }
+    return splittedNumbers;
+  };
+  const splitNumberArray = (numberArray) =>
+    numberArray.map((number) => splitNumber(number));
+
+  const sum = (numberArray) => numberArray.reduce((prev, cur) => prev + cur, 0);
+
+  const multiple = (numberArray) =>
+    numberArray.reduce((prev, cur) => prev * cur, 1);
+
+  const getPoint = (pages) => {
+    const points = [];
+    const splittedNumber = splitNumberArray(pages);
+
+    splittedNumber.forEach((page) => {
+      points.push(sum(page));
+      points.push(multiple(page));
+    });
+    return Math.max(...points);
+  };
+
+  pobiPoint = getPoint(pobi);
+  crongPoint = getPoint(crong);
+
+  if (pobiPoint > crongPoint) {
+    answer = WINNDER_POBI;
+    return answer;
+  }
+
+  if (pobiPoint < crongPoint) {
+    answer = WINNER_CRONG;
+    return answer;
+  }
+  if (pobiPoint === crongPoint) {
+    answer = DRAW;
+    return answer;
+  }
+
+  answer = EXCEPTIONS;
   return answer;
 }
 
