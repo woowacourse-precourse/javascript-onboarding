@@ -29,7 +29,10 @@ const filterValue2OverOfMapToList = (obj) =>
     return acc;
   }, []);
 // key를 포함한 닉네임 index 뽑기
-const getNameIncludeIndex = (nickNames, keyword) => {};
+const getNameIncludeIndex = (nickNames, keyword) =>
+  nickNames
+    .map((nickName, i) => (nickName.includes(keyword) ? i : -1))
+    .filter((i) => i !== -1);
 // index로 전체 뽑기
 const getTargetOfList = (nicknames, indexs) => {};
 
