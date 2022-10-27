@@ -11,15 +11,20 @@ class ErrorCase {
   }
 }
 
+const is369 = (num) => {
+  if (num == 3 || num == 6 || num == 9) {
+    return true;
+  }
+
+  return false;
+};
+
 function problem3(number) {
   new ErrorCase(number);
-}
 
-/*
-  에러 케이스 테스트
-  
-  problem3(0);
-  problem3(10001);
-*/
+  return Array.from({ length: number }, (_, i) => i + 1)
+    .flatMap((num) => String(num).split(""))
+    .filter((num) => is369(num)).length;
+}
 
 module.exports = problem3;
