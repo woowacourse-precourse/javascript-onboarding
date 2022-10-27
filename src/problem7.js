@@ -51,6 +51,12 @@ function problem7(user, friends, visitors) {
   }
 
   // 추천 점수가 부여된 사용자의 목록을 점수-이름 순으로 정렬
+  const sortRank = () => {
+    user_rank.sort((a, b) => {
+      if (a.score < b.score) return 1;
+      else if (a.name > b.name) return 1;
+    });
+  }
 
   return answer;
 }
