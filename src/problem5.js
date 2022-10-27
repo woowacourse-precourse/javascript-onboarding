@@ -13,7 +13,6 @@ function problem5(money) {
     i += 1; // 다음 화폐 확인을 위해
   }
 
-  console.log(idx);
   return idx;
 }
 
