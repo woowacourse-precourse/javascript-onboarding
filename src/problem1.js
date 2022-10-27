@@ -16,10 +16,19 @@ function problem1(pobi, crong) {
       return multiple;
     } // 자릿수를 모두 더하거나 곱해 그중 큰 수 return
   }
+  function score(member) {
+    const left_page = calculate(member[0]);
+    const right_page = calculate(member[1]);
+    if (left_page > right_page) {
+      return left_page;
+    } else {
+      return right_page;
+    }
+  } // 왼쪽 페이지와 오른쪽 페이지 비교하여 score 정하기
 
   return answer;
 }
 
-problem1();
+//예외사항 - 왼쪽 페이지가 1 또는 399, 왼쪽페이지가 짝수, 오른쪽페이지 != 왼쪽페이지+1
 
 module.exports = problem1;
