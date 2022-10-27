@@ -1,20 +1,7 @@
 function problem7(user, friends, visitors) {
-  let relation = {};
-  let score = {};
-  for (let i = 0; i < friends.length; i++) {
-    const [a, b] = friends[i];
-    if (!relation[a]) {
-      relation[a] = [];
-      score[a] = 0;
-    }
-    if (!relation[b]) {
-      relation[b] = [];
-      score[b] = 0;
-    }
-    relation[a].push(b);
-    relation[b].push(a);
-  }
+  const relation = getRelation(friends);
 
+  let score = {};
   const userFriends = [...relation[user]];
   for (let i = 0; i < userFriends.length; i++) {
     const userFriend = userFriends[i];
@@ -24,10 +11,12 @@ function problem7(user, friends, visitors) {
       if (friendFriend === user) {
         continue;
       }
+      if (!score[friendFriend]) {
+        score[friendFriend] = 0;
+      }
       score[friendFriend] += 10;
     }
   }
-
   for (let i = 0; i < visitors.length; i++) {
     const visitor = visitors[i];
     if (!score[visitor]){
@@ -45,6 +34,22 @@ function problem7(user, friends, visitors) {
   }
 
   return result.sort().map(([,id]) => id);
+}
+
+function getRelation(friends) {
+  let relation = {};
+  for (let i = 0; i < friends.length; i++) {
+    const [a, b] = friends[i];
+    if (!relation[a]) {
+      relation[a] = [];
+    }
+    if (!relation[b]) {
+      relation[b] = [];
+    }
+    relation[a].push(b);
+    relation[b].push(a);
+  }
+  return relation;
 }
 
 module.exports = problem7;
