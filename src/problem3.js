@@ -4,6 +4,7 @@ function problem3(number) {
     let num = i;
     while (num >= 1) {
       if (num % 10 === 3 || num % 10 === 6 || num % 10 === 9) answer++;
+      num = Math.floor(num / 10);
     }
   }
   return answer;
