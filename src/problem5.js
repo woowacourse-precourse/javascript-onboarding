@@ -13,9 +13,12 @@
  */
 
 function problem5(money) {
-  const MONEY_LENGTH = 9;
   const MONEY = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  var answer;
+  const answer = [];
+  MONEY.forEach((m) => {
+    answer.push(changeMoney(money, m));
+    money = moduloMoney(money, m);
+  });
   return answer;
 }
 
