@@ -1,4 +1,10 @@
-function problem3(number) {}
+function problem3(number) {
+	let totalClapCount = 0
+	for (let i = 1; i <= number; i++) {
+		totalClapCount += getClapCount(i)
+	}
+	return totalClapCount
+}
 
 const canClap = numberChar => numberChar === '3' || numberChar === '6' || numberChar === '9'
 
