@@ -29,6 +29,7 @@
    2. 카운트 반환
 
 4. 문제 4
-   1. 변환 규칙 {65(ascii A) + 90(ascii Z) - asciiCode}
-   2. 규칙 기반으로 word를 변환
-   3. 변환한 문자열 반환
+   1. 변환 규칙(대문자): {65(ascii A) + 90(ascii Z) - asciiCode}
+   2. 변환 규칙(소문자): {97(ascii a) + 122(ascii z) - asciiCode}
+   3. 규칙 기반으로 word를 변환
+   4. 변환한 문자열 반환
