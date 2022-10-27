@@ -20,6 +20,8 @@ function problem1(pobi, crong) {
     crongRightPageArray.reduce((acc, cur) => acc * Number(cur), 1),
     crongRightPageArray.reduce((acc, cur) => acc + Number(cur), 0)]
   );
+
+  const answer = checkExceptions ? -1 : pobiMax === crongMax ? 0 : pobiMax > crongMax ? 1 : 2;
   
   return answer;
 }
