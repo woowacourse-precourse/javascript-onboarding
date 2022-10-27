@@ -8,7 +8,6 @@ function problem4(word) {
     answer += checkAndTransform(w);
   }
 
-  console.log(answer);
   return answer;
 }
 
@@ -25,7 +24,5 @@ function checkAndTransform(w) {
     }
   }
 }
-
-// problem4("abCCd!"); // zyXXw!
 
 module.exports = problem4;
