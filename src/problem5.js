@@ -32,10 +32,9 @@ function problem5(money) {
 
   withrawCash({ wallet, money });
 
-  return Array.from(wallet.values());
-}
+  const billsCountInWallet = Array.from(wallet.values());
 
-console.log(problem5(50237));
-console.log(problem5(15000));
+  return billsCountInWallet;
+}
 
 module.exports = problem5;
