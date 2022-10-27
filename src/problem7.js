@@ -1,12 +1,3 @@
-function findUserFriends(user, friends) {
-  const userRelations = friends.filter((friend) => friend.includes(user));
-  const userFriends = userRelations.map((relation) =>
-    relation.find((person) => person !== user)
-  );
-
-  return userFriends;
-}
-
 function getRelations(friends) {
   const relations = friends.reduce((acc, cur) => {
     const [crewA, crewB] = cur;
@@ -20,8 +11,7 @@ function getRelations(friends) {
   return relations;
 }
 
-function getRelationScores(user, friends) {
-  const relations = getRelations(friends);
+function getRelationScores(user, relations) {
   const relationScores = Object.keys(relations).reduce((acc, cur) => {
     if (cur === user) {
       return acc;
@@ -79,12 +69,14 @@ function getSortedCrews(crewScores) {
 }
 
 function problem7(user, friends, visitors) {
-  const userFriends = findUserFriends(user, friends);
-  const relationScores = getRelationScores(user, friends);
+  const relations = getRelations(friends);
+
+  const relationScores = getRelationScores(user, relations);
   const visitorScores = getVisitorScores(visitors);
   const crewScores = getCrewScores(relationScores, visitorScores);
+
   const sortedCrews = getSortedCrews(crewScores);
-  const answer = sortedCrews.filter((crew) => !userFriends.includes(crew));
+  const answer = sortedCrews.filter((crew) => !relations[user].includes(crew));
 
   if (answer.length > 5) {
     answer.splice(5);
@@ -94,23 +86,3 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
-
-function test() {
-  const user = 'mrko';
-  const friends = [
-    ['donut', 'andole'],
-    ['donut', 'jun'],
-    ['donut', 'mrko'],
-    ['shakevan', 'andole'],
-    ['shakevan', 'jun'],
-    ['shakevan', 'mrko'],
-  ];
-  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa', 'zz'];
-
-  console.log(findUserFriends(user, friends));
-  console.log(getRelationScores(user, friends));
-  console.log(getVisitorScores(visitors));
-  console.log(problem7(user, friends, visitors));
-}
-
-test();
