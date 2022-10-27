@@ -5,6 +5,11 @@ function returnNumber(page) {
   return eachnum
 }
 
+function calcMaxScore(eachnum) {
+  const sumvalue = eachnum.reduce((prev, curr) => prev + curr)
+  const multiplyvalue = eachnum.reduce((prev, curr) => prev * curr)
+  return Math.max(sumvalue, multiplyvalue)
+}
 
 function problem1(pobi, crong) {
   var answer;
