@@ -3,6 +3,8 @@ function problem1(pobi, crong) {
 
   pobiLeftScore = pobiCrongLeft(pobi);
   crongLeftScore = pobiCrongLeft(crong);
+  pobiRightScore = pobiCrongRight(pobi);
+  crongRightScore = pobiCrongRight(crong);
 
   return answer;
 }
@@ -17,6 +19,18 @@ function pobiCrongLeft(pobiCrong){
   }
   for(let i = 0; i < left.length; i++){
     leftMul += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
+  }
+}
+
+function pobiCrongRight(pobiCrong){
+  Right = pobiCrong[1].toString();  //ex)pobi[1] => 정수형 98, toString => 문자형 98
+  RightSum = 0;  //전역변수
+  RightMul = 1;  //전역변수
+  for (let i = 0; i < Right.length; i++){
+    RightSum += parseInt(Right[i]) //parseInt => 문자형을 정수형으로 변환
+  }
+  for (let i = 0; i < Right.length; i++){
+    RightMul *= parseInt(Right[i]) //parseInt => 문자형을 정수형으로 변환
   }
 }
 
