@@ -42,5 +42,16 @@ function exception(pobi,crong){
   return true;
 }
 
+function ScoreResult(pobiScore, crongScore){
+  if (pobiScore > crongScore){
+    return 1;
+  }
+  if (pobiScore < crongScore){
+    return 2;
+  }
+  if (pobiScore == crongScore){
+    return 0;
+  }
 }
+
 module.exports = problem1;
