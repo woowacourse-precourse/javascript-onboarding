@@ -62,6 +62,9 @@ function problem1(pobi, crong) {
   if (!checkPageGap(pobi, crong)) return -1;
   if (!checkOddEven(pobi, crong)) return -1;
   if (!checkLength(pobi, crong)) return -1;
+  if (getMaxNumber(pobi) > getMaxNumber(crong)) return 1;
+  if (getMaxNumber(pobi) > getMaxNumber(crong)) return 2;
+  if (getMaxNumber(pobi) === getMaxNumber(crong)) return 0;
 }
 
 console.log(problem1([97, 98], [197, 198]));
