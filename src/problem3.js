@@ -1,9 +1,15 @@
 function problem3(number) {
-  var answer = 0;
-  for(let i = 1; i <= number; i++){
-    answer += getClap(i);
-  }
+  var answer;
+  answer = getSum(number);
   return answer;
+}
+
+function getSum(num){
+  let sum = 0;
+  for(let i = 1; i <= num; i++){
+    sum += getClap(i);
+  }
+  return sum;
 }
 
 function getClap(i){
