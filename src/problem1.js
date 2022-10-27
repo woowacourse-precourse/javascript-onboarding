@@ -22,6 +22,9 @@ function problem1(pobi, crong) {
     }
   }
 
+  const IsPobiLeftOdd = new IsLeft(pobi.leftPage)
+  const IsCrongLeftOdd = new IsLeft(crong.leftPage)
+
   class IsRight {
     constructor({rightPage}) {
       this.rightPage = rightPage
@@ -34,7 +37,25 @@ function problem1(pobi, crong) {
     }
   }
 
+  const IsPobiRightEven = new IsRight(pobi.rightPage)
+  const IsCrongRightEven = new IsRight(crong.rightPage)
 
+  class IsLeftPlusOne {
+    constructor({leftPage, rightPage}) {
+      this.leftPage = leftPage
+      this.rightPage = rightPage
+    }
+    LeftPlusOne() {
+      if(this.leftPage + 1 === this.rightPage) {
+        return true
+      }
+      return false
+    }
+  }
+
+  const IsPobiLeftPlusOne = new IsLeftPlusOne(pobi.leftPage, pobi.rightPage)
+  const IsCrongLeftPlusOne = new IsLeftPlusOne(crong.leftPage, crong.rightPage)
+  
   return answer;
 }
 
