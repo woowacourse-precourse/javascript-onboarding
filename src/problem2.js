@@ -14,7 +14,7 @@ function exception(cryptogram) {
 
 module.exports = problem2;
 
-//기능들
+// 기능들
 // 1. 암호문 길이 판별(1~1000)
 // 2. 알파벳이 소문자인가?
 // 3. 연속하는 중복문자 제거
