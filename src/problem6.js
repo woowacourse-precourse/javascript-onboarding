@@ -5,8 +5,6 @@ function problem6(forms) {
       if(isDuplicated(forms[i][1], forms[j][1])) {
         answer.add(forms[i][0]);
         answer.add(forms[j][0]);
-        forms.splice(j, 1);
-        j--;
       }
     }
   }  
