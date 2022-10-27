@@ -13,8 +13,11 @@ function alphabet(letter){
 }
 
 function problem4(word) {
-  var answer;
+  const wordlist = [...word];
+  
   return answer;
 }
 
 module.exports = problem4;
+
+problem4('I love you');
