@@ -52,9 +52,11 @@ function calcRecommendedScore (user, relationships, visitor) {
 }
 
 function problem7(user, friends, visitors) {
+  const MAXIMUM_NUM = 5;
   const relationships = getRelationships(friends);
   const recommendedScores = calcRecommendedScore(user, relationships, visitors);
-
+  const sortedScores = Object.fromEntries(Object.entries(recommendedScores).sort(([, a], [, b]) => b - a));
+  return Object.keys(sortedScores).slice(0, MAXIMUM_NUM + 1);
 }
 
 module.exports = problem7;
