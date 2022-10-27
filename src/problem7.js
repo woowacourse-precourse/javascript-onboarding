@@ -1,16 +1,28 @@
-function visitCount(visitors){
+function checkFriend(candidate, name){
+  if (candidate.includes(name)){
+      return false;
+  }
+  else{
+    return true;
+  }
+}
+
+
+function visitCount(visitors, user, friends){
   return visitors.reduce((prev, curr) => {
-    if (curr in prev){
+    if (curr in prev && checkFriend([user,...friendRelation(friends)[user]] ,curr)){
       prev[curr] += 1;
     }
     else{
-      prev[curr] = 1;
+      if (checkFriend([user,...friendRelation(friends)[user]] ,curr)){
+        prev[curr] = 1;
+      }
     }
     return prev;
   }, {});
 };
 
-function friendRelation(friends){
+function friendRelation(friends, user){
   const relation = {};
   friends.map(friend =>{
     let a = friend[0];
@@ -31,12 +43,14 @@ function friendRelation(friends){
   return relation;
 }
 
-function knowFriend(arr, user, algorithm){
+function knowFriend(arr, user, relation, algorithm){
   //존재하는 경우
   userFriend = arr[user];
   userFriend.map(commonFriend => {
     arr[commonFriend].map(name => {
-      (name in algorithm) ? algorithm[name] += 10 : algorithm[name] = 10;
+      if (checkFriend([user,...relation[user]], name)){
+        (name in algorithm) ? algorithm[name] += 10 : algorithm[name] = 10;
+      }
     })
   })
   return algorithm;
@@ -44,9 +58,9 @@ function knowFriend(arr, user, algorithm){
 
 function problem7(user, friends, visitors) {
   //const answer = friendRelation(friends)
-  const algorithm = visitCount(visitors);
-  const relation = friendRelation(friends);
-  const answer = knowFriend(relation, user, algorithm);
+  const algorithm = visitCount(visitors, user, friends);
+  const relation = friendRelation(friends, user);
+  const answer = knowFriend(relation, user, relation, algorithm);
   return answer;
 }
 
