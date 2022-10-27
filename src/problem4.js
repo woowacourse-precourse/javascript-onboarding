@@ -2,7 +2,7 @@ function problem4(word) {
   let answer;
 
   answer = word.replace(/[a-z|A-Z]/g, (char) => {
-    return changeWordToGreenFrogWord(char);
+    return getGreenFrogWord(char);
   });
 
   return answer;
@@ -14,7 +14,7 @@ function problem4(word) {
 // 97이상이면 소문자 처리, 이하면 대문자 처리
 // 대문자 처리: "155 - 현재 아스키 코드" 한 값을 문자로 변환하여 리턴
 // 소문자 처리: "219 - 현재 아스키 코드" 한 값을 문자로 변환하여 리턴
-function changeWordToGreenFrogWord(char) {
+function getGreenFrogWord(char) {
   let ASCII = char.charCodeAt(0);
 
   if (ASCII >= 97) {
