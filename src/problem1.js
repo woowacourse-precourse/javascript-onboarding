@@ -3,7 +3,6 @@ function problem1(pobi, crong) {
   
   let PobiScore=[];
   let CrongScore=[];
-  let pobi_max=0;//포비의 최대값저장
   let pobi_ans=0;//포비의 최종 최대값
   for(let i=0;i<2;i++){
     let pobi_sum=0;//포비의 각 자리수의 합 
@@ -12,12 +11,11 @@ function problem1(pobi, crong) {
     while(val!=0){
       pobi_sum+=val%10;
       pobi_mul*=val%10;
-      val=val/10;
+      val = parseInt(val / 10);
     }
-    PobiScore.shift(pobi_sum);
-    PobiScore.shift(pobi_mul);
+    PobiScore.push(pobi_sum);
+    PobiScore.push(pobi_mul);
   }
-  let crong_max=0;//크롱의 최대값저장
   let crong_ans=0;//크롱의 최종 최대값
   for(let i=0;i<2;i++){
     let crong_sum=0;//크롱의 각 자리수의 합 
@@ -26,14 +24,14 @@ function problem1(pobi, crong) {
     while(val!=0){
       crong_sum+=val%10;
       crong_mul*=val%10;
-      val=val/10;
+      val = parseInt(val / 10);
     }
-    CrongScore.shift(crong_sum);
-    CrongScore.shift(crong_mul);
+    CrongScore.push(crong_sum);
+    CrongScore.push(crong_mul);
   }
-  pobi_ans=Math.max(PobiScore);
-  crong_ans=Math.max(CrongScore);
-  if(pobi[1]-pobi[0]==1&&crong[1]-crong[0]==1){//예외사항 
+  pobi_ans=Math.max.apply(null,PobiScore);
+  crong_ans=Math.max.apply(null,CrongScore);
+  if(pobi[1]-pobi[0]==1 && crong[1]-crong[0]==1){
     if(pobi_ans>crong_ans) {
       answer=1;
     }
@@ -44,10 +42,10 @@ function problem1(pobi, crong) {
       answer=0;
     }
   }
-  else{
+  else{//예외사항
     answer=-1;
   }
-    return answer;
+  return answer;
 }
 
 
