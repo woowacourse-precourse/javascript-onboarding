@@ -4,11 +4,21 @@ function problem1(pobi, crong) {
   const pobiLeftPageArray = String(pobi[0]).split("");
   const pobiRightPageArray = String(pobi[1]).split("");
 
+  const crongLeftPageArray = String(crong[0]).split("");
+  const crongRightPageArray = String(crong[1]).split("");
+
   const pobiMax = Math.max(...
     [pobiLeftPageArray.reduce((acc, cur) => acc * Number(cur), 1),
     pobiLeftPageArray.reduce((acc, cur) => acc + Number(cur), 0),
     pobiRightPageArray.reduce((acc, cur) => acc * Number(cur), 1),
     pobiRightPageArray.reduce((acc, cur) => acc + Number(cur), 0)]
+  );
+
+  const crongMax = Math.max(...
+    [crongLeftPageArray.reduce((acc, cur) => acc * Number(cur), 1),
+    crongLeftPageArray.reduce((acc, cur) => acc + Number(cur), 0),
+    crongRightPageArray.reduce((acc, cur) => acc * Number(cur), 1),
+    crongRightPageArray.reduce((acc, cur) => acc + Number(cur), 0)]
   );
   
   return answer;
