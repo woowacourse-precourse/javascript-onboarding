@@ -13,9 +13,34 @@ function isExceptional(pages){
   if(isFirstOrLast || isFitOddandEven || isFitPageOrder) return true
 }
 
-function getCalculate(pages){}
+function getCalculate(pages){
+  let biggest = 0;
+
+  pages.map((currentPage) => {
+    if(currentPage >= 100) {
+      const units = (currentPage % 100) % 10
+      const tens = parseInt((currentPage % 100)/10)
+      const hundreds = parseInt(currentPage / 100)
+      const sum = units + tens + hundreds;
+      const mul = units * tens * hundreds;
+
+      biggest = Math.max(sum, mul, biggest);
+    } else {
+      const units = currentPage % 10
+      const tens = parseInt(currentPage / 10)
+      const sum = units + tens;
+      const mul = units * tens;
+
+      biggest = Math.max(sum, mul, biggest);
+    }
+  })
+  return biggest;
+}
 
 
 console.log(problem1([99, 102], [211, 212]))
+console.log(problem1([99, 100], [99, 100]))
+console.log(problem1([77, 78], [277, 278]))
+console.log(problem1([77, 78], [177, 178]))
 
 module.exports = problem1;
