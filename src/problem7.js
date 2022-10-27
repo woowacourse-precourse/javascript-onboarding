@@ -38,6 +38,11 @@ function problem7(user, friends, visitors) {
   const sortableObject = Object.entries(object)
     .sort(([, a], [, b]) => b - a)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  //최대 5명까지만 return한다
+  const answer = Object.keys(sortableObject).slice(0, 5);
+
+  return answer;
 }
 
 module.exports = problem7;
