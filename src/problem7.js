@@ -34,47 +34,38 @@ function getUserList(keys, visitors, skip) {
   return [...new Set(list)].filter((el) => !skip.includes(el));
 }
 
+function getScore(other, visitors, user_friends, other_friends) {
+  const visitScore = visitors.filter((visitor) => visitor === other).length;
+  let friendScore = 0;
+
+  for (const one of other_friends) {
+    if (user_friends.includes(one)) friendScore += 10;
+  }
+
+  return visitScore + friendScore;
+}
+
 function getScores(user, userList, relation, visitors) {
   const scores = [];
-  let arr = relation[user];
-
-  if (!arr) arr = [];
 
   for (const other of userList) {
     let score = 0;
-    const visitScore = visitors.filter((visitor) => visitor === other).length;
-    score += visitScore;
-    let friendScore = 0;
-    if (!relation[other]) relation[other] = [];
-    for (const one of relation[other]) {
-      if (arr.includes(one)) friendScore += 10;
-    }
-    score += friendScore;
+    score += getScore(other, visitors, relation[user], relation[other]);
     scores.push([other, score]);
   }
 
   return scores;
 }
 
-function getInfos(user, friends, visitors) {
+function getAnswer(user, friends, visitors) {
   const relation = getRelation(user, friends, visitors);
   const skip = getSkip(user, relation);
   const userList = getUserList(Object.keys(relation), visitors, skip);
   const scores = getScores(user, userList, relation, visitors);
-  console.log(scores);
+
+  return scores;
 }
-getInfos(
-  'mrko',
-  [
-    ['donut', 'andole'],
-    ['donut', 'jun'],
-    ['donut', 'mrko'],
-    ['shakevan', 'andole'],
-    ['shakevan', 'jun'],
-    ['shakevan', 'mrko'],
-  ],
-  ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
-);
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
