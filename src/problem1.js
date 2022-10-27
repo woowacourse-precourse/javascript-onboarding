@@ -21,7 +21,16 @@
     
 */
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (!checkAvailable(pobi) || !checkAvailable(crong)) return -1;
+
+  const biggestNumberOfPobi = makeBiggestNumber(pobi);
+  const biggestNumberOfCrong = makeBiggestNumber(crong);
+
+  if (biggestNumberOfPobi > biggestNumberOfCrong) return 1;
+  else if (biggestNumberOfPobi < biggestNumberOfCrong) return 2;
+  else return 0;
+}
 
 const checkAvailable = (pages) => {
   const [leftPage, rightPage] = pages;
