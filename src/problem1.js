@@ -1,4 +1,4 @@
-console.log(problem1([97, 98],[197, 198]));
+console.log(problem1([7, 8],[197, 198]));
 
 function problem1(pobi, crong) {
   if(validationArr(pobi) && validationArr(crong)){  
@@ -12,7 +12,7 @@ function validationArr(arr){
 }
 
 function pageGameApp(numArrA,numArrB){
-  console.log(splitNumber(numArrA[0]));
+  console.log(sumArr(splitNumber(numArrA[0])));
   let maxNumA;
   let maxNumB;
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
@@ -25,6 +25,14 @@ function splitNumber(n){
     n = parseInt(n/10);
   }
   return splitArr;
+}
+
+function sumArr(arr){
+  let totalSum = 0;
+  for(let i=0; i<arr.length; i++){
+    totalSum += arr[i];
+  }
+  return totalSum;
 }
 
 module.exports = problem1;
