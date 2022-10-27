@@ -61,5 +61,13 @@ function problem4(word) {
 		dictionary[upperCase[i]] = [...upperCase].reverse()[i]
 		dictionary[lowerCase[i]] = [...lowerCase].reverse()[i]
 	}
+
+	let result = ''
+
+	for (let char of word) {
+		result += dictionary[char] || char
+	}
+
+	return result
 }
 module.exports = problem4
