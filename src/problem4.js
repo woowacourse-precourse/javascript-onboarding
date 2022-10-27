@@ -1,6 +1,15 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  const CHAR_CODE_A = 65;
+  const CHAR_CODE_Z = 90;
+  const CHAR_CODE_a = 97;
+  const CHAR_CODE_z = 122;
+
+  const answer = [...word].map((v) => {
+    if (v.charCodeAt() >= CHAR_CODE_A && v.charCodeAt() <= CHAR_CODE_Z) {
+    }
+    if (v.charCodeAt() >= CHAR_CODE_a && v.charCodeAt() <= CHAR_CODE_z) {
+    }
+  });
 }
 
 module.exports = problem4;
