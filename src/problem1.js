@@ -1,7 +1,7 @@
 
-function calculateMaxNum(arr){
-  let leftNum = arr[0];
-  let rightNum = arr[1];
+function calculateMaxNum(page){
+  let leftNum = page[0];
+  let rightNum = page[1];
   let leftSum = 0;
   let rightSum = 0;
   let leftMulti = 0;
