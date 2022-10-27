@@ -9,6 +9,18 @@ function checkArr(arr) {
   return (1);
 }
 
+function splitAdd(arr) {
+  return result = String(arr).split('').reduce(function(acc, cur) {
+    return acc + Number(cur);
+  }, 0);
+}
+
+function splitMul(arr) {
+  return result = String(arr).split('').reduce(function(acc, cur) {
+    return acc * Number(cur);
+  }, 1);
+}
+
 function problem1(pobi, crong) {
   if (!checkArr(pobi) || !checkArr(crong))
     return -1;
