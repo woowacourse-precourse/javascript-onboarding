@@ -40,6 +40,18 @@ function checkValidPageNumber(left, right) {
   );
 }
 
+function multiplyNumberDigits(num) {
+  let result = 1;
+  const stringNum = String(num);
+  for (i = 0; i < stringNum.length; i++) {
+    result *= +stringNum[i];
+  }
+
+  return result;
+}
+
+console.log(multiplyNumberDigits(567));
+
 function problem1(pobi, crong) {
   var answer;
 
