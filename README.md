@@ -27,7 +27,10 @@
 
 - [ ] [문제 4](docs/PROBLEM4.md) solution 함수 작성
 
-  
+  - [ ] 알파벳 소문자, 대문자 배열 생성
+  - [ ] 청개구리 사전 구현
+  - [ ] 변환된 문자열 return 로직
+  - [ ] 문제4 테스트 통과
 
 - [ ] [문제 5](docs/PROBLEM5.md) solution 함수 작성
 
