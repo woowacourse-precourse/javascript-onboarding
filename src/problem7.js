@@ -10,9 +10,29 @@ function visitCount(visitors){
   }, {});
 };
 
+function friendRelation(friends){
+  const relation = {};
+  friends.map(friend =>{
+    let a = friend[0];
+    let b = friend[1];
+    if (a in relation){
+      relation[a].push(b);
+    }
+    else{
+      relation[a] = [b];
+    }
+    if (b in relation){
+      relation[b].push(a);
+    }
+    else{
+      relation[b] = [a];
+    }
+  })
+  return relation;
+}
 
 function problem7(user, friends, visitors) {
-  
+  //const answer = friendRelation(friends)
   return answer;
 }
 
