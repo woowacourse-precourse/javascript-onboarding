@@ -30,6 +30,14 @@ function checkNickNameLength(forms) {
   return true;
 }
 
+function checkFormsLength(forms) {
+  if (forms.length < 1 || forms.length > 10000) {
+    return false;
+  }
+
+  return true;
+}
+
 function checkSameWord(i, forms, testWord, ans) {
   for (let n = 0; n < forms.length; n++) {
     if (n === i) {
@@ -76,7 +84,8 @@ function problem6(forms) {
   if (
     !checkEmailLength(forms) ||
     !checkEmailForm(forms) ||
-    !checkNickNameLength(forms)
+    !checkNickNameLength(forms) ||
+    !checkFormsLength(forms)
   ) {
     return;
   }
