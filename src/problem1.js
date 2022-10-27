@@ -14,6 +14,20 @@ function calc(page) {
   return maxNum;
 }
 
+function handleException(pages) {
+  const [leftPage, rightPage] = pages;
+
+  const checkRange = (page) => {
+    if (page < 1 || page > 400) return false;
+    return true;
+  };
+
+  if (!checkRange(leftPage) || !checkRange(rightPage)) return true;
+  if (leftPage >= rightPage || rightPage - leftPage !== 1) return true;
+  if (leftPage % 2 == 0) return true;
+  return false;
+}
+
 function problem1(pobi, crong) {}
 
 module.exports = problem1;
