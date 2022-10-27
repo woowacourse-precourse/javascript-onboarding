@@ -18,4 +18,8 @@ function getMoneyNumber(money) {
   return resultArray;
 }
 
+function problem5(money) {
+  return getMoneyNumber(money);
+}
+
 module.exports = problem5;
