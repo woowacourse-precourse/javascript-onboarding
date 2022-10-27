@@ -27,4 +27,23 @@ const alphabetArray = [
   "Z",
 ];
 
+function convertWord(words) {
+  let wordsArray = words.split("");
+  let newWord = "";
+
+  wordsArray.map((word) => {
+    if (word == " ") {
+      newWord += " ";
+    } else if (word == word.toLowerCase()) {
+      newWord +=
+        alphabetArray[
+          25 - alphabetArray.indexOf(word.toUpperCase())
+        ].toLowerCase();
+    } else {
+      newWord += alphabetArray[25 - alphabetArray.indexOf(word)];
+    }
+  });
+  return newWord;
+}
+
 module.exports = problem4;
