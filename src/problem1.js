@@ -19,6 +19,8 @@ function problem1(pobi, crong) {
   if ((pobiSub !== 1) | (crongSub !== 1)) {
     return -1;
   }
+  const pobiMax = Math.max(calValue(pobi[0]), calValue(pobi[1]));
+  const crongMax = Math.max(calValue(crong[0]), calValue(crong[1]));
   var answer;
   return answer;
 }
