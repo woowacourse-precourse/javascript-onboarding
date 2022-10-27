@@ -13,9 +13,23 @@ function includes369(num) {
   return false;
 }
 
+//3,6,9를 몇개 가지고 있는지 세고 더해주는 함수 - 기능목록 3
+function countClap(item) {
+  let arrItem = item.toString().split("");
+  let count = 0;
+  for (let i of arrItem) {
+    if (i === "3" || i === "6" || i === "9") {
+      count++;
+    }
+  }
+  return count;
+}
+
 function problem3(number) {
   let arrNumber = range(1, number);
-  return arrNumber.filter((item) => includes369(item));
+  return arrNumber
+    .filter((item) => includes369(item))
+    .reduce((acc, curr) => acc + countClap(curr), 0);
 }
 
 module.exports = problem3;
