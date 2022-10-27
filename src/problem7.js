@@ -31,7 +31,7 @@ function getSkip(user, relation) {
 function getUserList(keys, visitors, skip) {
   const list = [...keys, ...visitors];
 
-  return [...new Set(list)].filter((el) => !skip.includes(el));
+  return [...new Set(list)].filter((el) => !skip.includes(el)).sort();
 }
 
 function getScore(other, visitors, user_friends, other_friends) {
@@ -63,11 +63,16 @@ function getAnswer(user, friends, visitors) {
   const userList = getUserList(Object.keys(relation), visitors, skip);
   const scores = getScores(user, userList, relation, visitors);
 
-  return scores;
+  scores.sort((a, b) => b[1] - a[1]);
+  return scores
+    .slice(0, 5)
+    .filter((v) => v[1] !== 0)
+    .map((v) => v[0]);
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  const answer = getAnswer(user, friends, visitors);
+
   return answer;
 }
 
