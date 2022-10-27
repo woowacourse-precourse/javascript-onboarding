@@ -2,6 +2,7 @@
  * splitNumberToDigits
  * @type {(n: number) => number[]}
  */
+const splitNumberToDigits = (n) => n.toString().split("").map(Number);
 
 /**
  * range
