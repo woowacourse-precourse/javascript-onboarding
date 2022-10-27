@@ -21,8 +21,6 @@ function getSkip(user, relation) {
   const skip = [user];
   const arr = relation[user];
 
-  if (!arr) return skip;
-
   for (const already of arr) {
     skip.push(already);
   }
@@ -31,9 +29,9 @@ function getSkip(user, relation) {
 }
 
 function getUserList(keys, visitors, skip) {
-  const list = [...keys, ...visitors].filter((el) => !skip.includes(el));
+  const list = [...keys, ...visitors];
 
-  return [...new Set(list)];
+  return [...new Set(list)].filter((el) => !skip.includes(el));
 }
 
 function getScores(user, userList, relation, visitors) {
