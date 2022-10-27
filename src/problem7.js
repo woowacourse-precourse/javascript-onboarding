@@ -2,8 +2,10 @@ function problem7(user, friends, visitors) {
   var answer;
   let userScore = convertFriendsToUserScore(friends, user);
   let userList = convertFriendsToNonRepeatUserList(friends, user);
+  let currentUserFriendList = makeCurrentUserFriendList(friends, user);
   console.log(userScore);
   console.log(userList);
+  console.log(currentUserFriendList);
   return answer;
 }
 
@@ -27,6 +29,18 @@ function convertFriendsToNonRepeatUserList(friends, user) {
     }
   }
   return userList;
+}
+
+function makeCurrentUserFriendList(friends, user) {
+  let friendList = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].includes(user)) {
+      for (let j = 0; j < 2; j++) {
+        if (friends[i][j] !== user) friendList.push(friends[i][j]);
+      }
+    }
+  }
+  return friendList;
 }
 
 module.exports = problem7;
