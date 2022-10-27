@@ -39,6 +39,15 @@ function problem7(user, friends, visitors) {
       rankMap.set(friends[k][0], rankMap.get(friends[k][0]) + 10);
     }
   }
+
+  // 방문 점수 더하기
+  for (let i = 0; i < visitors.length; i++) {
+    rankMap.set(visitors[i], rankMap.get(visitors[i]) + 1);
+  }
+  // 방문 점수 맵 -> 배열
+  for (const [name, rank] of rankMap) {
+    answer.push([name, rank]);
+  }
 }
 
 module.exports = problem7;
