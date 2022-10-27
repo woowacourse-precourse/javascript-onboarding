@@ -22,6 +22,17 @@ function problem7(user, friends, visitors) {
   //찾은 목록들에서 중복을 제거한다
   const selectFriends = [...new Set(removeMrko)];
   const selectVisitors = [...new Set(visitors)];
+
+  //찾은 friends와 visitors에게 점수를 부여한다
+  const object = {};
+  for (const value of selectFriends) {
+    object[value] = removeMrko.filter((v) => v === value).length * 10;
+  }
+  for (const value of selectVisitors) {
+    object[value] !== undefined
+      ? (object[value] += visitors.filter((v) => v === value).length)
+      : (object[value] = visitors.filter((v) => v === value).length);
+  }
 }
 
 module.exports = problem7;
