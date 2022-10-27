@@ -30,8 +30,21 @@ function getWords(forms) {
   return words;
 }
 
+function isIncludes(answer, nickname, email, word) {
+  if (nickname.includes(word)) answer.push(email);
+}
+
 function problem6(forms) {
-  const words = {};
+  const words = getWords(forms);
+  const answer = [];
+
+  for (const [email, nickname] of forms) {
+    for (const word of words) {
+      isIncludes(answer, nickname, email, word);
+    }
+  }
+
+  return [...new Set(answer)].sort();
 }
 
 module.exports = problem6;
