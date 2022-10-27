@@ -22,4 +22,11 @@ function sumOfPages(pages2D) {
   else return sumOfSecondOne;
 }
 
+function multipleOfPages(pages2D) {
+  const multipleOfFirstOne = pages2D[0].reduce((pre, cur) => pre * cur, 1);
+  const multipleOfSecondOne = pages2D[1].reduce((pre, cur) => pre * cur, 1);
+  if (multipleOfFirstOne > multipleOfSecondOne) return multipleOfFirstOne;
+  else return multipleOfSecondOne;
+}
+
 module.exports = problem1;
