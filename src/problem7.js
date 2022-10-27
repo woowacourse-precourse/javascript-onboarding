@@ -6,6 +6,18 @@ function problem7(user, friends, visitors) {
   const findFriends = removeMrko
     .filter((v) => v.length === 1)
     .flatMap((v) => v);
+
+  //user를 없앤 배열 변수(removeMrko)에서 length가 1개인 (findFriends)같은 값을 삭제한다
+  for (const value of findFriends) {
+    removeMrko = removeMrko
+      .flatMap((v) => v)
+      .filter((v) => v !== value)
+      .sort();
+    visitors = visitors
+      .flatMap((v) => v)
+      .filter((v) => v !== value)
+      .sort();
+  }
 }
 
 module.exports = problem7;
