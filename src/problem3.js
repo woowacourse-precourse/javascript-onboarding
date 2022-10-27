@@ -1,5 +1,7 @@
 function problem3(number) {
 
+  if(number < 1 || number > 10000) return -1;
+
   let clap = 0;
   let i = 1;
   const reg365 = /3|6|9/g;
