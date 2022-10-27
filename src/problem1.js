@@ -2,7 +2,13 @@
 function pageToMax(pageNum) {}
 
 // 가장 큰 수 본인의 점수로 만드는 함수
-function getMaxNum(pageArr) {}
+function getMaxNum(pageArr) {
+  let leftMaxNum = pageToMax(pageArr[0]);
+  let rightManNum = pageToMax(pageArr[1]);
+
+  let maxNum = Math.max(leftMaxNum, rightManNum);
+  return maxNum;
+}
 
 //제한사항에 해당되면  true, 안되면 false
 // 1.길이가 2가 아닐 시
