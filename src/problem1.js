@@ -1,4 +1,6 @@
 function problem1(pobi, crong) {
+  if(judgeCorrectPage(pobi) === -1 || judgeCorrectPage(crong) === -1)
+    return -1;
   let pobiMaxNum = compareLeftAndRightPageNum(pobi);
   let crongMaxNum = compareLeftAndRightPageNum(crong);
   return compareEachMaxNum(pobiMaxNum, crongMaxNum);
@@ -26,6 +28,15 @@ function compareEachMaxNum(pobiMaxNum, crongMaxNum){
     return 0;
   if(pobiMaxNum < crongMaxNum)
     return 2;
+}
+
+function judgeCorrectPage(pageNumArr){
+  let leftPageNum = pageNumArr[0];
+  let rightPageNum = pageNumArr[1];
+  if(leftPageNum < 1 || rightPageNum > 400)
+    return -1;
+  if(rightPageNum - leftPageNum !== 1)
+    return -1;
 }
 
 module.exports = problem1;
