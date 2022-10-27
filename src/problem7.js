@@ -17,6 +17,7 @@ function problem7(user, friends, visitors) {
     userScore[userList[i]] += calcScoreForVisitFrequency(visitors, userList[i]);
   }
   userList.sort((a, b) => Number(userScore[b]) - Number(userScore[a]));
+  userList = userList.filter((v) => userScore[v] !== 0).filter((v, i) => i < 5);
 
   return userList;
 }
