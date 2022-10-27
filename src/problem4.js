@@ -1,3 +1,24 @@
+const UPPER_CASE_START = 65;
+const LOWER_CASE_START = 97;
+const UPPER_CASE_END = 90;
+const LOWER_CASE_END = 122;
+
+/**
+ * @param {string} character
+ * @returns {boolean}
+ */
+function isUpperCase(character) {
+  return character >= 65 && character <= 90;
+}
+
+/**
+ * @param {string} character
+ * @returns {boolean}
+ */
+function isLowerCase(character) {
+  return character >= 97 && character <= 122;
+}
+
 /**
  * @param {string} character
  * @returns {string}
@@ -5,12 +26,12 @@
 function convertCharacter(character) {
   const charCode = character.charCodeAt(0);
 
-  if (charCode >= 65 && charCode <= 90) {
-    return String.fromCharCode(65 - charCode + 90);
+  if (isUpperCase(charCode)) {
+    return String.fromCharCode(UPPER_CASE_START - charCode + UPPER_CASE_END);
   }
 
-  if (charCode >= 97 && charCode <= 122) {
-    return String.fromCharCode(97 - charCode + 122);
+  if (isLowerCase(charCode)) {
+    return String.fromCharCode(LOWER_CASE_START - charCode + LOWER_CASE_END);
   }
 
   return character;
