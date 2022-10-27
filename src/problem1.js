@@ -28,10 +28,9 @@ function get_digits_helper(num) {
 }
 
 function get_digits(person) {
-  let page_digits = [[], []];
-  let [left, right] = page_digits;
-  left = get_digits_helper(person[0]); // left page digits
-  right = get_digits_helper(person[1]); // right page digits
+  let page_digits = [];
+  page_digits.push(get_digits_helper(person[0])); // left page digits
+  page_digits.push(get_digits_helper(person[1])); // right page digits
   return page_digits;
 }
 
@@ -61,8 +60,13 @@ function problem1(pobi, crong) {
   const [crong_left, crong_right] = crong_page_digits;
   const crong_score = Math.max(get_score(crong_left), get_score(crong_right));
 
-  var answer;
-  return answer;
+  if (pobi_score > crong_score) {
+    return 1;
+  } else if (pobi_score < crong_score) {
+    return 2;
+  } else if (pobi_score === crong_score) {
+    return 0;
+  }
 }
 
 module.exports = problem1;
