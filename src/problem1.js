@@ -16,7 +16,8 @@ const calcProduct = (num) => {
   return product;
 }
 
-const getMaxNum = (odd, even) => {
+const getMaxNum = (player) => {
+  const [odd, even] = player;
   return Math.max(
     calcSum(odd), 
     calcSum(even), 
