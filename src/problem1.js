@@ -28,12 +28,28 @@ function checkPageNum(pageArr){
   }
 }
 
+function getMaxNum(pageArr){
+  const [left, right] = pageArr;
+  
+  maxNum = Math.max(
+    left.toString().split('').reduce((prev,curr)=> Number(prev) + Number(curr)),
+    left.toString().split('').reduce((prev,curr)=> Number(prev) * Number(curr)),
+    right.toString().split('').reduce((prev,curr)=> Number(prev) + Number(curr)),
+    right.toString().split('').reduce((prev,curr)=> Number(prev) * Number(curr)),
+  );
+
+  return maxNum;
+}
+
 function problem1(pobi, crong) {
   var answer;
+
   if(!isValidInput(pobi) || !isValidInput(crong)){
-    answer = -1;
+    return -1;
   }
+
   return answer;
+  
 }
 
 module.exports = problem1;
