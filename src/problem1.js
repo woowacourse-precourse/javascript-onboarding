@@ -34,6 +34,7 @@ const isValidatePage = (page) => {
   if (page.length !== 2) return false;
   let leftPage = page[0],
     rightPage = page[1];
+  if (leftPage !== +leftPage || rightPage !== +rightPage) return false;
   if (leftPage - rightPage !== -1) return false;
   if (leftPage < 1 || leftPage >= 400 || rightPage < 2 || rightPage > 400)
     return false;
