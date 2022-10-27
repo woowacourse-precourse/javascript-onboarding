@@ -26,7 +26,7 @@ function checkIsContinuous(inputArr) {
 }
 
 function checkPageIsInRange(inputArr) {
-  if (inputArr.indexOf(1) === -1 || inputArr.indexOf(400) === -1) {
+  if (inputArr[1] !== 1 || inputArr[0] !== 400) {
     return true;
   }
   return false;
