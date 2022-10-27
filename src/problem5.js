@@ -11,6 +11,8 @@ function problem5(money) {
 
   for (const unit of units) {
     const [count, rest] = calculate(money, unit);
+    answer.push(count);
+    money = rest;
   }
   return answer;
 }
