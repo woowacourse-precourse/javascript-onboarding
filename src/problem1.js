@@ -50,6 +50,14 @@ const splitNumber = ([left, right]) => {
   return [leftNums, rightNums];
 };
 
+const getScore = ([left, right]) => {
+  const leftSum = left.reduce((acc, cur) => acc + cur, 0);
+  const leftMultiply = left.reduce((acc, cur) => acc * cur, 1);
+  const rightSum = right.reduce((acc, cur) => acc + cur, 0);
+  const rightMultiply = right.reduce((acc, cur) => acc * cur, 1);
+  return Math.max(leftSum, leftMultiply, rightSum, rightMultiply);
+};
+
 function problem1(pobi, crong) {
   if (!isCorrectPage(pobi) || !isCorrectPage(crong)) return -1;
 }
