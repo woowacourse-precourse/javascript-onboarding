@@ -1,25 +1,29 @@
 function problem1(pobi, crong) {
-  pobiLeftSum = 0;
-  pobiLeftMultple = 1;
-  pobiRightSum = 0;
-  pobiRightMultple = 1;
-  pobiMax = 0;
+  var answer;
 
-  crongLeftSum = 0;
-  crongLeftMultple = 1;
-  crongRightSum = 0;
-  crongRightMultple = 1;
-  crongMax = 0;
+  var pobiLeftSum = 0;
+  var pobiLeftMultple = 1;
+  var pobiRightSum = 0;
+  var pobiRightMultple = 1;
+  var pobiMax = 0;
+
+  var crongLeftSum = 0;
+  var crongLeftMultple = 1;
+  var crongRightSum = 0;
+  var crongRightMultple = 1;
+  var crongMax = 0;
+
+  //예외처리
 
   //left
-  pobiLeftNum = pobi[0];
+  var pobiLeftNum = pobi[0];
   pobiLeftNum = String(pobiLeftNum);
   for (let i = 0; i < pobiLeftNum.length; i++) {
     pobiLeftSum += parseInt(pobiLeftNum[i]);
     pobiLeftMultple *= parseInt(pobiLeftNum[i]);
   }
 
-  crongLeftNum = crong[0];
+  var crongLeftNum = crong[0];
   crongLeftNum = String(crongLeftNum);
   for (let i = 0; i < crongLeftNum.length; i++) {
     crongLeftSum += parseInt(crongLeftNum[i]);
@@ -27,22 +31,27 @@ function problem1(pobi, crong) {
   }
 
   //right
-  pobiRightNum = pobi[1];
+  var pobiRightNum = pobi[1];
   pobiRightNum = String(pobiRightNum);
   for (let i = 0; i < pobiRightNum.length; i++) {
     pobiRightSum += parseInt(pobiRightNum[i]);
     pobiRightMultple *= parseInt(pobiRightNum[i]);
   }
 
-  crongRightNum = crong[1];
+  var crongRightNum = crong[1];
   crongRightNum = String(crongRightNum);
   for (let i = 0; i < crongRightNum.length; i++) {
     crongRightSum += parseInt(crongRightNum[i]);
     crongRightMultple *= parseInt(crongRightNum[i]);
   }
 
-  pobiValue = [pobiLeftSum, pobiLeftMultple, pobiRightSum, pobiRightMultple];
-  crongValue = [
+  var pobiValue = [
+    pobiLeftSum,
+    pobiLeftMultple,
+    pobiRightSum,
+    pobiRightMultple,
+  ];
+  var crongValue = [
     crongLeftSum,
     crongLeftMultple,
     crongRightSum,
@@ -52,10 +61,15 @@ function problem1(pobi, crong) {
   pobiMax = Math.max(...pobiValue);
   crongMax = Math.max(...crongValue);
 
-  var answer;
+  if (pobiMax > crongMax) {
+    answer = 1;
+  } else if (pobiMax < crongMax) {
+    answer = 2;
+  } else if (pobiMax === crongMax) {
+    answer = 0;
+  }
+
   return answer;
 }
-
-problem1([97, 98], [197, 198]);
 
 module.exports = problem1;
