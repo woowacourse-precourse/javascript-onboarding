@@ -30,6 +30,9 @@ describe("problem2", () => {
   test("Problem2_OnlyOneChar_ReturnEmptryString", () => {
     expect(problem2("aaaaaaaaaaaaaaaaaaaa")).toEqual("");
   });
+  test("Problem2_NoRepetitiveChar_ReturnSelf", () => {
+    expect(problem2("ababababababab")).toEqual("ababababababab");
+  });
 });
 
 describe("problem3", () => {
