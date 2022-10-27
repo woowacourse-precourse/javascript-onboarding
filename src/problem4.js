@@ -70,6 +70,14 @@ function problem4(word) {
 
   setUpperDict();
   setLowerDict();
+  for (let index = 0; index < word.length; index++) {
+    if (word[index] != " ") {
+      answer += dict.get(word[index]);
+      continue;
+    }
+    answer += " ";
+  }
+
   return answer;
 }
 
