@@ -24,6 +24,8 @@ function continuousRemoval(code) {
     }
 
     // 현재 문자가 연속되지 않는 경우
+    continuousAlphabet = "";
+    newCode += code[i];
   }
 
   return newCode;
