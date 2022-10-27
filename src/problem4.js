@@ -1,6 +1,6 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let reverseWord = word.split('').map(c => getReverseAlphabet(c)).join('');
+  return reverseWord;    
 }
 
 module.exports = problem4;
