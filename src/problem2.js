@@ -1,9 +1,12 @@
 function problem2(cryptogram) {
-  let answer;
-  while(isDuplicate(cryptogram)){
-
+  let refinedCryptogram = cryptogram;
+  while (isDuplicate(refinedCryptogram)) {
+    refinedCryptogram = removeDuplicatesChar(
+        refinedCryptogram.split(""),
+        findDuplicatesCharIndex(refinedCryptogram)
+    );
   }
-  return answer;
+  return refinedCryptogram;
 }
 function isDuplicate(cryptogram){
   for(let i =0; i<cryptogram.length-1; i++){
