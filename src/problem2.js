@@ -1,10 +1,15 @@
 function problem2(cryptogram) {
   var answer = cryptogram;
-  answer = cryptogram;
-  while(checkIsSequence(answer)){
-    answer = removeSequence(answer);
-  }
+  answer = decipher(cryptogram);
   return answer;
+}
+
+function decipher(cryptogram){
+  let decipherStr = cryptogram;
+  while(checkIsSequence(decipherStr)){
+    decipherStr = removeSequence(decipherStr);
+  }
+  return decipherStr;
 }
 
 function checkIsSequence(str){
