@@ -8,8 +8,11 @@ function problem2(cryptogram) {
     console.log(isRepeat);
 
     // 함수 1
-    cryptogram = checkRepeat(cryptogram);
-    console.log(isRepeat);
+    tmp = checkRepeat(cryptogram, isRepeat);
+    cryptogram = tmp[0];
+    isRepeat = tmp[1];
+
+    console.log(cryptogram, isRepeat);
     
   } while (isRepeat)
 
@@ -47,10 +50,12 @@ function checkRepeat(cryptogram, isRepeat) {
     }
   }
 
-  return cryptogram;
+  return [cryptogram, isRepeat];
 }
 
 
-problem2("browoanoommnaon");
+// problem2("browoanoommnaon");
+problem2("saddaas");
+problem2("subin");
 
 // module.exports = problem2;
