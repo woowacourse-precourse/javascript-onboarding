@@ -18,6 +18,26 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  test("case4", () => {
+    expect(problem1([211, 212], [131, 132])).toEqual(2);
+  });
+
+  test("case5", () => {
+    expect(problem1([0, 1], [211, 212])).toEqual(-1);
+  });
+
+  test("case6", () => {
+    expect(problem1([401, 402], [211, 212])).toEqual(-1);
+  });
+
+  test("case7", () => {
+    expect(problem1([99, 100], [211, 212])).toEqual(1);
+  });
+
+  test("case8", () => {
+    expect(problem1(["a", "b"], [211, 212])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
