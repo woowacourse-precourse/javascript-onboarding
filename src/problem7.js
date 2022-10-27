@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  var answer;
   let currentUserFriendList = makeUserFriendList(friends, user);
   let userList = makeAllUserList(
     friends,
@@ -17,10 +16,9 @@ function problem7(user, friends, visitors) {
     );
     userScore[userList[i]] += calcScoreForVisitFrequency(visitors, userList[i]);
   }
+  userList.sort((a, b) => Number(userScore[b]) - Number(userScore[a]));
 
-  console.log(userScore);
-
-  return answer;
+  return userList;
 }
 
 function makeUserScoreObject(userList) {
