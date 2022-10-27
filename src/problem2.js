@@ -30,6 +30,9 @@ function problem2(cryptogram) {
     return array;
   };
 
+  const cryptogramToArray = stringToArr(cryptogram);
+  const answerArray = overlapElementDeleter(cryptogramToArray);
+  answer = answerArray.join("");  
 
   return answer;
 }
