@@ -1,6 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
 
+  if (errcheck(pobi) || errcheck(crong)) return -1;
+
   let pobiNum = getMaxNum(pobi);
   let crongNum = getMaxNum(crong);
 
@@ -35,6 +37,15 @@ function getMaxNum(who) {
     }
   });
   return Math.max(...arr);
+}
+
+function errcheck(who) {
+  let isError = false;
+  who.forEach((page) => {
+    if (page === 400 || page === 1) isError = true;
+    if (Math.abs(who[0] - who[1]) !== 1) isError = true;
+  });
+  return isError;
 }
 
 module.exports = problem1;
