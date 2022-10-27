@@ -16,10 +16,16 @@ function getFinalBigNumber(numberArray) {
   return Math.max(leftBigNumber, rightBigNumber);
 }
 
+function getResult(pobiNumber, crongNumber) {
+  if (pobiNumber > crongNumber) return 1;
+  if (pobiNumber < crongNumber) return 2;
+  if (pobiNumber === crongNumber) return 0;
+}
+
 function problem1(pobi, crong) {
   const pobiNumber = getFinalBigNumber(pobi);
   const crongNumber = getFinalBigNumber(crong);
-  return answer;
+  return getResult(pobiNumber, crongNumber);
 }
 
 module.exports = problem1;
