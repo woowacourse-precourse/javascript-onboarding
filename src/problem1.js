@@ -1,8 +1,3 @@
-function problem1(pobi, crong) {
-  var answer;
-  return answer;
-}
-
 const copyArray = targetArray => {
   return [...targetArray];
 };
@@ -116,5 +111,30 @@ const calculateEachElementByMultiplication = numberArray => {
 
   return resultArray;
 };
+
+/**
+ * 과연 누가 책을 가져갈까..
+ * @param {[number, number]} pobi
+ * @param {[number, number]} crong
+ * @returns {number}
+ */
+function problem1(pobi, crong) {
+  const score = 0;
+  const copyPobi = copyArray(pobi);
+  const copyCrong = copyArray(crong);
+  const [pobiPlus, crongPlus] = calculateEachElementByPlus([copyPobi, copyCrong]);
+  const [pobiMultipl, crongMultipl] = calculateEachElementByMultiplication([copyPobi, copyCrong]);
+
+  // 예외사항은 -1을 반환한다.
+  if (isExceptions([pobiPlus, crongPlus], [pobiMultipl, crongMultipl])) {
+    return -1;
+  }
+
+  const greatestNumberInPobi = getMaxNumber(pobiPlus, pobiMultipl);
+  const greatestNumberInCrong = getMaxNumber(crongPlus, crongMultipl);
+  const answer = judgeVictory(score, greatestNumberInPobi, greatestNumberInCrong);
+
+  return answer;
+}
 
 module.exports = problem1;
