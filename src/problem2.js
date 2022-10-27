@@ -8,7 +8,8 @@ function problem2(cryptogram) {
       answer.push(letter);
     }
   }
-  return answer;
+
+  return answer.join('');
 }
 
 module.exports = problem2;
