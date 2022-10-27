@@ -33,5 +33,3 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
-
-console.log(problem1([97, 98], [197, 198]));
