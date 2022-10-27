@@ -82,7 +82,7 @@
 //입력받기
 function(pobi, crong){
   //예외 케이스 처리
-  if(!isCorrect([pobi,crong], [isOddEven(1,2), isDiff(1), isArea(1,400)])) return -1;
+  if(!isValid([pobi,crong], [isOddEven(1,2), isDiff(1), isArea(1,400)])) return -1;
 
   let pobiPoints = getPoints(pobi);
   let crongPoints = getPoints(crong);
