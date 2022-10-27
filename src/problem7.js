@@ -18,7 +18,7 @@ function problem7(user, friends, visitors) {
     if(recommendList.has(visitor)) return recommendList.set(visitor, recommendList.get(visitor) + 1);
     recommendList.set(visitor, 1);
   });
-  recommendList = sortRecommends([...recommendList]).splice(0,5);
+  recommendList = sortRecommends([...recommendList]);
   return recommendList;
 }
 
@@ -48,6 +48,10 @@ function sortRecommends(list) {
     }
     sortedList.push(...([...tiePointUsers].sort()));
     tiePointUsers = new Set();
+    if(sortedList.length > 5) {
+      sortedList = sortedList.splice(0, 5);
+      break;
+    }
   }
   return sortedList;
 }
