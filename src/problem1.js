@@ -10,8 +10,15 @@ function getBigNumber(number) {
   return Math.max(sumResult, mulResult);
 }
 
+function getFinalBigNumber(numberArray) {
+  const leftBigNumber = getBigNumber(numberArray[0]);
+  const rightBigNumber = getBigNumber(numberArray[1]);
+  return Math.max(leftBigNumber, rightBigNumber);
+}
+
 function problem1(pobi, crong) {
-  var answer;
+  const pobiNumber = getFinalBigNumber(pobi);
+  const crongNumber = getFinalBigNumber(crong);
   return answer;
 }
 
