@@ -3,14 +3,18 @@ function decrypt(cryptogram) {
 
   for (let i = 0; i < cryptogram.length; i++) {
     const currentChar = cryptogram[i];
-    const nextChar = cryptogram[i + 1];
+    let j = i + 1;
+    let nextChar = cryptogram[j];
 
-    if (currentChar === nextChar) {
-      i++;
-      continue;
+    while (currentChar === nextChar) {
+      nextChar = cryptogram[++j];
     }
 
-    result += currentChar;
+    if (i === j - 1) {
+      result += currentChar;
+    }
+
+    i = j - 1;
   }
 
   return result;
