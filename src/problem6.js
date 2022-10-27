@@ -15,16 +15,15 @@ function checkOverlap(nickname) {
 
 
 function problem6(forms) {
-  const answer = [];
   const nickname = forms.map(([_, id]) => id);
 
-  const OverlapWord = checkOverlap(nickname);
+  const overlapWords = checkOverlap(nickname);
 
-  forms.forEach(([email, name]) => {
-    if (OverlapWord.some(v => name.includes(v))) answer.push(email);
+  const answer = forms.filter(([email, name]) => {
+    if (overlapWords.some(v => name.includes(v))) return email;
   })
 
-  return answer.sort();
+  return answer.map(([email, _]) => email).sort();
 }
 
 module.exports = problem6;
