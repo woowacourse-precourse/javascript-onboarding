@@ -5,7 +5,12 @@ function problem5(money) {
   let count = 0;
   let local = money;
   for (let x of won) {
+    if (local % x === local) {
+      count++;
+      continue;
+    }
     num = parseInt(local / x);
+    answer[count] = num;
     local -= num * x;
     count++;
   }
