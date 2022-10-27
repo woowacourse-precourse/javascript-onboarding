@@ -1,13 +1,15 @@
 function problem7(user, friends, visitors) {
   var answer;
-  let userScore = convertFriendsToUserScore(friends, user);
-  let userList = convertFriendsToNonRepeatUserList(friends, user);
+  let userScore = makeUserScoreObject(friends, visitors, user);
+  let userList = makeAllUserList(friends, visitors, user);
   let currentUserFriendList = makeUserFriendList(friends, user);
+
+  console.log(userScore, userList);
 
   return answer;
 }
 
-function convertFriendsToUserScore(friends, user) {
+function makeUserScoreObject(friends, visitors, user) {
   let userScore = {};
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
@@ -15,16 +17,22 @@ function convertFriendsToUserScore(friends, user) {
         userScore[friends[i][j]] = 0;
     }
   }
+  for (let i = 0; i < visitors.length; i++) {
+    if (userScore[visitors[i]] === undefined) userScore[visitors[i]] = 0;
+  }
   return userScore;
 }
 
-function convertFriendsToNonRepeatUserList(friends, user) {
+function makeAllUserList(friends, visitors, user) {
   let userList = [];
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
       if (!userList.includes(friends[i][j]) && friends[i][j] !== user)
         userList.push(friends[i][j]);
     }
+  }
+  for (let i = 0; i < visitors.length; i++) {
+    if (!userList.includes(visitors[i])) userList.push(visitors[i]);
   }
   return userList;
 }
@@ -70,7 +78,7 @@ module.exports = problem7;
 
 // 구현 방향성
 // 1. {아이디 : 점수} 형식의 유저 아이디 객체를 생성한다.
-// 2. friends 배열의 사용자들을 중복되지 않게 하나의 유저 아이디 객체에 {아이디: 0}의 형식으로 담는다.
+// 2. 모든 사용자 아이디를 중복되지 않게 하나의 유저 아이디 객체에 {아이디: 0}의 형식으로 담는다.
 // 3. 모든 사용자 아이디를 중복되지 않게 하나의 배열에 담는다. (key값으로 유저 아이디 객체의 점수에 접근하기 위함)
 // 4. 현재 유저가 아는 친구를 하나의 배열에 담는다.
 
