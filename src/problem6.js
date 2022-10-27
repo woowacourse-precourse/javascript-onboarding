@@ -1,6 +1,10 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const duplicatedObj = makeDuplicatedObj(forms);
+  const duplicatedMemberEmails = filterDuplicatedMemberEmail(
+    forms,
+    duplicatedObj
+  );
+  return duplicatedMemberEmails;
 }
 
 function filterDuplicatedMemberEmail(forms, duplicatedObj) {
