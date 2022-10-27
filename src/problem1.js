@@ -50,7 +50,15 @@ function multiplyNumberDigits(num) {
   return result;
 }
 
-console.log(multiplyNumberDigits(567));
+function sumNumberDigits(num) {
+  let result = 0;
+  const stringNum = String(num);
+  for (i = 0; i < stringNum.length; i++) {
+    result += +stringNum[i];
+  }
+
+  return result;
+}
 
 function problem1(pobi, crong) {
   var answer;
