@@ -16,8 +16,8 @@ function problem1(pobi, crong) {
   if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return RESULT.ERROR;
 
   // main Logic 
-  let pobiPoints = getPoints(pobi);
-  let crongPoints = getPoints(crong);
+  let pobiPoints = getPoints(pobi, Math.max, [add, multiply]);
+  let crongPoints = getPoints(crong, Math.max, [add, multiply]);
 
   if (pobiPoints === crongPoints) return RESULT.DRAW;
   if (pobiPoints > crongPoints) return RESULT.POBI;
@@ -28,15 +28,19 @@ function problem1(pobi, crong) {
 
   /**
    * - 유저 포인트 계산
-   * @param {[Number, Number]} numbers 
+   * 
+   * @param {[number, number]} numbers 
+   * @param {(...:number[])=> number} decide
+   * @param {Array<(a:number,b:number)=>number>} calcurates
    * @return {number} points
+   * @description 유저의 튜플을 받아 계산한 값들 중 decide에 의해 결정된 값을 반환한다. 
    */
-  function getPoints(numbers) {
+  function getPoints(numbers, decide, calcurates) {
     let possibleCases = numberToDigits(numbers)
-      .map((digitsOfPage) => [digitsOfPage.reduce(add), digitsOfPage.reduce(multiply)])
+      .map((digitsOfPage) => calcurates.map((calcurate) => digitsOfPage.reduce(calcurate)))
       .flat();
 
-    return Math.max(...possibleCases)
+    return decide(...possibleCases)
   }
 
   /**
