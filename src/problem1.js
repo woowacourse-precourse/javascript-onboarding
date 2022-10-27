@@ -5,8 +5,13 @@ function problem1(pobi, crong) {
   const afterCheckPobi = checkException(pobi);
   const afterCheckCrong = checkException(crong);
 
+  console.log(afterCheckPobi, afterCheckCrong);
+
   if (afterCheckPobi && afterCheckCrong) {
     // 기능 2
+    const maxPobi = calculation(pobi);
+    const maxCrong = calculation(crong);
+    
     // 기능 3
   } else { // 예외사항이 발생한 경우
     answer = -1;
@@ -39,8 +44,35 @@ function checkException(pageList) {
 }
 
 // 기능 2. 계산하기
+function calculation(pageList) {
 
+  const leftPage = pageList[0].toString();
+  const rightPage = pageList[1].toString();
+
+  console.log("leftPage, rightPage: ", leftPage, rightPage);
+
+  let leftPagePlace = []; // 왼쪽 페이지 자릿수
+  let rightPagePlace = []; // 오른쪽 페이지 자릿수
+
+  // 기능 2.1 자릿수로 구분하기
+  for (let i = 0; i < leftPage.length; i++) {
+    leftPagePlace.push(leftPage[i]);
+  }
+  for (let i = 0; i < rightPage.length; i++) {
+    rightPagePlace.push(rightPage[i]);
+  }
+
+  console.log("leftPagePlace, rightPagePlace: ", leftPagePlace, rightPagePlace);
+
+
+
+}
 // 기능 3. 둘의 점수 비교하여 결과 리턴하기
 
+pobi = [97, 98];
+// pobi = [1, 2];
+crong = [197, 198];
 
-module.exports = problem1;
+problem1(pobi, crong);
+
+// module.exports = problem1;
