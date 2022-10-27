@@ -18,14 +18,67 @@
  *   4-2. 포비 점수 < 크롱 점수: "크롱 승"
  *   4-3. 포비 점수 === 크롱 점수: "무승부"
  * 5. 포비 승: 1, 크롱 승: 2, 무승부: 0, 예외사항: -1 을 return한다. (종료)
- *
+ */
+
+class Game {
+  RESULT = {
+    POBI_WIN: 1,
+    CRONG_WIN: 2,
+    DRAW: 0,
+    EXCEPTION: -1,
+  };
+
+  constructor(pobi, crong) {
+    this.pobi = new Pages(pobi);
+    this.crong = new Pages(crong);
+    this.result = null;
+  }
+
+  start() {
+    if (this.checkValidPages()) {
+      return;
+    }
+    this.result = this.RESULT.EXCEPTION;
+  }
+
+  checkValidPages() {
+    return this.pobi.isValid() && this.crong.isValid();
+  }
+}
+
+class Pages {
+  constructor(player) {
+    const [left, right] = player;
+    this.left = left;
+    this.right = right;
+  }
+
+  isValid() {
+    if (this.left % 2 !== 1 || this.left < 1 || this.left > 399) {
+      return false;
+    }
+    return this.left === this.right - 1;
+  }
+}
+
+/**
  * @param {[number, number]} pobi
  * @param {[number, number]} crong
  * @returns {number}
  */
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const game = new Game(pobi, crong);
+  game.start();
+  const result = game.result;
+  return result;
 }
+
+console.log(problem1([97, 98], [197, 198]));
+console.log(problem1([131, 132], [211, 212]));
+console.log(problem1([99, 102], [211, 212]));
+console.log(problem1([0, 1], [211, 212]));
+console.log(problem1([401, 402], [211, 212]));
+console.log(problem1([99, 100], [211, 212]));
+console.log(problem1(["a", "b"], [211, 212]));
 
 module.exports = problem1;
