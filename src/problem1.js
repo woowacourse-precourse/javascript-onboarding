@@ -11,6 +11,9 @@ function getMaxScore(pages) {
 function problem1(pobi, crong) {
   const pobiMaxScore = getMaxScore(pobi);
   const crongMaxScore = getMaxScore(crong);
+  if (pobiMaxScore > crongMaxScore) return 1;
+  if (pobiMaxScore < crongMaxScore) return 2;
+  if (pobiMaxScore === crongMaxScore) return 0;
 }
 
 module.exports = problem1;
