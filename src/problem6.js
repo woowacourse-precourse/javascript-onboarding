@@ -21,8 +21,21 @@
  */
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const answer = [];
+
+  const filteredForms = forms.filter(
+    ([email, nickanme]) =>
+      vaildateEmailDomain(email) &&
+      vaildateEmailLength(email) &&
+      validateNicknameType(nickanme) &&
+      validateNicknameLength(nickanme)
+  );
+
+  getSplitNicknameMap(filteredForms).forEach(
+    (value) => value.length >= 2 && answer.push(...value)
+  );
+
+  return removeRepeatString(answer).sort();
 }
 
 function vaildateEmailDomain(email) {
