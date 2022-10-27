@@ -55,7 +55,7 @@ function problem7(user, friends, visitors) {
     });
   }
 
-  function cntKnowScore(memberList, target) {
+  function cntKnowScore(target) {
     let nearFriends = friendsInfo[idIndexInfo[target]];
     nearFriends.map((nearName) => {
       let farFriends = friendsInfo[idIndexInfo[nearName]];
@@ -77,11 +77,10 @@ function problem7(user, friends, visitors) {
       if (Score[i] !== 0) tmpList.push([Score[i], i]);
     }
     tmpList.sort((a, b) => {
-      b[0] - a[0] !== 0
-        ? b[0] - a[0]
-        : idIndexInfo[a[1]] > idIndexInfo[b[1]]
-        ? true
-        : false;
+      if (b[0] > a[0]) return 1;
+      if (b[0] < a[0]) return -1;
+      if (b[1] > a[1]) return -1;
+      if (b[1] < a[1]) return 1;
     });
     let memberList = Object.keys(idIndexInfo);
     tmpList.map((v) => {
@@ -98,9 +97,10 @@ function problem7(user, friends, visitors) {
   idIndexInfo[user] = i;
   i = createInfo(friends, i + 1);
   cntScore(visitors, i);
-  cntKnowScore(friendsInfo, user);
+  cntKnowScore(user);
   let nowFriends = friendsInfo[1];
   let answer = makeResult(friendsScore, nowFriends);
+  answer = answer.slice(0, 5);
   return answer;
 }
 
