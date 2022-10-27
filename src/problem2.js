@@ -40,9 +40,8 @@ function problem2(cryptogram) {
     return result;
   };
 
-  answer = removeDuplicated(cryptogram);
-
-  // - [ ] 배열 문자열로 바꾸기
+  // - [x] 배열 문자열로 바꾸기
+  answer = removeDuplicated(cryptogram).reduce((prev, cur) => prev + cur, '');
 
   return answer;
 }
