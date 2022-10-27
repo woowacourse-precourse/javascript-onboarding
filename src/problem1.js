@@ -1,6 +1,6 @@
 function problem1(pobi, crong) {
   if (pobi[0] - pobi[1] !== -1 || crong[0] - crong[1] !== -1) return -1;
-  
+
   let answer;
   let max = 0;
   let pobiMax = 0;
@@ -11,8 +11,6 @@ function problem1(pobi, crong) {
 
   pobi.forEach(num => pobiMax = Math.max(getSum(num), getMultiply(num)));
   crong.forEach(num => crongMax = Math.max(getSum(num), getMultiply(num)));
-
-  console.log(pobiMax, crongMax);
 
   if (pobiMax === crongMax) answer = 0;
   else answer = pobiMax > crongMax ? 1 : 2;
