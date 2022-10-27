@@ -5,24 +5,17 @@ function problem1(pobi, crong) {
   const afterCheckPobi = checkException(pobi);
   const afterCheckCrong = checkException(crong);
 
-  console.log(afterCheckPobi, afterCheckCrong);
-
   if (afterCheckPobi && afterCheckCrong) {
     // 기능 2
     const maxPobi = calculation(pobi);
     const maxCrong = calculation(crong);
-
-    console.log("maxPobi, maxCrong: ", maxPobi, maxCrong);
-    // maxPobi, maxCrong:  72 72
     
     // 기능 3
-    const answer = checkScore(maxPobi, maxCrong);
-    console.log(answer)
+    answer = checkScore(maxPobi, maxCrong);
     return answer;  
 
   } else { // 예외사항이 발생한 경우
     answer = -1;
-    console.log(answer)
     return answer;
   }
 }
@@ -56,9 +49,6 @@ function calculation(pageList) {
   const rightPage = pageList[1].toString();
   let totalPage = []; // 더하기 또는 곱하기 계산된 결과들
 
-  console.log("leftPage, rightPage: ", leftPage, rightPage);
-  // leftPage, rightPage:  97 98
-
   let leftPagePlace = []; // 왼쪽 페이지 자릿수
   let rightPagePlace = []; // 오른쪽 페이지 자릿수
 
@@ -69,8 +59,6 @@ function calculation(pageList) {
   for (let i = 0; i < rightPage.length; i++) {
     rightPagePlace.push(Number(rightPage[i]));
   }
-  console.log("leftPagePlace, rightPagePlace: ", leftPagePlace, rightPagePlace);
-  // leftPagePlace, rightPagePlace:  [ 9, 7 ] [ 9, 8 ]
 
   // 기능 2.1.1 자릿수 더하기
   let leftSum = 0;
@@ -100,9 +88,6 @@ function calculation(pageList) {
   }
   totalPage.push(rightMul);
 
-  console.log(totalPage);
-  // [ 16, 17, 63, 72 ]
-
   // 기능 2.2 최댓값 선택하기
   return Math.max.apply(null, totalPage);
 }
@@ -122,14 +107,4 @@ function checkScore(maxPobi, maxCrong) {
   return score;
 }
 
-
-
-// pobi = [97, 98];
-// pobi = [1, 2];
-pobi = [131, 132];
-// crong = [197, 198];
-crong = [211, 212];
-
-problem1(pobi, crong);
-
-// module.exports = problem1;
+module.exports = problem1;
