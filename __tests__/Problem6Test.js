@@ -54,10 +54,11 @@ describe("getNameIncludeIndex", () => {
 
 describe("getTargetOfList", () => {
   it("is get list that inputList's index ", () => {
-    expect(getTargetOfList(["제이슨", "제이엠"], [0])).toEqual(["제이슨"]);
-    expect(getTargetOfList(["제이슨", "제이엠"], [0, 1])).toEqual([
-      "제이슨",
-      "제이엠",
+    expect(getTargetOfList(["jm@email.com", "jason@email.com"], [0])).toEqual([
+      "jm@email.com",
     ]);
+    expect(
+      getTargetOfList(["jm@email.com", "jason@email.com"], [0, 1])
+    ).toEqual(["jm@email.com", "jason@email.com"]);
   });
 });
