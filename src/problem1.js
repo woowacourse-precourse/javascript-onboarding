@@ -1,5 +1,15 @@
 function problem1(pobi, crong) {
 
+  //예외사항
+  function check(n) {
+    if (n.length >= 3) return true
+    if (n[1] !== n[0] + 1 || n[0] !== n[1] - 1) return true
+  }
+
+  if (check(pobi) || check(crong)) {
+    return -1
+  }
+
   var pobi_result = getMaxNum(pobi[0], pobi[1])
   var crong_result = getMaxNum(crong[0], crong[1])
 
@@ -27,12 +37,6 @@ function problem1(pobi, crong) {
       multiplication(right)
     )
   }
-
-
 }
-
-
-
 module.exports = problem1;
-
 
