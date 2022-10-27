@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let convertWord = word.split("");
 }
 
 module.exports = problem4;
