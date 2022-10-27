@@ -10,7 +10,7 @@ function problem2(cryptogram) {
     }
   }
 
-  return answer;
+  return answer.join('');
 }
 
 module.exports = problem2;
