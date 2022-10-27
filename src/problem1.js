@@ -94,4 +94,11 @@ const judgeVictory = (score, targetA, targetB) => {
   return score + result;
 };
 
+const isExceptions = (additionResult, multiplicationResult, criterion = 0, depth = 2) => {
+  const toBeExamined = [additionResult, multiplicationResult].flat(depth);
+  const result = toBeExamined.includes(criterion);
+
+  return result;
+};
+
 module.exports = problem1;
