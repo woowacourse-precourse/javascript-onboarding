@@ -19,9 +19,14 @@ function problem3(number) {
 
   //!1. 숫자는 1이상 10,000 이하인 자연수.
 
-
+  function CHECK_NUMBER_BETWEEN_ONE_TO_TENTHOUSAND (number){
+    if(number < 1 || number > 10000){
+      return false;
+    } return true;
+  }
 
   
+
   let result = 0;
   for (let j = 1; j <= number; j++) {
     result += RETURN_COUNT_INCLUDED_THREE_SIX_NINE(j);
