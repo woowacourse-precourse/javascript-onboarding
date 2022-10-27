@@ -66,10 +66,23 @@ function getScore(pages) {
   return Math.max(sumLeft, productLeft, sumRight, productRight);
 }
 
+/**
+ * Returns result of the game
+ * @param {any} pobi pobi's page numbers in array
+ * @param {any} crong crong's page number in array
+ * @returns {number} result of the game (0 if draw, 1 if pobi wins, 2 if crong wins, -1 if invalid)
+ */
 function problem1(pobi, crong) {
   var answer;
 
   if (!isPagesValid(pobi) || !isPagesValid(crong)) return -1;
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) answer = 1;
+  else if (pobiScore < crongScore) answer = 2;
+  else answer = 0;
 
   return answer;
 }
