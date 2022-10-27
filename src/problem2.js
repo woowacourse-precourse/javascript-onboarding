@@ -1,7 +1,6 @@
 function problem2(cryptogram) {
   let answer;
   let array = [...cryptogram]; // 배열로
-
   //문자열로 바꿔준 array배열을 문자열로 다시 만들어줌
   answer = cryptoSlice(array).join("");;
   return answer;

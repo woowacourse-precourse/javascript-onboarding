@@ -1,20 +1,10 @@
 function problem1(pobi, crong) {
   let answer;
-  let score = [pageGame(pobi), pageGame(crong)];
-
-  if (score[0] === -1 || score[1] === -1)
-    answer = -1;
-  else if(score[0] > score[1])
-    answer = 1;
-  else if (score[0] < score[1])
-    answer = 2;
-  else if (score[0] === score[1])
-    answer = 0;
-
+  answer = pageGame(pobi, crong);
   return answer;
 }
 
-function check (player) {
+function check(player) {
   //오류 핸들링을 해줘야 하는경우
   //1. 왼쪽 오른쪽 페이지가 각각 홀수, 짝수가 아닐 때
   //2. 책의 번호가 연속적이지 않을 때
@@ -32,14 +22,13 @@ function check (player) {
     
 }
 
-function pageGame (player) {
+function pageSum(page) {
   let sum = [0, 1, 0, 1]; // 자릿수를 곱한 값과 더한 값을 저장
-  let page = player; //page[0] : 왼쪽페이지, page[1] : 오른쪽페이지
-  let length = [0, 0];   //자릿수는 toString().length; 를 통해 구한다.
-  let max = -999999; //return 할 최댓값
+  let length = [0, 0];
+  let max = -99999;
 
   //오류 핸들링
-  if(check(player))
+  if(check(page))
     return -1;
 
   //페이지 숫자 길이 계산
@@ -67,6 +56,20 @@ function pageGame (player) {
   };
 
   return max;
+} 
+
+function pageGame(player1, player2) {
+  let score = [pageSum(player1), pageSum(player2)];
+
+  if(score[0] === -1 || score[1] === -1)
+    return -1;
+  else if(score[0] > score[1])
+    return 1;
+  else if (score[0] < score[1])
+    return 2;
+  else if (score[0] === score[1])
+    return 0;
+
 }
 
 module.exports = problem1;

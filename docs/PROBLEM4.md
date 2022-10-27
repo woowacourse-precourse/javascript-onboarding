@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 구현할 기능 목록
+
+swap()
+: 받아온 문자를 변환시키는 기능

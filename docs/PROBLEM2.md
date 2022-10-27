@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 구현할 기능 목록
+
+cryptoSlice()
+: 받아온 암호문을 잘라내는 함수

@@ -1,7 +1,6 @@
 function problem4(word) {
   let answer;
   answer = swap(word).join("");
-
   return answer;
 }
 
@@ -11,7 +10,6 @@ function swap(word) {
 
   for(let i = 0; i < array.length; i++) {
     ascii = word.charCodeAt(i);
-    console.log(ascii);
     if(ascii >= 65 && ascii <= 90) { //대문자
       if(ascii - 65 <= 90 - ascii)
         array[i] = String.fromCharCode(90 - (ascii - 65));
