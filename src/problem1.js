@@ -14,6 +14,10 @@ function problem1(pobi, crong) {
       return mul *= parseInt(String(num)[k]);
     }
   }
+
+  const maxPoint = (arr) => {
+    Math.max(sumfn(arr[0]),sumfn(arr[1]), mulfn(arr[0]), mulfn(arr[1]));
+  }
   
   return answer;
 }
