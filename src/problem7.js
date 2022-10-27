@@ -17,9 +17,22 @@ function getRelationships (friends) {
   return relationships;
 }
 
+function calcFriendScore(user, relationships) {
+  let scores = {};
+  const userFriends = relationships[user];
+  for (const name in relationships) {
+    if (name === user || userFriends.includes(name)) {
+      continue;
+    }
+    const names = relationships[name] || [];
+    const overlapFriends = names.filter(name => userFriends.includes(name)).length;
+    scores[name] = 10 * overlapFriends;
+  }
+  return scores;
+}
+
 function problem7(user, friends, visitors) {
   const relationships = getRelationships(friends);
-  const userFriends = relationships[user];
 }
 
 module.exports = problem7;
