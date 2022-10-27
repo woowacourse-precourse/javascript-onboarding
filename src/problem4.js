@@ -15,6 +15,8 @@ function problem4(word) {
     return;
   }
 
+  const wordArray = word.split(' ');
+
   return answer;
 }
 
