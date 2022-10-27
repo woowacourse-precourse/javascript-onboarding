@@ -1,5 +1,9 @@
 function problem3(number) {
-  var answer;
+  let answer;
+
+  const arr = Array(number).fill().map((v, i) => i + 1);
+
+
   return answer;
 }
 
