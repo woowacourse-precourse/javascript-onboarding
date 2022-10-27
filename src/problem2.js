@@ -14,7 +14,13 @@ function overlap(cryptogram){
   return false;
 }
 
-
-let cryptogram="browoanoommnaon"
-
-console.log(overlap(cryptogram))
+function remove(cryptogram){
+  let cryptogramArr=[...cryptogram];
+  let removeString="";
+  for(let i=0; i<cryptogramArr.length; i++){
+    if(cryptogramArr[i]!==cryptogramArr[i+1] && cryptogramArr[i]!==cryptogramArr[i-1]){
+      removeString+=cryptogramArr[i]
+    }
+  }   
+  return removeString;
+}
