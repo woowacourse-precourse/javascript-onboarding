@@ -8,7 +8,7 @@ const makeNumberWord = (number) => {
 };
 
 const makeOnly369 = (word) => {
-  return word.replaceAll(/[0124578]/g, "");
+  return word.replace(/[0124578]/gi, "");
 };
 
 const count369 = (number) => {
