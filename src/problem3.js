@@ -1,12 +1,18 @@
 function problem3(number) {
-  if(num<1 || num>10000 || Number.isIntiger(number) === false){
+  var answer = 0;
+  let numString;
+  let howMany = 0;
+
+  if (number < 1 || number > 10000 || Number.isInteger(number) === false) {
     return -1;
   }
-  var answer;
-  let numArr = [];
-  let numString = num.toString();
-  for(let i = 0; i < numString.length; i+){
-    numArr[i] = Number(numString[i]);
+
+  for (let i = 1; i <= number; i++) {
+    numString = i.toString();
+    howMany = numString.match(/[3,6,9]/g);
+    if (howMany != 'undefined' && howMany != null) {
+      answer += howMany.filter(function (item) { return item !== '' }).length;
+    }
   }
 
   return answer;
