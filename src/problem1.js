@@ -33,6 +33,13 @@ function getPlayerMaxPageScore(pageNumber) {
   return getMaxScore(addedScore, multipliedScore);
 }
 
+function getPlayerMaxScore([leftPage, rightPage]) {
+  const leftScore = getPlayerMaxPageScore(leftPage);
+  const rightScore = getPlayerMaxPageScore(rightPage);
+
+  return getMaxScore(leftScore, rightScore);
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
