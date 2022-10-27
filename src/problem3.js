@@ -10,6 +10,10 @@ const splitNumberToDigits = (n) => n.toString().split("").map(Number);
  */
 const range = (n) => [...Array(n).keys()];
 
+/**
+ * problem3
+ * @type {(number: number) => number}
+ */
 function problem3(number) {
   return range(number + 1)
     .map(splitNumberToDigits)
