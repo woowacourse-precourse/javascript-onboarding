@@ -1,5 +1,8 @@
 function problem4(word) {
   const arrayedAlphabetLists = arrayAlphabet();
+  const result = reverseWord(word, arrayedAlphabetLists);
+
+  return result;
 }
 
 function arrayAlphabet() {
@@ -20,6 +23,20 @@ function arrayAlphabet() {
   }
 
   return [alphabetList, reversedAlphabetList];
+}
+
+function reverseWord(correctWord, lists) {
+  const wordLength = correctWord.length;
+  const alphabetList = lists[0];
+  const reversedAlphabetList = lists[1];
+  let changedWord = new Array(wordLength);
+
+  for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
+    currentIndex = alphabetList.indexOf(correctWord[wordIndex]);
+    changedWord[wordIndex] = reversedAlphabetList[currentIndex];
+  }
+
+  return changedWord.join("");
 }
 
 module.exports = problem4;
