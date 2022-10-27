@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = removeDuplicated(cryptogram).join("");
   return answer;
 }
 
