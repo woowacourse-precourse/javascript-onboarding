@@ -1,4 +1,10 @@
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+	const duplicateIndex = getDuplicateIndex(cryptogram)
+	const filteredCryptogram = getFilterdCryptogram(cryptogram, duplicateIndex)
+	if (cryptogram === filteredCryptogram) return cryptogram
+
+	return problem2(filteredCryptogram)
+}
 
 const getDuplicateIndex = cryptogram => {
 	const duplicateIndex = new Array(cryptogram.length).fill(false)
