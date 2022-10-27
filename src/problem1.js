@@ -12,6 +12,15 @@ function getSum(pageNum) {
   return [...String(pageNum)].reduce((acc, cur) => (acc += Number(cur)), 0);
 }
 
+function getScore(player) {
+  return Math.max(
+    getMulti(player[0]),
+    getSum(player[0]),
+    getMulti(player[1]),
+    getSum(player[1])
+  );
+}
+
 function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong)) return -1;
 
