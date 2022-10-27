@@ -32,6 +32,19 @@ const findMaxNum = (num1, num2, num3, num4) => {
   return Math.max(num1, num2, num3, num4);
 };
 
+const checkPage = (page) => {
+  let [leftPage, rightPage] = page;
+  if (leftPage <= 1 || rightPage >= 400) return 0; //1-400 사이 수
+  else {
+    if (leftPage % 2 == 0) return 0; // 왼쪽 페이지 홀수
+    else {
+      if (leftPage + 1 != rightPage)
+        return 0; // 왼쪽 페이지 + 1 = 오른쪽 페이지
+      else return 1;
+    }
+  }
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
