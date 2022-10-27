@@ -37,14 +37,16 @@ function checkAlphabet(ans, oneWordASCII, word) {
 }
 
 function problem4(word) {
-  let wordArr = word.split("");
+  if (word.length < 1 || word.length > 1000) {
+    return;
+  }
 
   let ans = [];
 
-  for (let i = 0; i < wordArr.length; i++) {
-    const oneWordASCII = wordArr[i].charCodeAt();
+  for (let i = 0; i < word.length; i++) {
+    const oneWordASCII = word[i].charCodeAt();
 
-    if (!checkAlphabet(ans, oneWordASCII, wordArr[i])) {
+    if (!checkAlphabet(ans, oneWordASCII, word[i])) {
       continue;
     }
 
