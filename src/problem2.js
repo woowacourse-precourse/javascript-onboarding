@@ -15,19 +15,15 @@ function getStartIndex(str) {
     return -1;
 }
 
-function deleteStr(str) {
-    const start = getStartIndex(str);
-    if (start === -1) {
-        return str;
-    }
-    const end = getEndIndex(str, start) + 1;
-
-    const dStr = str.split("").slice(start, end).join("");
-    return deleteStr(str.replace(dStr, ""));
-}
-
 function problem2(cryptogram) {
-    return deleteStr(cryptogram)
+    const start = getStartIndex(cryptogram);
+    if (start === -1) {
+        return cryptogram;
+    }
+    const end = getEndIndex(cryptogram, start) + 1;
+
+    const deleteValues = cryptogram.split("").slice(start, end).join("");
+    return problem2(cryptogram.replace(deleteValues, ""));
 }
 
 module.exports = problem2;
