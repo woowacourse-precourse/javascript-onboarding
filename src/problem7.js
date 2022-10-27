@@ -70,9 +70,9 @@ function getCrewScores(relationScores, visitorScores) {
 
 function getSortedCrews(crewScores) {
   const sortedCrewsByName = Object.entries(crewScores).sort();
-  const sortedCrewsByScore = sortedCrewsByName.sort((prev, cur) => {
-    return cur[1] - prev[1];
-  });
+  const sortedCrewsByScore = sortedCrewsByName
+    .sort((prev, cur) => cur[1] - prev[1])
+    .filter((crew) => crew[1] !== 0);
   const sortedCrews = sortedCrewsByScore.map((crew) => crew[0]);
 
   return sortedCrews;
@@ -84,9 +84,7 @@ function problem7(user, friends, visitors) {
   const crewScores = getCrewScores(relationScores, visitorScores);
   const sortedCrews = getSortedCrews(crewScores);
 
-  console.log(sortedCrews);
-
-  return crewScores;
+  return sortedCrews;
 }
 
 module.exports = problem7;
