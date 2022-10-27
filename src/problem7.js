@@ -2,8 +2,8 @@ function problem7(user, friends, visitors) {
   let userFriends = [];
   let recommendList = new Map();
   friends.forEach(relationship => {
-    const userfriend = isfriend(user, relationship);
-    if(userfriend) userFriends.push(userfriend);
+    const userFriend = isfriend(user, relationship);
+    if(userFriend) userFriends.push(userFriend);
   });
   userFriends.forEach(recommendUser => {
     friends.forEach(relationship => {
