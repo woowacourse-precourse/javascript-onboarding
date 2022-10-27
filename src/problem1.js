@@ -38,7 +38,7 @@ function problem1(pobi, crong) {
   }
 
   // 예외사항 확인
-  if (MaxPobi === -1 && MaxPobi === -1) {
+  if (MaxPobi === -1 && MaxCrong === -1) {
     // 둘중 하나라도 있으면 결과값 -1 리턴
     return (result = -1);
   } else {
