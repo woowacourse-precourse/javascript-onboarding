@@ -37,6 +37,18 @@ function checkVisitorsLength(visitors) {
   return true;
 }
 
+function checkIdOnlyLowerCase(friends) {
+  const regex = /^[a-z]+$/g;
+
+  for (let i = 0; i < friends.length; i++) {
+    if (!regex.test(friends[i][0]) || !regex.test(friends[i][1])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function getAlreadyFriends(user, friends, alreadyFriends) {
   friends.forEach((item) => {
     if (item.includes(user)) {
