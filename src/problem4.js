@@ -14,6 +14,7 @@ function converFun(word) {
 
 function problem4(word) {
   let convertWord = word.split("").map((x) => converFun(x));
+  return convertWord.join("");
 }
 
 module.exports = problem4;
