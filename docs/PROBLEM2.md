@@ -22,3 +22,5 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 🌹 기능 목록
+✔️ feat: 재귀함수를 사용해 중복 문자들 삭제
