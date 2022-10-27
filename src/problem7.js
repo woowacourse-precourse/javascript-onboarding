@@ -53,11 +53,27 @@ function getVisitorScores(visitors) {
   return visitorScores;
 }
 
+function getCrewScores(relationScores, visitorScores) {
+  const totalCrews = Object.keys({ ...relationScores, ...visitorScores });
+  const crewScores = totalCrews.reduce((acc, cur) => {
+    acc[cur] = relationScores[cur] || visitorScores[cur];
+
+    if (relationScores[cur] && visitorScores[cur]) {
+      acc[cur] += visitorScores[cur];
+    }
+
+    return acc;
+  }, {});
+
+  return crewScores;
+}
+
 function problem7(user, friends, visitors) {
   const relationScores = getRelationScores(user, friends);
   const visitorScores = getVisitorScores(visitors);
+  const crewScores = getCrewScores(relationScores, visitorScores);
 
-  console.log(relationScores, visitorScores);
+  return crewScores;
 }
 
 module.exports = problem7;
