@@ -22,6 +22,10 @@ function multiplyDigits(number) {
   return digitsSum;
 }
 
+function getMaxScore(score1, score2) {
+  return Math.max(score1, score2);
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
