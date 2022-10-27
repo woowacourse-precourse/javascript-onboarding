@@ -18,7 +18,8 @@ function problem6(forms) {
       if (map.get(dic[j]) > 1) answer.push(mail);
     }
   });
-  return new Set(answer.sort());
+  answer = new Set(answer);
+  return [...answer].sort();
 }
 
 module.exports = problem6;
