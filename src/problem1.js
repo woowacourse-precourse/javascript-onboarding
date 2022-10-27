@@ -41,8 +41,16 @@ function problem1(pobi, crong) {
     crongRightMultple *= parseInt(crongRightNum[i]);
   }
 
-  console.log(pobiLeftSum, pobiLeftMultple, crongLeftSum, crongLeftMultple);
-  console.log(pobiRightSum, pobiRightMultple, crongRightSum, crongRightMultple);
+  pobiValue = [pobiLeftSum, pobiLeftMultple, pobiRightSum, pobiRightMultple];
+  crongValue = [
+    crongLeftSum,
+    crongLeftMultple,
+    crongRightSum,
+    crongRightMultple,
+  ];
+
+  pobiMax = Math.max(...pobiValue);
+  crongMax = Math.max(...crongValue);
 
   var answer;
   return answer;
