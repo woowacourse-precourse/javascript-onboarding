@@ -1,6 +1,6 @@
 function inputCheck(pages) {
   let [left, right] = pages;
-  if (1 <= left && left < 400 && left + 1 == right) {
+  if (1 <= left && left < 400 && left % 2 == 1 && left + 1 == right) {
     return true;
   }
   return false;
