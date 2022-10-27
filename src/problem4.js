@@ -46,4 +46,8 @@ function convertWord(words) {
   return newWord;
 }
 
+function problem4(word) {
+  return convertWord(word);
+}
+
 module.exports = problem4;
