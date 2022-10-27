@@ -23,6 +23,14 @@ function countClap(number) {
   return clap;
 }
 
+// 예외상황
+// function exception() {
+//   if (number < 1 || number > 10000) return true;
+//   return false;
+// }
+
+problem3(33);
+
 module.exports = problem3;
 
 // 기능들
