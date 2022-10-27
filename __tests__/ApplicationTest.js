@@ -18,6 +18,23 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  // 예외사항 및 테스트 추가
+  test("case4", () => {
+    expect(problem1([99, 103], [211, 212])).toEqual(-1);
+  });
+
+  test("case5", () => {
+    expect(problem1([399, 400], [211, 212])).toEqual(1);
+  });
+
+  test("case6", () => {
+    expect(problem1([401, 402], [211, 212])).toEqual(-1);
+  });
+
+  test("case7", () => {
+    expect(problem1([99, 100], [-1, 0])).toEqual(-1);
+  });
 });
 
 // describe("problem2", () => {
