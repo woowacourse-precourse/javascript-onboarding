@@ -10,7 +10,7 @@ function problem1(pobi, crong) {
     pobiNumArr = arrSort(pobiNumArr.concat(mkNumArr(pobiNumtoStr)));
     crongNumArr = arrSort(crongNumArr.concat(mkNumArr(crongNumtoStr)));
   }
-  
+
   if (pobiNumArr[0] > crongNumArr[0]) answer = 1;
   else if (crongNumArr[0] > pobiNumArr[0]) answer = 2; 
   else if (crongNumArr[0] === pobiNumArr[0]) answer = 0;
@@ -40,8 +40,6 @@ function inputExecption(arr1, arr2) {
 }
 
 function arrSort(fullNumArr) {
-  fullNumArr.sort((a, b) => {return b - a;});
-  return fullNumArr;
+  return fullNumArr.sort((a, b) => {return b - a;});
 }
-console.log(problem1([97, 98], [197, 198]));
 module.exports = problem1;
