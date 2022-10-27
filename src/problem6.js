@@ -20,7 +20,6 @@ dict 를 사용하자.
 */
 
 function problem6(forms) {
-  let nickNameCnt = {};
   function enterDict(accountInfo) {
     accountInfo.map((account) => {
       let nickName = account[1].split("");
@@ -36,22 +35,14 @@ function problem6(forms) {
     return;
   }
 
-  enterDict(forms);
-
   function checkValue(dict) {
     let keys = Object.keys(dict).filter((key) => dict[key] > 1);
     return keys;
   }
 
-  let refuseNames = checkValue(nickNameCnt);
-  let refuseList = {};
-  refuseNames.map((refuseNickName) => {
-    refuseList[refuseNickName] = true;
-  });
-  let result = [];
-
   function refuseEmail(accountInfo) {
     accountInfo.map((account) => {
+      let result = [];
       let email = account[0];
       let nickName = account[1].split("");
       for (let i = 0; i < nickName.length - 1; i++) {
@@ -65,10 +56,23 @@ function problem6(forms) {
         }
       }
     });
+    return result;
   }
-  refuseEmail(forms);
-  result.sort();
-  return result;
+  let [nickNameCnt, refuseList] = [{}, {}];
+
+  enterDict(forms);
+
+  const refuseNames = checkValue(nickNameCnt);
+
+  refuseNames.map((refuseNickName) => {
+    refuseList[refuseNickName] = true;
+  });
+
+  let answer = refuseEmail(forms);
+
+  answer.sort();
+
+  return answer;
 }
 
 module.exports = problem6;
