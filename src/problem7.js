@@ -60,6 +60,10 @@ function problem7(user, friends, visitors) {
   makeRelations(friends, user);
   calculateScore(user, visitors);
   const sortedScore = getSortedScoreArr();
+  sortedScore.some((each, i) => {
+    if (i > 4) return true;
+    answer.push(each[0]);
+  });
   return answer;
 }
 
