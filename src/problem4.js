@@ -5,7 +5,9 @@ function problem4(word) {
 
   for (let i = 0; i < word.length; i++) {
     for (let j = 0; j < alphabet.length; j++) {
-      if (word[i].toLowerCase() === alphabet[j]) {
+      if (word.charCodeAt(i) < 91 && word[i].toLowerCase() === alphabet[j]) {
+        result.push(frog[j].toUpperCase());
+      } else if (word[i].toLowerCase() === alphabet[j]) {
         result.push(frog[j]);
       }
     }
