@@ -25,15 +25,16 @@ function errorcheck(forms){
 }
 
 function duplicateWord(nickname){
-  const dupcheck = [];
+  const dupcheck = {};
   const id = [];
   nickname.map((user, idx) => {
     for (let i = 0; i < user.length-1; i++){
-      if (dupcheck.includes(user.substr(i, 2))){
+      if ((user.substr(i, 2)) in dupcheck){
         id.push(idx);
+        id.push(dupcheck[user.substr(i,2)]);
       }
       else{
-        dupcheck.push(user.substr(i, 2));
+        dupcheck[user.substr(i, 2)] = idx;
       }
     }
   })
@@ -41,12 +42,21 @@ function duplicateWord(nickname){
 }
 
 function problem6(forms) {
-  var answer;
+  const answer = [];
   if (!errorcheck(forms)){
     return '입력 형식을 확인해주세요';
   }
   else{
-    
+    const emailList = [];
+    const nicknameList = [];
+    forms.map(user => {
+      emailList.push(user[0]);
+      nicknameList.push(user[1]);
+    })
+    const id = Array.from(duplicateWord(nicknameList));
+    id.map(i =>{
+      answer.push(emailList[i]);
+    })
     return answer;
   }
 }
