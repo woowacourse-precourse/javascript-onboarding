@@ -14,6 +14,21 @@ function checkFriendsLength(friends) {
   return true;
 }
 
+function checkIdLength(friends) {
+  for (let i = 0; i < friends.length; i++) {
+    if (
+      friends[i][0].length < 1 ||
+      friends[i][0].length > 30 ||
+      friends[i][1].length < 1 ||
+      friends[i][1].length > 30
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function getAlreadyFriends(user, friends, alreadyFriends) {
   friends.forEach((item) => {
     if (item.includes(user)) {
