@@ -4,13 +4,21 @@ function withrawCash({ wallet, money }) {
   const bills = Array.from(wallet.keys());
 
   for (const bill of bills) {
-    console.log(bill);
+    if (remainingMoney === 0) {
+      return;
+    }
+
+    if (remainingMoney < bill) {
+      continue;
+    }
+
+    const billCount = parseInt(remainingMoney / bill);
+    wallet.set(bill, billCount);
+    remainingMoney -= billCount * bill;
   }
 }
 
 function problem5(money) {
-  let answer;
-
   const wallet = new Map()
     .set(50000, 0)
     .set(10000, 0)
@@ -24,7 +32,7 @@ function problem5(money) {
 
   withrawCash({ wallet, money });
 
-  return answer;
+  return Array.from(wallet.values());
 }
 
 console.log(problem5(50237));
