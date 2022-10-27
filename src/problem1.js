@@ -4,7 +4,7 @@ function problem1(pobi, crong) {
   let pobiMax = getMax(pobi);
   let crongMax = getMax(crong);
 
-  if (pobiMax == 0 || crongMax == 0) answer = -1;
+  if (pobiMax === 0 || crongMax === 0) answer = -1;
   else if (pobiMax > crongMax) answer = 1;
   else if (pobiMax < crongMax) answer = 2;
   else answer = 0;
@@ -13,7 +13,7 @@ function problem1(pobi, crong) {
 }
 
 function getMax(pages) {
-  if (pages[0] + 1 != pages[1]) return 0;
+  if (pages[0] + 1 !== pages[1]) return 0;
   let result = 0;
 
   pages.forEach((page) => {
