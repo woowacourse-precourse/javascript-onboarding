@@ -13,11 +13,15 @@ dict 를 사용하자.
 이 값들을 찾아내어. 해당 키값을 가지고 있는 계정들의 이메일을 따로 저장.
 문자열 정렬하여 출력.
 
+주의! 
+refuseEmail 함수에서 map 을 사용하면 email 을 두번 이상 중복되게 추가할 수도 있으므로 
+for loop 사용했다.
+
 *기능목록
-1. 입력된 닉네임을 키값에 넣어주는 함수 => enterDict
-2. 키값의 value 값이 2개 이상인 값들을 return 해주는 함수 => checkValue
-3. 사용제한될 이메일을 return 해주는 함수 => refuseEmail
-4. 닉네임으로 만들어질 수 있는 연속된 문자열 생성시켜 return 해주는 함수 => makeKeys
+1. 닉네임으로 만들어질 수 있는 연속된 문자열 생성시켜 return 해주는 함수 =>  makeKeys
+2. 입력된 닉네임을 키값에 넣어주는 함수 =>  enterDict
+3. 키값의 value 값이 2개 이상인 값들을 return 해주는 함수 =>  checkValue
+4. 사용제한될 이메일을 return 해주는 함수 =>  refuseEmail
 */
 
 function problem6(forms) {
@@ -36,7 +40,7 @@ function problem6(forms) {
   function enterDict(accountInfo) {
     accountInfo.map((account) => {
       let nickName = account[1].split("");
-      let makeResult = makeKeys(nickName);
+      makeResult = makeKeys(nickName);
       makeResult.map((key) => {
         if (nickNameCnt[key]) nickNameCnt[key] += 1;
         else nickNameCnt[key] = 1;
@@ -56,12 +60,18 @@ function problem6(forms) {
       let email = account[0];
       let nickName = account[1].split("");
       let makeResult = makeKeys(nickName);
-      makeResult.map((key) => {
-        if (refuseList[key]) result.push(email);
-      });
+      for (let i = 0; i < makeResult.length; i++) {
+        if (refuseList[makeResult[i]]) {
+          result.push(email);
+          break;
+        }
+      }
     });
+    result.sort();
+
     return result;
   }
+
   let [nickNameCnt, refuseList] = [{}, {}];
 
   enterDict(forms);
@@ -73,8 +83,6 @@ function problem6(forms) {
   });
 
   let answer = refuseEmail(forms);
-
-  answer.sort();
 
   return answer;
 }
