@@ -33,6 +33,11 @@ function problem7(user, friends, visitors) {
       ? (object[value] += visitors.filter((v) => v === value).length)
       : (object[value] = visitors.filter((v) => v === value).length);
   }
+
+  //높은 점수순으로 이름을 나열한다
+  const sortableObject = Object.entries(object)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 }
 
 module.exports = problem7;
