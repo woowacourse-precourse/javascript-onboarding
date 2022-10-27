@@ -1,6 +1,14 @@
 function problem3(number) {
-  var answer;
+  const answer = getTotalClap(number);
   return answer;
+}
+
+function getTotalClap(number) {
+  let clapTotal = 0;
+  for (let num = 1; num <= number; num++) {
+    clapTotal += getCountClap(String(num));
+  }
+  return clapTotal;
 }
 
 function getCountClap(num) {
