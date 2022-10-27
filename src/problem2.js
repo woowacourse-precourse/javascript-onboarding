@@ -1,20 +1,21 @@
 function problem2(cryptogram) {
   let answer = cryptogram;
   let tracker = 0;
+  let isRemoved = 0;
 
   do {
-    let isRemoved = 0;
-    for (let i = 0; i < length(cryptogram); i++) {
-      if (cryptogram[i] === cryptogram[i + 1]) {
+    isRemoved = 0;
+    for (let i = 0; i < answer.length; i++) {
+      if (answer[i] === answer[i + 1]) {
         tracker = tracker + 1;
         continue;
       }
 
       if (tracker != 0) {
-        if (i - tracker === 0) {
-          answer = answer.slice(i + 1, length(answer));
-        } else if (i - tracker != 0) {
-          answer = answer.slice(0, i - (tracker + 1)) + answer.slice(i + 1, length(answer) - 1);
+        if ((i - tracker) === 0) {
+          answer = answer.slice(i + 1, answer.length);
+        } else if ((i - tracker) != 0) {
+          answer = answer.slice(0, i - tracker) + answer.slice(i + 1, answer.length);
         }
         isRemoved++;
         i = i - (tracker + 1);
