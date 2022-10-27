@@ -1,23 +1,27 @@
 function getDecodingArr(cryptogram) {
-  const cryptogramArr = Array.from(cryptogram);
-  const decodingArr = cryptogramArr.reduce((acc,cur)=>{
-    if(acc.length === 0 || acc[acc.length-1] !== cur){
-      return [...acc, cur];
-    };
+  let curOverlap = null;
 
-    acc.pop();
-    return acc;
+  const decodingArr = Array.from(cryptogram).reduce((acc,cur)=>{
+    
+    if(curOverlap === cur){
+      return acc;
+    }
+    
+    if(acc[acc.length-1] === cur){
+      curOverlap = cur;
+      return acc.slice(0, -1);
+    }
+
+    curOverlap = null;
+    return [...acc, cur];
   },[]);
 
   return decodingArr;
 }
 
 function problem2(cryptogram) {
-  let answer;
-  
   const decodingArr = getDecodingArr(cryptogram);
-
-  return answer;
+  return decodingArr.join('');
 }
 
 module.exports = problem2;
