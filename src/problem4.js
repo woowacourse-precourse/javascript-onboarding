@@ -1,33 +1,23 @@
-// dictionary = "ABCDEFGHIJKLM NOPQRSTUVWXYZ";
-// A = 0, B = 1, C = 2, D = 3, E = 4, F = 5,
-// G = 6, H = 7, I = 8, J = 9, K = 10, L = 11, M = 12,
-//  N = 13, O = 14, P = 15, Q = 16, R = 17, S = 18, T = 19,
-// U = 20, V = 21, W = 22, X = 23, Y = 24, Z = 25
-
-// 25 - (Z  ) = 0  a
-// 25 - (L ) = 14 o
-
 function problem4(word) {
+  // 대문자 , 소문자 사전 선언
   let Dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let dictionary = Dictionary.toLowerCase();
+  // 빈배열 선언
   let result = [];
   for (let i = 0; i < word.length; i++) {
+    // word값이 사전에 맞는 곳에 있는지 확인
     if (Dictionary.includes(word[i])) {
-      // 25로 빼주고 그 인덱스 값의 밸류값을 찾아줌
+      //확인이 된 사전에 25에서 뺀 인덱스 값을 다시 사전의 인덱스에 맞는 값을 추출 후 배열에 푸시
       result.push(Dictionary.charAt(25 - Dictionary.indexOf(word[i])));
     } else if (dictionary.includes(word[i])) {
       result.push(dictionary.charAt(25 - dictionary.indexOf(word[i])));
     } else {
+      // 빈배열이면 빈배열 푸시
       result.push(" ");
     }
   }
+  // 결과 값을 join("")으로 다시 합쳐줌
   return result.join("");
 }
 
 module.exports = problem4;
-
-/*
-1. word 값이 들어오면 치환할수 있게 변환
-2. 소문자면 소문자, 대문자면 대문자
-3. 빈칸은 빈칸에
-*/
