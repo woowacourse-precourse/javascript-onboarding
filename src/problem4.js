@@ -9,6 +9,9 @@ function problem4(word) {
         result.push(frog[j]);
       }
     }
+    if (word[i] === ' ') {
+      result.push(' ');
+    }
   }
   return result.join('');
 }
