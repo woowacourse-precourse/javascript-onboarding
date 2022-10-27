@@ -43,8 +43,18 @@ function calcVisitorScore(visitors, friends, scores = {}) {
   return scores;
 }
 
+function calcRecommendedScore (user, relationships, visitor) {
+  let scores = calcFriendScore(user, relationships);
+  scores = calcVisitorScore(visitor, relationships[user], scores);
+  return Object.keys(scores).sort().reduce((sortedScores, key) => {
+    sortedScores[key] = scores[key];
+    return sortedScores;
+  }, {});
+}
+
 function problem7(user, friends, visitors) {
   const relationships = getRelationships(friends);
+  const recommendedScores = calcRecommendedScore(user, relationships, visitors);
 }
 
 module.exports = problem7;
