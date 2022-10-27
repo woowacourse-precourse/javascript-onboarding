@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  var answer = "";
   for (x of word) {
     let letter = x;
     if (65 <= x.charCodeAt(0) && x.charCodeAt(0) <= 90) {
@@ -7,6 +7,7 @@ function problem4(word) {
     } else if (97 <= x.charCodeAt(0) && x.charCodeAt(0) <= 122) {
       letter = String.fromCharCode(219 - x.charCodeAt(0));
     }
+    answer += letter;
   }
   return answer;
 }
