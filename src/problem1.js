@@ -1,5 +1,10 @@
 function problem1(pobi, crong) {
 
+  // 포비, 크롱이 불가능한 페이지를 펼쳤을 경우
+  if(pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1){
+    return -1
+  }
+
   const pobiArray = []
   const crongArray = []
 
