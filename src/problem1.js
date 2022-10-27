@@ -46,9 +46,11 @@ function problem1(pobi, crong) {
     .map(Number)
     .reduce((acc, cur) => acc * cur);
 
-  // 6. 총 네가지의 값중 가장 큰 수를 구한다.
-  // 7. 가장 큰 수를 본인의 점수로 한다.
-  // 8. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+  // 6. 총 네가지의 값중 가장 큰 수를 구한다. 그리고 가장 큰 수를 본인의 점수로 한다.
+  const pobiScore = Math.max(...[sumLeftPageByPobi, multiplyLeftPageByPobi, sumRightPageByPobi, multiplyRightPageByPobi]);
+  const crongScore = Math.max(...[sumLeftPageByCrong, multiplyLeftPageByCrong, sumRightPageByCrong, multiplyRightPageByCrong]);
+
+  // 7. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
 }
 
 module.exports = problem1;
