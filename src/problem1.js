@@ -12,6 +12,8 @@ function problem1(pobi, crong) {
 
   const pobiResult = findMaxValue(pobi);
   const crongResult = findMaxValue(crong);
+
+  answer = compareValue(pobiResult, crongResult);
   return answer;
 }
 
@@ -39,5 +41,13 @@ function findMaxValue(inputArr) {
     calculatedArr.push(addResult, multipleResult);
   }
   return Math.max(...calculatedArr);
+}
+
+function compareValue(pobiResult, crongResult) {
+  let answer = 0;
+  if (pobiResult > crongResult) answer = 1;
+  else if (pobiResult < crongResult) answer = 2;
+  else if (pobiResult === crongResult) answer = 0;
+  return answer;
 }
 module.exports = problem1;
