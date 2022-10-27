@@ -39,7 +39,16 @@
 
 ## 💎 새로 알게 된 점
 - 자바스크립트가 익숙하지 않아서 딕셔너리에 접근하고, 아스키코드를 문자로 바꾸는 것에서 어려움을 느꼈다. 그래서 파이썬으로 코드를 작성한 후 자바스크립트로 변환하기도 했다. 
-
+- 특정 문자를 바꿔주는 함수인 replace()를 쓰는 줄 알았지만, replace()의 기능인 특정 문자를 바꾸는 것이 아니라 특정 인덱스에 있는 문자를 바꾸는 것이라서 replace()는 쓰지 못했다. 그래서 특정 인덱스를 변경해주는 내장 함수가 있나 검색해봤는데, 자바스크립트에 그런 함수는 없다는 것을 알게 되었다.
+- 대신 누가 직접 작성한 '문자열에서 특정 인덱스를 바꾸는 함수'를 보게 되었다. 
 ---
 
 ## ❓ 아쉬운 점 & 궁금한 점
+- 그 함수는 `String.prototype.replaceAt = function(index, replacement) {
+    return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+  }`인데, 사실 처음에는 String.prototype부터 this와 substring까지 이해가 가지 않았다. 그래서 하나하나 검색해보기 시작했다.
+- replaceAt 앞에 있는 String.prototype는 replaceAt() 앞에 문자열을 붙이라는 말인 것 같다. 
+- 함수의 이름은 replaceAt이고, 인자로 index와 replacement를 받는다. 
+- this는 현재의 그 문자열을 의미하는 것 같다. 
+- substring(start, end)는 start부터 end-1 인덱스까지의 문자열을 잘라주는 내장 함수이다.
+- 바꿔준 replacement 앞 뒤로 기존의 문자열을 붙여준다. 인자로 하나(n)만 오면 n-1번째 인덱스(n개) 뒤부터 잘라내어준다는 의미이다.
