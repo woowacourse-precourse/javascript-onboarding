@@ -68,10 +68,23 @@ function getCrewScores(relationScores, visitorScores) {
   return crewScores;
 }
 
+function getSortedCrews(crewScores) {
+  const sortedCrewsByName = Object.entries(crewScores).sort();
+  const sortedCrewsByScore = sortedCrewsByName.sort((prev, cur) => {
+    return cur[1] - prev[1];
+  });
+  const sortedCrews = sortedCrewsByScore.map((crew) => crew[0]);
+
+  return sortedCrews;
+}
+
 function problem7(user, friends, visitors) {
   const relationScores = getRelationScores(user, friends);
   const visitorScores = getVisitorScores(visitors);
   const crewScores = getCrewScores(relationScores, visitorScores);
+  const sortedCrews = getSortedCrews(crewScores);
+
+  console.log(sortedCrews);
 
   return crewScores;
 }
@@ -88,7 +101,7 @@ function test() {
     ['shakevan', 'jun'],
     ['shakevan', 'mrko'],
   ];
-  const visitors = ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'];
+  const visitors = ['bedi', 'bedi', 'donut', 'bedi', 'shakevan', 'aa'];
 
   console.log(findUserFriends(user, friends));
   console.log(getRelations(friends));
