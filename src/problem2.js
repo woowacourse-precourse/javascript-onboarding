@@ -1,5 +1,9 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = [];
+
+  for (const letter of cryptogram) {
+    answer.push(letter);
+  }
   return answer;
 }
 
