@@ -20,7 +20,12 @@ function checkException(pages) {
 
 function problem1(pobi, crong) {
   var answer;
-
+  if (!(checkException(pobi) && checkException(crong))) {
+    return -1;
+  }
+  let pobipage = comparePage(addPages(pobi[0]), addPages(pobi[1]));
+  let crongpage = comparePage(addPages(crong[0]), addPages(crong[1]));
+  answer = pobipage === crongpage ? 0 : pobipage > crongpage ? 1 : 2;
   return answer;
 }
 
