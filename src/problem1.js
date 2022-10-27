@@ -1,5 +1,13 @@
 function problem1(pobi, crong) {
 
+  var pobi_result = getMaxNum(pobi[0], pobi[1])
+  var crong_result = getMaxNum(crong[0], crong[1])
+
+  //승부 가리기
+  if (pobi_result > crong_result) return 1
+  else if (pobi_result < crong_result) return 2
+  else if (pobi_result == crong_result) return 0
+
 
   function sum(n) {
     var result = String(n).split("").reduce((acc, cur) => Number(acc) + Number(cur), 0);
