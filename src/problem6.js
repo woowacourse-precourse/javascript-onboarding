@@ -1,3 +1,14 @@
+// 이메일 형식 체크
+function checkIsEmail(email) {
+  let regex = /[a-z0-9]+@email.com/;
+
+  const checkEmail = email.filter(v => {
+    if (regex.test(v) && v.length < 20) return v;
+  });
+
+  return checkEmail;
+}
+
 // 중복 글자 체크
 function checkOverlap(nickname) {
   const arr = [];
@@ -19,11 +30,13 @@ function problem6(forms) {
 
   const overlapWords = checkOverlap(nickname);
 
-  const answer = forms.filter(([email, name]) => {
+  const checkNames = forms.filter(([email, name]) => {
     if (overlapWords.some(v => name.includes(v))) return email;
   })
 
-  return answer.map(([email, _]) => email).sort();
+  const answer = checkNames.map(([email, _]) => email);
+
+  return checkIsEmail(answer).sort();
 }
 
 module.exports = problem6;
