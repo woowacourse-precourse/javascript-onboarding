@@ -10,6 +10,12 @@ function extractWord({ nickname, characterLength = 2 }) {
   return wordSet;
 }
 
+function getUniqueEmails(emails) {
+  const uniqueEmails = [...new Set(emails)].sort();
+
+  return uniqueEmails;
+}
+
 function problem6(forms) {
   const UNIQUE_NAME_USER_COUNT = 1;
   const duplicateNicknameUserEmails = [];
@@ -41,19 +47,9 @@ function problem6(forms) {
     }
   }
 
-  duplicateNicknameUserEmails.sort();
+  const filteredUserEmails = getUniqueEmails(duplicateNicknameUserEmails);
 
-  return duplicateNicknameUserEmails;
+  return filteredUserEmails;
 }
-
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
 
 module.exports = problem6;
