@@ -2,6 +2,7 @@ function problem2(cryptogram) {
   var answer;
 
   const decryptString = (string) => {
+    let finishedDecryption = true;
     for (let i = 0; i < string.length - 1; i++) {
       for (let j = i + 1; j < string.length - 1; j++) {
         if (string[i] != string[j]) {
@@ -9,11 +10,16 @@ function problem2(cryptogram) {
         }
         if (string[i] == string[j] && string[i] != string[j + 1]) {
           string = string.slice(0, i) + string.slice(j + 1);
-          return decryptString(string);
+          finishedDecryption = false;
+          i = i - 1;
+          break;
         }
       }
     }
-    return string;
+    if (finishedDecryption) {
+      return string;
+    }
+    return solution(string);
   };
 
   const solution = (cryptogram) => {
@@ -29,8 +35,6 @@ function problem2(cryptogram) {
     answer = decryptString(cryptogram);
     return answer;
   };
-
-  // answer = decryptString(cryptogram);
   answer = solution(cryptogram);
   return answer;
 }
