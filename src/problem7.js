@@ -1,4 +1,4 @@
-function getRelation(friends) {
+function getRelation(user, friends, visitors) {
   const relation = {};
 
   for (const [A, B] of friends) {
@@ -6,6 +6,12 @@ function getRelation(friends) {
     if (!relation[B]) relation[B] = [];
     relation[A].push(B);
     relation[B].push(A);
+  }
+
+  if (!relation[user]) relation[user] = [];
+  visitors = [...new Set(visitors)];
+  for (const visitor of visitors) {
+    if (!relation[visitor]) relation[visitor] = [];
   }
 
   return relation;
@@ -53,7 +59,7 @@ function getScores(user, userList, relation, visitors) {
 }
 
 function getInfos(user, friends, visitors) {
-  const relation = getRelation(friends);
+  const relation = getRelation(user, friends, visitors);
   const skip = getSkip(user, relation);
   const userList = getUserList(Object.keys(relation), visitors, skip);
   const scores = getScores(user, userList, relation, visitors);
