@@ -3,7 +3,6 @@ function problem1(pobi, crong) {
   let result = 0;
 
   // 각각의 값 중 가장 높은 값 추출 함수
-
   let MaxPobi = GetBicValue(pobi);
   let MaxCrong = GetBicValue(crong);
 
@@ -38,7 +37,7 @@ function problem1(pobi, crong) {
   }
 
   // 예외사항 확인
-  if (MaxPobi === -1 && MaxCrong === -1) {
+  if (MaxPobi === -1 || MaxCrong === -1) {
     // 둘중 하나라도 있으면 결과값 -1 리턴
     return (result = -1);
   } else {
