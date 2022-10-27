@@ -1,39 +1,16 @@
 function problem7(user, friends, visitors) {
   const relation = getRelation(friends);
+  const score = getScore(relation, user, visitors);
 
-  let score = {};
-  const userFriends = [...relation[user]];
-  for (let i = 0; i < userFriends.length; i++) {
-    const userFriend = userFriends[i];
-    const friendFriends = [...relation[userFriend]];
-    for (let j = 0; j < friendFriends.length; j++) {
-      const friendFriend = friendFriends[j];
-      if (friendFriend === user) {
-        continue;
-      }
-      if (!score[friendFriend]) {
-        score[friendFriend] = 0;
-      }
-      score[friendFriend] += 10;
-    }
-  }
-  for (let i = 0; i < visitors.length; i++) {
-    const visitor = visitors[i];
-    if (!score[visitor]){
-      score[visitor] = 0;
-    }
-    score[visitor] += 1;
-  }
-
-  let result = [];
+  let recommend = [];
   for (const id in score) {
-    if (userFriends.includes(id) || id === user) {
-      continue;
+    if (!relation[user].includes(id) && !(id === user)) {
+      recommend.push([score[id], id]);
     }
-    result.push([score[id], id]);
   }
+  const answer = recommend.sort().map(([, id]) => id);
 
-  return result.sort().map(([,id]) => id);
+  return answer
 }
 
 function getRelation(friends) {
@@ -50,6 +27,31 @@ function getRelation(friends) {
     relation[b].push(a);
   }
   return relation;
+}
+
+function getScore(relation, user, visitors) {
+  const ids = Object.keys(relation);
+  let score = {};
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    score[id] = 0;
+  }
+  const userFs = relation[user];
+  for (let i = 0; i < userFs.length; i++) {
+    const userFFs = relation[userFs[i]];
+    for (let j = 0; j < userFFs.length; j++) {
+      const userFF = userFFs[j];
+      if (userFF === user) {
+        continue;
+      }
+      score[userFF] += 10;
+    }
+  }
+  for (let i = 0; i < visitors.length; i++) {
+    score[visitors[i]] += 1;
+  }
+
+  return score;
 }
 
 module.exports = problem7;
