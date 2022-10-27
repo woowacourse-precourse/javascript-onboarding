@@ -21,8 +21,9 @@ function problem1(pobi, crong) {
   }
   const pobiMax = Math.max(calValue(pobi[0]), calValue(pobi[1]));
   const crongMax = Math.max(calValue(crong[0]), calValue(crong[1]));
-  var answer;
-  return answer;
+  if (pobiMax > crongMax) return 1;
+  if (pobiMax < crongMax) return 2;
+  return 0;
 }
 
 module.exports = problem1;
