@@ -1,6 +1,27 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+
+  if (!edgeCase(pobi) || !edgeCase(crong)) {
+    return -1;
+  }
+
   return answer;
+}
+
+function edgeCase(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] <= 1 || arr[i] >= 400) {
+      return false;
+    }
+
+    if (
+      i === 0 &&
+      (arr[i] + 1 !== arr[i + 1] || !(arr[i] % 2) || arr[i + 1] % 2)
+    ) {
+      return false;
+    }
+  }
+  return true;
 }
 
 module.exports = problem1;
