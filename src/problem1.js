@@ -8,10 +8,12 @@ function getMulti(pageNum) {
   return [...String(pageNum)].reduce((acc, cur) => (acc *= Number(cur)), 1);
 }
 
+function getSum(pageNum) {
+  return [...String(pageNum)].reduce((acc, cur) => (acc += Number(cur)), 0);
+}
+
 function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong)) return -1;
-
-  console.log(getMulti(pobi[0]));
 
   var answer;
 
