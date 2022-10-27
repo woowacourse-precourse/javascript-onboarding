@@ -9,7 +9,6 @@ function problem4(word) {
 
   const changeWord = (word) => {
     let changedWord = "";
-
     for (let i = 0; i < word.length; i++) {
       if (isUpperCase(word[i])) {
         changedWord += String.fromCharCode(155 - word[i].charCodeAt());
@@ -23,7 +22,6 @@ function problem4(word) {
     }
     return changedWord;
   };
-
   return changeWord(word);
 }
 
