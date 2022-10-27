@@ -1,4 +1,4 @@
-console.log(problem1([297, 298],[197, 198]));
+console.log(problem1([97, 98],[197, 198]));
 
 function problem1(pobi, crong) {
   if(validationArr(pobi) && validationArr(crong)){  
@@ -12,9 +12,9 @@ function validationArr(arr){
 }
 
 function pageGameApp(numArrA,numArrB){
-  console.log(mulArr(splitNumber(numArrA[0])));
-  let maxNumA;
-  let maxNumB;
+  let maxNumA = maxValueCalculator([splitNumber(numArrA[0]),splitNumber(numArrA[1])]);
+  let maxNumB = maxValueCalculator([splitNumber(numArrB[0]),splitNumber(numArrB[1])]);
+  console.log(maxNumA);
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
 }
 
@@ -41,6 +41,10 @@ function mulArr(arr){
     totalMul *= arr[i];
   }
   return totalMul;
+}
+
+function maxValueCalculator(arr){
+  return Math.max(sumArr(arr[0]),mulArr(arr[0]),sumArr(arr[1]),mulArr(arr[1]));
 }
 
 module.exports = problem1;
