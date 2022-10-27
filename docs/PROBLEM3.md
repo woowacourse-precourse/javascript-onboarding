@@ -4,6 +4,10 @@
 
 숫자 number가 매개변수로 주어질 때, 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록 solution 메서드를 완성하라.
 
+## 기능 목록
+Feat: Change input num to string
+Feat: Count if string contains [369]
+
 ### 제한사항
 
 - number는 1 이상 10,000 이하인 자연수이다.
