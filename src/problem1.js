@@ -29,10 +29,12 @@ function errorHandling(numberArray) {
   if (numberArray.length !== 2) return false;
   if (leftNumber % 2 === 0) return false;
   if (rightNumber - leftNumber !== 1) return false;
-  if (leftNumber < 1 && leftNumber > 400) return false;
-  if (rightNumber < 1 && rightNumber > 400) return false;
+  if (leftNumber < 1 || leftNumber > 400) return false;
+  if (rightNumber < 1 || rightNumber > 400) return false;
   if (leftNumber === 1) return false;
   if (rightNumber === 400) return false;
+  if (!Number.isInteger(leftNumber) || !Number.isInteger(rightNumber))
+    return false;
   return true;
 }
 
