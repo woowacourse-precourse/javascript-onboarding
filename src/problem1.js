@@ -5,10 +5,23 @@
 * 4. 코드 정리
 */
 
-
-
 function problem1(pobi, crong) {
   var answer;
+  var pobi_num = [];
+  var crong_num = [];
+
+  for (const item of pobi){
+    var arr = item.toString().split("").map(x=> parseInt(x));
+    pobi_num.push(arr.reduce((x,y)=> x+y));
+    pobi_num.push(arr.reduce((x,y)=> x*y));
+  }
+
+  for(const item of crong){
+    var arr = item.toString().split("").map(x=> parseInt(x));
+    crong_num.push(arr.reduce((x,y)=> x+y));
+    crong_num.push(arr.reduce((x,y)=> x*y));
+  }
+
   return answer;
 }
 
