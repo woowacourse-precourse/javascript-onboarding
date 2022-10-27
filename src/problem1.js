@@ -47,7 +47,18 @@ const checkPage = (page) => {
 
 function problem1(pobi, crong) {
   var answer;
+  let pobiMaxNumber;
+  let crongMaxNumber;
+
+  pobiMaxNumber = findMaxNum(...calculatePageNumber(pobi));
+  crongMaxNumber = findMaxNum(...calculatePageNumber(crong));
+
+  if (checkPage(pobi) * checkPage(crong) == 0) answer = -1;
+  else {
+    if (pobiMaxNumber > crongMaxNumber) answer = 1;
+    else if (pobiMaxNumber < crongMaxNumber) answer = 2;
+    else if (pobiMaxNumber == crongMaxNumber) answer = 0;
+  }
+
   return answer;
 }
-
-module.exports = problem1;
