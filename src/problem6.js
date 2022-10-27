@@ -11,7 +11,7 @@ dict 를 사용하자.
 이때, 같은 글자가 연속적으로 포함된다면 같은 키값을 가질 것이고, 카운트는 1이 넘어가게됨.
 
 이 값들을 찾아내어. 해당 키값을 가지고 있는 계정들의 이메일을 따로 저장.
-문자열 정렬하여 출력.
+문자열 중복제거하고 정렬하여 출력.
 
 주의! 
 refuseEmail 함수에서 map 을 사용하면 email 을 두번 이상 중복되게 추가할 수도 있으므로 
@@ -67,6 +67,7 @@ function problem6(forms) {
         }
       }
     });
+    result = [...new Set(result)];
     result.sort();
 
     return result;
@@ -82,7 +83,7 @@ function problem6(forms) {
     refuseList[refuseNickName] = true;
   });
 
-  let answer = refuseEmail(forms);
+  const answer = refuseEmail(forms);
 
   return answer;
 }
