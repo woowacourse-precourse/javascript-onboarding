@@ -9,7 +9,8 @@ function problem7(user, friends, visitors) {
   setRelation(relation, friends, map); 
   setUserScores(userScores, relation, visitors, userList, map);
   getAnswer(userScores, relation);
-  console.log(userScores);
+  sortUserScore(userScores);
+  return answer;
 }
 
 function setMap(map, mapIndex, user, friends, visitors, userList){
@@ -116,6 +117,23 @@ function delFriend(userScores, relation){
       i--;
     }
   }
+}
+
+function sortUserScore(userScores){
+  userScores.sort(function (user1, user2){
+    if(user1.score === user2.score){
+      if(user1.name < user2.name){
+        return user1;
+      }
+      return user2;
+    }
+    else{
+      if(user1.score > user2.score){
+        return user1;
+      }
+      return user2;
+    }
+  });
 }
 
 module.exports = problem7;
