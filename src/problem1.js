@@ -13,7 +13,16 @@ function problem1(pobi, crong) {
   const crongScore = compareScore(sumOrMul(crong[0]), sumOrMul(crong[1]));
 }
 
-function compareScore(leftPage, rightPage) {}
+function compareScore(leftPage, rightPage) {
+  if (leftPage > rightPage) {
+    return leftPage;
+  } else if (leftPage < rightPage) {
+    return rightPage;
+  } else {
+    // 같은 경우 아무거나 반환한다.
+    return leftPage;
+  }
+}
 
 function sumOrMul(page) {
   const hundred = Math.floor(page / 100);
@@ -32,7 +41,8 @@ function sumOrMul(page) {
 
   if (sum > multiply) {
     return sum;
-  } else if (sum < multiply) {
+  }
+  if (sum < multiply) {
     return multiply;
   } else {
     // 같은 경우 아무거나 반환한다.
