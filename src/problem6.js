@@ -22,18 +22,20 @@ function problem6(forms) {
 
     // 기능 2
     tmpNicknameAnswer = checkCaseInNick(tmpTwoLenNick, nickname);
-    console.log(tmpNicknameAnswer); // [ '제이슨', '엠제이' ]
+    // console.log(tmpNicknameAnswer); // [ '제이슨', '엠제이' ]
 
     // 기능 2를 통해 얻은 닉네임들을 nicknameAnswer 배열에 push
     for (let tmpNick of tmpNicknameAnswer) {
       nicknameAnswer.push(tmpNick);
     }
-    console.log(nicknameAnswer);
+    // console.log(nicknameAnswer);
 
-    
     nickname.push(nick);
   }
 
+  // 닉네임 중복 제거
+  nicknameAnswer = Array.from(new Set(nicknameAnswer));
+  console.log(nicknameAnswer);
   
   return answer;
 }
@@ -70,6 +72,7 @@ function checkCaseInNick(tmpTwoLenNick, nickname) {
   return tmpNicknameAnswer;
 }
 
+// 기능 3. 
 
 
 forms = [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"], ["jsb@email.com", "빨주노초파남보는무지개"]];
