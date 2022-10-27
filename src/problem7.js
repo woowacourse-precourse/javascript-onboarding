@@ -2,12 +2,12 @@ function problem7(user, friends, visitors) {
   let userFriends = [];
   let recommendList = new Map();
   friends.forEach(relationship => {
-    const userFriend = isfriend(user, relationship);
+    const userFriend = isFriend(user, relationship);
     if(userFriend) userFriends.push(userFriend);
   });
   userFriends.forEach(recommendUser => {
     friends.forEach(relationship => {
-      const friend = isfriend(recommendUser, relationship)
+      const friend = isFriend(recommendUser, relationship)
       if([false, user].includes(friend)) return;
       if(recommendList.has(friend)) return recommendList.set(friend, recommendList.get(friend) + 10);
       recommendList.set(friend, 10);
@@ -22,7 +22,7 @@ function problem7(user, friends, visitors) {
   return recommendList;
 }
 
-function isfriend(user, relationship) {
+function isFriend(user, relationship) {
   let friend = null;
   if(relationship[0] === user) friend = relationship[1];
   if(relationship[1] === user) friend = relationship[0];
