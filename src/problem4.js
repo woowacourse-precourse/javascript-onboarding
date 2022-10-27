@@ -2,11 +2,18 @@ function problem4(word) {
   var answer;
   let dictionary = [];
   let reversDictionary = [];
+  let wordIndex = 0;
   new Array(26).fill().map((_, i) => {
     dictionary += String.fromCharCode(i + 97);
   });
-  reversDictionary = dictionary.split("").reverse().join("");
+  reversDictionary = dictionary.split("").reverse();
   console.log(dictionary, reversDictionary);
+
+  word.split("").map((x) => {
+    wordIndex = dictionary.indexOf(x.toLowerCase());
+    console.log(x, wordIndex);
+    console.log("개구리사전 :", reversDictionary[wordIndex], wordIndex);
+  });
   return answer;
 }
 
