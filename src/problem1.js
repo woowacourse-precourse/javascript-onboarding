@@ -4,6 +4,7 @@ function problem1(pobi, crong) {
   // 예외 확인
   const check = (left, right) => {
     // 입력 페이지가 정상이면 1, 비정상이면 -1
+    if (left < 1 || right > 400) return -1;
     return (left + 1) == right ? 1 : -1;
   }
 
