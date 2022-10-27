@@ -7,8 +7,7 @@
 */
 
 function problem2(cryptogram) {
-  var crypArr = cryptogram.split("");
-  var decryption = crypArr;
+  var decryption = cryptogram.split("");
   
   let i = 0;
   while(1){
@@ -26,7 +25,6 @@ function problem2(cryptogram) {
       i = 0;
     }else{
       i++;
-      continue;
     }
   }
 }
