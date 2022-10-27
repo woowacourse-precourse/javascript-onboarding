@@ -26,8 +26,8 @@ function checkIsPageValid(pobi, crong) {
     isValid = false;
 
   if (
-    pobi.filter((v) => v > 400 || v < 1).length > 0 ||
-    crong.filter((v) => v > 400 || v < 1).length > 0
+    pobi.filter((page) => page > 400 || page < 1).length > 0 ||
+    crong.filter((page) => page > 400 || page < 1).length > 0
   )
     isValid = false;
 
@@ -43,18 +43,18 @@ function calcMul(array) {
 
 function calcMaxValue(pageArray) {
   let maxValue = 0;
-  let leftPageSplit = String(pageArray[0])
+  let leftPageNumberSplitArray = String(pageArray[0])
     .split("")
     .map((v) => Number(v));
-  let rightPageSplit = String(pageArray[1])
+  let rightPageNumberSplitArray = String(pageArray[1])
     .split("")
     .map((v) => Number(v));
 
   maxValue = Math.max(
-    calcSum(leftPageSplit),
-    calcMul(leftPageSplit),
-    calcSum(rightPageSplit),
-    calcMul(rightPageSplit)
+    calcSum(leftPageNumberSplitArray),
+    calcMul(leftPageNumberSplitArray),
+    calcSum(rightPageNumberSplitArray),
+    calcMul(rightPageNumberSplitArray)
   );
 
   return maxValue;
