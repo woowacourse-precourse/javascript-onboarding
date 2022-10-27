@@ -1,4 +1,4 @@
-const { checkInputError } = require("../src/problem5.util");
+const { checkInputError, countNumByMoney } = require("../src/problem5.util");
 
 describe("checkInputError", () => {
   it("is return true because input is small", () => {
@@ -17,6 +17,6 @@ describe("countNumByMoney", () => {
     expect(countNumByMoney(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
   });
   it("pase 2", () => {
-    expect(countNumByMoney(50237)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+    expect(countNumByMoney(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
 });
