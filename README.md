@@ -56,6 +56,10 @@ npm test
 - [x] 중복 되는 문자를 찾아 제거하는 기능
 
 3. [문제 3](docs/PROBLEM3.md)
+
+- 기능 구현 목록
+- [x] 숫자를 카운트 해주는 기능
+
 4. [문제 4](docs/PROBLEM4.md)
 5. [문제 5](docs/PROBLEM5.md)
 6. [문제 6](docs/PROBLEM6.md)
