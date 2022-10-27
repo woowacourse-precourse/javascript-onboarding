@@ -26,6 +26,12 @@ function calculateClapCount(num) {
 function problem3(number) {
   let answer = 0;
 
+  for (let i = 1; i <= number; i++) {
+    const count = calculateClapCount(i);
+
+    if (count !== 0) answer += count;
+  }
+
   return answer;
 }
 
