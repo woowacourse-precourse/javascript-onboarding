@@ -33,6 +33,12 @@ function problem1(pobi, crong) {
     return Math.max(...possibleCases)
   }
 
+  /**
+   * 주어진 수를 자릿수 배열로 만드는 함수
+   * @param {number} pages 
+   * @returns {number[]} seat of digits
+   * @example numberToDigits(123) => [1, 2, 3]
+   */
   function numberToDigits(pages) {
     return pages.map(
       page =>
