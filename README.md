@@ -11,12 +11,12 @@
   - [x] 예외사항 처리 로직
   - [x] 문제1 테스트 통과
 
-- [ ] [문제 2](docs/PROBLEM2.md) solution 함수 작성
+- [x] [문제 2](docs/PROBLEM2.md) solution 함수 작성
 
   - [x] cryptogram의 중복 인덱스를 return하는 함수 
   - [x] 중복을 제거한 새로운 cryptogram을 return하는 함수 
   - [x] 중복이 모두 제거될 때까지 재귀 호출하는 로직
-  - [ ] 문제2 테스트 통과 
+  - [x] 문제2 테스트 통과 
 
 - [ ] [문제 3](docs/PROBLEM3.md) solution 함수 작성
 
