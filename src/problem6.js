@@ -16,8 +16,6 @@ function problem6(forms) {
   let item = errEmail.splice(0, 1);
   errEmail.splice(1, 0, item[0]);
   answer = errEmail;
-  console.log(errEmail);
-  console.log(answer);
   return answer;
 }
 
