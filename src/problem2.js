@@ -2,7 +2,11 @@ function problem2(cryptogram) {
   let answer = [];
 
   for (const letter of cryptogram) {
-    answer.push(letter);
+    if (answer[answer.length - 1] === letter) {
+      answer.pop();
+    } else {
+      answer.push(letter);
+    }
   }
   return answer;
 }
