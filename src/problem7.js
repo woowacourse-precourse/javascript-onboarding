@@ -1,12 +1,11 @@
 function comp(A, B) {
-  console.log(A.score, B.score);
   if (A.score !== B.score) return B.score - A.score;
   if (A.name < B.name) return -1;
   return 1;
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   const userInfo = new Map();
 
   for (let i = 0; i < friends.length; i++) {
@@ -76,68 +75,13 @@ function problem7(user, friends, visitors) {
 
   scoreArr = scoreArr.sort(comp);
 
+  const minLength = Math.min(scoreArr.length, 5);
+
+  for (let i = 0; i < minLength; i++) {
+    answer.push(scoreArr[i].name);
+  }
+
   return answer;
 }
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  [
-    "bedi",
-    "bedi",
-    "donut",
-    "bedi",
-    "shakevan",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-    "bedi",
-  ]
-);
 
 module.exports = problem7;
