@@ -7,12 +7,10 @@ function problem1(pobi, crong) {
   for (let i = 0 ; i < 2 ; i++) {
     let pobiNumtoStr = pobi[i].toString();
     let crongNumtoStr = crong[i].toString();
-    pobiNumArr = pobiNumArr.concat(mkNumArr(pobiNumtoStr));
-    crongNumArr = crongNumArr.concat(mkNumArr(crongNumtoStr));
+    pobiNumArr = arrSort(pobiNumArr.concat(mkNumArr(pobiNumtoStr)));
+    crongNumArr = arrSort(crongNumArr.concat(mkNumArr(crongNumtoStr)));
   }
-  arrSort(pobiNumArr);
-  arrSort(crongNumArr);
-
+  
   if (pobiNumArr[0] > crongNumArr[0]) answer = 1;
   else if (crongNumArr[0] > pobiNumArr[0]) answer = 2; 
   else if (crongNumArr[0] === pobiNumArr[0]) answer = 0;
@@ -45,4 +43,5 @@ function arrSort(fullNumArr) {
   fullNumArr.sort((a, b) => {return b - a;});
   return fullNumArr;
 }
+console.log(problem1([97, 98], [197, 198]));
 module.exports = problem1;
