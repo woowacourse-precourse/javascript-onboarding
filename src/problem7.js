@@ -64,10 +64,13 @@ function problem7(user, friends, visitors) {
   const sortByscore = Object.fromEntries(
     Object.entries(friendScore).sort(([,a],[,b]) => a > b? -1: 1)
   );
-  const sortByid =  Object.fromEntries(
-    Object.entries(sortByscore).sort(([a],[b]) => a < b? -1: 1 )
-  );
-  return sortByid;
+
+  if (Object.keys(sortByscore).length > 5){
+    return Object.keys(sortByscore).slice(0,5);
+  }
+  else{
+    return Object.keys(sortByscore);
+  }
 }
 
 module.exports = problem7;
