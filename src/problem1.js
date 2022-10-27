@@ -7,7 +7,7 @@ function addPages(number) {
     addSum += parseInt(str[i]);
     multiSum *= parseInt(str[i]);
   }
-  return addSum > multiSum ? addSum : multiSum;
+  return comparePage(addSum, multiSum);
 }
 
 function comparePage(left, right) {
