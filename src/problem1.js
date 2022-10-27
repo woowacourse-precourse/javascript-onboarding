@@ -10,6 +10,10 @@ function addPages(number) {
   return addSum > multiSum ? addSum : multiSum;
 }
 
+function comparePage(left, right) {
+  return left > right ? left : right;
+}
+
 function problem1(pobi, crong) {
   var answer;
 
