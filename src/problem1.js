@@ -27,15 +27,28 @@ function findLargestNumber(firstNumber, secondNumber) {
 }
 
 function judgeResult(pobi, crong) {
-  if (pobi[0] % 2 !== 1 || crong[0] % 2 !== 1 || pobi[1] % 2 !== 0 || crong[1] % 2 !== 0) return;
-  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1;
+  const GAME_STATUS = {
+    draw: 0,
+    pobiWin: 1,
+    crongWin: 2,
+    pageException: -1,
+  };
 
-  const pobiScore = findLargestNumber(pobi[0], pobi[1]);
-  const crongScore = findLargestNumber(crong[0], crong[1]);
+  const [pobiLeft, pobiRight] = pobi;
+  const [crongLeft, crongRight] = crong;
 
-  if (pobiScore === crongScore) return 0;
-  else if (pobiScore > crongScore) return 1;
-  else if (pobiScore < crongScore) return 2;
+  const { draw, pobiWin, crongWin, pageException } = GAME_STATUS;
+
+  if (pobiLeft % 2 !== 1 || crongLeft % 2 !== 1 || pobiRight % 2 !== 0 || crongRight % 2 !== 0)
+    return;
+  if (pobiLeft + 1 !== pobiRight || crongLeft + 1 !== crongRight) return pageException;
+
+  const pobiScore = findLargestNumber(pobiLeft, pobiRight);
+  const crongScore = findLargestNumber(crongLeft, crongRight);
+
+  if (pobiScore === crongScore) return draw;
+  else if (pobiScore > crongScore) return pobiWin;
+  else if (pobiScore < crongScore) return crongWin;
 }
 
 module.exports = problem1;
