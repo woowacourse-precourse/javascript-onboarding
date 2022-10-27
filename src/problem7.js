@@ -4,9 +4,6 @@ function problem7(user, friends, visitors) {
   let mapIndex = 0;
   mapIndex = setMap(map, mapIndex, user, friends, visitors);
   let relation = new Array(mapIndex+1);
-  for(let i = 0; i < relation.length; i++){
-    relation[i] = new Array();
-  }
   setRelation(relation, friends, map);
   return answer;
 }
@@ -42,6 +39,9 @@ function setMapVisitors(map, mapIndex, visitors){
 }
 
 function setRelation(relation, friends, map){
+  for(let i = 0; i < relation.length; i++){
+    relation[i] = new Array();
+  }
   for(let i = 0; i < friends.length; i++){
     let leftNode = friends[i][0];
     let rightNode = friends[i][1];
