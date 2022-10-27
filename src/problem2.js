@@ -24,3 +24,10 @@ function remove(cryptogram){
   }   
   return removeString;
 }
+
+function playRemove(cryptogram){
+  while(overlap(cryptogram)){
+    cryptogram=remove(cryptogram)
+  }
+  return cryptogram;
+}
