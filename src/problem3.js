@@ -5,6 +5,11 @@ function problem3(number) {
     // 기능 1
     const numPlace = devidePlace(num);
     console.log(numPlace);
+
+    // 기능 2
+    let count = countClap(numPlace);
+    console.log(count);
+    
   }
 
   return answer;
@@ -23,9 +28,18 @@ function devidePlace(number) {
   return numPlace;
 }
 
-
 // 기능 2. 각 자릿수마다 3, 6, 9에 해당하는지 확인하기
+function countClap(numPlace) {
+  let count = 0;
 
+  for (let num of numPlace) {
+    if (num % 3 == 0 || num % 6 == 0 || num % 9 == 0) {
+      count += 1
+    }
+  }
+
+  return count;
+}
 
 
 
