@@ -15,4 +15,11 @@ function check(word) {
   return delete_list.sort((a, b) => b - a);
 }
 
+function delete_word(word, delete_list) {
+  for (let i = 0; i < delete_list.length; i++) {
+    let index = delete_list[i];
+    word = word.substring(0, index) + word.substring(index + 1);
+  }
+  return word;
+}
 module.exports = problem2;
