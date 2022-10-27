@@ -11,8 +11,10 @@ const splitNumberToDigits = (n) => n.toString().split("").map(Number);
 const range = (n) => [...Array(n).keys()];
 
 function problem3(number) {
-  var answer;
-  return answer;
+  return range(number + 1)
+    .map(splitNumberToDigits)
+    .flat()
+    .filter((v) => [3, 6, 9].includes(v)).length;
 }
 
 module.exports = problem3;
