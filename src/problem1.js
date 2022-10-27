@@ -3,10 +3,11 @@ function problem1(pobi, crong) {
   let pobi_score;
   let crong_score;
   if (!validation_check(pobi) || !validation_check(crong)) return -1;
-  pobi_score = calcScore(pobi);
-  crong_score = calcScore(crong);
-  console.log(pobi_score);
-  console.log(crong_score);
+  else {
+    pobi_score = calcScore(pobi);
+    crong_score = calcScore(crong);
+    answer = compare_Score(pobi_score, crong_score);
+  }
   return answer;
 }
 //출력값 : 포비와 크롱이 펼친 페이지가 들어있는 배열 pobi와 crong이 주어질 때, 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
@@ -85,6 +86,16 @@ function calcScore(name) {
   if (left_score >= right_score) score = left_score;
   else score = right_score;
   return score;
+}
+
+//두명의 점수를 비교하는 함수
+//포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0
+function compare_Score(pobi, crong) {
+  let compare;
+  if (pobi === crong) compare = 0;
+  else if (pobi > crong) compare = 1;
+  else compare = 2;
+  return compare;
 }
 
 module.exports = problem1;
