@@ -47,10 +47,11 @@
 
 - pobi와 crong의 본인의 점수를 비교 [기능 3번]
 
-  - pobi 본인의 숫자가 crong 본인의 점수보다 클 경우 : return 1
-  - crong 본인의 숫자가 pobi 본인의 점수보다 클 경우 : return 2
-  - crong 본인의 숫자와 pobi 본인의 점수가 같을 경우 : return 0
-  - 예외일 경우 : return -1
+  - `기능 2번` 의 과정을 거쳐서 pobi와 crong의 `본인의 점수` 비교
+    - pobi 본인의 숫자가 crong 본인의 점수보다 클 경우 : return 1
+    - crong 본인의 숫자가 pobi 본인의 점수보다 클 경우 : return 2
+    - crong 본인의 숫자와 pobi 본인의 점수가 같을 경우 : return 0
+    - 예외일 경우 : return -1
 
 - pobi와 crong 배열 예외처리 [기능 4번]
 
