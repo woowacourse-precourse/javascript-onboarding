@@ -58,4 +58,17 @@ const validateForms = (forms) => {
   return true;
 };
 
+const validateName = (forms) => {
+  for (let i = 0; i < forms.length; i += 1) {
+    const name = forms[i][1];
+    if (!/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(name)) {
+      return false;
+    }
+    if (name.length < 1 || name.length > 19) {
+      return false;
+    }
+  }
+  return true;
+};
+
 module.exports = problem6;
