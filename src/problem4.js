@@ -1,5 +1,8 @@
 function problem4(word) {
-  var answer;
+  var answer=answerString(word);
+  if(!error(word)){
+    throw new Error('제한사항을 확인하세요.')
+  }
   return answer;
 }
 
