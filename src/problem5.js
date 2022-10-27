@@ -3,6 +3,11 @@ function problem5(money) {
   return answer;
 }
 
+function changeBill(money, bill) {
+  money = money - bill;
+  return money;
+}
+
 module.exports = problem5;
 
 /**
