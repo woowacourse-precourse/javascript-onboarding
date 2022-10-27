@@ -7,6 +7,10 @@ function problem1(pobi, crong) {
 
   const crongRigthScore = Math.max(pageSum(crong[1]),pageMul(crong[1]));
 
+  const Pobiscore = Math.max(pobiLeftScore, pobiRightScore);
+
+  const crongscore = Math.max(crongLeftScore, crongRigthScore);
+
   return ScoreResult(Pobiscore,crongscore);
 }
 
