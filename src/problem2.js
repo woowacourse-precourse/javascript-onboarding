@@ -4,8 +4,9 @@ const cryptogramArr = (string) => {
 }
 
 // 중복문자 제거 
-let i = 0;
+
 const compare = (word) => {
+    let i = 0;
     while (i !=word.length){
     if (word[i] == word[i+1]){
         word.splice(i,2);
@@ -15,10 +16,10 @@ const compare = (word) => {
     }
 } return word.join("");}
 
+// 결과값 출력
+function problem2(cryptogram) {
+    let arr = cryptogramArr(cryptogram);
+    return compare(arr);
+}
 
-// function problem2(cryptogram) {
-//   var answer;
-//   return answer;
-// }
-
-// module.exports = problem2;
+module.exports = problem2;
