@@ -106,7 +106,7 @@ function getBigAddtionScore(numArr) {
 function getBigMultiplicationScore(numArr) {
   const arr = numArr.map(v => {
     return v.reduce((acc, cur) => {
-      return (acc *= cur ? cur : 1);
+      return (acc *= cur);
     }, REDUCING.multiplicationInit);
   });
 
