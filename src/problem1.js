@@ -9,6 +9,8 @@ function problem1(pobi, crong) {
   pobiScore = bestScore(pobiLeftScore, pobiRightScore);
   crongScore = bestScore(crongLeftScore, crongRightScore);
 
+  answer = winner(pobiScore, crongScore);
+
   return answer;
 }
 
@@ -52,6 +54,16 @@ function bestScore(leftScore, rightScore){
     return rightScore;
   } else {
     return leftScore;
+  }
+}
+
+function winner(pobiBestScore, crongBestScore){
+  if(pobiBestScore > crongBestScore){
+    return 1;
+  } else if(pobiBestScore < crongBestScore){
+    return 2;
+  }else{
+    return 0;
   }
 }
 
