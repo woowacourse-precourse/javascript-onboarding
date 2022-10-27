@@ -4,6 +4,4 @@ function problem3(number) {
   return answer.length;
 }
 
-console.log(problem3(20));
-
-// module.exports = problem3;
+module.exports = problem3;
