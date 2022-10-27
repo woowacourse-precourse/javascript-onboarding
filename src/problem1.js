@@ -1,6 +1,24 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  let pobi_score = 0;
+  let crong_score = 0;
+
+  for (let i = 0; i < pobi.length; i++) {
+    pobi_score = Math.max(plus(pobi[i]), multiple(pobi[i]));
+  }
+
+  for (let i = 0; i < crong.length; i++) {
+    crong_score = Math.max(plus(crong[i]), multiple(crong[i]));
+  }
+
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) {
+    return -1;
+  } else if (pobi_score > crong_score) {
+    return 1;
+  } else if (pobi_score < crong_score) {
+    return 2;
+  } else {
+    return 0;
+  }
 }
 
 function plus(number) {
