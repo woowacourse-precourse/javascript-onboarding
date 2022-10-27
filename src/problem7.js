@@ -1,6 +1,19 @@
 function problem7(user, friends, visitors) {
   var answer;
+  let userScore = convertFriendsArrayToUserScore(friends, user);
+  console.log(userScore);
   return answer;
+}
+
+function convertFriendsArrayToUserScore(friends, user) {
+  let userScore = {};
+  for (let i = 0; i < friends.length; i++) {
+    for (let j = 0; j < 2; j++) {
+      if (userScore[friends[i][j]] === undefined && friends[i][j] !== user)
+        userScore[friends[i][j]] = 0;
+    }
+  }
+  return userScore;
 }
 
 module.exports = problem7;
