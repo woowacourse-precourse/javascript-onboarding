@@ -1,5 +1,12 @@
 function problem2(cryptogram) {
   var answer;
+  let delete_list;
+  while (true) {
+    delete_list = check(cryptogram);
+    if (delete_list.length === 0) break;
+    cryptogram = delete_word(cryptogram, delete_list);
+  }
+  answer = cryptogram;
   return answer;
 }
 
