@@ -24,7 +24,10 @@ const removeDuplicatedName = (forms, result = []) => {
   getName(forms).forEach((userName) => {
     for (let j = 0; j < userName.length - 1; j += 1) {
       const dividedUserName = userName.slice(j, j + 2);
-      if (usersNameHashMap.has(dividedUserName)) {
+      if (
+        usersNameHashMap.has(dividedUserName) &&
+        userName !== usersNameHashMap.get(dividedUserName)
+      ) {
         result.push(userName, usersNameHashMap.get(dividedUserName));
       }
       usersNameHashMap.set(dividedUserName, userName);
