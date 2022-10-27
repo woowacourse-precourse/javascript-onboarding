@@ -23,4 +23,15 @@
 
 function problem1(pobi, crong) {}
 
+const checkAvailable = (pages) => {
+  const [leftPage, rightPage] = pages;
+
+  if (pages.length !== 2) return false;
+  if (rightPage % 2 !== 0 || leftPage % 2 !== 1) return false;
+  if (rightPage - leftPage !== 1) return false;
+  if (rightPage === 400 || leftPage === 1) return false;
+
+  return true;
+};
+
 module.exports = problem1;
