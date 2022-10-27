@@ -44,6 +44,29 @@ function getScore(friendOfFreinds, score, visitors) {
   });
 }
 
+function sortScore(score, sortedScore) {
+  for (let name in score) {
+    sortedScore.push([name, score[name]]);
+  }
+
+  sortedScore.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return -1;
+    }
+    if (a[1] < b[1]) {
+      return 1;
+    }
+
+    // 여기까지 내려오면 점수가 같은 상황인 것
+    if (a[0] < b[0]) {
+      return -1;
+    }
+    if (a[0] > b[0]) {
+      return 1;
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   let alreadyFriends = [];
 
@@ -56,6 +79,10 @@ function problem7(user, friends, visitors) {
   let score = {};
 
   getScore(friendOfFreinds, score, visitors);
+
+  let sortedScore = [];
+
+  sortScore(score, sortedScore);
 }
 
 module.exports = problem7;
