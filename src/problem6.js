@@ -3,6 +3,19 @@ function problem6(forms) {
   return answer;
 }
 
+function makeTwoLetterArray(forms) {
+  let twoLetterArray = [];
+
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 1; j < forms[i][1].length; j++) {
+      const newWord = `${forms[i][1][j - 1]}${forms[i][1][j]}`;
+      if (!twoLetterArray.includes(newWord)) twoLetterArray.push(newWord);
+    }
+  }
+
+  return twoLetterArray;
+}
+
 module.exports = problem6;
 
 // 입력값 : ["이메일","닉네임"] 형식의 요소들을 가진 배열
