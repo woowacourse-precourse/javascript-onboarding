@@ -10,11 +10,26 @@ function getRelation(friends) {
 
   return relation;
 }
+
+function getSkip(user, relation) {
+  const skip = [user];
+  const arr = relation[user];
+
+  if (!arr) return skip;
+
+  for (const already of arr) {
+    skip.push(already);
+  }
+
+  return skip;
+}
 function getInfos(user, friends) {
   const relation = getRelation(friends);
-  console.log(relation);
+  const skip = getSkip(user, relation);
+
+  console.log(skip);
 }
-getInfos('', [
+getInfos('mrko', [
   ['donut', 'andole'],
   ['donut', 'jun'],
   ['donut', 'mrko'],
