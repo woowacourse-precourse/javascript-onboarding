@@ -15,7 +15,7 @@ describe("checkInputError", () => {
   });
 
   it("is return false", () => {
-    expect(checkInputError("abc")).toEqual(true);
+    expect(checkInputError("abc")).toEqual(false);
   });
 });
 
