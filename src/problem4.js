@@ -14,7 +14,12 @@ function alphabet(letter){
 
 function problem4(word) {
   const wordlist = [...word];
-  
+  if (word.length > 1000 || word.length < 1){
+    return 'word 길이를 확인해주세요';
+  }
+  else{
+    
+  }
   return answer;
 }
 
