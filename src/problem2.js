@@ -12,6 +12,9 @@ function problem2(cryptogram) {
   
   let i = 0;
   while(1){
+    if(i==decryption.length){
+      break;
+    }
     if(decryption[i] == decryption[i+1]){
       let j = 2;
       while(1){
@@ -20,11 +23,11 @@ function problem2(cryptogram) {
         }j++;
       }
       decryption.splice(i,j);
+      i = 0;
     }else{
       i++;
       continue;
     }
-    break;
   }
   console.log(decryption);
 }
