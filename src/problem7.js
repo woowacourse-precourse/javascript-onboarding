@@ -140,10 +140,10 @@ function getFriendsRecommendArray(alreadyFriends, sortedScore, ans) {
 
 function problem7(user, friends, visitors) {
   if (
-    checkUserLength(user) ||
-    checkFriendsLength(friends) ||
-    checkIdLength(friends) ||
-    checkVisitorsLength(visitors) ||
+    checkUserLength(user) &&
+    checkFriendsLength(friends) &&
+    checkIdLength(friends) &&
+    checkVisitorsLength(visitors) &&
     checkIdOnlyLowerCase(friends)
   ) {
     return;
