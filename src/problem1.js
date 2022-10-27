@@ -23,4 +23,10 @@ const getMyScore = (addPageNumber, multiplyPageNumber) => {
     : multiplyPageNumber;
 };
 
+const getWinner = (pobiScore, crongScore) => {
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore === crongScore) return 0;
+  return 2;
+};
+
 module.exports = problem1;
