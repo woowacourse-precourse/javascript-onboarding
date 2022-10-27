@@ -31,6 +31,15 @@ function problem6(forms) {
     });
     return;
   }
+
+  enterDict(forms);
+
+  function checkValue(dict) {
+    let keys = Object.keys(dict).filter((key) => dict[key] > 1);
+    return keys;
+  }
+
+  console.log(checkValue(nickNameCnt));
 }
 
 module.exports = problem6;
