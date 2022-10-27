@@ -25,7 +25,23 @@ function problem2(cryptogram) {
     throw new Error('cryptogram은 알파벳 소문자로만 이루어져 있습니다.');
   }
 
-  // - [ ] 연속하는 중복 문자 삭제하기
+  // - [x] 연속하는 중복 문자 삭제하기
+  const removeDuplicated = (_cryptogram) => {
+    let result = [];
+
+    for (const oneLetter of _cryptogram) {
+      if (result[result.length - 1] === oneLetter) {
+        result.splice(-1);
+        continue;
+      }
+      result.push(oneLetter);
+    }
+
+    return result;
+  };
+
+  answer = removeDuplicated(cryptogram);
+
   // - [ ] 배열 문자열로 바꾸기
 
   return answer;
