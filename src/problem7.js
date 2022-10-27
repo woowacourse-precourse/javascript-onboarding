@@ -3,6 +3,9 @@ function problem7(user, friends, visitors) {
   let map = new Map();
   let mapIndex = 0;
   setMap(map, mapIndex, user, friends, visitors);
+  let graph = [mapIndex+1][mapIndex+1];
+  setGraph(graph, map, visitors);
+  console.log(graph);
   return answer;
 }
 
@@ -33,6 +36,14 @@ function setMapVisitors(map, mapIndex, visitors){
     }
   }
   return mapIndex;
+}
+
+function setGraph(graph, map, visitors){
+  for(let i = 0; i < visitors.length; i++){
+    let leftIndex = map.get(visitors[i][0]);
+    let rightIndex = map.get(visitors[i][1]);
+    graph[leftIndex][rightIndex] = graph[rightIndex][leftIndex] = 1;
+  }
 }
 
 module.exports = problem7;
