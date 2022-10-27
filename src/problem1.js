@@ -17,15 +17,18 @@ function scoreCalculator(score) {
   return ans;
 }
 
+function isNormal(arr) {
+  if (arr.length !== 2) return false;
+  if (arr[0] % 2 !== 1 || arr[1] % 2 !== 0) return false;
+  if (arr[0] <= 1 || arr[1] >= 400) return false;
+  if (arr[1] - arr[0] !== 1) return false;
+  return true;
+}
+
 function problem1(pobi, crong) {
   var answer;
 
-  pobi.sort();
-  crong.sort();
-
-  if (pobi[0] <= 1 || crong[0] <= 1 || pobi[1] >= 400 || crong[1] >= 400)
-    return -1;
-  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) return -1;
+  if (!isNormal(pobi) || !isNormal(crong)) return -1;
 
   let pLeftScore, pRightScore, cLeftScore, cRightScore;
 
