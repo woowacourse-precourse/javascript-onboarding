@@ -2,14 +2,16 @@ function problem2(cryptogram) {
   var answer;
   let decodeArr = [];
 
-  for (let i = 0; i < cryptogram.length; i++) {
-    const char = cryptogram[i];
-    if (decodeArr[decodeArr.length - 1] == char) decodeArr.pop();
-    else decodeArr.push(char);
-  }
-  
+  decode(cryptogram, decodeArr);
   answer = decodeArr.join("");
   return answer;
 }
-console.log(problem2('browoanoommnaon'));
 module.exports = problem2;
+
+function decode(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    const char = arr1[i];
+    if (arr2[arr2.length - 1] == char) arr2.pop();
+    else arr2.push(char);
+  }
+}
