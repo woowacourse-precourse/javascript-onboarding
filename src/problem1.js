@@ -6,6 +6,9 @@ function problem1(pobi, crong) {
   pobiRightScore = pobiCrongRight(pobi);
   crongRightScore = pobiCrongRight(crong);
 
+  pobiScore = bestScore(pobiLeftScore, pobiRightScore);
+  crongScore = bestScore(crongLeftScore, crongRightScore);
+
   return answer;
 }
 
@@ -41,6 +44,14 @@ function pobiCrongRight(pobiCrong){
     return RightSum;
   } else {
     return RightMul;
+  }
+}
+
+function bestScore(leftScore, rightScore){
+  if(leftScore < rightScore){
+    return rightScore;
+  } else {
+    return leftScore;
   }
 }
 
