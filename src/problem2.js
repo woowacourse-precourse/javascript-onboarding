@@ -19,6 +19,9 @@ function problem2(cryptogram) {
     return RETURN_REMOVE_DUPLICATION_ALPHABET(newWord);
   }
 
+
+  return RETURN_REMOVE_DUPLICATION_ALPHABET(cryptogram);
+
   //특이사항
 
   //!1. 글자의 길이는 1이상 1000이하
