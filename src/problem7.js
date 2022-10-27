@@ -61,10 +61,7 @@ function setRelation(relation, friends, map){
 function setUserScores(userScores, relation, visitors, userList, map){
   initUserScores(userScores, userList);
   addFriendScore(userScores, relation, map);
-  for(let i = 0; i < visitors.length; i++){
-    let userIndex = map.get(visitors[i]);
-    userScores[userIndex].score += 1;
-  }
+  addVisitScore(userScores, visitors, map);
 }
 
 function initUserScores(userScores, userList){
@@ -85,6 +82,13 @@ function addFriendScore(userScores, relation, map){
       let finalIndex = map.get(relation[friendIndex][j]);
       userScores[finalIndex].score += 10;
     }
+  }
+}
+
+function addVisitScore(userScores, visitors, map){
+  for(let i = 0; i < visitors.length; i++){
+    let userIndex = map.get(visitors[i]);
+    userScores[userIndex].score += 1;
   }
 }
 
