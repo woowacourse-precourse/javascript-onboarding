@@ -3,6 +3,12 @@ function problem3(number) {
     return -1;
   }
   var answer;
+  let numArr = [];
+  let numString = num.toString();
+  for(let i = 0; i < numString.length; i+){
+    numArr[i] = numString[i];
+  }
+  
   return answer;
 }
 
