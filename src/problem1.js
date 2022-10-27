@@ -21,6 +21,14 @@ function splitMul(arr) {
   }, 1);
 }
 
+function getMax(arr) {
+  let maxResult = 0;
+  arr.forEach(function(arr) {
+    maxResult = Math.max(maxResult, splitAdd(arr), splitMul(arr));
+  });
+  return maxResult;
+}
+
 function problem1(pobi, crong) {
   if (!checkArr(pobi) || !checkArr(crong))
     return -1;
