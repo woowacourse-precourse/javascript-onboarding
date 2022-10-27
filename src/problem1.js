@@ -35,6 +35,16 @@ function get_digits(person) {
   return page_digits;
 }
 
+function get_score(digits) {
+  let sum = 0;
+  let mul = 1;
+  for (let digit of digits) {
+    sum += digit;
+    mul *= digit;
+  }
+  return Math.max(sum, mul);
+}
+
 function problem1(pobi, crong) {
   // execption
   if (exception_handler(pobi) || exception_handler(crong)) {
@@ -44,10 +54,12 @@ function problem1(pobi, crong) {
   // for pobi
   let pobi_page_digits = get_digits(pobi);
   const [pobi_left, pobi_right] = pobi_page_digits;
+  const pobi_score = Math.max(get_score(pobi_left), get_score(pobi_right));
 
   // for crong
   let crong_page_digits = get_digits(crong);
   const [crong_left, crong_right] = crong_page_digits;
+  const crong_score = Math.max(get_score(crong_left), get_score(crong_right));
 
   var answer;
   return answer;
