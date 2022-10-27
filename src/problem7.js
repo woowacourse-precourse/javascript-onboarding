@@ -51,6 +51,22 @@ function computeFriendsScoreBySerperation({ user, friendsMap }) {
   return friendsHasScore;
 }
 
+function computeFriendsScoreByVisiting(visitors) {
+  const VISITING_SCORE = 1;
+  const friendsHasScore = new Map();
+
+  visitors.forEach((visitor) =>
+    friendsHasScore.has(visitor)
+      ? friendsHasScore.set(
+          visitor,
+          friendsHasScore.get(visitor) + VISITING_SCORE
+        )
+      : friendsHasScore.set(visitor, VISITING_SCORE)
+  );
+
+  return friendsHasScore;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -59,8 +75,6 @@ function problem7(user, friends, visitors) {
     user,
     friendsMap,
   });
-
-  console.log(friendsScoreMap);
 
   return answer;
 }
