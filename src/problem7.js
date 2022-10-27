@@ -6,6 +6,14 @@ function checkUserLength(user) {
   return true;
 }
 
+function checkFriendsLength(friends) {
+  if (friends.length < 1 || friends.length > 10000) {
+    return false;
+  }
+
+  return true;
+}
+
 function getAlreadyFriends(user, friends, alreadyFriends) {
   friends.forEach((item) => {
     if (item.includes(user)) {
