@@ -11,7 +11,7 @@ function checkInputErr(pobi, crong) {
 
   const validType = () => Array.isArray(pobi) && Array.isArray(crong); //Type
   const validLength = () => pobi.length === 2 && crong.length === 2; //Length 
-  const validRange = (array) => array.some(data => 1 <= data && data <= 400); //Range
+  const validRange = (array) => array.every(data => 1 <= data && data <= 400); //Range
   const validValue = (array) => (array[0] % 2 === 1) && (array[1] === array[0] + 1); //Input
 
   if (!validType()) return true;
