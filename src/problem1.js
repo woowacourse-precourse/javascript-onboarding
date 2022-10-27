@@ -17,6 +17,13 @@ function problem1(pobi, crong) {
      let add = numStr.reduce((prev, curr) => prev += Number(curr), 0);
      return add
   }
+
+  //페이지 번호의 각 자리 숫자를 모두 곱하는 기능
+  const mulNum = (num) => {
+    let numStr = num.toString().split("");
+     let mul = numStr.reduce((prev, curr) => prev *= Number(curr), 1);
+     return mul
+  }
 }
 
 problem1([97, 98], [197, 198])
