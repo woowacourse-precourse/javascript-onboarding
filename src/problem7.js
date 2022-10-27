@@ -25,7 +25,9 @@ function calcFriendScore(user, relationships, scores = {}) {
     }
     const friends = relationships[name] || [];
     const overlapFriends = friends.filter(friend => userFriends.includes(friend)).length;
-    scores[name] = 10 * overlapFriends;
+    if (overlapFriends > 0) {
+      scores[name] = 10 * overlapFriends;
+    }
   }
   return scores;
 }
@@ -52,7 +54,7 @@ function calcRecommendedScore (user, relationships, visitor) {
 function problem7(user, friends, visitors) {
   const relationships = getRelationships(friends);
   const recommendedScores = calcRecommendedScore(user, relationships, visitors);
-  console.log(recommendedScores)
+
 }
 
 module.exports = problem7;
