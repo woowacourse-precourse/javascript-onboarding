@@ -4,7 +4,8 @@ function problem6(forms) {
     forms,
     duplicatedObj
   );
-  return duplicatedMemberEmails;
+
+  return duplicatedMemberEmails.sort();
 }
 
 function filterDuplicatedMemberEmail(forms, duplicatedObj) {
