@@ -30,5 +30,6 @@ function problem5(money) {
     }
     return currencyCnt;
   }
+  return divideCurrency(money);
 }
 module.exports = problem5;
