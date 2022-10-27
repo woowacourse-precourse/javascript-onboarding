@@ -58,6 +58,5 @@ function mutiNumber(number) {
     .split("")
     .reduce((muti, current) => parseInt(muti) * parseInt(current), 1);
 }
-problem1([1, 312], [1, 2312]);
 
 module.exports = problem1;
