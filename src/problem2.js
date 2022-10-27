@@ -19,6 +19,16 @@ function duplicateJudgment(cryptogram) {
   return recordArray(tellDuplication, cryptogram)
 }
 
+// 중복 판별 배열만들기
+function recordArray(tellDuplication, cryptogram) {
+  for (let i = 1; i < cryptogram.length; i++) {
+    if (cryptogram[i-1] === cryptogram[i]) {
+      tellDuplication[i - 1] = 1;
+      tellDuplication[i] = 1;
+    }
+  }
+  return repeatDelete(tellDuplication, cryptogram);
+}
 
 
 problem2("browoanoommnaon");
