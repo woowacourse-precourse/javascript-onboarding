@@ -39,14 +39,18 @@ function comparePoint(pobiPoint, crongPoint) {
   if (pobiPoint < crongPoint) return 2;
 }
 
+// 더하기 곱하기 중 큰 값 구하기
+function getBigNum(point) {
+  return Math.max(addDigit(point),mulDigit(point));
+}
+
 function problem1(pobi, crong) {
   if (exception(pobi) || exception(crong)) return -1;
 
-  const pobiPoint = Math.max(addDigit(pobi),mulDigit(pobi));
-  const crongPoint = Math.max(addDigit(crong),mulDigit(crong));
+  const pobiPoint = getBigNum(pobi);
+  const crongPoint = getBigNum(crong);
 
   return comparePoint(pobiPoint, crongPoint);
 }
 
 module.exports = problem1;
-
