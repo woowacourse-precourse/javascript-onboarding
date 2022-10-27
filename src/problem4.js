@@ -22,17 +22,14 @@ function problem4(word) {
   for (let i = 0; i < word.length; i++) {
     let origin = 0;
 
-    if (word[i] == " ") {
-      answer += " ";
-      continue;
-    }
-
     if (isUpperCase(word[i])) {
       origin = word[i].charCodeAt() - 65;
       answer += upperArr[25 - origin];
     } else if (isLowerCase(word[i])) {
       origin = word[i].charCodeAt() - 97;
       answer += lowerArr[25 - origin];
+    } else {
+      answer += word[i];
     }
   }
 
