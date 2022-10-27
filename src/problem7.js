@@ -7,6 +7,19 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
+function getRelations(friends) {
+  const relations = friends.reduce((acc, cur) => {
+    const [crewA, crewB] = cur;
+
+    acc[crewA] = [...(acc[crewA] || []), crewB];
+    acc[crewB] = [...(acc[crewB] || []), crewA];
+
+    return acc;
+  }, {});
+
+  return relations;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
@@ -26,6 +39,7 @@ function test() {
   ];
 
   console.log(findUserFriends(user, friends));
+  console.log(getRelations(friends));
 }
 
 test();
