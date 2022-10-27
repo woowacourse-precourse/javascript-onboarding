@@ -53,4 +53,9 @@ function gatherCrew(forms) {
   return crewEmailArray;
 }
 
+function problem6(forms) {
+  const sortEmailArray = gatherCrew(forms).sort();
+  return sortEmailArray;
+}
+
 module.exports = problem6;
