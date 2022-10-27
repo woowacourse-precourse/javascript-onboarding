@@ -57,3 +57,5 @@ function problem1(pobi, crong) {
 
   return answer;
 }
+
+module.exports = problem1;
