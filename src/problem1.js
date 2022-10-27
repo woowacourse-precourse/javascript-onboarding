@@ -12,7 +12,7 @@ function checkInputErr(pobi, crong) {
   const validType = () => Array.isArray(pobi) && Array.isArray(crong);
   const validLength = () => pobi.length === 2 && crong.length === 2;
   const validRange = (array) => array.some(data => 1 <= data && data <= 400);
-  const validValue = (array) => (array[0]%2 ===1) && (array[1] = array[0]+1);
+  const validValue = (array) => (array[0]%2 ===1) && (array[1] === array[0]+1);
 
   if(!validType()) return true;
   else if(!validLength()) return true;
@@ -61,3 +61,17 @@ function calScore(score, operator){
 
 
 module.exports = problem1;
+
+
+function test(){
+  
+  console.log(problem1([97,98], [197,198])); // 0
+  console.log(problem1([131,132], [211,212])); // 1
+  console.log(problem1([99,102], [211,212])); // -1
+  console.log(problem1([99,102,102], [211,212])); //-1
+  console.log(problem1("pobi", [211,212])); //-1
+  console.log(problem1([99,100], [213,212])); //-1
+  console.log(problem1([500,501], [213,212])); //-1
+}
+
+test()
