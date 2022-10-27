@@ -10,18 +10,15 @@ function problem4(word) {
       answer.push(' ');
     }
     if(upperCase.includes(item)) {
-      // 해당하는 i의 index를 값을 뒤집어서 찾아서 push해준다.
       const UPPER = upperCase.indexOf(item);
       const reverseWord = [...upperCase].reverse();
       answer.push(reverseWord[UPPER]);
     }
     if(lowerCase.includes(item)) {
-      // 해당하는 i의 index값을 뒤집어서 찾아서 push해준다.
       const LOWER = lowerCase.indexOf(item);
       const reverseWord = [...lowerCase].reverse();
       answer.push(reverseWord[LOWER]);
     }
-    
   }
   return answer.join('');
 }
