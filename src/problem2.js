@@ -16,6 +16,8 @@ function problem2(cryptogram) {
     top = stack[stack.length - 1];
   }
 
+  answer = stack.join('');
+
   return answer;
 }
 
