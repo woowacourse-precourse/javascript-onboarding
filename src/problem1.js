@@ -7,6 +7,13 @@ function problem1(pobi, crong) {
       return sum += parseInt(String(num)[j]);
     }
   } 
+
+  const mulfn = (num) => {
+    var mul = 1;
+    for (var k = 0; k < String(num).length; k++) {
+      return mul *= parseInt(String(num)[k]);
+    }
+  }
   
   return answer;
 }
