@@ -15,6 +15,29 @@ function problem1(pobi, crong) {
 
 function compareScore(leftPage, rightPage) {}
 
-function sumOrMul(page) {}
+function sumOrMul(page) {
+  const hundred = Math.floor(page / 100);
+  const ten = Math.floor((page % 100) / 10);
+  const one = page % 10;
+
+  let sum = hundred + ten + one;
+  let multiply = 0;
+  if (page < 10) {
+    multiply = one;
+  } else if (page >= 10 && page < 100) {
+    multiply = ten * one;
+  } else {
+    multiply = hundred * ten * one;
+  }
+
+  if (sum > multiply) {
+    return sum;
+  } else if (sum < multiply) {
+    return multiply;
+  } else {
+    // 같은 경우 아무거나 반환한다.
+    return sum;
+  }
+}
 
 module.exports = problem1;
