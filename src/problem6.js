@@ -37,4 +37,20 @@ function getAllSameWord(forms) {
   return [...uniqueArray];
 }
 
+function gatherCrew(forms) {
+  let crewEmailArray = [];
+
+  getAllSameWord(forms).map((word) => {
+    let index = 0;
+    while (index < forms.length) {
+      if (forms[index][1].includes(word)) {
+        crewEmailArray.push(forms[index][0]);
+      }
+      index++;
+    }
+  });
+
+  return crewEmailArray;
+}
+
 module.exports = problem6;
