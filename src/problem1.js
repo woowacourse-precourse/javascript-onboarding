@@ -21,6 +21,9 @@ function problem1(pobi, crong) {
     crongArr.push(crongSum);
   }
 
+  const pobiMax = Math.max(...pobiArr);
+  const crongMax = Math.max(...crongArr);
+
   return answer;
 }
 
