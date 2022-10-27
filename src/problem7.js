@@ -16,14 +16,41 @@ dict에 각 아이디의 배열 index 번호 정보를 담아주자.
 user 정보는 배열 0번째 인덱스에 저장.
 
 *기능목록
-1. friends 를 순회하면서 dict에 각 아이디 인덱스 정보와 배열을 생성해줄 함수 =>  createInfo
+1. friends 를 순회하면서 dict에 각 아이디 인덱스 정보와 배열을 생성해줄 함수 
+   =>  createInfo , 파라미터 값: 친구 관계 friends, 인덱스 idx
 2. 각 아이디의 점수를 카운트해줄 함수 =>  cntScore
 3. 결과값을 출력해주고 정렬하여 return 해줄 함수 =>  makeResult
 */
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  function createInfo(eachFriend, i) {
+    let idx = i;
+    eachFriend.map((friend) => {
+      let [name1, name2] = friend;
+      friend.map((name) => {
+        if (!idIndexInfo[name]) {
+          idIndexInfo[name] = idx;
+          friendsInfo.push([]);
+          idx += 1;
+        }
+      });
+      friendsInfo[idIndexInfo[name1]].push(name2);
+      friendsInfo[idIndexInfo[name2]].push(name1);
+    });
+  }
 }
+
+// problem7(
+//   "mrko",
+//   [
+//     ["donut", "andole"],
+//     ["donut", "jun"],
+//     ["donut", "mrko"],
+//     ["shakevan", "andole"],
+//     ["shakevan", "jun"],
+//     ["shakevan", "mrko"],
+//   ],
+//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
+// );
 
 module.exports = problem7;
