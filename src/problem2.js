@@ -10,49 +10,51 @@ const RESULT = {
 
 const DUPLICATION = true;
 
-function getStringFromArray(array) {
-  return array.join('');
+function problem2(cryptogram) {
+  if (isWrongInput(cryptogram)) {
+    return RESULT.exception;
+  }
+
+  return decodeCryptogram(cryptogram);
+}
+
+function isWrongInput(input) {
+  if (isWrongLength(input.length)) {
+    return true;
+  }
+
+  if (isNotString(input)) {
+    return true;
+  }
+
+  if (isUpperCase(input)) {
+    return true;
+  }
+
+  return false;
+}
+
+function isWrongLength(length) {
+  return length < INPUT.minLength || length > INPUT.maxLength;
+}
+
+function isNotString(input) {
+  return typeof input !== INPUT.string;
+}
+
+function isUpperCase(input) {
+  return input === input.toUpperCase();
+}
+
+function decodeCryptogram(cryptogram) {
+  const cryptogramArr = getArrayFromString(cryptogram);
+  const res = decodeCycle(cryptogramArr);
+
+  return getStringFromArray(res);
 }
 
 function getArrayFromString(string) {
   return Array.from(string);
-}
-
-function isDupWithNextElement(curElement, nextElement) {
-  return curElement === nextElement ? true : false;
-}
-
-function decode(cryptogramArr) {
-  let isDuplicate = false;
-
-  const res = cryptogramArr
-    .map((v, i) => {
-      if (isDupWithNextElement(v, cryptogramArr[i + 1])) {
-        isDuplicate = true;
-        return DUPLICATION;
-      }
-
-      if (isDuplicate && !isDupWithNextElement(v, cryptogramArr[i + 1])) {
-        isDuplicate = false;
-        return DUPLICATION;
-      }
-
-      return v;
-    })
-    .filter(v => v !== DUPLICATION);
-
-  return res;
-}
-
-function decodeInit(cryptogramArr) {
-  return {
-    res: decode(cryptogramArr),
-    prevLength: decode(cryptogramArr).length,
-  };
-}
-
-function isCycleDone(decodeRes) {
-  return decodeRes.res.length === decodeRes.prevLength ? true : false;
 }
 
 function decodeCycle(cryptogramArr) {
@@ -63,41 +65,51 @@ function decodeCycle(cryptogramArr) {
     if (isCycleDone(decodeRes)) {
       break;
     }
-    decodeRes.prevLength = decodeRes.res.length;
+    recordLength(decodeRes);
   }
 
   return decodeRes.res;
 }
 
-function decodeCryptogram(cryptogram) {
-  const cryptogramArr = getArrayFromString(cryptogram);
-  const res = decodeCycle(cryptogramArr);
-
-  return getStringFromArray(res);
+function recordLength(decodeRes) {
+  decodeRes.prevLength = decodeRes.res.length;
 }
 
-function isWrongInput(input) {
-  if (input.length < INPUT.minLength || input.length > INPUT.maxLength) {
-    return true;
-  }
-
-  if (typeof input !== INPUT.string) {
-    return true;
-  }
-
-  if (input === input.toUpperCase()) {
-    return true;
-  }
-
-  return false;
+function decodeInit(cryptogramArr) {
+  return {
+    res: decode(cryptogramArr),
+    prevLength: decode(cryptogramArr).length,
+  };
 }
 
-function problem2(cryptogram) {
-  if (isWrongInput(cryptogram)) {
-    return RESULT.exception;
+function decode(cryptogramArr) {
+  return cryptogramArr.filter(removeDup, { dupElement: false });
+}
+
+function removeDup(v, i, arr) {
+  if (isDupWithNextElement(v, arr[i + 1])) {
+    this.dupElement = true;
+    return false;
   }
 
-  return decodeCryptogram(cryptogram);
+  if (this.dupElement) {
+    this.dupElement = false;
+    return false;
+  }
+
+  return true;
+}
+
+function isDupWithNextElement(curElement, nextElement) {
+  return curElement === nextElement;
+}
+
+function isCycleDone(decodeRes) {
+  return decodeRes.res.length === decodeRes.prevLength;
+}
+
+function getStringFromArray(array) {
+  return array.join('');
 }
 
 module.exports = problem2;
