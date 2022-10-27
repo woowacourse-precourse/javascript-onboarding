@@ -85,6 +85,21 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  test("my test1", () => {
+    expect(problem4("ABCDEFGHIJKLMNOPQRSTUVWXYZ")).toEqual(
+      "ZYXWVUTSRQPONMLKJIHGFEDCBA"
+    );
+  });
+  test("my test2", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba"
+    );
+  });
+  test("my test3", () => {
+    expect(problem4("기억abcdeFG hijkl^^mnop qrstuv wxYz")).toEqual(
+      "기억zyxwvUT srqpo^^nmlk jihgfe dcBa"
+    );
+  });
 });
 
 /*
