@@ -1,5 +1,4 @@
 function problem1(pobi, crong) {
-  var answer;
   let arr = [];
   let plus;
   let multiply;
@@ -36,7 +35,9 @@ function problem1(pobi, crong) {
       ? crongLeftRight[0]
       : crongLeftRight[1];
 
-  return answer;
+  if (pobiMax > crongMax) return 1;
+  else if (pobiMax < crongMax) return 2;
+  else if (pobiMax === crongMax) return 0;
 }
 
 module.exports = problem1;
@@ -46,3 +47,4 @@ module.exports = problem1;
 // 2. pobi의 왼쪽페이지와 오른쪽페이지의 값중 큰 값을 본인의 점수로 한다.
 // 3. crong 도 pobi와 같은 과정을 거친다.
 // 4. 점수를 비교해 승자를 가린다.
+//  - 테스트케이스3 예외 상황 : 페이지가 연속된 숫자가 아닐 경우
