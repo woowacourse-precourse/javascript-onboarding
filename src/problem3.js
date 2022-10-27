@@ -1,22 +1,21 @@
-function problem3(number) {
+function problem3(targetNumber) {
   var answer = 0;
-  for (let i = 1; i <= number; i++) {
-    if (includesNumbers(i, [3, 6, 9])) {
-      answer++;
-    }
+  for (let number = 1; number <= targetNumber; number++) {
+    answer += includesNumbers(number, [3, 6, 9]);
   }
   return answer;
 }
 
-function includesNumbers(number, compareNumbers) {
-  for (let compareNumber of compareNumbers) {
-    if (String(number).includes(compareNumber)) {
-      return true;
+function includesNumbers(targetNumber, compareNumbers) {
+  let count = 0;
+  for (let number of String(targetNumber)) {
+    if (compareNumbers.includes(Number(number))) {
+      count++;
     }
   }
-  return false;
+  return count;
 }
 
-console.log(problem3(13));
+console.log(problem3(33));
 
 module.exports = problem3;
