@@ -13,24 +13,27 @@
 
 - [ ] [문제 2](docs/PROBLEM2.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  - [ ] cryptogram의 중복 인덱스를 return하는 함수 
+  - [ ] 중복을 제거한 새로운 cryptogram을 return하는 함수 
+  - [ ] 중복이 모두 제거될 때까지 재귀 호출하는 로직
+  - [ ] 문제2 테스트 통과 
 
 - [ ] [문제 3](docs/PROBLEM3.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  
 
 - [ ] [문제 4](docs/PROBLEM4.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  
 
 - [ ] [문제 5](docs/PROBLEM5.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  
 
 - [ ] [문제 6](docs/PROBLEM6.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  
 
 - [ ] [문제 7](docs/PROBLEM7.md) solution 함수 작성
 
-  - [ ] solution 함수 리팩토링
+  
