@@ -11,6 +11,18 @@ function calcMaxScore(eachnum) {
   return Math.max(sumvalue, multiplyvalue)
 }
 
+function leftandright(user) {
+  const arr = []
+  user.map((score) => arr.push(calcMaxScore(returnNumber(score))))
+  return arr
+}
+
+function compareEach(arr) {
+  left = arr[0]
+  right = arr[1]
+  return Math.max(left, right)
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
