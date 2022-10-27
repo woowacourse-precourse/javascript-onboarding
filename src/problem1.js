@@ -35,8 +35,25 @@ class Game {
 
   start() {
     if (this.checkValidPages()) {
-      console.log(`pobi: ${this.pobi.getBiggestNumber()}`, this.pobi);
-      console.log(`crong: ${this.crong.getBiggestNumber()}`, this.crong);
+      this.checkGameResult();
+      return;
+    }
+    this.result = this.RESULT.EXCEPTION;
+  }
+
+  checkGameResult() {
+    const pobiPoint = this.pobi.getBiggestNumber();
+    const crongPoint = this.crong.getBiggestNumber();
+    if (pobiPoint === crongPoint) {
+      this.result = this.RESULT.DRAW;
+      return;
+    }
+    if (pobiPoint > crongPoint) {
+      this.result = this.RESULT.POBI_WIN;
+      return;
+    }
+    if (pobiPoint < crongPoint) {
+      this.result = this.RESULT.CRONG_WIN;
       return;
     }
     this.result = this.RESULT.EXCEPTION;
@@ -114,13 +131,5 @@ function problem1(pobi, crong) {
   const result = game.result;
   return result;
 }
-
-problem1([97, 98], [197, 198]);
-problem1([131, 132], [211, 212]);
-problem1([99, 102], [211, 212]);
-problem1([0, 1], [211, 212]);
-problem1([401, 402], [211, 212]);
-problem1([99, 100], [211, 212]);
-problem1(["a", "b"], [211, 212]);
 
 module.exports = problem1;
