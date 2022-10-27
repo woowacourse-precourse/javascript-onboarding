@@ -12,10 +12,19 @@ function validationArr(arr){
 }
 
 function pageGameApp(numArrA,numArrB){
+  console.log(splitNumber(numArrA[0]));
   let maxNumA;
   let maxNumB;
-  console.log(numArrA,numArrB);
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
+}
+
+function splitNumber(n){
+  const splitArr=[];
+  while(n>0) {
+    splitArr.unshift(n%10);
+    n = parseInt(n/10);
+  }
+  return splitArr;
 }
 
 module.exports = problem1;
