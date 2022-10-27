@@ -33,18 +33,20 @@ function problem1(pobi, crong) {
     crongnums.push(_crongnums)
   }
   for ( i = 0 ; i < pobinums.length ; i ++) {
-    pobiplus_1 = pobiplus_1 + pobinums[0][i]
-    pobiplus_2 = pobiplus_2 + pobinums[1][i]
-    pobimultiply_1 = pobimultiply_1 * pobinums[0][i]
-    pobimultiply_2 = pobimultiply_2 * pobinums[1][i]
+    for ( j = 0 ; j <= pobinums[i].length ; j ++)
+      pobiplus_1 = pobiplus_1 + pobinums[j][i]
+      pobiplus_2 = pobiplus_2 + pobinums[j][i]
+      pobimultiply_1 = pobimultiply_1 * pobinums[j][i]
+      pobimultiply_2 = pobimultiply_2 * pobinums[j][i]
   }
   
   for ( i = 0 ; i < crongnums.length ; i ++) {
-    crongplus_1 = crongplus_1 + crongnums[0][i]
-    crongplus_2 = crongplus_2 + crongnums[1][i]
-    crongmultiply_1 = crongmultiply_1 * crongnums[0][i]
-    crongmultiply_2 = crongmultiply_2 * crongnums[1][i]
-  
+    for ( j = 0 ; j <= crongnums[i].length ; j ++){
+      crongplus_1 = crongplus_1 + crongnums[j][i]
+      crongplus_2 = crongplus_2 + crongnums[j][i]
+      crongmultiply_1 = crongmultiply_1 * crongnums[j][i]
+      crongmultiply_2 = crongmultiply_2 * crongnums[j][i]
+    }
   }
 
   if (pobiplus_1 < pobiplus_2){
@@ -95,6 +97,15 @@ function problem1(pobi, crong) {
     crongone = crongplus
   }
 
+  if ( pobione < crongone) {
+    console.log(2)
+  }else if ( pobione > crongone) {
+    console.log(1)
+  } else if ( pobione == crongone) {
+    console.log(0)
+  } else {
+    console.log(-1)
+  }
 
   console.log("중간확인",pobinums[1][0]);
   console.log("포비확인",pobinums)
