@@ -1,6 +1,9 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let allNumbers = Array.from({length: number}, (_,i) => i+1).join('')
+
+  return allNumbers
 }
 
-module.exports = problem3;
+console.log(problem3(20));
+
+// module.exports = problem3;
