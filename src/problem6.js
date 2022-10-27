@@ -17,20 +17,30 @@ dict 를 사용하자.
 1. 입력된 닉네임을 키값에 넣어주는 함수 => enterDict
 2. 키값의 value 값이 2개 이상인 값들을 return 해주는 함수 => checkValue
 3. 사용제한될 이메일을 return 해주는 함수 => refuseEmail
+4. 닉네임으로 만들어질 수 있는 연속된 문자열 생성시켜 return 해주는 함수 => makeKeys
 */
 
 function problem6(forms) {
+  function makeKeys(words) {
+    let madeKeys = [];
+    for (let i = 0; i < words.length - 1; i++) {
+      let Key = words[i];
+      for (let j = i + 1; j < words.length; j++) {
+        Key += words[j];
+        madeKeys.push(Key);
+      }
+    }
+    return madeKeys;
+  }
+
   function enterDict(accountInfo) {
     accountInfo.map((account) => {
       let nickName = account[1].split("");
-      for (let i = 0; i < nickName.length - 1; i++) {
-        let nickNameKey = nickName[i];
-        for (let j = i + 1; j < nickName.length; j++) {
-          nickNameKey += nickName[j];
-          if (nickNameCnt[nickNameKey]) nickNameCnt[nickNameKey] += 1;
-          else nickNameCnt[nickNameKey] = 1;
-        }
-      }
+      let makeResult = makeKeys(nickName);
+      makeResult.map((key) => {
+        if (nickNameCnt[key]) nickNameCnt[key] += 1;
+        else nickNameCnt[key] = 1;
+      });
     });
     return;
   }
@@ -41,20 +51,14 @@ function problem6(forms) {
   }
 
   function refuseEmail(accountInfo) {
+    let result = [];
     accountInfo.map((account) => {
-      let result = [];
       let email = account[0];
       let nickName = account[1].split("");
-      for (let i = 0; i < nickName.length - 1; i++) {
-        let nickNameKey = nickName[i];
-        for (let j = i + 1; j < nickName.length; j++) {
-          nickNameKey += nickName[j];
-          if (refuseList[nickNameKey]) {
-            result.push(email);
-            break;
-          }
-        }
-      }
+      let makeResult = makeKeys(nickName);
+      makeResult.map((key) => {
+        if (refuseList[key]) result.push(email);
+      });
     });
     return result;
   }
