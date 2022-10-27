@@ -1,29 +1,53 @@
 function problem1(pobi, crong) {
-  pobiSum = 0;
-  pobiMultple = 1;
+  pobiLeftSum = 0;
+  pobiLeftMultple = 1;
+  pobiRightSum = 0;
+  pobiRightMultple = 1;
   pobiMax = 0;
 
-  crongSum = 0;
-  crongMultple = 1;
+  crongLeftSum = 0;
+  crongLeftMultple = 1;
+  crongRightSum = 0;
+  crongRightMultple = 1;
   crongMax = 0;
 
   //left
   pobiLeftNum = pobi[0];
-  pNum = String(pobiLeftNum);
-  for (let i = 0; i < pNum.length; i++) {
-    pobiSum += parseInt(pNum[i]);
-    pobiMultple *= parseInt(pNum[i]);
+  pobiLeftNum = String(pobiLeftNum);
+  for (let i = 0; i < pobiLeftNum.length; i++) {
+    pobiLeftSum += parseInt(pobiLeftNum[i]);
+    pobiLeftMultple *= parseInt(pobiLeftNum[i]);
   }
 
   crongLeftNum = crong[0];
-  cNum = String(crongLeftNum);
-  for (let i = 0; i < cNum.length; i++) {
-    crongSum += parseInt(cNum[i]);
-    crongMultple *= parseInt(cNum[i]);
+  crongLeftNum = String(crongLeftNum);
+  for (let i = 0; i < crongLeftNum.length; i++) {
+    crongLeftSum += parseInt(crongLeftNum[i]);
+    crongLeftMultple *= parseInt(crongLeftNum[i]);
   }
+
+  //right
+  pobiRightNum = pobi[1];
+  pobiRightNum = String(pobiRightNum);
+  for (let i = 0; i < pobiRightNum.length; i++) {
+    pobiRightSum += parseInt(pobiRightNum[i]);
+    pobiRightMultple *= parseInt(pobiRightNum[i]);
+  }
+
+  crongRightNum = crong[1];
+  crongRightNum = String(crongRightNum);
+  for (let i = 0; i < crongRightNum.length; i++) {
+    crongRightSum += parseInt(crongRightNum[i]);
+    crongRightMultple *= parseInt(crongRightNum[i]);
+  }
+
+  console.log(pobiLeftSum, pobiLeftMultple, crongLeftSum, crongLeftMultple);
+  console.log(pobiRightSum, pobiRightMultple, crongRightSum, crongRightMultple);
 
   var answer;
   return answer;
 }
+
+problem1([97, 98], [197, 198]);
 
 module.exports = problem1;
