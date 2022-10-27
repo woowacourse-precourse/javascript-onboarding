@@ -27,9 +27,9 @@ function problem1(pobi, crong) {
     const scoreArr = [];
 
     const getSumMul = (num) => {
-      const numToArr = num.split("").map(Number);
+      const numToArr = num.toString().split("").map(Number);
       let sum = 0;
-      let mul = 0;
+      let mul = 1;
 
       for (let i = 0; i < numToArr.length; i++) {
         sum += numToArr[i];
