@@ -1,7 +1,7 @@
 function checkValidation(pageArr) {
   const [left, right] = pageArr;
 
-  return left % 2 === 1 && right - left && left >= 3 && left <= 397;
+  return left % 2 === 1 && left + 1 === right && left >= 3 && left <= 397;
 }
 
 function getMulti(pageNum) {
