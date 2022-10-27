@@ -1,11 +1,13 @@
 function problem1(pobi, crong) {
-  let answer;
-
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
 
   const getSum = (page) => {
     return page.toString().split('').reduce((a, b) => a + Number(b), 0);
+  };
+
+  const getMultiplication = (page) => {
+    return page.toString().split('').reduce((a, b) => a * Number(b), 1);
   };
 
   const check = (arr) => {
@@ -16,11 +18,10 @@ function problem1(pobi, crong) {
     if (arr[1] >= 400) return false;
     return true;
   }
-  if (!check(pobi) || !check(crong)) return answer = -1;
+  if (!check(pobi) || !check(crong)) return -1;
   else {
 
   }
-  return answer;
 }
 
 module.exports = problem1;
