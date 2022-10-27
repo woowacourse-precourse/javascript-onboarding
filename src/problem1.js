@@ -24,7 +24,13 @@ function getScore(player) {
 function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong)) return -1;
 
-  var answer;
+  let answer = 0;
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) answer = 1;
+  if (crongScore > pobiScore) answer = 2;
 
   return answer;
 }
