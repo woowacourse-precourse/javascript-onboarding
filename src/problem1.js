@@ -1,9 +1,20 @@
 function problem1(pobi, crong) {
   var answer;
   var players = [pobi, crong];
-  if (players.filter((player) => player[1] - player[0] != 1).length > 0) {
-    return -1;
-  }
+  if (
+    players.filter(
+      (player) =>
+        (player[1] - player[0] != 1) |
+        player.includes(1) |
+        player.includes(2) |
+        player.includes(399) |
+        player.includes(400) |
+        (player.length !== 2) |
+        (player[0] % 2 == 0) |
+        (player[1] % 2 == 1)
+    ).length > 0
+  )
+    return (answer = -1);
 
   var [pobiScore, crongScore] = players.map((player) => {
     var playerMax = Number.MIN_SAFE_INTEGER;
