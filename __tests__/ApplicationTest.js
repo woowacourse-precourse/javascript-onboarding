@@ -27,6 +27,9 @@ describe("problem2", () => {
   test("Problem2_SymmetricCrypto_ReturnEmptyString", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("Problem2_OnlyOneChar_ReturnEmptryString", () => {
+    expect(problem2("aaaaaaaaaaaaaaaaaaaa")).toEqual("");
+  });
 });
 
 describe("problem3", () => {
