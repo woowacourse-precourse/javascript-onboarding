@@ -42,14 +42,21 @@
   - ex)`[12, 34] => [[1,2], [3,4]]`
 
 - 주어진 쪽수를 각각 더하기 거나 곱하는 계산을 수행한다.
-  - `pages.map((page) => [page.reduce(add), page.reduce(multiply)])`
-  - helper 함수로 더하기, 곱하기 함수를 사용한다.
-  - ex)`[[1,2],[3,4]] => [[3,3],[7,12]]`
-- 더하기 계산과 곱하기 계산을 수행한 결과를 비교하여 더 큰 값을 반환한다.
-  - `max`함수를 사용하여 더 큰 값을 반환한다.
-  - `Math.max()`를 사용할지, `reduce`를 사용할지 고민했는데, `reduce`를 사용하면 체이닝을 이용하여 코드를 간결하게 작성할 수 있을 것 같아서 reduce를 사용할 것 이다.
-  - `max(iter): number`
-  - ex)`[[3,3],[7,12]] => 12`
+- 계산이나, 값을 결정하는 기준은 변경될 수도 있을테니, 함수외부에서 주입받는다.
+  - 함수의 시그니처는 아래와 같다.
+
+- 이 문제에서는 각각의 자리수를 더하거나 곱하는 계산을 수행하고, 최댓값을 구하므로
+  decide와 calculates 인자는 아래와 같다.
+  - `decide` : `Math.max`
+  - `calcurates` : [`(a,b)=>a+b`, `(a,b)=>a*b`]
+
+```ts
+  getPoints(
+    userPages:[number, number], 
+    decide:(...)=>number, 
+    calcurates:((a:number,b:number)=>number)[]
+  )
+```  
 
 #### 3. 승자 구하기
 
@@ -57,15 +64,25 @@
 - 예상되는 핵심 이 함수의 메인 코드는 아래와 같다.
 
 ```js
-
-  if(pobiPoints === crongPoints) return 0;
-  if(pobiPoints> crongPoints) return 1;
-  else return 2;
+  if(pobiPoints === crongPoints) return RESULT.DRAW;
+  if(pobiPoints> crongPoints) return RESULT.POBI;
+  else return RESULT.CRONG;
 ```
 
 #### 3. 예외 케이스
 
-- `isValid(numbers:Array<Number[]>, errorcases:Array<Function(number)>):Boolean` 함수를 만들어 예외 케이스를 먼저 거르는 방향으로 구현해보려고한다.
+- `isValid`함수를 만들어 예외 케이스를 먼저 거르는 방향으로 구현해보려고한다.
+함수의 시그니처는 아래와 같다.
+- `errorCases`에 들어갈 함수배열은 인자를 받아 자신의 유효범위를 만들어 해당 로직을 확인할 수 있도록, `(a:number,b:number):boolean` 형태의 두 인자를 받아 `boolean`을 반환하는 함수로 구성한다.
+
+```ts
+// ts snippet 
+
+type numbers = [number, number];
+type errorCases = ((a,b)=>boolean)[]
+
+isValid( numbers:numbers, errorCases:errorCases):Boolean
+```
 
 1. 입력받은 페이지가 [홀수, 짝수] 순으로 주어지지 않은 경우
 2. 오른쪽 페이지 - 왼쪽 페이지가 1이 아닌 경우
@@ -73,6 +90,15 @@
 4. 두번째 페이지가 홀수인 경우(2번과 같이 처리가능)
 5. 왼쪽 페이지가 1보다 작은 경우
 6. 오른쪽 페이지가 400보다 큰 경우
+
+- 위의 6가지 에러케이스는 아래 3가지 함수를 통해 처리할수 있다.
+
+- `isOddEven`
+  - a, b를 받아 a, b가 각각 홀수, 짝수인 튜플인지 확인하는 함수
+- `isDiff(diff)`
+  - n을 받아 `(a,b):boolean` 형태로 a,b페이지의 차이가 n인지 확인하는 함수
+- `isArea(min,max)`
+  - min, max를 받아 `(a,b):boolean` 형태로 a,b페이지가 min, max 범위에 있는지 확인하는 함수
 
 #### 4. 정리
 
@@ -82,14 +108,14 @@
 //입력받기
 function(pobi, crong){
   //예외 케이스 처리
-  if(!isValid([pobi,crong], [isOddEven(1,2), isDiff(1), isArea(1,400)])) return -1;
+  if(!isValid([pobi,crong], [isOddEven, isDiff(1), isArea(1,400)])) return -1;
 
-  let pobiPoints = getPoints(pobi);
-  let crongPoints = getPoints(crong);
-  
-  if(pobiPoints === crongPoints) return 0;
-  if(pobiPoints> crongPoints) return 1;
-  else return 2;
+  let pobiPoints = getPoints(pobi, Math.max, [add, multiply]);
+  let crongPoints = getPoints(crong, Math.max, [add, multiply]);
+
+  if (pobiPoints === crongPoints) return RESULT.DRAW;
+  if (pobiPoints > crongPoints) return RESULT.POBI;
+  else return RESULT.CRONG;
 
   //... function
 }
