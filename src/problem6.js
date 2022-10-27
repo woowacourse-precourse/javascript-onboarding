@@ -2,14 +2,10 @@ function problem6(forms) {
   let answer = [];
 
   for (let i = 0; i < forms.length; i++) {
-    let standardArrayForCheckingRepeat = makeTwoLetterArray(
-      forms.filter((v, j) => j !== i)
-    );
+    const formsWithoutCurrentUser = forms.filter((v, j) => j !== i);
+    let nicknameSplitArray = getNicknameSplitArray(formsWithoutCurrentUser);
     if (
-      checkIsNicknameInCludesRepeatWord(
-        forms[i][1],
-        standardArrayForCheckingRepeat
-      ) &&
+      checkIsNicknameIncludeRepeatWord(forms[i][1], nicknameSplitArray) &&
       !answer.includes(forms[i][0])
     )
       answer.push(forms[i][0]);
@@ -20,33 +16,31 @@ function problem6(forms) {
   return answer;
 }
 
-function makeTwoLetterArray(forms) {
-  let twoLetterArray = [];
+function getNicknameSplitArray(forms) {
+  let nicknameSplitArray = [];
 
   for (let i = 0; i < forms.length; i++) {
     for (let j = 1; j < forms[i][1].length; j++) {
-      const newWord = `${forms[i][1][j - 1]}${forms[i][1][j]}`;
-      if (!twoLetterArray.includes(newWord)) twoLetterArray.push(newWord);
+      const newSplitWord = `${forms[i][1][j - 1]}${forms[i][1][j]}`;
+      if (!nicknameSplitArray.includes(newSplitWord))
+        nicknameSplitArray.push(newSplitWord);
     }
   }
 
-  return twoLetterArray;
+  return nicknameSplitArray;
 }
 
-function checkIsNicknameInCludesRepeatWord(
-  nickname,
-  standardArrayForCheckingRepeat
-) {
-  let isNickNameIncludesRepeatWord = false;
+function checkIsNicknameIncludeRepeatWord(nickname, nicknameSplitArray) {
+  let isNickNameIncludeRepeatWord = false;
 
-  for (let i = 0; i < standardArrayForCheckingRepeat.length; i++) {
-    if (nickname.includes(standardArrayForCheckingRepeat[i])) {
-      isNickNameIncludesRepeatWord = true;
+  for (let i = 0; i < nicknameSplitArray.length; i++) {
+    if (nickname.includes(nicknameSplitArray[i])) {
+      isNickNameIncludeRepeatWord = true;
       break;
     }
   }
 
-  return isNickNameIncludesRepeatWord;
+  return isNickNameIncludeRepeatWord;
 }
 
 module.exports = problem6;
