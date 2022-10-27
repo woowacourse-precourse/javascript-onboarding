@@ -1,6 +1,6 @@
 function problem7(user, friends, visitors) {
   let userFriends = [];
-  let recommends = new Map();
+  let recommendList = new Map();
   friends.forEach(relationship => {
     const userfriend = isfriend(user, relationship);
     if(userfriend) userFriends.push(userfriend);
@@ -8,23 +8,18 @@ function problem7(user, friends, visitors) {
   userFriends.forEach(recommendUser => {
     friends.forEach(relationship => {
       const friend = isfriend(recommendUser, relationship)
-      if(friend) {
-        if(friend === user) return;
-        if(recommends.has(friend)) recommends.set(friend, recommends.get(friend) + 10);
-        else recommends.set(friend, 10);
-      }
+      if([false, user].includes(friend)) return;
+      if(recommendList.has(friend)) return recommendList.set(friend, recommendList.get(friend) + 10);
+      recommendList.set(friend, 10);
     });
   });
   visitors.forEach(visitor => {
     if(userFriends.includes(visitor)) return;
-    if(recommends.has(visitor)) {
-      recommends.set(visitor, recommends.get(visitor) + 1);
-      return;
-    }
-    recommends.set(visitor, 1);
+    if(recommendList.has(visitor)) return recommendList.set(visitor, recommendList.get(visitor) + 1);
+    recommendList.set(visitor, 1);
   });
-  recommends = sortRecommends([...recommends]).splice(0,5);
-  return recommends;
+  recommendList = sortRecommends([...recommendList]).splice(0,5);
+  return recommendList;
 }
 
 function isfriend(user, relationship) {
@@ -35,24 +30,24 @@ function isfriend(user, relationship) {
   return friend;
 }
 
-function sortRecommends(recommendList) {
+function sortRecommends(list) {
   let sortedList = [];
   let tiePointUsers = new Set();
-  recommendList.sort((a,b) => {
+  list.sort((a,b) => {
     return b[1] - a[1];
   });    
-  for(let i = 0; i < recommendList.length; i++) {
-    const userID = recommendList[i][0];    
-    const userPoint = recommendList[i][1];
-    const nextUserID = recommendList[i + 1]?.[0];     
-    const nextUserPoint = recommendList[i + 1]?.[1];  
+  for(let i = 0; i < list.length; i++) {
+    const userID = list[i][0];    
+    const userPoint = list[i][1];
+    const nextUserID = list[i + 1]?.[0];     
+    const nextUserPoint = list[i + 1]?.[1];  
     tiePointUsers.add(userID); 
     if(userPoint === nextUserPoint) {
       tiePointUsers.add(nextUserID);
-    } else {
-      sortedList.push(...([...tiePointUsers].sort()));
-      tiePointUsers = new Set();
+      continue;
     }
+    sortedList.push(...([...tiePointUsers].sort()));
+    tiePointUsers = new Set();
   }
   return sortedList;
 }
