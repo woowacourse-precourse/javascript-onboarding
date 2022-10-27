@@ -10,6 +10,8 @@ function problem6(forms) {
   let namesArr = [];
   // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
   let nameCount = {};
+  // 중복되는 문자열
+  let duplicate = "";
 
   // 모든 크루의 닉네임을 2글자 단위로 자른 값을 키로, 개수를 값으로 만들기
   for (let i = 0; i < forms.length; i++) {
@@ -24,6 +26,14 @@ function problem6(forms) {
       } else nameCount[name] = 1;
     }
     namesArr.push(arr);
+  }
+
+  // nameCount에서 값이 2 이상인 문자열 찾기
+  for (let key in nameCount) {
+    if (nameCount[key] >= 2) {
+      duplicate = key;
+      break;
+    }
   }
 }
 
