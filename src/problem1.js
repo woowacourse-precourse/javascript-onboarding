@@ -1,6 +1,11 @@
 function problem1(pobi, crong) {
-  const pobiScore = Math.max(pageSum(pobi),pageMul(pobi))
-  const crongScore = Math.max(pageSum(crong),pageMul(crong));
+  const pobiLeftScore = Math.max(pageSum(pobi[0]),pageMul(pobi[0]));
+
+  const pobiRightScore = Math.max(pageSum(pobi[1]),pageMul(pobi[1]));
+
+  const crongLeftScore = Math.max(pageSum(crong[0]),pageMul(crong[0]));
+
+  const crongRigthScore = Math.max(pageSum(crong[1]),pageMul(crong[1]));
 
   return ScoreResult(Pobiscore,crongscore);
 }
