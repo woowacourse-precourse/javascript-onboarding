@@ -55,7 +55,10 @@ function problem7(user, friends, visitors) {
   }
 
   answer.sort(compare);
-
+  if (answer.length > 5) {
+    answer.splice(5);
+  }
+  
   return answer;
 }
 
