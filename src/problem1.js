@@ -20,7 +20,7 @@ function problem1(pobi, crong) {
   }else if(pobi[1]-pobi[0] != 1|| crong[1]-crong[0] != 1){
     return -1;
   }
-  
+    
   for (const item of pobi){
     var arr = item.toString().split("").map(x=> parseInt(x));
     pobi_num.push(arr.reduce((x,y)=> x+y));
