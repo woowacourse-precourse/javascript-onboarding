@@ -1,6 +1,6 @@
 function problem1(pobi, crong) {
- 
-  return 
+  var answer;
+  return answer;
 }
 
 function pageSum(num){
@@ -16,6 +16,5 @@ function pageMul(num){
   }
   return (num / 10) * (num % 10);
 }
-
 
 module.exports = problem1;
