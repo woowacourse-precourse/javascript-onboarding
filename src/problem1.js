@@ -1,4 +1,4 @@
-const VALIDITT = {
+const INPUT = {
   length: 2,
   number: 'number',
   minPage: 3,
@@ -71,32 +71,32 @@ function isEven(num) {
   return num % 2 === 0 ? true : false;
 }
 
-function isValidInput(arr) {
-  if (arr.length !== VALIDITT.length) {
-    return false;
+function isWrongInput(arr) {
+  if (arr.length !== INPUT.length) {
+    return true;
   }
 
-  if (typeof arr[0] !== VALIDITT.number || typeof arr[1] !== VALIDITT.number) {
-    return false;
+  if (typeof arr[0] !== INPUT.number || typeof arr[1] !== INPUT.number) {
+    return true;
   }
 
   if (isEven(arr[0]) || !isEven(arr[1])) {
-    return false;
+    return true;
   }
 
   if (arr[0] !== arr[1] - 1) {
-    return false;
+    return true;
   }
 
-  if (arr[0] < VALIDITT.minPage || arr[1] > VALIDITT.maxPage) {
-    return false;
+  if (arr[0] < INPUT.minPage || arr[1] > INPUT.maxPage) {
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function problem1(pobi, crong) {
-  if (!isValidInput(pobi) || !isValidInput(crong)) {
+  if (isWrongInput(pobi) || isWrongInput(crong)) {
     return RESULT.exception;
   }
   return compareScore(getBigScore(pobi), getBigScore(crong));

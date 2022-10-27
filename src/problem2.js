@@ -1,4 +1,4 @@
-const VALIDITY = {
+const INPUT = {
   minLength: 1,
   maxLength: 1000,
   string: 'string',
@@ -76,24 +76,24 @@ function decodeCryptogram(cryptogram) {
   return getStringFromArray(res);
 }
 
-function isValidInput(input) {
-  if (input.length < VALIDITY.minLength || input.length > VALIDITY.maxLength) {
-    return false;
+function isWrongInput(input) {
+  if (input.length < INPUT.minLength || input.length > INPUT.maxLength) {
+    return true;
   }
 
-  if (typeof input !== VALIDITY.string) {
-    return false;
+  if (typeof input !== INPUT.string) {
+    return true;
   }
 
   if (input === input.toUpperCase()) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function problem2(cryptogram) {
-  if (!isValidInput(cryptogram)) {
+  if (isWrongInput(cryptogram)) {
     return RESULT.exception;
   }
 
