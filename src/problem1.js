@@ -4,13 +4,16 @@
   [O] 페이지 번호의 각 자리 숫자를 모두 더하는 기능 | return 값 : 각 자리 숫자의 합 
   [O] 페이지 번호의 각 자리 숫자를 모두 곱하는 기능 | return 값 : 각 자리 숫자의 곱 | 함수명 : getProductOfDigits
   [O] 계산된 값(인자로 주어진 값) 중 가장 큰 값을 구하는 기능 | return 값 : 가장 큰 수 | 함수명 : getMaxScore 
-  [ ] 점수를 비교해 게임의 결과를 return 하는 기능 | return 값 : 0(무승부)/1(포비 승)/2(크롱 승) 
+  [O] 점수를 비교해 게임의 결과를 return 하는 기능 | return 값 : 0(무승부)/1(포비 승)/2(크롱 승) | 함수명 : getGameResult
 */
 
 function problem1(pobi, crong) {
   if (!(isConsecutiveNumbers(pobi) && isConsecutiveNumbers(crong))) return -1;
+
   let maxScoreOfPobi = getMaxScore(getSumOfDigits(pobi), getProductOfDigits(pobi));
   let maxScoreOfCrong = getMaxScore(getSumOfDigits(crong), getProductOfDigits(crong));
+
+  return getGameResult(maxScoreOfPobi, maxScoreOfCrong);
 }
 
 function isConsecutiveNumbers(numbers) {
@@ -35,4 +38,7 @@ function getMaxScore(scores) {
   return Math.max(scores);
 }
 
+function getGameResult(maxScoreOfPobi, maxScoreOfCrong) {
+  return maxScoreOfPobi > maxScoreOfCrong ? 1 : maxScoreOfPobi < maxScoreOfCrong ? 2 : 0;
+}
 module.exports = problem1;
