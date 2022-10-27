@@ -3,16 +3,18 @@ function problem3(number) {
 
   const Numbers = Array.from({ length: number }, (v, i) => i + 1);
   Numbers.forEach((eachNum) => {
-    let temp = eachNum.toString().split("");
-    temp.forEach((char) => {
-      switch (char) {
-        case "3":
-        case "6":
-        case "9":
-          count++;
-          break;
-      }
-    });
+    eachNum
+      .toString()
+      .split("")
+      .forEach((char) => {
+        switch (char) {
+          case "3":
+          case "6":
+          case "9":
+            count++;
+            break;
+        }
+      });
   });
 
   return count;
