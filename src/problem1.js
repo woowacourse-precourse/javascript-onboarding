@@ -16,12 +16,15 @@ function problem1(pobi, crong) {
     // maxPobi, maxCrong:  72 72
     
     // 기능 3
+    const answer = checkScore(maxPobi, maxCrong);
+    console.log(answer)
+    return answer;  
+
   } else { // 예외사항이 발생한 경우
     answer = -1;
+    console.log(answer)
     return answer;
   }
-
-  return answer;
 }
 
 // 기능 1. 입력 배열의 예외사항 체크
@@ -104,12 +107,28 @@ function calculation(pageList) {
   return Math.max.apply(null, totalPage);
 }
 
-
 // 기능 3. 둘의 점수 비교하여 결과 리턴하기
+function checkScore(maxPobi, maxCrong) {
+  let score = 0;
 
-pobi = [97, 98];
+  if (maxPobi > maxCrong) {
+    score = 1;
+  } else if (maxPobi < maxCrong) {
+    score = 2;
+  } else {
+    score = 0;
+  }
+
+  return score;
+}
+
+
+
+// pobi = [97, 98];
 // pobi = [1, 2];
-crong = [197, 198];
+pobi = [131, 132];
+// crong = [197, 198];
+crong = [211, 212];
 
 problem1(pobi, crong);
 
