@@ -1,26 +1,26 @@
 function problem1(pobi, crong) {
-  const getScores = ([firstPage, secondPage]) => {
+  const getScoreList = ([firstPage, secondPage]) => {
     return [
-      Number(
-        [...String(firstPage)].reduce((acc, cur) => Number(cur) * Number(acc))
-      ),
-      Number(
-        [...String(firstPage)].reduce((acc, cur) => Number(cur) + Number(acc))
-      ),
-      Number(
-        [...String(secondPage)].reduce((acc, cur) => Number(cur) * Number(acc))
-      ),
-      Number(
-        [...String(secondPage)].reduce((acc, cur) => Number(cur) + Number(acc))
-      ),
+      getScore(firstPage, multiplyCallback),
+      getScore(firstPage, addCallback),
+      getScore(secondPage, multiplyCallback),
+      getScore(secondPage, addCallback),
     ];
   };
+  const getScore = (page, calculateCallback) => {
+    return getDigitNumberList(page).reduce(calculateCallback);
+  };
+
+  const getDigitNumberList = (page) => [...String(page)];
+  const multiplyCallback = (acc, cur) => Number(cur) * Number(acc);
+  const addCallback = (acc, cur) => Number(cur) + Number(acc);
   const getMaxScore = (scores) => {
     return scores.reduce((acc, cur) => Math.max(acc, cur));
   };
-  getMaxScore(getScores(pobi)); //72
-  getMaxScore(getScores(crong)); //72
+
+  getMaxScore(getScoreList(pobi));
+  getMaxScore(getScoreList(crong));
 }
 
-problem1([97, 98], [197, 198]);
+problem1([131, 132], [211, 212]);
 // module.exports = problem1;
