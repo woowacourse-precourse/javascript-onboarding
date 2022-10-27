@@ -26,6 +26,15 @@ def problem1(pobi, crong):
   pobi_max = max(sum0(pobi_left), sum0(pobi_right), mult0(pobi_left), mult0(pobi_right))
   crong_max = max(sum0(crong_left), sum0(crong_right), mult0(crong_left), mult0(crong_right))
 
+  # 점수 높은 사람 result에 저장
+  result = max(pobi_max,crong_max)
+  # print(result)
+
+  # 포비가 이기면 1, 크롱이 이기면 2 처리 후 리턴
+  if result == pobi_max:
+    return 1
+  else:
+    return 2
 
 
 
