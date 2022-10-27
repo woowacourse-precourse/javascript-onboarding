@@ -45,6 +45,18 @@ const multiplyDigits = (num) => {
   return mul;
 };
 
+const getMaxNumber = (pages) => {
+  const [left, right] = pages;
+  let maxNumber = 0;
+  maxNumber = Math.max(
+    sumDigits(left),
+    multiplyDigits(left),
+    sumDigits(right),
+    multiplyDigits(right)
+  );
+  return maxNumber;
+};
+
 function problem1(pobi, crong) {
   if (!checkPageRange(pobi, crong)) return -1;
   if (!checkPageGap(pobi, crong)) return -1;
