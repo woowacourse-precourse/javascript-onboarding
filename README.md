@@ -32,11 +32,11 @@
   - [x] 변환된 문자열 return 로직
   - [x] 문제4 테스트 통과
 
-- [ ] [문제 5](docs/PROBLEM5.md) solution 함수 작성
+- [x] [문제 5](docs/PROBLEM5.md) solution 함수 작성
 
   - [x] 금액 단위가 들어있는 배열 생성
   - [x] 각 금액 단위별 변환 개수 return 로직 
-  - [ ] 문제 5 테스트 통과
+  - [x] 문제 5 테스트 통과
 
 - [ ] [문제 6](docs/PROBLEM6.md) solution 함수 작성
 
