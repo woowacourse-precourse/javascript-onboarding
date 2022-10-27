@@ -18,12 +18,12 @@
   - [x] 중복이 모두 제거될 때까지 재귀 호출하는 로직
   - [x] 문제2 테스트 통과 
 
-- [ ] [문제 3](docs/PROBLEM3.md) solution 함수 작성
+- [x] [문제 3](docs/PROBLEM3.md) solution 함수 작성
 
   - [x] 박수가 가능한지 판별하는 함수
   - [x] 각 자릿수의 박수 횟수를 return하는 함수
   - [x] 주어진 숫자의 총 박수 횟수 return 로직
-  - [ ] 문제3 테스트 통과
+  - [x] 문제3 테스트 통과
 
 - [ ] [문제 4](docs/PROBLEM4.md) solution 함수 작성
 
