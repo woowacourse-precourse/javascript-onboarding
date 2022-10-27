@@ -1,17 +1,19 @@
-function changeUpper(oneWordASCII, ans) {
-  const newWordASCII = 90 - (oneWordASCII - 65);
-
+function addChangedWord(ans, newWordASCII) {
   const newWord = String.fromCharCode(newWordASCII);
 
   ans.push(newWord);
 }
 
+function changeUpper(oneWordASCII, ans) {
+  const newWordASCII = 90 - (oneWordASCII - 65);
+
+  addChangedWord(ans, newWordASCII);
+}
+
 function changeLower(oneWordASCII, ans) {
   const newWordASCII = 122 - (oneWordASCII - 97);
 
-  const newWord = String.fromCharCode(newWordASCII);
-
-  ans.push(newWord);
+  addChangedWord(ans, newWordASCII);
 }
 
 function checkUpperOrLower(oneWordASCII, ans) {
