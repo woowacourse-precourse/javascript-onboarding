@@ -12,6 +12,15 @@ function isDuplicate(cryptogram){
   }
   return 0;
 }
-
+function findDuplicatesCharIndex(cryptogram) {
+  let findIndex = [];
+  for (let i = 0; i < cryptogram.length - 1; i++) {
+    if (cryptogram[i] === cryptogram[i + 1]) {
+      findIndex.push(i);
+      findIndex.push(i + 1);
+    }
+  }
+  return Array.from(new Set(findIndex));
+}
 
 module.exports = problem2;
