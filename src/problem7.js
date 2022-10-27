@@ -17,15 +17,14 @@ function getRelationships (friends) {
   return relationships;
 }
 
-function calcFriendScore(user, relationships) {
-  let scores = {};
+function calcFriendScore(user, relationships, scores = {}) {
   const userFriends = relationships[user];
   for (const name in relationships) {
     if (name === user || userFriends.includes(name)) {
       continue;
     }
-    const names = relationships[name] || [];
-    const overlapFriends = names.filter(name => userFriends.includes(name)).length;
+    const friends = relationships[name] || [];
+    const overlapFriends = friends.filter(friend => userFriends.includes(friend)).length;
     scores[name] = 10 * overlapFriends;
   }
   return scores;
