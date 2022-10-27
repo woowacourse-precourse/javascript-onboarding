@@ -58,6 +58,10 @@ function setRelation(relation, friends, map){
 }
 
 function setUserScores(userScores, relation, visitors, userList){
+  initUserScores(userScores, userList);
+}
+
+function initUserScores(userScores, userList){
   for(let i = 0; i < userList.length; i++){
     console.log(userList[i]);
     userScores[i] = {
