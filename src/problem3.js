@@ -10,8 +10,6 @@ function problem3(number) {
 
     const totalNumberArray = totalNumberString.split('');
 
-    console.log(totalNumberArray);
-
     return totalNumberArray;
   };
 
@@ -22,7 +20,14 @@ function problem3(number) {
 
     return count;
   };
+
+  const totalNumberArray = getTotalNumberArray(number);
+
+  const NumberThreeCount = getSpecificNumberCount(totalNumberArray, 3);
+  const NumberSixCount = getSpecificNumberCount(totalNumberArray, 6);
+  const NumberNineCount = getSpecificNumberCount(totalNumberArray, 9);
   
+  answer = NumberThreeCount + NumberSixCount + NumberNineCount;
 
   return answer;
 }
