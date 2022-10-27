@@ -2,6 +2,8 @@ const {
   checkInputError,
   checkAlpha,
   transAlpha,
+  isSmall,
+  isBig,
 } = require("../src/problem4.util");
 
 describe("checkInputError", () => {
@@ -16,6 +18,30 @@ describe("checkInputError", () => {
 
   it("is return false", () => {
     expect(checkInputError("abc")).toEqual(false);
+  });
+});
+
+describe("isSmall", () => {
+  it("is check alpha that alpha small is True", () => {
+    expect(isSmall("a")).toEqual(true);
+  });
+  it("is check alpha that alpha small is False", () => {
+    expect(isSmall("A")).toEqual(false);
+  });
+  it("is check alpha that alpha small is False", () => {
+    expect(isSmall("")).toEqual(false);
+  });
+});
+
+describe("isBig", () => {
+  it("is check alpha that alpha big is True", () => {
+    expect(isBig("A")).toEqual(true);
+  });
+  it("is check alpha that alpha small is False", () => {
+    expect(isBig("a")).toEqual(false);
+  });
+  it("is check alpha that alpha small is False", () => {
+    expect(isBig("")).toEqual(false);
   });
 });
 
