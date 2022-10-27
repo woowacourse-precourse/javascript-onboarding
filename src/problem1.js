@@ -1,4 +1,14 @@
 
+function checkArr(arr) {
+  left = Number(arr[0]);
+  right = Number(arr[1]);
+  if (left % 2 != 1 || left < 3 || left > 397)
+    return (0);
+  if (left + 1 !== right)
+    return (0);
+  return (1);
+}
+
 function problem1(pobi, crong) {
   if (!checkArr(pobi) || !checkArr(crong))
     return -1;
