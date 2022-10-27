@@ -39,6 +39,17 @@ function problem7(user, friends, visitors) {
   }
 
   // visitors에서 추천 사용자의 중복횟수 * 3
+  const scoreVisitors = () => {
+    visitors.map((u) => {
+      if (!(user_rank.find(e => e.name === u)) && (users_friend.includes(u) == false)) {
+        user_rank.push({ name: u, score: 1 });
+      } else if ((user_rank.find(e => e.name === u)) && (users_friend.includes(u) == false)) {
+        let idx = user_rank.findIndex(e => e.name === u);
+        user_rank[idx].score += 1;
+      }
+    })
+  }
+
   // 추천 점수가 부여된 사용자의 목록을 점수-이름 순으로 정렬
 
   return answer;
