@@ -1,15 +1,39 @@
 function problem1(pobi, crong) {
   let answer = null
-
-  if(pobi[0] % 2 !== 0 || pobi[1] % 2 !== 0 || 
-    crong[0] % 2 !== 0 || crong[1] % 2 !== 0 ||
-    pobi[0] + 1 !== pobi[1] ||
-    crong[0] + 1 !== crong[1] ||
-    pobi[0] > 399 || pobi[1] > 400 ||
-    crong[0] > 399 || crong[1] > 400 ||
-    pobi.length > 2 || crong.length > 2){
-      return -1
+  class Input {
+    constructor ({name, leftPage, rightPage}) {
+      this.name = name
+      this.leftPage = leftPage
+      this.rightPage = rightPage
+    }
   }
+  const Pobi = new Input({name: 'pobi', leftPage : pobi[0], rightPage : pobi[1]})
+  const Crong = new Input({name: 'crong', leftPage : crong[0], rightPage : crong[1]})
+  
+  class IsLeft {
+    constructor({leftPage}) {
+      this.leftPage = leftPage
+    }
+    IsLeftOdd() {
+      if(!this.leftPage / 2) {
+        return true
+      }
+      return false
+    }
+  }
+
+  class IsRight {
+    constructor({rightPage}) {
+      this.rightPage = rightPage
+    }
+    IsRightEven() {
+      if(this.rightPage / 2) {
+        return true
+      }
+      return false
+    }
+  }
+
 
   return answer;
 }
