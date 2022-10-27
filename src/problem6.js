@@ -3,9 +3,11 @@ function checkOverlap(nickname) {
   const arr = [];
 
   for (let i = 0; i < nickname.length; i++) {
-    const standard = nickname[i].slice(i, i + 2);
-    const expectSelf = nickname.filter(v => v !== nickname[i]);
-    if (expectSelf.some(v => v.includes(standard))) arr.push(standard);
+    for (let j = 0; j < nickname[i].length; j++) {
+      const standard = nickname[j].slice(j, j + 2);
+      const expectSelf = nickname.filter(v => v !== nickname[j]);
+      if (expectSelf.some(v => v.includes(standard))) arr.push(standard);
+    }
   }
 
   return arr.filter(v => v !== '');
