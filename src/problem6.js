@@ -1,27 +1,27 @@
-function getKeys(nickname) {
-  const keys = [];
-  let num = 2;
-  while (num <= nickname.length) {
-    let cur = 0;
-    while (cur + num <= nickname.length) {
-      keys.push(nickname.substr(cur, num));
-      cur++;
+function getPartsOfNickname(nickname) {
+  const parts = [];
+  let numberOfLetters = 2;
+  while (numberOfLetters <= nickname.length) {
+    let currentIndex = 0;
+    while (currentIndex + numberOfLetters <= nickname.length) {
+      parts.push(nickname.substr(currentIndex, numberOfLetters));
+      currentIndex++;
     }
-    num++;
+    numberOfLetters++;
   }
-  return keys;
 }
 
 function problem6(forms) {
-  const duplicates = {};
-  forms.forEach((form) => {
-    getKeys(form[1]).forEach((key) => {
-      duplicates[key] = [...(duplicates[key] || []), form[0]];
+  const duplicates = forms.reduce((_duplicates, form) => {
+    const [email, nickname] = form;
+    getPartsOfNickname(nickname).forEach((part) => {
+      _duplicates[part] = [...(_duplicates[part] || []), email];
     });
-  });
-  const result = Object.values(duplicates).reduce((resultList, duplicate) => {
-    if (duplicate.length > 1) return [...resultList, ...duplicate];
-    return resultList;
+    return _duplicates;
+  }, {});
+  const result = Object.values(duplicates).reduce((emails, duplicate) => {
+    if (duplicate.length > 1) return [...emails, ...duplicate];
+    return emails;
   }, []);
   return [...new Set(result.sort())];
 }
