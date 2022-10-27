@@ -16,4 +16,7 @@ function generateTwoLetterArray(string) {
   return twoLetterArray;
 }
 
+function makeResultArray(array) {
+  return Array.from(new Set(array)).sort();
+}
 module.exports = problem6;
