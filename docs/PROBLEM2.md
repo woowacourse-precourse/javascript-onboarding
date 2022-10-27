@@ -22,3 +22,5 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## ✅ 구현할 기능 목록
+- [x] 중복 문자 제거 기능
