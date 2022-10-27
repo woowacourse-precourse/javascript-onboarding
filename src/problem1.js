@@ -43,7 +43,7 @@ function problem1(pobi, crong) {
       return 1;
     }
     if (oneScore < anotherScore) {
-      return -1;
+      return 2;
     }
     return 0;
   };
@@ -58,5 +58,4 @@ function problem1(pobi, crong) {
   return compareScores(pobiMaxScore, crongMaxScore);
 }
 
-problem1([99, 102], [211, 212]);
-// module.exports = problem1;
+module.exports = problem1;
