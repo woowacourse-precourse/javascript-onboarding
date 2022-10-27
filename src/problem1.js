@@ -1,4 +1,26 @@
 function problem1(pobi, crong) {
+  const isValid = (pages) => {
+    return (
+      isInRange(pages) &&
+      isNumber(pages) &&
+      isLeftOdd(pages) &&
+      isContinious(pages)
+    );
+  };
+  const isInRange = ([firstPage, secondPage]) => {
+    return (
+      firstPage > 0 && firstPage <= 400 && secondPage > 0 && secondPage <= 400
+    );
+  };
+  const isNumber = ([firstPage, secondPage]) => {
+    return typeof firstPage === 'number' && typeof secondPage === 'number';
+  };
+  const isLeftOdd = ([fisrtPage]) => {
+    return fisrtPage % 2 === 1;
+  };
+  const isContinious = ([firstPage, secondPage]) => {
+    return secondPage === firstPage + 1;
+  };
   const getScoreList = ([firstPage, secondPage]) => {
     return [
       getScore(firstPage, multiplyCallback),
@@ -25,6 +47,10 @@ function problem1(pobi, crong) {
     }
     return 0;
   };
+
+  if (!(isValid(pobi) && isValid(crong))) {
+    return -1;
+  }
 
   const pobiMaxScore = getMaxScore(getScoreList(pobi));
   const crongMaxScore = getMaxScore(getScoreList(crong));
