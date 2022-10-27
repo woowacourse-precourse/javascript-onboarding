@@ -27,6 +27,7 @@ function problem4(word) {
     });
 
     reversedWordArray.push(reversedWord.join(''));
+    answer = reversedWordArray.join(' ');
   });
 
   return answer;
