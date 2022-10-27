@@ -18,8 +18,6 @@ function problem1(pobi, crong) {
     
     console.log("포비분해",_pobinums)
     pobinums.push(_pobinums)
-    
-
 
     let _crongnums = [];
     
@@ -29,19 +27,21 @@ function problem1(pobi, crong) {
     } while (crong[i] > 0);
     console.log("크롱분해",_crongnums)
     crongnums.push(_crongnums)
-
-    
-    for ( i = 0 ; i < _pobinums.length ; i ++) {
-      pobiplus = pobiplus  + _pobinums[i]
-      pobimultiply = pobimultiply * _pobinums[i]
-    }
-
-    for ( i = 0 ; i < _crongnums.length ; i ++) {
-      crongplus = crongplus  + _crongnums[i]
-      crongmultiply = crongmultiply * _crongnums[i]
-    }
-
   }
+  for ( i = 0 ; i < pobinums.length ; i ++) {
+    for ( j = 0 ; j <pobinums[i].length; j++){
+      pobiplus = pobiplus  + pobinums[i][j]
+      pobimultiply = pobimultiply * pobinums[i][j]
+    }
+  }
+  
+  for ( i = 0 ; i < crongnums.length ; i ++) {
+    for ( j = 0 ; j <pobinums[i].length; j++){
+      crongplus = crongplus  + crongnums[i][j]
+      crongmultiply = crongmultiply * crongnums[i][j]
+    }
+  }
+  console.log("중간확인",pobinums[0][1]);
   console.log("포비확인",pobinums)
   console.log("크로확인",crongnums)
   console.log("포비 더하기",pobiplus)
@@ -49,6 +49,7 @@ function problem1(pobi, crong) {
   console.log("포비 곱하기",pobimultiply)
   console.log("크롱 곱하기",crongmultiply)
 }
+
 
 
 
