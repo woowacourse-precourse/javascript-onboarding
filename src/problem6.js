@@ -12,6 +12,8 @@ function problem6(forms) {
   let nameCount = {};
   // 중복되는 문자열
   let duplicate = "";
+  // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
+  let answer = [];
 
   // 모든 크루의 닉네임을 2글자 단위로 자른 값을 키로, 개수를 값으로 만들기
   for (let i = 0; i < forms.length; i++) {
@@ -35,6 +37,11 @@ function problem6(forms) {
       break;
     }
   }
+
+  // 중복되는 닉네임을 가진 크루들의 이메일 구하기
+  namesArr.filter((el, i) => {
+    if (el.includes(duplicate)) answer.push(forms[i][0]);
+  });
 }
 
 module.exports = problem6;
