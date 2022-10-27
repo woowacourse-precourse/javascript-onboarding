@@ -41,17 +41,33 @@ function getRemovedCryptogram(cryptogram, index) {
 
 /**
  * @param {string} cryptogram
+ * @returns {string} decryptedCryptogram
+ */
+function brownDecrypt(cryptogram) {
+  let result = cryptogram;
+  let isRemoved = true;
+  let removedIndex = 0;
+  while (isRemoved) {
+    isRemoved = false;
+    for (let i = removedIndex; i < result.length - 1; i++) {
+      if (result[i] === result[i + 1]) {
+        result = getRemovedCryptogram(result, i);
+        i -= 1;
+        removedIndex = i;
+        isRemoved = true;
+      }
+    }
+  }
+  return result;
+}
+
+/**
+ * @param {string} cryptogram
  * @returns {string} result
  */
 function problem2(cryptogram) {
-  var answer;
+  const answer = brownDecrypt(cryptogram);
   return answer;
 }
-
-console.log(getRemovedCryptogram("browoanoommnaon", 7));
-console.log(getRemovedCryptogram("browoanoommnaon", 9));
-console.log(getRemovedCryptogram("zyelleyz", 3));
-console.log(getRemovedCryptogram("zyellleyz", 3));
-console.log(getRemovedCryptogram("zyellllll", 3));
 
 module.exports = problem2;
