@@ -25,6 +25,13 @@ const getMaxNum = (odd, even) => {
   );
 }
 
+const isValidPage = (player) => {
+  const [leftPage, rightPage] = player;
+  if (leftPage < 1 || rightPage > 400) return false;
+  if (rightPage - leftPage !== 1) return false;
+  return true;
+}
+
 function problem1(pobi, crong) {
   const pobiMax = getMaxNum(pobi);
   const crongMax = getMaxNum(crong);
