@@ -16,7 +16,22 @@ function problem2(cryptogram) {
     return string;
   };
 
-  answer = decryptString(string);
+  const solution = (cryptogram) => {
+    if (cryptogram.length <= 1) {
+      return cryptogram;
+    }
+    if (cryptogram.length == 2) {
+      if (cryptogram[0] == cryptogram[1]) {
+        return "";
+      }
+      return cryptogram;
+    }
+    answer = decryptString(cryptogram);
+    return answer;
+  };
+
+  // answer = decryptString(cryptogram);
+  answer = solution(cryptogram);
   return answer;
 }
 
