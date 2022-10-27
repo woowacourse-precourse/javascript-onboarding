@@ -21,7 +21,6 @@ function problem2(cryptogram) {
       if (!pattern.test(simplified)) {
         // When there is no duplicated strings, stop and return it.
         return simplified;
-        break;
       }
 
       isDuplicated = pattern.test(simplified); // Check if still duplicates
