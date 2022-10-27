@@ -92,6 +92,10 @@ function addVisitScore(userScores, visitors, map){
 
 function getAnswer(userScores, relation){
   userScores.shift();
+  delZero(userScores);
+}
+
+function delZero(userScores){
   for(let i = 0; i < userScores.length; i++){
     if(userScores[i].score == 0){
       userScores.splice(i);
