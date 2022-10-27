@@ -10,7 +10,18 @@ function getDuplicatedEmails (index, target, forms) {
 }
 
 function problem6(forms) {
-  var answer;
+  const NICKNAME_INDEX = 1;
+  let result = [];
+  
+  forms.map((form, index) => {
+    const nickname = form[NICKNAME_INDEX];
+    for(let i=0; i < nickname.length-1; i++) {
+      const target = nickname.slice(i, i+2);
+      const duplicatedEmails = getDuplicatedEmails(index, target, forms);
+      result = [...result, ...duplicatedEmails]
+    }
+  });
+
   return answer;
 }
 
