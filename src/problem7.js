@@ -93,12 +93,26 @@ function addVisitScore(userScores, visitors, map){
 function getAnswer(userScores, relation){
   userScores.shift();
   delZero(userScores);
+  delFriend(userScores, relation);
 }
 
 function delZero(userScores){
   for(let i = 0; i < userScores.length; i++){
     if(userScores[i].score == 0){
-      userScores.splice(i);
+      userScores.splice(i, 1);
+      i--;
+    }
+  }
+}
+
+function delFriend(userScores, relation){
+  let isFriendMap = new Map();
+  for(let i = 0; i < relation[0].length; i++){
+    isFriendMap.set(relation[0][i], 1);
+  }
+  for(let i = 0; i < userScores.length; i++){
+    if(isFriendMap.has(userScores[i].name)){
+      userScores.splice(i, 1);
       i--;
     }
   }
