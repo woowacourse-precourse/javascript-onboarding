@@ -31,7 +31,7 @@ function numberCount(number){
 }
 
 function error(number){
-  if(isNaN(number)){
+  if(typeof(number)!=="number" || isNaN(number)){
     return false;
   }
   if(number<1 || number>10000){
