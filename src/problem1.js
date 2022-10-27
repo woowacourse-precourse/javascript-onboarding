@@ -5,6 +5,17 @@ function problem1(pobi, crong) {
     return -1;
   }
 
+  const pobiScore = Math.max(searchForMax(pobi[0]), searchForMax(pobi[1]));
+  const crongScore = Math.max(searchForMax(crong[0]), searchForMax(crong[1]));
+
+  if (pobiScore > crongScore) {
+    answer = 1;
+  } else if (pobiScore < crongScore) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
+
   return answer;
 }
 
@@ -22,6 +33,19 @@ function edgeCase(arr) {
     }
   }
   return true;
+}
+
+function searchForMax(num) {
+  num = num.toString();
+  let [resultOfPlus, resultOfMultiple] = [0, 1];
+
+  for (let i = 0; i < num.length; i++) {
+    let number = Number(num[i]);
+    resultOfPlus += number;
+    resultOfMultiple *= number;
+  }
+
+  return Math.max(resultOfPlus, resultOfMultiple);
 }
 
 module.exports = problem1;
