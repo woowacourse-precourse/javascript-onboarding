@@ -56,9 +56,9 @@ function getVisitorScores(visitors) {
 function getCrewScores(relationScores, visitorScores) {
   const totalCrews = Object.keys({ ...relationScores, ...visitorScores });
   const crewScores = totalCrews.reduce((acc, cur) => {
-    acc[cur] = relationScores[cur] || visitorScores[cur];
+    acc[cur] = relationScores[cur] || 0;
 
-    if (relationScores[cur] && visitorScores[cur]) {
+    if (visitorScores[cur]) {
       acc[cur] += visitorScores[cur];
     }
 
@@ -101,10 +101,10 @@ function test() {
     ['shakevan', 'jun'],
     ['shakevan', 'mrko'],
   ];
-  const visitors = ['bedi', 'bedi', 'donut', 'bedi', 'shakevan', 'aa'];
+  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa'];
 
   console.log(findUserFriends(user, friends));
-  console.log(getRelations(friends));
+  console.log(getRelationScores(user, friends));
   console.log(getVisitorScores(visitors));
   console.log(problem7(user, friends, visitors));
 }
