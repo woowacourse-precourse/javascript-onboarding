@@ -1,5 +1,4 @@
 function problem4(word) {
-  var answer;
   var answer = '';
   const alphaCap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const alphaLow = 'abcdefghijklmnopqrstuvwxyz';
@@ -16,7 +15,6 @@ function problem4(word) {
       answer += word[i];
     }
   }
-
   return answer;
 }
 
