@@ -4,16 +4,13 @@ function problem3(number) {
   for (let num = 1; num <= number; num++) {
     // 기능 1
     const numPlace = devidePlace(num);
-    console.log(numPlace);
 
     // 기능 2
     let count = countClap(numPlace);
-    console.log(count);
 
     answer += count;
   }
 
-  console.log(answer);
   return answer;
 }
 
@@ -45,10 +42,4 @@ function countClap(numPlace) {
   return count;
 }
 
-
-
-// problem3(5);
-problem3(13);
-// problem3(100);
-
-// module.exports = problem3;
+module.exports = problem3;
