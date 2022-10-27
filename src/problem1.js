@@ -14,6 +14,10 @@ function comparePage(left, right) {
   return left > right ? left : right;
 }
 
+function checkException(pages) {
+  return pages[0] + 1 === pages[1] ? true : false;
+}
+
 function problem1(pobi, crong) {
   var answer;
 
