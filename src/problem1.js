@@ -2,9 +2,9 @@ function problem1(pobi, crong) {
   if (checkInputErr(pobi, crong)) return -1;
 
   const [pobiMax, crongMax] = findMaxScore(pobi,crong);
-
-
-
+  if(pobiMax > crongMax) return 1;
+  else if(pobiMax < crongMax) return 2;
+  else return 0;
 }
 
 function checkInputErr(pobi, crong) {
