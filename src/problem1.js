@@ -25,9 +25,11 @@ function problem1(pobi, crong) {
 function compareScore(leftPage, rightPage) {
   if (leftPage > rightPage) {
     return leftPage;
-  } else if (leftPage < rightPage) {
+  }
+  if (leftPage < rightPage) {
     return rightPage;
-  } else {
+  }
+  if (leftPage === rightPage) {
     // 같은 경우 아무거나 반환한다.
     return leftPage;
   }
@@ -42,9 +44,11 @@ function sumOrMul(page) {
   let multiply = 0;
   if (page < 10) {
     multiply = one;
-  } else if (page >= 10 && page < 100) {
+  }
+  if (page >= 10 && page < 100) {
     multiply = ten * one;
-  } else {
+  }
+  if (page >= 100 && page <= 400) {
     multiply = hundred * ten * one;
   }
 
@@ -53,7 +57,8 @@ function sumOrMul(page) {
   }
   if (sum < multiply) {
     return multiply;
-  } else {
+  }
+  if (sum === multiply) {
     // 같은 경우 아무거나 반환한다.
     return sum;
   }
