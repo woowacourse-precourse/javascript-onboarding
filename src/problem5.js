@@ -13,7 +13,14 @@
  */
 
 function problem5(money) {
+  const MONEY_LENGTH = 9;
+  const MONEY = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   var answer;
   return answer;
 }
+
+function changeMoney(money, changeMoney) {
+  return Math.floor(money / changeMoney);
+}
+
 module.exports = problem5;
