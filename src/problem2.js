@@ -1,5 +1,7 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = cryptogram.split('');
+  let cnt = 0;
+
   return answer;
 }
 
