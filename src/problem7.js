@@ -21,8 +21,22 @@ function getRelations(friends) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const crewScores = {};
+  const relations = getRelations(friends);
+
+  Object.keys(relations).forEach((crew) => {
+    if (crew === user) {
+      return;
+    }
+
+    const acquaintances = relations[crew].filter((friend) =>
+      relations[user].includes(friend)
+    );
+    const score = acquaintances.length * 10;
+    crewScores[crew] = score;
+  });
+
+  return crewScores;
 }
 
 module.exports = problem7;
@@ -40,6 +54,7 @@ function test() {
 
   console.log(findUserFriends(user, friends));
   console.log(getRelations(friends));
+  console.log(problem7(user, friends, []));
 }
 
 test();
