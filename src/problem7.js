@@ -2,7 +2,12 @@ function problem7(user, friends, visitors) {
   var answer;
   let map = new Map();
   let mapIndex = 0;
-  setMap(map, mapIndex, user, friends, visitors);
+  mapIndex = setMap(map, mapIndex, user, friends, visitors);
+  let relation = new Array(mapIndex+1);
+  for(let i = 0; i < relation.length; i++){
+    relation[i] = new Array();
+  }
+  setRelation(relation, friends, map);
   return answer;
 }
 
@@ -11,6 +16,7 @@ function setMap(map, mapIndex, user, friends, visitors){
   mapIndex++;
   mapIndex = setMapFriends(map, mapIndex, friends);
   mapIndex = setMapVisitors(map, mapIndex, visitors);
+  return mapIndex;
 }
 
 function setMapFriends(map, mapIndex, friends){
@@ -33,6 +39,16 @@ function setMapVisitors(map, mapIndex, visitors){
     }
   }
   return mapIndex;
+}
+
+function setRelation(relation, friends, map){
+  for(let i = 0; i < friends.length; i++){
+    let leftNode = friends[i][0];
+    let rightNode = friends[i][1];
+    relation[map.get(leftNode)].push(rightNode);
+    relation[map.get(rightNode)].push(leftNode);
+  }
+  console.log(relation);
 }
 
 module.exports = problem7;
