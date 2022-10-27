@@ -44,5 +44,7 @@ const isCorrectPage = ([left, right]) => {
   return true;
 };
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (isCorrectPage(pobi) || isCorrectPage(crong)) return -1;
+}
 module.exports = problem1;
