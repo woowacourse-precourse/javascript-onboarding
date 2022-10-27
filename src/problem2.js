@@ -4,20 +4,15 @@ function problem2(cryptogram) {
 
   do {
     isRepeat = false;
-  
-    console.log(isRepeat);
 
     // 함수 1
     tmp = checkRepeat(cryptogram, isRepeat);
     cryptogram = tmp[0];
     isRepeat = tmp[1];
-
-    console.log(cryptogram, isRepeat);
     
   } while (isRepeat)
 
   answer = cryptogram;
-  console.log(answer);
   return answer;
 }
 
@@ -29,7 +24,6 @@ function checkRepeat(cryptogram, isRepeat) {
     // 연속하는 중복 문자열 발견 시,
     if (cryptogram[i] == cryptogram[i + 1]) {      
       isRepeat = true;
-      console.log(isRepeat);
       
       // "앞"의 문자를 삭제
       cryptogram = cryptogram.slice(0, i) + cryptogram.slice(i + 1);
@@ -53,9 +47,4 @@ function checkRepeat(cryptogram, isRepeat) {
   return [cryptogram, isRepeat];
 }
 
-
-// problem2("browoanoommnaon");
-problem2("saddaas");
-problem2("subin");
-
-// module.exports = problem2;
+module.exports = problem2;
