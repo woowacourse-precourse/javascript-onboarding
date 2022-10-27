@@ -5,6 +5,7 @@ function problem4(word) {
   let wordIndex = 0;
   let flogWord = [];
   let upperCase = 0;
+  // 알파벳 사전
   new Array(26).fill().map((_, i) => {
     dictionary += String.fromCharCode(i + 97);
   });
@@ -28,7 +29,6 @@ function problem4(word) {
     }
     answer += x;
   });
-  console.log(answer);
   return answer;
 }
 
