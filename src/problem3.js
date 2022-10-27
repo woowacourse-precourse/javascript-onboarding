@@ -1,6 +1,6 @@
 function problem3(number) {
   for (let n = 1; n < number + 1; n++) {
-    console.log(n);
+    let strArr = String(n).split("");
   }
 
   return;
