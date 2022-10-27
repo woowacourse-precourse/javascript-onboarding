@@ -13,6 +13,13 @@
 1. 문자의 369 개수를 세어주는 함수. => cntNum function
 */
 
-function problem3(number) {}
+function problem3(number) {
+  function cntNum(num) {
+    let cutNum = String(num)
+      .split("")
+      .filter((str) => str === "3" || str === "6" || str === "9");
+    return cutNum.length;
+  }
+}
 
 module.exports = problem3;
