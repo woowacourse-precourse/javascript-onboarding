@@ -23,6 +23,12 @@ describe("checkAlpha", () => {
   it("is input alphabet check return true", () => {
     expect(checkAlpha("a")).toEqual(true);
   });
+  it("is input alphabet check return true", () => {
+    expect(checkAlpha("Z")).toEqual(true);
+  });
+  it("is input alphabet check return false", () => {
+    expect(checkAlpha("#")).toEqual(false);
+  });
   it("is input alphabet check return false", () => {
     expect(checkAlpha(" ")).toEqual(false);
   });
