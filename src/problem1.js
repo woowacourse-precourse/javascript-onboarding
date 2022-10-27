@@ -22,6 +22,19 @@ function problem1(pobi, crong) {
     }
     return res;
   };
+
+
+  // 가장 큰 수 구하기
+  let pobi;
+  let crong;
+
+  pobi.map((num) =>
+    sumAllPage(num) > multiplyAllPage(num) ? (pobi = sumAllPage(num)) : (pobi = multiplyAllPage(num))
+  );
+
+  crong.map((num) =>
+    sumAllPage(num) > multiplyAllPage(num) ? (crong = sumAllPage(num)) : (crong = multiplyAllPage(num))
+  );
 }
 
 module.exports = problem1;
