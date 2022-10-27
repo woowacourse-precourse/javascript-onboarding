@@ -1,20 +1,19 @@
 function problem1(pobi, crong) {
   var answer;
   if (!isValidatePage(pobi) || !isValidatePage(crong)) return -1;
-
+  const pobiScore = getMyScore(addPage(pobi), multiplyPage(pobi));
+  const crongScore = getMyScore(addPage(crong), multiplyPage(crong));
   return answer;
 }
 
 const addPage = (page) => {
-  return page
-    .toString()
+  return (page[0].toString() + page[1].toString())
     .split("")
     .reduce((prev, cur) => prev + +cur, 0);
 };
 
 const multiplyPage = (page) => {
-  return page
-    .toString()
+  return (page[0].toString() + page[1].toString())
     .split("")
     .reduce((prev, cur) => prev * +cur, 1);
 };
