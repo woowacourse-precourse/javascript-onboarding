@@ -7,7 +7,13 @@
  */
 
 function problem5(money) {
-  var answer;
+  var answer = [];
+  var units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+  units.map((unit) => {
+    answer.push(parseInt(money / unit));
+    money = parseInt(money % unit);
+  })
   return answer;
 }
 
