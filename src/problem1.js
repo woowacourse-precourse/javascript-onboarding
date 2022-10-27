@@ -10,4 +10,12 @@ function compareSumAndMultiple(num){
   return digitsSum >= digitsMultiple ? digitsSum : digitsMultiple;
 }
 
+function compareLeftAndRightPageNum(pageNumArr){
+  let leftPageNum = pageNumArr[0];
+  let rightPageNum = pageNumArr[1];
+  let leftMaxNum = compareSumAndMultiple(leftPageNum);
+  let rightMaxNum = compareSumAndMultiple(rightPageNum);
+  return leftMaxNum >= rightMaxNum ? leftMaxNum : rightMaxNum;
+}
+
 module.exports = problem1;
