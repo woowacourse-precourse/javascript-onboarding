@@ -90,6 +90,18 @@ function problem7(user, friends, visitors) {
 
     return result;
   }
+
+  let idIndexInfo = {};
+  let friendsInfo = [[], []];
+  let friendsScore = [0, 0];
+  let i = 1;
+  idIndexInfo[user] = i;
+  i = createInfo(friends, i + 1);
+  cntScore(visitors, i);
+  cntKnowScore(friendsInfo, user);
+  let nowFriends = friendsInfo[1];
+  let answer = makeResult(friendsScore, nowFriends);
+  return answer;
 }
 
 module.exports = problem7;
