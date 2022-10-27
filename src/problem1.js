@@ -15,7 +15,7 @@ function problem1(pobi, crong) {
 
   if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return RESULT.ERROR;
 
-  /** main logic */
+  // main Logic 
   let pobiPoints = getPoints(pobi);
   let crongPoints = getPoints(crong);
 
@@ -55,14 +55,14 @@ function problem1(pobi, crong) {
   }
 
   /**
-   * 
+   * 두 수의 합을 반환한다.
    * @param {number} a 
    * @param {number} b 
    * @returns {number} sum
    */
   function add(a, b) { return a + b; }
   /**
-   * 
+   * 두 수의 곱을 반환한다.
    * @param {number} a 
    * @param {number} b 
    * @returns {number} mul
@@ -71,8 +71,8 @@ function problem1(pobi, crong) {
 
 
   /**
-   * 주언 배열이 유효한 지 검사한다. 
-   * @param {Array<number[]>} users 
+   * 배열과 조건을 받아 조건을 만족하는지 검사한다.
+   * @param {[[number, number], [number, number]]} users 
    * @param {Array<(...)=>(a,b)=> boolean>} errorCase 
    * @returns 
    */
