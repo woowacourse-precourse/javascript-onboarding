@@ -1,4 +1,13 @@
-function problem4(word) {}
+function problem4(word) {
+  let str = [...word];
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") {
+      str[i] = reverseLetter(str[i]);
+    }
+  }
+  return str.join("");
+}
 
 function reverseLetter(letter) {
   const alphabet = [
