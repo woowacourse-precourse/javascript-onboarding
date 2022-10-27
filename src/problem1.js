@@ -44,8 +44,8 @@ function getProductOfDigits(number) {
     .reduce((accProduct, curDigit) => accProduct * curDigit, 1);
 }
 
-function getMaxScore(scores) {
-  return Math.max(scores);
+function getMaxScore(...scores) {
+  return Math.max(...scores);
 }
 
 function getGameResult(maxScoreOfPobi, maxScoreOfCrong) {
