@@ -13,8 +13,49 @@
 
 function problem5(money) {
   let coin = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  if (money >= 50000) {
+    coin.splice(0, 1, Math.floor(money / 50000));
+    money %= 50000;
+  }
+  console.log(money);
+  if (money >= 10000) {
+    coin.splice(1, 1, Math.floor(money / 10000));
+    money %= 10000;
+  }
+  console.log(money);
+  if (money >= 5000) {
+    coin.splice(2, 1, Math.floor(money / 5000));
+    money %= 5000;
+  }
+  console.log(money);
+  if (money >= 1000) {
+    coin.splice(3, 1, Math.floor(money / 1000));
+    money %= 1000;
+  }
+  console.log(money);
+  if (money >= 500) {
+    coin.splice(4, 1, Math.floor(money / 500));
+    money %= 500;
+  }
+  console.log(money);
+  if (money >= 100) {
+    coin.splice(5, 1, Math.floor(money / 100));
+    money %= 100;
+  }
+  console.log(money);
 
+  if (money >= 50) {
+    coin.splice(6, 1, Math.floor(money / 50));
+    money %= 50;
+  }
+  console.log(money);
+  if (money >= 10) {
+    coin.splice(7, 1, Math.floor(money / 10));
+    money %= 10;
+    coin.splice(8, 1, money);
+  }
   let answer;
+  answer = money;
   return answer;
 }
 
