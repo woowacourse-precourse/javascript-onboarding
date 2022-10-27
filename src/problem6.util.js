@@ -22,7 +22,12 @@ const makeCountMapOfNickName = (nickNames) => {
   return obj;
 };
 // 2개 이상 분리
-const filterValue2OverOfMapToList = (obj) => {};
+const filterValue2OverOfMapToList = (obj) =>
+  Object.entries(obj).reduce((acc, cur) => {
+    const [key, value] = cur;
+    if (value > 1) acc.push(key);
+    return acc;
+  }, []);
 // key를 포함한 닉네임 index 뽑기
 const getNameIncludeIndex = (nickNames, keyword) => {};
 // index로 전체 뽑기
