@@ -12,4 +12,10 @@ const getDuplicateIndex = cryptogram => {
 	return duplicateIndex
 }
 
+const getFilterdCryptogram = (cryptogram, duplicateIndex) => {
+	const filterdCryptogramArr = cryptogram.split('').filter((_, idx) => !duplicateIndex[idx])
+	const filterdCryptogram = filterdCryptogramArr.join('')
+	return filterdCryptogram
+}
+
 module.exports = problem2
