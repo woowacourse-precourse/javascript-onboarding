@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+---
+### 기능 목록
+1. stack을 활용하기 위한 배열을 생성
+ 

@@ -1,0 +1,1 @@
+# [[우테코] clean code 를 위한 check list](https://velog.io/@jinlee/%EC%9A%B0%ED%85%8C%EC%BD%94-clean-code-%EB%A5%BC-%EC%9C%84%ED%95%9C-check-list)
