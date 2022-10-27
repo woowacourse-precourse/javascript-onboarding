@@ -20,6 +20,20 @@ function problem6(forms) {
   }
   //2개이상 검색된 문자열중 중복된것을 제거한다
   findName = [...new Set(findName)];
+
+  //2개이상 검색된 문자열을 매개변수의 닉네임에서 검색하여 검색될시 이메일을 result 배열에 추가한다
+  let result = [];
+  for (let i = 0; i < findName.length; i++) {
+    for (let j = 0; j < nameArr.length; j++) {
+      nameIncludes(result, nameArr, findName, forms, i, j);
+    }
+  }
+}
+
+function nameIncludes(result, nameArr, findName, forms, i, j) {
+  if (nameArr[j].includes(findName[i])) {
+    return result.push(forms[j][0]);
+  }
 }
 
 module.exports = problem6;
