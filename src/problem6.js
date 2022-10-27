@@ -28,6 +28,8 @@ function problem6(forms) {
       nameIncludes(result, nameArr, findName, forms, i, j);
     }
   }
+  //중복된 이메일을 제거한다
+  return [...new Set(result.sort())];
 }
 
 function nameIncludes(result, nameArr, findName, forms, i, j) {
