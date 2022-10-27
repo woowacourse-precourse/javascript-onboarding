@@ -13,7 +13,14 @@ const makeNickNameCombination = (nickName) => {
   return res;
 };
 // map 생성
-const makeCountMapOfNickName = (nickNames) => {};
+const makeCountMapOfNickName = (nickNames) => {
+  const obj = {};
+  for (const nickName of nickNames) {
+    obj[nickName] ??= 0;
+    obj[nickName]++;
+  }
+  return obj;
+};
 // 2개 이상 분리
 const filterValue2OverOfMapToList = (obj) => {};
 // key를 포함한 닉네임 index 뽑기

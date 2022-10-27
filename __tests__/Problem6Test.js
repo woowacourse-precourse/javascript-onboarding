@@ -22,7 +22,7 @@ describe("makeCountMapOfNickName", () => {
     });
     expect(makeCountMapOfNickName(["제이", "이슨", "제이", "이슨"])).toEqual({
       제이: 2,
-      이엠: 2,
+      이슨: 2,
     });
   });
 });
