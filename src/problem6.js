@@ -17,7 +17,7 @@ function handleExcept(forms, rejectIndex){
 
 function handleFormSize(forms){
   if(forms.length > 10000){
-    forms.slice(0, 9999);
+    forms = forms.slice(0, 9999);
   }
 }
 
