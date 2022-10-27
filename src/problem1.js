@@ -25,6 +25,16 @@ const checkLength = (page1, page2) => {
   return false;
 };
 
+const sumDigits = (num) => {
+  let sum = 0;
+  do {
+    if (num < 0) break;
+    sum += num % 10;
+    num = Math.floor(num / 10);
+  } while (num > 0);
+  return sum;
+};
+
 function problem1(pobi, crong) {
   if (!checkPageRange(pobi, crong)) return -1;
   if (!checkPageGap(pobi, crong)) return -1;
