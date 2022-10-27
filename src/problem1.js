@@ -5,7 +5,6 @@ function exceptionHandle(arr){
 }
 
 function calcNum(pageNum){
-  //* 좋게바꿔보자
   let sum = 0;
   let multi = 1;
   const numbers = Array.from(pageNum.toString(), (num) => Number(num));
@@ -16,7 +15,7 @@ function calcNum(pageNum){
     multi = multi * num;
   });
 
-  return sum > multi ? sum : multi;
+  return Math.max(sum,multi);
 }
 
 function getMaxNum(arr){
@@ -25,7 +24,7 @@ function getMaxNum(arr){
   //*Math.max함수 사용
   arr.map((pageNum)=>{
     const num = calcNum(pageNum);
-    maxNum = maxNum < num ? num : maxNum;
+    maxNum = Math.max(maxNum,num);
   })
 
   return maxNum;
