@@ -47,8 +47,10 @@ function problem1(pobi, crong) {
   const pobiScore = calculateScore(pobi);
   const crongScore = calculateScore(crong);
 
-  var answer;
-  return answer;
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
+  else return -1;
 }
 
 module.exports = problem1;
