@@ -28,6 +28,15 @@ function handleException(pages) {
   return false;
 }
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (handleException(pobi) || handleException(crong)) return -1;
+  let answer;
+  const pobiScore = calc(pobi);
+  const crongScore = calc(crong);
+  if (pobiScore > crongScore) answer = 1;
+  else if (pobiScore < crongScore) answer = 2;
+  else answer = 0;
+  return answer;
+}
 
 module.exports = problem1;
