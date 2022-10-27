@@ -3,7 +3,7 @@
 - [x] feat1. 닉네임 2글자씩 잘라서 dictionary에 넣기
   - [x] {2글자: 인덱스} 구조
   - [x] 이미 key가 존재하면 해당 이메일과 dictionary 에 있는 idx 값도 set() 에 넣기
-- [ ] feat2. 중복 닉네임의 이메일을 담은 set를 array로 변경하고 정렬해서 반환
+- [x] feat2. 중복 닉네임의 이메일을 담은 set를 array로 변경하고 정렬해서 반환
 
 ## 🚀 기능 요구 사항
 
