@@ -20,3 +20,11 @@ function stringTransform(element){
   }
   return String.fromCharCode(transform);
 }
+
+function answerString(word){
+  let newWord='';
+  for(let i=0; i<word.length; i++){
+    newWord+=stringTransform(word[i]);
+  }
+  return newWord;
+}
