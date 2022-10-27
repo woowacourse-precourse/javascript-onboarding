@@ -8,9 +8,9 @@ function problem7(user, friends, visitors) {
   let userScores = new Array(mapIndex);
   setRelation(relation, friends, map); 
   setUserScores(userScores, relation, visitors, userList, map);
-  getAnswer(userScores, relation);
+  delScore(userScores, relation);
   sortUserScore(userScores);
-  saveAnswer(userScores, answer);
+  getAnswer(userScores, answer);
   return answer;
 }
 
@@ -92,7 +92,7 @@ function addVisitScore(userScores, visitors, map){
   }
 }
 
-function getAnswer(userScores, relation){
+function delScore(userScores, relation){
   userScores.shift();
   delZero(userScores);
   delFriend(userScores, relation);
@@ -137,7 +137,7 @@ function sortUserScore(userScores){
   });
 }
 
-function saveAnswer(userScores, answer){
+function getAnswer(userScores, answer){
   for(let i = 0; i < userScores.length; i++){
     answer.push(userScores[i].name);
   }
