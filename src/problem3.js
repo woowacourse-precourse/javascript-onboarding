@@ -6,7 +6,7 @@ function problem3(number) {
     let countedDigit = splitDigit.filter(
       (num) => num === '3' || num === '6' || num === '9'
     ).length;
-    clapCount = countedDigit;
+    clapCount += countedDigit;
   };
 
   for (let i = 1; i <= number; i++) {
