@@ -8,4 +8,17 @@ function isValidCase (case1, case2) {
   if (case1[1] % 2 !== 0 || case1[1] % 2 !== 0) return false
 }
 
+function pageMaxFinder(num) { 
+  const splitNumber = (num) => {
+    let strNumArr = num.toString().split("")
+    return strNumArr.map((strNum) => Number(strNum)) 
+  }
+  const pageMax = (arr) => {
+    let plus = arr.reduce((acc, cur) => acc + cur) 
+    let times = arr.reduce((acc, cur) => acc * cur) 
+    return Math.max(plus, times)
+  }
+  return pageMax(splitNumber(num))
+}
+
 module.exports = problem1;
