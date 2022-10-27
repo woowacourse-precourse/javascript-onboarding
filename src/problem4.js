@@ -3,6 +3,7 @@ function problem4(word) {
   let dictionary = [];
   let reversDictionary = [];
   let wordIndex = 0;
+  let flogWord = [];
   new Array(26).fill().map((_, i) => {
     dictionary += String.fromCharCode(i + 97);
   });
@@ -11,9 +12,9 @@ function problem4(word) {
 
   word.split("").map((x) => {
     wordIndex = dictionary.indexOf(x.toLowerCase());
-    console.log(x, wordIndex);
-    console.log("개구리사전 :", reversDictionary[wordIndex], wordIndex);
+    flogWord.push(reversDictionary[wordIndex]);
   });
+  console.log(flogWord.join());
   return answer;
 }
 
