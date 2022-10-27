@@ -1,52 +1,51 @@
 function returnNumber(page) {
-  const pg = [...String(page)]
-  const eachnum = []
-  pg.map((num) => eachnum.push(parseInt(num)))
-  return eachnum
+  const pg = [...String(page)];
+  const eachnum = [];
+  pg.map((num) => eachnum.push(parseInt(num)));
+  return eachnum;
 }
 
 function calcMaxScore(eachnum) {
-  const sumvalue = eachnum.reduce((prev, curr) => prev + curr)
-  const multiplyvalue = eachnum.reduce((prev, curr) => prev * curr)
-  return Math.max(sumvalue, multiplyvalue)
+  const sumvalue = eachnum.reduce((prev, curr) => prev + curr);
+  const multiplyvalue = eachnum.reduce((prev, curr) => prev * curr);
+  return Math.max(sumvalue, multiplyvalue);
 }
 
 function leftandright(user) {
-  const arr = []
-  user.map((score) => arr.push(calcMaxScore(returnNumber(score))))
-  return arr
+  const arr = [];
+  user.map((score) => arr.push(calcMaxScore(returnNumber(score))));
+  return arr;
 }
 
 function compareEach(arr) {
-  left = arr[0]
-  right = arr[1]
-  return Math.max(left, right)
+  left = arr[0];
+  right = arr[1];
+  return Math.max(left, right);
 }
 
 function error(user) {
-  const leftpage = user[0]
-  const rightpage = user[1]
+  const leftpage = user[0];
+  const rightpage = user[1];
   if (user.length !== 2) {
-    return false
+    return false;
   }
   if (typeof leftpage != 'number' || typeof rightpage != 'number') {
-    return false
+    return false;
   }
   if (rightpage - leftpage !== 1) {
-    return false
+    return false;
   }
   if (rightpage < 1 || rightpage > 400 || leftpage < 1 || leftpage > 400) {
-    return false
+    return false;
   }
   if (rightpage % 2 != 0 || leftpage % 2 != 1) {
-    return false
+    return false;
   }
-  return true
+  return true;
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+
 }
 
 module.exports = problem1;
