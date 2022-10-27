@@ -15,5 +15,12 @@ function calculatePage(pageNum) {
 
   return sum > multiply ? sum : multiply;
 }
+// 2) 페이지 배열을 주면 가능한 4가지 케이스중 가장 큰 수를 리턴하는 함수
+function calculateScore(pageArr) {
+  const left = calculatePage(pageArr[0]);
+  const right = calculatePage(pageArr[1]);
+  return left > right ? left : right;
+}
+
 
 module.exports = problem1;
