@@ -20,9 +20,10 @@ function getScore(pages) {
 
 function isException(pages) {
   const [leftPage, rightPage] = pages;
+  if (pages.length !== 2) return 1;
   if (leftPage === 1 || rightPage === 400) return 1;
-  if (rightPage - leftPage !== 1) return 1;
   if (leftPage % 2 === 0) return 1;
+  if (rightPage - leftPage !== 1) return 1;
   return 0;
 }
 
