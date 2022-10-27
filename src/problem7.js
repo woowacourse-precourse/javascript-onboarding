@@ -31,26 +31,41 @@ function problem7(user, friends, visitors) {
         if (!idIndexInfo[name]) {
           idIndexInfo[name] = idx;
           friendsInfo.push([]);
+          friendsScore.push(0);
           idx += 1;
         }
       });
       friendsInfo[idIndexInfo[name1]].push(name2);
       friendsInfo[idIndexInfo[name2]].push(name1);
     });
+    return idx;
+  }
+
+  function cntScore(visitorsInfo, i) {
+    let idx = i;
+    visitorsInfo.map((visitor) => {
+      if (!idIndexInfo[visitor]) {
+        idIndexInfo[visitor] = idx;
+        friendsInfo.push([]);
+        friendsScore.push(0);
+      }
+      let num = idIndexInfo[visitor];
+      friendsScore[num] += 1;
+    });
   }
 }
 
-// problem7(
-//   "mrko",
-//   [
-//     ["donut", "andole"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 
 module.exports = problem7;
