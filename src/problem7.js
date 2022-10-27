@@ -28,11 +28,39 @@ function isAlreadyFriend({ user, friend, friendsMap }) {
   return false;
 }
 
+function computeFriendsScoreBySerperation({ user, friendsMap }) {
+  const FRIEND_SCORE = 10;
+  const friendsHasScore = new Map();
+
+  const friendsOfUser = friendsMap.get(user);
+  const twoDegreesOfSeperation = friendsOfUser.map((friend) =>
+    friendsMap.get(friend).filter((name) => name !== user)
+  );
+
+  twoDegreesOfSeperation.forEach((friendList) =>
+    friendList.forEach((friend) =>
+      friendsHasScore.has(friend)
+        ? friendsHasScore.set(
+            friend,
+            friendsHasScore.get(friend) + FRIEND_SCORE
+          )
+        : friendsHasScore.set(friend, FRIEND_SCORE)
+    )
+  );
+
+  return friendsHasScore;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
   const friendsMap = createFriendsMap(friends);
-  console.log(isAlreadyFriend({ user, friendsMap, friend: "jun" }));
+  const friendsScoreMap = computeFriendsScoreBySerperation({
+    user,
+    friendsMap,
+  });
+
+  console.log(friendsScoreMap);
 
   return answer;
 }
