@@ -61,13 +61,19 @@ function problem1(pobi, crong) {
     return isError;
   }
 
-  const getTotalError = (pobi, crong) => {
-    return getError(pobi) * getError(crong);
+  const getTotalError = (totalPeoplePagesArr) => {
+    let totalError = 1;
+
+     totalPeoplePagesArr.map(personsPage => {
+      totalError = totalError * getError(personsPage);
+     })
+
+     return totalError
   }
 
   const pobiScore = getBiggestNumber(getPageScore(pobi[0]), getPageScore(pobi[1]));
   const crongScore = getBiggestNumber(getPageScore(crong[0]), getPageScore(crong[1]));
-  const pageError = getTotalError(pobi, crong);
+  const pageError = getTotalError([pobi, crong]);
 
   answer = pageError === -1 ? pageError :  getWinner(pobiScore, crongScore);
 
