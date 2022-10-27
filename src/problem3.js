@@ -35,8 +35,10 @@ function countClap(numPlace) {
   let count = 0;
 
   for (let num of numPlace) {
-    if (num % 3 == 0 || num % 6 == 0 || num % 9 == 0) {
-      count += 1
+    if (num !== 0) {
+      if (num % 3 == 0 || num % 6 == 0 || num % 9 == 0) {
+        count += 1
+      }
     }
   }
 
@@ -45,8 +47,8 @@ function countClap(numPlace) {
 
 
 
-problem3(5);
-// problem3(13);
+// problem3(5);
+problem3(13);
 // problem3(100);
 
 // module.exports = problem3;
