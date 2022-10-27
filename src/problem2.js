@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let arrCrypto = [...cryptogram];
 }
 
 module.exports = problem2;
