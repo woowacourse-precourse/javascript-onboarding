@@ -12,6 +12,16 @@ function findDup(str){
   return resultArray.join('');
 }
 
+function error(str){
+  if (str.toLowerCase() != str){
+    return false;
+  }
+  if (str.length < 1 || str.length > 1000){
+    return false;
+  }
+  return true;
+}
+
 function problem2(cryptogram) {
   var answer;
   return answer;
