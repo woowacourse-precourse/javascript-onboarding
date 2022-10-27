@@ -23,6 +23,13 @@ function maxNum(pages) {
   return maxNum;
 }
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
+  const pobiScore = maxNum(pobi);
+  const crongScore = maxNum(crong);
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
+}
 
 module.exports = problem1;
