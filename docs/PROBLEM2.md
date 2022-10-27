@@ -22,3 +22,10 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능목록
+1. 매개변수를 배열로 만들기 splited
+2. 빈 배열 생성 noDup
+3. splited의 요소와 noDup의 마지막 요소가 중복되면 제거한다
+4. splited의 요소와 noDup의 마지막 요소가 중복되지 않으면 noDup에 추가한다. 
+5. 배열 noDup을 문자열로 변환
+6. 조건 추가
