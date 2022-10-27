@@ -19,4 +19,40 @@ function checkInputErr(pobi, crong) {
   
 }
 
+function findMaxScore(pobi, crong){
+
+  const calMaxScore = (array) => {
+    let max = -1;
+    array.forEach(val =>{
+      max = Math.max(val, "+");
+      max = Math.max(val, '*');
+    })
+
+    return max;
+  }
+
+  const pobiMax = calMaxScore(pobi);
+  const crongMax = calMaxScore(crong);
+
+  return [pobiMax, crongMax];
+}
+
+function calScore(score, operator){
+  const scoreArray = [...score.toString()].map(Number);
+  let value;
+  switch(operator){
+    case "+" :
+      value = scoreArray.reduce((acc,cur) => acc + cur, 0);
+      break;
+    case "*" :
+      value = scoreArray.reduce((acc,cur) => acc *=cur , 1);
+      break;
+    default :
+      console.log("not valid operator")
+  }
+
+  return value;
+}
+
+
 module.exports = problem1;
