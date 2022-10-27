@@ -4,3 +4,13 @@ function problem3(number) {
 }
 
 module.exports = problem3;
+
+function numberArr(number){
+  let arr=[];
+  for(let i=1; i<=number; i++){
+    arr.push(i.toString());
+  }
+  return arr.join('')
+  .split('')
+  .map((el)=>Number(el));
+}
