@@ -23,6 +23,7 @@ function checkEmailForm(forms){
   })
   return new_crew_list;
 }
+
 //닉네임 한글 검사
 function checkNicknameKorean(forms){
   let check_nickname_korean = new RegExp('^[가-힣]*$');
@@ -38,6 +39,21 @@ function checkNicknameKorean(forms){
     new_crew_list.push(element);
   })
   return new_crew_list;
+}
+
+//연속되는 두글자 추출
+function checkOverlapKeyword(forms){
+  let check_overlap_arr = [];
+  forms.map((element)=>{
+    crew_nickname = element[1];
+    for(i =0;i<crew_nickname.length-1;i++){
+      check_overlap_arr.push(crew_nickname.substr(i,2))
+    }
+  })
+  let overlap_arr = check_overlap_arr.filter((element, index) => check_overlap_arr.indexOf(element) != index);
+  overlap_arr = new Set(overlap_arr)
+  overlap_arr = [...overlap_arr]
+  return overlap_arr
 }
 
 function problem6(forms) {
