@@ -19,6 +19,15 @@ function compare(scoreArr) {
   return big;
 }
 
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  let pobiScore = 0;
+  let crongScore = 0;
+  if (pobi.includes(400 || 1) || crong.includes(400 || 1)) return -1;
+  crongScore = compare(crong);
+  pobiScore = compare(pobi);
+  if (pobiScore === crongScore) return 0;
+  else if (pobiScore > crongScore) return 1;
+  else return 2;
+}
 
 module.exports = problem1;
