@@ -21,4 +21,12 @@ class Stack {
   }
 }
 
+const removeDuplicated = (word) => {
+  const stack = new Stack();
+  word.split("").forEach((alphabet) => {
+    if (stack.size() > 0 && stack.peek() === alphabet) stack.pop();
+    else stack.push(alphabet);
+  });
+};
+
 module.exports = problem2;
