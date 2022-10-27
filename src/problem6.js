@@ -22,9 +22,9 @@ function problem6(forms) {
       }
     }
   }
-  result = [...result].sort();
+  const answer = [...result].sort();
 
-  return result;
+  return answer;
 }
 
 module.exports = problem6;
