@@ -89,11 +89,21 @@ const judgeVictory = (score, targetA, targetB) => {
   return score + result;
 };
 
-const isExceptions = (additionResult, multiplicationResult, criterion = 0, depth = 2) => {
-  const toBeExamined = [additionResult, multiplicationResult].flat(depth);
-  const result = toBeExamined.includes(criterion);
+const isIncludes = (targetArray, valueToFinds) => {
+  const resultArray = map(valueToFinds, value => {
+    return targetArray.includes(value);
+  });
 
-  return result;
+  return resultArray;
+};
+
+const isException = (additionResult, multiplicationResult, depth = 2) => {
+  // 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
+  const exceptionList = [0, 1, 400];
+  const targetArray = [additionResult, multiplicationResult].flat(depth);
+  const result = isIncludes(targetArray, exceptionList).every(element => element === false);
+
+  return !result;
 };
 
 const calculateEachElementByPlus = numberArray => {
@@ -126,7 +136,7 @@ function problem1(pobi, crong) {
   const [pobiMultipl, crongMultipl] = calculateEachElementByMultiplication([copyPobi, copyCrong]);
 
   // 예외사항은 -1을 반환한다.
-  if (isExceptions([pobiPlus, crongPlus], [pobiMultipl, crongMultipl])) {
+  if (isException([pobiPlus, crongPlus], [pobiMultipl, crongMultipl])) {
     return -1;
   }
 
