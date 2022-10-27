@@ -55,6 +55,13 @@ function problem4(word) {
     'Y',
     'Z',
   ];
+  const len = arrLow.length - 1;
+  let words = '';
+
+  for (const value of word) {
+    const lowIndex = arrLow.indexOf(value);
+    const upIndex = arrUp.indexOf(value);
+  }
 
   return words;
 }
