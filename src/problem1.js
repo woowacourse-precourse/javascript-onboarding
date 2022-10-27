@@ -15,6 +15,12 @@ function problem1(pobi, crong) {
   crongCalculations.push(String(crong[1]).split('').map((num) => +num).reduce((a, b) => a + b))
   crongCalculations.push(String(crong[1]).split('').map((num) => +num).reduce((a, b) => a * b))
   const crongScore = crongCalculations.sort((a, b) => b - a)[0];
+
+  // 3. pobi의 점수와 crong의 점수를 비교하여 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0
+  if (pobiScore > crongScore) return 1
+  if (pobiScore < crongScore) return 2
+  if (pobiScore === crongScore) return 0
+
   return answer;
 }
 
