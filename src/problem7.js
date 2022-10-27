@@ -60,8 +60,14 @@ function problem7(user, friends, visitors) {
   //const answer = friendRelation(friends)
   const algorithm = visitCount(visitors, user, friends);
   const relation = friendRelation(friends, user);
-  const answer = knowFriend(relation, user, relation, algorithm);
-  return answer;
+  const friendScore = knowFriend(relation, user, relation, algorithm);
+  const sortByscore = Object.fromEntries(
+    Object.entries(friendScore).sort(([,a],[,b]) => a > b? -1: 1)
+  );
+  const sortByid =  Object.fromEntries(
+    Object.entries(sortByscore).sort(([a],[b]) => a < b? -1: 1 )
+  );
+  return sortByid;
 }
 
 module.exports = problem7;
