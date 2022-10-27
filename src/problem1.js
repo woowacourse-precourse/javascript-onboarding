@@ -1,6 +1,15 @@
 function problem1(pobi, crong) {
   let answer;
 
+  const checkPobiValidation =
+    checkIsContinuous(pobi) && checkPageIsInRange(pobi);
+  const checkCrongValidation =
+    checkIsContinuous(crong) && checkPageIsInRange(crong);
+  if (!checkPobiValidation || !checkCrongValidation) {
+    answer = -1;
+    return answer;
+  }
+
   return answer;
 }
 
@@ -18,4 +27,5 @@ function checkPageIsInRange(inputArr) {
   }
   return false;
 }
+
 module.exports = problem1;
