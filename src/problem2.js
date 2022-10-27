@@ -1,7 +1,19 @@
 function problem2(cryptogram) {
-  const removedAllResult = checkDuplicates(cryptogram);
+  const result = checkErrors(cryptogram);
 
-  return removedAllResult;
+  return result;
+
+  function checkErrors(word) {
+    const MINIMUM_LENGTH = 1;
+    const MAXIMUM_LENGTH = 1000;
+    const wordLength = word.length;
+
+    if (wordLength < MINIMUM_LENGTH || wordLength > MAXIMUM_LENGTH) {
+      return "문자열의 길이는 최소 1, 최대 1000입니다.";
+    }
+
+    return checkDuplicates(word);
+  }
 
   function checkDuplicates(word) {
     for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
