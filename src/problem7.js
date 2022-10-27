@@ -79,10 +79,12 @@ function getSortedCrews(crewScores) {
 }
 
 function problem7(user, friends, visitors) {
+  const userFriends = findUserFriends(user, friends);
   const relationScores = getRelationScores(user, friends);
   const visitorScores = getVisitorScores(visitors);
   const crewScores = getCrewScores(relationScores, visitorScores);
-  const answer = getSortedCrews(crewScores);
+  const sortedCrews = getSortedCrews(crewScores);
+  const answer = sortedCrews.filter((crew) => !userFriends.includes(crew));
 
   if (answer.length > 5) {
     answer.splice(5);
@@ -103,7 +105,7 @@ function test() {
     ['shakevan', 'jun'],
     ['shakevan', 'mrko'],
   ];
-  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa', 'bb'];
+  const visitors = ['bedi', 'bedi', 'bedi', 'shakevan', 'aa', 'zz'];
 
   console.log(findUserFriends(user, friends));
   console.log(getRelationScores(user, friends));
