@@ -144,6 +144,28 @@
   - 가독성을 높이기 위해 if문과 concat 대신 스프레트 연산 이용
   - 모호한 변수명 가독성 좋게 변경
 
+### 학습메모
+
+리팩토링을 하면서 비트마스크를 이용해 부분문자열들을 추출하는 방법을 생각해보았다. 하지만 오히려 코드의 가독성이 더 떨어지는 것 같아 원래 이중반복문 방식을 유지하기로 했다.
+
+```javascript
+function getPartsOfNickname(nickname) {
+  let flag = 3;
+  const parts = [];
+  while (flag < Math.pow(2, nickname.length)) {
+    parts.push(
+      [...nickname].filter((_, idx) => Math.pow(2, idx) & flag).join("")
+    );
+    if (flag << 1 < Math.pow(2, nickname.length)) {
+      flag = flag << 1;
+    } else {
+      flag = flag * 2 + 1;
+    }
+  }
+  return parts;
+}
+```
+
 ## 🔖 PROBLEM 7
 
 ### 기능 요구 사항
