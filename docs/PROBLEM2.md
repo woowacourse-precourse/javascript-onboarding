@@ -13,7 +13,7 @@
 ## 기능 목록
 
 Feat: Find same letters in a row
-Feat: Remove function
+Feat: Add recursive method 
 
 ### 제한사항
 
