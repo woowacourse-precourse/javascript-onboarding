@@ -41,7 +41,8 @@ const transSmall = (alpha) => transWord(alpha, true);
 const transBig = (alpha) => transWord(alpha, false);
 
 // 알파벳 변환
-const transAlpha = (alpha) => {};
+const transAlpha = (alpha) =>
+  isSmall(alpha) ? transSmall(alpha) : transBig(alpha);
 
 exports.checkInputError = checkInputError;
 exports.checkAlpha = checkAlpha;
