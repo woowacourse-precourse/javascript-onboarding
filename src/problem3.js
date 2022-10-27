@@ -14,3 +14,15 @@ function numberArr(number){
   .split('')
   .map((el)=>Number(el));
 }
+
+function numberCount(number){
+  const answerNumber=[3,6,9];
+  const arr=numberArr(number);
+  let count=0;
+  arr.map((el)=>{
+    if(answerNumber.includes(el)){
+      count++;
+    }
+  })
+  return count;
+}
