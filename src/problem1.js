@@ -1,6 +1,7 @@
 function problem1(pobi, crong) {
-  let answer;
-  return answer;
+  let pobiMaxNum = compareLeftAndRightPageNum(pobi);
+  let crongMaxNum = compareLeftAndRightPageNum(crong);
+  return compareEachMaxNum(pobiMaxNum, crongMaxNum);
 }
 
 function compareSumAndMultiple(num){
@@ -16,6 +17,15 @@ function compareLeftAndRightPageNum(pageNumArr){
   let leftMaxNum = compareSumAndMultiple(leftPageNum);
   let rightMaxNum = compareSumAndMultiple(rightPageNum);
   return leftMaxNum >= rightMaxNum ? leftMaxNum : rightMaxNum;
+}
+
+function compareEachMaxNum(pobiMaxNum, crongMaxNum){
+  if(pobiMaxNum > crongMaxNum)
+    return 1;
+  if(pobiMaxNum = crongMaxNum)
+    return 0;
+  if(pobiMaxNum < crongMaxNum)
+    return 2;
 }
 
 module.exports = problem1;
