@@ -1,6 +1,5 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  return Array(number);
 }
 
 module.exports = problem3;
