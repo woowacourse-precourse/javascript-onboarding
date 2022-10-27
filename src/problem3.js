@@ -10,7 +10,17 @@ function problem3(number) {
 
     const totalNumberArray = totalNumberString.split('');
 
+    console.log(totalNumberArray);
+
     return totalNumberArray;
+  };
+
+  const getSpecificNumberCount = (totalNumberArray, numberForCount) => {
+    const count = totalNumberArray.reduce((acc, cur) => (      
+      cur === String(numberForCount) ? acc + 1 : acc
+    ),0)
+
+    return count;
   };
   
 
