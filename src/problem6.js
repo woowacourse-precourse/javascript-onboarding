@@ -12,6 +12,13 @@ function problem6(forms) {
       }
     }
   }
+
+  arr.sort();
+  for (let i = 0; i < arr.length; i++) {
+    if (answer.includes(arr[i][0]) == false) {
+      answer.push(arr[i][0]);
+    }
+  }
   return answer;
 }
 
