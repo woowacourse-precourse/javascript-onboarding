@@ -1,13 +1,13 @@
 function problem2(cryptogram) {
   if (exception(cryptogram)) return false;
   
-  while (1) {
-    const result = duplicateJudgment(cryptogram);
-    if (!(duplicateJudgment(cryptogram)))
-    {
-      return result;
-    }
-  }
+  // while (1) {
+  //   const result = duplicateJudgment(cryptogram);
+  //   if (!(duplicateJudgment(cryptogram)))
+  //   {
+  //     return result;
+  //   }
+  // }
 }
 
 // 암호문 길이 판별, 암호문이 소문자인지 판별

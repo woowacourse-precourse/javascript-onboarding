@@ -12,10 +12,10 @@ function exception(arr) {
 
 //각 자리수 나눠서 더하기
 function addDigit(arr) {
-  const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
+  const firstArr = arr[0].toString().split("").map(x => parseInt(x));
   const firstNum = firstArr.reduce((a,b) => (a+b));
 
-  const secondArr = arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondArr = arr[1].toString().split("").map(x => parseInt(x));
   const secondNum = secondArr.reduce((a,b) => (a+b));
 
   return Math.max(firstNum, secondNum);
@@ -23,10 +23,10 @@ function addDigit(arr) {
 
 //각 자리수 나눠서 곱하기
 function mulDigit(arr) {
-  const firstArr = arr[0][0].toString().split("").map(x => parseInt(x));
+  const firstArr = arr[0].toString().split("").map(x => parseInt(x));
   const firstNum = firstArr.reduce((a,b) => (a*b));
 
-  const secondArr = arr[0][1].toString().split("").map(x => parseInt(x));
+  const secondArr = arr[1].toString().split("").map(x => parseInt(x));
   const secondNum = secondArr.reduce((a,b) => (a*b));
 
   return Math.max(firstNum, secondNum);
@@ -49,8 +49,9 @@ function problem1(pobi, crong) {
 
   const pobiPoint = getBigNum(pobi);
   const crongPoint = getBigNum(crong);
-
   return comparePoint(pobiPoint, crongPoint);
 }
+
+problem1([13,14], [17,18])
 
 module.exports = problem1;
