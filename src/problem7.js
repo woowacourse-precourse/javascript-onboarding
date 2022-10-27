@@ -22,7 +22,7 @@ function visitCount(visitors, user, friends){
   }, {});
 };
 
-function friendRelation(friends, user){
+function friendRelation(friends){
   const relation = {};
   friends.map(friend =>{
     let a = friend[0];
@@ -59,7 +59,7 @@ function knowFriend(arr, user, relation, algorithm){
 function problem7(user, friends, visitors) {
   //const answer = friendRelation(friends)
   const algorithm = visitCount(visitors, user, friends);
-  const relation = friendRelation(friends, user);
+  const relation = friendRelation(friends);
   const friendScore = knowFriend(relation, user, relation, algorithm);
   const sortByscore = Object.fromEntries(
     Object.entries(friendScore).sort(([,a],[,b]) => a > b? -1: 1)
