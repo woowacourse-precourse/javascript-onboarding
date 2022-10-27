@@ -20,7 +20,7 @@ function isExceptional(pages){
 function getCalculate(pages){
   let biggest = 0;
 
-  pages.map((currentPage) => {
+  pages.forEach((currentPage) => {
     if(currentPage >= 100) {
       const units = (currentPage % 100) % 10
       const tens = parseInt((currentPage % 100)/10)
