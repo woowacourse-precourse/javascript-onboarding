@@ -44,9 +44,18 @@ function problem1(pobi, crong) {
     return biggestNumber;
   };
 
-  const getWinner = (pobiScore, crongScore) => {
+  const getWinner = (totalPeoplePagesArr) => {
 
-    const result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+    const peoplesScoreArr = [];
+    totalPeoplePagesArr.map(personPages => {
+      peoplesScoreArr.push( getBiggestNumber(getPageScore(personPages[0]), getPageScore(personPages[1])) );
+    })
+
+    const isTie = peoplesScoreArr.every(score => score === peoplesScoreArr[0]);
+    const winnerIndex = peoplesScoreArr.indexOf(Math.max(...peoplesScoreArr)) + 1;
+
+    result = isTie === true ? 0 : winnerIndex;
+
     return result;
   }
 
@@ -71,11 +80,19 @@ function problem1(pobi, crong) {
      return totalError
   }
 
-  const pobiScore = getBiggestNumber(getPageScore(pobi[0]), getPageScore(pobi[1]));
-  const crongScore = getBiggestNumber(getPageScore(crong[0]), getPageScore(crong[1]));
-  const pageError = getTotalError([pobi, crong]);
+  const getTotalPeoplePagesArr = people => {
+    const totalPeoplePagesArr = [];
+    for(const personsPage in people) {
+      totalPeoplePagesArr.push(people[personsPage]);
+    }
 
-  answer = pageError === -1 ? pageError :  getWinner(pobiScore, crongScore);
+    return totalPeoplePagesArr;
+  }
+
+  const totalPeoplePagesArr = getTotalPeoplePagesArr(arguments);
+  const pageError = getTotalError(totalPeoplePagesArr);
+
+  answer = pageError === -1 ? pageError :  getWinner(totalPeoplePagesArr);
 
   return answer;
 }
