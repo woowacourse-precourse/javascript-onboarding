@@ -26,6 +26,14 @@ function problem4(word) {
 
     return String.fromCharCode(frogDictKey);
   }
+
+  let result = "";
+  word.split("").map((str) => {
+    if (str !== " ") result += frogDict(str.charCodeAt(0));
+    else result += " ";
+  });
+
+  return result;
 }
 
 module.exports = problem4;
