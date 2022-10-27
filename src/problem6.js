@@ -47,6 +47,18 @@ function getSplitNickname(nickname) {
     .filter((string) => string.length >= 2);
 }
 
+function getSplitNicknameMap(forms) {
+  const map = new Map();
+  forms.forEach(([email, nickname]) =>
+    removeRepeatString(getSplitNickname(nickname)).forEach((splitNickname) =>
+      map.has(splitNickname)
+        ? map.get(splitNickname).push(email)
+        : map.set(splitNickname, [email])
+    )
+  );
+  return map;
+}
+
 function removeRepeatString(arr) {
   return Array.from(new Set(arr));
 }
