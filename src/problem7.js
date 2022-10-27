@@ -34,6 +34,16 @@ function problem7(user, friends, visitors) {
     return r2[1] - r1[1];
   });
 
+  const maxRecommendLimit = 4;
+
+  for (let i = 0; i <= maxRecommendLimit; i++) {
+    if (sortByScoreArr[i][1] === 0) {
+      break;
+    } else {
+      answer.push(sortByScoreArr[i][0]);
+    }
+  }
+
   return answer;
 }
 
