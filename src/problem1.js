@@ -1,5 +1,15 @@
 function problem1(pobi, crong) {
   var answer;
+  if (isException(pobi) === true || isException(crong) === true) {
+    answer = -1;
+  } else {
+    const pobiMax = calcNum(pobi);
+    const crongMax = calcNum(crong);
+    if (pobiMax > crongMax) answer = 1;
+    else if (pobiMax === crongMax) answer = 0;
+    else answer = 2;
+  }
+  return answer;
 }
 
 const isException = (arr) => {
@@ -8,13 +18,29 @@ const isException = (arr) => {
   else return false;
 };
 
+const calcNum = (arr) => {
+  let calc = [];
+  arr = arr.map((e) => e.toString());
+  arr.forEach((num) => {
+    let sum = 0;
+    let mul = 1;
+    for (let i = 0; i < num.length; i++) {
+      sum += parseInt(num[i]);
+      mul *= parseInt(num[i]);
+    }
+    calc.push(sum);
+    calc.push(mul);
+  });
+  const max = Math.max(...calc);
+  return max;
+};
+
 module.exports = problem1;
 
 // 기능 구현
 // 1. 예외사항 사전 처리
 // 2. 문자열 변환을 통해 좌 우 페이지의 최대값 찾기
-// 4. 위의 과정을 통해 포비와 크롱의 최대값 찾기
-// 5. 비교 후  return값 도출
+// 4. 위의 과정을 통해 포비와 크롱의 비교
 
 // 예외 사항
 // 1. 좌우 페이지의 차이가 1 이상인 경우

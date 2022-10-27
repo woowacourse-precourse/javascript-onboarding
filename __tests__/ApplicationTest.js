@@ -1,4 +1,4 @@
-const problem1 = require("../src/problem1").default;
+const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
 const problem3 = require("../src/problem3");
 const problem4 = require("../src/problem4");
