@@ -8,12 +8,20 @@
 function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = [];
+  // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
+  let nameCount = {};
 
+  // 모든 크루의 닉네임을 2글자 단위로 자른 값을 키로, 개수를 값으로 만들기
   for (let i = 0; i < forms.length; i++) {
     let arr = [];
     for (let j = 0; j < forms[i][1].length - 1; j++) {
       let name = forms[i][1].slice(j, j + 2);
       arr.push(name);
+      // nameCount에 키가 있을 경우
+      if (nameCount.hasOwnProperty(name)) {
+        nameCount[name] += 1;
+        // nameCount에 키가 없을 경우
+      } else nameCount[name] = 1;
     }
     namesArr.push(arr);
   }
