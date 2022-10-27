@@ -1,4 +1,3 @@
-// 16:56 ~ 17:51
 function problem1(pobi, crong) {
   if (!isPagesCorrect(pobi) || !isPagesCorrect(crong)) return -1;
   let pobiMaxNum = getMaxNum(pobi);
