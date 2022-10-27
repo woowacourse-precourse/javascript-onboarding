@@ -11,14 +11,48 @@ class ErrorCase {
   }
 }
 
-function problem4(word) {
-  console.log(word.length);
-  new ErrorCase(word);
+class Frog {
+  constructor(word) {
+    new ErrorCase(word);
+    this.word = word;
+  }
+
+  getLowerAlphaList() {
+    return Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 65));
+  }
+
+  getUpperAlphaList() {
+    return Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 97));
+  }
+
+  makeFrogDic() {
+    const alphabet = [...this.getLowerAlphaList(), ...this.getUpperAlphaList()];
+    const reverseAlphabet = [
+      ...this.getLowerAlphaList().reverse(),
+      ...this.getUpperAlphaList().reverse(),
+    ];
+
+    return [...alphabet].reduce(
+      (acc, cur, index) => ({ ...acc, [cur]: reverseAlphabet[index] }),
+      {}
+    );
+  }
+
+  checkAlpha(alpha) {
+    return /[a-zA-Z]/.test(alpha) ? this.makeFrogDic()[alpha] : alpha;
+  }
+
+  say() {
+    return this.word
+      .split("")
+      .map((alpha) => this.checkAlpha(alpha))
+      .join("");
+  }
 }
 
-/*
-  에러케이스 - 1000자 이상 테스트 성공 but 너무 길어 담지 않음
-  problem4("");
-*/
+function problem4(word) {
+  const frog = new Frog(word);
+  return frog.say();
+}
 
 module.exports = problem4;
