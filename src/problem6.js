@@ -18,6 +18,8 @@ function problem6(forms) {
       findName.push(parserName[i]);
     }
   }
+  //2개이상 검색된 문자열중 중복된것을 제거한다
+  findName = [...new Set(findName)];
 }
 
 module.exports = problem6;
