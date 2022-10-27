@@ -5,6 +5,10 @@ function problem1(pobi, crong) {
   return -1;
 }
 
+function validationArr(arr){
+  return arr.length!=2?false:arr[1]-arr[0] == 1?true:false;
+}
+
 function pageGameApp(numArrA,numArrB){
   let maxNumA = maxValueCalculator([splitNumber(numArrA[0]),splitNumber(numArrA[1])]);
   let maxNumB = maxValueCalculator([splitNumber(numArrB[0]),splitNumber(numArrB[1])]);
@@ -12,9 +16,8 @@ function pageGameApp(numArrA,numArrB){
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
 }
 
-
-function validationArr(arr){
-  return arr.length!=2?false:arr[1]-arr[0] == 1?true:false;
+function maxValueCalculator(arr){
+  return Math.max(sumArr(arr[0]),mulArr(arr[0]),sumArr(arr[1]),mulArr(arr[1]));
 }
 
 function splitNumber(n){
@@ -40,10 +43,6 @@ function mulArr(arr){
     totalMul *= arr[i];
   }
   return totalMul;
-}
-
-function maxValueCalculator(arr){
-  return Math.max(sumArr(arr[0]),mulArr(arr[0]),sumArr(arr[1]),mulArr(arr[1]));
 }
 
 module.exports = problem1;
