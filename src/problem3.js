@@ -13,6 +13,7 @@ function clap(num) {
 }
 
 function problem3(number) {
+  let newArr = [...Array(number)].map((v, i) => i + 1);
   
 }
 
