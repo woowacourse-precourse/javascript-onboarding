@@ -4,6 +4,8 @@ const {
   transAlpha,
   isSmall,
   isBig,
+  transSmall,
+  transBig,
 } = require("../src/problem4.util");
 
 describe("checkInputError", () => {
@@ -57,6 +59,24 @@ describe("checkAlpha", () => {
   });
   it("is input alphabet check return false", () => {
     expect(checkAlpha(" ")).toEqual(false);
+  });
+});
+
+describe("transSmall", () => {
+  it("is that small alpha trans", () => {
+    expect(transSmall("a")).toEqual("z");
+  });
+  it("is that small alpha trans", () => {
+    expect(transSmall("z")).toEqual("a");
+  });
+});
+
+describe("transBig", () => {
+  it("is that big alpha trans", () => {
+    expect(transBig("A")).toEqual("Z");
+  });
+  it("is that small alpha trans", () => {
+    expect(transBig("Z")).toEqual("A");
   });
 });
 
