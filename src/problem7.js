@@ -59,7 +59,7 @@ function setRelation(relation, friends, map){
 
 function setUserScores(userScores, relation, visitors, userList, map){
   initUserScores(userScores, userList);
-  AddFriendScore(userScores, relation, map);
+  addFriendScore(userScores, relation, map);
   for(let i = 0; i < visitors.length; i++){
     let userIndex = map.get(visitors[i]);
     userScores[userIndex].score += 1;
@@ -76,7 +76,7 @@ function initUserScores(userScores, userList){
   }
 }
 
-function AddFriendScore(userScores, relation, map){
+function addFriendScore(userScores, relation, map){
   for(let i = 0; i < relation[0].length; i++){
     let friendIndex = map.get(relation[0][i]);
     for(let j = 0; j < relation[friendIndex].length; j++){
