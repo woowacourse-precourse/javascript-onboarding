@@ -9,13 +9,28 @@ const defineStringType = (string) => {
   return "noAlphabet";
 };
 
+const defineASCIIRange = (stringType) => {
+  const MIN_ASCII = stringType === "upperCase" ? MIN_UPPER_ASCII : MIN_LOWER_ASCII;
+  const MAX_ASCII = stringType === "upperCase" ? MAX_UPPER_ASCII : MAX_LOWER_ASCII;
+  return [MIN_ASCII, MAX_ASCII];
+};
+
+const reverseWord = (WORD_ASCII, MIN_ASCII, MAX_ASCII) => {
+  const ASCII = MAX_ASCII - WORD_ASCII + MIN_ASCII;
+  return String.fromCharCode(ASCII);
+};
+
 function problem4(word) {
   let result = "";
 
   for (const index in word) {
     const string = word[index];
     const stringType = defineStringType(string);
-    }
+
+    const WORD_ASCII = word.charCodeAt(index);
+    const [MIN_ASCII, MAX_ASCII] = defineASCIIRange(stringType);
+    result += reverseWord(WORD_ASCII, MIN_ASCII, MAX_ASCII);
+  }
 
   return result;
 }
