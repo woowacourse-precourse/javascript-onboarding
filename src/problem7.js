@@ -2,10 +2,8 @@ function problem7(user, friends, visitors) {
   var answer;
   let userScore = convertFriendsToUserScore(friends, user);
   let userList = convertFriendsToNonRepeatUserList(friends, user);
-  let currentUserFriendList = makeCurrentUserFriendList(friends, user);
-  console.log(userScore);
-  console.log(userList);
-  console.log(currentUserFriendList);
+  let currentUserFriendList = makeUserFriendList(friends, user);
+
   return answer;
 }
 
@@ -31,7 +29,7 @@ function convertFriendsToNonRepeatUserList(friends, user) {
   return userList;
 }
 
-function makeCurrentUserFriendList(friends, user) {
+function makeUserFriendList(friends, user) {
   let friendList = [];
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
@@ -41,6 +39,17 @@ function makeCurrentUserFriendList(friends, user) {
     }
   }
   return friendList;
+}
+
+function calcScoreForFriendsKnowTogather(
+  currentUserFriendList,
+  otherUserFriendList
+) {
+  const friendListKnowTogather = currentUserFriendList.filter((friend) =>
+    otherUserFriendList.includes(friend)
+  );
+
+  return friendListKnowTogather.length * 10;
 }
 
 module.exports = problem7;
