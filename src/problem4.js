@@ -1,6 +1,9 @@
 function problem4(word) {
   var answer;
 
+  const MINIMUM_NUMBER = 1;
+  const MAXIMAL_NUMBER = 1000;
+
   // - [x] 사전 구현
   const dictionary = {
     A: 'Z',
@@ -31,9 +34,20 @@ function problem4(word) {
     Z: 'A',
   };
 
-  // - [ ] 번역하기
+  // - [x] word는 길이가 1 이상 1,000 이하인 문자열이다.
+  const isAllowNumberRange = (word, min, max) => {
+    if (!typeof word === 'string') {
+      return false;
+    }
+    const length = word.length;
+    return length >= min && length <= max;
+  };
 
-  // - [ ] word는 길이가 1 이상 1,000 이하인 문자열이다.
+  if (!isAllowNumberRange(word, MINIMUM_NUMBER, MAXIMAL_NUMBER)) {
+    throw new Error('word는 1 이상 1,000 이하인 문자열이다.');
+  }
+
+  // - [ ] 번역하기
 
   // - [ ] 알파벳 외의 문자는 변환하지 않는다.
 
