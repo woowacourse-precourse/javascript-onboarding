@@ -41,34 +41,47 @@ function validAll(arr) {
   });
 }
 
-// function checkResource(nick, arr) {
-//   //1번째 방법
-//   for (let i = 0; i < nick.length - 1; i++) {
-//     arr.map((form) => {
-//       const [, arrNick] = form;
-//       if (arrNick.includes(nick[i] + nick[i + 1])) return fasle;
-//     });
-//   }
-// }
-function nicknamArray(arr) {
+function checkDup ()
+
+function checkResource(nickname, nickArr) {
+  let result;
+  for (let i = 0; i < nickname.length - 1; i++) {
+    nickArr.some((id) => {
+      // console.log("id사본 : ", id);
+      // console.log("nick 비교본:", `${nickname[i]}${nickname[i + 1]}`);
+      // return id.includes(`${nickname[i]}${nickname[i + 1]}`);
+      // console.log(id.indexOf(`${nickname[i]}${nickname[i + 1]}`));
+      if (id.indexOf(`${nickname[i]}${nickname[i + 1]}`) < 0) return false;
+    });
+  }
+  console.log("result : ", result);
+}
+
+function nicknamArray(arr, nickname) {
   let nickArr = [];
 
   arr.forEach((item, index) => {
     const [, nickname] = item;
     nickArr[index] = nickname;
   });
-  console.log(nickArr);
 
+  nickArr.splice(nickArr.indexOf(nickname), 1);
+  console.log(nickArr);
   return nickArr;
 }
 
 function isNicknameDup(arr) {
-  if (!validAll(arr)) return;
+  // if (!validAll(arr)) return;
 
+  let emailList = [];
   arr.forEach((form) => {
     const [email, nickname] = form;
-    checkResource(nickname, arr);
+    const nickArr = nicknamArray(arr, nickname);
+    const check = checkResource(nickname, nickArr);
+    console.log(check);
+    if (!check) emailList.push(email);
   });
+  console.log(emailList);
 }
 
-nicknamArray(Arr);
+isNicknameDup(Arr);
