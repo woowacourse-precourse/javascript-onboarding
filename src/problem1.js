@@ -30,6 +30,12 @@ function problem1(pobi, crong) {
     let Score = Math.max(addNum(num[0]), mulNum(num[0]), addNum(num[1]), mulNum(num[1]));
     return Score;
   }
+
+  //4 과정에서 나온 숫자를 통해 결과 값을 구하는 기능
+  if (!exceptions(pobi) || !exceptions(crong)) return -1
+  if (maxNum(pobi) > maxNum(crong)) return 1
+  if (maxNum(pobi) < maxNum(crong)) return 2
+  if (maxNum(pobi) == maxNum(crong)) return 0
 }
 
 problem1([97, 98], [197, 198])
