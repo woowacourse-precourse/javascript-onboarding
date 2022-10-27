@@ -1,24 +1,39 @@
 function problem3(number) {
-  const result = countClapNumber(number);
+  const result = countClapAll(number);
 
   return result;
 }
 
-function countClapNumber(lastNumber) {
+function countClapAll(lastNumber) {
   const FIRST_NUMBER = 1;
-  let countClap = 0;
+  let countAll = 0;
 
   for (
     let currentNumber = FIRST_NUMBER;
     currentNumber <= lastNumber;
     currentNumber++
   ) {
-    let currentString = currentNumber.toString();
+    countAll += countClapNumber(currentNumber);
+  }
+
+  return countAll;
+}
+
+function countClapNumber(number) {
+  let countClap = 0;
+  let currentString = number.toString();
+
+  for (
+    let currentStringIndex = 0;
+    currentStringIndex < currentString.length;
+    currentStringIndex++
+  ) {
+    const singleNumber = currentString[currentStringIndex];
 
     if (
-      currentString.includes("3") ||
-      currentString.includes("6") ||
-      currentString.includes("9")
+      singleNumber.includes("3") ||
+      singleNumber.includes("6") ||
+      singleNumber.includes("9")
     ) {
       countClap++;
     }
