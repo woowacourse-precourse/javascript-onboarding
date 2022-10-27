@@ -13,7 +13,7 @@ function problem2(cryptogram) {
   let i = 0;
   while(1){
     if(i==decryption.length){
-      break;
+      return decryption.join("");
     }
     if(decryption[i] == decryption[i+1]){
       let j = 2;
@@ -29,7 +29,6 @@ function problem2(cryptogram) {
       continue;
     }
   }
-  console.log(decryption);
 }
 
 module.exports = problem2;
