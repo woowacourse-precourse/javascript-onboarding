@@ -3,7 +3,7 @@ function problem2(cryptogram) {
   const decrypted = [];
   let pointer = '';
   let isContinious = false;
-  [...cryptogram].forEach((character, index) => {
+  [...cryptogram].forEach((character) => {
     if (!isContinious) {
       pointer = decrypted.pop() || '';
     }
@@ -15,7 +15,6 @@ function problem2(cryptogram) {
       if (!isContinious) {
         decrypted.push(pointer);
       }
-      console.log(decrypted);
       decrypted.push(character);
       isContinious = false;
     }
