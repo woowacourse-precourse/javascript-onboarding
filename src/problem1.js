@@ -27,6 +27,12 @@ function problem1(pobi, crong) {
     return total;
   }
 
+  // 최종 점수 선택
+  const score = (num1, num2) => {
+    // 중첩 삼항 연산자: num1이 더 크면 num1반환, 거짓인데 num2가 더 크면 num2반환, 같으면 아무거나(num2)
+    return num1 > num2 ? num1 : num1 < num2 ? num2 : num2;
+  }
+
   // 왼쪽 페이지 계산
   const calLeft = (num) => {
     let sumLeft = sum(num);
