@@ -13,6 +13,22 @@
 
 */
 
-function problem5(money) {}
-
+function problem5(money) {
+  function divideCurrency(m) {
+    const currency = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+    const currencyLen = currency.length;
+    let currencyCnt = Array.from({ length: currencyLen }).fill(0);
+    let MONEY = m;
+    let [rest, idx] = [0, 0];
+    while (idx < currencyLen) {
+      let cnt = parseInt(MONEY / currency[idx]);
+      currencyCnt[idx] = cnt;
+      rest = MONEY % currency[idx];
+      if (rest === 0) break;
+      MONEY = rest;
+      idx += 1;
+    }
+    return currencyCnt;
+  }
+}
 module.exports = problem5;
