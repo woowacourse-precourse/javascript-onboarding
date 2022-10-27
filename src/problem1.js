@@ -26,44 +26,56 @@ function problem1(pobi, crong) {
   return compareScore(getScore(pobi), getScore(crong));
 }
 
-function isWrongInput(arr) {
-  if (isWrongTypeOfInput(arr)) {
+function isWrongInput(input) {
+  if (isWrongInputValue(input)) {
     return true;
   }
 
-  if (isWrongLengthOfInput(arr)) {
+  if (isWrongTypeOfInput(input)) {
     return true;
   }
 
-  if (isWrongTypeOfElement(arr[0], arr[1])) {
+  if (isWrongLengthOfInput(input)) {
     return true;
   }
 
-  if (isWrongFormatOfElement(arr[0], arr[1])) {
+  if (Number.isNaN(input[0]) || Number.isNaN(input[1])) {
     return true;
   }
 
-  if (isWrongRangeOfElement(arr[0], arr[1])) {
+  if (isWrongTypeOfElement(input[0], input[1])) {
+    return true;
+  }
+
+  if (isWrongFormatOfElement(input[0], input[1])) {
+    return true;
+  }
+
+  if (isWrongRangeOfElement(input[0], input[1])) {
     return true;
   }
 
   return false;
 }
 
-function isWrongTypeOfInput(arr) {
-  return typeof arr !== INPUT.object;
+function isWrongInputValue(input) {
+  return !input;
 }
 
-function isWrongLengthOfInput(arr) {
-  return arr.length !== INPUT.length;
+function isWrongTypeOfInput(input) {
+  return typeof input !== INPUT.object;
 }
 
-function isWrongTypeOfElement(num1, num2) {
-  return typeof num1 !== INPUT.number || typeof num2 !== INPUT.number;
+function isWrongLengthOfInput(input) {
+  return input.length !== INPUT.length;
 }
 
-function isWrongFormatOfElement(num1, num2) {
-  return isEven(num1) || isOdd(num2) || num1 !== num2 - 1;
+function isWrongTypeOfElement(e1, e2) {
+  return typeof e1 !== INPUT.number || typeof e2 !== INPUT.number;
+}
+
+function isWrongFormatOfElement(e1, e2) {
+  return isEven(e1) || isOdd(e2) || e1 !== e2 - 1;
 }
 
 function isEven(num) {
@@ -74,8 +86,8 @@ function isOdd(num) {
   return num % 2 === 1;
 }
 
-function isWrongRangeOfElement(num1, num2) {
-  return num1 < INPUT.minPage || num2 > INPUT.maxPage;
+function isWrongRangeOfElement(e1, e2) {
+  return e1 < INPUT.minPage || e2 > INPUT.maxPage;
 }
 
 function getScore(arr) {

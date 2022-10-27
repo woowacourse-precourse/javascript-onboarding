@@ -8,12 +8,19 @@ const INPUT = {
   maxInput: 10000,
 };
 
+function problem3(number) {
+  if (isWrongInput(number)) {
+    console.log('test');
+    return RESULT.exception;
+  }
+}
+
 function isWrongInput(input) {
-  if (typeof input !== INPUT.number) {
+  if (isWrongTypeOfInput(input)) {
     return true;
   }
 
-  if (input < INPUT.minInput || input > INPUT.maxInput) {
+  if (isWrongLengthOfInput(input)) {
     return true;
   }
 
@@ -24,11 +31,12 @@ function isWrongInput(input) {
   return false;
 }
 
-function problem3(number) {
-  if (isWrongInput(number)) {
-    console.log('test');
-    return RESULT.exception;
-  }
+function isWrongTypeOfInput(input) {
+  return typeof input !== INPUT.number;
+}
+
+function isWrongLengthOfInput(input) {
+  return input < INPUT.minInput || input > INPUT.maxInput;
 }
 
 module.exports = problem3(NaN);
