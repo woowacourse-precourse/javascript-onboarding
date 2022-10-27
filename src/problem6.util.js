@@ -34,7 +34,13 @@ const getNameIncludeIndex = (nickNames, keyword) =>
     .map((nickName, i) => (nickName.includes(keyword) ? i : -1))
     .filter((i) => i !== -1);
 // index로 전체 뽑기
-const getTargetOfList = (nicknames, indexs) => {};
+const getTargetOfList = (emails, indexs) => {
+  const res = [];
+  for (const index of indexs) {
+    res.push(emails[index]);
+  }
+  return res;
+};
 
 exports.makeNickNameCombination = makeNickNameCombination;
 exports.makeCountMapOfNickName = makeCountMapOfNickName;
