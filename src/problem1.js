@@ -80,4 +80,18 @@ const getMaxNumber = (plus, multiplication) => {
   return Math.max(...plus, ...multiplication);
 };
 
+const judgeVictory = (score, targetA, targetB) => {
+  const TARGET_A_WIN = 1;
+  const TARGET_B_WIN = 2;
+  const DRAW = 0;
+
+  if (targetA === targetB) {
+    return DRAW;
+  }
+
+  const result = targetA < targetB ? TARGET_B_WIN : TARGET_A_WIN;
+
+  return score + result;
+};
+
 module.exports = problem1;
