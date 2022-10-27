@@ -41,6 +41,13 @@ function problem1(pobi, crong) {
     return answer;
   }
 
+  // - [x] 좌우 페이지는 연속된다.
+  const isContinuousPage = ([left, right]) => left - right === -1;
+  if (!isContinuousPage(pobi) || !isContinuousPage(crong)) {
+    answer = EXCEPTIONS;
+    return answer;
+  }
+
   // - [x] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호다.
   const isOddNumber = (number) => number % 2 > 0;
   const isEvenNumber = (number) => number % 2 === 0;
