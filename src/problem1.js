@@ -10,6 +10,8 @@ function problem1(pobi, crong) {
     return answer;
   }
 
+  const pobiResult = findMaxValue(pobi);
+  const crongResult = findMaxValue(crong);
   return answer;
 }
 
@@ -28,4 +30,14 @@ function checkPageIsInRange(inputArr) {
   return false;
 }
 
+function findMaxValue(inputArr) {
+  const calculatedArr = [];
+  for (let i = 0; i < inputArr.length; i++) {
+    const splitString = inputArr[i].toString().split("");
+    const addResult = splitString.map((item) => +item).reduce((a, c) => a + c);
+    const multipleResult = splitString.reduce((a, c) => a * c);
+    calculatedArr.push(addResult, multipleResult);
+  }
+  return Math.max(...calculatedArr);
+}
 module.exports = problem1;
