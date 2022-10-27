@@ -35,4 +35,16 @@ function vaildateEmailLength(email) {
   return false;
 }
 
+function getSplitNickname(nickname) {
+  return nickname
+    .split("")
+    .map((_, start) =>
+      Array.from({ length: start + 1 }).map((_, length) =>
+        nickname.slice(start, start + 2 + length)
+      )
+    )
+    .flat()
+    .filter((string) => string.length >= 2);
+}
+
 module.exports = problem6;
