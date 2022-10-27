@@ -1,6 +1,14 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  let alreadyFriends = [];
+
+  friends.forEach((item) => {
+    if (item.includes(user)) {
+      // user가 1차원 배열의 0,1번 인덱스 중 어디있는지 모르기 때문
+      item.indexOf(user) === 0
+        ? alreadyFriends.push(item[1])
+        : alreadyFriends.push(item[0]);
+    }
+  });
 }
 
 module.exports = problem7;
