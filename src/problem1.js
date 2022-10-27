@@ -11,6 +11,9 @@ function problem1(pobi, crong) {
     // 기능 2
     const maxPobi = calculation(pobi);
     const maxCrong = calculation(crong);
+
+    console.log("maxPobi, maxCrong: ", maxPobi, maxCrong);
+    // maxPobi, maxCrong:  72 72
     
     // 기능 3
   } else { // 예외사항이 발생한 경우
@@ -95,8 +98,13 @@ function calculation(pageList) {
   totalPage.push(rightMul);
 
   console.log(totalPage);
+  // [ 16, 17, 63, 72 ]
 
+  // 기능 2.2 최댓값 선택하기
+  return Math.max.apply(null, totalPage);
 }
+
+
 // 기능 3. 둘의 점수 비교하여 결과 리턴하기
 
 pobi = [97, 98];
