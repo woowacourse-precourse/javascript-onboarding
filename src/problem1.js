@@ -35,6 +35,15 @@ function problem1(pobi, crong) {
   crong.map((num) =>
     sumAllPage(num) > multiplyAllPage(num) ? (crong = sumAllPage(num)) : (crong = multiplyAllPage(num))
   );
+
+  // 승자 구하기
+  if (pobi > crong) {
+    return 1;
+  } else if (pobi < crong) {
+    return 2;
+  } else {
+    return 0;
+  }
 }
 
 module.exports = problem1;
