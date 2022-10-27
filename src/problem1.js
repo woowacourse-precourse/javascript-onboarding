@@ -16,7 +16,7 @@ function problem1(pobi, crong) {
 }
 function calcPageNum(arr) {
   let maxNum = -1;
-  if (arr[0] + 1 !== arr[1]) {
+  if (arr[0] + 1 !== arr[1] || arr[0] === 400 || arr[1] === 1) {
     return -1;
   }
 
