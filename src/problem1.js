@@ -20,6 +20,11 @@ function pobiCrongLeft(pobiCrong){
   for(let i = 0; i < left.length; i++){
     leftMul += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
   }
+  if(leftSum > leftMul){
+    return leftSum;
+  } else {
+    return leftMul;
+  }
 }
 
 function pobiCrongRight(pobiCrong){
@@ -31,6 +36,11 @@ function pobiCrongRight(pobiCrong){
   }
   for (let i = 0; i < Right.length; i++){
     RightMul *= parseInt(Right[i]) //parseInt => 문자형을 정수형으로 변환
+  }
+  if(RightSum > RightMul){
+    return RightSum;
+  } else {
+    return RightMul;
   }
 }
 
