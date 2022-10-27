@@ -6,36 +6,49 @@ const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
-describe("problem1", () => {
+// describe("problem1", () => {
+//   test("case1", () => {
+//     expect(problem1([97, 98], [197, 198])).toEqual(0);
+//   });
+
+//   test("case2", () => {
+//     expect(problem1([131, 132], [211, 212])).toEqual(1);
+//   });
+
+//   test("case3", () => {
+//     expect(problem1([99, 102], [211, 212])).toEqual(-1);
+//   });
+
+//   test("시작 페이지(1)를 포함하면 -1을 반환한다", () => {
+//     expect(problem1([1, 2], [211, 212])).toEqual(-1);
+//   });
+
+//   test("끝 페이지(400)를 포함하면 -1을 반환한다", () => {
+//     expect(problem1([99, 100], [399, 400])).toEqual(-1);
+//   });
+// });
+
+describe("problem2", () => {
   test("case1", () => {
-    expect(problem1([97, 98], [197, 198])).toEqual(0);
+    expect(problem2("browoanoommnaon")).toEqual("brown");
   });
 
   test("case2", () => {
-    expect(problem1([131, 132], [211, 212])).toEqual(1);
+    expect(problem2("zyelleyz")).toEqual("");
   });
 
   test("case3", () => {
-    expect(problem1([99, 102], [211, 212])).toEqual(-1);
+    expect(problem2("caa")).toEqual("c");
   });
 
-  test("case4", () => {
-    expect(problem1([1, 2], [211, 212])).toEqual(-1);
+  test("길이 1인 문자열은 그대로 반환한다.", () => {
+    expect(problem2("a")).toEqual("a");
   });
 
-  // test("case5", () => {
-  //   expect(problem1([99, 100], [399, 400])).toEqual(-1);
-  // });
+  test("길이 2의 연속 중복 문자열은 빈 배열을 반환한다.", () => {
+    expect(problem2("aa")).toEqual("");
+  });
 });
-
-// describe("problem2", () => {
-//   test("case1", () => {
-//     expect(problem2("browoanoommnaon")).toEqual("brown");
-//   });
-//   test("case2", () => {
-//     expect(problem2("zyelleyz")).toEqual("");
-//   });
-// });
 
 // describe("problem3", () => {
 //   test("case1", () => {
