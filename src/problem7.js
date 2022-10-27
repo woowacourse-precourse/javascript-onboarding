@@ -24,6 +24,15 @@ function setKnowTogetherScore(user, score, knowTogetherFriends) {
   });
 }
 
+function sortByScore(user1, user2) {
+  const [user1Name, user1Score] = user1;
+  const [user2Name, user2Score] = user2;
+  if (user2Score === user1Score) {
+    return user2Name > user1Name ? -1 : 1;
+  }
+  return user2Score - user1Score;
+}
+
 function problem7(user, friends, visitors) {
   const score = new Score();
   const relation = getRelation(friends);
@@ -38,14 +47,7 @@ function problem7(user, friends, visitors) {
   });
 
   const result = Object.entries(score.getScore())
-    .sort((user1, user2) => {
-      const [user1Name, user1Score] = user1;
-      const [user2Name, user2Score] = user2;
-      if (user2Score === user1Score) {
-        return user2Name > user1Name ? -1 : 1;
-      }
-      return user2Score - user1Score;
-    })
+    .sort(sortByScore)
     .reduce((recommands, [name]) => [...recommands, name], [])
     .slice(0, 5);
 
