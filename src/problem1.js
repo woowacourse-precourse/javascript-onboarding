@@ -1,6 +1,4 @@
 function problem1(pobi, crong) {
-  var answer;
-
   const isRightInput = (arr) => {
     if (!(arr.length == 2)) {
       return false;
@@ -58,8 +56,7 @@ function problem1(pobi, crong) {
     }
   };
 
-  answer = solution(pobi, crong);
-  return answer;
+  return solution(pobi, crong);
 }
 
 module.exports = problem1;
