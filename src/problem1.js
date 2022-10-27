@@ -1,3 +1,33 @@
+const add = (num) => {
+  return String(num)
+    .split("")
+    .reduce((acc, cur) => Number(acc) + Number(cur));
+};
+
+const mul = (num) => {
+  return String(num)
+    .split("")
+    .reduce((acc, cur) => Number(acc) * Number(cur));
+};
+
+const calculatePageNumber = (page) => {
+  const [leftPage, rightPage] = page;
+  let addLeftNum, addRightNum;
+  let mulLeftNum, mulRightNum;
+
+  addLeftNum = add(leftPage);
+  addRightNum = add(rightPage);
+  mulLeftNum = mul(leftPage);
+  mulRightNum = mul(rightPage);
+
+  console.log(addLeftNum);
+  console.log(mulLeftNum);
+  console.log(addRightNum);
+  console.group(mulRightNum);
+
+  return [addLeftNum, addRightNum, mulLeftNum, mulRightNum];
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
