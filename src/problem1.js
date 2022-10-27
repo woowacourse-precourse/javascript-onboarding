@@ -38,26 +38,27 @@ function problem1(pobi, crong) {
 
   // 각각의 점수 계산하기
   // pobi
-  let pobiLeftSum = 
-  let pobiLeftMultiply = 
-  let pobiLeftBig = 
+  let pobiLeftSum = letterSum(pobi[0]);
+  let pobiLeftMultiply = letterMultiply(pobi[0]);
+  let pobiLeftBig = Math.max(pobiLeftSum, pobiLeftMultiply)
 
-  let pobiRightSum = 
-  let pobiRightMultiply = 
-  let pobiRightBig = 
+  let pobiRightSum = letterSum(pobi[1]);
+  let pobiRightMultiply = letterMultiply(pobi[1]);
+  let pobiRightBig = Math.max(pobiRightSum, pobiRightMultiply)
 
-  let pobiFinalBig = 
+  let pobiResult = Math.max(pobiLeftBig,pobiRightBig);
 
   // crong
-  let crongLeftSum = 
-  let crongLeftMultiply = 
-  let crongLeftBig = 
+  let crongLeftSum = letterSum(crong[0]);
+  let crongLeftMultiply = letterMultiply(crong[0]);
+  let crongLeftBig = Math.max(crongLeftSum, crongLeftMultiply);
 
-  let crongRightSum = 
-  let crongRightMultiply = 
-  let crongRightBig = 
+  let crongRightSum = letterSum(crong[1]);
+  let crongRightMultiply = letterMultiply(crong[1]);
+  let crongRightBig = Math.max(crongRightSum, crongRightMultiply);
 
-  let crongFinalBig = 
+  let crongResult = Math.max(crongLeftBig, crongRightBig);
+  
 }
 
 module.exports = problem1;
