@@ -13,6 +13,15 @@ function problem1(pobi, crong) {
   );
 
   // 각 조건에 따라 결과값 출력
+  if (pobiMaxValue > crongMaxValue) {
+    return 1;
+  }
+  if (pobiMaxValue < crongMaxValue) {
+    return 2;
+  }
+  if (pobiMaxValue === crongMaxValue) {
+    return 0;
+  }
 }
 
 // 사용자의 페이지 예외처리 기능
