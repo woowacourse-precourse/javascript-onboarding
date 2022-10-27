@@ -50,7 +50,12 @@ function problem1(pobi, crong) {
   const pobiScore = Math.max(...[sumLeftPageByPobi, multiplyLeftPageByPobi, sumRightPageByPobi, multiplyRightPageByPobi]);
   const crongScore = Math.max(...[sumLeftPageByCrong, multiplyLeftPageByCrong, sumRightPageByCrong, multiplyRightPageByCrong]);
 
-  // 7. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+  // 7. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다. 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 한다.
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
+
+  return -1;
 }
 
 module.exports = problem1;
