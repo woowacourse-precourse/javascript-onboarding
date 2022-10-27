@@ -32,11 +32,33 @@ function reverseWord(correctWord, lists) {
   let changedWord = new Array(wordLength);
 
   for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
-    currentIndex = alphabetList.indexOf(correctWord[wordIndex]);
+    const currentWord = changeFromLowercaseToUppercase(correctWord[wordIndex]);
+
+    currentIndex = alphabetList.indexOf(currentWord);
     changedWord[wordIndex] = reversedAlphabetList[currentIndex];
   }
 
   return changedWord.join("");
+}
+
+function changeFromLowercaseToUppercase(alphabet) {
+  const START_ALPHABET_UPPER = 65;
+  const START_ALPHABET_LOWER = 97;
+  const LAST_ALPHABET_LOWER = 122;
+  const LOWER_MINUS_UPPER = START_ALPHABET_LOWER - START_ALPHABET_UPPER;
+  let alphabetNumber = alphabet.charCodeAt(0);
+  let changedAlphabet;
+
+  if (
+    alphabetNumber < START_ALPHABET_LOWER ||
+    alphabetNumber > LAST_ALPHABET_LOWER
+  ) {
+    return alphabet;
+  }
+
+  changedAlphabet = String.fromCharCode(alphabetNumber - LOWER_MINUS_UPPER);
+
+  return changedAlphabet;
 }
 
 module.exports = problem4;
