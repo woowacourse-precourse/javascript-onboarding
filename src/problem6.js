@@ -42,6 +42,9 @@ function problem6(forms) {
   namesArr.filter((el, i) => {
     if (el.includes(duplicate)) answer.push(forms[i][0]);
   });
+
+  // answer를 기준으로 오름차순으로 정렬하기
+  return answer.sort();
 }
 
 module.exports = problem6;
