@@ -34,7 +34,9 @@
 
 - [ ] [문제 5](docs/PROBLEM5.md) solution 함수 작성
 
-  
+  - [ ] 금액 단위가 들어있는 배열 생성
+  - [ ] 각 금액 단위별 변환 개수 return 로직 
+  - [ ] 문제 5 테스트 통과
 
 - [ ] [문제 6](docs/PROBLEM6.md) solution 함수 작성
 
