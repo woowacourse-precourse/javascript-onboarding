@@ -1,5 +1,16 @@
 function problem3(number) {
   let answer = 0;
+
+  for (let i = 1; i <= number; i++) {
+    i = i.toString();
+
+    for (let el of i) {
+      if (el === "3" || el === "6" || el === "9") {
+        answer++;
+      }
+    }
+  }
+
   return answer;
 }
 
