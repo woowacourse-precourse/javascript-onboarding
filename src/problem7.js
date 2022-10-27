@@ -1,6 +1,28 @@
 const relations = {};
 const score = {};
 
+function calculateScore(user, visitors) {
+  relations[user].forEach((friend) => {
+    if (friend in relations) {
+      relations[friend].forEach((f) => {
+        if (f in score) {
+          score[f] += 10;
+        } else {
+          score[f] = 10;
+        }
+      });
+    }
+  });
+  visitors.some((visitor) => {
+    if (relations[user].includes(visitor)) return 0;
+    if (visitor in score) {
+      score[visitor] += 1;
+    } else {
+      score[visitor] = 1;
+    }
+  });
+}
+
 function makeRelations(friends, me) {
   friends.forEach((friend) => {
     if (friend[0] in relations) {
@@ -23,6 +45,7 @@ function makeRelations(friends, me) {
 function problem7(user, friends, visitors) {
   const answer = [];
   makeRelations(friends, user);
+  calculateScore(user, visitors);
 
   return answer;
 }
