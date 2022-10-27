@@ -36,6 +36,14 @@ function reverseWord(correctWord, lists) {
 
     currentIndex = alphabetList.indexOf(currentWord);
     changedWord[wordIndex] = reversedAlphabetList[currentIndex];
+
+    if (currentWord === correctWord[wordIndex]) {
+      continue;
+    }
+
+    changedWord[wordIndex] = changeFromUppercaseToLowercase(
+      changedWord[wordIndex]
+    );
   }
 
   return changedWord.join("");
@@ -57,6 +65,18 @@ function changeFromLowercaseToUppercase(alphabet) {
   }
 
   changedAlphabet = String.fromCharCode(alphabetNumber - LOWER_MINUS_UPPER);
+
+  return changedAlphabet;
+}
+
+function changeFromUppercaseToLowercase(alphabet) {
+  const START_ALPHABET_UPPER = 65;
+  const START_ALPHABET_LOWER = 97;
+  const LOWER_MINUS_UPPER = START_ALPHABET_LOWER - START_ALPHABET_UPPER;
+  let alphabetNumber = alphabet.charCodeAt(0);
+  let changedAlphabet;
+
+  changedAlphabet = String.fromCharCode(alphabetNumber + LOWER_MINUS_UPPER);
 
   return changedAlphabet;
 }
