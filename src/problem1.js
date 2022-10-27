@@ -5,6 +5,12 @@ function problem1(pobi, crong) {
   }
 
   // 사용자 각 페이지 순회
+  const pobiMaxValue = Math.max(
+    ...pobi.map((page) => calculatePageMaxValue(page))
+  );
+  const crongMaxValue = Math.max(
+    ...crong.map((page) => calculatePageMaxValue(page))
+  );
 
   // 각 조건에 따라 결과값 출력
 }
