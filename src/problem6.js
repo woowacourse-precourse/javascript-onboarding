@@ -48,4 +48,14 @@ const removeDuplicatedName = (forms, result = []) => {
   return Array.from(new Set(result));
 };
 
+const validateForms = (forms) => {
+  if (typeof forms !== 'object') {
+    return false;
+  }
+  if (forms.length < 1 || forms.length > 10000) {
+    return false;
+  }
+  return true;
+};
+
 module.exports = problem6;
