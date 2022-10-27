@@ -45,7 +45,22 @@ function error(user) {
 }
 
 function problem1(pobi, crong) {
-
+    let answer = -1;
+    if (error(pobi) == false || error(crong) == false) {
+      return answer;
+    } 
+    else {
+      const pobiscore = compareEach(leftandright(pobi));
+      const crongscore = compareEach(leftandright(crong));
+      if (pobiscore > crongscore) {
+        answer = 1;
+      } else if (pobiscore < crongscore) {
+        answer = 2;
+      } else if (pobiscore == crongscore) {
+        answer = 0;
+      }
+    }
+  return answer;
 }
 
 module.exports = problem1;
