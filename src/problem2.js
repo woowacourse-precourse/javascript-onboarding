@@ -13,6 +13,7 @@ function isContinuous(cryptogram) {
     return newCryptogram;
   }
   // 아직 이웃하는 문자가 연속될 경우 (Recursion)
+  return isContinuous(newCryptogram);
 }
 
 // 연속문자 제거 기능
