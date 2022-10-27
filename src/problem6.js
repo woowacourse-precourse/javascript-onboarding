@@ -55,12 +55,31 @@ function checkOverlapKeyword(forms){
   overlap_arr = [...overlap_arr]
   return overlap_arr
 }
+//중복된 크루원 이메일 추출 후 정렬
+function deduplication(forms,overlap_arr){
+  let email_arr = [];
+  forms.map((element)=>{
+    overlap_arr.map((overlap)=>{
+      if(element[1].indexOf(overlap) != -1){
+        email_arr.push(element[0])
+      }
+    })
+  })
+  email_arr = email_arr.sort();
+  return email_arr;
+}
+
+  
 
 function problem6(forms) {
   var answer;
-  checkNicknameKorean(forms)
-  checkEmailForm(forms)
-  
+  let crew_info;
+  let overlap_keywords;
+  crew_info = checkCrewOver(forms)
+  crew_info = checkNicknameKorean(crew_info)
+  crew_info = checkEmailForm(crew_info)
+  overlap_keywords = checkOverlapKeyword(forms)
+  answer = deduplication(crew_info,overlap_keywords)
   return answer;
 }
 
