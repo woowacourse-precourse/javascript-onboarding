@@ -64,19 +64,32 @@ function problem7(user, friends, visitors) {
       });
     });
   }
-}
 
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
+  function makeResult(Score, Friends) {
+    let tmpList = [];
+    let nowFriendIdx = [];
+    let result = [];
+    Friends.map((friend) => {
+      nowFriendIdx.push(idIndexInfo[friend]);
+    });
+    for (let i = 2; i < Score.length; i++) {
+      if (nowFriendIdx.includes(i)) continue;
+      if (Score[i] !== 0) tmpList.push([Score[i], i]);
+    }
+    tmpList.sort((a, b) => {
+      b[0] - a[0] !== 0
+        ? b[0] - a[0]
+        : idIndexInfo[a[1]] > idIndexInfo[b[1]]
+        ? true
+        : false;
+    });
+    let memberList = Object.keys(idIndexInfo);
+    tmpList.map((v) => {
+      result.push(memberList[v[1] - 1]);
+    });
+
+    return result;
+  }
+}
 
 module.exports = problem7;
