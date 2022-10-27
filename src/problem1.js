@@ -17,11 +17,22 @@ function isException(arr) {
   return false;
 }
 
+const getMaxValue = (arr) => {
+  const splitNumArr =arr.map((page)=>page.toString().split("").map((item)=>Number(item)));
+  const sumArr = splitNumArr.map((item)=>item.reduce((previousValue, currentValue) => previousValue + currentValue, 0))
+  const multipleArr = splitNumArr.map((item)=>item.reduce((previousValue, currentValue) => previousValue * currentValue, 1));
+  return Math.max(...sumArr,...multipleArr);
+}
+
 function problem1(pobi, crong) {
-  let answer;
+  let answer = 0;
 
   if(isException(pobi)||isException(crong)) return -1;
   
+  const pobiMax = getMaxValue(pobi);
+  const crongMax = getMaxValue(crong);
+  if(pobiMax > crongMax) return 1;
+  if(pobiMax < crongMax) return 2;
   return answer;
 }
 
