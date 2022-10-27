@@ -1,10 +1,10 @@
-const add = (num) => {
+const addEachDigit = (num) => {
   return String(num)
     .split("")
     .reduce((acc, cur) => Number(acc) + Number(cur));
 };
 
-const mul = (num) => {
+const mulEachDigit = (num) => {
   return String(num)
     .split("")
     .reduce((acc, cur) => Number(acc) * Number(cur));
@@ -15,15 +15,10 @@ const calculatePageNumber = (page) => {
   let addLeftNum, addRightNum;
   let mulLeftNum, mulRightNum;
 
-  addLeftNum = add(leftPage);
-  addRightNum = add(rightPage);
-  mulLeftNum = mul(leftPage);
-  mulRightNum = mul(rightPage);
-
-  console.log(addLeftNum);
-  console.log(mulLeftNum);
-  console.log(addRightNum);
-  console.group(mulRightNum);
+  addLeftNum = addEachDigit(leftPage);
+  addRightNum = addEachDigit(rightPage);
+  mulLeftNum = mulEachDigit(leftPage);
+  mulRightNum = mulEachDigit(rightPage);
 
   return [addLeftNum, addRightNum, mulLeftNum, mulRightNum];
 };
