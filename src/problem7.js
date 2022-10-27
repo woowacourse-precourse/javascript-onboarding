@@ -4,10 +4,11 @@ function problem7(user, friends, visitors) {
   let mapIndex = 0;
   let userList = [];
   mapIndex = setMap(map, mapIndex, user, friends, visitors, userList);
-  let relation = new Array(mapIndex+1);
-  let userScores = new Array(mapIndex+1);
+  let relation = new Array(mapIndex);
+  let userScores = new Array(mapIndex);
   setRelation(relation, friends, map);
   setUserScores(userScores, relation, visitors, userList, map);
+  console.log(relation);
   console.log(userScores);
   return answer;
 }
