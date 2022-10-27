@@ -1,5 +1,22 @@
 function problem6(forms) {
-  var answer;
+  let answer = [];
+
+  for (let i = 0; i < forms.length; i++) {
+    let standardArrayForCheckingRepeat = makeTwoLetterArray(
+      forms.filter((v, j) => j !== i)
+    );
+    if (
+      checkIsNicknameInCludesRepeatWord(
+        forms[i][1],
+        standardArrayForCheckingRepeat
+      ) &&
+      !answer.includes(forms[i][0])
+    )
+      answer.push(forms[i][0]);
+  }
+
+  answer.sort();
+
   return answer;
 }
 
