@@ -20,12 +20,22 @@ function problem2(cryptogram) {
   }
 
 
-  return RETURN_REMOVE_DUPLICATION_ALPHABET(cryptogram);
+  
 
   //특이사항
 
   //!1. 글자의 길이는 1이상 1000이하
+
+  function CHECK_WORD_LENGTH_BETWEEN_ONE_TO_THOUSAND (word){
+    if(word.length < 1 || word > 1000){
+      return false;
+    } return true;
+  }
+
   //!2. 글자는 알파벳 소문자로만 이루어져 있음.
+
+
+  return RETURN_REMOVE_DUPLICATION_ALPHABET(cryptogram);
 }
 
 module.exports = problem2;
