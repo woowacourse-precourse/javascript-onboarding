@@ -31,8 +31,22 @@ function friendRelation(friends){
   return relation;
 }
 
+function knowFriend(arr, user, algorithm){
+  //존재하는 경우
+  userFriend = arr[user];
+  userFriend.map(commonFriend => {
+    arr[commonFriend].map(name => {
+      (name in algorithm) ? algorithm[name] += 10 : algorithm[name] = 10;
+    })
+  })
+  return algorithm;
+}
+
 function problem7(user, friends, visitors) {
   //const answer = friendRelation(friends)
+  const algorithm = visitCount(visitors);
+  const relation = friendRelation(friends);
+  const answer = knowFriend(relation, user, algorithm);
   return answer;
 }
 
