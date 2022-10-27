@@ -52,6 +52,7 @@ function checkFormsLength(forms) {
 
 function checkSameWord(i, forms, testWord, ans) {
   for (let n = 0; n < forms.length; n++) {
+    // 자기 자신은 비교하지 않는다
     if (n === i) {
       continue;
     }
@@ -86,7 +87,7 @@ function selectModelNickName(forms, ans) {
   }
 }
 
-function deleteOverlapEmail(ans) {
+function deleteOverlapAndSortEmail(ans) {
   let noOverlapAns = Array.from(new Set(ans)).sort();
 
   return noOverlapAns;
@@ -107,6 +108,7 @@ function problem6(forms) {
 
   selectModelNickName(forms, ans);
 
-  return deleteOverlapEmail(ans);
+  return deleteOverlapAndSortEmail(ans);
 }
+
 module.exports = problem6;
