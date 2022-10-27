@@ -6,6 +6,11 @@ function problem1(pobi, crong) {
     return result;
   }
 
+  function multiplication(n) {
+    var result = String(n).split("").reduce((acc, cur) => Number(acc) * Number(cur), 1);
+    return result;
+  }
+
 
 
 }
