@@ -6,9 +6,9 @@ function problem3(number) {
   let numArr = [];
   let numString = num.toString();
   for(let i = 0; i < numString.length; i+){
-    numArr[i] = numString[i];
+    numArr[i] = Number(numString[i]);
   }
-  
+
   return answer;
 }
 
