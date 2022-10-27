@@ -8,17 +8,15 @@ function getClapNumber(number) {
 }
 
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  let currentNumber = 1;
+
+  while (currentNumber < number + 1) {
+    answer += getClapNumber(currentNumber);
+    currentNumber += 1;
+  }
+
   return answer;
 }
 
 module.exports = problem3;
-
-function test() {
-  console.log(getClapNumber(33));
-  console.log(getClapNumber(13));
-  console.log(getClapNumber(3319));
-  console.log(getClapNumber(4));
-}
-
-test();
