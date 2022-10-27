@@ -18,11 +18,12 @@ function problem4(word) {
     return 'word 길이를 확인해주세요';
   }
   else{
-    
+    wordlist.map((w, idx) => {
+      wordlist[idx] = alphabet(w);
+    })
+    const answer = wordlist.join('');
+    return answer;
   }
-  return answer;
 }
 
 module.exports = problem4;
-
-problem4('I love you');
