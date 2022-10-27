@@ -20,6 +20,25 @@ function getRelations(friends) {
   return relations;
 }
 
+function getRelationScores(user, friends) {
+  const relations = getRelations(friends);
+  const relationScores = Object.keys(relations).reduce((acc, cur) => {
+    if (cur === user) {
+      return acc;
+    }
+
+    const acquaintances = relations[cur].filter((friend) =>
+      relations[user].includes(friend)
+    );
+    const score = acquaintances.length * 10;
+    acc[cur] = score;
+
+    return acc;
+  }, {});
+
+  return relationScores;
+}
+
 function getVisitorScores(visitors) {
   const visitorScores = visitors.reduce((acc, cur) => {
     if (!acc[cur]) {
@@ -35,22 +54,10 @@ function getVisitorScores(visitors) {
 }
 
 function problem7(user, friends, visitors) {
-  const crewScores = {};
-  const relations = getRelations(friends);
+  const relationScores = getRelationScores(user, friends);
+  const visitorScores = getVisitorScores(visitors);
 
-  Object.keys(relations).forEach((crew) => {
-    if (crew === user) {
-      return;
-    }
-
-    const acquaintances = relations[crew].filter((friend) =>
-      relations[user].includes(friend)
-    );
-    const score = acquaintances.length * 10;
-    crewScores[crew] = score;
-  });
-
-  return crewScores;
+  console.log(relationScores, visitorScores);
 }
 
 module.exports = problem7;
@@ -70,7 +77,7 @@ function test() {
   console.log(findUserFriends(user, friends));
   console.log(getRelations(friends));
   console.log(getVisitorScores(visitors));
-  console.log(problem7(user, friends, []));
+  console.log(problem7(user, friends, visitors));
 }
 
 test();
