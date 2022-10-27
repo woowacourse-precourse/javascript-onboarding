@@ -58,6 +58,4 @@ function isLower(string) {
   return string.match(new RegExp(/^[a-z]/)) !== null;
 }
 
-console.log(problem4('I love you'));
-
 module.exports = problem4;
