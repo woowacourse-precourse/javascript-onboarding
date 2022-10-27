@@ -1,6 +1,4 @@
 function problem2(cryptogram) {
-  var answer;
-
   const decryptString = (string) => {
     let finishedDecryption = true;
     for (let i = 0; i < string.length - 1; i++) {
@@ -32,11 +30,9 @@ function problem2(cryptogram) {
       }
       return cryptogram;
     }
-    answer = decryptString(cryptogram);
-    return answer;
+    return decryptString(cryptogram);
   };
-  answer = solution(cryptogram);
-  return answer;
+  return solution(cryptogram);
 }
 
 module.exports = problem2;
