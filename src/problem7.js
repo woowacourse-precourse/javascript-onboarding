@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let map = new Map();
   let mapIndex = 0;
   let userList = [];
@@ -10,6 +10,7 @@ function problem7(user, friends, visitors) {
   setUserScores(userScores, relation, visitors, userList, map);
   getAnswer(userScores, relation);
   sortUserScore(userScores);
+  saveAnswer(userScores, answer);
   return answer;
 }
 
@@ -134,6 +135,12 @@ function sortUserScore(userScores){
       return user2;
     }
   });
+}
+
+function saveAnswer(userScores, answer){
+  for(let i = 0; i < userScores.length; i++){
+    answer.push(userScores[i].name);
+  }
 }
 
 module.exports = problem7;
