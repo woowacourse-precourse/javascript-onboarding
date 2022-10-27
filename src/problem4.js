@@ -1,3 +1,7 @@
+const [CHARCODE_A, CHARCODE_Z, CHARCODE_a, CHARCODE_z] = 'AZaz'
+  .split('')
+  .map((_, idx) => 'AZaz'.charCodeAt(idx));
+
 function problem4(word) {
   const alphabetRegex = /[a-zA-Z]/;
 
