@@ -28,9 +28,11 @@ const getMaxNum = (odd, even) => {
 function problem1(pobi, crong) {
   const pobiMax = getMaxNum(pobi);
   const crongMax = getMaxNum(crong);
-  if(pobiMax > crongMax) return 1;
-  if(pobiMax < crongMax) return 2;
-  if(pobiMax === crongMax) return 0;
+  if(isValidPage(pobi) && isValidPage(crong)){
+    if(pobiMax > crongMax) return 1;
+    if(pobiMax < crongMax) return 2;
+    if(pobiMax === crongMax) return 0;
+  }
   return -1;
 }
 
