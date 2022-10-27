@@ -8,7 +8,7 @@ function alphabet(letter){
     return String.fromCharCode(219 - letter.charCodeAt(0));
   }
   else{
-    return letter
+    return letter;
   }
 }
 
