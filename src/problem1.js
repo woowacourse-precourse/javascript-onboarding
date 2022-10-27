@@ -1,4 +1,8 @@
 function problem1(pobi, crong) {
+  
+  if(exception == false){  
+    return -1;
+  }
   const pobiLeftScore = Math.max(pageSum(pobi[0]),pageMul(pobi[0]));
 
   const pobiRightScore = Math.max(pageSum(pobi[1]),pageMul(pobi[1]));
@@ -7,11 +11,11 @@ function problem1(pobi, crong) {
 
   const crongRigthScore = Math.max(pageSum(crong[1]),pageMul(crong[1]));
 
-  const Pobiscore = Math.max(pobiLeftScore, pobiRightScore);
+  const pobiScore = Math.max(pobiLeftScore, pobiRightScore);
 
-  const crongscore = Math.max(crongLeftScore, crongRigthScore);
+  const crongScore = Math.max(crongLeftScore, crongRigthScore);
 
-  return ScoreResult(Pobiscore,crongscore);
+  return ScoreResult(pobiScore,crongScore);
 }
 
 function pageSum(num){
@@ -28,4 +32,15 @@ function pageMul(num){
   return (num / 10) * (num % 10);
 }
 
+function exception(pobi,crong){
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1 ){
+    return false;
+  }
+  if (pobi[1] > 400 || crong[1] > 400 || pobi[0] < 1 || crong[0] < 1){
+    return false;
+  }
+  return true;
+}
+
+}
 module.exports = problem1;
