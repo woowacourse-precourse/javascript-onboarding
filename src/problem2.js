@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const duplicateCharacterList = cryptogram.match(/([a-z])\1+/g);
+  if (duplicateCharacterList === null) return cryptogram;
 }
 
 module.exports = problem2;
