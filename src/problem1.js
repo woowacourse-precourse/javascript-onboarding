@@ -1,13 +1,29 @@
 /*
-기능목록
-
-1. 각 자릿수 더하기
-2. 각 자릿수 곱하기
-3. 페이지가 유효한지 확인하기
-
-포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return
-
+[기능목록]
+1. 페이지가 연속된 페이지인지 확인하기
+2. 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수인지 확인하기
+3. 각 자릿수 더하기
+4. 각 자릿수 곱하기
+5. 누가 이겼는지 확인하기
 */
+
+function checkOddEvenNumber(arr){
+  if(arr[0] % 2 !== 0 && arr[1] % 2 === 0){
+    return true;
+  } else{
+    return false;
+  }
+}
+
+
+function checkSequencePage(arr){
+  if(arr[1] !== arr[0]+1){
+    return false;
+  } else{
+    return true;
+  }
+}
+
 
 function addPageNumber(num){
   num = num.toString();
@@ -28,43 +44,39 @@ function multiplePageNumber(num){
   return result;
 }
 
-function pageValidCheck(arr){
-    if(arr[1] !== arr[0]+1){
-      return false;
-    } else{
-      return true;
-    }
+function getBiggerNumber(arr){
+  let result = 0;
+  for(let i = 0; i < 2; i++){
+    let bigger_number = Math.max(addPageNumber(arr[i]), multiplePageNumber(arr[i]));
+    result = Math.max(result, bigger_number);
+  }
+  return result;
+}
+
+
+function getWinner(pobi_result, crong_result){
+  if(pobi_result > crong_result){
+    return 1;
+  } else if(pobi_result < crong_result){
+    return 2;
+  } else if(pobi_result === crong_result){
+    return 0;
+  } else{
+    return -1;
+  }
 }
 
 function problem1(pobi, crong) {
   let answer;
   let pobi_result = 0;
   let crong_result = 0;
-  if(!pageValidCheck(pobi) || !pageValidCheck(crong)){
+  if(!checkSequencePage(pobi) || !checkSequencePage(crong) || !checkOddEvenNumber(pobi) || !checkOddEvenNumber(crong)){
     return -1;
   }
 
-  for(let i = 0; i < 2; i++){
-    let bigger_number = Math.max(addPageNumber(pobi[i]), multiplePageNumber(pobi[i]));
-    pobi_result = Math.max(pobi_result, bigger_number);
-  }
-
-  for(let i = 0; i < 2; i++){
-    let bigger_number = Math.max(addPageNumber(crong[i]), multiplePageNumber(crong[i]));
-    crong_result = Math.max(crong_result, bigger_number);
-  }
-
-
-  if(pobi_result > crong_result){
-    answer = 1;
-  } else if(pobi_result < crong_result){
-    answer = 2;
-  } else if(pobi_result === crong_result){
-    answer = 0;
-  } else{
-    answer = -1;
-  }
-
+  pobi_result = getBiggerNumber(pobi);
+  crong_result = getBiggerNumber(crong);
+  answer = getWinner(pobi_result, crong_result);
   return answer;
 }
 
