@@ -1,23 +1,6 @@
 function problem6(forms) {
-  return sortEmail(getEmail(forms));
+  return sortEmail(removeDuplicatedName(forms));
 }
-
-const setUsers = (forms) => {
-  const usersHashMap = new Map();
-  forms.forEach((user) => {
-    usersHashMap.set(user[1], user[0]);
-  });
-  return usersHashMap;
-};
-
-const getName = (forms) => {
-  return forms.map((user) => user[1]);
-};
-
-const getEmail = (forms) => {
-  const usersHashMap = setUsers(forms);
-  return removeDuplicatedName(forms).map((name) => usersHashMap.get(name));
-};
 
 const sortEmail = (forms) => {
   return forms.sort((a, b) => {
@@ -33,16 +16,16 @@ const sortEmail = (forms) => {
 
 const removeDuplicatedName = (forms, result = []) => {
   const usersNameHashMap = new Map();
-  getName(forms).forEach((userName) => {
-    for (let j = 0; j < userName.length - 1; j += 1) {
-      const dividedUserName = userName.slice(j, j + 2);
+  forms.forEach((user) => {
+    for (let j = 0; j < user[1].length - 1; j += 1) {
+      const dividedUserName = user[1].slice(j, j + 2);
       if (
         usersNameHashMap.has(dividedUserName) &&
-        userName !== usersNameHashMap.get(dividedUserName)
+        user[0] !== usersNameHashMap.get(dividedUserName)
       ) {
-        result.push(userName, usersNameHashMap.get(dividedUserName));
+        result.push(user[0], usersNameHashMap.get(dividedUserName));
       }
-      usersNameHashMap.set(dividedUserName, userName);
+      usersNameHashMap.set(dividedUserName, user[0]);
     }
   });
   return Array.from(new Set(result));
