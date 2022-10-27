@@ -1,18 +1,20 @@
 function problem2(cryptogram) {
-  const cryptoArray = cryptogram.split('');
-    
-  const DetectedIndexs = getDupIndexs(cryptoArray)
+  const stringArray = cryptogram.split('');
 
-  DetectedIndexs.map((index) => cryptoArray.splice(index, 1))
+  while(1){
+    const DetectedIndexs = getDupIndexs(stringArray)
+    if(DetectedIndexs.length === 0) break;
+    DetectedIndexs.map((index) => stringArray.splice(index, 1))
+  }
   
-  return cryptoArray.join(''); 
+  return stringArray.join('');
 }
 
-function getDupIndexs(cryptoArray) {
+function getDupIndexs(stringArray) {
   const dupIndexs = [];
   let isDuplicate = false;
-  for(let i = 0; i < cryptoArray.length; i++) {
-    if( cryptoArray[i] === cryptoArray[i+1]) {
+  for(let i = 0; i < stringArray.length; i++) {
+    if( stringArray[i] === stringArray[i+1]) {
       isDuplicate = true;
       dupIndexs.unshift(i);
     } else if(isDuplicate) {
