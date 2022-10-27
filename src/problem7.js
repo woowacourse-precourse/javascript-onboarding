@@ -17,6 +17,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let visitor of visitors) {
+    if (!recordScoreMap.has(visitor)) {
+      recordScoreMap.set(visitor, 1);
+    } else if (recordScoreMap.get(visitor) !== 0) {
+      recordScoreMap.set(visitor, recordScoreMap.get(visitor) + 1);
+    }
+  }
+
   return answer;
 }
 
