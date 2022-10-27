@@ -77,10 +77,12 @@ function problem7(user, friends, visitors) {
       if (Score[i] !== 0) tmpList.push([Score[i], i]);
     }
     tmpList.sort((a, b) => {
-      if (b[0] > a[0]) return 1;
-      if (b[0] < a[0]) return -1;
-      if (b[1] > a[1]) return -1;
-      if (b[1] < a[1]) return 1;
+      let [curScore, preScore] = [b[0], a[0]];
+      let [curName, preName] = [b[1], a[1]];
+      if (curScore > preScore) return 1;
+      if (curScore < preScore) return -1;
+      if (curName > preName) return -1;
+      if (curName < preName) return 1;
     });
     let memberList = Object.keys(idIndexInfo);
     tmpList.map((v) => {
