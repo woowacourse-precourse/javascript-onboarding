@@ -47,6 +47,18 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("case3", () => {
+    expect(problem2("zyelllleyz")).toEqual("");
+  });
+  test("case4", () => {
+    expect(problem2("zyelllllll")).toEqual("zye");
+  });
+  test("case5", () => {
+    expect(problem2("l")).toEqual("l");
+  });
+  test("case6", () => {
+    expect(problem2("l".repeat(1000))).toEqual("");
+  });
 });
 
 describe("problem3", () => {
