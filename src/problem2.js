@@ -22,5 +22,11 @@ function findDuplicatesCharIndex(cryptogram) {
   }
   return Array.from(new Set(findIndex));
 }
+function removeDuplicatesChar(refinedCryptogram, indexArr) {
+  for (let i = indexArr.length - 1; i > -1; i--) {
+    refinedCryptogram.splice(indexArr[i], 1);
+  }
+  return refinedCryptogram.join("");
+}
 
 module.exports = problem2;
