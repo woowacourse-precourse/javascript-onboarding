@@ -3,8 +3,8 @@ function problem7(user, friends, visitors) {
   let map = new Map();
   let mapIndex = 0;
   setMap(map, mapIndex, user, friends, visitors);
-  let graph = [mapIndex+1][mapIndex+1];
-  setGraph(graph, map, visitors);
+  let graph = new Array();
+  setGraph(graph, map, friends, mapIndex);
   console.log(graph);
   return answer;
 }
@@ -38,11 +38,23 @@ function setMapVisitors(map, mapIndex, visitors){
   return mapIndex;
 }
 
-function setGraph(graph, map, visitors){
-  for(let i = 0; i < visitors.length; i++){
-    let leftIndex = map.get(visitors[i][0]);
-    let rightIndex = map.get(visitors[i][1]);
-    graph[leftIndex][rightIndex] = graph[rightIndex][leftIndex] = 1;
+function initGraph(graph, mapIndex){
+  for(let i = 0; i <= mapIndex; i++){
+    let tmpArr = new Array();
+    for(let j = 0; j <= mapIndex; j++){
+      tmpArr.push(0);
+    }
+    graph.push(tmpArr);
+  }
+}
+
+function setGraph(graph, map, friends, mapIndex){
+  initGraph(graph, mapIndex);
+  for(let i = 0; i < friends.length; i++){
+    let leftIndex = map.get(friends[i][0]);
+    let rightIndex = map.get(friends[i][1]);
+    graph[leftIndex][rightIndex] = 1;
+    graph[rightIndex][leftIndex] = 1;
   }
 }
 
