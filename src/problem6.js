@@ -22,7 +22,8 @@ function problem6(forms) {
     }
   });
 
-  return answer;
+  result = [...new Set(result)].sort();
+  return result;
 }
 
 module.exports = problem6;
