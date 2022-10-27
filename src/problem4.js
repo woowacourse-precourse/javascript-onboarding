@@ -1,20 +1,34 @@
 function problem4(word) {
-  var answer;
+  var answer = "";
   let dictionary = [];
   let reversDictionary = [];
   let wordIndex = 0;
   let flogWord = [];
+  let upperCase = 0;
   new Array(26).fill().map((_, i) => {
     dictionary += String.fromCharCode(i + 97);
   });
-  reversDictionary = dictionary.split("").reverse();
-  console.log(dictionary, reversDictionary);
+  reversDictionary = dictionary.split("").reverse().join("");
 
   word.split("").map((x) => {
+    if (x.toLowerCase() !== x) {
+      upperCase = dictionary.indexOf(x.toLowerCase());
+    }
     wordIndex = dictionary.indexOf(x.toLowerCase());
     flogWord.push(reversDictionary[wordIndex]);
   });
-  console.log(flogWord.join());
+  flogWord.map((x) => {
+    // 공백
+    if (x === undefined) {
+      x = " ";
+    }
+    //대소문자
+    if (reversDictionary[upperCase] === x) {
+      x = x.toUpperCase();
+    }
+    answer += x;
+  });
+  console.log(answer);
   return answer;
 }
 
