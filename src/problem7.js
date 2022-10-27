@@ -20,6 +20,20 @@ function getRelations(friends) {
   return relations;
 }
 
+function getVisitorScores(visitors) {
+  const visitorScores = visitors.reduce((acc, cur) => {
+    if (!acc[cur]) {
+      acc[cur] = 0;
+    }
+
+    acc[cur] += 1;
+
+    return acc;
+  }, {});
+
+  return visitorScores;
+}
+
 function problem7(user, friends, visitors) {
   const crewScores = {};
   const relations = getRelations(friends);
@@ -51,9 +65,11 @@ function test() {
     ['shakevan', 'jun'],
     ['shakevan', 'mrko'],
   ];
+  const visitors = ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'];
 
   console.log(findUserFriends(user, friends));
   console.log(getRelations(friends));
+  console.log(getVisitorScores(visitors));
   console.log(problem7(user, friends, []));
 }
 
