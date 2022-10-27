@@ -17,7 +17,7 @@ function problem1(pobi, crong) {
 }
 
 function isConsecutiveNumbers(numbers) {
-  return numbers[0] + 1 == numbers[1];
+  return numbers[0] + 1 === numbers[1];
 }
 
 function getSumOfDigits(number) {
