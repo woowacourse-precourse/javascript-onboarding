@@ -1,20 +1,20 @@
 
 function makePlus(pNum){
   if(pNum>=100){
-    return parseInt((pNum/100)+((pNum%100)/10)+(pNum%10));
+    return parseInt((pNum/100)+parseInt((pNum%100,10)/10)+(pNum%10),10);
   }else if(pNum>=10){
-    return parseInt((pNum/10)+(pNum%10));
+    return parseInt((pNum/10)+(pNum%10),10);
   }else{
-    return parseInt(pNum);
+    return parseInt(pNum,10);
   }
 };
 function makeMul(mNum){
   if(mNum>=100){
-   return parseInt(mNum/100) * parseInt(mNum%10) * parseInt(parseInt(mNum%100)/10);
+   return parseInt(mNum/100,10) * parseInt(mNum%10,10) * parseInt(parseInt(mNum%100,10)/10,10);
   }else if(mNum>=10){
-   return parseInt((mNum/10))*parseInt((mNum%10));
+   return parseInt((mNum/10),10)*parseInt((mNum%10),10);
   }else{
-    return parseInt(mNum);
+    return parseInt(mNum,10);
   }
 }
 function MakeBiggest(num1,num2,num3,num4){
@@ -28,20 +28,18 @@ function MakeBiggest(num1,num2,num3,num4){
     return num4;
   }
 }
-function MakeFilter(n1,n2,n3,n4){
-  if(n2-n1 === 1 && n4-n3 === 1){
-      if(n1%2===1){
-        if(n2%2===0){
-          if(n3%2===1){
-            if(n4%2===0){
-              if(n1 !== 1 && n2!==400 && n3!== 1 && n4 !== 400){
-                return true;
-              }else{return false}
-            }else{return false}
-          }else{return false}
-        }else{return false}
-      }else{return false}
-  }else{return false}
+function MakeFilter(n1, n2) {
+  if (n2 - n1 === 1) {
+    if (n1 % 2 === 1) {
+      if (n2 % 2 === 0) {
+        if (n1 !== 1 && n2 !== 400) {
+              return true;
+            }else {return false;} 
+      }else{return false;}
+    } else {
+      return false;
+    }
+  }else{return false;}
 }
 function problem1(pobi, crong) {
   var answer;
@@ -50,14 +48,16 @@ function problem1(pobi, crong) {
   let pPobi2 = makePlus(pobi[1]);
   let mPobi2 = makeMul(pobi[1]); 
   let aPobi;
-
+  let cPobi = MakeFilter(pobi[0],pobi[1]);
   let pCrong1 = makePlus(crong[0]);
   let mCrong1 = makeMul(crong[0]);
   let pCrong2 = makePlus(crong[1]);
   let mCrong2 = makeMul(crong[1]);
   let aCrong;
+  let cCrong = MakeFilter(crong[0],crong[1]);
 
-  if(pobi[1]-pobi[0]=== 1 && crong[1]-crong[0]=== 1 && pobi[0]%2===1 && pobi[1]%2===0 && crong[0]%2===1 && crong[1]%2===1){
+  if(cPobi){
+    if(cCrong){
       aPobi = MakeBiggest(pPobi1,pPobi2,mPobi1,mPobi2);
       aCrong = MakeBiggest(pCrong1,pCrong2,mCrong1,mCrong2);
       if(aPobi>aCrong){
@@ -67,6 +67,7 @@ function problem1(pobi, crong) {
       }else if(aCrong>aPobi){
         answer = 2;
       }
+    }else{answer=-1}
   }else{ answer = -1}
 
   return answer;
