@@ -1,6 +1,7 @@
 function problem1(pobi, crong) {
   var answer;
-  console.log(checkValidatePage(null));
+  if (!isValidatePage(pobi) || !isValidatePage(crong)) return -1;
+
   return answer;
 }
 
@@ -30,7 +31,9 @@ const getWinner = (pobiScore, crongScore) => {
   return 2;
 };
 
-const checkValidatePage = (leftPage, rightPage) => {
+const isValidatePage = (page) => {
+  let leftPage = page[0],
+    rightPage = page[1];
   if (leftPage - rightPage !== -1) return -1;
   if (leftPage < 1 || leftPage >= 400 || rightPage < 2 || rightPage > 400)
     return -1;
