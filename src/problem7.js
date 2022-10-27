@@ -30,6 +30,19 @@ function calcFriendScore(user, relationships, scores = {}) {
   return scores;
 }
 
+function calcVisitorScore(visitors, friends, scores = {}) {
+  visitors.map(visitor => {
+    if (friends.includes(visitor)) {
+      return;
+    }
+    if (!scores[visitor]) {
+      return scores[visitor] = 1;
+    }
+    return scores[visitor] += 1;
+  })
+  return scores;
+}
+
 function problem7(user, friends, visitors) {
   const relationships = getRelationships(friends);
 }
