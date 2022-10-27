@@ -19,7 +19,7 @@ describe("problem1", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
 });
-
+/*
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
@@ -86,3 +86,4 @@ describe("problem7", () => {
     ).toEqual(["andole", "jun", "bedi"]);
   });
 });
+*/
