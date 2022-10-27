@@ -8,6 +8,7 @@ function problem3(number) {
       .forEach((char) => {
         if (Candidates.includes(Number(char))) count++;
       });
+    return count;
   };
 
   var answer;
