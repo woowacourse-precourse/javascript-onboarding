@@ -3,7 +3,15 @@
 ];
 
 // 분리
-const makeNickNameCombination = (nickName) => {};
+const makeNickNameCombination = (nickName) => {
+  const res = [];
+  for (let i = 0; i < nickName.length - 1; i++) {
+    const cur = nickName[i];
+    const next = nickName[i + 1];
+    res.push(cur + next);
+  }
+  return res;
+};
 // map 생성
 const makeCountMapOfNickName = (nickNames) => {};
 // 2개 이상 분리
