@@ -1,5 +1,5 @@
 function problem6(forms) {
-  return getEmail(forms);
+  return sortEmail(getEmail(forms));
 }
 
 const setUsers = (forms) => {
@@ -17,6 +17,18 @@ const getName = (forms) => {
 const getEmail = (forms) => {
   const usersHashMap = setUsers(forms);
   return removeDuplicatedName(forms).map((name) => usersHashMap.get(name));
+};
+
+const sortEmail = (forms) => {
+  return forms.sort((a, b) => {
+    if (a[0] === b[0]) {
+      return 0;
+    } else if (a[0] > b[0]) {
+      return 1;
+    } else if (a[0] < b[0]) {
+      return -1;
+    }
+  });
 };
 
 const removeDuplicatedName = (forms, result = []) => {
