@@ -28,7 +28,21 @@ function MakeBiggest(num1,num2,num3,num4){
     return num4;
   }
 }
-
+function MakeFilter(n1,n2,n3,n4){
+  if(n2-n1 === 1 && n4-n3 === 1){
+      if(n1%2===1){
+        if(n2%2===0){
+          if(n3%2===1){
+            if(n4%2===0){
+              if(n1 !== 1 && n2!==400 && n3!== 1 && n4 !== 400){
+                return true;
+              }else{return false}
+            }else{return false}
+          }else{return false}
+        }else{return false}
+      }else{return false}
+  }else{return false}
+}
 function problem1(pobi, crong) {
   var answer;
   let pPobi1 = makePlus(pobi[0]);
@@ -43,7 +57,7 @@ function problem1(pobi, crong) {
   let mCrong2 = makeMul(crong[1]);
   let aCrong;
 
-  if(pobi[1]-pobi[0]=== 1 && crong[1]-crong[0]=== 1){
+  if(pobi[1]-pobi[0]=== 1 && crong[1]-crong[0]=== 1 && pobi[0]%2===1 && pobi[1]%2===0 && crong[0]%2===1 && crong[1]%2===1){
       aPobi = MakeBiggest(pPobi1,pPobi2,mPobi1,mPobi2);
       aCrong = MakeBiggest(pCrong1,pCrong2,mCrong1,mCrong2);
       if(aPobi>aCrong){
