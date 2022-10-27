@@ -47,4 +47,8 @@ function getSplitNickname(nickname) {
     .filter((string) => string.length >= 2);
 }
 
+function removeRepeatString(arr) {
+  return Array.from(new Set(arr));
+}
+
 module.exports = problem6;
