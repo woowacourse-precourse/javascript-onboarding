@@ -9,7 +9,6 @@ function calcNum(pageNum){
   let multi = 1;
   const numbers = Array.from(pageNum.toString(), (num) => Number(num));
   
-  
   numbers.map((num) => {
     sum = sum + num;
     multi = multi * num;
@@ -19,15 +18,10 @@ function calcNum(pageNum){
 }
 
 function getMaxNum(arr){
-  let maxNum = -1;
+  const leftPage = calcNum(arr[0]);
+  const rightPage = calcNum(arr[1]);
 
-  //*Math.max함수 사용
-  arr.map((pageNum)=>{
-    const num = calcNum(pageNum);
-    maxNum = Math.max(maxNum,num);
-  })
-
-  return maxNum;
+  return Math.max(leftPage,rightPage);
 }
 
 function problem1(pobi, crong) {
