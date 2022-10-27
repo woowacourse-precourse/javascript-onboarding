@@ -1,11 +1,18 @@
 function add_if_possible(str) {
   let count = 0;
   for (let i = 0; i < str.length; i++) {
-    if (str[i] == '3' || str[i] == '6' || str[i] == '9') {
-      count++;
+    if (multipleof_three(str[i])) {
+      count += 1;
     }
   }
   return count;
+}
+
+function multipleof_three(str) {
+  if (str === '3' || str === '6' || str === '9') {
+    return true;
+  }
+  return false;
 }
 
 function problem3(number) {
