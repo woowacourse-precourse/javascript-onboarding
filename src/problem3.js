@@ -10,7 +10,6 @@ const INPUT = {
 
 function problem3(number) {
   if (isWrongInput(number)) {
-    console.log('test');
     return RESULT.exception;
   }
 }
@@ -39,4 +38,4 @@ function isWrongLengthOfInput(input) {
   return input < INPUT.minInput || input > INPUT.maxInput;
 }
 
-module.exports = problem3(NaN);
+module.exports = problem3;
