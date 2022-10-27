@@ -18,6 +18,14 @@ A~Z 는 65번부터 90번, a~z 는 97번부터 122번
 
 */
 
-function problem4(word) {}
+function problem4(word) {
+  function frogDict(num) {
+    let frogDictKey = 0;
+    if (num >= 65 && num <= 90) frogDictKey = 90 - (num - 65);
+    else if (num >= 97 && num <= 122) frogDictKey = 122 - (num - 97);
+
+    return String.fromCharCode(frogDictKey);
+  }
+}
 
 module.exports = problem4;
