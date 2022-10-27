@@ -1,4 +1,9 @@
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  if (getGreatestNumber(pobi) > getGreatestNumber(crong)) return 1;
+  if (getGreatestNumber(pobi) < getGreatestNumber(crong)) return 2;
+  if (getGreatestNumber(pobi) === getGreatestNumber(crong)) return 0;
+  return -1;
+}
 
 const getGreatestNumber = (pageList) => {
   if (pageList[0] + 1 !== pageList[1]) return 'error';
