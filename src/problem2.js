@@ -9,7 +9,9 @@ function removeDuplicateLetter(string) {
   string = string.split('');
   let result = '';
   string.forEach((letter, idx) => {
-    if(letter !== string[idx + 1] && letter !== string[idx - 1]) result += letter;
+    const previousLetter = string[idx - 1];
+    const nextLetter = string[idx + 1];
+    if(letter !== nextLetter && letter !== previousLetter) result += letter;
   });
   if(result !== string.join('')) return removeDuplicateLetter(result);
   if(result === string.join('')) return result;
