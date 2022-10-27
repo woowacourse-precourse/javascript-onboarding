@@ -15,4 +15,11 @@ function separateDigit(pages) {
   return [firstPage, secondPage];
 }
 
+function sumOfPages(pages2D) {
+  const sumOfFirstOne = pages2D[0].reduce((pre, cur) => pre + cur, 0);
+  const sumOfSecondOne = pages2D[1].reduce((pre, cur) => pre + cur, 0);
+  if (sumOfFirstOne > sumOfSecondOne) return sumOfFirstOne;
+  else return sumOfSecondOne;
+}
+
 module.exports = problem1;
