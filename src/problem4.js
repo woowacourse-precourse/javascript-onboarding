@@ -1,7 +1,9 @@
+//@ts-check
+
 /**
  * 입력한 문자에 반대 문자를 반환한다.
- * @param {char} char 
- * @returns {char} reversed character
+ * @param {string} char 
+ * @returns {string} reversed character
  */
 function getReversedChar(char) {
   const ascii = char.charCodeAt(0);

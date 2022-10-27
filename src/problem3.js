@@ -1,3 +1,5 @@
+//@ts-check
+
 /**
  * Check for valid value
  * @param {number} num

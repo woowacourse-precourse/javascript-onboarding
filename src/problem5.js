@@ -1,3 +1,5 @@
+//@ts-check
+
 /**
  * Returns the decrypt string
  * @param {number} money
@@ -7,7 +9,7 @@ function problem5(money) {
   let leftMoney = money;
   return [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
       .map((m) => {
-        const count = parseInt(leftMoney / m);
+        const count = Math.floor(leftMoney / m);
         leftMoney -= count * m;
         return count;
       })

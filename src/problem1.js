@@ -1,3 +1,5 @@
+//@ts-check
+
 /**
  * Check for valid values
  * @param {Array} pages 
@@ -37,7 +39,7 @@ function calculateAddScore(num) {
 /**
  * 펼친 페이지의 score 계산
  * @param {Array} pages 
- * @returns {boolean}
+ * @returns {number}
  */
 function calculateTotalScore(pages) {
   return Math.max(
