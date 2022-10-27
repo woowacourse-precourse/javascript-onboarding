@@ -51,7 +51,6 @@
     - pobi 본인의 숫자가 crong 본인의 점수보다 클 경우 : return 1
     - crong 본인의 숫자가 pobi 본인의 점수보다 클 경우 : return 2
     - crong 본인의 숫자와 pobi 본인의 점수가 같을 경우 : return 0
-    - 예외일 경우 : return -1
 
 - pobi와 crong 배열 예외처리 [기능 4번]
 
