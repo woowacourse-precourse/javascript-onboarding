@@ -7,7 +7,7 @@ function problem7(user, friends, visitors) {
   let relation = new Array(mapIndex+1);
   let userScores = new Array(mapIndex+1);
   setRelation(relation, friends, map);
-  setUserScores(userScores, relation, visitors, userList);
+  setUserScores(userScores, relation, visitors, userList, map);
   console.log(userScores);
   return answer;
 }
@@ -57,18 +57,33 @@ function setRelation(relation, friends, map){
   }
 }
 
-function setUserScores(userScores, relation, visitors, userList){
+function setUserScores(userScores, relation, visitors, userList, map){
   initUserScores(userScores, userList);
+  AddFriendScore(userScores, relation, map);
+  for(let i = 0; i < visitors.length; i++){
+    let userIndex = map.get(visitors[i]);
+    userScores[userIndex].score += 1;
+  }
 }
 
 function initUserScores(userScores, userList){
   for(let i = 0; i < userList.length; i++){
-    console.log(userList[i]);
     userScores[i] = {
       name: "",
       score: 0,
     };
     userScores[i].name = userList[i];
+  }
+}
+
+function AddFriendScore(userScores, relation, map){
+  for(let i = 0; i < relation[0].length; i++){
+    let friendIndex = map.get(relation[0][i]);
+    for(let j = 0; j < relation[friendIndex].length; j++){
+      console.log("Add score user is ", relation[friendIndex][j]);
+      let finalIndex = map.get(relation[friendIndex][j]);
+      userScores[finalIndex].score += 10;
+    }
   }
 }
 
