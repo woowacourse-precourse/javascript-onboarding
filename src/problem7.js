@@ -9,13 +9,7 @@ function getAlreadyFriends(user, friends, alreadyFriends) {
   });
 }
 
-function problem7(user, friends, visitors) {
-  let alreadyFriends = [];
-
-  getAlreadyFriends(user, friends, alreadyFriends);
-
-  let friendOfFreinds = [];
-
+function getFriendOfFreinds(user, alreadyFriends, friendOfFreinds) {
   friends.forEach((item) => {
     for (let i = 0; i < alreadyFriends.length; i++) {
       if (item.includes(alreadyFriends[i])) {
@@ -29,6 +23,16 @@ function problem7(user, friends, visitors) {
       }
     }
   });
+}
+
+function problem7(user, friends, visitors) {
+  let alreadyFriends = [];
+
+  getAlreadyFriends(user, friends, alreadyFriends);
+
+  let friendOfFreinds = [];
+
+  getFriendOfFreinds(user, alreadyFriends, friendOfFreinds);
 }
 
 module.exports = problem7;
