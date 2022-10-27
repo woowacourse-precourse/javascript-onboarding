@@ -25,6 +25,15 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  sortByScoreArr = [...recordScoreMap].sort((r1, r2) => {
+    if (r2[1] === r1[1]) {
+      if (r1[0] > r2[0]) return 1;
+      if (r1[0] === r2[0]) return 0;
+      if (r1[0] < r2[0]) return -1;
+    }
+    return r2[1] - r1[1];
+  });
+
   return answer;
 }
 
