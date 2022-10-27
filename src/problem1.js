@@ -1,16 +1,20 @@
 function problem1(pobi, crong) {
   var answer;
 
-  pobiLeftScore = pobiCrongLeft(pobi);
-  crongLeftScore = pobiCrongLeft(crong);
-  pobiRightScore = pobiCrongRight(pobi);
-  crongRightScore = pobiCrongRight(crong);
+  pobiCrongException = exception(pobi, crong);
+  if(pobiCrongException != -1) {
+    pobiLeftScore = pobiCrongLeft(pobi);
+    crongLeftScore = pobiCrongLeft(crong);
+    pobiRightScore = pobiCrongRight(pobi);
+    crongRightScore = pobiCrongRight(crong);
 
-  pobiScore = bestScore(pobiLeftScore, pobiRightScore);
-  crongScore = bestScore(crongLeftScore, crongRightScore);
+    pobiScore = bestScore(pobiLeftScore, pobiRightScore);
+    crongScore = bestScore(crongLeftScore, crongRightScore);
 
-  answer = winner(pobiScore, crongScore);
-
+    answer = winner(pobiScore, crongScore);
+  }else {
+    answer = pobiCrongException;
+  }
   return answer;
 }
 
@@ -65,6 +69,13 @@ function winner(pobiBestScore, crongBestScore){
   }else{
     return 0;
   }
+}
+
+function exception(pobiException, crongException){
+  if(pobiException[0]+1 == pobiException[1] && crongException[0]+1 == crongException[1]){
+    return 0;
+  }
+  return -1;
 }
 
 module.exports = problem1;
