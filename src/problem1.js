@@ -1,6 +1,12 @@
 function problem1(pobi, crong) {
+  // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 - 1로 return 한다.
+  const POBI_WIN = 1;
+  const CRONG_WIN = 2;
+  const DRAW = 0;
+  const EXCEPTIONS = -1;
+
   // 1. 책의 페이지가 연속된 숫자이어야 한다. (예외사항)
-  if (pobi[0] !== pobi[1] - 1 || crong[0] !== crong[1] - 1) return -1;
+  if (pobi[0] !== pobi[1] - 1 || crong[0] !== crong[1] - 1) return EXCEPTIONS;
 
   // 2. 포비와 크롱의 왼쪽 페이지 번호의 각 자리 숫자를 모두 더한 값을 구한다.
   const sumLeftPageByPobi = String(pobi[0])
@@ -50,12 +56,11 @@ function problem1(pobi, crong) {
   const pobiScore = Math.max(...[sumLeftPageByPobi, multiplyLeftPageByPobi, sumRightPageByPobi, multiplyRightPageByPobi]);
   const crongScore = Math.max(...[sumLeftPageByCrong, multiplyLeftPageByCrong, sumRightPageByCrong, multiplyRightPageByCrong]);
 
-  // 7. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다. 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 한다.
-  if (pobiScore > crongScore) return 1;
-  if (pobiScore < crongScore) return 2;
-  if (pobiScore === crongScore) return 0;
+  if (pobiScore > crongScore) return POBI_WIN;
+  if (pobiScore < crongScore) return CRONG_WIN;
+  if (pobiScore === crongScore) return DRAW;
 
-  return -1;
+  return EXCEPTIONS;
 }
 
 module.exports = problem1;
