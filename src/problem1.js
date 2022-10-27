@@ -17,4 +17,10 @@ const multiplyPage = (page) => {
     .reduce((prev, cur) => prev * +cur, 1);
 };
 
+const getMyScore = (addPageNumber, multiplyPageNumber) => {
+  return addPageNumber > multiplyPageNumber
+    ? addPageNumber
+    : multiplyPageNumber;
+};
+
 module.exports = problem1;
