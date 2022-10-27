@@ -1,25 +1,21 @@
-// 엄마 말씀을 반대로 변환하는 기능(아스키 코드 활용)
+// 엄마 말씀을 반대로 변환하는 기능(딕셔너리 활용)
 function problem4(word) {
-  const UPPER_A = 65,
-        UPPER_Z = 90,
-        UPPER_CENTER = 77.5,
-        LOWER_A = 97,
-        LOWER_Z = 122,
-        LOWER_CENTER = 109.5; 
-  let frog_word = '', ascii;
+  let alphabet = {},
+      alpha_a = 65,
+      alpha_z = 90, 
+      frog_word = '',
+      alpha_upper, alpha_lower;
+
+  for (let i = 0; i <= 25; i++) {
+    alphabet[String.fromCharCode(alpha_a++)] = String.fromCharCode(alpha_z--);
+  }
   
   for (let char of word) {
-    ascii = char.charCodeAt(0);
-    if (ascii >= UPPER_A && ascii <= UPPER_Z) {
-      if (ascii < UPPER_CENTER) ascii += (UPPER_CENTER - ascii) * 2;
-      else if (ascii > UPPER_CENTER) ascii -= (ascii - UPPER_CENTER) * 2;
-      frog_word += String.fromCharCode(ascii);
-    } 
-    else if (ascii >= LOWER_A && ascii <= LOWER_Z) {
-      if (ascii < LOWER_CENTER) ascii += (LOWER_CENTER - ascii) * 2;
-      else if (ascii > LOWER_CENTER) ascii -= (ascii - LOWER_CENTER) * 2;
-      frog_word += String.fromCharCode(ascii);
-    } 
+    alpha_upper = alphabet[char];
+    alpha_lower = alphabet[char.toUpperCase()];
+
+    if (alpha_upper) frog_word += alpha_upper;
+    else if (alpha_lower) frog_word += alpha_lower.toLowerCase();
     else frog_word += char;
   }
   return frog_word;
