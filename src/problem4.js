@@ -27,6 +27,11 @@ function problem4(word) {
     const string = word[index];
     const stringType = defineStringType(string);
 
+    if (stringType == "noAlphabet") {
+      result += string;
+      continue;
+    }
+
     const WORD_ASCII = word.charCodeAt(index);
     const [MIN_ASCII, MAX_ASCII] = defineASCIIRange(stringType);
     result += reverseWord(WORD_ASCII, MIN_ASCII, MAX_ASCII);
