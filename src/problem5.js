@@ -23,4 +23,8 @@ function changeMoney(money, changeMoney) {
   return Math.floor(money / changeMoney);
 }
 
+function moduloMoney(money, changeMoney) {
+  return money % changeMoney;
+}
+
 module.exports = problem5;
