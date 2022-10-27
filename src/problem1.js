@@ -4,10 +4,10 @@ const pageIndex = {
 }
 
 const winnerCount = {
-    pobi:1,
-    crong:2,
-    tie:0,
-    exception:-1
+    pobi: 1,
+    crong: 2,
+    tie: 0,
+    exception: - 1
 }
 
 function problem1(pobi, crong) {

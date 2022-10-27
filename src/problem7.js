@@ -50,13 +50,13 @@ function problem7(user, friends, visitors) {
     
     //이름 순 정렬
     recommendUserArr.sort((a, b) => {
-        return  a[0] < b[0] ? 0 : a[0] > b[0] ? 1 : -1;
+        return a[ 0 ] < b[ 0 ] ? 0 : a[ 0 ] > b[ 0 ] ? 1 : - 1;
     });
     recommendUserArr.sort((a, b) => a[ 1 ] + b[ 1 ]);
     
     //점수 순 정렬
-    recommendUserArr.forEach(userInfo=>{
-        answer.push(userInfo[0]);
+    recommendUserArr.forEach(userInfo => {
+        answer.push(userInfo[ 0 ]);
     })
     
     return answer;
