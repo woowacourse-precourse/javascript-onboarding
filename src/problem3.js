@@ -1,4 +1,9 @@
 /**
+ * splitNumberToDigits
+ * @type {(n: number) => number[]}
+ */
+
+/**
  * range
  * @type {(n: number) => number[]}
  */
