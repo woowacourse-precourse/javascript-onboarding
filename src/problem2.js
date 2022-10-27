@@ -10,9 +10,9 @@ function problem2(cryptogram) {
 }
   let answer = value.toString()
   let replaced_answer = answer.replace(/,/g, '');
-    
       return replaced_answer;
  
 }
+
 
 module.exports = problem2;

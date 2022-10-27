@@ -18,7 +18,6 @@ function problem4(word) {
     
     answer = answer.toString()
     let replaced_answer = answer.replace(/,/g, '');
-    
       return replaced_answer;
   }
 
