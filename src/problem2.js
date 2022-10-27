@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  if (validWord(cryptogram)) {
+  if (validateWord(cryptogram)) {
     return removeDuplicateWord(cryptogram);
   }
   return -1;
@@ -20,7 +20,7 @@ const removeDuplicateWord = (words) => {
   return stack.join('');
 };
 
-const validWord = (word) => {
+const validateWord = (word) => {
   const wordLength = word.legnth;
   if (wordLength === 0 || wordLength > 1000) {
     return false;

@@ -1,5 +1,5 @@
 function problem3(number) {
-  if (validNumber(number)) {
+  if (validateNumber(number)) {
     return playGame(number);
   }
   return -1;
@@ -25,7 +25,7 @@ const search369 = (currentValue) => {
   return clap;
 };
 
-const validNumber = (number) => {
+const validateNumber = (number) => {
   if (typeof number !== 'number') {
     return false;
   }
