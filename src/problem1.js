@@ -12,12 +12,16 @@ function problem1(pobi, crong) {
   var crong_num = [];
 
   if (pobi.length !=2 || crong.length != 2){
+    console.log("1");
     return -1;
   }else if(pobi.includes(0) || crong.includes(0)){
+    console.log("2");
     return -1;
   }else if(pobi[0]%2 != 1 || crong[0]%2 != 1 || pobi[1]%2 != 0 || crong[1]%2 != 0){
+    console.log("3");
     return -1;
-  }else if(pobi[1]-pobi[0] != 1|| crong[1]-crong[1] != 1){
+  }else if(pobi[1]-pobi[0] != 1|| crong[1]-crong[0] != 1){
+    console.log("4");
     return -1;
   }
   
@@ -32,6 +36,11 @@ function problem1(pobi, crong) {
     crong_num.push(arr.reduce((x,y)=> x+y));
     crong_num.push(arr.reduce((x,y)=> x*y));
   }
+
+  const pobi_maxNum = Math.max(...pobi_num);
+  const crong_maxNum = Math.max(...crong_num);
+
 }
+
 
 module.exports = problem1;
