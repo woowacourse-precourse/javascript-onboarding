@@ -26,22 +26,49 @@ function validEmail(email) {
   )
     return false;
 }
+
 function validNickname(nickname) {
   const nLength = nickname.length;
   if (nLength < NICKNAME_MIN || nLength >= NICKNAME_MAX) return false;
 }
+
 function validAll(arr) {
   arr.forEach((form) => {
     const [email, nickname] = form;
     if (!validEmail(email)) return false;
     if (!validNickname(nickname)) return false;
+    else return true;
   });
+}
+
+// function checkResource(nick, arr) {
+//   //1번째 방법
+//   for (let i = 0; i < nick.length - 1; i++) {
+//     arr.map((form) => {
+//       const [, arrNick] = form;
+//       if (arrNick.includes(nick[i] + nick[i + 1])) return fasle;
+//     });
+//   }
+// }
+function nicknamArray(arr) {
+  let nickArr = [];
+
+  arr.forEach((item, index) => {
+    const [, nickname] = item;
+    nickArr[index] = nickname;
+  });
+  console.log(nickArr);
+
+  return nickArr;
 }
 
 function isNicknameDup(arr) {
+  if (!validAll(arr)) return;
+
   arr.forEach((form) => {
     const [email, nickname] = form;
+    checkResource(nickname, arr);
   });
 }
 
-vaild(Arr);
+nicknamArray(Arr);
