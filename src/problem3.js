@@ -20,6 +20,11 @@ function problem3(number) {
       .filter((str) => str === "3" || str === "6" || str === "9");
     return cutNum.length;
   }
+  let cnt = 0;
+  for (let i = 1; i <= number; i++) {
+    cnt += cntNum(i);
+  }
+  return cnt;
 }
 
 module.exports = problem3;
