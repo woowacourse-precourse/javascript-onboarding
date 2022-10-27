@@ -99,19 +99,24 @@ function orderPageNumber(person) {
 }
 
 function getResult(score, error) {
+  const POBI_WiN = 1;
+  const CRONG_WIN = 2;
+  const TWO_THE_SAME = 0;
+  const EXCEPTION = -1;
+
   if (error[0] === 0 && error[1] === 0) {
     if (score[0] > score[1]) {
-      return 1;
+      return POBI_WiN;
     }
     if (score[0] === score[1]) {
-      return 0;
+      return TWO_THE_SAME;
     }
     if (score[0] < score[1]) {
-      return 2;
+      return CRONG_WIN;
     }
   }
 
-  return -1;
+  return EXCEPTION;
 }
 
 module.exports = problem1;
