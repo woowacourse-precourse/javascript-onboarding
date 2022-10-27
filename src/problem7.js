@@ -1,3 +1,11 @@
+function checkUserLength(user) {
+  if (user.length < 1 || user.length > 30) {
+    return false;
+  }
+
+  return true;
+}
+
 function getAlreadyFriends(user, friends, alreadyFriends) {
   friends.forEach((item) => {
     if (item.includes(user)) {
