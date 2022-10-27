@@ -37,23 +37,21 @@ function isfriend(user, relationship) {
 
 function sortRecommends(recommendList) {
   let sortedList = [];
-  let tiePointUsers = [];
+  let tiePointUsers = new Set();
   recommendList.sort((a,b) => {
     return b[1] - a[1];
-  });
+  });    
   for(let i = 0; i < recommendList.length; i++) {
+    const userID = recommendList[i][0];    
     const userPoint = recommendList[i][1];
-    const userID = recommendList[i][0];
-    const previousUser = recommendList[i - 1];
-    const nextUser = recommendList[i + 1];
-    if(userPoint === previousUser?.[1] || userPoint === nextUser?.[1]) {
-      tiePointUsers.push(userID);
+    const nextUserID = recommendList[i + 1]?.[0];     
+    const nextUserPoint = recommendList[i + 1]?.[1];  
+    tiePointUsers.add(userID); 
+    if(userPoint === nextUserPoint) {
+      tiePointUsers.add(nextUserID);
     } else {
-      if(tiePointUsers.length > 0) {
-        sortedList.push(...tiePointUsers.sort());
-        tiePointUsers = [];
-      }
-      sortedList.push(userID);
+      sortedList.push(...([...tiePointUsers].sort()));
+      tiePointUsers = new Set();
     }
   }
   return sortedList;
