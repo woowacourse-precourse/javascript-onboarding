@@ -22,8 +22,7 @@ function problem1(pobi, crong) {
   }
   
   if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] !=1) answer = -1;
-
-  if(maxPoint(pobi) > maxPoint(crong)) answer = 1;
+  else if(maxPoint(pobi) > maxPoint(crong)) answer = 1;
   else if(maxPoint(pobi) < maxPoint(crong)) answer = 2;
   else answer = 0;
 
