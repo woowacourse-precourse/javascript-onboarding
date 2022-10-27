@@ -25,21 +25,21 @@ function problem1(pobi, crong) {
 
 
   // 가장 큰 수 구하기
-  let pobi;
-  let crong;
+  let pobiScore;
+  let crongScore;
 
   pobi.map((num) =>
-    sumAllPage(num) > multiplyAllPage(num) ? (pobi = sumAllPage(num)) : (pobi = multiplyAllPage(num))
+    sumAllPage(num) > multiplyAllPage(num) ? (pobiScore = sumAllPage(num)) : (pobiScore = multiplyAllPage(num))
   );
 
   crong.map((num) =>
-    sumAllPage(num) > multiplyAllPage(num) ? (crong = sumAllPage(num)) : (crong = multiplyAllPage(num))
+    sumAllPage(num) > multiplyAllPage(num) ? (crongScore = sumAllPage(num)) : (crongScore = multiplyAllPage(num))
   );
 
   // 승자 구하기
-  if (pobi > crong) {
+  if (pobiScore > crongScore) {
     return 1;
-  } else if (pobi < crong) {
+  } else if (pobiScore < crongScore) {
     return 2;
   } else {
     return 0;
