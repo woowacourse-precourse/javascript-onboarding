@@ -19,6 +19,18 @@ dict 를 사용하자.
 3. 사용제한될 이메일을 return 해주는 함수 => refuseEmail
 */
 
-function problem6(forms) {}
+function problem6(forms) {
+  let nickNameCnt = {};
+  function enterDict(accountInfo) {
+    accountInfo.map((account) => {
+      let nickName = account[1].split("");
+      nickName.sort();
+      let key = nickName.join("");
+      if (nickNameCnt[key]) nickNameCnt[key] += 1;
+      else nickNameCnt[key] = 1;
+    });
+    return;
+  }
+}
 
 module.exports = problem6;
