@@ -57,7 +57,8 @@ function problem6(forms) {
     id.map(i =>{
       answer.push(emailList[i]);
     })
-    return answer;
+
+    return (Array.from(new Set(answer)).sort());
   }
 }
 
