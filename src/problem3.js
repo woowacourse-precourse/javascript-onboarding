@@ -1,7 +1,7 @@
 function problem3(number) {
-  let allNumbers = Array.from({length: number}, (_,i) => i+1).join('')
-
-  return allNumbers
+  const allNumbers = Array.from({length: number}, (_,i) => i+1).join('')
+  const answer = allNumbers.match(/[3|6|9]/g);
+  return answer.length;
 }
 
 console.log(problem3(20));
