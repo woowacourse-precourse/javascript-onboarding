@@ -48,5 +48,19 @@ def problem1(pobi, crong):
     return 2
 
 
+# pobi = [97,98]
+# crong = [197,198]
+
+# pobi = [131, 132]
+# crong = [211, 212]
+
+# 테스트 해보기 
+pobi = [99,102]
+crong = [211, 212]
+
+# 결과 출력
+print(problem1(pobi, crong))
+
+
 
 
