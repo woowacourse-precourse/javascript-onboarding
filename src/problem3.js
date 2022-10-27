@@ -26,3 +26,13 @@ function numberCount(number){
   })
   return count;
 }
+
+function error(number){
+  if(isNaN(number)){
+    return false;
+  }
+  if(number<1 || number>10000){
+    return false;
+  }
+  return true;
+}
