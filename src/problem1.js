@@ -1,39 +1,36 @@
+const isValidNum = function ([left, right]) {
+  return left % 2 === 1 && right % 2 === 0;
+};
+const isValidRange = function (book) {
+  return !book.includes(1) && !book.includes(400);
+};
+const isValidCondition = function ([left, right]) {
+  return !!left && !!right && left + 1 === right;
+};
 const isValidBook = function (book) {
-  const [left, right] = book;
-  const isValidNum = left % 2 === 1 && right % 2 === 0;
-  const isValidRange = !book.includes(1) && !book.includes(400);
-  const isValidCondition = !!left && !!right && left + 1 === right;
-  return isValidNum && isValidRange && isValidCondition;
+  return isValidNum(book) && isValidRange(book) && isValidCondition(book);
 };
 
 const getDigitsArr = function (page) {
   return page.toString().split("").map(Number);
 };
-
 const getDigitsSum = function (pageArr) {
   return pageArr.reduce((acc, cur) => acc + cur, 0);
 };
-
 const getDigitsMultiplication = function (pageArr) {
   return pageArr.reduce((acc, cur) => acc * cur, 1);
 };
-
 const getMaxNum = function (num1, num2) {
   return Math.max(num1, num2);
 };
-
-const getMaxScore = function ([left, right]) {
-  const leftNumArr = getDigitsArr(left);
+const getMaxOfSumMul = function (num) {
+  const leftNumArr = getDigitsArr(num);
   const leftSum = getDigitsSum(leftNumArr);
   const leftMultiplication = getDigitsMultiplication(leftNumArr);
-
-  const rightNumArr = getDigitsArr(right);
-  const rightSum = getDigitsSum(rightNumArr);
-
-  const rightMultiplication = getDigitsMultiplication(rightNumArr);
-  const leftMax = getMaxNum(leftSum, leftMultiplication);
-  const rightMax = getMaxNum(rightSum, rightMultiplication);
-  return getMaxNum(leftMax, rightMax);
+  return getMaxNum(leftSum, leftMultiplication);
+};
+const getMaxScore = function ([left, right]) {
+  return getMaxNum(getMaxOfSumMul(left), getMaxOfSumMul(right));
 };
 
 const judgeWinner = function (pobiMax, crongMax) {
