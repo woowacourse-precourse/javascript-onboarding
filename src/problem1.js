@@ -1,6 +1,23 @@
 function problem1(pobi, crong) {
   var answer;
+
+  pobiLeftScore = pobiCrongLeft(pobi);
+  crongLeftScore = pobiCrongLeft(crong);
+
   return answer;
+}
+
+function pobiCrongLeft(pobiCrong){
+  left = pobiCrong[0].toString(); //ex)pobi[0] => 정수형 97, toString => 문자형 97
+  leftSum = 0;  //전역변수
+  leftMul = 1;  //전역변수
+  
+  for(let i = 0; i < left.length; i++){
+    leftSum += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
+  }
+  for(let i = 0; i < left.length; i++){
+    leftMul += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
+  }
 }
 
 module.exports = problem1;
