@@ -7,8 +7,11 @@ function problem2(cryptogram) {
 function isContinuous(cryptogram) {
   //연속문자 제거
   let newCryptogram = continuousRemoval(cryptogram);
-  // 더이상 문자가 연속되지 않는 경우
 
+  // 더이상 문자가 연속되지 않는 경우
+  if (newCryptogram === cryptogram) {
+    return newCryptogram;
+  }
   // 아직 이웃하는 문자가 연속될 경우 (Recursion)
 }
 
