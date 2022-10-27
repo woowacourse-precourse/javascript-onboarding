@@ -45,7 +45,6 @@ function problem1(pobi, crong) {
     //합, 곱 계산 후 큰수 리턴
     pobiMaxNum = calculateMaxNum(pobi);
     crongMaxNum = calculateMaxNum(crong);
-
     //pobi, crong 최종 수 비교
     if(pobiMaxNum > crongMaxNum) return 1;
     else if(pobiMaxNum < crongMaxNum) return 2;
