@@ -26,6 +26,18 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  const user_rank = [];
+  const scoreFriends = () => {
+    for (let i = 0; i < users_reco.length; i++) {
+      if (!(user_rank.find(e => e.name === users_reco[i]))) {
+        user_rank.push({ name: users_reco[i], score: 10 });
+      } else {
+        let idx = user_rank.findIndex(e => e.name === users_reco[i]);
+        user_rank[idx].score += 10;
+      }
+    }
+  }
+
   // visitors에서 추천 사용자의 중복횟수 * 3
   // 추천 점수가 부여된 사용자의 목록을 점수-이름 순으로 정렬
 
