@@ -1,25 +1,25 @@
 function problem2(cryptogram) {
-  const decrypt = (cryptogram) => {
-    if (cryptogram.length === 0) {
-      return cryptogram;
+  if (cryptogram.length === 0) return cryptogram;
+  const tempt = [...cryptogram];
+  let startIndex = 0;
+  let count = 0;
+  [...cryptogram].slice(1).forEach((char, index) => {
+    if (tempt[startIndex] === char) {
+      count = count + 1;
+    } else if (count > 0) {
+      tempt.splice(startIndex, count + 1);
+      count = 0;
+    } else {
+      startIndex = startIndex + 1;
+      count = 0;
     }
-
-    const 
-
-    const decrypted = [...cryptogram].reduce((acc, cur) => {
-      if (acc.slice(-1) === cur) {
-        return acc.slice(0, -1);
-      }
-      return acc + cur;
-    });
-
-    if (cryptogram === decrypted) {
-      return cryptogram;
+    if (index === cryptogram.length - 2 && count > 0) {
+      tempt.splice(startIndex);
     }
-//?
-  };
-
-  decrypt(cryptogram); //?
+  });
+  const temptString = tempt.join('');
+  if (temptString === cryptogram) return cryptogram;
+  return problem2(temptString);
 }
-problem2('browoanoommnaon'); //?
-// module.exports = problem2;
+
+module.exports = problem2;
