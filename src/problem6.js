@@ -7,7 +7,7 @@
 
 *해결전략
 dict 를 사용하자. 
-닉네임을 정렬하여 dict에 키값으로 저장하고 카운트 1씩해줌.
+닉네임의 연속된 조합 단어를 dict에 키값으로 저장하고 카운트 1씩해줌.
 이때, 같은 글자가 연속적으로 포함된다면 같은 키값을 가질 것이고, 카운트는 1이 넘어가게됨.
 
 이 값들을 찾아내어. 해당 키값을 가지고 있는 계정들의 이메일을 따로 저장.
@@ -24,10 +24,14 @@ function problem6(forms) {
   function enterDict(accountInfo) {
     accountInfo.map((account) => {
       let nickName = account[1].split("");
-      nickName.sort();
-      let key = nickName.join("");
-      if (nickNameCnt[key]) nickNameCnt[key] += 1;
-      else nickNameCnt[key] = 1;
+      for (let i = 0; i < nickName.length - 1; i++) {
+        let nickNameKey = nickName[i];
+        for (let j = i + 1; j < nickName.length; j++) {
+          nickNameKey += nickName[j];
+          if (nickNameCnt[nickNameKey]) nickNameCnt[nickNameKey] += 1;
+          else nickNameCnt[nickNameKey] = 1;
+        }
+      }
     });
     return;
   }
@@ -39,7 +43,23 @@ function problem6(forms) {
     return keys;
   }
 
-  console.log(checkValue(nickNameCnt));
+  let refuseNames = checkValue(nickNameCnt);
+  let refuseList = {};
+  refuseNames.map((refuseNickName) => {
+    refuseList[refuseNickName] = true;
+  });
+  let result = [];
+
+  function refuseEmail(accountInfo) {
+    accountInfo.map((account) => {
+      let email = account[0];
+      let nickName = account[1].split("");
+      let key = nickName.join("");
+      if (refuseList[key]) result.push(email);
+    });
+  }
+  refuseEmail(forms);
+  result.sort();
 }
 
 module.exports = problem6;
