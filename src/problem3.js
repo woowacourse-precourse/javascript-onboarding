@@ -6,6 +6,11 @@ function problem3(number) {
     arr = i.toString().split("");
     if (arr.includes("3") || arr.includes("6") || arr.includes("9")) {
       count++;
+      //3,6,9 가 중복
+      let setCollection = new Set(arr);
+      if (setCollection.size < arr.length) {
+        count += arr.length - setCollection.size;
+      }
     }
   }
   answer = count;
