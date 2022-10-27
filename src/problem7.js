@@ -1,3 +1,10 @@
+function comp(A, B) {
+  console.log(A.score, B.score);
+  if (A.score !== B.score) return B.score - A.score;
+  if (A.name < B.name) return -1;
+  return 1;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const userInfo = new Map();
@@ -44,9 +51,30 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let i = 0; i < visitors.length; i++) {
+    const visitor = visitors[i];
+
+    if (userInfo.has(visitor)) {
+      const visitorFriendship = userInfo.get(visitor).friendship;
+      const visitorScore = userInfo.get(visitor).score;
+      if (visitorScore < 0) continue;
+      userInfo.set(visitor, {
+        friendship: visitorFriendship,
+        score: visitorScore + 1,
+      });
+    } else {
+      userInfo.set(visitor, { friendship: [], score: 1 });
+    }
+  }
+
+  let scoreArr = [];
+
   userInfo.forEach((value, key, map) => {
-    console.log(`${key} : ${value.score}`);
+    if (value.score <= 0) return;
+    scoreArr.push({ name: key, score: value.score });
   });
+
+  scoreArr = scoreArr.sort(comp);
 
   return answer;
 }
@@ -61,7 +89,55 @@ problem7(
     ["shakevan", "jun"],
     ["shakevan", "mrko"],
   ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  [
+    "bedi",
+    "bedi",
+    "donut",
+    "bedi",
+    "shakevan",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+    "bedi",
+  ]
 );
 
 module.exports = problem7;
