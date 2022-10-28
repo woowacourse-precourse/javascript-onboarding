@@ -2,7 +2,8 @@ function problem3(number) {
   if (!inputValidCheck(number)) {
     return 'error'
   }
-  // return 'checkValid Success'
+  const array = Array(number).fill();
+  // return array
 }
 
 function inputValidCheck(number) {
