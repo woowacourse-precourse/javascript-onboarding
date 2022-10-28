@@ -22,6 +22,17 @@ function score(person){
   ret= Math.max(Math.max(pLAdd,pLMul),Math.max(pRAdd,pRMul));
   return ret;
 }
+function compare(pobiScore, crongScore){
+  var answer;
+  if(pobiScore>crongScore){
+    answer = 1;
+  }else if(pobiScore<crongScore){
+    answer = 2;
+  }else{
+    answer = 0;
+  }
+  return answer;
+}
 function problem1(pobi, crong) {
   var answer;
   //기능목록1: 예외처리
@@ -31,15 +42,10 @@ function problem1(pobi, crong) {
     //기능목록2: 포비, 크롱 점수 구하기
     var pobiScore = score(pobi);
     var crongScore = score(crong);
-    
+
     //기능목록3: 승부 구하기
-    if(pobiScore>crongScore){
-      answer = 1;
-    }else if(pobiScore<crongScore){
-      answer = 2;
-    }else{
-      answer = 0;
-    }
+    answer = compare(pobiScore,crongScore);
+    
   }
   
   return answer;
