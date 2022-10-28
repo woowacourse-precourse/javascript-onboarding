@@ -53,9 +53,9 @@ function problem6(forms) {
   let nameCountObj = countName(namesArr);
   // 중복되는 문자열
   let duplicate = findDuplicate(nameCountObj);
-
   // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
   let answer = [];
+
   // 중복되는 문자열 포함하고 있는 크루의 이메일 구하기
   namesArr.filter((el, i) => {
     if (el.includes(duplicate)) answer.push(forms[i][0]);
