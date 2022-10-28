@@ -17,15 +17,15 @@ function problem1(pobi, crong) {
   }
 }
 function getMaxRecord(user) {
-  const [sumLeft, sumRight] = sliceArray(user[0], user[1]);
+  return sliceArray(user[0], user[1]);
 }
 function sliceArray(left, right) {
   const sliceLeft = left.toString().split("");
   const sliceRight = right.toString().split("");
   const maxSum = sum(sliceLeft, sliceRight);
   const maxMultiply = multiply(sliceLeft, sliceRight);
-  return maxSum, maxMultiply;
-  // return sum(sliceLeft, sliceRight), multiply(sliceLeft, sliceRight);
+
+  return maxSum > maxMultiply ? maxSum : maxMultiply;
 }
 
 function sum(sliceLeft, sliceRight) {
@@ -42,11 +42,7 @@ function sum(sliceLeft, sliceRight) {
   console.log(sumLeft);
   console.log(sumRight);
 
-  if (sumRight > sumLeft) {
-    return sumRight;
-  } else {
-    return sumLeft;
-  }
+  return sumLeft > sumRight ? sumLeft : sumRight;
 }
 
 function multiply(sliceLeft, sliceRight) {
@@ -62,11 +58,7 @@ function multiply(sliceLeft, sliceRight) {
   console.log(multiplyLeft);
   console.log(multiplyRight);
 
-  if (multiplyRight > multiplyLeft) {
-    return multiplyRight;
-  } else {
-    return multiplyLeft;
-  }
+  return multiplyLeft > multiplyRight ? multiplyLeft : multiplyRight;
 }
 
 function checkArray(user) {
