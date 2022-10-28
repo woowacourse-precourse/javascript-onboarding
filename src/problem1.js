@@ -6,9 +6,26 @@ function problem1(pobi, crong) {
 
 function makeMaxNumber(pobi, crong) {
   // 입력값에 대한 각각의 예외처리 우선시!
-  if (!checkValid(pobi) || !checkValid(crong)) return -1
-  return 1
-  // 이후 메인 로직()
+  if (!checkValid(pobi) || !checkValid(crong)) {
+    return -1
+  }
+  //이후 메인 로직()
+  const pobiAddMaxNumber = makeOddNumberString(pobi)
+  const pobiMultipleMaxNumber = makeEvenNumberString(pobi);
+  
+  const crongAddMaxNumber = makeOddNumberString(crong);
+  const crongMultipleMaxNumber = makeEvenNumberString(crong
+    )
+  // return [pobiAddMaxNumber,crongAddMaxNumber,pobiMultipleMaxNumber,crongMultipleMaxNumber]
+}
+
+function makeOddNumberString(userName) {
+  return String(userName[0]).split('').map(i => +i);
+}
+
+
+function makeEvenNumberString(userName) {
+  return String(userName[1]).split('').map(i => +i);
 }
 
 function checkValid(userName) {
