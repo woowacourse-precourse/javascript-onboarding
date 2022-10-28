@@ -6,8 +6,13 @@ function problem3(number) {
       .toString()
       .split("")
       .map((e) => parseInt(e));
-  }
 
+    gameNum.forEach((e) => {
+      if (game.includes(e)) {
+        answer++;
+      }
+    });
+  }
   return answer;
 }
 
@@ -19,4 +24,4 @@ module.exports = problem3;
 // 3. i의 원소 하나씩 돌며 game에 해당원소가 있으면 answer를 올려줌
 
 // console.log("1".split(""));
-problem3(13);
+problem3(33);
