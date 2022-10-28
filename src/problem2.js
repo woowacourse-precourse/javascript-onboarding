@@ -15,7 +15,15 @@ function decrypt(crypto) {
 	return tempStr;
 }
 
-function checkDuplicate(crypto) {}
+function checkDuplicate(crypto) {
+	let countDuplicate = 0;
+
+	for (let i = 0; i < crypto.length; i++) {
+		countDuplicate += crypto.charAt(i) === crypto.charAt(i + 1) ? 1 : 0;
+	}
+
+	return countDuplicate > 0 ? 1 : 0;
+}
 
 function deDuplicate(crypto) {}
 
