@@ -20,10 +20,16 @@ function count369InNumber(number) {
     .toString()
     .split("")
     .reduce((a, b) => (is369(b) ? a + 1 : a), 0);
+  return count;
 }
 
 function problem3(number) {
   var answer;
+
+  for (let i = 1; i <= number; i++) {
+    answer += count369InNumber(i);
+  }
+
   return answer;
 }
 
