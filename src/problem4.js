@@ -12,7 +12,21 @@ const FROG = {
     'm', 'n', 'o', 'p', 'q', 'r',
     's', 't', 'u', 'v', 'w', 'x',
     'y', 'z'
-  ]
+  ],
+  upperReverse: [
+    'Z', 'Y', 'X', 'W', 'V', 'U',
+    'T', 'S', 'R', 'Q', 'P', 'O',
+    'N', 'M', 'L', 'K', 'J', 'I',
+    'H', 'G', 'F', 'E', 'D', 'C',
+    'B', 'A'
+  ],
+  lowerReverse: [
+    'z', 'y', 'x', 'w', 'v', 'u',
+    't', 's', 'r', 'q', 'p', 'o',
+    'n', 'm', 'l', 'k', 'j', 'i',
+    'h', 'g', 'f', 'e', 'd', 'c',
+    'b', 'a'
+  ],
 };
 
 function problem4(word) {
@@ -28,18 +42,17 @@ function problem4(word) {
 // 대문자인지 소문자인지 판별
 function checkAlphabet(word) {
 
-  return result;
 }
 
-// 대문자일 경우 소문자로 변환
+// 대문자일 경우
 function upperCase(word) {
-  return FROG.lowerDictionary[FROG.upperDictionary.indexOf(word)];
+  return FROG.upperReverse[FROG.upperDictionary.indexOf(word)];
 }
 
 
-// 소문자일 경우 대문자로 변환 
+// 소문자일 경우
 function lowerCase(word) {
-  return FROG.upperDictionary[FROG.lowerDictionary.indexOf(word)];
+  return FROG.lowerReverse[FROG.lowerDictionary.indexOf(word)];
 }
 
 console.log(checkAlphabet("I love you"));
