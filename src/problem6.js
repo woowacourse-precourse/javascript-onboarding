@@ -22,7 +22,7 @@ function makeNameTwoLength(forms) {
 }
 
 // nameCountObj 객체에 2글자로 자른 닉네임들은 키로, count는 값으로 저장하는 함수
-function convertArrToObj(namesArr) {
+function countName(namesArr) {
   let nameCountObj = {};
 
   for (let i = 0; i < namesArr.length; i++) {
@@ -50,7 +50,7 @@ function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = makeNameTwoLength(forms);
   // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
-  let nameCountObj = convertArrToObj(namesArr);
+  let nameCountObj = countName(namesArr);
   // 중복되는 문자열
   let duplicate = findDuplicate(nameCountObj);
 
