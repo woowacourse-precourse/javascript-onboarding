@@ -8,7 +8,7 @@ function problem4(word) {
 
     if(ascii >= 65 && ascii <= 90){
       arr[i] = String.fromCharCode(155-ascii);
-    } 
+    } else arr[i]=String.fromCharCode(219-ascii);
   }
   return answer;
 }
