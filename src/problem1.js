@@ -2,7 +2,7 @@
  * 기능 분석
  * [x] pobi와 crong이 펼친 페이지에 대한 더 큰 값 계산 기능 
  * [x] pobi와 crong이 펼친 페이지 중 계산 값이 가장 큰 값 반환 기능
- * [] 입력된 값이 연속된 페이지가 아닌 경우 -1을 반환 기능
+ * [x] 입력된 값이 연속된 페이지가 아닌 경우 -1을 반환 기능
  * [] pobi와 crong의 점수 비교 후 결과에 대한 결과 반환 기능
  */
 
@@ -34,10 +34,16 @@ function getUserMaxScore(user) {
   )
 }
 
+// 연속된 페이지인지를 확인하는 예외 처리 기능
+const isValidatePage = (user) => user[0]+1 != user[1];
+
 function problem1(pobi, crong) {
   var answer = -1;
   let pobiScore = 0;
   let crongScore = 0;
+
+  // 입력값이 연속된 페이지가 들어오지 않은 경우 -1을 반환
+  if (isValidatePage(pobi) || isValidatePage(crong)) return answer;
 
   pobiScore = getUserMaxScore(pobi);
   crongScore = getUserMaxScore(crong);
