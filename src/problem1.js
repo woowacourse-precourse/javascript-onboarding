@@ -10,4 +10,9 @@ function problem1(pobi, crong) {
  * 3. 어떤 숫자가 더 큰지 비교하는 함수
  */
 
+function addDigits(str) {
+  const digits = str.split("");
+  return digits.reduce((acc, cur) => parseInt(acc, 10) + parseInt(cur, 10), 0);
+}
+
 module.exports = problem1;
