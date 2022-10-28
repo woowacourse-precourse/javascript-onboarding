@@ -24,4 +24,16 @@ function isInvalidPage(leftPage, rightPage) {
   return leftPage % 2 === 0 || rightPage % 2 === 1;
 }
 
+function calcScore(leftPage, rightPage) {
+  const l = leftPage + '';
+  const r = rightPage + '';
+
+  return Math.max(
+      [...l].map(num => +num).reduce((a, b) => a + b),
+      [...l].map(num => +num).reduce((a, b) => a * b),
+      [...r].map(num => +num).reduce((a, b) => a + b),
+      [...r].map(num => +num).reduce((a, b) => a * b),
+  );
+}
+
 module.exports = problem1;
