@@ -25,11 +25,17 @@ function addNumbers(numbers) {
   return result;
 }
 
-// 각 자리 숫자로 분리한 페이지 번호를 모둑 곱하는 기능
+// 각 자리 숫자로 분리한 페이지 번호를 모두 곱하는 기능
 function multiplyNumbers(numbers) {
   const result = numbers.map((number) =>
     number.reduce((acc, cur) => acc * cur, 1)
   );
+  return result;
+}
+
+// 각 자리 숫자를 더한 것과 곱한 것중 더 큰 수를 찾는 기능
+function getMaxNumber(add, multiply) {
+  const result = Math.max(...add, ...multiply);
   return result;
 }
 function problem1(pobi, crong) {
@@ -39,7 +45,7 @@ function problem1(pobi, crong) {
   }
   const splitedPobi = splitPageNumber(pobi);
   const splitedCrong = splitPageNumber(crong);
-  console.log(multiplyNumbers(splitedPobi), multiplyNumbers(splitedCrong));
+  console.log(getMaxNumber(addNumbers(splitedPobi), multiplyNumbers(splitedPobi)));
   return answer;
 }
 
