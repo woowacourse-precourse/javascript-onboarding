@@ -61,8 +61,15 @@ function problem4(word) {
     z: "a",
   };
 
-  var answer;
-  return answer;
+  let result = "";
+  for (let i = 0; i < word.length; i++) {
+    if (treefrogDictionary[word[i]]) {
+      result += treefrogDictionary[word[i]];
+    } else {
+      result += word[i];
+    }
+  }
+  return result;
 }
 
 module.exports = problem4;
