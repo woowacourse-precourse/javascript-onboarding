@@ -42,6 +42,9 @@ function problem6(forms) {
   answer = duplicate(forms);
   //기능목록2: 오름차순 정렬
   answer.sort();
-
+  //기능목록3: 중복제거
+  answer = new Set(answer);
+  answer = [...answer];
+  return answer;
 }
 module.exports = problem6;
