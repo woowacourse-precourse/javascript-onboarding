@@ -5,7 +5,15 @@ function divideMoney(money, moneyDigit) {
 }
 
 function problem5(money) {
-  var answer;
+  var answer = [];
+
+  for (i = 0; i < MONEY_LIST.length; i++) {
+    const moneyDigit = MONEY_LIST[i];
+    const divideCount = divideMoney(money, moneyDigit);
+    money = money - moneyDigit * divideCount;
+    answer.push(divideCount);
+  }
+
   return answer;
 }
 
