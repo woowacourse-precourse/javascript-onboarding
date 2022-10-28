@@ -10,6 +10,12 @@ const game369 = {
   checkNumber: function (number) {
     return number >= 1 && number <= 100000;
   },
+  allCount369: function (number) {
+    for (var i = 1; i <= number; i++) {
+      this.count += this.count369(i);
+    }
+    return this.count;
+  },
   count369: function (number) {
     return String(number)
       .split("")
