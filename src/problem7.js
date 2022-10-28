@@ -6,20 +6,23 @@ function problem7(user, friends, visitors) {
   };
 
   // - [x] 유저(mrko)의 친구 찾기
-  const userFriends = friends
-    .filter((friend) => friend.includes(user))
-    .map((friend) => friend.filter((_friend) => _friend !== user))
-    .flat(1);
+  const getUserFriends = (_friends) => {
+    return _friends
+      .filter((friend) => friend.includes(user))
+      .map((friend) => friend.filter((_friend) => _friend !== user))
+      .flat(1);
+  };
+  const userFriends = getUserFriends(friends);
 
   // - [x] 유저(mrko)의 친구의 친구 찾기
-  let friendsOfFriends = friends
-    .filter((friend) => !friend.includes(user))
-    .map((friend) => friend.filter((name) => !userFriends.includes(name)))
-    .flat(1);
-
+  const getFriendsOfFriends = (_friends) => {
+    return _friends
+      .filter((friend) => !friend.includes(user))
+      .map((friend) => friend.filter((name) => !userFriends.includes(name)))
+      .flat(1);
+  };
   const removeOverlap = (array) => [...new Set(array)];
-
-  friendsOfFriends = removeOverlap(friendsOfFriends);
+  const friendsOfFriends = removeOverlap(getFriendsOfFriends(friends));
 
   // - [x] visitors에서 이미 친구 제거하기
   const visitorsNotFriend = visitors.filter(
@@ -60,17 +63,22 @@ function problem7(user, friends, visitors) {
     }
     return [letterInA, letterInB];
   };
-  answer = friendsRecommandPoint
-    .sort((a, b) => {
-      const value = b.point - a.point;
-      if (value === 0) {
-        const [aName, bName] = findOtherSpelling([a.name, b.name]);
-        return aName < bName ? -1 : 1;
-      }
-      return value;
-    })
-    .slice(0, 5)
-    .map((friend) => friend.name);
+
+  const arrangeRecommandPoint = (recommandPoint) => {
+    return recommandPoint
+      .sort((a, b) => {
+        const value = b.point - a.point;
+        if (value === 0) {
+          const [aName, bName] = findOtherSpelling([a.name, b.name]);
+          return aName < bName ? -1 : 1;
+        }
+        return value;
+      })
+      .slice(0, 5)
+      .map((friend) => friend.name);
+  };
+
+  answer = arrangeRecommandPoint(friendsRecommandPoint);
 
   return answer;
 }
