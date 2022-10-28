@@ -1,4 +1,4 @@
-const game369 = {
+const Game369 = {
   endNumber: 0,
   inputEndNumber: function (number) {
     if (!this.checkNumber(number)) {
@@ -14,6 +14,7 @@ const game369 = {
     for (var i = 1; i <= this.endNumber; i++) {
       count += this.count369(i);
     }
+    return count;
   },
   count369: function (number) {
     return String(number)
@@ -26,6 +27,7 @@ const game369 = {
 };
 
 function problem3(number) {
+  const game369 = Object.assign({}, Game369);
   game369.inputEndNumber(number);
   return game369.allCount369();
 }
