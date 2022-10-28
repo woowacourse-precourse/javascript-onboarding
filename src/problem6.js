@@ -14,8 +14,18 @@ function problem6(forms) {
   });
 }
 
-// 크루들의 닉네임 2글자씩 저장하는 기능 (map 사용)
-function setMapTwoLetter(form, twoLetterMap) {}
+// 크루들의 닉네임 두 글자씩 저장하는 기능 (map 사용)
+function setMapTwoLetter(form, twoLetterMap) {
+  const [, nickname] = form;
+
+  if (nickname.length >= 2) {
+    // 크루의 닉네임 순회
+    for (let i = 0; i < nickname.length - 1; i++) {
+      // 크루 닉네임에서 두 글자씩 저장
+      let twoLetter = nickname.slice(i, i + 2);
+    }
+  }
+}
 
 // 크루 닉네임 중복 확인 기능
 function isDuplicateNickname(form, duplicateEmailSet, twoLetterMap) {}
