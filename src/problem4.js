@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  const answer = converter(word);
   return answer;
 }
 
@@ -27,9 +27,9 @@ const converter = (word) => {
 
 const convertAlpha = (text) => {
   let resultValue;
-  const isAlpha = checkAlpha(i);
+  const isAlpha = checkAlpha(text);
   if (isAlpha) {
-    resultValue = reverseAlpha(i);
+    resultValue = reverseAlpha(text);
   } else {
     resultValue = text;
   }
@@ -85,10 +85,3 @@ const isLower = (text) => {
 
   return resultValue;
 };
-
-/*
-대문자 : 65 ~ 90 -> 0 ~ 25
-소문자 : 97 ~ 122 -> 0 ~ 25
-else : return
-
-*/
