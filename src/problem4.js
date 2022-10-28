@@ -35,3 +35,21 @@ const isLowerString = s => {
   if (a <= target && target <= z) return true;
   return false;
 }
+
+const oppositeChar = (char) => {
+  if (isUpperString(char)) {
+    const upperAlphabet = makeUpperAlphabet(); // ['A','B', ..., 'Z']
+    const position = upperAlphabet.indexOf(char);
+    const opposite = upperAlphabet[25 - position];
+
+    return opposite;
+  } 
+  if (isLowerString(char)) {
+    const lowerAlphabet = makeLowerAlphabet(); // ['a','b', ..., 'z']
+    const position = lowerAlphabet.indexOf(char);
+    const opposite = lowerAlphabet[25 - position];
+
+    return opposite;
+  }  
+  return char;
+}
