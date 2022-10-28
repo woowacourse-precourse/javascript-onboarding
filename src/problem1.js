@@ -61,11 +61,33 @@ function getMultipleValue(value) {
   return ret;
 }
 
+function getScore(value) {
+  return Math.max(
+    getAddValue(value[0]),
+    getMultipleValue(value[0]),
+    getAddValue(value[1]),
+    getMultipleValue(value[1])
+  );
+}
+
+function getWinner(firstValue, secondValue) {
+  if (firstValue > secondValue) {
+    return 1;
+  } else if (firstValue < secondValue) {
+    return 2;
+  }
+  return 0;
+}
+
 function problem1(pobi, crong) {
   if (validTest(pobi, crong) < 0) {
     return -1;
   }
   var answer;
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+
+  answer = getWinner(pobiScore, crongScore);
   return answer;
 }
 
