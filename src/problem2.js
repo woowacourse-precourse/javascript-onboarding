@@ -1,5 +1,10 @@
 function problem2(cryptogram) {
   const REGEX = /(.)\1{1,}/g;
+  let decrypted = cryptogram;
+  while (isCryptoGram(decrypted, REGEX)) {
+    decrypted = decrypto(decrypted, REGEX, "");
+  }
+  return decrypted;
 }
 
 /**
