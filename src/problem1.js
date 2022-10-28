@@ -43,7 +43,13 @@ function problem1(pobi, crong) {
   }
 
   // 최고 점수 구하기
-
+  function maxScore(a, b) {
+    if (a > b) {
+      return a;
+    } else {
+      return b;
+    }
+  }
 
   // 예외상황 - 왼쪽 페이지와 오른쪽 페이지 차이가 1 나야함
 
