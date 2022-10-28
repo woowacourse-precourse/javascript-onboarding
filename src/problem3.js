@@ -7,7 +7,10 @@ function problem3(number) {
   .map((_, index) => String(index + 1))
   .map((v) => v.replace(regEx, '@'))
   .filter(v => v.includes('@'))
-
+  .join('')
+  .match(/@/g);
+  
+  return array.length
 }
 
 function inputValidCheck(number) {
