@@ -2,6 +2,8 @@ function problem6(forms) {
   let answer = [];
   let nameList = [];
 
+  if (checkValidation(forms) < 0) return -1;
+
   forms.forEach((form) => {
     let splitedNameSet = new Set();
     const [, nickname] = form;
@@ -28,12 +30,16 @@ function problem6(forms) {
     }
   }
 
-  return answer;
+  return [...new Set(answer)].sort();
+}
+
+function checkValidation(forms) {
+  if (forms.length < 1 || forms.length > 10000) return -1;
 }
 
 console.log(
   problem6([
-    ["jm@email.net", "제이엠"],
+    ["jm@email.com", "제이엠"],
     ["jason@email.com", "제이슨"],
     ["woniee@email.com", "워니"],
     ["mj@email.com", "엠제이"],
