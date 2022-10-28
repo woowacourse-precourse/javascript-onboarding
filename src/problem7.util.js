@@ -17,7 +17,15 @@ const getScoreTogetherFriend = (user, friends) => {
 };
 
 // 방문 user 중 친구 제거하기
-const getVisitorDeleteFriend = (visitors, firends) => {};
+const getVisitorDeleteFriend = (visitors, friends) => {
+  const makeObj = (friends) => getScoreTogetherFriend("", friends);
+  const friendObj = makeObj(friends);
+  const res = [];
+  for (const visitor of visitors) {
+    if (!friendObj[visitor]) res.push(visitor);
+  }
+  return res;
+};
 
 // 방문 user 점수 계산하기
 const getScoreVisitor = (visitors, score) => {};
