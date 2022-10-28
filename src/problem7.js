@@ -28,6 +28,20 @@ function problem7(user, friends, visitors) {
 
   const scoreOverZero = Object.keys(scores).filter(x => scores[x] > 0);
 
+  scoreOverZero.sort((x, y) => {
+    if (scores[x] === scores[y]) {
+      if (x > y) {
+        return 1;
+      }else if (x < y){
+        return -1;
+      }else{
+        return 0;
+      }
+    } else {
+      return scores[y] - scores[x];
+    }
+  });
+
   return scoreOverZero.slice(0, 5);
 
 }
