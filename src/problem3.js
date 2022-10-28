@@ -4,8 +4,15 @@ function problem3(number) {
 	return clap(number);
 }
 
-function clap() {}
+function clap(number) {
+	let sum = 0;
+	for (let i = 1; i <= number; i++) {
+		if (checkNum(i)) sum++;
+	}
 
-function checkNum() {}
+	return sum;
+}
+
+function checkNum(number) {}
 
 module.exports = problem3;
