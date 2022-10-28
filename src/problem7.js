@@ -59,71 +59,86 @@ class ErrorCase {
   }
 }
 
-function problem7(user, friends, visitors) {
-  new ErrorCase(user, friends, visitors);
+class SNSAlgorithm {
+  constructor(user, friends, visitors) {
+    new ErrorCase(user, friends, visitors);
 
-  return;
+    this.user = user;
+    this.friends = friends;
+    this.visitors = visitors;
+
+    this.scoreBoard = this.makeScoreBoard();
+    this.friendGraph = this.makeFriendGraph();
+    this.notRecommandList = this.getNotRecommandList();
+  }
+
+  saveFriendGraph(keyFriend, valueFriend, map) {
+    const defaultValue = map.get(keyFriend) || [];
+
+    map.set(keyFriend, [...defaultValue, valueFriend]);
+  }
+
+  makeFriendGraph() {
+    const resultMap = new Map();
+
+    this.friends.forEach(([ID_A, ID_B]) => {
+      this.saveFriendGraph(ID_A, ID_B, resultMap);
+      this.saveFriendGraph(ID_B, ID_A, resultMap);
+    });
+
+    return resultMap;
+  }
+
+  makeScoreBoard() {
+    return [
+      ...new Set(
+        [...this.friends, ...this.visitors].flatMap((relation) => relation)
+      ),
+    ].reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
+  }
+
+  getNotRecommandList() {
+    return [this.user, ...this.friendGraph.get(this.user)];
+  }
+
+  isFriend(person) {
+    return new Set([...this.getNotRecommandList()]).has(person);
+  }
+
+  scroeFriendToFriend() {
+    [...this.friendGraph.get(this.user)]
+      .flatMap((friend) => [...this.friendGraph.get(friend)])
+      .filter((person) => !this.isFriend(person))
+      .forEach((person) => (this.scoreBoard[person] += 10));
+  }
+
+  scroeVisitor() {
+    this.visitors
+      .filter((person) => !this.isFriend(person))
+      .forEach((person) => (this.scoreBoard[person] += 1));
+  }
+
+  scoreForRecommend() {
+    this.scroeFriendToFriend();
+    this.scroeVisitor();
+  }
+
+  recommend() {
+    this.scoreForRecommend();
+
+    return Object.keys(this.scoreBoard)
+      .map((person) => [person, this.scoreBoard[person]])
+      .filter(([_, score]) => score > 0)
+      .sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1))
+      .map(([person, _]) => person)
+      .slice(0, 5);
+  }
+}
+
+function problem7(user, friends, visitors) {
+  const sns = new SNSAlgorithm(user, friends, visitors);
+
+  return sns.recommend();
 }
 
 module.exports = problem7;
-
-// 에러 케이스
-
-// 사용자 아이디가 소문자로 이루어지지 않았을 때
-// problem7(
-//   "Arko",
-//   [
-//     ["Donut", "andole"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
-
-// user 길이가 30자가 넘을 때
-// problem7(
-//   "mrkodasljkfkljsadfkjlsajdflkjsadlkfjalsjdflasjfljasljflasjldfjlsa;jflkjasljfdldajslkdfjalsj",
-//   [
-//     ["donut", "andole"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
-
-// friends 길이 1이상 10000이하
-// problem7("mrko", [], [("bedi", "bedi", "donut", "bedi", "shakevan")]);
-
-// friends 원소 길이가 2인지
-// problem7(
-//   "mrko",
-//   [
-//     ["donut"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
-
-// friends 아이디 길이가 1이상 30이하 인지
-// problem7(
-//   "mrko",
-//   [
-//     ["", "andole"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
