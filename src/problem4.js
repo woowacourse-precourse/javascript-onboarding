@@ -15,10 +15,15 @@ function convertReverse(letter) {
   const lowerCaseReverse = lowerCaseStart + lowerCaseEnd - letter;
 
   // 알파벳일 경우 소문자 확인 후 변환
-
+  if (letter >= upperCaseStart && letter <= upperCaseEnd) {
+    return String.fromCharCode(upperCaseReverse);
+  }
   // 알파벳일 경우 대문자 확인 후 변환
-
+  if (letter >= lowerCaseStart && letter <= lowerCaseEnd) {
+    return String.fromCharCode(lowerCaseReverse);
+  }
   // 알파벳이 아닌 경우
+  return String.fromCharCode(letter);
 }
 
 module.exports = problem4;
