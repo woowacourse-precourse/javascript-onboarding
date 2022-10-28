@@ -3,10 +3,13 @@ function problem1(pobi, crong) {
     const pobiRecord = getMaxRecord(pobi);
     const crongRecord = getMaxRecord(crong);
     if (pobiRecord > crongRecord) {
+      console.log("포비 승");
       return 1;
     } else if (pobiRecord == crongRecord) {
+      console.log("무승부");
       return 0;
     } else if (pobiRecord < crongRecord) {
+      console.log("크롱 승");
       return 2;
     }
   } else {
@@ -14,16 +17,35 @@ function problem1(pobi, crong) {
   }
 }
 function getMaxRecord(user) {
-  // const left = String(user[0]);
-  // const right = String(user[1]);
-  const left = user[0];
-  const right = user[1];
-  console.log(user);
+  sliceArray(user[0], user[1]);
+  sum(user[0], user[1]);
+  multiply(user[0], user[1]);
+}
+function sliceArray(left, right) {
+  const sliceLeft = left.toString().split("");
+  const sliceRight = right.toString().split("");
+  sum(sliceLeft, sliceRight);
 }
 
-function sum() {}
+function sum(sliceLeft, sliceRight) {
+  let sumLeft = 0;
+  let sumRight = 0;
 
-function multiply() {}
+  for (let i = 0; i < sliceRight.length; i++) {
+    sumRight += Number(sliceRight[i]);
+  }
+
+  for (let i = 0; i < sliceLeft.length; i++) {
+    sumLeft += Number(sliceLeft[i]);
+  }
+  if (sumRight > sumLeft) {
+    return sumRight;
+  } else {
+    return sumLeft;
+  }
+}
+
+function multiply(left, right) {}
 
 function checkArray(user) {
   if (user[0] + 1 == user[1]) {
@@ -56,8 +78,9 @@ function testCode() {
   crong[1] = crong[0] + 1;
 
   //problem1(pobi, crong);
-  //  problem1([97, 98], [197, 198]);
-  problem1([99, 102], [211, 212]);
+  //problem1([97, 98], [197, 198]);
+  problem1([131, 132], [211, 212]);
+  //problem1([99, 102], [211, 212]);
 }
 
 testCode();
