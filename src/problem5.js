@@ -1,5 +1,9 @@
+function makeArray(number) {
+  return new Array(number).fill(0);
+}
 function problem5(money) {
-  var answer;
+  let answer = makeArray(9);
+
   return answer;
 }
 
