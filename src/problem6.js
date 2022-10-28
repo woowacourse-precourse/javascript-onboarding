@@ -16,6 +16,9 @@ function overlapWord(word) {
 function makeDuplicatedUserTable(forms) {
   const userTable = {};
   for (const [email, nickname] of forms) {
+    if (nickname.length === 1) {
+      continue;
+    }
     const slicedNicknames = overlapWord(nickname);
     for (const slicedNickname of slicedNicknames) {
       if (!userTable[slicedNickname]) {
