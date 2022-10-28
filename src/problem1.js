@@ -6,6 +6,14 @@ function getSum(num) {
   return result;
 }
 
+function getMul(num) {
+  let result = 1;
+  for (let letter of num.toString()) {
+    result *= parseInt(letter);
+  }
+  return result;
+}
+
 function problem1(pobi, crong) {
   const ERROR = -1;
   const TIE = 0;
