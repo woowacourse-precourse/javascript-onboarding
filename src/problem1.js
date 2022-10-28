@@ -33,5 +33,12 @@ function multiplyDigits(str) {
 function compare(num1, num2) {
   return num1 >= num2 ? num1 : num2;
 }
+function getLargerPageCalc(page) {
+  const added = addDigits(page);
+  const multiplied = multiplyDigits(page);
+  const larger = compare(added, multiplied);
+
+  return larger;
+}
 
 module.exports = problem1;
