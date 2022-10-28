@@ -24,7 +24,6 @@ function problem1(pobi, crong) {
     }
     if (pobiValue < addValue){pobiValue = addValue}
     if (pobiValue < mulValue){pobiValue = mulValue}
-    console.log(pobiValue)
   })
   crong.forEach((item)=>{
     let addValue = 0
@@ -38,7 +37,6 @@ function problem1(pobi, crong) {
     }
     if (crongValue < addValue){crongValue = addValue}
     if (crongValue < mulValue){crongValue = mulValue}
-    console.log(crongValue)
   })
   //기능 2,3,4 구현
   if (crongValue < pobiValue) {answer = 1}
