@@ -18,7 +18,7 @@ const getErrCrewEmail = (form, nicknameObj) => {
 }
 
 const problem6 = (forms) => {
-  const result = new Set();
+  let result = new Set();
   const nicknameObj = {};
 
   forms.map((form) => {
@@ -31,6 +31,8 @@ const problem6 = (forms) => {
       result.add(email);
     }
   });
+
+  return [...result].sort();
 }
 
 module.exports = problem6;
