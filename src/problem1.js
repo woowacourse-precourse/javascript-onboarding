@@ -22,7 +22,13 @@ function problem1(pobi, crong) {
   let crongList = [eachSum(crong[0]), eachMulti(crong[0]), eachSum(crong[1]), eachMulti(crong[1])];
   let crongScore = Math.max(...crongList);
 
-  console.log(pobiScore, crongScore);
+  if (pobiScore > crongScore) {
+    answer = 1;
+  } else if(pobiScore < crongScore) {
+    answer = 2;
+  } else if(pobiScore === crongScore){
+    answer = 0;
+  }
 
   return answer;
 }
