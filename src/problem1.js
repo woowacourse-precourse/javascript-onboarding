@@ -18,7 +18,6 @@ function problem1(pobi, crong) {
   }
 }
 
-
 /**
  * 양 페이지로 입력받은 값이 적절한지 검사한다.
  * @param {any} pages 
@@ -60,7 +59,7 @@ function isWithinValidRange(page) {
 /**
  * 양 페이지로 입력받은 값으로부터 점수를 계산한다.
  * @param {array} pages 길이가 2이고, 배열의 요소는 숫자이다.
- * @returns {number}
+ * @returns {number} 계산된 스코어 값
  */
 function getScoreByPages(pages) {
   const scoreLeft = getScoreByPage(pages[0])
@@ -71,7 +70,7 @@ function getScoreByPages(pages) {
 /**
  * 한 페이지에 대한 점수를 계산한다.
  * @param {number} page 
- * @return {number}
+ * @return {number} 계산된 스코어 값
  */
 function getScoreByPage(page) {
   const pageStr = page + ''
