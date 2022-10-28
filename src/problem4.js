@@ -19,18 +19,21 @@ const converter = (word) => {
   let resultValue;
   const wordArray = word.split("");
   const newArray = wordArray.map((i) => {
-    let returnValue;
-    const isAlpha = checkAlpha(i);
-    console.log(`${i} : ${isAlpha}`);
-    if (isAlpha) {
-      returnValue = reverseAlpha(i); //인덱스 반대로
-    } else {
-      returnValue = i;
-    }
-
-    return returnValue;
+    return convertAlpha(i);
   });
   resultValue = newArray.join("");
+  return resultValue;
+};
+
+const convertAlpha = (text) => {
+  let resultValue;
+  const isAlpha = checkAlpha(i);
+  if (isAlpha) {
+    resultValue = reverseAlpha(i);
+  } else {
+    resultValue = text;
+  }
+
   return resultValue;
 };
 
