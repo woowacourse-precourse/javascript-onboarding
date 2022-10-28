@@ -6,15 +6,15 @@ function problem3(number) {
 function memorizeNumber() {
   let index = 0;
   const memorizeNumbers = new Array(10001).fill(0);
-  for (index = 1; index < 10001; i++) {
+  for (index = 1; index < 10001; index++) {
     memorizeNumbers[index] = memorizeNumbers[index - 1] + countNumber(index);
   }
   return memorizeNumbers;
 }
 function countNumber(number) {
-  str = string(number);
+  const strArray = [...String(number)];
   let count = 0;
-  str.forEach((char) => {
+  strArray.forEach((char) => {
     if (char == "3" || char == "6" || char == "9") {
       count += 1;
     }
