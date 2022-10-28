@@ -11,19 +11,18 @@ const isUpperCase = (char) => {
 const getAscii = (char) => {
   return char.charCodeAt(0);
 };
+const reverseCharacter = (char) => {
+  if (isUpperCase(char)) {
+    return String.fromCharCode(getAscii("A") + getAscii("Z") - getAscii(char));
+  } else {
+    return String.fromCharCode(getAscii("a") + getAscii("z") - getAscii(char));
+  }
+};
 const reverseAlphabet = (word) => {
-  let wordArr = word.split("");
+  const wordArr = word.split("");
   wordArr.forEach((char, i) => {
     if (isAlphabet(char)) {
-      if (isUpperCase(char)) {
-        wordArr[i] = String.fromCharCode(
-          getAscii("A") + getAscii("Z") - getAscii(char)
-        );
-      } else {
-        wordArr[i] = String.fromCharCode(
-          getAscii("a") + getAscii("z") - getAscii(char)
-        );
-      }
+      wordArr[i] = reverseCharacter(char);
     }
   });
   return wordArr.join("");
