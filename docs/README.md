@@ -7,7 +7,7 @@
 
 2. problem2.js
 
-- [] problem2 기능 구현하기
+- [x] problem2 기능 구현하기
 - [] 리펙터링
 
 3. problem3.js
