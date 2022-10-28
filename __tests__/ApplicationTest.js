@@ -21,15 +21,15 @@ describe('problem1', () => {
 });
 
 describe('problem2', () => {
-  test.only('case1', () => {
+  test('case1', () => {
     expect(problem2('browoanoommnaon')).toEqual('brown');
   });
-  test.only('case2', () => {
+  test('case2', () => {
     expect(problem2('zyelleyz')).toEqual('');
   });
 });
 
-describe('problem3', () => {
+describe.only('problem3', () => {
   test('case1', () => {
     expect(problem3(13)).toEqual(4);
   });
