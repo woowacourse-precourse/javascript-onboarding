@@ -1,9 +1,18 @@
-function calPlusMinus(page){
+function slicePage(pageNum){
+  let pageString = String(pageNum);
+  let leftPageNum = Number(pageString[0]);
+  let rightPageNum = Number(pageString[1]);
+  
+  return calPlusMinus(leftPageNum, rightPageNum);
 }
 
+function maxCalPlusMinus(leftPageNum, rightPageNum){
+}
+
+
 function problem1(pobi, crong) {
-    pobi.forEach(calPlusMinus);
-    crong.forEach(calPlusMinus);
+    pobi.forEach(slicePage);
+    crong.forEach(slicePage);
 }
 
   var answer;
