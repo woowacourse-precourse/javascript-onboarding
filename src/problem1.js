@@ -36,4 +36,15 @@ function calcScore(leftPage, rightPage) {
   );
 }
 
+function getWinnerResult(player1Score, player2Score) {
+  let result = 0;
+  if (player1Score > player2Score) {
+    result = 1;
+  } else if (player1Score < player2Score) {
+    result = 2;
+  }
+
+  return result;
+}
+
 module.exports = problem1;
