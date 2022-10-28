@@ -37,6 +37,3 @@
 - 문제 7 구현
 
 
-for(comst item of pay) {
-  Math.f
-}
