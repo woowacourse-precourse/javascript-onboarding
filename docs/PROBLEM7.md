@@ -1,7 +1,19 @@
+## 기능 목록
+
+- [x] feat1. 특정 유저로 접근하면 친구 배열을 값으로 받는 object
+  - relationship = {userName: set()}로 friends 인풋 정리
+- [ ] feat2. 겹치는 친구에게 +10점 하는 함수
+  - [ ] scores object 선언해서 {userName: score} 로 기록
+- [ ] feat3. visitors 배열을 for문으로 순회하여 +1
+- [ ] feat4. scores 에서 relationship[user].has(userName) true 나오는 건 filter하고 sort해서 반환
+  - [ ] Object.entries() 로 이중배열 만들고
+  - [ ] filter() & sort((a,b) => b[1] - a[1] > 0 ? ~~~ ) 식으로 정렬
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
-- 사용자와 함께 아는 친구의 수 = 10점 
+
+- 사용자와 함께 아는 친구의 수 = 10점
 - 사용자의 타임 라인에 방문한 횟수 = 1점
 
 사용자 아이디 user와 친구 관계를 담은 이차원 배열 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
