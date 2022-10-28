@@ -2,7 +2,6 @@
 기능 목록 
 1. 문자열에 중복문자가 있는지 암호 해독하고 새로운 문자열 만들어주기
 2. 원래 문자와 중복문자 확인 후 문자가 같은지 다른지 확인
-3. 문자열 길이 및 소문자로 작성 예외 처리
 
 */
 
@@ -21,13 +20,8 @@ function getStr(s) {
     while (1) {
         prev = s
         s = decodeString(s)
-        console.log(s)
         if (s === prev) return s
     }
-}
-
-function exceptHandling(a){
-  
 }
 
 function problem2(cryptogram) {
