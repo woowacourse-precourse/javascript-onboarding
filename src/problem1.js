@@ -15,7 +15,18 @@ function eachMulti(num) {
   return parseInt(mul)
 }
 
+function validation(arr){
+  for (let i = 0; i < arr.lenght; i++){
+    if (pobi[i] < 1 || pobi[i] > 400){
+      return -1
+    }
+  }
+}
+
 function problem1(pobi, crong) {
+  validation(pobi);
+  validation(crong);
+
   let pobiList = [eachSum(pobi[0]), eachMulti(pobi[0]), eachSum(pobi[1]), eachMulti(pobi[1])];
   let pobiScore = Math.max(...pobiList);
 
