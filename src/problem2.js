@@ -1,3 +1,8 @@
+/**
+ * PROBLEM 2
+ * @param {string} cryptogram
+ * @returns {string} decrypted string
+ */
 function problem2(cryptogram) {
   const REGEX = /(.)\1{1,}/g;
   let decrypted = cryptogram;
