@@ -5,7 +5,9 @@ function problem7(user, friends, visitors) {
 
   const initScore = initRecommendationScore({ friendOfFriends });
   const score = scoreVisitor({ initScore, visitors, userFriends });
-  return score;
+
+  const recommendedUserList = getRecommendationUserList({ score });
+  return recommendedUserList;
 }
 
 function getFriendsAdjacencyList(friends) {
@@ -47,37 +49,14 @@ function scoreVisitor({ initScore, visitors, userFriends }) {
   }, initScore);
 }
 
-// 문제 7번 - 인접리스트, Hash 풀이
-// 1. friend loop를 돌아 각 유저에 대해 인접리스트를 구한다. ✅
-// -> 예상 결과물
-// {  donut: [andole, jun, mrko]
-//    andole: [donut, shakevan]
-//    jun: [donut, shakevan]
-//    shakevan: [andole, jun, mrko]
-//    mrko: [donut, shakevan]  }
+function getRecommendationUserList({ score }) {
+  const sortedScore = [...score].sort(([prevKey, prevVal], [currKey, currVal]) => {
+    if (prevVal === currVal) return prevKey - currKey;
+    return currVal - prevVal;
+  });
 
-// 2. 인접리스트 중 user의 친구를 구한다 ✅
-//  -> user = "mrko" 예상 결과물
-//  [donut, sharkevan]
-
-// 3. user의 친구들의 친구들 list를 구한다. ✅
-//    3.1. 중복 제거를 위해 Set 생성
-//    3.2. 친구의 친구 list를 구한다.
-//    -> donut = [andole, jun, mrko], sharkevan = [andole, jun, mrko]
-//    3.3. 중복 제거한 list를 구한다. 이 때 user(mrko)는 포함하지 않는다.
-//    -> [andole, jun]
-
-// 4. Map에 user 배열의 이름에 대해 10을 할당한다. ✅
-//  -> { andole => 10, jun => 10 }
-
-// 5. Map에 visitors들 점수를 +1 해준다. ✅
-//  5.1. 이미 친구일 경우 포함하지 않는다.
-//  5.2. 1번 사항을 만족하고, Map에 없는 유저일 경우 0 default
-//  5.3. 점수 +1을 해준다.
-
-// 6. Map을 점수(= value)에 대해서 내림차순
-//  6.1. 만약 점수(= value)가 동일할 시 이름(= key) 내림차순
-
-// 7. @return Map을 배열로 변환 후 길이 5로 slice
+  const recommendedUserList = sortedScore.slice(0, 5).map(([name, score]) => name);
+  return recommendedUserList;
+}
 
 module.exports = problem7;
