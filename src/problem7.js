@@ -1,40 +1,57 @@
-function problem7(user, friends, visitors) {
+function problem7(user, friendPairs, visitors) {
   let answer;
   let userInfoList;
+  let friendsOfUser;
 
-  userInfoList = makeUserInfoList(user, friends, visitors);
+  friendsOfUser = findFriendsOfUser(user, friendPairs);
+  userInfoList = makeUserInfoList(user, friendPairs, visitors, friendsOfUser);
+  addScoreToFriendsOfFriends(user, friendPairs, friendsOfUser, userInfoList);
   console.log(userInfoList);
   return answer;
 }
 
-function makeUserInfoList(user, friends, visitors) {
+function makeUserInfoList(user, friendPairs, visitors, friendsOfUser) {
   let userInfoList;
-  let friendsOfUser;
 
-  friendsOfUser = findFriendsOfUser(user, friends);
-  userInfoList = makeUserList(user, friends, visitors).map((user) => {
+  userInfoList = makeUserList(user, friendPairs, visitors).map((user) => {
     return { id: user, score: 0, isFriend: friendsOfUser.includes(user) };
   });
   return userInfoList;
 }
 
-function findFriendsOfUser(user, friends) {
-  return friends
-    .filter((friend) => friend.includes(user))
-    .map(([userA, userB]) => (userA === user ? userB : userA));
-}
-
-function makeUserList(user, friends, visitors) {
+function makeUserList(user, friendPairs, visitors) {
   let userSet;
 
   userSet = new Set();
-  friends.forEach(([userA, userB]) => {
+  friendPairs.forEach(([userA, userB]) => {
     userSet.add(userA);
     userSet.add(userB);
   });
   visitors.forEach((visitor) => userSet.add(visitor));
   userSet.delete(user);
   return Array.from(userSet);
+}
+
+function addScoreToFriendsOfFriends(
+  user,
+  friendPairs,
+  friendsOfUser,
+  userInfoList
+) {
+  friendsOfUser.forEach((friendOfuser) => {
+    let friendsOfFriend = findFriendsOfUser(friendOfuser, friendPairs).filter(
+      (friend) => friend !== user
+    );
+    for (const userInfo of userInfoList) {
+      if (friendsOfFriend.includes(userInfo.id)) userInfo.score += 10;
+    }
+  });
+}
+
+function findFriendsOfUser(user, friendPairs) {
+  return friendPairs
+    .filter((friend) => friend.includes(user))
+    .map(([userA, userB]) => (userA === user ? userB : userA));
 }
 
 problem7(
