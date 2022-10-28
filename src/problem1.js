@@ -18,9 +18,43 @@ function problem1(pobi, crong) {
   }
 }
 
-// TODO: 양 페이지로 입력받은 값이 적절한지 검사한다.
+
+/**
+ * 양 페이지로 입력받은 값이 적절한지 검사한다.
+ * @param {any} pages 
+ * @returns {boolean} 유효하면 true, 유효하지 않으면 false를 리턴한다. 
+ */
 function isValidParam(pages) {
+  if (!Array.isArray(pages) || pages.length !== 2) {
+    // 1. pages가 길이가 2인 배열이 아니면 유효하지 않다.
+    return false
+  }
+  if (!Number.isInteger(pages[0]) || !Number.isInteger(pages[1])) {
+    // 2. pages의 배열요소가 숫자가 아니면 유효하지 않다.
+    return false
+  }
+  if (!isWithinValidRange(pages[0]) || !isWithinValidRange(pages[1])) {
+    // 3. pages의 배열요소가 1보다 작거나 400보다 크면 유효하지 않다.
+    return false
+  }
+  if (pages[0] + 1 !== pages[1]) {
+    // 4. 왼쪽 페이지 값 + 1 이 오른쪽 페이지 값과 같지 않으면 유효하지 않다.
+    return false
+  }
+  if (pages[0] % 2 !== 1 && pages[1] % 2 !== 0) {
+    // 5. 왼쪽이 홀수, 오른쪽이 짝수가 아니면 유효하지 않다.
+    return false
+  }
   return true
+}
+
+/**
+ * 값이 유효한 페이지 범위 (1~400)에 속하는지 검사한다. 
+ * @param {number} page 
+ * @returns {boolean} 유효하면 true, 유효하지 않으면 false를 리턴한다. 
+ */
+function isWithinValidRange(page) {
+  return page > 0 && page <= 400
 }
 
 // TODO: 양 페이지로 입력받은 값으로부터 점수를 계산한다.
