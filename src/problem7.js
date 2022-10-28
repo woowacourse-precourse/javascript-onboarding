@@ -38,4 +38,15 @@ function getWithKnowScore(userFriends, friends) {
   return withKnowScore;
 }
 
+function getVisitTimelineScore(recommendScore, visitors) {
+  visitors.forEach((visitor) => {
+    if (recommendScore[visitor]) {
+      recommendScore[visitor]++;
+    } else {
+      recommendScore[visitor] = 1;
+    }
+  });
+  return recommendScore;
+}
+
 module.exports = problem7;
