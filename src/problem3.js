@@ -1,12 +1,14 @@
 // 1부터 number까지 쳐야하는 손뼉 횟수 구하기
 function problem3(number) {
-  let clap = 0;
+  let clap_count = 0,
+      claps;
+
   for (let num = 1; num <= number; num++) {
-    for (let n of num.toString()) {
-      if (n === '3' || n === '6' || n === '9') clap++;
-    }
+    claps = num.toString().match(/[369]/g);
+    if (claps) clap_count += claps.length;
   }
-  return clap;
+
+  return clap_count;
 }
 
 module.exports = problem3;
