@@ -49,9 +49,9 @@
 
 * 전체 프로세서 관리할 `game369App` 함수 생성.
 
-* input의 크기만큼의 Array 생성 후, 각 index의 value는 'index+1'를 넣어서 return 하는 함수 구현.
+* input의 크기만큼의 Array 생성 후, 각 index의 value는 'index+1'를 넣어서 return 하는 `createNumberArr` 함수 구현.
 
-* 전체 배열을 `join()`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 하는 함수 구현.
+* 전체 배열을 `join()`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 하는 `getCount369` 함수 구현.
 
 ***
 # 미션 - 온보딩
