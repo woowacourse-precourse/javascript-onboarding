@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 🎯 TODO 리스트
+- 같은 글자가 연속적으로 겹치는 길이가 2이상인지 찾는다 
+- 연속적으로 겹치는 최대 길이가 2 이상이면 set에 사용자 이메일 추가 
+- 위 조건에 해당되는 이메일들을 오름차순으로 정렬 
