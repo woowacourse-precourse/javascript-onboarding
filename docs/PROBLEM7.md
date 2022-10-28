@@ -1,7 +1,7 @@
 ## 기능 목록
 
 - [x] feat1. 특정 유저로 접근하면 친구 배열을 값으로 받는 object
-  - relationship = {userName: set()}로 friends 인풋 정리
+  - relationship = {userName: []}로 friends 인풋 정리
 - [ ] feat2. 겹치는 친구에게 +10점 하는 함수
   - [ ] scores object 선언해서 {userName: score} 로 기록
 - [ ] feat3. visitors 배열을 for문으로 순회하여 +1
