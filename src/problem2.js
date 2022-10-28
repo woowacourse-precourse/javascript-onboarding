@@ -1,4 +1,4 @@
-const Cyptogram = {
+const Cryptogram = {
   originText: "",
   chars: [],
   addOriginText: function (text) {
@@ -18,8 +18,8 @@ const Cyptogram = {
 };
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  Cryptogram.addOriginText(cryptogram);
+  return Cryptogram.removeSameWord();
 }
 
 module.exports = problem2;
