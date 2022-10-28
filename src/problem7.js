@@ -52,7 +52,7 @@ function problem7(user, friends, visitors) {
   });
 
   return recommendedFrieds
-    .flatMamap(([user]) => user)
+    .flatMap(([user]) => user)
     .slice(0, MAX_RECOMMENDED_NUMBER);
 }
 

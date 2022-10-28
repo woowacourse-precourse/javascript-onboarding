@@ -121,4 +121,40 @@ describe("problem7", () => {
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
+
+  // 예외사항 및 테스트 추가
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", "jun"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi"]);
+  });
+
+  test("case3", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", "jun"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["jun", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi"]);
+  });
 });
