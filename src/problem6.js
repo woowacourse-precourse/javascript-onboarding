@@ -38,25 +38,67 @@ function problem6(forms) {
   return removeRepeatString(answer).sort();
 }
 
+/**
+ * @function vaildateEmailDomain
+ * @description
+ * 이메일의 도메인을 검증해주는 함수
+ * @param {string} [email]
+ * @returns {boolean}
+ */
+
 function vaildateEmailDomain(email) {
   if (email.match(/email+\.com/)) return true;
   return false;
 }
+
+/**
+ * @function vaildateEmailLength
+ * @description
+ * 이메일의 길이를 검증해주는 함수
+ * @param {string} [email]
+ * @returns {boolean}
+ */
 
 function vaildateEmailLength(email) {
   if (email.length >= 11 && email.length < 20) return true;
   return false;
 }
 
+/**
+ * @function validateNicknameType
+ * @description
+ * 닉네임이 한글인지 검증해주는 함수
+ * @param {string} [nickname]
+ * @returns {boolean}
+ */
+
 function validateNicknameType(nickname) {
   if (nickname.match(/^[ㄱ-ㅎ|가-힣]+$/)) return true;
   return false;
 }
 
+/**
+ * @function validateNicknameLength
+ * @description
+ * 닉네임 길이를 검증해주는 함수
+ * @param {string} [nickname]
+ * @returns {boolean}
+ */
+
 function validateNicknameLength(nickname) {
   if (nickname.length >= 1 && nickname.length < 20) return true;
   return false;
 }
+
+/**
+ * @function getSplitNickname
+ * @description
+ * 경우의 수에 속하는 연속된 닉네임들을 반환하는 함수
+ * @example
+ * "제이엠" -> ["제이", "이엠", "제이엠"]
+ * @param {string} [nickname]
+ * @returns {string[]}
+ */
 
 function getSplitNickname(nickname) {
   return nickname
@@ -70,6 +112,16 @@ function getSplitNickname(nickname) {
     .filter((string) => string.length >= 2);
 }
 
+/**
+ * @function getSplitNicknameMap
+ * @description
+ * 경우의 수에 속하는 연속된 닉네임들을 키 값으로, 벨류 값은 이메일을 가지는 해쉬맵을 반환하는 함수
+ * @example
+ * "제이" -> ["jm@email.com", "jason@email.com", "mj@email.com"]
+ * @param {[string,string][]} [forms]
+ * @returns {Map<string, string>}
+ */
+
 function getSplitNicknameMap(forms) {
   const map = new Map();
   forms.forEach(([email, nickname]) =>
@@ -81,6 +133,14 @@ function getSplitNicknameMap(forms) {
   );
   return map;
 }
+
+/**
+ * @function removeRepeatString
+ * @description
+ * 배열에서 중복되는 값으 제거하고 반환하는 함수
+ * @param {string[]} [arr]
+ * @returns {string[]}
+ */
 
 function removeRepeatString(arr) {
   return Array.from(new Set(arr));
