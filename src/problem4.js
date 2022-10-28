@@ -7,6 +7,7 @@ tc1. I Love you
 R olev blf 로 대응
  */
 
+// 기존 알파벳
 const alpha = [
   "A",
   "B",
@@ -36,13 +37,21 @@ const alpha = [
   "Z",
 ];
 
-//
+// 청개구리 사전
 const flogCase = [...alpha].reverse();
 
+// 특정 문자를 인수로 받아서, 청개구리 사전에 맞춰서 변환
 function toFlogCase(char) {
+  // 먼저 특정 문자를 대문자로 치환하여 c에 저장.
   let c = char.toUpperCase();
+
+  // c의 인덱스를 찾는다.
   let index = alpha.indexOf(c);
+
+  // index를 활용하여 청개구리 사전에서 대응되는 문자를 찾는다. (또는 공백)
   let changed = flogCase[index] ?? " ";
+
+  // 만약, 기존 문자(char)가 소문자라면, 소문자로 리턴. 대문자면 그대로 대문자로 리턴
   if (char.charCodeAt(0) >= 97) return changed.toLowerCase();
   return changed;
 }
@@ -50,6 +59,7 @@ function toFlogCase(char) {
 // main
 function problem4(word) {
   var answer = [];
+  // 문자열을 배열로 바꾸고, 순회하면서 FlogCase를 적용한다.
   for (let i of [...word]) {
     answer.push(toFlogCase(i));
   }
