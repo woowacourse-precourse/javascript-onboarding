@@ -60,4 +60,16 @@ function getScore(arr) {
     return getBigger(arr[1]); //오른쪽 페이지 연산을 본인의 점수로 한다.
 }
 
+function getWinner(player1, player2) {
+  if (getScore(player1) > getScore(player2))
+    //플레이어 1의 점수가 더 높다면
+    return 1; //1을 반환한다.
+  else if (getScore(player1) < getScore(player2))
+    //플레이어 2의 점수가 더 높다면
+    return 2; //2를 반환한다.
+  else if (getScore(player1) === getScore(player2))
+    //두 플레이어의 점수가 같다면
+    return 0; //무승부이므로 0을 반환한다.
+}
+
 module.exports = problem1;
