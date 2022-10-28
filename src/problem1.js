@@ -10,7 +10,12 @@ function calculator(page) {
   return Math.max(plus, mul);
 }
 
-// 왼쪽, 오른쪽 페이지 계산 결과 중 가장 큰 수 반환 기능
+function findMaxNum(left, right) {
+  const leftMax = calculator(left);
+  const rightMax = calculator(right);
+
+  return Math.max(leftMax, rightMax);
+}
 
 function isContinuityPage(page) {
   if (page[1] - page[0] !== 1) return false;
@@ -27,6 +32,9 @@ function problem1(pobi, crong) {
 
   if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
   if (!isContinuityPage(pobi) || !isContinuityPage(crong)) return -1;
+
+  pobiMaxNum = findMaxNum(pobi[0], pobi[1]);
+  crongMaxNum = findMaxNum(crong[0], crong[1]);
 
   return answer;
 }
