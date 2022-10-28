@@ -1,6 +1,27 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  function add(a, b) {
+    return a + b;
+  }
+
+  function has(...args) {
+    return (item) => {
+      while (item > 0) {
+        if (args.includes(item % 10)) return true;
+        item = Math.floor(item / 10);
+      }
+    }
+  }
+
+  function count(...args) {
+    return (item) => {
+      let acc = 0;
+      while (item > 0) {
+        if (args.includes(item % 10)) acc++;
+        item = Math.floor(item / 10);
+      }
+      return acc;
+    }
+  }
 }
 
 let Lazy = {};
