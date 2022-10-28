@@ -37,9 +37,26 @@ function upperFrog(num) {
 
 function problem4(word) {
   var answer;
+
   // 리스트화
   const wordList = word.split("");
 
+  // 문자 -> 아스키
+  wordAscList = wordList.map((data) => strToAsc(data));
+
+  // 변환
+  wordAscFrogList = wordAscList.map((data) => {
+    if (isChar(data)) {
+      return isLower(data) ? lowerFrog(data) : upperFrog(data);
+    } else {
+      return data;
+    }
+  });
+
+  // 아스키 -> 문자
+  wordStrList = wordAscFrogList.map((data) => ascToStr(data));
+
+  answer = wordStrList.join("");
   return answer;
 }
 
