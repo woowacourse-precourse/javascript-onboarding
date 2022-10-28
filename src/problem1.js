@@ -4,7 +4,7 @@ const splitNumber = (number) => {
   const stringToNumber = splittedNumber.map((item) => Number(item));
   return stringToNumber;
 };
-const findSumOfNumber = (number) => {
+const sumOfNumber = (number) => {
   const splittedNumber = splitNumber(number);
   const sum = splittedNumber.reduce(
     (accumulator, currentNumer) => accumulator + currentNumer,
@@ -12,7 +12,7 @@ const findSumOfNumber = (number) => {
   );
   return sum;
 };
-const findProductOfNumber = (number) => {
+const productOfNumber = (number) => {
   const splittedNumber = splitNumber(number);
   const product = splittedNumber.reduce(
     (accumulator, currentNumer) => accumulator * currentNumer,
@@ -23,12 +23,12 @@ const findProductOfNumber = (number) => {
 const findMaximumNumber = (book) => {
   const [leftPage, rightPage] = book;
   const maximumLeftPage = Math.max(
-    findSumOfNumber(leftPage),
-    findProductOfNumber(leftPage)
+    sumOfNumber(leftPage),
+    productOfNumber(leftPage)
   );
   const maximumRightPage = Math.max(
-    findSumOfNumber(rightPage),
-    findProductOfNumber(rightPage)
+    sumOfNumber(rightPage),
+    productOfNumber(rightPage)
   );
   const maximumNumber = Math.max(maximumLeftPage, maximumRightPage);
   return maximumNumber;
@@ -79,7 +79,6 @@ function problem1(pobi, crong) {
 
   const pobiMax = findMaximumNumber(pobi);
   const crongMax = findMaximumNumber(crong);
-  console.log(pobiMax, crongMax);
 
   if (pobiMax > crongMax) answer = POBI_WIN;
   if (pobiMax < crongMax) answer = CRONG_WIN;
