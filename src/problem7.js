@@ -23,6 +23,13 @@ function problem7(user, friends, visitors) {
         }
       }
     }
+    // 2-2. 사용자 타임라인 방문자 찾기
+    for (let j = 0; j < visitors.length; j++) {
+      // 사용자와 이미 친구라면
+      if (current_friends[i] == visitors[j]) {
+        continue;
+      }
+    }
   }
 
   return answer;
