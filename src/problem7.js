@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  const relationships = getRelationships(friends);
+  getScores(friends, user);
 }
 
 function getRelationships(friends, user) {
@@ -10,23 +10,31 @@ function getRelationships(friends, user) {
   }, {});
 }
 
-function getOverlappingFriends(relationships, userFriends) {
-  return userFriends.reduce((acc, friend) => {
-    relationships[friend];
+function getScores(friends, user) {
+  let scores = updateOverlappingFriendScore(friends, user);
+}
+
+function updateOverlappingFriendScore(friends, user) {
+  const relationships = getRelationships(friends, user);
+  return relationships[user].reduce((scores, overlappedFriend) => {
+    relationships[overlappedFriend].forEach((id) => {
+      scores[id] = scores[id] || 0 + 10;
+    });
+    return scores;
   }, {});
 }
 
-console.log(
-  getRelationships(
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    "mrko"
-  )
+function updateVisitorScore() {}
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
 );
 module.exports = problem7;
