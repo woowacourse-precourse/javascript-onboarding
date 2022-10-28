@@ -1,5 +1,7 @@
 function problem2(cryptogram) { 
   const removed = deduplication(cryptogram); 
+
+  if (cryptogram == removed) return removed;
 }
 
 module.exports = problem2;
