@@ -5,6 +5,7 @@ function problem5(money) {
 
   for(let i=0;i<standard.length;i++){
     result.push(parseInt(money/standard[i]));
+    money %= standard[i];
   }
   return result
   return answer;
