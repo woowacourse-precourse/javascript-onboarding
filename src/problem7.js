@@ -85,4 +85,11 @@ function setIntersection(setA, setB) {
   return result;
 }
 
+function removeImproperRecommend(username, friendTable, scoreBoard) {
+  delete scoreBoard[username];
+  for (let friend of friendTable[username]) {
+    delete scoreBoard[friend];
+  }
+}
+
 module.exports = problem7;
