@@ -52,6 +52,18 @@ function getWinner(user1, user2){
   }  
 }
 
+//메인 함수
+function problem1(pobi, crong){
+  //예외처리
+  if (check(pobi) || check(crong)) {
+    return -1;
+  }
+  //유저 점수 계산
+  const pobi_score = calculateScore(pobi);
+  const crong_score = calculateScore(crong);
+
+  //누가 이긴지 판별
+  return getWinner(pobi_score, crong_score);
 }
 
 module.exports = problem1;
