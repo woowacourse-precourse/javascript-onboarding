@@ -16,9 +16,8 @@ const createNum = (num) => {
   return answer;
 }
 
-// function problem3(number) {
-//   var answer;
-//   return answer;
-// }
+function problem3(number) {
+  return createNum(number);
+}
 
-// module.exports = problem3;
+module.exports = problem3;
