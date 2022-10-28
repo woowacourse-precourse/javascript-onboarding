@@ -12,11 +12,7 @@ class ErrorCase {
 }
 
 const is369 = (num) => {
-  if (num == 3 || num == 6 || num == 9) {
-    return true;
-  }
-
-  return false;
+  return num == 3 || num == 6 || num == 9;
 };
 
 function problem3(number) {
