@@ -38,15 +38,16 @@ function getWithKnowScore(userFriends, friends) {
   return withKnowScore;
 }
 
-function getVisitTimelineScore(recommendScore, visitors) {
+function getVisitTimelineScore(visitors) {
+  const visitTimelineScore = {};
   visitors.forEach((visitor) => {
-    if (recommendScore[visitor]) {
-      recommendScore[visitor]++;
+    if (visitTimelineScore[visitor]) {
+      visitTimelineScore[visitor]++;
     } else {
-      recommendScore[visitor] = 1;
+      visitTimelineScore[visitor] = 1;
     }
   });
-  return recommendScore;
+  return visitTimelineScore;
 }
 
 module.exports = problem7;
