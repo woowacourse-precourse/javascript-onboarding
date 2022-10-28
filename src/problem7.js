@@ -50,6 +50,9 @@ function problem7(user, friends, visitors) {
 		}
 		return b[1] - a[1]
 	})
+
+	const resultFriends = scoreList.slice(0, 5).map(([name, score]) => name)
+	return resultFriends
 }
 
 module.exports = problem7
