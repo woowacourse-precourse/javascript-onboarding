@@ -11,11 +11,14 @@ function countMoneyType(money) {
   let countMoney = [];
 
   //단위가 큰 화폐부터 순회
+  for (let i = 0; i < moneyType.length; i++) {
+    //현재 금액을 화폐로 나눠 몫을 구함
+    countMoney[i] = Math.floor(currentMoney / moneyType[i]);
 
-  //현재 금액을 화폐로 나눠 몫을 구함
-
-  //나머지 값을 현재 금액으로 최신화
+    //나머지 값을 현재 금액으로 최신화
+    currentMoney %= moneyType[i];
+  }
+  return countMoney;
 }
-return countMoney;
 
 module.exports = problem5;
