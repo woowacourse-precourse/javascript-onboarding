@@ -115,8 +115,18 @@ function problem1(pobi, crong) {
   const CrongRightDigits = new DigitMaker(crong.rightPage)
 
   class ScoreMaker {
-    constructor
+    constructor({digits}) {
+      this.digits
+    }
+    CalculateScore() {
+      return Math.max(this.digits.reduce((a, b) => (a + b)), this.digits.reduce((a, b) => (a * b)))
+    }
   }
+
+  const PobiScore = Math.max(new ScoreMaker(PobiLeftDigits), new ScoreMaker(PobiRightDigits)) 
+  const CrongScore = Math.max(new ScoreMaker(CrongLeftDigits), new ScoreMaker(CrongRightDigits)) 
+  
+
 
   return answer;
 }
