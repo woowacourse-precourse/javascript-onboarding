@@ -40,6 +40,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // visitors 배열 요소들 각 1점씩
+  visitors.map((el) => {
+    // user의 친구가 아니고
+    if (!userFriends.includes(el)) {
+      // IdScore객체에 키가 있을 때
+      if (IdScore.hasOwnProperty(el)) IdScore[el] += 1;
+      // IdScore객체에 키가 없을 때
+      else IdScore[el] = 1;
+    }
+  });
+
   return answer;
 }
 
