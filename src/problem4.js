@@ -1,5 +1,9 @@
 function problem4(word) {
-  var answer;
+  let answer = "";
+  let alp = [];
+  for (let i = 90; i >= 65; i--) {
+    alp.push(String.fromCharCode(i));
+  }
   return answer;
 }
 
