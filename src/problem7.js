@@ -20,9 +20,15 @@ function problem7(user, friends, visitors) {
     }
     
   });
-  console.log(userInfo)
-  // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
+
   
+  // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
+  const userFriends=userInfo[user]
+  Object.entries(userInfo).forEach ((totalInfo)=> {
+    let person=totalInfo[0], personFriends=totalInfo[1]
+    userScore[person]=new Set([...personFriends].filter(x => userFriends.has(x))).size*10
+  });
+  console.log(userScore)
 
 
   // visitors중 친구목록에 없던것은 딕셔너리에 추가,점수 1 올리기
