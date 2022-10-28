@@ -1,4 +1,5 @@
 function problem2(cryptogram) {
+  const REGEX = /(.)\1{1,}/g;
 }
 
 /**
