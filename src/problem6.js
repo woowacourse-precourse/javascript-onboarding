@@ -16,7 +16,16 @@ function problem6(forms) {
       }
     }
   }
-  
+  const setduplicatenickname = new Set(duplicatenickname)
+  const setnickname = [...setduplicatenickname]
+  for (let r = 0; r<forms.length; r++){
+    for (let s = 0; s<setnickname.length; s++){
+      if(forms[r][1].includes(setnickname[s])){
+        answer.push(forms[r][0])
+      }
+    }
+  }
+  answer = answer.sort()
   return answer;
 }
 function substr(user){
