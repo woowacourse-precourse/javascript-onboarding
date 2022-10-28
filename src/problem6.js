@@ -31,3 +31,16 @@ function overlapNicknames(forms){
   }
    return overlapList;
  }
+
+ function answerEmailList(forms){
+  let list=overlapNicknames(forms);
+  let result=[];
+  forms.map((el)=>{
+    if(el[1].includes(list)){
+      result.push(el[0]);
+    }
+  });
+
+  result= new Set(result.sort());
+  return [...result];
+}
