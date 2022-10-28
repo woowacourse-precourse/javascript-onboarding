@@ -173,6 +173,7 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+    // score: (andole:20 | jun:20 | bedi:3)
   });
   test("my test1", () => {
     expect(
@@ -189,8 +190,9 @@ describe("problem7", () => {
         ["bedi", "jun", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["jun", "andole", "bedi"]);
+    // score: (jun:21 | andole:20 | bedi:3)
   });
-  test("my test1", () => {
+  test("my test2", () => {
     expect(
       problem7(
         "mrko",
@@ -203,6 +205,24 @@ describe("problem7", () => {
         ],
         ["bedi", "jun", "bedi", "donut", "bedi", "shakevan"]
       )
-    ).toEqual(["jun", "andole", "bedi"]);
+    ).toEqual(["andole", "jun", "bedi"]);
+    // score: (andole:20 | jun:11 | bedi:3)
+  });
+  test("my test3", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "mrko"],
+          ["shakevan", "bedi"],
+        ],
+        ["bedi", "jun", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi", "jun"]);
+    // score: (andole:20 | bedi:13 | jun:10)
   });
 });
