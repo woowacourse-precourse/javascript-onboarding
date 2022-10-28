@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer;
+  const duplicateWords = forms.map(user => nicknameCombination(user[1])).flat();
   return answer;
 }
 
