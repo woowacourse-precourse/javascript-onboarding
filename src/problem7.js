@@ -21,9 +21,16 @@ function problem7(user, friends, visitors) {
     
   });
 
+  // user와 user의 지인 제거
+  const userFriends=userInfo[user]
+  delete userInfo[user]
+  delete userScore[user]
+  for (let userFriend of userFriends) {
+    delete userInfo[userFriend]
+    delete userScore[userFriend]
+  }
   
   // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
-  const userFriends=userInfo[user]
   Object.entries(userInfo).forEach ((totalInfo)=> {
     let person=totalInfo[0], personFriends=totalInfo[1]
     userScore[person]=new Set([...personFriends].filter(x => userFriends.has(x))).size*10
@@ -33,6 +40,7 @@ function problem7(user, friends, visitors) {
 
   // visitors중 친구목록에 없던것은 딕셔너리에 추가,점수 1 올리기
   // 친구목록에 있던건 그냥 점수 1 올리기
+
 
 
 
