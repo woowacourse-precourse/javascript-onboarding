@@ -29,6 +29,10 @@ function problem1(pobi, crong) {
     crongScore=Math.max(addScore,mulScore,crongScore);
   });
 
+  // pobiScore와 crongScore를 비교하여 answer에 값을 넣고 리턴하기
+  if (pobiScore>crongScore) answer=1;
+  else if (pobiScore<crongScore) answer=2;
+  else answer=0;
   
   return answer;
 }
