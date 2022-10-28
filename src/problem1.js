@@ -30,21 +30,32 @@ function problem1(pobi, crong) {
         )
     }
     
+    function checkWinner(score1, score2) {
+        if (score1 < score2) {
+            answer = winnerCount.crong;
+        }
+        if (score1 > score2) {
+            answer = winnerCount.pobi;
+        }
+    }
+    
+    function checkException(a,b) {
+        if (
+            a[pageIndex.left] + 1 !== a[pageIndex.right]
+            ||
+            b[pageIndex.left] + 1 !== b[pageIndex.right]
+        ) {
+            answer = winnerCount.exception;
+        }
+    }
+    
     const pobiScore = getMaxScore(pobi);
     const crongScore = getMaxScore(crong);
-    if (pobiScore < crongScore) {
-        answer = winnerCount.crong;
-    }
-    if (pobiScore > crongScore) {
-        answer = winnerCount.pobi;
-    }
-    if (
-        pobi[pageIndex.left] + 1 !== pobi[pageIndex.right]
-        ||
-        crong[pageIndex.left] + 1 !== crong[pageIndex.right]
-    ) {
-        answer = winnerCount.exception;
-    }
+    
+    checkWinner(pobiScore, crongScore);
+    
+    checkException(pobi,crong);
+    
     return answer
 }
 
