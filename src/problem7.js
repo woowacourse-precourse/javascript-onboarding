@@ -48,7 +48,9 @@ const getScores = (user, friends, visitors) => {
 
 function problem7(user, friends, visitors) {
   const scores = getScores(user, friends, visitors);
-  
+  const pointsArr = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+  return pointsArr.map((user) => user[0]);
 }
 
 module.exports = problem7;
