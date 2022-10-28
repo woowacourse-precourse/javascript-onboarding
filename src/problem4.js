@@ -31,6 +31,10 @@ function reverseWord(correctWord, lists) {
   const reversedAlphabetList = lists[1];
   let changedWord = new Array(wordLength);
 
+  if (wordLength < 1 || wordLength > 1000) {
+    return "입력값은 반드시 1 이상 1000 이하 문자열이어야 합니다.";
+  }
+
   for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
     const isAlphabet = checkAlphabetOrNot(correctWord[wordIndex]);
     const currentWord = changeFromLowercaseToUppercase(correctWord[wordIndex]);
