@@ -1,7 +1,10 @@
 function problem6(forms) {
   //검사 배열
-  const checkArr = [];
+  let checkArr = [];
   const answer = [];
+  forms.map((id, i) => {
+    console.log(checkAnoterName(nickSplit(id[1]), forms, i));
+  });
 
   return answer;
 }
@@ -22,25 +25,38 @@ function nickSplit(id) {
     }
   }
 
-  return id;
+  return name;
 }
 
 //3.분리한 닉네임을 다른 닉네임과 검사하는 기능
-function checkAnoterName(id, arr) {}
+function checkAnoterName(check, form, index) {
+  //id: 검사할 닉네임 , arr: 원본 배열 , index : 원본 인덱스 ,
+  const res = [];
+  check.map((str) => {
+    const re = new RegExp(str);
+    form.map((check) => {
+      if (form[index] !== check) {
+        if (re.test(check[1])) res.push(check[0]);
+      }
+    });
+  });
+
+  return res;
+}
 
 //4.이메일에서 영어 아이디 기준으로 오름 차순으로 정렬 후 중복은 제거
 function emailSortAndDupDel(arr) {
   return arr.sort((a, b) => nickSplit(a) - nickSplit(b));
 }
 
-// console.log(
-//   problem6([
-//     ["jm@email.com", "제이엠"],
-//     ["jason@email.com", "제이슨"],
-//     ["woniee@email.com", "워니"],
-//     ["mj@email.com", "엠제이"],
-//     ["nowm@email.com", "이제엠"],
-//   ])
-// );
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
