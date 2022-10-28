@@ -1,19 +1,25 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let [userFriends, newFriends] = getSeparateFrieds(user, friends);
+  userFriends = new Set(userFriends);
+  let recommendScore = getWithKnowScore(userFriends, newFriends);
+  recommendScore = getVisitTimelineScore(userFriends, visitors);
+
   return answer;
 }
 
-function getUserFrieds(user, friends) {
-  const userFriends = new Set();
+function getSeparateFrieds(user, friends) {
+  const separateFriends = [[], []];
   friends.forEach((friend) => {
     const [friend1, friend2] = friend;
     if (friend1 === user) {
-      userFriends.add(friend2);
+      separateFriends[0].push(friend2);
     } else if (friend2 === user) {
-      userFriends.add(friend1);
+      separateFriends[0].push(friend1);
+    } else {
+      separateFriends[1].push(friend);
     }
   });
-  return userFriends;
+  return separateFriends;
 }
 
 function setWithKnowScore(withKnowScore, friend) {
