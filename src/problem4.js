@@ -12,6 +12,7 @@ const isUpperCase = (char) => {
 const convertChar = (char) => {
   const idx = charArr.indexOf(char.toLowerCase());
   const convertedChar = charArr[CHAR_LNEGTH - idx - 1];
+
   return isUpperCase(char) ? convertedChar.toUpperCase() : convertedChar;
 };
 
@@ -20,10 +21,11 @@ function problem4(word) {
   [...word].forEach((char) => {
     if (!isAlphabet(char)) {
       answer += char;
-      return;
+    } else {
+      answer += convertChar(char);
     }
-    answer += convertChar(char);
   });
+
   return answer;
 }
 

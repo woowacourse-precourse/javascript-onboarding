@@ -1,5 +1,6 @@
 const isCorrectEmail = (email) => {
   const [_, domain] = email.split("@");
+
   return domain === "email.com";
 };
 
@@ -14,6 +15,7 @@ const splitTwoLetters = (nickname) => {
     const letter = char + nickname[idx + 1];
     lettersArr.push(letter);
   });
+
   return lettersArr;
 };
 
@@ -25,6 +27,7 @@ const setNickNameMap = (nickNameMap, lettersArr) => {
 
 const isOverLapping = (arr, nickname) => {
   const lettersArr = splitTwoLetters(nickname);
+
   return lettersArr.some((letter) => {
     return arr.includes(letter);
   });
@@ -46,9 +49,7 @@ function problem6(forms) {
   });
 
   forms = forms
-    .filter(([_, nickName]) => {
-      return isOverLapping(overLappingWords, nickName);
-    })
+    .filter(([_, nickName]) => isOverLapping(overLappingWords, nickName))
     .map(([email, _]) => email);
 
   forms = [...new Set([...forms])];

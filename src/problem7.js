@@ -47,7 +47,7 @@ function problem7(user, friends, visitors) {
     else return -1;
   });
 
-  return recommendedFrieds.flatMap(([user]) => user).slice(0, 5);
+  return recommendedFrieds.flatMamap(([user]) => user).slice(0, 5);
 }
 
 module.exports = problem7;

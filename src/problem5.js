@@ -1,5 +1,6 @@
 const takeMoneyOut = (money, unit) => {
   const count = Math.floor(money / unit);
+
   return [count * unit, count];
 };
 
@@ -12,6 +13,7 @@ function problem5(money) {
     money -= takeMoney;
     answer.push(count);
   });
+
   return answer;
 }
 
