@@ -1,8 +1,8 @@
 // 기능 목록
 // 1. 모든 크루의 닉네임을 2글자 단위로 자르기
-// 2. 2글자로 자른 닉네임들을 nameCountObj 객체에 저장 및 값 증가 ex) {제이: 1, 이엠: 1}
-// 3. nameCount에서 값이 2이상인 문자열 찾기
-// 4. 3에서 찾은 값들을 포함한 크루 찾기
+// 2. nameCountObj 객체에 2글자로 자른 닉네임들은 키로, count는 값으로 저장 ex) {제이: 1, 이엠: 1}
+// 3. nameCountObj에서 값이 2이상인 문자열 찾기
+// 4. 3에서 찾은 문자열을 포함하고 있는 크루들의 이메일 찾기
 // 5. answer를 기준으로 오름차순으로 정렬하고, 중복 제거
 
 // 모든 크루의 닉네임을 2글자 단위로 자르는 함수
@@ -57,7 +57,7 @@ function problem6(forms) {
   // 중복되는 문자열
   let duplicate = findDuplicate(nameCountObj);
 
-  // 중복되는 닉네임을 가진 크루들의 이메일 구하기
+  // 중복되는 문자열 포함하고 있는 크루의 이메일 구하기
   namesArr.filter((el, i) => {
     if (el.includes(duplicate)) answer.push(forms[i][0]);
   });
