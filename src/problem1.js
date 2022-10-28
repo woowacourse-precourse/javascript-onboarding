@@ -37,31 +37,40 @@ function getDigitMultiply(page) {
 }
 
 function getBigger(page) {
-  if (getDigitSum(page) > getDigitMultiply(page))
+  let sum = getDigitSum(page);
+  let multiply = getDigitMultiply(page);
+
+  if (sum > multiply)
     //각 자릿수 합이 곱보다 크다면
-    return getDigitSum(page); //합을 반환한다.
-  else if (getDigitSum(page) <= getDigitMultiply(page))
+    return sum; //합을 반환한다.
+  else if (sum <= multiply)
     //각 자릿수 곱이 합보다 크거나 같다면
-    return getDigitMultiply(page); //곱을 반환한다.
+    return multiply; //곱을 반환한다.
 }
 
 function getScore(arr) {
-  if (getBigger(arr[0]) > getBigger(arr[1]))
+  let leftPage = getBigger(arr[0]);
+  let rightPage = getBigger(arr[1]);
+
+  if (leftPage > rightPage)
     //왼쪽 페이지 연산이 오른쪽 페이지 연산보다 크다면
-    return getBigger(arr[0]); //왼쪽 페이지 연산을 본인의 점수로 한다.
-  else if (getBigger(arr[0]) <= getBigger(arr[1]))
+    return leftPage; //왼쪽 페이지 연산을 본인의 점수로 한다.
+  else if (leftPage <= rightPage)
     //오른쪽 페이지 연산이 왼쪽 페이지 연산보다 크다면
-    return getBigger(arr[1]); //오른쪽 페이지 연산을 본인의 점수로 한다.
+    return rightPage; //오른쪽 페이지 연산을 본인의 점수로 한다.
 }
 
 function getWinner(player1, player2) {
-  if (getScore(player1) > getScore(player2))
+  let playerScore1 = getScore(player1);
+  let playerScore2 = getScore(player2);
+
+  if (playerScore1 > playerScore2)
     //플레이어 1의 점수가 더 높다면
     return 1; //1을 반환한다.
-  else if (getScore(player1) < getScore(player2))
+  else if (playerScore1 < playerScore2)
     //플레이어 2의 점수가 더 높다면
     return 2; //2를 반환한다.
-  else if (getScore(player1) === getScore(player2))
+  else if (playerScore1 === playerScore2)
     //두 플레이어의 점수가 같다면
     return 0; //무승부이므로 0을 반환한다.
 }
