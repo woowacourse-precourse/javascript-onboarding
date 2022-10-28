@@ -1,6 +1,23 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const relationshipTable = {};
+  const scoreTable = {};
+
+  setRelationshipAll(friends, relationshipTable);
+
+  const recommendedFriendList = getRecommendedFriendList(
+    user,
+    relationshipTable
+  );
+
+  const strangerOfVisitors = visitors.filter(
+    (name) => !relationshipTable[user].includes(name)
+  );
+  addRecommendedScoreByFriendList(scoreTable, strangerOfVisitors, 1);
+  addRecommendedScoreByFriendList(scoreTable, recommendedFriendList, 10);
+  const scoreArray = objectToArray(scoreTable);
+  const sortedScore = sortByScore(scoreArray);
+
+  return getTopFiveRecommendedFriends(sortedScore);
 }
 
 // 기능 1번
