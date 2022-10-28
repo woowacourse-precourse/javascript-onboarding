@@ -1,20 +1,32 @@
 function problem7(user, friends, visitors) {
   const relationships = getRelationships(friends);
-  let scores = getOverlappingFriends(relationships, relationships[user]);
 }
 
-function getRelationships(friends) {
-  return friends.reduce((relationships, [user1, user2]) => {
-    relationships[user1] = (relationships[user1] || []).push(user2);
-    relationships[user2] = (relationships[user2] || []).push(user1);
+function getRelationships(friends, user) {
+  return friends.reduce((relationships, [id1, id2]) => {
+    if (id2 !== user) relationships[id1] = [...(relationships[id1] || []), id2];
+    if (id1 !== user) relationships[id2] = [...(relationships[id2] || []), id1];
     return relationships;
   }, {});
 }
 
-function getOverlappingFriends(relationships, friends) {
-  return friends.reduce((acc, friend) => {
+function getOverlappingFriends(relationships, userFriends) {
+  return userFriends.reduce((acc, friend) => {
     relationships[friend];
   }, {});
 }
 
+console.log(
+  getRelationships(
+    [
+      ["donut", "andole"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"],
+    ],
+    "mrko"
+  )
+);
 module.exports = problem7;
