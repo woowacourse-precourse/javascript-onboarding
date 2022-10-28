@@ -1,6 +1,23 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let seperate_word = word.split("");
+  let ascii_word = [];
+  let answer = [];
+
+  for (let i = 0; i < seperate_word.length; i++) {
+    ascii_word.push(seperate_word[i].charCodeAt());
+  }
+  for (let j = 0; j < ascii_word.length; j++) {
+    if (ascii_word[j] === 32) {
+      answer.push(" ");
+    } else if (65 <= ascii_word[j] && ascii_word[j] <= 90) {
+      answer.push(upperCase_reverse(upperCase(ascii_word[j])));
+    } else if (97 <= ascii_word[j] && ascii_word[j] <= 122) {
+      answer.push(lowerCase_reverse(lowerCase(ascii_word[j])));
+    } else {
+      answer.push(String.fromCharCode(ascii_word[j]));
+    }
+  }
+  return answer.join("");
 }
 
 function upperCase(number) {
