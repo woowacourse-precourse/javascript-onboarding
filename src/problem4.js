@@ -1,3 +1,8 @@
+const INPUT = {
+  maxLength: 1000,
+  minLength: 1,
+}
+
 const FROG = {
   upperDictionary: [
     'A', 'B', 'C', 'D', 'E', 'F',
@@ -31,7 +36,7 @@ const FROG = {
 
 // 예외상황
 function exception (word) {
-  if(word < 1 || word > 1000) return true;
+  if(word < INPUT.minLength || word > INPUT.maxLength) return true;
   if(!(word.test(/^[a-z|A-Z]+$/))) return true;
   return false;
 }
@@ -67,11 +72,10 @@ function lowerCase(word) {
 
 function problem4(word) {
   if(exception) return false;
-  console.log(checkAlphabet(word));
+
   return checkAlphabet(word);
 }
 
-problem4("I love you");
 module.exports = problem4;
 
 // 기능들
