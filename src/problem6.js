@@ -1,12 +1,11 @@
 function problem6(forms) {
   //검사 배열
   let checkArr = [];
-  const answer = [];
   forms.map((id, i) => {
-    console.log(checkAnoterName(nickSplit(id[1]), forms, i));
+    checkArr = checkArr.concat(checkAnoterName(nickSplit(id[1]), forms, i));
   });
 
-  return answer;
+  return emailSortAndDupDel(checkArr);
 }
 
 // 1. 닉네임을 이메일과 분리하는 기능
@@ -46,17 +45,8 @@ function checkAnoterName(check, form, index) {
 
 //4.이메일에서 영어 아이디 기준으로 오름 차순으로 정렬 후 중복은 제거
 function emailSortAndDupDel(arr) {
-  return arr.sort((a, b) => nickSplit(a) - nickSplit(b));
+  const setArr = new Set(arr);
+  return [...setArr].sort();
 }
-
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
 
 module.exports = problem6;
