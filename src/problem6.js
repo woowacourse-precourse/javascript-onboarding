@@ -9,6 +9,24 @@
 // 6. 중복된 인덱스에 따라 이메일을 반환
 // 7. 중복되는 경우가 2가지 이상인 경우 -> 리스트를 개수에 맞게 반환
 
+// word_list를 돌며 단어를 포함하고 있나 확인하는 함수
+function checkDuplicate(current_word, word_list){
+  let temp_object = {};
+  for(let k = 0; k < word_list.length; k++){
+    // word_list 안의 리스트에 단어가 포함된다면 temp_object에 추가
+    if(word_list[k].includes(current_word)){
+      // 요소가 이미 있는 경우와 없는 경우를 나눠서 저장
+      if(temp_object[current_word]){
+        temp_object[current_word] = [...temp_object[current_word], word_list[k][0]];
+      }
+      else{
+        temp_object[current_word] = [word_list[k][0]];
+      }
+    };
+  }
+  return temp_object;
+}
+
 // 두 글자 단어를 끊어주는 함수
 function makeWord(nick_list){
   // 단어를 저장할 리스트
@@ -34,10 +52,29 @@ function checkDuplicateNick(nick_list){
     // 해당 닉네임의 인덱스를 저장
     let temp_list = [i];
     // 두개씩 끊은 단어 리스트를 저장
-    temp_list.push(...makeWord(nick_list[i]));
+    let make_word_list = makeWord(nick_list[i]);
     // 만약 단어 리스트가 없다면, 즉 닉네임이 한글자라면 word_list에 저장하지 않음
-    if(temp_list[1] !== false) word_list.push(temp_list);
+    if(make_word_list){
+      temp_list.push(...make_word_list);
+      word_list.push(temp_list);
+    } 
   }
+  // word_list의 단어를 순회하며 해당 단어로 중복된 닉네임의 인덱스를 객체로 저장
+  for(let i = 0; i < word_list.length; i++){
+    for(let j = 1; j < word_list[i].length; j++){
+      // 중복 확인할 단어
+      const current_word = word_list[i][j];
+      // 해당 단어가 객체에 없다면 중복 검사
+      if(!duplicateObject[current_word]){
+        let temp_object = checkDuplicate(current_word, word_list);
+        // 검사한 인덱스 리스트의 길이가 1보다 크다면, 즉 자신의 인덱스 말고 다른 인덱스도 있다면 객체에 저장
+        if(temp_object[current_word].length > 1){
+          duplicateObject[current_word] = temp_object[current_word];
+        }
+      }
+    }
+  }
+  return duplicateObject;
 }
 
 // 정규식을 통해 닉네임 예외처리
@@ -72,8 +109,8 @@ function problem6(forms) {
       nick_list.push(nick);
     }
   }
-  const index_list = checkDuplicateNick(nick_list);
-  
+  const index_object = checkDuplicateNick(nick_list);
+
   return answer;
 }
 
