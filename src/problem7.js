@@ -30,6 +30,14 @@ function problem7(user, friends, visitors) {
 		}
 		scores.set(friend, 10)
 	})
+
+	visitors.forEach(visitor => {
+		if (scores.has(visitor)) {
+			scores.set(visitor, scores.get(visitor) + 1)
+			return
+		}
+		scores.set(visitor, 1)
+	})
 }
 
 module.exports = problem7
