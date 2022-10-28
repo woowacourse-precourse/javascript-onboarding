@@ -1,16 +1,12 @@
-const isThreeSixNine = (number) => {
-  const isThreeSixNine = false;
-  if (number === "3" || number === "6" || number === "9") isThreeSixNine = true;
-  return isThreeSixNine;
-};
 const countThreeSixNine = (number) => {
   let count = 0;
   const numberToString = number.toString();
   for (eachNumber of numberToString) {
-    if (isThreeSixNine(eachNumber)) count++;
+    if (eachNumber === "3" || eachNumber === "6" || eachNumber === "9") count++;
   }
   return count;
 };
+
 function problem3(number) {
   var answer;
   return answer;
