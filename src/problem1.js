@@ -16,8 +16,12 @@ function addmulValue(page){
 }
 
 function getValue(a){
-  
+  let l, r;
+  l=addmulValue(a[0]);
+  r=addmulValue(a[1]);
+  return compareValue(l, r);
 }
+
 
 function problem1(pobi, crong) {
   var answer;
