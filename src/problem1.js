@@ -10,5 +10,12 @@ function sumDigits(number) {
   }
   return sum;
 }
-
+function multiplyDigits(number) {
+  let multiple = 1;
+  while (number > 0) {
+    multiple *= number % 10;
+    number = Math.floor(number / 10);
+  }
+  return multiple;
+}
 module.exports = problem1;
