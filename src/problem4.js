@@ -1,53 +1,32 @@
-const alphabetArray = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+const alphabetArray = Array.from({ length: 26 }, (v, i) =>
+  String.fromCharCode(i + 65)
+);
 
-function convertWord(words) {
-  let wordsArray = words.split("");
+function findAlphabet(alphabet) {
+  let convertedAlphabet =
+    alphabetArray[25 - alphabetArray.indexOf(alphabet.toUpperCase())];
+  return convertedAlphabet;
+}
+
+function convertWords(words) {
+  const wordsArray = words.split("");
   let newWord = "";
 
   wordsArray.map((word) => {
     if (word == " ") {
       newWord += " ";
     } else if (word == word.toLowerCase()) {
-      newWord +=
-        alphabetArray[
-          25 - alphabetArray.indexOf(word.toUpperCase())
-        ].toLowerCase();
+      newWord += findAlphabet(word).toLowerCase();
     } else {
-      newWord += alphabetArray[25 - alphabetArray.indexOf(word)];
+      newWord += findAlphabet(word);
     }
   });
+
   return newWord;
 }
 
 function problem4(word) {
-  return convertWord(word);
+  return convertWords(word);
 }
 
 module.exports = problem4;
