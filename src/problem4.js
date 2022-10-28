@@ -8,6 +8,9 @@
  * 3. 변환된 문자열을 return 한다.
  */
 
+/**
+ * @enum {number}
+ */
 const ALPHABET_CODE = {
   MIN_LOWER: "a".charCodeAt(),
   MAX_LOWER: "z".charCodeAt(),
