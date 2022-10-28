@@ -37,8 +37,12 @@ function createNumbers(number) {
  * @returns {number} result
  */
 function problem3(number) {
-  var answer;
-  return answer;
+  let result = 0;
+  const numbers = createNumbers(number);
+  numbers.forEach((element) => {
+    result += count369InNumber(element);
+  });
+  return result;
 }
 
 module.exports = problem3;
