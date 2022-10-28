@@ -10,8 +10,10 @@ function countNeedMoney(money, won) {
 }
 
 function problem5(money) {
-  var answer;
-  return answer;
+  //지폐 개수를 위한 배열
+  let count = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  //전체 돈에 대한 배열
+  let moneyIndex = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 }
 
 module.exports = problem5;
