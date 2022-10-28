@@ -17,7 +17,7 @@ function problem2(cryptogram) {
 }
 
 function isWrongInput(input) {
-  if (isWrongInputValue(input)) {
+  if (isWrongValueOfInput(input)) {
     return true;
   }
 
@@ -36,8 +36,8 @@ function isWrongInput(input) {
   return false;
 }
 
-function isWrongInputValue(input) {
-  return !input;
+function isWrongValueOfInput(v) {
+  return !v;
 }
 
 function isWrongTypeOfInput(type) {

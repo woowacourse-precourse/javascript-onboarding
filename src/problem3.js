@@ -17,7 +17,7 @@ function problem3(number) {
 }
 
 function isWrongInput(input) {
-  if (isWrongInputValue(input)) {
+  if (isWrongValueOfInput(input)) {
     return true;
   }
 
@@ -29,15 +29,11 @@ function isWrongInput(input) {
     return true;
   }
 
-  if (Number.isNaN(input)) {
-    return true;
-  }
-
   return false;
 }
 
-function isWrongInputValue(input) {
-  return !input;
+function isWrongValueOfInput(v) {
+  return !v;
 }
 
 function isWrongTypeOfInput(type) {

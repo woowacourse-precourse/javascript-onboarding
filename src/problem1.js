@@ -27,7 +27,7 @@ function problem1(pobi, crong) {
 }
 
 function isWrongInput(input) {
-  if (isWrongInputValue(input)) {
+  if (isWrongValueOfInput(input)) {
     return true;
   }
 
@@ -39,7 +39,7 @@ function isWrongInput(input) {
     return true;
   }
 
-  if (Number.isNaN(input[0]) || Number.isNaN(input[1])) {
+  if (isWrongValueOfElement(input[0]) || isWrongValueOfElement(input[1])) {
     return true;
   }
 
@@ -58,8 +58,8 @@ function isWrongInput(input) {
   return false;
 }
 
-function isWrongInputValue(input) {
-  return !input;
+function isWrongValueOfInput(v) {
+  return !v;
 }
 
 function isWrongTypeOfInput(type) {
@@ -68,6 +68,10 @@ function isWrongTypeOfInput(type) {
 
 function isWrongLengthOfInput(length) {
   return length !== INPUT.length;
+}
+
+function isWrongValueOfElement(v) {
+  return !v;
 }
 
 function isWrongTypeOfElement(type1, type2) {
