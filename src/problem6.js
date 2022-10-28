@@ -5,6 +5,18 @@
 // 4. 3에서 찾은 값들을 포함한 크루 찾기
 // 5. answer를 기준으로 오름차순으로 정렬하고, 중복 제거
 
+// 모든 크루의 닉네임을 2글자 단위로 자르는 함수
+function makeTwoLength(forms, namesArr) {
+  for (let i = 0; i < forms.length; i++) {
+    let arr = [];
+    let name = forms[i][1];
+    for (let j = 0; j < name.length - 1; j++) {
+      arr.push(name.slice(j, j + 2));
+    }
+    namesArr.push(arr);
+  }
+}
+
 function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = [];
@@ -15,20 +27,7 @@ function problem6(forms) {
   // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
   let answer = [];
 
-  // 모든 크루의 닉네임을 2글자 단위로 자른 값을 키로, 개수를 값으로 만들기
-  for (let i = 0; i < forms.length; i++) {
-    let arr = [];
-    for (let j = 0; j < forms[i][1].length - 1; j++) {
-      let name = forms[i][1].slice(j, j + 2);
-      arr.push(name);
-      // nameCountObj에 키가 있을 경우
-      if (nameCountObj.hasOwnProperty(name)) {
-        nameCountObj[name] += 1;
-        // nameCountObj에 키가 없을 경우
-      } else nameCountObj[name] = 1;
-    }
-    namesArr.push(arr);
-  }
+  makeTwoLength(forms, namesArr);
 
   // nameCount에서 값이 2 이상인 문자열 찾기
   for (let key in nameCountObj) {
