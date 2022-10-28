@@ -20,11 +20,12 @@ function charToAscii(char) {
 }
 
 function problem4(word) {
-  let reversedWord = '';
-  for (let i = 0; i < word.length; i++) {
-    const ascii = charToAscii(word[i]);
-    reversedWord += asciiToReversedChar(ascii);
-  }
+  let reversedWord = [...word].reduce((acc, cur) => {
+    const ascii = charToAscii(cur);
+    acc += asciiToReversedChar(ascii);
+    return acc;
+  }, '');
+
   return reversedWord;
 }
 
