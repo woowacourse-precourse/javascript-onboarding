@@ -44,5 +44,14 @@ function problem7(user, friends, visitors) {
     }
     friendPoint.push([friendOfFriend[i], count * 10]);
   }
+
+  for (let i = 0; i < userFriend.length; i++) {
+    for (let z = 0; z < visitors.length; z++) {
+      if (visitors[z] == userFriend[i]) {
+        visitors.splice(z, 1);
+        z -= 1;
+      }
+    }
+  }
 }
 module.exports = problem7;
