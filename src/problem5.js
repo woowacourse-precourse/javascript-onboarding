@@ -8,6 +8,7 @@ function problem5(money) {
     if (price >= unit) {
       const count = Math.floor(price / unit);
       answer[index] = count;
+      price = price - count * unit;
     }
   });
 
