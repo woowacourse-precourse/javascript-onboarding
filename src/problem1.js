@@ -10,19 +10,39 @@ function makeMaxNumber(pobi, crong) {
     return -1
   }
   //이후 메인 로직()
-  const pobiAddMaxNumber = makeOddNumberString(pobi)
-  const pobiMultipleMaxNumber = makeEvenNumberString(pobi);
-  
-  const crongAddMaxNumber = makeOddNumberString(crong);
-  const crongMultipleMaxNumber = makeEvenNumberString(crong
-    )
-  // return [pobiAddMaxNumber,crongAddMaxNumber,pobiMultipleMaxNumber,crongMultipleMaxNumber]
+  const pobiMaxNumber = Math.max(caseAddNumber(pobi), caseMultipleNumber(pobi));
+  const crongMaxNumber = Math.max(caseAddNumber(crong), caseMultipleNumber(crong));
+
+  const maxNumberArray = [pobiMaxNumber, crongMaxNumber]
+  return [...maxNumberArray]
+}
+
+function caseAddNumber(userName) {
+  const oddPageAddMaxNumber = makeOddNumberString(userName).reduce((acc, cur) => {
+    return acc + cur
+  }, 0);
+
+  const evenPageAddMaxNumber = makeEvenNumberString(userName).reduce((acc, cur) => {
+    return acc + cur
+  }, 0);
+
+  return (oddPageAddMaxNumber > evenPageAddMaxNumber) ? oddPageAddMaxNumber : evenPageAddMaxNumber;
+}
+
+function caseMultipleNumber(userName) {
+  const oddPageMultipleMaxNumber = makeOddNumberString(userName).reduce((acc, cur) => {
+    return acc * cur
+  }, 1);
+
+  const evenPageMultipleMaxNumber = makeEvenNumberString(userName).reduce((acc, cur) => {
+    return acc * cur
+  }, 1);
+  return (oddPageMultipleMaxNumber > evenPageMultipleMaxNumber) ? oddPageMultipleMaxNumber : evenPageMultipleMaxNumber;
 }
 
 function makeOddNumberString(userName) {
   return String(userName[0]).split('').map(i => +i);
 }
-
 
 function makeEvenNumberString(userName) {
   return String(userName[1]).split('').map(i => +i);
