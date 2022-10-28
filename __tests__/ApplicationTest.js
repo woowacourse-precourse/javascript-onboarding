@@ -35,9 +35,7 @@ describe("problem1", () => {
     expect(problem1([11, 101], [3, 4])).toEqual(-1);
   });
 });
-*/
 
-/*
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
@@ -121,7 +119,6 @@ describe("problem5", () => {
     expect(problem5(999999)).toEqual([19, 4, 1, 4, 1, 4, 1, 4, 9]);
   });
 });
-*/
 
 describe("problem6", () => {
   test("case1", () => {
@@ -158,8 +155,8 @@ describe("problem6", () => {
     ]);
   });
 });
+*/
 
-/*
 describe("problem7", () => {
   test("case1", () => {
     expect(
@@ -177,5 +174,35 @@ describe("problem7", () => {
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
+  test("my test1", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "jun", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["jun", "andole", "bedi"]);
+  });
+  test("my test1", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "jun", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["jun", "andole", "bedi"]);
+  });
 });
-*/
