@@ -5,6 +5,11 @@
 // 5. case에 맞게 청개구리 변환
 // 6. 다시 문자열로 변환
 
+// 문자 -> 아스키 변환
+function strToAsc(str) {
+  return str.charCodeAt();
+}
+
 function problem4(word) {
   var answer;
   // 리스트화
