@@ -1,6 +1,17 @@
 function problem1(pobi, crong) {
-  const answer = makeMaxNumber(pobi, crong)
+  const answer = compareMaxNumber(makeMaxNumber(pobi, crong));
   return answer;
+}
+
+function compareMaxNumber(maxNumberArray) {
+  const pobiFinalNumber = maxNumberArray[0];
+  const crongFinalNumber = maxNumberArray[1];
+
+  if (maxNumberArray === -1) return -1
+  if (pobiFinalNumber > crongFinalNumber) return 'pobi'
+  if (pobiFinalNumber === crongFinalNumber) return 'draw'
+  if (pobiFinalNumber < crongFinalNumber) return 'crong'
+  return -1
 }
 
 
