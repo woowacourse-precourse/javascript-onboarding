@@ -46,4 +46,13 @@ function getFriendsList(friends) {
   return map;
 }
 
+function getFriendsScore(friends) {
+  const map = new Map();
+  friends.forEach(([from, to]) => {
+    if (!map.has(from)) map.set(from, 0);
+    if (!map.has(to)) map.set(to, 0);
+  });
+  return map;
+}
+
 module.exports = problem7;
