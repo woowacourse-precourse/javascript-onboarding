@@ -16,13 +16,13 @@ function getUserFrieds(user, friends) {
   return userFriends;
 }
 
-function setWithKnowScore(recommendScore, friend) {
-  if (recommendScore[friend]) {
-    recommendScore[friend] += 10;
+function setWithKnowScore(withKnowScore, friend) {
+  if (withKnowScore[friend]) {
+    withKnowScore[friend] += 10;
   } else {
-    recommendScore[friend] = 10;
+    withKnowScore[friend] = 10;
   }
-  return recommendScore;
+  return withKnowScore;
 }
 
 module.exports = problem7;
