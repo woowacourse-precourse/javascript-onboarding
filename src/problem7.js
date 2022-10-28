@@ -6,7 +6,8 @@ function problem7(user, friendPairs, visitors) {
   friendsOfUser = findFriendsOfUser(user, friendPairs);
   userInfoList = makeUserInfoList(user, friendPairs, visitors, friendsOfUser);
   addScoreToFriendsOfFriends(user, friendPairs, friendsOfUser, userInfoList);
-  console.log(userInfoList);
+  addScoreToVisitors(visitors, userInfoList);
+  answer = makeRecommendUserList(userInfoList, 5);
   return answer;
 }
 
@@ -54,43 +55,28 @@ function findFriendsOfUser(user, friendPairs) {
     .map(([userA, userB]) => (userA === user ? userB : userA));
 }
 
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
+function addScoreToVisitors(visitors, userInfoList) {
+  visitors.forEach((visitor) => {
+    userInfoList.find((userInfo) => userInfo.id === visitor).score += 1;
+  });
+}
+
+function makeRecommendUserList(userInfoList, maxLength) {
+  let recommendUserList;
+
+  recommendUserList = userInfoList
+    .filter((userInfo) => userInfo.score > 0 && userInfo.isFriend === false)
+    .sort(compareScoreAndAlphabet)
+    .map((userInfo) => userInfo.id);
+  return recommendUserList.length <= maxLength
+    ? recommendUserList
+    : recommendUserList.slice(0, maxLength);
+}
+
+function compareScoreAndAlphabet(userInfoA, userInfoB) {
+  if (userInfoA.score < userInfoB.score) return 1;
+  else if (userInfoA.score > userInfoB.score) return -1;
+  else return userInfoA.id < userInfoB.id ? -1 : 1;
+}
 
 module.exports = problem7;
-
-/*
-** 내 친구의 친구다 -> +10점
-mrko: (donut, shakevan)
-
-donut: (andole, jun, mrko)
-shakevan: (andole, mrko)
-
-andole: (donut, shakevan)
-jun: (donut)
-*/
-
-/*
-friends
-[
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-]
-
-visitors
-["bedi", "bedi", "donut", "bedi", "shakevan"];
-*/
