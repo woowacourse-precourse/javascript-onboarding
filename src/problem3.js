@@ -1,21 +1,20 @@
-function getMultipleThree(number) {
-  let totalNumber = 0;
-  let index = 3;
+function getClapNumber(number) {
+  let clapNumber = 0;
+  let presentNumber = 3;
 
-  while (index <= number) {
-    let numberArray = index.toString().split("");
-    numberArray.map((number) => {
-      if (number == 3 || number == 6 || number == 9) {
-        totalNumber++;
-      }
+  while (presentNumber <= number) {
+    let numbersArray = presentNumber.toString().split("");
+    numbersArray.map((number) => {
+      if (number == 3 || number == 6 || number == 9) clapNumber++;
     });
-    index++;
+    presentNumber++;
   }
-  return totalNumber;
+
+  return clapNumber;
 }
 
 function problem3(number) {
-  return getMultipleThree(number);
+  return getClapNumber(number);
 }
 
 module.exports = problem3;
