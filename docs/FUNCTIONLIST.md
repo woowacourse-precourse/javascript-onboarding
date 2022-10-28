@@ -43,7 +43,7 @@
 
 ### [Problem 7]
 
-1. 유저의 친구들을 key로 가지고 빈 배열을 value로 가진 객체 UserFriendList 생성
-2. 유저 친구들의 친구를 UserFriendList 배열에 담는 함수
+1. 유저의 친구들을 key로 가지고 빈 배열을 value로 가진 객체 UserFriendObject 생성
+2. 유저 친구들의 친구를 UserFriendObject 배열에 담는 함수
 3. 함께 아는 친구 점수 구하는 함수
 4. 타임라인에 방문한 횟수로 점수 구하는 함수
