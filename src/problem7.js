@@ -1,12 +1,26 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const result = new Map();
+  const userRelation = getUserAdjacencyList(friends);
+
+  return userRelation;
+}
+
+function getUserAdjacencyList(friends) {
+  return friends.reduce((links, [user1, user2]) => {
+    if (!links[user1]) links[user1] = [];
+    if (!links[user2]) links[user2] = [];
+
+    links[user1].push(user2);
+    links[user2].push(user1);
+
+    return links;
+  }, {});
 }
 
 // 문제 7번 - 인접리스트, Hash 풀이
-// 0. 유저의 이름과 점수를 Key-Value로 저장할 Map 생성
+// 0. 유저의 이름과 점수를 Key-Value로 저장할 Map 생성 ✅
 
-// 1. friend loop를 돌아 각 유저에 대해 인접리스트를 구한다.
+// 1. friend loop를 돌아 각 유저에 대해 인접리스트를 구한다. ✅
 // -> 예상 결과물
 // {  donut: [andole, jun, mrko]
 //    andole: [donut, shakevan]
