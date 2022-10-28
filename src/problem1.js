@@ -12,7 +12,7 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-//예외사항 분리 함수 (페이지 차이,페이지 배열 3개,처음면과 끝면)
+//예외사항 분리 함수
 const exception = (arr) => {
   if (
     arr[1] - arr[0] !== 1 ||
