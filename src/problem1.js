@@ -47,7 +47,6 @@ function problem1(pobi, crong) {
     }
     let pobiValue = getValue(pobi);
     let crongValue = getValue(crong);
-    console.log(pobiValue, crongValue);
     if (pobiValue > crongValue) answer = 1;
     else if (pobiValue < crongValue) answer = 2
     else answer = 0
