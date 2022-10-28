@@ -1,6 +1,10 @@
 function problem1(pobi, crong) {
   var answer;
   if (exceptionCase(pobi) || exceptionCase(crong)) return -1;
+  getDigitSum(pobi[0]);
+  getDigitSum(pobi[1]);
+  getDigitSum(crong[0]);
+  getDigitSum(crong[1]);
   return answer;
 }
 
@@ -20,6 +24,15 @@ function exceptionCase(arr) {
 
   //두 페이지가 연속된 숫자가 아닌 경우
   if (arr[1] !== arr[0] + 1) return true;
+}
+
+function getDigitSum(page) {
+  let sum = 0;
+  while (page > 0) {
+    sum += page % 10;
+    page = parseInt(page / 10);
+  }
+  return sum;
 }
 
 module.exports = problem1;
