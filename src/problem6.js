@@ -8,6 +8,7 @@
 // 모든 크루의 닉네임을 2글자 단위로 자르는 함수
 function makeTwoLength(forms) {
   let namesArr = [];
+
   for (let i = 0; i < forms.length; i++) {
     let arr = [];
     let name = forms[i][1];
@@ -16,6 +17,7 @@ function makeTwoLength(forms) {
     }
     namesArr.push(arr);
   }
+
   return namesArr;
 }
 
