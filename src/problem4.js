@@ -1,5 +1,12 @@
 function errorHandling(word) {
   if (word.length < 1 || word.length > 1000) return false;
+  if (
+    word === null ||
+    word === undefined ||
+    word === "" ||
+    (word !== null && typeof word !== "string")
+  )
+    return false;
   return true;
 }
 function change(word) {
@@ -24,4 +31,5 @@ function problem4(word) {
   let answer = change(word);
   return answer;
 }
+
 module.exports = problem4;
