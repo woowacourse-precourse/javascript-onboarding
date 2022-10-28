@@ -6,12 +6,17 @@ function problem2(cryptogram) {
         removeList.push(idx);
       }
     });
-    // TODO: removeList에 담긴 index를 이용해서 배열을 조정
+    removeList.forEach((removeIdx, idx) => {
+      cryptogram =
+        cryptogram.slice(0, removeIdx) + cryptogram.slice(removeIdx + 2);
+      removeList[idx + 1] -= 2;
+    });
+    if (removeList.length === 0) break;
   }
   return cryptogram;
 }
 
 console.log(problem2("browoanoommnaon"));
-console.log(problem2('zyelleyz'))
+console.log(problem2("zyelleyz"));
 
 module.exports = problem2;
