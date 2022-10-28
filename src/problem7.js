@@ -26,6 +26,18 @@ function problem7(user, friends, visitors) {
     !userFriends.has(visitor) && addNumberToObject(1, scores, visitor)
   })
 
+  const scoreArray = []
+  for (const key in scores) {
+    scoreArray.push([key, scores[key]])
+  }
+  scoreArray.sort((a, b) =>{
+    if(a[1] === b[1]){
+      return [b[0], a[0]][0] === [b[0], a[0]].sort()[0] ? 0 : -1
+    }else return b[1] - a[1]
+  })
+
+  answer = scoreArray.map(s => s[0])
+
   return answer;
 }
 
