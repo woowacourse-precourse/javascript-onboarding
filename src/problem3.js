@@ -1,12 +1,19 @@
-const countThreeSixNine = (number) => {
-  let count = 0;
-  const numberToString = number.toString();
+const countThreeSixNine = (currentNumber) => {
+  let threeSixNineCount = 0;
+  const numberToString = currentNumber.toString();
   for (eachNumber of numberToString) {
-    if (eachNumber === "3" || eachNumber === "6" || eachNumber === "9") count++;
+    if (eachNumber === "3" || eachNumber === "6" || eachNumber === "9")
+      threeSixNineCount++;
   }
-  return count;
+  return threeSixNineCount;
 };
-
+const countClap = (number) => {
+  let clapCount = 0;
+  for (let currentNumer = 1; currentNumer <= number; currentNumer++) {
+    count += countThreeSixNine(currentNumer);
+  }
+  return clapCount;
+};
 function problem3(number) {
   var answer;
   return answer;
