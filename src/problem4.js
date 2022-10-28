@@ -37,7 +37,10 @@ function upperCase(word) {
 }
 
 
-
+// 소문자일 경우 대문자로 변환 
+function lowerCase(word) {
+  return FROG.upperDictionary[FROG.lowerDictionary.indexOf(word)];
+}
 
 console.log(checkAlphabet("I love you"));
 
