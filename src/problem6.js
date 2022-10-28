@@ -7,7 +7,20 @@ function problem6(forms) {
       else nickCaseMap.set(key, 1);
     }
   };
-  var answer;
+
+  forms.forEach(([_, nickName]) => getAllCase(nickName));
+
+  const dupliNickNames = Array.from(nickCaseMap)
+    .filter(([_, count]) => count > 1)
+    .map(([nickName, _]) => nickName);
+
+  const answer = forms
+    .filter(([_, nickName]) =>
+      dupliNickNames.some((el) => nickName.includes(el))
+    )
+    .map(([email, _]) => email)
+    .sort();
+
   return answer;
 }
 
