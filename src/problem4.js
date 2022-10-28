@@ -1,5 +1,7 @@
 function problem4(word) {
-  var answer;
+  var answer = word
+    .split("")
+    .reduce((prev, cur) => prev + changeAlphabet(cur), "");
   return answer;
 }
 
