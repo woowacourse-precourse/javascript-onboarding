@@ -12,8 +12,8 @@ function problem1(pobi, crong) {
 }
 
 function calculate(pages) {
-  var odd_digit = [];
-  var even_digit = [];
+  var odd_digit = [,];
+  var even_digit = [,];
   var odd_page_plus, odd_page_multi, odd_page_largest;
   var even_page_plus, even_page_multi, even_page_largest;
   var largest_var;
