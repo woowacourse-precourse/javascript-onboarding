@@ -58,7 +58,10 @@ function problem7(user, friends, visitors) {
   }
   // 점수 높은 순으로 정렬
   sortable.sort((a, b) => {
-    return b[1] - a[1];
+    // 점수가 같은 경우 이름 순으로 정렬
+    if (b[1] === a[1]) {
+      return b[0] > a[0] ? -1 : 1;
+    } else return b[1] - a[1];
   });
 
   return answer;
