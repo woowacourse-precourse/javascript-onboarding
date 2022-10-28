@@ -1,5 +1,11 @@
 function problem6(forms) {
-  
+  const twoSringNames = twoStringHash(forms); // {'제이': 1, ...}
+
+  const duplicatedNames = duplicatedStr(twoSringNames);
+
+  const regexp = '^[가-힣]*[[__str__]][가-힣]*$';
+
+  const duplicated_regExp = regExpMap(duplicatedNames, regexp);
 }
 
 
