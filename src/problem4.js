@@ -8,15 +8,34 @@
  * 1. word 길이: 1~1000
  * 2. 알파벳 외 문자는 x
  */
+
 function problem4(word) {
-  var answer;
-  return answer;
+  var answer = [];
+
+  var criterion = "";
+
+  word.split("").map((char)=>{
+
+    if (char.charCodeAt() >= 65 && char.charCodeAt() <= 80) {
+      criterion = "A";
+    } else if (char.charCodeAt() >= 97 && char.charCodeAt() <= 122){
+      criterion = "a";
+    } else {
+      criterion = "";
+    }
+
+    if (criterion) {
+      var charToOrder = char.charCodeAt() - criterion.charCodeAt(0);
+      var orderToUnicode = 25 - charToOrder + criterion.charCodeAt(0);
+
+      answer.push(String.fromCharCode(orderToUnicode));
+    } else {
+      answer.push(char);
+    }
+    
+  })
+
+	return answer.join("");
 }
-
-console.log("A".charCodeAt())
-console.log("Z".charCodeAt())
-console.log("M".charCodeAt())
-console.log("N".charCodeAt())
-
 
 module.exports = problem4;
