@@ -10,6 +10,9 @@ function problem4(word) {
       answer += convert(spell, alphabet_L);
     } else if (alphabet_U.includes(spell)) {
       answer += convert(spell, alphabet_U);
+    } else {
+      // 4) 알파벳 외의 문자는 변환하지 않고 그대로 넣어주는 과정
+      answer += spell;
     }
   }
   return answer;
