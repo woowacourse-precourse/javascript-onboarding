@@ -9,4 +9,15 @@
 
 function problem3(number) {}
 
+const count369InNumber = (number) => {
+  let countOf369 = 0;
+  const eachDigits = number.toString().split("");
+
+  eachDigits.forEach((digit) => {
+    if (digit === "3" || digit === "6" || digit === "9") countOf369++;
+  });
+
+  return countOf369;
+};
+
 module.exports = problem3;
