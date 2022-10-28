@@ -1,6 +1,12 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!isValidArray(pobi) || !isValidArray(crong)) return -1
+
+  let maxPobiNumber = 0;
+  let maxCrongNumber = 0;
+
+  maxPobiNumber = getMaxFromTwoNumber(getMaxFromAddSum(pobi),getMaxFromMultiplySum(pobi));
+  maxCrongNumber = getMaxFromTwoNumber(getMaxFromAddSum(crong),getMaxFromMultiplySum(crong));
+
 }
 
 /**
@@ -26,6 +32,16 @@ const getMaxFromMultiplySum = (arr) =>{
       String(ele).split('').reduce((acc,cur)=> acc * parseInt(cur), 1)
 );
   return  result[0] > result[1] ? result[0] : result[1];
+}
+
+/**
+ * 두 숫자를 비교해 큰 숫자를 리턴하는 함수.
+ * @param {number} getNumberFromAdd 
+ * @param {number} getNumberFromMultiply 
+ * @returns {number}
+ */
+ const getMaxFromTwoNumber = (getNumberFromAdd, getNumberFromMultiply) =>{
+  return getNumberFromAdd > getNumberFromMultiply ? getNumberFromAdd : getNumberFromMultiply; 
 }
 
 /**
