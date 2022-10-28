@@ -1,42 +1,33 @@
 function problem6(forms) {
+  //검사 배열
+  const checkArr = [];
   const answer = [];
-  const wordArr = [];
 
+  //검사 배열 만들기
   forms.map((id) => {
-    const result = checkTwoChar(id[1]);
-    if (result) {
-      answer.push(id[0]);
-    }
+    if (checkMyNickName(id[1], checkArr)) answer.push(id[0]);
+    checkStraightWord(id[1], checkArr);
   });
 
-  return emailSortAndDupDel(answer);
+  console.log(checkArr);
+
+  console.log(" filtered Arr", answer);
+  return answer;
 }
 
 // 1. 닉네임을 이메일과 분리하는 기능
-function nickSplit(id) {
+function nickEmailSplit(id) {
   const idArr = id.split("@");
   return idArr[0];
 }
 
-// 2. 같은 글자가 연속적으로 포함하는 닉네임목록을 생성
-function checkStraitWord(nickName) {
-  const arr = [];
-  let pos = 0;
-  for (let i = 1; i < nickName.length; i++) {
-    pos = 0;
-    while (pos < nickName.length - i) {
-      arr.push(nickName[pos].concat(nickName[pos + 1]));
-      pos++;
-    }
-  }
-  console.log(arr);
+//2.한글 닉네임을 2글자 이상으로 분리하는 기능
+function nickSplit(id) {}
 
-  return arr;
-}
+//3.분리한 닉네임을 다른 닉네임과 검사하는 기능
+function checkAnoterName(id, arr) {}
 
-checkStraitWord("제이엠");
-
-//3.이메일에서 영어 아이디 기준으로 오름 차순으로 정렬 후 중복은 제거
+//4.이메일에서 영어 아이디 기준으로 오름 차순으로 정렬 후 중복은 제거
 function emailSortAndDupDel(arr) {
   return arr.sort((a, b) => nickSplit(a) - nickSplit(b));
 }
