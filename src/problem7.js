@@ -26,4 +26,12 @@ function findFriendsOfFriend(user, friendsOfUser, friends) {
   return friendsOfFriend;
 }
 
+function makeCandidate(name, score) {
+  let candidate = [];
+
+  candidate.push(name);
+  candidate.push(score);
+  return candidate;
+}
+
 module.exports = problem7;
