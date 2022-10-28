@@ -11,7 +11,12 @@ function get369Count(num) {
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+
+  for (j = 1; j < number + 1; j++) {
+    answer += get369Count(j);
+  }
+
   return answer;
 }
 
