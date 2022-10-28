@@ -1,5 +1,8 @@
 function problem6(forms) {
-  return sortEmail(removeDuplicatedName(forms));
+  if (validateForms(forms) && validateName(forms) && validateEmail(forms)) {
+    return sortEmail(removeDuplicatedName(forms));
+  }
+  return -1;
 }
 
 const sortEmail = (forms) => {
@@ -64,9 +67,6 @@ const validateEmail = (forms) => {
       return false;
     }
     if (!(email.includes('@email.com') && email.match(/@email.com/g).length === 1)) {
-      return false;
-    }
-    if (!/^[A-Za-z0-9]+$/.test(email.split('@email.com')[0])) {
       return false;
     }
   }
