@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer;
   const POINT = {
     friendOfFriend: 10,
     visit: 1,
@@ -47,11 +47,30 @@ function problem7(user, friends, visitors) {
     calculatePoint(name, POINT.visit);
   });
 
-  // - [ ] 결과 반환하기
+  // - [x] 결과 반환하기
   //    - 점수가 가장 높은 순으로 최대 5명 반환한다.
   //    - 추천 점수 0 -> 반환 안한다.
   //    - 추천 점수 같음 -> 이름순으로 정렬한다.
-  answer = friendsRecommandPoint.map((friend) => friend.name);
+  const findOtherSpelling = ([nameA, nameB]) => {
+    let letterInA = nameA[0];
+    let letterInB = nameB[0];
+    for (let i = 1; letterInA === letterInB; i++) {
+      letterInA = nameA[i];
+      letterInB = nameB[i];
+    }
+    return [letterInA, letterInB];
+  };
+  answer = friendsRecommandPoint
+    .sort((a, b) => {
+      const value = b.point - a.point;
+      if (value === 0) {
+        const [aName, bName] = findOtherSpelling([a.name, b.name]);
+        return aName < bName ? -1 : 1;
+      }
+      return value;
+    })
+    .slice(0, 5)
+    .map((friend) => friend.name);
 
   return answer;
 }
