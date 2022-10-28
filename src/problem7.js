@@ -25,6 +25,7 @@
  * @thorws 추천할 친구가 없는 경우는 주어지지 않는다.
  * @todo 친구 관계를 가지는 해쉬맵을 리턴하는 함수
  * @todo 유저들과 점수를 초기화해 해쉬맵을 리턴하는 함수
+ * @todo 친구 추천 점수를 set하는 함수
  * @todo 타겟 유저의 친구 관계를 순회하면서 +10점
  * @todo visitor를 순회하면서 +1점
  * @todo 결과를 정렬해주는 함수로 결과를 리턴
@@ -53,6 +54,12 @@ function getFriendsScore(friends) {
     if (!map.has(to)) map.set(to, 0);
   });
   return map;
+}
+
+function setFriendsScore(friends, friendsScore) {
+  friends.forEach((friend) =>
+    friendsScore.set(friend, friendsScore.get(friend) + 10)
+  );
 }
 
 module.exports = problem7;
