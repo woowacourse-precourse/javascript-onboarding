@@ -12,6 +12,10 @@ function problem1(pobi, crong) {
     mul(crong[0]),
     mul(crong[1])
   );
+
+  return pobi_max > crong_max ? 1
+    : pobi_max < crong_max ? 2
+    : pobi_max == crong_max && 0;
 }
 
 module.exports = problem1;
