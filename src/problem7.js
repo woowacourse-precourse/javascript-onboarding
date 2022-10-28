@@ -14,7 +14,13 @@ function problem7(user, friends, visitors) {
     .flat(1);
 
   const removeOverlap = (array) => [...new Set(array)];
+
   friendsOfFriends = removeOverlap(friendsOfFriends);
+
+  // - [x] visitors에서 이미 친구 제거하기
+  const visitorsNotFriend = visitors.filter(
+    (friend) => !userFriends.includes(friend)
+  );
 
   // - [ ] 결과 반환하기
   //    - 점수가 가장 높은 순으로 최대 5명 반환한다.
