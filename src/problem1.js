@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   try {
-    catchError(pobi);
-    catchError(crong);
+    catchError(...pobi);
+    catchError(...crong);
     return findWinner(pobi, crong);
   } catch (err) {
     return -1;
