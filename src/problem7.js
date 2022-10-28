@@ -3,7 +3,6 @@ const userInfo={};
 const userScore={};
 
 function problem7(user, friends, visitors) {
-  let answer;
 
   relationshipLoad(friends)
   
@@ -27,20 +26,12 @@ function problem7(user, friends, visitors) {
       sortTable.push([member,userScore[member]])
     }
   }
-  // sortTable=[  [ 'jun', 20 ], [ 'andole', 20 ],[ 'abndole', 20 ],[ 'cndole', 20 ],[ 'bedi', 4 ] ]
-  sortTable.sort((a,b)=> {
-    if (a[1]!==b[1]) {
-      return b[1]-a[1]
-    }
-    if (a[0]>b[0]) {
-      return 1
-    }
-    return -1
-  });
-  answer=sortTable.map((finalName)=>finalName[0])
+  sortFriends(sortTable)
+  let answer=sortTable.map((finalName)=>finalName[0])
 
   return answer;
 }
+
 // friends의 값들을 딕셔너리에 정리_각 친구들을 리스트에 넣기
 function relationshipLoad(friendsName) {
   friendsName.forEach((name)=> {
@@ -68,6 +59,13 @@ function deleteInfo(user,userFriends) {
     delete userScore[userFriend]
   }
 }
-  
+
+function sortFriends(sortTable) {
+  sortTable.sort((a,b)=> {
+    return (a[1]!==b[1]) ? b[1]-a[1] : (a[0]>b[0] ? 1 : -1)
+  })
+}
+
+
 console.log(problem7('mrko',[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],["bedi", "bedi", "donut", "bedi", "shakevan"]))
 // module.exports = problem7;
