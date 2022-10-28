@@ -18,7 +18,6 @@ const compareNumWithNum = (num1, num2) => {
   return num1 >= num2 ? num1 : num2;
 }
 
-// 기능 1, 2: 숫자를 받아 각 자릿 수의 합, 곱을 구한 후, 대소 비교 후 반환
 const getMaxValOnPage = page => {
   var sumVal = 0;
   var mulVal = 1;
@@ -31,7 +30,6 @@ const getMaxValOnPage = page => {
   return compareNumWithNum(sumVal, mulVal);
 }
 
-// 기능 3 구현: 펼친 책의 왼쪽 점수와 오른쪽 점수를 구해 대소 비교 후 반환 
 const getMaxValOnPages = pages => {
   var leftScore = getMaxValOnPage(pages[0]);
   var rightScore = getMaxValOnPage(pages[1]);
@@ -40,8 +38,8 @@ const getMaxValOnPages = pages => {
   if (
     (pages[1] !== pages[0] + 1) || 
     (pages[0] % 2 !== 1) || 
-    (!(2 < pages[0] < 399)) ||
-    (!(2 < pages[1] < 399))
+    !(pages[0] > 2 && pages[0] < 399) ||
+    !(pages[1] > 2 && pages[1] < 399)
   ) {
     isExceptions = true;
   }
