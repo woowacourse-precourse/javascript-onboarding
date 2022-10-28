@@ -52,7 +52,7 @@ const validatePages = (pages) => {
   if (pages[0] + 1 !== pages[1]) {
     return false;
   }
-  if (pages[0] < 3 || pages[0] > 398 || pages[1] < 3 || pages[1] > 398) {
+  if (pages[0] < 1 || pages[0] > 400 || pages[1] < 1 || pages[1] > 400) {
     return false;
   }
   return true;
