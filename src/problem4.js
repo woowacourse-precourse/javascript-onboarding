@@ -7,6 +7,8 @@ function problem4(word) {
 
   const findIndex = Array.from(word, letter => letter === letter.toUpperCase() ? upperCase.indexOf(letter) : lowerCase.indexOf(letter) + 26);
 
+  const convert = findIndex.map((number) => oppositeDictionary[number]);
+
   return answer;
 }
 
