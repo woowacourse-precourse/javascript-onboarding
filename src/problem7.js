@@ -8,8 +8,9 @@ function problem7(user, friends, visitors) {
   const obj = {};
 
   const notFriends = friends.filter(([A, B]) => (A !== user && B !== user));
-  const alredyFriends = friends.filter(([A, B]) => !(A !== user && B !== user));
-  const friendList = alredyFriends.flat(Infinity).filter(v => v !== user);
+  const friendList = friends.filter(([A, B]) => !(A !== user && B !== user))
+    .flat(Infinity)
+    .filter(v => v !== user);
 
   // 이 부분 추후 수정
   for (const friend of notFriends) {
@@ -27,10 +28,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  const sortObj = objectSortFn(obj);
-  const answer = sortObj.map(v => v[0]);
+  const answer = objectSortFn(obj)
+    .map(v => v[0])
+    .slice(0, 5);
 
-  return answer.length > 5 ? answer.slice(0, 5) : answer;
+  return answer;
 }
 
 module.exports = problem7;
