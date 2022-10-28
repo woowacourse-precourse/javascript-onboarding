@@ -11,8 +11,15 @@ function problem5(money) {
 }
 
 function checkError(currentMoney) {
+  const MINIMUM_NUMBER = 1;
+  const MAXIMUN_NUMBER = 1000000;
+
   if (!Number.isInteger(currentMoney)) {
     return "money는 자연수이어야 합니다.";
+  }
+
+  if (currentMoney < MINIMUM_NUMBER || currentMoney > MAXIMUN_NUMBER) {
+    return "money는 1 이상 1,000,000 이하인 자연수이어야 합니다.";
   }
 
   return "Not Error";
