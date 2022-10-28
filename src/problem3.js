@@ -6,6 +6,7 @@ const countTargetNums = (num) => {
   num.split("").forEach((item) => {
     if (targetNums.includes(Number(item))) count++;
   });
+
   return count;
 };
 
@@ -14,6 +15,7 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     answer += countTargetNums(i);
   }
+
   return answer;
 }
 
