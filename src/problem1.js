@@ -14,6 +14,23 @@
 
 var isExceptions = false;
 
+// Exception 1
+const isLengthError = (player1, player2) => {
+  return (player1.length !== 2 || player2.length !== 2)
+}
+// Exception 2
+const isRangeError = page => {
+  return !(page > 2 && page < 399)
+}
+// Exception 3
+const isDisorder = (firstPage, SecondPage) => {
+  return (SecondPage !== firstPage + 1)
+}
+// Exception 4
+const isFirstPageOdd = firstPage => {
+  return (firstPage % 2 == 1)
+}
+
 const compareNumWithNum = (num1, num2) => {
   return num1 >= num2 ? num1 : num2;
 }
@@ -22,7 +39,7 @@ const getMaxValOnPage = page => {
   var sumVal = 0;
   var mulVal = 1;
 
-  String(page).split("").map((num) => {
+  String(page).split("").map(num => {
     sumVal += Number(num);
     mulVal *= Number(num);
   })
@@ -34,12 +51,11 @@ const getMaxValOnPages = pages => {
   var leftScore = getMaxValOnPage(pages[0]);
   var rightScore = getMaxValOnPage(pages[1]);
   
-  // Exception 2 || Exception 3 || Exception 4
   if (
-    (pages[1] !== pages[0] + 1) || 
-    (pages[0] % 2 !== 1) || 
-    !(pages[0] > 2 && pages[0] < 399) ||
-    !(pages[1] > 2 && pages[1] < 399)
+    isDisorder(pages[0], pages[1]) || 
+    isRangeError(pages[0]) || 
+    isRangeError(pages[1]) ||
+    !(isFirstPageOdd(pages[0]))
   ) {
     isExceptions = true;
   }
@@ -52,10 +68,11 @@ function problem1(pobi, crong) {
   var pobiScore = getMaxValOnPages(pobi);
   var crongScore = getMaxValOnPages(crong);
 
-  // Exception 1
-  if (pobi.length !== 2 || crong.length !== 2) {
+  if (isLengthError(pobi, crong)) {
     isExceptions = true;
   }
+
+  if(isExceptions) return -1;
 
   if (pobiScore > crongScore) {
     answer = 1;
@@ -64,8 +81,6 @@ function problem1(pobi, crong) {
   } else if (pobiScore === crongScore) {
     answer = 0;
   }
-
-  if(isExceptions) return -1;
 
   return answer;
 }
