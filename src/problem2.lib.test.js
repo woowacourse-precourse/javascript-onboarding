@@ -1,6 +1,9 @@
 // @ts-nocheck
 
-const { LetterPairDeletingStack } = require("./problem2.lib.js");
+const {
+  LetterPairDeletingStack,
+  removeRepeatingLetters,
+} = require("./problem2.lib.js");
 
 describe("Letter Pair Deleting Stack", () => {
   test("trivial case", () => {
@@ -29,5 +32,23 @@ describe("Letter Pair Deleting Stack", () => {
       stack.push(letter);
     }
     expect(stack.toString()).toBe(output);
+  });
+});
+
+describe("Removing repeating letters from text", () => {
+  test.each(["", "a", "abc", "abcda"])(
+    "should keep text with non-repeating letters",
+    (text) => {
+      const result = removeRepeatingLetters(text);
+      expect(result).toBe(text);
+    }
+  );
+  test.each([
+    ["abb", "a"],
+    ["acca", "aa"],
+    ["xddd", "x"],
+  ])("should remove consecutive letters", (input, expected) => {
+    const actual = removeRepeatingLetters(input);
+    expect(actual).toBe(expected);
   });
 });

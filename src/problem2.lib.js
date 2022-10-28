@@ -20,6 +20,29 @@ class LetterPairDeletingStack {
   }
 }
 
+function removeRepeatingLetters(input) {
+  const nonRepeatingLetters = [];
+  let lastRun = { letter: "", run: 0 };
+
+  for (const letter of input) {
+    if (letter === lastRun.letter) {
+      lastRun = { letter, run: lastRun.run + 1 };
+    } else {
+      // New run
+      if (lastRun.run === 1) {
+        nonRepeatingLetters.push(lastRun.letter);
+      }
+      lastRun = { letter, run: 1 };
+    }
+  }
+
+  if (lastRun.run === 1) {
+    nonRepeatingLetters.push(lastRun.letter);
+  }
+  return nonRepeatingLetters.join("");
+}
+
 module.exports = {
   LetterPairDeletingStack,
+  removeRepeatingLetters,
 };
