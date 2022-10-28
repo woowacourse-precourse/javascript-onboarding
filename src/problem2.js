@@ -3,7 +3,18 @@ function problem2(cryptogram) {
     return 'error'
   }
 
-  // return 'checkValid success!'
+  const compareArray = [];
+  let cnt = 0;
+
+  while (cnt < cryptogram.length) {
+    if (compareArray[compareArray.length - 1] !== cryptogram[cnt]) {
+      compareArray.push(cryptogram[cnt]);
+    } else if (compareArray[compareArray.length - 1] === cryptogram[cnt]) {
+      compareArray.pop();
+    }
+    cnt++;
+  }
+  return compareArray.join('');
 }
 
 function inputValidCheck(inputValue) {
