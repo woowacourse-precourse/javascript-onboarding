@@ -20,14 +20,14 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem2", () => {
-  test("case1", () => {
-    expect(problem2("browoanoommnaon")).toEqual("brown");
-  });
-  test("case2", () => {
-    expect(problem2("zyelleyz")).toEqual("");
-  });
-});
+// describe("problem2", () => {
+//   test("case1", () => {
+//     expect(problem2("browoanoommnaon")).toEqual("brown");
+//   });
+//   test("case2", () => {
+//     expect(problem2("zyelleyz")).toEqual("");
+//   });
+// });
 
 // describe("problem3", () => {
 //   test("case1", () => {
@@ -44,15 +44,15 @@ describe("problem2", () => {
 //   });
 // });
 
-// describe("problem5", () => {
-//   test("case1", () => {
-//     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
-//   });
+describe("problem5", () => {
+  test("case1", () => {
+    expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
+  });
 
-//   test("case2", () => {
-//     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
-//   });
-// });
+  test("case2", () => {
+    expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+  });
+});
 
 // describe("problem6", () => {
 //   test("case1", () => {
