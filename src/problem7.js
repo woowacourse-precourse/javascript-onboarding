@@ -71,16 +71,32 @@ function isHimSelf(person, friendsList) {
   return friendsList.includes(person);
 }
 
-function test(userId, list) {
+//방문자 점수를 추가하는 함수
+function allPoints(friendsPoint, visiter, friendsList) {
+  visiter.map((visit) => {
+    if (friendsPoint.has(visit)) {
+      friendsPoint.set(visit, friendsPoint.get(visit) + 1);
+    } else if (!friendsPoint.has(visit) && !friendsList.includes(visit)) {
+      friendsPoint.set(visit, 1);
+    }
+  });
+  return friendsPoint;
+}
+
+//
+
+function test(userId, list, visiter) {
   let filteredList = myFriendsList(userId, list);
   let friendsList = removeMyUsername(userId, filteredList);
   let friendsFriendList = friendsFilter(friendsList, list, userId);
-  let points = arrayToMap(friendsFriendList, friendsList);
-
-  
+  let friendsPoint = arrayToMap(friendsFriendList, friendsList);
+  let allPoint = allPoints(friendsPoint, visiter, friendsList);
+  console.log(friendsList, "플[ㄴ리지ㅣ스");
+  console.log(allPoint);
+  //리스트를 소팅하는 함수
 }
 
-test(userId, AllFriends);
+test(userId, AllFriends, visiterList);
 
 const names = new Map().set("이룸", 1).set("이름", "종찬");
 names.set("이룸", names.get("이룸") + 1);
