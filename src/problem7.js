@@ -1,16 +1,11 @@
+// 딕셔너리 만들기 지인 저장할것 하나, 점수 저장할 것 하나
+const userInfo={};
+const userScore={};
+
 function problem7(user, friends, visitors) {
   let answer;
 
-  // 딕셔너리 만들기 지인 저장할것 하나, 점수 저장할 것 하나
-  const userInfo={};
-  const userScore={}
-
-  // friends의 값들을 딕셔너리에 정리_각 친구들을 리스트에 넣기
-  friends.forEach((name) => {
-    userInfo[name[0]] ? userInfo[name[0]].add(name[1]) : userInfo[name[0]]=new Set([name[1]])
-    userInfo[name[1]] ? userInfo[name[1]].add(name[0]) : userInfo[name[1]]=new Set([name[0]])
-    // console.log(userInfo)
-  });
+  relationshipLoad(friends)
   
   // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
   const userFriends=userInfo[user]
@@ -58,7 +53,13 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
-
+// friends의 값들을 딕셔너리에 정리_각 친구들을 리스트에 넣기
+function relationshipLoad(friendsName) {
+  friendsName.forEach((name)=> {
+    userInfo[name[0]] ? userInfo[name[0]].add(name[1]) : userInfo[name[0]]=new Set([name[1]])
+    userInfo[name[1]] ? userInfo[name[1]].add(name[0]) : userInfo[name[1]]=new Set([name[0]])
+  })
+}
 
 
 
