@@ -10,6 +10,11 @@ function strToAsc(str) {
   return str.charCodeAt();
 }
 
+// 알파벳 check
+function isChar(asc) {
+  if ((asc >= 65 && asc <= 90) || (asc >= 97 && asc <= 122)) return true;
+}
+
 function problem4(word) {
   var answer;
   // 리스트화
