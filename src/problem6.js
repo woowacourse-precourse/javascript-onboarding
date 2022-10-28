@@ -13,6 +13,18 @@ function problem6(forms) {
 
 		return substrings
 	})
+
+	for (let i = 0; i < substrings.length; i++) {
+		for (let j = i + 1; j < substrings.length; j++) {
+			const mergeSubstrings = [...substrings[i], ...substrings[j]]
+			const duplicateCheck = new Set(mergeSubstrings)
+
+			if (mergeSubstrings.length !== duplicateCheck.size) {
+				duplicateCheckArr[i] = true
+				duplicateCheckArr[j] = true
+			}
+		}
+	}
 }
 
 module.exports = problem6
