@@ -1,4 +1,9 @@
 function problem3(number) {
+  let clapAmount = 0
+  for (let i = 1; i <= number; i++) {
+    clapAmount += counter369(i)
+  }
+  return clapAmount
 }
 
 function counter369(num) {
