@@ -10,8 +10,15 @@ function problem2(cryptogram) {
   return answer;
 }
 
-function checkIsRepeatExist(cryptogram, regexp) {
-  return cryptogram.match(regexp) !== null;
+function getIsRepeatExist(cryptogram) {
+  let isRepeatExist = false;
+  for (let i = 1; i < cryptogram.length; i++) {
+    if (cryptogram[i - 1] === cryptogram[i]) {
+      isRepeatExist = true;
+      break;
+    }
+  }
+  return isRepeatExist;
 }
 
 function deleteRepeatLetter(cryptogram, regexp) {
