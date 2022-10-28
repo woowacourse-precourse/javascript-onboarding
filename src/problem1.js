@@ -61,7 +61,7 @@ function problem1(pobi, crong) {
       this.leftPage
     }
     IsLeftOverPage() {
-      if(this.leftPage > 399) {
+      if(this.leftPage > 399 || this.leftPage < 1) {
         return false
       }
       return true
@@ -76,7 +76,7 @@ function problem1(pobi, crong) {
       this.rightPage
     }
     IsLeftOverPage() {
-      if(this.rightPage > 400) {
+      if(this.rightPage > 400 || this.rightPage < 2) {
         return false
       }
       return true
@@ -114,6 +114,9 @@ function problem1(pobi, crong) {
   const CrongLeftDigits = new DigitMaker(crong.leftPage)
   const CrongRightDigits = new DigitMaker(crong.rightPage)
 
+  class ScoreMaker {
+    constructor
+  }
 
   return answer;
 }
