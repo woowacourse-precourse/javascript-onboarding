@@ -40,8 +40,9 @@ const Cryptogram = {
 };
 
 function problem2(cryptogram) {
-  Cryptogram.addOriginText(cryptogram);
-  return Cryptogram.removeSameWord();
+  const cryto = Object.assign({}, Cryptogram);
+  cryto.addOriginText(cryptogram);
+  return cryto.removeSameWord();
 }
 
 module.exports = problem2;
