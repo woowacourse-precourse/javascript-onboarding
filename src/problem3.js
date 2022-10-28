@@ -1,6 +1,6 @@
 function problem3(number) {
   var answer;
-  let numberString = String(number)
+  let numberString = String(number);
   let count = 0;
   for (var i=1; i<=number; i++){
     for(var j=0; j<String(i).length; j++){
