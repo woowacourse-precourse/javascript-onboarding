@@ -1,5 +1,8 @@
 function problem5(money) {
-  var answer;
+  var answer=moneyTransform(money);
+  if(!error(money)){
+    throw new Error('제한사항을 확인하세요.')
+  }
   return answer;
 }
 
@@ -26,5 +29,3 @@ function error(money){
   }
   return true;
 }
-let money=1000000;
-console.log(error(money))
