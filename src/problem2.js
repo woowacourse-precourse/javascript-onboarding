@@ -1,15 +1,13 @@
 function problem2(cryptogram) {
-  let arr = [];
+  let arr = [cryptogram[0]];
 
-  for (let i = 0; i < cryptogram.length; ++i) {
-    arr.push(cryptogram[i]);
-    if (arr.length > 2) {
-      let num = arr.length;
-      if (arr[num - 1] === arr[num - 2]) {
-        arr.pop();
-        arr.pop();
-      }
+  for (let i = 1; i < cryptogram.length; ++i) {
+    const searchStr = cryptogram[i];
+    if (arr[arr.length - 1] === searchStr) {
+      arr.pop();
+      continue;
     }
+    arr.push(searchStr);
   }
 
   return arr.join('');
