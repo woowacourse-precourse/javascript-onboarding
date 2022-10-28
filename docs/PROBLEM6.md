@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## ✅ 구현할 기능 목록
+- [ ] 같은 글자가 연속적으로 포함되는 지원자 추출 기능
+- [ ] 해당 지원자의 이메일 오름차순 정렬 기능
