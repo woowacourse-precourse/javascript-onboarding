@@ -10,11 +10,6 @@ function problem7(user, friends, visitors) {
 
   return sortedScore.slice(0,5).map((el)=>el.name);
 
-  //1. user와 친구인 목록 배열로 생성.
-  //2. user와 친구인 목록의 친구인 목록 조회하여 점수 가산(+10).
-  //3. 타임 라인에 방문한 사용자 조회하여 점수 가산(+1).
-  //4. 조건에 맞게 정렬하여 반환.
-
   function createFrinedsWith(){
     friends.forEach((el)=>{
       if(el.includes(user)){
@@ -40,6 +35,27 @@ function problem7(user, friends, visitors) {
         scores[el] = scores[el] ? scores[el]+1 : 1;
       }
     });
+  }
+
+  function sortScores(){
+    for(const name in scores){
+      var score = {};
+      score.name=name;
+      score.score=scores[name];
+      sortedScore.push(score);
+    }
+    
+    for (let i = 0; i < sortedScore.length; i++) {
+      for (let j = 0; j < sortedScore.length - 1 - i; j++) {
+        if (sortedScore[j].score < sortedScore[j+1].score) {
+          [sortedScore[j],sortedScore[j+1]] = [sortedScore[j+1],sortedScore[j]];
+        }else if(sortedScore[j].score===sortedScore[j+1].score){
+          if(sortedScore[j].name>sortedScore[j+1].name){
+            [sortedScore[j],sortedScore[j+1]] = [sortedScore[j+1],sortedScore[j]];
+          }
+        }
+      }
+    }
   }
 }
 
