@@ -23,6 +23,7 @@ function problem6(forms) {
     }
   });
 
+  emailArr.sort();
   return emailArr;
 }
 
