@@ -1,4 +1,9 @@
 const isExceptCase = (arr) => {
+  /* arr = [num,num] */
+
+  // array에 제대로 된 값이 아닐 경우 false 리턴
+  if (!arr.length || arr.length !== 2) return true;
+
   const [a, b] = arr.map(Number);
   //앞페이지가 짝수거나 뒷페이지가 홀수일때
   if (a % 2 === 0 || b % 2 === 1) return true;
@@ -10,7 +15,7 @@ const isExceptCase = (arr) => {
   if (a === 0 || b === 400) return true;
   //뒷페이지-앞페이지가 1이 아닐때.
   if (b - a !== 1) return true;
-
+  // 입력값이 잘못되었을때
   // 모두 통과하면 예외사항 아니므로 false 반환\
   return false;
 };
@@ -57,6 +62,10 @@ function problem1(pobi, crong) {
 
 module.exports = problem1;
 
+// #1
 // 생각보다 예외가 많구나..
 // 기능별로 함수를 분리하고 싶어서 분리했는데 오히려 읽기 어려운 코드가 된것 같다
 // 변수,함수 이름 정하기가 쉽지않다
+
+// #2
+// 테스트코드를 작성하는 이유가 있구나 여러 예외에 대해 생각해보고 빠르게 확인하여 수정할 수 있구나

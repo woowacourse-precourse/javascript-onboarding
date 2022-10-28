@@ -18,6 +18,66 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+  test("case4 숫자가 아닐때, ", () => {
+    expect(problem1(["123", 102], [211, 212])).toEqual(-1);
+  });
+  const case5 = [
+    [
+      [0, 1],
+      [211, 212],
+    ],
+  ];
+  test.each(case5)("case5 시작 면이 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case6 = [
+    [
+      [399, 400],
+      [1, 2],
+    ],
+    [
+      [1, 2],
+      [399, 400],
+    ],
+  ];
+  test.each(case6)("case6 마지막 면이 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case7 = [
+    [
+      [356, 355],
+      [1, 2],
+    ],
+    [
+      [357, 355],
+      [1, 2],
+    ],
+  ];
+  test.each(case7)("case7 페이지 값이 반대로 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case8 = [
+    [
+      [355, 356, 357],
+      [1, 2],
+    ],
+    [[357], [1, 2]],
+    [
+      [[], 2],
+      [1, 2],
+    ],
+    [
+      [{}, 2],
+      [1, 2],
+    ],
+  ];
+  test.each(case8)("case8 입력값이 잘못되었을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
