@@ -35,11 +35,11 @@ function problem4(word) {
 }
 
 // 예외상황
-// function exception (word) {
-//   if(word < 1 || word > 1000) return true;
-//   if(!(word.test(/^[a-z|A-Z]+$/))) return true;
-//   return false;
-// }
+function exception (word) {
+  if(word < 1 || word > 1000) return true;
+  if(!(word.test(/^[a-z|A-Z]+$/))) return true;
+  return false;
+}
 
 // 대문자인지 소문자인지 판별
 function checkAlphabet(word) {
