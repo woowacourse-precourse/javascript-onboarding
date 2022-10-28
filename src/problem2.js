@@ -1,4 +1,7 @@
 function errorHandling(cryptogram) {
+  if (cryptogram.length === 1) {
+    if (cryptogram[0] < "a" || cryptogram[0] > "z") return false;
+  }
   if (cryptogram.length < 1 || cryptogram.length > 1000) return false;
   for (value of cryptogram) {
     if (value < "a" || value > "z") return false;
@@ -21,5 +24,4 @@ function problem2(cryptogram) {
   var answer = deduplication(cryptogram);
   return answer;
 }
-
 module.exports = problem2;
