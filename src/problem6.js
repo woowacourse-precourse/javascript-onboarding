@@ -5,8 +5,8 @@ function problem6(forms) {
   for (let i=0;i<forms.length-1;i++) {
     for (let j=i+1;j<forms.length;j++) {
       // 각 닉네임에서 공통된 부분 추출하는 기능
-      let sameWords = [...forms[i][1]].filter(x => forms[j][1].includes(x)).join('');
-      
+      let sameWords=sameWordCheck(forms[i][1],forms[j][1])
+
       // 공통부분의 순서가 일치하는지 확인하는 기능
       for (let c=0;c<sameWords.length-1;c++) {
         // console.log(forms[j][1].includes(sameWords.substring(c, c+2)),forms[j][1])
@@ -23,6 +23,13 @@ function problem6(forms) {
   answer=Array.from(answer).sort()
 
   return answer;
-}
-// console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]))
-module.exports = problem6;
+};
+
+// 각 닉네임에서 공통된 부분 추출하는 기능
+function sameWordCheck(firstName,secondName) {
+  return [...firstName].filter(word => secondName.includes(word)).join('');
+};
+
+
+console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]))
+// module.exports = problem6;
