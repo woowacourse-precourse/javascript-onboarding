@@ -17,6 +17,8 @@ function problem6(forms) {
             nickName_of_crew1[k + 1] == nickName_of_crew2[l + 1]
           ) {
             // answer에 해당 이메일 추가하기
+            answer.push(email_of_crew1);
+            answer.push(email_of_crew2);
           }
         }
       }
