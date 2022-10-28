@@ -34,6 +34,18 @@
 
 function problem7(user, friends, visitors) {
   var answer;
+
+  const friendsScore = getFriendsScore(friends);
+  const friendsList = getFriendsList(friends);
+
+  friendsList
+    .get(user)
+    .forEach((friend) =>
+      setFriendsScore(friendsList.get(friend), friendsScore)
+    );
+
+  visitors.forEach((visitor) => setVisitorFriendsScore(visitor, friendsScore));
+
   return answer;
 }
 
