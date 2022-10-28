@@ -16,5 +16,9 @@ function addDigits(str) {
   const digits = str.split("");
   return digits.reduce((acc, cur) => parseInt(acc, 10) + parseInt(cur, 10), 0);
 }
+function multiplyDigits(str) {
+  const digits = str.split("");
+  return digits.reduce((acc, cur) => parseInt(acc, 10) * parseInt(cur, 10), 1);
+}
 
 module.exports = problem1;
