@@ -1,5 +1,5 @@
 const setNicknameObj = (form, nicknameObj) => {
-  const [email, nickname] = form;
+  const nickname = form[1];
   for (let i = 0; i < nickname.length; i += 1) {
     const subStr = nickname.substring(i, i + 2);
     if (subStr in nicknameObj) {
