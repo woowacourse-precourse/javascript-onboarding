@@ -1,8 +1,5 @@
 const CHAR_LNEGTH = 26;
-const CHAR_ARR = new Array(26)
-  .fill()
-  .map((_, i) => String.fromCharCode(i + 97))
-  .join("");
+const charArr = new Array(26).fill().map((_, i) => String.fromCharCode(i + 97));
 
 const isAlphabet = (char) => {
   return char.match(/[a-zA-z]/) ? true : false;
@@ -13,8 +10,8 @@ const isUpperCase = (char) => {
 };
 
 const convertChar = (char) => {
-  const idx = CHAR_ARR.indexOf(char.toLowerCase());
-  const convertedChar = CHAR_ARR[CHAR_LNEGTH - idx - 1];
+  const idx = charArr.indexOf(char.toLowerCase());
+  const convertedChar = charArr[CHAR_LNEGTH - idx - 1];
   return isUpperCase(char) ? convertedChar.toUpperCase() : convertedChar;
 };
 
