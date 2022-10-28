@@ -7,15 +7,13 @@ function problem1(pobi, crong) {
   }
 
   // 각자의 점수 계산 함수
-  // pobiScore=scoreCount(pobi)
-  // crongScore=scoreCount(crong)
-  // console.log(pobiScore,crongScore)
+  pobiScore=scoreCount(pobi)
+  crongScore=scoreCount(crong)
 
   // pobiScore와 crongScore를 비교하여 answer에 값을 넣고 리턴하기
-
-  // if (pobiScore>crongScore) answer=1;
-  // else if (pobiScore<crongScore) answer=2;
-  // else answer=0;
+  if (pobiScore>crongScore) answer=1;
+  else if (pobiScore<crongScore) answer=2;
+  else answer=0;
   
   return answer;
 }
@@ -26,21 +24,21 @@ function isRightPage(pages) {
   return 1
 }
 
-// function scoreCount(pages) {
-//   finalScore=0
-//   pages.forEach((page)=> {
-//     let addScore=0, mulScore=1;
-//     do {
-//       addScore+=page%10;
-//       mulScore*=page%10;
-//       page=Math.floor(page/10);
-//     } while(page>0);
-//     finalScore=Math.max(addScore,mulScore,finalScore);
-//   });
-//   return finalScore
-// }
+function scoreCount(pages) {
+  finalScore=0
+  pages.forEach((page)=> {
+    let addScore=0, mulScore=1;
+    do {
+      addScore+=page%10;
+      mulScore*=page%10;
+      page=Math.floor(page/10);
+    } while(page>0);
+    finalScore=Math.max(addScore,mulScore,finalScore);
+  });
+  return finalScore
+}
 
-console.log(problem1([97, 98],[197, 198]))
+console.log(problem1([131, 132],[211, 212]))
 
 
 
