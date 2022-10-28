@@ -16,6 +16,7 @@ function problem2(cryptogram) {
     }
   }
 
+  answer = setArr.join("");
   return answer;
 }
 
