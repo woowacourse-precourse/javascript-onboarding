@@ -32,10 +32,18 @@ const deleteDuplicatedText = (text) => {
   }
   return textArr;
 };
+// 중복 문자들을 삭제한 결과를 반환하는 기능
 function problem2(cryptogram) {
   var answer;
-
-  return answer;
+  answer = cryptogram;
+  while (isTextDuplicated(answer) == false) {
+    if (isTextDuplicated(answer) == true) {
+      break;
+    } else {
+      answer = deleteDuplicatedText(answer);
+    }
+  }
+  return answer.join("");
 }
 
 module.exports = problem2;
