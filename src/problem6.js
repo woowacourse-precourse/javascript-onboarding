@@ -16,7 +16,10 @@ function duplicate(forms){
       if(name.has(tmp)==false){
         name.add(tmp);
       }else{
-       
+        //기능목록1-2: 중복된 지원자 1차 저장
+        answer.push(email);
+        check[i]=true;
+        same=tmp;
       }
     }
   }
