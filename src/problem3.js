@@ -1,4 +1,5 @@
 function problem3(number) {
+  if (!checkValidation(number)) throw new Error("입력오류입니다.");
   const memorizeNumbers = memorizeNumber();
   var answer = memorizeNumbers[number];
   return answer;

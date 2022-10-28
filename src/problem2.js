@@ -1,7 +1,7 @@
 function problem2(cryptogram) {
   var answer;
-  if (checkValidation(cryptogram)) answer = decryption(cryptogram);
-  else answer = "잘못된 입력입니다.";
+  if (!checkValidation(cryptogram)) throw new Error("잘못된 입력입니다.");
+  answer = decryption(cryptogram);
   return answer;
 }
 function decryption(cryptogram) {
