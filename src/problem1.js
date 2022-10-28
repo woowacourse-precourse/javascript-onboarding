@@ -22,5 +22,8 @@ function multiplyDigits(str) {
   const digits = str.split("");
   return digits.reduce((acc, cur) => parseInt(acc, 10) * parseInt(cur, 10), 1);
 }
+function compare(num1, num2) {
+  return num1 >= num2 ? num1 : num2;
+}
 
 module.exports = problem1;
