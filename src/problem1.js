@@ -13,38 +13,27 @@ function validate(user) {
   return true;
 }
 
+// 가장 큰 수를 찾는 함수
+function findMaxNum(user) {
+  return (
+    user
+      // 배열안에 각 자리의 숫자를 담기
+      .map((el) => String(el).split(""))
+      .reduce((acc, cur) => {
+        return Math.max(
+          acc.reduce((acc, cur) => Number(acc) + Number(cur)),
+          acc.reduce((acc, cur) => Number(acc) * Number(cur)),
+          cur.reduce((acc, cur) => Number(acc) + Number(cur)),
+          cur.reduce((acc, cur) => Number(acc) * Number(cur))
+        );
+      })
+  );
+}
+
 function problem1(pobi, crong) {
-  // pobi 가장 큰 수
-  let pobiMax;
-  // 크롱의 가장 큰 수
-  let crongMax;
   let answer;
-
-  // pobi의 가장 큰 수 구하기
-  pobi
-    // 배열안에 각 자리의 숫자를 담기
-    .map((el) => String(el).split(""))
-    .reduce((acc, cur) => {
-      pobiMax = Math.max(
-        acc.reduce((acc, cur) => Number(acc) + Number(cur)),
-        acc.reduce((acc, cur) => Number(acc) * Number(cur)),
-        cur.reduce((acc, cur) => Number(acc) + Number(cur)),
-        cur.reduce((acc, cur) => Number(acc) * Number(cur))
-      );
-    });
-
-  // crong의 가장 큰 수 구하기
-  crong
-    // 배열안에 각 자리의 숫자를 담기
-    .map((el) => String(el).split(""))
-    .reduce((acc, cur) => {
-      crongMax = Math.max(
-        acc.reduce((acc, cur) => Number(acc) + Number(cur)),
-        acc.reduce((acc, cur) => Number(acc) * Number(cur)),
-        cur.reduce((acc, cur) => Number(acc) + Number(cur)),
-        cur.reduce((acc, cur) => Number(acc) * Number(cur))
-      );
-    });
+  const pobiMax = findMaxNum(pobi);
+  const crongMax = findMaxNum(crong);
 
   // 승패 결과 처리하기 (포비 1, 크롱 2, 무승부 0, 예외사항 -1)
   if (!validate(pobi) || !validate(crong)) answer = -1;
