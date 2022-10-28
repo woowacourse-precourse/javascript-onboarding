@@ -5,6 +5,7 @@ const getHaveSimilarNickCrews = (forms, duplicateChars) => {
         acc.push(cur[0]);
       }
     }
+
     return acc;
   }, []);
 };
@@ -19,6 +20,7 @@ const getTwoCharsArr = (forms) => {
     for (let j = 0; j < nickname.length - 1; j++) {
       acc.push(nickname[j] + nickname[j + 1]);
     }
+
     return acc;
   }, []);
 };

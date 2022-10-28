@@ -22,7 +22,6 @@ function problem4(word) {
   let reversedWord = [...word].reduce((acc, cur) => {
     const ascii = charToAscii(cur);
     acc += asciiToReversedChar(ascii);
-
     return acc;
   }, '');
 
