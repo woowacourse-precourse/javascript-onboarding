@@ -20,7 +20,9 @@ function makeTwoLength(forms) {
 }
 
 // nameCountObj 객체에 2글자로 자른 닉네임들은 키로, count는 값으로 저장하는 함수
-function convertArrToObj(namesArr, nameCountObj) {
+function convertArrToObj(namesArr) {
+  let nameCountObj = {};
+
   for (let i = 0; i < namesArr.length; i++) {
     for (let j = 0; j < namesArr[i].length; j++) {
       let name = namesArr[i][j];
@@ -31,6 +33,8 @@ function convertArrToObj(namesArr, nameCountObj) {
       } else nameCountObj[name] = 1;
     }
   }
+
+  return nameCountObj;
 }
 
 // 중복되는 문자열 찾는 함수
@@ -41,15 +45,13 @@ function findDuplicate(nameCountObj) {
 }
 
 function problem6(forms) {
-  // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
-  let nameCountObj = {};
   // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
   let answer = [];
 
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = makeTwoLength(forms);
-  convertArrToObj(namesArr, nameCountObj);
-
+  // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
+  let nameCountObj = convertArrToObj(namesArr);
   // 중복되는 문자열
   let duplicate = findDuplicate(nameCountObj);
 
