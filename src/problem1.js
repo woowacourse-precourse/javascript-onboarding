@@ -4,8 +4,28 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+const getBiggestNumber = ({ leftPage, rigthPage }) => {
+  let biggerPage = rigthPage;
+  let sumPage = 0,
+    mulPage = 1;
+
+  if (rigthPage % 10 === 0) biggerPage = leftPage;
+
+  while (biggerPage > 0) {
+    let n = biggerPage % 10;
+    sumPage += n;
+    mulPage *= n;
+    biggerPage /= 10;
+  }
+
+  return sumPage < mulPage ? mulPage : sumPage;
+};
+
+const compareNumber = (numer1, number2) => {};
+
 const isvalidPage = ({ leftPage, rigthPage }) => {
-  if (leftPage + 1 !== rigthPage) return false;
+  if (leftPage + 1 !== rigthPage || leftPage < 1 || rigthPage > 400)
+    return false;
   return true;
 };
 
