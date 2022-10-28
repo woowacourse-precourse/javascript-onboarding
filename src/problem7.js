@@ -1,22 +1,10 @@
-// function problem7(user, friends, visitors) {
-//   var answer;
-//   return answer;
-// }
+function problem7(user, friends, visitors) {
+  var answer;
+  answer = friendsRecomand(user, friends, visitors);
+  return answer;
+}
 
-// module.exports = problem7;
-
-const AllFriends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-
-const visiterList = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-
-const userId = "mrko";
+module.exports = problem7;
 
 //유저아이디가 포함된 친구 목록을 반환.
 function myFriendsList(userId, AllFriends) {
@@ -83,24 +71,22 @@ function allPoints(friendsPoint, visiter, friendsList) {
   return friendsPoint;
 }
 
-//
+//맵을 변환하여 점수순으로 정렬하고 반환하는 함수
+function sortingMap(points) {
+  const sortedArr = [...points];
+  sortedArr.sort((a, b) => b[1] - a[1]);
+  return sortedArr;
+}
 
-function test(userId, list, visiter) {
+//메인함수
+function friendsRecomand(userId, list, visiter) {
   let filteredList = myFriendsList(userId, list);
   let friendsList = removeMyUsername(userId, filteredList);
   let friendsFriendList = friendsFilter(friendsList, list, userId);
   let friendsPoint = arrayToMap(friendsFriendList, friendsList);
   let allPoint = allPoints(friendsPoint, visiter, friendsList);
-  console.log(friendsList, "플[ㄴ리지ㅣ스");
-  console.log(allPoint);
-  //리스트를 소팅하는 함수
+  let sortedList = sortingMap(allPoint);
+
+  const result = new Map(sortedList);
+  return [...result.keys()];
 }
-
-test(userId, AllFriends, visiterList);
-
-const names = new Map().set("이룸", 1).set("이름", "종찬");
-names.set("이룸", names.get("이룸") + 1);
-names.forEach((key) => {
-  console.log([...names.keys()]);
-  console.log(key);
-});
