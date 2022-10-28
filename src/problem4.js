@@ -20,6 +20,16 @@ function isLower(asc) {
   if (asc >= 97 && asc <= 122) return true;
 }
 
+// Lower case Frog 변환
+function lowerFrog(num) {
+  return 219 - num;
+}
+
+// upper case Frog 변환
+function upperFrog(num) {
+  return 155 - num;
+}
+
 function problem4(word) {
   var answer;
   // 리스트화
