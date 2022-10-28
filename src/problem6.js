@@ -1,15 +1,17 @@
 function problem6(forms) {
   const answer = [];
+  const subDict = {};
+  const userEmail = {};
   forms.forEach((form) => {
     const user = form[1];
+    userEmail[user] = form[0];
     for (let i = 2; i <= user.length; i++) {
       for (let j = 0; j <= user.length - i; j++) {
         const subStr = user.substr(j, i);
-        forms.forEach((data) => {
-          if (data[1] !== user && data[1].includes(subStr)) {
-            answer.push(data[0]);
-          }
-        });
+        if (subDict[subStr] && subDict[subStr] !== user) {
+          answer.push(form[0]);
+          answer.push(userEmail[subDict[subStr]]);
+        } else subDict[subStr] = user;
       }
     }
   });
