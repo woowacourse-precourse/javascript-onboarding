@@ -12,4 +12,9 @@ function problem4(word) {
   return answer;
 }
 
+const isAlphabet = (chr) => {
+  const regExp = /[a-z|A-Z]/;
+  return regExp.test(chr);
+};
+
 module.exports = problem4;
