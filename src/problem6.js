@@ -35,6 +35,18 @@ function problem6(forms) {
 
 function checkValidation(forms) {
   if (forms.length < 1 || forms.length > 10000) return -1;
+  let flag = true;
+  forms.forEach((form) => {
+    const [, nickname] = form;
+    if (
+      nickname.match(/[^ㄱ-ㅎ가-힣]+/gi) ||
+      nickname.length < 1 ||
+      nickname.length > 20
+    ) {
+      flag = false;
+    }
+  });
+  if (!flag) return -1;
 }
 
 console.log(
