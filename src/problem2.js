@@ -25,10 +25,17 @@ const removeConsecutiveString = (cryptogram) => {
   // console.log(array);
   if(change === false)
     return array;
+  return removeConsecutiveString(array);
 }
 
 function problem2(cryptogram) {
+  let answer = removeConsecutiveString(cryptogram);
+  if (answer === "undefined")
+    return ""
   return removeConsecutiveString(cryptogram);
 }
+
+console.log(problem2("browoanoommnaon"));
+console.log(problem2("zyelleyz"));
 
 module.exports = problem2;
