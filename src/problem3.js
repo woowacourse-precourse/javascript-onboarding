@@ -1,17 +1,22 @@
-function clap(number) {
+function makeArray(number) {
+  const arr = new Array(number).fill().map((_, index) => String(index + 1));
+  return arr;
+}
+function clap(numberArray) {
   let result = 0;
-  number.forEach((item) => {
+  numberArray.forEach((item) => {
     for (v of item) {
       if (v === "3") result += 1;
       if (v === "6") result += 1;
       if (v === "9") result += 1;
     }
   });
-  return answer;
+  return result;
 }
 
 function problem3(number) {
-  var answer;
+  const numberArray = makeArray(number);
+  const answer = clap(numberArray);
   return answer;
 }
 
