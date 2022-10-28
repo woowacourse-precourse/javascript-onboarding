@@ -5,8 +5,7 @@
  */
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const regex = /(\w)\1+/g;
 }
 
 module.exports = problem2;
