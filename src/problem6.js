@@ -25,7 +25,8 @@ function problem6(forms) {
     }
   }
   // answer에서 중복되는 이메일 제거
-
+  answer = new Set(answer);
+  answer = Array.from(answer).sort();
   return answer;
 }
 
