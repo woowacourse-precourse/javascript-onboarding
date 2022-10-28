@@ -54,6 +54,21 @@ function problem1(pobi, crong) {
   for (let i = 0; i < crong_odd_number.length; i++) {
     crong_odd_answer_multiply *= parseInt(crong_odd_number[i]);
   }
+
+  //pobi 짝수 더하기 곱하기 비교
+  if (pobi_answer > pobi_answer_multiply) {
+    pobi_max_even = pobi_answer;
+  } else {
+    pobi_max_even = pobi_answer_multiply;
+  }
+
+  //crong 짝수 더하기 곱하기 비교
+  if (crong_answer > crong_answer_multiply) {
+    crong_max_even = crong_answer;
+  } else {
+    crong_max_even = crong_answer_multiply;
+  }
+
   return answer;
 }
 
