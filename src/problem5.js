@@ -21,7 +21,9 @@ function divideChange(money) {
 }
 
 function problem5(money) {
+  if(exception(money)) return false;
 
+  return divideChange(money);
 }
 
 module.exports = problem5
