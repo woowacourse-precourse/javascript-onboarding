@@ -1,6 +1,6 @@
 function problem5(money) {
-  var answer;
-  return answer;
+  const wallet = Array(9).fill(0);
+  return wallet;
 }
 
 module.exports = problem5;
