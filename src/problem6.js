@@ -31,26 +31,26 @@ function convertArrToObj(namesArr, nameCountObj) {
   }
 }
 
+// 중복되는 문자열 찾는 함수
+function findDuplicate(nameCountObj) {
+  for (let key in nameCountObj) {
+    if (nameCountObj[key] >= 2) return key;
+  }
+}
+
 function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = [];
   // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
   let nameCountObj = {};
-  // 중복되는 문자열
-  let duplicate = "";
   // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
   let answer = [];
 
   makeTwoLength(forms, namesArr);
   convertArrToObj(namesArr, nameCountObj);
 
-  // nameCount에서 값이 2 이상인 문자열 찾기
-  for (let key in nameCountObj) {
-    if (nameCountObj[key] >= 2) {
-      duplicate = key;
-      break;
-    }
-  }
+  // 중복되는 문자열
+  let duplicate = findDuplicate(nameCountObj);
 
   // 중복되는 닉네임을 가진 크루들의 이메일 구하기
   namesArr.filter((el, i) => {
