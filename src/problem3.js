@@ -10,8 +10,13 @@ function problem3(number) {
       if (clapNum.includes(Number(s))) clap++;
     })
   }
+
+  //받은 number 값 만큼 진행하는 기능
+  for (let i = 0; i <= number; i++) {
+    clapCheck(i);
+  }
+
+  return clap;
 }
 
-problem3(13)
-problem3(33)
-// module.exports = problem3;
+module.exports = problem3;
