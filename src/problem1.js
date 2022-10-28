@@ -39,6 +39,19 @@ function check(user){
   return 0;
 }
 
+//최종 점수 판별 함수
+function getWinner(user1, user2){
+  if (user1 > user2) {
+  return 1;
+  }
+  if (user1 < user2) {
+  return 2;
+  }
+  if (user1 === user2) {
+  return 0;
+  }  
+}
+
 }
 
 module.exports = problem1;
