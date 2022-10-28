@@ -31,7 +31,7 @@ function exception(number) {
 
 function problem3(number) {
   if(exception(number)) return false;
-  console.log(countClap(number));
+  
   return countClap(number);
 }
 
