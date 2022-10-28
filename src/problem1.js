@@ -17,7 +17,7 @@ function splitPageNumber(pages) {
   return splitedNumbers;
 }
 
-// 각 자리로 숫자로 분리한 페이지 번호를 모두 더하는 기능
+// 각 자리 숫자로 분리한 페이지 번호를 모두 더하는 기능
 function addNumbers(numbers) {
   const result = numbers.map((number) =>
     number.reduce((acc, cur) => acc + cur, 0)
@@ -25,6 +25,13 @@ function addNumbers(numbers) {
   return result;
 }
 
+// 각 자리 숫자로 분리한 페이지 번호를 모둑 곱하는 기능
+function multiplyNumbers(numbers) {
+  const result = numbers.map((number) =>
+    number.reduce((acc, cur) => acc * cur, 1)
+  );
+  return result;
+}
 function problem1(pobi, crong) {
   var answer;
   if (!isPageContinuous(pobi) || !isPageContinuous(crong)) {
@@ -32,7 +39,7 @@ function problem1(pobi, crong) {
   }
   const splitedPobi = splitPageNumber(pobi);
   const splitedCrong = splitPageNumber(crong);
-  console.log(addNumbers(splitedPobi), addNumbers(splitedCrong));
+  console.log(multiplyNumbers(splitedPobi), multiplyNumbers(splitedCrong));
   return answer;
 }
 
