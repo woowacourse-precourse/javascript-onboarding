@@ -49,15 +49,18 @@ function checkIdOnlyLowerCase(friends) {
   return true;
 }
 
+function addFriendDecidedByUserIndex(friend, user, alreadyFriends) {
+  friend.indexOf(user) === 0
+    ? alreadyFriends.push(friend[1])
+    : alreadyFriends.push(friend[0]);
+}
+
 function getAlreadyFriends(user, friends, alreadyFriends) {
-  friends.forEach((item) => {
-    if (item.includes(user)) {
-      // user가 1차원 배열의 0,1번 인덱스 중 어디있는지 모르기 때문
-      item.indexOf(user) === 0
-        ? alreadyFriends.push(item[1])
-        : alreadyFriends.push(item[0]);
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].includes(user)) {
+      addFriendDecidedByUserIndex(friends[i], user, alreadyFriends);
     }
-  });
+  }
 }
 
 function getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds) {
