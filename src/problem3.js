@@ -27,6 +27,13 @@ const count369InNumber = (number) => {
 
 /**
  * @param {number} number
+ */
+function createNumbers(number) {
+  return new Array(number).fill().map((_, index) => (index + 1).toString());
+}
+
+/**
+ * @param {number} number
  * @returns {number} result
  */
 function problem3(number) {
