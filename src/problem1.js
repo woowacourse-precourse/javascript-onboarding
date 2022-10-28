@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer = -1;
+  let answer = -1;
   const check = (arr) => {
     let leftPageNum = arr[0];
     let rightPageNum = arr[1];
@@ -15,10 +15,10 @@ function problem1(pobi, crong) {
   };
 
   const handleSum = (arr) => {
-    var left = arr[0];
-    var right = arr[1];
-    var sumLeft = 0;
-    var sumRight = 0;
+    let left = arr[0];
+    let right = arr[1];
+    let sumLeft = 0;
+    let sumRight = 0;
 
     do {
       sumLeft += left % 10;
@@ -40,10 +40,10 @@ function problem1(pobi, crong) {
   };
 
   const handleMultiply = (arr) => {
-    var left = arr[0];
-    var right = arr[1];
-    var multiLeft = 1;
-    var multiRight = 1;
+    let left = arr[0];
+    let right = arr[1];
+    let multiLeft = 1;
+    let multiRight = 1;
 
     do {
       multiLeft *= left % 10;
