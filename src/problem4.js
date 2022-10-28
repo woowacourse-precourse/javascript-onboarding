@@ -44,6 +44,18 @@ function getFrogSpelling(spelling) {
 
 function problem4(word) {
   var answer;
+  const wordArr = [];
+
+  for (i = 0; i < word.length; i++) {
+    if (checkEnglish(word[i])) {
+      console.log(word[i]);
+      wordArr.push(getFrogSpelling(word[i]));
+    } else {
+      wordArr.push(word[i]);
+    }
+  }
+
+  answer = wordArr.join('');
   return answer;
 }
 
