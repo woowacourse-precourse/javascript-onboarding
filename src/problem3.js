@@ -1,14 +1,15 @@
-function problem3(number) {
-  // if(exception) return false;
-  console.log(countClap(number));
-  return countClap(number);
-}
+const INPUT = {
+  Max: 10000,
+  Min: 1,
+};
+
+const clapTime = val => val === '3' || val === '6' || val === '9';
 
 // 1의 자리수 분리하기
 function divideNum(number) {
-  const countNum = number.toString().split("").map(x => parseInt(x));
-  if (countNum.includes(3) || countNum.includes(6) || countNum.includes(9)) return true;
-  return false;
+  const countNumArr = number.toString().split("");
+  
+  return countNumArr.filter(clapTime).length;
 }
 
 // 뒷자리 3, 6, 9에 손뼉치기
@@ -16,20 +17,23 @@ function countClap(number) {
   let clap = 0;
   for(let i=1; i<number+1; i++) {
     if (divideNum(i)) {
-      console.log(i);
-      clap = clap + 1;
+      clap = clap + divideNum(i);
     }
   }
   return clap;
 }
 
 // 예외상황
-// function exception() {
-//   if (number < 1 || number > 10000) return true;
-//   return false;
-// }
+function exception(number) {
+  if (number < INPUT.Min || number > INPUT.Max) return true;
+  return false;
+}
 
-problem3(33);
+function problem3(number) {
+  if(exception(number)) return false;
+  console.log(countClap(number));
+  return countClap(number);
+}
 
 module.exports = problem3;
 
