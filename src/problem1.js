@@ -7,6 +7,7 @@ function slicePage(pageNum){
 }
 
 function maxCalPlusMinus(leftPageNum, rightPageNum){
+  return max(leftPageNum + rightPageNum, leftPageNum * rightPageNum);
 }
 
 
