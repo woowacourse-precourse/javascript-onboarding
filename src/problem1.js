@@ -1,6 +1,6 @@
 function problem1(pobi, crong) {
   // 예외사항은 -1로 return한다.
-  if (!isValidPages(pobi) || !isValidParam(crong)) {
+  if (!isValidPages(pobi) || !isValidPages(crong)) {
     return -1
   }
 
@@ -24,7 +24,7 @@ function problem1(pobi, crong) {
  * @param {any} pages 
  * @returns {boolean} 유효하면 true, 유효하지 않으면 false를 리턴한다. 
  */
-function isValidParam(pages) {
+function isValidPages(pages) {
   if (!Array.isArray(pages) || pages.length !== 2) {
     // 1. pages가 길이가 2인 배열이 아니면 유효하지 않다.
     return false
