@@ -1,5 +1,5 @@
 function problem4(word) {
-  // word를 배열에 저장 후 순환
+  // word를 배열에 저장 후 순회
   // 문자 변환값들을 문자열로 반환
 }
 
@@ -9,6 +9,10 @@ function convertReverse(letter) {
     upperCaseEnd = 90;
   const lowerCaseStart = 97,
     lowerCaseEnd = 122;
+
+  // 문자 거꾸로 변환하는 연산
+  const upperCaseReverse = upperCaseStart + upperCaseEnd - letter;
+  const lowerCaseReverse = lowerCaseStart + lowerCaseEnd - letter;
 
   // 알파벳일 경우 소문자 확인 후 변환
 
