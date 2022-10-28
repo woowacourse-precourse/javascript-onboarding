@@ -1,5 +1,9 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+  if (isError(pobi) || isError(crong)) answer = -1;
+  else if (maxNum(pobi) > maxNum(crong)) answer= 1;
+  else if (maxNum(pobi) < maxNum(crong)) answer= 2;
+  else if (maxNum(pobi) === maxNum(crong)) answer= 0;
   return answer;
 }
 
