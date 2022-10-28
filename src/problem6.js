@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer = [];
+  var emails = [];
 
   const includeSameWord = (name1, name2) => {
     for (let i = 0; i < name1.length - 1; i++) {
@@ -13,8 +13,15 @@ function problem6(forms) {
   };
 
   const pushEmail = (email1, email2) => {
-    answer.push(email1);
-    answer.push(email2);
+    emails.push(email1);
+    emails.push(email2);
+  };
+
+  // emails에서 중복되는 이메일 제거
+  const deleteSameEmail = (emails) => {
+    emails = new Set(emails);
+    emails = Array.from(emails).sort();
+    return emails;
   };
 
   // 두명씩 비교하기 위해 크루의 이메일, 닉네임 순회
@@ -25,18 +32,14 @@ function problem6(forms) {
       let email_of_crew2 = forms[j][0];
       let nickName_of_crew2 = forms[j][1];
 
-      // 두 크루의 닉네임에 길이 2 이상의 중복 단어 있는지 확인
       if (includeSameWord(nickName_of_crew1, nickName_of_crew2)) {
-        // answer에 해당 이메일 추가하기
         pushEmail(email_of_crew1, email_of_crew2);
       }
     }
   }
+  deleteSameEmail();
 
-  // answer에서 중복되는 이메일 제거
-  answer = new Set(answer);
-  answer = Array.from(answer).sort();
-  return answer;
+  return emails;
 }
 
 module.exports = problem6;
