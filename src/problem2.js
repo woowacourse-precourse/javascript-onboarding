@@ -1,5 +1,6 @@
 function problem2(cryptogram) {
   const splitArr = cryptogram.split("");
+  let check = false;
   var tmp;
   for (let i = 0; i < splitArr.length - 1; i++) {
     if (splitArr[i] === splitArr[i + 1]) {
@@ -13,6 +14,8 @@ function problem2(cryptogram) {
       splitArr[i] = 0;
     }
   }
+  if (!check) return cryptogram;
+  else return problem2(splitArr.join("").split(0).join(""));
 }
 
 problem2("browoanoommnaon");
