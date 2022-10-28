@@ -7,7 +7,7 @@ function problem3(number) {
 
 function inputExecption(num) {
   let inputCheck = true;
-  if (num < 1 || num > 1000) inputCheck = false;
+  if (num < 1 || num > 10000) inputCheck = false;
   if (num == null) inputCheck = false;
   return inputCheck;
 }
