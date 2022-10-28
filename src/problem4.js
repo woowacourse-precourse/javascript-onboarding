@@ -10,7 +10,7 @@ function charFilter(word) {
 	let reverseWord = '';
 
 	for (let i = 0; i < word.length; i++) {
-		reverseWord += word.charAt(i) === ' ' ? ' ' : alphabetFilter(word.charAt(i));
+		reverseWord += /[a-z][A-z]/g.test(word.charAt(i)) ? alphabetFilter(word.charAt(i)) : word.charAt(i);
 	}
 
 	return reverseWord;
