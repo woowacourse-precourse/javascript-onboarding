@@ -1,9 +1,11 @@
 function problem1(pobi, crong) {
   var answer;
+
   const pages = ([pobiLeft, pobiRight, crongLeft, crongRight] = [
     ...pobi,
     ...crong,
   ]);
+
   // 타입 체크
   pages.forEach((v) => {
     if (typeof v !== 'number') return -1;
@@ -32,6 +34,7 @@ function problem1(pobi, crong) {
     const rightMax = Math.max(plusMax(right), multiMax(right));
     return Math.max(leftMax, rightMax);
   }
+
   let pobiMaxScore = decideMaxScore(pobiLeft, pobiRight);
   let crongMaxScore = decideMaxScore(crongLeft, crongRight);
   answer =
