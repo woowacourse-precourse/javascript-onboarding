@@ -38,17 +38,33 @@ function getMaxNumber(add, multiply) {
   const result = Math.max(...add, ...multiply);
   return result;
 }
+
+// 각자의 점수를 비교하여 게임의 승자를 찾는 기능
+function getWinner(pobiScore, crongScore) {
+  if (pobiScore === crongScore) {
+    return 0;
+  }
+  return pobiScore > crongScore ? 1 : 2;
+}
+
 function problem1(pobi, crong) {
-  var answer;
   if (!isPageContinuous(pobi) || !isPageContinuous(crong)) {
     return -1;
   }
   const splitedPobi = splitPageNumber(pobi);
   const splitedCrong = splitPageNumber(crong);
-  console.log(getMaxNumber(addNumbers(splitedPobi), multiplyNumbers(splitedPobi)));
+  const pobiScore = getMaxNumber(
+    addNumbers(splitedPobi),
+    multiplyNumbers(splitedPobi)
+  );
+  const crongScore = getMaxNumber(
+    addNumbers(splitedCrong),
+    multiplyNumbers(splitedCrong)
+  );
+  const answer = getWinner(pobiScore, crongScore);
   return answer;
 }
 
-problem1([97, 98], [101, 102]);
+console.log(problem1([97, 98], [101, 102]));
 
 module.exports = problem1;
