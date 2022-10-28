@@ -32,4 +32,8 @@ function selectWinner(pobi, crong) {
   else return 2;
 }
 
+function validRange(arr) {
+  return arr.every((item) => item < 1 || 400 < item)
+}
+
 module.exports = problem1;
