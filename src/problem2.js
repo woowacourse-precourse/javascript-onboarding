@@ -1,7 +1,8 @@
 function problem2(cryptogram) {
   let arr = cryptogram.split("");
   let checkedArr = checkOverlap(arr);
-  return;
+  let result = joinArr(checkedArr);
+  return result;
 }
 
 function checkOverlap(arr) {
@@ -14,8 +15,11 @@ function checkOverlap(arr) {
       i++;
     }
   }
-
   return arr;
+}
+
+function joinArr(arr) {
+  return arr.join("");
 }
 
 module.exports = problem2;
