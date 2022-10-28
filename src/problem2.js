@@ -13,6 +13,3 @@ function problem2(cryptogram) {
 }
 
 module.exports = problem2;
-
-console.log(problem2('browoanoommnaon'));
-console.log(problem2('zyelleyz'));
