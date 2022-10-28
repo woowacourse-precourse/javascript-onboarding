@@ -7,6 +7,10 @@ function problem2(cryptogram) {
     if (setArr[setArr.length - 1] !== cryptogram[i]) {
       setArr.push(cryptogram[i]);
     } else {
+      //예외사항 : 중복되는 문자가 홀수일 경우
+      if (setArr[setArr.length - 1] === cryptogram[i + 1]) {
+        i += 1;
+      }
       // 중복되는 값이 있는 경우
       setArr.pop();
     }
