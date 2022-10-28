@@ -1,6 +1,7 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  const blueFrogDictionary = makeBlueFrogDictionary();
+
+  return word.replace(/[a-zA-Z]/g, substr => blueFrogDictionary.get(substr));
 }
 
 function makeBlueFrogDictionary() {
