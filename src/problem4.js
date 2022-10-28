@@ -35,6 +35,8 @@ const LOWERCASE_FROG_DICTIONARY_OBJ = {
   z: "a",
 };
 
+Object.freeze(LOWERCASE_FROG_DICTIONARY_OBJ);
+
 const UPPERCASE_FROG_DICTIONARY_OBJ = {
   A: "Z",
   B: "Y",
@@ -63,5 +65,7 @@ const UPPERCASE_FROG_DICTIONARY_OBJ = {
   Y: "B",
   Z: "A",
 };
+
+Object.freeze(UPPERCASE_FROG_DICTIONARY_OBJ);
 
 module.exports = problem4;
