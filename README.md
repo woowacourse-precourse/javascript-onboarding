@@ -34,6 +34,16 @@ answer = answerArray.join("");
 
 # 문제 4 기능 목록
 
-문자 → 숫자 : sting.charCodeAt();
+문자 → 유니코드 : string.charCodeAt();
 
-숫자 → 문자 : String.fromCharCode(number);
+유니코드 → 문자 : String.fromCharCode(number);
+
+1. problem4 : 대문자 변환 함수 제작
+2. problem4 : 소문자 변환 함수 제작
+3. problem4 : 아무 문자 입력 후 대/소문자 판별하여 변환 함수 제작
+4. problem4 : 문자열 입력하면 변환하는 함수 제작
+
+# 문제 5 기능 목록
+
+1. problem5 : 1자리 수 입력 시 바로 반환
+2. problem5 : 이외 기타 돈 입력 시 반환하는 함수 제작
