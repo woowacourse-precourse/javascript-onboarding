@@ -12,11 +12,33 @@ function validInputCheck(money) {
   return 0;
 }
 
+function countMoney(money, value) {
+  let ret = parseInt(money / value);
+
+  return ret;
+}
+
+function getResult(money) {
+  let moneyArray = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let afterCount = money;
+
+  for (let index = 0; index < moneyArray.length; index++) {
+    money = afterCount;
+    if (parseInt(money / moneyArray[index]) > 0) {
+      afterCount = money % moneyArray[index];
+      moneyArray[index] = countMoney(money, moneyArray[index]);
+      continue;
+    }
+    moneyArray[index] = 0;
+  }
+  return moneyArray;
+}
+
 function problem5(money) {
   if (validInputCheck(money) < 0) {
     return "Argument Error";
   }
-  var answer;
+  var answer = getResult(money);
   return answer;
 }
 
