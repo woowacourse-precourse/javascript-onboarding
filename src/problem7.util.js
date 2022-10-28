@@ -1,5 +1,6 @@
 // 아는 친구 list 만들기
-const getUserFriend = (user, friends) => {};
+const getUserFriend = (user, friends) =>
+  friends.filter((friend) => friend.includes(user));
 
 // 함께 아는 친구 중 user를 제외하고 score 계산하기
 const getScoreTogetherFriend = (user, friends) => {};

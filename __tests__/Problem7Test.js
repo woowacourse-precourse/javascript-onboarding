@@ -15,11 +15,11 @@ describe("getUserFriend", () => {
         ["shakevan", "andole"],
         ["shakevan", "jun"],
         ["shakevan", "mrko"],
-      ]).toEqual([
-        ["donut", "mrko"],
-        ["shakevan", "mrko"],
       ])
-    );
+    ).toEqual([
+      ["donut", "mrko"],
+      ["shakevan", "mrko"],
+    ]);
     expect(
       getUserFriend("donut", [
         ["donut", "andole"],
@@ -28,12 +28,12 @@ describe("getUserFriend", () => {
         ["shakevan", "andole"],
         ["shakevan", "jun"],
         ["shakevan", "mrko"],
-      ]).toEqual([
-        ["donut", "andole"],
-        ["donut", "jun"],
-        ["donut", "mrko"],
       ])
-    );
+    ).toEqual([
+      ["donut", "andole"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+    ]);
   });
 });
 
