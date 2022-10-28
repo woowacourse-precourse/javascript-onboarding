@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
   let answer;
 
+  answer = decrypt(cryptogram);
+
   return answer;
 }
 const removeConsecutiveDuplicates = (text) => {
@@ -24,6 +26,17 @@ const removeConsecutiveDuplicates = (text) => {
     textArr[i - 1] = "";
   }
   return textArr.join("");
+};
+const decrypt = (cryptogram) => {
+  let text = cryptogram;
+  for (let i = 0; i < cryptogram.length; i++) {
+    let temp = removeConsecutiveDuplicates(text);
+    if (text === temp) {
+      break;
+    }
+    text = temp;
+  }
+  return text;
 };
 
 module.exports = problem2;
