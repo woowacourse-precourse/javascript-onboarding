@@ -34,7 +34,7 @@ class Frog {
     this.word = word;
   }
 
-  makeFrogDic() {
+  getFrogDicTranslation() {
     return Dictionary.momFor().reduce(
       (acc, cur, index) => ({
         ...acc,
@@ -44,14 +44,14 @@ class Frog {
     );
   }
 
-  checkAlpha(alpha) {
-    return /[a-zA-Z]/.test(alpha) ? this.makeFrogDic()[alpha] : alpha;
+  translate(alpha) {
+    return /[a-zA-Z]/.test(alpha) ? this.getFrogDicTranslation()[alpha] : alpha;
   }
 
   say() {
     return this.word
       .split("")
-      .map((alpha) => this.checkAlpha(alpha))
+      .map((alpha) => this.translate(alpha))
       .join("");
   }
 }
