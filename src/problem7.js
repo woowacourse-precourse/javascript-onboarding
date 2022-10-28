@@ -29,6 +29,21 @@ function problem7(user, friends, visitors) {
         userScoreList[x] += 10;
       });
   });
+
+  answer = Object.entries(userScoreList)
+    .filter((userScore) => {
+      const [, score] = userScore;
+      return score > 0;
+    })
+    .sort((a, b) => {
+      if (a[1] === b[1]) {
+        if (a[0] > b[0]) return 1;
+        else return 1;
+      } else if (a[1] > b[1]) return -1;
+      return 1;
+    });
+  answer = answer.flatMap((x) => x).filter((x, idx) => idx % 2 === 0);
+
   return answer;
 }
 
