@@ -34,5 +34,15 @@ function problem7(user, friends, visitors) {
       friendOfFriend.push(friendReduplication[i]);
     }
   }
+
+  for (let i = 0; i < friendOfFriend.length; i++) {
+    let count = 0;
+    for (let z = 0; z < friendReduplication.length; z++) {
+      if (friendOfFriend[i] == friendReduplication[z]) {
+        count += 1;
+      }
+    }
+    friendPoint.push([friendOfFriend[i], count * 10]);
+  }
 }
 module.exports = problem7;
