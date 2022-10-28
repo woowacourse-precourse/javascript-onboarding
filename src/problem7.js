@@ -16,5 +16,23 @@ function problem7(user, friends, visitors) {
       i -= 1;
     }
   }
+
+  for (let i = 0; i < userFriend.length; i++) {
+    for (let z = 0; z < friends.length; z++) {
+      if (friends[z].includes(userFriend[i])) {
+        for (let x = 0; x < friends[z].length; x++) {
+          if (friends[z][x] != userFriend[i]) {
+            friendReduplication.push(friends[z][x]);
+          }
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < friendReduplication.length; i++) {
+    if (friendOfFriend.includes(friendReduplication[i]) == false) {
+      friendOfFriend.push(friendReduplication[i]);
+    }
+  }
 }
 module.exports = problem7;
