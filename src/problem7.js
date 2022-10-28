@@ -9,5 +9,12 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].includes(user)) {
+      friends.splice(i, 1);
+      i -= 1;
+    }
+  }
 }
 module.exports = problem7;
