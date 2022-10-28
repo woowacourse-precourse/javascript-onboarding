@@ -9,6 +9,13 @@ function problem4(word) {
 
   for (let i = 0; i < word.length; i++) {
     const currentAscii = word.charCodeAt(i);
+    let frogAscii = '';
+
+    if (currentAscii >= 65 && currentAscii <= 90)
+      frogAscii = asciiUpperZ - currentAscii + asciiUpperA;
+    if (currentAscii >= 97 && currentAscii <= 122)
+      frogAscii = asciiLowerZ - currentAscii + asciiLowerA;
+    if (currentAscii === 32) frogAscii = space;
   }
 
   return frogWord;
