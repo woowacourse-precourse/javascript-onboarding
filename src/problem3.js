@@ -3,6 +3,7 @@ function problem3(number) {
   for (i = 1; i <= number; i++) {
     count += count369(i);
   }
+
   return count;
 }
 
