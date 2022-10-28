@@ -3,25 +3,29 @@ function deleteDuplicatedWord(wordsArray) {
   let index = 0;
   let targetIndex = [];
 
-  while (true) {
+  while (index < wordsArray.length) {
     if (wordsArray[index] == wordsArray[index + 1]) {
       while (wordsArray[index] == wordsArray[index + count]) {
         count++;
       }
-      targetIndex.push(index, count);
-      break;
+      targetIndex.push(wordsArray[index].repeat(count));
     }
     index++;
   }
-  wordsArray.splice(targetIndex[0], targetIndex[1]);
 
-  return wordsArray;
+  let newWord = wordsArray.join("");
+
+  targetIndex.map((target) => {
+    newWord = newWord.replace(target, "");
+  });
+
+  return newWord.split("");
 }
 
 function isUniqueWords(wordsArray) {
   let flag = true;
-  wordsArray.map((words, index) => {
-    if (wordsArray[index] == wordsArray[index + 1]) {
+  wordsArray.map((word, index) => {
+    if (word == wordsArray[index + 1]) {
       flag = false;
     }
   });
