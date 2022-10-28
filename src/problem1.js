@@ -69,6 +69,20 @@ function problem1(pobi, crong) {
     crong_max_even = crong_answer_multiply;
   }
 
+  //pobi 홀수 더하기 곱하기 비교
+  if (pobi_odd_answer > pobi_odd_answer_multiply) {
+    pobi_max_odd = pobi_odd_answer;
+  } else {
+    pobi_max_odd = pobi_odd_answer_multiply;
+  }
+
+  //crong 홀수 더하기 곱하기 비교
+  if (crong_odd_answer > crong_odd_answer_multiply) {
+    crong_max_odd = crong_odd_answer;
+  } else {
+    crong_max_odd = crong_odd_answer_multiply;
+  }
+
   return answer;
 }
 
