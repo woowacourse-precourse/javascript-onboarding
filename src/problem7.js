@@ -14,6 +14,13 @@ function problem7(user, friends, visitors) {
 			friendLists.set(userB, [userA])
 		}
 	})
+
+	const userFriends = friendLists.has(user) ? friendLists.get(user) : []
+	const mutualFriendLists = []
+	userFriends.forEach(friend => {
+		const mutualFriends = friendLists.get(friend).filter(name => name !== user)
+		mutualFriendLists.push(...mutualFriends)
+	})
 }
 
 module.exports = problem7
