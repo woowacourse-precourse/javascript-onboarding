@@ -19,11 +19,8 @@ function multiplyDigits(number) {
   return multiple;
 }
 function compareNumber(num1, num2) {
-  if (num1 > num2) {
-    return num1;
-  } else {
-    return num2;
-  }
+  if (num1 > num2) return num1;
+  else return num2;
 }
 function getWinner(pobi, crong) {
   const pobiMax = compareNumber(sumDigits(pobi[0], multiplyDigits(pobi[1])));
@@ -47,10 +44,11 @@ function checkContinuous(Array) {
   else return false;
 }
 function checkRange(Array) {
+  let check = false;
   Array.forEach((num) => {
-    if (num >= 1 && num <= 400) return true;
-    else return false;
+    if (num >= 1 && num <= 400) check = true;
   });
+  return check;
 }
 function checkSniffling(Array) {
   if (Array[0] % 2 == 1 && Array[1] % 2 == 0) return true;
