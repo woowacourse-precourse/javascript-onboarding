@@ -64,6 +64,11 @@ function problem7(user, friends, visitors) {
     } else return b[1] - a[1];
   });
 
+  // answer 배열에 이름만 담기
+  sortable.map((el) => answer.push(el[0]));
+  // answer은 최대 5명
+  if (answer.length > 5) answer.slice(0, 5);
+
   return answer;
 }
 
