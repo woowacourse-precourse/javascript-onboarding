@@ -51,8 +51,21 @@ function checkExceptions([leftPage, rightPage]) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiIsValid = checkExceptions(pobi);
+  const crongIsValid = checkExceptions(crong);
+
+  if (!pobiIsValid || !crongIsValid) return -1; 
+
+  const pobiMaxScore = getPlayerMaxScore(pobi);
+  const crongMaxScore = getPlayerMaxScore(crong);
+  let result; 
+
+  if (pobiMaxScore > crongMaxScore) result = 1;
+  else if (pobiMaxScore < crongMaxScore) result = 2; 
+  else if (pobiMaxScore === crongMaxScore) result = 0;
+  else result = -1; 
+
+  return result; 
 }
 
 module.exports = problem1;
