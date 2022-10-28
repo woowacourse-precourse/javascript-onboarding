@@ -5,7 +5,15 @@ function problem2(cryptogram) {
 	return decrypt(cryptogram);
 }
 
-function decrypt(crypto) {}
+function decrypt(crypto) {
+	let tempStr = crypto;
+
+	while (checkDuplicate(tempStr)) {
+		tempStr = deDuplicate(tempStr);
+	}
+
+	return tempStr;
+}
 
 function checkDuplicate(crypto) {}
 
