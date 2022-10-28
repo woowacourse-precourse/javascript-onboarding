@@ -45,4 +45,16 @@ const objectToArray = (obj) => {
   return arr;
 };
 
+// 기능 5번
+const sortByScore = (scoreArray) => {
+  const sortedFriendList = scoreArray.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    if (a[1] < b[1]) return 1;
+    if (a[0] > b[0]) return 1;
+    if (a[0] < b[0]) return -1;
+    return 0;
+  });
+  return sortedFriendList;
+};
+
 module.exports = problem7;
