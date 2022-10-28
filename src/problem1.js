@@ -11,22 +11,22 @@ function problem1(pobi, crong) {
  */
 function reduceAfterSplit(str, cb) {
   if (isNaN(str)) throw new Error("숫자가 아닙니다.");
+
   const digits = str.split("");
   return digits.reduce(cb);
 }
 
 function addDigits(str) {
-  if (isNaN(str)) throw new Error("숫자가 아닙니다.");
-
-  const digits = str.split("");
-  return digits.reduce((acc, cur) => parseInt(acc, 10) + parseInt(cur, 10), 0);
+  return reduceAfterSplit(
+    str,
+    (acc, cur) => parseInt(acc, 10) + parseInt(cur, 10)
+  );
 }
+
 function multiplyDigits(str) {
-  if (isNaN(str)) throw new Error("숫자가 아닙니다.");
-
-  const digits = str.split("");
-  return digits.reduce((acc, cur) => parseInt(acc, 10) * parseInt(cur, 10), 1);
+  return reduceAfterSplit((acc, cur) => parseInt(acc, 10) * parseInt(cur, 10));
 }
+
 function compare(num1, num2) {
   return num1 >= num2 ? num1 : num2;
 }
