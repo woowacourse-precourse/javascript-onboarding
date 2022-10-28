@@ -17,6 +17,20 @@ function makeTwoLength(forms, namesArr) {
   }
 }
 
+// nameCountObj 객체에 2글자로 자른 닉네임들은 키로, count는 값으로 저장하는 함수
+function convertArrToObj(namesArr, nameCountObj) {
+  for (let i = 0; i < namesArr.length; i++) {
+    for (let j = 0; j < namesArr[i].length; j++) {
+      let name = namesArr[i][j];
+      // nameCountObj에 키가 있을 경우
+      if (nameCountObj.hasOwnProperty(name)) {
+        nameCountObj[name] += 1;
+        // nameCountObj에 키가 없을 경우
+      } else nameCountObj[name] = 1;
+    }
+  }
+}
+
 function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
   let namesArr = [];
@@ -28,6 +42,7 @@ function problem6(forms) {
   let answer = [];
 
   makeTwoLength(forms, namesArr);
+  convertArrToObj(namesArr, nameCountObj);
 
   // nameCount에서 값이 2 이상인 문자열 찾기
   for (let key in nameCountObj) {
