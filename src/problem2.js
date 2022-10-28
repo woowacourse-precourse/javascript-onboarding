@@ -1,5 +1,5 @@
 function problem2(cryptogram) { 
-
+  const removed = deduplication(cryptogram); 
 }
 
 module.exports = problem2;
