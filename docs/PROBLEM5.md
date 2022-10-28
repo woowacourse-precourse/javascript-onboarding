@@ -18,6 +18,6 @@
 ### 구현 목록
 
 1. money_list 배열을 만들어 금액의 큰 순서대로 넣어둔다.
-2. index값을 이용하여 반복문을 돌며 매개변수를 나눈 값의 몫을 wallet배열에 push한다.
-3. 매개변수 money의 값을 index값을 이용하여 나눈 나머지를 money로 재 할당한다
+2. index값을 이용하여 반복문을 돌며 매개변수 money를 나눈 값의 몫을 wallet배열에 push한다.
+3. 매개변수 money의 값을 index값을 이용하여 나눈 나머지를 money로 재 할당한다.
 4. money_list의 끝 값까지 반복한다.
