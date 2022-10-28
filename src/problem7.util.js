@@ -28,7 +28,14 @@ const getVisitorDeleteFriend = (visitors, friends) => {
 };
 
 // 방문 user 점수 계산하기
-const getScoreVisitor = (visitors, score) => {};
+const getScoreVisitor = (visitors, score) => {
+  const newScore = JSON.parse(JSON.stringify(score));
+  for (const visitor of visitors) {
+    newScore[visitor] ??= 0;
+    newScore[visitor] += VISTOR_SCORE;
+  }
+  return newScore;
+};
 
 exports.getUserFriend = getUserFriend;
 exports.getScoreTogetherFriend = getScoreTogetherFriend;
