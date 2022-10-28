@@ -86,6 +86,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  friendPoint.sort((a, b) => {
+    if (b[1] == a[1]) {
+      return a[0] - b[0];
+    } else {
+      return b[1] - a[1];
+    }
+  });
+
   return answer;
 }
 module.exports = problem7;
