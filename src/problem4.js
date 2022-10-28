@@ -6,9 +6,6 @@
  *   2-2. 소문자는 소문자로 사전을 참고해 변환한다.
  *   2-3. 알파벳이 아닌 문자는 변환하지 않는다.
  * 3. 변환된 문자열을 return 한다.
- *
- * @param {string} word
- * @returns {string} result
  */
 
 const ALPHABET_CODE = {
@@ -48,9 +45,23 @@ function changeUpperToLower(code) {
   return String.fromCharCode(newCode);
 }
 
+/**
+ * @param {string} word
+ */
+function solution(word) {
+  let result = "";
+  for (const char of word) {
+    result += changeAlphabet(char);
+  }
+  return result;
+}
+
+/**
+ * @param {string} word
+ */
 function problem4(word) {
-  var answer;
-  return answer;
+  const result = solution(word);
+  return result;
 }
 
 module.exports = problem4;
