@@ -27,18 +27,27 @@
 <br>
 
   - 입력값에 에러가 없는지, 입력 양식이 유효한지 검사한지 검사  
+  - ```incorrectInput()```함수에서 체크. 오류및 검증 실패 -> ```return true```
 
 	  - 주어진 범위인 1이상 1000이하의 숫자인지 확인
 
         ```javascript 
-          if(number < 1 || number > 1000) return false;
+          if(number < 1 || number > 1000) return true;
         ```
   
 	  - 데이터 타입이 숫자가 맞는지 확인
 
         ```javascript 
-          if(!Number.isInteger(number)) return false;
+          if(!Number.isInteger(number)) return true;
         ```
+    - 처음으로 나오는 '3' 이전의 숫자인지 확인
+    
+        ```javascript 
+          if(!Number.isInteger(number)) return true;
+        ```
+        
+  - ### ```incorrectInput()```의 리턴값이 true면 , 에러 및 숫자 3 이하의 숫자일 때   ```retrun 0```
+  
     
 </br>
 
