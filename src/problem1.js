@@ -1,6 +1,12 @@
 function problem1(pobi, crong) {
   var answer;
-  return answer;
+
+  if (validExceptions(pobi, crong)) {
+    answer = selectWinner(pobi, crong);
+    return answer;
+  }
+
+  return -1;
 }
 
 function sumDigits(num) {
