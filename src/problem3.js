@@ -22,9 +22,14 @@ function countNumber(number) {
   return count;
 }
 function checkValidation(number) {
+  return checkIsNumber(number) && checkNumberRange(number);
 }
 function checkIsNumber(number) {
   if (typeof number == "number") return true;
+  return false;
+}
+function checkNumberRange(number) {
+  if (number >= 1 && number <= 10000) return true;
   return false;
 }
 module.exports = problem3;
