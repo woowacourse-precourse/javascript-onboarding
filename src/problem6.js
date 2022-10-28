@@ -14,6 +14,15 @@ function problem6(forms) {
     }
   });
 
+  forms.map((item) => {
+    const [email, nickName] = item;
+    for (let compareWord in nickNameObj) {
+      if (nickName.includes(compareWord) && nickNameObj[compareWord] > 1) {
+        emailArr.push(email);
+      }
+    }
+  });
+
   return emailArr;
 }
 
