@@ -11,8 +11,21 @@ function problem4(word) {
     for(let i=0; i<wordArr.length; i++) {
         if(wordArr[i]==' ') newWord.push(' ');
         else {
+            let nowIndex = 0;
+            let changeIndex = 0;
+            if(wordArr[i]===wordArr[i].toLowerCase()) {
+                nowIndex = alphabetArr.indexOf(wordArr[i].toUpperCase());
+                changeIndex = -1-nowIndex;
+                newWord.push(alphabetArr[alphabetArr.length+changeIndex].toLowerCase());
+            }
+            else {
+                nowIndex = alphabetArr.indexOf(wordArr[i]);
+                changeIndex = -1-nowIndex;
+                newWord.push(alphabetArr[alphabetArr.length+changeIndex]);
+            }
         }
     }
+    return newWord.join('')
 }
 
 module.exports = problem4;
