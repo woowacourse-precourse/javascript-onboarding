@@ -2,7 +2,7 @@ function problem2(cryptogram) {
   let answer = cryptogram;
 
   while (getIsRepeatExist(answer)) {
-    answer = getModifiedCryptogram(answer);
+    answer = getRepeatDeletedCryptogram(answer);
   }
 
   return answer;
@@ -19,23 +19,18 @@ function getIsRepeatExist(cryptogram) {
   return isRepeatExist;
 }
 
-function getModifiedCryptogram(cryptogram) {
-  let modifiedCryptogram = [];
+function getRepeatDeletedCryptogram(cryptogram) {
+  let repeatDeletedCryptogram = "";
+
   for (let i = 0; i < cryptogram.length; i++) {
-    if (i == 0 && cryptogram[i] !== cryptogram[i + 1]) {
-      modifiedCryptogram.push(cryptogram[0]);
-    }
-    if (i == cryptogram.length - 1 && cryptogram[i - 1] !== cryptogram[i]) {
-      modifiedCryptogram.push(cryptogram[i]);
-    }
-    if (i == 0 || i == cryptogram.length - 1) continue;
     if (
       cryptogram[i] !== cryptogram[i - 1] &&
       cryptogram[i] !== cryptogram[i + 1]
     )
-      modifiedCryptogram.push(cryptogram[i]);
+      repeatDeletedCryptogram += `${cryptogram[i]}`;
   }
-  return modifiedCryptogram.join("");
+
+  return repeatDeletedCryptogram;
 }
 
 module.exports = problem2;
