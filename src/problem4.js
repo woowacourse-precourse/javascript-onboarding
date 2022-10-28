@@ -1,12 +1,22 @@
-function problem4(word) {
-  const dict = {};
-
+function writeDictionary(dict) {
   let reverse = 90;
 
   for (let i = 65; i < 91; i++) {
     dict[String.fromCharCode(i)] = String.fromCharCode(reverse);
     reverse -= 1;
   }
+}
+
+function lowercaseConversion(str, dict) {
+  const upperStr = str.toUpperCase();
+  const lowerStr = dict[upperStr].toLowerCase();
+  return lowerStr;
+}
+
+function problem4(word) {
+  const dict = {};
+
+  writeDictionary(dict);
 
   let result = "";
 
@@ -16,8 +26,7 @@ function problem4(word) {
     } else if (str === str.toUpperCase()) {
       result += dict[str];
     } else if (str === str.toLowerCase()) {
-      const upperStr = str.toUpperCase();
-      const lowerStr = dict[upperStr].toLowerCase();
+      const lowerStr = lowercaseConversion(str, dict);
       result += lowerStr;
     }
   }
