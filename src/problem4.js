@@ -5,8 +5,13 @@ const asciiLowerZ = 122;
 const space = 32;
 
 function problem4(word) {
-  var answer;
-  return answer;
+  let frogWord = '';
+
+  for (let i = 0; i < word.length; i++) {
+    const currentAscii = word.charCodeAt(i);
+  }
+
+  return frogWord;
 }
 
 module.exports = problem4;
