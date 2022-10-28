@@ -36,4 +36,9 @@ function validRange(arr) {
   return arr.every((item) => item < 1 || 400 < item)
 }
 
+function validPage(arr) {
+  if (arr[0] % 2 == 0 || arr[1] % 2 == 1) return false;
+  return true;
+}
+
 module.exports = problem1;
