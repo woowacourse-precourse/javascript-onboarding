@@ -13,6 +13,46 @@ function problem1(pobi, crong) {
     // return answer;
 }
 
+function getMaxPoint(arr) {
+    const plusMaxPoint = calcMaxPoint(arr, '+');
+    const multipleMaxPoint = calcMaxPoint(arr, '*');
+    return plusMaxPoint > multipleMaxPoint ? plusMaxPoint : multipleMaxPoint;
+}
+
+function calcMaxPoint(arr, operator) {
+    const odd = arr[0].toString().split('');
+    const even = arr[1].toString().split('');
+
+    let oddSum = 0;
+    let evenSum = 0;
+
+    switch (operator) {
+        case '+':
+            odd.map(function (e) {
+                oddSum += Number(e);
+            });
+
+            even.map(function (e) {
+                evenSum += Number(e);
+            });
+            break;
+        case '*':
+            oddSum = 1;
+            evenSum = 1;
+            odd.map(function (e) {
+                oddSum *= Number(e);
+            });
+
+            even.map(function (e) {
+                evenSum *= Number(e);
+            });
+            break;
+        default:
+            break;
+    }
+    return oddSum > evenSum ? oddSum : evenSum;
+}
+
 function exception(arr) {
     if (
         arr[0] >= arr[1] ||
