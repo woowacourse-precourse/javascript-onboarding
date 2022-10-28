@@ -25,6 +25,17 @@ function problem1(pobi, crong) {
     return userScore;
   }
 
+  let pobiScore = getScore(pobi);
+  let crongScore = getScore(crong);
+
+  function getResult(pobiScore, crongScore) {
+    if (pobiScore > crongScore) answer = 1;
+    else if (pobiScore < crongScore) answer = 2;
+    else if (pobiScore === crongScore) answer = 0;
+  }
+
+  getResult(pobiScore, crongScore);
+
   return answer;
 }
 
