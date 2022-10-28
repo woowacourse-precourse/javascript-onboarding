@@ -1,25 +1,25 @@
 function getPartsOfNickname(nickname) {
-  const parts = [];
-  let numberOfLetters = 2;
-  while (numberOfLetters <= nickname.length) {
-    let currentIndex = 0;
-    while (currentIndex + numberOfLetters <= nickname.length) {
-      parts.push(nickname.substr(currentIndex, numberOfLetters));
-      currentIndex += 1;
-    }
-    numberOfLetters += 1;
-  }
+  const parts = [...nickname]
+    .reduce((acc, _, idx) => [...acc, nickname.substr(idx, 2)], [])
+    .slice(0, -1);
+
   return parts;
 }
 
-function problem6(forms) {
-  const duplicates = forms.reduce((_duplicates, form) => {
+function getDuplicates(forms) {
+  return forms.reduce((duplicates, form) => {
     const [email, nickname] = form;
+
     getPartsOfNickname(nickname).forEach((part) => {
-      _duplicates[part] = [...(_duplicates[part] || []), email];
+      duplicates[part] = [...(duplicates[part] || []), email];
     });
-    return _duplicates;
+
+    return duplicates;
   }, {});
+}
+
+function problem6(forms) {
+  const duplicates = getDuplicates(forms);
 
   const result = Object.values(duplicates)
     .filter((duplicate) => duplicate.length > 1)
