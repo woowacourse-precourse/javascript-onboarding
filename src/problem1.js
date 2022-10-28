@@ -28,10 +28,18 @@ function problem1(pobi, crong) {
   if(exception(pobi, crong)){
     answer = -1;
   }else{
-  //기능목록2: 포비, 크롱 점수 구하기
-  var pobiScore = score(pobi);
-  var crongScore = score(crong);
-
+    //기능목록2: 포비, 크롱 점수 구하기
+    var pobiScore = score(pobi);
+    var crongScore = score(crong);
+    
+    //기능목록3: 승부 구하기
+    if(pobiScore>crongScore){
+      answer = 1;
+    }else if(pobiScore<crongScore){
+      answer = 2;
+    }else{
+      answer = 0;
+    }
   }
   
   return answer;
