@@ -25,6 +25,10 @@ function problem6(forms) {
 			}
 		}
 	}
+
+	const noticeTargetEmails = emails.filter((_, idx) => duplicateCheckArr[idx])
+
+	return noticeTargetEmails.sort((a, b) => a.localeCompare(b))
 }
 
 module.exports = problem6
