@@ -28,4 +28,17 @@ function multiplyAllElement(pageArray){
   );
 }
 
+function judgeResult(pobiScore, crongScore){
+  switch(true){
+    case pobiScore > crongScore:
+      return 1;
+    case pobiScore < crongScore:
+      return 2;
+    case pobiScore === crongScore:
+      return 0;
+    default:
+      throw new Error('Unrechable Error')
+  }
+}
+
 module.exports = problem1;
