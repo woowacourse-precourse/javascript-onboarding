@@ -11,6 +11,8 @@ function problem7(user, friends, visitors) {
   let answer = [];
   // 유저의 친구
   let userFriends = [];
+  // 아이디를 키로, 점수를 값으로 가지는 객체
+  let IdScore = {};
 
   // user의 친구 구하기
   friends
@@ -20,6 +22,23 @@ function problem7(user, friends, visitors) {
         if (el[i] !== user) userFriends.push(el[i]);
       }
     });
+
+  // user의 친구의 친구 구하기
+  for (let i = 0; i < userFriends.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      // userFriends 요소를 가지고 있지만, userFriends 요소도 아니고, user도 아닐 때
+      if (
+        friends[j].includes(userFriends[i]) &&
+        userFriends[i] === friends[j][0] &&
+        !friends[j].includes(user)
+      ) {
+        // IdScore객체에 키가 있을 때
+        if (IdScore.hasOwnProperty(friends[j][1])) IdScore[friends[j][1]] += 10;
+        // IdScore객체에 키가 없을 때
+        else IdScore[friends[j][1]] = 10;
+      }
+    }
+  }
 
   return answer;
 }
