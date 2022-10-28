@@ -18,6 +18,14 @@ function removeCharacters(cryptogram) {
 function problem2(cryptogram) {
   var answer;
 
+  let prevString = cryptogram;
+  answer = removeCharacters(cryptogram);
+
+  while (prevString !== answer) {
+    prevString = answer;
+    answer = removeCharacters(answer);
+  }
+
   return answer;
 }
 
