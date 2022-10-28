@@ -1,5 +1,7 @@
 function problem2(cryptogram) {
-  var answer = decryption(cryptogram);
+  var answer;
+  if (checkValidation(cryptogram)) answer = decryption(cryptogram);
+  else answer = "잘못된 입력입니다.";
   return answer;
 }
 function decryption(cryptogram) {
@@ -26,4 +28,18 @@ function progressIndex(cryptogram, index, targetChar) {
 function getString(Array) {
   return Array.join("");
 }
+
+function checkValidation(cryptogram) {
+  return checkLength(cryptogram) && checkLowercase(cryptogram);
+}
+function checkLength(cryptogram) {
+  if (cryptogram.length >= 1 && cryptogram.length <= 1000) return true;
+  else return false;
+}
+function checkLowercase(cryptogram) {
+  const LowerCase = cryptogram.toLowerCase();
+  if (LowerCase == cryptogram) return true;
+  else return false;
+}
+
 module.exports = problem2;
