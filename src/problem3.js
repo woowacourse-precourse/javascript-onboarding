@@ -36,9 +36,3 @@ function problem3(number) {
 }
 
 module.exports = problem3;
-
-// 기능들
-// 1. 1부터 number까지 세기.
-// 2. 1의 자리수 분리하기
-// 3. 뒷자리 3, 6, 9에 손뼉치기.
-// 4. 손뼉치는 수의 합계
