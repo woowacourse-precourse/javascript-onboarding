@@ -5,15 +5,15 @@ function problem1(pobi, crong) {
     answer = -1;
     return answer;
   } 
-  if (pobi[0] % 2 === 0 || pobi[1] % 2 === 1 || crong[0] % 2 === 0 || pobi[1] % 22 === 1) {
-    answer = -1;
-    return answer;
-  }
-  if (pobi[1] !== (pobi[0] + 1) || crong[1] !== (crong[0] + 1)) {
+  if (pobi[0] % 2 === 0 || pobi[1] % 2 === 1 || crong[0] % 2 === 0 || pobi[1] % 2 === 1) {
     answer = -1;
     return answer;
   }
   if (pobi[0] === 1 || pobi[0] === 399 || pobi[1] === 2 || pobi[1] === 400 || crong[0] === 1 || crong[0] === 399 || crong[1] === 2 || crong[1] === 400) {
+    answer = -1;
+    return answer;
+  }
+  if (pobi[0] < 1 || pobi[0] > 400 || pobi[1] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[0] > 400 || crong[1] < 1 || crong[1] > 400) {
     answer = -1;
     return answer;
   }
@@ -72,8 +72,3 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
-
-
-// console.log(problem1([97, 98] , [197, 198])); // 0
-// console.log(problem1([131, 132] , [211, 212])); // 1
-// console.log(problem1([99, 102], [211, 212])); // -1
