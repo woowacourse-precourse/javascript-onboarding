@@ -5,10 +5,16 @@
  */
 
 function problem5(money) {
-  var answer;
   const moneyList = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
-  return answer;
+  const result = moneyList.reduce((acc, cur) => {
+    const numberOfMoney = Math.floor(money / cur);
+    money = money % cur;
+    acc.push(numberOfMoney);
+    return acc;
+  }, []);
+
+  return result;
 }
 
 module.exports = problem5;
