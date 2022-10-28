@@ -4,7 +4,7 @@ function problem1(pobi, crong) {
 }
 
 function isValid(pageArray){
-  return  pageArray[0] % 2 === 0 || pageArray[1] % 2 === 1
+  return  pageArray[0] % 2 !== 0 || pageArray[1] % 2 !== 1
 }
 
 function getMaxScore(pageArray){
@@ -29,6 +29,7 @@ function multiplyAllElement(pageArray){
 }
 
 function judgeResult(pobiScore, crongScore){
+
   switch(true){
     case pobiScore > crongScore:
       return 1;
