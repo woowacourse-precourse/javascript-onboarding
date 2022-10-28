@@ -46,4 +46,12 @@ function validContinuous(arr) {
   return true;
 }
 
+function validExceptions(arr1, arr2) {
+  const range = validRange(arr1) && validRange(arr2);
+  const page = validPage(arr1) && validPage(arr2);
+  const continuous = validContinuous(arr1) && validContinuous(arr2);
+
+  return range && page && continuous;
+}
+
 module.exports = problem1;
