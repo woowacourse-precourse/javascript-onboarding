@@ -18,13 +18,13 @@ const treeFrog = {
 
 function convertWordSwitch(text, startChar, endChar) {
   let chars = text.split("");
-  let start = String.charCodeAt(startChar);
-  let end = String.charCodeAt(endChar);
+  let start = startChar.charCodeAt(0);
+  let end = endChar.charCodeAt(0);
   chars = chars.map((char) => {
-    let charCode = String.charCodeAt(char);
+    let charCode = char.charCodeAt(0);
     if (charCode > start && charCode < end) {
       let gap = charCode - start;
-      return String.charAt(end - gap);
+      return String.fromCharCode(end - gap);
     }
     return char;
   });
