@@ -5,6 +5,6 @@ function problem2(cryptogram) {
     else stack.pop();
   };
   return stack.join('');
-}
+};
 
 module.exports = problem2;
