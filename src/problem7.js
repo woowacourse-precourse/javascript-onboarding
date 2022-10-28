@@ -16,4 +16,17 @@ const setRelationshipAll = (friends, relationshipTable) => {
   }
 };
 
+// 기능 2번
+const getRecommendedFriendList = (userName, relationshipTable) => {
+  const friendList = relationshipTable[userName];
+  const recommendedFriendList = [];
+  for (const friend of friendList) {
+    const recommendedFriend = relationshipTable[friend].filter(
+      (name) => name !== userName
+    );
+    recommendedFriendList.push(...recommendedFriend);
+  }
+  return recommendedFriendList;
+};
+
 module.exports = problem7;
