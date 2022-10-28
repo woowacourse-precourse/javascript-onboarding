@@ -20,12 +20,12 @@ function getRelation(friends) {
   return relation;
 }
 
-function setKnowTogetherScore(user, score, knowTogetherFriends) {
-  knowTogetherFriends.forEach((knowTogether) => {
-    if (knowTogether === user) {
+function setRecommand(score, friendList, notForRecommand, additionalScore) {
+  friendList.forEach((friend) => {
+    if (notForRecommand.includes(friend)) {
       return;
     }
-    score.setScore(knowTogether, 10);
+    score.setScore(friend, additionalScore);
   });
 }
 
@@ -42,17 +42,13 @@ function sortByScore(user1, user2) {
 function problem7(user, friends, visitors) {
   const score = new Score();
   const relation = getRelation(friends);
+  const alreadyFriend = relation[user];
+  const notForRecommand = [...alreadyFriend, user];
 
-  relation[user].forEach((friend) => {
-    setKnowTogetherScore(user, score, relation[friend]);
+  alreadyFriend.forEach((friend) => {
+    setRecommand(score, relation[friend], notForRecommand, 10);
   });
-
-  visitors.forEach((visitor) => {
-    if (relation[user].includes(visitor)) {
-      return;
-    }
-    score.setScore(visitor, 1);
-  });
+  setRecommand(score, visitors, notForRecommand, 1);
 
   const result = Object.entries(score.getScore())
     .sort(sortByScore)

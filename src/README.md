@@ -203,5 +203,6 @@ function getPartsOfNickname(nickname) {
   - 기능별로 함수만들어 분리하기
   - 클로저를 이용해 score 객체 관리하기
   - 커스텀 정렬함수 분리하기
+  - 추천알고리즘 부분의 동일로직 함수로 분리
 
 ### 학습메모
