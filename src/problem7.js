@@ -53,5 +53,11 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  for (let i = 0; i < visitors.length; i++) {
+    if (visit.includes(visitors[i]) == false) {
+      visit.push(visitors[i]);
+    }
+  }
 }
 module.exports = problem7;
