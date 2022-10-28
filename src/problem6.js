@@ -12,6 +12,11 @@ function problem6(forms) {
   forms.map((form) => {
     isDuplicateNickname(form, duplicateEmailSet, twoLetterMap);
   });
+
+  let answer = [...duplicateEmailSet];
+  answer.sort();
+
+  return answer;
 }
 
 // 크루들의 닉네임 두 글자씩 저장하는 기능 (map 사용)
