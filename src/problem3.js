@@ -5,6 +5,9 @@ function validInputCheck(number) {
   if (number < 1 || number > 10000) {
     return -1;
   }
+  if (!Number.isInteger(number)) {
+    return -1;
+  }
   return 0;
 }
 
