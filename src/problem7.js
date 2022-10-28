@@ -1,12 +1,12 @@
 function problem7(user, friends, visitors) {
   const friendRelation = getFriendsAdjacencyList(friends);
-  const userFriends = friendRelation[user];
+  const userFriends = friendRelation[user] ?? [];
   const friendOfFriends = getFriendOfFriends({ user, userFriends, friendRelation });
 
   const initScore = initRecommendationScore({ userFriends, friendRelation, friendOfFriends });
   const score = scoreVisitor({ initScore, visitors, userFriends });
 
-  const recommendedUserList = getRecommendationUserList({ score });
+  const recommendedUserList = getRecommendationUserList(score);
   return recommendedUserList;
 }
 
@@ -57,7 +57,7 @@ function scoreVisitor({ initScore, visitors, userFriends }) {
   }, initScore);
 }
 
-function getRecommendationUserList({ score }) {
+function getRecommendationUserList(score) {
   const sortedScore = [...score].sort(([prevKey, prevVal], [currKey, currVal]) => {
     if (prevVal !== currVal) return currVal - prevVal;
 
