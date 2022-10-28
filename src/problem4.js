@@ -48,12 +48,10 @@ function changeWord(char) {
 }
 
 function reverse(word) {
-  console.log(vaildate(word));
   if (!vaildate(word)) alert("워드길이");
   const arr = stringToArray(word);
   const reverseArr = evalueAscii(arr);
   const reverseWord = reverseArr.join("");
-  console.log(reverseWord);
   return reverseWord;
 }
 

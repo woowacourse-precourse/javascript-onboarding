@@ -1,87 +1,81 @@
-// function problem6(forms) {
-//   var answer;
-//   return answer;
-// }
+function problem6(forms) {
+  var answer;
+  answer = isNicknameDup(forms);
+  return answer;
+}
 
-// module.exports = problem6;
+module.exports = problem6;
 
-const Arr = [
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-];
+//상수선언
 const EMAIL_MAX = 20;
 const EMAIL_MIN = 11;
 const NICKNAME_MAX = 20;
 const NICKNAME_MIN = 1;
 
+//이메일 이 형식에 맞게 끝나는지 검사
 function validEmail(email) {
   const eLength = email.length;
-  if (
-    !email.endsWith("email.com") ||
-    eLength >= EMAIL_MAX ||
-    eLength < EMAIL_MIN
-  )
-    return false;
+  return (
+    !email.endsWith("email.com") || eLength >= EMAIL_MAX || eLength < EMAIL_MIN
+  );
 }
 
+//닉네임의 길이를 검사
 function validNickname(nickname) {
   const nLength = nickname.length;
-  if (nLength < NICKNAME_MIN || nLength >= NICKNAME_MAX) return false;
+  return nLength < NICKNAME_MIN || nLength >= NICKNAME_MAX;
 }
 
+//이메일과 닉네임검사를 호출
 function validAll(arr) {
-  arr.forEach((form) => {
-    const [email, nickname] = form;
-    if (!validEmail(email)) return false;
-    if (!validNickname(nickname)) return false;
-    else return true;
-  });
-}
+  for (let i = 0; i < arr.length; i++) {
+    const [email, nickname] = arr[i];
 
-function checkDup ()
-
-function checkResource(nickname, nickArr) {
-  let result;
-  for (let i = 0; i < nickname.length - 1; i++) {
-    nickArr.some((id) => {
-      // console.log("id사본 : ", id);
-      // console.log("nick 비교본:", `${nickname[i]}${nickname[i + 1]}`);
-      // return id.includes(`${nickname[i]}${nickname[i + 1]}`);
-      // console.log(id.indexOf(`${nickname[i]}${nickname[i + 1]}`));
-      if (id.indexOf(`${nickname[i]}${nickname[i + 1]}`) < 0) return false;
-    });
+    if (validEmail(email) || validNickname(nickname)) return false;
+    else continue;
   }
-  console.log("result : ", result);
+  return true;
 }
 
+//닉네임 배열과 닉네임을 받아 배열의 요소들이 닉네임을 포함하는지 검사
+function checkDup(nickArr, nick) {
+  return nickArr.some((nickname) => nickname.includes(nick));
+}
+
+//닉네임 2글자씩 배열과 비교
+function checkResource(nickname, nickArr) {
+  for (let i = 0; i < nickname.length - 1; i++) {
+    let nick = nickname[i] + nickname[i + 1];
+    if (checkDup(nickArr, nick)) return false;
+    else continue;
+  }
+  return true;
+}
+
+//배열과 닉네임을 받아 닉네임이 제외된 배열을 반환
 function nicknamArray(arr, nickname) {
   let nickArr = [];
 
   arr.forEach((item, index) => {
-    const [, nickname] = item;
-    nickArr[index] = nickname;
+    const [, arrNick] = item;
+    nickArr[index] = arrNick;
   });
 
   nickArr.splice(nickArr.indexOf(nickname), 1);
-  console.log(nickArr);
   return nickArr;
 }
 
 function isNicknameDup(arr) {
-  // if (!validAll(arr)) return;
+  if (!validAll(arr)) return;
 
   let emailList = [];
   arr.forEach((form) => {
     const [email, nickname] = form;
     const nickArr = nicknamArray(arr, nickname);
     const check = checkResource(nickname, nickArr);
-    console.log(check);
     if (!check) emailList.push(email);
   });
-  console.log(emailList);
-}
 
-isNicknameDup(Arr);
+  emailList.sort();
+  return emailList;
+}
