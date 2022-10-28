@@ -32,8 +32,22 @@ function changeAlphabet(char) {
   return char;
 }
 
-function changeLowerToUpper(code) {}
-function changeUpperToLower(code) {}
+/**
+ * @param {number} code
+ */
+function changeLowerToUpper(code) {
+  const newCode = ALPHABET_CODE.MIN_LOWER + (ALPHABET_CODE.MAX_LOWER - code);
+  return String.fromCharCode(newCode);
+}
+
+/**
+ * @param {number} code
+ */
+function changeUpperToLower(code) {
+  const newCode = ALPHABET_CODE.MIN_UPPER + (ALPHABET_CODE.MAX_UPPER - code);
+  return String.fromCharCode(newCode);
+}
+
 function problem4(word) {
   var answer;
   return answer;
