@@ -49,34 +49,50 @@ function checkIdOnlyLowerCase(friends) {
   return true;
 }
 
-function addFriendDecidedByUserIndex(friend, user, alreadyFriends) {
-  friend.indexOf(user) === 0
-    ? alreadyFriends.push(friend[1])
-    : alreadyFriends.push(friend[0]);
+function addFriendDecidedByAnotherSideIndex(friend, anotherSide, addToThisArr) {
+  friend.indexOf(anotherSide) === 0
+    ? addToThisArr.push(friend[1])
+    : addToThisArr.push(friend[0]);
 }
 
 function getAlreadyFriends(user, friends, alreadyFriends) {
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
-      addFriendDecidedByUserIndex(friends[i], user, alreadyFriends);
+      addFriendDecidedByAnotherSideIndex(friends[i], user, alreadyFriends);
+    }
+  }
+}
+
+function checkMyFriendsLinkedWithUnknown(
+  friends,
+  alreadyFriends,
+  friendOfFreinds,
+  i
+) {
+  for (let j = 0; j < alreadyFriends.length; j++) {
+    if (friends[i].includes(alreadyFriends[j])) {
+      addFriendDecidedByAnotherSideIndex(
+        friends[i],
+        alreadyFriends[j],
+        friendOfFreinds
+      );
     }
   }
 }
 
 function getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds) {
-  friends.forEach((item) => {
-    for (let i = 0; i < alreadyFriends.length; i++) {
-      if (item.includes(alreadyFriends[i])) {
-        if (item.includes(user)) {
-          continue;
-        }
-
-        item.indexOf(alreadyFriends[i]) === 0
-          ? friendOfFreinds.push(item[1])
-          : friendOfFreinds.push(item[0]);
-      }
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].includes(user)) {
+      continue;
     }
-  });
+
+    checkMyFriendsLinkedWithUnknown(
+      friends,
+      alreadyFriends,
+      friendOfFreinds,
+      i
+    );
+  }
 }
 
 function getScore(friendOfFreinds, score, visitors) {
