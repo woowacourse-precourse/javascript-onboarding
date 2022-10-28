@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## ✏️ 기능 목록
+
+- 중복된 문자가 없을 때까지 해독하는 로직 생성
