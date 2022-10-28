@@ -18,10 +18,9 @@ function problem2(cryptogram) {
  * @param {Regex} regex
  * @returns {Boolean} boolean
  */
- function isCryptoGram(string, regex) {
+function isCryptoGram(string, regex) {
   return regex.test(string);
 }
-
 
 /**
  * 암호문을 복호화한다.
@@ -30,7 +29,7 @@ function problem2(cryptogram) {
  * @param {string | (match:string)=>string} replacer
  * @returns
  */
- function decrypto(cryptogram, REGEX, replacer) {
+function decrypto(cryptogram, REGEX, replacer) {
   return cryptogram.replace(REGEX, replacer);
 }
 
