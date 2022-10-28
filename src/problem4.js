@@ -7,9 +7,22 @@ function problem4(word) {
     dict[String.fromCharCode(i)] = String.fromCharCode(reverse);
     reverse -= 1;
   }
-  return dict;
+
+  let result = "";
+
+  for (let str of word) {
+    if (str === " ") {
+      result += " ";
+    } else if (str === str.toUpperCase()) {
+      result += dict[str];
+    } else if (str === str.toLowerCase()) {
+      const upperStr = str.toUpperCase();
+      const lowerStr = dict[upperStr].toLowerCase();
+      result += lowerStr;
+    }
+  }
+
+  return result;
 }
 
 module.exports = problem4;
-
-console.log(problem4("I love you"));
