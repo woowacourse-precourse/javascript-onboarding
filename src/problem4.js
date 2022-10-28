@@ -8,6 +8,11 @@ function problem4(word) {
         'Y', 'Z'
     ];
     const wordArr = word.split('');
+    for(let i=0; i<wordArr.length; i++) {
+        if(wordArr[i]==' ') newWord.push(' ');
+        else {
+        }
+    }
 }
 
 module.exports = problem4;
