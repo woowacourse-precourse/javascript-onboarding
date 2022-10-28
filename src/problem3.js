@@ -1,6 +1,7 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  return Array.from({ length: number }, (_, i) => i + 1)
+      .map(howManyHas369Numbers)
+      .reduce((a, b) => a + b);
 }
 
 function howManyHas369Numbers(number) {
