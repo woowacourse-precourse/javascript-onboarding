@@ -9,6 +9,9 @@ function problem4(word) {
 
   const convert = findIndex.map((number) => oppositeDictionary[number]);
 
+  const removeComma = { ",,": " ", ",": "" };
+  const answer = String(convert).replace(/,,|,/g, index => removeComma[index]);
+
   return answer;
 }
 
