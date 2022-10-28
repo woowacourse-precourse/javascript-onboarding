@@ -32,6 +32,15 @@ const problem7 = (user, friends, visitors) => {
   let friendsMap = new Map();
   friendsMap = getFriendsShareScore(user, friends, friendsMap);
   friendsMap = getTimelineVisitedScore(visitors, friendsMap);
+
+  friendsMap = [...friendsMap].sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0];
+    } else {
+      return b[1] - a[1];
+    }
+  });
+
 };
 
 module.exports = problem7;
