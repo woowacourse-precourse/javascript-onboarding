@@ -1,14 +1,3 @@
-function makeSplitedArr(eachSideNum) {
-  let eachSide = eachSideNum;
-
-  eachSide = eachSide
-    .toString()
-    .split("")
-    .map((item) => Number(item));
-
-  return eachSide;
-}
-
 function sumCalc(eachSide) {
   let eachSideSum = eachSide.reduce((acc, curr) => {
     return acc + curr;
@@ -28,7 +17,10 @@ function multipleCalc(eachSide) {
 }
 
 function eachSideCalc(eachSideNum) {
-  const eachSide = makeSplitedArr(eachSideNum);
+  const eachSide = eachSideNum
+    .toString()
+    .split("")
+    .map((item) => Number(item));
 
   const eachSideSum = sumCalc(eachSide);
 
@@ -51,18 +43,18 @@ function pageNumCalc(who) {
 
 function exceptionCheck(who) {
   if (who[0] < 1 || who[0] > 400 || who[1] < 1 || who[1] > 400) {
-    return true;
+    return false;
   }
 
   if (who[1] - who[0] !== 1) {
-    return true;
+    return false;
   }
 
   if ((who[0] === 1 && who[1] === 2) || (who[0] === 399 && who[1] === 400)) {
-    return true;
+    return false;
   }
 
-  return false;
+  return true;
 }
 
 function whoIsWinner(pobi, crong) {
@@ -80,7 +72,7 @@ function whoIsWinner(pobi, crong) {
 }
 
 function problem1(pobi, crong) {
-  if (exceptionCheck(pobi) || exceptionCheck(crong)) {
+  if (!exceptionCheck(pobi) || !exceptionCheck(crong)) {
     return -1;
   }
 
