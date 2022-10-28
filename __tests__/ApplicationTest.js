@@ -44,29 +44,29 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem5", () => {
-  test("case1", () => {
-    expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
-  });
-
-  test("case2", () => {
-    expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
-  });
-});
-
-// describe("problem6", () => {
+// describe("problem5", () => {
 //   test("case1", () => {
-//     expect(
-//       problem6([
-//         ["jm@email.com", "제이엠"],
-//         ["jason@email.com", "제이슨"],
-//         ["woniee@email.com", "워니"],
-//         ["mj@email.com", "엠제이"],
-//         ["nowm@email.com", "이제엠"],
-//       ])
-//     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+//     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
+//   });
+
+//   test("case2", () => {
+//     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
 //   });
 // });
+
+describe("problem6", () => {
+  test("case1", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+});
 
 // describe("problem7", () => {
 //   test("case1", () => {
