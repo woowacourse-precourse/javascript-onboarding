@@ -1,5 +1,11 @@
 function problem4(word) {
+  let res = '';
 
+  for (const char of word) {
+    res += oppositeChar(char);
+  }
+
+  return res;
 }
 
 module.exports = problem4;
