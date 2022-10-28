@@ -32,13 +32,17 @@ function isValidPage(pages) {
   return pages.every((page) => page > MIN_PAGE && page < MAX_PAGE);
 }
 
+function isValidPages(...pages) {
+  return pages.every((page) => isValidPage(page));
+}
+
 function problem1(pobi, crong) {
   const POBI_WIN = 1;
   const CRONG_WIN = 2;
   const DRAW = 0;
   const EXCEPTION = -1;
 
-  if (!isValidPage(pobi) || !isValidPage(crong)) {
+  if (!isValidPages(pobi, crong)) {
     return EXCEPTION;
   }
 
