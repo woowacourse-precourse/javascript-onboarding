@@ -31,6 +31,7 @@ function removeDuplicate(cryptogram) {
 
 function problem2(cryptogram) {
   let answer = removeDuplicate(cryptogram);
+  console.log(answer);
   return answer;
 }
 
