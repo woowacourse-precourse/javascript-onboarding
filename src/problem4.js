@@ -1,4 +1,4 @@
-const treeFrog = {
+const TreeFrog = {
   monSay: "",
   inputMonSay: function (text) {
     if (!this.checkTextLength(text)) {
@@ -32,8 +32,9 @@ function convertWordSwitch(text, startChar, endChar) {
 }
 
 function problem4(word) {
-  var answer;
-  return answer;
+  const treeFlog = Object.assign({}, TreeFrog);
+  treeFlog.inputMonSay(word);
+  return treeFlog.convertTreeFlog();
 }
 
 module.exports = problem4;
