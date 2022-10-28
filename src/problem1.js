@@ -86,7 +86,7 @@ function problem1(pobi, crong) {
   const IsPobiRightver = new RightOverPage(pobi.rightPage)
   const IsCrongRightOver = new RightOverPage(crong.rightPage)
 
-  if(IsPobiLeftOdd || IsCrongLeftOdd ||
+  if (IsPobiLeftOdd || IsCrongLeftOdd ||
     IsPobiRightEven || IsCrongRightEven ||
     IsPobiLeftPlusOne || IsCrongLeftPlusOne ||
     IsPobiLeftOver || IsCrongLeftOver ||
@@ -94,7 +94,26 @@ function problem1(pobi, crong) {
       return -1
     }
 
-  
+  class DigitMaker {
+    constructor({page}) {
+      this.page
+    }
+    SeperateDigit() {
+      let temp = this.page
+      const Digits = []
+      while (temp > 0) {
+        Digits.push(temp % 10)
+        temp /= 10
+      }
+      return Digits
+    }
+  }
+
+  const PobiLeftDigits = new DigitMaker(pobi.leftPage)
+  const PobiRightDigits = new DigitMaker(pobi.rightPage)
+  const CrongLeftDigits = new DigitMaker(crong.leftPage)
+  const CrongRightDigits = new DigitMaker(crong.rightPage)
+
 
   return answer;
 }
