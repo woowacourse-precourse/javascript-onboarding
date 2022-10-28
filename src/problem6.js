@@ -5,9 +5,17 @@ function problem6(forms) {
     if (result.includes(testCrew[0])) continue;
     for (let idx = 0; idx < testCrew[1].length - 1; idx++){
       const testStr = testCrew[1].slice(idx, idx + 2);
+      const repeatedNames = forms.filter(x => x[1].indexOf(testStr) !== -1);
+      if (repeatedNames.length > 0){
+        result.push(testCrew[0]);
+        for (let crew of repeatedNames){
+          if (!(result.includes(crew[0]))) result.push(crew[0]);
+        }
+      }
     }
   }
 
+  return result.sort();
 }
 
 module.exports = problem6;
