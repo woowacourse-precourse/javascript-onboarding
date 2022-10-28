@@ -8,18 +8,19 @@ function problem4(word) {
   let reverseWord = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
 
   for (let i = 0; i < word.length; i++) {
+    let str = word[i];
     // 공백 예외 처리
-    if (word[i] === " ") answer += " ";
+    if (str === " ") answer += " ";
     // 대문자일 때
-    else if (word[i] === word[i].toUpperCase()) {
-      answer += reverseWord[word[i].charCodeAt() - 65];
+    else if (str === str.toUpperCase()) {
+      answer += reverseWord[str.charCodeAt() - 65];
     }
     // 소문자일 때
-    else if (word[i] === word[i].toLowerCase()) {
-      answer += reverseWord[word[i].charCodeAt() - 97].toLowerCase();
+    else if (str === str.toLowerCase()) {
+      answer += reverseWord[str.charCodeAt() - 97].toLowerCase();
     }
     // 제한 사항 처리
-    else answer += word[i];
+    else answer += str;
   }
 
   return answer;
