@@ -5,9 +5,9 @@ function getPartsOfNickname(nickname) {
     let currentIndex = 0;
     while (currentIndex + numberOfLetters <= nickname.length) {
       parts.push(nickname.substr(currentIndex, numberOfLetters));
-      currentIndex++;
+      currentIndex += 1;
     }
-    numberOfLetters++;
+    numberOfLetters += 1;
   }
   return parts;
 }
@@ -22,10 +22,8 @@ function problem6(forms) {
   }, {});
 
   const result = Object.values(duplicates)
-    .reduce((emails, duplicate) => {
-      if (duplicate.length > 1) return [...emails, ...duplicate];
-      return emails;
-    }, [])
+    .filter((duplicate) => duplicate.length > 1)
+    .flatMap((results) => results)
     .sort();
 
   return [...new Set(result)];

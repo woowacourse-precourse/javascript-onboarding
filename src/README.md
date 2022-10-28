@@ -70,7 +70,8 @@
 - [o] 배열에서 3,6,9만 filter해준다.
 - [o] filter를 거친 배열의 length를 리턴한다.
 - refactor
-  - for문 while 문으로 대체
+  - ~~for문 while 문으로 대체~~
+    - 함수형으로 변경
   - filter 제거 후 match를 이용한 정규표현식으로 대체
 
 ### 학습메모
