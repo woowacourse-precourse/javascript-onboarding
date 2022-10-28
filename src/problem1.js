@@ -1,33 +1,28 @@
 const ARR_LENGTH = 2;
 
-const sumAllDigitNumber = (page) => {
-  let result = 0;
-  for (let i = 0; i < page.length; i++) {
-    result += +page[i];
-  }
-
-  return result;
+const getSumAllDigit = (pageNum) => {
+  return [...pageNum.toString()].reduce(
+    (acc, curDigit) => acc + parseInt(curDigit),
+    0
+  );
 };
 
-const mulAllDigitNumber = (page) => {
-  let result = +page[0];
-  for (let i = 1; i < page.length; i++) {
-    result *= +page[i];
-  }
-
-  return result;
+const getMulAllDigit = (pageNum) => {
+  return [...pageNum.toString()].reduce(
+    (acc, curDigit) => acc * parseInt(curDigit)
+  );
 };
 
-const getBiggestValue = (arr) => {
-  const calculatedNums = [];
+const getMaxValue = (pages) => {
+  const calculateNums = [];
   for (let i = 0; i < 2; i++) {
-    const digitSum = sumAllDigitNumber(arr[i] + '');
-    const digitMul = mulAllDigitNumber(arr[i] + '');
-    calculatedNums.push(digitSum);
-    calculatedNums.push(digitMul);
+    const digitSum = getSumAllDigit(pages[i]);
+    const digitMul = getMulAllDigit(pages[i]);
+    calculateNums.push(digitSum);
+    calculateNums.push(digitMul);
   }
 
-  return Math.max(...calculatedNums);
+  return Math.max(...calculateNums);
 };
 
 function problem1(pobi, crong) {
@@ -39,8 +34,8 @@ function problem1(pobi, crong) {
       return -1;
     }
   }
-  const pobiValue = getBiggestValue(pobi);
-  const crongValue = getBiggestValue(crong);
+  const pobiValue = getMaxValue(pobi);
+  const crongValue = getMaxValue(crong);
   if (pobiValue > crongValue) return 1;
   if (pobiValue < crongValue) return 2;
   if (pobiValue === crongValue) return 0;
