@@ -1,4 +1,12 @@
 function problem1(pobi, crong) {
+  for (let i = 0; i < 2; i++) {
+    const pobi_diff = pobi[1] - pobi[0];
+    const crong_diff = crong[1] - crong[0];
+
+    if (!(pobi_diff == 1)) return -1;
+    if (!(crong_diff == 1)) return -1;
+  }
+  
   const pobi_max = Math.max(
     sum(pobi[0]),
     sum(pobi[1]),
