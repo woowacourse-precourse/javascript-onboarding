@@ -23,8 +23,14 @@ function compareNumber(num1, num2) {
   else return num2;
 }
 function getWinner(pobi, crong) {
-  const pobiMax = compareNumber(sumDigits(pobi[0], multiplyDigits(pobi[1])));
-  const crongMax = compareNumber(sumDigits(crong[0], multiplyDigits(crong[1])));
+  const pobiMax = compareNumber(
+    compareNumber(sumDigits(pobi[0]), sumDigits(pobi[1])),
+    compareNumber(multiplyDigits(pobi[0]), multiplyDigits(pobi[1]))
+  );
+  const crongMax = compareNumber(
+    compareNumber(sumDigits(crong[0]), sumDigits(crong[1])),
+    compareNumber(multiplyDigits(crong[0]), multiplyDigits(crong[1]))
+  );
   if (pobiMax == crongMax) return 0;
   else if (pobiMax > crongMax) return 1;
   else if (pobiMax < crongMax) return 2;
