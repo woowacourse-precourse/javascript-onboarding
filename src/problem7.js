@@ -1,6 +1,6 @@
 function problem7(user, friends, visitors) {
   let finalScores = getScores(friends, user, visitors);
-  return;
+  return getTop5Ids(finalScores);
 }
 
 function getRelationships(friends, user) {
@@ -49,16 +49,4 @@ function getTop5Ids(finalScores) {
     .map((ele) => ele[0]);
 }
 
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 module.exports = problem7;
