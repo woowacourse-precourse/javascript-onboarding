@@ -55,11 +55,9 @@
 
 ```js
 if (pobiMax > crongMax) return 1;
-if (pobiMax === crongMax) return 0;
-else return -1;
+if (pobiMax === crongMax) retursn 0;
+else return 2;
 ```
-
-`
 
 #### 4. 에외 처리
 
