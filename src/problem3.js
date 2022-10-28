@@ -2,7 +2,7 @@ function problem3(number) {
   var answer = 0 ;
   let number_add = [];
   let last_add = [] 
-  console.log(number)
+  //console.log(number)
 
   for (i = 1 ; i <= number ; i++) {
     let n = i
@@ -11,7 +11,7 @@ function problem3(number) {
       n = Math.floor(n / 10);  
     } while (n > 0);  
   }
-  console.log("숫자 확인",number_add)
+  //console.log("숫자 확인",number_add)
   //숫자가 입력됬을때 각 자리수 배열로 넣기
 
 
