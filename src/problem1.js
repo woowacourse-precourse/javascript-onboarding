@@ -16,9 +16,7 @@ function scoreGenerator(pages) {
 }
 
 function problem1(pobi, crong) {
-  if (!inputCheck(pobi) || !inputCheck(crong)) {
-    return -1;
-  }
+  if (!inputCheck(pobi) || !inputCheck(crong)) return -1;
   let answer = 0;
   const pobiScore = scoreGenerator(pobi);
   const crongScore = scoreGenerator(crong);

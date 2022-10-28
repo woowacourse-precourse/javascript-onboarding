@@ -44,8 +44,7 @@ function problem7(user, friends, visitors) {
     answer.push(scores[i].id);
     if (count === 5) break;
   }
-
+  
   return answer;
 }
-
 module.exports = problem7;
