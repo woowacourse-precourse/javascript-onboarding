@@ -9,6 +9,7 @@ function problem1(pobi, crong) {
 function validationCheck(info) {
 	if (info.length !== 2) return false;
 	if (info[1] - info[0] !== 1) return false;
+	if (info[0] % 2 !== 1) return false;
 	if (info[0] <= 1 || info[1] >= 400) return false;
 
 	return true;

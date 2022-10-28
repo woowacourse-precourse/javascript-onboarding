@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
 	const users = {};
-	const recommendList = {};
 	const userList = setUserAndUserList(users, friends);
+	const recommendList = {};
 
 	countCommonFriends(users, user, userList, recommendList);
 	countVisitors(users, user, visitors, recommendList);
