@@ -12,6 +12,15 @@ function upperCase(number) {
   return alpabet.indexOf(number);
 }
 
+function upperCase_reverse(index) {
+  let alpabet_reverse = [];
+
+  for (let i = 90; i >= 65; i--) {
+    alpabet_reverse.push(String.fromCharCode(i));
+  }
+  return alpabet_reverse[index];
+}
+
 function lowerCase(number) {
   let alpabet = [];
 
@@ -19,6 +28,15 @@ function lowerCase(number) {
     alpabet.push(i);
   }
   return alpabet.indexOf(number);
+}
+
+function lowerCase_reverse(index) {
+  let alpabet_reverse = [];
+
+  for (let i = 122; i >= 97; i--) {
+    alpabet_reverse.push(String.fromCharCode(i));
+  }
+  return alpabet_reverse[index];
 }
 
 module.exports = problem4;
