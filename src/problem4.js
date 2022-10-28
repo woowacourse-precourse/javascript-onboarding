@@ -4,7 +4,9 @@ function problem4(word) {
   const alphabet = lowerCase.concat(upperCase);
 
   const oppositeDictionary = alphabet.reverse(); // z = oppositeDictionary[26]
-  
+
+  const findIndex = Array.from(word, letter => letter === letter.toUpperCase() ? upperCase.indexOf(letter) : lowerCase.indexOf(letter) + 26);
+
   return answer;
 }
 
