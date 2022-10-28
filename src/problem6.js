@@ -28,7 +28,7 @@ function problem6(forms) {
   const duplicateChars = getDuplicateChars(charsCase);
   const haveSimilarNickCrews = getHaveSimilarNickCrews(forms, duplicateChars);
 
-  return;
+  return [...new Set(haveSimilarNickCrews)].sort();
 }
 
 module.exports = problem6;
