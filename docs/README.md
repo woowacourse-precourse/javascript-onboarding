@@ -23,6 +23,7 @@
 - refactor:   코드 리팩토링
 - chore:      자잘한 수정
 - docs:       문서 관련 
+- test:       테스트 관련
 
 <br/>
 <br/>
