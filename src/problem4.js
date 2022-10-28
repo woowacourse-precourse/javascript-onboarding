@@ -30,4 +30,12 @@ function upperCheck(letter) {
   return false;
 }
 
+function inputExecption(word) {
+  let inputCheck = true;
+  if (word.length < 1 || word.length > 1000) inputCheck = false;
+  if (word == null) inputCheck = false;
+  if (/^[a-z|A-Z]+$/.test(word)) inputCheck = false;
+  return inputCheck;
+}
+
 module.exports = problem4;
