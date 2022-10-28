@@ -1,9 +1,4 @@
-/**
- * @param {number[]} arr 페이지수를 구하고자 하는 사람의 배열 (ex. pobi 또는 crong)
- * @param {number[]} maxArr 페이지의 최대값이 저장되는 배열
- * @param {number} maxIdx pobi의 경우 0, crong의 경우 1이다.
- */
-
+// 게임과 관련된 상수 및 인덱스
 const rule = {
   leftPage: 0,
   rightPage: 1,
@@ -15,6 +10,11 @@ const rule = {
   exception: -1,
 };
 
+/**
+ * @param {number[]} arr 페이지수를 구하고자 하는 사람의 배열 (ex. pobi 또는 crong)
+ * @param {number[]} maxArr 페이지의 최대값이 저장되는 배열
+ * @param {number} maxIdx pobi의 경우 rule.pobi, crong의 경우 rule.crong이다.
+ */
 function getMax(arr, maxArr, maxIdx) {
   arr.map((v) => {
     const tmpArr = v
