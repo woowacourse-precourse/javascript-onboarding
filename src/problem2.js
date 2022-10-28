@@ -5,6 +5,8 @@ function problem2(cryptogram) {
 
   return answer;
 }
+//input: 'afcbbbcfaacf'
+//expected output: 'acf'
 const removeConsecutiveDuplicates = (text) => {
   const textArr = text.split("");
   let lastChar = textArr[0];
