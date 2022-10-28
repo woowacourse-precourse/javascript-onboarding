@@ -1,5 +1,3 @@
-console.log(problem3(33));
-
 function problem3(number) {
   return game369App(number);
 }
