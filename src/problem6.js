@@ -12,18 +12,110 @@ const INPUT = {
   koChar: /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/,
   enChar: /[a-zA-Z]/,
   numChar: /[0-9]/,
-  specialChar: /[~!#\#$%<>^&*]/,
+  specialNickChar: /[~!#@\#$%<>^&*]/,
+  specialMailChar: /[~!#\#$%<>^&*]/,
 };
 
 const RESULT = {
   exception: -1,
 };
 
+const INDEX = {
+  email: 0,
+  nickname: 1,
+};
+
 function problem6(forms) {
   if (isWrongInput(forms)) {
-    console.log(forms);
     return RESULT.exception;
   }
+
+  return solution(forms);
+}
+
+function solution(forms) {
+  const newForms = changeNicknameTypeToArray(forms);
+  const obj = getObject(newForms);
+  const arr = getDupArrayCycle(obj);
+  const cleanSet = removeDupInArray(arr);
+  const cleanArr = getArrayFromSet(cleanSet);
+  const sortedArr = sortArrWithString(cleanArr);
+
+  return sortedArr;
+}
+
+function changeNicknameTypeToArray(twoArr) {
+  return twoArr.map(arr => arr.map(splitNickname));
+}
+
+function splitNickname(v, i) {
+  if (i === INDEX.email) {
+    return v;
+  }
+
+  return getArrayFromString(v);
+}
+
+function getArrayFromString(string) {
+  return Array.from(string);
+}
+
+function getObject(threeArr) {
+  const obj = {};
+
+  threeArr.forEach((twoArr, i) => {
+    twoArr.forEach((arr, i) => {
+      if (i === INDEX.email) {
+        return;
+      }
+      arr.forEach((v, i) => {
+        if (!existWordInObject(obj, v)) {
+          obj[v] = {};
+        }
+        if (i === arr.length - 1) {
+          return;
+        }
+        if (!existWordInObject(obj[v], arr[i + 1])) {
+          obj[v][arr[i + 1]] = [];
+        }
+        obj[v][arr[i + 1]].push(twoArr[INDEX.email]);
+      });
+    });
+  });
+
+  return obj;
+}
+
+function existWordInObject(obj, v) {
+  return obj.hasOwnProperty(v);
+}
+
+function getDupArrayCycle(obj) {
+  const arr = [];
+
+  for (let key1 in obj) {
+    if (Object.keys(obj[key1]).length >= 1) {
+      for (let key2 in obj[key1]) {
+        if (Object.keys(obj[key1][key2]).length > 1) {
+          arr.push(...obj[key1][key2]);
+        }
+      }
+    }
+  }
+
+  return arr;
+}
+
+function removeDupInArray(arr) {
+  return new Set(arr);
+}
+
+function getArrayFromSet(set) {
+  return Array.from(set);
+}
+
+function sortArrWithString(arr) {
+  return arr.sort();
 }
 
 function isWrongInput(input) {
@@ -74,7 +166,7 @@ function isWrongArray(twoArr) {
 
 function isWrongElement(twoArr) {
   return twoArr.some(arr => {
-    if (isWrongFormat(arr[0], arr[1])) {
+    if (isWrongFormat(arr[INDEX.email], arr[INDEX.nickname])) {
       return true;
     }
     return arr.some(v => {
@@ -89,14 +181,14 @@ function isWrongElement(twoArr) {
   });
 }
 
-function isWrongFormat(nickname, email) {
-  if (isWrongLanguage(nickname, email)) {
+function isWrongFormat(email, nickname) {
+  if (isWrongLanguage(email, nickname)) {
     return true;
   }
 
   if (
-    isWrongLength(nickname.length, INPUT.minNick, INPUT.maxNick) ||
-    isWrongLength(email.length, INPUT.minMail, INPUT.maxMail)
+    isWrongLength(email.length, INPUT.minMail, INPUT.maxMail) ||
+    isWrongLength(nickname.length, INPUT.minNick, INPUT.maxNick)
   ) {
     return true;
   }
@@ -108,28 +200,28 @@ function isWrongFormat(nickname, email) {
   return false;
 }
 
-function isWrongLanguage(nickname, email) {
-  if (isWrongNickname(nickname)) {
+function isWrongLanguage(email, nickname) {
+  if (isWrongEmail(email)) {
     return true;
   }
 
-  if (isWrongEmail(email)) {
+  if (isWrongNickname(nickname)) {
     return true;
   }
 
   return false;
 }
 
+function isWrongEmail(email) {
+  return INPUT.koChar.test(email) || INPUT.specialMailChar.test(email);
+}
+
 function isWrongNickname(nickname) {
   return (
     INPUT.enChar.test(nickname) ||
     INPUT.numChar.test(nickname) ||
-    INPUT.specialChar.test(nickname)
+    INPUT.specialNickChar.test(nickname)
   );
-}
-
-function isWrongEmail(email) {
-  return INPUT.koChar.test(email) || INPUT.specialChar.test(email);
 }
 
 function isWrongType(type, checker) {
