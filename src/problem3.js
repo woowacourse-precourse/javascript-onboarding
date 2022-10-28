@@ -1,5 +1,7 @@
 function problem3(number) {
-  var answer;
+  for (let i=1; i<=number; i++) {
+    
+  }
   return answer;
 }
 
