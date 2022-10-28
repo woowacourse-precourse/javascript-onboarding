@@ -69,14 +69,28 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-
   // 포비 점수 내기
- 
+  var pobi_sum_score = sum(pobi);
+  var pobi_mul_score = mul(pobi);
+
+  var pobi_max_score = maxScore(pobi_sum_score, pobi_mul_score);
+
   // 크롱 점수 내기
- 
+  var crong_sum_score = sum(crong);
+  var crong_mul_score = mul(crong);
+
+  var crong_max_score = maxScore(crong_sum_score, crong_mul_score);
 
   //포비가 이기면 1, 크롱이 이기면 2, 무승부는 0, 예외사항은 -1로 리턴  
- 
+  if (pobi_max_score > crong_max_score) {
+    return 1;
+  }else if (pobi_max_score < crong_max_score) {
+    return 1
+  }else if (pobi_max_score == crong_max_score) {
+    return 0;
+  } else{
+    return -1;
+  }
 }
 
 module.exports = problem1;
