@@ -2,8 +2,11 @@ function problem3(number) {
   if (!inputValidCheck(number)) {
     return 'error'
   }
-  const array = Array(number).fill();
-  // return array
+  const regEx = /[369]/g;
+  const array = Array(number).fill()
+                .map((_, index) => String(index + 1))
+                .map((v) => v.replace(regEx, '@'));
+  
 }
 
 function inputValidCheck(number) {
