@@ -1,19 +1,18 @@
 function problem1(pobi, crong) {
   var answer;
-  if (exception(pobi) || exception(crong)) {
+  if (handleException(pobi) || handleException(crong)) {
     return -1;
   } else {
     pobi = [String(pobi[0]), String(pobi[1])];
     crong = [String(crong[0]), String(crong[1])];
   }
-  const pobiBigNum = process(pobi);
-  const crongBigNum = process(crong);
-  answer = pobiBigNum === crongBigNum ? 0 : pobiBigNum > crongBigNum ? 1 : 2;
+  const pobiNum = solve(pobi);
+  const crongNum = solve(crong);
+  answer = pobiNum === crongNum ? 0 : pobiNum > crongNum ? 1 : 2;
   return answer;
 }
 
-//예외사항 분리 함수
-const exception = (arr) => {
+const handleException = (arr) => {
   if (
     arr[1] - arr[0] !== 1 ||
     arr.length > 2 ||
@@ -26,11 +25,10 @@ const exception = (arr) => {
   }
 };
 
-//계산과정 함수
-const process = (arr) => {
-  let firstBigNum = 0;
-  let secondBigNum = 0;
-  let finalBigNum = 0;
+const solve = (arr) => {
+  let firstNum = 0;
+  let secondNum = 0;
+  let finalNum = 0;
   for (let i = 0; i < 2; i++) {
     let multiply = 1;
     let add = 0;
@@ -38,14 +36,14 @@ const process = (arr) => {
       add = add + Number(arr[i][j]);
       multiply = multiply * arr[i][j];
     }
-    if (!firstBigNum) {
-      firstBigNum = add > multiply ? add : multiply;
+    if (!firstNum) {
+      firstNum = add > multiply ? add : multiply;
     } else {
-      secondBigNum = add > multiply ? add : multiply;
-      finalBigNum = firstBigNum > secondBigNum ? firstBigNum : secondBigNum;
+      secondNum = add > multiply ? add : multiply;
+      finalNum = firstNum > secondNum ? firstNum : secondNum;
     }
   }
-  return finalBigNum;
+  return finalNum;
 };
 
 module.exports = problem1;
