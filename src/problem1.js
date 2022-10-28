@@ -1,6 +1,18 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const [pobisLeftPage, pobisRightPage] = pobi;
+  const [crongsLeftPage, crongsRightPage] = crong;
+
+  if (
+      isException(pobisLeftPage, pobisRightPage) ||
+      isException(crongsLeftPage, crongsRightPage)
+  ) {
+    return -1;
+  }
+
+  const pobiScore = calcScore(pobisLeftPage, pobisRightPage);
+  const crongScore = calcScore(crongsLeftPage, crongsRightPage);
+
+  return getWinnerResult(pobiScore, crongScore);
 }
 
 function isException(leftPage, rightPage) {
