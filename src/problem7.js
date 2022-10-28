@@ -1,5 +1,11 @@
 function problem7(user, friends, visitors) {
   let userFriend = [];
+  let friendPoint = [];
+  let friendOfFriend = [];
+  let friendReduplication = [];
+  let visit = [];
+  let answer = [];
+
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
       for (let z = 0; z < friends[i].length; z++) {
@@ -59,5 +65,19 @@ function problem7(user, friends, visitors) {
       visit.push(visitors[i]);
     }
   }
+
+  for (let i = 0; i < visit.length; i++) {
+    let count = 0;
+    for (let z = 0; z < friendPoint.length; z++) {
+      if (visit[i] == friendPoint[z][0]) {
+        count += 1;
+      }
+    }
+    if (count == 0) {
+      friendPoint.push([visit[i], 0]);
+    }
+  }
+
+  return answer;
 }
 module.exports = problem7;
