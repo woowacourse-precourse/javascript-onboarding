@@ -27,11 +27,11 @@ function pobiCrongLeft(pobiCrong){
     leftSum += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
   }
   for(let i = 0; i < left.length; i++){
-    leftMul += parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
+    leftMul *= parseInt(left[i]); //parseInt => 문자형을 정수형으로 변환
   }
   if(leftSum > leftMul){
     return leftSum;
-  } else {
+  }else {
     return leftMul;
   }
 }
@@ -40,6 +40,7 @@ function pobiCrongRight(pobiCrong){
   Right = pobiCrong[1].toString();  //ex)pobi[1] => 정수형 98, toString => 문자형 98
   RightSum = 0;  //전역변수
   RightMul = 1;  //전역변수
+
   for (let i = 0; i < Right.length; i++){
     RightSum += parseInt(Right[i]) //parseInt => 문자형을 정수형으로 변환
   }
@@ -48,7 +49,7 @@ function pobiCrongRight(pobiCrong){
   }
   if(RightSum > RightMul){
     return RightSum;
-  } else {
+  }else {
     return RightMul;
   }
 }
@@ -56,7 +57,7 @@ function pobiCrongRight(pobiCrong){
 function bestScore(leftScore, rightScore){
   if(leftScore < rightScore){
     return rightScore;
-  } else {
+  }else {
     return leftScore;
   }
 }
