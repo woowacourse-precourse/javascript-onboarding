@@ -1,9 +1,20 @@
 /**
- *
  * @param {number[]} arr 페이지수를 구하고자 하는 사람의 배열 (ex. pobi 또는 crong)
  * @param {number[]} maxArr 페이지의 최대값이 저장되는 배열
  * @param {number} maxIdx pobi의 경우 0, crong의 경우 1이다.
  */
+
+const rule = {
+  leftPage: 0,
+  rightPage: 1,
+  pobi: 0,
+  crong: 1,
+  pobiWin: 1,
+  crongWin: 2,
+  draw: 0,
+  exception: -1,
+};
+
 function getMax(arr, maxArr, maxIdx) {
   arr.map((v) => {
     const tmpArr = v
@@ -19,21 +30,24 @@ function getMax(arr, maxArr, maxIdx) {
 
 function problem1(pobi, crong) {
   // 예외상황 :: 왼쪽페이지 번호와 오른쪽 페이지 번호가 형식에 맞지 않을 떄
-  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) {
-    return -1;
+  if (
+    pobi[rule.leftPage] + 1 !== pobi[rule.rightPage] ||
+    crong[rule.leftPage] + 1 !== crong[rule.rightPage]
+  ) {
+    return rule.exception;
   }
 
   const max = [Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
 
-  getMax(pobi, max, 0);
-  getMax(crong, max, 1);
+  getMax(pobi, max, rule.pobi);
+  getMax(crong, max, rule.crong);
 
   // 포비 승
-  if (max[0] > max[1]) return 1;
+  if (max[rule.pobi] > max[rule.crong]) return rule.pobiWin;
   // 크롱 승
-  if (max[0] < max[1]) return 2;
+  if (max[rule.pobi] < max[rule.crong]) return rule.crongWin;
   // 무승부
-  if (max[0] === max[1]) return 0;
+  if (max[rule.pobi] === max[rule.crong]) return rule.draw;
 }
 
 module.exports = problem1;
