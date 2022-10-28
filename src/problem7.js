@@ -63,4 +63,10 @@ function setFriendsScore(friends, friendsScore) {
   );
 }
 
+function setVisitorFriendsScore(visitor, friendsScore) {
+  if (friendsScore.has(visitor))
+    friendsScore.set(visitor, friendsScore.get(visitor) + 1);
+  else friendsScore.set(visitor, 1);
+}
+
 module.exports = problem7;
