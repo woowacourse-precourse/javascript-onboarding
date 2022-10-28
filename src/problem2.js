@@ -12,21 +12,17 @@ function deleteDuplicateCharacters(cryptogram) {
     return acc;
   }, '');
 
-  return deletedString;
+  if (deletedString === cryptogram) {
+    return cryptogram;
+  }
+
+  return deleteDuplicateCharacters(deletedString);
 }
 
 function problem2(cryptogram) {
-  var answer;
+  const answer = deleteDuplicateCharacters(cryptogram);
+
   return answer;
 }
 
 module.exports = problem2;
-
-function test() {
-  console.log(deleteDuplicateCharacters('browoanoommnaon'));
-  console.log(deleteDuplicateCharacters('zyelleyz'));
-  console.log(deleteDuplicateCharacters('zyellleyz'));
-  console.log(deleteDuplicateCharacters('zyeleyz'));
-}
-
-test();
