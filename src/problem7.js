@@ -22,7 +22,6 @@ function searchFriends(user, friends){
   })
   return [user_friends,friends];
 }
-
 //유저의 친구의 친구를 리턴하는 함수
 function searchFriendsFriend(user_friends/**유저와 친구인 배열 */,friends/**유저와 친구를 거른 배열 */){
   let recommand_10 = []
@@ -38,6 +37,31 @@ function searchFriendsFriend(user_friends/**유저와 친구인 배열 */,friend
       }})
   })
   return recommand_10
+}
+
+//친구추천 점수를 아이디:점수로 반환
+function friendRecommandScore(recommand_10,recommand_1){
+  friend_score = {};
+  recommand_10.map((element)=>{
+    if(friend_score.hasOwnProperty(element) == true){
+      friend_score[element] = friend_score[element] + 10
+    }
+    if(friend_score.hasOwnProperty(element) == false){
+      friend_score[element] = 10
+    }
+
+  })
+
+  recommand_1.map((element)=>{
+    if(friend_score.hasOwnProperty(element) == true){
+      friend_score[element] = friend_score[element] + 1
+    }
+    if(friend_score.hasOwnProperty(element) == false){
+      friend_score[element] = 1
+    }
+
+  })
+  return friend_score
 }
 
 function problem7(user, friends, visitors) {
