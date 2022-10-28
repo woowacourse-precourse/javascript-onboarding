@@ -1,12 +1,17 @@
-function slicePage(pageNum){
-  let pageString = String(pageNum);
-  let leftPageNum = Number(pageString[0]);
-  let rightPageNum = Number(pageString[1]);
+function slicePage(nowPageNum){
+  let pageSliceArray = [0, 0, 0];
+  let pageString = String(nowPageNum);
+  let prePageNum = nowPageNum;
+
+  for(let i = length.pageString - 1; i > -1 ; i--){
+    pageSliceArray[i] = Number(prePageNum) / (10 ** i);
+    prePageNum = prePageNum % (10 ** i);
+  }
   
-  return calPlusMinus(leftPageNum, rightPageNum);
+  return pageSliceArray;
 }
 
-function calPlusMinus(leftPageNum, rightPageNum){
+function calPlusMinus(pageSliceArray){
   let maxNum = Math.max(leftPageNum + rightPageNum, leftPageNum * rightPageNum);
   return maxNum;
 }
@@ -30,11 +35,11 @@ function findReault(maxNumArray) {
 }
 
 function problem1(pobi, crong) {
-  let animal = [pobi, crong];
-  let maxNumArray = [0, 0];
-  for(i = 0; i < 2; i++){
-    animal[i].forEach((element) => {
-      maxNumArray[i] = Math.max(maxNumArray[i], slicePage(element));
+  let animal = [...pobi, ...crong];
+  let maxNumArray = [0, 0, 0, 0];
+  
+  animal.forEach((element) => {
+      maxNumArray[i] = ;
     });     
   }
   
