@@ -11,10 +11,25 @@
  *   2-7. 돈이 50 이상이면 50으로 나눈 값은 다음 배열에 추가하고, 나머지를 돈에 대입한다.
  *   2-8. 돈이 10 이상이면 10으로 나눈 값은 다음 배열에 추가하고, 나머지를 마지막 배열에 추가한다.
  * 3. 변환된 배열을 return 한다.
- *
- * @param {number} money
- * @returns {number[]} result (an array of length 9)
  */
+
+/**
+ * @type {number[]}
+ */
+const MONEY_UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+/**
+ * @param {number} money
+ * @returns {number} index
+ */
+function findConvertibleUnitIndex(money) {
+  return MONEY_UNITS.findIndex((unit) => unit <= money);
+}
+
+/**
+* @param {number} money
+* @returns {number[]} result (an array of length 9)
+*/
 function problem5(money) {
   var answer;
   return answer;
