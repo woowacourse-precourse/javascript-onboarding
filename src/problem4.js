@@ -1,6 +1,11 @@
 const UPPERCASE_REVERSE_NUMBER = 155;
 const LOWERCASE_REVERSE_NUMBER = 219;
 function problem4(word) {
+  const wordArray = [...word];
+  let index = 0;
+  for (index = 0; index < wordArray.length; index++) {
+    wordArray[index] = reverseChar(wordArray);
+  }
   var answer;
   return answer;
 }
