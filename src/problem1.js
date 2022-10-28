@@ -36,8 +36,6 @@ const reduceByOperator = (array, operator) => {
 };
 
 function problem1(pobi, crong) {
-  var answer;
-
   // 예외처리
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     return -1;
@@ -82,7 +80,10 @@ function problem1(pobi, crong) {
     );
   }
 
-  return answer;
+  // pobiScore가 크면 1을,
+  // crongScore가 크면 2를,
+  // pobiScore와 crongScore가 같을 때는 (무승부) 0을 return
+  return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
 }
 
 module.exports = problem1;
