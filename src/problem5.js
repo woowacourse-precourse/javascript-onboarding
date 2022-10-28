@@ -4,6 +4,11 @@ function isNeed(money, won) {
   return false;
 }
 
+//필요하다면 몇개가 필요한지 세주는 함수
+function countNeedMoney(money, won) {
+  return Math.floor(money / won);
+}
+
 function problem5(money) {
   var answer;
   return answer;
