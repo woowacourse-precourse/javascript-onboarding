@@ -12,12 +12,10 @@
 function problem1(pobi, crong) {
   var answer;
 
-  /** 예외처리 */
-  // pobi, crong이 펼친 페이지 번호가 연속되지 않은 경우
+  // 예외처리
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     return -1;
   }
-  // pobi, crong의 왼쪽 페이지가 홀수가 아니고 오른쪽 페이지가 짝수가 아닌 경우
   if (
     pobi[0] % 2 === 0 ||
     crong[0] % 2 === 0 ||
@@ -25,6 +23,35 @@ function problem1(pobi, crong) {
     crong[1] % 2 !== 0
   ) {
     return -1;
+  }
+
+  // 왼쪽 페이지 번호가 9로 끝날 때 왼쪽 페이지가 항상 더 큰 점수를 가지고
+  // 반대의 경우는 오른쪽 페이지가 항상 더 큰 점수를 가진다.
+
+  /** pobi의 최대 점수 구하기 */
+  let pobiScore = 0;
+  if (pobi[0] % 10 === 9) {
+    pobiScore = Math.max(
+      pobi[0]
+        .toString()
+        .split("")
+        .reduce((acc, cur) => acc * cur, 1),
+      pobi[0]
+        .toString()
+        .split("")
+        .reduce((acc, cur) => acc + cur, 0)
+    );
+  } else {
+    pobiScore = Math.max(
+      pobi[1]
+        .toString()
+        .split("")
+        .reduce((acc, cur) => acc * cur, 1),
+      pobi[1]
+        .toString()
+        .split("")
+        .reduce((acc, cur) => acc + cur, 0)
+    );
   }
 
   return answer;
