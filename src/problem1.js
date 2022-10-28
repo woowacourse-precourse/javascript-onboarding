@@ -11,4 +11,8 @@ function sumAllElement(pageNumber){
   return pageNumber.split('').reduce((acc, current) => acc + Number(current),0);
 }
 
+function multiplyAllElement(pageNumber){
+  return pageNumber.split('').reduce((acc, current) => acc * Number(current),1);
+}
+
 module.exports = problem1;
