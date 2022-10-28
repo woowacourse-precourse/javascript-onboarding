@@ -10,11 +10,23 @@ function alphaDict(){
   }
   return alphaRev;
 }
+function reverse(word){
+  var answer="";
+  for(var i=0; i<word.length; i++){
+    if(word[i]!=" "){
+      answer+=alphaRev[word[i]];
+    }else{
+      answer+=" ";
+    }
+  }
+  return answer;
+}
 function problem4(word) {
   var answer="";
   //기능목록1: 알파벳 저장
   alphaRev=alphaDict();
-
+  //기능목록2: 치환
+  answer=reverse(word);
   return answer;
 }
 module.exports = problem4;
