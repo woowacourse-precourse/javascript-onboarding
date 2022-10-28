@@ -38,7 +38,7 @@ function checkVisitorsLength(visitors) {
 }
 
 function checkIdOnlyLowerCase(friends) {
-  const regex = /^[a-z]+$/g;
+  const regex = /[a-z]/;
 
   for (let i = 0; i < friends.length; i++) {
     if (!regex.test(friends[i][0]) || !regex.test(friends[i][1])) {
@@ -175,11 +175,11 @@ function getFriendsRecommendArray(alreadyFriends, sortedScore, ans) {
 
 function problem7(user, friends, visitors) {
   if (
-    checkUserLength(user) &&
-    checkFriendsLength(friends) &&
-    checkIdLength(friends) &&
-    checkVisitorsLength(visitors) &&
-    checkIdOnlyLowerCase(friends)
+    !checkUserLength(user) ||
+    !checkFriendsLength(friends) ||
+    !checkIdLength(friends) ||
+    !checkVisitorsLength(visitors) ||
+    !checkIdOnlyLowerCase(friends)
   ) {
     return;
   }
@@ -188,13 +188,13 @@ function problem7(user, friends, visitors) {
 
   getAlreadyFriends(user, friends, alreadyFriends);
 
-  let friendOfFreinds = [];
+  let friendOfFriends = [];
 
-  getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds);
+  getFriendOfFreinds(user, friends, alreadyFriends, friendOfFriends);
 
   let score = {};
 
-  getScore(friendOfFreinds, score, visitors);
+  getScore(friendOfFriends, score, visitors);
 
   let sortedScore = [];
 
