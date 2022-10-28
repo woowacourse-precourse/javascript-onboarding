@@ -1,5 +1,12 @@
-function checkContinousPage(pages) {
-  return pages[0] + 1 == pages[1];
+function checkAvailablePages(pages) {
+  let isAvailable = true;
+  if (pages[0] <= 1 || pages[0] >= 399) {
+    isAvailable = false;
+  }
+  if (pages[0] + 1 != pages[1]) {
+    isAvailable = false;
+  }
+  return isAvailable;
 }
 
 function calculateNumber(pageNumber) {
@@ -30,7 +37,7 @@ function compareTwoNumbers(pages) {
 }
 
 function problem1(pobi, crong) {
-  if (!(checkContinousPage(pobi) && checkContinousPage(crong))) return -1;
+  if (!(checkAvailablePages(pobi) && checkAvailablePages(crong))) return -1;
 
   if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
   else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
