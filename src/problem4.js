@@ -2,7 +2,6 @@ const asciiUpperA = 65;
 const asciiUpperZ = 90;
 const asciiLowerA = 97;
 const asciiLowerZ = 122;
-const space = 32;
 
 function problem4(word) {
   let frogWord = '';
@@ -13,9 +12,9 @@ function problem4(word) {
 
     if (currentAscii >= 65 && currentAscii <= 90)
       frogAscii = asciiUpperZ - currentAscii + asciiUpperA;
-    if (currentAscii >= 97 && currentAscii <= 122)
+    else if (currentAscii >= 97 && currentAscii <= 122)
       frogAscii = asciiLowerZ - currentAscii + asciiLowerA;
-    if (currentAscii === 32) frogAscii = space;
+    else frogAscii = currentAscii;
 
     frogWord += String.fromCharCode(frogAscii);
   }
