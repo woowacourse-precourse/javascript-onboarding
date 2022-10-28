@@ -45,5 +45,13 @@ function getLargestPage(pageLeft, pageRight) {
   const largestRight = getLargerPageCalc(pageRight);
   return compare(largestLeft, largestRight);
 }
+function findWinner(pobi, crong) {
+  const largestPobi = getLargestPage(...pobi);
+  const largestCrong = getLargestPage(...crong);
+
+  if (largestPobi === largestCrong) return 0;
+  else if (largestPobi > largestCrong) return 1;
+  else return 2;
+}
 
 module.exports = problem1;
