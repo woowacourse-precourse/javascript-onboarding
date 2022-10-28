@@ -37,6 +37,10 @@ function problem6(forms) {
     }
     same ? nickname.splice(idx, 1) : (idx += 1);
   }
+  return forms
+    .filter((x) => !nickname.includes(x[1]))
+    .map((x) => x[0])
+    .sort();
 }
 
 module.exports = problem6;
