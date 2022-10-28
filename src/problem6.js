@@ -18,6 +18,7 @@ function problem6(forms) {
       }
     }
   }
+  answer.sort();
   return answer;
 }
 module.exports = problem6;
