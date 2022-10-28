@@ -30,19 +30,15 @@ function problem1(pobi, crong) {
 function calcMax(pobi, crong) {
   const mapfn = (arg) => Number(arg);
   var left = String(pobi[0]).split("").map(mapfn);
-  console.log("앞" + left);
   var maxleft = checkMax(left);
   
   var right = String(pobi[1]).split("").map(mapfn);
-  console.log("뒤" + right);
   var maxright = checkMax(right);
 
   return (maxleft>maxright ? maxleft : maxright);
 }
 
 function checkMax(arr){
-  console.log("배열" + arr);
-
   var max = 0;
   var temp = 1;
 
