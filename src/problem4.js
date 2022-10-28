@@ -7,6 +7,9 @@
 
 function problem4(word) {
   var answer;
+  // 리스트화
+  const wordList = word.split("");
+
   return answer;
 }
 
