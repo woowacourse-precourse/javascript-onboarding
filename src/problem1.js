@@ -23,4 +23,12 @@ function maxNum(array){
   return maxNum;
 }
 
+function isError(array){
+  let isError = false;
+  if (array[1]<=2 || array[1] >= 399) isError = true;
+  else if (array.length !== 2) isError = true;
+  else if (array[0] % 2 !== 1 || array[1] % 2 !== 0) isError = true;
+  else if (array[1] - array[0] !== 1) isError = true;
+  return isError;
+}
 module.exports = problem1;
