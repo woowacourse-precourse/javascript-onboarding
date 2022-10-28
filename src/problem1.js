@@ -40,8 +40,15 @@ function calScore(arg) {
   );
 }
 
+function compare(pobiScore, crongScore) {
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  return 0;
+}
+
 function problem1(pobi, crong) {
   if (isException(pobi) || isException(crong)) return -1;
+  return compare(calScore(pobi), calScore(crong));
 }
 
 module.exports = problem1;
