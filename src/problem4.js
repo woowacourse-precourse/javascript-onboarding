@@ -13,7 +13,7 @@ function problem4(word) {
 }
 
 function convertLetter(letter) {
-  if (letter === ' ') return letter;
+  if (!checkLetterIsAlphabet(letter)) return letter;
 
   const isLetterUpper = checkLetterIsUpperCase(letter);
 
@@ -24,6 +24,11 @@ function convertLetter(letter) {
 
   const idx = LOWERCASE.split('').indexOf(letter);
   return LOWERCASE[25 - idx];
+}
+
+function checkLetterIsAlphabet(letter) {
+  const ALPHABET_REGEX = /[a-zA-z]/;
+  return letter.match(ALPHABET_REGEX);
 }
 
 function checkLetterIsUpperCase(letter) {
