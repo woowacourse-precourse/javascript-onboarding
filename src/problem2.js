@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = decryption(cryptogram);
   return answer;
 }
 function decryption(cryptogram) {
@@ -17,9 +17,13 @@ function decryption(cryptogram) {
     }
     index++;
   }
+  return getString(stack);
 }
 function progressIndex(cryptogram, index, targetChar) {
   while (cryptogram[index] == targetChar) index++;
   return index;
+}
+function getString(Array) {
+  return Array.join("");
 }
 module.exports = problem2;
