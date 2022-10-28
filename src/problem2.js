@@ -2,7 +2,6 @@ function problem2(cryptogram) {
   let target = cryptogram;
   while (true) {
     stack = [target[0]];
-    console.log(target);
     let flag = false;
     for (let i = 1; i < target.length; i++) {
       const top = stack[stack.length - 1];
