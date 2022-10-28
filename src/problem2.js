@@ -12,6 +12,15 @@ function decodeString(s) {
     return newString
 }
 
+function getString(s) {
+    let prev = ''
+    while (1) {
+        prev = s
+        s = decodeString(s)
+        if (s === prev) return s
+    }
+}
+
 function problem2(cryptogram) {
     var answer
     return answer
