@@ -9,6 +9,7 @@ function getPartsOfNickname(nickname) {
     }
     numberOfLetters++;
   }
+  return parts;
 }
 
 function problem6(forms) {
