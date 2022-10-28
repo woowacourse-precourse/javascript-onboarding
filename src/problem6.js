@@ -21,6 +21,8 @@ function problem6(forms) {
       if (duplicateName.includes(crew[1].slice(i, i+2))) result.add(crew[0]);
     }
   });
+
+  return [...result].sort(); // 전개 연산자를 사용하여 배열로 변환한 후 오름차 순으로 정렬
 }
 
 module.exports = problem6;
