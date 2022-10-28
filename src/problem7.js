@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
   const userFriends = friendRelation[user];
   const friendOfFriends = getFriendOfFriends({ user, userFriends, friendRelation });
 
-  const initScore = initRecommendationScore({ friendOfFriends });
+  const initScore = initRecommendationScore({ userFriends, friendRelation, friendOfFriends });
   const score = scoreVisitor({ initScore, visitors, userFriends });
 
   const recommendedUserList = getRecommendationUserList({ score });
@@ -34,8 +34,14 @@ function getFriendOfFriends({ user, userFriends, friendRelation }) {
   return [...frinedOfFriends];
 }
 
-function initRecommendationScore({ friendOfFriends }) {
-  return friendOfFriends.reduce((map, friend) => map.set(friend, 10), new Map());
+function initRecommendationScore({ userFriends, friendRelation, friendOfFriends }) {
+  return friendOfFriends.reduce((map, friend) => {
+    const frineds = friendRelation[friend];
+    const friendsNum = frineds.filter(friend => userFriends.includes(friend)).length;
+
+    map.set(friend, friendsNum * 10);
+    return map;
+  }, new Map());
 }
 
 function scoreVisitor({ initScore, visitors, userFriends }) {
