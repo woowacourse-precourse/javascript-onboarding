@@ -66,3 +66,15 @@ npm test
 
 - 미션은 [javascript-onboarding](https://github.com/woowacourse-precourse/javascript-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 💻 과제 구현 현황
+
+- 문제 1. 구현 사항
+
+  - [x] 승리, 패배, 무승부 기능 구현.
+  - [x] 예외 처리
+    - [x] 1. 책의 첫, 마지막 페이지를 펼쳤을 때.
+    - [x] 2. 한 사람의 페이지 번호가 1보다 큰 차이가 있을 때.
+    - [x] 3. 왼쪽 페이지 번호는 홀수, 오른쪽 페이지 번호는 짝수가 아닐 때.
