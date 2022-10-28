@@ -6,7 +6,7 @@
 // 5. answer를 기준으로 오름차순으로 정렬하고, 중복 제거
 
 // 모든 크루의 닉네임을 2글자 단위로 자르는 함수
-function makeTwoLength(forms) {
+function makeNameTwoLength(forms) {
   let namesArr = [];
 
   for (let i = 0; i < forms.length; i++) {
@@ -48,7 +48,7 @@ function findDuplicate(nameCountObj) {
 
 function problem6(forms) {
   // 2글자로 자른 닉네임을 담은 배열
-  let namesArr = makeTwoLength(forms);
+  let namesArr = makeNameTwoLength(forms);
   // 2글자로 자른 닉네임을 키로, count를 값으로 갖는 객체
   let nameCountObj = convertArrToObj(namesArr);
   // 중복되는 문자열
