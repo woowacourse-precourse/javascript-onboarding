@@ -14,6 +14,12 @@ function problem1(pobi, crong) {
     return true;
   };
 
+  const compareScore = (arr) => {
+    const sumMax = handleSum(arr);
+    const multiMax = handleMultiply(arr);
+    return sumMax > multiMax ? sumMax : multiMax;
+  };
+
   const handleSum = (arr) => {
     let left = arr[0];
     let right = arr[1];
@@ -31,12 +37,6 @@ function problem1(pobi, crong) {
     } while (right > 0);
 
     return sumLeft > sumRight ? sumLeft : sumRight;
-  };
-
-  const compareScore = (arr) => {
-    const sumMax = handleSum(arr);
-    const multiMax = handleMultiply(arr);
-    return sumMax > multiMax ? sumMax : multiMax;
   };
 
   const handleMultiply = (arr) => {
