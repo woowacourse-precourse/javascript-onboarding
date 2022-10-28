@@ -34,4 +34,27 @@ function makeCandidate(name, score) {
   return candidate;
 }
 
+function scoreCandidates(friends, visitors, friendsOfUser) {
+  let candidatesArray = [];
+
+  friends.map((friend) => {
+    candidatesArray.push(makeCandidate(friend, 20));
+  });
+
+  visitors.map((visitor) => {
+    let isDone = false;
+    candidatesArray.map((candidate, index) => {
+      if (candidate.includes(visitor)) {
+        candidatesArray[index][1]++;
+        isDone = true;
+      }
+    });
+    if (!isDone && !friendsOfUser.includes(visitor)) {
+      candidatesArray.push(makeCandidate(visitor, 1));
+    }
+  });
+
+  return candidatesArray;
+}
+
 module.exports = problem7;
