@@ -39,8 +39,6 @@ function sum(sliceLeft, sliceRight) {
   for (let i = 0; i < sliceLeft.length; i++) {
     sumLeft += Number(sliceLeft[i]);
   }
-  console.log(sumLeft);
-  console.log(sumRight);
 
   return sumLeft > sumRight ? sumLeft : sumRight;
 }
@@ -55,8 +53,6 @@ function multiply(sliceLeft, sliceRight) {
   for (let i = 0; i < sliceRight.length; i++) {
     multiplyRight = multiplyRight * Number(sliceRight[i]);
   }
-  console.log(multiplyLeft);
-  console.log(multiplyRight);
 
   return multiplyLeft > multiplyRight ? multiplyLeft : multiplyRight;
 }
