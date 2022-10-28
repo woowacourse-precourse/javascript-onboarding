@@ -1,6 +1,11 @@
 function problem4(word) {
   // word를 배열에 저장 후 순회
   // 문자 변환값들을 문자열로 반환
+  const wordToArray = word.split("");
+  const answer = wordToArray
+    .map((letter) => convertReverse(letter.charCodeAt()))
+    .join("");
+  return answer;
 }
 
 // 문자를 반대로 변환하는 기능
