@@ -7,18 +7,9 @@ function problem7(user, friends, visitors) {
 
   // friends의 값들을 딕셔너리에 정리_각 친구들을 리스트에 넣기
   friends.forEach((name) => {
-    if (userInfo[name[0]]) {
-      userInfo[name[0]].add(name[1])
-    } else if (!userInfo[name[0]]){
-      userInfo[name[0]]=new Set([name[1]])
-    };
-
-    if (userInfo[name[1]]) {
-      userInfo[name[1]].add(name[0])
-    } else if (!userInfo[name[1]]){
-      userInfo[name[1]]=new Set([name[0]])
-    }
-    
+    userInfo[name[0]] ? userInfo[name[0]].add(name[1]) : userInfo[name[0]]=new Set([name[1]])
+    userInfo[name[1]] ? userInfo[name[1]].add(name[0]) : userInfo[name[1]]=new Set([name[0]])
+    // console.log(userInfo)
   });
   
   // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
@@ -67,5 +58,9 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
-// console.log(problem7('mrko',[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],["bedi", "bedi", "donut", "bedi", "shakevan"]))
-module.exports = problem7;
+
+
+
+
+console.log(problem7('mrko',[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],["bedi", "bedi", "donut", "bedi", "shakevan"]))
+// module.exports = problem7;
