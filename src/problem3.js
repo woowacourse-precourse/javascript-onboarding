@@ -6,7 +6,11 @@
 */
 
 function numberCheck(n, c){
-
+  let hmany=0;
+  for(let one of n){
+    if(one===c) hmany++;
+  }
+  return hmany;
 }
 
 function numberInclude(n){
