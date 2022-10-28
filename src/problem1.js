@@ -10,7 +10,7 @@ function addmulValue(page) {
         v = page % 10
         add += v
         mul *= v
-        page /= 10
+        page = parseInt(page/10)
     }
     return compareValue(add, mul)
 }
@@ -37,9 +37,10 @@ function problem1(pobi, crong) {
         answer = -1
         return answer
     }
-    let pobiValue = getValue(pobi)
-    let crongValue = getValue(crong)
-    if (pobiValue > crongValue) answer = 1
+    let pobiValue = getValue(pobi);
+    let crongValue = getValue(crong);
+    console.log(pobiValue, crongValue);
+    if (pobiValue > crongValue) answer = 1;
     else if (pobiValue < crongValue) answer = 2
     else answer = 0
 
