@@ -29,6 +29,7 @@ const getTimelineVisitedScore = (visitors, friendsMap) => {
 };
 
 const problem7 = (user, friends, visitors) => {
+  const result = [];
   let friendsMap = new Map();
   friendsMap = getFriendsShareScore(user, friends, friendsMap);
   friendsMap = getTimelineVisitedScore(visitors, friendsMap);
@@ -41,6 +42,13 @@ const problem7 = (user, friends, visitors) => {
     }
   });
 
+  friendsMap.forEach((friend) => {
+    if (friend[1] !== 0) {
+      result.push(friend[0]);
+    }
+  });
+
+  return result;
 };
 
 module.exports = problem7;
