@@ -5,5 +5,5 @@
 - [x] problem3
 - [x] problem4
 - [x] problem5
-- [ ] problem6
+- [x] problem6
 - [ ] problem7

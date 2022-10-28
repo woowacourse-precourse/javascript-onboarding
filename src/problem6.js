@@ -14,9 +14,12 @@ function getCombinationOfStr(str) {
  * 중복된 값이 있는 지 확인
  */
 function isRepeated(cur, idx, arr) {
-  // 문자열의 연속 조합 구하기 (getCombination)
-  // arr와 비교해서 있다면 true
-}
+  arr = [...arr.slice(0, idx), ...arr.slice(idx + 1)];
+  return getCombinationOfStr(cur[1])
+      .map(((str) => arr.map(([_, name])=>[str, name])))
+      .flat()
+      .some(([target, source]) => source.includes(target));
+}//arr 부수효과 제거해야 함
 
 /**
  * @param {Array<Array<string>>} forms
