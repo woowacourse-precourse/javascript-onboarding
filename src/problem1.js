@@ -4,6 +4,17 @@ function compareValue(v1, v2){
   else return v1;
 }
 
+function addmulValue(page){
+  let v, add=0, mul=1;
+  while(page>0){
+    v=page%10;
+    add+=v;
+    mul*=v;
+    page/=10;
+  }
+  return compareValue(add, mul);
+}
+
 function getValue(a){
   
 }
