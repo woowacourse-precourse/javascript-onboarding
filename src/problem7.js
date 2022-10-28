@@ -38,6 +38,10 @@ function problem7(user, friends, visitors) {
 		}
 		scores.set(visitor, 1)
 	})
+
+	userFriends.forEach(friend => {
+		scores.delete(friend)
+	})
 }
 
 module.exports = problem7
