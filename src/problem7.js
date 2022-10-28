@@ -25,4 +25,17 @@ function setWithKnowScore(withKnowScore, friend) {
   return withKnowScore;
 }
 
+function getWithKnowScore(userFriends, friends) {
+  let withKnowScore = {};
+  friends.forEach((friend) => {
+    const [friend1, friend2] = friend;
+    if (userFriends.has(friend1)) {
+      withKnowScore = setWithKnowScore(withKnowScore, friend2);
+    } else if (userFriends.has(friend2)) {
+      withKnowScore = setWithKnowScore(withKnowScore, friend1);
+    }
+  });
+  return withKnowScore;
+}
+
 module.exports = problem7;
