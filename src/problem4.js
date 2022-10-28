@@ -24,32 +24,6 @@ function checkUpperOrLower(oneWordASCII, ans) {
   }
 }
 
-// function checkAlphabet(ans, oneWordASCII, word) {
-//   if (
-//     oneWordASCII < 65 ||
-//     (oneWordASCII > 90 && oneWordASCII < 97) ||
-//     oneWordASCII > 122
-//   ) {
-//     ans.push(word);
-
-//     return false;
-//   }
-
-//   return true;
-// }
-
-// function changeWord(word, ans) {
-//   for (let i = 0; i < word.length; i++) {
-//     const oneWordASCII = word[i].charCodeAt();
-
-//     if (!checkAlphabet(ans, oneWordASCII, word[i])) {
-//       continue;
-//     }
-
-//     checkUpperOrLower(oneWordASCII, ans);
-//   }
-// }
-
 function checkAlphabet(ans, word) {
   const regex = /^[a-z|A-Z]+$/g;
 
