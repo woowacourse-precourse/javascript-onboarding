@@ -31,9 +31,9 @@ function problem1(pobi, crong) {
   // 포비 승
   if (max[0] > max[1]) return 1;
   // 크롱 승
-  else if (max[0] < max[1]) return 2;
+  if (max[0] < max[1]) return 2;
   // 무승부
-  else return 0;
+  if (max[0] === max[1]) return 0;
 }
 
 module.exports = problem1;
