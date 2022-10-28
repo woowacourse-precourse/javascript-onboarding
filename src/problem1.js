@@ -1,39 +1,45 @@
 function problem1(pobi, crong) {
-  if (!isvalidPage) return -1;
-  var answer;
+  if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
+  let pobiScore = getBiggestNumber(pobi);
+  let crongScore = getBiggestNumber(crong);
+
+  console.log("pobiScore : ", pobiScore, " crongScore : ", crongScore);
+  var answer = compareScore(pobiScore, crongScore);
+
+  console.log(answer);
   return answer;
 }
 
-const getBiggestNumber = ({ leftPage, rigthPage }) => {
-  let biggerPage = rigthPage;
+const getBiggestNumber = ([leftPage, rightPage]) => {
+  console.log(leftPage, rightPage);
+  let biggerPage = rightPage;
   let sumPage = 0,
     mulPage = 1;
 
-  if (rigthPage % 10 === 0) biggerPage = leftPage;
+  if (rightPage % 10 === 0) biggerPage = leftPage;
 
   while (biggerPage > 0) {
-    let n = biggerPage % 10;
+    let n = Math.floor(biggerPage % 10);
     sumPage += n;
     mulPage *= n;
-    biggerPage /= 10;
+    biggerPage = Math.floor(biggerPage / 10);
   }
+
+  console.log(sumPage, mulPage);
 
   return sumPage < mulPage ? mulPage : sumPage;
 };
 
-const compareNumber = (numer1, number2) => {};
+const compareScore = (score1, score2) => {
+  if (score1 > score2) return 1;
+  else if (score1 === score2) return 0;
+  return 2;
+};
 
-const isvalidPage = ({ leftPage, rigthPage }) => {
-  if (leftPage + 1 !== rigthPage || leftPage < 1 || rigthPage > 400)
+const isValidPage = ([leftPage, rightPage]) => {
+  if (leftPage + 1 !== rightPage || leftPage < 1 || rightPage > 400)
     return false;
   return true;
 };
 
 module.exports = problem1;
-
-/*
-  1. 왼쪽 페이지의 가장 큰 수를 구한다.
-  2. 오른쪽 페이지의 가장 큰  수를 구한다.
-  3. 왼쪽과 오른쪽을 비교해서 큰 수를 정한다.
-  4. 두 사람의 점수를 비교한 결과를 return 한다.
-*/
