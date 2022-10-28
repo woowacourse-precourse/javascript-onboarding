@@ -1,5 +1,7 @@
 // 게임과 관련된 상수 및 인덱스
 const rule = {
+  firstPage: 1,
+  lastPage: 400,
   leftPage: 0,
   rightPage: 1,
   pobi: 0,
@@ -29,6 +31,22 @@ function getMax(arr, maxArr, maxIdx) {
 }
 
 function problem1(pobi, crong) {
+  // 예외 상황 :: 포비 또는 크롱이 첫 페이지를 펼쳤을 때
+  if (
+    pobi[rule.leftPage] === rule.firstPage ||
+    crong[rule.leftPage] === rule.firstPage
+  ) {
+    return rule.exception;
+  }
+
+  // 예외 상황 :: 포비 또는 크롱이 마지막 페이지를 펼쳤을 때
+  if (
+    pobi[rule.rightPage] === rule.lastPage ||
+    crong[rule.rightPage] === rule.lastPage
+  ) {
+    return rule.exception;
+  }
+
   // 예외상황 :: 왼쪽페이지 번호와 오른쪽 페이지 번호가 형식에 맞지 않을 떄
   if (
     pobi[rule.leftPage] + 1 !== pobi[rule.rightPage] ||
@@ -39,6 +57,7 @@ function problem1(pobi, crong) {
 
   const max = [Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
 
+  // 본인의 왼쪽 페이지 혹은 오른쪽 페이지의 각 자리 숫자 합과 곱의 최대를 구한다.
   getMax(pobi, max, rule.pobi);
   getMax(crong, max, rule.crong);
 
