@@ -5,8 +5,9 @@ function problem5(money) {
   balance = money - isOhmanwon(money) * 50000;
   result.push(isManwon(balance));
   balance = balance - isManwon(balance) * 10000;
+  result.push(isOhCheonwon(balance));
+  balance = balance - isOhCheonwon(balance) * 5000;
 
-  console.log(isOhmanwon(money));
   console.log(balance);
   console.log(result);
 }
@@ -27,8 +28,16 @@ function isManwon(money) {
   return 0;
 }
 
+function isOhCheonwon(money) {
+  if (money >= 5000) {
+    let ohcheonwon = money / 5000;
+    return Number.parseInt(ohcheonwon);
+  }
+  return 0;
+}
+
 function testCode() {
-  problem5(50237);
+  problem5(57237);
   // problem5(10000);
   // problem5(15000);
   // problem5(1000000);
