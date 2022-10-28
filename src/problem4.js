@@ -10,6 +10,30 @@
  * @param {string} word
  * @returns {string} result
  */
+
+const ALPHABET_CODE = {
+  MIN_LOWER: "a".charCodeAt(),
+  MAX_LOWER: "z".charCodeAt(),
+  MIN_UPPER: "A".charCodeAt(),
+  MAX_UPPER: "Z".charCodeAt(),
+};
+
+/**
+ * @param {string} char
+ */
+function changeAlphabet(char) {
+  const code = char.charCodeAt();
+  if (ALPHABET_CODE.MIN_LOWER <= code && code <= ALPHABET_CODE.MAX_LOWER) {
+    return changeLowerToUpper(code);
+  }
+  if (ALPHABET_CODE.MIN_UPPER <= code && code <= ALPHABET_CODE.MAX_UPPER) {
+    return changeUpperToLower(code);
+  }
+  return char;
+}
+
+function changeLowerToUpper(code) {}
+function changeUpperToLower(code) {}
 function problem4(word) {
   var answer;
   return answer;
