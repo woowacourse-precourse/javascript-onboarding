@@ -70,9 +70,11 @@ function getRecommendFriends(candidatesArray) {
   if (candidatesArray.length > 5) {
     candidatesArray.slice(0, 4);
   }
+
   candidatesArray.map((candidate) => {
     recommendFriends.push(candidate[0]);
   });
+
   return recommendFriends;
 }
 
