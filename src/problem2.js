@@ -3,9 +3,8 @@ function problem2(cryptogram) {
   return check(cryptogram, length);
 }
 function check(str, length) {
-  //browoanoommnaon,15
   for (let i = 0; i < length; i++) {
-    if (str.length == 0) {
+    if (length == 0) {
       return "";
     }
     if (i + 1 < str.length) {
@@ -13,8 +12,7 @@ function check(str, length) {
         let a = str.toString().substring(i, i + 2); //같은 글자를 뽑아서
         str = str.replace(a, ""); //빈걸로 바꿔줌
         length -= 2; //뺀수만큼 길이를 줄이고
-        check(str, length); //brown,5,
-        console.log(str);
+        return check(str, length); //brown,5,
       }
     }
   }
