@@ -36,6 +36,10 @@ function problem1(pobi, crong) {
   pobiMaxNum = findMaxNum(pobi[0], pobi[1]);
   crongMaxNum = findMaxNum(crong[0], crong[1]);
 
+  if (pobiMaxNum > crongMaxNum) answer = 1;
+  else if (pobiMaxNum < crongMaxNum) answer = 2;
+  else answer = 0;
+
   return answer;
 }
 
