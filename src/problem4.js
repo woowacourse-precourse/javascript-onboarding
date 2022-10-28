@@ -1,5 +1,5 @@
 function problem4(word) {
-  let answer = word.split("").map(char => {
+  const answer = word.split("").map(char => {
     if (char == " ") {
       return " "; 
     } else if (char == char.toUpperCase()){
