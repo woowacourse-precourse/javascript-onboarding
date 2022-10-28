@@ -5,7 +5,7 @@ function problem4(word) {
     if (/[a-z]/.test(char)) return String.fromCharCode(219 - uniCode);
     else return char;
   };
-  var answer;
-  return answer;
+  const answer = word.split("").map((char) => reverseChar(char));
+  return answer.join("");
 }
 module.exports = problem4;
