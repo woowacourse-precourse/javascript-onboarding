@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록
+닉네임 두 글자 이상 중복 시 빼는 기능
+이메일 형식 구분 처리 기능
+이메일 11자 이상 20자 미만 처리 기능
+닉네임 한글인지 확인 기능
+최종반환시 이메일을 오름차순정렬, 중복제거 기능
