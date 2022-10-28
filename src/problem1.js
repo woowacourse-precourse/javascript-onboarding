@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  console.log("기본값",pobi, crong)
+  //console.log("기본값",pobi, crong)
   const N = 2;
 
   //실패 조건 검사
@@ -22,7 +22,7 @@ function problem1(pobi, crong) {
       pobi[i] = Math.floor(pobi[i] / 10);  
     } while (pobi[i] > 0);
     
-    console.log("포비분해",_pobinums)
+    //console.log("포비분해",_pobinums)
     pobinums.push(_pobinums)
 
     let _crongnums = [];
@@ -32,12 +32,12 @@ function problem1(pobi, crong) {
       crong[i] = Math.floor(crong[i] / 10);  
     } while (crong[i] > 0);
 
-    console.log("크롱분해",_crongnums)
+    //console.log("크롱분해",_crongnums)
     crongnums.push(_crongnums)
   }
   //포비/크롱 분해 완료
-  console.log("포비확인",pobinums)
-  console.log("크로확인",crongnums)
+  //console.log("포비확인",pobinums)
+  //console.log("크로확인",crongnums)
 
 
   let pobi_plus = [0, 0];
@@ -50,8 +50,8 @@ function problem1(pobi, crong) {
     }
   }
 
-  console.log("포비 더하기_1",pobi_plus[0])
-  console.log("포비 더하기_2",pobi_plus[1])
+  //console.log("포비 더하기_1",pobi_plus[0])
+  //console.log("포비 더하기_2",pobi_plus[1])
 
   let crong_plus = [0,0]
 
@@ -60,8 +60,8 @@ function problem1(pobi, crong) {
       crong_plus[i] += crongnums[i][j];
     }
   }
-  console.log("크롱 더하기_1",crong_plus[0])
-  console.log("크롱 더하기_2",crong_plus[1])
+  //console.log("크롱 더하기_1",crong_plus[0])
+  //console.log("크롱 더하기_2",crong_plus[1])
 
   let pobi_multiply = [1,1]
 
@@ -70,8 +70,8 @@ function problem1(pobi, crong) {
       pobi_multiply[i] *= pobinums[i][j];
     }
   }
-  console.log("포비 곱하기_1",pobi_multiply[0])
-  console.log("포비 곱하기_2",pobi_multiply[1])
+  //console.log("포비 곱하기_1",pobi_multiply[0])
+  //console.log("포비 곱하기_2",pobi_multiply[1])
   
   let crong_multiply = [1,1]
 
@@ -80,13 +80,13 @@ function problem1(pobi, crong) {
       crong_multiply[i] *= crongnums[i][j];
     }
   }
-  console.log("크롱 곱하기_1",crong_multiply[0])
-  console.log("크롱 곱하기_2",crong_multiply[1])
+  //console.log("크롱 곱하기_1",crong_multiply[0])
+  //console.log("크롱 곱하기_2",crong_multiply[1])
 
   let pobi_max = Math.max(Math.max(...pobi_plus), Math.max(...pobi_multiply))
   let crong_max = Math.max(Math.max(...crong_plus), Math.max(...crong_multiply))
 
-  console.log(pobi_max, crong_max)
+  //console.log(pobi_max, crong_max)
 
   let res
   if ( pobi_max < crong_max) {
