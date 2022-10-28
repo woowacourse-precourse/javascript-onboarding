@@ -19,6 +19,7 @@ function problem4(word) {
     }
   }
 
+  answer = replaceWord;
   return answer;
 }
 
