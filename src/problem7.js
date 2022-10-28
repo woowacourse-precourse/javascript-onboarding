@@ -14,9 +14,24 @@ function createUserFriendObject(user, friends) {
   return initialFriendObject;
 }
 
+function findFriendFollower(user, userFriendObject, friends) {
+  const userFriends = Object.keys(userFriendObject);
+  friends = friends.filter(friend => !friend.includes(user));
+  friends.forEach(friend => {
+    if (friend.some(person => userFriends.includes(person))) {
+      try {
+        userFriendObject[friend[0]].push(friend[1]);
+      } catch {
+        userFriendObject[friend[1]].push(friend[0]);
+      }
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const userFriendObject = createUserFriendObject(user, friends);
+  findFriendFollower(user, userFriendObject, friends);
   return answer;
 }
 
