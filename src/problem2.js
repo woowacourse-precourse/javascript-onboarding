@@ -19,12 +19,13 @@ function decipher(word) {
 
 // 중복 문자를 제거하고 다시 처음부터 루프를 도는 for loop
 function decrypto(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === arr[i + 1]) {
-      arr.splice(i, 2);
+  const strArr = [...arr];
+  for (let i = 0; i < strArr.length; i++) {
+    if (strArr[i] === strArr[i + 1]) {
+      strArr.splice(i, 2);
       i = -1;
     }
   }
 
-  return arr;
+  return strArr;
 }

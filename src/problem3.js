@@ -27,7 +27,7 @@ function calc(arr) {
 function gameStart(number) {
   const validate = isNumber(number);
   if (!validate) {
-    return false;
+    return;
   }
 
   let clap = 0;

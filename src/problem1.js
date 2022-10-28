@@ -29,8 +29,7 @@ function pageResult(arr) {
   const sumResult = arr.reduce((a, b) => a + b);
   const multipleResult = arr.reduce((a, b) => a * b);
 
-  if (sumResult > multipleResult) return sumResult;
-  else return multipleResult;
+  return sumResult > multipleResult ? sumResult : multipleResult;
 }
 
 //배열의 숫자를 처리 하는 함수 //
@@ -43,8 +42,7 @@ function calcPage(arr) {
   const startResult = pageResult(startPage);
   const nextResult = pageResult(nextPage); //숫자 배열에서 계산된 값중 높은값을 반환
 
-  if (startResult > nextResult) return startResult; // 높은 숫자를 리턴
-  else return nextResult; //
+  return startResult > nextResult ? startResult : nextResult; // 높은 숫자를 리턴
 }
 
 //메인 함수 answer 에 값을 반환하기 위한 함수
@@ -56,9 +54,13 @@ function resultCalc(pobi, crong) {
   const pobiNumber = calcPage(pobi);
   const crongNumber = calcPage(crong);
 
-  if (pobiNumber > crongNumber) return 1;
-  else if (crongNumber > pobiNumber) return 2;
-  else if (pobiNumber === crongNumber) return 0;
+  return pobiNumber > crongNumber
+    ? 1
+    : crongNumber > pobiNumber
+    ? 2
+    : pobiNumber === crongNumber
+    ? 0
+    : -1;
 }
 
 //페이지의 길이검사, 페이지의 연속성검사 , 페이지 범위 검사

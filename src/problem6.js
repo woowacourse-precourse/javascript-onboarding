@@ -57,8 +57,8 @@ function nicknamArray(arr, nickname) {
   let nickArr = [];
 
   arr.forEach((item, index) => {
-    const [, nickname] = item;
-    nickArr[index] = nickname;
+    const [, arrNick] = item;
+    nickArr[index] = arrNick;
   });
 
   nickArr.splice(nickArr.indexOf(nickname), 1);
