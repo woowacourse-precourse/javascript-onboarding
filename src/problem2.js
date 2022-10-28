@@ -6,6 +6,9 @@ function problem2(cryptogram) {
     //중복 되는 값이 없는 경우
     if (setArr[setArr.length - 1] !== cryptogram[i]) {
       setArr.push(cryptogram[i]);
+    } else {
+      // 중복되는 값이 있는 경우
+      setArr.pop();
     }
   }
 
