@@ -1,11 +1,11 @@
 function problem4(word) {
-  let seperate_word = word.split("");
   let ascii_word = [];
   let answer = [];
 
-  for (let i = 0; i < seperate_word.length; i++) {
-    ascii_word.push(seperate_word[i].charCodeAt());
+  for (let i = 0; i < word.length; i++) {
+    ascii_word.push(word[i].charCodeAt());
   }
+
   for (let j = 0; j < ascii_word.length; j++) {
     if (ascii_word[j] === 32) {
       answer.push(" ");
