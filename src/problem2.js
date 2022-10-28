@@ -1,4 +1,17 @@
-// 연속하는 중복 문자 삭제 결과 반환 기능
+function removeDuplicate(cryptogram) {
+  let removedDuplicate = '';
+  let cnt = 1;
+
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (cryptogram[i] === cryptogram[i + 1]) cnt++;
+    else {
+      if (cnt === 1) removedDuplicate += cryptogram[i];
+      cnt = 1;
+    }
+  }
+
+  return removedDuplicate;
+}
 
 function isDuplicate(cryptogram) {
   let check = false;
@@ -12,8 +25,11 @@ function isDuplicate(cryptogram) {
 
 function problem2(cryptogram) {
   let answer;
+  let crypto = cryptogram;
 
-  while (isDuplicate(crypto)) {}
+  while (isDuplicate(crypto)) {
+    crypto = removeDuplicate(crypto);
+  }
 
   return answer;
 }
