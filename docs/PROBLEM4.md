@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 🎯 TODO 리스트
+- 현재 character가 공백이면 변환하지 않는다 
+- 문자가 대문자인지 소문자인지 체크 
+- 문자를 반대로 변환 
