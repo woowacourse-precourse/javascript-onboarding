@@ -97,6 +97,29 @@ function problem1(pobi, crong) {
     crong_max = crong_max_odd;
   }
 
+  //pobi와 crong 수 비교
+  if (
+    pobi_max > crong_max &&
+    pobi[0] + 1 == pobi[1] &&
+    crong[0] + 1 == crong[1]
+  ) {
+    answer = 1;
+  } else if (
+    pobi_max < crong_max &&
+    pobi[0] + 1 == pobi[1] &&
+    crong[0] + 1 == crong[1]
+  ) {
+    answer = 2;
+  } else if (
+    pobi_max == crong_max &&
+    pobi[0] + 1 == pobi[1] &&
+    crong[0] + 1 == crong[1]
+  ) {
+    answer = 0;
+  } else {
+    answer = -1;
+  }
+
   return answer;
 }
 
