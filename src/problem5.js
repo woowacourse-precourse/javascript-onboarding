@@ -8,8 +8,14 @@ function getExchange(haveMoney, exchangeMoney) {
         exchangeCount: exchangeCount,
     };
 }
+
+console.log(problem5(15000));
+
 function problem5(money) {
     return exchange.map((toChange) => {
+        if (money === 0) {
+            return 0;
+        }
         const moneyInfo = getExchange(money, toChange);
         money = moneyInfo.haveMoney;
         return moneyInfo.exchangeCount;
