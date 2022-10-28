@@ -41,6 +41,26 @@ function validTest(firstValue, secondValue) {
   return 0;
 }
 
+function getAddValue(value) {
+  let ret = 0;
+
+  while (value > 0) {
+    ret += value % 10;
+    value = parseInt(value / 10);
+  }
+  return ret;
+}
+
+function getMultipleValue(value) {
+  let ret = 1;
+
+  while (value > 0) {
+    ret *= value % 10;
+    value = parseInt(value / 10);
+  }
+  return ret;
+}
+
 function problem1(pobi, crong) {
   if (validTest(pobi, crong) < 0) {
     return -1;
