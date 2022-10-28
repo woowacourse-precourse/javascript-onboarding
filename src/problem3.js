@@ -1,14 +1,14 @@
 function problem3(number) {
-  if (inputExecption(number)) {
+  if (!inputExecption(number)) return false;
     var answer;
     answer = clapCnt(number);
     return answer;
-  }
 }
 
 function inputExecption(num) {
   let inputCheck = true;
   if (num < 1 || num > 1000) inputCheck = false;
+  if (num == null) inputCheck = false;
   return inputCheck;
 }
 
@@ -21,5 +21,5 @@ function clapCnt(num) {
   return cnt;
 }
 
-console.log(problem3());
+console.log(problem3(10000));
 module.exports = problem3;
