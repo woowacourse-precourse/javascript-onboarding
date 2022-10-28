@@ -1,14 +1,14 @@
 function problem7(user, friends, visitors) {
     let answer = [];
-    const userFriendAndUser = []
+    const userFriends = []
     const userMap = new Map();
     
     friends.forEach(friend => {
         if (friend[0] === user) {
-            userFriendAndUser.push(friend[1]);
+            userFriends.push(friend[1]);
         }
         if (friend[1] === user) {
-            userFriendAndUser.push(friend[0]);
+            userFriends.push(friend[0]);
         }
         if (friend[0] === user || friend[1] === user) {
             return;
@@ -22,17 +22,17 @@ function problem7(user, friends, visitors) {
     })
     
     //이미 친구인 유저 삭제
-    userFriendAndUser.forEach(exceptionPeople => {
+    userFriends.forEach(exceptionPeople => {
         userMap.delete(exceptionPeople);
     })
     
     //가까운 친구 점수 추가
     for (let targetUser of userMap) {
         friends.forEach(friend => {
-            if (friend[0] === targetUser[0] && userFriendAndUser.includes(friend[1])) {
+            if (friend[0] === targetUser[0] && userFriends.includes(friend[1])) {
                 userMap.set(targetUser[0], targetUser[1] + 10)
             }
-            if (friend[1] === targetUser[0] && userFriendAndUser.includes(friend[0])) {
+            if (friend[1] === targetUser[0] && userFriends.includes(friend[0])) {
                 userMap.set(targetUser[0], targetUser[1] + 10)
             }
         });
