@@ -18,6 +18,7 @@ function problem6(forms) {
   for(let i=0; i<len; ++i){
     if(duplMails[i]) duplMails[i] = forms[i][0];
   }
+  answer = duplMails.filter(e=>e!=0).sort();
   return answer;
 }
 
