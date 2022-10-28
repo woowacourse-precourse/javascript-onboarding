@@ -40,5 +40,10 @@ function getLargerPageCalc(page) {
 
   return larger;
 }
+function getLargestPage(pageLeft, pageRight) {
+  const largestLeft = getLargerPageCalc(pageLeft);
+  const largestRight = getLargerPageCalc(pageRight);
+  return compare(largestLeft, largestRight);
+}
 
 module.exports = problem1;
