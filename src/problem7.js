@@ -29,4 +29,11 @@ const getRecommendedFriendList = (userName, relationshipTable) => {
   return recommendedFriendList;
 };
 
+// 기능 3번
+const addRecommendedScoreByFriendList = (scoreTable, friendList, addScore) => {
+  for (const friendName of friendList) {
+    scoreTable[friendName] = (scoreTable[friendName] || 0) + addScore;
+  }
+};
+
 module.exports = problem7;
