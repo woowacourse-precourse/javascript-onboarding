@@ -1,6 +1,5 @@
 const game369 = {
   endNumber: 0,
-  count: 0,
   inputEndNumber: function (number) {
     if (!this.checkNumber(number)) {
       return false;
@@ -10,11 +9,11 @@ const game369 = {
   checkNumber: function (number) {
     return number >= 1 && number <= 100000;
   },
-  allCount369: function (number) {
-    for (var i = 1; i <= number; i++) {
-      this.count += this.count369(i);
+  allCount369: function () {
+    let count = 0;
+    for (var i = 1; i <= this.endNumber; i++) {
+      count += this.count369(i);
     }
-    return this.count;
   },
   count369: function (number) {
     return String(number)
@@ -27,8 +26,8 @@ const game369 = {
 };
 
 function problem3(number) {
-  var answer;
-  return answer;
+  game369.inputEndNumber(number);
+  return game369.allCount369();
 }
 
 module.exports = problem3;
