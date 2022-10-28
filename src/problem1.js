@@ -20,14 +20,14 @@ function findMaxNum(user) {
       // 배열안에 각 자리의 숫자를 담기
       .map((el) => String(el).split(""))
       .reduce((acc, cur) => {
-        return Math.max(
-          acc.reduce((acc, cur) => Number(acc) + Number(cur)),
-          acc.reduce((acc, cur) => Number(acc) * Number(cur)),
-          cur.reduce((acc, cur) => Number(acc) + Number(cur)),
-          cur.reduce((acc, cur) => Number(acc) * Number(cur))
-        );
+        return Math.max(sum(acc), sum(cur));
       })
   );
+}
+
+// 자릿수를 더하는 함수
+function sum(arr) {
+  return arr.reduce((acc, cur) => Number(acc) + Number(cur));
 }
 
 function problem1(pobi, crong) {
@@ -37,7 +37,7 @@ function problem1(pobi, crong) {
 
   // 승패 결과 처리하기 (포비 1, 크롱 2, 무승부 0, 예외사항 -1)
   if (!validate(pobi) || !validate(crong)) answer = -1;
-  else if (pobiMax > crongMax) answer = 1;
+  else if (pobiMax - crongMax) answer = 1;
   else if (pobiMax < crongMax) answer = 2;
   else answer = 0;
 
