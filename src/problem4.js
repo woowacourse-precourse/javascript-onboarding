@@ -40,6 +40,12 @@ function getOppositeAlphabet(word) {
     return word;
 }
 
-function problem4(word) {}
+function problem4(word) {
+    let answer = "";
+    for (let value of word) {
+        answer += getOppositeAlphabet(value);
+    }
+    return answer;
+}
 
 module.exports = problem4;
