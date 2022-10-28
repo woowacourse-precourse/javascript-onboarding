@@ -10,6 +10,8 @@ function deduplication(str, regex) {
 // solution
 function solution(cryptogram) {
   const regex = /([a-z])\1+/g;
+  const result = deduplication(cryptogram, regex);
+  return result;
 }
 
 function problem2(cryptogram) {
