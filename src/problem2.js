@@ -18,7 +18,7 @@ function encoding(encoded) {
       break;
     }
   }
-  return newEncoded
+  return newEncoded;
 }
 
 module.exports = problem2;

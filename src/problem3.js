@@ -11,7 +11,7 @@ function getClap(current) {
   current.toString().split('').forEach((char) => {
     clap += '369'.includes(char);
   })
-  return clap
+  return clap;
 }
 
 module.exports = problem3;

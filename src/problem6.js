@@ -1,5 +1,5 @@
 function problem6(forms) {
-  let log = {}
+  let log = {};
   for (let i = 0; i < forms.length; i++) {
     const [, nickname] = forms[i];
     for (let j = 0; j < nickname.length - 1; j++) {

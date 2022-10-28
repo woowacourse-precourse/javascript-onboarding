@@ -19,7 +19,7 @@ function problem1(pobi, crong) {
 }
 
 function valid([left, right]) {
-  return right - left === 1 && left % 2 === 1 && right % 2 === 0
+  return right - left === 1 && left % 2 === 1 && right % 2 === 0;
 }
 
 function getPoint([left, right]) {
