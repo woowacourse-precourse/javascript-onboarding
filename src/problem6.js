@@ -21,6 +21,9 @@ function problem6(forms) {
   //기능목록 2-1 구현
   let result = new Set();
   for (let i = 0; i < forms.length; i++) {
+    //예외처리
+    //기능목록 3-1 구현
+    if (forms[i][0].match(/@email.com/) === null) continue;
     for (let j = 0; j < forms.length; j++) {
       if (i === j) continue;
       if (isRepeat(forms[i][1], forms[j][1]))
