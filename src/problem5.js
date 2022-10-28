@@ -7,6 +7,7 @@ function problem5(money) {
   moneyUnit.forEach((unit, index) => {
     if (price >= unit) {
       const count = Math.floor(price / unit);
+      answer[index] = count;
     }
   });
 
