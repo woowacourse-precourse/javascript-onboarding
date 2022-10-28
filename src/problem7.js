@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
 	const friendLists = new Map()
+	const scores = new Map()
 
 	friends.map(([userA, userB]) => {
 		if (friendLists.has(userA)) {
