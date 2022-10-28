@@ -10,7 +10,20 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  console.log(current_friends);
+
+  // 추천 친구 목록 만들기
+  let recommendations = [];
+  for (let i = 0; i < current_friends.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      for (let k = 0; k < 2; k++) {
+        // 사용자 친구의 친구 찾기
+        if (current_friends[i] == friends[j][k]) {
+          // 추천 목록에 있는 사람인지 확인
+        }
+      }
+    }
+  }
+
   return answer;
 }
 
