@@ -1,19 +1,15 @@
 function problem1(pobi, crong) {
-  var answer;
-
   // 잘못된 페이지인 경우 -1리턴
   if (!isRightPage(pobi) || !isRightPage(crong)) {
     return -1
   }
 
   // 각자의 점수 계산 함수
-  pobiScore=scoreCount(pobi)
-  crongScore=scoreCount(crong)
+  let pobiScore=scoreCount(pobi)
+  let crongScore=scoreCount(crong)
 
   // pobiScore와 crongScore를 비교하여 answer에 값을 넣고 리턴하기
-  if (pobiScore>crongScore) answer=1;
-  else if (pobiScore<crongScore) answer=2;
-  else answer=0;
+  let answer = (pobiScore>crongScore) ? 1 : ((pobiScore<crongScore) ? 2 : 0);
   
   return answer;
 }
@@ -25,7 +21,7 @@ function isRightPage(pages) {
 }
 
 function scoreCount(pages) {
-  finalScore=0
+  let finalScore=0
   pages.forEach((page)=> {
     let addScore=0, mulScore=1;
     do {
@@ -38,8 +34,4 @@ function scoreCount(pages) {
   return finalScore
 }
 
-console.log(problem1([131, 132],[211, 212]))
-
-
-
-// module.exports = problem1;
+module.exports = problem1;
