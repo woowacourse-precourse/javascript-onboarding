@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const { userFriends, userFriendsScore } = getUserFriendScroe(user, friends, visitors);
   const usersResultScore = sortUsers(getUserVisitorScore(userFriends, userFriendsScore, visitors));
+  return getAnswer(usersResultScore);
 }
 
 const getUserFriendScroe = (user, friends) => {
@@ -57,6 +58,16 @@ const sortUsers = (users) => {
     }
     return scoreA > scoreB ? -1 : 1;
   });
+};
+
+const getAnswer = (usersResultScore) => {
+  const answer = [];
+  usersResultScore.forEach((user) => {
+    if (user[1] !== 0) {
+      answer.push(user[0]);
+    }
+  });
+  return answer.slice(0, 5);
 };
 
 module.exports = problem7;
