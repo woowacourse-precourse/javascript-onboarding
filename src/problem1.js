@@ -23,4 +23,13 @@ function multiplyDigits(num) {
   return multiplyResult;
 }
 
+function selectWinner(pobi, crong) {
+  const pobiNumber = Math.max(sumDigits(pobi[0]), sumDigits(pobi[1]), multiplyDigits(pobi[0]), multiplyDigits(pobi[1]));
+  const crongNumber = Math.max(sumDigits(crong[0]), sumDigits(crong[1]), multiplyDigits(crong[0]), multiplyDigits(crong[1]));
+
+  if (pobiNumber == crongNumber) return 0;
+  else if (pobiNumber > crongNumber) return 1;
+  else return 2;
+}
+
 module.exports = problem1;
