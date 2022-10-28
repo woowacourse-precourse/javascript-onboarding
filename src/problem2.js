@@ -6,6 +6,13 @@
 
 function problem2(cryptogram) {
   const regex = /(\w)\1+/g;
+
+  let result = cryptogram;
+  while (regex.test(result)) {
+    result = result.replace(regex, "");
+  }
+
+  return result;
 }
 
 module.exports = problem2;
