@@ -22,6 +22,14 @@ function getValue(a){
   return compareValue(l, r);
 }
 
+function exceptHandling(a){
+  if(a[0]===1 && a[1]===2) return 0;
+  else if(a[0]===399 && a[1]===400) return 0;
+
+  if((a[1]-a[0])<=0) return 0;
+
+  if((a[1]-a[0])>=2) return 0;
+}
 
 function problem1(pobi, crong) {
   var answer;
