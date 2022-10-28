@@ -55,7 +55,8 @@ function getWinner(pobiScore, crongScore) {
   return pobiScore > crongScore ? 1 : 2;
 }
 
-function problem1(pobi, crong) {
+// solution
+function solution(pobi, crong) {
   if (!validatePages(pobi, crong)) {
     return -1;
   }
@@ -69,7 +70,12 @@ function problem1(pobi, crong) {
     addNumbers(splitedCrong),
     multiplyNumbers(splitedCrong)
   );
-  const answer = getWinner(pobiScore, crongScore);
+  const result = getWinner(pobiScore, crongScore);
+  return result;
+}
+
+function problem1(pobi, crong) {
+  const answer = solution(pobi, crong);
   return answer;
 }
 
