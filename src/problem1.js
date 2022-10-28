@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   let answer;
+
   return answer;
 }
 
@@ -11,6 +12,17 @@ function getAddedScore(pages) {
     String(pages[1])
       .split("")
       .reduce((acc, cur) => acc + +cur, 0)
+  );
+}
+
+function getMultipliedScore(pages) {
+  return Math.max(
+    String(pages[0])
+      .split("")
+      .reduce((acc, cur) => acc * +cur, 1),
+    String(pages[1])
+      .split("")
+      .reduce((acc, cur) => acc * +cur, 1)
   );
 }
 
