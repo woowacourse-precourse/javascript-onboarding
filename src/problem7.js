@@ -57,6 +57,7 @@ function scoreCandidates(friends, visitors, friendsOfUser) {
   return candidatesArray;
 }
 
+//이름순 정렬
 function sortCandidatesArray(candidatesArray) {
   let newArray = candidatesArray.sort((prev, cur) => {
     if (prev[1] > cur[1]) return -1;
@@ -64,6 +65,18 @@ function sortCandidatesArray(candidatesArray) {
   });
 
   return newArray;
+}
+
+function getRecommendFriends(candidatesArray) {
+  let recommendFriends = [];
+
+  if (candidatesArray.length > 5) {
+    candidatesArray.slice(0, 4);
+  }
+  candidatesArray.map((candidate) => {
+    recommendFriends.push(candidate[0]);
+  });
+  return recommendFriends;
 }
 
 module.exports = problem7;
