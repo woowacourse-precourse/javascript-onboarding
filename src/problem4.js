@@ -8,8 +8,20 @@
 */
 
 function problem4(word) {
-  var answer;
-  return answer;
+  const lowerCases = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  const upperCases = lowerCases.map((alphabet) => alphabet.toUpperCase());
+
+  return Array.from(word)
+    .map((chr) => {
+      if (!isAlphabet(chr)) {
+        return chr;
+      } else if (lowerCases.includes(chr)) {
+        return reverseAlphabet(chr, lowerCases, 122);
+      } else {
+        return reverseAlphabet(chr, upperCases, 90);
+      }
+    })
+    .join("");
 }
 
 const isAlphabet = (chr) => {
