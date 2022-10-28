@@ -1,5 +1,8 @@
 function problem6(forms) {
-  var answer;
+  var answer=answerEmailList(forms);
+  if(!error(forms)){
+    throw new Error('제한사항을 확인하세요.');
+  }
   return answer;
 }
 
