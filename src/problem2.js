@@ -10,7 +10,10 @@ function problem2(cryptogram) {
       stack = stack.slice(0, stack.length - 1);
       recentDeletedCahr = char;
     }
-    if (recentDeletedCahr !== char) stack += char;
+    if (recentDeletedCahr !== char) {
+      stack += char;
+      recentDeletedCahr = "";
+    }
   });
 
   return stack;
