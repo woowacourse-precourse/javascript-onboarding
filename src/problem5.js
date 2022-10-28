@@ -8,6 +8,10 @@ function problem5(money) {
     return quotient;
   }
 
+  for (let i = 0; i < unit.length; i++) {
+    let count = takeOutMoney(unit[i]);
+    result.push(count);
+  }
   return result;
 }
 
