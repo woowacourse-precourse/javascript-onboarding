@@ -13,9 +13,42 @@ const getUserFriends = (user, friends) => {
   return userFriends;
 };
 
+const getScores = (user, friends, visitors) => {
+  const scores = {};
+  const userFriends = getUserFriends(user,friends);
+
+  userFriends.forEach((friend) => {
+    const mutualFriends = getUserFriends(friend, friends);
+    mutualFriends.forEach((mutualFriend) => {
+      if (mutualFriend === user) {
+        return;
+      }
+      if (scores[mutualFriend] === undefined) {
+        scores[mutualFriend] = 10;
+      }
+      if (scores[mutualFriend] !== undefined) {
+        scores[mutualFriend] += 10;
+      }
+    });
+  });
+
+  visitors.forEach((visitor) => {
+    if (userFriends.includes(visitor)) {
+      return;
+    }
+    if (scores[visitor] === undefined) {
+      scores[visitor] = 1;
+      return;
+    }
+    scores[visitor] += 1;
+  });
+
+  return scores;
+};
+
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const scores = getScores(user, friends, visitors);
+  
 }
 
 module.exports = problem7;
