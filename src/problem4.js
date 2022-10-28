@@ -1,4 +1,4 @@
-function addChangedWord(ans, newWordASCII) {
+function addChangedWord(newWordASCII, ans) {
   const newWord = String.fromCharCode(newWordASCII);
 
   ans.push(newWord);
@@ -7,25 +7,27 @@ function addChangedWord(ans, newWordASCII) {
 function changeUpper(oneWordASCII, ans) {
   const newWordASCII = 90 - (oneWordASCII - 65);
 
-  addChangedWord(ans, newWordASCII);
+  addChangedWord(newWordASCII, ans);
 }
 
 function changeLower(oneWordASCII, ans) {
   const newWordASCII = 122 - (oneWordASCII - 97);
 
-  addChangedWord(ans, newWordASCII);
+  addChangedWord(newWordASCII, ans);
 }
 
 function checkUpperOrLower(oneWordASCII, ans) {
   if (oneWordASCII >= 65 && oneWordASCII <= 90) {
     changeUpper(oneWordASCII, ans);
-  } else if (oneWordASCII >= 97 && oneWordASCII <= 122) {
+  }
+
+  if (oneWordASCII >= 97 && oneWordASCII <= 122) {
     changeLower(oneWordASCII, ans);
   }
 }
 
 function checkAlphabet(ans, word) {
-  const regex = /^[a-z|A-Z]+$/g;
+  const regex = /^[a-z|A-Z]+$/;
 
   if (!regex.test(word)) {
     ans.push(word);
