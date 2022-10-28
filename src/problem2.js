@@ -9,6 +9,7 @@ function decryption(cryptogram) {
     if (!stack) stack.push(cryptogram[index]);
     else {
       if (stack[stack.length - 1] == cryptogram[index]) {
+        index = progressIndex(cryptogram, index, cryptogram[index]) - 1;
         stack.pop();
       } else {
         stack.push(cryptogram[index]);
@@ -16,5 +17,9 @@ function decryption(cryptogram) {
     }
     index++;
   }
+}
+function progressIndex(cryptogram, index, targetChar) {
+  while (cryptogram[index] == targetChar) index++;
+  return index;
 }
 module.exports = problem2;
