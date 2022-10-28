@@ -1,6 +1,6 @@
 function problem3(number) {
-  if (!inputValidCheck(number)) {
-    return 'error'
+  if (incorrectInput(number)) {
+    return 0
   }
   const regEx = /[369]/g;
   const array = Array(number).fill()
@@ -10,13 +10,14 @@ function problem3(number) {
   .join('')
   .match(/@/g);
   
-  return array.length
+  return array.length;
 }
 
-function inputValidCheck(number) {
-  if(number < 1 || number > 1000) return false;
-  if(!Number.isInteger(number)) return false;
-  return true
+function incorrectInput(number) {
+  if(number < 1 || number > 1000) return true;
+  if(!Number.isInteger(number)) return true;
+  if(number < 3) return true
+  return false
 }
 
 module.exports = problem3;
