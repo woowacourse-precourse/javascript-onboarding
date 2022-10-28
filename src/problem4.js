@@ -16,7 +16,13 @@ function getOpposite(letter) {
 }
 
 function problem4(word) {
+  const wordArray = [...word];
   let answer = '';
+
+  wordArray.forEach((letter) => {
+    answer += getOpposite(letter);
+  });
+
   return answer;
 }
 
