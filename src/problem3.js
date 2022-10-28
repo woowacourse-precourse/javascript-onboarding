@@ -14,7 +14,7 @@ function countClap(number) {
     .toString()
     .split("")
     .map((num) => {
-      if (["3", "6", "9"].includes(num)) count += 1;
+      if (["3", "6", "9"].includes(num)) count++;
     });
 
   return count;
