@@ -1,6 +1,7 @@
 function problem6(forms) {
   let members = [...forms];
   let membersName = [];
+  let resultEmail = [];
 
   for (let i = 0; i < members.length; i++) {
     membersName.push(members[i][1]);
@@ -24,6 +25,26 @@ function problem6(forms) {
     let result = [...new Set(findWords)];
     return result;
   };
+
+  // 연속된 단어 포함된 닉네임의 이메일 찾기
+  let doubledList = findDoubled(membersName);
+
+  for (let i = 0; i < membersName.length; i++) {
+    for (let j = 0; j < doubledList.length; j++) {
+      if (membersName[i].includes(doubledList[j])) {
+        resultEmail.push(members[i][0]);
+      }
+    }
+  }
+
+  // 찾은 이메일 오름치순, 중복 제거
+  let result = [...new Set(resultEmail.sort())];
+  console.log(resultEmail);
+  console.log(result);
+  console.log(membersName);
+
+  console.log(members);
+  return result;
 }
 
 module.exports = problem6;
