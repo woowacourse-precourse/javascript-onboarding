@@ -15,8 +15,20 @@ function checkCommonSubstring(word1, word2) {
 }
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const continuousNicknames = new Set();
+
+  for (let i = 0; i < forms.length; i += 1) {
+    for (let j = i + 1; j < forms.length; j += 1) {
+      const commonSubstring = checkCommonSubstring(forms[i][1], forms[j][1]);
+
+      if (commonSubstring) {
+        continuousNicknames.add(forms[i][0]);
+        continuousNicknames.add(forms[j][0]);
+      }
+    }
+  }
+
+  return [...continuousNicknames].sort((a, b) => a.localeCompare(b));
 }
 
 module.exports = problem6;
