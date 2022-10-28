@@ -1,5 +1,15 @@
 function problem6(forms) {
   let answer = [];
+  const CREW_LIMIT = [1, 10000];
+
+  // - [x] 크루는 1명 이상 10,000명 이하이다.
+  const checkLimitCrew = (count) => {
+    const [min, max] = CREW_LIMIT;
+    return count >= min && count <= max;
+  };
+  if (!checkLimitCrew(forms.length)) {
+    throw new Error('크루는 1명 이상 10,000명 이하이다.');
+  }
 
   // - [x] 닉네임에 두 글자 이상의 문자가 연속적으로 포함되어 있는 경우 반환하기.
   const getOverlappings = (word, wordIdx) => {
@@ -19,7 +29,6 @@ function problem6(forms) {
     return value;
   };
 
-  // - [ ] 크루는 1명 이상 10,000명 이하이다.
   const initProcess = () => {
     const value = [];
     forms.forEach(([email, nickname], idx) => {
