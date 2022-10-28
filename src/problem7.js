@@ -36,4 +36,13 @@ const addRecommendedScoreByFriendList = (scoreTable, friendList, addScore) => {
   }
 };
 
+// 기능 4번
+const objectToArray = (obj) => {
+  const arr = [];
+  for (const key of Object.keys(obj)) {
+    arr.push([key, obj[key]]);
+  }
+  return arr;
+};
+
 module.exports = problem7;
