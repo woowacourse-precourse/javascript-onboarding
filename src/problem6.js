@@ -19,18 +19,22 @@ function problem6(forms) {
 
   forms.forEach((form, idx) => {
     const [email, name] = form;
-    
-    for (let i =0; i<name.length - 1; i++) {
-      const slicedName = `${name.slice(i,i+2)}`;
-      
+
+    for (let i = 0; i < name.length - 1; i++) {
+      const slicedName = `${name.slice(i, i + 2)}`;
+
       if (isFirstCrew(idx, answer, email)) answer.push(email);
-      else if (isContainSameLetters(tokens, slicedName) && checkIsDoubled(email, answer)) answer.push(email);
-      
+      else if (
+        isContainSameLetters(tokens, slicedName) &&
+        checkIsDoubled(email, answer)
+      )
+        answer.push(email);
+
       checkIsDoubled(slicedName, tokens) && tokens.push(slicedName);
     }
-  })
+  });
 
-  answer =answer.sort();
+  answer = answer.sort();
   return answer;
 }
 
