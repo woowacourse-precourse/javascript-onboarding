@@ -9,16 +9,21 @@
  * 1. 1 ~ 10000 이하의 자연수
  */
 
-// 정수를 digit 단위로 쪼개서 배열로 반횐
-const getNumToDigitArr = num => String(num).split("")
+const isOutOfRange = num => {
+  return !(num >= 1 && num <= 10000)
+}
 
 function problem3(number) {
   var answer = 0;
-  var i;
+  var turn;
   var targets = [3, 6, 9]
 
-  for (i = 1; i <= number; i++) {
-    getNumToDigitArr(i).map((digit) => {
+  if (isOutOfRange(number)) {
+    throw 'Input range error'
+  }
+
+  for (turn = 1; turn <= number; turn++) {
+    String(turn).split("").map((digit) => {
       if(targets.includes(Number(digit))) answer += 1
     })
   }
