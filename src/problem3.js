@@ -16,7 +16,7 @@ function is369(digit) {
  * @returns {int} number of 3, 6, 9 in given number
  */
 function count369InNumber(number) {
-  let count = number
+  const count = number
     .toString()
     .split("")
     .reduce((a, b) => (is369(b) ? a + 1 : a), 0);
@@ -26,6 +26,7 @@ function count369InNumber(number) {
 function problem3(number) {
   var answer;
 
+  answer = 0;
   for (let i = 1; i <= number; i++) {
     answer += count369InNumber(i);
   }
