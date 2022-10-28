@@ -71,6 +71,21 @@ function problem1(pobi, crong) {
   const IsPobiLeftOver = new LeftOverPage(pobi.leftPage)
   const IsCrongLeftOver = new LeftOverPage(crong.leftPage)
 
+  class RightOverPage {
+    constructor({rightPage}) {
+      this.rightPage
+    }
+    IsLeftOverPage() {
+      if(this.rightPage > 400) {
+        return false
+      }
+      return true
+    }
+  }
+  
+  const IsPobiRightver = new RightOverPage(pobi.rightPage)
+  const IsCrongRightOver = new RightOverPage(crong.rightPage)
+
   
   return answer;
 }
