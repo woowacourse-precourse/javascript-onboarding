@@ -1,17 +1,15 @@
 function deleteDuplicatedWord(wordsArray) {
   let count = 1;
-  let index = 0;
   let targetIndex = [];
 
-  while (index < wordsArray.length) {
-    if (wordsArray[index] == wordsArray[index + 1]) {
-      while (wordsArray[index] == wordsArray[index + count]) {
+  wordsArray.map((word, index) => {
+    if (word == wordsArray[index + 1]) {
+      while (word == wordsArray[index + count]) {
         count++;
       }
-      targetIndex.push(wordsArray[index].repeat(count));
+      targetIndex.push(word.repeat(count));
     }
-    index++;
-  }
+  });
 
   let newWord = wordsArray.join("");
 
@@ -23,13 +21,14 @@ function deleteDuplicatedWord(wordsArray) {
 }
 
 function isUniqueWords(wordsArray) {
-  let flag = true;
+  let isUnique = true;
+
   wordsArray.map((word, index) => {
     if (word == wordsArray[index + 1]) {
-      flag = false;
+      isUnique = false;
     }
   });
-  return flag;
+  return isUnique;
 }
 
 function problem2(cryptogram) {
