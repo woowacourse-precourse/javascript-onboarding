@@ -1,5 +1,5 @@
 function problem4(word) {
-  let letters = []
+  let letters = [];
   
   for(let i = 0; i < word.length; i++){
     if(word[i] === " "){
@@ -15,7 +15,6 @@ function problem4(word) {
   }
 
   const answer = letters.join('');
-
   return answer;
 }
 
