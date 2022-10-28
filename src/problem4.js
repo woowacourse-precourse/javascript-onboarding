@@ -17,4 +17,8 @@ const isAlphabet = (chr) => {
   return regExp.test(chr);
 };
 
+const reverseAlphabet = (alphabet, cases, lastAsciiCode) => {
+  return cases[lastAsciiCode - alphabet.charCodeAt(0)];
+};
+
 module.exports = problem4;
