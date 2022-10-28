@@ -19,7 +19,7 @@ const isLengthError = (player1, player2) => {
   return (player1.length !== 2 || player2.length !== 2)
 }
 // Exception 2
-const isRangeError = page => {
+const isOutOfRange = page => {
   return !(page > 2 && page < 399)
 }
 // Exception 3
@@ -53,8 +53,8 @@ const getMaxValOnPages = pages => {
   
   if (
     isDisorder(pages[0], pages[1]) || 
-    isRangeError(pages[0]) || 
-    isRangeError(pages[1]) ||
+    isOutOfRange(pages[0]) || 
+    isOutOfRange(pages[1]) ||
     !(isFirstPageOdd(pages[0]))
   ) {
     isExceptions = true;
