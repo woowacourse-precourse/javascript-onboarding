@@ -1,7 +1,21 @@
 function problem5(money) {
+  const checkedError = checkError(money);
+
+  if (checkedError !== "Not Error") {
+    return checkedError;
+  }
+
   const result = countByBillUnit(money);
 
   return result;
+}
+
+function checkError(currentMoney) {
+  if (!Number.isInteger(currentMoney)) {
+    return "money는 자연수이어야 합니다.";
+  }
+
+  return "Not Error";
 }
 
 function countByBillUnit(currentMoney) {
