@@ -5,7 +5,7 @@ const clapNumber = {
 }
 
 function problem3(number) {
-    var answer = 0;
+    let answer = 0;
     
     for (let i = 1 ; i < number + 1 ; i ++) {
         let current = i;

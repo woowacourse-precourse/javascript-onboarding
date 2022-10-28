@@ -11,7 +11,7 @@ const winnerCount = {
 }
 
 function problem1(pobi, crong) {
-    var answer = winnerCount.tie;
+    let answer = winnerCount.tie;
     
     function getPlusNum(targetPage) {
         return [...String(targetPage)].reduce((acc, cur) => Number(acc) + Number(cur));
