@@ -17,6 +17,18 @@ const getMaxFromAddSum = arr => {
 }
 
 /**
+* 길이가 2인 배열을 넣으면 그 곱을 리턴해주는 함수.
+* @param {array} arr 입력된 배열
+* @returns {number}곱 결과 리턴
+*/
+const getMaxFromMultiplySum = (arr) =>{
+  const result = arr.map( ele => 
+      String(ele).split('').reduce((acc,cur)=> acc * parseInt(cur), 1)
+);
+  return  result[0] > result[1] ? result[0] : result[1];
+}
+
+/**
  * 받은 배열이 유효한지 확인하는 함수.
  * @param {array} arr 
  * @returns {boolean}
