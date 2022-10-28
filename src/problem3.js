@@ -1,3 +1,11 @@
+function checkNumberRange(number) {
+  if (number < 1 || number > 10000) {
+    return false;
+  }
+
+  return true;
+}
+
 function check369(splitedNum) {
   let snap = 0;
 
@@ -15,6 +23,10 @@ function check369(splitedNum) {
 }
 
 function problem3(number) {
+  if (!checkNumberRange(number)) {
+    return;
+  }
+
   let snapSum = 0;
 
   for (let i = 1; i <= number; i++) {
