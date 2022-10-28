@@ -86,7 +86,7 @@
         { id: "bedi", score: 3, isFriend: false },
       ];
       ```
-   4. score가 높은 최대 5명을 추출 (0점 제외)
+   4. filter(score > 0 && isNotFriend)
       ```jsx
       // 기대 결과
       [
@@ -95,7 +95,7 @@
         { id: "bedi", score: 3, isFriend: false },
       ];
       ```
-   5. score 높은 순+이름 순으로 id 정렬, 반환
+   5. score 높은 순+이름 순으로 id 정렬(최대 5명), 반환
       ```jsx
       // 기대 결과
       ["andole", "jun", "bedi"];
