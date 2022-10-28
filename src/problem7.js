@@ -78,6 +78,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let i = 0; i < visitors.length; i++) {
+    for (let z = 0; z < friendPoint.length; z++) {
+      if (visitors[i] == friendPoint[z][0]) {
+        friendPoint[z][1] += 1;
+      }
+    }
+  }
+
   return answer;
 }
 module.exports = problem7;
