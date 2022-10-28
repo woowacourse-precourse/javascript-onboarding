@@ -27,12 +27,28 @@ function findConvertibleUnitIndex(money) {
 }
 
 /**
-* @param {number} money
-* @returns {number[]} result (an array of length 9)
-*/
+ * @param {number} money
+ * @returns {number[]} result (an array of length 9)
+ */
+function convertMoney(money) {
+  const units = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let result = money;
+  while (result > 0) {
+    const convertibleUnitIndex = findConvertibleUnitIndex(result);
+    const convertibleUnit = MONEY_UNITS[convertibleUnitIndex];
+    units[convertibleUnitIndex] = Math.floor(result / convertibleUnit);
+    result %= convertibleUnit;
+  }
+  return units;
+}
+
+/**
+ * @param {number} money
+ * @returns {number[]} result (an array of length 9)
+ */
 function problem5(money) {
-  var answer;
-  return answer;
+  const result = convertMoney(money);
+  return result;
 }
 
 module.exports = problem5;
