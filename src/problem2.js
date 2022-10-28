@@ -8,28 +8,50 @@ function problem2(cryptogram) {
     return -1;
   }
 
-  while (1) {
+  do {
     // 중복되는 index 값을 얻는다.
-    const duplicatedindex = getDuplictatedindex(cryptogram);
-    if (duplicatedindex === -1) break;
-    const count = getCount(cryptogram, duplicatedindex);
-    cryptogram.splice(duplicatedindex, count);
-  }
+    let arr = cryptogram.split("");
+    const duplicatedindex = getDuplictatedindex(arr);
+    console.log(arr.length);
+    console.log(duplicatedindex);
 
-  return cryptogram;
+    let count = getCount(arr, duplicatedindex);
+    console.log(count);
+    console.log(arr);
+    arr.join("");
+  } while (duplicatedindex !== -1);
+
+  return arr;
 }
 
 // 중복된 문자가 있는 index 값을 얻는 함수
-function getDuplictatedindex(cryptogram) {
-  for (let i = 0; i < cryptogram.length; i++) {
-    if (cryptogram[i] === cryptogram[i + 1]) {
+function getDuplictatedindex(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
       return i;
     }
-    return -1;
+    if (i === arr.length - 1) {
+      return -1;
+    }
   }
 }
 
 // 중복된 문자로부터 몇 개까지 중복인지 count 값을 얻는 함수
-function getCount(cryptogram, duplicatedindex) {}
+function getCount(cryptogram, duplicatedindex) {
+  let count = 1;
+  for (let i = duplicatedindex; i < cryptogram.length; i++) {
+    if (cryptogram[i + 1] === cryptogram[i + 2]) {
+      count++;
+      continue;
+    }
+    if (cryptogram[i + 1] !== cryptogram[i + 2]) {
+      break;
+    }
+  }
+  return count;
+}
 
 module.exports = problem2;
+
+// 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+// b r o w o a n o o m  m  n  a  o  n
