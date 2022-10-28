@@ -21,3 +21,36 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 구현할 기능 목록
+
+start()
+: 기능을 시작하는 메소드
+
+check()
+: 옵션들을 불러와 제한사항에 해당되는지 확인하고 에러를 보내주는 메소드
+
+isRangeOver()
+: 크루의 수가 1명 이상 10,000명 이하인지 체크하는 메소드
+
+isEmailLengthOver()
+: 이메일의 길이가 11자 이상 20자 미만인지 체크하는 메소드
+
+isEmailDomainCorrect()
+: 이메일이 @email.com으로 끝나는지 체크하는 메소드
+
+isNicknameKorean()
+: 닉네임이 한글인지 체크하는 메소드
+
+isNicknameLengthOver()
+: 닉네임이 1자 이상 20자 미만인지 체크하는 메소드
+
+checkNicknameOverlap()
+: 같은 글자가 연속적으로 포함되는 닉네임들의 리스트를 받아오는 메소드
+
+splitNickname()
+: 닉네임을 길이별로 split하고 중복되는지 확인하는 메소드
+
+arrayUnique()
+: 배열의 중복을 제거해주는 메소드
