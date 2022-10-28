@@ -1,14 +1,14 @@
-function getSameWord(crew1, crew2) {
-  let crew1Array = crew1.split("");
-  let crew2Array = crew2.split("");
+function getSameWord(crew1Name, crew2Name) {
+  const crew1Array = crew1Name.split("");
+  const crew2Array = crew2Name.split("");
   let sameWord = "";
 
   crew1Array.map((word1, index1) => {
     crew2Array.map((word2, index2) => {
       if (
         word1 == word2 &&
-        crew1Array[index1 + 1] == crew2Array[index2 + 1] &&
-        crew1Array[index1 + 1] != undefined
+        crew1Array[index1 + 1] != undefined &&
+        crew1Array[index1 + 1] == crew2Array[index2 + 1]
       ) {
         sameWord = word1 + crew1Array[index1 + 1];
       }
@@ -19,35 +19,32 @@ function getSameWord(crew1, crew2) {
 }
 
 function getAllSameWord(forms) {
-  let index = 0;
   let sameWordArray = [];
 
-  while (index < forms.length) {
+  forms.map((form, index) => {
     let count = index + 1;
     while (count < forms.length) {
-      if (getSameWord(forms[index][1], forms[count][1]) != "") {
-        sameWordArray.push(getSameWord(forms[index][1], forms[count][1]));
+      if (getSameWord(form[1], forms[count][1]) != "") {
+        sameWordArray.push(getSameWord(form[1], forms[count][1]));
       }
       count++;
     }
-    index++;
-  }
+  });
 
-  const uniqueArray = new Set(sameWordArray);
-  return [...uniqueArray];
+  const uniqueWordSet = new Set(sameWordArray);
+  return [...uniqueWordSet];
 }
 
 function gatherCrew(forms) {
+  const sameWordArray = getAllSameWord(forms);
   let crewEmailArray = [];
 
-  getAllSameWord(forms).map((word) => {
-    let index = 0;
-    while (index < forms.length) {
-      if (forms[index][1].includes(word)) {
-        crewEmailArray.push(forms[index][0]);
+  sameWordArray.map((word) => {
+    forms.map((form) => {
+      if (form[1].includes(word)) {
+        crewEmailArray.push(form[0]);
       }
-      index++;
-    }
+    });
   });
 
   return crewEmailArray;
