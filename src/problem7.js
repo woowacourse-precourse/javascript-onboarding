@@ -4,7 +4,8 @@ function problem7(user, friends, visitors) {
   const friendOfFriends = getFriendOfFriends({ user, userFriends, friendRelation });
 
   const initScore = initRecommendationScore({ friendOfFriends });
-  return initScore;
+  const score = scoreVisitor({ initScore, visitors, userFriends });
+  return score;
 }
 
 function getFriendsAdjacencyList(friends) {
@@ -32,10 +33,18 @@ function getFriendOfFriends({ user, userFriends, friendRelation }) {
 }
 
 function initRecommendationScore({ friendOfFriends }) {
-  return friendOfFriends.reduce((map, friend) => {
-    map.set(friend, 10);
-    return map;
-  }, new Map());
+  return friendOfFriends.reduce((map, friend) => map.set(friend, 10), new Map());
+}
+
+function scoreVisitor({ initScore, visitors, userFriends }) {
+  return visitors.reduce((initScore, visitor) => {
+    if (userFriends.includes(visitor)) return initScore;
+
+    const currVisitorScore = initScore.get(visitor) || 0;
+    initScore.set(visitor, currVisitorScore + 1);
+
+    return initScore;
+  }, initScore);
 }
 
 // 문제 7번 - 인접리스트, Hash 풀이
@@ -46,7 +55,7 @@ function initRecommendationScore({ friendOfFriends }) {
 //    jun: [donut, shakevan]
 //    shakevan: [andole, jun, mrko]
 //    mrko: [donut, shakevan]  }
-//
+
 // 2. 인접리스트 중 user의 친구를 구한다 ✅
 //  -> user = "mrko" 예상 결과물
 //  [donut, sharkevan]
@@ -61,8 +70,10 @@ function initRecommendationScore({ friendOfFriends }) {
 // 4. Map에 user 배열의 이름에 대해 10을 할당한다. ✅
 //  -> { andole => 10, jun => 10 }
 
-// 5. Map에 visitors들 점수를 +1 해준다.
-//  5.1. Map에 없는 유저일 경우 0 default
+// 5. Map에 visitors들 점수를 +1 해준다. ✅
+//  5.1. 이미 친구일 경우 포함하지 않는다.
+//  5.2. 1번 사항을 만족하고, Map에 없는 유저일 경우 0 default
+//  5.3. 점수 +1을 해준다.
 
 // 6. Map을 점수(= value)에 대해서 내림차순
 //  6.1. 만약 점수(= value)가 동일할 시 이름(= key) 내림차순
