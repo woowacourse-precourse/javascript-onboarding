@@ -52,6 +52,22 @@ function problem1(pobi, crong) {
   }
 
   // 예외상황 - 왼쪽 페이지와 오른쪽 페이지 차이가 1 나야함
+  function validation(pobi, crong) {
+    var result = true;
+
+    if(Math.abs(pobi[0] - pobi[1]) != 1) {
+      return false;
+    } else if( Math.abs(crong[0] - crong[1]) != 1) {
+      return false;
+    } else{
+      return result;
+    }
+  }
+
+  var page = validation(pobi, crong);
+  if(!page) {
+    return -1;
+  }
 
 
   // 포비 점수 내기
