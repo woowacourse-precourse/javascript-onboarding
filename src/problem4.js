@@ -22,6 +22,4 @@ function problem4(word) {
   return answer;
 }
 
-problem4("I love you");
-
 module.exports = problem4;
