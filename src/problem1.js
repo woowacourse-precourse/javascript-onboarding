@@ -14,7 +14,8 @@ const isValidArray = (arr) => {
       if (rightPage < finalPage && rightPage > firstPage + 1) return true;
   }
   const isEvenAndOdd = () =>  leftPage % 2 !== 0 && rightPage % 2 === 0;
-  if (isValidRange()) return true
+  const isSamePage = () =>  leftPage + 1 === rightPage; 
+  if (isValidRange() && isEvenAndOdd() && isSamePage()) return true
   return false
 }
 
