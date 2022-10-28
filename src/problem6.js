@@ -20,10 +20,9 @@ function problem6(forms) {
   }
 
   // answer의 자료형을 리스트로 바꾸고 정렬하는 기능
-  
-
+  answer=Array.from(answer).sort()
 
   return answer;
 }
-console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]))
-// module.exports = problem6;
+// console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]))
+module.exports = problem6;
