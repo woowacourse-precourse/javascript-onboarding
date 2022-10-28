@@ -6,6 +6,14 @@ function problem6(forms) {
   const regexp = '^[가-힣]*[[__str__]][가-힣]*$';
 
   const duplicated_regExp = regExpMap(duplicatedNames, regexp);
+
+  return forms
+    .filter(form => duplicated_regExp
+        .filter(regexp => regexp.test(form[1]))
+        .length
+    )
+    .map(form => form[0])
+    .sort();
 }
 
 
