@@ -10,14 +10,14 @@ function problem6(forms) {
     }
     
     forms.forEach((form) => {
-        nameArrays.push([...form[ 1 ]]);
+        nameArrays.push([...form[1]]);
     })
     nameArrays.forEach(nameArr => {
         nameArr.forEach((string, index) => {
-            if (nameArr[ index + 1 ] === undefined) {
+            if (nameArr[index + 1] === undefined) {
                 return;
             }
-            compareStrings.push([string, nameArr[ index + 1 ]].join(""))
+            compareStrings.push([string, nameArr[index + 1]].join(""))
         });
     });
     
@@ -25,14 +25,14 @@ function problem6(forms) {
     
     nameArrays.forEach((nameArray, index) => {
         nameArray.forEach((string, index2) => {
-            if (duplicateList.includes([string, nameArray[ index2 + 1 ]].join(""))) {
-                duplicateNameList.push(nameArrays[ index ].join(""))
+            if (duplicateList.includes([string, nameArray[index2 + 1]].join(""))) {
+                duplicateNameList.push(nameArrays[index].join(""))
             }
         })
     })
     
     duplicateNameList.forEach(name => {
-        answerList.push(forms.find(form => form[ 1 ] === name)[ 0 ]);
+        answerList.push(forms.find(form => form[1] === name)[0]);
     })
     answerList.sort();
     return answerList;

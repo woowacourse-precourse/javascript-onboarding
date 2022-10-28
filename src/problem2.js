@@ -3,7 +3,7 @@ function problem2(cryptogram) {
     
     function removeDuplicateString() {
         newCryptogram.forEach((string, idx) => {
-            if (string === newCryptogram[ idx + 1 ]) {
+            if (string === newCryptogram[idx + 1]) {
                 newCryptogram.splice(idx, 2);
             }
         });

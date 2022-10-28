@@ -23,10 +23,10 @@ function problem1(pobi, crong) {
     
     function getMaxScore(name) {
         return Math.max(
-            getPlusNum(name[ pageIndex.left ]),
-            getMultipleNum(name[ pageIndex.left ]),
-            getPlusNum(name[ pageIndex.right ]),
-            getMultipleNum(name[ pageIndex.right ])
+            getPlusNum(name[pageIndex.left]),
+            getMultipleNum(name[pageIndex.left]),
+            getPlusNum(name[pageIndex.right]),
+            getMultipleNum(name[pageIndex.right])
         )
     }
     
@@ -39,9 +39,9 @@ function problem1(pobi, crong) {
         answer = winnerCount.pobi;
     }
     if (
-        pobi[ pageIndex.left ] + 1 !== pobi[ pageIndex.right ]
+        pobi[pageIndex.left] + 1 !== pobi[pageIndex.right]
         ||
-        crong[ pageIndex.left ] + 1 !== crong[ pageIndex.right ]
+        crong[pageIndex.left] + 1 !== crong[pageIndex.right]
     ) {
         answer = winnerCount.exception;
     }
