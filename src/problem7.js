@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const { userFriends, userFriendsScore } = getUserFriendScroe(user, friends, visitors);
+  const usersResultScore = sortUsers(getUserVisitorScore(userFriends, userFriendsScore, visitors));
 }
 
 const getUserFriendScroe = (user, friends) => {
@@ -21,6 +22,19 @@ const getUserFriendScroe = (user, friends) => {
     });
   });
   return { userFriends, userFriendsScore };
+};
+
+const getUserVisitorScore = (userFriends, userFriendsScore, visitors) => {
+  visitors.forEach((visitor) => {
+    if (!userFriends.has(visitor)) {
+      if (userFriendsScore.has(visitor)) {
+        userFriendsScore.set(visitor, userFriendsScore.get(visitor) + 1);
+      } else if (!userFriendsScore.has(visitor)) {
+        userFriendsScore.set(visitor, 1);
+      }
+    }
+  });
+  return userFriendsScore;
 };
 
 const getUserFriends = (user, friends) => {
