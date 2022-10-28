@@ -23,7 +23,17 @@ function duplicate(forms){
       }
     }
   }
-
+  //기능목록1-3: 한번 더 체크(최초 사용자 2차 저장)
+  for(var i in check){
+    if(check[i]==false){
+      for(var j=0; j<forms[i][1].length-1; j++){
+        var tmp=forms[i][1][j]+forms[i][1][j+1];
+        if(tmp==same){
+          answer.push(forms[i][0]);
+        }
+      }
+    }
+  }
   return answer;
 }
 function problem6(forms) {
