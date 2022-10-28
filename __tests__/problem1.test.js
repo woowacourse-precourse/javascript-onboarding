@@ -1,6 +1,6 @@
 const problem1 = require("../src/problem1");
 
-describe("problem1: 매개변수 유효성 검사", () => {
+describe("problem1: 페이지로 점수 구하기 게임 - 매개변수 유효성 검사", () => {
   test("case1 입력된 변수가 길이가 2인 배열이 아님", () => {
     expect(problem1('hi', [197, 198])).toEqual(-1);
     expect(problem1('12', [197, 198])).toEqual(-1);
@@ -31,7 +31,7 @@ describe("problem1: 매개변수 유효성 검사", () => {
   });
 });
 
-describe("problem1: 우테코 제공 테스트 케이스를 기반으로한 확장 실험", () => {
+describe("problem1: 페이지로 점수 구하기 게임 - 우테코 제공 테스트 케이스를 기반으로한 확장 실험", () => {
   test("case1 무승부", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
   });

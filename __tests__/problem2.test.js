@@ -1,6 +1,6 @@
 const problem2 = require("../src/problem2");
 
-describe("problem2", () => {
+describe("problem2: 암호해독(연속된 중복 문자열 제거)", () => {
   test("case1: 재귀로 일부 지워진다.", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
