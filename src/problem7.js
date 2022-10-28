@@ -19,6 +19,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let visitor of visitors.filter(x => !(userFriend.includes(x)))){
+    if (!(scores.hasOwnProperty(visitor))){
+      scores[visitor] = 0;
+    }
+    scores[visitor]++;
+  }
+
+  const scoreOverZero = Object.keys(scores).filter(x => scores[x] > 0);
+
+  return scoreOverZero.slice(0, 5);
+
 }
 
 
