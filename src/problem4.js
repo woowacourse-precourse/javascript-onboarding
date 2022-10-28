@@ -6,10 +6,13 @@ function problem4(word) {
 }
 
 const changeAlphabet = (alphabet) => {
-  if (alphabet.charCodeAt(0) > 96) {
-    // 소문자
+  const asciiCode = alphabet.charCodeAt(0);
+  if (asciiCode > 96) {
+    // 소문자 (97 ~ 122)
+    return String.fromCharCode(219 - asciiCode);
   } else {
-    // 대문자
+    // 대문자 (65 ~ 90)
+    return String.fromCharCode(155 - asciiCode);
   }
 };
 
