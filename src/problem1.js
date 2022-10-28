@@ -51,4 +51,13 @@ function getBigger(page) {
     return getDigitMultiply(page); //곱을 반환한다.
 }
 
+function getScore(arr) {
+  if (getBigger(arr[0]) > getBigger(arr[1]))
+    //왼쪽 페이지 연산이 오른쪽 페이지 연산보다 크다면
+    return getBigger(arr[0]); //왼쪽 페이지 연산을 본인의 점수로 한다.
+  else if (getBigger(arr[0]) <= getBigger(arr[1]))
+    //오른쪽 페이지 연산이 왼쪽 페이지 연산보다 크다면
+    return getBigger(arr[1]); //오른쪽 페이지 연산을 본인의 점수로 한다.
+}
+
 module.exports = problem1;
