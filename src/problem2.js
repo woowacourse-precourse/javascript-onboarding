@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  return decipher(cryptogram);
 }
 
 function decipher(cryptogram) {
