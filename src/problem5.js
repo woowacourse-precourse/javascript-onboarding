@@ -14,6 +14,16 @@ function problem5(money) {
   let count = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   //전체 돈에 대한 배열
   let moneyIndex = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+  for (let i = 0; i < moneyIndex.length; i++) {
+    if (isNeed(money, moneyIndex[i])) {
+      let countMoney = countNeedMoney(money, moneyIndex[i]);
+      count[i] += countMoney;
+      money -= moneyIndex[i] * countMoney;
+    }
+  }
+  return count;
 }
 
+console.log(problem5(50237));
 module.exports = problem5;
