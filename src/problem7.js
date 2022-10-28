@@ -100,18 +100,14 @@ function problem7(user, friends, visitors) {
   const totalFriendScore = [
     ...computeTotalFriendScore(friendScoreBySeperation, friendScoreByVisiting),
   ].filter(([friend]) => !isAlreadyFriend({ user, friend, friendsMap }));
-  // .map( => );
-  // totalFriendScore.filter(
-  //   ([friend]) => !isAlreadyFriend({ user, friend, friendsMap })
-  // );
 
-  const arr = cutListByComparison(
-    ([, scoreA], [, scoreB]) => scoreB - scoreA,
+  const slicedTotalFriendScore = cutListByComparison(
+    ([nameA, scoreA], [nameB, scoreB]) =>
+      scoreB - scoreA || nameA.localeCompare(nameB),
     totalFriendScore
   );
-  console.log(arr);
 
-  return totalFriendScore;
+  return slicedTotalFriendScore.map(([name]) => name);
 }
 
 console.log(
@@ -125,7 +121,7 @@ console.log(
       ["shakevan", "jun"],
       ["shakevan", "mrko"],
     ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan", "jun"]
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]
   )
 );
 
