@@ -25,4 +25,4 @@ function problem5(money) {
   return arr;
 }
 
-// module.exports = problem5;
+module.exports = problem5;
