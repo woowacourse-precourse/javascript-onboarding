@@ -83,6 +83,20 @@ function problem1(pobi, crong) {
     crong_max_odd = crong_odd_answer_multiply;
   }
 
+  //pobi 홀수와 짝수 큰 수 비교하기
+  if (pobi_max_even > pobi_max_odd) {
+    pobi_max = pobi_max_even;
+  } else {
+    pobi_max = pobi_max_odd;
+  }
+
+  //crong 홀수와 짝수 큰 수 비교하기
+  if (crong_max_even > crong_max_odd) {
+    crong_max = crong_max_even;
+  } else {
+    crong_max = crong_max_odd;
+  }
+
   return answer;
 }
 
