@@ -1,3 +1,11 @@
+// 페이지 번호가 적절한지 검증하는 기능
+function validatePages(pobi, crong) {
+  if (!isPageContinuous(pobi) || !isPageContinuous(crong)) {
+    return false;
+  }
+  return true;
+}
+
 // 페이지 번호가 연속적인지 확인하는 기능
 function isPageContinuous(pages) {
   if (pages[1] - pages[0] === 1) {
@@ -48,7 +56,7 @@ function getWinner(pobiScore, crongScore) {
 }
 
 function problem1(pobi, crong) {
-  if (!isPageContinuous(pobi) || !isPageContinuous(crong)) {
+  if (!validatePages(pobi, crong)) {
     return -1;
   }
   const splitedPobi = splitPageNumber(pobi);
@@ -64,7 +72,5 @@ function problem1(pobi, crong) {
   const answer = getWinner(pobiScore, crongScore);
   return answer;
 }
-
-console.log(problem1([97, 98], [101, 102]));
 
 module.exports = problem1;
