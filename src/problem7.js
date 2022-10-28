@@ -82,6 +82,10 @@ function computeTotalFriendScore(...friendScores) {
   return friendScore;
 }
 
+function cutListByComparison(compareFunction, list, maxCount = 5) {
+  return list.sort(compareFunction).slice(0, maxCount);
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -93,12 +97,21 @@ function problem7(user, friends, visitors) {
   });
   const friendScoreByVisiting = computeFriendScoreByVisiting(visitors);
 
-  const totalFriendScore = computeTotalFriendScore(
-    friendScoreBySeperation,
-    friendScoreByVisiting
-  );
+  const totalFriendScore = [
+    ...computeTotalFriendScore(friendScoreBySeperation, friendScoreByVisiting),
+  ].filter(([friend]) => !isAlreadyFriend({ user, friend, friendsMap }));
+  // .map( => );
+  // totalFriendScore.filter(
+  //   ([friend]) => !isAlreadyFriend({ user, friend, friendsMap })
+  // );
 
-  return answer;
+  const arr = cutListByComparison(
+    ([, scoreA], [, scoreB]) => scoreB - scoreA,
+    totalFriendScore
+  );
+  console.log(arr);
+
+  return totalFriendScore;
 }
 
 console.log(
@@ -112,7 +125,7 @@ console.log(
       ["shakevan", "jun"],
       ["shakevan", "mrko"],
     ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+    ["bedi", "bedi", "donut", "bedi", "shakevan", "jun"]
   )
 );
 
