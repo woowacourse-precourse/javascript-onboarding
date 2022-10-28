@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-    let newCryptogram = [...cryptogram];
+    const newCryptogram = [...cryptogram];
     
     function removeDuplicateString() {
         newCryptogram.forEach((string, idx) => {
