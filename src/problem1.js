@@ -1,3 +1,8 @@
+const INVALID = -1;
+const DRAW = 0;
+const POBI_WIN = 1;
+const CRONG_WIN = 2;
+
 const isValidValue = (pages) => {
   // 페이지의 범위가 1~400인지 체크
   for (let i in pages) {
@@ -50,16 +55,16 @@ const getMaxValue = (pages) => {
 };
 
 function problem1(pobi, crong) {
-  let answer = 0;
+  let answer = DRAW;
   if (!isValidValue([...pobi, ...crong])) {
-    return -1;
+    return INVALID;
   }
   const pobiValue = getMaxValue(pobi);
   const crongValue = getMaxValue(crong);
   if (pobiValue > crongValue) {
-    answer = 1;
+    answer = POBI_WIN;
   } else if (pobiValue < crongValue) {
-    answer = 2;
+    answer = CRONG_WIN;
   }
 
   return answer;
