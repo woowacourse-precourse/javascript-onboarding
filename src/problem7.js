@@ -22,6 +22,14 @@ function problem7(user, friends, visitors) {
 		const mutualFriends = friendLists.get(friend).filter(name => name !== user)
 		mutualFriendLists.push(...mutualFriends)
 	})
+
+	mutualFriendLists.forEach(friend => {
+		if (scores.has(friend)) {
+			scores.set(friend, scores.get(friend) + 10)
+			return
+		}
+		scores.set(friend, 10)
+	})
 }
 
 module.exports = problem7
