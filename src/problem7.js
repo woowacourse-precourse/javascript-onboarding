@@ -28,10 +28,28 @@ function findFriendFollower(user, userFriendObject, friends) {
   });
 }
 
+function countFollowerScore(userFriendObject, scoreCount) {
+  let followerList = [];
+  Object.values(userFriendObject).forEach(followers => {
+    followerList = followerList.concat(followers);
+  });
+
+  followerList.forEach(follower => {
+    const INCREMENT_NUMBER = 10;
+    if (scoreCount[follower]) {
+      scoreCount[follower] += INCREMENT_NUMBER;
+    } else {
+      scoreCount[follower] = INCREMENT_NUMBER;
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
+  let scoreCount = {};
   const userFriendObject = createUserFriendObject(user, friends);
   findFriendFollower(user, userFriendObject, friends);
+  countFollowerScore(userFriendObject, scoreCount);
   return answer;
 }
 
