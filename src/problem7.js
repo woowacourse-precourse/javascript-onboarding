@@ -50,18 +50,41 @@ function isFriends(friendsList, each, userId) {
   );
 }
 
+//받은 배열을 맵으로 변경하여 반환
+function arrayToMap(array, friendsList) {
+  const friendArray = array.flat();
+  let friendsPoint = new Map();
+
+  for (let i = 0; i < friendArray.length; i++) {
+    if (isHimSelf(friendArray[i], friendsList)) continue;
+    if (friendsPoint.has(friendArray[i])) {
+      friendsPoint.set(friendArray[i], friendsPoint.get(friendArray[i]) + 10);
+    } else {
+      friendsPoint.set(friendArray[i], 10);
+    }
+  }
+  return friendsPoint;
+}
+
+//배열의 요소가 친구 본인인지 평가하는 함수
+function isHimSelf(person, friendsList) {
+  return friendsList.includes(person);
+}
+
 function test(userId, list) {
   let filteredList = myFriendsList(userId, list);
   let friendsList = removeMyUsername(userId, filteredList);
   let friendsFriendList = friendsFilter(friendsList, list, userId);
-  console.log(friendsFriendList);
+  let points = arrayToMap(friendsFriendList, friendsList);
+
+  
 }
 
 test(userId, AllFriends);
 
-const names = new Map().set("이룸", "상돈").set("이름", "종찬");
+const names = new Map().set("이룸", 1).set("이름", "종찬");
+names.set("이룸", names.get("이룸") + 1);
 names.forEach((key) => {
   console.log([...names.keys()]);
   console.log(key);
 });
-
