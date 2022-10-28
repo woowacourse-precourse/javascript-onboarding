@@ -32,7 +32,13 @@ function reverseWord(correctWord, lists) {
   let changedWord = new Array(wordLength);
 
   for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
+    const isAlphabet = checkAlphabetOrNot(correctWord[wordIndex]);
     const currentWord = changeFromLowercaseToUppercase(correctWord[wordIndex]);
+
+    if (isAlphabet === "Not Alphabet") {
+      changedWord[wordIndex] = correctWord[wordIndex];
+      continue;
+    }
 
     currentIndex = alphabetList.indexOf(currentWord);
     changedWord[wordIndex] = reversedAlphabetList[currentIndex];
@@ -47,6 +53,24 @@ function reverseWord(correctWord, lists) {
   }
 
   return changedWord.join("");
+}
+
+function checkAlphabetOrNot(word) {
+  const START_ALPHABET_UPPER = 65;
+  const LAST_ALPHABET_UPPER = 90;
+  const START_ALPHABET_LOWER = 97;
+  const LAST_ALPHABET_LOWER = 122;
+  let wordNumber = word.charCodeAt(0);
+
+  if (
+    wordNumber < START_ALPHABET_UPPER ||
+    (wordNumber > LAST_ALPHABET_UPPER && wordNumber < START_ALPHABET_LOWER) ||
+    wordNumber > LAST_ALPHABET_LOWER
+  ) {
+    return "Not Alphabet";
+  }
+
+  return word;
 }
 
 function changeFromLowercaseToUppercase(alphabet) {
