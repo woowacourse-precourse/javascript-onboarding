@@ -57,4 +57,9 @@ const sortByScore = (scoreArray) => {
   return sortedFriendList;
 };
 
+// 기능 6번
+const getTopFiveRecommendedFriends = (scoreArray) => {
+  return scoreArray.slice(0, 5).map((score) => score[0]);
+};
+
 module.exports = problem7;
