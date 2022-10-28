@@ -7,7 +7,14 @@ function problem7(user, friends, visitors) {
     .map((friend) => friend.filter((_friend) => _friend !== user))
     .flat(1);
 
-  // - [ ] 유저(mrko)의 친구의 친구 찾기
+  // - [x] 유저(mrko)의 친구의 친구 찾기
+  let friendsOfFriends = friends
+    .filter((friend) => !friend.includes(user))
+    .map((friend) => friend.filter((name) => !userFriends.includes(name)))
+    .flat(1);
+
+  const removeOverlap = (array) => [...new Set(array)];
+  friendsOfFriends = removeOverlap(friendsOfFriends);
 
   // - [ ] 결과 반환하기
   //    - 점수가 가장 높은 순으로 최대 5명 반환한다.
