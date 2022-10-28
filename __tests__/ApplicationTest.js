@@ -89,6 +89,19 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  test("case2", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba"
+    );
+  });
+  test("case3", () => {
+    expect(problem4("ABCDEFGHIJKLMNOPQRSTUVWXYZ")).toEqual(
+      "ZYXWVUTSRQPONMLKJIHGFEDCBA"
+    );
+  });
+  test("case1", () => {
+    expect(problem4("가나다라  !@#$^%&*")).toEqual("가나다라  !@#$^%&*");
+  });
 });
 
 describe("problem5", () => {
