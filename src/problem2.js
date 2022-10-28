@@ -7,6 +7,14 @@ function problem2(cryptogram) {
   if (/[^a-z]/.test(cryptogram)) {
     return -1;
   }
+
+  while (1) {
+    // 중복되는 index 값을 얻는다.
+    const duplicatedindex = getDuplictatedindex(cryptogram);
+    if (duplicatedindex === 0) break;
+    const count = getCount(cryptogram, duplicatedindex);
+    cryptogram.splice(duplicatedindex, count);
+  }
 }
 
 // 중복된 문자가 있는 index 값을 얻는 함수
