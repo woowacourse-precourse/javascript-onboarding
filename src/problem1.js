@@ -31,7 +31,12 @@ function findMaxValue(arr) {
   return maxValue;
 }
 function problem1(pobi, crong) {
-  var answer;
+  var answer = 0;
+  if (isError(pobi) || isError(crong)) return -1;
+  const pobiScore = findMaxValue(pobi);
+  const crongScore = findMaxValue(crong);
+  if (pobiScore > crongScore) answer = 1;
+  if (pobiScore < crongScore) answer = 2;
   return answer;
 }
 module.exports = problem1;
