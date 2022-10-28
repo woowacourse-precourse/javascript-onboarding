@@ -29,7 +29,7 @@ describe("problem2", () => {
   });
 });
 
-describe.only("problem3", () => {
+describe("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
@@ -38,7 +38,7 @@ describe.only("problem3", () => {
   });
 });
 
-describe("problem4", () => {
+describe.only("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
