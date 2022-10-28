@@ -29,20 +29,20 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem3", () => {
-  test("case1", () => {
-    expect(problem3(13)).toEqual(4);
-  });
-  test("case2", () => {
-    expect(problem3(33)).toEqual(14);
-  });
-});
-
-// describe("problem4", () => {
+// describe("problem3", () => {
 //   test("case1", () => {
-//     expect(problem4("I love you")).toEqual("R olev blf");
+//     expect(problem3(13)).toEqual(4);
+//   });
+//   test("case2", () => {
+//     expect(problem3(33)).toEqual(14);
 //   });
 // });
+
+describe("problem4", () => {
+  test("case1", () => {
+    expect(problem4("I love you")).toEqual("R olev blf");
+  });
+});
 
 // describe("problem5", () => {
 //   test("case1", () => {
