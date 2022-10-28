@@ -21,6 +21,15 @@ function pageNumMult(num) {
   }
   return ret;
 }
+function findMaxValue(arr) {
+  let [left, right] = arr;
+  const leftSum = pageNumSum(left);
+  const rightSum = pageNumSum(right);
+  const leftMult = pageNumMult(left);
+  const rightMult = pageNumMult(right);
+  const maxValue = Math.max(leftSum, leftMult, rightSum, rightMult);
+  return maxValue;
+}
 function problem1(pobi, crong) {
   var answer;
   return answer;
