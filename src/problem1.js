@@ -2,7 +2,10 @@ function problem1(pobi, crong) {
   try {
     catchError(...pobi);
     catchError(...crong);
-    return findWinner(pobi, crong);
+
+    const pobiStr = pobi.map((p) => p.toString());
+    const crongStr = crong.map((c) => c.toString());
+    return findWinner(pobiStr, crongStr);
   } catch (err) {
     return -1;
   }
@@ -16,7 +19,6 @@ function problem1(pobi, crong) {
  */
 function reduceAfterSplit(str, cb) {
   if (isNaN(str)) throw new Error("숫자가 아닙니다.");
-
   const digits = str.split("");
   return digits.reduce(cb);
 }
