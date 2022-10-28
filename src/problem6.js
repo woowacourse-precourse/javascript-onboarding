@@ -13,6 +13,17 @@ function problem6(forms) {
     }
     return nameList;
   };
+
+  // 연속된 단어 찾기
+  const findDoubled = membersName => {
+    let words = [];
+    for (let i = 0; i < membersName.length; i++) {
+      words.push(splitName(membersName[i]));
+    }
+    let findWords = words.flat().filter((e, i, a) => a.indexOf(e) !== i);
+    let result = [...new Set(findWords)];
+    return result;
+  };
 }
 
 module.exports = problem6;
