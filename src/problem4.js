@@ -6,4 +6,11 @@ function problem4(word) {
   return answer;
 }
 
+// 2) 청개구리 언어로 변환하는 과정
+function convert(spell, fullSpell) {
+  const idx = 25 - fullSpell.indexOf(spell);
+  return fullSpell[idx];
+}
+
+
 module.exports = problem4;
