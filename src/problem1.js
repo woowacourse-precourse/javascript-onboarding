@@ -41,4 +41,9 @@ function validPage(arr) {
   return true;
 }
 
+function validContinuous(arr) {
+  if (arr[0] + 1 != arr[1]) return false;
+  return true;
+}
+
 module.exports = problem1;
