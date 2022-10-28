@@ -30,3 +30,24 @@ describe("problem1: 매개변수 유효성 검사", () => {
     expect(problem1([1, 2], [196, 197])).toEqual(-1);
   });
 });
+
+describe("problem1: 우테코 제공 테스트 케이스를 기반으로한 확장 실험", () => {
+  test("case1 무승부", () => {
+    expect(problem1([97, 98], [197, 198])).toEqual(0);
+  });
+  test("case2 무승부는 반대로 해도 무승부", () => {
+    expect(problem1([197, 198], [97, 98])).toEqual(0);
+  });
+  test("case3 포비 승리", () => {
+    expect(problem1([131, 132], [211, 212])).toEqual(1);
+  });
+  test("case4 포비 승리를 반대로하면 크롱 승리", () => {
+    expect(problem1([211, 212], [131, 132])).toEqual(2);
+  });
+  test("case5 예외 케이스 아님", () => {
+    expect(problem1([1, 2], [399, 400])).not.toEqual(-1);
+  });
+  test("case6 예외 케이스", () => {
+    expect(problem1([99, 102], [211, 212])).toEqual(-1);
+  });
+})

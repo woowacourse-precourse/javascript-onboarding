@@ -57,9 +57,31 @@ function isWithinValidRange(page) {
   return page > 0 && page <= 400
 }
 
-// TODO: 양 페이지로 입력받은 값으로부터 점수를 계산한다.
+/**
+ * 양 페이지로 입력받은 값으로부터 점수를 계산한다.
+ * @param {array} pages 길이가 2이고, 배열의 요소는 숫자이다.
+ * @returns {number}
+ */
 function getScoreByPages(pages) {
-  return 0
+  const scoreLeft = getScoreByPage(pages[0])
+  const scoreRight = getScoreByPage(pages[1])
+  return Math.max(scoreLeft, scoreRight)
+}
+
+/**
+ * 한 페이지에 대한 점수를 계산한다.
+ * @param {number} page 
+ * @return {number}
+ */
+function getScoreByPage(page) {
+  const pageStr = page + ''
+  let added = +pageStr[0]
+  let multiplied = +pageStr[0]
+  for (let i = 1; i < pageStr.length; i++) {
+    added = added + (+pageStr[i])
+    multiplied = multiplied * (+pageStr[i])
+  }
+  return Math.max(added, multiplied)
 }
 
 module.exports = problem1;
