@@ -112,6 +112,15 @@ describe("problem5", () => {
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+  test("case3", () => {
+    expect(problem5(1)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 1]);
+  });
+  test("case4", () => {
+    expect(problem5(1_000_000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+  test("case5", () => {
+    expect(problem5(999_999)).toEqual([19, 4, 1, 4, 1, 4, 1, 4, 9]);
+  });
 });
 
 describe("problem6", () => {
