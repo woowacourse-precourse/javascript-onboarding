@@ -57,4 +57,13 @@ function scoreCandidates(friends, visitors, friendsOfUser) {
   return candidatesArray;
 }
 
+function sortCandidatesArray(candidatesArray) {
+  let newArray = candidatesArray.sort((prev, cur) => {
+    if (prev[1] > cur[1]) return -1;
+    if (prev[1] < cur[1]) return 1;
+  });
+
+  return newArray;
+}
+
 module.exports = problem7;
