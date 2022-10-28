@@ -68,7 +68,7 @@ function decodeCycle(cryptogramArr) {
 
   while (true) {
     decodeRes.res = decode(decodeRes.res);
-    if (isCycleDone(decodeRes)) {
+    if (noChangeLength(decodeRes.res.length, decodeRes.prevLength)) {
       break;
     }
     recordLength(decodeRes);
@@ -110,8 +110,8 @@ function isDupWithNextElement(curElement, nextElement) {
   return curElement === nextElement;
 }
 
-function isCycleDone(decodeRes) {
-  return decodeRes.res.length === decodeRes.prevLength;
+function noChangeLength(length, prevLength) {
+  return length === prevLength;
 }
 
 function getStringFromArray(array) {

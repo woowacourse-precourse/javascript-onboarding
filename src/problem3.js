@@ -52,13 +52,13 @@ function countClap(number) {
   let clapNum = 0;
 
   for (let i = 3; i <= number; i++) {
-    const strArr = numberToStringArray(i);
+    const strArr = getStringArrayFromNumber(i);
     clapNum += count369(strArr);
   }
   return clapNum;
 }
 
-function numberToStringArray(number) {
+function getStringArrayFromNumber(number) {
   return Array.from(String(number));
 }
 

@@ -46,20 +46,31 @@ function isWrongLengthOfInput(length) {
 }
 
 function translateWord(word) {
-  return wordToArray(word).map(wordToFrogWord).join('');
+  const wordArray = getArrayFromString(word);
+  const frogWordArray = getFrogWordArrayFromWordArray(wordArray);
+
+  return getStringFromArray(frogWordArray);
 }
 
-function wordToArray(word) {
-  return Array.from(String(word));
+function getArrayFromString(string) {
+  return Array.from(String(string));
 }
 
-function wordToFrogWord(v) {
+function getFrogWordArrayFromWordArray(wordArray) {
+  return wordArray.map(translateWithAscci);
+}
+
+function translateWithAscci(v) {
   if (isAlphabet(v)) {
     const ascci = getAscciFromChar(v);
     const frogChar = getCharFromAscci(ascci);
     return frogChar;
   }
   return v;
+}
+
+function getStringFromArray(arr) {
+  return arr.join('');
 }
 
 function isAlphabet(v) {
