@@ -23,6 +23,15 @@ function setMapTwoLetter(form, twoLetterMap) {
     for (let i = 0; i < nickname.length - 1; i++) {
       // 크루 닉네임에서 두 글자씩 저장
       let twoLetter = nickname.slice(i, i + 2);
+
+      // map에 현재 저장할 두글자가 이미 존재하는 경우
+      if (twoLetterMap.has(twoLetter)) {
+        let duplicateCount = twoLetterMap.get(twoLetter);
+        twoLetterMap.set(twoLetter, duplicateCount + 1);
+        continue;
+      }
+      // map에 현재 저장할 두글자가 존재하지 않는 경우
+      twoLetterMap.set(twoLetter, 1);
     }
   }
 }
