@@ -16,3 +16,15 @@ function moneyTransform(money){
   }
   return resultArr;
 }
+
+function error(money){
+  if(money<1 || money>1000000){
+    return false;
+  }
+  if(typeof(money)!=="number"){
+    return false;
+  }
+  return true;
+}
+let money=1000000;
+console.log(error(money))
