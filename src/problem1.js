@@ -21,6 +21,20 @@ const splitByDigit = (number) => {
     .map((digit) => parseInt(digit));
 };
 
+/**
+ * 정수 배열과 연산자를 입력 받아 배열의 곱연산|합연산을 수행하는 함수
+ * @param {[number]} array 연산을 수행할 배열
+ * @param {"*"|"+"} operator 연산자
+ * @returns {number} 연산 결과
+ */
+const reduceByOperator = (array, operator) => {
+  if (operator === "*") {
+    return array.reduce((acc, cur) => acc * cur, 1);
+  } else if (operator === "+") {
+    return array.reduce((acc, cur) => acc + cur, 0);
+  }
+};
+
 function problem1(pobi, crong) {
   var answer;
 
