@@ -1,18 +1,15 @@
 function problem6(forms) {
     const answerList = [];
-    const nameArrays = [];
     const compareStrings = [];
-    const duplicateNameList = []
+    const duplicateNameList = [];
     
     function findDuplicates(arr) {
         const filtered = arr.filter((item, index) => arr.indexOf(item) !== index);
-        return [...new Set(filtered)]
+        return [...new Set(filtered)];
     }
-    
-    forms.forEach((form) => {
-        nameArrays.push([...form[1]]);
-    })
-    nameArrays.forEach(nameArr => {
+    //중복 비교 글자들을 구한다
+    forms.forEach(form => {
+        const nameArr = [...form[1]];
         nameArr.forEach((string, index) => {
             if (nameArr[index + 1] === undefined) {
                 return;
@@ -23,14 +20,17 @@ function problem6(forms) {
     
     const duplicateList = findDuplicates(compareStrings);
     
-    nameArrays.forEach((nameArray, index) => {
+    // 중복 비교 글자들과 중복되는 것이 있는지 확인한다
+    forms.forEach(form => {
+        const nameArray = [...form[1]];
         nameArray.forEach((string, index2) => {
             if (duplicateList.includes([string, nameArray[index2 + 1]].join(""))) {
-                duplicateNameList.push(nameArrays[index].join(""))
+                duplicateNameList.push(form[1])
             }
-        })
-    })
+        });
+    });
     
+    //중복되는 닉네임의 이메일을 확인하여 정답리스트에 추가한다
     duplicateNameList.forEach(name => {
         answerList.push(forms.find(form => form[1] === name)[0]);
     })
