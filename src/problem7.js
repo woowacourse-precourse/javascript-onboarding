@@ -7,6 +7,7 @@ function findFriendsOfUser(user, friends) {
       friendsArray.push(newArray[0]);
     }
   });
+
   return friendsArray;
 }
 
@@ -23,22 +24,15 @@ function findFriendsOfFriend(user, friendsOfUser, friends) {
       }
     });
   });
+
   return friendsOfFriend;
-}
-
-function makeCandidate(name, score) {
-  let candidate = [];
-
-  candidate.push(name);
-  candidate.push(score);
-  return candidate;
 }
 
 function scoreCandidates(friends, visitors, friendsOfUser) {
   let candidatesArray = [];
 
   friends.map((friend) => {
-    candidatesArray.push(makeCandidate(friend, 20));
+    candidatesArray.push([friend, 20]);
   });
 
   visitors.map((visitor) => {
@@ -50,18 +44,21 @@ function scoreCandidates(friends, visitors, friendsOfUser) {
       }
     });
     if (!isDone && !friendsOfUser.includes(visitor)) {
-      candidatesArray.push(makeCandidate(visitor, 1));
+      candidatesArray.push([visitor, 1]);
     }
   });
 
   return candidatesArray;
 }
 
-//이름순 정렬
 function sortCandidatesArray(candidatesArray) {
   let newArray = candidatesArray.sort((prev, cur) => {
     if (prev[1] > cur[1]) return -1;
-    if (prev[1] < cur[1]) return 1;
+    else if (prev[1] < cur[1]) return 1;
+    else if (prev[1] == cur[1]) {
+      if (prev[0] > cur[0]) return 1;
+      if (prev[0] < cur[0]) return -1;
+    }
   });
 
   return newArray;
