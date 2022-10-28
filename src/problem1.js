@@ -3,13 +3,13 @@ function problem1(pobi, crong) {
     if (exception(pobi, crong)) {
         return -1;
     }
-    maxScoreArr.push(maxNumber(pobi));
-    maxScoreArr.push(maxNumber(crong));
+    maxScoreArr.push(maxNumberCheck(pobi));
+    maxScoreArr.push(maxNumberCheck(crong));
     let answer = compScore(maxScoreArr);
     return answer;
 }
 
-function maxNumber(people) {
+function maxNumberCheck(people) {
     const score = [];
     people.forEach(el => {
         const str = String(el).split("");
@@ -21,11 +21,10 @@ function maxNumber(people) {
     return Math.max(...score);
 }
 
-function compScore(scoreArr) {
-    let result;
-    const maxScore = Math.max(...scoreArr);
-    result = scoreArr.indexOf(maxScore) + 1;
-    if ((scoreArr[0] === scoreArr[1])) {
+function compScore(maxScoreArr) {
+    const maxScore = Math.max(...maxScoreArr);
+    let result = maxScoreArr.indexOf(maxScore) + 1;
+    if ((maxScoreArr[0] === maxScoreArr[1])) {
         result = 0;
     }
     return result;
