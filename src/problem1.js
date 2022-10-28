@@ -3,15 +3,12 @@ function problem1(pobi, crong) {
   let pobiScore = getBiggestNumber(pobi);
   let crongScore = getBiggestNumber(crong);
 
-  console.log("pobiScore : ", pobiScore, " crongScore : ", crongScore);
   var answer = compareScore(pobiScore, crongScore);
 
-  console.log(answer);
   return answer;
 }
 
 const getBiggestNumber = ([leftPage, rightPage]) => {
-  console.log(leftPage, rightPage);
   let biggerPage = rightPage;
   let sumPage = 0,
     mulPage = 1;
@@ -24,8 +21,6 @@ const getBiggestNumber = ([leftPage, rightPage]) => {
     mulPage *= n;
     biggerPage = Math.floor(biggerPage / 10);
   }
-
-  console.log(sumPage, mulPage);
 
   return sumPage < mulPage ? mulPage : sumPage;
 };
