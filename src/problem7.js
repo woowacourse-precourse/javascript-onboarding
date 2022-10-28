@@ -92,4 +92,14 @@ function removeImproperRecommend(username, friendTable, scoreBoard) {
   }
 }
 
+function sortFn(userA, userB) {
+  const [nameA, scoreA] = userA;
+  const [nameB, scoreB] = userB;
+  if (scoreA === scoreB) {
+    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+  }
+
+  return scoreB - scoreA;
+}
+
 module.exports = problem7;
