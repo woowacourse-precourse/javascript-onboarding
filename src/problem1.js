@@ -1,9 +1,3 @@
-function problem1(pobi, crong) {
-  var answer;
-  if (exceptionCase(pobi) || exceptionCase(crong)) return -1;
-  return answer;
-}
-
 function exceptionCase(arr) {
   //예외 사항 처리 함수, 예외 사항인 경우 true를 반환
   //페이지 번호가 1부터 400 사이의 범위 밖인 경우
@@ -70,6 +64,13 @@ function getWinner(player1, player2) {
   else if (getScore(player1) === getScore(player2))
     //두 플레이어의 점수가 같다면
     return 0; //무승부이므로 0을 반환한다.
+}
+
+function problem1(pobi, crong) {
+  var answer;
+  if (exceptionCase(pobi) || exceptionCase(crong)) return -1;
+  answer = getWinner(pobi, crong);
+  return answer;
 }
 
 module.exports = problem1;
