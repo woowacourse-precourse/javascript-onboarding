@@ -1,5 +1,7 @@
 function problem5(money) {
   const result = countByBillUnit(money);
+
+  return result;
 }
 
 function countByBillUnit(currentMoney) {
@@ -12,9 +14,15 @@ function countByBillUnit(currentMoney) {
     currentUnitIndex < listLength;
     currentUnitIndex++
   ) {
-    billCountList[currentUnitIndex] += Math.floor(
+    const theNumbeOfBill = Math.floor(
       currentMoney / BILL_UNIT_LIST[currentUnitIndex]
     );
+
+    if (theNumbeOfBill >= 1) {
+      billCountList[currentUnitIndex] += theNumbeOfBill;
+
+      currentMoney -= theNumbeOfBill * BILL_UNIT_LIST[currentUnitIndex];
+    }
   }
 
   return billCountList;
