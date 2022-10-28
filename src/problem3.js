@@ -4,9 +4,10 @@ function problem3(number) {
   }
   const regEx = /[369]/g;
   const array = Array(number).fill()
-                .map((_, index) => String(index + 1))
-                .map((v) => v.replace(regEx, '@'));
-  
+  .map((_, index) => String(index + 1))
+  .map((v) => v.replace(regEx, '@'))
+  .filter(v => v.includes('@'))
+
 }
 
 function inputValidCheck(number) {
