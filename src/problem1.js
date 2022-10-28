@@ -11,11 +11,11 @@ function problem1(pobi, crong) {
   else return 0;
 }
 
-function calculateMaxNum(num) {
+const calculateMaxNum = (num) => {
   const numArr = num.toString().split("");
   const plusNum = numArr.reduce((acc, cur) => acc + Number(cur), 0);
   const multiplyNum = numArr.reduce((acc, cur) => acc * Number(cur), 1);
   return Math.max(plusNum, multiplyNum);
-}
+};
 
 module.exports = problem1;
