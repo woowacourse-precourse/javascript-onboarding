@@ -16,6 +16,8 @@ function problem4(word) {
     if (currentAscii >= 97 && currentAscii <= 122)
       frogAscii = asciiLowerZ - currentAscii + asciiLowerA;
     if (currentAscii === 32) frogAscii = space;
+
+    frogWord += String.fromCharCode(frogAscii);
   }
 
   return frogWord;
