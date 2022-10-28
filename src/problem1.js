@@ -42,6 +42,4 @@ function mulDigit(num) {
 	return result;
 }
 
-console.log(solution([99, 102], [211, 212]));
-
 module.exports = problem1;
