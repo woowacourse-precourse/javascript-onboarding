@@ -1,5 +1,5 @@
 function problem4(word) {
-  
+
   let result;
   wordArr = word.split("");
 
@@ -17,8 +17,10 @@ function problem4(word) {
     return String.fromCodePoint(asciiNum);
   }
 
-  return result;
+  //청개구리 엄마의 말의 길이만큼 반복되는 기능
+  result = wordArr.map(w => conversion(w));
+
+  return result.join("");
 }
 
-problem4("I love you")
-// module.exports = problem4;
+module.exports = problem4;
