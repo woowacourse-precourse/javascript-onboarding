@@ -5,6 +5,7 @@ function problem2(cryptogram) {
   return result;
 }
 
+// 조건을 확인하여 중복 문자를 삭제하고, 반환하는 함수
 function checkOverlap(arr) {
   let i = 0;
   while (i !== arr.length) {
@@ -18,6 +19,7 @@ function checkOverlap(arr) {
   return arr;
 }
 
+// 배열로 나누어진 문자열을 다시 합쳐서 반환하는 함수
 function joinArr(arr) {
   return arr.join("");
 }
