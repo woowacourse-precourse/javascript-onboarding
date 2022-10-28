@@ -56,6 +56,22 @@ function problem1(pobi, crong) {
   const IsPobiLeftPlusOne = new IsLeftPlusOne(pobi.leftPage, pobi.rightPage)
   const IsCrongLeftPlusOne = new IsLeftPlusOne(crong.leftPage, crong.rightPage)
   
+  class LeftOverPage {
+    constructor({leftPage}) {
+      this.leftPage
+    }
+    IsLeftOverPage() {
+      if(this.leftPage > 399) {
+        return false
+      }
+      return true
+    }
+  }
+  
+  const IsPobiLeftOver = new LeftOverPage(pobi.leftPage)
+  const IsCrongLeftOver = new LeftOverPage(crong.leftPage)
+
+  
   return answer;
 }
 
