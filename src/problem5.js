@@ -12,8 +12,13 @@ function problem5(money) {
     }
     money = money % unit;
   }
+
+  //단위의 수만큼 반복하는 기능
+  for (let i = 0; i < won.length; i++) {
+    moneyDivide(won[i]);
+  }
+
+  return arr;
 }
 
-problem5(50237);
-problem5(15000);
-// module.exports = problem5;
+module.exports = problem5;
