@@ -5,10 +5,12 @@ function problem1(pobi, crong) {
   if (isException(pobi) || isException(crong)){
     return -1;
   }
+
   let pobi_score = getScore(pobi);
   let crong_score = getScore(crong);
-  //console.log(`pobi_score: ${pobi_score}, crong_score: ${crong_score}`);
-  //answer = compareScores(pobi_score, crong_score);
+
+  answer = compareScores(pobi_score, crong_score);
+
   return answer;
 }
 
