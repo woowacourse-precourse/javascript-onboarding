@@ -2,9 +2,21 @@ const Cryptogram = {
   originText: "",
   chars: [],
   addOriginText: function (text) {
+    if (!this.checkText(text)) return false;
     this.originText = text;
     this.chars = this.originText.split("");
+    return true;
   },
+  checkText: function (text) {
+    if (!this.checkTextLength(text)) {
+      return false;
+    }
+    return true;
+  },
+  checkTextLength: function (text) {
+    return text.length >= 0 && this.chars <= 1000;
+  },
+
   removeSameWord: function () {
     let tmpChars = [...this.chars];
     for (let i = 0; i < tmpChars.length - 1; i++) {
