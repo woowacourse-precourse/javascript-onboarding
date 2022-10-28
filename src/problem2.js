@@ -14,7 +14,6 @@ function getDuplicateIndex(str, startIndex) {
   const COMPARISON = str[startIndex];
   let endIndex = startIndex;
   for (i = startIndex; i < str.length; i++) {
-    console.log(str[i]);
     if (str[i] === COMPARISON) {
       endIndex = i;
     } else {
@@ -26,6 +25,21 @@ function getDuplicateIndex(str, startIndex) {
 
 function problem2(cryptogram) {
   var answer;
+
+  while (checkStringDuplication(cryptogram)) {
+    for (j = 0; j < cryptogram.length; j++) {
+      const [startIndex, endIndex] = getDuplicateIndex(cryptogram, j);
+      if (startIndex != endIndex) {
+        cryptogram =
+          cryptogram.substring(0, startIndex) +
+          cryptogram.substring(endIndex + 1);
+        j = j - 1;
+      }
+    }
+  }
+
+  answer = cryptogram;
+
   return answer;
 }
 
