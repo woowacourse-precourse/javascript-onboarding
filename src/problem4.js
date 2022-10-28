@@ -26,3 +26,12 @@ const isUpperString = s => {
   if (A <= target && target <= Z) return true;
   return false;
 }
+
+const isLowerString = s => {
+  const target = s.charCodeAt();
+  const a = 'a'.charCodeAt();
+  const z = 'z'.charCodeAt();
+  
+  if (a <= target && target <= z) return true;
+  return false;
+}
