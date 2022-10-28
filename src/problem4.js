@@ -28,7 +28,6 @@ const converter = (word) => {
 
     return returnValue;
   });
-  //대소문자 체크 i;
 };
 
 const checkAlpha = (text) => {
@@ -45,18 +44,36 @@ const checkAlpha = (text) => {
 
 const reverseAlpha = (text) => {
   let resultValue;
+  let startIndex;
+  let endIndex;
   const isLowerCase = isLower(text);
+
   if (isLowerCase) {
-    //lowerCase
+    //ASCII 97 ~ 122
+    const charCode = text.charCodeAt(0);
+    startIndex = 97;
+    endIndex = 122;
+    const index = charCode - startIndex;
+    resultValue = String.fromCharCode(endIndex - index);
+    //resultValue = lowerCaseConverter()
   } else {
-    //upperCase
+    //ASCII 65 ~ 90
+    const charCode = text.charCodeAt(0);
+    startIndex = 65;
+    endIndex = 90;
+    const index = charCode - startIndex;
+    resultValue = String.fromCharCode(endIndex - index);
+    //resultValue = upperCaseConverter()
   }
+
+  return resultValue;
 };
 
+//isLower함수를 그냥 reverseAlpha 내부에 구현하는게 오히려 효율적으로 보여서 지울까 고민. 허나, 가독성 측면에서 유지하기로 결정.
 const isLower = (text) => {
   let resultValue;
   const charCode = text.charCodeAt(0);
-  if (97 <= charCode <= 122) {
+  if (97 <= charCode && charCode <= 122) {
     resultValue = true;
   } else {
     resultValue = false;
