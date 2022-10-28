@@ -1,6 +1,13 @@
 function problem1(pobi, crong) {
   const answer = compareMaxNumber(makeMaxNumber(pobi, crong));
-  return answer;
+  return makeResult(answer);
+}
+
+function makeResult(gameResult) {
+  if (gameResult === 'pobi') return 1
+  if (gameResult === 'draw') return 0
+  if (gameResult === 'crong') return 2
+  return -1
 }
 
 function compareMaxNumber(maxNumberArray) {
@@ -14,13 +21,11 @@ function compareMaxNumber(maxNumberArray) {
   return -1
 }
 
-
 function makeMaxNumber(pobi, crong) {
-  // 입력값에 대한 각각의 예외처리 우선시!
   if (!checkValid(pobi) || !checkValid(crong)) {
     return -1
   }
-  //이후 메인 로직()
+  
   const pobiMaxNumber = Math.max(caseAddNumber(pobi), caseMultipleNumber(pobi));
   const crongMaxNumber = Math.max(caseAddNumber(crong), caseMultipleNumber(crong));
 
