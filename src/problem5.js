@@ -1,7 +1,7 @@
 //@ts-check
 
 /**
- * Returns the decrypt string
+ * Returns the changed money
  * @param {number} money
  * @returns {Array<number>}
  */
@@ -12,6 +12,6 @@ function problem5(money) {
         money -= count * m;
         return count;
       })
-} //leftMoney 부수효과 없애야함
+} //money 부수효과 없애야 함
 
 module.exports = problem5;
