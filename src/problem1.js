@@ -5,6 +5,9 @@ function problem1(pobi, crong) {
   if (isException(pobi) || isException(crong)){
     return -1;
   }
+  let pobi_score = getScore(pobi);
+  let crong_score = getScore(crong);
+  //console.log(`pobi_score: ${pobi_score}, crong_score: ${crong_score}`);
 
   return answer;
 }
@@ -27,7 +30,11 @@ function getMaxNumByPage(page){
   return Math.max(candidate_plus, candidate_mult);
 }
 
+function getScore(pages){
+  let left_num = getMaxNumByPage(pages[0]);
+  let right_num = getMaxNumByPage(pages[1]);
+  return Math.max(left_num, right_num);
+}
+
 module.exports = problem1;
-const arr1 = [3, 4];
-const arr2 = [3, 4];
-console.log(problem1(arr1, arr2));
+
