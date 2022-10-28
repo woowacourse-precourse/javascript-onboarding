@@ -11,7 +11,7 @@ function calPlusMinus(leftPageNum, rightPageNum){
   return maxNum;
 }
 
-function FindReault(maxNumArray) {
+function findReault(maxNumArray) {
   let result = -1;
   let pobiNum = maxNumArray[0]
   let crongNum = maxNumArray[1];
@@ -25,23 +25,24 @@ function FindReault(maxNumArray) {
   else {
     result = 0;
   }
+
+  return result;
 }
 
-
 function problem1(pobi, crong) {
-  let maxNumArray = [0, 0];
   let animal = [pobi, crong];
-  
+  let maxNumArray = [0, 0];
   for(i = 0; i < 2; i++){
     animal[i].forEach((element) => {
       maxNumArray[i] = Math.max(maxNumArray[i], slicePage(element));
     });     
   }
-
-    var answer;
-    return answer;  
+  
+  var answer;
+  answer = findReault(maxNumArray);
+  return answer;  
   }
 
-problem1([97, 98], [197, 198])
+console.log(problem1([97, 98], [197, 198]));
 
 module.exports = problem1;
