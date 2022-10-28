@@ -68,17 +68,17 @@ class UAHTechCourse {
       .map((word, idx) => [name[idx], word].join(""));
   }
 
-  tieTwoWordsAndEmail() {
+  getEmailBook() {
     return this.forms.flatMap(([email, name]) => ({
       twoWords: this.changeNameToTwoWord(name),
       email: email,
     }));
   }
 
-  makeTwoWordDic() {
+  getTwoWordBook() {
     const resultMap = new Map();
 
-    this.tieTwoWordsAndEmail().forEach(({ twoWords, email }) => {
+    this.getEmailBook().forEach(({ twoWords, email }) => {
       twoWords.forEach((twoWordName) => {
         const defaultWord = resultMap.get(twoWordName) || [];
 
@@ -92,7 +92,7 @@ class UAHTechCourse {
   getResult() {
     return [
       ...new Set(
-        [...this.makeTwoWordDic().values()].flatMap((emailList) => {
+        [...this.getTwoWordBook().values()].flatMap((emailList) => {
           if (emailList.length > 1) {
             return emailList;
           }
