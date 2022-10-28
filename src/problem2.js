@@ -11,12 +11,22 @@ const Cryptogram = {
     if (!this.checkTextLength(text)) {
       return false;
     }
+    if (!this.checkTextLow(text)) {
+      return false;
+    }
     return true;
   },
   checkTextLength: function (text) {
     return text.length >= 0 && this.chars <= 1000;
   },
-
+  checkTextLow: function (text) {
+    const nonLowText = text.split("").filter((char) => {
+      if ("a" > char && "z" < char) {
+        return char;
+      }
+    });
+    return nonLowText.length === 0;
+  },
   removeSameWord: function () {
     let tmpChars = [...this.chars];
     for (let i = 0; i < tmpChars.length - 1; i++) {
