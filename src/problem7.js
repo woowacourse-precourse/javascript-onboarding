@@ -122,11 +122,13 @@ function getScore(friendOfFreinds, score, visitors) {
   scoringVisitors(visitors, score);
 }
 
-function sortScore(score, sortedScore) {
+function makeScoreArray(sortedScore, score) {
   for (let name in score) {
     sortedScore.push([name, score[name]]);
   }
+}
 
+function sortByScoreAndThenName(sortedScore) {
   sortedScore.sort((a, b) => {
     if (a[1] > b[1]) {
       return -1;
@@ -143,6 +145,12 @@ function sortScore(score, sortedScore) {
       return 1;
     }
   });
+}
+
+function sortScore(score, sortedScore) {
+  makeScoreArray(sortedScore, score);
+
+  sortByScoreAndThenName(sortedScore);
 }
 
 function getFriendsRecommendArray(alreadyFriends, sortedScore, ans) {
