@@ -13,7 +13,9 @@ function problem6(forms) {
 
     for (var j = 0; j < name.length - 1; j++) {
       // 두 글자씩 쪼갠 문자열 리스트
-      two_words.push(name[j] + name[j + 1]);
+      if (!two_words.includes(name[j] + name[j + 1])) {
+        two_words.push(name[j] + name[j + 1]);
+      }
     }
     for (var k = 0; k < two_words.length; k++) {
       //중복이 있는지 확인
@@ -34,9 +36,11 @@ function problem6(forms) {
   //첫번째 사용자는 중복 검사 하지 않았음 -> 첫번쨰 사용자 중복 검사
   name = forms[0][1];
   for (var j = 0; j < name.length - 1; j++) {
-    two_words.push(name[j] + name[j + 1]);
+    if (!two_words.includes(name[j] + name[j + 1])) {
+      two_words.push(name[j] + name[j + 1]);
+    }
   }
-  first_length = name.length - 1;
+  var first_length = name.length - 1;
   var overlap_except_first = overlap.slice(first_length);
   for (var k = 0; k < two_words.length; k++) {
     if (overlap_except_first.includes(two_words[k])) {
