@@ -31,6 +31,7 @@ function problem2(cryptogram) {
     crypto = removeDuplicate(crypto);
   }
 
+  answer = crypto;
   return answer;
 }
 
