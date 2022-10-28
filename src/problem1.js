@@ -17,14 +17,15 @@ function problem1(pobi, crong) {
   }
 }
 function getMaxRecord(user) {
-  sliceArray(user[0], user[1]);
-  sum(user[0], user[1]);
-  multiply(user[0], user[1]);
+  const [sumLeft, sumRight] = sliceArray(user[0], user[1]);
 }
 function sliceArray(left, right) {
   const sliceLeft = left.toString().split("");
   const sliceRight = right.toString().split("");
-  sum(sliceLeft, sliceRight);
+  const maxSum = sum(sliceLeft, sliceRight);
+  const maxMultiply = multiply(sliceLeft, sliceRight);
+  return maxSum, maxMultiply;
+  // return sum(sliceLeft, sliceRight), multiply(sliceLeft, sliceRight);
 }
 
 function sum(sliceLeft, sliceRight) {
@@ -38,6 +39,9 @@ function sum(sliceLeft, sliceRight) {
   for (let i = 0; i < sliceLeft.length; i++) {
     sumLeft += Number(sliceLeft[i]);
   }
+  console.log(sumLeft);
+  console.log(sumRight);
+
   if (sumRight > sumLeft) {
     return sumRight;
   } else {
@@ -45,7 +49,25 @@ function sum(sliceLeft, sliceRight) {
   }
 }
 
-function multiply(left, right) {}
+function multiply(sliceLeft, sliceRight) {
+  let multiplyLeft = 1;
+  let multiplyRight = 1;
+
+  for (let i = 0; i < sliceLeft.length; i++) {
+    multiplyLeft = multiplyLeft * Number(sliceLeft[i]);
+  }
+  for (let i = 0; i < sliceRight.length; i++) {
+    multiplyRight = multiplyRight * Number(sliceRight[i]);
+  }
+  console.log(multiplyLeft);
+  console.log(multiplyRight);
+
+  if (multiplyRight > multiplyLeft) {
+    return multiplyRight;
+  } else {
+    return multiplyLeft;
+  }
+}
 
 function checkArray(user) {
   if (user[0] + 1 == user[1]) {
