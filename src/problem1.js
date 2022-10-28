@@ -91,9 +91,9 @@ let input = {
     [211, 212],
   ],
 };
-for (let i = 0; i < input.pobi.length; i++) {
-  console.log(`#${i + 1} ${problem1(input.pobi[i], input.crong[i])}`);
-}
+// for (let i = 0; i < input.pobi.length; i++) {
+//   console.log(`#${i + 1} ${problem1(input.pobi[i], input.crong[i])}`);
+// }
 // problem1(pobi, crong);
 
 module.exports = problem1;
