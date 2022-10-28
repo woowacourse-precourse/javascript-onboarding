@@ -1,4 +1,4 @@
-function calculator(remain, cash, ans) {
+function calculator(cash, ans, remain) {
   for (let i = 0; i < cash.length; i++) {
     const quotient = Math.floor(remain / cash[i]);
 
@@ -20,7 +20,7 @@ function problem5(money) {
   let ans = [];
   let remain = money;
 
-  return calculator(remain, cash, ans);
+  return calculator(cash, ans, remain);
 }
 
 module.exports = problem5;
