@@ -10,9 +10,6 @@ function problem7(user, friends, visitors) {
   deleteInfo(user,userFriends);
 
   let sortTable=[];
-  for (let member of Object.keys(userScore)) {
-    if (userScore[member]!==0) sortTable.push([member,userScore[member]]);
-  };
   sortFriends(sortTable);
 
   return sortTable.map((finalName)=>finalName[0]);
@@ -45,6 +42,10 @@ function deleteInfo(user,userFriends) {
 };
 
 function sortFriends(sortTable) {
+  for (let member of Object.keys(userScore)) {
+    if (userScore[member]!==0) sortTable.push([member,userScore[member]]);
+  };
+
   sortTable.sort((a,b)=> {
     return (a[1]!==b[1]) ? b[1]-a[1] : (a[0]>b[0] ? 1 : -1)
   });
