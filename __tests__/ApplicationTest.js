@@ -38,11 +38,11 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-// describe("problem4", () => {
-//   test("case1", () => {
-//     expect(problem4("I love you")).toEqual("R olev blf");
-//   });
-// });
+describe("problem4", () => {
+  test("case1", () => {
+    expect(problem4("I love you")).toEqual("R olev blf");
+  });
+});
 
 // describe("problem5", () => {
 //   test("case1", () => {
