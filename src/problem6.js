@@ -8,8 +8,19 @@ function problem6(forms) {
       let sameWords = [...forms[i][1]].filter(x => forms[j][1].includes(x)).join('');
       
       // 공통부분의 순서가 일치하는지 확인하는 기능
+      for (let c=0;c<sameWords.length-1;c++) {
+        // console.log(forms[j][1].includes(sameWords.substring(c, c+2)),forms[j][1])
+        if (forms[j][1].includes(sameWords.substring(c, c+2))) {
+          answer.add(forms[i][0])
+          answer.add(forms[j][0])
+          break
+        }
+      }
     }
   }
+
+  // answer의 자료형을 리스트로 바꾸고 정렬하는 기능
+  
 
 
   return answer;
