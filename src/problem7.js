@@ -50,4 +50,13 @@ const getUserFriends = (user, friends) => {
   return userFriends;
 };
 
+const sortUsers = (users) => {
+  return [...users].sort(([nameA, scoreA], [nameB, scoreB]) => {
+    if (scoreA === scoreB) {
+      return nameA > nameB ? 1 : -1;
+    }
+    return scoreA > scoreB ? -1 : 1;
+  });
+};
+
 module.exports = problem7;
