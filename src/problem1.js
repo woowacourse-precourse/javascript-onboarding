@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  let answer = null
+
   class Input {
     constructor ({name, leftPage, rightPage}) {
       this.name = name
@@ -126,8 +126,26 @@ function problem1(pobi, crong) {
   const PobiScore = Math.max(new ScoreMaker(PobiLeftDigits), new ScoreMaker(PobiRightDigits)) 
   const CrongScore = Math.max(new ScoreMaker(CrongLeftDigits), new ScoreMaker(CrongRightDigits)) 
   
+  class WhoIsWinner {
+    constructor({pobiscore, crongscore}) {
+      this.pobiscore
+      this.crongscore
+    }
+    CompareScore() {
+      if(this.pobiscore > this.crongscore) {
+        return 1
+      }
+      if(this.pobiscore < this.crongscore) {
+        return 2
+      }
+      if(this.pobiscore === this.crongscore) {
+        return 0
+      }
+    }
+  }
 
-
+  const answer = new WhoIsWinner(PobiScore, CrongScore)
+  
   return answer;
 }
 
