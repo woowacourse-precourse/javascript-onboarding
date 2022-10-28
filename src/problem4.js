@@ -16,10 +16,12 @@ module.exports = problem4;
 */
 
 const converter = (word) => {
+  let resultValue;
   const wordArray = word.split("");
-  wordArray.map((i) => {
+  const newArray = wordArray.map((i) => {
     let returnValue;
     const isAlpha = checkAlpha(i);
+    console.log(`${i} : ${isAlpha}`);
     if (isAlpha) {
       returnValue = reverseAlpha(i); //인덱스 반대로
     } else {
@@ -28,6 +30,8 @@ const converter = (word) => {
 
     return returnValue;
   });
+  resultValue = newArray.join("");
+  return resultValue;
 };
 
 const checkAlpha = (text) => {
