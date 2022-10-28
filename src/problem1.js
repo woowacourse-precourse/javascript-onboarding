@@ -17,8 +17,8 @@ const exceptionCheck = (arr) => {
     arr[0] % 2 != 1 ||
     arr[1] % 2 != 0 ||
     arr[1] - arr[0] > 1 ||
-    arr[0] == 1 ||
-    arr[1] == 400
+    arr.includes(1) ||
+    arr.includes(400)
   )
     return true;
 };
