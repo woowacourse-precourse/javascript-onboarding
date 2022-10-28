@@ -17,3 +17,12 @@ const makeLowerAlphabet = () => {
     .map((_, i) => i + 97)
     .map((x) => String.fromCharCode(x));
 }
+
+const isUpperString = s => {
+  const target = s.charCodeAt();
+  const A = 'A'.charCodeAt();
+  const Z = 'Z'.charCodeAt();
+
+  if (A <= target && target <= Z) return true;
+  return false;
+}
