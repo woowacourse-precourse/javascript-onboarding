@@ -11,8 +11,8 @@ describe("problem2", () => {
     expect(problem2("abcdefg")).toEqual("abcdefg");
   });
   test("case4: 맨 앞 또는 맨 뒤에서 한번 지워진다.", () => {
-    expect(problem2("aabcdefg")).toEqual("abcdefg");
-    expect(problem2("abcdefgg")).toEqual("abcdefg");
+    expect(problem2("aabcdefg")).toEqual("bcdefg");
+    expect(problem2("abcdefgg")).toEqual("abcdef");
   });
   test("case5: 3개 이상이 연속되는 사례", () => {
     expect(problem2("abcccdefg")).toEqual("abdefg");
