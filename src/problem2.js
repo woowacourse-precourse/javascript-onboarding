@@ -1,17 +1,16 @@
 function problem2(cryptogram) {
   let answer;
   let stack = [];
+  let deletedWord = "";
 
   for (let i = 0; i < cryptogram.length; i++) {
-    let duplicate = false;
-
     while (stack.length && stack[stack.length - 1] === cryptogram[i]) {
-      stack.pop();
-      duplicate = true;
+      deletedWord = stack.pop();
     }
 
-    if (!duplicate) {
+    if (deletedWord !== cryptogram[i]) {
       stack.push(cryptogram[i]);
+      deletedWord = "";
     }
   }
 
