@@ -94,6 +94,16 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  if (friendPoint.length > 5) {
+    for (let i = 0; i < 5; i++) {
+      answer.push(friendPoint[i][0]);
+    }
+  } else {
+    for (let i = 0; i < friendPoint.length; i++) {
+      answer.push(friendPoint[i][0]);
+    }
+  }
+
   return answer;
 }
 module.exports = problem7;
