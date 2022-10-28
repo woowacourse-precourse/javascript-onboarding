@@ -3,26 +3,31 @@ const FROGDICTION = NORMAL.split('').reverse();
 
 function problem4(word) {
   var answer;
-
-  frogDiction(word);
-  console.log(frogDiction(word));
+  let afterFrogDiction ='';
+  
+  for (i = 0; i < word.length; i++) {
+    afterFrogDiction += frogDiction(word[i]);
+  }
+  answer = afterFrogDiction;
   return answer;
 }
 
-
 function frogDiction(word) {
-  let result = "";
-  for (i = 0; i <= word.length; i++) {
-    if (word[i] === ' ') result += word[i];
-    else {
-      const convertWord = FROGDICTION[NORMAL.split('').indexOf(word[i])];
-      result += convertWord;
+    if (word === ' ') return word;
+
+    if (upperCheck(word)) {
+      const convertWord = FROGDICTION[NORMAL.split('').indexOf(word)];
+      return convertWord;
     }
-  } 
-  return result;
+    if (!upperCheck(word)) {
+      const convertWord = FROGDICTION[NORMAL.toLowerCase().split('').indexOf(word)].toLowerCase();
+      return convertWord;
+    }
 }
 
-problem4("I LOVE YOU");
-
+function upperCheck(letter) {
+  if (letter === letter.toUpperCase()) return true;
+  return false;
+}
 
 module.exports = problem4;
