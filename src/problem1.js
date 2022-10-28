@@ -1,4 +1,14 @@
-// 주어진 페이지 계산(더하기, 곱하기) 결과 중 가장 큰 수 반환 기능
+function calculator(page) {
+  const plus = String(page)
+    .split('')
+    .reduce((sum, val) => sum + Number(val), 0);
+
+  const mul = String(page)
+    .split('')
+    .reduce((sum, val) => sum * Number(val), 1);
+
+  return Math.max(plus, mul);
+}
 
 // 왼쪽, 오른쪽 페이지 계산 결과 중 가장 큰 수 반환 기능
 
