@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 기능 목록
+
+1. forms 내용 중 닉네임에서 같은 글자가 연속적으로 포함되는 닉네임을 찾는다.
+2. 해당 닉네임을 작성한 지원자의 이메일을 배열에 넣는다.
+3. 이메일 목록을 오름차순 정렬, 중복 제거 후 반환한다.
