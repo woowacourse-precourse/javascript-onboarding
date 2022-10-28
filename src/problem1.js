@@ -30,6 +30,15 @@ function calculateScore(user){
   return best;
 }
 
+//예외처리 함수
+function check(user){
+  //연속된 페이지가 아닌경우 / 첫페이지,마지막페이지를 펼치는 경우
+  if ((user[1] - user[0] !== 1) || (user[0] <= 1)||(user[1] >= 400)) {
+    return 1;
+  }
+  return 0;
+}
+
 }
 
 module.exports = problem1;
