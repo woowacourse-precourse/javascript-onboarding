@@ -6,7 +6,7 @@ const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
-describe.only("problem1", () => {
+describe("problem1", () => {
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
   });
@@ -29,7 +29,7 @@ describe("problem2", () => {
   });
 });
 
-describe("problem3", () => {
+describe.only("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
