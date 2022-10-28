@@ -5,5 +5,8 @@ function problem4(word) {
 const isAlphabet = (char) => {
   return /^[a-zA-Z]+$/.test(char);
 };
+const isUpperCase = (char) => {
+  return /^[A-Z]+$/.test(char);
+};
 
 module.exports = problem4;
