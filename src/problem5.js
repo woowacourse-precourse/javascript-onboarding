@@ -4,20 +4,31 @@ function problem5(money) {
   result.push(isOhmanwon(money));
   balance = money - isOhmanwon(money) * 50000;
   result.push(isManwon(balance));
+  balance = balance - isManwon(balance) * 10000;
+
   console.log(isOhmanwon(money));
   console.log(balance);
   console.log(result);
 }
+
 function isOhmanwon(money) {
   if (money >= 50000) {
     let ohmanwon = money / 50000;
-    ohmanwon = Number.parseInt(ohmanwon);
-    return ohmanwon;
+    return Number.parseInt(ohmanwon);
   }
   return 0;
 }
+
+function isManwon(money) {
+  if (money >= 10000) {
+    let manwon = money / 10000;
+    return Number.parseInt(manwon);
+  }
+  return 0;
+}
+
 function testCode() {
-  problem5(60237);
+  problem5(50237);
   // problem5(10000);
   // problem5(15000);
   // problem5(1000000);
