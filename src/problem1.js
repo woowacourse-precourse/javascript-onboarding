@@ -1,5 +1,10 @@
 function problem1(pobi, crong) {
   var answer;
+  // 5) 예외사항을 처리하는 과정
+  if (exceptionHandle(pobi) || exceptionHandle(crong)) {
+    answer = -1;
+    return answer;
+  }
   // 3) 플레이어 각각의 점수를 계산하는 과정
   const pobiScore = calculateScore(pobi);
   const crongScore = calculateScore(crong);
@@ -33,5 +38,18 @@ function calculateScore(pageArr) {
   return left > right ? left : right;
 }
 
+// 5) 예외사항을 처리하는 과정
+// 짝홀로 입력된다(이건 제한사항에서 걸러진다고 생각)
+function exceptionHandle(pageArr) {
+  // 양 페이지가 1씩차이가 안난다
+  if (pageArr[1] - pageArr[0] !== 1) {
+    return true;
+  } else if (pageArr[0] < 1 || pageArr[1] > 400) {
+    // 범위 1 ~ 400을넘긴다
+    return true;
+  } else {
+    return false;
+  }
+}
 
 module.exports = problem1;
