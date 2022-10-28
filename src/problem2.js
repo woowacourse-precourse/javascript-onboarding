@@ -9,12 +9,8 @@ function problem2(cryptogram) {
     if (isOverlap(stack, char)) {
       stack = stack.slice(0, stack.length - 1);
       recentDeletedCahr = char;
-      return;
     }
-    if (recentDeletedCahr === char) {
-      return;
-    }
-    stack += char;
+    if (recentDeletedCahr !== char) stack += char;
   });
 
   return stack;

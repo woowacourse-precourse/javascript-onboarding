@@ -26,7 +26,7 @@
   - [x] feat: 최근 삭제된(중복된) 문자와 새롭게 추가할 문자가 같다면 스택에 추가하지 않기
   - [x] feat: 스택을 반환하여 구현 완료하기
 - 문제 2 리팩토링
-  - [ ] refactor: `forEach` 콜백함수 내 `return` 제거하기
+  - [x] refactor: `forEach` 콜백함수 내 `return` 제거하기
 
 ---
 
