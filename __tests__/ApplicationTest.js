@@ -68,6 +68,21 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
+  test("case3", () => {
+    expect(problem3(1)).toEqual(0);
+  });
+  test("case4", () => {
+    expect(problem3(10)).toEqual(3);
+  });
+  test("case5", () => {
+    expect(problem3(100)).toEqual(60);
+  });
+  test("case6", () => {
+    expect(problem3(1000)).toEqual(900);
+  });
+  test("case7", () => {
+    expect(problem3(10000)).toEqual(12000);
+  });
 });
 
 describe("problem4", () => {
