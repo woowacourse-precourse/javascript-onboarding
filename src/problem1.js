@@ -1,6 +1,11 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  try {
+    catchError(pobi);
+    catchError(crong);
+    return findWinner(pobi, crong);
+  } catch (err) {
+    return -1;
+  }
 }
 
 /**
@@ -52,6 +57,15 @@ function findWinner(pobi, crong) {
   if (largestPobi === largestCrong) return 0;
   else if (largestPobi > largestCrong) return 1;
   else return 2;
+}
+function catchError(page1, page2) {
+  //페이지가 홀수, 짝수가 아닐떄
+  if ((page1 + page2) % 2 === 0) {
+    throw new Error("페이자가 짝수 , 홀수가 아닙니다.");
+  }
+  if (page2 - page1 !== 1) {
+    throw new Error("연속된 페이지가 아닙니다.");
+  }
 }
 
 module.exports = problem1;
