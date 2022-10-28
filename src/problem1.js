@@ -18,6 +18,7 @@ function problem1(pobi, crong) {
   let pobiMax;
   // 크롱의 가장 큰 수
   let crongMax;
+  let answer;
 
   // pobi의 가장 큰 수 구하기
   pobi
@@ -46,10 +47,12 @@ function problem1(pobi, crong) {
     });
 
   // 승패 결과 처리하기 (포비 1, 크롱 2, 무승부 0, 예외사항 -1)
-  if (!validate(pobi) || !validate(crong)) return -1;
-  else if (pobiMax > crongMax) return 1;
-  else if (pobiMax < crongMax) return 2;
-  else return 0;
+  if (!validate(pobi) || !validate(crong)) answer = -1;
+  else if (pobiMax > crongMax) answer = 1;
+  else if (pobiMax < crongMax) answer = 2;
+  else answer = 0;
+
+  return answer;
 }
 
 module.exports = problem1;
