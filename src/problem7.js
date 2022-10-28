@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+	const friendLists = new Map()
 }
 
-module.exports = problem7;
+module.exports = problem7
