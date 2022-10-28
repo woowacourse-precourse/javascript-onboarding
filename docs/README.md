@@ -55,7 +55,7 @@
   - [x] feat: 출금한 금액을 money에서 빼고, 출금한 화폐의 개수를 배열에 추가하기
   - [x] feat: 구현 완료하기
 - 문제 5 리팩토링
-  - [ ] refactor: `UNIT_OF_MONEY` 카멜 표기법으로 바꾸기
+  - [x] refactor: `UNIT_OF_MONEY` 카멜 표기법으로 바꾸기
 
 ---
 
