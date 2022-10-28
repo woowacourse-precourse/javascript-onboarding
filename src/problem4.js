@@ -1,12 +1,12 @@
 const FROG = {
-  upperCase: [
+  upperDictionary: [
     'A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L',
     'M', 'N', 'O', 'P', 'Q', 'R',
     'S', 'T', 'U', 'V', 'W', 'X',
     'Y', 'Z'
   ],
-  lowerCase: [
+  lowerDictionary: [
     'a', 'b', 'c', 'd', 'e', 'f',
     'g', 'h', 'i', 'j', 'k', 'l',
     'm', 'n', 'o', 'p', 'q', 'r',
@@ -21,26 +21,25 @@ function problem4(word) {
 }
 
 // 예외상황
-function exception () {
+// function exception () {
 
-}
+// }
 
 // 대문자인지 소문자인지 판별
 function checkAlphabet(word) {
-  
+
+  return result;
 }
 
-// 소문자일 경우 변환 
-function lowerCase() {
-
+// 대문자일 경우 소문자로 변환
+function upperCase(word) {
+  return FROG.lowerDictionary[FROG.upperDictionary.indexOf(word)];
 }
 
-// 대문자일 경우 변환
-function upperCase() {
 
-}
 
-checkAlphabet("I love you");
+
+console.log(checkAlphabet("I love you"));
 
 module.exports = problem4;
 
