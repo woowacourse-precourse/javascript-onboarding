@@ -1,6 +1,10 @@
 function problem1(pobi, crong) {
   var answer;
-  return answer;
+  if(isValid(pobi) && isValid(crong)){
+    answer = judgeResult(getMaxScore(pobi), getMaxScore(crong))
+    return answer
+  }
+  return -1;
 }
 
 function isValid(pageArray){
