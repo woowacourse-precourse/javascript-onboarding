@@ -6,11 +6,13 @@ function problem1(pobi, crong) {
       this.rightPage = rightPage;
     }
   }
+
   const Pobi = new Input({
     name: "pobi",
     leftPage: pobi[0],
     rightPage: pobi[1],
   });
+
   const Crong = new Input({
     name: "crong",
     leftPage: crong[0],
@@ -18,42 +20,43 @@ function problem1(pobi, crong) {
   });
 
   class IsLeft {
-    constructor({ leftPage }) {
+    constructor(leftPage) {
       this.leftPage = leftPage;
-      console.log("leftpage", this.leftPage);
     }
+
     IsLeftOdd() {
-      if (!this.leftPage / 2) {
+      if (this.leftPage % 2 !== 0) {
         return true;
       }
       return false;
     }
   }
 
-  const IsPobiLeftOdd = new IsLeft(Pobi.leftPage);
-  const IsCrongLeftOdd = new IsLeft(Crong.leftPage);
+  const IsPobiLeftOdd = new IsLeft(Pobi.leftPage).IsLeftOdd();
+  const IsCrongLeftOdd = new IsLeft(Crong.leftPage).IsLeftOdd();
 
   class IsRight {
-    constructor({ rightPage }) {
+    constructor(rightPage) {
       this.rightPage = rightPage;
     }
+
     IsRightEven() {
-      if (this.rightPage / 2) {
+      if (this.rightPage % 2 === 0) {
         return true;
       }
       return false;
     }
   }
 
-  const IsPobiRightEven = new IsRight(Pobi.rightPage);
-  const IsCrongRightEven = new IsRight(Crong.rightPage);
+  const IsPobiRightEven = new IsRight(Pobi.rightPage).IsRightEven();
+  const IsCrongRightEven = new IsRight(Crong.rightPage).IsRightEven();
 
-  class IsLeftPlusOne {
+  class LeftPlusOne {
     constructor({ leftPage, rightPage }) {
       this.leftPage = leftPage;
       this.rightPage = rightPage;
     }
-    LeftPlusOne() {
+    IsLeftPlusOneEqulRight() {
       if (this.leftPage + 1 === this.rightPage) {
         return true;
       }
@@ -61,8 +64,8 @@ function problem1(pobi, crong) {
     }
   }
 
-  const IsPobiLeftPlusOne = new IsLeftPlusOne(Pobi.leftPage, pobi.rightPage);
-  const IsCrongLeftPlusOne = new IsLeftPlusOne(Crong.leftPage, crong.rightPage);
+  const IsPobiLeftPlusOne = new LeftPlusOne(Pobi).IsLeftPlusOneEqulRight();
+  const IsCrongLeftPlusOne = new LeftPlusOne(Crong).IsLeftPlusOneEqulRight();
 
   class LeftOverPage {
     constructor({ leftPage }) {
@@ -76,14 +79,14 @@ function problem1(pobi, crong) {
     }
   }
 
-  const IsPobiLeftOver = new LeftOverPage(Pobi.leftPage);
-  const IsCrongLeftOver = new LeftOverPage(Crong.leftPage);
+  const IsPobiLeftOver = new LeftOverPage(Pobi).IsLeftOverPage();
+  const IsCrongLeftOver = new LeftOverPage(Crong).IsLeftOverPage();
 
   class RightOverPage {
     constructor({ rightPage }) {
       this.rightPage = rightPage;
     }
-    IsLeftOverPage() {
+    IsRightOverPage() {
       if (this.rightPage > 400 || this.rightPage < 2) {
         return false;
       }
@@ -91,67 +94,68 @@ function problem1(pobi, crong) {
     }
   }
 
-  const IsPobiRightver = new RightOverPage(Pobi.rightPage);
-  const IsCrongRightOver = new RightOverPage(Crong.rightPage);
+  const IsPobiRightver = new RightOverPage(Pobi).IsRightOverPage();
+  const IsCrongRightOver = new RightOverPage(Crong).IsRightOverPage();
 
   if (
-    IsPobiLeftOdd ||
-    IsCrongLeftOdd ||
-    IsPobiRightEven ||
-    IsCrongRightEven ||
-    IsPobiLeftPlusOne ||
-    IsCrongLeftPlusOne ||
-    IsPobiLeftOver ||
-    IsCrongLeftOver ||
-    IsPobiRightver ||
-    IsCrongRightOver
+    !IsPobiLeftOdd ||
+    !IsCrongLeftOdd ||
+    !IsPobiRightEven ||
+    !IsCrongRightEven ||
+    !IsPobiLeftPlusOne ||
+    !IsCrongLeftPlusOne ||
+    !IsPobiLeftOver ||
+    !IsCrongLeftOver ||
+    !IsPobiRightver ||
+    !IsCrongRightOver
   ) {
     return -1;
   }
 
   class DigitMaker {
-    constructor({ page }) {
+    constructor(page) {
       this.page = page;
     }
     SeperateDigit() {
       let temp = this.page;
       const Digits = [];
-      while (temp > 0) {
+      while (temp > 1) {
         Digits.push(temp % 10);
-        temp /= 10;
+        temp =  parseInt(temp / 10);
       }
       return Digits;
     }
   }
 
-  const PobiLeftDigits = new DigitMaker(Pobi.leftPage);
-  const PobiRightDigits = new DigitMaker(Pobi.rightPage);
-  const CrongLeftDigits = new DigitMaker(Crong.leftPage);
-  const CrongRightDigits = new DigitMaker(Crong.rightPage);
+  const PobiLeftDigits = new DigitMaker(Pobi.leftPage).SeperateDigit();
+  const PobiRightDigits = new DigitMaker(Pobi.rightPage).SeperateDigit();
+  const CrongLeftDigits = new DigitMaker(Crong.leftPage).SeperateDigit();
+  const CrongRightDigits = new DigitMaker(Crong.rightPage).SeperateDigit();
 
   class ScoreMaker {
-    constructor({ digits }) {
-      this.digits = digits;
+    constructor(pages) {
+      this.pages = pages;
     }
+
     CalculateScore() {
       return Math.max(
-        this.digits.reduce((a, b) => a + b),
-        this.digits.reduce((a, b) => a * b)
+        this.pages.reduce((a, b) => a + b),
+        this.pages.reduce((a, b) => a * b)
       );
     }
   }
 
   const PobiScore = Math.max(
-    new ScoreMaker(PobiLeftDigits),
-    new ScoreMaker(PobiRightDigits)
+    new ScoreMaker(PobiLeftDigits).CalculateScore(),
+    new ScoreMaker(PobiRightDigits).CalculateScore()
   );
   const CrongScore = Math.max(
-    new ScoreMaker(CrongLeftDigits),
-    new ScoreMaker(CrongRightDigits)
+    new ScoreMaker(CrongLeftDigits).CalculateScore(),
+    new ScoreMaker(CrongRightDigits).CalculateScore()
   );
 
   class WhoIsWinner {
-    constructor({ pobiscore, crongscore }) {
+    constructor(pobiscore, crongscore) {
       this.pobiscore = pobiscore;
       this.crongscore = crongscore;
     }
@@ -168,8 +172,7 @@ function problem1(pobi, crong) {
     }
   }
 
-  const answer = new WhoIsWinner(PobiScore, CrongScore);
-
+  const answer = new WhoIsWinner(PobiScore, CrongScore).CompareScore();
   return answer;
 }
 
