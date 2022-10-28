@@ -1,10 +1,30 @@
 function problem1(pobi, crong) {
+  if (!isContinue(pobi, crong)) return -1;
+  if (!isOddEven(pobi, crong)) return -1;
+  if (!isInrange(pobi, crong)) return -1;
+
   let pobiMax = getMax(pobi);
   let crongMax = getMax(crong);
 
   if (pobiMax > crongMax) return 1;
   if (pobiMax === crongMax) return 0;
   else return 2;
+
+  function isContinue(a, b) {
+    if (a[1] - a[0] === 1 && b[1] - b[0] === 1) return true;
+    else return false;
+  }
+
+  function isOddEven(a, b) {
+    if (a[1] % 2 === 0 && a[0] % 2 === 1 && b[1] % 2 === 0 && b[0] % 2 === 1)
+      return true;
+    else return false;
+  }
+
+  function isInrange(a, b) {
+    if (a[0] >= 1 && a[1] <= 400 && b[0] >= 1 && b[1] <= 400) return true;
+    else return false;
+  }
 
   function numToDigit(pages) {
     return pages.map((page) =>
