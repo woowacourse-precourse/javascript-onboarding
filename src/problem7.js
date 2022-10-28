@@ -43,14 +43,14 @@ function arrayToMap(array, friendsList) {
   const friendArray = array.flat();
   let friendsPoint = new Map();
 
-  for (let i = 0; i < friendArray.length; i++) {
-    if (isHimSelf(friendArray[i], friendsList)) continue;
-    if (friendsPoint.has(friendArray[i])) {
-      friendsPoint.set(friendArray[i], friendsPoint.get(friendArray[i]) + 10);
+  friendArray.map((friends) => {
+    if (isHimSelf(friends, friendsList)) return;
+    if (friendsPoint.has(friends)) {
+      friendsPoint.set(friends, friendsPoint.get(friends) + 10);
     } else {
-      friendsPoint.set(friendArray[i], 10);
+      friendsPoint.set(friends, 10);
     }
-  }
+  });
   return friendsPoint;
 }
 
@@ -74,7 +74,16 @@ function allPoints(friendsPoint, visiter, friendsList) {
 //맵을 변환하여 점수순으로 정렬하고 반환하는 함수
 function sortingMap(points) {
   const sortedArr = [...points];
-  sortedArr.sort((a, b) => b[1] - a[1]);
+
+  sortedArr.sort((a, b) => {
+    if (b[1] === a[1]) {
+      if (a[0] < b[0]) return -1;
+      if (a[0] > b[0]) return 1;
+      return 0;
+    }
+    return b[1] - a[1];
+  });
+  sortedArr.splice(5);
   return sortedArr;
 }
 
@@ -86,7 +95,6 @@ function friendsRecomand(userId, list, visiter) {
   let friendsPoint = arrayToMap(friendsFriendList, friendsList);
   let allPoint = allPoints(friendsPoint, visiter, friendsList);
   let sortedList = sortingMap(allPoint);
-
   const result = new Map(sortedList);
   return [...result.keys()];
 }
