@@ -1,5 +1,11 @@
 function problem3(number) {
+  let res = 0;
 
+  for (let i = 3; i <= number; i++) {
+    res += clapCount(i);
+  }
+
+  return res;
 }
 
 module.exports = problem3;
