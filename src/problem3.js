@@ -11,11 +11,33 @@ function validInputCheck(number) {
   return 0;
 }
 
+function isClap(number) {
+  let count = 0;
+
+  while (number > 0) {
+    if (number % 10 === 3 || number % 10 === 6 || number % 10 === 9) {
+      count += 1;
+    }
+    number = parseInt(number / 10);
+  }
+  return count;
+}
+
+function countClap(number) {
+  let count = 0;
+
+  for (let index = 1; index <= number; index++) {
+    count += isClap(index);
+  }
+  return count;
+}
+
 function problem3(number) {
   if (validInputCheck(number) < 0) {
     return "Argument Error";
   }
-  var answer;
+  var answer = countClap(number);
+
   return answer;
 }
 
