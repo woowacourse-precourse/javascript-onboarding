@@ -7,11 +7,13 @@ function checkPage(pages) {
 	}
 	return true;
 }
+
 /*각 자릿수 나누기*/
 function splitNum(num) {
 	num = num + "";
 	return num.split("").map(item => Number(item));
 }
+
 /*양쪽 페이지 계산*/
 function calculateScore(leftNums, rightNums) {
 	const leftSumByPlus = leftNums.reduce(
@@ -32,6 +34,7 @@ function calculateScore(leftNums, rightNums) {
 
 	return Math.max(leftSumByPlus, leftMultiply, rightSumByPlus, rightMultiply);
 }
+
 /*문제해결*/
 function problem1(pobi, crong) {
 	const [pobiLeftPage, pobiRightPage] = pobi;
