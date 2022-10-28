@@ -37,6 +37,18 @@ function setMapTwoLetter(form, twoLetterMap) {
 }
 
 // 크루 닉네임 중복 확인 기능
-function isDuplicateNickname(form, duplicateEmailSet, twoLetterMap) {}
+function isDuplicateNickname(form, duplicateEmailSet, twoLetterMap) {
+  const [email, nickname] = form;
+  if (nickname.length >= 2) {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      // 크루 닉네임에서 두 글자씩 판별
+      let twoLetter = nickname.slice(i, i + 2);
+      if (twoLetterMap.get(twoLetter) > 1) {
+        duplicateEmailSet.add(email);
+        break;
+      }
+    }
+  }
+}
 
 module.exports = problem6;
