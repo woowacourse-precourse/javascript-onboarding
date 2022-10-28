@@ -33,12 +33,28 @@ function findDuplicateName(nameObj) {
   }
 }
 
+// 길이가 두 글자 이상인 리스트롸 이름 사전을 파라미터로 받는다
+function getEmailOfDuplicatedName(forms, nameDict) {
+  const duplicateEmailList = [];
+  forms.forEach(form => {
+    const [email, nickname] = form;
+    if (nameDict[nickname] > 0) {
+      duplicateEmailList.push(email);
+    }
+  });
+
+  duplicateEmailList.sort();
+
+  return duplicateEmailList;
+}
+
 function problem6(forms) {
   var answer;
   // 이름이 두 글자 이상인 크루 리스트
   const nameLengthTwoList = forms.filter(form => form[1].length > 1);
   const nameDictionary = createNameDictionary(nameLengthTwoList);
   findDuplicateName(nameDictionary);
+  answer = getEmailOfDuplicatedName(nameLengthTwoList, nameDictionary);
   return answer;
 }
 
