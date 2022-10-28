@@ -1,18 +1,14 @@
 function problem2(cryptogram) {
-  const crypto = cryptogram.split("");
-  console.log(crypto);
-  let cry;
-  for (let i = 0; i < cryptogram.length; i++) {
-    console.log(cryptogram[i]);
-    if (cryptogram[i] === cryptogram[i + 1]) {
-    }
+  const result = [cryptogram[0]];
+  for (let i = 1; i < cryptogram.length; i++) {
+    const current = cryptogram[i];
   }
+  console.log(result.join(""));
 }
 
 function testCode() {
   testcode = "browoanoommnaon";
-  // testcode = "zyelleyz";
-
+  //testcode = "zyelleyz";
   problem2(testcode);
 }
 testCode();
