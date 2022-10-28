@@ -3,6 +3,32 @@ function splitString(str) {
   const strArr = str.split("");
   return strArr;
 }
+// 기능 2 : 중복 문자열 제거
+function deduplicate(arr) {
+  const duplCheckArr = [];
+
+  arr.forEach((val, idx) => {
+    if (val === arr[idx + 1]) {
+      let cnt = 2;
+      while (val === arr[idx + cnt]) {
+        cnt++;
+      }
+      duplCheckArr.push([idx, cnt]);
+    }
+  });
+
+  for (let i = 0; i < duplCheckArr.length; i++) {
+    if (i === 0) arr.splice(duplCheckArr[i][0], duplCheckArr[i][1]);
+    else {
+      arr.splice(
+        duplCheckArr[i][0] - duplCheckArr[i - 1][0],
+        duplCheckArr[i][1]
+      );
+    }
+  }
+
+  return arr;
+}
 
 function problem2(cryptogram) {
   var answer;
