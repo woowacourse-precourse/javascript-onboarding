@@ -60,7 +60,7 @@ function sameFriendScoreCount(userFriends) {
 
 function visitScoreCount(visitors) {
   visitors.forEach((visit) => {
-    userScore[visit] ? userScore[visit]+=1 : userScore[visit]=1
+    userScore[visit]=(userScore[visit]|0)+1
   })
 }
 
