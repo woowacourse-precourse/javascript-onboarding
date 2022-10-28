@@ -4,6 +4,8 @@ function problem6(forms) {
 
   if (checkValidation(forms) < 0) return -1;
 
+  forms = getValidateForms(forms);
+
   forms.forEach((form) => {
     let splitedNameSet = new Set();
     const [, nickname] = form;
@@ -49,14 +51,12 @@ function checkValidation(forms) {
   if (!flag) return -1;
 }
 
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
+function getValidateForms(forms) {
+  return forms.filter((form) => {
+    const [email] = form;
+    const regex = "email.com";
+    return email.match(regex);
+  });
+}
 
 module.exports = problem6;
