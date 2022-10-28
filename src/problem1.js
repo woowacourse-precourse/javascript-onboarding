@@ -8,6 +8,15 @@ function problem1(pobi, crong) {
   };
 
   // pobi의 점수
+  pobi.forEach((page)=> {
+    let addScore=0, mulScore=1;
+    do {
+      addScore+=page%10;
+      mulScore*=page%10;
+      page=Math.floor(page/10);
+    } while(page>0);
+    pobiScore=Math.max(addScore,mulScore,pobiScore);
+  });
   
   // crong의 점수
   
