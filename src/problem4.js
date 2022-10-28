@@ -29,6 +29,10 @@ function reverseCharacter(character) {
 
 function problem4(word) {
   var answer;
+
+  answer = "";
+  for (let i = 0; i < word.length; i++) answer += reverseCharacter(word[i]);
+
   return answer;
 }
 
