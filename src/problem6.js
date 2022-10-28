@@ -1,6 +1,6 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+	const emails = [...new Map(forms).keys()]
+	const nickNames = [...new Map(forms).values()]
 }
 
-module.exports = problem6;
+module.exports = problem6
