@@ -21,8 +21,24 @@ function getIsRepeatExist(cryptogram) {
   return isRepeatExist;
 }
 
-function deleteRepeatLetter(cryptogram, regexp) {
-  return cryptogram.replace(regexp, "");
+function getModifiedCryptogram(cryptogram) {
+  let modifiedCryptogram = [];
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (i == 0 && cryptogram[i] !== cryptogram[i + 1]) {
+      modifiedCryptogram.push(cryptogram[0]);
+      continue;
+    }
+    if (i == cryptogram.length - 1 && cryptogram[i - 1] !== cryptogram[i]) {
+      modifiedCryptogram.push(cryptogram[i]);
+      continue;
+    }
+    if (
+      cryptogram[i] !== cryptogram[i - 1] &&
+      cryptogram[i] !== cryptogram[i + 1]
+    )
+      modifiedCryptogram.push(cryptogram[i]);
+  }
+  return modifiedCryptogram.join("");
 }
 
 module.exports = problem2;
