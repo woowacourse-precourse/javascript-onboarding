@@ -40,6 +40,8 @@ function problem6(forms) {
   var answer;
   //기능목록1: 같은 글자 포함된 목록 구하기
   answer = duplicate(forms);
+  //기능목록2: 오름차순 정렬
+  answer.sort();
 
 }
 module.exports = problem6;
