@@ -8,14 +8,29 @@ const setNicknameObj = (form, nicknameObj) => {
   }
 }
 
+const getErrCrewEmail = (form, nicknameObj) => {
+  const [email, nickname] = form;
+  for (let i = 0; i < nickname.length - 1; i += 1) {
+    const subStr = nickname.substring(i, i + 2);
+    if (nicknameObj[subStr] >= 2) return email;
+  }
+  return null;
+}
+
 const problem6 = (forms) => {
   const result = [];
   const nicknameObj = {};
+
   forms.map((form) => {
     setNicknameObj(form, nicknameObj);
-  })
-}
+  });
 
-problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]);
+  forms.map((form) => {
+    const email = getErrCrewEmail(form, nicknameObj);
+    if (email !== null) {
+      result.push(email);
+    }
+  });
+}
 
 module.exports = problem6;
