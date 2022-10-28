@@ -16,12 +16,13 @@ function multipleof_three(str) {
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
   let str = '';
   for (let i = 1; i <= number; i++) {
-    str += i.toString();
-    answer = add_if_possible(str);
+    str = i.toString();
+    answer += add_if_possible(str);
   }
+
   return answer;
 }
 

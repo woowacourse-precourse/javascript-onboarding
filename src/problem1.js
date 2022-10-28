@@ -2,10 +2,11 @@ const max_range = 400;
 const min_range = 1;
 
 //페이지 객체 생성
-function Page(add, multiply) {
+function Page(add, multiply, page) {
   this.add = add;
   this.multiply = multiply;
   this.score = Math.max(this.add, this.multiply);
+  this.page = page;
 }
 
 //각 자리수의 합을 구하는 함수
@@ -61,54 +62,63 @@ function problem1(pobi, crong) {
   //포비의 왼쪽 페이지 객체생성(각 자리의 합,각 자리의 곱,두 가지 중 최대값 저장)
   let pobi_left_page = new Page(
     page_add(pobi[0].toString()),
-    page_mulitply(pobi[0].toString())
+    page_mulitply(pobi[0].toString()),
+    pobi[0]
   );
 
   //포비의 오른쪽 페이지 객체
   let pobi_right_page = new Page(
     page_add(pobi[1].toString()),
-    page_mulitply(pobi[1].toString())
+    page_mulitply(pobi[1].toString()),
+    pobi[1]
   );
-
-  //포비의 최종 점수
-  const pobi_score = Math.max(pobi_left_page.score, pobi_right_page.score);
 
   //크롱의 왼쪽 페이지 객체 생성
   let crong_left_page = new Page(
     page_add(crong[0].toString()),
-    page_mulitply(crong[0].toString())
+    page_mulitply(crong[0].toString()),
+    crong[0]
   );
 
   //크롱의 오른쪽 페이지 객체 생성
   let crong_right_page = new Page(
     page_add(crong[1].toString()),
-    page_mulitply(crong[1].toString())
+    page_mulitply(crong[1].toString()),
+    crong[1]
   );
 
-  //크롱의 최종 점수
+  const pobi_score = Math.max(pobi_left_page.score, pobi_right_page.score);
   const crong_score = Math.max(crong_left_page.score, crong_right_page.score);
 
   //페이지가 연속적이지 않는 경우(포비)
-  if (is_successive(pobi[0], pobi[1]) === false) {
+  if (is_successive(pobi_left_page.page, pobi_right_page.page) === false) {
     answer = -1;
   }
   //페이지가 연속적이지 않은 경우(크롱)
-  else if (is_successive(crong[0], crong[1]) === false) {
+  else if (
+    is_successive(crong_left_page.page, crong_right_page.page) === false
+  ) {
     answer = -1;
   }
   //첫 페이지나 마지막 페이지에 도달, 또는 범위를 벗어나는 경우
   else if (
-    out_of_bound(pobi[0]) ||
-    out_of_bound(pobi[1]) ||
-    out_of_bound(crong[0]) ||
-    out_of_bound(crong[1])
+    out_of_bound(crong_left_page.page) ||
+    out_of_bound(crong_right_page.page) ||
+    out_of_bound(pobi_left_page.page) ||
+    out_of_bound(pobi_right_page.page)
   ) {
     answer = -1;
   }
   //첫 페이지가 짝수, 다음 페이지가 홀수인 경우 올바르지 않은 케이스
-  else if (is_odd(pobi[0]) === false && is_odd(pobi[1]) === true) {
+  else if (
+    is_odd(pobi_left_page.page) === false &&
+    is_odd(pobi_right_page.page) === true
+  ) {
     answer = -1;
-  } else if (is_odd(crong[0]) === false && is_odd(crong[1]) === true) {
+  } else if (
+    is_odd(crong_left_page.page) === false &&
+    is_odd(crong_right_page.page) === true
+  ) {
     answer = -1;
   } else if (crong_score > pobi_score) {
     answer = 2;
