@@ -1,6 +1,12 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const friendTable = makeFriendsTable(friends);
+  const scoreBoard = makeScoreBoard(user, friendTable, visitors);
+  removeImproperRecommend(user, friendTable, scoreBoard);
+
+  return Object.entries(scoreBoard)
+      .sort(sortFn)
+      .map(user => user[0])
+      .slice(0, 5);
 }
 
 function makeFriendsTable(friends) {
