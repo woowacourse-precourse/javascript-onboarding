@@ -1,11 +1,14 @@
 function problem7(user, friends, visitors) {
   const result = new Map();
-  const userRelation = getUserAdjacencyList(friends);
 
-  return userRelation;
+  const friendRelation = getFriendsAdjacencyList(friends);
+  const userFriends = friendRelation[user];
+  const friendOfFriends = getFriendOfFriends({ user, userFriends, friendRelation });
+
+  return friendOfFriends;
 }
 
-function getUserAdjacencyList(friends) {
+function getFriendsAdjacencyList(friends) {
   return friends.reduce((links, [user1, user2]) => {
     if (!links[user1]) links[user1] = [];
     if (!links[user2]) links[user2] = [];
@@ -15,6 +18,18 @@ function getUserAdjacencyList(friends) {
 
     return links;
   }, {});
+}
+
+function getFriendOfFriends({ user, userFriends, friendRelation }) {
+  const frinedOfFriends = userFriends.reduce((set, friend) => {
+    const friends = friendRelation[friend];
+    const filteredFriends = friends.filter(friend => friend !== user);
+
+    filteredFriends.forEach(friend => set.add(friend));
+    return set;
+  }, new Set());
+
+  return [...frinedOfFriends];
 }
 
 // 문제 7번 - 인접리스트, Hash 풀이
@@ -28,11 +43,11 @@ function getUserAdjacencyList(friends) {
 //    shakevan: [andole, jun, mrko]
 //    mrko: [donut, shakevan]  }
 //
-// 2. 인접리스트 중 user의 친구를 구한다
+// 2. 인접리스트 중 user의 친구를 구한다 ✅
 //  -> user = "mrko" 예상 결과물
 //  [donut, sharkevan]
 
-// 3. user의 친구들의 친구들 list를 구한다.
+// 3. user의 친구들의 친구들 list를 구한다. ✅
 //    3.1. 중복 제거를 위해 Set 생성
 //    3.2. 친구의 친구 list를 구한다.
 //    -> donut = [andole, jun, mrko], sharkevan = [andole, jun, mrko]
