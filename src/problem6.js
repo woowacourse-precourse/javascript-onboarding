@@ -18,3 +18,16 @@ function continuousNicknames(forms){
   });
   return continuousArr;
 }
+
+function overlapNicknames(forms){
+  let map = new Map();
+  let list=continuousNicknames(forms);
+  let overlapList=[];
+  for(let i=0; i<list.length; i++){
+    map.set(list[i], (map.get(list[i]) || 0)+1);
+  }
+  for(let [key,value] of map){
+    if(value>1)  overlapList.push(key);
+  }
+   return overlapList;
+ }
