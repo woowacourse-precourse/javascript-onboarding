@@ -22,7 +22,7 @@ function problem4(word) {
 }
 
 function isWrongInput(input) {
-  if (isWrongInputData(input)) {
+  if (isWrongValueOfInput(input)) {
     return true;
   }
 
@@ -30,15 +30,11 @@ function isWrongInput(input) {
     return true;
   }
 
-  if (Number.isNaN(input)) {
-    return true;
-  }
-
   return false;
 }
 
-function isWrongInputData(input) {
-  return !input;
+function isWrongValueOfInput(v) {
+  return !v;
 }
 
 function isWrongLengthOfInput(length) {
