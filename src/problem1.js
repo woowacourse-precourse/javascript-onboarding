@@ -31,10 +31,11 @@ function exceptionCase(arr) {
 }
 
 function getDigitSum(page) {
-  let sum = 0;
+  let sum = 0; //sum을 0으로 초기화한다.
   while (page > 0) {
-    sum += page % 10;
-    page = parseInt(page / 10);
+    //page가 0이 될 때까지
+    sum += page % 10; //page의 1의 자릿수를 더한 다음,
+    page = parseInt(page / 10); //page의 1의 자릿수는 버린다.
   }
   return sum;
 }
