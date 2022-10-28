@@ -35,17 +35,17 @@ class Calculator {
     this.crong = crong;
   }
 
-  compareTwoBook() {
-    const pobiBigestNumber = this.getBigestNumber(this.pobi);
-    const crongBigestNumber = this.getBigestNumber(this.crong);
+  answerWhoWin(pobiNum, crongNum) {
+    if (pobiNum === crongNum) return 0;
 
-    if (pobiBigestNumber > crongBigestNumber) {
-      return 1;
-    } else if (pobiBigestNumber < crongBigestNumber) {
-      return 2;
-    } else {
-      return 0;
-    }
+    return pobiNum > crongNum ? 1 : 2;
+  }
+
+  compareTwoBook() {
+    return this.answerWhoWin(
+      this.getBigestNumber(this.pobi),
+      this.getBigestNumber(this.crong)
+    );
   }
 
   splitNum(page) {
