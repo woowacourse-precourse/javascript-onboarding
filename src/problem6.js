@@ -18,7 +18,7 @@ const getErrCrewEmail = (form, nicknameObj) => {
 }
 
 const problem6 = (forms) => {
-  const result = [];
+  const result = new Set();
   const nicknameObj = {};
 
   forms.map((form) => {
@@ -28,7 +28,7 @@ const problem6 = (forms) => {
   forms.map((form) => {
     const email = getErrCrewEmail(form, nicknameObj);
     if (email !== null) {
-      result.push(email);
+      result.add(email);
     }
   });
 }
