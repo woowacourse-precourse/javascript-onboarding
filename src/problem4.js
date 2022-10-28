@@ -5,6 +5,7 @@ function problem4(word) {
     let newASCII = 32;
     if (ASCII >= 65 && ASCII <= 90) newASCII = 90 - (ASCII - 65);
     else if (ASCII >= 97 && ASCII <= 122) newASCII = 122 - (ASCII - 97);
+    answer += String.fromCharCode(newASCII);
   }
   return answer;
 }
