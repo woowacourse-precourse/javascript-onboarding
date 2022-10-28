@@ -7,7 +7,6 @@ function problem6(forms) {
       map.set(id.substring(i, i + 2), map.get(id.substring(i, i + 2)) + 1 || 1);
     }
   });
-
   forms.forEach((person) => {
     const [mail, id] = person;
     let dic = [];
@@ -15,7 +14,10 @@ function problem6(forms) {
       dic.push(id.substring(i, i + 2));
     }
     for (let j = 0; j < dic.length; j++) {
-      if (map.get(dic[j]) > 1) answer.push(mail);
+      if (map.get(dic[j]) > 1) {
+        answer.push(mail);
+        break;
+      }
     }
   });
   answer = new Set(answer);
