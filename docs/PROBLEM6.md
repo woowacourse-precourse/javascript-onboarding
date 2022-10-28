@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현사항
+
+1. 닉네임을 두 글자 단위로 분리할 splitCrewName 배열과 중복된 닉네임 형식을 저장할 duplicateName 배열, 중복이 제거될 result Set 객체를 각각 선언하기.
+2. forms 요소를 순회하며 crew의 닉네임을 두 글자 단위로 나누고(slice), splitCrewName 배열에 저장하며 중복될 시 duplicateName 배열에 저장하기
+3. forms 요소를 순회하며 crew의 닉네임을 두 글자 단위로 나누고(slice), duplicateName 배열에 닉네임이 포함(includes) 될 시 result 객체에 해당 크루의 이메일 add 하기
+4. result 객체를 전개 연산자를 사용하여 배열로 변환한 뒤 sort() 함수를 통해 오름차순으로 정렬하고 return 하기
