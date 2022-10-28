@@ -39,7 +39,7 @@ function selectWinner(pobi, crong) {
 }
 
 function validRange(arr) {
-  return arr.every((item) => item < 1 || 400 < item)
+  return arr.every((item) => item >= 1 && 400 >= item)
 }
 
 function validPage(arr) {
