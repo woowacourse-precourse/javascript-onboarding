@@ -13,7 +13,7 @@ const isValidArray = (arr) => {
       if (leftPage < finalPage - 1 && leftPage > firstPage) return true;
       if (rightPage < finalPage && rightPage > firstPage + 1) return true;
   }
-  
+  const isEvenAndOdd = () =>  leftPage % 2 !== 0 && rightPage % 2 === 0;
   if (isValidRange()) return true
   return false
 }
