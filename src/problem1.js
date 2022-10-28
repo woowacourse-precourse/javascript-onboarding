@@ -1,22 +1,24 @@
 const ARR_LENGTH = 2;
 
-function sumAllDigitNumber(page) {
+const sumAllDigitNumber = (page) => {
   let result = 0;
   for (let i = 0; i < page.length; i++) {
     result += +page[i];
   }
-  return result;
-}
 
-function mulAllDigitNumber(page) {
+  return result;
+};
+
+const mulAllDigitNumber = (page) => {
   let result = +page[0];
   for (let i = 1; i < page.length; i++) {
     result *= +page[i];
   }
-  return result;
-}
 
-function getBiggestValue(arr) {
+  return result;
+};
+
+const getBiggestValue = (arr) => {
   const calculatedNums = [];
   for (let i = 0; i < 2; i++) {
     const digitSum = sumAllDigitNumber(arr[i] + '');
@@ -24,8 +26,9 @@ function getBiggestValue(arr) {
     calculatedNums.push(digitSum);
     calculatedNums.push(digitMul);
   }
+
   return Math.max(...calculatedNums);
-}
+};
 
 function problem1(pobi, crong) {
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
