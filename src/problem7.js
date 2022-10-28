@@ -126,3 +126,5 @@ function problem7(user, friends, visitors) {
 
   return topScore;
 }
+
+module.exports = problem7;
