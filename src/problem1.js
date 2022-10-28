@@ -1,14 +1,6 @@
 function problem1(pobi, crong) {
   var answer;
   if (exceptionCase(pobi) || exceptionCase(crong)) return -1;
-  getDigitSum(pobi[0]);
-  getDigitSum(pobi[1]);
-  getDigitSum(crong[0]);
-  getDigitSum(crong[1]);
-  getDigitMultiply(pobi[0]);
-  getDigitMultiply(pobi[1]);
-  getDigitMultiply(crong[0]);
-  getDigitMultiply(crong[1]);
   return answer;
 }
 
@@ -48,6 +40,15 @@ function getDigitMultiply(page) {
     page = parseInt(page / 10); //page의 1의 자릿수는 버린다.
   }
   return multiply;
+}
+
+function getBigger(page) {
+  if (getDigitSum(page) > getDigitMultiply(page))
+    //각 자릿수 합이 곱보다 크다면
+    return getDigitSum(page); //합을 반환한다.
+  else if (getDigitSum(page) <= getDigitMultiply(page))
+    //각 자릿수 곱이 합보다 크거나 같다면
+    return getDigitMultiply(page); //곱을 반환한다.
 }
 
 module.exports = problem1;
