@@ -44,3 +44,21 @@ function overlapNicknames(forms){
   result= new Set(result.sort());
   return [...result];
 }
+
+function error(forms){
+  for(let i=0; i<forms.length; i++){
+    let email=forms[i][0];
+    let domain=forms[i][0].split('@')[1];
+    let name=forms[i][1];
+    if(domain !== "email.com" || (email.length < 11 && email.length >= 20)){
+      return false;
+    }
+    if(name.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,'').length!==0 || (name.length<1 || name.length>=20)){
+      return false;
+    }
+  }
+    if(forms.length<1 || forms.length>10000){
+      return false;
+  }
+  return true;
+}
