@@ -1,6 +1,7 @@
 function duplicate(forms){
   var answer = [];
   var check = {};
+  //두번 체크
   for(var i=0; i<forms.length; i++){
     check[i]=false;
   }
