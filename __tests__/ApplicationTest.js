@@ -6,7 +6,6 @@ const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
-/*
 describe("problem1", () => {
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
@@ -17,6 +16,7 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+  /*
   // Exception Test
   // 시작 면
   test("exception test1", () => {
@@ -34,6 +34,7 @@ describe("problem1", () => {
   test("exception test4", () => {
     expect(problem1([11, 101], [3, 4])).toEqual(-1);
   });
+  */
 });
 
 describe("problem2", () => {
@@ -43,12 +44,14 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  /*
   test("my test1", () => {
     expect(problem2("aaaaaaaa")).toEqual("");
   });
   test("my test2", () => {
     expect(problem2("aaaaaaaabbb")).toEqual("");
   });
+  */
 });
 
 describe("problem3", () => {
@@ -58,6 +61,7 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
+  /*
   test("my test1", () => {
     expect(problem3(39)).toEqual(22);
   });
@@ -76,12 +80,14 @@ describe("problem3", () => {
   test("my test6", () => {
     expect(problem3(1)).toEqual(0);
   });
+  */
 });
 
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  /*
   test("my test1", () => {
     expect(problem4("ABCDEFGHIJKLMNOPQRSTUVWXYZ")).toEqual(
       "ZYXWVUTSRQPONMLKJIHGFEDCBA"
@@ -97,6 +103,7 @@ describe("problem4", () => {
       "기억zyxwvUT srqpo^^nmlk jihgfe dcBa"
     );
   });
+  */
 });
 
 describe("problem5", () => {
@@ -106,6 +113,7 @@ describe("problem5", () => {
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+  /*
   test("my test1", () => {
     expect(problem5(1000000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
@@ -118,6 +126,7 @@ describe("problem5", () => {
   test("my test4", () => {
     expect(problem5(999999)).toEqual([19, 4, 1, 4, 1, 4, 1, 4, 9]);
   });
+  */
 });
 
 describe("problem6", () => {
@@ -132,6 +141,7 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  /*
   test("my test1", () => {
     expect(
       problem6([
@@ -154,8 +164,8 @@ describe("problem6", () => {
       "woniee@email.com",
     ]);
   });
+  */
 });
-*/
 
 describe("problem7", () => {
   test("case1", () => {
@@ -175,6 +185,7 @@ describe("problem7", () => {
     ).toEqual(["andole", "jun", "bedi"]);
     // score: (andole:20 | jun:20 | bedi:3)
   });
+  /*
   test("my test1", () => {
     expect(
       problem7(
@@ -225,4 +236,5 @@ describe("problem7", () => {
     ).toEqual(["andole", "bedi", "jun"]);
     // score: (andole:20 | bedi:13 | jun:10)
   });
+  */
 });
