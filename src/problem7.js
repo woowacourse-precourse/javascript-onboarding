@@ -16,10 +16,8 @@ function problem7(user, friends, visitors) {
   visitScoreCount(visitors)
 
   // user와 user의 지인 점수 제거
-  delete userScore[user]
-  for (let userFriend of userFriends) {
-    delete userScore[userFriend]
-  }
+  deleteInfo(user,userFriends)
+  
   
 
   // 추천할 사람 정렬 기능
@@ -64,6 +62,12 @@ function visitScoreCount(visitors) {
   })
 }
 
-
+function deleteInfo(user,userFriends) {
+  delete userScore[user]
+  for (let userFriend of userFriends) {
+    delete userScore[userFriend]
+  }
+}
+  
 console.log(problem7('mrko',[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],["bedi", "bedi", "donut", "bedi", "shakevan"]))
 // module.exports = problem7;
