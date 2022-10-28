@@ -10,6 +10,11 @@ function strToAsc(str) {
   return str.charCodeAt();
 }
 
+// 아스키 -> 문자 변환
+function ascToStr(asc) {
+  return String.fromCharCode(asc);
+}
+
 // 알파벳 check
 function isChar(asc) {
   if ((asc >= 65 && asc <= 90) || (asc >= 97 && asc <= 122)) return true;
