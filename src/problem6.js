@@ -1,6 +1,7 @@
 function problem6(forms) {
   const nickname = [];
   const answer = [];
+  const real_answer = [];
 
   for (let i = 0; i < forms.length; i++) {
     nickname.push(forms[i][1]);
@@ -9,6 +10,14 @@ function problem6(forms) {
   for (let j = 0; j < nickname.length; j++) {
     if (nickname[j].includes(duplication(nickname).join())) answer.push(nickname[j]);
   }
+
+  for (let k = 0; k < forms.length; k++) {
+    for (let l = 0; l < answer.length; l++) {
+      if (forms[k][1] === answer[l]) real_answer.push(forms[k][0]);
+    }
+  }
+
+  return [...new Set(real_answer.sort())];
 }
 
 function duplication(arr) {
