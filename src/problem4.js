@@ -1,6 +1,4 @@
 function problem4(word) {
-  // var answer;
-  // return answer;
   const wordChar = word.split('')
   const changeChar = (char) => {
     if (/^[a-z]*$/.test(char)) char = reverseChar(char)
