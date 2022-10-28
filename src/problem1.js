@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
   const pobiMAX = calcPageNum(pobi);
   const crongMAX = calcPageNum(crong);
 
