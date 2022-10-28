@@ -11,9 +11,9 @@ function checkAvailablePages(pages) {
 
 function calculateNumber(pageNumber) {
   let plusNum, multiplyNum;
-  let digit1 = parseInt(pageNumber % 10);
-  let digit2 = parseInt((pageNumber % 100) / 10);
-  let digit3 = parseInt((pageNumber % 1000) / 100);
+  const digit1 = parseInt(pageNumber % 10);
+  const digit2 = parseInt((pageNumber % 100) / 10);
+  const digit3 = parseInt((pageNumber % 1000) / 100);
 
   if (pageNumber.toString().length == 1) {
     plusNum = digit1;
@@ -30,19 +30,19 @@ function calculateNumber(pageNumber) {
 }
 
 function compareTwoNumbers(pages) {
-  if (calculateNumber(pages[0]) >= calculateNumber(pages[1])) {
-    return calculateNumber(pages[0]);
-  }
-  return calculateNumber(pages[1]);
+  const pageLeft = calculateNumber(pages[0]);
+  const pageRight = calculateNumber(pages[1]);
+  return pageLeft >= pageRight ? pageLeft : pageRight;
 }
 
 function problem1(pobi, crong) {
   if (!(checkAvailablePages(pobi) && checkAvailablePages(crong))) return -1;
-
-  if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
-  else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
-  else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) return 0;
-  else return -1;
+  else {
+    if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
+    else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
+    else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) return 0;
+    else return -1;
+  }
 }
 
 module.exports = problem1;
