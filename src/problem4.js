@@ -11,29 +11,35 @@ class ErrorCase {
   }
 }
 
+class Dictionary {
+  static momFor() {
+    return [
+      ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 65)),
+      ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 97)),
+    ];
+  }
+
+  static frogFor() {
+    return [
+      ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(90 - i)),
+      ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(122 - i)),
+    ];
+  }
+}
+
 class Frog {
   constructor(word) {
     new ErrorCase(word);
+
     this.word = word;
   }
 
-  getLowerAlphaList() {
-    return Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 65));
-  }
-
-  getUpperAlphaList() {
-    return Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 97));
-  }
-
   makeFrogDic() {
-    const alphabet = [...this.getLowerAlphaList(), ...this.getUpperAlphaList()];
-    const reverseAlphabet = [
-      ...this.getLowerAlphaList().reverse(),
-      ...this.getUpperAlphaList().reverse(),
-    ];
-
-    return [...alphabet].reduce(
-      (acc, cur, index) => ({ ...acc, [cur]: reverseAlphabet[index] }),
+    return Dictionary.momFor().reduce(
+      (acc, cur, index) => ({
+        ...acc,
+        [cur]: Dictionary.frogFor()[index],
+      }),
       {}
     );
   }
