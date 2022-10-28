@@ -5,7 +5,7 @@ function decryption(cryptogram) {
 
   for (let chr of cryptogram) {
     if (result.length === 0) result.push(chr); 
-    else if (chr === result.at(-1)) prev = result.pop();
+    else if (chr === result[result.length-1]) prev = result.pop();
     else if (chr === prev) continue;
     else result.push(chr);
   }
