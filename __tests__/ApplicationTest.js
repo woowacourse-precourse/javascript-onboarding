@@ -49,6 +49,10 @@ describe("problem2", () => {
   test("case3", () => {
     expect(problem2("zyellleyz")).toEqual("");
   });
+
+  test("case4", () => {
+    expect(problem2("zyalllelyz")).toEqual("zyaelyz");
+  });
 });
 
 // describe("problem3", () => {
