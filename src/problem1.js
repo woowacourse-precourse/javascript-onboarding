@@ -24,7 +24,10 @@ function addDigits(str) {
 }
 
 function multiplyDigits(str) {
-  return reduceAfterSplit((acc, cur) => parseInt(acc, 10) * parseInt(cur, 10));
+  return reduceAfterSplit(
+    str,
+    (acc, cur) => parseInt(acc, 10) * parseInt(cur, 10)
+  );
 }
 
 function compare(num1, num2) {
