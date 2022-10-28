@@ -24,11 +24,15 @@ function exceptionEmail(email) {
 
 function problem6(forms) {
   let answer;
+  // 예외처리 할 form을 저장할 리스트
+  let forms_list = [];
 
   for([email, nick] of forms){
     // 이메일, 닉네임 예외처리
     const check_email = exceptionEmail(email);
     const check_nick = exceptionNick(nick);
+    // 예외처리가 됐다면 리스트에 저장
+    if(check_email && check_nick) forms_list.push([email, nick]);
   }
   
   return answer;
