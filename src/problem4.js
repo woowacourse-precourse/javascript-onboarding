@@ -35,24 +35,28 @@ function problem4(word) {
 }
 
 // 예외상황
-// function exception () {
-
+// function exception (word) {
+//   if(word < 1 || word > 1000) return true;
+//   if(!(word.test(/^[a-z|A-Z]+$/))) return true;
+//   return false;
 // }
 
 // 대문자인지 소문자인지 판별
 function checkAlphabet(word) {
+  let result = "";
   const wordArr = Array.from(word);
-  for(let i = 0; i <= wordArr.length; i++) {
+  for(let i = 0; i < wordArr.length; i++) {
     if (wordArr[i] === " ") {
-      console.log(" ");
+      result += " ";
     }
-    if (wordArr[i] == wordArr[i].toUpperCase()) {
-      console.log(upperCase(wordArr[i]));
+    else if (wordArr[i] === wordArr[i].toUpperCase()) {
+      result += upperCase(wordArr[i]);
     }
-    if (wordArr[i] == wordArr[i].toLowerCase()) {
-      console.log(lowerCase(wordArr[i]));
+    else if (wordArr[i] === wordArr[i].toLowerCase()) {
+      result += lowerCase(wordArr[i]);
     }
   }
+  return result;
 }
 
 // 대문자일 경우
@@ -65,8 +69,6 @@ function upperCase(word) {
 function lowerCase(word) {
   return FROG.lowerReverse[FROG.lowerDictionary.indexOf(word)];
 }
-
-console.log(checkAlphabet("Iloveyou"));
 
 module.exports = problem4;
 
