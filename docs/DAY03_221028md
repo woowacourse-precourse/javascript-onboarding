@@ -1,0 +1,86 @@
+# 학습 체크리스트
+
+- [x]  git commit message 되돌리는 법
+- [ ]  구현 내용 스스로 점검하기
+
+# 학습 내용
+
+## 1️⃣ git commit message 되돌리기
+
+### 문제 발생
+
+오늘 아침에 커밋 로그를 보고 식은땀을 흘렸습니다. 커밋 메세지가 단단히 잘못되었으니까요. 그것도 한둘이 아니라 여러가지였습니다. 문제 2의 기능 추가인데 문제 1이라고 적은 것도 있었고, 문제를 명시하지 않고 커밋한 메세지도 있었습니다. 
+
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/94ec2c92-a524-4b78-8ee9-eecccaa1f613/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221028%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221028T014717Z&X-Amz-Expires=86400&X-Amz-Signature=46bfb6cc1408de0fb6904f6097e543eba649a0b60cd2f8e7261590ad5be5eeb6&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+### 문제 해결
+
+1. 우선 현재 진행중인 변경사항이 있을 경우 stash를 통해 임시저장해둡니다.
+    
+    ```
+    git stash save
+    ```
+    
+
+1.  rebase 명령어를 통해 이전 커밋 메세지를 불러 올 수 있습니다.
+    
+    ```
+    git rebase -i HEAD~15
+    ```
+    
+    HEAD~(숫자) : 이 숫자부분은 HEAD로부터 몇 번째 전 로그까지 history가 보여질 것인지 정하는 부분입니다.
+    
+2. vi 편집을 통해 변경할 커밋 메세지를 pick에서 reword로 변경후 저장합니다. 여러 개를 선택해도 무방합니다.
+    1. `i` : insert
+    2. `:wq` : 저장하고 종료
+    
+    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66a51d56-daa0-44cb-b1c4-eb535aa87350/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221028%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221028T014805Z&X-Amz-Expires=86400&X-Amz-Signature=1cf7edadb83c269cac84d0f6a999684296d0ac9575d56db803a892e07abc0e80&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    
+3. 제 실수겠지만 간혹 편집기에서 나가질 때가 있는데 `git rebase —continue` 명령을 작성하면 나머지 선택된 커밋 메세지를 변경할 수 있습니다.
+
+### 결과
+
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2ee5d028-fa1b-40fb-8365-e6968d7ab7b0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221028%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221028T014834Z&X-Amz-Expires=86400&X-Amz-Signature=7900ba6cb477ddd5563225c151f7f44d2ea284adedb234e4dab39a56617bc0a9&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+잘못된 git message를 수정하고 난 제 깃 로그입니다. 앞서 체크한 부분 이외에도 고칠 부분이 많아서 여러번 진행했습니다. 덕분에 실습 많이해서 손에 익어서 좋네요.
+
+🔗 참고자료
+
+| 제목 | 링크 |
+| --- | --- |
+| stash | https://backlog.com/git-tutorial/kr/reference/stash.html |
+| rebase | https://backlog.com/git-tutorial/kr/stepup/stepup7_6.html |
+| 이미 commit한 메세지 수정하기 | https://xtring-dev.tistory.com/entry/Git-이미-commit한-메세지-수정하기-바로-이전그-전리모트-commit |
+
+## 2️⃣
+
+🔗 참고자료
+
+| 제목 | 링크 |
+| --- | --- |
+|  |  |
+|  |  |
+
+## 3️⃣
+
+🔗 참고자료
+
+| 제목 | 링크 |
+| --- | --- |
+|  |  |
+|  |  |
+
+## 4️⃣
+
+🔗 참고자료
+
+| 제목 | 링크 |
+| --- | --- |
+|  |  |
+|  |  |
+
+# 회고
+
+## 1️⃣ 배운 점
+
+## 2️⃣ 배울 점
