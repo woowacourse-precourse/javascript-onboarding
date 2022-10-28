@@ -1,11 +1,10 @@
 function problem7(user, friends, visitors) {
-  const result = new Map();
-
   const friendRelation = getFriendsAdjacencyList(friends);
   const userFriends = friendRelation[user];
   const friendOfFriends = getFriendOfFriends({ user, userFriends, friendRelation });
 
-  return friendOfFriends;
+  const initScore = initRecommendationScore({ friendOfFriends });
+  return initScore;
 }
 
 function getFriendsAdjacencyList(friends) {
@@ -32,9 +31,14 @@ function getFriendOfFriends({ user, userFriends, friendRelation }) {
   return [...frinedOfFriends];
 }
 
-// 문제 7번 - 인접리스트, Hash 풀이
-// 0. 유저의 이름과 점수를 Key-Value로 저장할 Map 생성 ✅
+function initRecommendationScore({ friendOfFriends }) {
+  return friendOfFriends.reduce((map, friend) => {
+    map.set(friend, 10);
+    return map;
+  }, new Map());
+}
 
+// 문제 7번 - 인접리스트, Hash 풀이
 // 1. friend loop를 돌아 각 유저에 대해 인접리스트를 구한다. ✅
 // -> 예상 결과물
 // {  donut: [andole, jun, mrko]
@@ -54,7 +58,7 @@ function getFriendOfFriends({ user, userFriends, friendRelation }) {
 //    3.3. 중복 제거한 list를 구한다. 이 때 user(mrko)는 포함하지 않는다.
 //    -> [andole, jun]
 
-// 4. Map에 user 배열의 이름에 대해 10을 할당한다.
+// 4. Map에 user 배열의 이름에 대해 10을 할당한다. ✅
 //  -> { andole => 10, jun => 10 }
 
 // 5. Map에 visitors들 점수를 +1 해준다.
