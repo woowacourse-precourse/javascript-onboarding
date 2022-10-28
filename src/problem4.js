@@ -8,5 +8,8 @@ const isAlphabet = (char) => {
 const isUpperCase = (char) => {
   return /^[A-Z]+$/.test(char);
 };
+const getAscii = (char) => {
+  return char.charCodeAt(0);
+};
 
 module.exports = problem4;
