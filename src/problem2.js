@@ -11,8 +11,8 @@ const reduceWord = (word) => {
   for(let i = 0 ; i<charSet.length; i++){
     for(let j = 0 ; j<new_word.length; j++){
       // console.log(new_word.match(/(\w)\1/))
-      new_word = new_word.replace(/(\w)\1/,'')
-      // new_word = new_word.replace(/([a-z])\1{1,}/,'')
+      // new_word = new_word.replace(/(\w)\1/,'')
+      new_word = new_word.replace(/([a-z])\1{1,}/,'')
     }
   }
   return new_word
