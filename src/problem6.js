@@ -1,6 +1,7 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const splitCrewName = [];
+  const duplicateName = [];
+  const result = new Set();
 }
 
 module.exports = problem6;
