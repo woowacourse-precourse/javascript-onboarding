@@ -5,32 +5,35 @@
 
 */
 
-function numberCheck(n, c){
-  let hmany=0;
-  for(let one of n){
-    if(one===c) hmany++;
-  }
-  return hmany;
+function numberCheck(n, c) {
+    let hmany = 0
+    for (let one of n) {
+        if (one === c) hmany++
+    }
+    return hmany
 }
 
-function numberInclude(n){
-  let sum=0;
-  let str=n.toString(10);
-  if(str.includes('3')){
-    sum+=numberCheck(n, '3');
-  }
-  if(str.includes('6')){
-    sum+=numberCheck(n, '6');
-  }
-  if(str.includes('9')){
-    sum+=numberCheck(n, '9');
-  }
-  return sum;
+function numberInclude(n) {
+    let sum = 0
+    let str = n.toString(10)
+    if (str.includes('3')) {
+        sum += numberCheck(str, '3')
+    }
+    if (str.includes('6')) {
+        sum += numberCheck(str, '6')
+    }
+    if (str.includes('9')) {
+        sum += numberCheck(str, '9')
+    }
+    return sum
 }
 
 function problem3(number) {
-  var answer;
-  return answer;
+    var answer=0;
+    for (let i = 1; i <= number; i++) {
+        answer += numberInclude(i)
+    }
+    return answer
 }
 
-module.exports = problem3;
+module.exports = problem3
