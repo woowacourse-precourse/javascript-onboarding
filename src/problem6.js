@@ -40,3 +40,11 @@ const duplicatedStr = (twoSringNames) => {
 
   return res;
 }
+
+const regExpMap = (arr, regexp) => {
+  const res = arr.map(name => new RegExp(
+    regexp.replace('[[__str__]]',
+    name)));
+
+  return res;
+}
