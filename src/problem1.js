@@ -40,10 +40,11 @@ function problem1(pobi, crong) {
     if (crongValue < mulValue){crongValue = mulValue}
     console.log(crongValue)
   })
+  //기능 2,3,4 구현
   if (crongValue < pobiValue) {answer = 1}
   if (crongValue == pobiValue) {answer = 0}
   if (crongValue > pobiValue) {answer = 2}
-
+  //기능 5 구현
   return answer;
 }
 module.exports = problem1;
