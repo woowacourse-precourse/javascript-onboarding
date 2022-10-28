@@ -54,9 +54,7 @@ function problem1(pobi, crong) {
   if (!checkValidation(pobi) || !checkValidation(crong))
     return -1;
   const score1 = calculateTotalScore(pobi);
-  console.log(score1);
   const score2 = calculateTotalScore(crong);
-  console.log(score2);
   return score1 > score2 ? 1 : (score1 < score2 ? 2 : 0);
 }
 
