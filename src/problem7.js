@@ -5,7 +5,7 @@
 
 // module.exports = problem7;
 
-const friendsList = [
+const AllFriends = [
   ["donut", "andole"],
   ["donut", "jun"],
   ["donut", "mrko"],
@@ -19,27 +19,49 @@ const visiterList = ["bedi", "bedi", "donut", "bedi", "shakevan"];
 const userId = "mrko";
 
 //유저아이디가 포함된 친구 목록을 반환.
-function myFriendsList(userId, friendsList) {
-  return friendsList.filter((list) => list.includes(userId));
+function myFriendsList(userId, AllFriends) {
+  // let temp = JSON.stringify();
+  // let tempList = JSON.parse(temp);
+  return AllFriends.filter((list) => list.includes(userId));
 }
 
 //반환된 친구 목록에서 유저아이디를 제거
 function removeMyUsername(userId, filteredList) {
-  const changeList = [...filteredList];
+  const temp = JSON.stringify(filteredList);
+  const changeList = JSON.parse(temp);
   changeList.map((list) => list.splice(list.indexOf(userId), 1));
-  return changeList;
+  return changeList.flat();
+}
+
+//전체 목록에서 친구의 친구를 검색.
+function friendsFilter(friendsList, AllFriends, userId) {
+  let friFriends = [];
+  AllFriends.map((each) => {
+    const nFriends = isFriends(friendsList, each, userId);
+    if (nFriends) friFriends.push(each);
+  });
+  return friFriends;
+}
+
+//친구의 친구인지 평가하여 boolean을 반환
+function isFriends(friendsList, each, userId) {
+  return friendsList.some(
+    (friend) => each.includes(friend) && !each.includes(userId)
+  );
 }
 
 function test(userId, list) {
   let filteredList = myFriendsList(userId, list);
-  let friends = removeMyUsername(userId, filteredList);
-  console.log(friends);
+  let friendsList = removeMyUsername(userId, filteredList);
+  let friendsFriendList = friendsFilter(friendsList, list, userId);
+  console.log(friendsFriendList);
 }
 
-test(userId, friendsList);
+test(userId, AllFriends);
 
-const newmap = new Map();
-newmap.set("사과", "삼성");
-newmap.set("애플", "생숭");
+const names = new Map().set("이룸", "상돈").set("이름", "종찬");
+names.forEach((key) => {
+  console.log([...names.keys()]);
+  console.log(key);
+});
 
-console.log([...newmap].flat());
