@@ -1,45 +1,42 @@
 function slicePage(nowPageNum){
+  const pageString = String(nowPageNum);
   let pageSliceArray = [0, 0, 0];
-  let pageString = String(nowPageNum);
   let prePageNum = nowPageNum;
 
   for(let i = length.pageString - 1; i > -1 ; i--){
     pageSliceArray[i] = Number(prePageNum) / (10 ** i);
     prePageNum = prePageNum % (10 ** i);
   }
-  
+
   return pageSliceArray;
 }
 
 function calPlusMinus(pageSliceArray){
-  let maxNum = Math.max(leftPageNum + rightPageNum, leftPageNum * rightPageNum);
-  return maxNum;
+  let pageCalArray = [0, 0];
+  let sumResult = 0;
+  let multiplicationResult = 1;
+
+  for(let i = 0; i < pageSliceArray.length; i++){
+    nowArrayValue = pageSliceArray[i];
+    sumReault += nowArrayValue;
+    multiplicationResult *= nowArrayValue;
+  }
+  
+  pageCalArray = [sumResult, multiplicationResult];
+  return pageCalArray;
 }
 
 function findReault(maxNumArray) {
-  let result = -1;
-  let pobiNum = maxNumArray[0]
-  let crongNum = maxNumArray[1];
-  
-  if (pobiNum > crongNum){
-    result = 1;
-  }
-  else if(pobiNum < crongNum) {
-    result = 2;
-  }
-  else {
-    result = 0;
-  }
-
-  return result;
 }
 
 function problem1(pobi, crong) {
   let animal = [...pobi, ...crong];
-  let maxNumArray = [0, 0, 0, 0];
-  
+  let pageSliceArray = [0, 0, 0];
+  let pageCalArray = [0, 0];
+
   animal.forEach((element) => {
-      maxNumArray[i] = ;
+    pageSliceArray = slicePage(maxNumArray[i]);
+    pageCalArray = calPlusMinus(pageSliceArray);
     });     
   }
   
