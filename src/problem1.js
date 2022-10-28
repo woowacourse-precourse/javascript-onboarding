@@ -17,6 +17,14 @@ function splitPageNumber(pages) {
   return splitedNumbers;
 }
 
+// 각 자리로 숫자로 분리한 페이지 번호를 모두 더하는 기능
+function addNumbers(numbers) {
+  const result = numbers.map((number) =>
+    number.reduce((acc, cur) => acc + cur, 0)
+  );
+  return result;
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (!isPageContinuous(pobi) || !isPageContinuous(crong)) {
@@ -24,7 +32,7 @@ function problem1(pobi, crong) {
   }
   const splitedPobi = splitPageNumber(pobi);
   const splitedCrong = splitPageNumber(crong);
-  console.log(splitedPobi, splitedCrong);
+  console.log(addNumbers(splitedPobi), addNumbers(splitedCrong));
   return answer;
 }
 
