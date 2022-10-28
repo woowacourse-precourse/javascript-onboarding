@@ -2,6 +2,7 @@ const NORMAL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const FROGDICTION = NORMAL.split('').reverse();
 
 function problem4(word) {
+  if (!inputExecption(word)) return false;
   var answer;
   let afterFrogDiction ='';
   
