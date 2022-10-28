@@ -2,8 +2,13 @@ function problem2(cryptogram) {
   const result = [cryptogram[0]];
   for (let i = 1; i < cryptogram.length; i++) {
     const current = cryptogram[i];
+    if (result[result.length - 1] === current) {
+      result.pop();
+      continue;
+    }
+    result.push(current);
   }
-  console.log(result.join(""));
+  return result.join("");
 }
 
 function testCode() {
