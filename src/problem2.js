@@ -23,6 +23,15 @@ function validInputCheck(inputValue) {
   return 0;
 }
 
+function overlapCheck(value) {
+  for (let index = 0; index < value.length; index++) {
+    if (value[index] === value[index + 1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function problem2(cryptogram) {
   if (validInputCheck(cryptogram) < 0) {
     return "Argument Error";
