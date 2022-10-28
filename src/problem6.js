@@ -28,6 +28,19 @@ function problem6(forms) {
 
   const duplicatedTokens = findDuplicate(nicknameTokens);
 
+  for (let i = 0; i < forms.length; i++) {
+    const [email, nickname] = forms[i];
+
+    for (let k = 0; k < duplicatedTokens.length; k++) {
+      if (nickname.includes(duplicatedTokens[k])) {
+        answer.push(email);
+        break;
+      }
+    }
+  }
+
+  return answer.sort();
+
   return answer;
 }
 
