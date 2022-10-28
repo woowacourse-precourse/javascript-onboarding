@@ -28,3 +28,15 @@ const twoStringHash = (forms) => {
   });
   return hash;
 }
+
+const duplicatedStr = (twoSringNames) => {
+  const res = [];
+
+  for (const name in twoSringNames) {
+    if (twoSringNames[name] > 1) {
+      res.push(name);
+    }
+  } 
+
+  return res;
+}
