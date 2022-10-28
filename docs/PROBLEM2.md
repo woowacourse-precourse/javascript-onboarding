@@ -67,10 +67,9 @@
 - 새로운 배열(스택)을 생성하여 중복값이 제거된 새로운 값을 저장한다.
 <br>
 
-    - ```const compareArray = []```을 통해 배열을 만들고, 비교를 시작한다.
-    - while-loop을 돌면서, compareArray의 최상단값과 cnt가 가르키고 있는 입력값의 인덱스를 비교.
-      - ❓ If 일치하지않으면 -> <br>❗️ ```compareArray```에  ```cryptograme[cnt]```를 ```push```
-      - ❓ If 일치하면 -> ❗️ ```compareArray```에서 ```pop```을 하고, 다음 순회로 이어간다.
-      ``` 
+    ```const compareArray = []을 통해 배열을 만들고, 비교를 시작한다.
+    while-loop을 돌면서, compareArray의 최상단값과 cnt가 가르키고 있는 입력값의 인덱스를 비교.
+      - ❓ If 일치하지않으면 -> ❗️compareArray에 cryptograme[cnt]를 push
+      - ❓ If 일치하면 -> ❗️ compareArray에서 pop을 하고, 다음 순회로 이어간다.
+      
       ✌🏻  여기서 pop만 하고 넘어가는 이유는 compareArray의 최상단값은 cryptogram[cnt]의 이전 값이기에 중복된다면 새로운 배열에 추가할 필요❌
-      ```
