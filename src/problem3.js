@@ -21,4 +21,10 @@ function countNumber(number) {
   });
   return count;
 }
+function checkValidation(number) {
+}
+function checkIsNumber(number) {
+  if (typeof number == "number") return true;
+  return false;
+}
 module.exports = problem3;
