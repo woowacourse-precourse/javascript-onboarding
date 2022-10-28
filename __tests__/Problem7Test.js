@@ -37,23 +37,29 @@ describe("getUserFriend", () => {
   });
 });
 
-describe("getSetFriend", () => {
+describe("getScoreTogetherFriend", () => {
   it("is get set array that input list delete user", () => {
     expect(
-      getScoreTogetherFriend("mrko", [
-        ["donut", "mrko"],
-        ["shakevan", "mrko"],
-      ])
+      getScoreTogetherFriend(
+        ["mrko"],
+        [
+          ["donut", "mrko"],
+          ["shakevan", "mrko"],
+        ]
+      )
     ).toEqual({
       donut: 10,
       shakevan: 10,
     });
     expect(
-      getScoreTogetherFriend("donut", [
-        ["donut", "andole"],
-        ["donut", "jun"],
-        ["donut", "mrko"],
-      ])
+      getScoreTogetherFriend(
+        ["donut"],
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+        ]
+      )
     ).toEqual({ mrko: 10, jun: 10, andole: 10 });
   });
 });
