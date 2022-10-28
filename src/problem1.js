@@ -33,6 +33,14 @@ function problem1(pobi, crong) {
     return Math.max(...arr);
   }
 
+  const pobiMax = getMax(pobi);
+  const crongMax = getMax(crong);
+  
+  if (pobiMax > crongMax) answer = 1;
+  else if(pobiMax < crongMax) answer = 2;
+  else if(pobiMax === crongMax) answer = 0;
+  else answer = -1;
+  
   return answer;
 }
 
