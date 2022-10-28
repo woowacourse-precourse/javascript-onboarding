@@ -20,7 +20,7 @@ function problem4(word) {
   };
 
 
-  const alphabetConverter = letter => {
+  const alphabetOnlyConverter = letter => {
 
     let convertedLetter = ''; 
     
@@ -34,6 +34,20 @@ function problem4(word) {
 
     return convertedLetter;
   }
+
+
+  const wordConverter = word => {
+    let convertedWord = '';
+    const wordArray = word.split("");
+
+    wordArray.map(letter => {
+      convertedWord = convertedWord + alphabetOnlyConverter(letter);
+    })
+
+    return convertedWord;
+  }
+
+  answer = wordConverter(word);
   
   return answer;
 }
