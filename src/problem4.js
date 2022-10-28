@@ -1,6 +1,14 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  // var answer;
+  // return answer;
+  const wordChar = word.split('')
+  const changeChar = (char) => {
+    if (/^[a-z]*$/.test(char)) char = reverseChar(char)
+    if (/^[A-Z]*$/.test(char)) char = reverseChar(char.toLowerCase()).toUpperCase()
+    return char
+  }
+  const changedWord = wordChar.map((char) => changeChar(char)).join("")
+  return changedWord
 }
 
 function reverseChar(char) {
