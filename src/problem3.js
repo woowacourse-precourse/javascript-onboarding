@@ -10,12 +10,12 @@ const countThreeSixNine = (currentNumber) => {
 const countClap = (number) => {
   let clapCount = 0;
   for (let currentNumer = 1; currentNumer <= number; currentNumer++) {
-    count += countThreeSixNine(currentNumer);
+    clapCount += countThreeSixNine(currentNumer);
   }
   return clapCount;
 };
 function problem3(number) {
-  var answer;
+  let answer = countClap(number);
   return answer;
 }
 
