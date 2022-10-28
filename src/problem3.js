@@ -1,4 +1,4 @@
-function checkNum(number){
+function getCount(number){
   let count = 0;
   
   for(let i = 1 ; i < number + 1 ; i++){
@@ -12,7 +12,7 @@ function checkNum(number){
 
 function problem3(number) {
 
-  return checkNum(number);
+  return getCount(number);
 
 }
 
