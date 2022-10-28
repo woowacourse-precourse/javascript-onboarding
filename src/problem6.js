@@ -1,27 +1,29 @@
 function problem6(forms) {
-  const nickCaseMap = new Map();
-  const getAllCase = (name) => {
-    for (let i = 0; i < name.length - 1; i++) {
-      const key = name.slice(i, i + 2);
-      if (nickCaseMap.get(key)) nickCaseMap.set(key, nickCaseMap.get(key) + 1);
-      else nickCaseMap.set(key, 1);
-    }
-  };
+  const duplicateWords = getDuplicateWords(forms);
 
-  forms.forEach(([_, nickName]) => getAllCase(nickName));
-
-  const dupliNickNames = Array.from(nickCaseMap)
-    .filter(([_, count]) => count > 1)
-    .map(([nickName, _]) => nickName);
-
-  const answer = forms
+  return forms
     .filter(([_, nickName]) =>
-      dupliNickNames.some((el) => nickName.includes(el))
+      duplicateWords.some((duplicateWord) => nickName.includes(duplicateWord))
     )
     .map(([email, _]) => email)
     .sort();
-
-  return answer;
 }
+
+const getAllCase = (map, nickName) => {
+  for (let i = 0; i < nickName.length - 1; i++) {
+    const key = nickName.slice(i, i + 2);
+    if (map.get(key)) map.set(key, map.get(key) + 1);
+    else map.set(key, 1);
+  }
+};
+
+const getDuplicateWords = (forms) => {
+  const candinates = new Map();
+  forms.forEach(([_, nickName]) => getAllCase(candinates, nickName));
+
+  return Array.from(candinates)
+    .filter(([_, count]) => count > 1)
+    .map(([word, _]) => word);
+};
 
 module.exports = problem6;
