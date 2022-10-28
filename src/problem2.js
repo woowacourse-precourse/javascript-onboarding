@@ -20,6 +20,11 @@ const isOverlap = (answer, char) => {
   return answer[answer.length - 1] === char;
 };
 
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+  let stack = "";
+  [...cryptogram].forEach((char) => {
+    stack += char;
+  });
+}
 
 module.exports = problem2;
