@@ -6,7 +6,15 @@ function problem4(word) {
 	return charFilter(word);
 }
 
-function charFilter() {}
+function charFilter(word) {
+	let reverseWord = '';
+
+	for (let i = 0; i < word.length; i++) {
+		reverseWord += word.charAt(i) === ' ' ? ' ' : alphabetFilter(word.charAt(i));
+	}
+
+	return reverseWord;
+}
 
 function alphabetFilter() {}
 
