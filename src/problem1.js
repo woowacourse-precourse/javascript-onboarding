@@ -14,3 +14,14 @@ const sum = (num) => {
 
   return res;
 }
+
+const mul = (num) => {
+  const string_num = String(num);
+  let res = 1;
+
+  for (let i = 0; i < string_num.length; i++) {
+    res *= Number(string_num[i]);
+  }
+  
+  return res;
+}
