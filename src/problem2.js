@@ -2,6 +2,8 @@ function problem2(cryptogram) {
   const removed = deduplication(cryptogram); 
 
   if (cryptogram == removed) return removed;
+
+  return problem2(removed);
 }
 
 module.exports = problem2;
