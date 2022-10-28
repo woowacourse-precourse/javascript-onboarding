@@ -9,18 +9,11 @@ function problem7(user, friends, visitors) {
   
   // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
   const userFriends=userInfo[user]
-  sameFriendsScore(userFriends)
+  sameFriendScoreCount(userFriends)
 
   // visitors중 친구목록에 없던것은 딕셔너리에 추가,점수 1 올리기
   // 친구목록에 있던건 그냥 점수 1 올리기
-  visitors.forEach((visit) => {
-    if (!userScore[visit]) {
-      userScore[visit]=1
-    }
-    if (userScore[visit]) {
-      userScore[visit]+=1
-    }
-  })
+  visitScoreCount(visitors)
 
   // user와 user의 지인 점수 제거
   delete userScore[user]
@@ -59,16 +52,18 @@ function relationshipLoad(friendsName) {
 }
 
 // 딕셔너리의 values를 돌며 user의 친구와 같은 수만큼 점수 더하기
-function sameFriendsScore(userFriends) {
+function sameFriendScoreCount(userFriends) {
   Object.entries(userInfo).forEach((eachlInfo)=> {
     userScore[eachlInfo[0]]=new Set([...eachlInfo[1]].filter(x => userFriends.has(x))).size*10
   })
 }
-  // const userFriends=userInfo[user]
-  // Object.entries(userInfo).forEach ((totalInfo)=> {
-  //   let person=totalInfo[0], personFriends=totalInfo[1]
-  //   userScore[person]=new Set([...personFriends].filter(x => userFriends.has(x))).size*10
-  // });
+
+function visitScoreCount(visitors) {
+  visitors.forEach((visit) => {
+    userScore[visit] ? userScore[visit]+=1 : userScore[visit]=1
+  })
+}
+
 
 console.log(problem7('mrko',[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],["bedi", "bedi", "donut", "bedi", "shakevan"]))
 // module.exports = problem7;
