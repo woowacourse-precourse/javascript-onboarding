@@ -3,6 +3,12 @@ function problem2(cryptogram) {
 }
 
 function cryptogramSolver(cryptogram) {
+  while (true) {
+    const cryptogramArr = cryptogram.split("");
+    tempCryptogram = removeDuplicatesChar(cryptogramArr).join("");
+    if (cryptogram != tempCryptogram) cryptogram = tempCryptogram;
+    else break;
+  }
   return cryptogram;
 }
 
