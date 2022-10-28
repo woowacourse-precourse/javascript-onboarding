@@ -1,6 +1,11 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let clap = 0;
+
+  for (let i = 1; i <= number; i++) {
+    clap += countClap(i);
+  }
+
+  return clap;
 }
 
 function countClap(number) {
