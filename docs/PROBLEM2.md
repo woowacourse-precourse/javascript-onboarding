@@ -22,3 +22,8 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 🎯 TODO 리스트
+- 재귀로 연속적으로 중복되는 character가 없을 때까지 확인
+- 정규식 표현으로 연속적으로 중복되는 character 있는지 확인
+  - 연속적으로 중복된는 character가 없으면 재귀 종료 
+  - 연속적으로 중복되는 character가 있으면 중복된 character들을 없애고 재귀 호출 
