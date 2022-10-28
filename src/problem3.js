@@ -19,8 +19,11 @@ const count369 = (number) => {
 };
 
 function problem3(number) {
-  var answer;
-  return answer;
+  let count = 0;
+  for (let i = 1; i <= number; i++) {
+    count += count369(i);
+  }
+  return count;
 }
 
 module.exports = problem3;
