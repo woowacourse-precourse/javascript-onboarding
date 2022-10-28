@@ -38,8 +38,18 @@ function makeDict() {
 }
 
 function problem4(word) {
-  var answer;
-  return answer;
+  let [smallDictionary, bigDictionary] = makeDict();
+  return [...word]
+    .reduce((acc, item) => {
+      if (isUpperCase(item)) {
+        return [...acc, bigDictionary[item]];
+      } else if (isLowerCase(item)) {
+        return [...acc, smallDictionary[item]];
+      } else {
+        return [...acc, item];
+      }
+    }, [])
+    .join("");
 }
 
 module.exports = problem4;
