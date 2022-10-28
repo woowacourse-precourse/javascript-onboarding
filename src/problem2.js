@@ -15,9 +15,6 @@ function problem2(cryptogram) {
 }
 
 
-//전 문자열을 기억한다.
-//배열을 순회하면서 앞에 문자랑 뒤에 문자가 같은지 확인해야한다.
-
 
 
 module.exports = problem2;
