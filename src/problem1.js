@@ -40,6 +40,16 @@ function getPlayerMaxScore([leftPage, rightPage]) {
   return getMaxScore(leftScore, rightScore);
 }
 
+function checkExceptions([leftPage, rightPage]) {
+  let isValid = true; 
+
+  if (rightPage - leftPage !== 1) isValid = false;
+  else if (leftPage % 2 !== 1 && rightPage % 2 !== 0) isValid = false; 
+  else if (leftPage <= 1 || rightPage >= 400) isValid = false; 
+
+  return isValid;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
