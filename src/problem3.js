@@ -1,6 +1,15 @@
 function problem3(number) {
-  var answer;
+  const memorizeNumbers = memorizeNumber();
+  var answer = memorizeNumbers[number];
   return answer;
+}
+function memorizeNumber() {
+  let index = 0;
+  const memorizeNumbers = new Array(10001).fill(0);
+  for (index = 1; index < 10001; i++) {
+    memorizeNumbers[index] = memorizeNumbers[index - 1] + countNumber(index);
+  }
+  return memorizeNumbers;
 }
 function countNumber(number) {
   str = string(number);
