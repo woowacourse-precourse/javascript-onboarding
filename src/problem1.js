@@ -22,7 +22,25 @@ function problem1(pobi, crong) {
   }
 
   // 각 자리 숫자 곱하기
-  
+  function mul(value) {
+    first_num = String(value[0]).split("").reduce((val_1, val_2) => val_1 * val_2*1);
+    second_num = String(value[1]).split("").reduce((val_1, val_2) => val_1 * val_2*1);
+    // 방법 2
+    // var answer1 = 1;
+    // var str1 = String(value[0]);
+    // for (var i=0; i < str1.length ; i++) {
+    //   answer1 *= parseInt(str1[i]);
+    // }
+    // first_num = answer1;
+
+    // var answer2 = 1;
+    // var str2 = String(value[1]);
+    // for (var i=0; i < str2.length ; i++) {
+    //   answer2 *= parseInt(str2[i]);
+    // }
+    // second_num = answer2;
+    return maxScore(first_num, second_num);
+  }
 
   // 최고 점수 구하기
 
