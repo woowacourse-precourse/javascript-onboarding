@@ -13,7 +13,8 @@
     "test3": "jest __tests__/Problem3Test.js",
     "test4": "jest __tests__/Problem4Test.js",
     "test5": "jest __tests__/Problem5Test.js",
-    "test6": "jest __tests__/Problem6Test.js"
+    "test6": "jest __tests__/Problem6Test.js",
+    "test7": "jest __tests__/Problem7Test.js"
   },
   "repository": {
     "type": "git",
