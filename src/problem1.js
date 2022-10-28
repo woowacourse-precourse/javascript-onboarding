@@ -33,6 +33,12 @@ function problem1(pobi, crong) {
     return sumLeft > sumRight ? sumLeft : sumRight;
   };
 
+  const compareScore = (arr) => {
+    const sumMax = handleSum(arr);
+    const multiMax = handleMultiply(arr);
+    return sumMax > multiMax ? sumMax : multiMax;
+  };
+
   const handleMultiply = (arr) => {
     var left = arr[0];
     var right = arr[1];
