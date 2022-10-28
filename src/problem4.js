@@ -15,16 +15,6 @@ function problem4(word) {
   return answer;
 }
 
-function frogDictionary(char, capitalOrSmall) {
-  switch (char) {
-    case "capital":
-      let ascii1 = char.charCodeAt(0);
-      let frogDic1 = (ascii1 - 65) + (25 - 2 * ascii1);
-      return String.fromCharCode(frogDic1);
-    case "small":
-      let ascii2 = char.charCodeAt(0);
-      let frogDic2 = (ascii2 - 97 ) + (25 - 2 * ascii2);
-      return String.fromCharCode(frogDic2);
-  }
-}
+function frogDictionary(char, capitalOrSmall) {}
+
 module.exports = problem4;
