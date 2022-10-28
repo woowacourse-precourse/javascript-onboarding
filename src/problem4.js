@@ -11,10 +11,26 @@ function is_UpperCase(char) {
   if(char === char.toUpperCase()) return 1;
   return 0;
 }
+function reverseChar(char) {
+  if(char === ' ') return ' ';  // 공백은 공백으로 리턴
+
+  let result = '';
+  let ascii = 0;
+  if(is_UpperCase(char)) ascii = 65;
+  else ascii = 97;
+
+  let point = Math.abs(ascii - char.charCodeAt());  // 시작점으로부터 떨어진 거리
+  let reverseCode = (ascii+25) - point; // 제일 끝에서 떨어진거리만큼 앞으로 이동
+  result = String.fromCharCode(reverseCode);
+
+  return result;
+}
 
 function problem4(word) {
   let answer = '';
-
+  for(let i =0; i<word.length; i++) {
+    answer += reverseChar(word[i]);
+  }
   return answer;
 }
 
