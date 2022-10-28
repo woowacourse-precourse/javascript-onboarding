@@ -23,8 +23,13 @@ const isOverlap = (answer, char) => {
 function problem2(cryptogram) {
   let stack = "";
   [...cryptogram].forEach((char) => {
+    if (isOverlap(stack, char)) {
+      stack = stack.slice(0, stack.length - 1);
+      return;
+    }
     stack += char;
   });
+  console.log(stack);
 }
 
 module.exports = problem2;
