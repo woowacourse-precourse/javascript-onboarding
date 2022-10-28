@@ -20,6 +20,21 @@ function problem4(word) {
   };
 
 
+  const alphabetConverter = letter => {
+
+    let convertedLetter = ''; 
+    
+    if(letter.charCodeAt() >= 65 && letter.charCodeAt() <= 90) {
+      convertedLetter = capitalLetterConverter(letter) 
+    } else if(letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122) {
+      convertedLetter = smallLetterConverter(letter) 
+    } else {
+      convertedLetter = letter;
+    }
+
+    return convertedLetter;
+  }
+  
   return answer;
 }
 
