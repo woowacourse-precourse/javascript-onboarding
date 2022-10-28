@@ -48,27 +48,24 @@ const checkAlpha = (text) => {
 
 const reverseAlpha = (text) => {
   let resultValue;
-  let startIndex;
-  let endIndex;
   const isLowerCase = isLower(text);
 
   if (isLowerCase) {
     //ASCII 97 ~ 122
-    const charCode = text.charCodeAt(0);
-    startIndex = 97;
-    endIndex = 122;
-    const index = charCode - startIndex;
-    resultValue = String.fromCharCode(endIndex - index);
-    //resultValue = lowerCaseConverter()
+    resultValue = reverse(text, 97, 122);
   } else {
     //ASCII 65 ~ 90
-    const charCode = text.charCodeAt(0);
-    startIndex = 65;
-    endIndex = 90;
-    const index = charCode - startIndex;
-    resultValue = String.fromCharCode(endIndex - index);
-    //resultValue = upperCaseConverter()
+    resultValue = reverse(text, 65, 90);
   }
+
+  return resultValue;
+};
+
+// reverseAlpha에서 반복되는 코드 함수화.
+const reverse = (text, startIndex, endIndex) => {
+  const charCode = text.charCodeAt(0);
+  const index = charCode - startIndex;
+  const resultValue = String.fromCharCode(endIndex - index);
 
   return resultValue;
 };
