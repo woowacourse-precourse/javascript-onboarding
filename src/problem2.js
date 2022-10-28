@@ -5,7 +5,7 @@
 function problem2(cryptogram) {
   let answer = "";
 
-  for (let i = 1; i < cryptogram.length; i++) {
+  for (let i = 0; i < cryptogram.length; i++) {
     if (answer[answer.length - 1] !== cryptogram[i]) answer += cryptogram[i];
     else answer = answer.slice(0, -1);
   }
