@@ -1,5 +1,17 @@
 function problem1(pobi, crong) {
-
+  const pobi_max = Math.max(
+    sum(pobi[0]),
+    sum(pobi[1]),
+    mul(pobi[0]),
+    mul(pobi[1])
+  );
+  
+  const crong_max = Math.max(
+    sum(crong[0]),
+    sum(crong[1]),
+    mul(crong[0]),
+    mul(crong[1])
+  );
 }
 
 module.exports = problem1;
