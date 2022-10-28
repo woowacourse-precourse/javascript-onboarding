@@ -86,7 +86,16 @@ function problem1(pobi, crong) {
   const IsPobiRightver = new RightOverPage(pobi.rightPage)
   const IsCrongRightOver = new RightOverPage(crong.rightPage)
 
+  if(IsPobiLeftOdd || IsCrongLeftOdd ||
+    IsPobiRightEven || IsCrongRightEven ||
+    IsPobiLeftPlusOne || IsCrongLeftPlusOne ||
+    IsPobiLeftOver || IsCrongLeftOver ||
+    IsPobiRightver || IsCrongRightOver) {
+      return -1
+    }
+
   
+
   return answer;
 }
 
