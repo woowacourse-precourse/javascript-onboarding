@@ -35,4 +35,15 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+function getFriendsList(friends) {
+  const map = new Map();
+  friends.forEach(([from, to]) => {
+    if (map.has(from)) map.get(from).push(to);
+    else map.set(from, [to]);
+    if (map.has(to)) map.get(to).push(from);
+    else map.set(to, [from]);
+  });
+  return map;
+}
+
 module.exports = problem7;
