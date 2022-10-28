@@ -1,6 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
   
+  if(pobi[1] !== pobi[0] + 1 || crong[1] !== crong[0] + 1) return -1;
+
   function getMax(pages) {
     var n1 = pages[0].toString();
     var n2 = pages[1].toString();
@@ -40,7 +42,7 @@ function problem1(pobi, crong) {
   else if(pobiMax < crongMax) answer = 2;
   else if(pobiMax === crongMax) answer = 0;
   else answer = -1;
-  
+
   return answer;
 }
 
