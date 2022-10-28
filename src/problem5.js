@@ -4,7 +4,16 @@ function problem5(money) {
     const remain = total % base;
     return [count, remain];
   };
-  var answer;
+
+  let total = money;
+  const MONETARY_UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+  const answer = MONETARY_UNITS.map((unit) => {
+    const [count, remain] = changeMaxCount(total, unit);
+    total = remain;
+    return count;
+  });
+
   return answer;
 }
 
