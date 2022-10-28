@@ -1,6 +1,7 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const result = findDuplicateCrew(forms);
+
+  return [...result].sort();
 }
 
 function findDuplicateCrew(forms) {
