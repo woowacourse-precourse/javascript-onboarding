@@ -5,6 +5,10 @@ function problem1(pobi, crong) {
   getDigitSum(pobi[1]);
   getDigitSum(crong[0]);
   getDigitSum(crong[1]);
+  getDigitMultiply(pobi[0]);
+  getDigitMultiply(pobi[1]);
+  getDigitMultiply(crong[0]);
+  getDigitMultiply(crong[1]);
   return answer;
 }
 
@@ -33,6 +37,16 @@ function getDigitSum(page) {
     page = parseInt(page / 10);
   }
   return sum;
+}
+
+function getDigitMultiply(page) {
+  let multiply = 1; //multiply를 1로 초기화한다.
+  while (page > 0) {
+    //page가 0이 될 때까지
+    multiply *= page % 10; //page의 1의 자릿수를 곱한 다음,
+    page = parseInt(page / 10); //page의 1의 자릿수는 버린다.
+  }
+  return multiply;
 }
 
 module.exports = problem1;
