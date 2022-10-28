@@ -1,6 +1,17 @@
+const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+
 function problem4(word) {
-  var answer;
-  return answer;
+  let result = "";
+
+  for (let i = 0; i < word.length; i++) {
+    const letter = word[i];
+  }
+  console.log(result);
 }
 
+function testCode() {
+  problem4("I love you");
+}
+testCode();
 module.exports = problem4;
