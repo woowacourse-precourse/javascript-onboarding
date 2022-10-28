@@ -19,8 +19,8 @@ function pageTest(leftPage, rightPage) {
 
 function addPageNum(pageNum) {
   const dividePageNums = [...pageNum.toString()];
-  return dividePageNums.reduce(function (preValue, currentValue) {
-    return parseInt(preValue) + parseInt(currentValue);
+  return dividePageNums.reduce((accumulator, currentValue) => {
+    return parseInt(accumulator) + parseInt(currentValue);
   });
 }
 
