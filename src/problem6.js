@@ -1,11 +1,11 @@
 function problem6(forms) {
-  // [ '제이엠', '제이슨', '워니', '엠제이', '이제엠' ]
+  // input에서 이름만 뽑아 nameList에 추가
   let nameList = [];
   for (let i of forms) {
     nameList.push(i[1]);
   }
 
-  //['제이', '이엠', '이슨', '워니', '엠제', '이제', '제엠']
+  // 이름에서 추출할 수 있는 순서가 있는 두 글자의 모음을 twoLetterList에 추가
   twoLetterList = [];
   for (let i of nameList) {
     for (let j = 0;j < i.length - 1; j++) {
@@ -14,13 +14,11 @@ function problem6(forms) {
   }
   twoLetterList = [...new Set(twoLetterList)];
 
-  // 중복 횟수를 세어 각각의 count를 countList에 반환
+  // 위에서 추출한 글자가 이름에 총 몇 번 들어갔는지 각각의 count를 countList에 반환
   let countList = [];
   for (let i = 0; i < twoLetterList.length ; i++) {
     countList[i] = 0;
   }
-
-  // countList = [1, 0, 0, 0, 0, 0, 0]
   for (let i of nameList) {
     let count = 0;
     for (let j = 0; j < twoLetterList.length; j++) {
@@ -32,7 +30,7 @@ function problem6(forms) {
   }
 
 
-  // 2개 이상 count된 두 글자를 찾아 
+  // 2개 이상 count된 글자가 어느 이름에 있는지 확인 후 추출한 각 이름에 해당하는 이메일을 result 배열에 추가
   let result = [];
   for (let i = 0; i < countList.length; i++) {
     if (countList[i] >1) {
@@ -44,9 +42,9 @@ function problem6(forms) {
     } 
   }
 
-  // 오름차순 정렬
+  // result 배열 오름차순 정렬
   result.sort();
-  
+
   let answer = result;
   return answer;
 }
@@ -54,11 +52,3 @@ function problem6(forms) {
 module.exports = problem6;
 
 console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]));
-
-// input: [ ["jm@email.com", "제이엠"], O '제이'엠
-//        ["jason@email.com", "제이슨"], O '제이'슨
-//        ["woniee@email.com", "워니"], 
-//        ["mj@email.com", "엠제이"], O 엠'제이'
-//        ["nowm@email.com", "이제엠"] ]
-
-// output: ["jason@email.com", "jm@email.com", "mj@email.com"]
