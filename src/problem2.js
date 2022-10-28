@@ -8,50 +8,22 @@ function problem2(cryptogram) {
     return -1;
   }
 
-  do {
-    // 중복되는 index 값을 얻는다.
-    let arr = cryptogram.split("");
-    const duplicatedindex = getDuplictatedindex(arr);
-    console.log(arr.length);
-    console.log(duplicatedindex);
+  // 스택을 첫번째 문자로 초기화한다.
+  const stack = [cryptogram[0]];
 
-    let count = getCount(arr, duplicatedindex);
-    console.log(count);
-    console.log(arr);
-    arr.join("");
-  } while (duplicatedindex !== -1);
-
-  return arr;
-}
-
-// 중복된 문자가 있는 index 값을 얻는 함수
-function getDuplictatedindex(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === arr[i + 1]) {
-      return i;
-    }
-    if (i === arr.length - 1) {
-      return -1;
-    }
-  }
-}
-
-// 중복된 문자로부터 몇 개까지 중복인지 count 값을 얻는 함수
-function getCount(cryptogram, duplicatedindex) {
-  let count = 1;
-  for (let i = duplicatedindex; i < cryptogram.length; i++) {
-    if (cryptogram[i + 1] === cryptogram[i + 2]) {
-      count++;
+  for (let i = 1; i < cryptogram.length; i++) {
+    // 스택에 들어있는 값과 다음 들어갈 값을 비교한다.
+    if (cryptogram[i] === stack[stack.length - 1]) {
+      // 값이 같다면 pop 하고 넘어간다.
+      stack.pop();
       continue;
     }
-    if (cryptogram[i + 1] !== cryptogram[i + 2]) {
-      break;
-    }
+    // 값이 다르다면 값을 stack에 쌓고 반복한다.
+    stack.push(cryptogram[i]);
   }
-  return count;
+
+  // 값을 스택에 전부 쌓았으면 배열을 문자열로 반환한다. 요소들을 이어준다. 스택을 반환한다.
+  return stack.join("");
 }
 
 module.exports = problem2;
-
-// 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-// b r o w o a n o o m  m  n  a  o  n
