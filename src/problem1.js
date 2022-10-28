@@ -25,11 +25,7 @@ class PageError {
     if (!this.checkLength())
       throw new Error("input 양식에 에러가 발생하였습니다!");
 
-    if (!(this.checkLimit() && this.checkNext())) {
-      return false;
-    }
-
-    return true;
+    return this.checkLimit() && this.checkNext();
   }
 }
 
