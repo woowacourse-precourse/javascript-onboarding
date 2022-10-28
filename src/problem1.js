@@ -9,6 +9,18 @@
  * 2. 왼쪽 페이지가 홀수가 아니고 오른쪽 페이지가 짝수가 아닌 경우
  */
 
+/**
+ * 정수를 입력받아 자릿수 별로 분리하여 배열로 반환하는 함수
+ * @param {number} number - 1~400의 정수
+ * @returns {number[]} 인자로 넘겨받은 숫자를 자릿수별로 나눠 정수 타입의 배열로 반환
+ */
+const splitByDigit = (number) => {
+  return number
+    .toString()
+    .split("")
+    .map((digit) => parseInt(digit));
+};
+
 function problem1(pobi, crong) {
   var answer;
 
