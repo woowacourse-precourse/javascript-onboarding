@@ -9,6 +9,11 @@ function problem1(pobi, crong) {
  * 2. 페이지 번호의 각 자리 숫자를 모두 더하는 함수
  * 3. 어떤 숫자가 더 큰지 비교하는 함수
  */
+function reduceAfterSplit(str, cb) {
+  if (isNaN(str)) throw new Error("숫자가 아닙니다.");
+  const digits = str.split("");
+  return digits.reduce(cb);
+}
 
 function addDigits(str) {
   if (isNaN(str)) throw new Error("숫자가 아닙니다.");
