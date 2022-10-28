@@ -58,25 +58,13 @@ function problem1(pobi, crong) {
   let pobiScore = 0;
   if (pobi[0] % 10 === 9) {
     pobiScore = Math.max(
-      pobi[0]
-        .toString()
-        .split("")
-        .reduce((acc, cur) => acc * cur, 1),
-      pobi[0]
-        .toString()
-        .split("")
-        .reduce((acc, cur) => acc + cur, 0)
+      reduceByOperator(splitByDigit(pobi[0]), "+"),
+      reduceByOperator(splitByDigit(pobi[0]), "+")
     );
   } else {
     pobiScore = Math.max(
-      pobi[1]
-        .toString()
-        .split("")
-        .reduce((acc, cur) => acc * cur, 1),
-      pobi[1]
-        .toString()
-        .split("")
-        .reduce((acc, cur) => acc + cur, 0)
+      reduceByOperator(splitByDigit(pobi[1]), "*"),
+      reduceByOperator(splitByDigit(pobi[1]), "*")
     );
   }
 
