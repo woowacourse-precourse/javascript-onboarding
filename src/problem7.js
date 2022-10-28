@@ -34,6 +34,13 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  function addScoresVisitors(){
+    visitors.forEach((el)=>{
+      if(!frinedsWithUser.includes(el)){
+        scores[el] = scores[el] ? scores[el]+1 : 1;
+      }
+    });
+  }
 }
 
 module.exports = problem7;
