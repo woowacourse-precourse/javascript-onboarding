@@ -1,11 +1,13 @@
 // 기능 목록
-// 1. 3, 6, 9가 들어가는 숫자는 손뼉 치기
+// 1. number를 하나씩 잘라서 배열에 담기
+// 2. 배열 안에 3 또는 6 또는 9가 들어있는 경우 answer 증가
 
 function problem3(number) {
   // 손벽 치는 횟수
   let answer = 0;
 
   for (let i = 1; i <= number; i++) {
+    // number를 하나씩 잘라서 배열에 담기
     let arr = String(i).split("");
 
     for (let j = 0; j < arr.length; j++) {
