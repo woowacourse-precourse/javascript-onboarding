@@ -7,7 +7,7 @@ function deduplication(cryptogram) {
       array.pop();
     } else array.push(cryptogram[i]);
   }
-  return array;
+  return array.join();
 }
 function problem2(cryptogram) {
   var answer = deduplication(cryptogram);
