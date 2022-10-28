@@ -25,7 +25,9 @@ function getFriendsAdjacencyList(friends) {
 function getFriendOfFriends({ user, userFriends, friendRelation }) {
   const frinedOfFriends = userFriends.reduce((set, friend) => {
     const friends = friendRelation[friend];
-    const filteredFriends = friends.filter(friend => friend !== user);
+    const filteredFriends = friends.filter(
+      friend => friend !== user && !userFriends.includes(friend),
+    );
 
     filteredFriends.forEach(friend => set.add(friend));
     return set;
@@ -57,8 +59,11 @@ function scoreVisitor({ initScore, visitors, userFriends }) {
 
 function getRecommendationUserList({ score }) {
   const sortedScore = [...score].sort(([prevKey, prevVal], [currKey, currVal]) => {
-    if (prevVal === currVal) return prevKey - currKey;
-    return currVal - prevVal;
+    if (prevVal !== currVal) return currVal - prevVal;
+
+    if (prevKey < currKey) return -1;
+    if (prevKey > currKey) return 1;
+    if (prevKey === currKey) return 0;
   });
 
   const recommendedUserList = sortedScore.slice(0, 5).map(([name, score]) => name);
