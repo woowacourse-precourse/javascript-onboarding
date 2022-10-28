@@ -15,6 +15,12 @@ function problem6(forms) {
     }  
   });
 
+  forms.forEach(crew => {
+    for (let i=0; i<crew[1].length-1; i++) {
+      // 크루의 닉네임이 중복된 닉네임일 시 result 객체에 이메일 저장
+      if (duplicateName.includes(crew[1].slice(i, i+2))) result.add(crew[0]);
+    }
+  });
 }
 
 module.exports = problem6;
