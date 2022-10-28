@@ -1,19 +1,16 @@
 function problem2(cryptogram) {
-  let answer;
-
-  answer = decrypt(cryptogram);
-
+  const answer = decrypt(cryptogram);
   return answer;
 }
 //input: 'afcbbbcfaacf'
 //expected output: 'acf'
 const removeConsecutiveDuplicates = (text) => {
-  const textArr = text.split("");
-  let lastChar = textArr[0];
-  let dupeCount = 0,
-    i = 1;
-  for (i; i < textArr.length; i++) {
-    if (textArr[i] == lastChar) {
+  const textArr = text.split(""),
+    textLength = text.length;
+  let charToCompare = text[0],
+    dupeCount = 0;
+  for (let i = 1; i < textLength; i++) {
+    if (text[i] == charToCompare) {
       textArr[i - 1] = "";
       dupeCount++;
     } else {
@@ -21,11 +18,11 @@ const removeConsecutiveDuplicates = (text) => {
         textArr[i - 1] = "";
         dupeCount = 0;
       }
-      lastChar = textArr[i];
+      charToCompare = text[i];
     }
   }
   if (dupeCount != 0) {
-    textArr[i - 1] = "";
+    textArr[textLength - 1] = "";
   }
   return textArr.join("");
 };
