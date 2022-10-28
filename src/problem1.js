@@ -8,7 +8,7 @@ function problem1(pobi, crong) {
   let pobi_score = getScore(pobi);
   let crong_score = getScore(crong);
   //console.log(`pobi_score: ${pobi_score}, crong_score: ${crong_score}`);
-
+  //answer = compareScores(pobi_score, crong_score);
   return answer;
 }
 
@@ -36,5 +36,14 @@ function getScore(pages){
   return Math.max(left_num, right_num);
 }
 
-module.exports = problem1;
+function compareScores(pobi_score, crong_score){
+  if (pobi_score > crong_score) {
+    return 1;
+  }
+  if (pobi_score < crong_score) {
+    return 2;
+  }
+  return 0;
+}
 
+module.exports = problem1;
