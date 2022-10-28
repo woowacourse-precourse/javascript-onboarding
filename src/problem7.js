@@ -1,8 +1,9 @@
 function problem7(user, friends, visitors) {
   let [userFriends, newFriends] = getSeparateFrieds(user, friends);
   userFriends = new Set(userFriends);
-  let recommendScore = getWithKnowScore(userFriends, newFriends);
-  recommendScore = getVisitTimelineScore(userFriends, visitors);
+  const withKnowScore = getWithKnowScore(userFriends, newFriends);
+  const visitTimelineScore = getVisitTimelineScore(userFriends, visitors);
+  const recommendScore = getRecommendScore(withKnowScore, visitTimelineScore);
 
   return answer;
 }
@@ -56,4 +57,14 @@ function getVisitTimelineScore(visitors) {
   return visitTimelineScore;
 }
 
+function getRecommendScore(withKnowScore, visitTimelineScore) {
+  for (visitor in visitTimelineScore) {
+    if (withKnowScore[visitor]) {
+      withKnowScore[visitor] += visitTimelineScore[visitor];
+    } else {
+      withKnowScore[visitor] = visitTimelineScore[visitor];
+    }
+    return withKnowScore;
+  }
+}
 module.exports = problem7;
