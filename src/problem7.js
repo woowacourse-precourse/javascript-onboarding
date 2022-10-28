@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-function findUserFrieds(user, friends) {
+function getUserFrieds(user, friends) {
   const userFriends = new Set();
   friends.forEach((friend) => {
     const [friend1, friend2] = friend;
