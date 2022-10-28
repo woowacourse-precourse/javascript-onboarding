@@ -11,6 +11,10 @@ function problem4(word) {
       str[i]=String.fromCharCode(219-word.charCodeAt(i));//소문자의 리버스 숫자
       rev_word[i]=str[i];
     }
+    else{//공백일때
+      str[i]=" ";//공백일때 공백 저장
+      rev_word[i]=str[i];
+    }
   }
   answer=rev_word.join("");
   return answer;
