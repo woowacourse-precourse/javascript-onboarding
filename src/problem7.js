@@ -22,6 +22,10 @@ function problem7(user, friends, visitors) {
     }
   })
 
+  visitors.forEach(visitor => {
+    !userFriends.has(visitor) && addNumberToObject(1, scores, visitor)
+  })
+
   return answer;
 }
 
