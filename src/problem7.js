@@ -28,6 +28,12 @@ function isAlreadyFriend({ user, friend, friendsMap }) {
   return false;
 }
 
+function isValidScore(score) {
+  const MIN_SCORE = 0;
+
+  return score > MIN_SCORE;
+}
+
 function computeFriendScoreBySerperation({ user, friendsMap }) {
   const FRIEND_SCORE = 10;
   const friendsHasScore = new Map();
@@ -82,47 +88,35 @@ function computeTotalFriendScore(...friendScores) {
   return friendScore;
 }
 
-function cutListByComparison(compareFunction, list, maxCount = 5) {
-  return list.sort(compareFunction).slice(0, maxCount);
+function cutListByComparison(compareFunction, array, maxCount = 5) {
+  return array.sort(compareFunction).slice(0, maxCount);
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
-
+  const MAX_COUNT = 5;
   const friendsMap = createFriendsMap(friends);
 
-  const friendScoreBySeperation = computeFriendScoreBySerperation({
-    user,
-    friendsMap,
-  });
-  const friendScoreByVisiting = computeFriendScoreByVisiting(visitors);
+  const totalFriendScoreMap = computeTotalFriendScore(
+    computeFriendScoreBySerperation({
+      user,
+      friendsMap,
+    }),
+    computeFriendScoreByVisiting(visitors)
+  );
 
-  const totalFriendScore = [
-    ...computeTotalFriendScore(friendScoreBySeperation, friendScoreByVisiting),
-  ].filter(([friend]) => !isAlreadyFriend({ user, friend, friendsMap }));
+  const filteredFriedScores = [...totalFriendScoreMap].filter(
+    ([friend, score]) =>
+      !isAlreadyFriend({ user, friend, friendsMap }) && isValidScore(score)
+  );
 
   const slicedTotalFriendScore = cutListByComparison(
     ([nameA, scoreA], [nameB, scoreB]) =>
       scoreB - scoreA || nameA.localeCompare(nameB),
-    totalFriendScore
+    filteredFriedScores,
+    MAX_COUNT
   );
 
   return slicedTotalFriendScore.map(([name]) => name);
 }
-
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
 
 module.exports = problem7;
