@@ -25,12 +25,12 @@ function isCryptoGram(string, regex) {
 /**
  * 암호문을 복호화한다.
  * @param {string} cryptogram
- * @param {regex} REGEX
+ * @param {Regex} regex
  * @param {string | (match:string)=>string} replacer
  * @returns
  */
-function decrypto(cryptogram, REGEX, replacer) {
-  return cryptogram.replace(REGEX, replacer);
+function decrypto(cryptogram, regex, replacer) {
+  return cryptogram.replace(regex, replacer);
 }
 
 module.exports = problem2;

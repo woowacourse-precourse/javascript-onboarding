@@ -30,7 +30,7 @@
 - 암호문인지 확인하는 정규식은 바뀔 수 있을 것 같아서 정규식을 매개변수로 받는다.
 - 암호문을 처리하는방법이 바뀔 수 있을 것 같아 repalcer 함수를 매개변수로 받는다.
 
-#### 연속된 문자열 제거 : decrypto(string, regex, replacer)
+#### 연속된 문자열 제거 : decrypto(cryptoGram, regex, replacer)
 
 - replacer는 유니온 타입으로 string 또는 함수를 받을 수 있도록한다.
 - 문자열과 정규식, 그리고 매치된 문자열을 어떻게 대체할지 함수를 받아 처리한다
@@ -44,6 +44,7 @@
 
 ```js
 function solution(cryptogram) {
+  const REGEX = '암호문인지 판별하는 정규식';
   let decryptoGram = cryptogram;
   while (isCryptoGram(decryptoGram, REGEX)) {
     decryptoGram = decrypto(decryptoGram, REGEX, '');
