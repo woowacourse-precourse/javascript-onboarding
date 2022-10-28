@@ -10,6 +10,7 @@ function problem1(pobi, crong) {
     return 0;
   }
   let exception = except(pobi) || except(crong);
+  if (exception === -1) return -1;
 
   function getScore(user) {
     let leftScore = String(user[0]).split("");
