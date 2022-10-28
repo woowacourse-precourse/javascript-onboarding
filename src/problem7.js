@@ -21,6 +21,14 @@ function problem7(user, friends, visitors) {
       myFriends.push(...friend.filter((x) => x !== user));
     }
   });
+
+  myFriends.forEach((myFriend) => {
+    friendsList[myFriend]
+      .filter((x) => x !== user)
+      .forEach((x) => {
+        userScoreList[x] += 10;
+      });
+  });
   return answer;
 }
 
