@@ -3,15 +3,6 @@ function problem6(forms) {
   const checkArr = [];
   const answer = [];
 
-  //검사 배열 만들기
-  forms.map((id) => {
-    if (checkMyNickName(id[1], checkArr)) answer.push(id[0]);
-    checkStraightWord(id[1], checkArr);
-  });
-
-  console.log(checkArr);
-
-  console.log(" filtered Arr", answer);
   return answer;
 }
 
@@ -22,7 +13,17 @@ function nickEmailSplit(id) {
 }
 
 //2.한글 닉네임을 2글자 이상으로 분리하는 기능
-function nickSplit(id) {}
+function nickSplit(id) {
+  const name = [];
+
+  for (let i = id.length; i > 1; i--) {
+    for (let j = 0; i - j > 1; j++) {
+      name.push(id.slice(j, i));
+    }
+  }
+
+  return id;
+}
 
 //3.분리한 닉네임을 다른 닉네임과 검사하는 기능
 function checkAnoterName(id, arr) {}
@@ -32,14 +33,14 @@ function emailSortAndDupDel(arr) {
   return arr.sort((a, b) => nickSplit(a) - nickSplit(b));
 }
 
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
+// console.log(
+//   problem6([
+//     ["jm@email.com", "제이엠"],
+//     ["jason@email.com", "제이슨"],
+//     ["woniee@email.com", "워니"],
+//     ["mj@email.com", "엠제이"],
+//     ["nowm@email.com", "이제엠"],
+//   ])
+// );
 
 module.exports = problem6;
