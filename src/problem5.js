@@ -9,7 +9,15 @@ function exception(money) {
 
 // 오만원에서 일원까지 차례로 나눠서 계산하기
 function divideChange(money) {
+  const sortArr = moneySort.map(sort => {
+    const restMoney = money % sort;
+    const countMoney = Math.trunc(money / sort);
+    money = restMoney;
 
+    return countMoney;
+  })
+  
+  return sortArr;
 }
 
 function problem5(money) {
