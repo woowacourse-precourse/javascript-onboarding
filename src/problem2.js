@@ -15,7 +15,8 @@ function problem2(cryptogram) {
     }
   }
 
-  return result;
+  // 배열 문자열로 변경
+  return result.join("");
 }
 
 module.exports = problem2;
