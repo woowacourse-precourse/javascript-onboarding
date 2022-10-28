@@ -51,6 +51,16 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  // sort시키기 위해 객체인 IdScore를 배열로 만들기
+  let sortable = [];
+  for (let id in IdScore) {
+    sortable.push([id, IdScore[id]]);
+  }
+  // 점수 높은 순으로 정렬
+  sortable.sort((a, b) => {
+    return b[1] - a[1];
+  });
+
   return answer;
 }
 
