@@ -68,6 +68,20 @@ function problem1(pobi, crong) {
     );
   }
 
+  /** crong의 최대 점수 구하기 */
+  let crongScore = 0;
+  if (crong[0] % 10 === 9) {
+    crongScore = Math.max(
+      reduceByOperator(splitByDigit(crong[0]), "+"),
+      reduceByOperator(splitByDigit(crong[0]), "*")
+    );
+  } else {
+    crongScore = Math.max(
+      reduceByOperator(splitByDigit(crong[1]), "+"),
+      reduceByOperator(splitByDigit(crong[1]), "*")
+    );
+  }
+
   return answer;
 }
 
