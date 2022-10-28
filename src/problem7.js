@@ -29,6 +29,7 @@ function problem7(user, friends, visitors) {
   }
 
   const answer = objectSortFn(obj)
+    .filter(([A, B]) => !friendList.includes(A) && !friendList.includes(B))
     .map(v => v[0])
     .slice(0, 5);
 
