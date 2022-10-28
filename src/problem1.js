@@ -20,7 +20,7 @@ function findMaxNum(user) {
       // 배열안에 각 자리의 숫자를 담기
       .map((el) => String(el).split(""))
       .reduce((acc, cur) => {
-        return Math.max(sum(acc), sum(cur));
+        return Math.max(sum(acc), multiply(acc), sum(cur), multiply(cur));
       })
   );
 }
@@ -28,6 +28,11 @@ function findMaxNum(user) {
 // 자릿수를 더하는 함수
 function sum(arr) {
   return arr.reduce((acc, cur) => Number(acc) + Number(cur));
+}
+
+// 자릿수를 곱하는 함수
+function multiply(arr) {
+  return arr.reduce((acc, cur) => Number(acc) * Number(cur));
 }
 
 function problem1(pobi, crong) {
