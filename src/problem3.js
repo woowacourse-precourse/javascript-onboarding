@@ -13,6 +13,8 @@ function problem3(number) {
     isNine += num.split("9").length - 1;
   }
 
+  // 3, 6, 9 개수의 합을 구한다.
+  answer = isThree + isSix + isNine;
   return answer;
 }
 
