@@ -29,11 +29,6 @@ const FROG = {
   ],
 };
 
-function problem4(word) {
-  var answer;
-  return answer;
-}
-
 // 예외상황
 function exception (word) {
   if(word < 1 || word > 1000) return true;
@@ -70,6 +65,13 @@ function lowerCase(word) {
   return FROG.lowerReverse[FROG.lowerDictionary.indexOf(word)];
 }
 
+function problem4(word) {
+  if(exception) return false;
+  console.log(checkAlphabet(word));
+  return checkAlphabet(word);
+}
+
+problem4("I love you");
 module.exports = problem4;
 
 // 기능들
