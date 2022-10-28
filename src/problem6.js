@@ -2,6 +2,7 @@ function problem6(forms) {
   const duplicateWords = forms
     .map(user => nicknameCombination(user[1]))
     .flat();
+  const answer = [...new Set(...(nicknameValidator(forms,duplicateWords)))].sort()
   return answer;
 }
 
