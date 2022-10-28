@@ -1,5 +1,11 @@
 function problem2(cryptogram) {
-    var answer;
+    let beforeStr = cryptogram;
+    let afterStr = delDuplication(cryptogram);
+    while (beforeStr.length !== afterStr.length) {
+        beforeStr = afterStr;
+        afterStr = delDuplication(beforeStr);
+    }
+    const answer = afterStr;
     return answer;
 }
 
