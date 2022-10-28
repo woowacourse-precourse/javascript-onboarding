@@ -20,11 +20,15 @@ function problem6(forms) {
     });
     return _duplicates;
   }, {});
-  const result = Object.values(duplicates).reduce((emails, duplicate) => {
-    if (duplicate.length > 1) return [...emails, ...duplicate];
-    return emails;
-  }, []);
-  return [...new Set(result.sort())];
+
+  const result = Object.values(duplicates)
+    .reduce((emails, duplicate) => {
+      if (duplicate.length > 1) return [...emails, ...duplicate];
+      return emails;
+    }, [])
+    .sort();
+
+  return [...new Set(result)];
 }
 
 module.exports = problem6;
