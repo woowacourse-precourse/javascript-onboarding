@@ -1,15 +1,15 @@
 function problem3(number) {
   var answer;
-  let numberArr = [];
-  let sum = 0;
+  let cnt = 0;
   for (i = 1; i <= number; i++) {
-    numberArr.push(i)
+    let numberCompare = String(i).match(/[369]/g);
+    console.log(numberCompare);
+    if (numberCompare != null) cnt += numberCompare.length;
   }
-  console.log(numberArr);
-
+  answer = cnt;
   
   return answer;
 }
 
+console.log(problem3(33));
 module.exports = problem3;
-problem3(13);
