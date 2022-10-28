@@ -1,5 +1,7 @@
 function problem4(word) {
-  var answer;
+  let answer;
+
+  answer = [...word].map((spelling) => LOWERCASE_FROG_DICTIONARY_OBJ[spelling] || UPPERCASE_FROG_DICTIONARY_OBJ[spelling] || spelling).join("");
 
   return answer;
 }
