@@ -5,11 +5,7 @@ class ErrorCase {
   }
 
   checkFormsLimit() {
-    if (1 <= this.forms.length && this.forms.length <= 10000) {
-      return true;
-    }
-
-    return false;
+    return 1 <= this.forms.length && this.forms.length <= 10000;
   }
 
   isOnlyKOR(name) {
