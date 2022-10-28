@@ -18,6 +18,8 @@ function problem6(forms) {
     names.push(name);
   }
 
+  // 해당 지원자의 이메일 오름차순 정렬
+  restricted_emails.sort();
   return restricted_emails;
 }
 
