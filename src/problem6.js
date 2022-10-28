@@ -1,7 +1,9 @@
+const POSSIBLE_EMAIL = "email.com";
+
 const isCorrectEmail = (email) => {
   const [_, domain] = email.split("@");
 
-  return domain === "email.com";
+  return domain === POSSIBLE_EMAIL;
 };
 
 const isHangeul = (nickname) => {

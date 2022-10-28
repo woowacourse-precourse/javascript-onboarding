@@ -1,3 +1,7 @@
+const FRIEND_SCORE = 10;
+const VISITED_SCORE = 1;
+const MAX_RECOMMENDED_NUMBER = 5;
+
 const setUserMap = (userMap, [userA, userB]) => {
   userMap.set(userA, [...(userMap.get(userA) || []), userB]);
   userMap.set(userB, [...(userMap.get(userB) || []), userA]);
@@ -9,7 +13,7 @@ const getKnowEachOtherScore = (userAFriends, userBFriends) => {
     if (userBFriends.includes(user)) count++;
   });
 
-  return count * 10;
+  return count * FRIEND_SCORE;
 };
 
 const setUserScoreMap = (map, user, score) => {
@@ -31,7 +35,7 @@ function problem7(user, friends, visitors) {
   });
 
   visitors.forEach((item) => {
-    setUserScoreMap(userScoreMap, item, 1);
+    setUserScoreMap(userScoreMap, item, VISITED_SCORE);
   });
 
   let recommendedFrieds = [];
@@ -47,7 +51,9 @@ function problem7(user, friends, visitors) {
     else return -1;
   });
 
-  return recommendedFrieds.flatMamap(([user]) => user).slice(0, 5);
+  return recommendedFrieds
+    .flatMamap(([user]) => user)
+    .slice(0, MAX_RECOMMENDED_NUMBER);
 }
 
 module.exports = problem7;
