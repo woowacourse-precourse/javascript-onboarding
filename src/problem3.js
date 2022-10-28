@@ -7,7 +7,13 @@
 
 */
 
-function problem3(number) {}
+function problem3(number) {
+  let totalCountOf369 = 0;
+  for (let targetNumber = 1; targetNumber <= number; targetNumber++) {
+    totalCountOf369 += count369InNumber(targetNumber);
+  }
+  return totalCountOf369;
+}
 
 const count369InNumber = (number) => {
   let countOf369 = 0;
