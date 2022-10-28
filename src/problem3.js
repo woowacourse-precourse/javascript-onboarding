@@ -1,4 +1,9 @@
 function problem3(number) {
+  return reduce(add,
+    Lazy.map(count(3, 6, 9),
+      Lazy.filter(has(3, 6, 9),
+        Lazy.range(1, number))));
+
   function add(a, b) {
     return a + b;
   }
