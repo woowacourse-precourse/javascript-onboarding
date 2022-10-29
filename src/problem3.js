@@ -3,6 +3,14 @@ function problem3(number) {
   return answer;
 }
 
+function countSpecificClap(number) {
+  const number_digits = seperateDigits(number);
+  let specificClap = 0;
+  number_digits.forEach((item) => { if (checkMultiple(item)) specificClap++ });
+  
+  return specificClap;
+}
+
 function seperateDigits(number) {
   const digits = [];
 
@@ -10,6 +18,8 @@ function seperateDigits(number) {
     digits.push(number % 10);
     number = parseInt(number / 10);
   }
+
+  return digits;
 }
 
 function checkMultiple(number) {
