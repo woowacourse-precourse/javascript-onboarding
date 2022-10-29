@@ -26,6 +26,15 @@ function problem6(forms) {
         string = stringArr[j] + stringArr[j+1];
 
         
+          const duplicateForms = []; 
+        
+          for(let k=i ; k < forms.length ; k++){
+            if(forms[k][1].indexOf(string) !== -1) {
+              duplicateForms.push(forms[k][0]);
+            }
+          }
+        
+        
       }
     }
 
