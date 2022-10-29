@@ -100,6 +100,7 @@ function upperCaseTest(value) {
         if (lowerCaseTest(v)) {
           return String.fromCharCode(122 - (v.charCodeAt(0) - 97))
         }
+        return v
 ```
 
   - 해당 로직은 먼저 순회하고 있는 아이템을 ```charCodeAt()```을 통해 ascII코드(아스키코드)에 해당하는 숫자로 변환시킴
@@ -119,6 +120,8 @@ function upperCaseTest(value) {
   - 따라서 뒤에서 몇번째 인지를 찾기 위해 소문자의 맨 뒤의 값인 'z'(122) 와 대문자의 맨 뒤의 값인 'Z'(90)에서 뺀다.
 
   - 마지막으로 ```String.fromCharCode()```를 통해 앞서 계산된 아스키코드인 숫자값을 문자열로 재변환하여 리턴하는 과정을 거침.
+
+  - 추가적으로, 영어 대/소문자를 제외한 문자는 변환하지 않고 그대로 출력하라는 제한사항에 맞춰, 그 외에 문자는 그대로 출력
 
     
 </br>
