@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const array = [];
 }
 
 module.exports = problem2;
