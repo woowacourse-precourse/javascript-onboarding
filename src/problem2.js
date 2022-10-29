@@ -23,7 +23,7 @@ function problem2(cryptogram) {
         }
     }
 
-    answer = pwd;
+    answer = pwd.join('');
 
 
     return answer;
