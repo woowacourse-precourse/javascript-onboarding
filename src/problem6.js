@@ -23,6 +23,8 @@ function getEmailSet(forms) {
 
 function problem6(forms) {
   var answer;
+  const unsortedEmails = getEmailSet(forms);
+  answer = unsortedEmails.sort();
   return answer;
 }
 module.exports = problem6;
