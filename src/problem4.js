@@ -23,29 +23,26 @@ function mapAlphabet(ch) {
     throw new Error("알파벳이 아닙니다");
   }
 }
+function reverseCharacter(ch, mid) {
+  const diff = Math.abs(mid - ch.charCodeAt());
+
+  if (ch < mid) {
+    return String.charCodeAt(mid + diff);
+  } else {
+    return String.charCodeAt(mid - diff);
+  }
+}
 
 function convertCapital(ch) {
   const mid = ("Z".charCodeAt() + "A".charCodeAt()) / 2;
 
-  if (ch < mid) {
-    const diff = mid - ch.charCodeAt();
-    return String.fromCharCode(mid + diff);
-  } else {
-    const diff = ch.charCodeAt() - mid;
-    return String.fromCharCode(mid - diff);
-  }
+  return reverseCharacter(ch, mid);
 }
 
 function convertLower(ch) {
   const mid = ("z".charCodeAt() + "a".charCodeAt()) / 2;
 
-  if (ch < mid) {
-    const diff = mid - ch.charCodeAt();
-    return String.fromCharCode(mid + diff);
-  } else {
-    const diff = ch.charCodeAt() - mid;
-    return String.fromCharCode(mid - diff);
-  }
+  return reverseCharacter(ch, mid);
 }
 
 module.exports = problem4;
