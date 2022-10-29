@@ -9,12 +9,11 @@ function splitNumbers(numbers) {
   return splitedNumbers;
 }
 
-// 리한 숫자들 중에서 3, 6, 9가 포함되어 있는 숫자의 개수를 찾는 기능
+// 분리한 숫자들 중에서 3, 6, 9가 얼마나 포함되어 있는지 구하는 기능 
 function findNumber(source, number) {
-  const result = source.reduce(
-    (acc, cur) => (cur.includes(number) ? ++acc : acc),
-    0
-  );
+  const result = source
+    .flat()
+    .reduce((acc, cur) => (cur === number ? ++acc : acc), 0);
   return result;
 }
 
@@ -35,6 +34,6 @@ function problem3(number) {
   return answer;
 }
 
-solution(13);
+solution(33);
 
 module.exports = problem3;
