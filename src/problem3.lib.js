@@ -11,6 +11,7 @@ function countOfDigits369Of(n) {
   return countOf369;
 }
 
+/** Start inclusive, end exclusive */
 function range(start, end) {
   return [...new Array(end - start).keys()].map((i) => i + start);
 }
@@ -28,6 +29,34 @@ function naiveCountOfDigits369FromOneTo(lastNumberInclusive) {
   return result;
 }
 
+/**
+ * O(log n) solution.
+ * @param {number} lastNumberExclusive
+ * @returns {number}
+ */
+function countOfDigits369FromZeroUntil(lastNumberExclusive) {
+  // We split 0..lastNumberExclusive-1 to groups of 10.
+  // Groups: range(0, 10), range(10, 20), ..., range(10q-10, 10q)
+  // Remaining: range(10q, 10q+r)
+  const q = Math.floor(lastNumberExclusive / 10);
+
+  const remainingNumbers = range(10 * q, lastNumberExclusive);
+  const countOf369InRemainingNumbers = remainingNumbers
+    .map(countOfDigits369Of)
+    .reduce((acc, count) => acc + count, 0);
+
+  let countOf369InGroups = 0;
+  if (q > 0) {
+    const countOf369InGroupsInLastDigit = 3 * q;
+    const countOf369InGroupsNotInLastDigit = 10 * countOfDigits369FromZeroUntil(q);
+    countOf369InGroups = countOf369InGroupsInLastDigit + countOf369InGroupsNotInLastDigit;
+  }
+
+  return countOf369InGroups + countOf369InRemainingNumbers;
+}
+
 module.exports = {
   naiveCountOfDigits369FromOneTo,
+  countOfDigits369FromZeroUntil,
+  range,
 };
