@@ -1,5 +1,8 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  for (let i = 0; i<= number; i++) {
+    answer += calculateClapHands(i);
+  }
   return answer;
 }
 
