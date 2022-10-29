@@ -8,7 +8,7 @@ const cryptogramArr = (string) => {
 const compare = (word) => {
     let i = 0;
     while (i !=word.length){
-    if (word[i] == word[i+1]){
+    if (word[i] === word[i+1]){
         word.splice(i,2);
         i=0;
     } else {
