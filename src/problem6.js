@@ -3,9 +3,9 @@ function problem6(forms) {
   const nickMap = new Map();
 
   makeMaps(userInfo, nickMap, forms);
+  const answer = findRepeatName(userInfo, nickMap);
 
-  console.log(userInfo,nickMap);
-
+  return answer;
 }
 
 function checkInputErr(email, nickName){
@@ -40,9 +40,30 @@ function makeMaps(userInfo, nickMap, forms){
       nickMap.has(key)? nickMap.set(key,nickMap.get(key)+1) : nickMap.set(key,1) 
     }
   }
-  console.log(userInfo,nickMap);
 }
 
-problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
+function findRepeatName(userInfo, nickMap){
+
+  const repeatName = [...nickMap.keys()].filter(key => nickMap.get(key) > 1);
+  const userKeys = [...userInfo.keys()];
+  const set = new Set();
+
+  for(let i=0; i<repeatName.length; i++){
+    const curRepeat = repeatName[i];
+    for(let j=0; j<userKeys.length; j++){
+      const curKey = userKeys[j];
+      const curEmail = userInfo.get(curKey);
+      if(set.has(curEmail)) continue;
+
+      if(curKey.includes(curRepeat)){
+        set.add(curEmail);
+      }
+    }
+  }
+
+  return [...set].sort();
+}
+
+console.log(problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
 
 module.exports = problem6;
