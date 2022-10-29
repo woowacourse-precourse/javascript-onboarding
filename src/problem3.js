@@ -4,7 +4,19 @@
 //3. result를 반환한다.
 
 function problem3(number) {
-  var answer;
+    var answer;
+    var count;
+    var tmpNumber = number;
+    var tmpArray = new Array[tmpNumber.length];
+
+    if (tmpNumber > 10000) {
+        answer = "10000 이하의 값을 입력하시오.";
+    }
+    else if (tmpNumber <= 10000) {
+        for (let i = 0; i < tmpNumber; i++) {
+            tmpArray[i] = i + 1;
+        }
+    }
   return answer;
 }
 
