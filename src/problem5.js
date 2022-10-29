@@ -1,7 +1,7 @@
 function problem5(money) {
   // 큰 금액의 화폐 순서의 오만 원권 ~ 일원 동전 (PROBLEM5.md 참조)
-  const banknotes = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
-  return countsBanknotes(money, banknotes)
+  const banknotes = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  return countsBanknotes(money, banknotes);
 }
 
 /**
@@ -11,13 +11,13 @@ function problem5(money) {
  * @returns {number[]}
  */
 function countsBanknotes(money, banknotes) {
-  const counts = []
-  let remain = money
+  const counts = [];
+  let remain = money;
   for (let i = 0; i < banknotes.length; i++) {
-    counts[i] = (parseInt(remain / banknotes[i]))
-    remain = remain % banknotes[i]
+    counts[i] = parseInt(remain / banknotes[i]);
+    remain = remain % banknotes[i];
   }
-  return counts
+  return counts;
 }
 
 module.exports = problem5;

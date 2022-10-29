@@ -2,16 +2,16 @@ const problem1 = require("../src/problem1");
 
 describe("problem1: 페이지로 점수 구하기 게임 - 매개변수 유효성 검사", () => {
   test("case1 입력된 변수가 길이가 2인 배열이 아님", () => {
-    expect(problem1('hi', [197, 198])).toEqual(-1);
-    expect(problem1('12', [197, 198])).toEqual(-1);
+    expect(problem1("hi", [197, 198])).toEqual(-1);
+    expect(problem1("12", [197, 198])).toEqual(-1);
     expect(problem1([12, 13], true)).toEqual(-1);
     expect(problem1([12, 13])).toEqual(-1);
     expect(problem1([12, 13, 14], [197, 198])).toEqual(-1);
     expect(problem1([12], [197, 198])).toEqual(-1);
   });
   test("case2 배열요소가 숫자가 아님", () => {
-    expect(problem1([1, '2'], [197, 198])).toEqual(-1);
-    expect(problem1([1, 'two'], [197, 198])).toEqual(-1);
+    expect(problem1([1, "2"], [197, 198])).toEqual(-1);
+    expect(problem1([1, "two"], [197, 198])).toEqual(-1);
     expect(problem1([1, 2], [197, true])).toEqual(-1);
     expect(problem1([1.1, 2.1], [197, 198])).toEqual(-1);
   });
@@ -50,4 +50,4 @@ describe("problem1: 페이지로 점수 구하기 게임 - 우테코 제공 테�
   test("case6 예외 케이스", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
-})
+});

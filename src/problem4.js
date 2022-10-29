@@ -1,5 +1,5 @@
 function problem4(word) {
-  const table = getTransformTable()
+  const table = getTransformTable();
   return getTransformedStr(word, table);
 }
 
@@ -8,17 +8,17 @@ function problem4(word) {
  * @returns {object}
  */
 function getTransformTable() {
-  const alphabetSmall = 'abcdefghijklmnopqrstuvwxyz'
-  const alphabetLarge = alphabetSmall.toUpperCase()
-  const numOfAlphabets = alphabetSmall.length
-  const table = {}
+  const alphabetSmall = "abcdefghijklmnopqrstuvwxyz";
+  const alphabetLarge = alphabetSmall.toUpperCase();
+  const numOfAlphabets = alphabetSmall.length;
+  const table = {};
 
   for (let i = 0; i < numOfAlphabets; i++) {
-    table[alphabetSmall[i]] = alphabetSmall[numOfAlphabets - i - 1]
-    table[alphabetLarge[i]] = alphabetLarge[numOfAlphabets - i - 1]
+    table[alphabetSmall[i]] = alphabetSmall[numOfAlphabets - i - 1];
+    table[alphabetLarge[i]] = alphabetLarge[numOfAlphabets - i - 1];
   }
 
-  return table
+  return table;
 }
 
 /**
@@ -27,11 +27,11 @@ function getTransformTable() {
  * @return {string}
  */
 function getTransformedStr(str, table) {
-  let retStr = ''
+  let retStr = "";
   for (let i = 0; i < str.length; i++) {
-    retStr += getTransformedChar(str[i], table)
+    retStr += getTransformedChar(str[i], table);
   }
-  return retStr
+  return retStr;
 }
 
 /**
@@ -40,7 +40,7 @@ function getTransformedStr(str, table) {
  * @return {string} 길이가 1이다.
  */
 function getTransformedChar(char, table) {
-  return table.hasOwnProperty(char) ? table[char] : char
+  return table.hasOwnProperty(char) ? table[char] : char;
 }
 
 module.exports = problem4;
