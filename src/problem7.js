@@ -1,44 +1,53 @@
 function problem7(user, friends, visitors) {
-  const friendRelation = new Map();
-  const pushToMap = (key, value) => {
-    if (friendRelation.has(key))
-      friendRelation.set(key, [...friendRelation.get(key), value]);
-    else friendRelation.set(key, [value]);
-  };
-  friends.forEach(([one, theOther]) => {
-    pushToMap(one, theOther);
-    pushToMap(theOther, one);
-  });
+  const friendsRelation = getFriendsRelationMap(friends);
 
-  const userFriends = friendRelation.get(user);
-  friendRelation.delete(user);
+  const USER_FRIENDS_LIST = friendsRelation.get(user);
+  friendsRelation.delete(user);
 
-  const FRIEND_SCORE = 10;
+  const ACQUAINTANCE_SCORE = 10;
   const VISIT_SCORE = 1;
+
   const scores = new Map();
 
-  Array.from(friendRelation).map(([userId, friends]) => {
-    const score =
-      Number(friends.filter((userId) => userFriends.includes(userId)).length) *
-      FRIEND_SCORE;
-    scores.set(userId, score);
-  });
+  const getAcquaintanceCount = (friendsList) =>
+    +friendsList.filter((userId) => USER_FRIENDS_LIST.includes(userId)).length;
+
+  Array.from(friendsRelation).map(([userId, friendsList]) =>
+    scores.set(userId, getAcquaintanceCount(friendsList) * ACQUAINTANCE_SCORE)
+  );
 
   visitors.forEach((userId) => {
-    if (scores.has(userId))
-      scores.set(userId, scores.get(userId) + VISIT_SCORE);
-    else scores.set(userId, VISIT_SCORE);
+    pushToMapAsSum(scores, userId, VISIT_SCORE);
   });
 
   return Array.from(scores)
-    .filter(([userId, final_score]) => {
-      if (userFriends.includes(userId)) return false;
-      if (final_score === 0) return false;
+    .filter(([userId, score]) => {
+      if (USER_FRIENDS_LIST.includes(userId)) return false;
+      if (score === 0) return false;
       return true;
     })
     .sort()
     .sort((a, b) => b[1] - a[1])
     .map(([userId, _]) => userId);
 }
+
+const pushToMapAsArr = (map, key, value) => {
+  if (map.has(key)) map.set(key, [...map.get(key), value]);
+  else map.set(key, [value]);
+};
+
+const pushToMapAsSum = (map, key, value) => {
+  if (map.has(key)) map.set(key, map.get(key) + value);
+  else map.set(key, value);
+};
+
+const getFriendsRelationMap = (friends) => {
+  const result = new Map();
+  friends.forEach(([one, theOther]) => {
+    pushToMapAsArr(result, one, theOther);
+    pushToMapAsArr(result, theOther, one);
+  });
+  return result;
+};
 
 module.exports = problem7;
