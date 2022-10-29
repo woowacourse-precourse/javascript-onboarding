@@ -1,8 +1,6 @@
 function problem1(pobi, crong) {
   const checkPages = (arr) => {
-    return arr[1] - arr[0] !== 1 || arr[0] === 1 || arr[1] === 400
-      ? true
-      : false;
+    return arr[1] - arr[0] !== 1 || arr[0] < 1 || arr[1] > 400 ? true : false;
   };
   const calcNum = (num) => {
     const add = (num + "")
