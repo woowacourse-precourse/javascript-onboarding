@@ -1,3 +1,5 @@
+console.log(createStringArr("I love you"));
+
 function problem4(word) {
   return treeFrogApp(word);
 }
@@ -8,6 +10,10 @@ function treeFrogApp(word){
     eachCharArr[i] != " " && (eachCharArr[i] = getTreeFrogChar(getUTF16Code(eachCharArr[i])));
   }
   return getFromCharsToString(eachCharArr);
+}
+
+function createStringArr(word){
+  return word.split("");
 }
 
 module.exports = problem4;
