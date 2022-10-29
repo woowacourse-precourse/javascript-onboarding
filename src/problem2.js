@@ -7,7 +7,13 @@ function problem2(cryptogram) {
   else {
     deleted = deleted.replace(repeated[0],'')
     repeated = deleted.match(pattern)
+
+    while(repeated!==null){
+      deleted = deleted.replace(repeated[0],'')
+      repeated=deleted.match(pattern)
+    }
   }
+  return deleted;
 }
 
 module.exports = problem2;
