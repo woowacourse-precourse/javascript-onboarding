@@ -126,17 +126,11 @@ class Model {
   }
 }
 
-class SNSAlgorithm {
-  constructor(user, friends, visitors) {
-    new UsersError(user);
-    new FriendsError(friends);
-    new VisitorsError(visitors);
-
-    this.user = user;
-    this.friends = friends;
-    this.visitors = visitors;
-
-    this.model = new Model(friends, visitors);
+class Controller {
+  constructor(props) {
+    this.user = props.user;
+    this.visitors = props.visitors;
+    this.model = props.model;
   }
 
   isRecommand(person) {
@@ -177,10 +171,29 @@ class SNSAlgorithm {
   }
 }
 
+// View
+class SNSAlgorithm {
+  constructor(user, friends, visitors) {
+    new UsersError(user);
+    new FriendsError(friends);
+    new VisitorsError(visitors);
+
+    this.controller = new Controller({
+      user: user,
+      visitors: visitors,
+      model: new Model(friends, visitors),
+    });
+  }
+
+  showFriendRecommend() {
+    return this.controller.recommend();
+  }
+}
+
 function problem7(user, friends, visitors) {
   const sns = new SNSAlgorithm(user, friends, visitors);
 
-  return sns.recommend();
+  return sns.showFriendRecommend();
 }
 
 module.exports = problem7;
