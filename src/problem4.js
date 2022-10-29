@@ -1,5 +1,5 @@
 function transformAlpha(alpha) {
-  let retAlpha = "";
+  let retAlpha = alpha;
   const alphaAscii = alpha.charCodeAt(0);
   const aAscii = "a".charCodeAt(0);
   const zAscii = "z".charCodeAt(0);
