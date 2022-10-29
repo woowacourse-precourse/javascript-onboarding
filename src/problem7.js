@@ -16,13 +16,22 @@ function problem7(user, friends, visitors) {
     else obj[b] = [a];
   }
 
+  let alreadyFriend = [];
   for(let key in obj) {
     if(obj[key].includes(user)) {
+      alreadyFriend.push(key);
       obj[key].map(v => {
         if(result[v] && v !== user) result[v] += 10;
         else if(!result[v] && v !== user) result[v] = 10;
       });
     }
+  }
+
+  for(let visitor of visitors) {
+    if(alreadyFriend.includes(visitor)) continue;
+
+    if(result[visitor]) result[visitor]++;
+    else result[visitor] = 1;
   }
 
   console.log(result);
