@@ -10,8 +10,8 @@ function problem3(number) {
 
   // 문자열에 3,6,9의 개수를 구한다.
   let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "3" || str[i] === "6" || str[i] === "9") {
+  for (const num of str) {
+    if (num === "3" || num === "6" || num === "9") {
       count++;
     }
   }
