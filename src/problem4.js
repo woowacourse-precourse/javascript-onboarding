@@ -27,14 +27,14 @@ function checkInputErr(word) {
 }
 
 function makeDictionary(dict) {
-  const alpha = new Array(26).fill(null).map((_, i) => String.fromCharCode(i + 65));
-  const reverseAlpha = [...alpha].reverse();
+  const alpha = new Array(26).fill(null).map((_, i) => String.fromCharCode(i + 65)); // A-Z 배열만들기
+  const reverseAlpha = [...alpha].reverse(); // Z-A 배열 만들기
   for (let i = 0; i < alpha.length; i++) {
     const [key, value] = [alpha[i], reverseAlpha[i]];
     dict.set(key, value);
     dict.set(key.toLowerCase(), value.toLowerCase());
   }
-}
+}//사전만들기
 
 function handleString(word, dict) {
   const temp = [];
@@ -54,7 +54,7 @@ function handleString(word, dict) {
 
 module.exports = problem4;
 
-function test(){
+function test() {
   console.log(problem4("I love you")); // "R olev blf"
   console.log(problem4("R olev blf")); //"I love you"
   console.log(problem4("Aa 123 &^%& bCC ++")); // Zz 123 &^%& yXX ++
