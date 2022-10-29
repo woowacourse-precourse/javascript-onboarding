@@ -11,6 +11,8 @@ function problem7(user, friends, visitors) {
 
   addScore(friendsFriends, visitors, peoples);
 
+  const scoreObj = scoreHash(peoples);
+
 }
 
 module.exports = problem7;
@@ -73,4 +75,15 @@ const addScore = (friendsFriends, visitors, peoples) => {
   visitors.forEach(visitor => {
     if (peoples.hasOwnProperty(visitor)) peoples[visitor]++;
   })
+}
+
+const scoreHash = (peoples) => {
+  const scoreObj = {};
+
+  for (const name in peoples) {
+    if (!scoreObj[peoples[name]]) scoreObj[peoples[name]] = [name];
+    else  scoreObj[peoples[name]].push(name);
+  }
+
+  return scoreObj;
 }
