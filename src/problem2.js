@@ -7,7 +7,7 @@ function checkCryptogramLength(cryptogram) {
 }
 
 function checkCryptogramOnlyLowerCase(cryptogram) {
-  const regex = /^[a-z]+$/g;
+  const regex = /^[a-z]+$/;
 
   if (!regex.test(cryptogram)) {
     return false;
@@ -17,7 +17,7 @@ function checkCryptogramOnlyLowerCase(cryptogram) {
 }
 
 function updateDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr, i) {
-  if (startIndex !== 1000) {
+  if (startIndex !== -1) {
     endIndex = i;
 
     wantDeleteArr.push([cryptogram[i], startIndex, endIndex]);
@@ -35,8 +35,8 @@ function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
       if (
         updateDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr, i)
       ) {
-        startIndex = 1000;
-        endIndex = 1000;
+        startIndex = -1;
+        endIndex = -1;
 
         continue;
       }
@@ -44,7 +44,7 @@ function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
       continue;
     }
 
-    if (startIndex === 1000) {
+    if (startIndex === -1) {
       startIndex = i;
     }
   }
@@ -59,9 +59,9 @@ function deleteRepeatedString(cryptogram, wantDeleteArr) {
 
     const end = wantDeleteArr[i][2];
 
-    const deleteStr = str.repeat(end - start + 1);
+    const wantDeleteStr = str.repeat(end - start + 1);
 
-    let deletedStr = cryptogram.split(deleteStr);
+    let deletedStr = cryptogram.split(wantDeleteStr);
 
     cryptogram = deletedStr.join("");
   }
@@ -86,8 +86,8 @@ function roundsAllString(cryptogram, startIndex, endIndex) {
 }
 
 function runDecoding(cryptogram) {
-  let startIndex = 1000;
-  let endIndex = 1000;
+  let startIndex = -1;
+  let endIndex = -1;
 
   cryptogram = roundsAllString(cryptogram, startIndex, endIndex);
 
