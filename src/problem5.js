@@ -4,7 +4,17 @@ function problem5(money) {
 	return solution(money);
 }
 
-function solution(money) {}
+function solution(money) {
+	amounts = [50000, 10000, 5000, 1000, 500, 100, 10, 1];
+	wallet = [];
+	count = 0;
+
+	amounts.forEach((amount) => {
+		count = getCount(money, amount);
+		wallet.push(count);
+		money -= amount * count;
+	});
+}
 
 function getCount(money, amount) {}
 
