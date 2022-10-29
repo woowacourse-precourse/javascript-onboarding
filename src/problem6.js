@@ -7,8 +7,26 @@
 // - [] 중복 제거
 
 function problem6(forms) {
+  let spiceName = [];
+
+  forms.map((data) => {
+    console.log(data[1]);
+    for (let index = 0; index < data[1].length - 1; index++) {
+      spliceName = data[1].slice(index, index + 2);
+      console.log(spliceName);
+    }
+  });
+
   var answer;
   return answer;
 }
+const data = [
+  ["jm@email.com", "제이엠"],
+  ["jason@email.com", "제이슨"],
+  ["woniee@email.com", "워니"],
+  ["mj@email.com", "엠제이"],
+  ["nowm@email.com", "이제엠"],
+];
+problem6(data);
 
 module.exports = problem6;
