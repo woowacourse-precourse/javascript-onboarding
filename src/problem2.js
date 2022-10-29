@@ -1,11 +1,3 @@
-/**
- * | cryptogram        | result  |
-| ----------------- | ------- |
-| "browoanoommnaon" | "brown" |
-| "zyelleyz"        | ""      |
- * @param {*} cryptogram
- * @returns
- */
 function problem2(cryptogram) {
   const map = new Map();
   let result = "";
