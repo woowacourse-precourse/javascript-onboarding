@@ -34,5 +34,6 @@ function problem2(cryptogram) {
   console.log(answer);
   return answer;
 }
+problem2('aabbba');
 
 module.exports = problem2;

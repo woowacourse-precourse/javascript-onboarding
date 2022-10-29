@@ -23,7 +23,6 @@ function findMax(nums) {
 
 function problem1(pobi, crong) {
   let answer;
-
   let pobi_maxNum = findMax(pobi);
   let crong_maxNum = findMax(crong);
 
@@ -34,4 +33,7 @@ function problem1(pobi, crong) {
 
   return answer;
 }
+
+console.log(problem1([99, 100], [87, 88]));
+
 module.exports = problem1;
