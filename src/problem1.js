@@ -9,4 +9,21 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+const bigNum = (arr) => {
+  let big;
+  let newArr = [];
+  for(let i = 0; i < arr.length; i++) {
+    const changeNum = (arg) => Number(arg)
+    let num = String(arr[i]).split('').map(changeNum).reduce((acc, cur) => acc + cur)
+    newArr.push(num)
+    num = String(arr[i]).split('').map(changeNum).reduce((prev, curv) => prev * curv)
+    newArr.push(num)
+    num;
+  }
+  newArr.sort((a, b) => b - a)
+  big = newArr[0]
+  return big
+}
+
+
 module.exports = problem1;
