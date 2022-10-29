@@ -1,8 +1,8 @@
 function problem3(number) {
   let answer = 0;
 
-  for (let i = 1; i < number + 1; i++) {
-    answer += count369(i);
+  for (let curNumber = 1; curNumber < number + 1; curNumber++) {
+    answer += count369(curNumber);
   }
   return answer;
 }
