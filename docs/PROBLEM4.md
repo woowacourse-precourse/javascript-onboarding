@@ -21,6 +21,7 @@
 | "I love you" | "R olev blf" |
 
 <hr>
+
 ### 기능 목록
 
 1. 엄마의 말씀 word를 문자 하나씩 쪼개서 letters 배열에 저장한다.
