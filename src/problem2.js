@@ -100,8 +100,11 @@ const recursiveTour = stringArray => {
 };
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const eachStringArray = convertToCharacterArray(cryptogram);
+  const arrayAnswer = recursiveTour(eachStringArray);
+  const stringAnswer = convertToString(arrayAnswer);
+
+  return stringAnswer;
 }
 
 module.exports = problem2;
