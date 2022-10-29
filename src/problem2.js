@@ -16,6 +16,7 @@ function problem2(cryptogram) {
     if (arrayLength === cryptoArray.length) break;
     arrayLength = cryptoArray.length;
   }
+  return cryptoArray.join("");
 }
 
 module.exports = problem2;
