@@ -47,7 +47,8 @@ function gatherCrew(forms) {
     });
   });
 
-  return crewEmailArray;
+  const uniqueEmailSet = new Set(crewEmailArray);
+  return [...uniqueEmailSet];
 }
 
 function problem6(forms) {
