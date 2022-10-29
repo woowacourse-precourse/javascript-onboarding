@@ -6,9 +6,11 @@
  4) 횟수가 2인 이상이면 다른 Set2에 이름 넣어주기
  5) 모든 사람들의 이름을 Set2 안에 있는 것들과 비교해 반복된 이름이 있는지 확인 후 있다면 true반환
  6) 이메일 삽입 후 오름차순으로 정렬
+ 7) 글자 수가 한 글자일 경우 처리
 */
 
 function nameDisting(n, c){
+  if(n.length==1) c.add(n);
   for(let i=0; i<n.length-1; i++){
     c.add(n.substr(i,2));
   }
@@ -19,6 +21,11 @@ function makeName(c, name){
 }
 
 function nameNumberCount(n, c, name){
+  if(n.length==1){
+    if(c.has(n)){
+      name[n]+=1;
+    }
+  }
   for(let i=0; i<n.length-1; i++){
     if(c.has(n.substr(i,2))){
       name[n.substr(i,2)]+=1;
@@ -33,6 +40,11 @@ function overTwo(c, name, d){
 }
 
 function nameRepeatCheck(n, d){
+  if(n.length==1){
+    if(d.has(n)){
+      return 1;
+    }
+  }
   for(let i=0; i<n.length-1; i++){
     if(d.has(n.substr(i,2))) return 1;
   }
