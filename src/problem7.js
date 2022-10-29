@@ -9,12 +9,7 @@ function duduChecker(user, friends, dude) {
   });
 }
 
-function problem7(user, friends, visitors) {
-  const dude = [];
-  const score = {};
-
-  duduChecker(user, friends, dude);
-
+function friendScore(dude, friends, score, user) {
   dude.forEach((friend) => {
     friends.forEach((arr) => {
       const [A, B] = arr;
@@ -33,6 +28,15 @@ function problem7(user, friends, visitors) {
       }
     });
   });
+}
+
+function problem7(user, friends, visitors) {
+  const dude = [];
+  const score = {};
+
+  duduChecker(user, friends, dude);
+
+  friendScore(dude, friends, score, user);
 
   visitors.forEach((name) => {
     if (!dude.includes(name)) {
