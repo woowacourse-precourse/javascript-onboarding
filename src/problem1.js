@@ -48,9 +48,9 @@ function getBigger(page) {
     return multiply; //곱을 반환한다.
 }
 
-function getScore(arr) {
-  let leftPage = getBigger(arr[0]);
-  let rightPage = getBigger(arr[1]);
+function getScore(pages) {
+  let leftPage = getBigger(pages[0]);
+  let rightPage = getBigger(pages[1]);
 
   if (leftPage > rightPage)
     //왼쪽 페이지 연산이 오른쪽 페이지 연산보다 크다면
