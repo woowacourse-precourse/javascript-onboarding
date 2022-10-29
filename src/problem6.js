@@ -1,5 +1,8 @@
 function problem6(forms) {
   var answer;
+  if (!validRange(forms)) throw new Error("크루의 범위를 벗어났습니다.");
+  
+  answer = changeSetToArray(checkNickname(forms));
   return answer;
 }
 
@@ -9,6 +12,8 @@ function checkNickname(arr) {
   let firstNickname = new Set(); // 첫 번째 닉네임을 확인하기 위해 첫 번째 닉네임을 두 글자씩 나누어 집합으로 저장
 
   for (let i = 0; i < arr.length; i++) {
+    if (!validEmail(arr[i][0])) throw new Error("잘못된 이메일이 포함되어 있습니다.");
+    if (!validNickname(arr[i][1])) throw new Error("잘못된 닉네임이 포함되어 있습니다.");
     if (checkOverlap(arr[i][1], nicknameSet)) overlapedNickname.add(arr[i][0]);
     
     nicknameSet = sliceNickname(arr[i][1], nicknameSet);
