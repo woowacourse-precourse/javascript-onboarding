@@ -25,6 +25,32 @@ function problem1(pobi, crong) {
     return result;
   };
 
+  // 더한값과 곱한값 두개 중 더 큰수를 반환하는 함수
+  function resultValue(plus, multiply) {
+    let result;
+    if (plus > multiply) {
+      result = plus;
+    } else {
+      result = multiply;
+    }
+
+    return result;
+  };
+
+  // pobi
+  let pobiLeftPlusValue = plusValue(pobi[0]);
+  let pobiRightPlusValue = plusValue(pobi[1]);
+
+  let pobiLeftMultiplyValue = multiplyValue(pobi[0]);
+  let pobiRightMultiplyValue = multiplyValue(pobi[1]);
+
+  let pobiLeftVaule;
+  let pobiRightValue;
+
+  let pobiResultValue;
+
+
+
   return answer;
 }
 
