@@ -95,7 +95,6 @@ class SNSAlgorithm {
 
     this.scoreBoard = this.makeScoreBoard();
     this.friendGraph = this.makeFriendGraph();
-    this.notRecommandList = this.getNotRecommandList();
   }
 
   saveFriendGraph(keyFriend, valueFriend, map) {
@@ -123,24 +122,22 @@ class SNSAlgorithm {
     ].reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
   }
 
-  getNotRecommandList() {
-    return [this.user, ...this.friendGraph.get(this.user)];
-  }
+  isRecommand(person) {
+    const { user, friendGraph } = this;
 
-  isFriend(person) {
-    return new Set([...this.getNotRecommandList()]).has(person);
+    return !new Set([user, ...friendGraph.get(user)]).has(person);
   }
 
   scroeFriendToFriend() {
     [...this.friendGraph.get(this.user)]
       .flatMap((friend) => [...this.friendGraph.get(friend)])
-      .filter((person) => !this.isFriend(person))
+      .filter((person) => this.isRecommand(person))
       .forEach((person) => (this.scoreBoard[person] += 10));
   }
 
   scroeVisitor() {
     this.visitors
-      .filter((person) => !this.isFriend(person))
+      .filter((person) => this.isRecommand(person))
       .forEach((person) => (this.scoreBoard[person] += 1));
   }
 
