@@ -93,6 +93,27 @@ function arrangeInAscendingOrder(list) {
     list[comparedIndex + 1] = standard;
   }
 
+  const deduplicatedList = removeDuplicatedEmail(list);
+
+  return deduplicatedList;
+}
+
+function removeDuplicatedEmail(list) {
+  const theNumberOfEmail = list.length;
+
+  for (
+    let emailListindex = 1;
+    emailListindex < theNumberOfEmail;
+    emailListindex++
+  ) {
+    if (list[emailListindex - 1] === list[emailListindex]) {
+      list[emailListindex - 1] = "";
+      list[emailListindex] = "";
+    }
+  }
+
+  list = list.filter(removeEmptyValue);
+
   return list;
 }
 
