@@ -6,16 +6,16 @@
 class MoneyChanger {
   MONEY_UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
-  _divideMoney(money, unit) {
-    return [Math.floor(money / unit), money % unit];
-  }
-
   change(money) {
     return this.MONEY_UNITS.map((moneyUnit) => {
       const [quotient, remainder] = this._divideMoney(money, moneyUnit);
       money = remainder;
       return quotient;
     });
+  }
+
+  _divideMoney(money, unit) {
+    return [Math.floor(money / unit), money % unit];
   }
 }
 
