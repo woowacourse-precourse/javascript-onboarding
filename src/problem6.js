@@ -1,5 +1,20 @@
 function problem6(forms) {
-  var answer;
+  const mailForm = forms.map((i) => i[0]);
+  const nameForm = forms.map((i) => i[1]);
+  const validMailArray = mailForm.map((i) => isValidMail(i));
+  const validNameArray = mailForm.map((i) => isValidName(i));
+  const validAccount = new Array(forms.length).map((v, i) => {
+    let resultValue;
+    if (validMailArray && validNameArray) {
+      resultValue = mailForm[i];
+    } else {
+      resultValue = false;
+    }
+  });
+
+  //둘 다 만족하는 것들 중에, 이메일만 filter로 새로 만들어서 return
+  const answer = validAccount.filter((v) => v);
+
   return answer;
 }
 
