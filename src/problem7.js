@@ -13,9 +13,14 @@ function problem7(user, friends, visitors) {
     strangeVisitorList,
     STRANGER_SCORE
   );
-  const recomendFriends = Object.keys(sumScore(recomendFriendsScore, strangeVisitorScore));
+  const recomendFriends = Object.keys(
+    sumScore(recomendFriendsScore, strangeVisitorScore)
+  );
 
   for (let i = 0; i < 5; i++) {
+    if (i >= recomendFriends.length) {
+      break;
+    }
     answer.push(recomendFriends[i]);
   }
   return answer;
@@ -38,7 +43,7 @@ function getRecomendFriendList(user, myFriends, friends) {
   myFriends.forEach((myFriend) => {
     for (let friend of friends) {
       if (friend.includes(myFriend) && friend.includes(user) === false) {
-        const recomendFriendName = filter(friend,(friend) => friend !== user);
+        const recomendFriendName = filter(friend, (friend) => friend !== user);
         recomendFriends.push(...recomendFriendName);
       }
     }
@@ -79,7 +84,7 @@ function sumScore(friends, visitors) {
       friends[key] += value;
     }
   }
-  
+
   return friends;
 }
 
