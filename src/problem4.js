@@ -1,5 +1,6 @@
 function problem4(word) {
   let answer;
+  const isAlpha = str => /^[a-zA-z]$/.test(str);
   return answer;
 }
 
