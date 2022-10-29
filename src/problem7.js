@@ -19,6 +19,10 @@ function problem7(user, friends, visitors) {
         }
     });
 
+    // 2. 친구 추천 후보 목록 정렬
+
+    otherFriends = new Array(...otherFriends).sort();
+
     return answer;
 }
 
