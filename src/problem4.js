@@ -23,26 +23,24 @@ function mapAlphabet(ch) {
     throw new Error("알파벳이 아닙니다");
   }
 }
-function reverseCharacter(ch, mid) {
-  const diff = Math.abs(mid - ch.charCodeAt());
+function reverseCharacter(ch) {
+  const chCode = ch.charCodeAt();
 
+  let mid = 0;
+  if (chCode >= "A".charCodeAt() && chCode <= "Z".charCodeAt()) {
+    mid = ("Z".charCodeAt() + "A".charCodeAt()) / 2;
+  } else if (chCode >= "a".charCodeAt() && chCode <= "z".charCodeAt()) {
+    mid = ("z".charCodeAt() + "a".charCodeAt()) / 2;
+  } else {
+    throw new Error("알파벳이 아닙니다");
+  }
+
+  const diff = Math.abs(mid - ch.charCodeAt());
   if (ch < mid) {
     return String.charCodeAt(mid + diff);
   } else {
     return String.charCodeAt(mid - diff);
   }
-}
-
-function convertCapital(ch) {
-  const mid = ("Z".charCodeAt() + "A".charCodeAt()) / 2;
-
-  return reverseCharacter(ch, mid);
-}
-
-function convertLower(ch) {
-  const mid = ("z".charCodeAt() + "a".charCodeAt()) / 2;
-
-  return reverseCharacter(ch, mid);
 }
 
 module.exports = problem4;
