@@ -13,4 +13,10 @@ function withdrawApp(money){
   return currBillCount;
 }
 
+function calcWithdraw(money, billType){
+  let billCount = Math.floor(money/billType);
+  money %= billType;
+  return [money, billCount];
+}
+
 module.exports = problem5;
