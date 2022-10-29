@@ -1,22 +1,12 @@
 function problem1(pobi, crong) {
-  if (!(isValidPages(pobi) && isValidPages(crong))) {
-    return -1;
-  }
+  if (!(isValidPages(pobi) && isValidPages(crong))) return -1;
 
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
   
-  if (pobiScore === crongScore) {
-    return 0;
-  }
-
-  if (pobiScore > crongScore) {
-    return 1;
-  }
-
-  if (pobiScore < crongScore) {
-    return 2;
-  }
+  if (pobiScore === crongScore) return 0;
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
 }
 
 function isValidPages(pages) {
