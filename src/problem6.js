@@ -14,7 +14,7 @@ const NickNameChecker = {
   getResult: function () {
     const indexSet = new Set(this.resultIndexs);
     this.resultIndexs = [...indexSet];
-    this.result = this.resultIndexs.map((index) => forms[i][0]);
+    this.result = this.resultIndexs.map((index) => this.forms[index][0]);
     return this.result.sort();
   },
   getOverlapEmails: function () {
