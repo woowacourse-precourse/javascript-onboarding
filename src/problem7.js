@@ -11,9 +11,10 @@ function problem7(user, friends, visitors) {
     else friendList[b] = [a];
   }
 
+  const userFriendList = friendList[user];
+
   for (const [target, list] of Object.entries(friendList)) {
     if (target === user) continue;
-    const userFriendList = friendList[user];
     const friendIntersection = userFriendList.filter((friend) =>
       list.includes(friend),
     );
@@ -32,6 +33,11 @@ function problem7(user, friends, visitors) {
       recommendScore[visitor] = 1;
     }
   }
+
+  //이미 친구인 경우와 0점 제외
+  const recommendFriends = Object.entries(recommendScore).filter(
+    ([name, score]) => !userFriendList.includes(name) && score > 0,
+  );
 
   return answer;
 }
