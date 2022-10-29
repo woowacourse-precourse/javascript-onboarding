@@ -36,10 +36,17 @@ const getDuplicateNames = (forms) => {
   return duplicatedCrew;
 };
 
+const getCrewEmail = (crewList) => {
+  const crewEmailList = crewList.map((crew) => crew[0]);
+  const removedDuplicatedEmailList = [...new Set(crewEmailList)];
+  const sortedEmailList = removedDuplicatedEmailList.sort();
+  return sortedEmailList;
+};
+
 function problem6(forms) {
-  var answer;
-  console.log(getDuplicateNames(forms));
-  return answer;
+  const duplicatedNameList = getDuplicateNames(forms);
+  const duplicatedNameCrewEmailList = getCrewEmail(duplicatedNameList);
+  return duplicatedNameCrewEmailList;
 }
 
 module.exports = problem6;
