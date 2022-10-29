@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-    var answer;
+    const answer = result(user, friends, visitors);
     return answer;
 }
 
@@ -61,6 +61,12 @@ function recomendScoreSort(user, friends, visitors) {
         }
     })
     return scoreSort;
+}
+
+function result(user, friends, visitors) {
+    const scoreMap = new Map(recomendScoreSort(user, friends, visitors));
+    const result = [...scoreMap.keys()].slice(0, 5);
+    return result;
 }
 
 module.exports = problem7;
