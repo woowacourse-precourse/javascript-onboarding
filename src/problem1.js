@@ -79,6 +79,15 @@ const getDigitAddedNum = (arr) => {
   return arr.reduce((acc, cur) => acc + cur, 0);
 };
 
+/**
+ * 각 자리 숫자로 쪼갠 배열의 원소를 모두 곱한 값을 반환한다.
+ * @param arr - 각 자리 숫자로 쪼갠 배열
+ * @return {number}
+ */
+const getDigitMultipliedNum = (arr) => {
+  return arr.reduce((acc, cur) => acc * cur, 1);
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
