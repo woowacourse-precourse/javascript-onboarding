@@ -2,8 +2,7 @@ function problem1(pobi, crong) {
   if (breakTheRules(pobi) || breakTheRules(crong)) {
     return -1;
   }
-  let pobiLargeNum = getLargeNum(pobi);
-  let crongLargeNum = getLargeNum(crong);
+  let [pobiLargeNum, crongLargeNum] = [getLargeNum(pobi), getLargeNum(crong)];
   let result = getWinner(pobiLargeNum, crongLargeNum);
   return result;
 }
@@ -16,9 +15,11 @@ function getLargeNum(arr) {
   const multiCallback = (accumulator, current) => {
     return accumulator * current;
   };
+  let [leftPage, rightPage] = [
+    arr[0].toString().split("").map(Number),
+    arr[1].toString().split("").map(Number),
+  ];
 
-  let leftPage = arr[0].toString().split("").map(Number);
-  let rightPage = arr[1].toString().split("").map(Number);
   let max = Math.max(
     leftPage.reduce(sumCallback),
     leftPage.reduce(multiCallback),
