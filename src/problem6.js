@@ -64,8 +64,10 @@ const NickNameChecker = {
 };
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const nicknameChecker = Object.assign({}, NickNameChecker);
+  nicknameChecker.inputForms(forms);
+  nicknameChecker.getOverlapEmails();
+  return nicknameChecker.getResult();
 }
 
 module.exports = problem6;
