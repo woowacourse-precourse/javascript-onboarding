@@ -7,6 +7,9 @@ const DRAW = 0;
 
 function problem1(pobi, crong) {
   if (!validate(pobi) || !validate(crong)) return EXCEPTION;
+
+  const scorePobi = getMostScore(pobi);
+  const scoreCrong = getMostScore(crong);
 }
 
 function validate(pages) {
@@ -17,6 +20,29 @@ function validate(pages) {
   if (isOutOfBook || !isSequence) return false;
 
   return true;
+}
+
+function getScore(page) {
+  let num = page;
+  let sum = 0;
+  let multiple = 1;
+
+  while (num !== 0) {
+    const digit = num % 10;
+
+    sum += digit;
+    multiple *= digit;
+    num = Math.floor(num / 10);
+  }
+
+  return sum > multiple ? sum : multiple;
+}
+
+function getMostScore(pages) {
+  const [left, right] = pages;
+  const scoreLeft = getScore(left);
+  const scoreRight = getScore(right);
+  return scoreLeft > scoreRight ? scoreLeft : scoreRight;
 }
 
 module.exports = problem1;
