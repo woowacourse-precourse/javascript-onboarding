@@ -40,7 +40,7 @@ function deleteSame(input) {
     const regex = new RegExp(`(${repeatChar}){2,}`, 'g'); // 정규표현식 생성
     copyString = copyString.replace(regex, ""); // 2개이상 중복된문자들 공백으로 치환.
     console.log(copyString);
-    map.clear(); //map초기화
+    map.clear(); //map초기화 ㅠ
   }
 
   return copyString;
