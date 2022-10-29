@@ -19,7 +19,7 @@ function problem3(number) {
 
 function checkInputErr(number) {
   const vaildType = (input) => typeof input === 'number'; //TypeError
-  const validRange = (input) => 1 <= input && input <= 10000; // LengthError
+  const validRange = (input) => 1 <= input && input <= 10000; // RangeError
 
   if (!vaildType(number)) return true;
   else if (!validRange(number)) return true;
@@ -42,4 +42,11 @@ function findNumberSet(inputArray){
 
 module.exports = problem3;
 
+function test(){
+  console.log(problem3(13)); //4
+  console.log(problem3(33)); //14
+  console.log(problem3("string")); // TypeError 
+  console.log(problem3(20000)); // RangeError
+}
 
+test();
