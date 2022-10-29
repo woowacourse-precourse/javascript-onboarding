@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  const container = [];
+  const lettersCount = [];
   let hasDuplicates = false;
   for (let i = 0; i < cryptogram.length; i++) {
     let count = 1;
@@ -8,16 +8,16 @@ function problem2(cryptogram) {
       i += 1;
       count += 1;
     }
-    container.push([cryptogram[i], count]);
+    lettersCount.push([cryptogram[i], count]);
   }
 
-  const result = container.map((el) => {
-    if (el[1] === 1) return el[0];
+  const letters = lettersCount.map((lettersCount) => {
+    if (lettersCount[1] === 1) return lettersCount[0];
   });
 
-  if (hasDuplicates) return problem2(result.join(''));
+  if (hasDuplicates) return problem2(letters.join(''));
 
-  return result.join('');
+  return letters.join('');
 }
 
 module.exports = problem2;
