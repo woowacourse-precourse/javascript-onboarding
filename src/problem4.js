@@ -4,26 +4,27 @@ const isAlphabet = (char) => {
 const isUpperCase = (char) => {
   return /[A-Z]/.test(char);
 };
+const isLowerCase = (char) => {
+  return /[a-z]/.test(char);
+};
 
-function problem4(word) {
+const convertCharacter = (char) => {
   const UPPER_ASCII_A_Z = 155;
   const LOWER_ASCII_A_Z = 219;
 
-  let answer = "";
-  for (let currentChar = 0; currentChar < word.length; currentChar++) {
-    if (!isAlphabet(word[currentChar])) {
-      answer += word[currentChar];
-      continue;
-    }
-    if (isUpperCase(word[currentChar]))
-      answer += String.fromCharCode(
-        UPPER_ASCII_A_Z - word.charCodeAt(currentChar)
-      );
+  let convertedChar;
+  if (!isAlphabet(char)) convertedChar = char;
+  if (isUpperCase(char))
+    convertedChar = String.fromCharCode(UPPER_ASCII_A_Z - char.charCodeAt());
+  if (isLowerCase(char))
+    convertedChar = String.fromCharCode(LOWER_ASCII_A_Z - char.charCodeAt());
+  return convertedChar;
+};
 
-    if (!isUpperCase(word[currentChar]))
-      answer += String.fromCharCode(
-        LOWER_ASCII_A_Z - word.charCodeAt(currentChar)
-      );
+function problem4(word) {
+  let answer = "";
+  for (let currentChar of word) {
+    answer += convertCharacter(currentChar);
   }
   return answer;
 }
