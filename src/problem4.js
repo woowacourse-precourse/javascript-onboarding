@@ -6,7 +6,12 @@ function convertCode(code) {
   }
 }
 function problem4(word) {
-  var answer;
+  var answer = "";
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] !== " ") {
+      answer += String.fromCharCode(convertCode(word.charCodeAt(i)));
+    } else answer += " ";
+  }
   return answer;
 }
 
