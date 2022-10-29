@@ -5,24 +5,15 @@ function moneyCalculator(amount, sumMoney) {
 }
 
 function problem5(money) {
-  let answer = Array.from({ length: 8 }, () => 0);
+  let answer = Array.from({ length: 9 }, () => 0);
   let sumMoney = money;
 
-  const map = new Map();
-  map.set(50000, 0);
-  map.set(10000, 1);
-  map.set(5000, 2);
-  map.set(1000, 3);
-  map.set(500, 4);
-  map.set(100, 5);
-  map.set(50, 6);
-  map.set(10, 7);
-  map.set(1, 8);
+  const amount = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
-  for (let x of map) {
-    const cnt = moneyCalculator(x[0], sumMoney);
-    sumMoney -= x[0] * cnt;
-    answer[x[1]] = cnt;
+  for (let i = 0; i < amount.length; i++) {
+    const cnt = moneyCalculator(amount[i], sumMoney);
+    sumMoney %= amount[i];
+    answer[i] = cnt;
   }
 
   return answer;
