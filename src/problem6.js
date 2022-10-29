@@ -6,6 +6,8 @@
 
 function problem6(forms) {
   let combi = [];
+  let tf = new Array(forms.length).fill(true);
+
   for(let i=2; i<=forms[0][1].length; i++) {
     for(let j=0; j<=forms[0][1].length-i; j++) {
       combi.push(forms[0][1].slice(j, j+i));
@@ -13,10 +15,13 @@ function problem6(forms) {
   }
 
   for(let i=1; i<forms.length; i++) {
-    if(combi.some(v => forms[i][1].includes(v))) {
-      console.log(forms[i][1]);
+    if(tf[i] && combi.some(v => forms[i][1].includes(v))) {
+      tf[0] = false;
+      tf[i] = false;
     }
   }
+
+  console.log(tf);
 }
 
 module.exports = problem6;
