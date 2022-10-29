@@ -47,3 +47,11 @@ answer = answerArray.join("");
 
 1. problem5 : 1자리 수 입력 시 바로 반환
 2. problem5 : 이외 기타 돈 입력 시 반환하는 함수 제작
+
+# 문제 6 기능 목록
+
+1. problem6 : 닉네임 1자인 인원 제거
+2. problem6 : 첫번째 form부터 닉네일 배열로 뽑기
+3. problem6 : 2글자씩만 추출
+4. problem6 : 2글자 추출한 form 이후의 form들에서 해당 글자가 있는지 확인 후 있으면 중복된 닉네임 모으는 배열에 push
+5. problem6 : 중복된 닉네임가진 이메일들의 배열을 중복된 님네임과 함께 객체에 담기
