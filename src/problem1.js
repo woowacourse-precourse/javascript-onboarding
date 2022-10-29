@@ -18,6 +18,15 @@ function multiply(page) {
   return number;
 }
 
+/** 펼친 페이지 숫자가 들어있는 배열을 입력받아서 게임 규칙에 따라 큰 수를 찾아 반환하는 함수 **/
+function findLargeNumbe(name) {
+  var largeNumber = 0;
+  for (var i = 0; i < 2; i++) {
+    largeNumber = Math.max(largeNumber, add(name[i]), multiply(name[i]));
+  }
+  return largeNumber;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
