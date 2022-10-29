@@ -1,4 +1,10 @@
-const inputFriendsList = (friendsList, friends, friendsScore) => {
+const acquaintancePoints = (userFriend, friendsList, friendsScore) => {
+  for(let i=0; i<friendsList[userFriend].length; i++) {
+    friendsScore[friendsList[userFriend][i]] += 10;
+  }
+}
+
+const setFriendsList = (friendsList, friends, friendsScore) => {
   for(let i=0; i<friends.length; i++) {
     for(let j=0; j<2; j++) {
       let k = 0;
@@ -12,13 +18,17 @@ const inputFriendsList = (friendsList, friends, friendsScore) => {
         friendsList[friends[i][j]].push(friends[i][k]);
     }
   }
-  console.log(friendsScore);
 }
 
 function problem7(user, friends, visitors) {
   const friendsList = new Object();
   const friendsScore = new Object();
-  inputFriendsList(friendsList, friends, friendsScore);
+  setFriendsList(friendsList, friends, friendsScore);
+
+  for(let i=0; i<friendsList[user].length; i++) {
+    acquaintancePoints(friendsList[user][i], friendsList, friendsScore);
+  }
+  console.log(friendsScore);
 }
 
 problem7("mrko", [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ], ["bedi", "bedi", "donut", "bedi", "shakevan"]);
