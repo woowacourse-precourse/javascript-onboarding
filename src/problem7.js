@@ -38,7 +38,7 @@ function checkVisitorsLength(visitors) {
 }
 
 function checkIdOnlyLowerCase(friends) {
-  const regex = /[a-z]/;
+  const regex = /^[a-z]+$/;
 
   for (let i = 0; i < friends.length; i++) {
     if (!regex.test(friends[i][0]) || !regex.test(friends[i][1])) {
