@@ -60,6 +60,9 @@ function problem1(pobi, crong) {
     return -1;
   }
 
+  // 점수 높은 사람 result에 저장
+  var result = Math.max(pobi_max, crong_max);
+
   var answer;
   return answer;
 }
