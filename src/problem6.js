@@ -14,4 +14,13 @@ function setTwoLetters(nickname) {
   return [...new Set(twoLettersArr)];
 }
 
+function getDuplicateEmails(obj) {
+  let duplicateEmails = [];
+  for (const value of Object.values(obj)) {
+    if (value.length > 1) duplicateEmails.push(...value);
+  }
+
+  return [...new Set(duplicateEmails)].sort();
+}
+
 module.exports = problem6;
