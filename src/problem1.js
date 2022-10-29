@@ -6,13 +6,12 @@ function problem1(pobi, crong) {
 }
 
 function validationArr(arr){
-  return arr.length!=2?false:arr[1]-arr[0] == 1?true:false;
+  return arr[0]>400||arr[1]>400||arr[0]<1||arr[1]<1?false:arr[1]-arr[0] == 1?true:false;
 }
 
 function pageGameApp(numArrA,numArrB){
   let maxNumA = maxValueCalculator([splitNumber(numArrA[0]),splitNumber(numArrA[1])]);
   let maxNumB = maxValueCalculator([splitNumber(numArrB[0]),splitNumber(numArrB[1])]);
-  console.log(maxNumA, maxNumB);
   return maxNumA==maxNumB?0:maxNumA>maxNumB?1:2; 
 }
 
