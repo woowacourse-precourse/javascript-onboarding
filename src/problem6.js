@@ -1,8 +1,3 @@
-const isEmail = function (text) {
-  let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return text.match(mailformat);
-};
-
 const NickNameChecker = {
   forms: [],
   result: [],
@@ -10,6 +5,7 @@ const NickNameChecker = {
     if (!this.checkForms(forms)) {
       return false;
     }
+    forms = forms.filter(emailString);
     return true;
   },
   checkForms: function (forms) {
@@ -20,6 +16,9 @@ const NickNameChecker = {
   },
   checkFormsLength: function (forms) {
     return forms.length >= 1 && forms.length <= 10000;
+  },
+  checkFormEmail: function (emailString) {
+    return emailString.match(/@email.com/);
   },
 };
 
