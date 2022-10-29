@@ -6,23 +6,36 @@
 4. 연속된 중복문자가 없는 이메일 중 중복된 이메일 제거하고 오름차순 정렬한 결과 반환
 */
 
-function checkEmailFormat(email){
-  if(email.length < 11 || email.length >= 20){
-    return false;
-  }
-  if(email.indexOf('email.com') === -1){
-    return false;
+function checkEmailFormat(forms){
+  let email;
+  for(let i = 0; i < forms.length; i++){
+    email = forms[i][0];
+    if(email.length < 11 || email.length >= 20){
+      return false;
+    }
+    if(email.indexOf('email.com') === -1){
+      return false;
+    }
   }
   return true;
 }
 
-function checkNickname(name){
+function checkNickname(forms){
   let korean_pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  if(korean_pattern.test(name)){
-    return true;
+  let nickname;
+  for(let i = 0; i < forms.length; i++){
+    nickname = forms[i][1];
+    if(!korean_pattern.test(nickname)){
+      return false;
+    }
   }
-  return false;
+  return true;
 }
+
+function checkSequenceName(forms){
+
+}
+
 
 function getResult(result){
   const set = new Set(result);
@@ -34,9 +47,10 @@ function getResult(result){
 
 function problem6(forms) {
   let answer;
-  // answer = checkEmailFormat(forms[0][0]);
-  // answer = checkNickname(forms[0][1]);
-  console.log(answer);
+  if(!checkEmailFormat(forms) || !checkNickname(forms)){
+    return -1;
+  }
+  // checkSequenceName(forms);
   return answer;
 }
 
