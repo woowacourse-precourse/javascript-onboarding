@@ -5,23 +5,32 @@
 // 4. 1-3번을 반복하여 끝까지 확인했으면, 답을 return 한다. 
 
 function problem6(forms) {
-  let combi = [];
   let tf = new Array(forms.length).fill(true);
+  for(let z=0; z<forms.length; z++) {
+    let combi = [];
 
-  for(let i=2; i<=forms[0][1].length; i++) {
-    for(let j=0; j<=forms[0][1].length-i; j++) {
-      combi.push(forms[0][1].slice(j, j+i));
+    for(let i=2; i<=forms[z][1].length; i++) {
+      for(let j=0; j<=forms[z][1].length-i; j++) {
+        combi.push(forms[z][1].slice(j, j+i));
+      }
+    }
+
+    for(let i=z+1; i<forms.length; i++) {
+      if(tf[i] && combi.some(v => forms[i][1].includes(v))) {
+        tf[z] = false;
+        tf[i] = false;
+      }
     }
   }
 
-  for(let i=1; i<forms.length; i++) {
-    if(tf[i] && combi.some(v => forms[i][1].includes(v))) {
-      tf[0] = false;
-      tf[i] = false;
+  let result = [];
+  for(let i=0; i<tf.length; i++) {
+    if(!tf[i]) {
+      result.push(forms[i][0]);
     }
   }
 
-  console.log(tf);
+  return result;
 }
 
 module.exports = problem6;
