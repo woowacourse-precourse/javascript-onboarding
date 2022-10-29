@@ -10,7 +10,13 @@
 function problem4(word) {
   let answer = '';
   for (const char of word) {
-    console.log(convertUnicode(char));
+    if (isUpper(convertUnicode(char))) {
+      console.log('대문자 처리중');
+    } else if (isLower(convertUnicode(char))) {
+      console.log('소문자 처리중');
+    } else {
+      console.log('그 이외 문자 처리중');
+    }
   }
   return answer;
 }
@@ -19,20 +25,12 @@ function convertUnicode(char) {
   return char.charCodeAt();
 }
 
-function isLower(unicodeChar) {
-  const LOWER_CASE_START_POINT = 97;
-  const LOWER_CASE_END_POINT = 122;
-  return LOWER_CASE_START_POINT <= unicodeChar && unicodeChar <= LOWER_CASE_END_POINT
-    ? true
-    : false;
+function isLower(unicodeChar, START_POINT = 97, END_POINT = 122) {
+  return START_POINT <= unicodeChar && unicodeChar <= END_POINT ? true : false;
 }
 
-function isUpper(unicodeChar) {
-  const UPPER_CASE_START_POINT = 65;
-  const UPPER_CASE_END_POINT = 90;
-  return UPPER_CASE_START_POINT <= unicodeChar && unicodeChar <= UPPER_CASE_END_POINT
-    ? true
-    : false;
+function isUpper(unicodeChar, START_POINT = 65, END_POINT = 90) {
+  return START_POINT <= unicodeChar && unicodeChar <= END_POINT ? true : false;
 }
 
 problem4('I love you'); // 'R olev blf'
