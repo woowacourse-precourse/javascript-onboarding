@@ -24,24 +24,39 @@ function checkInputErr(cryptogram) {
 }
 
 function deleteSame(input) {
-  const map = new Map();
+
   let copyString = input;
 
   while (true) {
-    for (let i = 0; i < copyString.length - 1; i++) {
-      const [cur, next] = [copyString[i], copyString[i + 1]];
-      if (cur === next) {
-        map.set(cur, 1);
+    const stack = [];
+    let [startIdx, endIdx] = [0, copyString.length - 1];
+
+    while (startIdx <= endIdx) {
+      if (startIdx === endIdx) {
+        stack.push(copyString[startIdx]);
+        break;
       }
-    }//중복되는 문자가 있으면 map에 set함.
-    const keyArr = [...map.keys()];
-    if (keyArr.length === 0) break; //중복문자가 없다면 break
-    const repeatChar = keyArr.join('|'); // "a|b" 형식으로 중복문자들을 만듬.
-    const regex = new RegExp(`(${repeatChar}){2,}`, 'g'); // 정규표현식 생성
-    copyString = copyString.replace(regex, ""); // 2개이상 중복된문자들 공백으로 치환.
-    console.log(copyString);
-    map.clear(); //map초기화 ㅠ
+
+      if(copyString[startIdx] !== copyString[startIdx+1]){
+        stack.push(copyString[startIdx]);
+        startIdx++;
+      }
+      else{
+        const cur = copyString[startIdx];
+        let curIdx = startIdx+1;
+        while(cur === copyString[curIdx]){
+          curIdx++;
+        }
+        startIdx = curIdx;
+      }
+    }
+    
+    const temp = stack.join('');
+    if(temp === copyString) break;
+    copyString = temp;
   }
+
+
 
   return copyString;
 }
