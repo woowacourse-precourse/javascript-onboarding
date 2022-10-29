@@ -51,7 +51,29 @@
 
 * input의 크기만큼의 Array 생성 후, 각 index의 value는 'index+1'를 넣어서 return 하는 `createNumberArr` 함수 구현.
 
-* 전체 배열을 `join()`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 하는 `getCount369` 함수 구현.
+* 전체 배열을 `join("")`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 하는 `getCount369` 함수 구현.
+
+***
+## :mag: [문제 4] 구현할 기능 목록
+
+> A안 선택: A안이 B안보다 간단한 알고리즘 순서도로 그려지고, 클린 코디로 짜기 좋은 방법일 것 같아 채택.
+
+* [X] A안: UTF-16 코드를 활용할 수 있는 내장함수 `String.prototype.charCodeAt(index)`과 `String.fromCharCode(number)`을 사용해서 한 번 에 변경할 수 있는 방법
+  예) 'E'의 경우 '`(E).charCodeAt(0)` => 69'가 되며, A인 65와의 차이가 4이기 떄문에, Z인 90에 4를 뺀 86의 값을 `String.fromCharCode(86)` 코드로 읽어오게되면, 'V'가 출력됨.
+* [ ] B안: 대소문자 알파벳 배열을 각각 만들어서 입력된 값을 한글자씩 가져와서 대소문자 구분하는 함수를 구현하고, 각 대소문자 순서대로 정렬된 배열에서 위치를 찾아 해당 위치의 역순으로 불러와 나열하는 방법
+  예) 'E'의 경우 index 위치가 4이며, 역순으로 `UpperAlphabetArr[-5]`를 불러와서 'V'가 출력됨.
+
+* 전체 프로세서 관리할 `treeFrogApp` 함수 생성.
+  + 변수 `eachCharArr`를 함수 `createStringArr`에서 받아온다.
+
+* 입력된 문자열을 배열로 만들어줄 함수 `createStringArr` 생성.
+  + 입력된 문자열을 `.split("")`로 한글자씩 나눠서 배열을 만든 후, return 한다.
+
+* 입력된 문자를 UTF16코드로 변경해 줄 함수 `getUTF16Code(char)` 를 구현.
+
+* 입력된 숫자에 반대되는 문자로 출력해 줄 함수 `getTreeFrogChar(number)` 를 구현.
+
+* 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharsToString` 를 구현.
 
 ***
 # 미션 - 온보딩
