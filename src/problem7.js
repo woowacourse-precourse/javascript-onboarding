@@ -5,12 +5,12 @@ function problem7(user, friends, visitors) {
     const userFriend = isFriend(user, relationship);
     if(userFriend) userFriends.push(userFriend);
   });
-  userFriends.forEach(recommendUser => {
+  userFriends.forEach(userFriend => {
     friends.forEach(relationship => {
-      const friend = isFriend(recommendUser, relationship)
-      if([false, user].includes(friend)) return;
-      if(recommendList.has(friend)) return recommendList.set(friend, recommendList.get(friend) + 10);
-      recommendList.set(friend, 10);
+      const friendOfFriend = isFriend(userFriend, relationship);
+      if(userFriends.includes(friendOfFriend) || [false, user].includes(friendOfFriend)) return;
+      if(recommendList.has(friendOfFriend)) return recommendList.set(friendOfFriend, recommendList.get(friendOfFriend) + 10);
+      recommendList.set(friendOfFriend, 10);
     });
   });
   visitors.forEach(visitor => {
@@ -24,10 +24,9 @@ function problem7(user, friends, visitors) {
 
 function isFriend(user, relationship) {
   let friend = null;
-  if(relationship[0] === user) friend = relationship[1];
-  if(relationship[1] === user) friend = relationship[0];
+  if(relationship[0] === user) return friend = relationship[1];
+  if(relationship[1] === user) return friend = relationship[0];
   if(friend === null) return false;
-  return friend;
 }
 
 function sortRecommends(list) {
