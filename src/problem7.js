@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   
   // 1. 친구 관계 객체 생성
   let friendsList = {}
@@ -40,7 +40,21 @@ function problem7(user, friends, visitors) {
   }
 
   // 5. 점수를 통해 answer 산출
+  allUsers = allUsers.sort(); // 알파벳순 정렬
+  allUsers = allUsers.sort(function(a,b){
+    return scores[a] > scores[b] ? -1 : scores[a] < scores[b] ? 1 : 0;
+  })
 
+  for(let i=0;i<5;i++){
+    if(scores[allUsers[i]] !== 0 && scores[allUsers[i]] !== -1){
+      answer.push(allUsers[i]);
+    }else{
+      break;
+    }
+    if(allUsers.length <= i+1){
+      break;
+    }
+  }
   return answer;
 }
 
