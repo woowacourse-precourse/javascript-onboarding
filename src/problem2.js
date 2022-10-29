@@ -1,7 +1,5 @@
 function problem2(cryptogram) {
   const splitCrypto = cryptogram.split("");
-
-  return answer;
 }
 
 module.exports = problem2;
@@ -12,6 +10,10 @@ module.exports = problem2;
  * 3. 문자열을 제거하는 함수가 필요로 하다.
  */
 
+/**
+ * @param {array} str
+ * @returns
+ */
 function getRepeated(str) {
   const results = [];
 
@@ -39,4 +41,9 @@ function getRepeated(str) {
  * @param {array} slice 중복된 문자의 시작과 끝 정보를 가진 배열
  * @param {array} str 원래 문자열
  */
-function removeChracters(slice, str) {}
+function removeChracters(slice, str) {
+  const [start, end] = slice;
+  const left = str.slice(0, start);
+  const right = str.slice(end + 1);
+  return left.concat(right);
+}
