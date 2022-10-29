@@ -83,6 +83,20 @@
 * 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharsToString` 를 구현.
 
 ***
+
+## :mag: [문제 5] 구현할 기능 목록
+
+* 전체 프로세서 관리할 `BankApp` 함수 생성.
+  + 각 지폐 종류를 저장하고 있는 `billType`을 선언.
+  + `withdrawApp`에서 return 해주는 잔여금액을 변수 `curAccount`에 저장.
+  + `withdrawApp`에서 return 해주는 지폐 수를 배열 `curMoney`에 저장.
+  + 잔여 금액이 0원이 될 때 까지, `withdrawApp`을 호출함.
+  + 잔여 금액이 0원이 되면, `curMoney`를 return 한다.
+
+* `현재 금액`과 `출금할 지폐 크기`를 입력하면, `남은 금액`과 `최대 지폐수`를 출력하는 함수 `withdrawApp`를 구현.
+
+***
+
 # 미션 - 온보딩
 
 ## 🔍 진행 방식
