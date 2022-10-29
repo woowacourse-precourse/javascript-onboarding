@@ -9,6 +9,8 @@ function problem7(user, friends, visitors) {
 
   const friendsFriends = friendsFriendList(userFriend, friends);
 
+  addScore(friendsFriends, visitors, peoples);
+
 }
 
 module.exports = problem7;
@@ -59,4 +61,16 @@ const friendsFriendList = (userFriend, friends) => {
   })
 
   return friendsFriends;
+}
+
+const addScore = (friendsFriends, visitors, peoples) => {
+  for (const friend in friendsFriends) {
+    friendsFriends[friend].forEach(people => {
+      if (peoples.hasOwnProperty(people)) peoples[people] += 10;
+    })
+  }
+
+  visitors.forEach(visitor => {
+    if (peoples.hasOwnProperty(visitor)) peoples[visitor]++;
+  })
 }
