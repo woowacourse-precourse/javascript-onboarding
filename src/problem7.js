@@ -20,7 +20,10 @@ user 정보는 배열 0번째 인덱스에 저장.
    =>  createInfo , 파라미터 값: 친구 관계 friends, 인덱스 idx
 2. 각 아이디의 점수를 카운트해줄 함수 =>  cntScore
 3. 함께아는 친구의 수에 대한 정보를 점수화 시켜 카운트해줄 함수 =>  cntKnowScore
-4. 결과값을 출력해주고 정렬하여 return 해줄 함수 =>  makeResult
+4. (1) 점수 내림차순
+   (2) 이름 내림차순  
+   정렬 함수 => sortList
+5. 결과값을 출력해주고 정렬하여 return 해줄 함수 =>  makeResult
 */
 
 function problem7(user, friends, visitors) {
@@ -65,6 +68,18 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  function sortList(beforeSortList) {
+    afterSortList = beforeSortList.sort((a, b) => {
+      let [curScore, preScore] = [b[0], a[0]];
+      let [curName, preName] = [b[1], a[1]];
+      if (curScore > preScore) return 1;
+      if (curScore < preScore) return -1;
+      if (curName > preName) return -1;
+      if (curName < preName) return 1;
+    });
+    return afterSortList;
+  }
+
   function makeResult(Score, Friends) {
     let tmpList = [];
     let nowFriendIdx = [];
@@ -73,23 +88,14 @@ function problem7(user, friends, visitors) {
       nowFriendIdx.push(idIndexInfo[friend]);
     });
     for (let i = 2; i < Score.length; i++) {
-      if (nowFriendIdx.includes(i)) {
-        continue;
-      }
+      if (nowFriendIdx.includes(i)) continue;
       if (Score[i] !== 0) {
         tmpList.push([Score[i], i]);
       }
     }
-    tmpList.sort((a, b) => {
-      let [curScore, preScore] = [b[0], a[0]];
-      let [curName, preName] = [b[1], a[1]];
-      if (curScore > preScore) return 1;
-      if (curScore < preScore) return -1;
-      if (curName > preName) return -1;
-      if (curName < preName) return 1;
-    });
+    let sortedList = sortList(tmpList);
     let memberList = Object.keys(idIndexInfo);
-    tmpList.map((v) => {
+    sortedList.map((v) => {
       result.push(memberList[v[1] - 1]);
     });
 
