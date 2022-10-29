@@ -1,15 +1,23 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+
+  for(let i=1; i<=number; i++){
+    const cur = [...i.toString()].map(Number);
+    answer += findNumberSet(cur).reduce((acc,cur)=> acc+=cur,0);
+  }
+
   return answer;
 }
+
+
 
 function findNumberSet(inputArray){
   const filterNum = (numArray) =>{
     const temp=[];
-    numArray.forEach(inputNum){
+    numArray.forEach(inputNum =>{
       const count = inputArray.filter(cur => cur === inputNum).length;
       temp.push(count);
-    }
+    })
     return temp;
   }
   
@@ -17,3 +25,5 @@ function findNumberSet(inputArray){
 }
 
 module.exports = problem3;
+
+
