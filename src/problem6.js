@@ -65,9 +65,19 @@ class AccountManager {
   }
 }
 
+/**
+ * 문제 6번의 입력으로, 이메일과 닉네임의 리스트가 주어지면
+ * 두 글자 이상 중복된 닉네임을 가진 이메일을 추출하여
+ * 반환한다.
+ * @param {[string, string][]} forms 이메일과 닉네임의 리스트
+ * @returns {string[]} 정렬되어 있는 이메일 리스트
+ */
 function problem6(forms) {
-  var answer;
-  return answer;
+  const manager = new AccountManager();
+
+  forms.forEach(form => manager.submit(form));
+
+  return manager.duplicatedEmails;
 }
 
 module.exports = problem6;
