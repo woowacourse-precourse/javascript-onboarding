@@ -35,8 +35,18 @@ function getRecomendScore(user, friends, visitors) {
   return recommendFriends;
 }
 
+function recommendFriends(user, friends, visitors) {
+  const recommendFriends = getRecomendScore(user, friends, visitors);
+
+  return [...recommendFriends]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .filter((x) => x[1] !== 0)
+    .map((x) => x[0]);
+}
+
 function problem7(user, friends, visitors) {
-  var answer;
+  const answer = recommendFriends(user, friends, visitors);
   return answer;
 }
 module.exports = problem7;
