@@ -8,7 +8,7 @@ const duplicateNicknamePushToEmailList = (emailList) => {
       }
     }
   }
-  console.log(emailList);
+  
 }
 
 const pushToNickname = (splitedWord, email) => {
@@ -26,11 +26,13 @@ const split_words = (word, email) => {
 }
 
 function problem6(forms) {
-  const emailList = [];
+  let emailList = [];
   for(let i=0; i<forms.length; i++) {
     split_words(forms[i][1], forms[i][0]);
   }
   duplicateNicknamePushToEmailList(emailList);
+  emailList = Array.from(new Set(emailList));
+  console.log(emailList);
 }
 
 problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]);
