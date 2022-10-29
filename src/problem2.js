@@ -21,4 +21,8 @@ function deleteOverlap(cryptogram) {
   }
 }
 
+function validRange(arr) {
+  return (arr.length >= 1 && arr.length <= 1000);
+}
+
 module.exports = problem2;
