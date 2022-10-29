@@ -12,7 +12,11 @@ function problem6(forms) {
     }
   }
 
-  return combi;
+  for(let i=1; i<forms.length; i++) {
+    if(combi.some(v => forms[i][1].includes(v))) {
+      console.log(forms[i][1]);
+    }
+  }
 }
 
 module.exports = problem6;
