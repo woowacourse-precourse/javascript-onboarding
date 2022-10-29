@@ -23,9 +23,27 @@ function getIndex(nicknames) {
 		if (checkDuplicate(nickname, nicknames)) index.push(idx);
 	});
 
+	console.log('인덱스들:', index);
+
 	return index;
 }
 
-function checkDuplicate() {}
+function checkDuplicate(selected, nicknames) {
+	const words = selected.split('');
+	let result = [];
+
+	result = nicknames.filter((nickname) => {
+		let count = 0;
+
+		for (let i = 0; i < words.length - 1; i++) {
+			count += nickname.includes(words[i] + words[i + 1]) ? 1 : 0;
+		}
+
+		return count > 0 ? true : false;
+	});
+
+	console.log('결과:', result);
+	return result.length > 1 ? true : false;
+}
 
 module.exports = problem6;
