@@ -58,11 +58,7 @@ class Password {
     if (!this.stack.isEmpty() && this.stack.peek() === char) {
       this.stack.pop();
       this.prevPopValue = char;
-    } else if (this.prevPopValue === char) {
-      /*
-        do Nothing
-      */
-    } else {
+    } else if (this.prevPopValue !== char) {
       this.stack.push(char);
       this.prevPopValue = "";
     }
