@@ -6,8 +6,7 @@ function problem7(user, friends, visitors) {
     friends
   );
   const scores = getScores(countsOfCommonFriends, visitors);
-  const recommendedList = getRecommendedList(scores, friendsOfUser);
-  return recommendedList;
+  return getRecommendedList(scores, friendsOfUser);
 }
 
 /**
