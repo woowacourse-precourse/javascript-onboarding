@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   const answer = [];
   const userFriendList = [];
   const newFriendList = [];
+  const scoreMap = new Map();
 
   friends.forEach((friend) => {
     if (friend.includes(user)) {
@@ -17,6 +18,14 @@ function problem7(user, friends, visitors) {
         newFriend && newFriendList.push(newFriend);
       }
     });
+  });
+
+  newFriendList.forEach((newFriend) => {
+    if (scoreMap.has(newFriend)) {
+      scoreMap.set(newFriend, scoreMap.get(newFriend) + 10);
+    } else {
+      scoreMap.set(newFriend, 10);
+    }
   });
 
   return answer;
