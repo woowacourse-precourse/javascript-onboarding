@@ -57,6 +57,7 @@ function problem4(word) {
     z: "a",
   };
 
+  //청개구리 사전을 이용해서 알파벳 변환
   for (var i of word) {
     if (i in change_alphabet) {
       answer += change_alphabet[i];
@@ -64,7 +65,6 @@ function problem4(word) {
       answer += " ";
     }
   }
-
   return answer;
 }
 
