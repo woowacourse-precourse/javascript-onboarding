@@ -12,8 +12,12 @@ function problem7(user, friends, visitors) {
     }
   }
   let isFriend = [...new Set(isFriends)]; // 중복제거
+  // 이름 리스트에 visitors 요소 추가
+  for(let i=0; i<visitors.length; ++i){
+    namesList.push(visitors[i]);
+  }
 
-  
+
   return answer;
 }
 
