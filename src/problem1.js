@@ -3,7 +3,7 @@ function changeNumberToString(n){
   return n;
 }
 
-function plus(n){
+function plusPageNumber(n){
   let result=0;
   n = changeNumberToString(n);
   for(let i=0;i<n.length;i++){
@@ -11,7 +11,14 @@ function plus(n){
   }
   return result;
 }
-
+function mutiplyPageNumber(n){
+  let result=1;
+  n = changeNumberToString(n);
+  for(let i=0;i<n.length;i++){
+      result*=parseInt(n[i]);
+  }
+  return result;
+}
 function problem1(pobi, crong) {
     let answer;
     return answer;
