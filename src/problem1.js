@@ -21,11 +21,15 @@ function multi(num) {
 function problem1(pobi, crong) {
   // 예외 (페이지 차이가 1 이상 or 페이지가 범위에 없을때)
   // 예외 추가 - null, 1 or 400, null
+  // [1,2] [399,400] 첫 페이지랑 마지막페이지 랜덤 ??
+  // 왼쪽이 홀수 오른쪽이 짝수인 경우만 성립
+
   if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
   const arr = [...pobi, ...crong];
   arr.forEach((x) => {
     if (x < 1 || x > 400) return -1;
   });
+
   let maxPobi = Math.max(
     sum(pobi[0]),
     multi(pobi[0]),

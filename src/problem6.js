@@ -1,6 +1,8 @@
 // 이메일 조건에 적합한지 확인하는 함수
 function checkEmail(str) {
   const len = str.length;
+  // sdsf@email.com
+  // sfsd@naver.com -> 예외처리
   const reg =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   // 이메일 형식이 아니라면 false
@@ -31,6 +33,8 @@ function problem6(forms) {
       verifyForms.push([email, name]);
   }
 
+  // 제이엠스 제이엠
+  // 훈 훈 연속적은 아님..
   // 연속된 문자가 두글자 이상이면 겹치니 최소 개수 2개만 뽑아내서 검사
   let sameWord = {};
   for (let [email, name] of verifyForms) {
@@ -49,8 +53,9 @@ function problem6(forms) {
       }
     }
   }
-  // 중복 제거 후 정렬
-  answer = [...new Set(answer)].sort();
+  // 중복 제거
+  // 오름차순 정렬 추가
+  answer = [...new Set(answer)];
   return answer;
 }
 
@@ -62,5 +67,5 @@ const arr = [
   ["nowm@email.com", "이제엠"],
   ["test@email.com", "워니제이순"],
 ];
-console.log(problem6(arr));
-// module.exports = problem6;
+// console.log(problem6(arr));
+module.exports = problem6;

@@ -26,6 +26,9 @@ function problem7(user, friends, visitors) {
   for (const [name, score] of Object.entries(point)) {
     if (score > 0) res.push([name, score]);
   }
+  // 기본 내림차순
+  // 점수가 같다면 오름차순
+  // 최대 5개를 추출하고 0점 제외 유저 제외
   res = res.sort((a, b) => b[1] - a[1]);
   res.forEach((v) => answer.push(v[0]));
   return answer;
@@ -40,5 +43,5 @@ const arr = [
   ["shakevan", "mrko"],
 ];
 const visit = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-console.log(problem7("mrko", arr, visit));
-// module.exports = problem7;
+// console.log(problem7("mrko", arr, visit));
+module.exports = problem7;
