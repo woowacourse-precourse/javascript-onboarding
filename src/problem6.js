@@ -6,9 +6,22 @@
 4. 연속된 중복문자가 없는 이메일 중 중복된 이메일 제거하고 오름차순 정렬한 결과 반환
 */
 
+function checkEmailFormat(email){
+  if(email.length < 11 || email.length >= 20){
+    return false;
+  }
 
+  if(email.indexOf('email.com') === -1){
+    return false;
+  }
+
+
+  return true;
+}
 function problem6(forms) {
   let answer;
+  answer = checkEmailFormat(forms[0][0]);
+  console.log(answer);
   return answer;
 }
 
