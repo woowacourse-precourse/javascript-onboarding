@@ -18,12 +18,22 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
+
 /* Nickname */
 const isValidName = (name) => {
   // 닉네임은 한글만 가능
   const KRResult = isKR(name);
   // 길이는 1자 이상 20자 미만
   const lengthResult = isValidLength(name, 1, 20);
+};
+
+/* Mail */
+const isValidMail = (mail) => {
+  const domainResult = isValidDomain(mail);
+  const lengthResult = isValidLength(mail, 11, 20);
+  const resultValue = domainResult && lengthResult;
+
+  return resultValue;
 };
 
 const isValidDomain = (mail) => {
