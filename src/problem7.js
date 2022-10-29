@@ -15,7 +15,15 @@ function userFriends(user,friends){
   return userFriends;
 }
 
-
-let user='mrko'
-let friends=[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ];
-console.log(userFriends(user,friends))
+function friendOfFriends(user,friends){
+  let friendOfFriends=[];
+  let userFriendArr=userFriends(user,friends);
+  for(let i=0; i<userFriendArr.length; i++){
+    for(let j=0; j<friends.length; j++){
+      if(friends[j].includes(userFriendArr[i])){
+        friendOfFriends.push(friends[j].find(el=>el!==userFriendArr[i]))
+      }
+    }
+  }
+  return friendOfFriends.filter(el=>el!==user)
+}
