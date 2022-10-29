@@ -17,6 +17,8 @@ function problem3(number) {
       }
     }
   }
+  // 결과로 배열의 길이 반환
+  return result.length
 }
 
 module.exports = problem3;
