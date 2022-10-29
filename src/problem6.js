@@ -1,10 +1,13 @@
 function problem6(forms) {
   let word;
   let result = [];
+  // 1. loop for extracting nickname from forms.
   for(i = 0; i < forms.length; i++){
     if(!forms[i]) continue;
+    // 2. loop for extracting two words from nickname.
     for(j = 0; j < forms[i][1].length - 1; j++){
       word = forms[i][1].substring(j, j + 2);
+      // 3. loop for checking if others have the same words.
       for(k = i + 1; k < forms.length; k++){
         if(!forms[k]) continue;
         if(forms[k][1].includes(word)){
