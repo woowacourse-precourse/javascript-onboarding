@@ -1,9 +1,27 @@
 function problem6(forms) {
+  const numberOfCheckedCrews = countCrews(forms);
+
+  if (numberOfCheckedCrews !== "Not Error") {
+    return numberOfCheckedCrews;
+  }
+
   const cutNames = cutNamesIntoTwoLetters(forms);
   const emailListOfDuplicatedCrews = getEmailOfDuplicatedCrews(forms, cutNames);
   const result = arrangeInAscendingOrder(emailListOfDuplicatedCrews);
 
   return result;
+}
+
+function countCrews(crews) {
+  const MINIMUM_NUMBER = 1;
+  const MAXIMUM_NUMBER = 10000;
+  const theNumberOfCrews = crews.length;
+
+  if (theNumberOfCrews < MINIMUM_NUMBER || theNumberOfCrews > MAXIMUM_NUMBER) {
+    return "크루는 1명 이상 10,000명 이하이어야 합니다.";
+  }
+
+  return "Not Error";
 }
 
 function cutNamesIntoTwoLetters(crews) {
