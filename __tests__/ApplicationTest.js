@@ -90,6 +90,18 @@ describe('problem4', () => {
   test('case1', () => {
     expect(problem4('I love you')).toEqual('R olev blf')
   })
+
+  test('case2', () => {
+    expect(problem4('ABC Def !@#')).toEqual('ZYX Wvu !@#')
+  })
+
+  test('case3', () => {
+    expect(problem4('한글은 어떨까')).toEqual('한글은 어떨까')
+  })
+
+  test('case4', () => {
+    expect(problem4('')).toEqual(INVALID_INPUT)
+  })
 })
 
 describe('problem5', () => {
