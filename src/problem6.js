@@ -24,10 +24,11 @@ const NickNameChecker = {
     return mustMailFormat.test(emailString);
   },
   checkNickname: function (nickname) {
-    for (let i = 0; i < nickname.length; i++) {
-      let c = v.charAt(i);
-      if (c < "가" || c > "힣") return false;
-    }
+    Array.from(nickname).forEach((char) => {
+      if (char < "ㄱ" || char > "힣") {
+        return false;
+      }
+    });
     return nickname >= 1 && nickname < 20;
   },
 };
