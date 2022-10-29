@@ -50,4 +50,8 @@ function changeSetToArray(set) {
   return arr.sort();
 }
 
+function validRange(arr) {
+  return 1 <= arr.length && arr.length <= 10000;
+}
+
 module.exports = problem6;
