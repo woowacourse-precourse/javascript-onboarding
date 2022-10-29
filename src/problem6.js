@@ -41,16 +41,20 @@ function checkLength(forms) {
   if (forms.length >= 1 && forms.length <= 10000) return true;
   return false;
 }
-function checkEmailLength(email) {
-  if (email.length >= 11 && email.length < 20) return false;
-  return true;
-}
-function checkEamilDomain(forms) {
+function checkEamil(forms) {
+  const spcPattern = /[~!@#$%^&*()_+|<>?:{}]/;
   for (let x = 0; x < forms.length; x++) {
     const email = forms[x][0];
     if (!checkEmailLength(email)) return false;
     if (!email.includes("@email.com")) return false;
     if (!email.substr(-10, eamil.length)) return false;
+    if (email.split("@").length != 2) return false;
+    if (spcPattern.test(email.split("@")[0])) return false;
   }
+  return true;
+}
+function checkEmailLength(email) {
+  if (email.length >= 11 && email.length < 20) return false;
+  return true;
 }
 module.exports = problem6;
