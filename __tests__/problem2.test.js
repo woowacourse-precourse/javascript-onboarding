@@ -19,8 +19,11 @@ describe("problem2: 암호해독(연속된 중복 문자열 제거)", () => {
     expect(problem2("aaabcdef")).toEqual("bcdef");
     expect(problem2("abcdeffff")).toEqual("abcde");
   });
-  test("case5: 3개 이상이 연속되는 사례 + 재귀", () => {
+  test("case6: 3개 이상이 연속되는 사례 + 재귀", () => {
     expect(problem2("abecccebfg")).toEqual("afg");
     expect(problem2("cbaaabcdef")).toEqual("def");
+  });
+  test("case7: 한번에 한 스텝씩만 지우는 지 확인", () => {
+    expect(problem2("abbaa")).toEqual("a");
   });
 });
