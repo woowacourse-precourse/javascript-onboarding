@@ -44,4 +44,15 @@ function numToString(n){
   else return multiple;
 }
 
+// 본인의 점수를 계산하는 함수
+function myScore(user){
+  // 왼쪽 페이지와 오른쪽 페이지의 점수를 비교한 후 큰 점수를 리턴
+  if (numToString(user[0]) >= numToString(user[1])){
+    return numToString(user[0]);
+  }
+  else {
+    return numToString(user[1]);
+  }
+}
+
 module.exports = problem1;
