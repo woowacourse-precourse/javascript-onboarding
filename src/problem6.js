@@ -1,8 +1,25 @@
 function problem6(forms) {
-  const numberOfCheckedCrews = countCrews(forms);
-  const checkedDomain = checkDomain(forms);
-  const checkedKoreanName = checkKoreanName(forms);
-  const checkedNameLength = checkNameLength(forms);
+  const checkedErrors = checkErrors(forms);
+
+  if (checkedErrors === "Not Error") {
+    const cutNames = cutNamesIntoTwoLetters(forms);
+    const emailListOfDuplicatedCrews = getEmailOfDuplicatedCrews(
+      forms,
+      cutNames
+    );
+    const result = arrangeInAscendingOrder(emailListOfDuplicatedCrews);
+
+    return result;
+  }
+
+  return checkedErrors;
+}
+
+function checkErrors(crews) {
+  const numberOfCheckedCrews = countCrews(crews);
+  const checkedDomain = checkDomain(crews);
+  const checkedKoreanName = checkKoreanName(crews);
+  const checkedNameLength = checkNameLength(crews);
 
   if (numberOfCheckedCrews !== "Not Error") {
     return numberOfCheckedCrews;
@@ -20,11 +37,7 @@ function problem6(forms) {
     return checkedNameLength;
   }
 
-  const cutNames = cutNamesIntoTwoLetters(forms);
-  const emailListOfDuplicatedCrews = getEmailOfDuplicatedCrews(forms, cutNames);
-  const result = arrangeInAscendingOrder(emailListOfDuplicatedCrews);
-
-  return result;
+  return "Not Error";
 }
 
 function countCrews(crews) {
