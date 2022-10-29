@@ -65,13 +65,18 @@
 
 * 전체 프로세서 관리할 `treeFrogApp` 함수 생성.
   + 변수 `eachCharArr`를 함수 `createStringArr`에서 받아온다.
+  + 해당 배열 길이만큼 반복해서 한글자씩 변경해준다.
 
 * 입력된 문자열을 배열로 만들어줄 함수 `createStringArr` 생성.
   + 입력된 문자열을 `.split("")`로 한글자씩 나눠서 배열을 만든 후, return 한다.
 
 * 입력된 문자를 UTF16코드로 변경해 줄 함수 `getUTF16Code(char)` 를 구현.
 
-* 입력된 숫자에 반대되는 문자로 출력해 줄 함수 `getTreeFrogChar(number)` 를 구현.
+* 입력된 UTF-16 코드가 알파벳인지 판단하는 함수 `checkAlphabet(utf16Code)`
+  + 대문자 A : 65 / 대문자 Z : 90 / 소문자 a : 97/ 소문자 z : 122
+  + 알파벳이 아니면, `false`를 return 하게 구현.
+
+* 입력된 숫자에 반대되는 문자로 출력해 줄 함수 `getTreeFrogChar(utf16Code)` 를 구현.
 
 * 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharsToString` 를 구현.
 
