@@ -8,6 +8,16 @@ const sumDigit = (n) => {
   return sum_res;
 };
 
+// 각 자리 곱하는 함수 선언
+const multDigit = (n) => {
+  let mult_res = 1;
+  while (n > 0) {
+    mult_res *= n % 10;
+    n = parseInt(n / 10);
+  }
+  return mult_res;
+};
+
 // 문제 해결 함수
 function problem1(pobi, crong) {
   var answer;
