@@ -60,6 +60,7 @@ function problem7(user, friends, visitors) {
       return b[1]-a[1];
     }
   }).forEach(r => result.push(r[0]));
+  
   return result.slice(undefined, 5);
 }
 
