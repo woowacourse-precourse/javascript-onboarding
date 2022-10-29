@@ -1,6 +1,5 @@
 function problem1(pobi, crong) {
   var answer;
-  sumNum(785)
   return answer;
 }
 
@@ -11,6 +10,15 @@ function sumNum(num) {
     num = parseInt(num / 10);
   }
   return sum;
+}
+
+function multipleNum(num) {
+  var rslt = 1;
+  while (num > 0) {
+      rslt *= num % 10;
+      num = parseInt(num / 10);
+  }
+  return rslt;
 }
 
 module.exports = problem1;
