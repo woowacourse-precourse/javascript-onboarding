@@ -13,6 +13,22 @@ function find369(number) {
 
 function problem3(number) {
   let clap = 0;
+
+  function count369(s) {
+    for (let letter of s) {
+      const translatedNum = parseInt(letter);
+      if (
+        (translatedNum === 3) |
+        (translatedNum === 6) |
+        (translatedNum === 9)
+      ) {
+        clap += 1;
+      }
+    }
+  }
+
+  const arr = find369(number);
+
   return clap;
 }
 
