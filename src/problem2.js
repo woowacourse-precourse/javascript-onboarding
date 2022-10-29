@@ -26,6 +26,15 @@ function problem2(cryptogram) {
   return getNoRepeat(cryptogram);
 }
 
+function getIncludeLowerCaseRegExp(cryptogram) {
+  return new RegExp(
+    `${Array.from(new Set(cryptogram))
+      .map((char) => char + "{2,}")
+      .join("|")}`,
+    "g"
+  );
+}
+
 function getNoRepeat(cryptogram) {
   const noRepeat = [];
   cryptogram.split("").forEach((char) => {
