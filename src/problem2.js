@@ -17,7 +17,14 @@ const redundancyCheck = (str) => {
 }
 
 function problem2(cryptogram) {
-  console.log(redundancyCheck(cryptogram));
+  let result = cryptogram;
+  while(1) {
+    if(result === redundancyCheck(result)) {
+      return result;
+    }else {
+      result = redundancyCheck(result);
+    }
+  }
 }
 
 module.exports = problem2;
