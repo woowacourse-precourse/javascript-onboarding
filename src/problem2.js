@@ -1,3 +1,8 @@
+/**
+ * 1. 반복되는 로직이 필요로 하다.(혹은 재귀적)
+ * 2. 문자열에서 중복되는 지를 판별하는 함수가 필요로 하다.
+ * 3. 문자열을 제거하는 함수가 필요로 하다.
+ */
 function problem2(cryptogram) {
   let splitCrpyto = cryptogram.split("");
 
@@ -12,14 +17,7 @@ function problem2(cryptogram) {
   }
   return splitCrpyto.join("");
 }
-
 module.exports = problem2;
-
-/**
- * 1. 반복되는 로직이 필요로 하다.(혹은 재귀적)
- * 2. 문자열에서 중복되는 지를 판별하는 함수가 필요로 하다.
- * 3. 문자열을 제거하는 함수가 필요로 하다.
- */
 
 /**
  * @param {array} str
@@ -34,6 +32,7 @@ function getRepeatedRanges(str) {
   }
   return results;
 }
+
 /**
  * @param {number} start 비교의 기준이 되는 색인 값
  * @param {string} str 모든 문자를 담고 있는 문자열
