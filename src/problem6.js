@@ -32,7 +32,7 @@ function checkHasSame(twoCharsList, nickname) {
 
 /**
  * @param {[string, string][]} forms
- * @returns
+ * @returns {boolean[]} duplicated data
  */
 function findDuplicatedData(forms) {
   const result = new Array(forms.length).fill(false);
@@ -54,9 +54,26 @@ function findDuplicatedData(forms) {
  * @param {[string, string][]} forms
  * @returns {string[]} result
  */
+function solution(forms) {
+  const duplicated = findDuplicatedData(forms);
+  const result = [];
+  duplicated.forEach((element, index) => {
+    if (element) {
+      const [email] = forms[index];
+      result.push(email);
+    }
+  });
+  result.sort();
+  return result;
+}
+
+/**
+ * @param {[string, string][]} forms
+ * @returns {string[]} result
+ */
 function problem6(forms) {
-  var answer;
-  return answer;
+  const result = solution(forms);
+  return result;
 }
 
 module.exports = problem6;
