@@ -1,33 +1,28 @@
-function shouldPush(stack, cryp, idx) {
-  if (stack.length < 1 || stack[stack.length - 1] !== cryp[idx]) {
-    return true;
-  }
-  return false;
-}
-
-function getNextIdx(lastElement, cryp, idx) {
-  let j = 0;
-  while (lastElement === cryp[idx + j]) {
-    j += 1;
-  }
-  if (j > 0) {
-    idx += j - 1;
-  }
-  return idx;
-}
-
-function problem2(cryptogram) {
-  const stack = [];
+const getOnceSolvedString = (cryptogram) => {
+  let solvedString = '';
   for (let i = 0; i < cryptogram.length; i++) {
-    if (shouldPush(stack, cryptogram, i)) {
-      stack.push(cryptogram[i]);
-    } else {
-      const lastElement = stack[stack.length - 1];
-      i = getNextIdx(lastElement, cryptogram, i);
-      stack.pop();
+    const curIdx = i;
+    while (cryptogram[i] === cryptogram[i + 1]) {
+      i++;
+    }
+    if (curIdx === i) {
+      solvedString += cryptogram[curIdx];
     }
   }
-  return stack.join('');
+
+  return solvedString;
+};
+
+function problem2(cryptogram) {
+  while (true) {
+    const solvedString = getOnceSolvedString(cryptogram);
+    if (solvedString === cryptogram) {
+      break;
+    }
+    cryptogram = solvedString;
+  }
+
+  return cryptogram;
 }
 
 module.exports = problem2;
