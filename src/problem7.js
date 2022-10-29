@@ -19,7 +19,14 @@ function problem7(user, friends, visitors) {
       else recommend_friends[recommand] = 10;
     })
   })
-  
+
+  visitors.forEach(visitor => {
+    if (!acquaintance[user].includes(visitor)) {
+      if (recommend_friends[visitor]) recommend_friends[visitor] += 1;
+      else recommend_friends[visitor] = 1;
+    }
+  })
+
   return recommend_friends;
 }
 
