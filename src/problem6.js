@@ -3,7 +3,7 @@ function problem6(forms) {
   const nameForm = forms.map((i) => i[1]);
   const validMailArray = mailForm.map((i) => isValidMail(i));
   const validNameArray = nameForm.map((i) => isValidName(i));
-  const invalidAccount = classifyInvalid(validMailArray, validNameArray);
+  const invalidAccount = classifyInvalid(forms, validMailArray, validNameArray);
   const answer = invalidAccount.filter((v) => v); //정렬 추가해야함.
 
   return answer;
@@ -12,10 +12,10 @@ function problem6(forms) {
 module.exports = problem6;
 
 /* classify  */
-const classifyInvalid = (validMailArray, validNameArray) => {
-  new Array(forms.length).map((v, i) => {
+const classifyInvalid = (forms, validMailArray, validNameArray) => {
+  const invalidAccount = new Array(forms.length).map((v, i) => {
     let resultValue;
-    if (validMailArray && validNameArray) {
+    if (validMailArray[i] && validNameArray[i]) {
       resultValue = false;
     } else {
       resultValue = mailForm[i];
@@ -23,7 +23,49 @@ const classifyInvalid = (validMailArray, validNameArray) => {
 
     return resultValue;
   });
+
+  return invalidAccount;
 };
+
+const checkDuplicate = (nameForm) => {
+  //nameForm = ['제이엠', '제이슨', '워니', '엠제이', '이제엠']
+  let resultArray = [];
+  const srcArray = nameForm.map((v) => {
+    const sliceArray = [];
+    const len = v.length - 2;
+    for (let i = 0; i <= len; i++) {
+      const srcText = v.slice(i, i + 2);
+      sliceArray.push(srcText);
+    }
+
+    return sliceArray;
+  });
+
+  const len = srcArray.length - 1;
+  for (let i = 0; i <= len - 1; i++) {
+    for (let j = 0; j <= srcArray[i].length - 1; j++) {
+      for (let k = i + 1; k <= len; k++) {
+        const isDuplicate = srcArray[k].includes(srcArray[i][j]);
+        if (isDuplicate) {
+          resultArray.push(nameForm[k], nameForm[i]);
+        }
+      }
+    }
+  }
+
+  resultArray = resultArray.filter((v, i) => resultArray.indexOf(v) === i);
+
+  return resultArray;
+};
+
+/*
+  for (let i of nameForm) {
+    const len = i.length - 2;
+    for (let j = 0; j <= len; j++) {
+      const srcText = i.slice(j, j + 2);
+    }
+  }
+*/
 
 /* Nickname */
 const isValidName = (name) => {
