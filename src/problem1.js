@@ -29,6 +29,7 @@ function problem1(pobi, crong) {
   }
 
   let pobiNum = [pageSum(pobiLeft), pageSum(pobiRight), pageMulti(pobiLeft), pageMulti(pobiRight)];
+  //.sort(function(a,b) {return b-a;}) 내림차순으로 정렬
   pobiNum.sort(function(a,b) {return b-a;});
   let crongNum = [pageSum(crongLeft), pageSum(crongRight), pageMulti(crongLeft), pageMulti(crongRight)];
   crongNum.sort(function(a,b) {return b-a;});
