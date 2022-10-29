@@ -1,9 +1,13 @@
 function problem6(forms) {
   const cutNames = cutNamesIntoTwoLetters(forms);
+  const result = getEmailOfDuplicatedCrews(forms, cutNames);
+
+  return result;
 }
 
 function cutNamesIntoTwoLetters(crews) {
   const theNumberOfCrews = crews.length;
+  const duplicatedNameIndexList = new Array(theNumberOfCrews).fill(0);
 
   for (
     let standardNameIndex = 0;
@@ -35,11 +39,33 @@ function cutNamesIntoTwoLetters(crews) {
         ) {
           const comparedCutName = comparedName.substr(comparedCutIndex, 2);
 
-          return [standardCutName, comparedCutName];
+          if (standardCutName === comparedCutName) {
+            duplicatedNameIndexList[standardNameIndex] += 1;
+            duplicatedNameIndexList[comparedNameIndex] += 1;
+          }
         }
       }
     }
   }
+
+  return duplicatedNameIndexList;
+}
+
+function getEmailOfDuplicatedCrews(crews, duplicatedCrewsList) {
+  const theNumberOfCrews = crews.length;
+  let emailList = new Array(theNumberOfCrews);
+  let emailIndex = 0;
+
+  for (let i = 0; i < theNumberOfCrews; i++) {
+    const email = crews[i][0];
+
+    if (duplicatedCrewsList[i] > 0) {
+      emailList[emailIndex] = email;
+      emailIndex++;
+    }
+  }
+
+  return emailList;
 }
 
 module.exports = problem6;
