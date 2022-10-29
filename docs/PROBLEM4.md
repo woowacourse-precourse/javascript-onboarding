@@ -19,3 +19,47 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 요구사항 분석(기능목록)
+
+- 알파벳인지 확인한다.
+- 알파벳을 치환하는 해쉬테이블이 필요하다.
+- 해쉬테이블을 대소문자를 다 저장하지 않고, 외부에서 확인하도록 한다.
+  - 이를 위해 isLowerCase 혹은 isUpperCase 함수를 사용한다.
+
+#### 알파벳인지 확인하기
+
+- 문자열을 받아 boolean을 반환하도록 한다.
+
+```js
+isAlpabet(char): boolean
+
+```
+
+#### 알파벳 해쉬테이블 만들기
+
+- 단일 알파벳을 받아, 그에 맵핑되는 알파벳을 반환한다.
+
+```js
+
+alpabetHash(char): char
+
+//ex)
+alpabetHash('a') // z
+alpabetHash('z') // a
+
+```
+
+#### 메인 로직 슈도코드
+
+```js
+function solution(word){
+  return map((char)=>{
+    if(!isAlpabet) return char
+    if(isLowerCase(char)) return alpabetHash(char);
+    return alpabetHas(char.toLowerCase()).toUpperCase();
+  })
+  
+  // functions...
+}
+```
