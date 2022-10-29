@@ -4,7 +4,7 @@ function problem2(cryptogram) {
   while (!flag){
     let str = "";
     for(let i=0;i<cryptogram.length;i++){
-      if (str.length > 0 && str[str.length-1] === cryptogram[i]){
+      if (str.length > 0 || str[stack.length-1] === cryptogram[i]){
         str = str.slice(0,str.length - 1);
         flag = true;
         continue;
@@ -13,5 +13,7 @@ function problem2(cryptogram) {
     }
     cryptogram = str;
   }
-  return cryptogram;
+  return answer;
 }
+
+module.exports = problem2;
