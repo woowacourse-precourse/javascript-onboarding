@@ -24,8 +24,19 @@ const isNicknameDuplicated = (forms) => {
   return duplicatedNickname;
 };
 
+// 중복이 있는 배열에서 이메일만 오름차순 정렬된 배열로 반환하는 기능
 function problem6(forms) {
   var answer;
+  let emailArr = [];
+  const duplicatedNicknameArr = isNicknameDuplicated(forms);
+  for (i = 0; i < duplicatedNicknameArr.length; i++) {
+    for (j = 0; j < forms.length; j++) {
+      if (forms[j][1] == duplicatedNicknameArr[i]) {
+        emailArr.push(forms[j][0]);
+      }
+    }
+  }
+  answer = emailArr.sort();
   return answer;
 }
 
