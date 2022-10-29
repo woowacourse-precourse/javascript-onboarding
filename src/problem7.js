@@ -28,6 +28,7 @@ function problem7(user, friends, visitors) {
     everyoneScoreList.push(0);
   }
 
+  // [ 0, 20, 20, 0, 0 ]
   for (let i of friends) {
     for (let j of alreadyFriendList) {
       if (i[0] === user || i[1] === user) {
@@ -43,7 +44,13 @@ function problem7(user, friends, visitors) {
     }
   }
 
-
+  for (let i of visitors) {
+    for (let j of everyoneList) {
+      if (j === i) {
+        everyoneScoreList[everyoneList.indexOf(j)] += 1;
+      }
+    }
+  }
 
 
 

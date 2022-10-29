@@ -37,7 +37,7 @@
   - 이때 friends의 원소에서 user가 들어갔을 경우에는 무시한다. ⭕
   - 짝이면 `eveyoneList`에서 그 친구의 인덱스를 찾는다. ⭕
   - `everyoneScoreList`에서 그 인덱스의 score을 10 높여준다. ⭕
-  - visitors 리스트에 있는 사람들은 한 번 등장할 때마다 `everyoneScoreList`의 score을 1 높여준다.
+  - visitors 리스트에 있는 사람들은 한 번 등장할 때마다 `everyoneScoreList`의 score을 1 높여준다. ⭕
 - 출력하기
   - 점수가 높은대로 친구의 이름을 출력해준다.
   - 최대 5명을 출력한다.
