@@ -19,6 +19,7 @@
  * @todo 1. cryptogram이 포함하고있는 알파벳 소문자가 연속된 경우를 체크하는 정규식 반환하는 함수
  * @todo 2. 중복이 존재하는지 판별하는 함수
  * @todo 3. 알파벳 소문자가 연속되는게 있다면 제거해주는 함수
+ * @todo 4. 알파벳 소문자가 중복되지 않을 때까지 반복해서 제거하는 재귀함수
  */
 
 function problem2(cryptogram) {
@@ -42,6 +43,12 @@ function isRepeatLowerCase(cryptogram) {
 
 function setRemoveRepeatLowerCase(cryptogram) {
   return cryptogram.replace(getIncludeLowerCaseRegExp(cryptogram), "");
+}
+
+function getNoRepeatCryptogram(cryptogram) {
+  if (!cryptogram.length) return cryptogram;
+  if (!isRepeatLowerCase(cryptogram)) return cryptogram;
+  return getNoRepeatCryptogram(setRemoveRepeatLowerCase(cryptogram));
 }
 
 function getNoRepeat(cryptogram) {
