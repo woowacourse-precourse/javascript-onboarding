@@ -1,8 +1,4 @@
 function problem4(word) {
-	//알파벳인지 판별하는 함수 -> charFilter
-	//대문자, 소문자를 구별하는 함수 -> alphabetFilter
-	//대문자, 소문자 별로 알파벳을 반전하는 함수 -> reverseSmall, reverseBig
-
 	return charFilter(word);
 }
 
@@ -17,11 +13,15 @@ function charFilter(word) {
 }
 
 function alphabetFilter(alphabet) {
-	return /[a-z]/g.test(alphabet) ? reverseLower(alphabet) : reverseUpper(alphabet);
+	return /[a-z]/g.test(alphabet) ? reverseLower(alphabet.charCodeAt(0)) : reverseUpper(alphabet.charCodeAt(0));
 }
 
-function reverseLower() {}
+function reverseLower(alphabetCode) {
+	return String.fromCharCode(alphabetCode > 109 ? 97 + (122 - alphabetCode) : 122 + (97 - alphabetCode));
+}
 
-function reverseUpper() {}
+function reverseUpper(alphabetCode) {
+	return String.fromCharCode(alphabetCode > 77 ? 65 + (90 - alphabetCode) : 90 + (65 - alphabetCode));
+}
 
 module.exports = problem4;
