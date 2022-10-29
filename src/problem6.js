@@ -45,4 +45,12 @@ function checkEmailLength(email) {
   if (email.length >= 11 && email.length < 20) return false;
   return true;
 }
+function checkEamilDomain(forms) {
+  for (let x = 0; x < forms.length; x++) {
+    const email = forms[x][0];
+    if (!checkEmailLength(email)) return false;
+    if (!email.includes("@email.com")) return false;
+    if (!email.substr(-10, eamil.length)) return false;
+  }
+}
 module.exports = problem6;
