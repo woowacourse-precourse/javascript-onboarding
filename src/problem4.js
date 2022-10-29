@@ -2,6 +2,7 @@ const UPPERCASE_REVERSE_NUMBER = 155;
 const LOWERCASE_REVERSE_NUMBER = 219;
 function problem4(word) {
   var answer;
+  if (!checkValidation(word)) throw new Error("입력값 오류입니다.");
   const wordArray = [...word];
   let index = 0;
   for (index = 0; index < wordArray.length; index++) {
@@ -27,5 +28,12 @@ function reverseChar(char) {
 }
 function getString(array) {
   return array.join("");
+}
+function checkValidation(word) {
+  return checkLengthOfWord(word);
+}
+function checkLengthOfWord(word) {
+  if (word.length >= 1 && word.length <= 1000) return true;
+  return false;
 }
 module.exports = problem4;
