@@ -1,5 +1,4 @@
 function game(num) {
-  let arr = [];
   let count = 0
   while (num !== 0) {
     let temp = num % 10;
