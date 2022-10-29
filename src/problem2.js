@@ -4,6 +4,17 @@
 */
 
 class Decoder {
+  decode(cryptogram) {
+    while (true) {
+      const removedString = this._removeDuplicatedString(cryptogram);
+      if (removedString.length === cryptogram.length) {
+        break;
+      }
+      cryptogram = removedString;
+    }
+    return cryptogram;
+  }
+
   _removeDuplicatedString(string) {
     const stringLength = string.length;
     const chars = [""];
@@ -18,17 +29,6 @@ class Decoder {
       }
     }
     return chars.filter((char) => char.length === 1).join("");
-  }
-
-  decode(cryptogram) {
-    while (true) {
-      const removedString = this._removeDuplicatedString(cryptogram);
-      if (removedString.length === cryptogram.length) {
-        break;
-      }
-      cryptogram = removedString;
-    }
-    return cryptogram;
   }
 }
 
