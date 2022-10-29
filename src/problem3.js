@@ -4,14 +4,17 @@
 
 function problem3(number) {
   const tsn = ['3', '6', '9'];
+
+  let result = 0;
   for(let i=1; i<=number; i++) {
     let num = i.toString().split('');
+
     if(tsn.some(v => num.includes(v))) {
-      console.log(i, '들어있음')
-    }else {
-      console.log(i, '안 들어있음')
+      result += num.filter(n => n === '3' || n === '6' || n === '9').length;
     }
   }
+
+  return result;
 }
 
 module.exports = problem3;
