@@ -101,19 +101,31 @@ function problem1(pobi, crong) {
   if (
     pobi_max > crong_max &&
     pobi[0] + 1 == pobi[1] &&
-    crong[0] + 1 == crong[1]
+    crong[0] + 1 == crong[1] &&
+    pobi[0] >= 1 &&
+    pobi[1] <= 400 &&
+    crong[0] >= 1 &&
+    crong[1] <= 400
   ) {
     answer = 1;
   } else if (
     pobi_max < crong_max &&
     pobi[0] + 1 == pobi[1] &&
-    crong[0] + 1 == crong[1]
+    crong[0] + 1 == crong[1] &&
+    pobi[0] >= 1 &&
+    pobi[1] <= 400 &&
+    crong[0] >= 1 &&
+    crong[1] <= 400
   ) {
     answer = 2;
   } else if (
     pobi_max == crong_max &&
     pobi[0] + 1 == pobi[1] &&
-    crong[0] + 1 == crong[1]
+    crong[0] + 1 == crong[1] &&
+    pobi[0] >= 1 &&
+    pobi[1] <= 400 &&
+    crong[0] >= 1 &&
+    crong[1] <= 400
   ) {
     answer = 0;
   } else {
