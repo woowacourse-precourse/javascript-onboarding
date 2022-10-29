@@ -29,7 +29,7 @@ function error(person){
   if(left > rigth){
       return false;
   }
-  if(left<1 || rigth>400){
+  if(left<=1 || rigth>=400){
       return false;
   }
   if((left%2)!==1 || (rigth%2)!==0){
@@ -56,8 +56,3 @@ function play(pobi,crong){
       return crongWin;
   }
 }
-
-let pobi = [131,132];
-let crong = [211,212];
-
-console.log(problem1(pobi,crong))
