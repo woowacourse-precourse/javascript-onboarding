@@ -1,7 +1,16 @@
 function problem3(number) {
-  var answer;
+  const getThree = getCountFrom("3");
+  const getSix = getCountFrom("6");
+  const getNine = getCountFrom("9");
 
-  return answer;
+  let count = 0;
+  for (let i = 1; i <= number; i++) {
+    count += getThree(i);
+    count += getSix(i);
+    count += getNine(i);
+  }
+
+  return count;
 }
 
 module.exports = problem3;
