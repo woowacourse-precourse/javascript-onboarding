@@ -13,7 +13,7 @@ function problem4(word) {
   function replacer(string){
     let letter = string;
     // 대소문자 체크 후 변환
-    return (isUpperCase(letter)) ? letter : letter;
+    return (isUpperCase(letter)) ? replaceAlphabet(letter, 'upper') : replaceAlphabet(letter, 'lower');
   };
 
   /**
@@ -26,6 +26,32 @@ function problem4(word) {
     return (alphabet === alphabet.toUpperCase()) ? true : false;
   };
 
+  /**
+   * 알파벳 변환하는 함수
+   * @param {string} alphabet 
+   * @param {string} letterCaseType 'upper' | 'lower'
+   * @returns {string}
+   */
+  function replaceAlphabet(alphabet, letterCaseType){
+
+    const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
+    let idx;
+
+    if (!(letterCaseType === 'upper' | letterCaseType === 'lower')) console.log('대소문자 타입을 지정해주세요.');
+    switch(letterCaseType){
+      case 'upper' :
+      idx = UPPERCASE.split('').indexOf(alphabet);
+      return UPPERCASE[25 - idx];
+      break;
+      
+      case 'lower' :
+      idx = LOWERCASE.split('').indexOf(alphabet);
+      return LOWERCASE[25 - idx];
+      break;
+    };
+  };
+  return result;
 }
 
 module.exports = problem4;
