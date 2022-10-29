@@ -112,6 +112,18 @@ describe('problem5', () => {
   test('case2', () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0])
   })
+
+  test('case3', () => {
+    expect(problem5(150001)).toEqual([3, 0, 0, 0, 0, 0, 0, 0, 1])
+  })
+
+  test('case4', () => {
+    expect(problem5(66661)).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1])
+  })
+
+  test('case5', () => {
+    expect(problem5(0)).toEqual(INVALID_INPUT)
+  })
 })
 
 describe('problem6', () => {
