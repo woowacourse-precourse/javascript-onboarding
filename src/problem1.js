@@ -1,24 +1,24 @@
 function slicePage(nowPageNum){
   const pageString = String(nowPageNum);
-  let pageSliceArray = [0, 0, 0];
-  let prePageNum = nowPageNum;
+  let pageSliceArray = [-1, -1, -1];
+  let prePageNum = Number(nowPageNum);
 
-  for(let i = length.pageString - 1; i > -1 ; i--){
-    pageSliceArray[i] = Number(prePageNum) / (10 ** i);
+  for(let i = pageString.length - 1; i > -1 ; i--){
+    pageSliceArray[i] = parseInt(prePageNum / (10 ** i));
     prePageNum = prePageNum % (10 ** i);
   }
-
   return pageSliceArray;
 }
 
 function calPlusMinus(pageSliceArray){
-  let pageCalArray = [0, 0];
+  let pageCalArray = [-1, -1];
   let sumResult = 0;
   let multiplicationResult = 1;
 
   for(let i = 0; i < pageSliceArray.length; i++){
     nowArrayValue = pageSliceArray[i];
-    sumReault += nowArrayValue;
+    if (nowArrayValue == -1) continue;
+    sumResult += nowArrayValue;
     multiplicationResult *= nowArrayValue;
   }
   
@@ -26,25 +26,43 @@ function calPlusMinus(pageSliceArray){
   return pageCalArray;
 }
 
-function findReault(maxNumArray) {
+function findReault(numArray) {
+  let resultNum = -1;
+
+  let pobiMaxNum= Math.max(...numArray.slice(0, 4));
+  let crongMaxNum = Math.max(...numArray.slice(4)); 
+
+  if(pobiMaxNum == crongMaxNum){
+    resultNum = 0;
+  }
+  else if(pobiMaxNum > crongMaxNum){
+    resultNum = 1;
+  }
+  else {
+    resultNum = 2;
+  }
+
+  return resultNum;
 }
 
+function exception(){
+  
+}
 function problem1(pobi, crong) {
-  let animal = [...pobi, ...crong];
-  let pageSliceArray = [0, 0, 0];
-  let pageCalArray = [0, 0];
+  const animal = [...pobi, ...crong];
+  let numArray = [];
 
   animal.forEach((element) => {
-    pageSliceArray = slicePage(maxNumArray[i]);
-    pageCalArray = calPlusMinus(pageSliceArray);
+    let pageSliceArray = slicePage(element);
+    let pageCalArray = calPlusMinus(pageSliceArray);
+    numArray = [...numArray, ...pageCalArray]
     });     
-  }
+
+    let resultNum = findReault(numArray);
   
-  var answer;
-  answer = findReault(maxNumArray);
-  return answer;  
+    return resultNum;  
   }
 
-console.log(problem1([97, 98], [197, 198]));
+console.log(problem1([131, 132], [211, 212]));
 
 module.exports = problem1;
