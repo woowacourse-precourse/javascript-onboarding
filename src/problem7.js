@@ -66,6 +66,12 @@ function problem7(user, friends, visitors) {
       return -1;
     }
     // 점수 같을 경우
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
     return 0;
   });
 
