@@ -44,7 +44,41 @@ function problem7(user, friends, visitors) {
   };
   const visitorScore = getVisitorsScore(visitors);
 
-  
+  const newScoreResult = Object.entries(newFriendsScore);
+
+  newScoreResult.sort((a, b) => b[1] - a[1]);
+
+  const visitorScoreResult = Object.entries(visitorScore);
+
+  visitorScoreResult.sort((a, b) => b[1] - a[1]);
+
+  const mergedArr = [];
+
+  for (let el of newScoreResult) {
+    mergedArr.push(el);
+  }
+  for (let el of visitorScoreResult) {
+    mergedArr.push(el);
+  }
+  mergedArr.sort((a, b) => b[1] - a[1]);
+
+  const answer = [];
+
+  for (let t = 0; t < mergedArr.length; t++) {
+    answer.push(mergedArr[t][0]);
+  }
+
+  const namesToDelete = new Set(noUserName);
+
+  const finalAnswer = answer.filter((name) => {
+    return !namesToDelete.has(name);
+  });
+
+  if (finalAnswer.length > 5) {
+    finalAnswer.length = 5;
+  }
+
+  return finalAnswer;
 }
 
 module.exports = problem7;

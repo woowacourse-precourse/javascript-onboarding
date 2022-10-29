@@ -12,8 +12,12 @@ function problem6(forms) {
     twoChaArr.filter(
       (item, index) => twoChaArr[index] === twoChaArr[index + 2]
     );
+
   const duplicates = findDuplicates(twoChaArr);
-  const duplicatesJoined = duplicates.join("");
+
+  let wordsToDelete = [...new Set(duplicates)];
+
+  const duplicatesJoined = wordsToDelete.join("");
 
   for (let h = 0; h < forms.length; h++) {
     const findName = forms[h][1];
@@ -22,7 +26,7 @@ function problem6(forms) {
     }
   }
   const noDupEmail = [...new Set(pushedEmail)];
-  
+
   return noDupEmail.sort();
 }
 
