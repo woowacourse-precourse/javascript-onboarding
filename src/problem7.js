@@ -7,7 +7,15 @@ function problem7(user, friends, visitors) {
       friends[i].map((ele) => {
         return score.set(ele, 0);
       });
-    } 
+    } else {
+      friends[i].map((ele) => {
+        if (score.has(ele)) {
+          return score.set(ele, score.get(ele) + 10);
+        } else {
+          return score.set(ele, 10);
+        }
+      });
+    }
   }
   return answer;
 }
