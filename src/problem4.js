@@ -29,34 +29,7 @@ function problem4(word) {
         "y",
         "z",
     ];
-    const reverseLetter = [
-        "z",
-        "y",
-        "x",
-        "w",
-        "v",
-        "u",
-        "t",
-        "s",
-        "r",
-        "q",
-        "p",
-        "o",
-        "n",
-        "m",
-        "l",
-        "k",
-        "j",
-        "i",
-        "h",
-        "g",
-        "f",
-        "e",
-        "d",
-        "c",
-        "b",
-        "a",
-    ];
+    const reverseLetter = letter.slice().reverse();
 
     // 2. 일반 배열의 Index 찾아서 반대된 배열의 문자로 바꾸기
     // - 비교는 소문자로 비교
