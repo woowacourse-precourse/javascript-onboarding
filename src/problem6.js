@@ -24,11 +24,13 @@ function returnEmail(forms, map) {
       if (map.get(subStr) === "duplication") set.add(email);
     }
   });
-  return set;
+  return Array.from(set);
 }
 function problem6(forms) {
   let map = nicknameWordMap(forms);
-  return returnEmail(forms, map);
+  let answer = returnEmail(forms, map);
+  answer.sort();
+  return answer;
 }
 
 module.exports = problem6;
