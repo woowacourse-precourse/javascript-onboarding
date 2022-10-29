@@ -25,7 +25,7 @@ function getInvalidNames(names) {
 }
 
 function getEmailsFromNames(forms, names) {
-  const filteredForms = forms.filter((form) => form[1].includes(names));
+  const filteredForms = forms.filter((form) => names.some((name) => form[1].includes(name)));
   const emails = filteredForms.map((form) => form[0]);
 
   return emails;
