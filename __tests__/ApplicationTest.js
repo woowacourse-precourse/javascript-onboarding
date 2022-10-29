@@ -87,6 +87,18 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("case3", () => {
+    expect(problem2("gooooooooooooooooooo")).toEqual("g");
+  });
+  test("case4", () => {
+    expect(problem2("ooooooooooooooooooo")).toEqual("");
+  });
+  test("case5", () => {
+    expect(problem2("g")).toEqual("g");
+  });
+  test("case6", () => {
+    expect(problem2("ga")).toEqual("ga");
+  });
 });
 
 describe("problem3", () => {

@@ -1,6 +1,9 @@
-//#1
+// #1
 // 풀긴 풀었는데 시간이 너무 오래 걸렸다
 // 맘대로 안풀려서 if문을 계속 추가하고 맞을때까지 계속 체크했는데 좋은것같진않다
+
+// #2
+// 테스트케이스를 통해서 틀린부분 한군데를 더 수정할 수 있었다
 
 function problem2(cryptogram) {
   var answer;
@@ -18,6 +21,7 @@ function problem2(cryptogram) {
     let isSameStr = false;
     let buffer = "";
 
+    if (remainStr.length === 1) return remainStr;
     // 중복검사 루프 시작
     for (let i = 0; i < remainStr.length; i++) {
       const current = remainStr[i];
@@ -56,7 +60,6 @@ function problem2(cryptogram) {
     //중복 문자열 지우고 남은 새로운 문자열에 중복이 있나 확인
     for (let j = 0; j < remainStr.length - 1; j++) {
       if (remainStr[j] === remainStr[j + 1]) {
-        console.log("중복값있다", j);
         isEnd = false;
         break;
       } else {
