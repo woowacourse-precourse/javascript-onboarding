@@ -4,7 +4,10 @@ function problem2(cryptogram) {
   let deleted = cryptogram;
 
   if (repeated===null){return cryptogram}
-
+  else {
+    deleted = deleted.replace(repeated[0],'')
+    repeated = deleted.match(pattern)
+  }
 }
 
 module.exports = problem2;
