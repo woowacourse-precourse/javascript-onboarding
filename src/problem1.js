@@ -20,7 +20,6 @@ function pageRule(pages) {
 function getBiggestNumber(num) {
   const digits = num.toString().split('');
   const realDigits = digits.map(Number);
-  
   const sum = realDigits.reduce((a,b) => a + b, 0)
   const multiply = realDigits.reduce((a,b) => a * b, 1)
   return Math.max(sum, multiply)
@@ -34,6 +33,12 @@ function getMaxScore(array) {
 
 function problem1(pobi, crong) {
   if(!pageRule(pobi) || !pageRule(crong)) return -1;
+
+  if(getMaxScore(pobi) === getMaxScore(crong)) return 0;
+
+  if(getMaxScore(pobi) > getMaxScore(crong)) return 1;
+
+  if(getMaxScore(pobi) < getMaxScore(crong)) return 2;
 }
 
 module.exports = problem1;
