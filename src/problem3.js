@@ -24,6 +24,7 @@ function checkAllNum(number) {
 
 function problem3(number) {
   var answer;
+  answer = checkAllNum(number);
   return answer;
 }
 
