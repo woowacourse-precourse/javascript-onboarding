@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  return mapAlphabet(word);
 }
 
 /**
@@ -10,12 +9,16 @@ function problem4(word) {
 
 /**
  *
- * @param {string} ch
+ * @param {string} word
+ * @returns {string}
  */
-function mapAlphabet(ch) {}
+function mapAlphabet(word) {
+  const split = word.split("");
+  const reversed = split.map((ch) => reverseCharacter(ch));
+  return reversed.join("");
+}
 
-function getMid(ch) {
-  const chCode = ch.charCodeAt();
+function getMid(chCode) {
   let mid = 0;
 
   if (chCode >= "A".charCodeAt() && chCode <= "Z".charCodeAt()) {
@@ -29,12 +32,18 @@ function getMid(ch) {
 }
 
 function reverseCharacter(ch) {
-  const mid = getMid(ch);
-  const diff = Math.abs(mid - ch.charCodeAt());
-  if (ch < mid) {
-    return String.charCodeAt(mid + diff);
-  } else {
-    return String.charCodeAt(mid - diff);
+  try {
+    const chCode = ch.charCodeAt();
+    const mid = getMid(ch);
+    const diff = Math.abs(mid - ch.charCodeAt());
+
+    if (chCode < mid) {
+      return String.fromCharCode(mid + diff);
+    } else {
+      return String.fromCharCode(mid - diff);
+    }
+  } catch (err) {
+    return ch;
   }
 }
 
