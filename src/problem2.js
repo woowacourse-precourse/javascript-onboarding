@@ -4,6 +4,18 @@ function lastChar(str, idx) {
 function sameNext(str, idx) {
   return str[idx] === str[idx + 1];
 }
+function decryption(str) {
+  let ret = "";
+  for (let i = 0; i < str.length; i++) {
+    let skip = 0;
+    while (sameNext(str, i) && !lastChar(str, i)) {
+      skip = 1;
+      i++;
+    }
+    if (!skip) ret += str[i];
+  }
+  return ret;
+}
 function problem2(cryptogram) {
   var answer;
   return answer;
