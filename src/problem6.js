@@ -6,17 +6,25 @@ function problem6(forms) {
 }
 
 function checkNickname(forms) {
-	const nicknameOnly = forms.map((el) => el[1]);
+	const nicknameOnly = forms.map((form) => form[1]);
 	const duplicateIndex = getIndex(nicknameOnly);
 
 	return forms
-		.map((el, idx) => {
-			if (duplicateIndex.includes(idx)) return el[0];
+		.map((form, idx) => {
+			if (duplicateIndex.includes(idx)) return form[0];
 		})
 		.sort((a, b) => (a > b ? 1 : -1));
 }
 
-function getIndex() {}
+function getIndex(nicknames) {
+	let index = [];
+
+	nicknames.forEach((nickname, idx) => {
+		if (checkDuplicate(nickname)) index.push(idx);
+	});
+
+	return index;
+}
 
 function checkDuplicate() {}
 
