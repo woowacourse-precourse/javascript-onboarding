@@ -16,4 +16,10 @@ function makeReverseAlphabetArray() {
   return reverseAlphabet;
 }
 
+function recordCapitalAlphabet(word) {
+  const wordArray = word.split("");
+  const recordCapital = wordArray.map((i) => i === i.toUpperCase());
+  return recordCapital;
+}
+
 module.exports = problem4;
