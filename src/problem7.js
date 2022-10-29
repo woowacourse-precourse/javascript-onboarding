@@ -14,4 +14,18 @@ function getMyFriend(user,friends){
 
   return foundFriends;
 }
+
+function recomendFriendList(user,myFriends,friends){
+  const recomendFriends = []
+  myFriends.forEach(myFriend=>{
+    for (let friend of friends){
+      if (friend.includes(myFriend) && friend.includes(user) === false){
+        const recomendFriendName = friend.filter(friend=> friend !== myFriend);
+        recomendFriends.push(...recomendFriendName)
+      }
+    }
+  })
+
+  return recomendFriends
+}
 module.exports = problem7;
