@@ -1,4 +1,12 @@
-function problem7(user, friends, visitors) {}
+function problem7(user, friends, visitors) {
+  let graph = new Map();
+  friends.forEach((duo) => makeGraph(graph, duo));
+
+  let scoreList = new Map();
+  friendOfFriend(user, graph, scoreList);
+  scoreVisitor(user, graph, visitors, scoreList);
+  return sortResult(scoreList);
+}
 
 function makeGraph(vertex, duo) {
   for (let i = 0; i < duo.length; i++) {
@@ -33,17 +41,6 @@ function scoreVisitor(user, graph, visitors, scoreList) {
   });
 }
 
-let user = "mrko";
-let friends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-
 function sortResult(scoreList) {
   let ArrScoreList = [...scoreList]; // 배열로 만들기
   ArrScoreList.sort(function (a, b) {
@@ -60,5 +57,4 @@ function sortResult(scoreList) {
   return ArrScoreList.map((score) => score[0]);
 }
 
-problem7(user, friends, visitors);
 module.exports = problem7;
