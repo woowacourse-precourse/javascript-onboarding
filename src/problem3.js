@@ -44,4 +44,8 @@ function checkMultiple(number) {
   return number % 3 == 0 && number > 0;
 }
 
+function validRange(number) {
+  return (1 <= number && number <= 10000)
+}
+
 module.exports = problem3;
