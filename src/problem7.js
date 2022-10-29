@@ -65,6 +65,10 @@ function findAnswer(scoreMap){
 
 module.exports = problem7;
 
-
+function test(){
 const temp = problem7("mrko", [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"])
 console.log(temp);
+
+}
+
+test();
