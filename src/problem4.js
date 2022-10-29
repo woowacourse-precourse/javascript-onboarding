@@ -1,4 +1,11 @@
-const encryptLetter = (letter) => {
+function problem4(word) {
+  const letters = word.split('');
+  const encryptedLetters = letters.map((letter) => encryptLetter(letter));
+
+  return encryptedLetters.join('');
+}
+
+function encryptLetter(letter) {
   const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
@@ -17,13 +24,6 @@ const encryptLetter = (letter) => {
   }
 
   return letter;
-};
-
-function problem4(word) {
-  const letters = word.split('');
-  const encryptedLetters = letters.map((letter) => encryptLetter(letter));
-
-  return encryptedLetters.join('');
 }
 
 module.exports = problem4;
