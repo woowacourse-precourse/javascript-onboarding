@@ -26,7 +26,7 @@ function problem7(user, friends, visitors) {
     const final_score =
       score +
       Number(visitors.filter((id) => userId === id).length) * VISIT_SCORE;
-    return [(userId, final_score)];
+    return [userId, final_score];
   });
 
   const answer = [];
