@@ -7,7 +7,7 @@ function deleteString(cryptogram){
   for (let i = 0; i < stringLength; i++){
     if(check[i] == 1) continue;
     
-    if((cryptogram[i] == cryptogram[i + 1])){
+    if((cryptogram[i] == cryptogram[i + 1]) && (i != stringLength - 1)){
       count += 1;
       check[i] = 1;
       check[i+1] = 1;
