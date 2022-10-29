@@ -104,13 +104,6 @@ function friendRecommand(friend_recommand){
 }
 
 
-
-let user = "mrko"
-let friends = [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]
-let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
-
-
-
 function problem7(user, friends, visitors) {
   let answer;
   let search_friends_result = searchFriends(user,friends) //user의 친구와 user의 친구를 제외한 친구목록
