@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let leftPointer = 0;
+  let rightPoiner = 1;
+  const cryptogramList = [...cryptogram];
+  
 }
-
 module.exports = problem2;
