@@ -1,5 +1,15 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+
+  const scoreCalculator = (score, operation) => {
+    return String(score)
+      .split("")
+      .reduce((acc, cur) => {
+        if (operation === "+") return +acc + +cur;
+        if (operation === "*") return +acc * +cur;
+      });
+  };
+
   return answer;
 }
 
