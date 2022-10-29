@@ -21,6 +21,12 @@ function problem6(forms) {
 
       const stringArr = forms[i][1].split("");
 
+      for(let j=0 ; j < stringArr.length-1 ; j++){
+
+        string = stringArr[j] + stringArr[j+1];
+
+        
+      }
     }
 
     return duplicateFormsBasket;
