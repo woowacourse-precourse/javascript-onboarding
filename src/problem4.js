@@ -3,6 +3,12 @@ function problem4(word) {
   return answer;
 }
 
+function reverseLetter(letter) {
+  const letterASCII = letter.charCodeAt();
+  if (97 <= letterASCII && letterASCII <= 122) return reverseLower(letter);
+  return reverseUpper(letter);
+}
+
 function reverseLower(letter) {
   // 영어 소문자 ASCII : 97 ~ 122
   const index = 97 - letter.charCodeAt();
