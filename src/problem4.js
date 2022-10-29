@@ -1,4 +1,8 @@
 function problem4(word) {
+  const ALPABET = "abcdefghijklmnopqrstuvwxyz";
+  const alpabetHash = (char) =>
+    ALPABET[ALPABET.length - 1 - ALPABET.indexOf(char)];
+
 }
 
 const map = (f, iter) => {
