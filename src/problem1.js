@@ -1,24 +1,19 @@
 function problem1(pobi, crong) {
   var answer;
+  const [pobiLeft, pobiRight] = pobi;
+  const [crongLeft, crongRight] = crong;
 
-  // 유효한 페이지인지 체크
-  const isValidPobiPage = isValidPage(pobi[0], pobi[1]);
-  const isValidCrongPage = isValidPage(crong[0], crong[1]);
+  const isValidPobiPage = isValidPage(pobiLeft, pobiRight);
+  const isValidCrongPage = isValidPage(crongLeft, crongRight);
 
   if (!isValidCrongPage || !isValidPobiPage) {
     return (answer = -1);
   }
 
-  // 유효한 페이지인 경우 페이지 비교
-  const pobiNumber =
-    biggerNumber(pobi[0]) > biggerNumber(pobi[1])
-      ? biggerNumber(pobi[0])
-      : biggerNumber(pobi[1]);
-
-  const crongNumber =
-    biggerNumber(crong[0]) > biggerNumber(crong[1])
-      ? biggerNumber(crong[0])
-      : biggerNumber(crong[1]);
+  const [pobiNumber, crongNumber] = comparePages(
+    [pobiLeft, pobiRight],
+    [crongLeft, crongRight]
+  );
 
   if (pobiNumber === crongNumber) {
     answer = 0;
@@ -29,6 +24,23 @@ function problem1(pobi, crong) {
   }
 
   return answer;
+}
+
+function comparePages(pobiPages, crongPages) {
+  const [pobiLeft, pobiRight] = pobiPages;
+  const [crongLeft, crongRight] = crongPages;
+
+  const pobiNumber =
+    biggerNumber(pobiLeft) > biggerNumber(pobiRight)
+      ? biggerNumber(pobiLeft)
+      : biggerNumber(pobiRight);
+
+  const crongNumber =
+    biggerNumber(crongLeft) > biggerNumber(crongRight)
+      ? biggerNumber(crongLeft)
+      : biggerNumber(crongRight);
+
+  return [pobiNumber, crongNumber];
 }
 
 function biggerNumber(page) {
@@ -56,11 +68,15 @@ function multipleSplitPageNumber(splitPageNumber) {
 }
 
 function isValidPage(leftPageNumber, rightPageNumber) {
-  // (좌)400페이지, (우)1페이지 일 때 예외
-  // left와 right 페이지의 차이가 1이 아니면 예외
-  if (leftPageNumber >= 400) return false;
-  if (rightPageNumber <= 1) return false;
-  if (rightPageNumber - leftPageNumber !== 1) return false;
+  if (leftPageNumber >= 400) {
+    return false;
+  }
+  if (rightPageNumber <= 1) {
+    return false;
+  }
+  if (rightPageNumber - leftPageNumber !== 1) {
+    return false;
+  }
   return true;
 }
 
