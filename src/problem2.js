@@ -1,6 +1,13 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let result = cryptogram;
+  let prev = '';
+
+  while (prev !== result) {
+    prev = result;
+    result = removeAllAdjacent(result);
+  }
+
+  return result;
 }
 
 function removeAllAdjacent(string) {
