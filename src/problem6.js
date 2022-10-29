@@ -20,6 +20,13 @@ function problem6(forms) {
         return !isUnique;
     }
 
+    // 2. 중복된 글자가 있는 닉네임의 이메일을 배열에 추가
+    for (let i = 0; i < nicknames.length; i++) {
+        if (checkNickname(nicknames[i], nicknames)) {
+            answer.push(forms[i][0]);
+        }
+    }
+
     return answer;
 }
 
