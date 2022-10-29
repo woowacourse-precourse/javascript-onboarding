@@ -39,13 +39,14 @@ describe("problem3", () => {
   });
 });
 
-*/
+
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
-/*
+*/
+
 describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
@@ -55,7 +56,7 @@ describe("problem5", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
 });
-
+/*
 describe("problem6", () => {
   test("case1", () => {
     expect(
