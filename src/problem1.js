@@ -29,7 +29,7 @@ function problem1(pobi, crong) { //매개변수 : pobi, crong
   /* var : 중복 선언이 가능, 재할당 가능
      let : 중복 선언 불가능, 재할당 가능
      const : 중복 선언 불가능, 재할당 불가능 */
- 
+  /* 테스트 데이터가 있기 때문에 이 부분은 없어도 됨.
   // 책 배열
   var bookpage = [];    // 책 페이지가 들어갈 배열
   var bookpage_L = 200; // 왼쪽 페이지 번호
@@ -73,53 +73,63 @@ function problem1(pobi, crong) { //매개변수 : pobi, crong
   const crongOpenBookPage = bookRandom[1]; // 첫번째로 펼쳐진 책 페이지 -> 크롱꺼
   pobi = bookpage[pobiOpenBookPage];
   crong = bookpage[crongOpenBookPage];
-  console.log(pobi, crong);
+  //console.log(pobi, crong);
+   */
 
-  // 포비 값 더하기
-  var pobi_LR_num = new Array(); // 좌우 덧셈과 곱셈값을 넣을 배열 생성
-  for(var i=0; i<pobi.length; i++){ // 배열 길이만큼 반복
-    const sum = String(pobi[i]).split('').reduce((a,b)=> a+=Number(b),0);
-    // 배열에서 String으로 문자를 추출하고 split으로 자릿수를 변환 (ex. 12 -> 1,2)
-    // 이후 덧셈을 위해 Number로 형변환 후 reduce로 각 자릿수 덧셈해줌
-    // reduce((누산값, 현재요소값) => 덧셈식, 초기누산값); 형태임
-    const mul = String(pobi[i]).split('').reduce((a,b)=> (a*b));
-    // 곱셈도 동일하게 진행함. 근데 왜 곱셈에서는 number가 없어도 계산이 될까?
-    pobi_LR_num.push(sum,mul);
-    // 배열에 왼쪽 페이지에 대한 덧셈과 곱셈 값을 넣음.
-  } // for문으로 오른쪽 페이지 값도 계산 후 총 4개의 값이 들어가게 됨.
-  console.log(pobi_LR_num);
-
-  // 크롱 값 더하기
-  var crong_LR_num = new Array(); // 포비와 형식은 동일함.
-  for(var i=0; i<crong.length; i++){
-    const sum = String(crong[i]).split('').reduce((a,b)=> a+=Number(b),0);
-    const mul = String(crong[i]).split('').reduce((a,b)=> (a*b));
-    crong_LR_num.push(sum,mul)
-  }
-  console.log(crong_LR_num);
-
-  // 포비, 크롱 가장 큰 값 구하기
-  // Math.max.apply(null, array)
-  const pobi_max = Math.max.apply(null, pobi_LR_num);
-  const crong_max = Math.max.apply(null, crong_LR_num);
-  console.log(pobi_max, crong_max);
-
-  // 포비, 크롱 값 비교하기
   var answer; // 승부값 출력할 변수
-  if(pobi_max > crong_max){
-    // 포비가 이길경우
-    answer = 1;
-    document.write("pobi : [" + pobi + "]<br>"+ "crong : [" + crong + "]<br>" + "result : " + answer);
-  } else if(pobi_max < crong_max){
-    answer = 2;
-    document.write("pobi : [" + pobi + "]<br>"+ "crong : [" + crong + "]<br>" + "result : " + answer);
-  } else if (pobi_max == crong_max){
-    answer = 0;
-    document.write("pobi : [" + pobi + "]<br>"+ "crong : [" + crong + "]<br>" + "result : " + answer);
-  } else {
-    answer = -1;
-    document.write("pobi : [" + pobi + "]<br>"+ "crong : [" + crong + "]<br>" + "result : " + answer);
-  }
+  
+  // 포비 페이지 값
+  var pobi_LR_num = [2]; // 좌우 덧셈과 곱셈값을 넣을 배열 생성
+  var pobi_err = Number(pobi[0])+Number(pobi[1]); // 좌우페이지 합
+  var testP_err = Number(pobi[0])+(Number(pobi[0])+1); // 좌우페이지 합산 값이 에러 체크 변수
+  // console.log(pobi_err,testP_err);
+  
+  // 크롱 페이지값
+  var crong_LR_num = [2]; // 포비와 형식은 동일함.
+  var crong_err = Number(crong[0])+Number(crong[1]); // 좌우페이지 합
+  var testC_err = Number(crong[0])+(Number(crong[0])+1); // 좌우페이지 합산 값이 에러 체크 변수
+  // console.log(crong_err,testC_err);
+
+  for(var i=0; i<2; i++){ // 배열 길이만큼 반복
+    if (pobi_err == testP_err && crong_err == testC_err){ // 연속된 페이지인 경우
+
+      const sum1 = String(pobi[i]).split('').reduce((a,b)=> a+=Number(b),0);
+      const sum2 = String(crong[i]).split('').reduce((a,b)=> a+=Number(b),0); // 덧셈
+      // 배열에서 String으로 문자를 추출하고 split으로 자릿수를 변환 (ex. 12 -> 1,2)
+      // 이후 덧셈을 위해 Number로 형변환 후 reduce로 각 자릿수 덧셈해줌
+      // reduce((누산값, 현재요소값) => 덧셈식, 초기누산값); 형태임
+
+      const mul1 = String(pobi[i]).split('').reduce((a,b)=> (a*b));
+      const mul2 = String(crong[i]).split('').reduce((a,b)=> (a*b));
+      // 곱셈도 동일하게 진행함.
+
+      // 배열에 왼쪽 페이지에 대한 덧셈과 곱셈 값을 넣음.
+      pobi_LR_num.push(sum1,mul1);
+      crong_LR_num.push(sum2,mul2); // 배열에 값 넣기
+
+      console.log('포비 : '+ sum1,mul1 + '<br>' + '크롱 : ' + sum2,mul2);
+
+      // 가장 큰 값 구하기
+      // Math.max.apply(null, array)
+      var pobi_max = Math.max.apply(null, pobi_LR_num);
+      var crong_max = Math.max.apply(null, crong_LR_num);
+      console.log(pobi_max,crong_max);
+      
+      
+      // 포비, 크롱 값 비교하기
+      if(pobi_max > crong_max){ // 포비가 이길 경우
+        answer = 1;
+      } else if(pobi_max < crong_max){ // 크롱이 이길 경우
+        answer = 2;
+      } else if (pobi_max == crong_max){ // 포비, 크롱이 비길경우
+        answer = 0;
+      } else { // 에러가 나온 경우
+        answer = (-1);
+      }
+      
+    } else { answer = -1; } // 값이 다르면 무조건 에러처리함.
+  } // for문으로 오른쪽 페이지 값도 계산 후 총 4개의 값이 들어가게 됨.
+  console.log(answer);
 
   return answer; // return문 : 함수에 의해 반환되는 값을 지정
 }
