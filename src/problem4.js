@@ -15,7 +15,10 @@ function transformAlpha(alpha) {
   return retAlpha;
 }
 function problem4(word) {
-  var answer;
+  var answer = "";
+  for (let alpha of word) {
+    answer += transformAlpha(alpha);
+  }
   return answer;
 }
 module.exports = problem4;
