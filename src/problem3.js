@@ -11,6 +11,10 @@ function problem3(number) {
           result.push(i);
         }
       })
+    } else { // 한 자릿수일 때
+      if (String(i).match(/[3|6|9]/g)) {
+        result.push(String(i))
+      }
     }
   }
 }
