@@ -7,7 +7,7 @@ function getMyFriend(user,friends){
   const foundFriends = [];
   friends.forEach(friend => {
     if(friend.includes(user)){
-      const friendName = friend.slice(0,friend.indexOf(user));
+      const friendName = friend.filter(friend => friend !== user);
       foundFriends.push(...friendName);
     }
   })
