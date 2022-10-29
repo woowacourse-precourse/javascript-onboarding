@@ -3,8 +3,8 @@ function problem7(user, friends, visitors) {
   const countsOfCommonFriends = getCountsOfCommonFriends(user, friendsOfUser, friends)
   const scoresForCommonFriends = getScoresForCommonFriends(countsOfCommonFriends)
   const scoresForVisting = getScoresForVisting(visitors)
-  console.log(scoresForCommonFriends)
-  console.log(scoresForVisting)
+  const totalScore = sumScores(scoresForCommonFriends, scoresForVisting)
+  // const recommendedList = getRecommendedList(totalScore)
   // 본인과 이미 친구인 애 빼기
   // 추천 점수 순으로 정렬해서 최대 5명만 반환하기 
   var answer;
@@ -72,12 +72,29 @@ function getScoresForCommonFriends(common) {
  */
 function getScoresForVisting(visitors) {
   const scores = {}
-  console.log(visitors)
   for (let i = 0; i < visitors.length; i++) {
     const visitor = visitors[i]
     scores[visitor] = scores[visitor] ? scores[visitor] + 1 : 1
   }
   return scores
+}
+
+/**
+ * 두 scores를 합친 결과를 반환한다.
+ * @param {{ [key: string]: number }} scores1 { user_id: score }
+ * @param {{ [key: string]: number }} scores2 { user_id: score }
+ * @return {{ [key: string]: number }} 
+ */
+function sumScores(scores1, scores2) {
+  const total = {}
+  for (let user in scores1) {
+    total[user] = scores1[user]
+  }
+  for (let user in scores2) {
+    total[user] = total[user] ? total[user] + scores2[user] : scores2[user]
+  }
+  return total
+
 }
 
 console.log(problem7(
