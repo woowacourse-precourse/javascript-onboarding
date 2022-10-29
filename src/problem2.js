@@ -11,9 +11,8 @@ function problem2(cryptogram) {
     lettersCount.push([cryptogram[i], count]);
   }
 
-  const letters = lettersCount.map((lettersCount) => {
-    if (lettersCount[1] === 1) return lettersCount[0];
-  });
+  const oneLetters = lettersCount.filter((letterCount) => letterCount[1] === 1);
+  const letters = oneLetters.map((oneLetter) => oneLetter[0]);
 
   if (hasDuplicates) return problem2(letters.join(''));
 
