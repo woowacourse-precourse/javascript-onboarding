@@ -65,7 +65,13 @@ function getEmailOfDuplicatedCrews(crews, duplicatedCrewsList) {
     }
   }
 
+  emailList = emailList.filter(removeEmptyValue);
+
   return emailList;
+}
+
+function removeEmptyValue(email) {
+  return email !== null && email !== undefined && email !== "";
 }
 
 module.exports = problem6;
