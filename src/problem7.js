@@ -30,6 +30,16 @@ function problem7(user, friends, visitors) {
     });
   });
 
+  visitors.forEach((name) => {
+    if (!dude.includes(name)) {
+      if (!score[name]) {
+        score[name] = 1;
+      } else {
+        score[name] += 1;
+      }
+    }
+  });
+
   return score;
 }
 
