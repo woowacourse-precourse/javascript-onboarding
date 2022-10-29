@@ -17,8 +17,7 @@ function getScore(pages) {
     var digitProduct = 1;
 
     pageDigits.forEach(digit => {
-      digit = Number(digit);
-      digitSum += digit;
+      digitSum += Number(digit);
       digitProduct *= digit;
     });
     score = Math.max(score, digitSum, digitProduct);
@@ -27,14 +26,17 @@ function getScore(pages) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-
   if (!isValidPages(pobi) || !isValidPages(crong)) {
     return -1;
   }
-  if (getScore(pobi) > getScore(crong)) {
+
+  var answer;
+  var pobiScore = getScore(pobi);
+  var crongScore = getScore(crong);
+
+  if (pobiScore > crongScore) {
     answer = 1;
-  } else if (getScore(pobi) < getScore(crong)) {
+  } else if (pobiScore < crongScore) {
     answer = 2;
   } else {
     answer = 0;
