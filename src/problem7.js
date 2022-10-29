@@ -1,7 +1,7 @@
 /*
 [x] 전체 유저의 친구 관계를 구하는 기능을 구현한다.
 [x] 유저에 대해서 친구 추천을 하는 기능을 구현한다.
-[ ] 정렬하여 결과를 반환한다.
+[x] 정렬하여 결과를 반환한다.
 */
 
 function intersect(setA, setB) {
@@ -57,8 +57,17 @@ function recommendFriend(user, friends, visitors) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  function compare(userA, userB) {
+    const [usernameA, userScoreA] = userA;
+    const [usernameB, userScoreB] = userB;
+    if (userScoreA === userScoreB) {
+      return usernameA < usernameB ? -1 : 1;
+    }
+    return userScoreB - userScoreA;
+  }
+
+  const recommendedFriends = recommendFriend(user, friends, visitors);
+  return recommendedFriends.sort(compare).map(([username]) => username);
 }
 
 module.exports = problem7;
