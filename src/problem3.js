@@ -45,7 +45,11 @@ function checkMultiple(number) {
 }
 
 function validRange(number) {
-  return (1 <= number && number <= 10000)
+  return (1 <= number && number <= 10000);
+}
+
+function validType(number) {
+  return typeof (number) == "number";
 }
 
 module.exports = problem3;
