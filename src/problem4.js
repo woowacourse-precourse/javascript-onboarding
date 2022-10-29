@@ -1,18 +1,26 @@
 function problem4(word) {
   if(word === '') return '';
-  let answer;
-  answer = word.split('').map(letter => {
-    if(/[A-Z]/.test(letter)) {
-      const reversedLetter = String.fromCharCode(90 - (letter.charCodeAt(0) - 65));
+  const ASCII_VALUES = {
+    UPPER_CASE_REGEX: /[A-Z]/,
+    UPPER_CASE_START: 65,
+    UPPER_CASE_END: 90,
+
+    LOWER_CASE_REGEX: /[a-z]/,
+    LOWER_CASE_START: 97,
+    LOWER_CASE_END: 122,
+  };
+  const answer = word.split('').map(letter => {
+    if(ASCII_VALUES.UPPER_CASE_REGEX.test(letter)) {
+      const reversedLetter = String.fromCharCode(ASCII_VALUES.UPPER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.UPPER_CASE_START));
       return reversedLetter;
     }
-    if(/[a-z]/.test(letter)) {
-      const reversedLetter = String.fromCharCode(122 - (letter.charCodeAt(0) - 97));
+    if(ASCII_VALUES.LOWER_CASE_REGEX.test(letter)) {
+      const reversedLetter = String.fromCharCode(ASCII_VALUES.LOWER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.LOWER_CASE_START));
       return reversedLetter;
     }
     return letter;
-  });
-  return answer.join('');
+  }).join('');
+  return answer;
 }
 
 module.exports = problem4;
