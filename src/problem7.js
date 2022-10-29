@@ -44,12 +44,26 @@ function countFollowerScore(userFriendObject, scoreCount) {
   });
 }
 
+function countVisitScore(visitors, userFriendObject, scoreCount) {
+  const INCREMENT_NUMBER = 1;
+  visitors.forEach(visitor => {
+    if (!userFriendObject[visitor]) {
+      if (scoreCount[visitor]) {
+        scoreCount[visitor] += INCREMENT_NUMBER;
+      } else {
+        scoreCount[visitor] = INCREMENT_NUMBER;
+      }
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let scoreCount = {};
   const userFriendObject = createUserFriendObject(user, friends);
   findFriendFollower(user, userFriendObject, friends);
   countFollowerScore(userFriendObject, scoreCount);
+  countVisitScore(visitors, userFriendObject, scoreCount);
   return answer;
 }
 
