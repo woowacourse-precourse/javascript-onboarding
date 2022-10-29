@@ -70,7 +70,9 @@
 * 입력된 문자열을 배열로 만들어줄 함수 `createStringArr` 생성.
   + 입력된 문자열을 `.split("")`로 한글자씩 나눠서 배열을 만든 후, return 한다.
 
-* 입력된 문자를 UTF16코드로 변경해 줄 함수 `getUTF16Code(char)` 를 구현.
+* 입력된 문자를 UTF16코드로 변경해 줄 함수 `getFromCharToUTF16Code(char)` 를 구현.
+
+* 입력된 UTF16코드를 문자로 변경해 줄 함수 `getFromUTF16CodeToChar(utf16Code)` 를 구현. 
 
 * 입력된 UTF-16 코드가 알파벳인지 판단하는 함수 `checkAlphabet(utf16Code)`
   + 대문자 A : 65 / 대문자 Z : 90 / 소문자 a : 97/ 소문자 z : 122
