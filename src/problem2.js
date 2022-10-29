@@ -23,6 +23,10 @@ function problem2(cryptogram) {
 
     str.push(cryptogram[idx]);
   }
+  if (changeFlag) {
+    str.splice(-1, 1);
+  }
+  return str.join("");
   return answer;
 }
 
