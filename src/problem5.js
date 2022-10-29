@@ -3,9 +3,9 @@ function problem5(money) {
 }
 
 function solution(money) {
-	amounts = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-	wallet = [];
-	count = 0;
+	const amounts = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+	let wallet = [];
+	let count = 0;
 
 	amounts.forEach((amount) => {
 		count = getCount(money, amount);
