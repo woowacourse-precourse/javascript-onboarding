@@ -50,21 +50,28 @@ function checkFormsLength(forms) {
   return true;
 }
 
-function checkSameWord(forms, checkingWordArray, ans) {
-  for (let i = 0; i < forms.length; i++) {
-    for (let j = 0; j < checkingWordArray.length; j++) {
-      // 자기 자신은 비교하지 않는다
-      if (i === j) {
-        continue;
-      }
-
-      for (let k = 0; k < checkingWordArray[j].length; k++) {
-        // 여기서 본인 닉네임에서 나온 중복 단어를 거르지 못해서 오답이 발생함
-        if (forms[i][1].includes(checkingWordArray[j][k])) {
-          ans.push(forms[i][0]);
-        }
-      }
+function checkSameWord(forms, checkingWordArray, ans, i, j) {
+  for (let k = 0; k < checkingWordArray[j].length; k++) {
+    if (forms[i][1].includes(checkingWordArray[j][k])) {
+      ans.push(forms[i][0]);
     }
+  }
+}
+
+function checkSameWordExceptOneself(forms, checkingWordArray, ans, i) {
+  for (let j = 0; j < checkingWordArray.length; j++) {
+    // 자기 자신은 비교하지 않는다
+    if (i === j) {
+      continue;
+    }
+
+    checkSameWord(forms, checkingWordArray, ans, i, j);
+  }
+}
+
+function checkSameWordForAllCrew(forms, checkingWordArray, ans) {
+  for (let i = 0; i < forms.length; i++) {
+    checkSameWordExceptOneself(forms, checkingWordArray, ans, i);
   }
 }
 
@@ -78,7 +85,7 @@ function makeTestWord(j, modelNickName, testWordArrayFromStandardNickname) {
 }
 
 function decideTestWordLength(modelNickName, checkingWordArray) {
-  // 2차원 배열로 만들자
+  // 하나의 닉네임에서 얻은 중복 판별 단어들을 하나의 배열로 만들어, 모든 중복 판별 단어 배열을 2차원으로 만든다.
   let testWordArrayFromStandardNickname = [];
 
   // 길이 2부터 문자열 최대 길이까지 중복 판별 단어 선정
@@ -120,9 +127,11 @@ function problem6(forms) {
 
   let ans = [];
 
-  checkSameWord(forms, checkingWordArray, ans);
+  checkSameWordForAllCrew(forms, checkingWordArray, ans);
 
   return deleteOverlapAndSortEmail(ans);
 }
+
+module.exports = problem6;
 
 module.exports = problem6;
