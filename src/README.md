@@ -98,6 +98,7 @@
 - refactor
   - if문 가독성 좋게 변경
   - opposite 로직 변경
+  - replace 함수를 한 번 호출로 변경
 
 ### 학습메모
 
