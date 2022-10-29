@@ -95,9 +95,21 @@ class SocialNetwork {
   }
 }
 
-function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+/**
+ * 문제 7번의 입력인 사용자, 친구 관계, 방문 목록이 주어지면 사용자를 기준으로 하여
+ * 추천하는 친구의 목록을 만들어 반환한다.
+ * @param {*} name 사용자 이름
+ * @param {*} friends 친구 관계 리스트
+ * @param {*} visitors 사용자가 타임라인에 방문한 사람 목록
+ * @returns {string[]} 추천하는 친구 목록
+ */
+function problem7(username, friends, visitors) {
+  const user = new User(username, visitors);
+  const socialNetwork = new SocialNetwork();
+
+  friends.forEach(friendRelation => socialNetwork.addFriendRelation(...friendRelation));
+
+  return socialNetwork.getFriendRecommendations(user);
 }
 
 module.exports = problem7;
