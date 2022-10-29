@@ -32,6 +32,26 @@ function checkHasSame(twoCharsList, nickname) {
 
 /**
  * @param {[string, string][]} forms
+ * @returns
+ */
+function findDuplicatedData(forms) {
+  const result = new Array(forms.length).fill(false);
+  const nicknames = forms.map((form) => form[1]);
+  for (let i = 0; i < nicknames.length - 1; i++) {
+    for (let j = i + 1; j < nicknames.length; j++) {
+      const twoCharsList = getTwoCharsInString(nicknames[i]);
+      const hasSameChars = checkHasSame(twoCharsList, nicknames[j]);
+      if (hasSameChars) {
+        result[i] = true;
+        result[j] = true;
+      }
+    }
+  }
+  return result;
+}
+
+/**
+ * @param {[string, string][]} forms
  * @returns {string[]} result
  */
 function problem6(forms) {
