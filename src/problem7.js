@@ -41,8 +41,24 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 3. 최종 추천친구 목록 만들기
+  let recommendations2 = [];
+  for (let i = 0; i < recommendations.length - 1; i++) {
+    let score_sum = recommendations[i][1];
+    for (let j = i + 1; j < recommendations.length; j++) {
+      // 같은 사람인 경우
+      if (recommendations[i][0] == recommendations[j][0]) {
+        score_sum += recommendations[j][1];
+        recommendations.splice(j, 1);
+        j--;
+      }
+    }
+    // 새 배열에 최종 [이름, 점수] 값 추가
+    recommendations2.push(recommendations[i][0], score_sum);
+  }
+
   console.log(current_friends);
-  console.log(recommendations);
+  console.log(recommendations2);
 
   return answer;
 }
