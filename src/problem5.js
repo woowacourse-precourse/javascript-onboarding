@@ -10,7 +10,7 @@ const findLargestMoneyUnit = (money) => {
   if (money >= 1) return 1;
 };
 
-const findResultArrayIndex = (money) => {
+const findWalletArrayIndex = (money) => {
   if (money === 50000) return 0;
   if (money === 10000) return 1;
   if (money === 5000) return 2;
@@ -23,8 +23,15 @@ const findResultArrayIndex = (money) => {
 };
 
 function problem5(money) {
-  var answer;
-  return answer;
+  const wallet = Array.from({ length: 9 }, () => 0);
+  while (money > 0) {
+    const largestMoneyUnit = findLargestMoneyUnit(money);
+    const walletIndex = findWalletArrayIndex(largestMoneyUnit);
+
+    wallet[walletIndex]++;
+    money -= largestMoneyUnit;
+  }
+  return wallet;
 }
 
 module.exports = problem5;
