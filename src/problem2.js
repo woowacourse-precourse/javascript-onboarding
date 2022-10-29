@@ -3,6 +3,7 @@ function problem2(cryptogram) {
   let repeated = cryptogram.match(pattern);
   let deleted = cryptogram;
 
+  if (repeated===null){return cryptogram}
 
 }
 
