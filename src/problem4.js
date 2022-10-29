@@ -1,24 +1,5 @@
-/*
-기능 구현 목록
-- [v] 문자를 유니코드로 변환하는 기능
-- [v] 문자가 소문자인지 판별하는 기능
-- [v] 문자가 대문자인지 판별하는 기능
-- [v] 사전 역순 대문자 알파벳 변환 기능
-- [ ] 사전 역순 소문자 알파벳 변환 기능
-*/
-
 function problem4(word) {
-  let answer = '';
-  for (const char of word) {
-    if (isUpper(convertUnicode(char))) {
-      answer += convertUpperToReverseDictionary(convertUnicode(char));
-    } else if (isLower(convertUnicode(char))) {
-      console.log('소문자 처리중');
-    } else {
-      answer += char;
-    }
-  }
-  return answer;
+  return changeReverseDictionary(word);
 }
 
 function convertUnicode(char) {
@@ -37,7 +18,26 @@ function convertUpperToReverseDictionary(unicodeChar, START_POINT = 65, END_POIN
   return String.fromCharCode(END_POINT - unicodeChar + START_POINT);
 }
 
-problem4('I love you'); // 'R olev blf'
-problem4('Hello Everyone!'); // 'Svool Veviblmv!'
-problem4('Grrr... Wang!'); // 'Tiii... Dzmt!'
+function convertLowerToReverseDictionary(unicodeChar, START_POINT = 97, END_POINT = 122) {
+  return String.fromCharCode(END_POINT - unicodeChar + START_POINT);
+}
+
+function changeReverseDictionary(word) {
+  let _char = '';
+  let convertedChar;
+
+  for (const char of word) {
+    convertedChar = convertUnicode(char);
+    if (isUpper(convertedChar)) {
+      _char += convertUpperToReverseDictionary(convertedChar);
+    } else if (isLower(convertedChar)) {
+      _char += convertLowerToReverseDictionary(convertedChar);
+    } else {
+      _char += char;
+    }
+  }
+
+  return _char;
+}
+
 module.exports = problem4;
