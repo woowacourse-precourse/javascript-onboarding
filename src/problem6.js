@@ -11,6 +11,11 @@ function findDuplicateWords(forms, words) {
   while (index < crew.length - 1) {
     const word = crew.substring(index, index + 2);
 
+    if (words.includes(word)) {
+      index += 1;
+      continue;
+    }
+
     forms.some((form) => {
       if (form[1].includes(word)) {
         words.push(word);
@@ -20,7 +25,7 @@ function findDuplicateWords(forms, words) {
       return false;
     });
 
-    index++;
+    index += 1;
   }
 
   return findDuplicateWords(forms, words);
@@ -47,7 +52,7 @@ function test() {
   ];
   const user1 = '제이엠';
 
-  console.log(findDuplicateLetters(forms, []));
+  console.log(findDuplicateWords(forms, []));
 }
 
 test();
