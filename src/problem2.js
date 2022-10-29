@@ -9,7 +9,12 @@
 function problem2(cryptogram) {
   let changeFlag = false;
   let str = [];
-
+  for (let idx = 0; idx < cryptogram.length; idx++) {
+    if (str[str.length - 1] === cryptogram[idx]) {
+      changeFlag = true;
+      continue;
+    }
+  }
   return answer;
 }
 
