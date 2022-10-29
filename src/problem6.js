@@ -1,4 +1,5 @@
 function problem6(forms) {
+  if (!checkValidation(forms)) throw new Error("입력오류입니다.");
   var answer = getEmailList(forms);
   return answer;
 }
@@ -36,26 +37,28 @@ function duplicateCheck(forms, result, compareIndex, patterns) {
 function resultPush(result, target) {
   if (!result.includes(target)) result.push(target);
 }
-function checkValidation(forms) {}
+function checkValidation(forms) {
+  return checkLength(forms) && checkEmail(forms) && checkNickname(forms);
+}
 function checkLength(forms) {
   if (forms.length >= 1 && forms.length <= 10000) return true;
   return false;
 }
-function checkEamil(forms) {
+function checkEmail(forms) {
   const spcPattern = /[~!@#$%^&*()_+|<>?:{}]/;
   for (let x = 0; x < forms.length; x++) {
     const email = forms[x][0];
     if (!checkEmailLength(email)) return false;
     if (!email.includes("@email.com")) return false;
-    if (!email.substr(-10, eamil.length)) return false;
+    if (!(email.substr(-10, email.length) == "@email.com")) return false;
     if (email.split("@").length != 2) return false;
     if (spcPattern.test(email.split("@")[0])) return false;
   }
   return true;
 }
 function checkEmailLength(email) {
-  if (email.length >= 11 && email.length < 20) return false;
-  return true;
+  if (email.length >= 11 && email.length < 20) return true;
+  return false;
 }
 function checkNickname(forms) {
   for (let x = 0; x < forms.length; x++) {
