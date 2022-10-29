@@ -24,6 +24,7 @@ function problem7(user, friends, visitors) {
 
   // 임시 친구추천 배열에서 사용자 중복제거 & 점수 +10점 부여
   let recommendationFriends = new Map();
+
   tempRecommendationFriends.map((tempRecommendationFriend) => {
     // 친구추천에 등록돼 있는 경우 +10점
     if (recommendationFriends.has(tempRecommendationFriend)) {
@@ -39,11 +40,22 @@ function problem7(user, friends, visitors) {
     return recommendationFriends.set(tempRecommendationFriend, 10);
   });
 
-  // visitor중 유저나 이미 친구인 사용자 제외
-
-  // 친구추천에 등록된 visitor는 점수 +1점 부여
-
-  // 친구추천에 등록되지 않은 visitor는 신규 등록 (점수 1점 부여)
+  // 친구추천에 visitor 추가 기능
+  visitors.map((visitor) => {
+    // visitor에 유저나 친구가 들어오는 경우 예외처리
+    if (visitor !== user && !alreadyFriends.includes(visitor)) {
+      // 친구추천에 등록된 visitor는 점수 +1점 부여
+      if (recommendationFriends.has(visitor)) {
+        let recommendationFriendScore = recommendationFriends.get(visitor);
+        return recommendationFriends.set(
+          visitor,
+          recommendationFriendScore + 1
+        );
+      }
+      // 친구추천에 등록되지 않은 visitor는 신규 등록
+      return recommendationFriends.set(visitor, 1);
+    }
+  });
 }
 
 module.exports = problem7;
