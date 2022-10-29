@@ -63,8 +63,17 @@ function problem1(pobi, crong) {
   // 점수 높은 사람 result에 저장
   var result = Math.max(pobi_max, crong_max);
 
-  var answer;
-  return answer;
+  // 같으면 0, 포비가 이기면 1, 크롱이 이기면 2 처리 후 리턴
+  if (crong_max == pobi_max) {
+    var answer = 0;
+    return answer;
+  } else if (result == pobi_max) {
+    var answer = 1;
+    return answer;
+  } else {
+    var answer = 2;
+    return answer;
+  }
 }
 
 module.exports = problem1;
