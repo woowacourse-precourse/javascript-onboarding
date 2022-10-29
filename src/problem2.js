@@ -13,7 +13,28 @@ function removeOverlap(cryptogram) {
 
 function problem2(cryptogram) {
   var answer;
+
+  let inputArr = [...cryptogram];
+  let answerArr;
+  let outputArr;
+
+  // 연속하는 중복 배열이 없을때까지 반복하는 while문
+  while (true) {
+    outputArr = removeOverlap(inputArr);
+    console.log(inputArr);
+
+    // 배열 비교를 위해 문자열로 변환후 비교
+    if (JSON.stringify(outputArr) === JSON.stringify(inputArr)) {
+      answerArr = outputArr;
+      break;
+    }
+
+    inputArr = outputArr;
+  }
+
   return answer;
 }
 
 module.exports = problem2;
+
+problem2("browoanoommnaon");
