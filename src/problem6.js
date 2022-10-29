@@ -1,14 +1,13 @@
 const NickNameChecker = {
   forms: [],
   result: [],
+  sameValues: [],
   inputForms: function (forms) {
     if (!this.checkFormsLength(forms)) {
       return false;
     }
     forms = forms.filter((form) => this.checkFormEmail(form[0]));
-    if (!forms.every((form) => this.checkNickname(form[1]))) {
-      return false;
-    }
+    forms = forms.filter((form) => this.checkNickname(form[1]));
     return true;
   },
   checkFormsLength: function (forms) {
