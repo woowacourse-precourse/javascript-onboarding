@@ -1,6 +1,17 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let duplicateObj = {};
+
+  forms.forEach((form) => {
+    let twoLettersArr = setTwoLetters(form[1]);
+
+    twoLettersArr.forEach((element) =>
+      element in duplicateObj
+        ? duplicateObj[element].push(form[0])
+        : (duplicateObj[element] = [form[0]])
+    );
+  });
+
+  return getDuplicateEmails(duplicateObj);
 }
 
 function setTwoLetters(nickname) {
@@ -16,6 +27,7 @@ function setTwoLetters(nickname) {
 
 function getDuplicateEmails(obj) {
   let duplicateEmails = [];
+  
   for (const value of Object.values(obj)) {
     if (value.length > 1) duplicateEmails.push(...value);
   }
