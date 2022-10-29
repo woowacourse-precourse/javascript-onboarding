@@ -37,6 +37,7 @@ function createDictionary(array) {
 }
 
 function problem4(word) {
+  // 알파벳 사전 만들기
   const dictionary = createDictionary(alphabet);
 
   if (word.match(/[^a-zA-Z\s+]/g)) return;
@@ -44,6 +45,7 @@ function problem4(word) {
 
   const splited = word.split("");
 
+  // 입력 받은 단어를 청개구리 사전을 이용해 변형
   for (let i = 0; i < splited.length; i++) {
     if (splited[i] === " ") continue;
     const replace = dictionary[splited[i].toUpperCase()];
