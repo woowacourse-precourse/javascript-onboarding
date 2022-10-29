@@ -1,8 +1,13 @@
 const CLAB_NUMBERS = [3, 6, 9];
 
 function problem3(number) {
-  var answer;
-  return answer;
+  let totalClabCount = 0;
+
+  for (let i = 1; i <= number; i += 1) {
+    totalClabCount += getClabCount(i);
+  }
+
+  return totalClabCount;
 }
 
 function getClabCount(number) {
