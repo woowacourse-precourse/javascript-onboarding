@@ -11,6 +11,31 @@ function problem1(pobi, crong) {
   };
 
   if (!checkValidation(pobi) || !checkValidation(crong)) return -1;
+
+  // 2. 포비와 크롱의 점수 계산
+  const arraySum = (arr) => {
+    return arr.reduce((n, ret) => ret + n);
+  };
+  const arrayMultiple = (arr) => {
+    return arr.reduce((n, ret) => ret * n);
+  };
+
+  // 2.1. 페이지별 최대 점수 계산
+  const calcPageMaxScore = (page) => {
+    const nums = String(page)
+      .split("")
+      .map((n) => +n);
+    return Math.max(arraySum(nums), arrayMultiple(nums));
+  };
+
+  // 2.2. 개인 최대 점수 계산
+  const calcPersonalMaxScore = (pages) => {
+    const [p1, p2] = pages;
+    return Math.max(calcPageMaxScore(p1), calcPageMaxScore(p2));
+  };
+
+  const scorePobi = calcPersonalMaxScore(pobi);
+  const scoreCrong = calcPersonalMaxScore(crong);
 }
 
 module.exports = problem1;
