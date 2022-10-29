@@ -1,4 +1,47 @@
 function problem7(user, friends, visitors) {
+  //utils
+  const MAX_VISITORS_LENGTH = 10000;
+  const MIN_FREINDS_LENGTH = 1;
+  const MAX_FREINDS_LENGTH = 10000;
+  const NICKNAME_REGEX = /^[a-z]{1,30}$/;
+
+  const checkValid = (user, friends, visitors) => {
+    checkNamesValid(user, friends, visitors);
+    checkFriendsValid(friends);
+    checkVistorsValid(visitors);
+  };
+
+  const checkNamesValid = (user, friends, visitors) => {
+    const nickNames = [user, ...friends.flat(), ...visitors];
+    nickNames.forEach((nickName) => {
+      if (!NICKNAME_REGEX.test(nickName)) {
+        throw new Error(
+          '모든 user의 닉네임은 1이상 30이하의 알파벳 소문자이여야 합니다.'
+        );
+      }
+    });
+  };
+
+  const checkFriendsValid = (friends) => {
+    if (
+      friends.length < MIN_FREINDS_LENGTH ||
+      friends.length > MAX_FREINDS_LENGTH
+    ) {
+      throw new Error('friends는 길이가 1이상 10,000 이하인 배열이여야 합니다');
+    }
+  };
+
+  const checkVistorsValid = (visitors) => {
+    if (visitors.length === 0) {
+      return;
+    }
+    if (visitors.length > MAX_FREINDS_LENGTH) {
+      throw new Error(
+        'visitors는 길이가 0이상 10,000 이하인 배열이여야 합니다'
+      );
+    }
+  };
+
   //data structure
   class SNS {
     constructor(usersFriendRelation, visitors) {
@@ -110,16 +153,20 @@ function problem7(user, friends, visitors) {
       return recommandationLsit;
     }
   }
+
+  //error handle
+  checkValid(user, friends, visitors);
+
   //data handle
-  const sns = new SNS(friends);
+  const sns = new SNS(friends, visitors);
   snsUserMap = sns.getUserMap();
 
   //recommandation system handle
-  const markRecommandationSystem = new UserRecommandationSystem(
+  const userRecommandationSystem = new UserRecommandationSystem(
     user,
     snsUserMap
   );
-  const result = markRecommandationSystem
+  const result = userRecommandationSystem
     .initBoard()
     .analyzeIndrectRelation()
     .analyzeVistors(visitors)
