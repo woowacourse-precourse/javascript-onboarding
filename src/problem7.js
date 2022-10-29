@@ -12,6 +12,22 @@ function getSortedScoreArr(score) {
   return scoreArr;
 }
 
+const getTargetScore = (user, relations, totalScore) => {
+  let targetScore = totalScore;
+  if (user in totalScore) {
+    delete targetScore[user];
+    targetScore = relations[user].reduce((acc, friend) => {
+      if (friend in acc) {
+        delete acc[friend];
+      }
+
+      return acc;
+    }, targetScore);
+  }
+
+  return targetScore;
+};
+
 const getTotalScore = (scoreObj, visitors) => {
   const totalScore = visitors.reduce((acc, visitor) => {
     if (visitor in acc) {
@@ -45,7 +61,7 @@ const getRelationScore = (user, relations) => {
   return relationScore;
 };
 
-function makeRelations(friends) {
+const makeRelations = (friends) => {
   const relations = friends.reduce((acc, relation) => {
     if (relation[0] in acc) {
       acc[relation[0]].push(relation[1]);
@@ -62,15 +78,15 @@ function makeRelations(friends) {
   }, {});
 
   return relations;
-}
+};
 
 function problem7(user, friends, visitors) {
   const answer = [];
   const relations = makeRelations(friends);
   const relationScore = getRelationScore(user, relations);
   const totalScore = getTotalScore(relationScore, visitors);
-  console.log(totalScore);
-  const sortedScore = getSortedScoreArr(totalScore);
+  const targetUserScore = getTargetScore(user, relations, totalScore);
+  const sortedScore = getSortedScoreArr(targetUserScore);
   sortedScore.some((each, i) => {
     if (i > 4) return true;
     answer.push(each[0]);
