@@ -12,7 +12,7 @@ function problem7(user, friends, visitors) {
   }
 
   for (const [target, list] of Object.entries(friendList)) {
-    if (me === user) continue;
+    if (target === user) continue;
     const userFriendList = friendList[user];
     const friendIntersection = userFriendList.filter((friend) =>
       list.includes(friend),
@@ -22,6 +22,14 @@ function problem7(user, friends, visitors) {
       recommendScore[target] += knowTogether * 10;
     } else {
       recommendScore[target] = knowTogether * 10;
+    }
+  }
+
+  for (const visitor of visitors) {
+    if (recommendScore[visitor]) {
+      recommendScore[visitor] += 1;
+    } else {
+      recommendScore[visitor] = 1;
     }
   }
 
