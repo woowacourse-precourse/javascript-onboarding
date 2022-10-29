@@ -14,6 +14,16 @@ function makeNameSliceTable(name, index, nameSliceTable) {
   return nameSliceTable;
 }
 
+//dupFormIndex를 저장하는 set을 만든다.
+function makeDupFormIndexs(dupedIndexs, dupFormIndexs) {
+  if (dupedIndexs.size > 1) {
+    for (index of dupedIndexs) {
+      dupFormIndexs.add(index);
+    }
+  }
+  return dupFormIndexs;
+}
+
 //nameSliceTable을 순회하면서 중복되는 nameSlice가 있는 form의 index를 찾는다.
 function findDupForm(nameSliceTable) {
   let dupFormIndexs = new Set();
@@ -22,9 +32,6 @@ function findDupForm(nameSliceTable) {
   }
   return dupFormIndexs;
 }
-
-//dupFormIndex를 저장하는 set을 만든다.
-function makeDupFormIndexs(dupedIndexs, dupFormIndexs) {}
 
 //Array형식으로 정답을 가공.
 function makeAnswerArr(forms, dupForm) {}
