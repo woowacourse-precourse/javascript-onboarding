@@ -30,17 +30,17 @@ function problem7(user, friends, visitors) {
   );
 
   // - [x] 점수 계산하기
-  const friendsRecommandPoint = [];
+  const friendsRecommendPoint = [];
 
   const calculatePoint = (name, point) => {
-    const idx = friendsRecommandPoint.findIndex(
+    const idx = friendsRecommendPoint.findIndex(
       (friend) => friend.name === name
     );
     if (idx === -1) {
-      friendsRecommandPoint.push({ name, point });
+      friendsRecommendPoint.push({ name, point });
       return;
     }
-    friendsRecommandPoint[idx].point = friendsRecommandPoint[idx].point + point;
+    friendsRecommendPoint[idx].point = friendsRecommendPoint[idx].point + point;
   };
 
   friendsOfFriends.forEach((name) =>
@@ -64,8 +64,8 @@ function problem7(user, friends, visitors) {
     return [letterInA, letterInB];
   };
 
-  const arrangeRecommandPoint = (recommandPoint) => {
-    return recommandPoint
+  const arrangeRecommendPoint = (recommendPoint) => {
+    return recommendPoint
       .sort((a, b) => {
         const value = b.point - a.point;
         if (value === 0) {
@@ -78,7 +78,7 @@ function problem7(user, friends, visitors) {
       .map((friend) => friend.name);
   };
 
-  answer = arrangeRecommandPoint(friendsRecommandPoint);
+  answer = arrangeRecommendPoint(friendsRecommendPoint);
 
   return answer;
 }

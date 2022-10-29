@@ -6,7 +6,7 @@ function problem1(pobi, crong) {
   const PAGE_LENGTH = 2;
 
   const EXCEPTIONS = -1;
-  const WINNDER_POBI = 1;
+  const WINNER_POBI = 1;
   const WINNER_CRONG = 2;
   const DRAW = 0;
 
@@ -99,7 +99,7 @@ function problem1(pobi, crong) {
   crongPoint = getPoint(crong);
 
   if (pobiPoint > crongPoint) {
-    answer = WINNDER_POBI;
+    answer = WINNER_POBI;
     return answer;
   }
 

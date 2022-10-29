@@ -27,22 +27,22 @@ function problem5(money) {
   }
 
   // - [x] 화폐 단위 별로 출금 수 세기
-  const caculate = (_money, unit) => {
+  const calculate = (_money, unit) => {
     const getUnitCount = (_money, unit) => +(_money / unit + '').split('.')[0];
     const getRemainder = (_money, unit) => _money % unit;
 
     return [getUnitCount(_money, unit), getRemainder(_money, unit)];
   };
 
-  const [오만원, 오만_원나머지] = caculate(money, 오만_원권);
-  const [만원, 만_원나머지] = caculate(오만_원나머지, 만_원권);
-  const [오천원, 오천_원나머지] = caculate(만_원나머지, 오천_원권);
-  const [천원, 천_원나머지] = caculate(오천_원나머지, 천_원권);
-  const [오백원, 오백_원나머지] = caculate(천_원나머지, 오백_원권);
-  const [백원, 백_원나머지] = caculate(오백_원나머지, 백_원권);
-  const [오십원, 오십_원나머지] = caculate(백_원나머지, 오십_원권);
-  const [십원, 십_원나머지] = caculate(오십_원나머지, 십_원권);
-  const [일원] = caculate(십_원나머지, 일_원권);
+  const [오만원, 오만_원나머지] = calculate(money, 오만_원권);
+  const [만원, 만_원나머지] = calculate(오만_원나머지, 만_원권);
+  const [오천원, 오천_원나머지] = calculate(만_원나머지, 오천_원권);
+  const [천원, 천_원나머지] = calculate(오천_원나머지, 천_원권);
+  const [오백원, 오백_원나머지] = calculate(천_원나머지, 오백_원권);
+  const [백원, 백_원나머지] = calculate(오백_원나머지, 백_원권);
+  const [오십원, 오십_원나머지] = calculate(백_원나머지, 오십_원권);
+  const [십원, 십_원나머지] = calculate(오십_원나머지, 십_원권);
+  const [일원] = calculate(십_원나머지, 일_원권);
 
   answer = [오만원, 만원, 오천원, 천원, 오백원, 백원, 오십원, 십원, 일원];
   return answer;
