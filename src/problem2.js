@@ -3,13 +3,15 @@ function problem2(cryptogram) {
   let rslt;
 
   rslt = checkStr(cryptogram)
-  while (rslt) {
+  while (rslt != "" && rslt != -1) {
     cryptogram = rslt;
     rslt = checkStr(cryptogram)
   }
 
-  answer = cryptogram;
-  return answer;
+  if (rslt == "") answer = rslt;            //모두 제거된 경우
+  else if (rslt == -1) answer = cryptogram; //연속되는 문자가 더이상 없는 경우
+
+  return answer
 }
 
 //연속되는 문자가 있는지 체크하는 함수
@@ -18,7 +20,7 @@ function checkStr(str) {
   for (; str[i] != str[i + 1] && str[i + 1] != '\0'; i++);
   
   //연속되는 문자 없이 끝까지 탐색했다면 false 반환
-  if (i == str.length) return false;
+  if (i == str.length || str[i] != str[i + 1]) return -1;
 
   str = removeChars(str, i);
   return str;
