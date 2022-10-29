@@ -3,7 +3,10 @@ function problem1(pobi, crong) {
 
   const pobi_nums = calc(pobi);
   const crong_nums = calc(crong);
-  
+
+  const pobi_max = Math.max.apply(null, pobi_nums);
+  const crong_max = Math.max.apply(null, crong_nums);
+
   return answer;
 }
 
