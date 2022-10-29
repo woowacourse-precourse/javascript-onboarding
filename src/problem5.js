@@ -5,7 +5,7 @@ function problem5(money) {
 
   for(let i=0; i<9; ++i){
     if(money >= unit[i]){
-      for(let n=1; money > unit[i]*n; ++n){
+      for(let n=1; money >= unit[i]; ++n){
         money -= unit[i];
         coins[i]++;
         if(money <= 0) break;
