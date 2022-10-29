@@ -11,6 +11,4 @@ function problem3(number) {
   return (answer = sum);
 }
 
-console.log(problem3(13));
-console.log(problem3(33));
 module.exports = problem3;
