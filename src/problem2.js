@@ -19,7 +19,6 @@ function recursion(word) {
     }
   }
   answer = result.join('');
-  console.log(answer);
   return answer;
 }
 
