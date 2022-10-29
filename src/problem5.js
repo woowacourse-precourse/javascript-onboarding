@@ -39,3 +39,16 @@ function calUnits(money) {
 
 
 module.exports = problem5;
+
+
+function test(){
+  console.log(problem5(50237)); //	[1, 0, 0, 0, 0, 2, 0, 3, 7]
+  console.log(problem5(15000)); // 	[0, 1, 1, 0, 0, 0, 0, 0, 0]
+  console.log(problem5(49999)); // [0, 4, 1, 4, 1, 4, 1, 4, 9]
+  console.log(problem5(1000000)); // [20, 0, 0 , 0, 0, 0, 0, 0]
+  console.log(problem5("fdsfs")); // Type Error
+  console.log(problem5(100000000)); // Range Error
+  
+}
+
+test();
