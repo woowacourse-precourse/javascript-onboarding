@@ -95,7 +95,6 @@ function problem7(user, friends, visitors) {
     answer.push(value.name)
     if(answer.length==5) break;
   }
-  console.log(answer)
   return answer;
 }
 
