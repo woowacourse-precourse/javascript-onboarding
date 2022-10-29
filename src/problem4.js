@@ -3,6 +3,8 @@ function reverseWord(char) {
   const lowerArr  = Array.from({ length : 26 }, (v, i) => String.fromCharCode(i + 97));
   const reverseUpper = [...upperArr].reverse();
   const reverseLower = [...lowerArr].reverse();
+  const upperIndex = upperArr.indexOf(char);
+  const lowerIndex = lowerArr.indexOf(char);
 }
 
 function problem4(word) {
