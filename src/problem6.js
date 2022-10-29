@@ -1,6 +1,7 @@
 function problem6(forms) {
-  var answer;
+  var answer = [];
   let sameNickIdx = new Set();
+  let mailList = new Set();
 
   for (let i = 0; i < forms.length; i++) {
     let twoChar = new Set();
@@ -16,6 +17,13 @@ function problem6(forms) {
         }
       }
     }
+  }
+
+  for (let idx of sameNickIdx) {
+    mailList.add(forms[idx][0]);
+  }
+  for (let mail of mailList) {
+    answer.push(mail);
   }
 
   return answer;
