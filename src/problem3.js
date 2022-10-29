@@ -1,11 +1,26 @@
 function problem3(number) {
   var answer = 0;
-  for(var i = 1; i <= number; i++) {
-    if(String(i).includes(3) || String(i).includes(6) || String(i).includes(9)) {
-      answer++;
+
+  if (vaild(number)) {
+    for(var i = 1; i <= number; i++) {
+      answer += (String(i).match(/3/g) || []).length;
+      answer += (String(i).match(/6/g) || []).length;
+      answer += (String(i).match(/9/g) || []).length;
     }
   }
   return answer;
 }
+
+/** number는 1 이상 10,000 이하인 자연수 확인하기 위한 함수*/
+function vaild(number) {
+  if (typeof number !== "number") {
+    return false;
+  } 
+  if (number > 10000 || number < 1) {
+    return false;
+  }
+  return true;
+}
+
 
 module.exports = problem3;
