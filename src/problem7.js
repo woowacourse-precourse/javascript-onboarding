@@ -2,18 +2,15 @@ function problem7(user, friends, visitors) {
   const findMyFriends = (friends) =>
     friends.filter((item, index) => friends[index][1] === user);
   const myFriends = findMyFriends(friends);
-  console.log(myFriends);
 
   const friendsArr = myFriends.join(",");
   const friendsArrSplited = friendsArr.split(",");
-  console.log(friendsArrSplited);
 
   const noUser = (friendsArrSplited) =>
     friendsArrSplited.filter(
       (item, index) => friendsArrSplited[index] !== user
     );
   const noUserName = noUser(friendsArrSplited);
-  console.log(noUserName);
 
   const newFriendsArr = [];
 
@@ -24,6 +21,30 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  const getElScore = (arrA) => {
+    let result = {};
+    for (const el of arrA) {
+      if (el !== user) {
+        result[el] = (result[el] || 0) + 10;
+      }
+    }
+    return result;
+  };
+  const newFriendsScore = getElScore(newFriendsArr);
+
+  const getVisitorsScore = (arrB) => {
+    let result = {};
+    for (const el of arrB) {
+      if (el !== user) {
+        result[el] = (result[el] || 0) + 1;
+      }
+    }
+    return result;
+  };
+  const visitorScore = getVisitorsScore(visitors);
+
+  
 }
 
 module.exports = problem7;
