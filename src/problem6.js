@@ -3,10 +3,8 @@ function problem6(forms) {
   let resultSet = new Set();
 
   for (let i = 0; i < forms.length; i++) {
-    // let name = forms[i][1];
-    // let email = forms[i][0];
-
-    //let [email, name] = form[i];
+    let name = forms[i][1];
+    let email = forms[i][0];
 
     /*
     구조분해할당을 쓸 수 있을까?

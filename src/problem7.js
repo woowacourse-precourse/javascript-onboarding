@@ -1,13 +1,4 @@
-function problem7(user, friends, visitors) {
-  // let graph = new Map();
-  // friends.forEach((duo) => makeGraph(graph, duo));
-
-  // let scoreList = new Map();
-  // friendOfFriend(user, graph, scoreList);
-  // score(user, graph, visitors, scoreList);
-
-  return;
-}
+function problem7(user, friends, visitors) {}
 
 function makeGraph(vertex, duo) {
   for (let i = 0; i < duo.length; i++) {
@@ -31,7 +22,7 @@ function friendOfFriend(user, graph, scoreList) {
 }
 
 // 이미 친구인 사람은 뺴야함
-function score(user, graph, visitors, scoreList) {
+function scoreVisitor(user, graph, visitors, scoreList) {
   visitors.forEach((visitor) => {
     if (scoreList.has(visitor)) {
       scoreList.set(visitor, scoreList.get(visitor) + 1);
@@ -42,4 +33,32 @@ function score(user, graph, visitors, scoreList) {
   });
 }
 
+let user = "mrko";
+let friends = [
+  ["donut", "andole"],
+  ["donut", "jun"],
+  ["donut", "mrko"],
+  ["shakevan", "andole"],
+  ["shakevan", "jun"],
+  ["shakevan", "mrko"],
+];
+let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+
+function sortResult(scoreList) {
+  let ArrScoreList = [...scoreList]; // 배열로 만들기
+  ArrScoreList.sort(function (a, b) {
+    [name1, score1] = a;
+    [name2, score2] = b;
+    if (score1 > score2) return -1;
+    if (score1 < score2) return 1;
+    if (score1 === score2) {
+      if (name1 > name2) return 1;
+      if (name1 <= name2) return -1;
+    }
+  });
+
+  return ArrScoreList.map((score) => score[0]);
+}
+
+problem7(user, friends, visitors);
 module.exports = problem7;
