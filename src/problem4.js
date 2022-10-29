@@ -4,8 +4,8 @@ const asciiLowerA = 97;
 const asciiLowerZ = 122;
 
 const checkValid = (word) => {
-  if (typeof word === 'string') return true;
-  if (word.length >= 1 && word.length <= 1000) return true;
+  if (typeof word !== 'string') return true;
+  if (word.length < 1 || word.length > 1000) return true;
   return false;
 };
 
