@@ -3,6 +3,14 @@ function problem3(number) {
   return answer;
 }
 
+function countTotalClap(number) {
+  const totalArray = makeArray(number);
+  let totalClap = 0;
+  totalArray.forEach((item) => totalClap += countSpecificClap(item));
+
+  return totalClap;
+}
+
 function makeArray(number) {
   const numberArray = [];
 
