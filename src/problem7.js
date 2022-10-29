@@ -8,6 +8,8 @@ const setUserMap = (userMap, [userA, userB]) => {
 };
 
 const getKnowEachOtherScore = (userAFriends, userBFriends) => {
+  if (!userAFriends) return 0;
+
   let count = 0;
   userAFriends.forEach((user) => {
     if (userBFriends.includes(user)) count++;
@@ -40,7 +42,7 @@ function problem7(user, friends, visitors) {
 
   let recommendedFrieds = [];
   userScoreMap.forEach((value, key) => {
-    if (userMap.get(user).includes(key)) return;
+    if (userMap.get(user)?.includes(key)) return;
     recommendedFrieds.push([key, value]);
   });
 
