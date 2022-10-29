@@ -54,6 +54,15 @@ function problem1(pobi, crong) {
     // 두 플레이어의 최종 점수
     const pobiScore = getScore(pobiMaxValueArr);
     const crongScore = getScore(crongMaxValueArr);
+
+    // 두 플레이어의 최종 점수 비교 및 알맞은 값 반환
+    if (pobiScore > crongScore) {
+      answer = 1;
+    } else if (pobiScore < crongScore) {
+      answer = 2;
+    } else if (pobiScore === crongScore) {
+      answer = 0;
+    }
   } catch (error) {
     // try문에서의 오류로 예외사항인 경우 answer = -1;
     answer = -1;
