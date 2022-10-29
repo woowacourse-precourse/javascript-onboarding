@@ -1,16 +1,14 @@
 function problem1(pobi, crong) {
-  // 1. 책을 임의로 펼친다.
-  // => 펼쳐진 페이지가 맞는지 확인한다.
-  // 둘중 하나라도 false이면 예외사항 이므로 && 사용.
+
   if(!checkPage(pobi) && checkPage(crong)){return -1}
 
-  if (result_value(pobi)>result_value(crong)){
+  if (resultValue(pobi)>resultValue(crong)){
     return 1
   }
-  if (result_value(pobi)<result_value(crong)){
+  if (resultValue(pobi)<resultValue(crong)){
     return 2
   }
-  if(result_value(pobi)==result_value(crong)){
+  if(resultValue(pobi)==resultValue(crong)){
     return 0
   }
 
@@ -45,7 +43,7 @@ function multiValue(page){
 
 function resultValue(member){
   for (let idx in member){
-    member[idx] = Math.max(plus_value(member[idx]),multi_value(member[idx]))
+    member[idx] = Math.max(plusValue(member[idx]),multiValue(member[idx]))
   }
   return Math.max(...member)
 }
