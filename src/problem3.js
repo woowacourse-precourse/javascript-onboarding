@@ -12,6 +12,16 @@ function has369(digits) {
   return count;
 }
 
+function checkAllNum(number) {
+  let countAll = 0;
+  let digits;
+  for (let i = 1; i <= number; i++) {
+    digits = getDigits(i);
+    countAll += has369(digits);
+  }
+  return countAll;
+}
+
 function problem3(number) {
   var answer;
   return answer;
