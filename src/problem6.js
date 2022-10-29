@@ -27,6 +27,13 @@ function problem6(forms) {
         }
     }
 
+    // 3. 이메일 형식이 @email.com인지 확인하고 중복 제거 후 오름차순 정렬
+    answer = answer.filter((email, idx, arr) => {
+        if (email.includes("@email.com") && arr.lastIndexOf(email) === idx)
+            return true;
+    });
+    answer.sort();
+
     return answer;
 }
 
