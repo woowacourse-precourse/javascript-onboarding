@@ -13,6 +13,10 @@ function problem7(user, friends, visitors) {
 
   const scoreObj = scoreHash(peoples);
 
+  const sortByScore = Object
+    .entries(scoreObj)
+    .sort((arr1, arr2) => Number(arr2[0]) - Number(arr1[0]));
+
 }
 
 module.exports = problem7;
