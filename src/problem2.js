@@ -10,6 +10,14 @@ function problem2(cryptogram) {
             }
         }
     };
+
+    // 3단계) 정규식으로 2개가 연속된 문자열 찾기 return boolean
+    const reg = /(.)\1+/;
+
+    // 연속된 문자열이 존재한다면 해당 문자열을 제외하는 함수를 실행합니다.
+    while (reg.test(wordArr.join(""))) {
+        findRepetition(wordArr);
+    }
 }
 
 module.exports = problem2;
