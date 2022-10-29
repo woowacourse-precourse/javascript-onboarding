@@ -42,7 +42,7 @@ function problem7(user, friends, visitors) {
 
   let recommendedFrieds = [];
   userScoreMap.forEach((value, key) => {
-    if (userMap.get(user)?.includes(key)) return;
+    if (userMap.get(user)?.includes(key) || value === 0) return;
     recommendedFrieds.push([key, value]);
   });
 
