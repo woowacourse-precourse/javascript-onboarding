@@ -12,12 +12,13 @@ const Bank = {
     return money >= 1 && money <= 1000000;
   },
   makeResult: function () {
+    let curMoney = this.amount;
     const result = this.notes.map((note) => {
-      let { curMoney, fig } = this.minusMoneyByNote(this.amount, note);
-      this.amount = curMoney;
+      let fig = this.minusMoneyByNote(curMoney, note);
+      curMoney -= note * fig;
       return fig;
     });
-    return this.amount === 0 ? result : [];
+    return curMoney === 0 ? result : [];
   },
   minusMoneyByNote: function (money, note) {
     let count = 0;
@@ -25,7 +26,7 @@ const Bank = {
       money -= note;
       count++;
     }
-    return { money, count };
+    return count;
   },
 };
 
