@@ -13,6 +13,8 @@ function problem1(pobi, crong) {
       singleDigitsOfOnePage.reduce((prev, curr) => prev * curr),
     );
   });
+
+  const pobiScore = Math.max(...scores);
 }
 
 module.exports = problem1;
