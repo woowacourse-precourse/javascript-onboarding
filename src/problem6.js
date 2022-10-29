@@ -2,11 +2,7 @@
 function checkIsEmail(email) {
   let regex = /[a-z0-9]+@email.com/;
 
-  const checkEmail = email.filter(v => {
-    if (regex.test(v) && v.length < 20) return v;
-  });
-
-  return checkEmail;
+  return email.filter(v => regex.test(v) && v.length < 20);
 }
 
 // 중복 글자 체크
@@ -27,11 +23,7 @@ function checkOverlap(forms) {
 
 function problem6(forms) {
   const overlapWords = checkOverlap(forms);
-
-  const checkNames = forms.filter(([email, name]) => {
-    if (overlapWords.some(v => name.includes(v))) return email;
-  })
-
+  const checkNames = forms.filter(([_, name]) => overlapWords.some(v => name.includes(v)));
   const answer = checkNames.map(([email, _]) => email);
 
   return checkIsEmail(answer).sort();
