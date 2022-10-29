@@ -15,4 +15,11 @@ function user_friends(user, friends) {
   return known_friends;
 }
 
+function friends_score(arr) {
+  return arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 10 }), {});
+}
+
+function visited_friends(arr) {
+  return arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+}
 module.exports = problem7;
