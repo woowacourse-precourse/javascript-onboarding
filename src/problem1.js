@@ -40,8 +40,8 @@ function sumNum(num) {
 function multipleNum(num) {
   var rslt = 1;
   while (num > 0) {
-      rslt *= num % 10;
-      num = parseInt(num / 10);
+    rslt *= num % 10;
+    num = parseInt(num / 10);
   }
   return rslt;
 }
