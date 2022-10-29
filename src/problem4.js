@@ -46,6 +46,28 @@ function problem4(word) {
   }
 
   //!2. 알파벳 외의 문자는 변환하지 않음
+
+  function CHECK_IS_ALPHABET(letter){
+    
+    if(typeof letter !== "string"){
+      return false;
+    }
+    
+    let inputASCII = letter.charCodeAt();
+
+    if(inputASCII >= ASCII_OBJ.A && inputASCII <= ASCII_OBJ.Z){
+      return true
+    }
+
+    if(inputASCII >= ASCII_OBJ.a && inputASCII <= ASCII_OBJ.z){
+      return true
+    }
+
+    return false;
+
+  }
+
+
   //!3. 알파벳 대문자는 대문자, 소문자는 소문자로 변환
 
   const result = [];
