@@ -35,11 +35,53 @@
 
   - 입력값에 에러가 없는지, 입력 양식이 유효한지 검사한지 검사  
 
-	  - 주어진 범위인 1이상 1000이하의 문자열인지 확인
+    - 주어진 범위인 1이상 1000이하의 문자열인지 확인
 
-        ```javascript 
-          if(word.length < 1 || word.length > 1000) return false;
-        ```
+      ```javascript 
+        if(word.length < 1 || word.length > 1000) return false;
+      ```
   
     
 </br>
+
+
+### ✔️ 기능 2. 소문자와 대문자의 경우를 구분하기 위한 함수 작성.
+<br>
+
+  - 입력값인 ```word```는 영어 대문자 + 소문자 조합으로 들어온다.
+
+  - 제한사항 中
+    ```
+    알파벳 "대문자는 대문자"로 "소문자는 소문자"로, "이 외의 문자는 변환 X"
+    ```
+    라는 특성을 이용하여, 대문자와 소문자의 경우를 분리하여 작성.
+
+<br>
+
+  - 대문자와 소문자를 구분하기 위해서 정규식 사용
+    - 소문자일 경우는 a-z사이의 값만 ```true``` 로 리턴하고 그 외는 ```false```
+    - 소문자일 경우는 a-z사이의 값만 ```true``` 로 리턴하고 그 외는 ```false```
+    
+
+```javascript
+function lowerCaseTest(value) {
+  const lowerCaseRegExp = /^[a-z]+$/;
+  if (lowerCaseRegExp.test(value)) {
+    return true
+  }
+  return false;
+}
+
+function upperCaseTest(value) {
+  const upperCaseRegEx = /^[A-Z]+$/;
+  if (upperCaseRegEx.test(value)) {
+    return true
+  }
+  return false;
+}
+```
+
+-
+
+  
+
