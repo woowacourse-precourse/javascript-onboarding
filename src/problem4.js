@@ -3,7 +3,7 @@ const reversedAlphabet = 'zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA';
 
 function problem4(word) {
   let answer;
-  let reversedWordArray = [];
+  const reversedWordArray = [];
   const validWord = /^[a-zA-Z\s]*$/;
 
   if (word.length < 1 || word.length > 1000) {
