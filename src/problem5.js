@@ -14,10 +14,8 @@ function problem5(money) {
   return WALLET;
 }
 
-console.log(problem5(50237))
-
 function calculate(Q) {
     return [parseInt(Q/5, 10), parseInt(Q%5, 10)];
 }
 
-// module.exports = problem5;
+module.exports = problem5;

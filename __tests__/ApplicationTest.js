@@ -65,15 +65,23 @@ describe("problem4", () => {
   });
 });
 
-// describe("problem5", () => {
-//   test("case1", () => {
-//     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
-//   });
+describe("problem5", () => {
+  test("case1", () => {
+    expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
+  });
 
-//   test("case2", () => {
-//     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
-//   });
-// });
+  test("case2", () => {
+    expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+  });
+
+  test("case3", () => {
+    expect(problem5(500000)).toEqual([10, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+
+  test("case4", () => {
+    expect(problem5(3)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 3]);
+  });
+});
 
 // describe("problem6", () => {
 //   test("case1", () => {
