@@ -21,4 +21,27 @@ function errorHandler(a, b){
   else return false;
 }
 
+// 입력받은 숫자의 각 자리수를 더하고 곱한 값을 비교하여 더 큰 수를 리턴하는 함수
+function numToString(n){
+  // 문자를 쪼갠 후 숫자로 치환
+  var num = (n + '').split('').map(function(item) {
+    return parseInt(item);
+  });
+  
+  var plus = num[0];
+  var multiple = num[0];
+
+  // 1번 index부터 끝까지 탐색하며 연산 수행. 최초값이 0번 index값이라 1부터 시작
+  for (i=1; i<num.length; i++){
+    plus += num[i];
+    multiple *= num[i];
+  }
+
+  // 값 비교
+  if (plus >= multiple){
+    return plus;
+  }
+  else return multiple;
+}
+
 module.exports = problem1;
