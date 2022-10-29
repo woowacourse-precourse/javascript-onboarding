@@ -1,44 +1,24 @@
 function problem7(user, friends, visitors) {
-  const alreadyFriends = findAlreadyFriends(user, friends);
+  let recommendationFriends = new Map();
 
+  const alreadyFriends = findAlreadyFriends(user, friends);
   const tempRecommendationFriends = findTempRecommendationFriends(
     user,
     friends,
     alreadyFriends
   );
 
-  // 임시 친구추천 배열에서 사용자 중복제거 & 점수 +10점 부여
-  let recommendationFriends = new Map();
-
   tempRecommendationFriends.map((tempRecommendationFriend) => {
-    // 친구추천에 등록돼 있는 경우 +10점
-    if (recommendationFriends.has(tempRecommendationFriend)) {
-      let recommendationFriendScore = recommendationFriends.get(
-        tempRecommendationFriend
-      );
-      return recommendationFriends.set(
-        tempRecommendationFriend,
-        recommendationFriendScore + 10
-      );
-    }
-    // 친구추천에 등록돼 있지 않은 경우 신규 등록
-    return recommendationFriends.set(tempRecommendationFriend, 10);
+    addRecommendationFriends(
+      recommendationFriends,
+      tempRecommendationFriend,
+      10
+    );
   });
 
-  // 친구추천에 visitor 추가 기능
   visitors.map((visitor) => {
-    // visitor에 유저나 친구가 들어오는 경우 예외처리
     if (visitor !== user && !alreadyFriends.includes(visitor)) {
-      // 친구추천에 등록된 visitor는 점수 +1점 부여
-      if (recommendationFriends.has(visitor)) {
-        let recommendationFriendScore = recommendationFriends.get(visitor);
-        return recommendationFriends.set(
-          visitor,
-          recommendationFriendScore + 1
-        );
-      }
-      // 친구추천에 등록되지 않은 visitor는 신규 등록
-      return recommendationFriends.set(visitor, 1);
+      addRecommendationFriends(recommendationFriends, visitor, 1);
     }
   });
 
@@ -79,6 +59,17 @@ function findTempRecommendationFriends(user, friends, alreadyFriends) {
     })
     .flat()
     .filter((friend) => !alreadyFriends.includes(friend));
+}
+
+function addRecommendationFriends(recommendationFriends, friendId, score) {
+  if (recommendationFriends.has(friendId)) {
+    let recommendationFriendScore = recommendationFriends.get(friendId);
+    return recommendationFriends.set(
+      friendId,
+      recommendationFriendScore + score
+    );
+  }
+  return recommendationFriends.set(friendId, score);
 }
 
 module.exports = problem7;
