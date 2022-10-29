@@ -16,14 +16,17 @@ module.exports = problem3;
  * @param {number} num
  * @returns {number}
  */
-function getThree(num) {
-  const split = num.toString().split("");
-  let count = 0;
 
-  split.forEach((ch) => {
-    ch === "3";
-    count++;
-  });
+function getCountFrom(number) {
+  return (num) => {
+    const split = num.toString().split("");
+    let count = 0;
 
-  return count;
+    split.forEach((ch) => {
+      if (ch === number) {
+        count++;
+      }
+    });
+    return count;
+  };
 }
