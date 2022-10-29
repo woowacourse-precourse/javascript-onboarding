@@ -13,11 +13,11 @@ function problem2(cryptogram) {
 }
 
 function checkInputErr(cryptogram) {
-  const vaildType = (input) => typeof input === 'string'; //TypeError
+  const validType = (input) => typeof input === 'string'; //TypeError
   const validLength = (input) => 1 <= input.length && input.length <= 1000; // LengthError
   const validInput = (input) => [...input].every(char => char === char.toLowerCase()); // InputError
 
-  if (!vaildType(cryptogram)) return true;
+  if (!validType(cryptogram)) return true;
   else if (!validLength(cryptogram)) return true;
   else if (!validInput(cryptogram)) return true;
   else return false;

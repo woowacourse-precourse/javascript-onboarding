@@ -18,10 +18,10 @@ function problem3(number) {
 }
 
 function checkInputErr(number) {
-  const vaildType = (input) => typeof input === 'number'; //TypeError
+  const validType = (input) => typeof input === 'number'; //TypeError
   const validRange = (input) => 1 <= input && input <= 10000; // RangeError
 
-  if (!vaildType(number)) return true;
+  if (!validType(number)) return true;
   else if (!validRange(number)) return true;
   else return false;
 }

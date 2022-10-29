@@ -18,10 +18,10 @@ function problem4(word) {
 
 function checkInputErr(word) {
 
-  const vaildType = (input) => typeof input === 'string'; //TypeError
+  const validType = (input) => typeof input === 'string'; //TypeError
   const validLength = (input) => 1 <= input.length && input.length <= 1000; // LengthError
 
-  if (!vaildType(word)) return true;
+  if (!validType(word)) return true;
   else if (!validLength(word)) return true;
   else return false;
 }
