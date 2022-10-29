@@ -1,5 +1,21 @@
 function problem1(pobi, crong) {
   var answer;
+
+  let pobiRslt = []
+  let crongRslt = []
+
+  //pobi 4개 값 저장
+  pobiRslt.append(sumNum(pobi[0]))
+  pobiRslt.append(multipleNum(pobi[0]))
+  pobiRslt.append(sumNum(pobi[1]))
+  pobiRslt.append(multipleNum(pobi[1]))
+
+  //crong 4개 값 저장
+  crongRslt.append(sumNum(crong[0]))
+  crongRslt.append(multipleNum(crong[0]))
+  crongRslt.append(sumNum(crong[1]))
+  crongRslt.append(multipleNum(crong[1]))  
+
   return answer;
 }
 
