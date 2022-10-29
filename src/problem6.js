@@ -21,10 +21,28 @@ module.exports = problem6;
 
 /* Nickname */
 const isValidName = (name) => {
-  // 닉네임은 한글만 가능
   const KRResult = isKR(name);
-  // 길이는 1자 이상 20자 미만
   const lengthResult = isValidLength(name, 1, 20);
+  const resultValue = KRResult && lengthResult;
+
+  return resultValue;
+};
+
+const isKR = (text) => {
+  if (!text) return false;
+
+  let resultValue;
+  const rKR = /[\u3131-\uD79D]/giu;
+  const regexResult = text.match(rKR);
+  if (!regexResult) return false;
+
+  if (regexResult.length === text.length) {
+    resultValue = true;
+  } else {
+    resultValue = false;
+  }
+
+  return resultValue;
 };
 
 /* Mail */
