@@ -1,7 +1,8 @@
-const acquaintancePoints = (userFriends, friendsList, friendsScore) => {
+const acquaintancePoints = (user, userFriends, friendsList, friendsScore) => {
   for(let i=0; i<userFriends.length; i++) {
     for(let j=0; j<friendsList[userFriends[i]].length; j++) {
-      friendsScore[friendsList[userFriends[i]][j]] += 10;
+      if(friendsList[userFriends[i]][j] !== user)
+        friendsScore[friendsList[userFriends[i]][j]] += 10;
     }
   }
 }
@@ -31,7 +32,7 @@ function problem7(user, friends, visitors) {
   for(let i=0; i<friendsList[user].length; i++) {
     userFriends.push(friendsList[user][i]);
   }
-  acquaintancePoints(userFriends, friendsList, friendsScore);
+  acquaintancePoints(user, userFriends, friendsList, friendsScore);
 
   console.log(friendsScore);
 }
