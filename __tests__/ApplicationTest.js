@@ -36,9 +36,6 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
-  test("case3", () => {
-    expect(problem3(10000)).toEqual(12000);
-  });
 });
 
 describe("problem4", () => {
