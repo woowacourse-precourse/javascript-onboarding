@@ -40,6 +40,16 @@ function problem7(user, friends, visitors) {
         }
     });
 
+    // 4. 점수가 큰 순서로 정렬 후 0점 제외한 최대 5명 구하기
+    let otherFriendsList = new Array(...otherFriendsMap).sort(
+        (x, y) => y[1] - x[1]
+    );
+
+    otherFriendsList = otherFriendsList.filter((friend) => friend[1] !== 0);
+
+    answer = otherFriendsList.map((friend) => friend[0]);
+    answer = answer.slice(0, 5);
+
     return answer;
 }
 
