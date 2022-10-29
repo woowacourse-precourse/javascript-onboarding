@@ -1,59 +1,83 @@
-class ErrorCase {
-  constructor(user, friends, visitors) {
-    this.user = user;
-    this.friends = friends;
-    this.visitors = visitors;
-    this.checkAllError();
+class MyError {
+  checkLimit() {
+    throw new Error("Overiding Error -> 제한된 input 길이를 체크하자");
   }
 
-  checkUserLimit() {
+  occurError() {
+    throw new Error("Overiding Error -> Error 발생 시 로직 멈추자");
+  }
+}
+
+class UsersError extends MyError {
+  constructor(user) {
+    super();
+
+    this.user = user;
+    this.occurError();
+  }
+
+  checkLimit() {
     return 1 <= this.user.length && this.user.length <= 30;
   }
 
-  checkUserLower() {
+  checkLower() {
     return this.user.match(/[a-z]/g).length === this.user.length;
   }
 
-  checkUser() {
-    return this.checkUserLimit() && this.checkUserLower();
+  occurError() {
+    if (!(this.checkLimit() && this.checkLower())) {
+      throw new Error("input 양식 중 user값에 오류가 발생하였습니다.");
+    }
+  }
+}
+
+class FriendsError extends MyError {
+  constructor(friends) {
+    super();
+
+    this.friends = friends;
+    this.occurError();
   }
 
-  checkFriendsLimit() {
+  checkLimit() {
     return 1 <= this.friends.length && this.friends.length <= 10000;
   }
 
-  checkFriendsIDLimit() {
+  checkIDLimit() {
     return this.friends
       .flatMap((friend) => friend)
       .every((friend) => 1 <= friend.length && friend.length <= 30);
   }
 
-  checkFriendIDListLimit() {
+  checkIDListLimit() {
     return this.friends.every((friend) => friend.length === 2);
   }
 
-  checkFriends() {
-    return (
-      this.checkFriendsLimit() &&
-      this.checkFriendsIDLimit() &&
-      this.checkFriendIDListLimit()
-    );
+  check() {
+    return this.checkLimit() && this.checkIDLimit() && this.checkIDListLimit();
   }
 
-  checkVisitorsLimit() {
+  occurError() {
+    if (!this.check()) {
+      throw new Error("input 양식 중 friends값에 오류가 발생하였습니다.");
+    }
+  }
+}
+
+class VisitorsError extends MyError {
+  constructor(visitors) {
+    super();
+
+    this.visitors = visitors;
+    this.occurError();
+  }
+
+  checkLimit() {
     return 0 <= this.visitors.length && this.visitors.length <= 10000;
   }
 
-  checkAllError() {
-    if (!this.checkUser()) {
-      throw new Error("input 양식 중 user값에 오류가 발생하였습니다.");
-    }
-
-    if (!this.checkFriends()) {
-      throw new Error("input 양식 중 friends값에 오류가 발생하였습니다.");
-    }
-
-    if (!this.checkVisitorsLimit()) {
+  occurError() {
+    if (!this.checkLimit()) {
       throw new Error("input 양식 중 visitor값에 오류가 발생하였습니다.");
     }
   }
@@ -61,7 +85,9 @@ class ErrorCase {
 
 class SNSAlgorithm {
   constructor(user, friends, visitors) {
-    new ErrorCase(user, friends, visitors);
+    new UsersError(user);
+    new FriendsError(friends);
+    new VisitorsError(visitors);
 
     this.user = user;
     this.friends = friends;
