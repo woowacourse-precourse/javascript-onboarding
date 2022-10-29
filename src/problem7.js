@@ -3,8 +3,7 @@ function problem7(user, friends, visitors) {
     return answer;
 }
 
-
-function friendCheck(user, friends) {
+function friendCheck(user, friends, visitors) {
     let userFriends = [];
     friends.forEach(friendship => {
         if (friendship.includes(user)) {
@@ -14,5 +13,21 @@ function friendCheck(user, friends) {
     })
     return userFriends;
 }
+
+function acquaintanceCheck(user, friends, visitors) {
+    let acquaintance = [];
+    friendCheck(user, friends, visitors).forEach(friend => {
+        friends.forEach(friendship => {
+            if (friendship.includes(friend)) {
+                acquaintance.push(friendship.filter(people => people !== friend).join());
+            }
+        })
+
+    })
+    acquaintance = acquaintance.filter(people => people !== user);
+    acquaintance = acquaintance.filter(people => !friendCheck(user, friends, visitors).includes(people));
+    return acquaintance;
+}
+
 
 module.exports = problem7;
