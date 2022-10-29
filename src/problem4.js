@@ -1,6 +1,9 @@
 function problem4(word) {
   const codeNumberList = [];
   const answerList = [];
+  const lastUpperCase = 'Z'.charCodeAt(0);
+  const upperCaseSum = 'A'.charCodeAt(0) + 'Z'.charCodeAt(0);
+  const lowerCaseSum = 'a'.charCodeAt(0) + 'z'.charCodeAt(0);
 
   for (let i = 0; i < word.length; i++) {
     codeNumberList.push(word.charCodeAt(i));
@@ -10,7 +13,8 @@ function problem4(word) {
     if (number === ' '.charCodeAt(0)) {
       answerList.push(' ');
     } else {
-      const opposite = number > 90 ? 219 - number : 155 - number;
+      const isUpperCase = number < lastUpperCase;
+      const opposite = isUpperCase ? upperCaseSum - number : lowerCaseSum - number;
       answerList.push(String.fromCharCode(opposite));
     }
   });
