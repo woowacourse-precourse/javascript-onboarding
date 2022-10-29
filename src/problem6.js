@@ -3,6 +3,7 @@
 // 2. 뒷 사람 모두를 조사하여 조합 중에 포함된 단어가 있는지 확인한다.
 // 3. 만약 포함되어 있다면, 다음에 조사하지 않도록 표시해준다. 
 // 4. 1-3번을 반복하여 끝까지 확인했으면, 답을 return 한다. 
+// + 정답을 오름차순 정렬한다.
 
 function problem6(forms) {
   let tf = new Array(forms.length).fill(true);
@@ -30,7 +31,7 @@ function problem6(forms) {
     }
   }
 
-  return result;
+  return result.sort();
 }
 
 module.exports = problem6;
