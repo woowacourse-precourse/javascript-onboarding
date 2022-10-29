@@ -10,6 +10,18 @@
  */
 
 /**
+ * @param {string} str
+ * @returns {string[]} two chars list
+ */
+function getTwoCharsInString(str) {
+  const result = new Set();
+  for (let i = 0; i < str.length - 1; i++) {
+    result.add(str.slice(i, i + 2));
+  }
+  return [...result];
+}
+
+/**
  * @param {[string, string][]} forms
  * @returns {string[]} result
  */
