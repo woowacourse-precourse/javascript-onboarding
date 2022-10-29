@@ -17,7 +17,16 @@ function problem6(forms) {
       wordArray.push(nickname[0] + nickname[1]);
     }
 
-    console.log(wordArray);
+    for (let j = i + 1; j < forms.length; j++) {
+      for (const word of wordArray) {
+        if (forms[j][1].indexOf(word) !== -1) {
+          answer.push(forms[j][0]);
+          break;
+        }
+      }
+    }
+
+    console.log(answer);
   }
 
   return answer;
