@@ -1,6 +1,28 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const userInfo = new Map();
+  const nickMap = new Map();
+  handleData(userInfo, nickMap, forms);
 }
+
+function checkInputErr(email, nickName){
+  const validType = (input) => typeof input === 'string'; //TypeError
+  const validlength = (input,a,b) => a <= input.length && input < b; // RangeError
+  const validEmail = (input) =>{
+    const regex = /^[a-zA-Z0-9]+@email.com/;
+    return regex.test(input);
+  };
+  const validName = (input) =>{
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+    return regex.test(input);
+  }
+
+  if (!validType(email) || !validType(nickName)) return true;
+  else if (!validlength(email,11,20) || !validlength(nickName,1,20)) return true;
+  else if (!validEmail(email)) return true;
+  else if (!validName(nickName)) return true;
+  else return false;
+}
+
+
 
 module.exports = problem6;
