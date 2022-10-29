@@ -15,7 +15,7 @@ function process(forms) {
     const patterns = makePatterns(forms[x][1]);
     duplicateCheck(forms, result, x, patterns);
   }
-  return result;
+  return result.sort();
 }
 function duplicateCheck(forms, result, start, patterns) {
   let index = start + 1;
