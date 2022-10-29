@@ -3,9 +3,9 @@
  * [x] friends에 대한 친구 내용과 관계를 friendList에 저장하는 기능
  * [x] user의 친구의 친구 중 user와 친구를 맺지 않은 친구들에 대한 선택 및 10점씩 추가 기능
  * [x] user의 친구의 친구 중 user와 친구를 맺지 않은 친구들이 visitor에 존재하는 갯수만큼 1점씩 추가 기능
- * [] 점수가 결정된 친구에 대한 recommendList에 저장하기
- * [] user의 친구의 친구는 아니지만 visitor에 있는 인원에 대한 점수 계산 및 recommendList에 저장
- * [] recommendList에 저장될 때 점수가 높고, 같을 경우 초성이 사전순으로 빠른 5개만 가지고 있도록 유지하는 기능 
+ * [x] 점수가 결정된 친구에 대한 recommendFriendList에 저장하는 기능
+ * [] user의 친구의 친구는 아니지만 visitor에 있는 인원에 대한 점수 계산 및 recommendFriendList에 저장
+ * [x] recommendFriendList에 저장될 때 점수가 높고, 같을 경우 초성이 사전순으로 빠른 5개만 가지고 있도록 유지하는 기능 
  */
 
 // 입력 받은 친구와 그의 친구들을 저장하는 함수
@@ -63,11 +63,41 @@ function getRecommendFriendList(user, visitors, friendsList) {
         // 만약 user의 타임라인에 방문한 친구인 경우 횟수당 1점 추가
         point += visitors.filter((elem) => elem === friendsList[friendsList[user][friend]][otherFrienda]).length;
 
+        // 최종점수와 함께 이름을 추천리스트에 저장
+        setRecommendFriendList(recommendFriendList ,[friendsList[friendsList[user][friend]][otherFriend], point]);
       }
     }
   }
 
   return recommendFriendList;
+}
+
+function setRecommendFriendList(recommendFriendList, [name, point]) {
+  if (recommendFriendList.length === 1) {
+    recommendFriendList.push([name, point])
+    return;
+  }
+
+  for (let i = 0; i < 5; i++ ) {
+    if (reList[i] === undefined) {
+      recommendFriendList.push([name, point]);
+      return;
+    }
+    let tmp;
+    if (recommendFriendList[i][1] < point){
+      tmp = recommendFriendList[i];
+      recommendFriendList[i] = [name, point];
+      [name, point] = tmp;
+    } else if (recommendFriendList[i][1] === point) {
+      for (let z = 0; z < name.length; z++) {
+        if (recommendFriendList[i][0][z] > name[z]) {
+          tmp = recommendFriendList[i];
+          recommendFriendList[i] = [name, point];
+          [name, point] = tmp;
+        }
+      }
+    }
+  }
 }
 
 function problem7(user, friends, visitors) {
