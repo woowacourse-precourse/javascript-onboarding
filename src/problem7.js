@@ -85,6 +85,17 @@ function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
   alreadyFriends.map((alreadyFriend) => friendsScore.delete(alreadyFriend));
 }
 
+function getMaxScoreFriends(user, friendsScore) {
+  return setMapToArray(friendsScore)
+    .filter(([key]) => key !== user)
+    .sort((a, b) => {
+      if (a[1] === b[1]) return b[0] - a[0];
+      return b[1] - a[1];
+    })
+    .map(([key]) => key)
+    .slice(0, 5);
+}
+
 function setMapToArray(hashMap) {
   return Array.from(hashMap);
 }
