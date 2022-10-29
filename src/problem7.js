@@ -6,6 +6,7 @@ function problem7(user, friends, visitors) {
   let answer;
   let relation = {};
   let userFriends;
+  let score = {};
 
   // 기능 1
   relation = makeRelation(friends);
@@ -14,6 +15,11 @@ function problem7(user, friends, visitors) {
   // userFriends(user의 친구 목록) 배열 할당
   userFriends = relation[user];
   console.log(userFriends); // [ 'donut', 'shakevan' ]
+
+  // 기능 2
+  score = makeScore(relation, userFriends);
+  console.log(score); // { donut: 0, andole: 0, jun: 0, shakevan: 0 }
+
 
   return answer;
 }
@@ -34,8 +40,23 @@ function makeRelation(friends) {
   return relation;
 }  
 
-// 기능 2. 
+// 기능 2. score 딕셔너리에 id 할당
+function makeScore(relation, userFriends) {
+  let score = {};
+  let relationKey = Object.keys(relation); // "key"값만
+  
+  for (let id of relationKey) {
+    if (id === user) { // 본인 제외
+      continue;
+    }
+    if (id in userFriends) { // 이미 친구인 경우 제외
+        continue;
+    }
+    score[id] = 0;
+  }
 
+  return score;
+}
 
 problem7(user,friends, visitors);
 
