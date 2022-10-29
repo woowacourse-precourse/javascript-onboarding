@@ -79,6 +79,14 @@ const stringDeduplication = (pointArray, targetArray, _deleteCount = 2) => {
   return newResultArray;
 };
 
+const isEmptyLength = iterable => {
+  if (!iterable.length) {
+    return true;
+  }
+
+  return false;
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
