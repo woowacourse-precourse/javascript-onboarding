@@ -25,6 +25,20 @@ function problem1(pobi, crong) {
     return result;
   };
 
+  // 왼쪽과 오른쪽 중 가장 큰수를 구하는 함수
+  function compareValue(left, right) {
+    let result;
+    if (!left > right) {
+      if (left > right) {
+        result = left;
+      } else {
+        result = right;
+      }
+    } else {
+      answer = -1;
+    }
+  }
+
   // pobi 와 crong중 더 큰수를 반환하는 함수
   function resultValue(pobi, crong) {
     if (pobi > crong) {
@@ -45,10 +59,10 @@ function problem1(pobi, crong) {
   let pobiLeftMultiplyValue = multiplyValue(pobi[0]);
   let pobiRightMultiplyValue = multiplyValue(pobi[1]);
 
-  let pobiLeftVaule = pobiLeftPlusValue > pobiLeftMultiplyValue ? pobiLeftPlusValue : pobiLeftMultiplyValue;
-  let pobiRightValue = pobiRightPlusValue > pobiRightMultiplyValue ? pobiRightPlusValue : pobiRightMultiplyValue;
+  let pobiResultPlusVaule = pobiLeftPlusValue > pobiRightPlusValue ? pobiLeftPlusValue : pobiRightPlusValue;
+  let pobiResultMultiplyValue = pobiLeftMultiplyValue > pobiRightMultiplyValue ? pobiLeftMultiplyValue : pobiRightMultiplyValue;
 
-  let pobiResultValue = pobiLeftVaule > pobiRightValue ? pobiLeftVaule : pobiRightValue;
+  let pobiResultValue = pobiResultPlusVaule > pobiResultMultiplyValue ? pobiResultPlusVaule : pobiResultMultiplyValue;
 
   // crong
   let crongLeftPlusValue = plusValue(crong[0]);
@@ -57,10 +71,10 @@ function problem1(pobi, crong) {
   let crongLeftMultiplyValue = multiplyValue(crong[0]);
   let crongRightMultiplyValue = multiplyValue(crong[1]);
 
-  let crongLeftValue = crongLeftPlusValue > crongLeftMultiplyValue ? crongLeftPlusValue : crongLeftMultiplyValue;
-  let crongRightValue = crongRightPlusValue > crongRightMultiplyValue ? crongRightPlusValue : crongRightMultiplyValue;
+  let crongResultPlusValue = crongLeftPlusValue > crongRightPlusValue ? crongLeftPlusValue : crongRightPlusValue;
+  let crongResultMultiplyValue = crongLeftMultiplyValue > crongRightMultiplyValue ? crongLeftMultiplyValue : crongRightMultiplyValue
 
-  let crongResultValue = crongLeftValue > crongRightValue ? crongLeftValue : crongRightValue;
+  let crongResultValue = crongResultPlusValue > crongResultMultiplyValue ? crongResultPlusValue : crongResultMultiplyValue
 
 
   resultValue(pobiResultValue, crongResultValue);
