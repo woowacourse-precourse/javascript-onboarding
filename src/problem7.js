@@ -37,6 +37,26 @@ function problem7(user, friends, visitors) {
 
     return a < b ? -1 : 1;
   });
+
+  // 다섯명만 담기
+  let maxFiveList = [];
+  for (let i = 0; i < 5; i++) {
+    maxFiveList.push(pointArr[i]);
+  }
+  // 점수가 0점일 경우 제외
+  for (let i = 0; i < maxFiveList.length; i++) {
+    if (maxFiveList[i][1] === 0) {
+      maxFiveList.splice(i, 1);
+    }
+  }
+  // 내 친구 제외
+  for (let i = 0; i < maxFiveList.length; i++) {
+    for (let j = 0; j < myFriends.length; j++) {
+      if (maxFiveList[i][0] === myFriends[j]) {
+        maxFiveList.splice(i, 1);
+      }
+    }
+  }
 }
 
 module.exports = problem7;
