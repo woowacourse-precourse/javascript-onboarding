@@ -24,6 +24,10 @@ function problem1(pobi, crong) {
     scoreCalculator(crong[1], "*")
   );
 
+  if (pobiScore > crongScore) answer = 1;
+  else if (pobiScore < crongScore) answer = 2;
+  else if (pobiScore === crongScore) answer = 0;
+
   return answer;
 }
 
