@@ -8,7 +8,7 @@ function problem3(number) {
   }
   // 2) 해당 문자열을 개별의 문자로 보고 손뼉을 더하는 과정
   for (let num of STRING_UNTIL_TURN) {
-    if (["3", "6", "9"].includes(num)) {
+    if (num === "3" || num === "6" || num === "9") {
       answer++;
     }
   }
