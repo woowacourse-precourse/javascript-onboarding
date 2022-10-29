@@ -32,9 +32,11 @@ function problem2(cryptogram) {
     inputArr = outputArr;
   }
 
+  // 해당 배열을 문자열로 변환 후 리턴
+
+  answer = answerArr.join("");
+
   return answer;
 }
 
 module.exports = problem2;
-
-problem2("browoanoommnaon");
