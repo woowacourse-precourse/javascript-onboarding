@@ -41,6 +41,26 @@ const isArrayConsecutiveOddEvenNumbers = (arr) => {
   return isFirstElOdd && isSecondElEven && isArrayConsecutive;
 };
 
+/**
+ * 주어진 pobi와 crong의 input이 valid한지 체크한다.
+ * @param {number[]} firstArr - pobi의 페이지 번호가 담긴 배열
+ * @param {number[]} secondArr - crong의 페이지 번호가 담긴 배열
+ * @return {boolean}
+ */
+const isValidInput = (firstArr, secondArr) => {
+  const isFirstArrValid =
+    isArrayLengthTwo(firstArr) &&
+    isValidRange(firstArr) &&
+    isArrayConsecutiveOddEvenNumbers(firstArr);
+
+  const isSecondArrValid =
+    isArrayLengthTwo(secondArr) &&
+    isValidRange(secondArr) &&
+    isArrayConsecutiveOddEvenNumbers(secondArr);
+
+  return isFirstArrValid && isSecondArrValid;
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
