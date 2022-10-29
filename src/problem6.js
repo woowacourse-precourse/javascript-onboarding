@@ -18,6 +18,14 @@ function makeName(c, name){
   c.forEach((a) => name[a]=0);
 }
 
+function nameNumberCount(n, c, name){
+  for(let i=0; i<n.length-1; i++){
+    if(c.has(n.substr(i,2))){
+      name[n.substr(i,2)]+=1;
+    }
+  }
+}
+
 function problem6(forms) {
   var answer;
   let name = {};
@@ -26,6 +34,10 @@ function problem6(forms) {
     nameDisting(forms[i][1], check);
   }
   makeName(check, name);
+  for(let i=0; i<forms.length; i++){
+    nameNumberCount(forms[i][1], check, name);
+  }
+  console.log(name)
   return answer;
 }
 
