@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const dude = [];
+  const score = {};
 
   friends.forEach((arr, idx) => {
     const [A, B] = arr;
@@ -10,7 +11,26 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  return dude;
+  dude.forEach((friend) => {
+    friends.forEach((arr) => {
+      const [A, B] = arr;
+      if (A === friend) {
+        if (!score[B] && B !== user) {
+          score[B] = 10;
+        } else if (B !== user) {
+          score[B] += 10;
+        }
+      } else if (B === friend) {
+        if (!score[A] && A !== user) {
+          score[A] = 10;
+        } else if (A !== user) {
+          score[A] += 10;
+        }
+      }
+    });
+  });
+
+  return score;
 }
 
 module.exports = problem7;
