@@ -60,11 +60,17 @@ function checkEmailLength(email) {
 function checkNickname(forms) {
   for (let x = 0; x < forms.length; x++) {
     if (!checkNicknameLength(forms[x][1])) return false;
+    if (!checkKorean(forms[x][1])) return false;
   }
   return true;
 }
 function checkNicknameLength(nickname) {
   if (nickname.length >= 1 && nickname.length < 20) return true;
+  return false;
+}
+function checkKorean(nickname) {
+  const korPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+  if (korPattern.test(nickname)) return true;
   return false;
 }
 module.exports = problem6;
