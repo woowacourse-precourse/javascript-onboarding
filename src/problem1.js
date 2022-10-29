@@ -43,9 +43,37 @@ function multiplyStrategy(page) {
   return String(page).split('').reduce((a, b) => +a * +b);
 }
 
+/**
+ * 문제 1번의 Entry Point
+ * @param {[number, number]} pobi 포비가 펼친 페이지가 들어있는 배열
+ * @param {[number, number]} crong 크롱이 펼친 페이지가 들어있는 배열
+ * @returns {number} 포비가 이길 시 1, 크롱이 이길 시 2, 무승부는 0, 예외사항은 -1
+ */
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  // 플레이어 정의.
+  //   단, 0과 -1은 무승부, 예외사항 발생으로 사용
+  const players = [
+    { id: 1, pages: pobi, score: 0 },
+    { id: 2, pages: crong, score: 0 },
+  ];
+
+  // 입력 검증
+  try {
+    players.forEach(player => verifyPages(player.pages));
+  } catch (e) {
+    return -1;
+  }
+
+  // 점수 계산 및 정렬
+  players.forEach(player => player.score = getScore(player.pages));
+  players.sort((a, b) => b.score - a.score);
+
+  const [winner, loser] = [players[0], players[players.length - 1]];
+
+  // 동점일 경우 0 반환
+  if (winner.score === loser.score) return 0;
+
+  return winner.id;
 }
 
 module.exports = problem1;
