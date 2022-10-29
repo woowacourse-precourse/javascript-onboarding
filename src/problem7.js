@@ -44,11 +44,11 @@ function problem7(user, friends, visitors) {
 	})
 
 	const scoreList = [...scores.entries()]
-	scoreList.sort((a, b) => {
-		if (a[1] === b[1]) {
-			return a[0].localeCompare(b[0])
+	scoreList.sort(([name1,score1], [name2,score2]) => {
+		if (score1 === score2) {
+			return name1.localeCompare(name2)
 		}
-		return b[1] - a[1]
+		return score2 - score1
 	})
 
 	const resultFriends = scoreList.slice(0, 5).map(([name, score]) => name)
