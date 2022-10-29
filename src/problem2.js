@@ -35,6 +35,11 @@ function getIncludeLowerCaseRegExp(cryptogram) {
   );
 }
 
+function isRepeatLowerCase(cryptogram) {
+  if (cryptogram.match(getIncludeLowerCaseRegExp(cryptogram))) return true;
+  return false;
+}
+
 function getNoRepeat(cryptogram) {
   const noRepeat = [];
   cryptogram.split("").forEach((char) => {
