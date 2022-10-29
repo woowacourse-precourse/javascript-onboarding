@@ -8,6 +8,8 @@ function problem5(money) {
   for (let i = 0; i < 9; i++) {
     if (money / money_array[i] != 0) {
       answer[i] = parseInt(money / money_array[i]);
+      //money에 나눠진 값을 다시 money에 저장한다.
+      money = money % money_array[i];
     } else {
       answer[i] = 0;
     }
