@@ -46,5 +46,21 @@ function recomendScore(user, friends, visitors) {
     return [...totalScore];
 }
 
+function recomendScoreSort(user, friends, visitors) {
+    const scoreSort = recomendScore(user, friends, visitors).sort((a, b) => {
+        if (a[1] === b[1]) {
+            if (a[0] > b[0]) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else if (a[1] > b[1]) {
+            return -1;
+        } else {
+            return 1;
+        }
+    })
+    return scoreSort;
+}
 
 module.exports = problem7;
