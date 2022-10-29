@@ -5,7 +5,7 @@ function problem4(word) {
 function treeFrogApp(word){
   const eachCharArr = createStringArr(word);
   for(let i = 0; i < eachCharArr.length; i++){
-    eachCharArr[i] != " " && (eachCharArr[i] = getTreeFrogChar(getFromCharToUTF16Code(eachCharArr[i])));
+    eachCharArr[i] != " " && (eachCharArr[i] = getTreeFrogChar(eachCharArr[i]));
   }
   return getFromCharsToString(eachCharArr);
 }
@@ -26,7 +26,8 @@ function checkAlphabet(utf16Code){
   return (utf16Code >= 65 && utf16Code <= 90) || (utf16Code <= 122 && utf16Code >= 97);
 }
 
-function getTreeFrogChar(utf16Code){
+function getTreeFrogChar(char){
+  let utf16Code = getFromCharToUTF16Code(char);
   if (checkAlphabet(utf16Code)){
     utf16Code>=97?utf16Code=219-utf16Code:utf16Code=155-utf16Code;
   }
