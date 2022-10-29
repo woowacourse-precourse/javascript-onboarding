@@ -30,6 +30,14 @@ function problem7(user, friends, visitors) {
   }
 
   // 4. 함께 아는 친구 점수 계산
+  for(let i=0;i<friendsListKeys.length;i++){
+    let onefriendsList = friendsList[friendsListKeys[i]];
+    for(let j=0;j<onefriendsList.length;j++){
+      if(scores[onefriendsList[j]] !== -1 && onefriendsList[j] !== user){
+        scores[onefriendsList[j]] += 10
+      }
+    }
+  }
 
   // 5. 점수를 통해 answer 산출
 
