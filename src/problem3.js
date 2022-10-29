@@ -2,13 +2,11 @@ function game(num) {
   let arr = [];
   let count = 0
   while (num !== 0) {
-    arr.push(num % 10);
-    num = parseInt(num / 10);
-  }
-  for (let i = 0; i < arr.length; i++) {
-    if ((arr[i] === 3) || (arr[i] === 6) || (arr[i] === 9)) {
-      count += 1
+    let temp=num%10;
+    if ((temp===3) || (temp===6) || (temp===9)) {
+      count+=1
     }
+    num = parseInt(num / 10);
   }
   return count
 }
