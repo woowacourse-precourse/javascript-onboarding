@@ -17,7 +17,12 @@ function decryption(str) {
   return ret;
 }
 function problem2(cryptogram) {
-  var answer;
+  var answer = cryptogram;
+  while (1) {
+    const decrypted = decryption(answer);
+    if (decrypted === answer) break;
+    answer = decrypted;
+  }
   return answer;
 }
 module.exports = problem2;
