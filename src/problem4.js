@@ -12,17 +12,8 @@ function problem4(word) {
  *
  * @param {string} ch
  */
-function mapAlphabet(ch) {
-  const chCode = ch.charCodeAt();
-  let pivot = 0;
-  if (chCode >= "A".charCodeAt() && chCode <= "Z".charCodeAt()) {
-    //대문자일떄
-  } else if (chCode >= "a".charCodeAt() && chCode <= "z".charCodeAt()) {
-    //소문자일떄
-  } else {
-    throw new Error("알파벳이 아닙니다");
-  }
-}
+function mapAlphabet(ch) {}
+
 function reverseCharacter(ch) {
   const chCode = ch.charCodeAt();
 
