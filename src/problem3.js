@@ -1,17 +1,20 @@
 function problem3(number) {
-  var answer = countClap(number);
+  var answer = countClapTotal(number);
   return answer;
 }
 
-function countClap(maxNumber) {
+function countClapTotal(maxNumber) {
   let clap = 0;
   for (let nowNumber = 1; nowNumber <= maxNumber; nowNumber++) {
-    const nums = [...nowNumber.toString()];
-    clap += nums.filter(
-      (num) => parseInt(num) !== 0 && parseInt(num) % 3 === 0
-    ).length;
+    clap += countNowNumClap(nowNumber);
   }
   return clap;
+}
+
+function countNowNumClap(number) {
+  const nums = [...number.toString()];
+  return nums.filter((num) => parseInt(num) !== 0 && parseInt(num) % 3 === 0)
+      .length;
 }
 
 module.exports = problem3;
