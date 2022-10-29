@@ -12,48 +12,50 @@ function getSortedScoreArr(score) {
   return scoreArr;
 }
 
-function calculateScore(user, visitors, relations) {
-  const score = {};
-  if (user in relations) {
-    relations[user].forEach((friend) => {
-      if (friend in relations) {
-        relations[friend].forEach((f) => {
-          if (f in score) {
-            score[f] += 10;
-          } else {
-            score[f] = 10;
-          }
-        });
-      }
-    });
-  }
-  visitors.some((visitor) => {
-    if (user in relations && relations[user].includes(visitor)) return 0;
-    if (visitor in score) {
-      score[visitor] += 1;
+const getTotalScore = (scoreObj, visitors) => {
+  const totalScore = visitors.reduce((acc, visitor) => {
+    if (visitor in acc) {
+      acc[visitor] += 1;
     } else {
-      score[visitor] = 1;
+      acc[visitor] = 1;
     }
-  });
 
-  return score;
-}
+    return acc;
+  }, scoreObj);
 
-function makeRelations(me, friends) {
-  const relations = friends.reduce((acc, relation, i) => {
-    if (relation[1] !== me) {
-      if (relation[0] in acc) {
-        acc[relation[0]].push(relation[1]);
-      } else {
-        acc[relation[0]] = [relation[1]];
+  return totalScore;
+};
+
+const getRelationScore = (user, relations) => {
+  let relationScore = {};
+  if (user in relations) {
+    relationScore = relations[user].reduce((acc, directFriend) => {
+      for (let friend of relations[directFriend]) {
+        if (friend in acc) {
+          acc[friend] += 10;
+        } else {
+          acc[friend] = 10;
+        }
       }
+
+      return acc;
+    }, {});
+  }
+
+  return relationScore;
+};
+
+function makeRelations(friends) {
+  const relations = friends.reduce((acc, relation) => {
+    if (relation[0] in acc) {
+      acc[relation[0]].push(relation[1]);
+    } else {
+      acc[relation[0]] = [relation[1]];
     }
-    if (relation[0] !== me) {
-      if (relation[1] in acc) {
-        acc[relation[1]].push(relation[0]);
-      } else {
-        acc[relation[1]] = [relation[0]];
-      }
+    if (relation[1] in acc) {
+      acc[relation[1]].push(relation[0]);
+    } else {
+      acc[relation[1]] = [relation[0]];
     }
 
     return acc;
@@ -64,13 +66,16 @@ function makeRelations(me, friends) {
 
 function problem7(user, friends, visitors) {
   const answer = [];
-  const relations = makeRelations(user, friends);
-  const score = calculateScore(user, visitors, relations);
-  const sortedScore = getSortedScoreArr(score);
+  const relations = makeRelations(friends);
+  const relationScore = getRelationScore(user, relations);
+  const totalScore = getTotalScore(relationScore, visitors);
+  console.log(totalScore);
+  const sortedScore = getSortedScoreArr(totalScore);
   sortedScore.some((each, i) => {
     if (i > 4) return true;
     answer.push(each[0]);
   });
+
   return answer;
 }
 
