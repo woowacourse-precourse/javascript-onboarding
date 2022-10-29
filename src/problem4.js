@@ -10,6 +10,9 @@ function problem4(word) {
     if (alphabet === alphabet.toLowerCase()) {
       const oppositeCode = 219 - alphabet.charCodeAt();
       answer += String.fromCharCode(oppositeCode);
+    } else {
+      const oppositeCode = 155 - alphabet.charCodeAt();
+      answer += String.fromCharCode(oppositeCode);
     }
   }
   return answer;
