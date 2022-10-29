@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   if(isVaild(pobi, crong) === false) return -1;
   let pobiScore = getScore(pobi);
   let crongScore = getScore(crong);
-  answer = decideWinner(pobiScore, crongScore);
+  answer = getWinner(pobiScore, crongScore);
   return answer;
 }
 
@@ -14,7 +14,7 @@ function isVaild(pobi, crong) {
   return true;
 }
 
-function decideWinner(pobiScore, crongScore) {  
+function getWinner(pobiScore, crongScore) {  
   if(pobiScore > crongScore) return 1;
   if(pobiScore < crongScore) return 2;
   if(pobiScore === crongScore) return 0;
