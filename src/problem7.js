@@ -14,7 +14,7 @@ function problem7(user, friends, visitors) {
     STRANGER_SCORE
   );
   const recomendFriends = Object.keys(
-    sumScore(recomendFriendsScore, strangeVisitorScore)
+    sorting(sumScore(recomendFriendsScore, strangeVisitorScore))
   );
 
   for (let i = 0; i < 5; i++) {
