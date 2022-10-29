@@ -40,8 +40,25 @@ describe('problem2', () => {
   test('case1', () => {
     expect(problem2('browoanoommnaon')).toEqual('brown')
   })
+
   test('case2', () => {
     expect(problem2('zyelleyz')).toEqual('')
+  })
+
+  test('case3', () => {
+    expect(problem2('abcde')).toEqual('abcde')
+  })
+
+  test('case4', () => {
+    expect(problem2('azzzb')).toEqual('ab')
+  })
+
+  test('case5', () => {
+    expect(problem2('ABC')).toEqual('입력값이 잘못되었습니다.')
+  })
+
+  test('case6', () => {
+    expect(problem2('')).toEqual('입력값이 잘못되었습니다.')
   })
 })
 
