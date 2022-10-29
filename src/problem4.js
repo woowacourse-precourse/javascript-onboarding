@@ -1,4 +1,6 @@
-// 알파벳 소문자 반대로 변환하여 반환하는 기능
+function lowercase(num) {
+  return String.fromCharCode(97 + (122 - num));
+}
 
 function uppercase(num) {
   return String.fromCharCode(65 + (90 - num));
@@ -13,6 +15,9 @@ function problem4(word) {
     if (asciiX >= 65 && asciiX <= 90) {
       const reverseUpper = uppercase(asciiX);
       answer += reverseUpper;
+    } else if (asciiX >= 97 && asciiX <= 122) {
+      const reverseLower = lowercase(asciiX);
+      answer += reverseLower;
     }
   }
 
