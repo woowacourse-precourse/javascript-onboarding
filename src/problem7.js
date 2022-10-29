@@ -1,4 +1,6 @@
 function problem7(user, friends, visitors) {
+  if (!checkValidation(user, friends, visitors))
+    throw new Error("입력오류입니다.");
   var answer = getScore(user, friends, visitors);
   return answer;
 }
@@ -60,5 +62,51 @@ function getMaxFive(array) {
     if (one[1] > 0 && result.length <= 5) result.push(one[0]);
   });
   return result;
+}
+function checkValidation(user, friends, visitors) {
+  console.log(
+    checkID(user),
+    checkNodeLength(user),
+    checkFriend(friends),
+    checkFriendsNode(friends),
+    checkFriendId(friends),
+    checkVisitors(visitors)
+  );
+  return (
+    checkID(user) &&
+    checkNodeLength(user) &&
+    checkFriend(friends) &&
+    checkFriendsNode(friends) &&
+    checkFriendId(friends) &&
+    checkVisitors(visitors)
+  );
+}
+function checkNodeLength(node) {
+  return node.length >= 1 && node.length <= 30;
+}
+function checkFriend(friends) {
+  return friends.length >= 1 && friends.length <= 10000;
+}
+function checkFriendsNode(friends) {
+  let check = true;
+  friends.forEach((friend) => {
+    if (friend.length != 2) check = false;
+  });
+  return check;
+}
+function checkID(Id) {
+  const lowerId = Id.toLowerCase();
+  return lowerId == Id;
+}
+function checkFriendId(friends) {
+  let check = true;
+  friends.forEach((friend) => {
+    if (!checkID(friend[0])) check = false;
+    if (!checkID(friend[1])) check = false;
+  });
+  return check;
+}
+function checkVisitors(visitors) {
+  return visitors.length >= 0 && visitors.length <= 10000;
 }
 module.exports = problem7;
