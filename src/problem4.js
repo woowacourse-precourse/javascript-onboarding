@@ -1,5 +1,29 @@
+// console.log("문제4");
+// console.log(problem4("I love you"));
+
 function problem4(word) {
   var answer;
+  const wordArr = [...word].map((char) => char.charCodeAt());
+  console.log(wordArr);
+  let greenFrogSaid = "";
+
+  for (const ASCIInum of wordArr) {
+    let str = 0;
+    if (ASCIInum >= 65 && ASCIInum <= 77) {
+      str = ASCIInum + ((77 - ASCIInum) * 2 + 1);
+    } else if (ASCIInum >= 78 && ASCIInum <= 90) {
+      str = ASCIInum - ((ASCIInum - 78) * 2 + 1);
+    } else if (ASCIInum >= 97 && ASCIInum <= 109) {
+      str = ASCIInum + ((109 - ASCIInum) * 2 + 1);
+    } else if (ASCIInum >= 110 && ASCIInum <= 122) {
+      str = ASCIInum - ((ASCIInum - 110) * 2 + 1);
+    } else {
+      str = ASCIInum;
+    }
+    greenFrogSaid += String.fromCharCode(str);
+  }
+
+  answer = greenFrogSaid;
   return answer;
 }
 
