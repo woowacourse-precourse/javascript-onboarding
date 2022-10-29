@@ -29,8 +29,6 @@ function updateDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr, i) {
 }
 
 function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
-  let isTrue = false;
-
   // 문자열을 순회하면서 반복되는 부분의 데이터를 배열화하여 저장한다.
   for (let i = 0; i < cryptogram.length; i++) {
     if (cryptogram[i] !== cryptogram[i + 1]) {
