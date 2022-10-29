@@ -17,7 +17,7 @@ function problem1(pobi, crong) {
     }
 
     /** 2~3단계) 각 자리 숫자를 모두 더하는 함수 */
-    const sum = (n) => {
+    const sumEach = (n) => {
         let sumIs = 0;
         while (n > 0) {
             sumIs += n % 10;
@@ -27,7 +27,7 @@ function problem1(pobi, crong) {
     };
 
     /** 2~3단계) 각 자리 숫자를 모두 곱하는 함수 */
-    const multiply = (n) => {
+    const multiplyEach = (n) => {
         let multiplyIs = 1;
         while (n > 0) {
             multiplyIs *= n % 10;
@@ -38,7 +38,7 @@ function problem1(pobi, crong) {
 
     /**  4단계) 가장 큰 수를 구하는 함수 */
     const getBigScore = (nameLeftPage, nameRightPage) => {
-        return Math.max(sum(nameLeftPage), sum(nameRightPage), multiply(nameLeftPage), multiply(nameRightPage));
+        return Math.max(sumEach(nameLeftPage), sumEach(nameRightPage), multiplyEach(nameLeftPage), multiplyEach(nameRightPage));
     };
 
     // 4단계) 본인의 점수를 구함
