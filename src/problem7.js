@@ -22,7 +22,32 @@ function problem7(user, friends, visitors) {
       if(nameList[i]==isFriend[j]) nameList.splice(i,1);
     }
   }
+  // 점수리스트 이차원배열 새로 생성. 0:이름, 1:점수
+  let pointList = Array.from(new Array(nameList.length), () => new Array(2).fill(0));
+  for(let i=0; i<nameList.length; ++i){
+    pointList[i][0] = nameList[i];
+  }
   
+  // 점수카운트
+  for(let i=0; i<friends.length; ++i){
+    for(let j=0; j<isFriend.length; ++j){
+      if(friends[i][0]==isFriend[j]) {
+        for(let k=0; k<nameList.length; ++k){
+          if(friends[i][1]==nameList[k]) pointList[k][1]+=10;
+        }
+      }
+      else if(friends[i][1]==isFriend[j]) {
+        for(let k=0; k<nameList.length; ++k){
+          if(friends[i][0]==nameList[k]) pointList[k][1]+=10;
+        }
+      }
+    }
+  }
+  for(let i=0; i<visitors.length; ++i){
+    for(let j=0; j<nameList.length; ++j){
+      if(visitors[i] == nameList[j]) pointList[j][1]++;   
+    }
+  }
 
   return answer;
 }
