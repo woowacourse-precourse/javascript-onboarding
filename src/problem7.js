@@ -7,6 +7,10 @@ function problem7(user, friends, visitors) {
     USER_FRIENDS
   );
   const recommendUserMap = initObj(NOT_USER_FRIENDS);
+  for (let i = 0; i < visitors.length; i++) {
+    if (recommendUserMap[visitors[i]] !== undefined)
+      recommendUserMap[visitors[i]] += 1;
+  }
 function getNotUserFriendsArray(user, friends, visitors, USER_FRIENDS) {
   const notUserFriends = [];
   for (let i = 0; i < friends.length; i++) {
