@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
   var answer;
 
+  //제한 사항
   if(cryptogram.length < 1 || cryptogram.length > 1000){
    return -1; 
   }
@@ -13,6 +14,7 @@ function problem2(cryptogram) {
   let arr = [...cryptogram];
   let temp;
   
+  //중복 문자 찾아서 빈문자열로 바꾸기
   for(let j=0; j<cryptogram.length -1; j++)
   {
     for(let i = 0; i < cryptogram.length-1; i++){
