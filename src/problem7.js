@@ -1,22 +1,27 @@
 function problem7(user, friends, visitors) {
   var answer;
 
-  const userFriendsListGetter = (user, friends) => {
+  const friendsListGetter = (finder) => {
 
-    const userFriendsList = [];
+    const friendsList = [];
 
     friends.map(friend => {
-      if(friend.indexOf(user) !== -1) {
-        userFriendsList.push(friend[1-friend.indexOf(user)]);
+      if(friend.indexOf(finder) !== -1) {
+        friendsList.push(friend[1-friend.indexOf(finder)]);
       }
     })
 
-    console.log(userFriendsList);
+    return friendsList;
+  };
+
+  const userFriendsListGetter = (user) => {
+
+    const userFriendsList = friendsListGetter(user);
 
     return userFriendsList;
   }
 
-  userFriendsListGetter(user, friends);
+  userFriendsListGetter(user);
 
   return answer;
 }
