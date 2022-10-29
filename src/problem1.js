@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   var answer;
   // 5) 예외사항을 처리하는 과정
-  if (exceptionHandle(pobi) || exceptionHandle(crong)) {
+  if (isException(pobi) || isException(crong)) {
     answer = -1;
     return answer;
   }
@@ -39,13 +39,15 @@ function calculateScore(pageArr) {
 }
 
 // 5) 예외사항을 처리하는 과정
-// 짝홀로 입력된다(이건 제한사항에서 걸러진다고 생각)
-function exceptionHandle(pageArr) {
-  // 양 페이지가 1씩차이가 안난다
-  if (pageArr[1] - pageArr[0] !== 1) {
+// 짝홀로 입력된다(이건 제한사항에서 걸러진다고 생각한다)
+function isException(pageArr) {
+  const PAGE_LEFT = pageArr[0];
+  const PAGE_RIGHT = pageArr[1];
+  if (PAGE_RIGHT - PAGE_LEFT !== 1) {
+    // 페이지차이가 1이 아니다
     return true;
-  } else if (pageArr[0] < 1 || pageArr[1] > 400) {
-    // 범위 1 ~ 400을넘긴다
+  } else if (PAGE_LEFT < 1 || PAGE_RIGHT > 400) {
+    // 1 ~ 400을 넘긴다
     return true;
   } else {
     return false;
