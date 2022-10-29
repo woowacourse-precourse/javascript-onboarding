@@ -11,7 +11,8 @@ function removeDuplicateLetter(string) {
   string.forEach((letter, idx) => {
     const previousLetter = string[idx - 1];
     const nextLetter = string[idx + 1];
-    if(letter !== nextLetter && letter !== previousLetter) result += letter;
+    if([nextLetter, previousLetter].includes(letter)) return;
+    result += letter;
   });
   if(result !== string.join('')) return removeDuplicateLetter(result);
   if(result === string.join('')) return result;
