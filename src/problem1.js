@@ -1,5 +1,7 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = -1;
+  if (pobi[1] - pobi[0] !== 1 || crong[1]-crong[0] !== 1) return answer
+
   function checker(...num){
     function slicer(num){
       let r = 0;
@@ -20,7 +22,6 @@ function problem1(pobi, crong) {
     slicer(String(num[index]));
 
     const finalScore = Math.max(...score);
-
     return finalScore
   }; 
 
@@ -33,6 +34,5 @@ function problem1(pobi, crong) {
 
   return answer;
 }
-
 
 module.exports = problem1;
