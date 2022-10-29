@@ -52,6 +52,15 @@ function handleString(word, dict) {
   return temp.join('');
 }
 
-
-
 module.exports = problem4;
+
+function test(){
+  console.log(problem4("I love you")); // "R olev blf"
+  console.log(problem4("R olev blf")); //"I love you"
+  console.log(problem4("Aa 123 &^%& bCC ++")); // Zz 123 &^%& yXX ++
+  console.log(problem4(123)) // Type Error
+  console.log(problem4('')) //Length Error
+}
+
+test();
+
