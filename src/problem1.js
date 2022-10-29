@@ -1,4 +1,14 @@
 function problem1(pobi, crong) {
+  const handleException = (pages) => {
+    const leftPage = pages[0];
+    const rightPage = pages[1];
+    if (!Number.isInteger(leftPage) || !Number.isInteger(rightPage)) return true;
+    if (rightPage - leftPage !== 1) return true;
+    if (leftPage <= 1 || rightPage >= 400) return true;
+    if (leftPage % 2 !== 1 || rightPage % 2 !== 0) return true;
+    return false;
+  };
+
   const getMaxScore = (pages) => {
     const singleDigitsOfBothPages = pages.map((page) =>
       page
@@ -16,6 +26,8 @@ function problem1(pobi, crong) {
     });
     return Math.max(...scores);
   };
+
+  if (handleException(pobi) || handleException(crong)) return -1;
 
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
