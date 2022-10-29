@@ -6,6 +6,10 @@ function problem1(pobi, crong) {
   
   if(!(isValidPobi && isValidCrong)) return -1;
 
+  // 규칙에 따라 계산된 점수
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+  
   /**
    * 예외사항 체크 함수
    * - input 의 길이가 2가 아닌 경우
@@ -25,6 +29,24 @@ function problem1(pobi, crong) {
       Math.abs(input[1] - input[0]) !== 1
       ) return false;
     return true;
+  };
+
+  /**
+   * 본인의 점수를 정하는 함수
+   * - 페이지의 각 자리의 숫자를 모두 더하거나 모두 곱해서 큰 수를 구한다
+   * - 왼쪽 페이지와 오른쪽 페이지 각각 위의 과정을 통해 나온 수를 score 배열에 저장 후 비교
+   * @param {number[]} pages [왼쪽 페이지 번호, 오른쪽 페이지 번호]
+   * @return {number} 계산된 점수를 반환
+   */
+  function getScore(pages){
+    const score = [];
+    pages.map((v)=>{
+      const page = v.toString().split("").map(x=>parseInt(x));
+      const pageSum = page.reduce((acc,cur)=>acc + cur , 0);
+      const pageMulti = page.reduce((acc,cur)=>acc * cur , 1);
+      return score.push(Math.max(pageSum, pageMulti));
+    });
+    return Math.max.apply(null,score);
   };
 
 };
