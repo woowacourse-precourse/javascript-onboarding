@@ -1,5 +1,9 @@
 function problem3(number) {
   var answer;
+  if (!validType(number)) throw new Error("잘못된 타입입니다.");
+  if(!validRange(number)) throw new Error("잘못된 범위입니다.");
+  
+  answer = countTotalClap(number);
   return answer;
 }
 
