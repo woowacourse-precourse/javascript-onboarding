@@ -1,5 +1,4 @@
 function problem6(forms) {
-  const nickname = forms.map((x) => x[1]);
   const seperate = (str) => {
     const arr = [];
     let cnt = 0;
@@ -18,29 +17,30 @@ function problem6(forms) {
     }
     return arr;
   };
-  let idx = 0;
-  // nickname에 있는 모든 문자열을 돌면서 문자열 분리
-  const arr = [];
-  while (idx < nickname.length) {
-    let i = idx + 1;
-    let same = 0;
-    // 분리된 문자열이 다른 문자열에 있는지
-    while (i < nickname.length) {
-      seperate(nickname[idx]).map((x) => {
-        if (nickname[i].includes(x)) {
-          arr.push(...nickname.splice(i, 1));
-          same += 1;
-          console.log(x, idx, nickname);
-        }
-      });
-      i += 1;
-    }
-    same ? nickname.splice(idx, 1) : (idx += 1);
-  }
-  return forms
-    .filter((x) => !nickname.includes(x[1]))
-    .map((x) => x[0])
-    .sort();
-}
 
+  const confirm = (checkArr, originArr) => {
+    const t = originArr.filter((c) => {
+      for (let index = 0; index < checkArr.length; index++) {
+        if (c[1].includes(checkArr[index])) {
+          return true;
+        }
+      }
+    });
+    return t;
+  };
+
+  const repeatNickname = (forms) => {
+    const arr = [];
+    while (forms.length !== 0) {
+      const key = forms.splice(0, 1);
+      const first = seperate(key.flat()[1]);
+      const repeat = confirm(first, forms);
+      if (repeat.length) {
+        arr.push(...repeat, ...key);
+      }
+    }
+    return [...new Set(arr)].map((x) => x[0]).sort();
+  };
+  return repeatNickname(forms);
+}
 module.exports = problem6;
