@@ -17,6 +17,12 @@ function findNumber(source, number) {
   return result;
 }
 
+// 총 손뼉을 몇 번 쳐야 하는지 숫자를 모두 더하는 기능
+function addNumbers(numbers) {
+  const result = numbers.reduce((acc, cur) => acc + cur, 0);
+  return result;
+}
+
 // solution
 function solution(number) {
   const sequences = Array.from({ length: number }, (_, i) => i + 1);
@@ -26,7 +32,7 @@ function solution(number) {
     findNumber(splitedNumbers, 6),
     findNumber(splitedNumbers, 9),
   ];
-  console.log(numbers);
+  console.log(addNumbers(numbers));
 }
 
 function problem3(number) {
