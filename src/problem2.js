@@ -10,6 +10,9 @@ function problem2(cryptogram) {
     leftPointer += 1;
     rightPoiner += 1;
   }
+  const removeDuplicated = () => {
+    cryptogramList.splice(leftPointer, 2);
+  }
   /**
    * 유효한 범위를 한정해 주는 함수.
    * @returns {boolean}
@@ -20,7 +23,7 @@ function problem2(cryptogram) {
 
   while (isValidRange()){
     if (cryptogramList[leftPointer] === cryptogramList[rightPoiner]){
-      cryptogramList.splice(leftPointer, 2);
+      removeDuplicated();
       pointerMoveBackward();
       continue;
     }
