@@ -7,6 +7,9 @@ function problem2(cryptogram) {
   }
 
   var answer;
+  // 암호해독
+  answer = splitWord(cryptogram);
+
   return answer;
 }
 
