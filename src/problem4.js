@@ -21,6 +21,14 @@ function problem4(word) {
     const convertAscToAsc = cToAsc(c);
     return ascToC(sumValArr[sumValArrIdx] - convertAscToAsc);
   };
+
+  // 4. 변환된 문자열 정리 및 결과 반환
+  let ret = "";
+  const arr = word.split("");
+  arr.forEach((c) => {
+    ret += c === " " ? " " : convertFrog(c);
+  });
+  return ret;
 }
 
 module.exports = problem4;
