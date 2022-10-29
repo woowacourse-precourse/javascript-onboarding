@@ -1,19 +1,16 @@
 function problem3(number) {
-  // 1부터 number까지의 숫자를 하나의 문자열로 합한다.
-  let str = "";
+  // 1부터 number까지의 숫자를 모두 순회하여 순회하는 숫자의 3,6,9 개수를 세어 리턴함.
+  let count = 0;
 
   let i = 1;
   while (i <= number) {
-    str += i;
-    i++;
-  }
+    String(i)
+      .split("")
+      .forEach((num) => {
+        if (num === "3" || num === "6" || num === "9") count++;
+      });
 
-  // 문자열에 3,6,9의 개수를 구한다.
-  let count = 0;
-  for (const num of str) {
-    if (num === "3" || num === "6" || num === "9") {
-      count++;
-    }
+    i++;
   }
 
   return count;
