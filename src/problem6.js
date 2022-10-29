@@ -1,5 +1,6 @@
 function problem6(forms) {
   var answer;
+  forms = forms.filter((form) => form[1].length > 1);
   return answer;
 }
 
