@@ -17,6 +17,39 @@ function problem5(money) {
 
   //필요함수
   //#1. 주어진 돈을 금액별로 지갑에 넣는 함수
+
+  function INPUT_MONEY_TO_WALLET_OBJ(number) {
+
+    let temp_money = number;
+
+    WALLET_OBJ[50000] = Math.floor(temp_money/50000);
+    temp_money = temp_money%50000;
+
+    WALLET_OBJ[10000] = Math.floor(temp_money/10000);
+    temp_money = temp_money%10000;
+
+    WALLET_OBJ[5000] = Math.floor(temp_money/5000);
+    temp_money = temp_money%5000;
+    
+    WALLET_OBJ[1000] = Math.floor(temp_money/1000);
+    temp_money = temp_money%1000;
+
+    WALLET_OBJ[500] = Math.floor(temp_money/500);
+    temp_money = temp_money%500;
+
+    WALLET_OBJ[100] = Math.floor(temp_money/100);
+    temp_money = temp_money%100;
+
+    WALLET_OBJ[50] = Math.floor(temp_money/50);
+    temp_money = temp_money%50;
+
+    WALLET_OBJ[10] = Math.floor(temp_money/10);
+    temp_money = temp_money%10;
+
+    WALLET_OBJ[1] = Math.floor(temp_money/1);
+    temp_money = temp_money%1;
+  }
+
   //#2. 지갑을 배열로 반환하는 함수
 
   //특이사항
