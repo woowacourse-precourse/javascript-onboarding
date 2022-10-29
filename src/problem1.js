@@ -30,6 +30,22 @@ function problem1(pobi, crong) {
   const crong_right = crong[1];
   // console.log("c-r", crong_right);
 
+  // 각 수의 max값 구하기
+  const pobi_max = Math.max(
+    sumDigit(pobi_left),
+    sumDigit(pobi_right),
+    multDigit(pobi_left),
+    multDigit(pobi_right)
+  );
+  console.log(pobi_max);
+  const crong_max = Math.max(
+    sumDigit(crong_left),
+    sumDigit(crong_right),
+    multDigit(crong_left),
+    multDigit(crong_right)
+  );
+  console.log(crong_max);
+
   var answer;
   return answer;
 }
