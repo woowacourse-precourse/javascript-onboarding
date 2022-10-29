@@ -41,6 +41,10 @@ function removeAlreadyFriend(user, network, scoreMap) {
     if (scoreMap.has(friend)) scoreMap.delete(friend);
   }
 }
+function select5Person(sortedArrSet) {
+  const ret = sortedArrSet.slice(0, 5).map((ele) => ele[0]);
+  return ret;
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
