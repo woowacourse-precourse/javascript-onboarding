@@ -44,6 +44,7 @@ function chgLetters(letters) {
 function problem4(word) {
   var answer;
   let letters = word.split("");
+  chgLetters(letters);
   return answer;
 }
 
