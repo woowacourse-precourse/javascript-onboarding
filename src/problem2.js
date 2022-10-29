@@ -9,6 +9,7 @@ function problem2(cryptogram) {
       answer.pop(cryptogram[i]);
     }
   }
+  answer = answer.join(''); // 배열을 다시 문자열로 변경
   return answer;
 }
 
