@@ -7,7 +7,7 @@
  */
 function problem6(forms) {
   const substrings = getDuplicatedSubstring(forms)
-  const emails = getEmailsWithstringsInNicknames(forms, substrings)
+  const emails = getEmailsWithStringsInNicknames(forms, substrings)
   // TODO: emails의 중복 제거 및 오름차순 정렬
   return emails
 }
@@ -39,17 +39,25 @@ function getDuplicatedSubstring(forms) {
   return subDuplicated
 }
 
-const tc = [["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]
-console.log(getDuplicatedSubstring(tc))
 
 /**
  * strings로 입력받은 문자열을 포함하는 닉네임을 가진 크루들의 이메일을 반환한다.
  * @param {string[][]} forms
- * @param {string[]} strings 
+ * @param {Set} strings 
  * @return {string[]} 
  */
-function getEmailsWithstringsInNicknames(forms, strings) {
-  return []
+function getEmailsWithStringsInNicknames(forms, strings) {
+  const ret = new Set()
+  for (let i = 0; i < forms.length - 1; i++) {
+    const [email, nickname] = forms[i]
+    for (let j = 0; j < nickname.length - 1; j++) {
+      const sub = nickname.slice(j, j + 2)
+      if (strings.has(sub)) {
+        ret.add(email)
+      }
+    }
+  }
+  return ret
 }
 
 module.exports = problem6;
