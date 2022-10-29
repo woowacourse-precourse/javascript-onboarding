@@ -25,7 +25,7 @@
 
 # 문제 4 기능 목록
 
-문자 → 유니코드 : string.charCodeAt();
+문자 → 유니코드 : string.charCodeAt(); </br>
 유니코드 → 문자 : String.fromCharCode(number);
 
 1. problem4 : 대문자 변환 함수 제작
