@@ -5,7 +5,11 @@ function problem6(forms) {
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms[i][1].length - 1; j++) {
       const test = forms[i][1].substr(j, 2);
-      data.set(test);
+      if (data.has(test)) {
+        data.set(test, data.get(test) + 1);
+      } else {
+        data.set(test, 1);
+      }
     }    
   }
   
