@@ -3,6 +3,16 @@ function problem3(number) {
   return answer;
 }
 
+function makeArray(number) {
+  const numberArray = [];
+
+  for (let i = 1; i <= number; i++) {
+    numberArray.push(i);
+  }
+
+  return numberArray;
+}
+
 function countSpecificClap(number) {
   const number_digits = seperateDigits(number);
   let specificClap = 0;
