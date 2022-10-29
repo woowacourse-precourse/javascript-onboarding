@@ -30,7 +30,7 @@ const NickNameChecker = {
       let c = v.charAt(i);
       if (c < "가" || c > "힣") return false;
     }
-    return nickname >= 1 && nickname <= 20;
+    return nickname >= 1 && nickname < 20;
   },
 };
 
