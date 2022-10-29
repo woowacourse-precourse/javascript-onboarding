@@ -51,3 +51,18 @@ function giveScore(user,friends,visitors){
   }
   return [...scoreList];
 }
+
+function answerList(user,friends,visitors){
+  let scoreList=giveScore(user,friends,visitors)
+  scoreList.sort((a,b)=>{
+    if(a[1]===b[1]){
+      if(a[0]>b[0]) return 1;
+      if(a[0]<b[0]) return -1;
+    }
+    return b[1]-a[1];
+  })
+  if(scoreList.length>5){
+    return scoreList.slice(0,5).map((el)=>el[0]);
+  }
+  return scoreList.map((el)=>el[0]);
+}
