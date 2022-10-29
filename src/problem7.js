@@ -1,10 +1,10 @@
 function findFriendsOfUser(user, friends) {
   let friendsArray = [];
 
-  friends.map((friend) => {
+  friends.forEach((friend) => {
     if (friend.includes(user)) {
-      let newArray = friend.filter((element) => element !== user);
-      friendsArray.push(newArray[0]);
+      let myFriend = friend.filter((element) => element !== user);
+      friendsArray.push(myFriend[0]);
     }
   });
 
@@ -14,13 +14,11 @@ function findFriendsOfUser(user, friends) {
 function findFriendsOfFriend(user, friendsOfUser, friends) {
   let friendsOfFriend = [];
 
-  friends.map((friend) => {
-    friendsOfUser.map((myFriend) => {
+  friends.forEach((friend) => {
+    friendsOfUser.forEach((myFriend) => {
       if (friend.includes(myFriend) && !friend.includes(user)) {
-        let newArray = friend.filter((element) => element !== myFriend);
-        if (!friendsOfFriend.includes(newArray[0])) {
-          friendsOfFriend.push(newArray[0]);
-        }
+        let yourFriend = friend.filter((element) => element !== myFriend);
+        friendsOfFriend.push(yourFriend[0]);
       }
     });
   });
@@ -28,16 +26,25 @@ function findFriendsOfFriend(user, friendsOfUser, friends) {
   return friendsOfFriend;
 }
 
-function scoreCandidates(friends, visitors, friendsOfUser) {
+function makeCandidatesScore(friends, visitors, friendsOfUser) {
   let candidatesArray = [];
 
-  friends.map((friend) => {
-    candidatesArray.push([friend, 20]);
+  friends.forEach((friend) => {
+    let isDone = false;
+    candidatesArray.forEach((candidate, index) => {
+      if (candidate.includes(friend)) {
+        candidatesArray[index][1] += 10;
+        isDone = true;
+      }
+    });
+    if (!isDone) {
+      candidatesArray.push([friend, 10]);
+    }
   });
 
-  visitors.map((visitor) => {
+  visitors.forEach((visitor) => {
     let isDone = false;
-    candidatesArray.map((candidate, index) => {
+    candidatesArray.forEach((candidate, index) => {
       if (candidate.includes(visitor)) {
         candidatesArray[index][1]++;
         isDone = true;
@@ -55,7 +62,7 @@ function sortCandidatesArray(candidatesArray) {
   let newArray = candidatesArray.sort((prev, cur) => {
     if (prev[1] > cur[1]) return -1;
     else if (prev[1] < cur[1]) return 1;
-    else if (prev[1] == cur[1]) {
+    else {
       if (prev[0] > cur[0]) return 1;
       if (prev[0] < cur[0]) return -1;
     }
@@ -71,7 +78,7 @@ function getRecommendFriends(candidatesArray) {
     candidatesArray.slice(0, 4);
   }
 
-  candidatesArray.map((candidate) => {
+  candidatesArray.forEach((candidate) => {
     recommendFriends.push(candidate[0]);
   });
 
@@ -81,7 +88,7 @@ function getRecommendFriends(candidatesArray) {
 function problem7(user, friends, visitors) {
   const friendsOfUser = findFriendsOfUser(user, friends);
   const friendsOfFriend = findFriendsOfFriend(user, friendsOfUser, friends);
-  const candidatesArray = scoreCandidates(
+  const candidatesArray = makeCandidatesScore(
     friendsOfFriend,
     visitors,
     friendsOfUser
