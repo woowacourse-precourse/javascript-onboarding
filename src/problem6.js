@@ -34,7 +34,14 @@ function findDupForm(nameSliceTable) {
 }
 
 //Array형식으로 정답을 가공.
-function makeAnswerArr(forms, dupForm) {}
+function makeAnswerArr(forms, dupForm) {
+  let answer_set = new Set();
+  for (item of dupForm) {
+    console.log(item);
+    answer_set.add(forms[item][0]);
+  }
+  return Array.from(answer_set).sort();
+}
 
 function problem6(forms) {
   var answer = [];
@@ -47,6 +54,7 @@ function problem6(forms) {
     nameSliceTable = makeNameSliceTable(forms[i][1], i, nameSliceTable);
   }
   let dupFormIndexs = findDupForm(nameSliceTable);
+  answer = makeAnswerArr(forms, dupFormIndexs);
   return answer;
 }
 
