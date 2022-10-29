@@ -3,26 +3,17 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-const sumNumbers = (pageNumber) => {
+const sumOrMultiply = (pageNumber) => {
   const pageString = pageNumber + "";
-  let score = 0;
+  let sumScore = 0;
+  let multiplyScore = 1;
 
   for (let i = 0; i < pageString.length; i++) {
-    score += +pageString[i];
+    sumScore += +pageString[i];
+    multiplyScore *= +pageString[i];
   }
 
-  return score;
-};
-
-const multiplyNumbers = (pageNumber) => {
-  const pageString = pageNumber + "";
-  let score = 0;
-
-  for (let i = 0; i < pageString.length; i++) {
-    score *= +pageString[i];
-  }
-
-  return score;
+  return Math.max(sumScore, multiplyScore);
 };
 
 module.exports = problem1;
