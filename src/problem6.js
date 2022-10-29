@@ -1,13 +1,21 @@
-const split_words = (word) => {
+const nickname = new Object();
+
+const pushToNickname = (splitedWord, email) => {
+  nickname[splitedWord] = [email];
+  console.log(nickname);
+}
+
+const split_words = (word, email) => {
   for(let i=0; i<word.length-1; i++) {
     const splitedWord = word.substr(i, i+2);
     console.log(splitedWord);
+    pushToNickname(splitedWord, email);
   }
 }
 
 function problem6(forms) {
   for(let i=0; i<forms.length; i++) {
-    split_words(forms[i][1]);
+    split_words(forms[i][1], forms[i][0]);
   }
 }
 
