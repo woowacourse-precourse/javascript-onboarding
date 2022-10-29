@@ -5,7 +5,7 @@
  3) 만들어진 배열에 횟수 카운트하기
  4) 횟수가 2인 이상이면 다른 Set2에 이름 넣어주기
  5) 모든 사람들의 이름을 Set2 안에 있는 것들과 비교해 반복된 이름이 있는지 확인 후 있다면 true반환
- 6) 이메일 삽입 후 오름차순으로 정렬
+ 6) 이메일 삽입 후 오름차순으로 정렬 후 중복문자 제거
  7) 글자 수가 한 글자일 경우 처리
 */
 
@@ -51,6 +51,12 @@ function nameRepeatCheck(n, d){
   return 0;
 }
 
+function emailRepeatRemove(array){
+  let es=new Set(array);
+  const erem= Array.from(es);
+  return erem.sort()
+}
+
 function problem6(forms) {
   var answer=[];
   let name = {}, b;
@@ -68,7 +74,8 @@ function problem6(forms) {
     b=nameRepeatCheck(forms[i][1], doubleCheck)
     if(b) answer.push(forms[i][0]);
   }
-  answer.sort();
+  answer=emailRepeatRemove(answer)
+  console.log(answer)
   return answer;
 }
 
