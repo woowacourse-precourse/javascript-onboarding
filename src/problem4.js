@@ -1,12 +1,13 @@
 const UPPERCASE_REVERSE_NUMBER = 155;
 const LOWERCASE_REVERSE_NUMBER = 219;
 function problem4(word) {
+  var answer;
   const wordArray = [...word];
   let index = 0;
   for (index = 0; index < wordArray.length; index++) {
-    wordArray[index] = reverseChar(wordArray);
+    wordArray[index] = reverseChar(wordArray[index]);
   }
-  var answer;
+  answer = getString(wordArray);
   return answer;
 }
 function getAsciiFromString(char) {
@@ -23,5 +24,8 @@ function reverseChar(char) {
   if (asciiNum >= 97 && asciiNum <= 122)
     resultAscii = LOWERCASE_REVERSE_NUMBER - asciiNum;
   return getStringFromString(resultAscii);
+}
+function getString(array) {
+  return array.join("");
 }
 module.exports = problem4;
