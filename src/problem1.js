@@ -61,6 +61,15 @@ const isValidInput = (firstArr, secondArr) => {
   return isFirstArrValid && isSecondArrValid;
 };
 
+/**
+ * 숫지를 각 자리 숫자로 쪼갠 배열을 반환한다.
+ * @param number - 페이지 번호
+ * @return {number[]}
+ */
+const getDigitSplittedArr = (number) => {
+  return number.toString().split("").map(Number);
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
