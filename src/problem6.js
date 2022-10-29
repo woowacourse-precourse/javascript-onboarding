@@ -25,7 +25,7 @@ function problem6(forms) {
 
         string = stringArr[j] + stringArr[j+1];
 
-        
+        if(!(duplicateFormsBasket[string])){
           const duplicateForms = []; 
         
           for(let k=i ; k < forms.length ; k++){
@@ -33,8 +33,10 @@ function problem6(forms) {
               duplicateForms.push(forms[k][0]);
             }
           }
-        
-        
+          if(duplicateForms.length !== 1) {
+            duplicateFormsBasket[string] = duplicateForms.sort();
+          }
+        }
       }
     }
 
@@ -50,4 +52,5 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
+
 
