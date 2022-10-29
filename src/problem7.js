@@ -23,6 +23,11 @@ function problem7(user, friends, visitors) {
   }
 
   // 3. 방문자 점수 계산
+  for(let i=0;i<visitors.length;i++){
+    if(scores[visitors[i]] !== -1){
+      scores[visitors[i]]++;
+    }
+  }
 
   // 4. 함께 아는 친구 점수 계산
 
