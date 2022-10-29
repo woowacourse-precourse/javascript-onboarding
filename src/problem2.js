@@ -1,21 +1,41 @@
 function problem2(cryptogram) {
   var answer;
+  let rslt;
+
+  rslt = checkStr(cryptogram)
+  while (rslt) {
+    cryptogram = rslt;
+    rslt = checkStr(cryptogram)
+  }
+
+  answer = cryptogram;
   return answer;
 }
 
 //연속되는 문자가 있는지 체크하는 함수
 function checkStr(str) {
-  for (i = 0; str[i] != str[i + 1] && str[i + 1] != '\0'; i++);
-  str = removeChars(str, i)
+  let i = 0;
+  for (; str[i] != str[i + 1] && str[i + 1] != '\0'; i++);
+  
+  //연속되는 문자 없이 끝까지 탐색했다면 false 반환
+  if (i == str.length) return false;
+
+  str = removeChars(str, i);
+  return str;
 }
 
 //연속되는 문자 삭제하는 함수
-function removeChar(str, i) {
-  for (j = i + 1; str[i] == str[j]; j++) 
-    str = str.replace(str[j], "");
-  str = str.replace(str[i], "");
-
+function removeChars(str, i) {
+  for (j = i + 1; str[i] == str[j];) 
+    str = replaceAt(str, j, "");
+    
+  str = replaceAt(str, i, "");
   return str
+}
+
+//원하는 인덱스의 문자 삭제 함수
+function replaceAt (input, index, character){
+  return input.substr(0, index) + character + input.substr(index+1, input.length);
 }
 
 module.exports = problem2;
