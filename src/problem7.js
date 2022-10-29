@@ -1,6 +1,13 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = getScore(user, friends, visitors);
   return answer;
+}
+function getScore(user, friends, visitors) {
+  const friendList = getFriendsList(user, friends);
+  const score = getAcquaintanceScore(user, friends, friendList);
+  applyVisitorScore(score, visitors, friendList);
+  const scoreArray = getArray(score);
+  return getMaxFive(scoreArray);
 }
 function getFriendsList(user, friends) {
   const friendList = [];
@@ -33,5 +40,25 @@ function applyVisitorScore(acquaintance, visitors, friendList) {
       else acquaintance[visitor] = 1;
     }
   });
+}
+function getArray(score) {
+  const resultArray = [];
+  for (let name in score) {
+    resultArray.push([name, score[name]]);
+  }
+  resultArray.sort((prev, cur) => {
+    if (prev[1] < cur[1]) return 1;
+    if (prev[1] > cur[1]) return -1;
+    if (prev[0] > cur[0]) return 1;
+    if (prev[0] < cur[0]) return -1;
+  });
+  return resultArray;
+}
+function getMaxFive(array) {
+  const result = [];
+  array.forEach((one) => {
+    if (one[1] > 0 && result.length <= 5) result.push(one[0]);
+  });
+  return result;
 }
 module.exports = problem7;
