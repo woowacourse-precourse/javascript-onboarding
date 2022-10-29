@@ -28,6 +28,16 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  visitors.forEach((visitor) => {
+    if (!userFriendList.includes(visitor)) {
+      if (scoreMap.has(visitor)) {
+        scoreMap.set(visitor, scoreMap.get(visitor) + 1);
+      } else {
+        scoreMap.set(visitor, 1);
+      }
+    }
+  });
+
   return answer;
 }
 
