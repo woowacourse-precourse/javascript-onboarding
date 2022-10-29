@@ -6,6 +6,8 @@ const each = (iterable, func) => {
   return;
 };
 
+const convertToString = element => `${element}`;
+
 function problem3(number) {
   var answer;
   return answer;
