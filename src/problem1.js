@@ -21,15 +21,14 @@ function isValidPage(book) {
 
 // 2, 3번의 최대 값을 반환하는 함수
 function maxNum(book) {
-  let max = 0;
+  let numList = [];
 
   book.forEach((page) => {
-    let sumResult = sum(page);
-    let mulResult = mul(page);
-    max = Math.max(sumResult, mulResult);
+    numList.push(sum(page));
+    numList.push(mul(page));
   });
 
-  return max;
+  return Math.max(...numList);
 }
 
 // 각 자리수를 더해서 반환하는 함수
