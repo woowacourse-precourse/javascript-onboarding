@@ -30,6 +30,15 @@ function compareScore(a,b){
     return 0;
   }
 }
+function findMaxNumber(n){
+  let result;
+  for(let i=0;i<n.length;i++){
+    n[i]=Math.max(plusPageNumber(n[i]),mutiplyPageNumber(n[i]));
+  }
+  result = Math.max(...n);
+  return result;
+}
+
 function problem1(pobi, crong) {
     let answer;
     return answer;
