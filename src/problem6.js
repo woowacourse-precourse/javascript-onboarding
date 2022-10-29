@@ -18,6 +18,7 @@ function problem6(forms) {
   });
 
   // 중복된 값을 닉네임으로 포함하고 있는 크루들을 찾아 이메일을 한 배열에 넣는다.
+  // 이메일을 문자열 오름차순으로 정렬하고 중복을 제거한 뒤 배열을 반환한다.
   const duplicateCrewEmails = forms
     .map((form) => {
       const email = form[0];
@@ -30,10 +31,10 @@ function problem6(forms) {
         }
       }
     })
-    .filter((email) => email !== undefined);
+    .filter((email) => email !== undefined)
+    .sort();
 
-  // 배열을 리턴한다.
-  return duplicateCrewEmails;
+  return [...new Set(duplicateCrewEmails)];
 }
 
 module.exports = problem6;
