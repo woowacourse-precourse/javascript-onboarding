@@ -96,4 +96,13 @@ function sorting(recomendFriends) {
 
   return sort;
 }
+
+function filter(array, func) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    func(array[i], i, array) ? result.push(array[i]) : null;
+  }
+
+  return result;
+}
 module.exports = problem7;
