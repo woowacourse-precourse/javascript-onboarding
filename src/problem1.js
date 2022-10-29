@@ -3,27 +3,26 @@ function problem1(pobi, crong) {
 
   var pobiScore, crongScore;
 
-  pobiScore = Math.max(
-    add(pobi[0]),
-    multiple(pobi[0]),
-    add(pobi[1]),
-    multiple(pobi[1])
-  );
-  crongScore = Math.max(
-    add(crong[0]),
-    multiple(crong[0]),
-    add(crong[1]),
-    multiple(crong[1])
-  );
+  if (
+    parseInt(pobi[0]) == parseInt(pobi[1]) - 1 &&
+    parseInt(crong[0]) == parseInt(crong[1]) - 1
+  ) {
+    pobiScore = Math.max(
+      add(pobi[0]),
+      multiple(pobi[0]),
+      add(pobi[1]),
+      multiple(pobi[1])
+    );
 
-  if (pobiScore == crongScore) {
-    answer = 0;
-  } else if (pobiScore > crongScore) {
-    answer = 1;
-  } else if (pobiScore < crongScore) {
-    answer = 2;
+    crongScore = Math.max(
+      add(crong[0]),
+      multiple(crong[0]),
+      add(crong[1]),
+      multiple(crong[1])
+    );
+
+    answer = pobiScore >= crongScore ? (pobiScore == crongScore ? 0 : 1) : 2;
   } else {
-    /* 예외 부분 test 실패 */
     answer = -1;
   }
 
