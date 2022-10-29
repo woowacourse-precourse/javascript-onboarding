@@ -9,6 +9,15 @@ function problem3(number) {
     answer.push(i)
   }
 
+  // replace를 사용하기 위해 배열을 문자열로 변경
+  let result = String(answer);
+
+  // 변경된 문자열에서 ,를 모두 제거
+  // 현재 값 : 12345678910111213.. 이런식으루
+  for (let i = 0; i <= number; i++) {
+    result = result.replace(",", "");
+  }
+
   return count;
 }
 
