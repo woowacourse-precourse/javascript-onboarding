@@ -1,6 +1,6 @@
 function problem6(forms) {
   let answer = [];
-  let emailListOfduplicatedNickname = [];
+  const emailListOfduplicatedNickname = [];
   const crew = {
     minimum: 1,
     maximum: 10000,
@@ -33,7 +33,7 @@ function problem6(forms) {
 
 function getBrokenNicknameList(arr) {
   return arr.map((nickname) => {
-    let brokenNickname = [];
+    const brokenNickname = [];
     for (let i = 1; i < nickname.length; i++) {
       const substring = nickname[i - 1] + nickname[i];
       brokenNickname.push(substring);
