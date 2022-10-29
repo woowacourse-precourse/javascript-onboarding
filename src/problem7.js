@@ -58,12 +58,18 @@ function countVisitScore(visitors, userFriendObject, scoreCount) {
   });
 }
 
+function covertObjectToArray(obj) {
+  let newArray = [];
+  for (let key in obj) {
+    newArray.push([key, obj[key]]);
+  }
+
+  return newArray;
+}
+
 function getRecommendationList(scoreCount) {
   const LIMIT_RECOMMENDATION_NUMBER = 5;
-  let recommendationList = [];
-  for (let name in scoreCount) {
-    recommendationList.push([name, scoreCount[name]]);
-  }
+  let recommendationList = covertObjectToArray(scoreCount);
 
   recommendationList.sort(function (a, b) {
     let scoreA = a[1];
