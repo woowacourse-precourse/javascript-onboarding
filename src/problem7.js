@@ -54,8 +54,20 @@ function problem7(user, friends, visitors) {
       }
     }
     // 새 배열에 최종 [이름, 점수] 값 추가
-    recommendations2.push(recommendations[i][0], score_sum);
+    recommendations2.push({ name: recommendations[i][0], score: score_sum });
   }
+
+  // 4. 추천친구 중 가장 점수 높은 5명 리턴하기
+  recommendations2.sort(function (a, b) {
+    if (a.score < b.score) {
+      return 1;
+    }
+    if (a.score > b.score) {
+      return -1;
+    }
+    // 점수 같을 경우
+    return 0;
+  });
 
   console.log(current_friends);
   console.log(recommendations2);
@@ -66,8 +78,8 @@ function problem7(user, friends, visitors) {
 problem7(
   "mrko",
   [
-    ["donut", "andole"],
     ["donut", "jun"],
+    ["donut", "andole"],
     ["donut", "mrko"],
     ["shakevan", "andole"],
     ["shakevan", "jun"],
