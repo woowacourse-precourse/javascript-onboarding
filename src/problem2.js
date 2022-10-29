@@ -87,6 +87,18 @@ const isEmptyLength = iterable => {
   return false;
 };
 
+const recursiveTour = stringArray => {
+  const duplicateLocation = checkDuplicateLetter(stringArray);
+
+  if (isEmptyLength(duplicateLocation)) {
+    return stringArray;
+  }
+
+  const newStringArray = stringDeduplication(duplicateLocation, stringArray);
+
+  return recursiveTour(newStringArray);
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
