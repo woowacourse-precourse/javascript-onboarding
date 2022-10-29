@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer;
-  answer = [...word]
+  let answer = [...word]
     .map((string) => {
       if (string.charCodeAt() === 32) {
         //공백 -> 공백
@@ -18,7 +17,6 @@ function problem4(word) {
     })
     .join("");
 
-  console.log(answer);
   return answer;
 }
 
