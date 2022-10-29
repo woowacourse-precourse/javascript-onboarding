@@ -2,7 +2,7 @@ function problem1(pobi, crong) {
   let pobiScore = 0;
   let crongScore = 0;
 
-  if (pobi[0] === 1 || crong[0] === 400) {
+  if (pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400) {
     return -1;
   }
 
