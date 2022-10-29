@@ -28,10 +28,21 @@ function friendOfFriends(user,friends){
   return friendOfFriends.filter(el=>el!==user);
 }
 
+function visitorsRemove(user,friends,visitors){
+  let removeTarget=userFriends(user,friends);
+  let removeResult=[];
+  for(let i=0; i<visitors.length; i++){
+    if(!removeTarget.includes(visitors[i])){
+      removeResult.push(visitors[i]);
+    }
+  }
+  return removeResult;
+}
+
 function giveScore(user,friends,visitors){
   let scoreList=new Map();
   let tenPoint=friendOfFriends(user,friends);
-  let onePoint=visitors;
+  let onePoint=visitorsRemove(user,friends,visitors);
   for(let i=0; i<tenPoint.length; i++){
     scoreList.set(tenPoint[i],(scoreList.get(tenPoint[i]) || 0)+10);
   }
