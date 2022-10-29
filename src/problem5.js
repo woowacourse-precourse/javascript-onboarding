@@ -1,5 +1,5 @@
 function problem5(money) {
-  var answer;
+  var answer = solution(money);
   return answer;
 }
 
