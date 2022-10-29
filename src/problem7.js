@@ -46,21 +46,21 @@ function getVisitorScores(visitors) {
 function getCrewScores(relationScores, visitorScores) {
   const totalCrews = Object.keys({ ...relationScores, ...visitorScores });
   const crewScores = totalCrews.reduce((acc, cur) => {
-    acc[cur] = relationScores[cur] || 0;
+    const crewScore = [cur, relationScores[cur] || 0];
 
     if (visitorScores[cur]) {
-      acc[cur] += visitorScores[cur];
+      crewScore[1] += visitorScores[cur];
     }
 
+    acc.push(crewScore);
     return acc;
-  }, {});
+  }, []);
 
   return crewScores;
 }
 
 function exceptCrew(crewScores, userFriends) {
-  const crewsWithScore = Object.entries(crewScores);
-  const crewsWithException = crewsWithScore.filter(
+  const crewsWithException = crewScores.filter(
     (crew) => crew[1] !== 0 && !userFriends.includes(crew[0])
   );
 
