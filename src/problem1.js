@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = -1;
 
   var pobiScore, crongScore;
 
@@ -22,8 +22,6 @@ function problem1(pobi, crong) {
     );
 
     answer = pobiScore >= crongScore ? (pobiScore == crongScore ? 0 : 1) : 2;
-  } else {
-    answer = -1;
   }
 
   return answer;
