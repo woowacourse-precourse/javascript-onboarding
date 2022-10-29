@@ -26,6 +26,17 @@ function problem7(user, friends, visitors) {
       myFriends.push(a[0]);
     }
   }
+
+  // 점수별로 정렬
+  let pointArr = Object.entries(userPointList);
+  pointArr.sort((a, b) => b[1] - a[1]);
+  // 점수가 같은 사람끼리 이름순으로 정렬
+  pointArr.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    if (a[1] < b[1]) return 1;
+
+    return a < b ? -1 : 1;
+  });
 }
 
 module.exports = problem7;
