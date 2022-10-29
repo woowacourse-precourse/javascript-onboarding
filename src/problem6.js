@@ -16,6 +16,10 @@ function problem6(forms) {
     }
   });
 
+  answer = [...new Set(emailListOfduplicatedNickname)].sort((a, b) =>
+    a.localeCompare(b)
+  );
+
   return answer;
 }
 
