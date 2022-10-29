@@ -1,4 +1,7 @@
 function problem1(pobi, crong) {
+  if (breakTheRules(pobi) || breakTheRules(crong)) {
+    return -1;
+  }
   let pobiLargeNum = getLargeNum(pobi);
   let crongLargeNum = getLargeNum(crong);
   let result = getWinner(pobiLargeNum, crongLargeNum);
@@ -32,6 +35,14 @@ function getWinner(pobiNum, crongNum) {
     return 2;
   } else if (pobiNum === crongNum) {
     return 0;
+  }
+}
+
+function breakTheRules(num) {
+  if (num[0] === 1 || num[0] === 399 || num[0] + 1 !== num[1]) {
+    return true;
+  } else {
+    return false;
   }
 }
 
