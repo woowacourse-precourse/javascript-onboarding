@@ -31,22 +31,29 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  let userFriendship = userInfo.get(user).friendship;
+  if (userInfo.has(user)) {
+    let userFriendship = userInfo.get(user).friendship;
 
-  for (let i = 0; i < userFriendship.length; i++) {
-    const realatedUsers = userInfo.get(userFriendship[i]).friendship;
+    for (let i = 0; i < userFriendship.length; i++) {
+      const realatedUsers = userInfo.get(userFriendship[i]).friendship;
 
-    userInfo.set(userFriendship[i], { friendship: realatedUsers, score: -100 });
-
-    for (let j = 0; j < realatedUsers.length; j++) {
-      if (realatedUsers[j] === user) continue;
-      const realatedUserFriendship = userInfo.get(realatedUsers[j]).friendship;
-      const realatedUserScore = userInfo.get(realatedUsers[j]).score;
-      if (realatedUserScore < 0) continue;
-      userInfo.set(realatedUsers[j], {
-        friendship: realatedUserFriendship,
-        score: realatedUserScore + 10,
+      userInfo.set(userFriendship[i], {
+        friendship: realatedUsers,
+        score: -100,
       });
+
+      for (let j = 0; j < realatedUsers.length; j++) {
+        if (realatedUsers[j] === user) continue;
+        const realatedUserFriendship = userInfo.get(
+          realatedUsers[j]
+        ).friendship;
+        const realatedUserScore = userInfo.get(realatedUsers[j]).score;
+        if (realatedUserScore < 0) continue;
+        userInfo.set(realatedUsers[j], {
+          friendship: realatedUserFriendship,
+          score: realatedUserScore + 10,
+        });
+      }
     }
   }
 
