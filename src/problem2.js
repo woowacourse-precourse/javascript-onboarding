@@ -19,6 +19,11 @@ function problem2(cryptogram) {
     answer_array.splice(0, 2);
   }
 
+  //배열을 문자열 answer로 변환한다
+  for (let i = 0; i < answer_array.length; i++) {
+    answer += answer_array[i];
+  }
+
   return answer;
 }
 
