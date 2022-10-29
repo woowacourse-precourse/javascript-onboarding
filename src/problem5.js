@@ -1,11 +1,11 @@
 function problem5(money) {
-  const units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  const UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   const result = [];
-  let remaining = money;
+  let remainingMoney = money;
   
-  units.forEach((unit) => {
-    result.push(Math.floor(remaining / unit));
-    remaining %= unit;
+  UNITS.forEach((unit) => {
+    result.push(Math.floor(remainingMoney / unit));
+    remainingMoney %= unit;
   });
 
   return result;
