@@ -1,6 +1,12 @@
+// @ts-check
+
+/**
+ * @param {number[]} pobi
+ * @param {number[]} crong
+ * @returns {number}
+ */
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  return 0;
 }
 
 module.exports = problem1;

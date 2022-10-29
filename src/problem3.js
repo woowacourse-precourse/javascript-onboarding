@@ -1,6 +1,11 @@
+// @ts-check
+
+/**
+ * @param {number} number
+ * @returns {number}
+ */
 function problem3(number) {
-  var answer;
-  return answer;
+  return 0;
 }
 
 module.exports = problem3;

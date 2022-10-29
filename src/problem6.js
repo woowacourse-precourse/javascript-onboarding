@@ -1,6 +1,11 @@
+// @ts-check
+
+/**
+ * @param {string[][]} forms
+ * @returns {string[]}
+ */
 function problem6(forms) {
-  var answer;
-  return answer;
+  return [];
 }
 
 module.exports = problem6;

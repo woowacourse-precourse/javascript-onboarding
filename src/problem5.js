@@ -1,6 +1,11 @@
+// @ts-chek
+
+/**
+ * @param {number} money
+ * @returns {number[]}
+ */
 function problem5(money) {
-  var answer;
-  return answer;
+  return [];
 }
 
 module.exports = problem5;

@@ -1,6 +1,11 @@
+// @ts-check
+
+/**
+ * @param {string} cryptogram
+ * @returns {string}
+ */
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  return "";
 }
 
 module.exports = problem2;
