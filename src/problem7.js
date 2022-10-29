@@ -1,5 +1,4 @@
-function getNetwork(friends) {
-  let network = new Map();
+function getNetwork(friends, network) {
   for (let friend of friends) {
     if (!network.has(friend[0])) {
       network.set(friend[0], []);
@@ -10,10 +9,8 @@ function getNetwork(friends) {
     network.get(friend[0]).push(friend[1]);
     network.get(friend[1]).push(friend[0]);
   }
-  return network;
 }
-function getNetworkScore(user, network) {
-  let scoreMap = new Map();
+function getNetworkScore(user, network, scoreMap) {
   for (let friend of network.get(user)) {
     for (let other of network.get(friend)) {
       if (other === user) continue;
@@ -22,7 +19,6 @@ function getNetworkScore(user, network) {
       scoreMap.set(other, score + 10);
     }
   }
-  return scoreMap;
 }
 function problem7(user, friends, visitors) {
   var answer;
