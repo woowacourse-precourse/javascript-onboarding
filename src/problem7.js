@@ -10,7 +10,29 @@ function problem7(user, friends, visitors) {
       .map((x) => (x[0] === user ? x[1] : x[0]));
   };
 
+  // 친구와 함께 아는 친구 숫자 구하기
+  const foafCnt = (relation, friends, user) => {
+    const foafRel = relation.filter(
+      (x) =>
+        !x.includes(user) && (friends.includes(x[0]) || friends.includes(x[1]))
+    );
+
+    const foafPerson = foafRel.map((x) =>
+      friends.includes(x[0]) ? x[1] : x[0]
+    );
+    // const arr = [];
+    // foafPerson.forEach((element) => {
+    //   arr.push([element, 10]);
+    // });
+    console.log(foafPerson.map((x) => [x, 10]));
+    // console.log(arr);
+    return foafPerson.map((x) => [x, 10]);
+  };
+
+  const alreadyFrineds = userFrineds(user, friends);
+  const foaf = foafCnt(friends, alreadyFrineds, user);
   console.log(userFrineds(user, friends));
+  console.log(foaf);
 }
 
 module.exports = problem7;
