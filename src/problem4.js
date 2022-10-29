@@ -1,4 +1,4 @@
-console.log(createStringArr("I love you"));
+console.log(getUTF16Code("I love you"));
 
 function problem4(word) {
   return treeFrogApp(word);
@@ -14,6 +14,10 @@ function treeFrogApp(word){
 
 function createStringArr(word){
   return word.split("");
+}
+
+function getUTF16Code(char){
+  return char.charCodeAt(0);
 }
 
 module.exports = problem4;
