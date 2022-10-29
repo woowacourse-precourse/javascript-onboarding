@@ -10,8 +10,9 @@ const getReverseChar = (char) => {
 
 function problem4(word) {
   const wordArray = word.split("");
+  const regex = /[a-z|A-Z]/;
   for (let i = 0; i < wordArray.length; i++) {
-    if (wordArray[i] === " ") continue;
+    if (!regex.test(wordArray[i])) continue;
     if (checkLowerCase(wordArray[i])) {
       wordArray[i] = getReverseChar(wordArray[i]);
     } else {
