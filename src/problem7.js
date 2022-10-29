@@ -34,9 +34,9 @@ function problem7(user, friends, visitors) {
     return r2[1] - r1[1];
   });
 
-  const MAX_RECOMMEND_LIMIT = 4;
+  const MAX_RECOMMEND_LIMIT = 5;
 
-  for (let i = 0; i <= MAX_RECOMMEND_LIMIT; i++) {
+  for (let i = 0; i < MAX_RECOMMEND_LIMIT; i++) {
     if (sortByScoreArr[i][1] === 0) {
       break;
     } else {

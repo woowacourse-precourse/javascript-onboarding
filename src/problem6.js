@@ -5,8 +5,9 @@ function problem6(forms) {
     const nickname = form[1];
     for (let i = 0; i < nickname.length - 1; i++) {
       const testText = nickname.substr(i, 2);
-      if (testText in repeatTextObj) repeatTextObj[testText]++;
-      else {
+      if (testText in repeatTextObj) {
+        repeatTextObj[testText]++;
+      } else {
         repeatTextObj[testText] = 1;
       }
     }
