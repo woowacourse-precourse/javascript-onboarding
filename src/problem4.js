@@ -22,6 +22,16 @@ function problem4(word) {
   const getConvertedLowerWord = word => {
     return String.fromCharCode(219 - word.charCodeAt());
   }
+  /**
+   * 문자 하나를 받고, 이것이 알파벳이 아니라면 그대로 리턴한다. 반대로 알파벳이라면, 대소문자를 구분해 청개구리 규칙에 의해 변환해 리턴해주는 함수.
+   * @param {String} word 
+   * @returns {String}
+   */
+  const convertWord = word => {
+    if (!isAlpha(word)) return word;
+    
+    return isUpperCase(word) ? getConvertedUpperWord(word) : getConvertedLowerWord(word);
+  }
   return answer;
 }
 
