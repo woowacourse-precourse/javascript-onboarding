@@ -29,5 +29,9 @@ function acquaintanceCheck(user, friends, visitors) {
     return acquaintance;
 }
 
+function visitorCheck(user, friends, visitors) {
+    const visitorNotFriends = visitors.filter(people => !friendCheck(user, friends, visitors).includes(people));
+    return visitorNotFriends;
+}
 
 module.exports = problem7;
