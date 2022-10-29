@@ -27,3 +27,26 @@ function common_friend(user, friends) {
   });
   return Array.from(common_friend_list);
 }
+
+//3. 친구가 이닌 명단 구하기
+function people_list(user, friends, visitors) {
+  let user_list = new Set();
+  friends.map((friend) => {
+    user_list.add(friend[0]);
+    user_list.add(friend[1]);
+  });
+  visitors.map((visitor) => {
+    user_list.add(visitor);
+  });
+  let friend_list = find_friend_list(user, friends);
+  user_list.delete(user);
+  friend_list.map((friend) => {
+    user_list.delete(friend);
+  });
+
+  const dictObj = {};
+  for (let i = 0; i < Array.from(user_list).length; i++) {
+    dictObj[Array.from(user_list)[i]] = 0;
+  }
+  return dictObj;
+}
