@@ -10,8 +10,15 @@ function problem2(cryptogram) {
     leftPointer += 1;
     rightPoiner += 1;
   }
- 
-  while (leftPointer >= 0 && rightPoiner < cryptogramList.length){
+  /**
+   * 유효한 범위를 한정해 주는 함수.
+   * @returns {boolean}
+   */
+  const isValidRange = () => {
+    return leftPointer >= 0 && rightPoiner < cryptogramList.length;
+  }
+
+  while (isValidRange()){
     if (cryptogramList[leftPointer] === cryptogramList[rightPoiner]){
       cryptogramList.splice(leftPointer, 2);
       pointerMoveBackward();
