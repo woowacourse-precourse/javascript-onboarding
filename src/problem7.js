@@ -28,25 +28,24 @@ function makeGraph(graph, pair) {
   }
 }
 
-/*[a, b]가 있으면 [b, a]라는 목록은 안줌... 그러면 페어를 받아서 양쪽을 다 확인해야함 */
-
 // 친구의 친구에게 10점씩 주는 함수
 function friendOfFriend(user, graph, scoreList) {
-  [...graph.get(user)].forEach((friend) => {
-    //friend는 user의 1차 친구
-    [...graph.get(friend)].forEach((fof) => {
-      if (fof !== user && !graph.get(user).has(fof)) scoreList.set(fof, 10);
+  let userFriends = graph.get(user);
+  userFriends.forEach((friend) => {
+    let fof = graph.get(friend);
+    fof.forEach((name) => {
+      // user 자신과 user와 겹친구는 제외
+      if (name !== user && !graph.get(user).has(name)) scoreList.set(name, 10);
     });
   });
 }
 
-// 이미 친구인 사람은 뺴야함
 function scoreVisitor(user, graph, visitors, scoreList) {
   visitors.forEach((visitor) => {
     if (scoreList.has(visitor)) {
-      scoreList.set(visitor, scoreList.get(visitor) + 1);
+      let score = scoreList.get(visitor);
+      scoreList.set(visitor, score + 1);
     } else if (!scoreList.has(visitor) && !graph.get(user).has(visitor)) {
-      //
       scoreList.set(visitor, 1);
     }
   });
