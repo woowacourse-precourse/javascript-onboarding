@@ -50,6 +50,24 @@ const updatePointIndex = (pointArray, _decrease = 2) => {
   return newPointIndexArray;
 };
 
+/**
+ * 중복되는 요소의 포인터 위치를 배열형태로 반환한다.
+ * @param {string[]} stringArray
+ * @returns {number[]}
+ */
+const checkDuplicateLetter = stringArray => {
+  const duplicatePointArray = recursiveCheckDuplicateElement(copyArray(stringArray), 0, []);
+
+  if (duplicatePointArray.length < 2) {
+    return duplicatePointArray;
+  }
+
+  const [firstPoint, ...restPoint] = duplicatePointArray;
+  const restPointIndexArray = updatePointIndex(restPoint);
+
+  return [firstPoint, ...restPointIndexArray];
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
