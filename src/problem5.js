@@ -26,6 +26,7 @@ function problem5(money) {
     }
   });
   return wallet;
+  //배열 길이 제한하기 7번참고.
 }
 
 module.exports = problem5;
