@@ -28,6 +28,11 @@ function problem6(forms) {
     });
     return allDuplication;
   };
+
+  // 함수 사용해서 중복 이메일들을 오름차순으로 정렬해 반환
+  const duplications = createDuplicationObject(forms);
+  const allDuplication = assembleDuplications(duplications);
+  return [...allDuplication].sort();
 }
 
 module.exports = problem6;
