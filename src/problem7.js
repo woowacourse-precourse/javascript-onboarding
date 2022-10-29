@@ -47,6 +47,14 @@ function select5Person(sortedArrSet) {
 }
 function problem7(user, friends, visitors) {
   var answer;
+  const network = new Map();
+  const scoreMap = new Map();
+  getNetwork(friends, network);
+  getNetworkScore(user, network, scoreMap);
+  getVisitScore(visitors, scoreMap);
+  removeAlreadyFriend(user, network, scoreMap);
+  const sortedArr = getSortedScoreArr(scoreMap);
+  answer = select5Person(sortedArr);
   return answer;
 }
 module.exports = problem7;
