@@ -4,6 +4,13 @@ function findOverlapStringIndex(str, base) {
   if (str[base] !== str[offset]) return base;
   return findOverlapStringIndex(str, offset);
 }
+
+function makeNewString(str, rmBase, rmOffset) {
+  const leftStr = str.substr(0, rmBase);
+  const rightStr = str.substr(rmOffset + 1, str.length - 1);
+  return leftStr + rightStr;
+}
+
 function problem2(cryptogram) {
   var answer;
   let base = 0; // 중복검사 때 사용하는 base index
@@ -17,7 +24,10 @@ function problem2(cryptogram) {
       continue;
     }
     // 새 문자열 로직 작성
+    target = makeNewString(target, base, offset);
+    base = 0;
   }
+
   return answer;
 }
 
