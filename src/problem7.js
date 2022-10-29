@@ -6,6 +6,7 @@ function problem7(user, friends, visitors) {
     visitors,
     USER_FRIENDS
   );
+  const recommendUserMap = initObj(NOT_USER_FRIENDS);
 function getNotUserFriendsArray(user, friends, visitors, USER_FRIENDS) {
   const notUserFriends = [];
   for (let i = 0; i < friends.length; i++) {
@@ -36,4 +37,13 @@ function getUserFriendesArray(user, friends) {
 function deleteDuplication(array) {
   return Array.from(new Set(array));
 }
+
+function initObj(array) {
+  let obj = {};
+
+  array.map((el) => (obj[el] = 0));
+
+  return obj;
+}
+
 module.exports = problem7;
