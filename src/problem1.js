@@ -10,6 +10,14 @@ function problem1(pobi, crong) {
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
   
+  // 점수 비교 후 결과
+  // 무승부 = 0
+  // 포비 승 = 1
+  // 크롱 승 = 2
+  if(pobiScore === crongScore) return 0;
+  if(pobiScore > crongScore) return 1;
+  if(pobiScore < crongScore) return 2;
+
   /**
    * 예외사항 체크 함수
    * - input 의 길이가 2가 아닌 경우
