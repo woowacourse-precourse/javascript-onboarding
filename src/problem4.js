@@ -6,18 +6,18 @@ function problem4(word) {
 }
 
 function encryptLetter(letter) {
-  const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const LOWER = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-  if (upperCaseLetters.includes(letter)) {
-    const index = upperCaseLetters.indexOf(letter);
-    const encryptedIndex = (upperCaseLetters.length - 1) - index;
-    return upperCaseLetters[encryptedIndex];
+  if (UPPER.includes(letter)) {
+    const index = UPPER.indexOf(letter);
+    const encryptedIndex = (UPPER.length - 1) - index;
+    return UPPER[encryptedIndex];
   }
-  if (lowerCaseLetters.includes(letter)) {
-    const index = lowerCaseLetters.indexOf(letter);
-    const encryptedIndex = (lowerCaseLetters.length - 1) - index;
-    return lowerCaseLetters[encryptedIndex];
+  if (LOWER.includes(letter)) {
+    const index = LOWER.indexOf(letter);
+    const encryptedIndex = (LOWER.length - 1) - index;
+    return LOWER[encryptedIndex];
   }
 
   return letter;
