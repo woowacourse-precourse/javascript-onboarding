@@ -1,8 +1,15 @@
 function problem1(pobi, crong) {
   var answer;
+  const GAME_RESULT = {
+    WINNER_POBI: 1,
+    WINNER_CRONG: 2,
+    DRAW: 0,
+    EXCEPTION: -1,
+  };
+
   // 5) 예외사항을 처리하는 과정
   if (isException(pobi) || isException(crong)) {
-    answer = -1;
+    answer = GAME_RESULT.EXCEPTION;
     return answer;
   }
   // 3) 플레이어 각각의 점수를 계산하는 과정
@@ -10,11 +17,11 @@ function problem1(pobi, crong) {
   const crongScore = calculateScore(crong);
   // 4) 플레이어 점수를 비교하는 과정
   if (pobiScore > crongScore) {
-    answer = 1;
+    answer = GAME_RESULT.WINNER_POBI;
   } else if (pobiScore === crongScore) {
-    answer = 0;
+    answer = GAME_RESULT.DRAW;
   } else if (pobiScore < crongScore) {
-    answer = 2;
+    answer = GAME_RESULT.WINNER_CRONG;
   }
   return answer;
 }
