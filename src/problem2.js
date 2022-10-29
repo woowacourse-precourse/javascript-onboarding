@@ -1,7 +1,6 @@
 function problem2(cryptogram) {
-  var answer;
-  console.log(cryptogram);
-  getRepeated(cryptogram);
+  const splitCrypto = cryptogram.split("");
+
   return answer;
 }
 
@@ -33,5 +32,10 @@ function getRepeated(str) {
       }
     }
   }
-  console.log(results);
+  return results;
 }
+
+/**
+ * @param {array} slice 중복된 문자의 시작과 끝 정보를 가진 배열
+ */
+function removeChracters(slice) {}
