@@ -7,6 +7,8 @@ function problem1(pobi, crong) {
   maxPobiNumber = getMaxFromTwoNumber(getMaxFromAddSum(pobi),getMaxFromMultiplySum(pobi));
   maxCrongNumber = getMaxFromTwoNumber(getMaxFromAddSum(crong),getMaxFromMultiplySum(crong));
 
+  if (maxPobiNumber === maxCrongNumber) return 0; 
+  return maxPobiNumber > maxCrongNumber ? 1 : 2; 
 }
 
 /**
@@ -27,7 +29,7 @@ const getMaxFromAddSum = arr => {
 * @param {array} arr 입력된 배열
 * @returns {number}곱 결과 리턴
 */
-const getMaxFromMultiplySum = (arr) =>{
+const getMaxFromMultiplySum = arr =>{
   const result = arr.map( ele => 
       String(ele).split('').reduce((acc,cur)=> acc * parseInt(cur), 1)
 );
@@ -54,7 +56,7 @@ const isValidArray = (arr) => {
   const rightPage = arr[1];
   const firstPage = 1;
   const finalPage = 400;
-  
+
   const isValidRange = () => {
       if (leftPage < finalPage - 1 && leftPage > firstPage) return true;
       if (rightPage < finalPage && rightPage > firstPage + 1) return true;
