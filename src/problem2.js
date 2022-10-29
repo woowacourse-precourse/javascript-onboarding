@@ -7,19 +7,19 @@ function problem2(cryptogram) {
   for (var i = 1; i < cryptogram.length; i++) {
     var stackTop = stack.length - 1;
 
-    if (cryptogram.charAt(i) === stack[stackTop]) {
-      while (
-        i <= cryptogramLastIndex &&
-        cryptogram.charAt(i + 1) === stack[stackTop]
-      ) {
-        i++;
-      }
-
-      stack.pop();
+    if (cryptogram.charAt(i) !== stack[stackTop]) {
+      stack.push(cryptogram.charAt(i));
       continue;
     }
 
-    stack.push(cryptogram.charAt(i));
+    while (
+      i <= cryptogramLastIndex &&
+      cryptogram.charAt(i + 1) === stack[stackTop]
+    ) {
+      i++;
+    }
+
+    stack.pop();
   }
 
   return stack.join("");
