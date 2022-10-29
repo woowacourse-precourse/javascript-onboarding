@@ -15,6 +15,7 @@ function problem4(word) {
 function mapAlphabet(ch) {}
 
 function getMid(ch) {
+  const chCode = ch.charCodeAt();
   let mid = 0;
 
   if (chCode >= "A".charCodeAt() && chCode <= "Z".charCodeAt()) {
@@ -24,10 +25,11 @@ function getMid(ch) {
   } else {
     throw new Error("알파벳이 아닙니다");
   }
+  return mid;
 }
-function reverseCharacter(ch) {
-  const chCode = ch.charCodeAt();
 
+function reverseCharacter(ch) {
+  const mid = getMid(ch);
   const diff = Math.abs(mid - ch.charCodeAt());
   if (ch < mid) {
     return String.charCodeAt(mid + diff);
