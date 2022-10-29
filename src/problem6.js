@@ -8,19 +8,7 @@ class UserFilter {
   userTable = {};
   constructor(forms) {
     this._makeInitUserTable(forms);
-  }
-
-  get duplicatedEmails() {
-    const duplicatedUserEmails = new Set();
-    for (const emailSets of Object.values(this.userTable)) {
-      const emails = [...emailSets];
-      if (emails.length > 1) {
-        for (const email of emails) {
-          duplicatedUserEmails.add(email);
-        }
-      }
-    }
-    return [...duplicatedUserEmails];
+    this.duplicatedEmails = this._searchDuplicatedEmails();
   }
 
   _makeInitUserTable(forms) {
@@ -46,6 +34,19 @@ class UserFilter {
       slicedWords.push(slicedWord);
     }
     return slicedWords;
+  }
+
+  _searchDuplicatedEmails() {
+    const duplicatedUserEmails = new Set();
+    for (const emailSets of Object.values(this.userTable)) {
+      const emails = [...emailSets];
+      if (emails.length > 1) {
+        for (const email of emails) {
+          duplicatedUserEmails.add(email);
+        }
+      }
+    }
+    return [...duplicatedUserEmails];
   }
 }
 
