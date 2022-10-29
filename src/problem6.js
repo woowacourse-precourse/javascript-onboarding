@@ -20,6 +20,14 @@ function problem6(forms) {
       check.push(standard[i][0]);
     }
   }
+
+  let result = [];
+  for (let i = 0; i < forms.length; i++) {
+    if (forms[i][1].includes(check)) {
+      result.push(forms[i][0]);
+    }
+  }
+  
   return answer;
 }
 
