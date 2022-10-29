@@ -54,6 +54,21 @@ const startThreeSixNine = (currentNumber, count) => {
   return startThreeSixNine(nextNumber, _count);
 };
 
+const checkException = value => {
+  if (typeof value !== "number") {
+    throw new TypeError("Only numeric elements are possible.");
+  }
+
+  // 1 이상 10,000 이하인 자연수
+  if (value < 1 && 10000 < value) {
+    throw new RangeError(
+      "Only natural numbers greater than or equal to 1 and less than or equal to 10,000."
+    );
+  }
+
+  return false;
+};
+
 function problem3(number) {
   var answer;
   return answer;
