@@ -12,14 +12,11 @@ function encryptLetter(letter) {
   if (upperCaseLetters.includes(letter)) {
     const index = upperCaseLetters.indexOf(letter);
     const encryptedIndex = (upperCaseLetters.length - 1) - index;
-    
     return upperCaseLetters[encryptedIndex];
   }
-
   if (lowerCaseLetters.includes(letter)) {
     const index = lowerCaseLetters.indexOf(letter);
     const encryptedIndex = (lowerCaseLetters.length - 1) - index;
-    
     return lowerCaseLetters[encryptedIndex];
   }
 
