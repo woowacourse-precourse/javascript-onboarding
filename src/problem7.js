@@ -6,6 +6,7 @@
   4) 사용자와 함께 아는 친구의 수만큼 점수 부여 기능
   5) 사용자의 타임 라인에 방문한 친구들 점수 부여 기능
   6) 점수가 가장 높은 순으로 정렬, 추천 점수가 같은 경우 이름순으로 정렬
+  7) 추천 점수가 0점인 경우 추천하지 않는 기능
 */
 
 function connectFreind(f, r){
@@ -69,13 +70,14 @@ function scoreToVisitor(r,fou,result, user, vist){
 }
 
 function sortArray(result){
-  let r=result.sort(function(a,b){
-    if(a.name==b.name){
-      return a.name-b.name;
-    }
+  result=result.sort((a,b)=>{
+    if(a.name>b.name) return 1;
+    if(a.name<b.name) return -1;
+    return 0;
+  })
+  result=result.sort(function(a,b){
     return b.score-a.score;
   })
-  
 }
 
 function problem7(user, friends, visitors) {
@@ -88,11 +90,12 @@ function problem7(user, friends, visitors) {
   scoreToFreinds(rel,fou,result, user)
   scoreToVisitor(rel,fou,result, user, visitors)
   sortArray(result)
-  console.log(result)
   for(let value of result){
     if(!value.score) continue;
     answer.push(value.name)
+    if(answer.length==5) break;
   }
+  console.log(answer)
   return answer;
 }
 
