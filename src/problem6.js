@@ -13,10 +13,22 @@ function nicknameWordMap(forms) {
   });
   return map;
 }
+
+function returnEmail(forms, map) {
+  let set = new Set();
+  forms.forEach((item) => {
+    let email = item[0];
+    let nickname = item[1];
+    for (let i = 0; i < nickname.length; i++) {
+      let subStr = nickname.substring(i, i + 2);
+      if (map.get(subStr) === "duplication") set.add(email);
+    }
+  });
+  return set;
+}
 function problem6(forms) {
-  var answer;
   let map = nicknameWordMap(forms);
-  return answer;
+  return returnEmail(forms, map);
 }
 
 module.exports = problem6;
