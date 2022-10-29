@@ -11,5 +11,3 @@ function problem3(number) {
 }
 
 module.exports = problem3;
-
-// npm t -- -t 'problem3'
