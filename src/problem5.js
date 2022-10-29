@@ -6,6 +6,12 @@ function problem5(money) {
   let moneys = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   let cnts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-}
+  for(let i=0; i<9; i++) {
+    cnts[i] = parseInt(money/moneys[i]);
+    money = money-(moneys[i]*cnts[i]);
+  }
+
+  return cnts;
+} 
 
 module.exports = problem5;
