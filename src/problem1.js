@@ -36,7 +36,7 @@ const getMax = (arr, maxArr, maxIdx) => {
  * @returns {boolean} 요구하는 제한사항에 걸려 올바르지 못한 결과를 낼 수 있는 경우 해당 함수는 true를 반환하며, 문제가 없을 경우 false를 반환한다.
  */
 const exceptionChecker = (pobi, crong) => {
-  // 예외 상황 :: 포비 또는 크롱이 첫 페이지를 펼쳤을 때
+  // 제한사항 :: 포비 또는 크롱이 첫 페이지를 펼쳤을 때
   if (
     pobi[rule.leftPage] === rule.firstPage ||
     crong[rule.leftPage] === rule.firstPage
@@ -44,7 +44,7 @@ const exceptionChecker = (pobi, crong) => {
     return true;
   }
 
-  // 예외 상황 :: 포비 또는 크롱이 마지막 페이지를 펼쳤을 때
+  // 제한사항 :: 포비 또는 크롱이 마지막 페이지를 펼쳤을 때
   if (
     pobi[rule.rightPage] === rule.lastPage ||
     crong[rule.rightPage] === rule.lastPage
@@ -52,7 +52,7 @@ const exceptionChecker = (pobi, crong) => {
     return true;
   }
 
-  // 예외상황 :: 왼쪽페이지 번호와 오른쪽 페이지 번호가 형식에 맞지 않을 떄
+  // 제한사항 :: 왼쪽페이지 번호와 오른쪽 페이지 번호가 형식에 맞지 않을 떄
   if (
     pobi[rule.leftPage] + 1 !== pobi[rule.rightPage] ||
     crong[rule.leftPage] + 1 !== crong[rule.rightPage]
