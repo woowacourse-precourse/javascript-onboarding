@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const known_friends = user_friends(user, friends);
   const unknown_friends = [];
+  let recommend_friends_score;
 
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < known_friends.length; j++) {
@@ -17,6 +18,19 @@ function problem7(user, friends, visitors) {
       if (visitors[k] === known_friends[l][0]) visitors.splice(k, 1);
     }
   }
+
+  recommend_friends_score = Object.assign(
+    friends_score(unknown_friends),
+    visited_friends(visitors)
+  );
+
+  recommend_friends_score = Object.fromEntries(
+    Object.entries(recommend_friends_score).sort(([a], [b]) => (a < b ? -1 : 1))
+  );
+
+  recommend_friends_score = Object.fromEntries(
+    Object.entries(recommend_friends_score).sort(([, a], [, b]) => (a > b ? -1 : 1))
+  );
 }
 
 function user_friends(user, friends) {
