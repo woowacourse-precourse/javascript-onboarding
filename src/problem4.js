@@ -44,4 +44,8 @@ function validLetters(word) {
   return reg.test(word);
 }
 
+function validType(word) {
+  return typeof (word) == "string";
+}
+
 module.exports = problem4;
