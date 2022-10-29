@@ -1,20 +1,20 @@
 function withrawCash({ wallet, money }) {
   let remainingMoney = money;
 
-  const bills = Array.from(wallet.keys());
+  const billsAndCoins = Array.from(wallet.keys());
 
-  for (const bill of bills) {
-    if (remainingMoney === 0) {
+  for (const billCoin of billsAndCoins) {
+    if (!remainingMoney) {
       return;
     }
 
-    if (remainingMoney < bill) {
+    if (remainingMoney < billCoin) {
       continue;
     }
 
-    const billCount = parseInt(remainingMoney / bill);
-    wallet.set(bill, billCount);
-    remainingMoney -= billCount * bill;
+    const billCoinCount = parseInt(remainingMoney / billCoin);
+    wallet.set(billCoin, billCoinCount);
+    remainingMoney -= billCoinCount * billCoin;
   }
 }
 
@@ -32,9 +32,9 @@ function problem5(money) {
 
   withrawCash({ wallet, money });
 
-  const billsCountInWallet = Array.from(wallet.values());
+  const moneyCountInWallet = Array.from(wallet.values());
 
-  return billsCountInWallet;
+  return moneyCountInWallet;
 }
 
 module.exports = problem5;
