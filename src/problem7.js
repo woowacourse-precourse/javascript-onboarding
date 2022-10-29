@@ -15,10 +15,9 @@ function createUserFriendObject(user, friends) {
 }
 
 function findFriendFollower(user, userFriendObject, friends) {
-  const userFriends = Object.keys(userFriendObject);
   friends = friends.filter(friend => !friend.includes(user));
   friends.forEach(friend => {
-    if (friend.some(person => userFriends.includes(person))) {
+    if (friend.some(person => userFriendObject[person])) {
       try {
         userFriendObject[friend[0]].push(friend[1]);
       } catch {
