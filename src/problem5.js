@@ -9,7 +9,7 @@ function problem5(money) {
     }
   }
 
-  return;
+  return answer;
 }
 
 module.exports = problem5;
