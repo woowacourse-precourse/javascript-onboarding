@@ -26,6 +26,14 @@ function problem6(forms) {
     answer.push(mail);
   }
 
+  function compareMail(a, b) {
+    let nickA = a.split("@")[0];
+    let nickB = b.split("@")[0];
+    return nickA.localeCompare(nickB);
+  }
+
+  answer.sort((a, b) => compareMail(a, b));
+
   return answer;
 }
 
