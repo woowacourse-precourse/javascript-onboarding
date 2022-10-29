@@ -210,5 +210,6 @@ function getPartsOfNickname(nickname) {
   - 커스텀 정렬함수 분리하기
   - 추천알고리즘 부분의 동일로직 함수로 분리
   - user의 친구가 한명도 없을 때 오류 수정
+  - 클로저 로직을 ES2019 방식으로 최신화
 
 ### 학습메모
