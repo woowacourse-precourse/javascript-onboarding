@@ -61,6 +61,13 @@ function problem7(user, friends, visitors) {
       if (a < b) return -1;
     });
   };
+
+  // 함수 적용 후 결과값 반환
+  const relations = createRelations(friends);
+  const friendScore = checkFriendScore(user, relations);
+  const totalScores = checkVisitors(user, friendScore, visitors);
+  const sortedResult = sortByScoreAndName(totalScores);
+  return sortedResult.slice(0, 5);
 }
 
 module.exports = problem7;
