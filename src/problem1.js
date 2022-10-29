@@ -18,6 +18,9 @@ function isException(pages) {
   if (pages[1]-pages[0] != 1) {
     return true;
   }
+  if (pages[0]<1 || pages[0]>400 || pages[1]<1 || pages[1]>400 ){
+    return true;
+  }
   return false;
 }
 
