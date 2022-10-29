@@ -51,6 +51,16 @@ function problem7(user, friends, visitors) {
     });
     return score;
   };
+
+  // 점수 순, 이름 오름차순으로 정렬하는 함수
+  const sortByScoreAndName = (scores) => {
+    return Object.keys(scores).sort((a, b) => {
+      if (scores[a] < scores[b]) return 1;
+      if (scores[a] > scores[b]) return -1;
+      if (a > b) return 1;
+      if (a < b) return -1;
+    });
+  };
 }
 
 module.exports = problem7;
