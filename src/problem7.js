@@ -23,9 +23,11 @@ function initializationObj(f, r){
 }
 
 function createUserFreind(u, r, fou){
-  r[u].forEach((a)=>{
-    fou.push(a);
-  })
+  if(r[u]){
+    r[u].forEach((a)=>{
+      fou.push(a);
+    })
+  }
 }
 
 function scoreToFreinds(r,fou,result, user){
@@ -86,7 +88,9 @@ function problem7(user, friends, visitors) {
   scoreToFreinds(rel,fou,result, user)
   scoreToVisitor(rel,fou,result, user, visitors)
   sortArray(result)
+  console.log(result)
   for(let value of result){
+    if(!value.score) continue;
     answer.push(value.name)
   }
   return answer;
