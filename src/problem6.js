@@ -9,7 +9,7 @@ function validationArr(forms) {
     if (
       data[0].length >= 11 &&
       data[0].length < 20 &&
-      data[1].length >= 1 &&
+      data[1].length >= 2 &&
       data[1].length < 20 &&
       data[0].includes("@email") &&
       !/[^가-힣]/.test(data[1]) &&
@@ -34,6 +34,14 @@ function duplicateCheckApp(CrewDataArr) {
       }
     }
   }
+}
+
+function getNameByTwoLetterArr(CrewNickName){
+  const TwoLetterNameArr = [];
+  for(let i = 0; i <CrewNickName.length-1; i++) {
+    TwoLetterNameArr.push(CrewNickName.substr(i,2));
+  }
+  return TwoLetterNameArr;
 }
 
 module.exports = problem6;
