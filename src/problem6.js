@@ -5,6 +5,7 @@ function problem6(forms) {
   const nicknameList = forms.map((form) => form[1]);
 
   const dividedNicknameList = [].concat(...getBrokenNicknameList(nicknameList));
+  const duplicatedwords = findDuplicates(dividedNicknameList);
 
   return answer;
 }
@@ -18,6 +19,11 @@ function getBrokenNicknameList(arr) {
     }
     return brokenNickname;
   });
+}
+
+function findDuplicates(arr) {
+  const filtered = arr.filter((item, index) => arr.indexOf(item) !== index);
+  return [...new Set(filtered)];
 }
 
 module.exports = problem6;
