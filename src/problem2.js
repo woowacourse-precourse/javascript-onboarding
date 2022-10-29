@@ -1,27 +1,3 @@
-class Stack{
-  constructor(){
-    this.stack = [];
-    this.top = -1;
-  }
-  push(item){
-    this.stack.push(item);
-    this.top++;
-  }
-  clear(){
-    this.stack.length = 0;
-    this.top = -1;
-  }
-  peek(){
-    return this.stack[this.top];
-  }
-  size(){
-    return this.stack.length;
-  }
-  entries(){
-    return this.stack;
-  }
-}
-
 function problem2(cryptogram) {
   try{
     if(checkInputErr(cryptogram)){
@@ -44,6 +20,12 @@ function checkInputErr(cryptogram){
   else if(!validInput(cryptogram)) return true;
   else return false;
 }
+
+function deleteSame(input){
+ 
+}
+
+console.log(deleteSame("browoanoommnaon"));
 
 
 module.exports = problem2;
