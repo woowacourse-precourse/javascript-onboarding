@@ -42,6 +42,16 @@ function visitedScore(visitors, dude, score) {
   });
 }
 
+function scoreSort(result) {
+  result.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+    } else {
+      return b[1] - a[1];
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   const dude = [];
   const score = {};
@@ -54,13 +64,7 @@ function problem7(user, friends, visitors) {
 
   let result = Object.entries(score);
 
-  result.sort((a, b) => {
-    if (a[1] === b[1]) {
-      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
-    } else {
-      return b[1] - a[1];
-    }
-  });
+  scoreSort(result);
 
   if (result.length > 5) {
     result = result.slice(0, 5);
