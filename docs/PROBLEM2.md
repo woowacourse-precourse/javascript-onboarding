@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 기능 목록
+
+1. 연속하는 중복 문자들을 삭제한 결과 반환
