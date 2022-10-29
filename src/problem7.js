@@ -3,6 +3,10 @@ function problem7(user, friends, visitors) {
 
   const userFriend = aleadyFriends(friends, user);
 
+  // 유저의 친구, 유저 삭제
+  userFriend.forEach(realFriend => delete peoples[realFriend])
+  delete peoples[user];
+
 }
 
 module.exports = problem7;
