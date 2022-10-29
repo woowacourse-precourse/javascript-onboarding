@@ -47,19 +47,4 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "jun"],
-      ["donut", "andole"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
-
 module.exports = problem7;

@@ -22,6 +22,4 @@ function problem2(cryptogram) {
   return getNoContinuousWords(cryptogram);
 }
 
-console.log(problem2("saddaas"));
-
 module.exports = problem2;
