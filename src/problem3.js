@@ -15,7 +15,7 @@ function problem3(number) {
     }
   }
 
-  return;
+  return answer;
 }
 
 module.exports = problem3;
