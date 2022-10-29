@@ -1,14 +1,19 @@
 const nickname = new Object();
 
 const pushToNickname = (splitedWord, email) => {
-  nickname[splitedWord] = [email];
+  if(nickname[splitedWord] === undefined){
+    nickname[splitedWord] = [email];
+  }
+  else {
+    console.log("hgih");
+    nickname[splitedWord].push(email);
+  }
   console.log(nickname);
 }
 
 const split_words = (word, email) => {
   for(let i=0; i<word.length-1; i++) {
     const splitedWord = word.substr(i, i+2);
-    console.log(splitedWord);
     pushToNickname(splitedWord, email);
   }
 }
