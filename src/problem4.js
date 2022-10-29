@@ -13,14 +13,14 @@ function changeWord(ascii){
   const MIDDLE_LOWER_ASCII = 109;
 
   if(ascii>=ASCII_A && ascii<=ASCII_Z){
-      return changeAscii(ascii, MIDDLE_UPPER_ASCII);
+    return changeAscii(ascii, MIDDLE_UPPER_ASCII);
   }
-  else if(ascii>=ASCII_a && ascii<=ASCII_z){
-      return changeAscii(ascii, MIDDLE_LOWER_ASCII);
+
+  if(ascii>=ASCII_a && ascii<=ASCII_z){
+    return changeAscii(ascii, MIDDLE_LOWER_ASCII);
   }
-  else{
-    return ascii;
-  }
+
+  return ascii;
 }
 
 function getChangedWord(word) {
