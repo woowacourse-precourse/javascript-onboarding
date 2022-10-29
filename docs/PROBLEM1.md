@@ -26,6 +26,7 @@
 
 ### ✔구현 기능 목록 리스트
 
+-   1단계) 입력받은 배열의 요소를 알기 쉬운 변수명으로 저장합니다. pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage
 -   2~3단계) 각 자리의 숫자를 모두 더하는 함수를 구현합니다.
 -   2~3단계) 각 자리의 숫자를 모두 곱하는 함수를 구현합니다.
 
