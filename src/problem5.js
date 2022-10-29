@@ -21,7 +21,7 @@ const Bank = {
   },
   minusMoneyByNote: function (money, note) {
     let count = 0;
-    while (money < note) {
+    while (money > note) {
       money -= note;
       count++;
     }
