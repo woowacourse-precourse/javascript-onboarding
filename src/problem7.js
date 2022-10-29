@@ -56,6 +56,13 @@ function cutFiveFriend(result) {
   return result.slice(0, 5);
 }
 
+function getFriendName(result) {
+  return result.map((arr) => {
+    const [id, _] = arr;
+    return id;
+  });
+}
+
 function problem7(user, friends, visitors) {
   const dude = [];
   const score = {};
@@ -74,27 +81,9 @@ function problem7(user, friends, visitors) {
     result = cutFiveFriend(result);
   }
 
-  result = result.map((arr) => {
-    const [id, _] = arr;
-    return id;
-  });
+  result = getFriendName(result);
 
   return result;
 }
 
 module.exports = problem7;
-
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
