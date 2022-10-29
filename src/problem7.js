@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   const usersFriends = [...new Set(friends.filter((list) => list.includes(user)).flat())];
 
-  const newFriends = test(usersFriends, friends.flat());
-  const newVisitors = test(usersFriends, visitors);
+  const newFriends = getNewMembers(usersFriends, friends.flat());
+  const newVisitors = getNewMembers(usersFriends, visitors);
 
   const newFriendScore = calcScore(newFriends, 10);
   const newVisitorScore = calcScore(newVisitors, 1);
@@ -28,7 +28,7 @@ const calcScore = (list, score) => {
   return result;
 };
 
-const test = (usersFriends, list) => {
+const getNewMembers = (usersFriends, list) => {
   let result = [];
   list.map((member) => {
     if (!usersFriends.includes(member)) {
