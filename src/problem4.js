@@ -9,12 +9,14 @@ function changeWord(ascii){
   const ASCII_Z = 90;
   const ASCII_a = 97;
   const ASCII_z = 122;
+  const MIDDLE_UPPER_ASCII = 77;
+  const MIDDLE_LOWER_ASCII = 109;
 
   if(ascii>=ASCII_A && ascii<=ASCII_Z){
-      return changeAscii(ascii, parseInt((ASCII_A+ASCII_Z)/2));
+      return changeAscii(ascii, MIDDLE_UPPER_ASCII);
   }
   else if(ascii>=ASCII_a && ascii<=ASCII_z){
-      return changeAscii(ascii, parseInt((ASCII_a+ASCII_z)/2));
+      return changeAscii(ascii, MIDDLE_LOWER_ASCII);
   }
   else{
     return ascii;
@@ -34,6 +36,5 @@ function problem4(word) {
   const answer = getChangedWord(word)
   return answer;
 }
-
 
 module.exports = problem4;
