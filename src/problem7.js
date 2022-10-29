@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
   //data structure
   class SNS {
-    constructor(usersFriendRelation, visiotrs) {
+    constructor(usersFriendRelation, visitors) {
       this.usersFriendRelation = usersFriendRelation;
       this.userList = usersFriendRelation.flat().concat(visitors);
       this.visitors = visitors;
@@ -116,7 +116,7 @@ function problem7(user, friends, visitors) {
 
   //recommandation system handle
   const markRecommandationSystem = new UserRecommandationSystem(
-    'mrko',
+    user,
     snsUserMap
   );
   const result = markRecommandationSystem
