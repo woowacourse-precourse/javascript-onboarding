@@ -32,4 +32,15 @@ const checkWinner = (pobiArr, crongArr) => {
   if (pobiScore === crongScore) return 0;
 };
 
+const handleException = (pageArr) => {
+  const firstPage = pageArr[0];
+  const secondPage = pageArr[1];
+
+  if (firstPage === 1) return -1;
+  if (secondPage === 400) return -1;
+  if (secondPage !== firstPage + 1) return -1;
+
+  return 1;
+};
+
 module.exports = problem1;
