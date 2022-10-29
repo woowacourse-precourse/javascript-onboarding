@@ -9,11 +9,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // [ 'donut', 'andole', 'jun', 'shakevan', 'bedi' ]
+  let everyoneList = [];
+  for (let i of friends) {
+    for (let j = 0; j < 2; j++) {
+      everyoneList.push(i[j]);
+    }
+  }
+  for (let i of visitors) {
+    everyoneList.push(i);
+  }
+  everyoneList = [...new Set(everyoneList)];
+  everyoneList = everyoneList.filter((element) => element !== user);
 
+  
 
-
-
-  let answer = alreadyFriendList;
+  let answer = everyoneList;
   return answer;
 }
 

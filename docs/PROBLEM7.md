@@ -31,7 +31,7 @@
   - 입력으로 user, friends, visitors, result가 하나의 배열에 담겨 주어진다. ⭕
 - 추천 점수 계산하기
   - user와 이미 친구인 사람의 이름을 배열 `alreadyFriendList`에 담는다. ⭕
-  - friends 목록과 visitors 목록을 합쳐 이름의 중복을 제외하고 user와 알 수도 있는 친구를 모두 배열 `everyoneList`에 담는다.
+  - friends 목록과 visitors 목록을 합쳐 이름의 중복을 제외하고 user와 알 수도 있는 친구를 모두 배열 `everyoneList`에 담는다. ⭕
   - `everyoneList`와 길이가 같은 배열 'everyoneScoreList`을 만들고 각 원소를 0으로 초기화하며 이곳에 각각의 점수를 저장한다.
   - friends 리스트에서 `alreadyFriendList`에 있는 친구와 짝이면 `eveyoneList`에서 그 친구의 인덱스를 찾아 `everyoneScoreList`에서 해당하는 인덱스의 score을 10 높여준다.
   - visitors 리스트에 있는 사람들은 한 번 등장할 때마다 `everyoneScoreList`의 score을 1 높여준다.
