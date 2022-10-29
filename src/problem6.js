@@ -7,20 +7,27 @@ function problem6(forms) {
   const checkKorean = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
   let arr = [];
   let addressStack = [];
+  let nicknameStack = [];
+  let nicknameStorage = [];
   //기능 목록 2. 제한사항 조건식들.
   outer: for (let i = 0; i < forms.length; i++) {
     if (checkDomain.test(forms[i][0]) && 10 < forms[i][0].length < 20) {
       if (checkKorean.test(forms[i][1]) && 1 <= forms[i][1].length < 20) {
+        nicknameStack.push(forms[i][1])
+        //address stack
         for (let j of forms[i][0]) {
           if (j === addressStack[addressStack.length - 1]) {
             continue outer;
           }
           addressStack.push(j);
         }
-        // 닉네임을 확인하고 arr에 결과값을 넣어줄 조건식
-        if (forms[i][1].includes('제이')) {
-          arr.push(forms[i][0]);
-          arr.sort();
+        // nickname storage
+        for (let u = 0; u < nicknameStack[i].length - 1; u++) {
+          nicknameStorage.push(nicknameStack[i].slice(u, u + 2));
+          if (!nicknameStorage.indexOf(nicknameStack[i].slice(u, u + 2))) {
+            arr.push(forms[i][0]);
+            arr.sort();
+          }
         }
       }
     }
