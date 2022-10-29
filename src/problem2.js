@@ -7,6 +7,15 @@ const removeOverlapChar = (string) => {
   return [...string].filter((_, idx) => !removeIdx.includes(idx)).join("");
 };
 
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+  let isOverlap = true;
+  while (isOverlap) {
+    const removedString = removeOverlapChar(cryptogram);
+    if (cryptogram === removedString) isOverlap = false;
+    else cryptogram = removedString;
+  }
+
+  return cryptogram;
+}
 
 module.exports = problem2;
