@@ -4,11 +4,16 @@
  */
 const splitNumberToDigits = (n) => n.toString().split("").map(Number);
 
+const add = (a, b) => a + b;
+
 /**
  * range
  * @type {(n: number) => number[]}
  */
 const range = (n) => [...Array(n).keys()];
+
+const filterArrayIncluded = (iter, container) =>
+  iter.filter((v) => container.includes(v));
 
 /**
  * problem3
@@ -17,8 +22,8 @@ const range = (n) => [...Array(n).keys()];
 function problem3(number) {
   return range(number + 1)
     .map(splitNumberToDigits)
-    .flat()
-    .filter((v) => [3, 6, 9].includes(v)).length;
+    .map((digits) => filterArrayIncluded(digits, [3, 6, 9]).length)
+    .reduce(add, 0);
 }
 
 module.exports = problem3;
