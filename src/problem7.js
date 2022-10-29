@@ -13,7 +13,7 @@ function problem7(user, friends, visitors) {
     strangeVisitorList,
     STRANGER_SCORE
   );
-  const recomendFriends = sumScore(recomendFriendsScore, strangeVisitorScore);
+  const recomendFriends = Object.keys(sumScore(recomendFriendsScore, strangeVisitorScore));
 
   for (let i = 0; i < 5; i++) {
     answer.push(recomendFriends[i]);
