@@ -11,12 +11,16 @@ function makeNewString(str, rmBase, rmOffset) {
   return leftStr + rightStr;
 }
 
+function isEncryptFinish(base, length) {
+  return base < length - 1;
+}
+
 function problem2(cryptogram) {
   var answer;
   let base = 0; // 중복검사 때 사용하는 base index
   let target = cryptogram;
 
-  while (base < target.length - 1) {
+  while (isEncryptFinish(base, target.length)) {
     // 중복 검사로직 작성
     let offset = findOverlapStringIndex(target, base);
     if (offset === base) {
