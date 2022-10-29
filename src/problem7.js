@@ -1,45 +1,61 @@
 function problem7(user, friends, visitors) {
-  let userFriends = [];
   let recommendList = new Map();
-  friends.forEach(relationship => {
-    const userFriend = isFriend(user, relationship);
+  const userFriends = getUserFriends(user, friends);
+  recommendList = getFriendOfFriendPoint(user, friends, userFriends);
+  recommendList = getVisitPoint(recommendList ,visitors, userFriends);
+  recommendList = toSortLimitedRecommendList([...recommendList], 5);
+  return recommendList;
+}
+
+function isFriend(user, friendship) {
+  let friend = null;
+  if(friendship[0] === user) return friend = friendship[1];
+  if(friendship[1] === user) return friend = friendship[0];
+  if(friend === null) return false;
+}
+
+function getUserFriends(user, friendshipList) {
+  const userFriends = [];
+  friendshipList.forEach(friendship => {
+    const userFriend = isFriend(user, friendship);
     if(userFriend) userFriends.push(userFriend);
   });
+  return userFriends;
+}
+
+function getFriendOfFriendPoint(user, friendshipList, userFriends) {  
+  const friendOfFriendList = new Map();
   userFriends.forEach(userFriend => {
-    friends.forEach(relationship => {
-      const friendOfFriend = isFriend(userFriend, relationship);
+    friendshipList.forEach(friendship => {
+      const friendOfFriend = isFriend(userFriend, friendship);
       if(userFriends.includes(friendOfFriend) || [false, user].includes(friendOfFriend)) return;
-      if(recommendList.has(friendOfFriend)) return recommendList.set(friendOfFriend, recommendList.get(friendOfFriend) + 10);
-      recommendList.set(friendOfFriend, 10);
+      if(friendOfFriendList.has(friendOfFriend)) return friendOfFriendList.set(friendOfFriend, friendOfFriendList.get(friendOfFriend) + 10);
+      friendOfFriendList.set(friendOfFriend, 10);
     });
   });
-  visitors.forEach(visitor => {
+  return friendOfFriendList;
+}
+
+function getVisitPoint(recommendList, visitorList, userFriends) {  
+  visitorList.forEach(visitor => {
     if(userFriends.includes(visitor)) return;
     if(recommendList.has(visitor)) return recommendList.set(visitor, recommendList.get(visitor) + 1);
     recommendList.set(visitor, 1);
   });
-  recommendList = sortRecommends([...recommendList]);
   return recommendList;
 }
 
-function isFriend(user, relationship) {
-  let friend = null;
-  if(relationship[0] === user) return friend = relationship[1];
-  if(relationship[1] === user) return friend = relationship[0];
-  if(friend === null) return false;
-}
-
-function sortRecommends(list) {
+function toSortLimitedRecommendList(recommendList, LimitedNumber) {
   let sortedList = [];
   let tiePointUsers = new Set();
-  list.sort((a,b) => {
+  recommendList.sort((a,b) => {
     return b[1] - a[1];
   });    
-  for(let i = 0; i < list.length; i++) {
-    const userID = list[i][0];    
-    const userPoint = list[i][1];
-    const nextUserID = list[i + 1]?.[0];     
-    const nextUserPoint = list[i + 1]?.[1];  
+  for(let i = 0; i < recommendList.length; i++) {
+    const userID = recommendList[i][0];    
+    const userPoint = recommendList[i][1];
+    const nextUserID = recommendList[i + 1]?.[0];     
+    const nextUserPoint = recommendList[i + 1]?.[1];  
     tiePointUsers.add(userID); 
     if(userPoint === nextUserPoint) {
       tiePointUsers.add(nextUserID);
@@ -47,8 +63,8 @@ function sortRecommends(list) {
     }
     sortedList.push(...([...tiePointUsers].sort()));
     tiePointUsers = new Set();
-    if(sortedList.length > 5) {
-      sortedList = sortedList.splice(0, 5);
+    if(sortedList.length > LimitedNumber) {
+      sortedList = sortedList.splice(0, LimitedNumber);
       break;
     }
   }
