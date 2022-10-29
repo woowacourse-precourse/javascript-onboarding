@@ -26,6 +26,22 @@ const convertToString = stringArray => {
   return copyedStringArray.join("");
 };
 
+const recursiveCheckDuplicateElement = (letterArray, currentIndex, pointArray) => {
+  const maxLength = letterArray.length;
+  let _nextIndexPoint = currentIndex + 1;
+
+  if (maxLength <= currentIndex) {
+    return pointArray;
+  }
+
+  if (letterArray[currentIndex] === letterArray[_nextIndexPoint]) {
+    pointArray.push(currentIndex);
+    _nextIndexPoint = _nextIndexPoint + 1;
+  }
+
+  return recursiveCheckDuplicateElement(letterArray, _nextIndexPoint, pointArray);
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
