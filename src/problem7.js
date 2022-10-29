@@ -4,7 +4,7 @@ const RETURN = {
 
 const VALIDITY = {
   stringType: 'string',
-  english: /[a-zA-Z]/,
+  english: /^[a-z]+$/,
   minLengthOfId: 1,
   maxLengthOfId: 30,
   minLengthOfFriends: 1,
@@ -17,10 +17,9 @@ const VALIDITY = {
 
 function problem7(user, friends, visitors) {
   if (!isValidInput(user, friends, visitors)) {
+    console.log('무효한 인풋!');
     return RETURN.invalidInput;
   }
-  var answer;
-  return answer;
 }
 
 function isValidInput(user, friends, visitors) {
@@ -54,11 +53,7 @@ function checkUser(user) {
     return false;
   }
 
-  if (!checkAlphabet(user)) {
-    return false;
-  }
-
-  if (!checkLowercase(user)) {
+  if (!checkAlphabetWithLowercase(user)) {
     return false;
   }
 
@@ -122,43 +117,39 @@ function checkVisitors(visitors) {
 }
 
 function checkValue(value) {
-  if (Boolean(value) === false) console.log('checkValue');
+  if (Boolean(value) === false) console.log('checkValue', value);
 
   return Boolean(value);
 }
 
 function checkType(type, checker) {
-  if (type !== checker) console.log('checkType');
+  if (type !== checker) console.log('checkType', type);
 
   return type === checker;
 }
 
 function checkLength(length, min, max) {
-  if (!(min <= length && length <= max)) console.log('checkLength');
+  if (!(min <= length && length <= max)) console.log('checkLength', length);
 
   return min <= length && length <= max;
 }
 
-function checkAlphabet(alphabet) {
-  if (!VALIDITY.english.test(alphabet)) console.log('checkAlphabet');
+function checkAlphabetWithLowercase(alphabet) {
+  if (!VALIDITY.english.test(alphabet))
+    console.log('checkAlphabetWithLowercase', alphabet);
 
   return VALIDITY.english.test(alphabet);
 }
 
-function checkLowercase(lowercase) {
-  if (!(lowercase === lowercase.toLowerCase())) console.log('checkLowercase');
-
-  return lowercase === lowercase.toLowerCase();
-}
-
 function checkArray(arr) {
-  if (!Array.isArray(arr)) console.log('checkArr');
+  if (!Array.isArray(arr)) console.log('checkArr', arr);
 
   return Array.isArray(arr);
 }
 
 function checkArrayLength(length, min, max) {
-  if (!(min <= length && length <= max)) console.log('checkArrayLength');
+  if (!(min <= length && length <= max))
+    console.log('checkArrayLength', length);
 
   return min <= length && length <= max;
 }
@@ -173,7 +164,7 @@ function checkFriendsElementLength(friends) {
       ),
     )
   )
-    console.log('checkFriendsElementLength');
+    console.log('checkFriendsElementLength', friends);
 
   return friends.every(element =>
     checkArrayLength(
@@ -185,16 +176,36 @@ function checkFriendsElementLength(friends) {
 }
 
 function checkFriendsElementOfElement(friends) {
-  if (friends.every(arr => arr.every(element => checkUser(element))))
-    console.log('checkFriendsElement');
+  if (
+    !friends.every(arr => {
+      return arr.every(element => {
+        return checkUser(element);
+      });
+    })
+  )
+    console.log('checkFriendsElementOFElement', friends);
 
   return friends.every(arr => arr.every(element => checkUser(element)));
 }
 
 function checkVisitorsElement(visitors) {
-  if (!visitors.every(element => checkUser(element))) console.log('checkUser');
+  if (!visitors.every(element => checkUser(element)))
+    console.log('checkUser', visitors);
 
   return visitors.every(element => checkUser(element));
 }
+
+problem7(
+  'mrko',
+  [
+    ['donut', 'andole'],
+    ['donut', 'jun'],
+    ['donut', 'mrko'],
+    ['shakevan', 'andole'],
+    ['shakevan', 'jun'],
+    ['shakevan', 'mrko'],
+  ],
+  ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'],
+);
 
 module.exports = problem7;
