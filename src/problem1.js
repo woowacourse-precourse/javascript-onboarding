@@ -45,24 +45,35 @@ function findReault(numArray) {
   return resultNum;
 }
 
-function exception(){
-  
-}
-function problem1(pobi, crong) {
-  const animal = [...pobi, ...crong];
-  let numArray = [];
+function isValid(pageArray){
+  let pobiLeft = pageArray[0];
+  let pobiRight = pageArray[1];
+  let crongLeft = pageArray[2];
+  let crongRight = pageArray[3];
+  let result = 0;
 
-  animal.forEach((element) => {
-    let pageSliceArray = slicePage(element);
-    let pageCalArray = calPlusMinus(pageSliceArray);
-    numArray = [...numArray, ...pageCalArray]
-    });     
-
-    let resultNum = findReault(numArray);
-  
-    return resultNum;  
+  if((pobiLeft + 1 == pobiRight) && (crongLeft + 1 == crongRight)){
+    result = 1;
   }
 
-console.log(problem1([131, 132], [211, 212]));
+  return result;
+}
+
+function problem1(pobi, crong) {
+  const pageArray = [...pobi, ...crong];
+  let numArray = [];
+  let resultNum = -1;
+
+  if (isValid(pageArray)) {
+    pageArray.forEach((page) => {
+    let pageSliceArray = slicePage(page);
+    let pageCalArray = calPlusMinus(pageSliceArray);
+    numArray = [...numArray, ...pageCalArray]
+    });    
+    resultNum = findReault(numArray);
+  }
+  return resultNum;  
+}
+console.log(problem1([99, 102],	[211, 212]));
 
 module.exports = problem1;
