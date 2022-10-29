@@ -34,4 +34,8 @@ function reverseUpper(letter) {
   return String.fromCharCode(90 + index);
 }
 
+function validRange(word) {
+  return 1 <= word.length && word.length <= 1000;
+}
+
 module.exports = problem4;
