@@ -26,10 +26,17 @@ function nameNumberCount(n, c, name){
   }
 }
 
+function overTwo(n, name, d){
+  for(let i=0; i<n.length-1; i++){
+    if(name[n.substr(i,2)]>=2) d.add(n.substr(i,2))
+  }
+}
+
 function problem6(forms) {
   var answer;
   let name = {};
   let check = new Set();
+  let doubleCheck = new Set();
   for(let i=0; i<forms.length; i++){
     nameDisting(forms[i][1], check);
   }
@@ -37,7 +44,11 @@ function problem6(forms) {
   for(let i=0; i<forms.length; i++){
     nameNumberCount(forms[i][1], check, name);
   }
-  console.log(name)
+  for(let i=0; i<forms.length; i++){
+    overTwo(forms[i][1], name, doubleCheck);
+  }
+
+  console.log(doubleCheck)
   return answer;
 }
 
