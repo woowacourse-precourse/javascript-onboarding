@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let answer = [...cryptogram];
+  const set = new Set(answer);
+  const uniqueArr = [...set];
+  return uniqueArr;
 }
 
 module.exports = problem2;

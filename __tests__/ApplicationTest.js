@@ -29,7 +29,7 @@ describe("problem2", () => {
   });
 });
 
-describe("problem3", () => {
+describe.only("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
