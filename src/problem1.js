@@ -1,26 +1,25 @@
 // 기능 목록
 // 1. 예외사항인지 확인하는 함수 구현후, try, catch 사용하여 함수종료 -1 반환
-// 1. 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 최댓값 반환 함수 구현
-// 2. map메소드로 각 페이지 최댓값이 담긴 길이2 배열 생성
-// 3. 길이가 2인 숫자 배열을 받고 큰수(본인 점수)를 반환하는 함수 구현
-// 3. 두 사람의 점수를 비교하여 알맞는 반환값 지정하기
+// 2. 페이지 번호의 각 자리 숫자를 모두 더하거나 곱해 최댓값 반환하는 함수 구현
+// 3. map메소드로 각 페이지 최댓값이 담긴 길이2 배열 생성
+// 4. 길이가 2인 숫자 배열을 받고 큰수(본인 점수)를 반환하는 함수 구현
+// 5. 두 사람의 점수를 비교하여 알맞는 반환값 지정하기
 
 // 예외 사항 체크 함수
 function isException(player) {
   // 정수형인지 확인 및 연속된 숫자인지 확인
-  const intPlayer = player.filter((player_ele) => Number.isInteger(player_ele));
-  const player_diff = intPlayer[1] - intPlayer[0];
-  const isInit = intPlayer[0] === 0 && intPlayer[0] === 1;
-  const isLast = intPlayer[0] === 399 && intPlayer[1] === 400;
+  const int_Player = player.filter((player_ele) =>
+    Number.isInteger(player_ele)
+  );
+  const player_diff = int_Player[1] - int_Player[0];
+  const isInit = int_Player[0] === 0 && int_Player[0] === 1;
+  const isLast = int_Player[0] === 399 && int_Player[1] === 400;
 
   // 조건 만족하면 예외사항으로 간주 true 반환
-  if (player_diff !== 1 || intPlayer.length !== 2 || isInit || isLast) {
+  if (player_diff !== 1 || int_Player.length !== 2 || isInit || isLast) {
     return true;
   }
 }
-
-// 2개의 숫자로 부터 최대 계산값 반환 함수
-function getMaxValue() {}
 
 function problem1(pobi, crong) {
   var answer;
@@ -39,5 +38,3 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
-
-console.log(problem1([97, 98], [197, 198]));
