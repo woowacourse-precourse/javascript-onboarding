@@ -51,20 +51,22 @@ function scoreVisitor(user, graph, visitors, scoreList) {
   });
 }
 
+// 조건대로 정렬하는 함수
 function sortResult(scoreList) {
   let ArrScoreList = [...scoreList]; // 배열로 만들기
-  ArrScoreList.sort(function (a, b) {
-    [name1, score1] = a;
-    [name2, score2] = b;
-    if (score1 > score2) return -1;
-    if (score1 < score2) return 1;
-    if (score1 === score2) {
-      if (name1 > name2) return 1;
-      if (name1 <= name2) return -1;
-    }
-  });
+  ArrScoreList.sort(ascendingSort);
 
   return ArrScoreList.map((score) => score[0]);
+}
+function ascendingSort(a, b) {
+  [name1, score1] = a;
+  [name2, score2] = b;
+  if (score1 > score2) return -1;
+  if (score1 < score2) return 1;
+  if (score1 === score2) {
+    if (name1 > name2) return 1;
+    if (name1 <= name2) return -1;
+  }
 }
 
 module.exports = problem7;
