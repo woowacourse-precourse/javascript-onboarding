@@ -1,4 +1,12 @@
+const checkValid = (number) => {
+  if (Number.isInteger(number)) return true;
+  if (number >= 1 && number <= 10000) return true;
+  return false;
+};
+
 function problem3(number) {
+  if (checkValid(number)) return false;
+
   let clapCount = 0;
 
   for (let i = 1; i <= number; i++) {
