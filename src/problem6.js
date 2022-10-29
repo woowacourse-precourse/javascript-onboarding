@@ -37,14 +37,15 @@ const getDuplicatedUser = (arr) => {
 };
 
 function problem6(forms) {
-  const hash = {};
+  const users = {};
   forms.forEach((form) => {
-    hash[form[1]] = form[0];
+    users[form[1]] = form[0];
   });
   const nicknames = forms.map((nickname) => nickname[1]);
   const partialStrs = nicknames.map((nickname) => getPartialStr(nickname));
   const selectedUsers = getDuplicatedUser(partialStrs);
 
+  return selectedUsers.map((selectedUser) => users[selectedUser]).sort();
 }
 
 const input = [
@@ -54,6 +55,5 @@ const input = [
   ["mj@email.com", "엠제이"],
   ["nowm@email.com", "이제엠"],
 ];
-problem6(input);
 
 module.exports = problem6;
