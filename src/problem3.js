@@ -11,6 +11,15 @@ function problem3(number) {
             n = Math.floor(n / 10);
         }
     };
+
+    let count = 0;
+
+    // 1부터 입력받은 숫자(number)까지 1~3단계 과정을 시행한 뒤 최종 count 반환
+    for (let i = 1; i <= number; i++) {
+        clapCount(i);
+    }
+
+    return count;
 }
 
 module.exports = problem3;
