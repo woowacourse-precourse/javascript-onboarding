@@ -3,7 +3,7 @@ function calc(money,price,answer){
   money = money % price
   answer.push(curr)
 
-  console.log ("함수" ,money,answer)
+  //console.log ("함수" ,money,answer)
 
   return money
 } 
