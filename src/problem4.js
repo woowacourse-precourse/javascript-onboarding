@@ -8,16 +8,12 @@ const CONSTANTS = {
   },
 };
 
-function isUpperCase(char) {
-  return char.toUpperCase() === char;
-}
-
 function reverseCharacter(char) {
   const { FIRST_INDEX, ASCII } = CONSTANTS;
 
   const asciiChar = char.charCodeAt(FIRST_INDEX);
 
-  if (isUpperCase(char)) {
+  if (char.toUpperCase() === char) {
     return String.fromCharCode(ASCII.Z - asciiChar + ASCII.A);
   }
 
