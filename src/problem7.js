@@ -50,6 +50,8 @@ function problem7(user, friends, visitors) {
   let friendNames = Array.from(friendsList.keys());
   scoreFriends(recommendScore, friendsList, friendNames, user, userFriendList);
   scoreVisitors(recommendScore, visitors, userFriendList);
+
+  let sortedScoreResult = [...recommendScore].sort((a, b) => b[1] - a[1]);
 }
 
 module.exports = problem7;
