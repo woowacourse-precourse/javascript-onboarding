@@ -4,7 +4,20 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < friendList.length; i++) {
     const friend = friendList[i];
     friendsFriendList.push(...createFriendList(friends, friend, friendList));
+    visitors = visitors.filter((v) => v !== friend);
   }
+  const recommendationList = [
+    ...new Set([...friendsFriendList.filter((v) => v !== user), ...visitors]),
+  ];
+  const scoreList = createScoreList(
+    recommendationList,
+    friendsFriendList,
+    visitors
+  );
+  return recommendationList
+    .sort()
+    .sort((a, b) => scoreList[b] - scoreList[a])
+    .slice(0, 5);
 }
 
 const createScoreList = (recommendationList, friendsFriendList, visitors) => {
