@@ -1,5 +1,11 @@
 function problem4(word) {
-  var answer;
+  let answer;
+  const isAlpha = word => {
+    return /[a-zA-Z]/.test(word);
+  }
+  const isUpperCase = word => {
+    return /[A-Z]/.test(word);
+  }
   return answer;
 }
 
