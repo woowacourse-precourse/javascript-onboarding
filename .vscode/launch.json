@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    // VSCode 에서 F5 키를 눌렀을 때 테스트가 실행되도록 구성 설정
+    // npm run-scripts test 명령을 VSCode 터미널에서 실행하게 된다.
+    {
+      "name": "npm test",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "test"
+      ],
+      "console": "integratedTerminal",
+      "outputCapture": "std"
+    }
+  ]
+}
