@@ -20,13 +20,13 @@ function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
   // 문자열을 순회하면서 반복되는 부분의 데이터를 배열화하여 저장한다.
   for (let i = 0; i < cryptogram.length; i++) {
     if (cryptogram[i] !== cryptogram[i + 1]) {
-      if (startIndex !== -1) {
+      if (startIndex !== null) {
         endIndex = i;
 
         wantDeleteArr.push([cryptogram[i], startIndex, endIndex]);
 
-        startIndex = -1;
-        endIndex = -1;
+        startIndex = null;
+        endIndex = null;
 
         continue;
       }
@@ -34,7 +34,7 @@ function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
       continue;
     }
 
-    if (startIndex === -1) {
+    if (startIndex === null) {
       startIndex = i;
     }
   }
@@ -76,8 +76,8 @@ function roundsAllString(cryptogram, startIndex, endIndex) {
 }
 
 function runDecoding(cryptogram) {
-  let startIndex = -1;
-  let endIndex = -1;
+  let startIndex = null;
+  let endIndex = null;
 
   cryptogram = roundsAllString(cryptogram, startIndex, endIndex);
 
