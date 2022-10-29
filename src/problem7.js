@@ -85,4 +85,8 @@ function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
   alreadyFriends.map((alreadyFriend) => friendsScore.delete(alreadyFriend));
 }
 
+function setMapToArray(hashMap) {
+  return Array.from(hashMap);
+}
+
 module.exports = problem7;
