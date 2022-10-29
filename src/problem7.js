@@ -38,7 +38,7 @@ function getRecomendFriendList(user, myFriends, friends) {
   myFriends.forEach((myFriend) => {
     for (let friend of friends) {
       if (friend.includes(myFriend) && friend.includes(user) === false) {
-        const recomendFriendName = friend.filter((friend) => friend !== user);
+        const recomendFriendName = filter(friend,(friend) => friend !== user);
         recomendFriends.push(...recomendFriendName);
       }
     }
