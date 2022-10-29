@@ -17,6 +17,17 @@ function problem6(forms) {
     });
     return duplications;
   };
+
+  // 2글자 키워드가 겹치는 이메일들을 종합
+  const assembleDuplications = (duplications) => {
+    let allDuplication = new Set();
+    Object.values(duplications).forEach((currentWordIncludes) => {
+      if (currentWordIncludes.size > 1) {
+        allDuplication = new Set([...currentWordIncludes, ...allDuplication]);
+      }
+    });
+    return allDuplication;
+  };
 }
 
 module.exports = problem6;
