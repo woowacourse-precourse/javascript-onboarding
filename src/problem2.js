@@ -1,41 +1,26 @@
 function problem2(cryptogram) {
-  const answer = decrypt(cryptogram);
+  const answer = removeConsecutiveDuplicates(cryptogram);
   return answer;
 }
 //input: 'afcbbbcfaacf'
 //expected output: 'acf'
 const removeConsecutiveDuplicates = (text) => {
-  const textArr = text.split(""),
-    textLength = text.length;
-  let charToCompare = text[0],
-    dupeCount = 0;
-  for (let i = 1; i < textLength; i++) {
-    if (text[i] == charToCompare) {
-      textArr[i - 1] = "";
+  const stack = [text[0]];
+  let dupeCount = 0;
+  for (let i = 1; i < text.length; i++) {
+    if (stack[stack.length - 1] == text[i]) {
       dupeCount++;
-    } else {
-      if (dupeCount != 0) {
-        textArr[i - 1] = "";
-        dupeCount = 0;
-      }
-      charToCompare = text[i];
+      continue;
     }
-  }
-  if (dupeCount != 0) {
-    textArr[textLength - 1] = "";
-  }
-  return textArr.join("");
-};
-const decrypt = (cryptogram) => {
-  let text = cryptogram;
-  for (let i = 0; i < cryptogram.length; i++) {
-    let temp = removeConsecutiveDuplicates(text);
-    if (text === temp) {
-      break;
+    if (dupeCount) {
+      dupeCount = 0;
+      stack.pop();
     }
-    text = temp;
+    if (stack[stack.length - 1] == text[i]) stack.pop();
+    else stack.push(text[i]);
   }
-  return text;
+  if (dupeCount) stack.pop();
+  return stack.join("");
 };
 
 module.exports = problem2;
