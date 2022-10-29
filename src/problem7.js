@@ -64,21 +64,14 @@ function getMaxFive(array) {
   return result;
 }
 function checkValidation(user, friends, visitors) {
-  console.log(
-    checkID(user),
-    checkNodeLength(user),
-    checkFriend(friends),
-    checkFriendsNode(friends),
-    checkFriendId(friends),
-    checkVisitors(visitors)
-  );
   return (
     checkID(user) &&
     checkNodeLength(user) &&
     checkFriend(friends) &&
     checkFriendsNode(friends) &&
     checkFriendId(friends) &&
-    checkVisitors(visitors)
+    checkVisitors(visitors) &&
+    checkVisitorsId(visitors)
   );
 }
 function checkNodeLength(node) {
@@ -108,5 +101,12 @@ function checkFriendId(friends) {
 }
 function checkVisitors(visitors) {
   return visitors.length >= 0 && visitors.length <= 10000;
+}
+function checkVisitorsId(visitors) {
+  let check = true;
+  visitors.forEach((visitor) => {
+    if (!checkID(visitor)) check = false;
+  });
+  return check;
 }
 module.exports = problem7;
