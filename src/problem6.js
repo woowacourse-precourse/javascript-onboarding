@@ -14,9 +14,14 @@ const NickNameChecker = {
     return forms.length >= 1 && forms.length <= 10000;
   },
   checkEmailForm: function (emailString) {
-    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!emailString.test(mailformat)) return false;
-    return emailString.test(/@email.com/);
+    let mailformat = new RegExp(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    );
+    let mustMailFormat = new RegExp(/@email.com$/);
+    if (!mailformat.test(emailString)) {
+      return false;
+    }
+    return mustMailFormat.test(emailString);
   },
   checkNickname: function (nickname) {
     for (let i = 0; i < nickname.length; i++) {
