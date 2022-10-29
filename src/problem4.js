@@ -18,6 +18,8 @@ function problem4(word) {
     } else if (asciiX >= 97 && asciiX <= 122) {
       const reverseLower = lowercase(asciiX);
       answer += reverseLower;
+    } else {
+      answer += String.fromCharCode(asciiX);
     }
   }
 
