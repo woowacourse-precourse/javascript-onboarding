@@ -1,3 +1,14 @@
+const visitorsPoints = (userFriends, visitors, friendsScore) => {
+  for(let i=0; i<visitors.length; i++) {
+    if(userFriends.includes(visitors[i]))
+      continue;
+    if(friendsScore[visitors[i]] === undefined) 
+      friendsScore[visitors[i]] = 1;
+    else
+      friendsScore[visitors[i]] += 1;
+  }
+}
+
 const acquaintancePoints = (user, userFriends, friendsList, friendsScore) => {
   for(let i=0; i<userFriends.length; i++) {
     for(let j=0; j<friendsList[userFriends[i]].length; j++) {
@@ -33,6 +44,7 @@ function problem7(user, friends, visitors) {
     userFriends.push(friendsList[user][i]);
   }
   acquaintancePoints(user, userFriends, friendsList, friendsScore);
+  visitorsPoints(userFriends, visitors, friendsScore)
 
   console.log(friendsScore);
 }
