@@ -69,7 +69,7 @@ function problem7(user, friends, visitors) {
   }
 
   function sortList(beforeSortList) {
-    afterSortList = beforeSortList.sort((a, b) => {
+    const afterSortList = beforeSortList.sort((a, b) => {
       let [curScore, preScore] = [b[0], a[0]];
       let [curName, preName] = [b[1], a[1]];
       if (curScore > preScore) return 1;
@@ -81,20 +81,18 @@ function problem7(user, friends, visitors) {
   }
 
   function makeResult(Score, Friends) {
-    let tmpList = [];
-    let nowFriendIdx = [];
-    let result = [];
+    let [tmpList, alreadyFriendIdx, result] = [[], [], []];
     Friends.map((friend) => {
-      nowFriendIdx.push(idIndexInfo[friend]);
+      alreadyFriendIdx.push(idIndexInfo[friend]);
     });
     for (let i = 2; i < Score.length; i++) {
-      if (nowFriendIdx.includes(i)) continue;
+      if (alreadyFriendIdx.includes(i)) continue;
       if (Score[i] !== 0) {
         tmpList.push([Score[i], i]);
       }
     }
-    let sortedList = sortList(tmpList);
-    let memberList = Object.keys(idIndexInfo);
+    const sortedList = sortList(tmpList);
+    const memberList = Object.keys(idIndexInfo);
     sortedList.map((v) => {
       result.push(memberList[v[1] - 1]);
     });
