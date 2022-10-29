@@ -7,34 +7,16 @@ function problem6(forms) {
         }
     });
 
-    let result = [];
-    [...matchTable.values()].forEach((item) => {
-        let repeatitionNickname = forms.filter(([_, nickname]) => nickname.indexOf(item) > -1);
+    let result = new Set();
+    matchTable.forEach((matchItem) => {
+        let repeatNickname = forms.filter(([_, nickname]) => nickname.indexOf(matchItem) > -1);
 
-        if (repeatitionNickname.length > 1) {
-            result.push(repeatitionNickname.map((item) => item[0]));
+        if (repeatNickname.length > 1) {
+            result.add(repeatNickname.map(([email, _]) => email.split('@')[0]));
         }
     });
 
-    result = result
-        .flat()
-        .map((item) => item.split('@')[0])
-        .sort()
-        .map((item) => item + '@email.com');
-    console.log(result);
-
-    // console.log(matchTable);
+    return [...result.values()].sort().map((email) => `${email}@email.com`);
 }
-
-problem6(
-    [
-        ['jm@email.com', '제이엠'],
-        ['jason@email.com', '제이슨'],
-        ['woniee@email.com', '워니'],
-        ['mj@email.com', '엠제이'],
-        ['nowm@email.com', '이제엠'],
-    ],
-    ['jason@email.com', 'jm@email.com', 'mj@email.com']
-);
 
 module.exports = problem6;
