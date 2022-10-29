@@ -50,40 +50,50 @@ function checkFormsLength(forms) {
   return true;
 }
 
-function checkSameWord(i, forms, testWord, ans) {
-  for (let n = 0; n < forms.length; n++) {
-    // 자기 자신은 비교하지 않는다
-    if (n === i) {
-      continue;
-    }
+function checkSameWord(forms, checkingWordArray, ans) {
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 0; j < checkingWordArray.length; j++) {
+      // 자기 자신은 비교하지 않는다
+      if (i === j) {
+        continue;
+      }
 
-    if (forms[n][1].includes(testWord)) {
-      ans.push(forms[n][0]);
+      for (let k = 0; k < checkingWordArray[j].length; k++) {
+        // 여기서 본인 닉네임에서 나온 중복 단어를 거르지 못해서 오답이 발생함
+        if (forms[i][1].includes(checkingWordArray[j][k])) {
+          ans.push(forms[i][0]);
+        }
+      }
     }
   }
 }
 
-function makeTestWord(i, j, modelNickName, forms, ans) {
+function makeTestWord(j, modelNickName, testWordArrayFromStandardNickname) {
   // 중복 판별 단어가 시작되고 끝나는 부분 선정
   for (let k = 0; k <= modelNickName.length - j; k++) {
     const testWord = modelNickName.slice(k, j + k);
 
-    checkSameWord(i, forms, testWord, ans);
+    testWordArrayFromStandardNickname.push(testWord);
   }
 }
 
-function decideTestWordLength(i, modelNickName, forms, ans) {
+function decideTestWordLength(modelNickName, checkingWordArray) {
+  // 2차원 배열로 만들자
+  let testWordArrayFromStandardNickname = [];
+
   // 길이 2부터 문자열 최대 길이까지 중복 판별 단어 선정
   for (let j = 2; j <= modelNickName.length; j++) {
-    makeTestWord(i, j, modelNickName, forms, ans);
+    makeTestWord(j, modelNickName, testWordArrayFromStandardNickname);
   }
+
+  checkingWordArray.push(testWordArrayFromStandardNickname);
 }
 
-function selectModelNickName(forms, ans) {
+function selecStandardNickName(forms, checkingWordArray) {
   for (let i = 0; i < forms.length; i++) {
     const modelNickName = forms[i][1];
 
-    decideTestWordLength(i, modelNickName, forms, ans);
+    decideTestWordLength(modelNickName, checkingWordArray);
   }
 }
 
@@ -104,9 +114,13 @@ function problem6(forms) {
     return;
   }
 
+  let checkingWordArray = [];
+
+  selecStandardNickName(forms, checkingWordArray);
+
   let ans = [];
 
-  selectModelNickName(forms, ans);
+  checkSameWord(forms, checkingWordArray, ans);
 
   return deleteOverlapAndSortEmail(ans);
 }
