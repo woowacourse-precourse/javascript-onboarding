@@ -27,7 +27,16 @@ function problem6(forms) {
   }
   const noDupEmail = [...new Set(pushedEmail)];
 
-  return noDupEmail.sort();
+  noDupEmail.sort((a, b) => {
+    const upCaseA = a.toUpperCase();
+    const upCaseB = b.toUpperCase();
+
+    if (upCaseA > upCaseB) return 1;
+    if (upCaseA === upCaseB) return 0;
+    if (upCaseA < upCaseB) return -1;
+  });
+
+  return noDupEmail;
 }
 
 module.exports = problem6;
