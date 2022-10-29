@@ -1,5 +1,9 @@
 function problem1(pobi, crong) {
   var answer;
+
+  const pobi_nums = calc(pobi);
+  const crong_nums = calc(crong);
+  
   return answer;
 }
 
