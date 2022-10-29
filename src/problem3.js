@@ -18,6 +18,33 @@ function problem3(number) {
     result = result.replace(",", "");
   }
 
+  // 여기서부터 문자열에 3, 6, 9가 몇개인지 확인하는 코드
+
+  // 3을 찾게하는 명령문 초깃값 0을 가짐
+  let findOf3 = result.indexOf('3');
+  // 6을 찾게하는 명령문 초깃값 0을 가짐
+  let findOf6 = result.indexOf('6');
+  // 9을 찾게하는 명령문 초깃값 0을 가짐
+  let findOf9 = result.indexOf('9');
+
+  // 3이 몇개인지 구하는 반복문
+  while (findOf3 !== -1) {
+    count++;
+    findOf3 = result.indexOf('3', findOf3 + 1);
+  }
+
+  // 6이 몇개인지 구하는 반복문
+  while (findOf6 !== -1) {
+    count++;
+    findOf6 = result.indexOf('6', findOf6 + 1);
+  }
+
+  // 9가 몇개인지 구하는 반복문
+  while (findOf9 !== -1) {
+    count++;
+    findOf9 = result.indexOf('9', findOf9 + 1);
+  }
+
   return count;
 }
 
