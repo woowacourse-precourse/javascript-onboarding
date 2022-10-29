@@ -1,5 +1,23 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer = [];
+  const FRIEND_OF_FRIEND_SCORE = 10;
+  const STRANGER_SCORE = 1;
+  const myFriends = getMyFriend(user, friends);
+  const recomendFriendsList = getRecomendFriendList(user, myFriends, visitors);
+  const strangeVisitorList = getStrangeVisitorList(myFriends, visitors);
+  const recomendFriendsScore = scoreConversion(
+    recomendFriendsList,
+    FRIEND_OF_FRIEND_SCORE
+  );
+  const strangeVisitorScore = scoreConversion(
+    strangeVisitorList,
+    STRANGER_SCORE
+  );
+  const recomendFriends = sumScore(recomendFriendsScore, strangeVisitorScore);
+
+  for (let i = 0; i < 5; i++) {
+    answer.push(recomendFriends[i]);
+  }
   return answer;
 }
 
@@ -20,9 +38,7 @@ function getRecomendFriendList(user, myFriends, friends) {
   myFriends.forEach((myFriend) => {
     for (let friend of friends) {
       if (friend.includes(myFriend) && friend.includes(user) === false) {
-        const recomendFriendName = friend.filter(
-          (friend) => friend !== myFriend
-        );
+        const recomendFriendName = friend.filter((friend) => friend !== user);
         recomendFriends.push(...recomendFriendName);
       }
     }
@@ -80,5 +96,4 @@ function sorting(recomendFriends) {
 
   return sort;
 }
-
 module.exports = problem7;
