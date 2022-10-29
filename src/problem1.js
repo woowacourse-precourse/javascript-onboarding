@@ -1,13 +1,12 @@
 function problem1(pobi, crong) {
 
-  //책의 범위 설정 getBookNum
-  const getBookNum = () => {
-
-  }
-  
-  //포비, 크롱의 가장 큰 값
-  const getMaxNum = () => {
-
+   //책의 범위 설정 getBookNum
+  const getBookNum  = (pobibook, crongbook ) => {
+    if (pobibook[0] <= 1 || pobibook[1] >= 400 || crongbook[0] <= 1 || crongbook[1] >= 400)
+      return false;
+    else if (pobibook[1] - pobibook[0] !== 1) return false;
+    else if (crongbook[1] - crongbook[0] !== 1) return false;
+    else return true;
   };
 
 //책 페이지 합산 값
