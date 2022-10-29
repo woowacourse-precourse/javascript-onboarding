@@ -1,6 +1,9 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let pattern = /(\w)\1+/g;
+  let repeated = cryptogram.match(pattern);
+  let deleted = cryptogram;
+
+
 }
 
 module.exports = problem2;
