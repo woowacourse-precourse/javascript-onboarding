@@ -1,11 +1,20 @@
 function problem6(forms) {
   let answer = [];
+  let emailListOfduplicatedNickname = [];
 
   const emailList = forms.map((form) => form[0]);
   const nicknameList = forms.map((form) => form[1]);
 
   const dividedNicknameList = [].concat(...getBrokenNicknameList(nicknameList));
   const duplicatedwords = findDuplicates(dividedNicknameList);
+
+  nicknameList.forEach((name, idx) => {
+    for (let i = 0; i < duplicatedwords.length; i++) {
+      if (name.includes(duplicatedwords[i])) {
+        emailListOfduplicatedNickname.push(emailList[idx]);
+      }
+    }
+  });
 
   return answer;
 }
