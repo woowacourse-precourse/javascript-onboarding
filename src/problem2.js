@@ -2,19 +2,21 @@ function decrypt(cryptogram) {
   let result = "";
 
   for (let i = 0; i < cryptogram.length; i++) {
-    const currentChar = cryptogram[i];
-    let j = i + 1;
-    let nextChar = cryptogram[j];
+    const leftChar = cryptogram[i];
 
-    while (currentChar === nextChar) {
-      nextChar = cryptogram[++j];
+    let pointer = i + 1;
+    let rightChar = cryptogram[pointer];
+
+    while (leftChar === rightChar) {
+      rightChar = cryptogram[++pointer];
     }
 
-    if (i === j - 1) {
-      result += currentChar;
+    if (pointer !== i + 1) {
+      i = pointer - 1;
+      continue;
     }
 
-    i = j - 1;
+    result += leftChar;
   }
 
   return result;
@@ -38,5 +40,8 @@ function problem2(cryptogram) {
 
   return decryptedString;
 }
+
+console.log(problem2("browoanoommnaon"));
+console.log(problem2("zyelleyz"));
 
 module.exports = problem2;
