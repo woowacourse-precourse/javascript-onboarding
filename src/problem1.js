@@ -16,4 +16,11 @@ const sumOrMultiply = (pageNumber) => {
   return Math.max(sumScore, multiplyScore);
 };
 
+const pageMaxScore = (pageArr) => {
+  const firstPageScore = sumOrMultiply(pageArr[0]);
+  const secondPageScore = sumOrMultiply(pageArr[1]);
+
+  return Math.max(firstPageScore, secondPageScore);
+};
+
 module.exports = problem1;
