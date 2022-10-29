@@ -13,6 +13,10 @@ function problem2(cryptogram) {
       }
     }
   }
+
+  duplicateLetterList.forEach((duplicateLetter) => {
+    cryptogram = cryptogram.replace(duplicateLetter, '');
+  });
 }
 
 module.exports = problem2;
