@@ -6,6 +6,10 @@ function problem1(pobi, crong) {
   const pobiMax = Math.max(sumNum(pobi[0]), multipleNum(pobi[0]), sumNum(pobi[1]), multipleNum(pobi[1]))
   const crongMax = Math.max(sumNum(crong[0]), multipleNum(crong[0]), sumNum(crong[1]), multipleNum(crong[1]))
 
+  if (pobiMax > crongMax) answer = 1        //포비 승
+  else if (crongMax > pobiMax) answer = 2   //크롱 승
+  else if (pobiMax == crongMax) answer = 0  //무승부
+
   return answer;
 }
 
