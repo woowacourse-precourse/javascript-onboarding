@@ -14,8 +14,15 @@
 
 class PageGame {
   constructor(firstPage = 1, lastPage = 400) {
-    this.firstPage = firstPage;
-    this.lastPage = lastPage;
+    this._firstPage = firstPage;
+    this._lastPage = lastPage;
+  }
+
+  calculateScore(page) {
+    if (!this._validate(page)) {
+      throw new Error("page is not valid.");
+    }
+    return Math.max(this._sumEachPageNumbers(page), this._multiplyEachPageNumbers(page));
   }
 
   _isValidPage(page) {
@@ -26,10 +33,10 @@ class PageGame {
     if (rightPage <= leftPage) {
       return false;
     }
-    if (leftPage < this.firstPage || leftPage > this.lastPage - 1) {
+    if (leftPage < this._firstPage || leftPage > this._lastPage - 1) {
       return false;
     }
-    if (rightPage < this.firstPage + 1 || rightPage > this.lastPage) {
+    if (rightPage < this._firstPage + 1 || rightPage > this._lastPage) {
       return false;
     }
     if (rightPage - leftPage !== 1) {
@@ -40,7 +47,7 @@ class PageGame {
 
   _isFirstPage(page) {
     const [leftPage, rightPage] = page;
-    if (leftPage === this.firstPage && rightPage === this.firstPage + 1) {
+    if (leftPage === this._firstPage && rightPage === this._firstPage + 1) {
       return true;
     }
     return false;
@@ -48,7 +55,7 @@ class PageGame {
 
   _isLastPage(page) {
     const [leftPage, rightPage] = page;
-    if (leftPage === this.lastPage - 1 && rightPage === this.lastPage) {
+    if (leftPage === this._lastPage - 1 && rightPage === this._lastPage) {
       return true;
     }
     return false;
@@ -79,13 +86,6 @@ class PageGame {
       }
     }
     return total;
-  }
-
-  calculateScore(page) {
-    if (!this._validate(page)) {
-      throw new Error("page is not valid.");
-    }
-    return Math.max(this._sumEachPageNumbers(page), this._multiplyEachPageNumbers(page));
   }
 }
 
