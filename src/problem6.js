@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer;
+  var answer = process(forms);
   return answer;
 }
 function makePatterns(nickname) {
@@ -22,9 +22,14 @@ function duplicateCheck(forms, result, start, patterns) {
   while (index < forms.length) {
     patterns.forEach((pattern) => {
       if (forms[index][1].includes(pattern)) {
+        resultPush(result, forms[index][0]);
+        resultPush(result, forms[start][0]);
       }
     });
     index++;
   }
+}
+function resultPush(result, target) {
+  if (!result.includes(target)) result.push(target);
 }
 module.exports = problem6;
