@@ -78,6 +78,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-console.log(problem1([99, 102], [211, 212]));
-
 module.exports = problem1;
