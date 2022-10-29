@@ -3,6 +3,15 @@
 // 2. 아는 친구 리스트와 방문한 사람 리스트를 스코어 매기는 기능
 // 3. 스코어에 따라 친구 정렬
 
+// 점수와 이름에 따라 정렬하는 함수
+function sortList(person_score){
+  person_score.sort((a, b)=>{
+    // 점수를 내림차순, 점수가 같다면 이름을 오름차순하여 정렬
+    if(a['score'] !== b['score']) return b['score'] - a['score'];
+    else return a['user_name'] - b['user_name'];
+  })
+}
+
 // 점수를 계산하는 함수
 function scoreSave(person_score, user_list, score){
   // 깊은 복사를 통해 독립적인 리스트 생성
@@ -51,7 +60,7 @@ function checkAcquaintance(user, friends){
 }
 
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = [];
   // score을 저장할 리스트
   let person_score = [];
   // 아는 사람을 체크한 리스트
@@ -60,6 +69,15 @@ function problem7(user, friends, visitors) {
   // 아는 사람과 방문한 사람의 점수를 계산하여 리스트에 저장
   person_score = scoreSave(person_score, acquaintance_user, 10).slice();
   person_score = scoreSave(person_score, visitors, 1).slice();
+
+  // person_score을 점수와 이름으로 정렬
+  sortList(person_score);
+
+  // 최대 다섯명만 결과 리스트에 추가
+  for(let i = 0; i < person_score.length; i++){
+    if(i > 4) break;
+    answer.push(person_score[i]['user_name']);
+  }
 
   return answer;
 }
