@@ -1,21 +1,21 @@
 /*
 기능 구현 목록
-[v] 문자를 유니코드로 변환하는 기능
-[v] 문자가 소문자인지 판별하는 기능
-[v] 문자가 대문자인지 판별하는 기능
-[ ] 대문자 알파벳 변환 기능
-[ ] 소문자 알파벳 변환 기능
+- [v] 문자를 유니코드로 변환하는 기능
+- [v] 문자가 소문자인지 판별하는 기능
+- [v] 문자가 대문자인지 판별하는 기능
+- [v] 사전 역순 대문자 알파벳 변환 기능
+- [ ] 사전 역순 소문자 알파벳 변환 기능
 */
 
 function problem4(word) {
   let answer = '';
   for (const char of word) {
     if (isUpper(convertUnicode(char))) {
-      console.log('대문자 처리중');
+      answer += convertUpperToReverseDictionary(convertUnicode(char));
     } else if (isLower(convertUnicode(char))) {
       console.log('소문자 처리중');
     } else {
-      console.log('그 이외 문자 처리중');
+      answer += char;
     }
   }
   return answer;
@@ -31,6 +31,10 @@ function isLower(unicodeChar, START_POINT = 97, END_POINT = 122) {
 
 function isUpper(unicodeChar, START_POINT = 65, END_POINT = 90) {
   return START_POINT <= unicodeChar && unicodeChar <= END_POINT ? true : false;
+}
+
+function convertUpperToReverseDictionary(unicodeChar, START_POINT = 65, END_POINT = 90) {
+  return String.fromCharCode(END_POINT - unicodeChar + START_POINT);
 }
 
 problem4('I love you'); // 'R olev blf'
