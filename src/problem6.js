@@ -3,21 +3,27 @@ function problem6(forms) {
   const nameForm = forms.map((i) => i[1]);
   const validMailArray = mailForm.map((i) => isValidMail(i));
   const validNameArray = nameForm.map((i) => isValidName(i));
-  const validAccount = new Array(forms.length).map((v, i) => {
-    let resultValue;
-    if (validMailArray && validNameArray) {
-      resultValue = mailForm[i];
-    } else {
-      resultValue = false;
-    }
-  });
-
-  const answer = validAccount.filter((v) => v); //정렬 추가해야함.
+  const invalidAccount = classifyInvalid(validMailArray, validNameArray);
+  const answer = invalidAccount.filter((v) => v); //정렬 추가해야함.
 
   return answer;
 }
 
 module.exports = problem6;
+
+/* classify  */
+const classifyInvalid = (validMailArray, validNameArray) => {
+  new Array(forms.length).map((v, i) => {
+    let resultValue;
+    if (validMailArray && validNameArray) {
+      resultValue = false;
+    } else {
+      resultValue = mailForm[i];
+    }
+
+    return resultValue;
+  });
+};
 
 /* Nickname */
 const isValidName = (name) => {
