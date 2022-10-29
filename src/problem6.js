@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer = process(forms);
+  var answer = getEmailList(forms);
   return answer;
 }
 function makePatterns(nickname) {
@@ -8,22 +8,26 @@ function makePatterns(nickname) {
     resultArray.push(nickname.substr(x, 2));
   return resultArray;
 }
-function process(forms) {
+function getEmailList(forms) {
   let x = 0;
   const result = [];
   for (x = 0; x < forms.length; x++) {
-    const patterns = makePatterns(forms[x][1]);
+    const nickname = forms[x][1];
+    const patterns = makePatterns(nickname);
     duplicateCheck(forms, result, x, patterns);
   }
   return result.sort();
 }
-function duplicateCheck(forms, result, start, patterns) {
-  let index = start + 1;
+function duplicateCheck(forms, result, compareIndex, patterns) {
+  let index = compareIndex + 1;
   while (index < forms.length) {
+    const currentNickname = forms[index][1];
+    const currentEmail = forms[index][0];
+    const compareEmail = forms[compareIndex][0];
     patterns.forEach((pattern) => {
-      if (forms[index][1].includes(pattern)) {
-        resultPush(result, forms[index][0]);
-        resultPush(result, forms[start][0]);
+      if (currentNickname.includes(pattern)) {
+        resultPush(result, currentEmail);
+        resultPush(result, compareEmail);
       }
     });
     index++;
