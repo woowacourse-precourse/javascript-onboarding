@@ -1,10 +1,7 @@
-// 입력 받은 금액을 지폐 단위로 나누어 떨어지는지 확인
-
-const result = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-
 // 나눌 수 있는 지폐 카운트 증가
 const divide = (cash) => {
-  
+  // 입력 받은 금액을 지폐 단위로 나누어 떨어지는지 확인
+  const result = [0, 0, 0, 0, 0, 0, 0, 0, 0]
   if (cash >= 50000) {
     result[0] += Math.floor(cash/50000)
     cash = cash % 50000
@@ -46,10 +43,10 @@ const divide = (cash) => {
   return result
 }
 
-// function problem5(money) {
-//   var answer;
-//   return answer;
-// }
 
-// module.exports = problem5;
+function problem5(money) {
+  return divide(money)
+}
+
+module.exports = problem5;
 
