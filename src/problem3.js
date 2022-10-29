@@ -19,6 +19,10 @@ function checkNum(charArr) {
 function problem3(number) {
   var answer = 0;
 
+  for (let i = 1; i <= number; i++) {
+    let arr = numToCharArr(i);
+    answer += checkNum(arr);
+  }
   return answer;
 }
 
