@@ -1,5 +1,28 @@
 function problem7(user, friends, visitors) {
   var answer;
+  let user_dict = calculate_score(user, friends, visitors);
+
+  console.log(user_dict);
+  let user_list = [];
+  let key = Object.keys(user_dict);
+  key.map((k) => user_list.push([k, user_dict[k]]));
+
+  user_list.sort((a, b) => {
+    let a_name = a[0];
+    let b_name = b[0];
+    let a_score = a[1];
+    let b_score = b[1];
+
+    if (a_score > b_score) return -1;
+    else if (a_score < b_score) return 1;
+    else if (a_name > b_name) return 1;
+    else if (a_name < b_name) return -1;
+  });
+  console.log(user_list);
+  answer = user_list.map((user) => {
+    return user[0];
+  });
+
   return answer;
 }
 
