@@ -6,6 +6,8 @@ const inputFriendsList = (friendsList, friends) => {
         k = 1;
       if(friendsList[friends[i][j]] === undefined)
         friendsList[friends[i][j]] = [friends[i][k]];
+      else
+        friendsList[friends[i][j]].push(friends[i][k]);
     }
   }
   console.log(friendsList);
