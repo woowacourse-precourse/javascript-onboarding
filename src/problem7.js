@@ -1,8 +1,5 @@
-function problem7(user, friends, visitors) {
-  const dude = [];
-  const score = {};
-
-  friends.forEach((arr, idx) => {
+function duduChecker(user, friends, dude) {
+  friends.forEach((arr) => {
     const [A, B] = arr;
     if (A === user) {
       dude.push(B);
@@ -10,6 +7,13 @@ function problem7(user, friends, visitors) {
       dude.push(A);
     }
   });
+}
+
+function problem7(user, friends, visitors) {
+  const dude = [];
+  const score = {};
+
+  duduChecker(user, friends, dude);
 
   dude.forEach((friend) => {
     friends.forEach((arr) => {
@@ -63,3 +67,18 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+console.log(
+  problem7(
+    "mrko",
+    [
+      ["donut", "andole"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"],
+    ],
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  )
+);
