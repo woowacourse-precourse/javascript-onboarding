@@ -98,6 +98,7 @@ function problem1(pobi, crong) {
   }
 
   //pobi와 crong 수 비교
+  //1~400페이지만 펼쳐볼 수 있게 설정
   if (
     pobi_max > crong_max &&
     pobi[0] + 1 == pobi[1] &&
