@@ -5,12 +5,14 @@
 // 4. 포비와 크롱 중, 승자 구하기
 
 function problem1(pobi, crong) {
+  const pobiSplit = [];
+  const crongSplit = [];
   for(let i=0; i<2; i++) {
-    pobi[i] = pobi[i].split('').map(Number);
-    crong[i] = crong[i].split('').map(Number);
+    pobiSplit.push(pobi[i].toString().split('').map(Number));
+    crongSplit.push(crong[i].toString().split('').map(Number));
   }
-}
 
-console.log(problem1([97, 98], [197, 198]))
+  console.log(pobiSplit, crongSplit);
+}
 
 module.exports = problem1;
