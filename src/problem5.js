@@ -17,4 +17,8 @@ function changeMoney(money) {
   return changedMoney;
 }
 
+function validRange(money) {
+  return 1 <= money && money <= 1000000;
+}
+
 module.exports = problem5;
