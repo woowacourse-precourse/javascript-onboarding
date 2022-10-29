@@ -39,6 +39,10 @@ function splitWord(word) {
 
     if (flag == true) break;
   }
+
+  // 쪼개진 암호 재결합
+  var result = arr.join('');
+  return result;
 }
 
 module.exports = problem2;
