@@ -20,7 +20,7 @@ describe.only("problem1", () => {
   });
 });
 
-describe.only("problem2", () => {
+describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
@@ -29,7 +29,7 @@ describe.only("problem2", () => {
   });
 });
 
-describe.only("problem3", () => {
+describe("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
@@ -38,13 +38,13 @@ describe.only("problem3", () => {
   });
 });
 
-describe.only("problem4", () => {
+describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
 
-describe.only("problem5", () => {
+describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
   });
@@ -54,7 +54,7 @@ describe.only("problem5", () => {
   });
 });
 
-describe.only("problem6", () => {
+describe("problem6", () => {
   test("case1", () => {
     expect(
       problem6([
@@ -68,7 +68,7 @@ describe.only("problem6", () => {
   });
 });
 
-describe.only("problem7", () => {
+describe("problem7", () => {
   test("case1", () => {
     expect(
       problem7(

@@ -34,7 +34,13 @@ function problem1(pobi, crong) {
   const pobiMax = Math.max(...pobiSumMul);
   const crongMax = Math.max(...crongSumMul);
 
-  console.log(pobiMax, crongMax);
+  if(pobiMax > crongMax) {
+    return 1;
+  }else if(pobiMax < crongMax) {
+    return 2;
+  }else if(pobiMax === crongMax) {
+    return 0;
+  }
 }
 
 module.exports = problem1;
