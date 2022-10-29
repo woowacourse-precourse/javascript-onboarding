@@ -10,8 +10,6 @@ function problem3(number) {
   return answer;
 }
 
-
-
 function check369(num){
   const arr_369=["3","6","9"]
   if(arr_369.includes(num)){
