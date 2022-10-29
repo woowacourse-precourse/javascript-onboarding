@@ -83,18 +83,21 @@ class VisitorsError extends MyError {
   }
 }
 
-class SNSAlgorithm {
-  constructor(user, friends, visitors) {
-    new UsersError(user);
-    new FriendsError(friends);
-    new VisitorsError(visitors);
-
-    this.user = user;
+class Model {
+  constructor(friends, visitors) {
     this.friends = friends;
     this.visitors = visitors;
 
     this.scoreBoard = this.makeScoreBoard();
     this.friendGraph = this.makeFriendGraph();
+  }
+
+  getFriendRelation() {
+    return this.friendGraph;
+  }
+
+  getScoreBoard() {
+    return this.scoreBoard;
   }
 
   saveFriendGraph(keyFriend, valueFriend, map) {
@@ -121,32 +124,52 @@ class SNSAlgorithm {
       ),
     ].reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
   }
+}
+
+class SNSAlgorithm {
+  constructor(user, friends, visitors) {
+    new UsersError(user);
+    new FriendsError(friends);
+    new VisitorsError(visitors);
+
+    this.user = user;
+    this.friends = friends;
+    this.visitors = visitors;
+
+    this.model = new Model(friends, visitors);
+  }
 
   isRecommand(person) {
-    const { user, friendGraph } = this;
+    const { model, user } = this;
 
-    return !new Set([user, ...friendGraph.get(user)]).has(person);
+    return !new Set([user, ...model.getFriendRelation().get(user)]).has(person);
   }
 
   scroeFriendToFriend() {
-    [...this.friendGraph.get(this.user)]
-      .flatMap((friend) => [...this.friendGraph.get(friend)])
+    const { model } = this;
+
+    [...model.getFriendRelation().get(this.user)]
+      .flatMap((friend) => [...model.getFriendRelation().get(friend)])
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (this.scoreBoard[person] += 10));
+      .forEach((person) => (model.scoreBoard[person] += 10));
   }
 
   scroeVisitor() {
+    const { model } = this;
+
     this.visitors
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (this.scoreBoard[person] += 1));
+      .forEach((person) => (model.scoreBoard[person] += 1));
   }
 
   recommend() {
+    const { model } = this;
+
     this.scroeFriendToFriend();
     this.scroeVisitor();
 
-    return Object.keys(this.scoreBoard)
-      .map((person) => [person, this.scoreBoard[person]])
+    return Object.keys(model.scoreBoard)
+      .map((person) => [person, model.scoreBoard[person]])
       .filter(([_, score]) => score > 0)
       .sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1))
       .map(([person, _]) => person)
