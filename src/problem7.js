@@ -81,4 +81,8 @@ function setVisitorFriendsScore(visitor, friendsScore) {
   else friendsScore.set(visitor, 1);
 }
 
+function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
+  alreadyFriends.map((alreadyFriend) => friendsScore.delete(alreadyFriend));
+}
+
 module.exports = problem7;
