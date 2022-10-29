@@ -108,6 +108,9 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
+  test("case3", () => {
+    expect(problem3(1)).toEqual(0);
+  });
 });
 
 describe("problem4", () => {
