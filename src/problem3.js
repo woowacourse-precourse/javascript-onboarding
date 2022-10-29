@@ -6,8 +6,19 @@ function numToCharArr(num) {
   return charArr;
 }
 
+// 기능 2
+function checkNum(charArr) {
+  const chkNum = ["3", "6", "9"];
+  let cnt = 0;
+  for (let i = 0; i < charArr.length; i++) {
+    if (chkNum.includes(charArr[i])) cnt++;
+  }
+  return cnt;
+}
+
 function problem3(number) {
   var answer = 0;
+
   return answer;
 }
 
