@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   const known_friends = user_friends(user, friends);
   const unknown_friends = [];
   let recommend_friends_score;
+  let answer;
 
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < known_friends.length; j++) {
@@ -31,6 +32,12 @@ function problem7(user, friends, visitors) {
   recommend_friends_score = Object.fromEntries(
     Object.entries(recommend_friends_score).sort(([, a], [, b]) => (a > b ? -1 : 1))
   );
+
+  answer = Object.keys(recommend_friends_score);
+
+  if (answer.length > 5) answer.length = 5;
+
+  return answer;
 }
 
 function user_friends(user, friends) {
