@@ -37,8 +37,22 @@ function problem7(user, friends, visitors) {
     return friendOfFriendList;
   };
 
+  const noFriendVisitorCollector =(visitors, userFriendsList) => {
+    
+    const onlyVisitor =[];
+
+    visitors.map(visitor => {
+      if(userFriendsList.indexOf(visitor) === -1){
+        onlyVisitor.push(visitor);
+      }
+    })
+
+    return onlyVisitor;
+  };
+
   const userFriendsList = userFriendsListGetter(user);
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
+  const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
 
   return answer;
 }
