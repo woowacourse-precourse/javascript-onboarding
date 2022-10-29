@@ -21,4 +21,8 @@ function validRange(money) {
   return 1 <= money && money <= 1000000;
 }
 
+function validType(money) {
+  return typeof (money) == "number" && money % 1 == 0;
+}
+
 module.exports = problem5;
