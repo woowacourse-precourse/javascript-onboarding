@@ -7,6 +7,7 @@ function problem4(word) {
   console.log(wordArr);
   let greenFrogSaid = "";
 
+  // 각 대소문자 아스키코드 중간값을 기준으로 일반항을 구해 품
   for (const ASCIInum of wordArr) {
     let str = 0;
     if (ASCIInum >= 65 && ASCIInum <= 77) {
