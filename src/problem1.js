@@ -68,7 +68,11 @@ function problem1(pobi, crong) {
     );
   });
 
-  result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+  if (pobiScore > crongScore) {
+    result = 1;
+  } else if (pobiScore < crongScore) {
+    result = 2;
+  }
 
   return result;
 }
