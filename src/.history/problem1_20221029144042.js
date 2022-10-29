@@ -11,6 +11,7 @@ function is_error(pobi, crong)
   return false;
 }
 
+
 function calc(charcter){
   let ans = 0;
   for (let i = 0; i < 2 ; i++) {
