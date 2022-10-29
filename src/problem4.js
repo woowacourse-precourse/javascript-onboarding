@@ -1,6 +1,7 @@
 // solution
 function solution(word) {
   const regex = /[a-zA-z]/;
+  const splitedWord = word.split("");
 }
 
 function problem4(word) {
