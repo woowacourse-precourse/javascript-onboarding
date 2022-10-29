@@ -23,7 +23,10 @@ function problem1(pobi, crong) {
 
             pobiLPlus[i] = p100 + p10 + p1;
             pobiMul[i] = p100 * p10 * p1;
+            let pobiPM = (pobiPlus[i] > pobiLPlus[i + 1]) ? pobiLPlus[i] : pobiLPlus[i + 1];
+            let pobiMM = (pobiMul[i] > pobiLMul[i + 1]) ? pobiLMul[i] : pobiLMul[i + 1];
         }
+        pobiMax = (pobiPM > pobiLMul) ? pobiPM : pobiMM;
     }
 
   return answer;
