@@ -1,4 +1,3 @@
-
 function problem6(forms) {
   var answer;
   const results = new Set()
