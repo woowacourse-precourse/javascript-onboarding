@@ -8,7 +8,7 @@
 
 function problem1(pobi, crong) {
     var answer;
-    let pobiLPlus; pobiMul; pobiMax;
+    let pobiPlus; pobiMul; pobiMax;
     let crongPlus; crongMul; crongMax;
 
     if (pobi[0] != pobi[1] - 1 || crong[0] != crong[1] - 1 || pobi[1] - pobi[0] != 1 || cobi[1] - cobi[0] != 1) {
@@ -16,17 +16,31 @@ function problem1(pobi, crong) {
     }
 
     else {
+        //cobi 값
         for (i = 0; i < pobi.length; i++) {
             var p100 = pobi[i] / 100;
             var p10 = pobi[i] / 10 - p100;
             var p1 = pobi[i] % 10;
 
-            pobiLPlus[i] = p100 + p10 + p1;
+            pobiPlus[i] = p100 + p10 + p1;
             pobiMul[i] = p100 * p10 * p1;
-            let pobiPM = (pobiPlus[i] > pobiLPlus[i + 1]) ? pobiLPlus[i] : pobiLPlus[i + 1];
-            let pobiMM = (pobiMul[i] > pobiLMul[i + 1]) ? pobiLMul[i] : pobiLMul[i + 1];
+            const pobiPM = (pobiPlus[i] > pobiPlus[i + 1]) ? pobiPlus[i] : pobiPlus[i + 1];
+            const pobiMM = (pobiMul[i] > pobiMul[i + 1]) ? pobiMul[i] : pobiMul[i + 1];
+            pobiMax = (pobiPM > pobiMul) ? pobiPM : pobiMM;
         }
-        pobiMax = (pobiPM > pobiLMul) ? pobiPM : pobiMM;
+
+        //crong 값
+        for (i = 0; i < crong.length; i++) {
+            var c100 = crong[i] / 100;
+            var c10 = crong[i] / 10 - c100;
+            var c1 = crong[i] % 10;
+
+            crongPlus[i] = c100 + c10 + c1;
+            crongMul[i] = c100 * c10 * c1;
+            let crongPM = (crongPlus[i] > crongPlus[i + 1]) ? crongPlus[i] : crongPlus[i + 1];
+            let crongMM = (crongMul[i] > crongMul[i + 1]) ? crongMul[i] : crongMul[i + 1];
+            crongMax = (crongPM > crongMul) ? crongPM : crongMM;
+        }
     }
 
   return answer;
