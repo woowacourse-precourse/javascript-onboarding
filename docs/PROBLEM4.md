@@ -60,7 +60,7 @@
 
   - 대문자와 소문자를 구분하기 위해서 정규식 사용
     - 소문자일 경우는 a-z사이의 값만 ```true``` 로 리턴하고 그 외는 ```false```
-    - 소문자일 경우는 a-z사이의 값만 ```true``` 로 리턴하고 그 외는 ```false```
+    - 대문자일 경우는 A-Z사이의 값만 ```true``` 로 리턴하고 그 외는 ```false```
     
 
 ```javascript
@@ -80,8 +80,6 @@ function upperCaseTest(value) {
   return false;
 }
 ```
-
--
 
   
 
