@@ -16,6 +16,26 @@ function problem7(user, friends, visitors) {
     });
     return relations;
   };
+
+  // 대상 유저의 주변인들에 대한 점수 계산 함수
+  const checkFriendScore = (user, relations) => {
+    const myFriends = relations[user];
+    const scores = {};
+
+    myFriends.forEach((myFriend) => {
+      const theirFriends = relations[myFriend];
+      theirFriends.forEach((theirFriend) => {
+        if (scores[theirFriend]) {
+          scores[theirFriend] += 10;
+        } else {
+          scores[theirFriend] = 10;
+        }
+      });
+    });
+
+    delete scores[user];
+    return scores;
+  };
 }
 
 module.exports = problem7;
