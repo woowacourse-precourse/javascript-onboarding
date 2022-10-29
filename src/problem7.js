@@ -17,6 +17,22 @@ function problem7(user, friends, visitors) {
     .entries(scoreObj)
     .sort((arr1, arr2) => Number(arr2[0]) - Number(arr1[0]));
 
+    const res = [];
+
+    sortByScore.forEach(([score, friends]) => {
+      if (res.length >= 5) return;
+      if (score == 0) return;
+  
+      const sortByName = friends.sort();
+  
+      sortByName.forEach(name => {
+        if (res.length >= 5) return;
+        if (name == user) return; 
+        res.push(name);
+      })
+    })
+  
+    return res;
 }
 
 module.exports = problem7;
