@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let cryptoArray = cryptogram.split("");
+  let arrayLength = cryptoArray.length;
 }
 
 module.exports = problem2;
