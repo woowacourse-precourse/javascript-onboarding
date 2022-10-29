@@ -7,10 +7,7 @@ function problem2(cryptogram) {
     return;
   }
 
-  if (cryptogram !== cryptogram.toLowerCase()) {
-    alert('소문자를 입력해주세요');
-    return;
-  }
+  if (!isLowerCase(cryptogram)) return;
 
   for (const letter of cryptogram) {
     if (answer[answer.length - 1] === letter) {
@@ -25,6 +22,15 @@ function problem2(cryptogram) {
   }
 
   return answer.join('');
+}
+
+function isLowerCase(string) {
+  const regex = /[^a-z]/;
+  if (regex.test(string)) {
+    console.error('소문자를 입력해주세요');
+    return false;
+  }
+  return true;
 }
 
 module.exports = problem2;
