@@ -47,11 +47,11 @@ function addFriendScore(friendObj, scoreMap, user, visitors) {
 }
 
 function findAnswer(scoreMap){
-  const keyArr = [...scoreMap.keys()].filter(key => scoreMap[key] > 0);
+  const keyArr = [...scoreMap.keys()].filter(key => scoreMap.get(key) > 0);
 
   keyArr.sort((key1, key2) =>{
-    if(scoreMap[key1] < scoreMap[key2]) return -1;
-    else if(scoreMap[key1] > scoreMap[key2]) return 1;
+    if(scoreMap.get(key1) < scoreMap.get(key2)) return 1;
+    else if(scoreMap.get(key1) > scoreMap.get(key2)) return -1;
     else{
       if(key1 <key2) return -1;
       else return 1;
@@ -66,4 +66,5 @@ function findAnswer(scoreMap){
 module.exports = problem7;
 
 
-problem7("mrko", [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"])
+const temp = problem7("mrko", [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"])
+console.log(temp);
