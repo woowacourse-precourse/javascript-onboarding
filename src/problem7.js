@@ -65,4 +65,20 @@ function sumScore(friends, visitors) {
   }
 }
 
+function sorting(recomendFriends) {
+  const sort = Object.fromEntries(
+    Object.entries(recomendFriends).sort(([, a], [, b]) => {
+      if (a > b) {
+        return -1;
+      } else if (a < b) {
+        return 1;
+      } else if (a === b) {
+        return a < b ? 1 : -1;
+      }
+    })
+  );
+
+  return sort;
+}
+
 module.exports = problem7;
