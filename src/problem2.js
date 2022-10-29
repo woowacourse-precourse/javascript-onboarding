@@ -11,7 +11,6 @@ function problem2(cryptogram) {
   ) 
 
   answer = decryption.reduce((answer,word)=>answer+=word,"")
-
   return answer;
 }
 
