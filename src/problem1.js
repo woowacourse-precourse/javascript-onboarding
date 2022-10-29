@@ -6,37 +6,38 @@
 // 3. 두 사람의 점수를 비교하여 알맞는 반환값 지정하기
 
 // 예외 사항 체크 함수
-function isException(pobi, crong) {
+function isException(player) {
   // 정수형인지 확인 및 연속된 숫자인지 확인
-  const intPobi = pobi.filter((pobi_ele) => Number.isInteger(pobi_ele));
-  const intcrong = crong.filter((crong_ele) => Number.isInteger(crong_ele));
-  const pobi_diff = intPobi[1] - intPobi[0];
-  const crong_diff = intcrong[1] - intcrong[0];
+  const intPlayer = player.filter((player_ele) => Number.isInteger(player_ele));
+  const player_diff = intPlayer[1] - intPlayer[0];
+  const isInit = intPlayer[0] === 0 && intPlayer[0] === 1;
+  const isLast = intPlayer[0] === 399 && intPlayer[1] === 400;
 
   // 조건 만족하면 예외사항으로 간주 true 반환
-  if (
-    pobi_diff !== 0 ||
-    crong_diff !== 0 ||
-    intPobi.length !== 2 ||
-    intcrong.length !== 2
-  ) {
+  if (player_diff !== 1 || intPlayer.length !== 2 || isInit || isLast) {
     return true;
   }
 }
+
+// 2개의 숫자로 부터 최대 계산값 반환 함수
+function getMaxValue() {}
 
 function problem1(pobi, crong) {
   var answer;
 
   try {
     // 예외 사항 확인후 true이면 Error 날리기
-    if (isException(pobi, crong)) {
+    if (isException(pobi) || isException(crong)) {
       throw new Error("예외사항");
     }
   } catch (error) {
     // try문에서의 오류로 예외사항인 경우 answer = -1;
     answer = -1;
+    console.log(error);
   }
   return answer;
 }
 
 module.exports = problem1;
+
+console.log(problem1([97, 98], [197, 198]));
