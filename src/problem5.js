@@ -30,8 +30,9 @@ const Bank = {
 };
 
 function problem5(money) {
-  var answer;
-  return answer;
+  let bank = Object.assign({}, Bank);
+  bank.inputMoney(money);
+  return bank.makeResult();
 }
 
 module.exports = problem5;
