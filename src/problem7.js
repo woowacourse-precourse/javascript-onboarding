@@ -5,7 +5,9 @@ function problem7(user, friends, visitors) {
 
   addFriendScore(friendObj, scoreMap, user, visitors);
 
+  const answer = findAnswer(scoreMap);
 
+  return answer;
 }
 
 function initMap(obj, friends, scoreMap) {
@@ -36,7 +38,6 @@ function addFriendScore(friendObj, scoreMap, user, visitors) {
       }
     })
   }
-
   visitors.forEach(friend => {
     if (!userSet.has(friend)) {
       scoreMap.has(friend) ?
@@ -45,6 +46,20 @@ function addFriendScore(friendObj, scoreMap, user, visitors) {
   })
 }
 
+function findAnswer(scoreMap){
+  const keyArr = [...scoreMap.keys()].filter(key => scoreMap[key] > 0);
+
+  keyArr.sort((key1, key2) =>{
+    if(scoreMap[key1] < scoreMap[key2]) return -1;
+    else if(scoreMap[key1] > scoreMap[key2]) return 1;
+    else{
+      if(key1 <key2) return -1;
+      else return 1;
+    }
+  })
+
+  return [...keyArr];
+}
 
 
 
