@@ -1,36 +1,45 @@
-//중복 제거
+//배열 순차적으로 돌면서 연속되는 글자를 찾은 후 delete_keywords 배열에 담기
+function searchDeleteKeywords(cryptogram){
+  let delete_keywords = [];
+  let before_character = "";
+  cryptogram.map((character) => {
+    if (character == before_character) {
+      delete_keywords.push(character);
+    }
+    before_character = character;
+  });
+
+  delete_keywords = new Set(delete_keywords);
+  delete_keywords = [...delete_keywords];
+
+  return delete_keywords;
+}
+
+//연속되는 중복 글자 제거
+function removeConsecutiveDuplicates(delete_keywords,decryptogram){
+  delete_keywords.map((delete_keyword) => {
+    let reg = delete_keyword + "{2,}";
+    let regexAllCase = new RegExp(reg, "gi");
+    decryptogram = decryptogram.replace(regexAllCase, "");
+  });
+  return decryptogram;
+}
+
+
+//복호화
 function decryption(cryptogram) {
-  let before_element = "";
-  let delete_char = [0];
-  //반복문 지울 글자가 더이상 없으면 종료
-  while (delete_char.length > 0) {
-    delete_char = [];
-    let copy_cryptogram = cryptogram;
-    //문자열 카피 후 배열로 만듬
-    copy_cryptogram = Array.from(copy_cryptogram);
-    //배열 순차적으로 돌면서 연속되는 글자를 찾은 후 delete_char 배열에 담기
-    copy_cryptogram.map((element) => {
-      if (element == before_element) {
-        delete_char.push(element);
-      }
-      before_element = element;
-    });
-    //연속되는 글자 중 중복된 글자 제거
-    delete_char = new Set(delete_char);
-    delete_char = [...delete_char];
-    //연속되는 글자 제거 (정규식 사용)
-    delete_char.map((element) => {
-      let reg = element + "{2,}";
-      let regexAllCase = new RegExp(reg, "gi");
-      cryptogram = cryptogram.replace(regexAllCase, "");
-    });
+  let delete_keywords = [0];
+  let decryptogram = cryptogram;
+  while (delete_keywords.length > 0) {
+    cryptogram = Array.from(cryptogram);
+    delete_keywords = searchDeleteKeywords(cryptogram)
+    decryptogram = removeConsecutiveDuplicates(delete_keywords, decryptogram)
+    cryptogram = decryptogram;
   }
-  return cryptogram;
+  return decryptogram;
 }
 
 function problem2(cryptogram) {
-  var answer;
-  answer = decryption(cryptogram);
-  return answer;
+  return decryption(cryptogram);
 }
 module.exports = problem2;
