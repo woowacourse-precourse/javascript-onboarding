@@ -2,6 +2,7 @@ function problem2(cryptogram) {
   try {
     if (checkInputErr(cryptogram)) {
       throw new Error("Invalid Input Error");
+      return;
     }
 
     const answer = deleteSame(cryptogram);
@@ -46,3 +47,15 @@ function deleteSame(input) {
   }
 
   module.exports = problem2;
+
+
+function test(){
+  console.log(problem2("browoanoommnaon")); //brown
+  console.log(problem2("zyelleyz"));  // ""
+  console.log(problem2("afvsdfsaaasfds")); // afv
+  console.log(problem2("FDASFSDssdsa")) // Input Error
+  console.log(problem2(123)) // Type Error
+  console.log(problem2()) //Length Error
+}
+
+test();
