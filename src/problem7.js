@@ -1,6 +1,8 @@
 function problem7(user, friends, visitors) {
   const peoples = allUserNames(friends, visitors);
 
+  const userFriend = aleadyFriends(friends, user);
+
 }
 
 module.exports = problem7;
@@ -17,4 +19,19 @@ const allUserNames = (friends, visitors) => {
     if (!peoples[visitor]) peoples[visitor] = 0;
   })
   return peoples;
+}
+
+const aleadyFriends = (friends, user) => {
+  const userFriend = []; // [ 'donut', 'shakevan' ]
+
+  friends.forEach(friend => {
+    if (friend[0] === user) {
+      userFriend.push(friend[1]);
+    }
+    if (friend[1] === user) {
+      userFriend.push(friend[0]);
+    }
+  })
+
+  return userFriend;
 }
