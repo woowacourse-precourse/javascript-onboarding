@@ -1,6 +1,6 @@
 const checkValid = (number) => {
-  if (Number.isInteger(number)) return true;
-  if (number >= 1 && number <= 10000) return true;
+  if (!Number.isInteger(number)) return true;
+  if (number < 1 || number > 1000000) return true;
   return false;
 };
 
