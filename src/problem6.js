@@ -3,7 +3,7 @@
  1) 모든 사람들의 이름을 두글자로 쪼개 Set1에 넣기
  2) 이름과 횟수를 배열에 넣어주기
  3) 만들어진 배열에 횟수 카운트하기
- 4) 횟수가 2인 이상이면 다른 Set2에 넣어주기
+ 4) 횟수가 2인 이상이면 다른 Set2에 이름 넣어주기
  5) 모든 사람들의 이름을 Set2 안에 있는 것들과 비교해 반복된 이름이 있는지 확인 후 있다면 true반환
  6) 이메일 삽입 후 오름차순으로 정렬
 */
@@ -32,9 +32,16 @@ function overTwo(n, name, d){
   }
 }
 
+function nameRepeatCheck(n, d){
+  for(let i=0; i<n.length-1; i++){
+    if(d.has(n.substr(i,2))) return 1;
+  }
+  return 0;
+}
+
 function problem6(forms) {
-  var answer;
-  let name = {};
+  var answer=[];
+  let name = {}, b;
   let check = new Set();
   let doubleCheck = new Set();
   for(let i=0; i<forms.length; i++){
@@ -47,8 +54,12 @@ function problem6(forms) {
   for(let i=0; i<forms.length; i++){
     overTwo(forms[i][1], name, doubleCheck);
   }
-
-  console.log(doubleCheck)
+  for(let i=0; i<forms.length; i++){
+    b=nameRepeatCheck(forms[i][1], doubleCheck)
+    if(b) answer.push(forms[i][0]);
+  }
+  answer.sort();
+  console.log(answer)
   return answer;
 }
 
