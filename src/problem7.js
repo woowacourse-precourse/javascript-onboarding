@@ -36,6 +36,21 @@ function problem7(user, friends, visitors) {
     delete scores[user];
     return scores;
   };
+
+  // 방문자 점수를 포함한 점수 계산 함수
+  const checkVisitors = (user, score, visitors) => {
+    const myFriends = relations[user];
+    visitors.forEach((visitor) => {
+      if (!myFriends.has(visitor)) {
+        if (score[visitor]) {
+          score[visitor] += 1;
+        } else {
+          score[visitor] = 1;
+        }
+      }
+    });
+    return score;
+  };
 }
 
 module.exports = problem7;
