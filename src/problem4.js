@@ -3,6 +3,13 @@ function problem4(word) {
   const alpabetHash = (char) =>
     ALPABET[ALPABET.length - 1 - ALPABET.indexOf(char)];
 
+  function isAlpabet(char) {
+    return /[a-zA-Z]/.test(char);
+  }
+
+  function isLowerCase(char) {
+    return /[a-z]/.test(char);
+  }
 }
 
 const map = (f, iter) => {
