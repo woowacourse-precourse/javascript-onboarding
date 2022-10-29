@@ -1,9 +1,6 @@
 function problem7(user, friends, visitors) {
   // 이미 친구인 사용자를 찾는 기능
-  let alreadyFriends = friends
-    .filter((friend) => friend.includes(user))
-    .flat()
-    .filter((friend) => friend !== user);
+  const alreadyFriends = findAlreadyFriends(user, friends);
 
   // 임시 친구추천 배열 도출 (이미 친구인 사용자과 친구인 관계)
   let tempRecommendationFriends = friends
@@ -70,6 +67,13 @@ function problem7(user, friends, visitors) {
 
   // 상위 5개까지만 출력
   return Array.from(answerTopFive.keys()).slice(0, 5);
+}
+
+function findAlreadyFriends(user, friends) {
+  return friends
+    .filter((friend) => friend.includes(user))
+    .flat()
+    .filter((friend) => friend !== user);
 }
 
 module.exports = problem7;
