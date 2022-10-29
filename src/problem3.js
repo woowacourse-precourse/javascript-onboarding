@@ -38,6 +38,22 @@ const isFindThreeSixNine = (eachString, count) => {
   return _count;
 };
 
+const startThreeSixNine = (currentNumber, count) => {
+  if (currentNumber === 0) {
+    return count;
+  }
+
+  let _count = count;
+  const stringElement = convertToString(currentNumber);
+  const nextNumber = currentNumber - 1;
+
+  each(stringElement, eachString => {
+    _count = isFindThreeSixNine(eachString, _count);
+  });
+
+  return startThreeSixNine(nextNumber, _count);
+};
+
 function problem3(number) {
   var answer;
   return answer;
