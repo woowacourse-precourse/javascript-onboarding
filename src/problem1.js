@@ -30,14 +30,12 @@ ex)
 */
 
 function problem1(pobi, crong) {
-  function pageNumEachPlus(num) {
-    let numList = String(num).split("").map(Number);
+  function pageNumEachPlus(numList) {
     let plusResult = numList.reduce((pre, cur) => pre + cur);
     return plusResult;
   }
 
-  function pageNumEachMultiply(num) {
-    let numList = String(num).split("").map(Number);
+  function pageNumEachMultiply(numList) {
     let multiplyResult = numList.reduce((pre, cur) => pre * cur);
     return multiplyResult;
   }
@@ -47,20 +45,27 @@ function problem1(pobi, crong) {
     return pageDiff === -1 ? false : true;
   }
 
-  if (except(pobi)) return -1;
-  if (except(crong)) return -1;
+  if (except(pobi) || except(crong)) return -1;
 
   let [pobiScore, crongScore] = [0, 0];
   let result = 0;
 
   pobi.map((pageNum) => {
-    pobiScore = Math.max(pobiScore, pageNumEachPlus(pageNum));
-    pobiScore = Math.max(pobiScore, pageNumEachMultiply(pageNum));
+    let pageNumList = String(pageNum).split("").map(Number);
+    pobiScore = Math.max(
+      pobiScore,
+      pageNumEachPlus(pageNumList),
+      pageNumEachMultiply(pageNumList)
+    );
   });
 
   crong.map((pageNum) => {
-    crongScore = Math.max(crongScore, pageNumEachPlus(pageNum));
-    crongScore = Math.max(crongScore, pageNumEachMultiply(pageNum));
+    let pageNumList = String(pageNum).split("").map(Number);
+    crongScore = Math.max(
+      crongScore,
+      pageNumEachPlus(pageNumList),
+      pageNumEachMultiply(pageNumList)
+    );
   });
 
   result = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;

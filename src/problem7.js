@@ -73,8 +73,12 @@ function problem7(user, friends, visitors) {
       nowFriendIdx.push(idIndexInfo[friend]);
     });
     for (let i = 2; i < Score.length; i++) {
-      if (nowFriendIdx.includes(i)) continue;
-      if (Score[i] !== 0) tmpList.push([Score[i], i]);
+      if (nowFriendIdx.includes(i)) {
+        continue;
+      }
+      if (Score[i] !== 0) {
+        tmpList.push([Score[i], i]);
+      }
     }
     tmpList.sort((a, b) => {
       let [curScore, preScore] = [b[0], a[0]];

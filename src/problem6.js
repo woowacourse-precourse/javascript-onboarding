@@ -74,15 +74,11 @@ function problem6(forms) {
   }
 
   let [nickNameCnt, refuseList] = [{}, {}];
-
   enterDict(forms);
-
   const refuseNames = checkValue(nickNameCnt);
-
   refuseNames.map((refuseNickName) => {
     refuseList[refuseNickName] = true;
   });
-
   const answer = refuseEmail(forms);
 
   return answer;
