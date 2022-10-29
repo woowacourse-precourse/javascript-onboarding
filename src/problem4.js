@@ -15,22 +15,25 @@ A~Z 는 65번부터 90번, a~z 는 97번부터 122번
 
 *기능목록
 1. 입력된 번호에 맞는 청개구리사전 문자를 return 시켜주는 함수. => frogDict function
-
 */
 
 function problem4(word) {
+  const [ASCII_A, ASCII_Z] = [65, 90];
+  const [ASCII_a, ASCII_z] = [97, 122];
+
   function frogDict(num) {
     let frogDictKey = 0;
-    if (num >= 65 && num <= 90) frogDictKey = 90 - (num - 65);
-    else if (num >= 97 && num <= 122) frogDictKey = 122 - (num - 97);
+    if (num >= ASCII_A && num <= ASCII_Z)
+      frogDictKey = ASCII_Z - (num - ASCII_A);
+    else if (num >= ASCII_a && num <= ASCII_z)
+      frogDictKey = ASCII_z - (num - ASCII_a);
 
     return String.fromCharCode(frogDictKey);
   }
 
   let result = "";
   word.split("").map((str) => {
-    if (str !== " ") result += frogDict(str.charCodeAt(0));
-    else result += " ";
+    result += str !== " " ? frogDict(str.charCodeAt(0)) : " ";
   });
 
   return result;
