@@ -1,16 +1,34 @@
+function makeGraph(arr) {
+  const graph = new Map();
+
+  for (let el of arr) {
+    graph.set(el[0], []);
+    graph.set(el[1], []);
+  }
+  for (let el of arr) {
+    graph.get(el[0]).push(el[1]);
+    graph.get(el[1]).push(el[0]);
+  }
+  return graph;
+}
+
+function sortScore(recommendList) {
+  let sortedRecommend = new Map(
+    [...recommendList].sort((a, b) => {
+      if (a[1] === b[1]) {
+        if (a[0] > b[0]) return 1;
+        else if (a[0] < b[0]) return -1;
+      }
+    })
+  );
+  return sortedRecommend;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
-  const friendsGraph = new Map();
-  const recommend = new Map();
 
-  for (let friend of friends) {
-    friendsGraph.set(friend[0], []);
-    friendsGraph.set(friend[1], []);
-  }
-  for (let friend of friends) {
-    friendsGraph.get(friend[0]).push(friend[1]);
-    friendsGraph.get(friend[1]).push(friend[0]);
-  }
+  const friendsGraph = makeGraph(friends);
+  const recommend = new Map();
 
   friendsGraph.forEach((val, key) => {
     if (key === user) return;
@@ -36,14 +54,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  let sortedRecommend = new Map(
-    [...recommend].sort((a, b) => {
-      if (a[1] === b[1]) {
-        if (a[0] > b[0]) return 1;
-        else if (a[0] < b[0]) return -1;
-      }
-    })
-  );
+  let sortedRecommend = sortScore(recommend);
   sortedRecommend.forEach((val, key) => answer.push(key));
 
   return answer;
