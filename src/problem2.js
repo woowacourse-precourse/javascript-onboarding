@@ -1,12 +1,12 @@
 function problem2(cryptogram) {
   const answer = [];
   let deletedLetter;
+  const length = {
+    minimum: 1,
+    maximum: 1000,
+  };
 
-  if (cryptogram.length < 1 || cryptogram.length > 1001) {
-    alert('길이가 1 이상 1000 이하인 문자열을 입력해주세요');
-    return;
-  }
-
+  if (!checkStringLength(cryptogram, length.minimum, length.maximum)) return;
   if (!isLowerCase(cryptogram)) return;
 
   for (const letter of cryptogram) {
@@ -28,6 +28,16 @@ function isLowerCase(string) {
   const regex = /[^a-z]/;
   if (regex.test(string)) {
     console.error('소문자를 입력해주세요');
+    return false;
+  }
+  return true;
+}
+
+function checkStringLength(string, minimum, maximum) {
+  if (string.length < minimum || string.length > maximum) {
+    console.error(
+      `길이가 ${minimum} 이상 ${maximum} 이하인 문자열을 입력해주세요`
+    );
     return false;
   }
   return true;
