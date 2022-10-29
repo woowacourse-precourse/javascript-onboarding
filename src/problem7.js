@@ -40,7 +40,9 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  return score;
+  let result = Object.entries(score);
+
+  return result;
 }
 
 module.exports = problem7;
