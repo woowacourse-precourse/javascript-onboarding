@@ -6,7 +6,7 @@ function problem3(number) {
 }
 
 function clap(number) {
-  let string;
+  let string; //받아온 숫자를 문자로 변환하여 담기위한 변수
   let check = 0;
 
   for(let i = 1; i <= number; i++) {

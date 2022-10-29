@@ -23,3 +23,44 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현할 기능 목록
+
+start()
+: 기능을 시작하는 메소드
+
+check()
+: 옵션들을 불러와 제한사항에 해당되는지 확인하고 에러를 보내주는 메소드
+
+isUserLengthOver()
+: user의 길이를 판별하는 메소드
+
+isFriendsSizeOver()
+: friends의 크기를 판별하는 메소드
+
+isIdLengthOver()
+: id의 길이를 판별하는 메소드
+
+isVisitorSizeOver()
+: visitor의 크기를 판별하는 메소드
+
+isIdLowerCase()
+: id가 소문자인지 판별하는 메소드
+
+findRecommandFriends()
+: 추천 친구를 찾는 메소드
+
+findUserFriends()
+: user의 친구를 찾는 메소드
+
+checkVisitors()
+: visitor 중 이미 친구인 사람들을 확인하는 메소드
+
+findFriends()
+: user의 친구의 친구들을 찾는 메소드(함께 아는 친구를 찾는 메소드)
+
+scoreCheck()
+; 추천 친구 점수를 계산하는 메소드
+
+returnScore()
+: 점수의 합이 가장 높은 5명을 return하는 메소드
