@@ -10,6 +10,20 @@ function problem1(pobi, crong) {
       });
   };
 
+  const pobiScore = Math.max(
+    scoreCalculator(pobi[0], "+"),
+    scoreCalculator(pobi[0], "*"),
+    scoreCalculator(pobi[1], "+"),
+    scoreCalculator(pobi[1], "*")
+  );
+
+  const crongScore = Math.max(
+    scoreCalculator(crong[0], "+"),
+    scoreCalculator(crong[0], "*"),
+    scoreCalculator(crong[1], "+"),
+    scoreCalculator(crong[1], "*")
+  );
+
   return answer;
 }
 
