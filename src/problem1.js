@@ -4,6 +4,18 @@
 // 3. 2번에서 나온 숫자 중, 최대값 찾기
 // 4. 포비와 크롱 중, 승자 구하기
 
+const sum = (arr) => {
+  return result = arr.reduce((pv, cv) => {
+    return pv+cv;
+  });
+};
+
+const mul = (arr) => {
+  return result = arr.reduce((pv, cv) => {
+    return pv*cv;
+  });
+};
+
 function problem1(pobi, crong) {
   const pobiSplit = [];
   const crongSplit = [];
@@ -12,7 +24,14 @@ function problem1(pobi, crong) {
     crongSplit.push(crong[i].toString().split('').map(Number));
   }
 
-  console.log(pobiSplit, crongSplit);
+  const pobiSumMul = [];
+  const crongSumMul = [];
+  for(let i=0; i<2; i++) {
+    pobiSumMul.push(...[sum(pobiSplit[i]), mul(pobiSplit[i])]);
+    crongSumMul.push(...[sum(crongSplit[i]), mul(crongSplit[i])]);
+  }
+
+  console.log(pobiSumMul, crongSumMul);
 }
 
 module.exports = problem1;
