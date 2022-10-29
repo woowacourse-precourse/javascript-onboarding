@@ -11,6 +11,7 @@ function problem2(cryptogram) {
       answerArray.push(cryptoPop);
     }
   }
+  answer = answerArray.reverse().join('');
   return answer;
 }
 
