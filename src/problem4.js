@@ -1,5 +1,12 @@
 function problem4(word) {
   var answer;
+  const wordArr = makeCapitalAlphabetArray(word);
+  const forwardArr = makeAlphabetArray();
+  const reverseArr = makeReverseAlphabetArray();
+  const recordCapitalArr = recordCapitalAlphabet(word);
+  const indexOfWordArr = checkIndexOfAlphabet(wordArr, forwardArr);
+  const reverseWordArr = convertReverseAlphabet(indexOfWordArr, reverseArr);
+  answer = checkCapitalAlphabet(reverseWordArr, recordCapitalArr).join("");
   return answer;
 }
 
