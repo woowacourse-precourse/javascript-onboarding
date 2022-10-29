@@ -1,5 +1,10 @@
 function problem4(word) {
   var answer;
+  if (!validType) throw new Error("잘못된 타입입니다.");
+  if (!validRange) throw new Error("잘못된 범위입니다.");
+  if (!validLetters) throw new Error("잘못된 형식입니다.");
+
+  answer = checkLetter(word);
   return answer;
 }
 
@@ -13,7 +18,7 @@ function checkLetter(word) {
       reversedArray.push(reverseLetter(word[i]));
   }
 
-  return reversedArray;
+  return reversedArray.join("");
 }
 
 function reverseLetter(letter) {
