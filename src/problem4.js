@@ -6,6 +6,11 @@ function problem4(word) {
       answer += alphabet;
       continue;
     }
+    //2. 소문자가 들어오는 경우
+    if (alphabet === alphabet.toLowerCase()) {
+      const oppositeCode = 219 - alphabet.charCodeAt();
+      answer += String.fromCharCode(oppositeCode);
+    }
   }
   return answer;
 }
