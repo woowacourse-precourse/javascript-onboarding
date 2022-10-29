@@ -42,6 +42,14 @@ const recursiveCheckDuplicateElement = (letterArray, currentIndex, pointArray) =
   return recursiveCheckDuplicateElement(letterArray, _nextIndexPoint, pointArray);
 };
 
+const updatePointIndex = (pointArray, _decrease = 2) => {
+  const copiedPointArray = copyArray(pointArray);
+  // 요소 제거할 때 배열의 인덱스도 당겨준다.
+  const newPointIndexArray = map(copiedPointArray, point => point - _decrease);
+
+  return newPointIndexArray;
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
