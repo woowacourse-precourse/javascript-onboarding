@@ -26,6 +26,12 @@ function getBiggestNumber(num) {
   return Math.max(sum, multiply)
 }
 
+function getMaxScore(array) {
+  const leftPage = array[0];
+  const rightPage = array[1];
+  return Math.max(getBiggestNumber(leftPage), getBiggestNumber(rightPage));
+}
+
 function problem1(pobi, crong) {
   if(!pageRule(pobi) || !pageRule(crong)) return -1;
 }
