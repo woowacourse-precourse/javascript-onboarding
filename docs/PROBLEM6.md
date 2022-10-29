@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 목록
+
+- [ ] 각 크루의 닉네임을 두글자씩 쪼개 Set을 만드는 함수를 만든다
+- [ ] 닉네임이 한 글자인 경우는 제외한다
+- [ ] 크루 한 명마다 모든 크루의 닉네임과 비교하고, 겹치면 크루의 이메일을 Set에 추가하는 함수를 만든다
+- [ ] 위에서 만든 Set을 배열로 바꾼다
+- [ ] 이메일을 오름차순으로 정렬하는 함수를 만든다
