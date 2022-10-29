@@ -23,3 +23,11 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현사항
+
+1. user의 친구 목록을 저장할 배열, 추천 친구와 추천 점수를 저장할 Map 객체 선언하기
+2. friends 배열에서 user가 있는 인덱스를 찾고, userFriends 배열에 user의 친구 저장하기
+3. user의 친구를 함께하는 친구를 찾고 그 친구와 추천 점수 10점을 recommendFriends 객체에 저장하기 - 객체에 추천 친구가 있을 시 누적 10점
+4. user의 친구가 아닌 visiors와 추천 점수 1점을 recommendFriends 객체에 저장하기 - 객체에 추천 친구가 있을 시 누적 1점(방문 횟수 당 1점)
+5. recommendFriends 객체에 저장된 추천 친구를 추천 점수가 높은 순으로 정렬(=점수가 같을 시 이름순) 하고 5명까지만 결과에 return 하기
