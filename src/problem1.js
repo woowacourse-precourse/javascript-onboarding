@@ -88,6 +88,29 @@ const getDigitMultipliedNum = (arr) => {
   return arr.reduce((acc, cur) => acc * cur, 1);
 };
 
+/**
+ * 한명의 페이지 번호가 담긴 배열을 이용해 가장 큰 점수를 반환한다.
+ * @param arr - 한명의 페이지 번호가 담긴 배열
+ * @return {number}
+ */
+const getMaxNumber = (arr) => {
+  const firstDigitsArr = getDigitSplittedArr(arr[0]);
+  const secondDigitsArr = getDigitSplittedArr(arr[1]);
+
+  const firstDigitsAddedNum = getDigitAddedNum(firstDigitsArr);
+  const firstDigitsMultipliedNum = getDigitMultipliedNum(firstDigitsArr);
+  const firstMaxNum = Math.max(firstDigitsAddedNum, firstDigitsMultipliedNum);
+
+  const secondDigitsAddedNum = getDigitAddedNum(secondDigitsArr);
+  const secondDigitsMultipliedNum = getDigitMultipliedNum(secondDigitsArr);
+  const secondMaxNum = Math.max(
+    secondDigitsAddedNum,
+    secondDigitsMultipliedNum
+  );
+
+  return Math.max(firstMaxNum, secondMaxNum);
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
