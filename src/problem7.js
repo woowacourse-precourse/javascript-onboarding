@@ -14,34 +14,43 @@ function problem7(user, friends, visitors) {
   let current_friends = find_current_friends(user, friends);
 
   // 2. 추천 친구 목록 만들기
-  // 2-2. 사용자와 함께 아는 친구 구하기
   let recommendations = [];
-  for (let i = 0; i < current_friends.length; i++) {
-    for (let j = 0; j < friends.length; j++) {
-      for (let k = 0; k < 2; k++) {
-        if (current_friends[i] == friends[j][k] && user != friends[j][1 - k]) {
-          // 추천친구목록에 추가
-          recommendations.push([friends[j][1 - k], 10]);
+
+  const find_friends_of_friends = () => {
+    for (let i = 0; i < current_friends.length; i++) {
+      for (let j = 0; j < friends.length; j++) {
+        for (let k = 0; k < 2; k++) {
+          if (
+            current_friends[i] == friends[j][k] &&
+            user != friends[j][1 - k]
+          ) {
+            // 추천친구목록에 추가
+            recommendations.push([friends[j][1 - k], 10]);
+          }
         }
       }
     }
-  }
+  };
 
-  // 2-2. 사용자 타임라인 방문자 찾기
-  for (let i = 0; i < visitors.length; i++) {
-    // 사용자와 이미 친구라면
-    isBreak = false;
-    for (let j = 0; j < current_friends.length; j++) {
-      if (visitors[i] == current_friends[j]) {
-        isBreak = true;
-        break;
+  const find_visitors = () => {
+    for (let i = 0; i < visitors.length; i++) {
+      // 사용자와 이미 친구라면
+      isBreak = false;
+      for (let j = 0; j < current_friends.length; j++) {
+        if (visitors[i] == current_friends[j]) {
+          isBreak = true;
+          break;
+        }
+      }
+      if (!isBreak) {
+        // 추천친구목록에 추가
+        recommendations.push([visitors[i], 1]);
       }
     }
-    if (!isBreak) {
-      // 추천친구목록에 추가
-      recommendations.push([visitors[i], 1]);
-    }
-  }
+  };
+
+  find_friends_of_friends();
+  find_visitors();
 
   // 3. 최종 추천친구 목록 만들기
   let recommendations2 = [];
