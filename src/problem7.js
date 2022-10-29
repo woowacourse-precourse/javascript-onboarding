@@ -57,6 +57,13 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  // 추천 이름
+  let result = [];
+  for (let i = 0; i < maxFiveList.length; i++) {
+    result.push(maxFiveList[i][0]);
+  }
+  return result;
 }
 
 module.exports = problem7;
