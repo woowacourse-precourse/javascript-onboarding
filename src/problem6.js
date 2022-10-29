@@ -32,4 +32,12 @@ function checkOverlap(nickname, set) {
   return false;
 }
 
+function checkFirst(arr, set) {
+  for (let i = 1; i < arr.length; i++) {
+    if (checkOverlap(arr[i][1], set)) return true;
+  }
+
+  return false;
+}
+
 module.exports = problem6;
