@@ -112,9 +112,10 @@ npm test
 - [x] 중복 체크할 단어 Set 생성
 - [x] Set 순회 & forms 순회하며 중복 단어 포함된 닉네임의 인덱스를 저장할 saveIndex 배열을 생성하고, 다음 중복 체크할 단어로 넘어갈 때마다 초기화함.
 - [x] indexOf 메서드를 이용하여 중복된 단어가 있다면, saveIndex에 push
-- [x] push하는 작업이 끝났을 때, saveIndex의 length가 1 이상이라면 중복된 것으로 판단하고 answer 배열에 push
-- [ ] 중복이 여러 단어에서 여러 차례 나올 것을 방지하기 위해 answer를 Set으로 변경할 것.
-- [x] saveIndex 배열에 저장된 해당 닉네임 인덱스 이용, answer 배열에 메일 추가.
+- [x] 한 단어가 다른 방식으로 여러 단어와의 중복이 됐을 때 이메일이 answer에 중복으로 들어가는 것을 방지하기 위해 answer를 Set으로 생성
+- [x] push하는 작업이 끝났을 때, saveIndex의 length가 1 이상이라면 중복된 것으로 판단하고 answer Set에 추가
+- [x] saveIndex 배열에 저장된 해당 닉네임 인덱스 이용, answer Set에 메일 추가.
+- [x] Set인 answer를 배열로 변환해 정렬하여 출력.
 
 ### 문제 7. 구현 사항
 

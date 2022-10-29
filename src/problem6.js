@@ -12,7 +12,7 @@ function checkReduplicate(username) {
 }
 
 function problem6(forms) {
-  var answer = [];
+  var answer = new Set();
   const tempList = [];
   for (let i = 0; i < forms.length; i++) {
     tempList.push(...checkReduplicate(forms[i][1].split("")));
@@ -28,9 +28,11 @@ function problem6(forms) {
     }
     if (saveIndex.length > 1)
       saveIndex.map((val) => {
-        answer.push(forms[val][0]);
+        answer.add(forms[val][0]);
       });
   });
+
+  answer = Array.from(answer);
 
   return answer.sort((a, b) => {
     if (a > b) return 1;
@@ -38,5 +40,15 @@ function problem6(forms) {
     else return 0;
   });
 }
+
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
