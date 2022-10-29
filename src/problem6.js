@@ -3,13 +3,25 @@ function problem6(forms) {
   return answer;
 }
 
-function sliceNickname(nickname) {
-  const nicknameSet = new Set();
-  for (let i = 2; i <= nickname.length; i++) {
-    nicknameSet.add(nickname.slice(i-2, i));
+function checkNickname(arr) {
+  const overlapedNickname = [];
+  let nicknameSet = new Set();
+
+  for (let i = 0; i < arr.length; i++) {
+    if (checkOverlap(arr[i][1], nicknameSet)) overlapedNickname.push(arr[i][0]);
+    
+    nicknameSet = sliceNickname(arr[i][1], nicknameSet);
   }
 
-  return nicknameSet;
+  return overlapedNickname;
+}
+
+function sliceNickname(nickname, overlapedSet) {
+  for (let i = 2; i <= nickname.length; i++) {
+    overlapedSet.add(nickname.slice(i-2, i));
+  }
+
+  return overlapedSet;
 }
 
 function checkOverlap(nickname, set) {
