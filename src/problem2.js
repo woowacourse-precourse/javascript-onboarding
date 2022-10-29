@@ -1,26 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
-}
+  var stack = [];
+  stack.push(cryptogram.charAt(0));
 
-function Stack() {
-  this.dataStore = [];
-  this.top = 0;
-  this.push = push;
-  this.pop = pop;
-  this.peek = peek;
-}
-
-function push(element) {
-  this.dataStore[this.top++] = element;
-}
-
-function pop() {
-  return this.dataStore[--this.top];
-}
-
-function peek() {
-  return this.dataStore[this.top - 1];
+  return stack.join("");
 }
 
 module.exports = problem2;
