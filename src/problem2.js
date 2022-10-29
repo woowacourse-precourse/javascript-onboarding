@@ -1,10 +1,10 @@
 function problem2(cryptogram) {
   while (/([a-z])\1{1,}/.test(cryptogram)) {
-    cryptogram = cryptogram.replace(/([a-z])\1{1,}/, "");
+    cryptogram = cryptogram.replace(/([a-z])\1{1,}/g, "");
+    console.log(cryptogram);
   }
   return cryptogram;
 }
-
 module.exports = problem2;
 
 /*
