@@ -1,4 +1,12 @@
-function findDuplicateWords(forms, words) {
+function isDuplicateWord(forms, duplicateWords, word) {
+  if (duplicateWords.includes(word)) {
+    return false;
+  }
+
+  return forms.some((form) => form[1].includes(word));
+}
+
+function getDuplicateWords(forms, words) {
   const crew = forms[0][1];
   forms.shift();
 
@@ -10,25 +18,16 @@ function findDuplicateWords(forms, words) {
 
   while (index < crew.length - 1) {
     const word = crew.substring(index, index + 2);
+    index += 1;
 
-    if (words.includes(word)) {
-      index += 1;
+    if (!isDuplicateWord(forms, words, word)) {
       continue;
     }
 
-    forms.some((form) => {
-      if (form[1].includes(word)) {
-        words.push(word);
-        return true;
-      }
-
-      return false;
-    });
-
-    index += 1;
+    words.push(word);
   }
 
-  return findDuplicateWords(forms, words);
+  return getDuplicateWords(forms, words);
 }
 
 function isCrewWithDuplicateWord(crew, words) {
@@ -37,7 +36,7 @@ function isCrewWithDuplicateWord(crew, words) {
 
 function problem6(forms) {
   const copiedForms = [...forms];
-  const words = findDuplicateWords(copiedForms, []);
+  const words = getDuplicateWords(copiedForms, []);
 
   const answer = forms
     .filter((form) => isCrewWithDuplicateWord(form[1], words))
