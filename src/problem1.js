@@ -12,88 +12,100 @@
 [x] 포비가 이긴다면 1을, 크롱이 이긴다면 2를, 무승부라면 0을 반환한다.
 */
 
-function isValidPage(page) {
-  const [left, right] = page;
-  if (typeof left !== "number" || typeof right !== "number") {
-    return false;
+class PageGame {
+  constructor(firstPage = 1, lastPage = 400) {
+    this.firstPage = firstPage;
+    this.lastPage = lastPage;
   }
-  if (right <= left) {
-    return false;
-  }
-  if (left < 0 || left > 400) {
-    return false;
-  }
-  if (right < 0 || right > 400) {
-    return false;
-  }
-  if (right - left !== 1) {
-    return false;
-  }
-  return true;
-}
 
-function isFirstPage(page) {
-  const [left, right] = page;
-  if (left === 1 && right === 2) {
+  _isValidPage(page) {
+    const [leftPage, rightPage] = page;
+    if (typeof leftPage !== "number" || typeof rightPage !== "number") {
+      return false;
+    }
+    if (rightPage <= leftPage) {
+      return false;
+    }
+    if (leftPage < this.firstPage || leftPage > this.lastPage - 1) {
+      return false;
+    }
+    if (rightPage < this.firstPage + 1 || rightPage > this.lastPage) {
+      return false;
+    }
+    if (rightPage - leftPage !== 1) {
+      return false;
+    }
     return true;
   }
-  return false;
-}
 
-function isLastPage(page) {
-  const [left, right] = page;
-  if (left === 399 && right === 400) {
+  _isFirstPage(page) {
+    const [leftPage, rightPage] = page;
+    if (leftPage === this.firstPage && rightPage === this.firstPage + 1) {
+      return true;
+    }
+    return false;
+  }
+
+  _isLastPage(page) {
+    const [leftPage, rightPage] = page;
+    if (leftPage === this.lastPage - 1 && rightPage === this.lastPage) {
+      return true;
+    }
+    return false;
+  }
+
+  _validate(page) {
+    if (!this._isValidPage(page) || this._isFirstPage(page) || this._isLastPage(page)) {
+      return false;
+    }
     return true;
   }
-  return false;
-}
 
-function sumEachPageNumbers(page) {
-  let total = 0;
-  for (const eachPage of page) {
-    for (const eachDigitString of String(eachPage)) {
-      total += parseInt(eachDigitString, 10);
+  _sumEachPageNumbers(page) {
+    let total = 0;
+    for (const eachPage of page) {
+      for (const eachDigitString of String(eachPage)) {
+        total += parseInt(eachDigitString, 10);
+      }
     }
+    return total;
   }
-  return total;
-}
 
-function multiplyEachPageNumbers(page) {
-  let total = 1;
-  for (const eachPage of page) {
-    for (const eachDigitString of String(eachPage)) {
-      total *= parseInt(eachDigitString, 10);
+  _multiplyEachPageNumbers(page) {
+    let total = 1;
+    for (const eachPage of page) {
+      for (const eachDigitString of String(eachPage)) {
+        total *= parseInt(eachDigitString, 10);
+      }
     }
+    return total;
   }
-  return total;
-}
 
-function calculateScore(page) {
-  return Math.max(sumEachPageNumbers(page), multiplyEachPageNumbers(page));
+  calculateScore(page) {
+    if (!this._validate(page)) {
+      throw new Error("page is not valid.");
+    }
+    return Math.max(this._sumEachPageNumbers(page), this._multiplyEachPageNumbers(page));
+  }
 }
 
 function problem1(pobi, crong) {
-  if (
-    !isValidPage(pobi) ||
-    !isValidPage(crong) ||
-    isFirstPage(pobi) ||
-    isFirstPage(crong) ||
-    isLastPage(pobi) ||
-    isLastPage(crong)
-  ) {
+  const pageGame = new PageGame();
+
+  try {
+    const pobiScore = pageGame.calculateScore(pobi);
+    const crongScore = pageGame.calculateScore(crong);
+
+    if (pobiScore > crongScore) {
+      return 1;
+    }
+    if (pobiScore < crongScore) {
+      return 2;
+    }
+    return 0;
+  } catch (e) {
     return -1;
   }
-
-  const pobiScore = calculateScore(pobi);
-  const crongScore = calculateScore(crong);
-
-  if (pobiScore > crongScore) {
-    return 1;
-  }
-  if (pobiScore < crongScore) {
-    return 2;
-  }
-  return 0;
 }
 
 module.exports = problem1;
