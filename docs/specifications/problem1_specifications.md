@@ -19,7 +19,7 @@
 
 ### 🚨 정답 출력
 - [x] **Invalid한 input에 대해 Exceptional Case Code 출력**
-- [] **Crong이 이긴 경우, Pobi가 이긴 경우, 비긴 경우에 대한 출력**
+- [x] **Crong이 이긴 경우, Pobi가 이긴 경우, 비긴 경우에 대한 출력**
 
 
 
