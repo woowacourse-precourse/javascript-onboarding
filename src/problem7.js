@@ -7,6 +7,15 @@ function problem7(user, friends, visitors) {
     USER_FRIENDS
   );
   const recommendUserMap = initObj(NOT_USER_FRIENDS);
+
+  for (let i = 0; i < friends.length; i++) {
+    if (recommendUserMap[friends[i][0]] !== undefined && friends[i][1] !== user)
+      recommendUserMap[friends[i][0]] += 10;
+
+    if (recommendUserMap[friends[i][1]] !== undefined && friends[i][0] !== user)
+      recommendUserMap[friends[i][1]] += 10;
+  }
+
   for (let i = 0; i < visitors.length; i++) {
     if (recommendUserMap[visitors[i]] !== undefined)
       recommendUserMap[visitors[i]] += 1;
