@@ -35,6 +35,7 @@ function addPageNumber(num){
   return result;
 }
 
+
 function multiplePageNumber(num){
   num = num.toString();
   let result = num[0];
@@ -43,6 +44,7 @@ function multiplePageNumber(num){
   }
   return result;
 }
+
 
 function getBiggerNumber(arr){
   let result = 0;
