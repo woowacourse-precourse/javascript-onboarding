@@ -3,17 +3,25 @@
 [x] 큰 단위부터 돈을 나누고 결과를 반환한다.
 */
 
-function divideMoney(money, unit) {
-  return [Math.floor(money / unit), money % unit];
+class MoneyChanger {
+  MONEY_UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+  _divideMoney(money, unit) {
+    return [Math.floor(money / unit), money % unit];
+  }
+
+  change(money) {
+    return this.MONEY_UNITS.map((moneyUnit) => {
+      const [quotient, remainder] = this._divideMoney(money, moneyUnit);
+      money = remainder;
+      return quotient;
+    });
+  }
 }
 
 function problem5(money) {
-  const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  return moneyUnits.map((moneyUnit) => {
-    const [quotient, remainder] = divideMoney(money, moneyUnit);
-    money = remainder;
-    return quotient;
-  });
+  const moneyChanger = new MoneyChanger();
+  return moneyChanger.change(money);
 }
 
 module.exports = problem5;
