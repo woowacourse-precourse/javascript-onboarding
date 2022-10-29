@@ -36,10 +36,12 @@ function countFollowerScore(userFriendObject, scoreCount) {
 
   followerList.forEach(follower => {
     const INCREMENT_NUMBER = 10;
-    if (scoreCount[follower]) {
-      scoreCount[follower] += INCREMENT_NUMBER;
-    } else {
-      scoreCount[follower] = INCREMENT_NUMBER;
+    if (!userFriendObject[follower]) {
+      if (scoreCount[follower]) {
+        scoreCount[follower] += INCREMENT_NUMBER;
+      } else {
+        scoreCount[follower] = INCREMENT_NUMBER;
+      }
     }
   });
 }
