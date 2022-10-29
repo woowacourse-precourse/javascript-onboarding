@@ -26,4 +26,12 @@ function applyScore(acquaintance, target) {
   if (acquaintance[target]) acquaintance[target] += 10;
   else acquaintance[target] = 10;
 }
+function applyVisitorScore(acquaintance, visitors, friendList) {
+  visitors.forEach((visitor) => {
+    if (!friendList.includes(visitor)) {
+      if (acquaintance[visitor]) acquaintance[visitor] += 1;
+      else acquaintance[visitor] = 1;
+    }
+  });
+}
 module.exports = problem7;
