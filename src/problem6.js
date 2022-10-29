@@ -23,7 +23,7 @@ function problem6(forms) {
 
   const result = Object.values(duplicates)
     .filter((duplicate) => duplicate.length > 1)
-    .flatMap((results) => results)
+    .flat()
     .sort();
 
   return [...new Set(result)];
