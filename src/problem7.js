@@ -5,6 +5,7 @@
   3) user의 친구들 배열로 만들기
   4) 사용자와 함께 아는 친구의 수만큼 점수 부여 기능
   5) 사용자의 타임 라인에 방문한 친구들 점수 부여 기능
+  6) 점수가 가장 높은 순으로 정렬, 추천 점수가 같은 경우 이름순으로 정렬
 */
 
 function connectFreind(f, r){
@@ -65,8 +66,18 @@ function scoreToVisitor(r,fou,result, user, vist){
   }
 }
 
+function sortArray(result){
+  let r=result.sort(function(a,b){
+    if(a.name==b.name){
+      return a.name-b.name;
+    }
+    return b.score-a.score;
+  })
+  
+}
+
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer=[];
   let rel={}, result=[];
   let fou=[];
   initializationObj(friends, rel);
@@ -74,7 +85,10 @@ function problem7(user, friends, visitors) {
   createUserFreind(user, rel, fou);
   scoreToFreinds(rel,fou,result, user)
   scoreToVisitor(rel,fou,result, user, visitors)
-  console.log(result)
+  sortArray(result)
+  for(let value of result){
+    answer.push(value.name)
+  }
   return answer;
 }
 
