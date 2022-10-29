@@ -1,6 +1,7 @@
 function problem6(forms) {
   const numberOfCheckedCrews = countCrews(forms);
   const checkedDomain = checkDomain(forms);
+  const checkedKoreanName = checkKoreanName(forms);
 
   if (numberOfCheckedCrews !== "Not Error") {
     return numberOfCheckedCrews;
@@ -8,6 +9,10 @@ function problem6(forms) {
 
   if (checkedDomain !== "Not Error") {
     return checkedDomain;
+  }
+
+  if (checkedKoreanName !== "Not Error") {
+    return checkedKoreanName;
   }
 
   const cutNames = cutNamesIntoTwoLetters(forms);
@@ -44,6 +49,27 @@ function checkDomain(crews) {
   return "Not Error";
 }
 
+function checkKoreanName(crews) {
+  const english = /[a-zA-Z]/;
+  const number = /[0-9]/;
+  const specialText = /[~!@#$%^&*()_+|<>?:{}]/;
+  const theNumberOfCrews = crews.length;
+
+  for (let crewIndex = 0; crewIndex < theNumberOfCrews; crewIndex++) {
+    const name = crews[crewIndex][1];
+
+    if (
+      english.test(name) === true ||
+      number.test(name) === true ||
+      specialText.test(name) === true
+    ) {
+      return "닉네임은 한글만 사용할 수 있습니다.";
+    }
+  }
+
+  return "Not Error";
+}
+
 function cutNamesIntoTwoLetters(crews) {
   const theNumberOfCrews = crews.length;
   const duplicatedNameIndexList = new Array(theNumberOfCrews).fill(0);
@@ -61,7 +87,7 @@ function cutNamesIntoTwoLetters(crews) {
       standardCutIndex < standardNameLength - 1;
       standardCutIndex++
     ) {
-      const standardCutName = standardName.substr(standardCutIndex, 2);
+      const standardCutName = standardName.subname(standardCutIndex, 2);
 
       for (
         let comparedNameIndex = standardNameIndex + 1;
@@ -76,7 +102,7 @@ function cutNamesIntoTwoLetters(crews) {
           comparedCutIndex < comparedNameLength - 1;
           comparedCutIndex++
         ) {
-          const comparedCutName = comparedName.substr(comparedCutIndex, 2);
+          const comparedCutName = comparedName.subname(comparedCutIndex, 2);
 
           if (standardCutName === comparedCutName) {
             duplicatedNameIndexList[standardNameIndex] += 1;
