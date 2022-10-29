@@ -6,10 +6,31 @@ function isPagesValid(pages) {
   return false;
 }
 
+function sumDigits(page) {
+  return [...page.toString()].reduce((acc, cur) => acc + Number(cur), 0);
+}
+
+function multiplyDigits(page) {
+  return [...page.toString()].reduce((acc, cur) => acc * Number(cur), 1);
+}
+
+function getMaxValue(pages) {
+  const [left, right] = pages;
+  return Math.max(
+    sumDigits(left),
+    multiplyDigits(left),
+    sumDigits(right),
+    multiplyDigits(right)
+  );
+}
+
 function problem1(pobi, crong) {
   if (!isPagesValid(pobi) || !isPagesValid(crong)) {
     return -1;
   }
+
+  const pobiMaxValue = getMaxValue(pobi);
+  const crongMaxValue = getMaxValue(crong);
 
   var answer;
   return answer;
