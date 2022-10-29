@@ -4,44 +4,54 @@
 [x] 중복된 닉네임을 사용하는 유저들을 반환한다.
 */
 
-function overlapWord(word) {
-  const slicedWords = [];
-  for (let index = 0; index < word.length - 1; index += 1) {
-    const slicedWord = word.slice(index, index + 2);
-    slicedWords.push(slicedWord);
+class UserFilter {
+  userTable = {};
+  constructor(forms) {
+    this._makeInitUserTable(forms);
   }
-  return slicedWords;
-}
 
-function makeDuplicatedUserTable(forms) {
-  const userTable = {};
-  for (const [email, nickname] of forms) {
-    if (nickname.length === 1) {
-      continue;
-    }
-    const slicedNicknames = overlapWord(nickname);
-    for (const slicedNickname of slicedNicknames) {
-      if (!userTable[slicedNickname]) {
-        userTable[slicedNickname] = new Set();
+  get duplicatedEmails() {
+    const duplicatedUserEmails = new Set();
+    for (const emailSets of Object.values(this.userTable)) {
+      const emails = [...emailSets];
+      if (emails.length > 1) {
+        for (const email of emails) {
+          duplicatedUserEmails.add(email);
+        }
       }
-      userTable[slicedNickname].add(email);
     }
+    return [...duplicatedUserEmails];
   }
-  return userTable;
+
+  _makeInitUserTable(forms) {
+    for (const [email, nickname] of forms) {
+      if (nickname.length === 1) {
+        continue;
+      }
+      const slicedNicknames = this._overlapWord(nickname);
+      for (const slicedNickname of slicedNicknames) {
+        if (!this.userTable[slicedNickname]) {
+          this.userTable[slicedNickname] = new Set();
+        }
+        this.userTable[slicedNickname].add(email);
+      }
+    }
+    return this.userTable;
+  }
+
+  _overlapWord(word) {
+    const slicedWords = [];
+    for (let index = 0; index < word.length - 1; index += 1) {
+      const slicedWord = word.slice(index, index + 2);
+      slicedWords.push(slicedWord);
+    }
+    return slicedWords;
+  }
 }
 
 function problem6(forms) {
-  const userTable = makeDuplicatedUserTable(forms);
-  const duplicatedUserEmails = new Set();
-  for (const emailSets of Object.values(userTable)) {
-    const emails = [...emailSets];
-    if (emails.length > 1) {
-      for (const email of emails) {
-        duplicatedUserEmails.add(email);
-      }
-    }
-  }
-  return [...duplicatedUserEmails].sort();
+  const { duplicatedEmails } = new UserFilter(forms);
+  return duplicatedEmails.sort();
 }
 
 module.exports = problem6;
