@@ -57,6 +57,34 @@ function countVisitScore(visitors, userFriendObject, scoreCount) {
   });
 }
 
+function getRecommendationList(scoreCount) {
+  const LIMIT_RECOMMENDATION_NUMBER = 5;
+  let recommendationList = [];
+  for (let name in scoreCount) {
+    recommendationList.push([name, scoreCount[name]]);
+  }
+
+  recommendationList.sort(function (a, b) {
+    let scoreA = a[1];
+    let scoreB = b[1];
+    let nameA = a[0];
+    let nameB = b[0];
+    if (scoreA < scoreB) return 1;
+    if (scoreA > scoreB) return -1;
+    if (nameA > nameB) return 1;
+    if (nameA < nameB) return -1;
+    return 0;
+  });
+
+  recommendationList = recommendationList.slice(0, LIMIT_RECOMMENDATION_NUMBER);
+
+  for (i = 0; i < recommendationList.length; i++) {
+    recommendationList[i] = recommendationList[i][0];
+  }
+
+  return recommendationList;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let scoreCount = {};
@@ -64,6 +92,7 @@ function problem7(user, friends, visitors) {
   findFriendFollower(user, userFriendObject, friends);
   countFollowerScore(userFriendObject, scoreCount);
   countVisitScore(visitors, userFriendObject, scoreCount);
+  answer = getRecommendationList(scoreCount);
   return answer;
 }
 
