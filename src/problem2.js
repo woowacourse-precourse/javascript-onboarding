@@ -1,7 +1,10 @@
 function problem2(cryptogram) {
+  const INIT = -1;
+  let countDuplication = INIT;
   let answer = cryptogram;
 
   function delDuplication(string) {
+    countDuplication = 0;
     let result = string;
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -12,7 +15,12 @@ function problem2(cryptogram) {
         countDuplication += 1;
       }
     }
+
     return result;
+  }
+
+  while (countDuplication !== 0) {
+    answer = delDuplication(answer);
   }
 
   return answer;
