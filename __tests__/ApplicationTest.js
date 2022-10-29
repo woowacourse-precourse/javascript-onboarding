@@ -77,6 +77,14 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+
+  test("does not check duplicates for invalid emails", () => {
+    const forms = [
+      ["test@example.com", "테스트"],
+      ["test@email.com", "테스트"],
+    ];
+    expect(problem6(forms)).toEqual([]);
+  });
 });
 
 describe("problem7", () => {
