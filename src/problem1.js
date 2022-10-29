@@ -18,7 +18,7 @@ function problem1(pobi, crong) {
   const [pobiLeft, pobiRight] = pobi
   const [crongLeft, crongRight] = crong
 
-  if(Math.max(...pobi, ...crong) === 400 || Math.min(...pobi, ...crong)===0)return -1
+  if(Math.max(...pobi, ...crong) === 400 || Math.min(...pobi, ...crong)===1)return -1
   if(pobiLeft % 2 !== 1 || crongLeft % 2 !== 1 || pobiRight % 2 !== 0 || crongRight % 2 !== 0) return -1
   if(pobiRight-pobiLeft !== 1 || crongRight - crongLeft !== 1)return -1
 
