@@ -11,6 +11,15 @@ function problem6(forms) {
             else checkObj[checkName] = 1;
         }
     })
+    checkArr.forEach((v,i)=> {
+        v.forEach(d=> {
+            if(checkObj[d]>1) {
+                const [mail] = forms[i].slice(0,1)
+                mailArr.push(mail)
+            }
+        })
+    })
+    return mailArr.sort();
 }
 
 function duplicateTest(name) {
