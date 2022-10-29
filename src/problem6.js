@@ -36,4 +36,11 @@ function duplicateCheck(forms, result, compareIndex, patterns) {
 function resultPush(result, target) {
   if (!result.includes(target)) result.push(target);
 }
+function checkValidation(forms) {
+  
+}
+function checkLength(forms){
+  if(forms.length>=1&&forms.length<=10000) return true;
+  return false;
+}
 module.exports = problem6;
