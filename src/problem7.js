@@ -66,3 +66,22 @@ function answerList(user,friends,visitors){
   }
   return scoreList.map((el)=>el[0]);
 }
+
+function lengthError(user,friends,visitors){
+  const friendsIdLength=friends.join().split(',').map((el)=>el.length)
+  if(user.length<1 || user.length>30){
+    return false;
+  }
+  if(friends.length>10000){
+    return false;
+  }
+  for(let i=0; i<friendsIdLength.length; i++){
+    if(friendsIdLength[i]<1 || friendsIdLength[i]>30){
+      return false;
+    }
+  }
+  if(visitors.length<0 || visitors>10000){
+    return false;
+  }
+  return true;
+}
