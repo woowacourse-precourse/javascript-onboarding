@@ -1,4 +1,9 @@
 function problem1(pobi, crong) {
+    [pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage] = [undefined, undefined, undefined, undefined];
+    if (Array.isArray(pobi)) {
+        [pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage] = [pobi[0], pobi[1], crong[0], crong[1]];
+    }
+
     /** 2~3단계) 각 자리 숫자를 모두 더하는 함수 */
     const sum = (n) => {
         let sumIs = 0;
