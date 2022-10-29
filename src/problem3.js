@@ -13,7 +13,7 @@ function problem3(number) {
 
   return answer;
   }catch(err){
-    console.log(err);
+    console.log(err.message);
   }
 }
 

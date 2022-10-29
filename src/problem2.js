@@ -8,7 +8,7 @@ function problem2(cryptogram) {
     return answer;
 
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 }
 
