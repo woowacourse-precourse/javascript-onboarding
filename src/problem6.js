@@ -7,14 +7,13 @@ function problem6(forms) {
     let firstNick = forms[0][1];
     let temp = forms[0];
     let length = forms.length - i;
-    
     comparisonArr = makeArrCases(firstNick);
-
+    
     for (let p = 1; p <= forms.length - i; p++) {
       let remainderNick = forms[p][1];
       comparedArr = makeArrCases(remainderNick);
       let intersection = comparedArr.filter(x => comparisonArr.includes(x));
-      console.log(intersection);
+      
       if (intersection != '') {
         resultArr.push(forms[p][0]);
         resultArr.push(forms[0][0]);
@@ -23,7 +22,9 @@ function problem6(forms) {
     forms[0] = forms[length];
     forms[length] = temp;
   }
-  console.log(resultArr);
+  const SET = new Set(resultArr);
+  const FINALARR = [...SET];
+  answer = FINALARR.sort();
   return answer;
 }
 
@@ -37,11 +38,11 @@ function makeArrCases(string) {
 return possibleArr.filter(x => x.length > 1);
 }
 
-problem6([
+console.log(problem6([
   ["jm@email.com", "제이엠"],
   ["jason@email.com", "제이슨"],
   ["woniee@email.com", "워니"],
   ["mj@email.com", "엠제이"],
   ["nowm@email.com", "이제엠"],
-]);
+]));
 module.exports = problem6;
