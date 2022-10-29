@@ -28,4 +28,14 @@ function recomendFriendList(user,myFriends,friends){
 
   return recomendFriends
 }
+
+function getnewVisitorList(myFriends,visitors){
+  let totalVisitorsList = visitors;
+  for (let name of myFriends){
+      totalVisitorsList = totalVisitorsList.filter(visitor => visitor !== name);
+  }
+
+  return totalVisitorsList;
+}
+
 module.exports = problem7;
