@@ -1,6 +1,5 @@
 function problem1(pobi, crong) {
     // 1단계) 입력받은 길이 2배열의 요소들을 각각의 변수에 저장
-    [pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage] = [undefined, undefined, undefined, undefined];
     if (Array.isArray(pobi)) {
         [pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage] = [pobi[0], pobi[1], crong[0], crong[1]];
     }
