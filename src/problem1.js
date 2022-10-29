@@ -1,5 +1,7 @@
+const LAST_PAGE = 400;
+
 function problem1(pobi, crong) {
-  if (!isValidPage(pobi, crong)) return -1;
+  if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
 
   let maxPobi = maxNum(pobi);
   let maxCrong = maxNum(crong);
@@ -9,11 +11,11 @@ function problem1(pobi, crong) {
 }
 
 //페이지 유효성 검사
-function isValidPage(book1, book2) {
-  if (book1[0] <= 1 || book1[1] >= 400 || book2[0] <= 1 || book2[1] >= 400)
-    return false;
-  else if (book1[1] - book1[0] !== 1) return false;
-  else if (book2[1] - book2[0] !== 1) return false;
+function isValidPage(book) {
+  if (book.length !== 2) return false;
+  if (book[0] < 1 || book[1] > LAST_PAGE) return false;
+  if (book[1] - book[0] !== 1) return false;
+  if (book[1] % 2 !== 0) return false;
   else return true;
 }
 
