@@ -28,6 +28,16 @@ const findThreeSixNine = eachString => {
   return find;
 };
 
+const isFindThreeSixNine = (eachString, count) => {
+  let _count = count;
+
+  if (findThreeSixNine(eachString)) {
+    _count += 1;
+  }
+
+  return _count;
+};
+
 function problem3(number) {
   var answer;
   return answer;
