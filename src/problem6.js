@@ -8,54 +8,54 @@ function problem6(forms) {
   return answer;
 }
 
-function checkInputErr(email, nickName){
+function checkInputErr(email, nickName) {
   const validType = (input) => typeof input === 'string'; //TypeError
-  const validlength = (input,a,b) => a <= input.length && input.length < b; // RangeError
-  const validEmail = (input) =>{
-    const regex = /^[a-zA-Z0-9]+@email.com/; 
+  const validlength = (input, a, b) => a <= input.length && input.length < b; // RangeError
+  const validEmail = (input) => {
+    const regex = /^[a-zA-Z0-9]+@email.com/;
     return regex.test(input);
-  }; 
-  const validName = (input) =>{
+  };
+  const validName = (input) => {
     const regex = /^[ㄱ-ㅎ|가-힣]+$/;
     return regex.test(input);
   }
 
   if (!validType(email) || !validType(nickName)) return true;
-  else if (!validlength(email,11,20) || !validlength(nickName,1,20)) return true;
+  else if (!validlength(email, 11, 20) || !validlength(nickName, 1, 20)) return true;
   else if (!validEmail(email)) return true;
   else if (!validName(nickName)) return true;
   else return false;
 }
 
-function makeMaps(userInfo, nickMap, forms){
-  
-  for(let i=0; i<forms.length; i++){
+function makeMaps(userInfo, nickMap, forms) {
+
+  for (let i = 0; i < forms.length; i++) {
     const [email, nickName] = forms[i];
-    if(checkInputErr(email,nickName)) continue;
+    if (checkInputErr(email, nickName)) continue;
 
     userInfo.set(nickName, email);
 
-    for(let i=0; i<nickName.length-1; i++){
-      const key = nickName[i] + nickName[i+1];
-      nickMap.has(key)? nickMap.set(key,nickMap.get(key)+1) : nickMap.set(key,1) 
+    for (let i = 0; i < nickName.length - 1; i++) {
+      const key = nickName[i] + nickName[i + 1];
+      nickMap.has(key) ? nickMap.set(key, nickMap.get(key) + 1) : nickMap.set(key, 1)
     }
   }
 }
 
-function findRepeatName(userInfo, nickMap){
+function findRepeatName(userInfo, nickMap) {
 
   const repeatName = [...nickMap.keys()].filter(key => nickMap.get(key) > 1);
   const userKeys = [...userInfo.keys()];
   const set = new Set();
 
-  for(let i=0; i<repeatName.length; i++){
+  for (let i = 0; i < repeatName.length; i++) {
     const curRepeat = repeatName[i];
-    for(let j=0; j<userKeys.length; j++){
+    for (let j = 0; j < userKeys.length; j++) {
       const curKey = userKeys[j];
       const curEmail = userInfo.get(curKey);
-      if(set.has(curEmail)) continue;
+      if (set.has(curEmail)) continue;
 
-      if(curKey.includes(curRepeat)){
+      if (curKey.includes(curRepeat)) {
         set.add(curEmail);
       }
     }
@@ -64,6 +64,19 @@ function findRepeatName(userInfo, nickMap){
   return [...set].sort();
 }
 
-console.log(problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
-
 module.exports = problem6;
+
+function test() {
+  const input = [["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"],
+  ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]];
+
+  console.log(problem6(input)) //  ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]	["jason@email.com", "jm@email.com", "mj@email.com"]
+  input[0][0] = "jm@gmail.com";
+  console.log(problem6(input)) // [ 'jason@email.com', 'mj@email.com' ]
+  input[1][1] = "abc";
+  console.log(problem6(input)) // [] 
+  input[4][1] = "이제엠워니"; 
+  console.log(problem6(input)); // [ 'nowm@email.com', 'woniee@email.com' ]
+}
+
+test();
