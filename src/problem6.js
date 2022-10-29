@@ -22,6 +22,15 @@ function getTwoCharsInString(str) {
 }
 
 /**
+ * @param {string[]} twoCharsList
+ * @param {string} nickname
+ * @returns {boolean} has same twoChars
+ */
+function checkHasSame(twoCharsList, nickname) {
+  return twoCharsList.some((twoChars) => nickname.includes(twoChars));
+}
+
+/**
  * @param {[string, string][]} forms
  * @returns {string[]} result
  */
