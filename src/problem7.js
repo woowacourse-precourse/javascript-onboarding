@@ -48,6 +48,14 @@ function problem7(user, friends, visitors) {
   return getMaxScoreFriends(user, friendsScore);
 }
 
+/**
+ * @function getFriendsList
+ * @description
+ * 친구 관계를 가지는 해쉬맵을 리턴하는 함수
+ * @param {[string, string][]} [friends]
+ * @returns {Map<string, stirng>}
+ */
+
 function getFriendsList(friends) {
   const map = new Map();
   friends.forEach(([from, to]) => {
@@ -59,6 +67,14 @@ function getFriendsList(friends) {
   return map;
 }
 
+/**
+ * @function getFriendsScore
+ * @description
+ * 유저들과 점수를 초기화해 해쉬맵을 리턴하는 함수
+ * @param {[string, string][]} [friends]
+ * @returns {Map<string, number>}
+ */
+
 function getFriendsScore(friends) {
   const map = new Map();
   friends.forEach(([from, to]) => {
@@ -68,11 +84,27 @@ function getFriendsScore(friends) {
   return map;
 }
 
+/**
+ * @function setFriendsScore
+ * @description
+ * 서로 아는 친구의 추천 점수를 set하는 함수
+ * @param {string[]} [friends]
+ * @param {Map<string, number>} [friendsScore]
+ */
+
 function setFriendsScore(friends, friendsScore) {
   friends.forEach((friend) =>
     friendsScore.set(friend, friendsScore.get(friend) + 10)
   );
 }
+
+/**
+ * @function setVisitorFriendsScore
+ * @description
+ * 타임 라인에 방문한 친구의 추천 점수를 set하는 함수
+ * @param {string[]} [visitor]
+ * @param {Map<string, number>} [friendsScore]
+ */
 
 function setVisitorFriendsScore(visitor, friendsScore) {
   if (friendsScore.has(visitor))
@@ -80,9 +112,25 @@ function setVisitorFriendsScore(visitor, friendsScore) {
   else friendsScore.set(visitor, 1);
 }
 
+/**
+ * @function setRemoveAlreadyFriendsScore
+ * @description
+ * 이미 친구 관계인 사람은 추천 점수에서 제거해주는 함수
+ * @param {string[]} [alreadyFriends]
+ * @param {Map<string, number>} [friendsScore]
+ */
+
 function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
   alreadyFriends.map((alreadyFriend) => friendsScore.delete(alreadyFriend));
 }
+
+/**
+ * @function getMaxScoreFriends
+ * @description
+ * 친구 추천 점수 최댓값을 가지는 5명을 리턴하는 함수
+ * @param {string} [user]
+ * @param {Map<string, number>} [friendsScore]
+ */
 
 function getMaxScoreFriends(user, friendsScore) {
   return setMapToArray(friendsScore)
@@ -94,6 +142,14 @@ function getMaxScoreFriends(user, friendsScore) {
     .map(([key]) => key)
     .slice(0, 5);
 }
+
+/**
+ * @function setMapToArray
+ * @description
+ * 해쉬맵을 배열로 변환하는 함수
+ * @param {Map<any, any>} [hashMap]
+ * @returns {[any,any][]}
+ */
 
 function setMapToArray(hashMap) {
   return Array.from(hashMap);
