@@ -75,22 +75,22 @@ function checkSameWordForAllCrew(forms, checkingWordArray, ans) {
   }
 }
 
-function makeTestWord(j, modelNickName, testWordArrayFromStandardNickname) {
+function makeTestWord(j, standardNickName, testWordArrayFromStandardNickname) {
   // 중복 판별 단어가 시작되고 끝나는 부분 선정
-  for (let k = 0; k <= modelNickName.length - j; k++) {
-    const testWord = modelNickName.slice(k, j + k);
+  for (let k = 0; k <= standardNickName.length - j; k++) {
+    const testWord = standardNickName.slice(k, j + k);
 
     testWordArrayFromStandardNickname.push(testWord);
   }
 }
 
-function decideTestWordLength(modelNickName, checkingWordArray) {
+function decideTestWordLength(standardNickName, checkingWordArray) {
   // 하나의 닉네임에서 얻은 중복 판별 단어들을 하나의 배열로 만들어, 모든 중복 판별 단어 배열을 2차원으로 만든다.
   let testWordArrayFromStandardNickname = [];
 
   // 길이 2부터 문자열 최대 길이까지 중복 판별 단어 선정
-  for (let j = 2; j <= modelNickName.length; j++) {
-    makeTestWord(j, modelNickName, testWordArrayFromStandardNickname);
+  for (let j = 2; j <= standardNickName.length; j++) {
+    makeTestWord(j, standardNickName, testWordArrayFromStandardNickname);
   }
 
   checkingWordArray.push(testWordArrayFromStandardNickname);
@@ -98,9 +98,9 @@ function decideTestWordLength(modelNickName, checkingWordArray) {
 
 function selecStandardNickName(forms, checkingWordArray) {
   for (let i = 0; i < forms.length; i++) {
-    const modelNickName = forms[i][1];
+    const standardNickName = forms[i][1];
 
-    decideTestWordLength(modelNickName, checkingWordArray);
+    decideTestWordLength(standardNickName, checkingWordArray);
   }
 }
 
@@ -131,7 +131,5 @@ function problem6(forms) {
 
   return deleteOverlapAndSortEmail(ans);
 }
-
-module.exports = problem6;
 
 module.exports = problem6;
