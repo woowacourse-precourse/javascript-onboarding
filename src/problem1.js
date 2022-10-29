@@ -21,6 +21,18 @@ function isException(player) {
   }
 }
 
+// 페이지 숫자로 부터 최대 계산값 반환
+function getMaxValue(page) {
+  const string_Page = page.toString();
+  const array_Page = string_Page
+    .split("")
+    .map((string_Page_ele) => parseInt(string_Page_ele));
+  const AddValue = array_Page.reduce((acc, num) => acc + num, 0);
+  const multipleValue = array_Page.reduce((acc, num) => acc * num, 1);
+
+  return Math.max(AddValue, multipleValue);
+}
+
 function problem1(pobi, crong) {
   var answer;
 
