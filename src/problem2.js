@@ -1,6 +1,23 @@
+function removeElement(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      arr.splice(i, 2);
+      return 1;
+    }
+  }
+  return 0;
+}
+
+function removeDups(arr) {
+  while (1) {
+    if (!removeElement(arr)) break;
+  }
+  return arr.join('');
+}
+
 function problem2(cryptogram) {
   if (cryptogram.length <= 1) return cryptogram;
-  var answer = removeDup(cryptogram.split(''));
+  var answer = removeDups(cryptogram.split(''));
   return answer;
 }
 
