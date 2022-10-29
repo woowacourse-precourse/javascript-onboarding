@@ -10,6 +10,7 @@ function problem6(forms) {
   const nicknameList = forms.map((form) => form[1]);
 
   if (!checkValidCrewNumber(forms, crew.minimum, crew.maximum)) return;
+  if (!checkValidEmail(emailList)) return;
 
   const dividedNicknameList = [].concat(...getBrokenNicknameList(nicknameList));
   const duplicatedwords = findDuplicates(dividedNicknameList);
@@ -51,6 +52,17 @@ function checkValidCrewNumber(crews, minimum, maximum) {
     return false;
   }
   return true;
+}
+
+function checkValidEmail(arr) {
+  const regex = /^[a-zA-Z0-9._+-]+@email.com/;
+  return arr.every((email) => {
+    if (!regex.test(email) || email.length < 11 || email.length >= 20) {
+      console.error('유효한 이메일 계정을 입력해주세요');
+      return false;
+    }
+    return true;
+  });
 }
 
 module.exports = problem6;
