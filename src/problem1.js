@@ -47,15 +47,12 @@ function problem1(pobi, crong) {
 
     // 5단계) 요구사항에 따라서 게임의 승자를 구함. 1:pobi승리 2:crong승리 0:무승부
     if (pobiScore > crongScore) {
-        console.log(1);
         return 1;
     }
     if (pobiScore < crongScore) {
-        console.log(2);
         return 2;
     }
     if (pobiScore === crongScore) {
-        console.log(0);
         return 0;
     }
 }

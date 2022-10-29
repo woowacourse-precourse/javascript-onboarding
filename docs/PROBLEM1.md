@@ -26,11 +26,14 @@
 
 ### ✔구현 기능 목록 리스트
 
--   1단계) 입력받은 배열의 요소를 알기 쉬운 변수명으로 저장합니다. pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage
+-   1단계) 입력받은 배열의 요소를 알기 쉬운 변수명으로 저장합니다.
+    -   pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage
 -   2~3단계) 각 자리의 숫자를 모두 더하는 함수를 구현합니다.
+    -   sum()
 -   2~3단계) 각 자리의 숫자를 모두 곱하는 함수를 구현합니다.
-
+    -   multiply()
 -   4단계) 입력 받은 수 중에서 가장 큰 수 구하는 함수를 구현합니다.
+    -   getBigScore()
 -   5단계) 요구사항에 따라서 게임의 결과를 반환합니다. 1:pobi승리 2:crong승리 0:무승부
 -   6단계) 예외사항을 확인하고 예외사항이 존재하면 -1을 반환합니다. -1:예외사항
 
