@@ -1,5 +1,11 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+  if (handleException(pobi) === -1 || handleException(crong) === -1) {
+    answer = -1;
+    return answer;
+  }
+
+  answer = checkWinner(pobi, crong);
   return answer;
 }
 
