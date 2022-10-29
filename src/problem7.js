@@ -1,10 +1,31 @@
 function problem7(user, friends, visitors) {
   var answer;
   let friendWithMe = [];
+  let pointArr = [];
   friends.map((u) => {
     if (u[0] === user) friendWithMe.push(u[1]);
     else if (u[1] === user) friendWithMe.push(u[0]);
   });
+  friends.map((u) => {
+    friendWithMe.map((friend) => {
+      if (u[0] === friend && !u.includes(user)) {
+        let target = pointArr.find((obj) => obj.id === u[1]);
+        if (target) {
+          target.pnt += 10;
+        } else {
+          pointArr.push({ id: u[1], pnt: 10 });
+        }
+      } else if (u[1] === friend && !u.includes(user)) {
+        let target = pointArr.find((obj) => obj.id === u[0]);
+        if (target) {
+          target.pnt += 10;
+        } else {
+          pointArr.push({ id: u[0], pnt: 10 });
+        }
+      }
+    });
+  });
+  answer = pointArr;
   return answer;
 }
 console.log(
