@@ -4,10 +4,10 @@ class RecommandInfo {
   constructor() {
     this.#scoreOfUsers = {};
   }
-  getScore() {
+  getScoreOfUsers() {
     return this.#scoreOfUsers;
   }
-  setScore(recommandFriend, additionalScore) {
+  setScoreOfUsers(recommandFriend, additionalScore) {
     this.#scoreOfUsers[recommandFriend] =
       (this.#scoreOfUsers[recommandFriend] || 0) + additionalScore;
   }
@@ -27,7 +27,7 @@ function setRecommand(recommandInfo, friendList, notForRecommand, additionalScor
     if (notForRecommand.includes(friend)) {
       return;
     }
-    recommandInfo.setScore(friend, additionalScore);
+    recommandInfo.setScoreOfUsers(friend, additionalScore);
   });
 }
 
