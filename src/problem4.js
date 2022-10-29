@@ -18,6 +18,11 @@ function isLowerCase(ascii) {
   return false; //소문자 알파벳이 아니라면 false를 반환한다.
 }
 
+function chgLowerCase(ascii) {
+  //참개구리 사전식 변환을 위해 ascii 코드를 변환
+  return String.fromCharCode(109.5 + (109.5 - ascii));
+}
+
 function problem4(word) {
   var answer;
   let letters = word.split("");
