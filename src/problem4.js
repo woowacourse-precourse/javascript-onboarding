@@ -1,7 +1,6 @@
 function problem4(word) {
   const table = getTransformTable()
-  const answer = getTransformedStr(word, table)
-  return answer;
+  return getTransformedStr(word, table);
 }
 
 /**
