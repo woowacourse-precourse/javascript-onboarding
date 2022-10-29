@@ -2,6 +2,7 @@ function problem6(forms) {
   const numberOfCheckedCrews = countCrews(forms);
   const checkedDomain = checkDomain(forms);
   const checkedKoreanName = checkKoreanName(forms);
+  const checkedNameLength = checkNameLength(forms);
 
   if (numberOfCheckedCrews !== "Not Error") {
     return numberOfCheckedCrews;
@@ -13,6 +14,10 @@ function problem6(forms) {
 
   if (checkedKoreanName !== "Not Error") {
     return checkedKoreanName;
+  }
+
+  if (checkedNameLength !== "Not Error") {
+    return checkedNameLength;
   }
 
   const cutNames = cutNamesIntoTwoLetters(forms);
@@ -64,6 +69,23 @@ function checkKoreanName(crews) {
       specialText.test(name) === true
     ) {
       return "닉네임은 한글만 사용할 수 있습니다.";
+    }
+  }
+
+  return "Not Error";
+}
+
+function checkNameLength(crews) {
+  const theNumberOfCrews = crews.length;
+
+  for (let crewIndex = 0; crewIndex < theNumberOfCrews; crewIndex++) {
+    const MINIMUN_NAME = 1;
+    const MAXIMUM_NAME = 19;
+    const name = crews[crewIndex][1];
+    const nameLength = name.length;
+
+    if (nameLength < MINIMUN_NAME || nameLength > MAXIMUM_NAME) {
+      return "닉네임은 1자 이상 20자 미만이어야 합니다.";
     }
   }
 
