@@ -12,4 +12,8 @@ function seperateDigits(number) {
   }
 }
 
+function checkMultiple(number) {
+  return number % 3 == 0;
+}
+
 module.exports = problem3;
