@@ -44,6 +44,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // [ 1, 20, 20, 1, 3 ]
   for (let i of visitors) {
     for (let j of everyoneList) {
       if (j === i) {
@@ -52,9 +53,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // { donut: 1, andole: 20, jun: 20, shakevan: 1, bedi: 3 }
+  let friendAndScoreDict = {};
+  for (let i = 0; i < everyoneList.length; i++) {
+    friendAndScoreDict[everyoneList[i]] = everyoneScoreList[i]; 
+  }
+
+  let friendAndScoreDictArray = Object.entries(friendAndScoreDict);
+
+  friendAndScoreDictArray.sort((a, b) => b[1] - a[1]);
+  
+  for (let i of alreadyFriendList) {
+    friendAndScoreDictArray = friendAndScoreDictArray.filter((element) => element[0] !== i);
+  }
 
 
-  let answer = everyoneScoreList;
+  let answer = friendAndScoreDictArray;
   return answer;
 }
 
