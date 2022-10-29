@@ -1,10 +1,11 @@
 function problem7(user, friends, visitors) {
-  let graph = new Map();
-  friends.forEach((duo) => makeGraph(graph, duo));
+  let relationGraph = new Map();
+  friends.forEach((pair) => makeGraph(relationGraph, pair));
 
   let scoreList = new Map();
-  friendOfFriend(user, graph, scoreList);
-  scoreVisitor(user, graph, visitors, scoreList);
+  friendOfFriend(user, relationGraph, scoreList);
+  scoreVisitor(user, relationGraph, visitors, scoreList);
+
   return sortResult(scoreList);
 }
 
@@ -20,6 +21,7 @@ function makeGraph(vertex, duo) {
   }
 }
 
+// 친구의 친구에게 10점씩 주는 함수
 function friendOfFriend(user, graph, scoreList) {
   [...graph.get(user)].forEach((friend) => {
     //friend는 user의 1차 친구
