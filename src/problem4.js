@@ -8,6 +8,9 @@ function problem4(word) {
   const checkIsUpper = (c) => {
     return cToAsc(c) <= cToAsc("Z");
   };
+
+  // 2. 암호 해독 기준값 배열
+  const sumValArr = [cToAsc("a") + cToAsc("z"), cToAsc("A") + cToAsc("Z")];
 }
 
 module.exports = problem4;
