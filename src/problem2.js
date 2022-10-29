@@ -19,6 +19,8 @@ function deleteOverlap(cryptogram) {
 
     index++;
   }
+
+  return stack.join("");
 }
 
 function validExceptions(cryptogram) {
