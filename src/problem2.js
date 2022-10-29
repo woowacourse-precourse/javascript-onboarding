@@ -16,7 +16,9 @@
  * @return {string} 연속하는 중복 문자들을 삭제한 결과를 return
  * @throws cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
  * @throws cryptogram은 알파벳 소문자로만 이루어져 있다.
- * @todo 1. 스택을 사용해 중복 문자를 제거해주는 함수
+ * @todo 1. cryptogram이 포함하고있는 알파벳 소문자를 리턴하는 함수
+ * @todo 2. 중복이 존재하는지 판별하는 함수
+ * @todo 3. 알파벳 소문자가 연속되는게 있다면 제거해주는 함수
  */
 
 function problem2(cryptogram) {
