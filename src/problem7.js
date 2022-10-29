@@ -67,6 +67,9 @@ function problem7(user, friends, visitors) {
       return b[1] - a[1];
     })
   );
+
+  // 상위 5개까지만 출력
+  return Array.from(answerTopFive.keys()).slice(0, 5);
 }
 
 module.exports = problem7;
