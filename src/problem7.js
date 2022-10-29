@@ -5,7 +5,23 @@ function problem7(user, friends, visitors) {
 
 function recommendFriends(user, friends, visitors) {
   const resultPointMap = createResultMap(user, friends, visitors);
-  return Object.keys(resultPointMap).slice(0, 3);
+  const friendsMap = makeFriendsMap(friends);
+  const userFriends = friendsMap[user];
+
+  return removeUserFriends(sortList(resultPointMap), userFriends).slice(0, 5);
+}
+
+function removeUserFriends(recommendUserList, userFriends) {
+  return Object.keys(recommendUserList).filter(
+    (key) => !userFriends.includes(key)
+  );
+}
+
+function sortList(userList) {
+  return Object.entries(userList)
+    .sort()
+    .sort(([, prev], [, next]) => next - prev)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 }
 
 function createResultMap(user, friends, visitors) {
@@ -33,7 +49,6 @@ function friendsPointCounter(user, friends) {
     acc.push(...searchFriends(user, friendsMap[cur]));
     return acc;
   }, []);
-
   friendsRelation.forEach((friend) => {
     !pointMap[friend] ? (pointMap[friend] = 10) : (pointMap[friend] += 10);
   });
