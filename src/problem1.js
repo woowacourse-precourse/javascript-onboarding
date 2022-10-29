@@ -13,7 +13,7 @@ function problem1(pobi, crong) {
   if(result_value(pobi)==result_value(crong)){
     return 0
   }
-
+  
   return -1;
 }
 
