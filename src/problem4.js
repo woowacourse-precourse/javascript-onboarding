@@ -31,7 +31,26 @@ function problem4(word) {
   const lowerCaseArr = upperCaseArr.join("").toLowerCase().split("");
   const reversedUpperCaseArr = upperCaseArr.slice().reverse();
   const reversedLowerCaseArr = lowerCaseArr.slice().reverse();
+
   // word를 순회하며 알파벳의 경우 배열의 인덱스를 이용해 청개구리의 말로 바꾸어 반환한다.
+  let answer = "";
+  for (const index in word) {
+    const upperCaseIndex = upperCaseArr.findIndex((element) => element === word[index]);
+    const lowerCaseIndex = lowerCaseArr.findIndex((element) => element === word[index]);
+
+    if (upperCaseIndex !== -1) {
+      answer += reversedUpperCaseArr[upperCaseIndex];
+      continue;
+    }
+    if (lowerCaseIndex !== -1) {
+      answer += reversedLowerCaseArr[lowerCaseIndex];
+      continue;
+    }
+
+    answer += word[index];
+  }
+
+  return answer;
 }
 
 module.exports = problem4;
