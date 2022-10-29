@@ -41,7 +41,7 @@ function seperateDigits(number) {
 }
 
 function checkMultiple(number) {
-  return number % 3 == 0;
+  return number % 3 == 0 && number > 0;
 }
 
 module.exports = problem3;
