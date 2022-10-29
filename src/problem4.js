@@ -22,4 +22,9 @@ function recordCapitalAlphabet(word) {
   return recordCapital;
 }
 
+function makeCapitalAlphabetArray(word) {
+  const capitalWordArray = word.toUpperCase().split("");
+  return capitalWordArray;
+}
+
 module.exports = problem4;
