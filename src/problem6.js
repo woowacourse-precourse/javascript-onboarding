@@ -1,14 +1,38 @@
 const NickNameChecker = {
   forms: [],
   result: [],
-  sameValues: [],
+  resultIndexs: [],
+  seperatedNicknames: {},
   inputForms: function (forms) {
     if (!this.checkFormsLength(forms)) {
       return false;
     }
     forms = forms.filter((form) => this.checkEmailForm(form[0]));
-    forms = forms.filter((form) => this.checkNickname(form[1]));
+    this.forms = forms.filter((form) => !this.checkNickname(form[1]));
     return true;
+  },
+  getOverlapEmails: function () {
+    this.forms.forEach((form, index) => {
+      this.overlapNicknames(form[1], index);
+    });
+    return this.resultIndexs;
+  },
+  overlapNicknames: function (nickname, index) {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      let splicedNickname = nickname.slice(i, i + 2);
+      if (!this.isOverlapNickname(splicedNickname)) {
+        this.seperatedNicknames[splicedNickname] = index;
+      } else {
+        this.resultIndexs.push(index);
+      }
+    }
+  },
+  isOverlapNickname: function (nickname) {
+    if (nickname in this.seperatedNicknames) {
+      this.resultIndexs.push(this.seperatedNicknames[nickname]);
+      return true;
+    }
+    return false;
   },
   checkFormsLength: function (forms) {
     return forms.length >= 1 && forms.length <= 10000;
