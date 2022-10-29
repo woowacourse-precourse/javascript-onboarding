@@ -18,6 +18,8 @@ const map = (array, func) => {
   return resultArray;
 };
 
+const convertToCharacterArray = string => copyArray(string);
+
 function problem2(cryptogram) {
   var answer;
   return answer;
