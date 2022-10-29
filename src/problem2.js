@@ -20,6 +20,12 @@ const map = (array, func) => {
 
 const convertToCharacterArray = string => copyArray(string);
 
+const convertToString = stringArray => {
+  const copyedStringArray = copyArray(stringArray);
+
+  return copyedStringArray.join("");
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
