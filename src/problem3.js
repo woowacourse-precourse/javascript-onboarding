@@ -1,8 +1,6 @@
 //예외사항
 function exception(number) {
-  if (number < 1 || number > 10000) {
-    return true;
-  }
+  if (number < 1 || number > 10000) return true;
   return false;
 }
 
@@ -18,17 +16,13 @@ function game_369(number) {
   for (let i = 1; i <= number; i++) {
     let change_crap = String(i).replace(/[3,6,9]/g, "crap");
     let crap = change_crap.match(/crap/g);
-    if (crap != null) {
-      crap_count = crap.length + crap_count;
-    }
+    if (crap != null) crap_count = crap.length + crap_count;
   }
   return crap_count;
 }
 
 function problem3(number) {
-  if (exception(number)) {
-    return "제한사항을 지켜주세요.";
-  }
+  if (exception(number)) return "제한사항을 지켜주세요.";
   return game_369(number);
 }
 

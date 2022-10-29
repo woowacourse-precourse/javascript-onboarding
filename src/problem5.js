@@ -1,16 +1,25 @@
-function problem5(money) {
-  var answer = [];
-  let monetary_unit = 100000;//초기 화폐 단위
-  for(let i = 0;i<8;i++){ //화폐 단위가 9개여서 8번 실행
-    //순서에따라 2와 5를 나눠 화폐 단위를 줄여나감
+//예외사항
+function exception(money){
+  if(money<1 || money> 1000000) return true;
+  return false;
+}
+
+//출금후 지갑에 담기
+function withdraw(money){
+  var wallet = [];
+  let monetary_unit = 100000;
+  for(let i = 0;i<8;i++){ //1원을 제외한 실행
     if(i % 2 == 0) monetary_unit = monetary_unit / 2;
     if(i % 2 == 1) monetary_unit = monetary_unit / 5;
-    //화폐 개수를 answer에 push함
-    answer.push(parseInt(money / monetary_unit))
+    wallet.push(parseInt(money / monetary_unit))
     money = money % monetary_unit
   }
-  //1단위 화폐를 push함
-  answer.push(parseInt(money / 1))
-  return answer;
+  wallet.push(parseInt(money / 1))
+  return wallet
+}
+
+function problem5(money){
+  if(exception(money)) return "제한사항을 지켜주세요.";
+  return withdraw(money);
 }
 module.exports = problem5;

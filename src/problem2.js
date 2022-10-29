@@ -1,12 +1,8 @@
 //예외사항
 function exception(cryptogram) {
   let check_cryptogram_lower = new RegExp("^[a-z]*$");
-  if (check_cryptogram_lower.test(cryptogram) == false) {
-    return true;
-  }
-  if (cryptogram.length < 1 || cryptogram.length > 1000) {
-    return true;
-  }
+  if (check_cryptogram_lower.test(cryptogram) == false) return true;
+  if (cryptogram.length < 1 || cryptogram.length > 1000) return true;
   return false;
 }
 
@@ -15,12 +11,9 @@ function searchDeleteKeywords(cryptogram) {
   let delete_keywords = [];
   let before_character = "";
   cryptogram.map((character) => {
-    if (character == before_character) {
-      delete_keywords.push(character);
-    }
+    if (character == before_character) delete_keywords.push(character);
     before_character = character;
   });
-
   delete_keywords = new Set(delete_keywords);
   delete_keywords = [...delete_keywords];
 
@@ -51,9 +44,7 @@ function decryption(cryptogram) {
 }
 
 function problem2(cryptogram) {
-  if (exception(cryptogram)) {
-    return "제한사항을 지켜주세요.";
-  }
+  if (exception(cryptogram)) return "제한사항을 지켜주세요.";
   return decryption(cryptogram);
 }
 module.exports = problem2;

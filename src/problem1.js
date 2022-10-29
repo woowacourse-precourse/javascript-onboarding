@@ -1,14 +1,8 @@
 //예외사항
 function exception(pobi, crong) {
-  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
-    return true;
-  }
-  if (pobi[1] <= 2 && pobi[0] >= 399 && crong[1] <= 2 && crong[0] >= 399) {
-    return true;
-  }
-  if (pobi.length != 2 && crong.length != 2) {
-    return true;
-  }
+  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) return true;
+  if (pobi[1] <= 2 && pobi[0] >= 399 && crong[1] <= 2 && crong[0] >= 399) return true;
+  if (pobi.length != 2 && crong.length != 2) return true;
   return false;
 }
 
@@ -53,20 +47,11 @@ function maxScore(player) {
 }
 
 function problem1(pobi, crong) {
-  if (exception(pobi, crong)) {
-    return -1;
-  }
-
+  if (exception(pobi, crong)) return -1;
   let pobi_score = maxScore(pobi);
   let crong_score = maxScore(crong);
-  if (pobi_score > crong_score) {
-    return 1;
-  }
-  if (pobi_score == crong_score) {
-    return 0;
-  }
-  if (pobi_score < crong_score) {
-    return 2;
-  }
+  if (pobi_score > crong_score) return 1;
+  if (pobi_score == crong_score) return 0;
+  if (pobi_score < crong_score) return 2;
 }
 module.exports = problem1;

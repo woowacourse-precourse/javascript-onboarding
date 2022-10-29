@@ -1,8 +1,6 @@
 //예외사항
 function exception(word) {
-  if (word.length < 1 || word.length > 1000) {
-    return true;
-  }
+  if (word.length < 1 || word.length > 1000) return true;
   return false;
 }
 
@@ -11,12 +9,8 @@ function reverseWords(words) {
   let reverse_words = [];
   words.map((word) => {
     let word_unicode = word.charCodeAt(0);
-    if (word_unicode >= 65 && word_unicode <= 90) {
-      word_unicode = 155 - word_unicode;
-    }
-    if (word_unicode >= 97 && word_unicode <= 122) {
-      word_unicode = 219 - word_unicode;
-    }
+    if (word_unicode >= 65 && word_unicode <= 90) word_unicode = 155 - word_unicode;
+    if (word_unicode >= 97 && word_unicode <= 122) word_unicode = 219 - word_unicode;
     reverse_words.push(String.fromCharCode(word_unicode));
   });
   return reverse_words;
@@ -31,9 +25,7 @@ function changeWords(word) {
 }
 
 function problem4(word) {
-  if (exception(word)) {
-    return "제한사항을 지켜주세요.";
-  }
+  if (exception(word)) return "제한사항을 지켜주세요.";
   return changeWords(word);
 }
 
