@@ -33,20 +33,19 @@
  */
 
 function problem7(user, friends, visitors) {
-  var answer;
-
   const friendsScore = getFriendsScore(friends);
   const friendsList = getFriendsList(friends);
+  const alreadyFriends = friendsList.get(user);
 
-  friendsList
-    .get(user)
-    .forEach((friend) =>
-      setFriendsScore(friendsList.get(friend), friendsScore)
-    );
+  alreadyFriends.forEach((alreadyFriend) =>
+    setFriendsScore(friendsList.get(alreadyFriend), friendsScore)
+  );
 
   visitors.forEach((visitor) => setVisitorFriendsScore(visitor, friendsScore));
 
-  return answer;
+  setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore);
+
+  return getMaxScoreFriends(user, friendsScore);
 }
 
 function getFriendsList(friends) {
