@@ -16,7 +16,13 @@ function problem7(user, friends, visitors) {
   for(let i=0; i<visitors.length; ++i){
     namesList.push(visitors[i]);
   }
-
+  let nameList = [...new Set(namesList)]; // 중복제거
+  for(let i=0; i<nameList.length; ++i){ // 이미 친구인 사람 제거
+    for(let j=0; j<isFriend.length; ++j){
+      if(nameList[i]==isFriend[j]) nameList.splice(i,1);
+    }
+  }
+  
 
   return answer;
 }
