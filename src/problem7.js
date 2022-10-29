@@ -1,11 +1,19 @@
 function getSortedScoreArr(score) {
   const scoreArr = Object.entries(score);
-  scoreArr.sort((a, b) => {
-    if (a[1] < b[1]) return 1;
-    if (a[1] > b[1]) return -1;
+  scoreArr.sort((l, r) => {
+    if (l[1] < r[1]) {
+      return 1;
+    }
+    if (l[1] > r[1]) {
+      return -1;
+    }
 
-    if (a[0] < b[0]) return -1;
-    if (a[0] > b[0]) return 1;
+    if (l[0] < r[0]) {
+      return -1;
+    }
+    if (l[0] > r[0]) {
+      return 1;
+    }
     return 0;
   });
 
@@ -28,7 +36,7 @@ const getTargetScore = (user, relations, totalScore) => {
   return targetScore;
 };
 
-const getTotalScore = (scoreObj, visitors) => {
+const getTargetScoreObj = (scoreObj, visitors) => {
   const totalScore = visitors.reduce((acc, visitor) => {
     if (visitor in acc) {
       acc[visitor] += 1;
@@ -42,7 +50,7 @@ const getTotalScore = (scoreObj, visitors) => {
   return totalScore;
 };
 
-const getRelationScore = (user, relations) => {
+const getRelationScoreObj = (user, relations) => {
   let relationScore = {};
   if (user in relations) {
     relationScore = relations[user].reduce((acc, directFriend) => {
@@ -61,7 +69,7 @@ const getRelationScore = (user, relations) => {
   return relationScore;
 };
 
-const makeRelations = (friends) => {
+const getRelationsObj = (friends) => {
   const relations = friends.reduce((acc, relation) => {
     if (relation[0] in acc) {
       acc[relation[0]].push(relation[1]);
@@ -82,10 +90,10 @@ const makeRelations = (friends) => {
 
 function problem7(user, friends, visitors) {
   const answer = [];
-  const relations = makeRelations(friends);
-  const relationScore = getRelationScore(user, relations);
-  const totalScore = getTotalScore(relationScore, visitors);
-  const targetUserScore = getTargetScore(user, relations, totalScore);
+  const relations = getRelationsObj(friends);
+  const relationScore = getRelationScoreObj(user, relations);
+  const totalScore = getTotalScoreObj(relationScore, visitors);
+  const targetUserScore = getTargetScoreObj(user, relations, totalScore);
   const sortedScore = getSortedScoreArr(targetUserScore);
   sortedScore.some((each, i) => {
     if (i > 4) return true;
