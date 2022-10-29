@@ -1,5 +1,6 @@
 function problem5(money) {
   var answer;
+  answer = withdraw(money);
   return answer;
 }
 
