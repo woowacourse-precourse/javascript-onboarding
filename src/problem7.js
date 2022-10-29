@@ -79,6 +79,8 @@ function sumScore(friends, visitors) {
       friends[key] += value;
     }
   }
+  
+  return friends;
 }
 
 function sorting(recomendFriends) {
