@@ -1,8 +1,11 @@
 function problem1(pobi, crong) {
   if (!isValidPage(pobi, crong)) return -1;
-  if (maxNum(pobi) > maxNum(crong)) return 1;
-  if (maxNum(pobi) < maxNum(crong)) return 2;
-  if (maxNum(pobi) === maxNum(crong)) return 0;
+
+  let maxPobi = maxNum(pobi);
+  let maxCrong = maxNum(crong);
+  if (maxPobi > maxCrong) return 1;
+  if (maxPobi < maxCrong) return 2;
+  if (maxPobi === maxCrong) return 0;
 }
 
 //페이지 유효성 검사
@@ -12,6 +15,19 @@ function isValidPage(book1, book2) {
   else if (book1[1] - book1[0] !== 1) return false;
   else if (book2[1] - book2[0] !== 1) return false;
   else return true;
+}
+
+// 2, 3번의 최대 값을 반환하는 함수
+function maxNum(book) {
+  let max = 0;
+
+  book.forEach((page) => {
+    let sumResult = sum(page);
+    let mulResult = mul(page);
+    max = Math.max(sumResult, mulResult);
+  });
+
+  return max;
 }
 
 // 각 자리수를 더해서 반환하는 함수
@@ -28,19 +44,6 @@ function mul(num) {
   let mul = numToString.reduce((m, n) => m * Number(n), 1);
 
   return mul;
-}
-
-// 2, 3번의 최대 값을 반환하는 함수
-function maxNum(book) {
-  let max = 0;
-
-  book.forEach((page) => {
-    let sumResult = sum(page);
-    let mulResult = mul(page);
-    max = Math.max(sumResult, mulResult);
-  });
-
-  return max;
 }
 
 module.exports = problem1;
