@@ -12,14 +12,15 @@ function problem6(forms) {
   for (let index = 0; index < nameSet.length; index++) {
     if (sequenceChar(nameSet[index], nameSet)) {
       sequenceCharIndex += index;
-      sequenceCharIndex = [...new Set(sequenceCharIndex)];
     }
   }
 
+  sequenceCharIndex = [...new Set(sequenceCharIndex)];
+  answer = returnEmail(sequenceCharIndex, emailSet);
   return answer;
 }
 
-function sequenceChar(name, set) {
+function sequenceChar(name, nameSet) {
   let indexArr = [];
   for (let i = 0; i < name.length - 1; i++) {
     let chars = name[i] + name[i + 1];
@@ -30,5 +31,14 @@ function sequenceChar(name, set) {
     }
   }
   return indexArr;
+}
+
+function returnEmail(indexSet, emailSet){
+  let emailArr = [];
+  for(let i =0; i< indexSet.length; i++){
+    emailArr = emailSet[indexSet[i]];
+  }
+
+  return emailArr.sort();
 }
 module.exports = problem6;
