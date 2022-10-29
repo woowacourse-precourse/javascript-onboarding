@@ -50,3 +50,15 @@ function people_list(user, friends, visitors) {
   }
   return dictObj;
 }
+// 3. 점수계산
+function calculate_score(user, friends, visitors) {
+  let user_dict = people_list(user, friends, visitors);
+  let common_friend_list = common_friend(user, friends);
+  common_friend_list.map((common) => {
+    user_dict[common] += 10;
+  });
+  visitors.map((visitor) => {
+    if (common_friend_list.includes(visitor)) user_dict[visitor] += 1;
+  });
+  return user_dict;
+}
