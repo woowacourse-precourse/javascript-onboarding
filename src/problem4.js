@@ -10,4 +10,10 @@ function makeAlphabetArray() {
   return alphabet;
 }
 
+function makeReverseAlphabetArray() {
+  const reverseAlphabet = makeAlphabetArray();
+  reverseAlphabet.reverse();
+  return reverseAlphabet;
+}
+
 module.exports = problem4;
