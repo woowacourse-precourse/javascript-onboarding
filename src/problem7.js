@@ -5,12 +5,16 @@ visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
 function problem7(user, friends, visitors) {
   let answer;
   let relation = {};
-  let score = {};
+  let userFriends;
 
   // 기능 1
   relation = makeRelation(friends);
   console.log(relation); // { donut: [ 'andole', 'jun', 'mrko' ], andole: [ 'donut', 'shakevan' ], ... }
  
+  // userFriends(user의 친구 목록) 배열 할당
+  userFriends = relation[user];
+  console.log(userFriends); // [ 'donut', 'shakevan' ]
+
   return answer;
 }
 
@@ -29,6 +33,9 @@ function makeRelation(friends) {
 
   return relation;
 }  
+
+// 기능 2. 
+
 
 problem7(user,friends, visitors);
 
