@@ -12,6 +12,18 @@ function getNetwork(friends) {
   }
   return network;
 }
+function getNetworkScore(user, network) {
+  let scoreMap = new Map();
+  for (let friend of network.get(user)) {
+    for (let other of network.get(friend)) {
+      if (other === user) continue;
+      if (!scoreMap.has(other)) scoreMap.set(other, 0);
+      const score = scoreMap.get(other);
+      scoreMap.set(other, score + 10);
+    }
+  }
+  return scoreMap;
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
