@@ -4,18 +4,18 @@ function problem6(forms) {
 }
 
 function checkNickname(arr) {
-  const overlapedNickname = [];
+  const overlapedNickname = new Set();
   let nicknameSet = new Set();
   let firstNickname = new Set(); // 첫 번째 닉네임을 확인하기 위해 첫 번째 닉네임을 두 글자씩 나누어 집합으로 저장
 
   for (let i = 0; i < arr.length; i++) {
-    if (checkOverlap(arr[i][1], nicknameSet)) overlapedNickname.push(arr[i][0]);
+    if (checkOverlap(arr[i][1], nicknameSet)) overlapedNickname.add(arr[i][0]);
     
     nicknameSet = sliceNickname(arr[i][1], nicknameSet);
   }
 
   firstNickname = sliceNickname(arr[0][1], firstNickname);
-  if (checkFirst) overlapedNickname.push(arr[0][0]);
+  if (checkFirst) overlapedNickname.add(arr[0][0]);
 
   return overlapedNickname;
 }
