@@ -33,22 +33,22 @@ function problem4(word) {
   const reversedLowerCaseArr = lowerCaseArr.slice().reverse();
 
   // word를 순회하며 알파벳의 경우 배열의 인덱스를 이용해 청개구리의 말로 바꾸어 반환한다.
-  let answer = "";
-  for (const index in word) {
-    const upperCaseIndex = upperCaseArr.findIndex((element) => element === word[index]);
-    const lowerCaseIndex = lowerCaseArr.findIndex((element) => element === word[index]);
+  const answer = word
+    .split("")
+    .map((alphabet) => {
+      const upperCaseIndex = upperCaseArr.findIndex((element) => element === alphabet);
+      const lowerCaseIndex = lowerCaseArr.findIndex((element) => element === alphabet);
 
-    if (upperCaseIndex !== -1) {
-      answer += reversedUpperCaseArr[upperCaseIndex];
-      continue;
-    }
-    if (lowerCaseIndex !== -1) {
-      answer += reversedLowerCaseArr[lowerCaseIndex];
-      continue;
-    }
+      if (upperCaseIndex !== -1) {
+        return reversedUpperCaseArr[upperCaseIndex];
+      }
+      if (lowerCaseIndex !== -1) {
+        return reversedLowerCaseArr[lowerCaseIndex];
+      }
 
-    answer += word[index];
-  }
+      return alphabet;
+    })
+    .join("");
 
   return answer;
 }
