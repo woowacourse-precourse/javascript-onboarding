@@ -7,10 +7,10 @@ function problem5(money) {
   let lastMoney = money
   for (let i = 0; i < moneyUnits.length; i++) {
     const unit = moneyUnits[i];
-    const currentUnitCount = Math.floor(lastMoney / unit)
+    const unitCount = Math.floor(lastMoney / unit)
 
-    answer[i] = currentUnitCount
-    lastMoney -= currentUnitCount * unit
+    answer[i] = unitCount
+    lastMoney -= unitCount * unit
     
     if(lastMoney === 0)break
   }
