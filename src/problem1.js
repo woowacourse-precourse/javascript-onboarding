@@ -1,20 +1,20 @@
 function problem1(pobi, crong) {
-  if (!(isValidPages(pobi) && isValidPages(crong))) return -1;
+  if (isNotValidPages(pobi) || isNotValidPages(crong)) return -1;
 
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
-  
+
   if (pobiScore === crongScore) return 0;
   if (pobiScore > crongScore) return 1;
   if (pobiScore < crongScore) return 2;
 }
 
-function isValidPages(pages) {
+function isNotValidPages(pages) {
   if ((pages[0] <= 1) || (pages[1] >= 400) || (pages[0] + 1 !== pages[1])) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function getScore(pages) {
