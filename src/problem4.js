@@ -34,7 +34,7 @@ function getMid(chCode) {
 function reverseCharacter(ch) {
   try {
     const chCode = ch.charCodeAt();
-    const mid = getMid(ch);
+    const mid = getMid(chCode);
     const diff = Math.abs(mid - ch.charCodeAt());
 
     if (chCode < mid) {
