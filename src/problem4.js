@@ -53,4 +53,13 @@ function convertReverseAlphabet(indexArr, reverseArr) {
   return result;
 }
 
+function checkCapitalAlphabet(reverseWordArr, recordCapitalArr) {
+  const result = [];
+  for (let i = 0; i < reverseWordArr.length; i++) {
+    if (recordCapitalArr[i]) result.push(reverseWordArr[i]);
+    else result.push(reverseWordArr[i].toLowerCase());
+  }
+  return result;
+}
+
 module.exports = problem4;
