@@ -3,6 +3,19 @@ function problem4(word) {
   return answer;
 }
 
+function checkLetter(word) {
+  const reversedArray = []
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] == " ") {
+      reversedArray.push(" ");
+    }
+    else
+      reversedArray.push(reverseLetter(word[i]));
+  }
+
+  return reversedArray;
+}
+
 function reverseLetter(letter) {
   const letterASCII = letter.charCodeAt();
   if (97 <= letterASCII && letterASCII <= 122) return reverseLower(letter);
