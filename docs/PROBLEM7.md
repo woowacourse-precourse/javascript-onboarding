@@ -32,14 +32,18 @@
 - 추천 점수 계산하기
   - user와 이미 친구인 사람의 이름을 배열 `alreadyFriendList`에 담는다. ⭕
   - friends 목록과 visitors 목록을 합쳐 이름의 중복을 제외하고 user와 알 수도 있는 친구를 모두 배열 `everyoneList`에 담는다. ⭕
-  - `everyoneList`와 길이가 같은 배열 'everyoneScoreList`을 만들고 각 원소를 0으로 초기화하며 이곳에 각각의 점수를 저장한다.
-  - friends 리스트에서 `alreadyFriendList`에 있는 친구와 짝이면 `eveyoneList`에서 그 친구의 인덱스를 찾아 `everyoneScoreList`에서 해당하는 인덱스의 score을 10 높여준다.
+  - `everyoneList`와 길이가 같은 배열 'everyoneScoreList`을 만들고 각 원소를 0으로 초기화하며 이곳에 각각의 점수를 저장한다. ⭕
+  - friends 리스트에서 `alreadyFriendList`에 있는 친구와 짝인 친구를 찾는다. ⭕
+  - 이때 friends의 원소에서 user가 들어갔을 경우에는 무시한다. ⭕
+  - 짝이면 `eveyoneList`에서 그 친구의 인덱스를 찾는다. ⭕
+  - `everyoneScoreList`에서 그 인덱스의 score을 10 높여준다. ⭕
   - visitors 리스트에 있는 사람들은 한 번 등장할 때마다 `everyoneScoreList`의 score을 1 높여준다.
 - 출력하기
   - 점수가 높은대로 친구의 이름을 출력해준다.
   - 최대 5명을 출력한다.
   - 점수가 0점인 경우는 출력하지 않는다.
   - 추천 점수가 같은 경우에는 이름순으로 정렬한다. 
+- 예외) user가 아무런 friends도 갖지 못했을 때 처리해야 함
 
 
 

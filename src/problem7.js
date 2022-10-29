@@ -22,9 +22,32 @@ function problem7(user, friends, visitors) {
   everyoneList = [...new Set(everyoneList)];
   everyoneList = everyoneList.filter((element) => element !== user);
 
-  
+  // [ 0, 0, 0, 0, 0 ]
+  let everyoneScoreList = [];
+  for (let i = 0; i < everyoneList.length; i++) {
+    everyoneScoreList.push(0);
+  }
 
-  let answer = everyoneList;
+  for (let i of friends) {
+    for (let j of alreadyFriendList) {
+      if (i[0] === user || i[1] === user) {
+        continue
+      }
+      if (i[0] === j) {
+        everyoneScoreList[everyoneList.indexOf(i[1])] += 10;
+      } else if (i[1] === j) {
+        everyoneScoreList[everyoneList.indexOf(i[0])] += 10;
+      } else {
+        continue;
+      }
+    }
+  }
+
+
+
+
+
+  let answer = everyoneScoreList;
   return answer;
 }
 
