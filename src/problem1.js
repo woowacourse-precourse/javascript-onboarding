@@ -28,6 +28,19 @@ const isValidRange = (arr) => {
   return isFirstPageInValidRange && isSecondPageInValidRange;
 };
 
+/**
+ * 배열의 2개의 원소가 연속적으로 [홀수, 짝수] 로 들어가있는지 체크한다.
+ * @param {number[]} arr - 한명의 페이지 번호가 담긴 배열
+ * @return {boolean}
+ */
+const isArrayConsecutiveOddEvenNumbers = (arr) => {
+  const isFirstElOdd = arr[0] % 2 !== 0;
+  const isSecondElEven = arr[1] % 2 === 0;
+  const isArrayConsecutive = arr[1] - arr[0] === 1;
+
+  return isFirstElOdd && isSecondElEven && isArrayConsecutive;
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
