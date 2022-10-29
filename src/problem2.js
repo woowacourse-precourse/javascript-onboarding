@@ -3,9 +3,19 @@ function problem2(cryptogram) {
   return answer;
 }
 
+//연속되는 문자가 있는지 체크하는 함수
 function checkStr(str) {
   for (i = 0; str[i] != str[i + 1] && str[i + 1] != '\0'; i++);
-  removeChars(str, i)
+  str = removeChars(str, i)
+}
+
+//연속되는 문자 삭제하는 함수
+function removeChar(str, i) {
+  for (j = i + 1; str[i] == str[j]; j++) 
+    str = str.replace(str[j], "");
+  str = str.replace(str[i], "");
+
+  return str
 }
 
 module.exports = problem2;
