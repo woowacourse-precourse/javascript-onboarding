@@ -1,15 +1,13 @@
-function problem7(user, friends, visitors) {}
+function problem7(user, friends, visitors) {
+  // let graph = new Map();
+  // friends.forEach((duo) => makeGraph(graph, duo));
 
-// let friends = [
-//   ["donut", "andole"],
-//   ["donut", "jun"],
-//   ["donut", "mrko"],
-//   ["shakevan", "andole"],
-//   ["shakevan", "jun"],
-//   ["shakevan", "mrko"],
-// ];
+  // let scoreList = new Map();
+  // friendOfFriend(user, graph, scoreList);
+  // score(user, graph, visitors, scoreList);
 
-// let user = "mrko";
+  return;
+}
 
 function makeGraph(vertex, duo) {
   for (let i = 0; i < duo.length; i++) {
@@ -23,8 +21,13 @@ function makeGraph(vertex, duo) {
   }
 }
 
-let vertex = new Map();
-friends.forEach((duo) => makeGraph(vertex, duo));
-console.log(vertex);
+function friendOfFriend(user, graph, scoreList) {
+  [...graph.get(user)].forEach((friend) => {
+    //friend는 user의 1차 친구
+    [...graph.get(friend)].forEach((fof) => {
+      if (fof !== user && !graph.get(user).has(fof)) scoreList.set(fof, 10);
+    });
+  });
+}
 
 module.exports = problem7;
