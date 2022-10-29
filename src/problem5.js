@@ -8,7 +8,8 @@ const FIFTY_WON = 50;
 const TEN_WON = 10;
 const ONE_WON = 1;
 function problem5(money) {
-  var answer;
+  if (!checkValidation(money)) throw new Error("입력값 오류입니다.");
+  var answer = divide(money);
   return answer;
 }
 function divide(money) {
@@ -31,5 +32,16 @@ function divide(money) {
     index++;
   }
   return resultArray;
+}
+function checkValidation(money) {
+  return checkIsNumber(money) && checkNumberRange(money);
+}
+function checkNumberRange(money) {
+  if (money >= 1 && money <= 1000000) return true;
+  return false;
+}
+function checkIsNumber(money) {
+  if (typeof money == "number") return true;
+  return false;
 }
 module.exports = problem5;
