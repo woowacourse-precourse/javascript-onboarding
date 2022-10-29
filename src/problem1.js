@@ -31,9 +31,6 @@ function problem1(pobi, crong) {
   var answer;
 
   if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) return -1;
-  for (var i = 0; i < 2; i++) {
-    if (typeof pobi[i] != "number" || typeof crong[i] != "number") return -1;
-  }
 
   scorePobi = findLargeNumber(pobi);
   scoreCrong = findLargeNumber(crong);
