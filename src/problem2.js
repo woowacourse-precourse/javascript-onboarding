@@ -1,5 +1,16 @@
 function problem2(cryptogram) {
   let splitCrpyto = cryptogram.split("");
+
+  let ranges = getRepeatedRanges(splitCrpyto);
+
+  while (ranges.length) {
+    ranges.forEach(([start, end]) => {
+      changeCharacter(start, end, splitCrpyto);
+    });
+    splitCrpyto = splitCrpyto.filter((ch) => ch !== null);
+    ranges = getRepeatedRanges(splitCrpyto);
+  }
+  return splitCrpyto.join("");
 }
 
 module.exports = problem2;
