@@ -25,6 +25,16 @@ function problem7(user, friends, visitors) {
       }
     });
   });
+  visitors.map((visitor) => {
+    let target = pointArr.find((obj) => obj.id === visitor);
+    if (!friendWithMe.includes(visitor)) {
+      if (target) {
+        target.pnt += 1;
+      } else {
+        pointArr.push({ id: visitor, pnt: 1 });
+      }
+    }
+  });
   answer = pointArr;
   return answer;
 }
