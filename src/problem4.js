@@ -1,6 +1,18 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let string = '';
+
+  for (let i = 0; i < word.length; i += 1) {
+    let char = word.charAt(i);
+
+    const isAlphabet = checkAlphabet(char);
+    if (isAlphabet) {
+      char = reverseAlphabet(char);
+    }
+
+    string += char;
+  }
+
+  return string;
 }
 
 function checkAlphabet(char) {
