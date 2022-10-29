@@ -54,8 +54,12 @@ describe("problem2", () => {
     expect(problem2("zyalllelyz")).toEqual("zyaelyz");
   });
 
-  test("case4", () => {
+  test("case5", () => {
     expect(problem2("aabba")).toEqual("a");
+  });
+
+  test("case6", () => {
+    expect(problem2("abbaa")).toEqual("a");
   });
 });
 
@@ -214,5 +218,22 @@ describe("problem7", () => {
         ["donut", "anne", "mrko", "mrko", "sam"]
       )
     ).toEqual(["mrko", "anne", "donut", "sam"]);
+  });
+
+  test("case8", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        []
+      )
+    ).toEqual(["andole", "jun"]);
   });
 });
