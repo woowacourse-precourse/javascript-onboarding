@@ -37,5 +37,6 @@ function getRepeated(str) {
 
 /**
  * @param {array} slice 중복된 문자의 시작과 끝 정보를 가진 배열
+ * @param {array} str 원래 문자열
  */
-function removeChracters(slice) {}
+function removeChracters(slice, str) {}
