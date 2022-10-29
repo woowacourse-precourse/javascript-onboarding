@@ -97,22 +97,25 @@ function getFriendOfFreinds(user, friends, alreadyFriends, friendOfFreinds) {
 
 function scoringFriendOfFrineds(friendOfFreinds, score) {
   for (let i = 0; i < friendOfFreinds.length; i++) {
-    // 이미 score 객체에 존재하는 key라면 그 value에 10을 더한다
-    if (score[friendOfFreinds[i]]) {
-      score[friendOfFreinds[i]] += 10;
+    if (score[friendOfFreinds[i]] === undefined) {
+      score[friendOfFreinds[i]] = 10;
+
+      continue;
     }
 
-    score[friendOfFreinds[i]] = 10;
+    score[friendOfFreinds[i]] += 10;
   }
 }
 
 function scoringVisitors(visitors, score) {
   for (let i = 0; i < visitors.length; i++) {
-    if (score[visitors[i]]) {
-      score[visitors[i]] += 1;
+    if (score[visitors[i]] === undefined) {
+      score[visitors[i]] = 1;
+
+      continue;
     }
 
-    score[visitors[i]] = 1;
+    score[visitors[i]] += 1;
   }
 }
 
@@ -137,7 +140,6 @@ function sortByScoreAndThenName(sortedScore) {
       return 1;
     }
 
-    // 여기까지 내려오면 점수가 같은 상황인 것
     if (a[0] < b[0]) {
       return -1;
     }
