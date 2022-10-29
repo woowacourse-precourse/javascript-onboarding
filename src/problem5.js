@@ -17,7 +17,7 @@ const Bank = {
       this.amount = curMoney;
       return fig;
     });
-    this.amount === 0 ? result : [];
+    return this.amount === 0 ? result : [];
   },
   minusMoneyByNote: function (money, note) {
     let count = 0;
