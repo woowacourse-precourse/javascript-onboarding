@@ -45,7 +45,7 @@ function sortByScore(user1, user2) {
 function problem7(user, friends, visitors) {
   const score = new Score();
   const relation = getRelation(friends);
-  const alreadyFriend = relation[user];
+  const alreadyFriend = relation[user] || [];
   const notForRecommand = [...alreadyFriend, user];
 
   alreadyFriend.forEach((friend) => {
