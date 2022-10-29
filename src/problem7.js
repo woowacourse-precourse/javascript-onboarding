@@ -29,6 +29,16 @@ function problem7(user, friends, visitors) {
     return foafPerson.map((x) => [x, 10]);
   };
 
+  // 방문 횟수에 따른 점수 구하기
+  const visitedCnt = (visitors, alreadyFrineds) => {
+    visitors = visitors.filter((x) => !alreadyFrineds.includes(x));
+    // const arr = [];
+    // visitors.forEach((element) => {
+    //   arr.push([element, 1]);
+    // });
+    return visitors.map((x) => [x, 1]);
+  };
+
   const alreadyFrineds = userFrineds(user, friends);
   const foaf = foafCnt(friends, alreadyFrineds, user);
   console.log(userFrineds(user, friends));
