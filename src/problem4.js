@@ -1,9 +1,9 @@
 function problem4(word) {
   const dict = new Map();
   makeDictionary(dict);
-  console.log(dict);
+  const answer = handleString(word,dict);
 
-
+  return answer;
 }
 
 function makeDictionary(dict){
@@ -16,10 +16,21 @@ function makeDictionary(dict){
   }
 }
 
-function changeString(word, dict){
+function handleString(word,dict){
+  const temp = [];
 
+  for(let i=0; i<word.length;i++){
+    const char = word[i];
+    if(!dict.has(char)){
+      temp.push(char);
+    }
+    else{
+      temp.push(dict.get(char));
+    }
+  }
+
+  return temp.join('');
 }
-
 
 
 
