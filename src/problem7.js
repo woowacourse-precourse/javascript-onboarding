@@ -30,14 +30,7 @@ function friendScore(dude, friends, score, user) {
   });
 }
 
-function problem7(user, friends, visitors) {
-  const dude = [];
-  const score = {};
-
-  duduChecker(user, friends, dude);
-
-  friendScore(dude, friends, score, user);
-
+function visitedScore(visitors, dude, score) {
   visitors.forEach((name) => {
     if (!dude.includes(name)) {
       if (!score[name]) {
@@ -47,6 +40,17 @@ function problem7(user, friends, visitors) {
       }
     }
   });
+}
+
+function problem7(user, friends, visitors) {
+  const dude = [];
+  const score = {};
+
+  duduChecker(user, friends, dude);
+
+  friendScore(dude, friends, score, user);
+
+  visitedScore(visitors, dude, score);
 
   let result = Object.entries(score);
 
