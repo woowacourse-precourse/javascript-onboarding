@@ -11,17 +11,17 @@ function checkIsEmail(email) {
 
 // 중복 글자 체크
 function checkOverlap(forms) {
-  const words = [];
+  const validWords = [];
 
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms[i][1].length; j++) {
       const word = forms[i][1].slice(j, j + 2);
-      const test = forms.filter(([_, name]) => word.length !== 1 && name.includes(word));
-      if (test.length >= 2 && !words.includes(word)) words.push(word);
+      const searchOverlapWords = forms.filter(([_, name]) => word.length !== 1 && name.includes(word));
+      if (searchOverlapWords.length >= 2 && !validWords.includes(word)) validWords.push(word);
     }
   }
 
-  return words;
+  return validWords;
 }
 
 
