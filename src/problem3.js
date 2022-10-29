@@ -1,5 +1,6 @@
 const CLAP_NUMBER = [3, 6, 9];
 
+// 총 쳐야하는 박수 개수
 function problem3(number) {
   let handsClap = 0;
 
@@ -11,6 +12,7 @@ function problem3(number) {
   return handsClap;
 }
 
+// 하나의 숫자에 치는 박수 개수
 function oneNumberClap(num) {
   let clap = 0;
   num.map((n) => {
