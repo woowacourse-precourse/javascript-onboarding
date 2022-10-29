@@ -1,11 +1,10 @@
 function problem7(user, friends, visitors) {
   const friendsOfUser = getFriendsOfUser(user, friends)
   const countsOfCommonFriends = getCountsOfCommonFriends(user, friendsOfUser, friends)
-  console.log(friendsOfUser)
-  console.log(countsOfCommonFriends)
-  // 함께 아는 친구 수 구하기
-  // 함께 아는 친구 수에 따른 점수 더하기
-  // 방문 횟수에 따른 점수 더하기
+  const scoresForCommonFriends = getScoresForCommonFriends(countsOfCommonFriends)
+  const scoresForVisting = getScoresForVisting(visitors)
+  console.log(scoresForCommonFriends)
+  console.log(scoresForVisting)
   // 본인과 이미 친구인 애 빼기
   // 추천 점수 순으로 정렬해서 최대 5명만 반환하기 
   var answer;
@@ -33,11 +32,11 @@ function getFriendsOfUser(user, friends) {
 }
 
 /**
- * 함께아는 친구의 수를 표시하는 객체를 반환한다.
+ * 함께 아는 친구의 수를 표시하는 객체를 반환한다.
  * @param {*} user 
  * @param {string[]} friendsOfUser 
  * @param {set} friends 
- * @returns {object} { user_id : counts }
+ * @returns {{ [key: string]: number }} { user_id : number_of_common_freinds }
  */
 function getCountsOfCommonFriends(user, friendsOfUser, friends) {
   const counts = {}
@@ -51,6 +50,34 @@ function getCountsOfCommonFriends(user, friendsOfUser, friends) {
     }
   }
   return counts
+}
+
+/**
+ * 함께 아는 친구 수에 따른 점수를 구한다.
+ * @param {{ [key: string]: number }} common { user_id : number_of_common_freinds }
+ * @returns {{ [key: string]: number }} { user_id: score }
+ */
+function getScoresForCommonFriends(common) {
+  const scores = {}
+  for (let key in common) {
+    scores[key] = common[key] * 10
+  }
+  return scores
+}
+
+/**
+ * 방문 횟수에 따른 점수를 구한다.
+ * @param {string[]} visitors 방문자 아이디 목록을 담고 있는 배열
+ * @returns {{ [key: string]: number }} { user_id: score }
+ */
+function getScoresForVisting(visitors) {
+  const scores = {}
+  console.log(visitors)
+  for (let i = 0; i < visitors.length; i++) {
+    const visitor = visitors[i]
+    scores[visitor] = scores[visitor] ? scores[visitor] + 1 : 1
+  }
+  return scores
 }
 
 console.log(problem7(
