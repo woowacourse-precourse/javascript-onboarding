@@ -31,7 +31,10 @@ function problem1(pobi, crong) {
     crongSumMul.push(...[sum(crongSplit[i]), mul(crongSplit[i])]);
   }
 
-  console.log(pobiSumMul, crongSumMul);
+  const pobiMax = Math.max(...pobiSumMul);
+  const crongMax = Math.max(...crongSumMul);
+
+  console.log(pobiMax, crongMax);
 }
 
 module.exports = problem1;
