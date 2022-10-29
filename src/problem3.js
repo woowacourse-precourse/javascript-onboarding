@@ -20,9 +20,11 @@ const filterArrayIncluded = (iter, container) =>
  * @type {(number: number) => number}
  */
 function problem3(number) {
+  const clapNumbers = [3, 6, 9];
+
   return range(number + 1)
     .map(splitNumberToDigits)
-    .map((digits) => filterArrayIncluded(digits, [3, 6, 9]).length)
+    .map((digits) => filterArrayIncluded(digits, clapNumbers).length)
     .reduce(add, 0);
 }
 
