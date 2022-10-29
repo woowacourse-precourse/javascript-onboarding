@@ -2,6 +2,12 @@ function problem2(cryptogram) {
   var answer;
   return answer;
 }
+
+function checkStr(str) {
+  for (i = 0; str[i] != str[i + 1] && str[i + 1] != '\0'; i++);
+  removeChars(str, i)
+}
+
 module.exports = problem2;
 
 /*
