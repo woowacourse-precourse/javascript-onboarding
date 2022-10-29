@@ -53,6 +53,16 @@ class AccountManager {
         this.#markWord(email, word);
       });
   }
+
+  /**
+   * 중복된 닉네임을 가진 이메일의 목록을 반환한다.
+   * @returns {string[]} 정렬되어 있는 이메일 리스트
+   */
+  get duplicatedEmails() {
+    const emails = Array.from(this.#duplicatedEmails.values());
+    emails.sort();
+    return emails;
+  }
 }
 
 function problem6(forms) {
