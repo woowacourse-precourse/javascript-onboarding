@@ -15,7 +15,7 @@ function getMyFriend(user,friends){
   return foundFriends;
 }
 
-function recomendFriendList(user,myFriends,friends){
+function getRecomendFriendList(user,myFriends,friends){
   const recomendFriends = []
   myFriends.forEach(myFriend=>{
     for (let friend of friends){
@@ -29,13 +29,13 @@ function recomendFriendList(user,myFriends,friends){
   return recomendFriends
 }
 
-function getnewVisitorList(myFriends,visitors){
-  let totalVisitorsList = visitors;
+function getStrangeVisitorList(myFriends,visitors){
+  let totalStrangeVisitorsList = visitors;
   for (let name of myFriends){
-      totalVisitorsList = totalVisitorsList.filter(visitor => visitor !== name);
+      totalStrangeVisitorsList = totalStrangeVisitorsList.filter(visitor => visitor !== name);
   }
 
-  return totalVisitorsList;
+  return totalStrangeVisitorsList;
 }
 
 module.exports = problem7;
