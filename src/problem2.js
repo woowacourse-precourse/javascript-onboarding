@@ -16,25 +16,15 @@ function checkCryptogramOnlyLowerCase(cryptogram) {
   return true;
 }
 
-function updateDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr, i) {
-  if (startIndex !== -1) {
-    endIndex = i;
-
-    wantDeleteArr.push([cryptogram[i], startIndex, endIndex]);
-
-    return true;
-  }
-
-  return false;
-}
-
 function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
   // 문자열을 순회하면서 반복되는 부분의 데이터를 배열화하여 저장한다.
   for (let i = 0; i < cryptogram.length; i++) {
     if (cryptogram[i] !== cryptogram[i + 1]) {
-      if (
-        updateDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr, i)
-      ) {
+      if (startIndex !== -1) {
+        endIndex = i;
+
+        wantDeleteArr.push([cryptogram[i], startIndex, endIndex]);
+
         startIndex = -1;
         endIndex = -1;
 
