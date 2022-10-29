@@ -20,10 +20,7 @@ function problem2(cryptogram) {
     }
   }
 
-  answer = strStack;
+  answer = strStack.join("");
   return answer;
 }
-
-console.log(problem2("browoanoommnaon").join(""));
-console.log(problem2("zyelleyz").join(""));
 module.exports = problem2;
