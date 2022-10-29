@@ -25,16 +25,17 @@ function problem1(pobi, crong) {
     return result;
   };
 
-  // 더한값과 곱한값 두개 중 더 큰수를 반환하는 함수
-  function resultValue(plus, multiply) {
-    let result;
-    if (plus > multiply) {
-      result = plus;
+  // pobi 와 crong중 더 큰수를 반환하는 함수
+  function resultValue(pobi, crong) {
+    if (pobi > crong) {
+      answer = 1;
+    } else if (crong > pobi) {
+      answer = 2;
+    } else if (pobi == crong) {
+      answer = 0;
     } else {
-      result = multiply;
+      answer = -1;
     }
-
-    return result;
   };
 
   // pobi
@@ -44,12 +45,25 @@ function problem1(pobi, crong) {
   let pobiLeftMultiplyValue = multiplyValue(pobi[0]);
   let pobiRightMultiplyValue = multiplyValue(pobi[1]);
 
-  let pobiLeftVaule;
-  let pobiRightValue;
+  let pobiLeftVaule = pobiLeftPlusValue > pobiLeftMultiplyValue ? pobiLeftPlusValue : pobiLeftMultiplyValue;
+  let pobiRightValue = pobiRightPlusValue > pobiRightMultiplyValue ? pobiRightPlusValue : pobiRightMultiplyValue;
 
-  let pobiResultValue;
+  let pobiResultValue = pobiLeftVaule > pobiRightValue ? pobiLeftVaule : pobiRightValue;
+
+  // crong
+  let crongLeftPlusValue = plusValue(crong[0]);
+  let crongRightPlusValue = plusValue(crong[1]);
+
+  let crongLeftMultiplyValue = multiplyValue(crong[0]);
+  let crongRightMultiplyValue = multiplyValue(crong[1]);
+
+  let crongLeftValue = crongLeftPlusValue > crongLeftMultiplyValue ? crongLeftPlusValue : crongLeftMultiplyValue;
+  let crongRightValue = crongRightPlusValue > crongRightMultiplyValue ? crongRightPlusValue : crongRightMultiplyValue;
+
+  let crongResultValue = crongLeftValue > crongRightValue ? crongLeftValue : crongRightValue;
 
 
+  resultValue(pobiResultValue, crongResultValue);
 
   return answer;
 }
