@@ -3,6 +3,26 @@ const isEmail = function (text) {
   return text.match(mailformat);
 };
 
+const NickNameChecker = {
+  forms: [],
+  result: [],
+  inputForms: function (forms) {
+    if (!this.checkForms(forms)) {
+      return false;
+    }
+    return true;
+  },
+  checkForms: function (forms) {
+    if (!this.checkFormsLength(forms)) {
+      return false;
+    }
+    return true;
+  },
+  checkFormsLength: function (forms) {
+    return forms.length >= 1 && forms.length <= 10000;
+  },
+};
+
 function problem6(forms) {
   var answer;
   return answer;
