@@ -34,4 +34,17 @@ function visitorCheck(user, friends, visitors) {
     return visitorNotFriends;
 }
 
+function recomendScore(user, friends, visitors) {
+    const acquaintanceScore = acquaintanceCheck(user, friends, visitors).reduce((acc, cur) => {
+        acc.set(cur, (acc.get(cur) || 0) + 10);
+        return acc;
+    }, new Map());
+    const totalScore = visitorCheck(user, friends, visitors).reduce((acc, cur) => {
+        acc.set(cur, (acc.get(cur) || 0) + 1);
+        return acc;
+    }, acquaintanceScore);
+    return [...totalScore];
+}
+
+
 module.exports = problem7;
