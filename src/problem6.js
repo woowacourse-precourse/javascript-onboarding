@@ -9,9 +9,9 @@ function problem6(forms) {
   const emailList = forms.map((form) => form[0]);
   const nicknameList = forms.map((form) => form[1]);
 
-  if (!checkValidCrewNumber(forms, crew.minimum, crew.maximum)) return;
-  if (!checkValidEmail(emailList)) return;
-  if (!checkValidNickname(nicknameList)) return;
+  if (!isValidCrewNumber(forms, crew.minimum, crew.maximum)) return;
+  if (!isValidEmail(emailList)) return;
+  if (!isValidNickname(nicknameList)) return;
 
   const dividedNicknameList = [].concat(...getBrokenNicknameList(nicknameList));
   const duplicatedwords = findDuplicates(dividedNicknameList);
@@ -47,7 +47,7 @@ function findDuplicates(arr) {
   return [...new Set(filtered)];
 }
 
-function checkValidCrewNumber(crews, minimum, maximum) {
+function isValidCrewNumber(crews, minimum, maximum) {
   if (crews.length < minimum || crews.length > maximum) {
     console.error(`크루는 ${minimum}명이상 ${maximum}명 이하입니다`);
     return false;
@@ -55,7 +55,7 @@ function checkValidCrewNumber(crews, minimum, maximum) {
   return true;
 }
 
-function checkValidEmail(arr) {
+function isValidEmail(arr) {
   const regex = /^[a-zA-Z0-9._+-]+@email.com/;
   return arr.every((email) => {
     if (!regex.test(email) || email.length < 11 || email.length >= 20) {
@@ -66,7 +66,7 @@ function checkValidEmail(arr) {
   });
 }
 
-function checkValidNickname(arr) {
+function isValidNickname(arr) {
   const regex = /^[ㄱ-ㅎ|가-힣]+$/;
   return arr.every((nickname) => {
     if (nickname.length < 1 || nickname.length >= 20) {
