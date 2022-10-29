@@ -1,5 +1,18 @@
 function problem7(user, friends, visitors) {
   // friends를 순회하여 user의 친구를 배열에 담는다.
+  const userFriends = [];
+
+  friends.forEach((friend) => {
+    const [a, b] = friend;
+    if (a === user && !userFriends.includes(b)) {
+      userFriends.push(b);
+      return;
+    }
+    if (b === user && !userFriends.includes(a)) {
+      userFriends.push(a);
+    }
+  });
+
   // friends를 순회하여 scores 객체에 친구의 이름과 점수를 담는다. 이미 있다면 +10점, 없다면 새로 만들어 10점을 준다.
   // visitors를 순회하여 scores 객체에 친구의 이름과 점수를 담는다. 이미 있다면 +1점, 없다면 새로 만들어 1점을 준다.
   // scores를 배열로 만들어 점수 기준 오름차순으로 정렬한다.
