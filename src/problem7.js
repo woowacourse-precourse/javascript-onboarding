@@ -10,6 +10,17 @@ function problem7(user, friends, visitors) {
     pushToMap(theOther, one);
   });
 
+  const userFriends = friendRelation.get(user);
+  friendRelation.delete(user);
+
+  const FRIEND_SCORE = 10;
+  const scores = Array.from(friendRelation).map(([userId, friends]) => {
+    const score =
+      Number(friends.filter((userId) => userFriends.includes(userId)).length) *
+      FRIEND_SCORE;
+    return [userId, score];
+  });
+
   const answer = [];
   return answer;
 }
