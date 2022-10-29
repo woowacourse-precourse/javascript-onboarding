@@ -1,0 +1,13 @@
+{
+  // VSCode 의 내장 Formatter 사용 시 EditorConfig가 적용된다.
+  "editor.defaultFormatter": "vscode.typescript-language-features",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  // node_modules 폴더가 탐색기에서 표시되지 않도록 한다.
+  "files.exclude": {
+    "node_modules": true
+  }
+}
