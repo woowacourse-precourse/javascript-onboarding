@@ -1,14 +1,6 @@
 function problem1(pobi, crong) {
   var answer;
-  //랜덤 부분
-  // const PNum = [];
-  // for (let i = 0 ; i < 4 ; i++){
-  //   PNum.push(Math.floor(Math.random()*(400-1)*1));
-  // }
-  // console.log(pobi[1].slice())
-
   function checker(...num){
-
     function slicer(num){
       let r = 0;
       let r2 = 1;
@@ -29,15 +21,18 @@ function problem1(pobi, crong) {
 
     const finalScore = Math.max(...score);
 
+    return finalScore
   }; 
-
 
   const pobiScore = checker(pobi[0],pobi[1]);
   const crongScore = checker(crong[0],crong[1]);
 
+  if (pobiScore > crongScore) answer = 1;
+  else if (pobiScore < crongScore) answer = 2;
+  else answer = 0;
 
   return answer;
 }
-// problem1([333,222],[312,111]);
+
 
 module.exports = problem1;
