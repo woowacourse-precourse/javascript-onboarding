@@ -30,8 +30,15 @@ function problem7(user, friends, visitors) {
     else scores.set(userId, VISIT_SCORE);
   });
 
-  const answer = [];
-  return answer;
+  return Array.from(scores)
+    .filter(([userId, final_score]) => {
+      if (userFriends.includes(userId)) return false;
+      if (final_score === 0) return false;
+      return true;
+    })
+    .sort()
+    .sort((a, b) => b[1] - a[1])
+    .map(([userId, _]) => userId);
 }
 
 module.exports = problem7;
