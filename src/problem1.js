@@ -20,10 +20,15 @@ const getSumNum  = (book) => {
   return sumNum;
 };
 
-  //책 페이지 곱한 값
-  const getmultNum = () => {
-
-  };
+//책 페이지 곱한 값
+const getmultNum  = (book)  => {
+  const bookString  = book.toString().split("");
+  let mulNum = 1;
+  for(let i=0; i<bookString.length; i++){
+    mulNum *= Number(bookString[i])
+  }
+  return mulNum;
+};
     
 }
 
