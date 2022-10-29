@@ -135,6 +135,45 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("case2", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual([
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+    ]);
+  });
+  test("case3", () => {
+    expect(
+      problem6([
+        ["a@email.com", "가"],
+        ["b@email.com", "나"],
+        ["c@email.com", "다"],
+        ["d@email.com", "라"],
+        ["e@email.com", "마"],
+        ["f@email.com", "바"],
+      ])
+    ).toEqual([]);
+  });
+  test("case4", () => {
+    expect(
+      problem6([
+        ["a@email.com", "가"],
+        ["e@email.com", "가나"],
+        ["d@email.com", "가나다"],
+        ["c@email.com", "가나다라"],
+        ["b@email.com", "가나다라마"],
+      ])
+    ).toEqual(["b@email.com", "c@email.com", "d@email.com", "e@email.com"]);
+  });
 });
 
 describe("problem7", () => {
