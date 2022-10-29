@@ -1,6 +1,12 @@
 function problem2(cryptogram) {
   var answer;
-  return answer;
+  if (validExceptions) {
+    answer = deleteOverlap(cryptogram);
+    return answer;
+  }
+  else {
+    throw new Error("잘못된 입력입니다.");
+  }
 }
 
 function deleteOverlap(cryptogram) {
