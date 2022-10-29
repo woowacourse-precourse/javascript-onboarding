@@ -30,4 +30,16 @@ function friendOfFriend(user, graph, scoreList) {
   });
 }
 
+// 이미 친구인 사람은 뺴야함
+function score(user, graph, visitors, scoreList) {
+  visitors.forEach((visitor) => {
+    if (scoreList.has(visitor)) {
+      scoreList.set(visitor, scoreList.get(visitor) + 1);
+    } else if (!scoreList.has(visitor) && !graph.get(user).has(visitor)) {
+      //
+      scoreList.set(visitor, 1);
+    }
+  });
+}
+
 module.exports = problem7;
