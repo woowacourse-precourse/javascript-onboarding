@@ -56,6 +56,7 @@ function problem7(user, friends, visitors) {
   while(answer.length<5){
     answer.push(pointList[i][0]);
     i++;
+    if(i==pointList.length) break;
   }
   
   return answer;
