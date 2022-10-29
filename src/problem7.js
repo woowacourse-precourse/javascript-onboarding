@@ -7,6 +7,23 @@ function problem7(user, friends, visitors) {
   }
 }
 
+const createScoreList = (recommendationList, friendsFriendList, visitors) => {
+  const list = {};
+  recommendationList.forEach((name) => {
+    const friendCount = friendsFriendList.reduce(
+      (count, v) => (v === name ? count + 1 : count),
+      0
+    );
+    const visitCount = visitors.reduce(
+      (count, v) => (v === name ? count + 1 : count),
+      0
+    );
+    const score = friendCount * 10 + visitCount;
+    list[name] = score;
+  });
+  return list;
+};
+
 const createFriendList = (relationshipList, who, friendList = []) => {
   const list = [];
   relationshipList.forEach((relationship) => {
