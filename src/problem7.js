@@ -13,15 +13,16 @@ function makeGraph(arr) {
 }
 
 function sortScore(recommendList) {
-  let sortedRecommend = new Map(
+  let sortedList = new Map(
     [...recommendList].sort((a, b) => {
       if (a[1] === b[1]) {
         if (a[0] > b[0]) return 1;
         else if (a[0] < b[0]) return -1;
-      }
+      } else if (a[1] > b[1]) return -1;
+      else if (a[1] < b[1]) return 1;
     })
   );
-  return sortedRecommend;
+  return sortedList;
 }
 
 function problem7(user, friends, visitors) {
@@ -53,9 +54,12 @@ function problem7(user, friends, visitors) {
       recommend.set(visitor, recommend.get(visitor) + 1);
     }
   }
-
   let sortedRecommend = sortScore(recommend);
   sortedRecommend.forEach((val, key) => answer.push(key));
+
+  if (answer.length >= 5) {
+    answer.length = 5;
+  }
 
   return answer;
 }

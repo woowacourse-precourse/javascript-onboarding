@@ -1,3 +1,19 @@
+function getMax(pageNumbers) {
+  let max = 0;
+  for (let pageNumber of pageNumbers) {
+    const splitList = pageNumber
+      .toString()
+      .split("")
+      .map((val) => +val);
+
+    let sum = splitList.reduce((sum, val) => sum + val, 0);
+    let multiResult = splitList.reduce((sum, val) => sum * val, 1);
+
+    max = Math.max(sum, multiResult);
+    return max;
+  }
+}
+
 function problem1(pobi, crong) {
   var answer;
   let pobiMax = 0;
@@ -17,20 +33,6 @@ function problem1(pobi, crong) {
     }
     return true;
   };
-
-  function getMax(pageNumbers) {
-    let max = 0;
-    for (let pageNumber of pageNumbers) {
-      const splitList = pageNumber
-        .toString()
-        .split("")
-        .map((val) => +val);
-      let sum = splitList.reduce((sum, val) => sum + val, 0);
-      let multiResult = splitList.reduce((sum, val) => sum * val, 1);
-      max = Math.max(sum, multiResult);
-      return max;
-    }
-  }
 
   if (isValid(pobi) && isValid(crong)) {
     pobiMax = getMax(pobi);

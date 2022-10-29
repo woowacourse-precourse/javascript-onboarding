@@ -134,3 +134,4 @@ npm test
   - [x] recommend Map에 존재하는지, user의 이미 친구인 사람인지 확인
     - [x] recommend Map에 없다면, 이름을 key로, value를 1로 할당
     - [x] 있다면, 이름과 같은 key의 value를 1 더해줌.
+  - [x] 최대 5명까지 추천하기 위한 answer 배열 길이 제한 추가
