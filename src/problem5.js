@@ -1,5 +1,9 @@
 function problem5(money) {
   var answer;
+  if (!validType(money)) throw new Error("잘못된 타입입니다.");
+  if (!validRange(money)) throw new Error("잘못된 범위입니다.");
+
+  answer = changeMoney(money);
   return answer;
 }
 
