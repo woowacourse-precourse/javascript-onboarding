@@ -46,6 +46,20 @@ function problem1(pobi, crong) {
   );
   console.log(crong_max);
 
+  // 예외 처리
+  if (pobi_left >= pobi_right) {
+    return -1;
+  }
+  if (pobi_right - pobi_left !== 1) {
+    return -1;
+  }
+  if (crong_left >= crong_right) {
+    return -1;
+  }
+  if (crong_right - crong_left !== 1) {
+    return -1;
+  }
+
   var answer;
   return answer;
 }
