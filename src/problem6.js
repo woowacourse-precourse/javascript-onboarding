@@ -10,25 +10,23 @@ function checkIsEmail(email) {
 }
 
 // 중복 글자 체크
-function checkOverlap(nickname) {
-  const arr = [];
+function checkOverlap(forms) {
+  const words = [];
 
-  for (let i = 0; i < nickname.length; i++) {
-    for (let j = 0; j < nickname[i].length; j++) {
-      const standard = nickname[j].slice(j, j + 2);
-      const expectSelf = nickname.filter(v => v !== nickname[j]);
-      if (expectSelf.some(v => v.includes(standard))) arr.push(standard);
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 0; j < forms[i][1].length; j++) {
+      const word = forms[i][1].slice(j, j + 2);
+      const test = forms.filter(([_, name]) => word.length !== 1 && name.includes(word));
+      if (test.length >= 2 && !words.includes(word)) words.push(word);
     }
   }
 
-  return arr.filter(v => v !== '');
+  return words;
 }
 
 
 function problem6(forms) {
-  const nickname = forms.map(([_, id]) => id);
-
-  const overlapWords = checkOverlap(nickname);
+  const overlapWords = checkOverlap(forms);
 
   const checkNames = forms.filter(([email, name]) => {
     if (overlapWords.some(v => name.includes(v))) return email;
