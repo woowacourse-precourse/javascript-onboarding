@@ -36,6 +36,11 @@ function problem1(pobi, crong) {
 
   const scorePobi = calcPersonalMaxScore(pobi);
   const scoreCrong = calcPersonalMaxScore(crong);
+
+  // 3. 포비와 크롱의 점수 비교에 따른 결과 반환
+  if (scorePobi > scoreCrong) return 1;
+  if (scorePobi < scoreCrong) return 2;
+  if (scorePobi === scoreCrong) return 0;
 }
 
 module.exports = problem1;
