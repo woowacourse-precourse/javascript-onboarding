@@ -40,6 +40,10 @@ function isRepeatLowerCase(cryptogram) {
   return false;
 }
 
+function setRemoveRepeatLowerCase(cryptogram) {
+  return cryptogram.replace(getIncludeLowerCaseRegExp(cryptogram), "");
+}
+
 function getNoRepeat(cryptogram) {
   const noRepeat = [];
   cryptogram.split("").forEach((char) => {
