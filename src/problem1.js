@@ -2,19 +2,22 @@ function problem1(pobi, crong) {
     var answer;
 
     // 1. 큰 수 구하기
-    // - 오른쪽 페이지 번호의 덧셈값과 곱셉값 구하기
-    // - 둘 중 큰 수 구하기
-    function getBiggestNumber(arr) {
-        const rightPage = String(arr[1]).split("");
-        let add = 0;
-        let mul = 1;
-        for (let i = 0; i < rightPage.length; i++) {
-            add += Number(rightPage[i]);
-            mul *= Number(rightPage[i]);
-        }
-        const biggestNumber = add > mul ? add : mul;
-        return biggestNumber;
+    // - 왼쪽, 오른쪽 번호 각각 덧셈값과 곱셈값 구하기
+    // - 가장 큰 수 구하기
+    function getBiggestNumber(pages) {
+        const leftPage = String(pages[0]).split("");
+        const rightPage = String(pages[1]).split("");
+
+        const leftAdd = eval(leftPage.join("+"));
+        const leftMul = eval(leftPage.join("*"));
+        const rightAdd = eval(rightPage.join("+"));
+        const rightMul = eval(rightPage.join("*"));
+
+        return Math.max(leftAdd, leftMul, rightAdd, rightMul);
     }
+
+    const pobiNumber = getBiggestNumber(pobi);
+    const crongNumber = getBiggestNumber(crong);
 
     // 2. 점수 구하기
     // - pobi가 이기면 1, crong이 이기면 2, 무승부는 0
@@ -31,13 +34,14 @@ function problem1(pobi, crong) {
         } else result = false;
         return result;
     }
+
     if (checkPages(pobi) === false || checkPages(crong) === false)
         return (answer = -1);
-    if (getBiggestNumber(pobi) > getBiggestNumber(crong)) {
+    if (pobiNumber > crongNumber) {
         answer = 1;
-    } else if (getBiggestNumber(pobi) < getBiggestNumber(crong)) {
+    } else if (pobiNumber < crongNumber) {
         answer = 2;
-    } else if (getBiggestNumber(pobi) === getBiggestNumber(crong)) {
+    } else if (pobiNumber === crongNumber) {
         answer = 0;
     } else answer = -1;
 
