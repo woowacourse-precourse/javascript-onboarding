@@ -80,7 +80,7 @@
 
 * 입력된 숫자에 반대되는 문자로 출력해 줄 함수 `getTreeFrogChar(utf16Code)` 를 구현.
 
-* 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharsToString` 를 구현.
+* 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharArrToString` 를 구현.
 
 ***
 
