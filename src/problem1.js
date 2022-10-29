@@ -10,6 +10,8 @@ function problem1(pobi, crong) {
 
   const scorePobi = getMostScore(pobi);
   const scoreCrong = getMostScore(crong);
+
+  return getWinner(scorePobi, scoreCrong);
 }
 
 function validate(pages) {
@@ -43,6 +45,20 @@ function getMostScore(pages) {
   const scoreLeft = getScore(left);
   const scoreRight = getScore(right);
   return scoreLeft > scoreRight ? scoreLeft : scoreRight;
+}
+
+function getWinner(scorePobi, scoreCrong) {
+  let winner;
+
+  if (scorePobi > scoreCrong) {
+    winner = POBI;
+  } else if (scorePobi < scoreCrong) {
+    winner = CRONG;
+  } else {
+    winner = DRAW;
+  }
+
+  return winner;
 }
 
 module.exports = problem1;
