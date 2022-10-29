@@ -38,9 +38,15 @@ function problem4(word) {
 
   // 특이사항
   //!1. word의 길이는 1이상 1000 이하인 문자열
+
+  function CHECK_WORD_LENGTH_BETWEEN_ONE_TO_THOUSAND (word){
+    if(word.length < 1 || word > 1000){
+      return false;
+    } return true;
+  }
+
   //!2. 알파벳 외의 문자는 변환하지 않음
   //!3. 알파벳 대문자는 대문자, 소문자는 소문자로 변환
-
 
   const result = [];
 
