@@ -4,7 +4,8 @@ function problem5(money) {
   let remainingMoney = money;
   
   UNITS.forEach((unit) => {
-    result.push(Math.floor(remainingMoney / unit));
+    const quotient = Math.floor(remainingMoney / unit);
+    result.push(quotient);
     remainingMoney %= unit;
   });
 
