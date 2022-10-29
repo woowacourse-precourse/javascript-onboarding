@@ -15,6 +15,6 @@ function problem2(cryptogram) {
       rightPoiner += 1;
     }
   }
-  
+  return cryptogramList.join("");
 }
 module.exports = problem2;
