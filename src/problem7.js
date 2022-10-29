@@ -1,3 +1,11 @@
+const addNumberToObject = (number, object, key) => {
+  if(!object[key]){
+    object[key] = number
+  }else{
+    object[key] += number
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -39,14 +47,6 @@ function problem7(user, friends, visitors) {
   answer = scoreArray.map(s => s[0])
 
   return answer;
-}
-
-const addNumberToObject = (number, object, key) => {
-  if(!object[key]){
-    object[key] = number
-  }else{
-    object[key] += number
-  }
 }
 
 module.exports = problem7;
