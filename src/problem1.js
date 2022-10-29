@@ -111,9 +111,22 @@ const getMaxNumber = (arr) => {
   return Math.max(firstMaxNum, secondMaxNum);
 };
 
-function problem1(pobi, crong) {
-  var answer;
-  return answer;
-}
+/**
+ * 메인 함수
+ * @param {number[]} pobi
+ * @param {number[]} crong
+ * @return {number}
+ */
+const problem1 = (pobi, crong) => {
+  const EXCEPTIONAL_CASE_CODE = -1;
+
+  // 주어진 input이 조건에 맞지 않는 경우 early return
+  if (!isValidInput(pobi, crong)) {
+    return EXCEPTIONAL_CASE_CODE;
+  }
+
+  // 예외사항
+  return EXCEPTIONAL_CASE_CODE;
+};
 
 module.exports = problem1;
