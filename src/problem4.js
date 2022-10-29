@@ -2,7 +2,7 @@ function problem4(word) {
   var answer;
   
 
-  console.log("워드입력",word)
+  //console.log("워드입력",word)
 
   let dictionary = {}
 
@@ -15,7 +15,7 @@ function problem4(word) {
   for ( j = 97 ; j < 123 ; j ++ ) {
     dictionary[j] = 122 + 97 - j 
   }
-  console.log("테이블 확인",dictionary)
+  //console.log("테이블 확인",dictionary)
   //소문자 변환 테이블 생성
 
   let new_word =[]
@@ -23,7 +23,7 @@ function problem4(word) {
     new_word.push(word.charCodeAt(k))
     
   }
-  console.log("아스키 변환확인",new_word) 
+  //console.log("아스키 변환확인",new_word) 
   //입력 단어 아스키 코드 변환
 
 
@@ -39,12 +39,12 @@ function problem4(word) {
       last_word.push(String.fromCharCode(chr))
     }
   }
-  console.log("알파벳 변환확인",last_word) 
+  //console.log("알파벳 변환확인",last_word) 
   //변환 단어 알파벳으로 변환
-  
+
   answer = last_word.join("")
 
-  return answer
+  //return answer
 }
 
 module.exports = problem4;
