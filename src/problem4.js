@@ -1,5 +1,3 @@
-console.log(getUTF16Code("I love you"));
-
 function problem4(word) {
   return treeFrogApp(word);
 }
@@ -21,7 +19,14 @@ function getUTF16Code(char){
 }
 
 function checkAlphabet(utf16Code){
-  return utf16Code >= 65 && utf16Code <= 90 && utf16Code <= 122 && utf16Code >= 97;
+  return (utf16Code >= 65 && utf16Code <= 90) || (utf16Code <= 122 && utf16Code >= 97);
+}
+
+function getTreeFrogChar(utf16Code){
+  if (checkAlphabet(utf16Code)){
+    utf16Code>=97?utf16Code=219-utf16Code:utf16Code=155-utf16Code;
+  }
+  return String.fromCharCode(utf16Code);
 }
 
 module.exports = problem4;
