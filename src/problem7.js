@@ -1,7 +1,5 @@
-function problem7(user, friends, visitors) {
-  const score = {};
-
-  const usersFriends = friends
+function findUsersFriends(friends, user) {
+  return friends
     .filter((element) => element.includes(user))
     .flatMap((element) =>
       element.splice(
@@ -9,7 +7,14 @@ function problem7(user, friends, visitors) {
         1
       )
     );
+}
 
+function problem7(user, friends, visitors) {
+  const score = {};
+
+  const usersFriends = findUsersFriends(friends, user);
+
+  // 함께 하는 친구 수 기준으로 점수 매기기
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < usersFriends.length; j++) {
       if (!friends[i].includes(user) && friends[i].includes(usersFriends[j])) {
@@ -26,6 +31,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 방문횟수 기준으로 점수 매기기
   for (let i = 0; i < visitors.length; i++) {
     if (usersFriends.includes(visitors[i])) continue;
     if (visitors[i] in score) {
@@ -35,6 +41,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 정렬하여 최종 결과 내기
   const result = Object.entries(score)
     .sort((a, b) => {
       if (a[1] > b[1]) return -1;
