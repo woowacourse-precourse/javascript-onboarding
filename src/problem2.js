@@ -4,9 +4,9 @@ function removeOverlap(word) {
       let n = j + 1;
       while (word[j] !== word[n]) {
         n++;
-      }
+      } 
+      word = word.substring(0, j) + word.substring(n + 1, word.length + 1);
     }
-    console.log(j, n);
   }
   return word
 }
@@ -27,6 +27,7 @@ function problem2(cryptogram) {
 
   if (checkOverlap(answer)) {
     answer = removeOverlap(answer);
+    console.log(answer);
   }
 
   return answer;
