@@ -1,7 +1,7 @@
 const getHaveSimilarNickCrews = (forms, duplicateChars) => {
   return forms.reduce((acc, cur) => {
-    for (let j = 0; j < duplicateChars.length; j++) {
-      if (cur[1].includes(duplicateChars)) {
+    for (let i = 0; i < duplicateChars.length; i++) {
+      if (cur[1].includes(duplicateChars[i])) {
         acc.push(cur[0]);
       }
     }
