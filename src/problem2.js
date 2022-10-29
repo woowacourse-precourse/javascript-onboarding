@@ -9,6 +9,7 @@ function problem2(cryptogram) {
       array.push(cryptogram[i]);
     }
   }
+  return array.join("");
 }
 
 module.exports = problem2;
