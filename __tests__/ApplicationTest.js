@@ -6,6 +6,8 @@ const problem5 = require('../src/problem5')
 const problem6 = require('../src/problem6')
 const problem7 = require('../src/problem7')
 
+const INVALID_INPUT = '입력값이 잘못되었습니다.'
+
 describe('problem1', () => {
   test('case1', () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0)
@@ -54,11 +56,11 @@ describe('problem2', () => {
   })
 
   test('case5', () => {
-    expect(problem2('ABC')).toEqual('입력값이 잘못되었습니다.')
+    expect(problem2('ABC')).toEqual(INVALID_INPUT)
   })
 
   test('case6', () => {
-    expect(problem2('')).toEqual('입력값이 잘못되었습니다.')
+    expect(problem2('')).toEqual(INVALID_INPUT)
   })
 })
 
@@ -66,8 +68,21 @@ describe('problem3', () => {
   test('case1', () => {
     expect(problem3(13)).toEqual(4)
   })
+
   test('case2', () => {
     expect(problem3(33)).toEqual(14)
+  })
+
+  test('case3', () => {
+    expect(problem3(100)).toEqual(60)
+  })
+
+  test('case4', () => {
+    expect(problem3(0)).toEqual(INVALID_INPUT)
+  })
+
+  test('case5', () => {
+    expect(problem3(10001)).toEqual(INVALID_INPUT)
   })
 })
 
