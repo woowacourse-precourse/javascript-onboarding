@@ -18,9 +18,23 @@ const TRANSLATE_TABLE = Object.freeze(
   )
 );
 
+/**
+ * A -> Z, B -> Y 와 같이 거꾸로 매핑된 청개구리 텍스트로 번역합니다.
+ * @param {string} word 청개구리 사전에 따라 번역할 텍스트
+ * @returns {string} 청개구리 사전에 따라 번역된 텍스트
+ */
+function translate(word) {
+  return word.split('').map(ch => TRANSLATE_TABLE[ch] ?? ch).join('');
+}
+
+/**
+ * 문제 4의 입력인, 텍스트가 주어지면 청개구리 사전 규칙에 따라
+ * 번역하여 반환합니다.
+ * @param {string} word 청개구리 사전에 따라 번역할 텍스트
+ * @returns {string} 청개구리 사전에 따라 번역된 텍스트
+ */
 function problem4(word) {
-  var answer;
-  return answer;
+  return translate(word);
 }
 
 module.exports = problem4;
