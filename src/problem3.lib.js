@@ -21,7 +21,7 @@ function range(start, end) {
  * @param {number} lastNumberInclusive
  * @returns number
  */
-function naiveCountOfDigits369FromOneTo(lastNumberInclusive) {
+function naiveCountDigits369FromOneTo(lastNumberInclusive) {
   const result = range(1, lastNumberInclusive + 1)
     .map(countOfDigits369Of)
     .reduce((currentSum, currentCount) => currentSum + currentCount, 0);
@@ -34,7 +34,7 @@ function naiveCountOfDigits369FromOneTo(lastNumberInclusive) {
  * @param {number} lastNumberExclusive
  * @returns {number}
  */
-function countOfDigits369FromZeroUntil(lastNumberExclusive) {
+function countDigits369FromZeroUntil(lastNumberExclusive) {
   // We split 0..lastNumberExclusive-1 to groups of 10.
   // Groups: range(0, 10), range(10, 20), ..., range(10q-10, 10q)
   // Remaining: range(10q, 10q+r)
@@ -48,7 +48,7 @@ function countOfDigits369FromZeroUntil(lastNumberExclusive) {
   let countOf369InGroups = 0;
   if (q > 0) {
     const countOf369InGroupsInLastDigit = 3 * q;
-    const countOf369InGroupsNotInLastDigit = 10 * countOfDigits369FromZeroUntil(q);
+    const countOf369InGroupsNotInLastDigit = 10 * countDigits369FromZeroUntil(q);
     countOf369InGroups = countOf369InGroupsInLastDigit + countOf369InGroupsNotInLastDigit;
   }
 
@@ -56,7 +56,7 @@ function countOfDigits369FromZeroUntil(lastNumberExclusive) {
 }
 
 module.exports = {
-  naiveCountOfDigits369FromOneTo,
-  countOfDigits369FromZeroUntil,
+  naiveCountDigits369FromOneTo,
+  countDigits369FromZeroUntil,
   range,
 };

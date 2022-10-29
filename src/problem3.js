@@ -1,4 +1,6 @@
-const { naiveCountOfDigits369FromOneTo } = require("./problem3.lib");
+const {
+  naiveCountDigits369FromOneTo: naiveCountOfDigits369FromOneTo,
+} = require("./problem3.lib");
 
 function problem3(number) {
   return naiveCountOfDigits369FromOneTo(number);
