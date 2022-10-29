@@ -26,10 +26,10 @@ function nameNumberCount(n, c, name){
   }
 }
 
-function overTwo(n, name, d){
-  for(let i=0; i<n.length-1; i++){
-    if(name[n.substr(i,2)]>=2) d.add(n.substr(i,2))
-  }
+function overTwo(c, name, d){
+  c.forEach((a)=>{
+    if(name[a]>=2) d.add(a)
+  })
 }
 
 function nameRepeatCheck(n, d){
@@ -51,15 +51,12 @@ function problem6(forms) {
   for(let i=0; i<forms.length; i++){
     nameNumberCount(forms[i][1], check, name);
   }
-  for(let i=0; i<forms.length; i++){
-    overTwo(forms[i][1], name, doubleCheck);
-  }
+  overTwo(check, name, doubleCheck);
   for(let i=0; i<forms.length; i++){
     b=nameRepeatCheck(forms[i][1], doubleCheck)
     if(b) answer.push(forms[i][0]);
   }
   answer.sort();
-  console.log(answer)
   return answer;
 }
 
