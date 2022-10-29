@@ -2,7 +2,7 @@ function problem6(forms) {
   const mailForm = forms.map((i) => i[0]);
   const nameForm = forms.map((i) => i[1]);
   const validMailArray = mailForm.map((i) => isValidMail(i));
-  const validNameArray = mailForm.map((i) => isValidName(i));
+  const validNameArray = nameForm.map((i) => isValidName(i));
   const validAccount = new Array(forms.length).map((v, i) => {
     let resultValue;
     if (validMailArray && validNameArray) {
@@ -12,13 +12,38 @@ function problem6(forms) {
     }
   });
 
-  //둘 다 만족하는 것들 중에, 이메일만 filter로 새로 만들어서 return
-  const answer = validAccount.filter((v) => v);
+  const answer = validAccount.filter((v) => v); //정렬 추가해야함.
 
   return answer;
 }
 
 module.exports = problem6;
+
+const isValidMail = (mail) => {
+  const domainResult = isValidDomain(mail);
+  const lengthResult = isValidLength(mail);
+  const resultValue = domainResult && lengthResult;
+
+  return resultValue;
+};
+
+const isValidDomain = (mail) => {
+  const rMail = /@email.com/g;
+  const resultValue = Boolean(mail.match(rMail));
+
+  return resultValue;
+};
+
+const isValidLength = (mail) => {
+  let resultValue;
+  if (11 <= mail.length && mail.length < 20) {
+    resultValue = true;
+  } else {
+    resultValue = false;
+  }
+
+  return resultValue;
+};
 
 /*
  - 신청받은 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 return.
@@ -26,13 +51,15 @@ module.exports = problem6;
 
  ### 이메일
  1) 전체 길이는 11자 이상 20자 미만.
- 2) 신청할 수 있는 이메일은 email.com 도메인으로만 제한.
- 3) 이메일 형식 체크
+ 2) 이메일 형식 체크 및 이메일은 email.com 도메인으로만 제한.
+ 3) 
 
  ### 닉네임
  1) 닉네임은 한글만 가능
  2) 길이는 1자 이상 20자 미만
- 3) 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬 후, 중복은 제거
+
+ ### return
+ 1) 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬 후, 중복은 제거
 
  ---
  #구현할 것
