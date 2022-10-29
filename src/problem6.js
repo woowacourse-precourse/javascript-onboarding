@@ -1,7 +1,8 @@
 function problem6(forms) {
   let answer = [];
+  let email_set= new Set(); // 중복허용X
   let crew_num = forms.length;
-  
+
   if (crew_num < 2){ // crew가 1명인 경우 종료
     return answer;
   }
@@ -23,6 +24,12 @@ function isOverlapNickname(crew1, crew2, forms){
     } 
   }
   return false;
+}
+
+function sortEmailArray(email_set){
+  let email_arr = Array.from(email_set);
+  email_arr.sort(); // 문자열 오름차순 정렬
+  return email_arr;
 }
 
 module.exports = problem6;
