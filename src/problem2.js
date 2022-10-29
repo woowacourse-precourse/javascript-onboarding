@@ -2,12 +2,12 @@
 function exception(cryptogram) {
   let check_cryptogram_lower = new RegExp("^[a-z]*$");
   if (check_cryptogram_lower.test(cryptogram) == false) {
-    return false;
+    return true;
   }
   if (cryptogram.length < 1 || cryptogram.length > 1000) {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 //배열 순차적으로 돌면서 연속되는 글자를 찾은 후 delete_keywords 배열에 담기
@@ -51,7 +51,7 @@ function decryption(cryptogram) {
 }
 
 function problem2(cryptogram) {
-  if (exception(cryptogram) == false) {
+  if (exception(cryptogram)) {
     return "제한사항을 지켜주세요.";
   }
   return decryption(cryptogram);

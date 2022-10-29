@@ -1,3 +1,17 @@
+//예외사항
+function exception(pobi, crong) {
+  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+    return true;
+  }
+  if (pobi[1] <= 2 && pobi[0] >= 399 && crong[1] <= 2 && crong[0] >= 399) {
+    return true;
+  }
+  if (pobi.length != 2 && crong.length != 2) {
+    return true;
+  }
+  return false;
+}
+
 //페이지 숫자의 합
 function sumPageNumber(page_numbers) {
   let sum_score = 0;
@@ -36,20 +50,6 @@ function maxScore(player) {
     second_page_sum,
     second_page_mul
   );
-}
-
-//예외사항
-function exception(pobi, crong) {
-  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
-    return true;
-  }
-  if (pobi[1] <= 2 && pobi[0] >= 399 && crong[1] <= 2 && crong[0] >= 399) {
-    return true;
-  }
-  if (pobi.length != 2 && crong.length != 2) {
-    return true;
-  }
-  return false;
 }
 
 function problem1(pobi, crong) {
