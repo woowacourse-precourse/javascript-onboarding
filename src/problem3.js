@@ -1,4 +1,4 @@
-const isDiviedThree = (num) => {
+const isDividedThree = (num) => {
   if (num != 0 && num % 3 == 0) return true;
 };
 
@@ -10,7 +10,7 @@ const countClap = (num) => {
 
     while (currentNum > 0) {
       let digitNum = currentNum % 10;
-      if (isDiviedThree(digitNum) == true) clap++;
+      if (isDividedThree(digitNum) == true) clap++;
       currentNum = parseInt(currentNum / 10);
     }
   }
