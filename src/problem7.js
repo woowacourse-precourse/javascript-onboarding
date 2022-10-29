@@ -1,17 +1,15 @@
 function problem7(user, friends, visitors) {
   const friendsOfUser = getFriendsOfUser(user, friends)
   const countsOfCommonFriends = getCountsOfCommonFriends(user, friendsOfUser, friends)
-  const scoresForCommonFriends = getScoresForCommonFriends(countsOfCommonFriends)
-  const scoresForVisting = getScoresForVisting(visitors)
-  const totalScore = sumScores(scoresForCommonFriends, scoresForVisting)
-  const recommendedList = getRecommendedList(totalScore, friendsOfUser)
+  const scores = getScores(countsOfCommonFriends, visitors)
+  const recommendedList = getRecommendedList(scores, friendsOfUser)
   return recommendedList
 }
 
 /**
  * user와 친구인 사용자 목록을 반환한다.
- * @param {string} user user_id
- * @param {string[][]} friends [['one_of_user_id', 'other_user_id'], ...]
+ * @param {string} user
+ * @param {string[][]} friends [['one_of_user', 'other_user'], ...]
  * @returns {Set<string>}
  */
 function getFriendsOfUser(user, friends) {
@@ -33,7 +31,7 @@ function getFriendsOfUser(user, friends) {
  * @param {*} user 
  * @param {Set<string>} friendsOfUser 
  * @param {set} friends 
- * @returns {{ [key: string]: number }} { user_id : number_of_common_freinds }
+ * @returns {{ [key: string]: number }} { user : number_of_common_freinds }
  */
 function getCountsOfCommonFriends(user, friendsOfUser, friends) {
   const counts = {}
@@ -50,8 +48,20 @@ function getCountsOfCommonFriends(user, friendsOfUser, friends) {
 }
 
 /**
+ * user와 친구인 사용자 목록과 user에게 방문한 사용자 정보를 바탕으로 점수 합산 값을 구하여 반환한다.
+ * @param {{ [key: string]: number }} countsOfCommonFriends { user : number_of_common_freinds }
+ * @param {string[]} visitors 
+ * @returns 
+ */
+function getScores(countsOfCommonFriends, visitors) {
+  const scoresForCommonFriends = getScoresForCommonFriends(countsOfCommonFriends)
+  const scoresForVisting = getScoresForVisting(visitors)
+  return sumScores(scoresForCommonFriends, scoresForVisting)
+}
+
+/**
  * 함께 아는 친구 수에 따른 점수를 구한다.
- * @param {{ [key: string]: number }} common { user_id : number_of_common_freinds }
+ * @param {{ [key: string]: number }} common { user : number_of_common_freinds }
  * @returns {{ [key: string]: number }} { user: score }
  */
 function getScoresForCommonFriends(common) {
@@ -139,17 +149,5 @@ function sortRecommendedList(recommendedList) {
     }
   })
 }
-
-console.log(problem7(
-  "mrko",
-  [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-))
-
-console.log(problem7(
-  "mrko",
-  [["donut", "jun"], ["shakevan", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["donut", "andole"], ["shakevan", "mrko"]],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-))
 
 module.exports = problem7;
