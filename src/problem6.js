@@ -20,7 +20,7 @@ function getIndex(nicknames) {
 	let index = [];
 
 	nicknames.forEach((nickname, idx) => {
-		if (checkDuplicate(nickname)) index.push(idx);
+		if (checkDuplicate(nickname, nicknames)) index.push(idx);
 	});
 
 	return index;
