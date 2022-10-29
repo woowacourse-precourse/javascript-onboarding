@@ -32,6 +32,13 @@ function problem1(pobi, crong) {
   if (!isValidPages(pobi) || !isValidPages(crong)) {
     return -1;
   }
+  if (getScore(pobi) > getScore(crong)) {
+    answer = 1;
+  } else if (getScore(pobi) < getScore(crong)) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
   return answer;
 }
 
