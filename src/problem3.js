@@ -17,6 +17,7 @@ function problem3(number) {
   function count369(s) {
     for (let letter of s) {
       const translatedNum = parseInt(letter);
+
       if (
         (translatedNum === 3) |
         (translatedNum === 6) |
@@ -28,6 +29,11 @@ function problem3(number) {
   }
 
   const arr = find369(number);
+
+  for (let element of arr) {
+    const translatedStr = element.toString();
+    count369(translatedStr);
+  }
 
   return clap;
 }
