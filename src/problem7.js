@@ -35,7 +35,7 @@ function problem7(user, friends, visitors) {
     if (visitors.length === 0) {
       return;
     }
-    if (visitors.length > MAX_FREINDS_LENGTH) {
+    if (visitors.length > MAX_VISITORS_LENGTH) {
       throw new Error(
         'visitors는 길이가 0이상 10,000 이하인 배열이여야 합니다'
       );
