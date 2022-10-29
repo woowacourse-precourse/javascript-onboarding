@@ -39,6 +39,7 @@ function deleteSame(input) {
     const repeatChar = keyArr.join('|'); // "a|b" 형식으로 중복문자들을 만듬.
     const regex = new RegExp(`(${repeatChar}){2,}`, 'g'); // 정규표현식 생성
     copyString = copyString.replace(regex, ""); // 2개이상 중복된문자들 공백으로 치환.
+    console.log(copyString);
     map.clear(); //map초기화
   }
 
@@ -55,6 +56,7 @@ function test() {
   console.log(problem2("FDASFSDssdsa")) // Input Error
   console.log(problem2(123)) // Type Error
   console.log(problem2()) //Length Error
+  console.log(problem2('saddaas')) // 'sas'
 }
 
 test();
