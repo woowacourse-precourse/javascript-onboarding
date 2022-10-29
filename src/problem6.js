@@ -31,17 +31,16 @@ function findDuplicateWords(forms, words) {
   return findDuplicateWords(forms, words);
 }
 
+function isCrewWithDuplicateWord(crew, words) {
+  return words.some((word) => crew.includes(word));
+}
+
 function problem6(forms) {
   const copiedForms = [...forms];
   const words = findDuplicateWords(copiedForms, []);
 
   const answer = forms
-    .filter((form) =>
-      words.find((word) => {
-        const reg = new RegExp(`${word}`);
-        return reg.test(form[1]);
-      })
-    )
+    .filter((form) => isCrewWithDuplicateWord(form[1], words))
     .map((form) => form[0])
     .sort();
 
@@ -70,9 +69,15 @@ function test() {
     ['mj@email.com', '엠제이'],
     ['nowm@email.com', '이제엠'],
   ];
+  const forms3 = [
+    ['jm@email.com', '제오'],
+    ['jason@email.com', '제이'],
+    ['woniee@email.com', '워니'],
+  ];
 
   console.log(problem6(forms));
   console.log(problem6(forms2));
+  console.log(problem6(forms3));
 }
 
 test();
