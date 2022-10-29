@@ -1,6 +1,39 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let answer;
+
+  const lowerCase = function (arr) {
+    return arr.join().toLowerCase().split(',')
+  }
+  
+  const frogConvertor = (str) => {
+    if (str === ' ') return str
+
+    if (motherWords.includes(str)) {
+      let idx = motherWords.indexOf(str)
+      let newWord = frogWords[idx]
+      return newWord
+    } else if (lowerMotehrWords.includes(str)) {
+      let idx = lowerMotehrWords.indexOf(str)
+      let newWord = lowerFrogWords[idx]
+      return newWord
+    }
+
+  }
+
+  let motherWords = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  let frogWords = [...motherWords].reverse()
+  //let frogWords = motherWords.slice().sort((a, b) => b.localeCompare(a))
+  let lowerMotehrWords = lowerCase(motherWords)
+  let lowerFrogWords = lowerCase(frogWords) 
+  let frogSay = '';
+  
+  
+  for (let i = 0; i < word.length; i++) {
+    frogSay += frogConvertor(word[i])
+  }
+  console.log(frogSay)
+  return frogSay;
 }
 
-module.exports = problem4;
+problem4('l FSDfjkdhsf fjiwjqnisadDKASDkASDK')
+module.exports = problem4;ㄱ
