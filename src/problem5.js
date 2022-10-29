@@ -60,6 +60,12 @@ function problem5(money) {
   //특이사항
   //!1. money는 1이상 1,000,000 이하인 자연수
 
+  function CHECK_NUMBER_BETWEEN_ONE_TO_MILLION (number){
+    if(number < 1 || number > 1000000){
+      return false;
+    } return true;
+  }
+
 
   INPUT_MONEY_TO_WALLET_OBJ(money)
   return RETURN_WALLET_MONEY_LIST(WALLET_OBJ)
