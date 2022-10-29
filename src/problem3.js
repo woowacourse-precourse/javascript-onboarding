@@ -2,17 +2,22 @@ const isDividedThree = (num) => {
   if (num != 0 && num % 3 == 0) return true;
 };
 
+const countThreeSixNine = (num) => {
+  let sum = 0;
+  while (num > 0) {
+    let digitNum = num % 10;
+    if (isDividedThree(digitNum) == true) sum++;
+    num = parseInt(num / 10);
+  }
+  return sum;
+};
+
 const countClap = (num) => {
   let clap = 0;
 
   for (let i = 1; i < num + 1; i++) {
     let currentNum = i;
-
-    while (currentNum > 0) {
-      let digitNum = currentNum % 10;
-      if (isDividedThree(digitNum) == true) clap++;
-      currentNum = parseInt(currentNum / 10);
-    }
+    clap += countThreeSixNine(currentNum);
   }
   return clap;
 };
