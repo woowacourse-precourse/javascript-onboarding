@@ -35,6 +35,12 @@ function getSortedScoreArr(scoreMap) {
   });
   return sortedArr;
 }
+function removeAlreadyFriend(user, network, scoreMap) {
+  if (!network.has(user)) return;
+  for (const friend of network.get(user)) {
+    if (scoreMap.has(friend)) scoreMap.delete(friend);
+  }
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
