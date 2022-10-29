@@ -56,6 +56,17 @@ function problem7(user, friends, visitors) {
       return recommendationFriends.set(visitor, 1);
     }
   });
+
+  //내림차순 정렬
+  let answerTopFive = new Map(
+    [...recommendationFriends.entries()].sort((a, b) => {
+      //value(점수) 값이 같을 경우
+      if (a[1] === b[1]) {
+        return a[0].localeCompare(b[0]);
+      }
+      return b[1] - a[1];
+    })
+  );
 }
 
 module.exports = problem7;
