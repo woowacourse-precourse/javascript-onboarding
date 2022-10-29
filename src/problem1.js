@@ -23,4 +23,13 @@ const pageMaxScore = (pageArr) => {
   return Math.max(firstPageScore, secondPageScore);
 };
 
+const checkWinner = (pobiArr, crongArr) => {
+  const pobiScore = pageMaxScore(pobiArr);
+  const crongScore = pageMaxScore(crongArr);
+
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
+};
+
 module.exports = problem1;
