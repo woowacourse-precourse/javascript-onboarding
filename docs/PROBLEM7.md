@@ -23,3 +23,55 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## 📚 정리
+
+친구 추천 알고리즘
+1. 사용자와 함께 아는 친구의 수 = 10점
+2. 사용자의 타임 라인에 방문한 횟수 = 1점
+
+사용자 아이디 user  
+친구 관계 배열 friends  
+타임 라인 방문 기록 visitors  
+
+__점수 높은 순으로 정렬__, __최대 5명__ return  
+__추천 점수가 0점인 경우 추천 X__, 추천 점수 같은 경우 __이름순 정렬__
+
+### ❗ 제한사항  
+1. user 길이 1 ~ 30 문자열
+2. friends 길이 1 ~ 10,000 배열  
+   friends의 각 원소 길이 2, __[A, B] => A와 B는 친구__  
+3. visitors 길이 0 ~ 10,000 배열
+4. 사용자 아이디는 알파벳 소문자로만
+5. 동일한 친구 관계 중복으로 주어지지 않음 => 별도의 중복 체크 필요 없음!
+6. 추천할 친구가 없는 경우 주어지지 않음 => 추천 점수가 전부 0점인 경우 X
+
+### ✅ 생각해보기
+~~1. friends 배열 정보를 토대로 친구 관계를 그래프(인접 리스트) 형식으로 정리하기  
+   ex) graph[0] = [1, 2, ...]   
+   1.1 빈 배열 "id"과 "relation" 생성  
+   1.2 friends 배열의 요소들을 확인하며 id 배열에 존재하지 않는다면 push  
+      &nbsp; &nbsp; ex) id = ["donut", "andole", ...]  
+   1.3 id 배열의 인덱스값을 통해 relation 배열에 친구 관계 push  
+      &nbsp; &nbsp; ex) friends = [ ["donut", "andole"], ["donut", "jun"] ]  
+      &nbsp; &nbsp; "donut"은 id 배열의 인덱스 0 => relation[0]은 "donut"의 친구 관계를 나타냄  
+      &nbsp; &nbsp; relation = [["andole", "jun"], ["donut"], ...]~~  
+~~2. user의 친구 관계를 확인하고, 함께 아는 친구의 수 구하기  
+   ex) user = "subin", id = ["donut", "andole", "subin"], relation = [["andole"], ["donut", "subin"], ["andole"]]  
+  2.1 id 배열에서 "subin" 인덱스를 체크(예시기준 2)  
+  2.2 relation 배열에서 인덱스 2의 요소를 체크(["andole"])  
+  2.3 "andole"의 친구 관계를 확인하기 위해 id 배열에서 "andole" 인덱스를 체크~~ (까지 작성해보고 있었는데 너무 번거로운 것 같음.. 딕셔너리를 사용하면 되지 않나 생각이 듦..)
+
+</br>
+
+1. friends 배열 정보를 토대로 친구 관계를 딕셔너리로 정리하기   
+  relation = {"donut":["andole", "subin"], "andole":["donut"], ...}  
+  정리하면서 score 딕셔너리도 초기화하기  
+  score = {"donut":0, "andole":0, ...}
+2. relation["유저의 아이디"]의 값 요소들의 친구 관계를 각각 확인하기(user와 중복 친구 count하여 score에 + 해주기)
+3. visitors 배열 정보를 토대로 score 딕셔너리의 값 + 해주기
+4. score 딕셔너리를 1. 점수순 - 내림차순, 2. 이름순 - 오름차순으로 정렬하기
+5. __score 딕셔너리의 첫번째 요소의 값이 0인지 체크하기__
+6. __최대 5명 return 하기!!__
