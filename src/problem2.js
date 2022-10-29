@@ -14,6 +14,14 @@ function problem2(cryptogram) {
       changeFlag = true;
       continue;
     }
+    if (changeFlag) {
+      str.splice(-1, 1);
+      changeFlag = false;
+      idx--;
+      continue;
+    }
+
+    str.push(cryptogram[idx]);
   }
   return answer;
 }
