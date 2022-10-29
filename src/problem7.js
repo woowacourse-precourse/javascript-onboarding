@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
 
   const friendList = {};
   const recommendScore = {};
@@ -44,6 +44,12 @@ function problem7(user, friends, visitors) {
     if (scoreA != scoreB) return scoreB - scoreA;
     return nameA - nameB;
   });
+
+  for (const [name, _] of recommendFriends) {
+    answer.push(name);
+  }
+
+  answer.splice(5); //최대 5명 제한
 
   return answer;
 }
