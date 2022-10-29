@@ -71,9 +71,15 @@ npm test
 - [x] 사전 역순 소문자 알파벳 변환 기능
 - [x] 단어를 사전 역순으로 바꾸는 기능
 
-1. [문제 5](docs/PROBLEM5.md)
-2. [문제 6](docs/PROBLEM6.md)
-3. [문제 7](docs/PROBLEM7.md)
+5. [문제 5](docs/PROBLEM5.md)
+
+- 기능 구현 목록
+- [x] 돈을 오름차순의 화폐 단위로 정렬하는 기능
+- [x] 돈을 큰 금액의 화폐 순으로 나누는 기능
+- [x] 화폐 별로 나눈 개수를 세는 기능
+
+6. [문제 6](docs/PROBLEM6.md)
+7. [문제 7](docs/PROBLEM7.md)
 
 ---
 
