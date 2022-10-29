@@ -11,6 +11,12 @@ const NickNameChecker = {
     this.forms = forms.filter((form) => !this.checkNickname(form[1]));
     return true;
   },
+  getResult: function () {
+    const indexSet = new Set(this.resultIndexs);
+    this.resultIndexs = [...indexSet];
+    this.result = this.resultIndexs.map((index) => forms[i][0]);
+    return this.result.sort();
+  },
   getOverlapEmails: function () {
     this.forms.forEach((form, index) => {
       this.overlapNicknames(form[1], index);
