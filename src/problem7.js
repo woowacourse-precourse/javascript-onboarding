@@ -55,4 +55,14 @@ function scoreConversion(recomendFriends, plusScore) {
   return score;
 }
 
+function sumScore(friends, visitors) {
+  for (const [key, value] of Object.entries(visitors)) {
+    if (!friends[key]) {
+      friends[key] = value;
+    } else if (key in friends) {
+      friends[key] += value;
+    }
+  }
+}
+
 module.exports = problem7;
