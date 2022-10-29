@@ -29,14 +29,14 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem3", () => {
-  test("case1", () => {
-    expect(problem3(13)).toEqual(4);
-  });
-  test("case2", () => {
-    expect(problem3(33)).toEqual(14);
-  });
-});
+// describe("problem3", () => {
+//   test("case1", () => {
+//     expect(problem3(13)).toEqual(4);
+//   });
+//   test("case2", () => {
+//     expect(problem3(33)).toEqual(14);
+//   });
+// });
 
 // describe("problem4", () => {
 //   test("case1", () => {
@@ -44,15 +44,15 @@ describe("problem3", () => {
 //   });
 // });
 
-// describe("problem5", () => {
-//   test("case1", () => {
-//     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
-//   });
+describe("problem5", () => {
+  test("case1", () => {
+    expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
+  });
 
-//   test("case2", () => {
-//     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
-//   });
-// });
+  test("case2", () => {
+    expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+  });
+});
 
 // describe("problem6", () => {
 //   test("case1", () => {

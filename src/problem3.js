@@ -1,14 +1,16 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  let arr = [];
+  let splitnumbers;
   for (i = 1; i <= number; i++) {
-    if (
-      String(i).indexOf("3") !== -1 ||
-      String(i).indexOf("6") !== -1 ||
-      String(i).indexOf("9") !== -1
-    ) {
+    arr.push(String(i));
+  }
+  splitnumbers = [...arr.join("")];
+  splitnumbers.forEach((e) => {
+    if (e === "3" || e === "6" || e === "9") {
       answer++;
     }
-    return answer;
-  }
+  });
+  return answer;
 }
 module.exports = problem3;
