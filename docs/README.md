@@ -12,7 +12,7 @@
 
 3. problem3.js
 
-- [] problem3 기능 구현하기
+- [x] problem3 기능 구현하기
 - [] 리펙터링
 
 4. problem4.js
