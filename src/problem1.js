@@ -16,9 +16,14 @@ function problem1(pobi, crong) {
   crongRslt.append(sumNum(crong[1]))
   crongRslt.append(multipleNum(crong[1]))  
 
+  //총 4개의 값 중 최댓값을 구하고 저장
+  const pobiMax = Math.max(pobiRslt[0], pobiRslt[1], pobiRslt[2], pobiRslt[3]);
+  const crongMax = Math.max(crongRslt[0], crongRslt[1], crongRslt[2], crongRslt[3]);
+
   return answer;
 }
 
+//자릿수의 합을 구하는 함수
 function sumNum(num) {
   var sum = 0;
   while (num > 0) {
@@ -28,6 +33,7 @@ function sumNum(num) {
   return sum;
 }
 
+//자릿수의 곱을 구하는 함수
 function multipleNum(num) {
   var rslt = 1;
   while (num > 0) {
