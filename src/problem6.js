@@ -60,4 +60,10 @@ function validEmail(email) {
   return reg.test(email) && 11 <= email.length && email.length < 20;
 }
 
+function validNickname(nickname) {
+  const reg = /^[ㄱ-ㅎ가-힣]+$/;
+
+  return reg.test(nickname) && 1 <= nickname.length && nickname.length < 20;
+}
+
 module.exports = problem6;
