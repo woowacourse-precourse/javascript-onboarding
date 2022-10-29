@@ -1,8 +1,10 @@
 function problem3(number) {
   let answer = 0;
-  [...Array(1,number + 1).keys()].forEach(
-    (num) =>  [...String(ele)].forEach(
-      (ele) => {
+  [...Array(number + 1).keys()].forEach(
+    (num) =>  [...String(num)].forEach(
+      (digit) => {
+        if (digit === '3' || digit === '6' || digit === '9')
+         answer ++;
       }
     )
   );
