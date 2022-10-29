@@ -4,6 +4,13 @@ const formsRule = {
 };
 
 function problem6(forms) {
+  // 제한사항 :: 크루는 1명 이상 10000명 이하이다.
+  if (forms.length < 1 && forms.length > 10000) return;
+
+  // 제한사항 :: 이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다.
+  forms.map((v, _) => {
+    if (!v[formsRule.email].match(/[[a-zA-Z0-9+-\_.]+@email.com+$/g)) return;
+  });
   const duplicatedEmail = [];
   // 오름차순으로 forms 정렬
   forms.sort((a, b) => {
