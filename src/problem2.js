@@ -6,6 +6,9 @@ function problem2(cryptogram) {
             stack.push(array[0]);
         }
         if (array[i] == stack[stack.length - 1]) {
+            while (array[i] === array[i + 1]) {
+                i++;
+            }
             stack.pop();
             continue;
         }
