@@ -1,4 +1,5 @@
 function problem6(forms) {
+  if (!inputExecption(forms)) return console.log(`오류~~`);
   var answer;
   let resultArr = [];
   for (let i = 1; i < forms.length ; i++) {
@@ -38,11 +39,21 @@ function makeArrCases(string) {
 return possibleArr.filter(x => x.length > 1);
 }
 
-console.log(problem6([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-]));
+function inputExecption(arr) {
+  let emailForm = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  let emailLast = /email.com$/;
+  let koreanForm = /[가-힣]/;
+  let inputCheck = true;
+  if (arr.length < 1 || arr.length > 10000) inputCheck = false;
+  for (let q = 0; q < arr.length - 1; q++) {
+    if (!emailForm.test(arr[q][0])) inputCheck = false;
+    else if (!emailLast.test(arr[q][0])) inputCheck = false;
+    else if (arr[q][0].length < 11 || arr[q][0].length > 20 ) inputCheck = false;
+    else if (!koreanForm.test(arr[q][1])) inputCheck = true;
+    else if (arr[q][1].lenth < 1 || arr[q][1].lenth > 20) inputCheck = false;
+    
+  } 
+  return inputCheck;
+}
+
 module.exports = problem6;
