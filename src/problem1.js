@@ -11,7 +11,7 @@ function problem1(pobi, crong) {
     let pobiLPlus; pobiMul; pobiMax;
     let crongPlus; crongMul; crongMax;
 
-    if (pobi[0] != pobi[1] - 1 || crong[0] != crong[1] - 1) {
+    if (pobi[0] != pobi[1] - 1 || crong[0] != crong[1] - 1 || pobi[1] - pobi[0] != 1 || cobi[1] - cobi[0] != 1) {
         answer = -1;
     }
 
