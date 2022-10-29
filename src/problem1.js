@@ -4,7 +4,18 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  var answer;
+    // 리턴할 answer 값
+    var answer;
+
+    // 각 인원의 점수 산출
+    var pobiScore = myScore(pobi);
+    var crongScore = myScore(crong);
+  
+    // 승부 판정
+    if (pobiScore > crongScore) answer = 1;
+    else if (pobiScore < crongScore)  answer = 2;
+    else answer = 0;
+    
   return answer;
 }
 
