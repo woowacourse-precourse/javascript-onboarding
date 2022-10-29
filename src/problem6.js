@@ -28,6 +28,9 @@ function problem6(forms) {
     }
   }
   
+  result.sort();
+  return result;
+
   return answer;
 }
 
