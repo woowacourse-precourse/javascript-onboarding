@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  const answer = [];
+  let answer = [];
   const userFriendList = [];
   const newFriendList = [];
   const scoreMap = new Map();
@@ -38,6 +38,8 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  const sortedScoreMap = new Map([...scoreMap.entries()].sort().sort((a, b) => b[1] - a[1]));
+  answer = [...sortedScoreMap.keys()].slice(0, 5);
   return answer;
 }
 
