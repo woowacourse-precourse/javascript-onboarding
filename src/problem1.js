@@ -41,6 +41,9 @@ function problem1(pobi, crong) {
     if (isException(pobi) || isException(crong)) {
       throw new Error("예외사항");
     }
+    // 두 플레이어의 최댓값 배열
+    pobiMaxValueArr = pobi.map((pobi_ele) => getMaxValue(pobi_ele));
+    crongMaxValueArr = crong.map((crong_ele) => getMaxValue(crong_ele));
   } catch (error) {
     // try문에서의 오류로 예외사항인 경우 answer = -1;
     answer = -1;
