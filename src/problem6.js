@@ -57,4 +57,14 @@ function checkEmailLength(email) {
   if (email.length >= 11 && email.length < 20) return false;
   return true;
 }
+function checkNickname(forms) {
+  for (let x = 0; x < forms.length; x++) {
+    if (!checkNicknameLength(forms[x][1])) return false;
+  }
+  return true;
+}
+function checkNicknameLength(nickname) {
+  if (nickname.length >= 1 && nickname.length < 20) return true;
+  return false;
+}
 module.exports = problem6;
