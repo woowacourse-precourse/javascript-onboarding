@@ -3,8 +3,10 @@ function problem6(forms) {
   const nameForm = forms.map((i) => i[1]);
   const validMailArray = mailForm.map((i) => isValidMail(i));
   const validNameArray = nameForm.map((i) => isValidName(i));
-  const invalidAccount = classifyInvalid(forms, validMailArray, validNameArray);
-  const answer = invalidAccount.filter((v) => v); //정렬 추가해야함.
+  const validAccount = classifyValid(mailForm, validMailArray, validNameArray);
+  const duplicatedNames = checkDuplicate(nameForm);
+  //const answer = invalidAccount.filter((v) => v); //정렬 추가해야함.
+  const answer = validAccount;
 
   return answer;
 }
@@ -12,23 +14,24 @@ function problem6(forms) {
 module.exports = problem6;
 
 /* classify  */
-const classifyInvalid = (forms, validMailArray, validNameArray) => {
-  const invalidAccount = new Array(forms.length).map((v, i) => {
+const classifyValid = (mailForm, validMailArray, validNameArray) => {
+  const newArray = new Array(mailForm.length);
+  newArray.fill(null);
+  const validAccount = newArray.map((v, i) => {
     let resultValue;
     if (validMailArray[i] && validNameArray[i]) {
-      resultValue = false;
-    } else {
       resultValue = mailForm[i];
+    } else {
+      resultValue = false;
     }
 
     return resultValue;
   });
 
-  return invalidAccount;
+  return validAccount;
 };
 
 const checkDuplicate = (nameForm) => {
-  //nameForm = ['제이엠', '제이슨', '워니', '엠제이', '이제엠']
   let resultArray = [];
   const srcArray = nameForm.map((v) => {
     const sliceArray = [];
@@ -57,15 +60,6 @@ const checkDuplicate = (nameForm) => {
 
   return resultArray;
 };
-
-/*
-  for (let i of nameForm) {
-    const len = i.length - 2;
-    for (let j = 0; j <= len; j++) {
-      const srcText = i.slice(j, j + 2);
-    }
-  }
-*/
 
 /* Nickname */
 const isValidName = (name) => {
