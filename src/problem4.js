@@ -38,4 +38,10 @@ function validRange(word) {
   return 1 <= word.length && word.length <= 1000;
 }
 
+function validLetters(word) {
+  const reg = /^[a-zA-Z\s]*$/
+
+  return reg.test(word);
+}
+
 module.exports = problem4;
