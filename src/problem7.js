@@ -141,13 +141,9 @@ class SNSAlgorithm {
       .forEach((person) => (this.scoreBoard[person] += 1));
   }
 
-  scoreForRecommend() {
+  recommend() {
     this.scroeFriendToFriend();
     this.scroeVisitor();
-  }
-
-  recommend() {
-    this.scoreForRecommend();
 
     return Object.keys(this.scoreBoard)
       .map((person) => [person, this.scoreBoard[person]])
