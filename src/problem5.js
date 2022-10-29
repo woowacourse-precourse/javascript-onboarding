@@ -5,7 +5,11 @@
  * @returns {number[]}
  */
 function problem5(money) {
-  return [];
+  return [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1].map((unit) => {
+    const val = Math.floor(money / unit);
+    money -= val * unit;
+    return val;
+  });
 }
 
 console.log(problem5(50237)); // [1, 0, 0, 0, 0, 2, 0, 3, 7]
