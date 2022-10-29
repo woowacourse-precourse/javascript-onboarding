@@ -6,5 +6,22 @@ function problem2(cryptogram) {
   if (cryptogram.length < 1 || cryptogram.length > 1000) return false;
   if (!(/^[a-z]+$/.test(cryptogram))) return false;
 
+  /**
+   * 연속하는 중복 문자가 있는지 체크 후 삭제하는 함수
+   * @param {string} str 
+   * @returns 연속하는 중복 문자 제거된 문자열 반환
+   */
+  function checkOverlap (str) {
+    const regex = /([a-z])\1{1,}/g;
+    let tempStr = str;
+    
+    while (regex.test(tempStr)){
+      tempStr = tempStr.replace(regex, '');
+    };
+    
+    return tempStr;
+  };
+  
+  return checkOverlap(cryptogram);
 }
 module.exports = problem2;
