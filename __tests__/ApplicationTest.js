@@ -54,35 +54,35 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem6", () => {
-  test("case1", () => {
-    expect(
-      problem6([
-        ["jm@email.com", "제이엠"],
-        ["jason@email.com", "제이슨"],
-        ["woniee@email.com", "워니"],
-        ["mj@email.com", "엠제이"],
-        ["nowm@email.com", "이제엠"],
-      ])
-    ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
-  });
-});
-
-// describe("problem7", () => {
+// describe("problem6", () => {
 //   test("case1", () => {
 //     expect(
-//       problem7(
-//         "mrko",
-//         [
-//           ["donut", "andole"],
-//           ["donut", "jun"],
-//           ["donut", "mrko"],
-//           ["shakevan", "andole"],
-//           ["shakevan", "jun"],
-//           ["shakevan", "mrko"],
-//         ],
-//         ["bedi", "bedi", "donut", "bedi", "shakevan"]
-//       )
-//     ).toEqual(["andole", "jun", "bedi"]);
+//       problem6([
+//         ["jm@email.com", "제이엠"],
+//         ["jason@email.com", "제이슨"],
+//         ["woniee@email.com", "워니"],
+//         ["mj@email.com", "엠제이"],
+//         ["nowm@email.com", "이제엠"],
+//       ])
+//     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
 //   });
 // });
+
+describe("problem7", () => {
+  test("case1", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "jun", "donut", "andole", "shakevan"]
+      )
+    ).toEqual(["andole", "jun", "bedi"]);
+  });
+});
