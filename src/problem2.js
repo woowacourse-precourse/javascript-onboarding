@@ -5,8 +5,28 @@
 //4. 해독된 암호문을 반환한다.
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+    var answer;
+    var tmp = cryptogram;
+    let pwd = new Array(tmp.length);
+
+    for (let i = 0; i < tmp.length; i++) {
+        pwd[i] = tmp.substring(i, i + 1);
+    }
+
+    let length = pwd.length;
+
+    for (let j = 0; j < length; j++) {
+        for (let i = 0; i < length; i++) {
+            if (pwd[i] == pwd[i + 1]) {
+                pwd.splice(i, 2);
+            }
+        }
+    }
+
+    answer = pwd;
+
+
+    return answer;
 }
 
 module.exports = problem2;
