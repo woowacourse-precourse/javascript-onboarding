@@ -45,6 +45,11 @@ function problem1(pobi, crong) {
     });
     return max;
   };
+
+  if (!getBookNum (pobi, crong)) return -1;
+  if (maxNum(pobi) > maxNum(crong)) return 1;
+  if (maxNum(pobi) < maxNum(crong)) return 2;
+  if (maxNum(pobi) === maxNum(crong)) return 0;
     
 }
 
