@@ -1,3 +1,5 @@
+const LENGTH_RECOMMEND_FRIEND = 5;
+
 function problem7(user, friends, visitors) {
   let relationGraph = new Map();
   friends.forEach((pair) => makeGraph(relationGraph, pair));
@@ -8,7 +10,7 @@ function problem7(user, friends, visitors) {
     scoreVisitor(user, relationGraph, visitor, scoreList)
   );
 
-  return recommendFriend(scoreList);
+  return recommendFriend(scoreList, LENGTH_RECOMMEND_FRIEND);
 }
 
 // 주어진 친구쌍을 그래프로 만드는 함수
@@ -55,11 +57,12 @@ function scoreVisitor(user, graph, visitor, scoreList) {
 }
 
 // 추천 친구의 이름만 반환하는 함수
-function recommendFriend(scoreList) {
+function recommendFriend(scoreList, length) {
   let ArrScoreList = [...scoreList]; // 배열로 만들기
   ArrScoreList.sort(ascendingSort);
 
-  return ArrScoreList.map((score) => score[0]);
+  let NameList = ArrScoreList.map((score) => score[0]);
+  return NameList.splice(0, length);
 }
 
 // 주어진 조건대로 정렬하는 함수
