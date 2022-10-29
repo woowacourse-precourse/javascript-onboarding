@@ -39,6 +39,12 @@ function problem7(user, friends, visitors) {
     ([name, score]) => !userFriendList.includes(name) && score > 0,
   );
 
+  recommendFriends.sort(([nameA, scoreA], [nameB, scoreB]) => {
+    //점수 오름차순 후 이름순 정렬
+    if (scoreA != scoreB) return scoreB - scoreA;
+    return nameA - nameB;
+  });
+
   return answer;
 }
 
