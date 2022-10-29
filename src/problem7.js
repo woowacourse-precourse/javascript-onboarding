@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   var answer;
   let score = new Map();
+  let ranking = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
@@ -25,6 +26,11 @@ function problem7(user, friends, visitors) {
       score.set(visitors[i], 1);
     }
   }
+
+  ranking = [...score].sort(function (a, b) {
+    return b[1] - a[1];
+  });
+  
   return answer;
 }
 
