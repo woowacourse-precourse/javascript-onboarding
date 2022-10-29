@@ -10,6 +10,10 @@ function problem2(cryptogram) {
       rightPoiner -= 1;
       continue;
     }
+    if (cryptogramList[leftPointer] !== cryptogramList[rightPoiner]){
+      leftPointer += 1;
+      rightPoiner += 1;
+    }
   }
   
 }
