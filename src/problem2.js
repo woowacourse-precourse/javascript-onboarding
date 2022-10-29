@@ -1,6 +1,21 @@
+// 기능 목록
+// 1. 중복 위치 찾기
+// 2. 중복 제거
+// 3. 중복 없을 때까지 1-2번 반복하기
+
+const redundancyCheck = (str) => {
+  let arr = str.split('');
+
+  let result = [];
+  for(let i=1; i<arr.length; i++) {
+    if(arr[i-1] === arr[i]) result.push([i-1, i]);
+  }
+
+  return result;
+}
+
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  console.log(redundancyCheck(cryptogram));
 }
 
 module.exports = problem2;
