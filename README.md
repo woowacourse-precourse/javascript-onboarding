@@ -62,9 +62,18 @@ npm test
 - [x] 숫자를 카운트 해주는 기능
 
 4. [문제 4](docs/PROBLEM4.md)
-5. [문제 5](docs/PROBLEM5.md)
-6. [문제 6](docs/PROBLEM6.md)
-7. [문제 7](docs/PROBLEM7.md)
+
+- 기능 구현 목록
+- [x] 문자를 유니코드로 변환하는 기능
+- [x] 문자가 소문자인지 판별하는 기능
+- [x] 문자가 대문자인지 판별하는 기능
+- [x] 사전 역순 대문자 알파벳 변환 기능
+- [x] 사전 역순 소문자 알파벳 변환 기능
+- [x] 단어를 사전 역순으로 바꾸는 기능
+
+1. [문제 5](docs/PROBLEM5.md)
+2. [문제 6](docs/PROBLEM6.md)
+3. [문제 7](docs/PROBLEM7.md)
 
 ---
 
