@@ -1,4 +1,4 @@
-function extractWord({ nickname, characterLength = 2 }) {
+function extractWord(nickname, characterLength = 2) {
   const wordSet = new Set();
 
   for (let i = 0; i <= nickname.length - characterLength; i++) {
@@ -16,15 +16,11 @@ function getUniqueEmails(emails) {
   return uniqueEmails;
 }
 
-function problem6(forms) {
-  const UNIQUE_NAME_USER_COUNT = 1;
-  const duplicateNicknameUserEmails = [];
-
-  /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
+function createNicknameWordMap(forms) {
   const nicknameWordMap = new Map();
 
   for (const [email, nickname] of forms) {
-    const wordSet = extractWord({ nickname });
+    const wordSet = extractWord(nickname);
 
     for (const word of wordSet) {
       if (nicknameWordMap.has(word)) {
@@ -41,6 +37,17 @@ function problem6(forms) {
     }
   }
 
+  return nicknameWordMap;
+}
+
+function problem6(forms) {
+  const UNIQUE_NAME_USER_COUNT = 1;
+  const duplicateNicknameUserEmails = [];
+
+  /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
+  const nicknameWordMap = createNicknameWordMap(forms);
+
+  // duplicateNicknameUserEmails 완성하는 부분의 함수 분리
   for (const [_, { count, users }] of nicknameWordMap) {
     if (count > UNIQUE_NAME_USER_COUNT) {
       users.forEach(({ email }) => duplicateNicknameUserEmails.push(email));
