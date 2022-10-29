@@ -9,7 +9,7 @@ function splitNumbers(numbers) {
   return splitedNumbers;
 }
 
-// 분리한 숫자들 중에서 3, 6, 9가 얼마나 포함되어 있는지 구하는 기능 
+// 분리한 숫자들 중에서 3, 6, 9가 얼마나 포함되어 있는지 구하는 기능
 function findNumber(source, number) {
   const result = source
     .flat()
@@ -32,14 +32,13 @@ function solution(number) {
     findNumber(splitedNumbers, 6),
     findNumber(splitedNumbers, 9),
   ];
-  console.log(addNumbers(numbers));
+  const claps = addNumbers(numbers);
+  return claps;
 }
 
 function problem3(number) {
-  var answer;
+  const answer = solution(number);
   return answer;
 }
-
-solution(33);
 
 module.exports = problem3;
