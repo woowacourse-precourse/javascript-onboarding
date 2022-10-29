@@ -1,7 +1,7 @@
 function problem6(forms) {
   const userInfo = new Map();
   const nickMap = new Map();
-  handleData(userInfo, nickMap, forms);
+  makeMaps(userInfo, nickMap, forms);
 }
 
 function checkInputErr(email, nickName){
@@ -23,6 +23,18 @@ function checkInputErr(email, nickName){
   else return false;
 }
 
+function makeMaps(userInfo, nickMap, forms){
+  
+  for(let i=0; i<forms.length; i++){
+    const [email, nickName] = forms[i];
+    if(checkInputErr(email,nickName)) continue;
+    userInfo.set(nickName, email);
 
+    for(let i=0; i<nickName.length-1; i++){
+      const key = nickName[i] + nickName[i+1];
+      nickMap.has(key)? nickMap.set(key,nickMap.get(key)+1) : nickMap.set(key,1) 
+    }
+  }
+}
 
 module.exports = problem6;
