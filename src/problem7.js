@@ -65,7 +65,7 @@ function scoreConversion(recomendFriends, plusScore) {
     } else if (current in total) {
       total[current] += plusScore;
     }
-    return score;
+    return total;
   }, {});
 
   return score;
