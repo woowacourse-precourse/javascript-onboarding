@@ -8,7 +8,9 @@ function problem7(user, friends, visitors) {
   const foafCnt = (relation, friends, user) => {
     const foafRel = relation.filter(
       (x) =>
-        !x.includes(user) && (friends.includes(x[0]) || friends.includes(x[1]))
+        !x.includes(user) &&
+        (friends.includes(x[0]) || friends.includes(x[1])) &&
+        !(friends.includes(x[0]) && friends.includes(x[1]))
     );
 
     const foafPerson = foafRel.map((x) =>
@@ -29,8 +31,10 @@ function problem7(user, friends, visitors) {
     arr.forEach(
       (x) => (recommendList[recommendListKey.indexOf(x[0])][1] += x[1])
     );
+
     return recommendList
-      .sort((a, b) => b[1] - a[1])
+      .sort()
+      .sort((a, b) => (b[1] > a[1] ? 1 : a[1] > b[1] ? -1 : 0))
       .map((x) => x[0])
       .slice(0, 5);
   };
