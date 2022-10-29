@@ -21,6 +21,10 @@ function deleteOverlap(cryptogram) {
   }
 }
 
+function validExceptions(cryptogram) {
+  return (validRange(cryptogram) && validLetters(cryptogram));
+}
+
 function validRange(arr) {
   return (arr.length >= 1 && arr.length <= 1000);
 }
