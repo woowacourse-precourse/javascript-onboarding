@@ -85,3 +85,16 @@ function lengthError(user,friends,visitors){
   }
   return true;
 }
+
+function error(user,friends,visitors){
+  if((user.replace(/['a-z']/g,'').length!==0)){
+    return false;
+  }
+  if(new Set(friends.map((el)=>el.toString())).size!==friends.length){
+    return false;
+  }
+  if(answerList(user,friends,visitors).length===0){
+    return false;
+  }
+  return true;
+}
