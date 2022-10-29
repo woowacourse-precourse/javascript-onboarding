@@ -44,4 +44,10 @@ function checkFirst(arr, set) {
   return false;
 }
 
+function changeSetToArray(set) {
+  const arr = Array.from(set);
+
+  return arr.sort();
+}
+
 module.exports = problem6;
