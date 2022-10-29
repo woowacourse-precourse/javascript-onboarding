@@ -4,19 +4,13 @@ function problem1(pobi, crong) {
     return -1;
   }
   let pobiPageSum = sum(pobi);
-  // console.log("pobi Mix Score Sum : ", pobiPageSum);
   let crongPageSum = sum(crong);
-  // console.log("crong Mix Score Sum : ", crongPageSum);
 
   let pobiPageMul = mul(pobi);
-  // console.log("pobi Mix Score Mul : ", pobiPageMul);
   let crongPageMul = mul(crong);
-  // console.log("crong Mix Score Mul", crongPageMul);
 
   let pobi_max_score = mixScore(pobiPageSum, pobiPageMul);
-  // console.log("pobi_max_score : ", pobi_max_score);
   let crong_max_score = mixScore(crongPageSum, crongPageMul);
-  // console.log("crong_max_score : ", crong_max_score);
 
   if (pobi_max_score > crong_max_score) {
     //포비승
@@ -91,5 +85,7 @@ let input = {
     [211, 212],
   ],
 };
-
+for (let i = 0; i < input.pobi.length; i++) {
+  console.log(`#${i + 1} ${problem1(input.pobi[i],input.crong[i])}`);
+}
 module.exports = problem1;
