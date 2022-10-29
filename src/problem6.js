@@ -54,4 +54,10 @@ function validRange(arr) {
   return 1 <= arr.length && arr.length <= 10000;
 }
 
+function validEmail(email) {
+  const reg = /^[a-zA-Z0-9]+@email.com$/;
+
+  return reg.test(email) && 11 <= email.length && email.length < 20;
+}
+
 module.exports = problem6;
