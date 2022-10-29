@@ -1,6 +1,7 @@
 const Bank = {
   amount: 0,
-  result: Array.from({ length: 9 }),
+  result: [],
+  note: [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1],
   inputMoney: function (money) {
     if (!this.checkMoney(money)) {
       return false;
