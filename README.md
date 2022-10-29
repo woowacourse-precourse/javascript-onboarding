@@ -1,8 +1,9 @@
 ## :mag: [문제 1] 구현할 기능 목록
 
 * 입력값 `validationArr` 함수 생성 
-  + 배열 크기(`array.length`)가 2인지 확인
-  + 왼쪽, 오른쪽 값 차이가 1만 나야함
+  + 배열 크기(`array.length`)가 2인지 확인.
+  + 왼쪽, 오른쪽 값 차이가 1만 나야함.
+  + 입력값이 1이상 400이하여야 함. 
 
 * 전체 프로세서관리 `pageGameApp` 함수 생성
   + `validationArr` 함수 통과 후 전체 프로세스를 관리할 함수로 구현
@@ -94,6 +95,31 @@
   + ~~잔여 금액이 0원이 되면,~~ billType의 크기만큼, `curMoney`를 return 한다.
 
 * `money`(현재 금액)과 `billType`(출금할 지폐 크기)를 입력하면, `currAccount`(남은 금액)과 `billCount`(최대 지폐수)를 출력하는 함수 `calcWithdraw`를 구현.
+
+***
+
+## :mag: [문제 6] 구현할 기능 목록
+
+* 입력값 `validationArr` 함수 생성
+  + 이메일 중복값 제거
+  + 닉네임 한글이 아닌거 제거
+  + 이메일 `email.com` 아니면 제거
+  + 닉네임 길이가 1이상 20자 미만이 아니면 제거
+  + 이메일 길이가 11자이상 20자 미만이 아니면 제거
+
+* 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
+  + 입력된 배열 `CrewDataArr` 길이만큼 계속해서 반복.
+  + 함수 `getDuplicateDataArr`에 `CrewDataArr`와 `CrewNickName`를 입력 후 함수 반환값을 return 한다.
+  + return 값 : 함수 `getDuplicateDataArr(CrewDataArr,CrewNickName)`
+
+* `CrewDataArr`(크루데이터)와 `CrewNickName`(닉네임)을 받아서 닉네임 중복값 체크하는 `getDuplicateDataArr` 함수 구현
+  + `CrewNickName`(닉네임)으로 함수 `getNameByTwoLetterArr`을 호출하여, 출력값을 배열 `TwoLetterNameArr`(닉네임검사리스트)에 저장 
+  + `CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewNickName, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우, 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.
+  + return 값 : 배열 `duplicateDataArr`
+
+* 닉네임을 2글자씩 잘라서 배열로 return 해주는 `getNameByTwoLetterArr` 함수 구현.
+
+* `CrewNickName`(닉네임)과 `twoLetter`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.
 
 ***
 
