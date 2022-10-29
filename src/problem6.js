@@ -13,6 +13,13 @@ function problem6(forms) {
     }    
   }
   
+  let standard = [...data];
+  let check = [];
+  for (let i = 0; i < standard.length; i++) {
+    if (standard[i][1] > 1) {
+      check.push(standard[i][0]);
+    }
+  }
   return answer;
 }
 
