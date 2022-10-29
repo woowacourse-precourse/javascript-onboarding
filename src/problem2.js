@@ -24,4 +24,6 @@ function problem2(cryptogram) {
   return answer;
 }
 
+console.log(problem2("browoanoommnaon").join(""));
+console.log(problem2("zyelleyz").join(""));
 module.exports = problem2;
