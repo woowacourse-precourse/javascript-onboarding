@@ -1,5 +1,14 @@
 function problem4(word) {
-  var answer;
+  let answer = "";
+
+  for (let i = 0; i < word.length; i++) {
+    if (isAlphabet(word[i])) {
+      answer += changeAlphabet(word[i]);
+      continue;
+    }
+
+    answer += word[i];
+  }
   return answer;
 }
 
