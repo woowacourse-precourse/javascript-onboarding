@@ -1,7 +1,8 @@
 function problem1(pobi, crong) {
   let pobiLargeNum = getLargeNum(pobi);
   let crongLargeNum = getLargeNum(crong);
-  console.log(pobiLargeNum, crongLargeNum);
+  let result = getWinner(pobiLargeNum, crongLargeNum);
+  return result;
 }
 
 function getLargeNum(arr) {
@@ -22,6 +23,16 @@ function getLargeNum(arr) {
     rightPage.reduce(multiCallback)
   );
   return max;
+}
+
+function getWinner(pobiNum, crongNum) {
+  if (crongNum < pobiNum) {
+    return 1;
+  } else if (pobiNum < crongNum) {
+    return 2;
+  } else if (pobiNum === crongNum) {
+    return 0;
+  }
 }
 
 module.exports = problem1;
