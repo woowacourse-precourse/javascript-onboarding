@@ -1,4 +1,5 @@
 function countClap(numbers) {
+  const TARGET_NUMBERS = [3, 6, 9];
   let count = 0;
 
   numbers.forEach((number) =>
@@ -6,16 +7,16 @@ function countClap(numbers) {
       .toString()
       .split("")
       .map(Number)
-      .forEach((num) => (num === 3 || num === 6 || num === 9 ? count++ : count))
+      .forEach((num) => (TARGET_NUMBERS.includes(num) ? count++ : count))
   );
 
   return count;
 }
 
 function problem3(number) {
-  const gameNumbers = Array.from({ length: number }, (_, i) => i + 1);
+  const numbersUsedInGame = Array.from({ length: number }, (_, i) => i + 1);
 
-  return countClap(gameNumbers);
+  return countClap(numbersUsedInGame);
 }
 
 module.exports = problem3;
