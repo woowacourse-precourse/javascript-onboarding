@@ -70,7 +70,11 @@ const checkException = value => {
 };
 
 function problem3(number) {
-  var answer;
+  checkException(number);
+
+  const startScore = 0;
+  const answer = startThreeSixNine(number, startScore);
+
   return answer;
 }
 
