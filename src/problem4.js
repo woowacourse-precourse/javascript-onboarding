@@ -3,11 +3,18 @@ function problem4(word) {
   let resultString = '';
 
   wordArray.forEach(char => { 
-    console.log(String.fromCharCode(155 - char.charCodeAt()));
-    console.log(String.fromCharCode(219 - char.charCodeAt()));
-    console.log(char);
-
+    if(char.match(/[A-Z]/)){
+      resultString += String.fromCharCode(155 - char.charCodeAt());
+    }
+    else if((char.match(/[a-z]/))){
+      resultString += String.fromCharCode(219 - char.charCodeAt());
+    }
+    else {
+      resultString += char;
+    }
   });
+
+  return resultString;
 }
 
 module.exports = problem4;
