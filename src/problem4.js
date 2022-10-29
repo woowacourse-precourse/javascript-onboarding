@@ -11,11 +11,13 @@ function problem4(word) {
   };
   const answer = word.split('').map(letter => {
     if(ASCII_VALUES.UPPER_CASE_REGEX.test(letter)) {
-      const reversedLetter = String.fromCharCode(ASCII_VALUES.UPPER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.UPPER_CASE_START));
+      const reversedAsciiCode = ASCII_VALUES.UPPER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.UPPER_CASE_START);
+      const reversedLetter = String.fromCharCode(reversedAsciiCode);
       return reversedLetter;
     }
     if(ASCII_VALUES.LOWER_CASE_REGEX.test(letter)) {
-      const reversedLetter = String.fromCharCode(ASCII_VALUES.LOWER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.LOWER_CASE_START));
+      const reversedAsciiCode = ASCII_VALUES.LOWER_CASE_END - (letter.charCodeAt(0) - ASCII_VALUES.LOWER_CASE_START)
+      const reversedLetter = String.fromCharCode(reversedAsciiCode);
       return reversedLetter;
     }
     return letter;
