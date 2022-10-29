@@ -7,6 +7,8 @@ function problem7(user, friends, visitors) {
   userFriend.forEach(realFriend => delete peoples[realFriend])
   delete peoples[user];
 
+  const friendsFriends = friendsFriendList(userFriend, friends);
+
 }
 
 module.exports = problem7;
@@ -38,4 +40,23 @@ const aleadyFriends = (friends, user) => {
   })
 
   return userFriend;
+}
+
+const friendsFriendList = (userFriend, friends) => {
+  const friendsFriends = {}; // {donut: [ 'andole', 'jun' ], shakevan: [ 'andole', 'jun' ]}
+
+  userFriend.forEach(friend => friendsFriends[friend] = []);
+
+  friends.forEach(([friendA, friendB]) => {
+    userFriend.forEach(realFriend => {
+      if (realFriend === friendA) {
+        friendsFriends[realFriend].push(friendB);
+      }
+      if (realFriend === friendB) {
+        friendsFriends[realFriend].push(friendA);
+      }
+    })
+  })
+
+  return friendsFriends;
 }
