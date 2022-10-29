@@ -16,7 +16,7 @@ function problem4(word) {
     }
   }
 
-  return;
+  return answer;
 }
 
 module.exports = problem4;
