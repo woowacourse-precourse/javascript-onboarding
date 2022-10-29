@@ -9,17 +9,26 @@ function problem7(user, friends, visitors) {
   return sortResult(scoreList);
 }
 
-function makeGraph(vertex, duo) {
-  for (let i = 0; i < duo.length; i++) {
-    let tempSet = new Set();
-    let name = duo[i];
-    if (vertex.has(name)) {
-      vertex.set(name, vertex.get(name).add(i ? duo[0] : duo[1]));
-    } else {
-      vertex.set(name, tempSet.add(i ? duo[0] : duo[1]));
-    }
+function makeGraph(graph, pair) {
+  [leftName, rightName] = pair;
+  let tempSet = new Set();
+  let value;
+  if (graph.has(leftName)) {
+    value = graph.get(leftName);
+    graph.set(leftName, value.add(rightName));
+  } else {
+    graph.set(leftName, tempSet.add(rightName));
+  }
+  if (graph.has(rightName)) {
+    value = graph.get(rightName);
+    graph.set(rightName, value.add(leftName));
+  } else {
+    tempSet.clear();
+    graph.set(rightName, tempSet.add(leftName));
   }
 }
+
+/*[a, b]가 있으면 [b, a]라는 목록은 안줌... 그러면 페어를 받아서 양쪽을 다 확인해야함 */
 
 // 친구의 친구에게 10점씩 주는 함수
 function friendOfFriend(user, graph, scoreList) {
