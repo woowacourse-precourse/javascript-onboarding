@@ -1,6 +1,6 @@
 const problem4 = require("../src/problem4");
 
-describe("problem4: ", () => {
+describe("problem4: 청개구리 ", () => {
   test("case1: 우테코 예제 테스트 케이스", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
