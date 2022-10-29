@@ -24,7 +24,7 @@
 
 function problem2(cryptogram) {
   if (cryptogram.length <= 1) return cryptogram;
-  return getNoRepeat(cryptogram);
+  return getNoRepeatCryptogram(cryptogram);
 }
 
 function getIncludeLowerCaseRegExp(cryptogram) {
@@ -49,16 +49,6 @@ function getNoRepeatCryptogram(cryptogram) {
   if (!cryptogram.length) return cryptogram;
   if (!isRepeatLowerCase(cryptogram)) return cryptogram;
   return getNoRepeatCryptogram(setRemoveRepeatLowerCase(cryptogram));
-}
-
-function getNoRepeat(cryptogram) {
-  const noRepeat = [];
-  cryptogram.split("").forEach((char) => {
-    const prevChar = noRepeat.pop();
-    if (prevChar === char) return;
-    noRepeat.push(prevChar, char);
-  });
-  return noRepeat.join("");
 }
 
 module.exports = problem2;
