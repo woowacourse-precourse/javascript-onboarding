@@ -16,7 +16,6 @@ function isEncryptFinish(base, length) {
 }
 
 function problem2(cryptogram) {
-  var answer;
   let base = 0; // 중복검사 때 사용하는 base index
   let target = cryptogram;
 
@@ -32,7 +31,7 @@ function problem2(cryptogram) {
     base = 0;
   }
 
-  return answer;
+  return target;
 }
 
 module.exports = problem2;
