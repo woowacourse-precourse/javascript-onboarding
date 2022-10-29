@@ -42,6 +42,14 @@ function problem7(user, friends, visitors) {
 
   let result = Object.entries(score);
 
+  result.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+    } else {
+      return b[1] - a[1];
+    }
+  });
+
   return result;
 }
 
