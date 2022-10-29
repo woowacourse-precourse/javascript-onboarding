@@ -30,3 +30,14 @@
 3. 없을 경우 nickname(Set)에 문자를 넣어준다
 
 4. forms 배열순회가 끝나면 nickname(Set) -> nickname(Array) 옮긴후 오름차순으로 정렬한다.
+
+### 구현중 바뀐 기능목록
+
+1. forms 배열을 돌면서 닉네임이 2글자 이상일 경우 문자열을 모든 연속된 2글자씩 문자로 구한다.
+
+2. 만약 문자가 nickname(Set)안에 있을경우 result(Set)안에 이메일을 넣고 중복됐지만 초기값이라 넘어간 값도 result(Set)에 이메일을  
+   넣어준다
+
+3. 없을 경우 nickname(Set)에 문자를 넣어준다
+
+4. forms 배열 순회가 끝나면 result(Set)를 배열로 변환후 문자열 오름차순 정렬후 리턴한다.
