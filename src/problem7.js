@@ -21,7 +21,24 @@ function problem7(user, friends, visitors) {
     return userFriendsList;
   }
 
-  userFriendsListGetter(user);
+  const friendOfFriendListGetter = (userFriendsList) => {
+
+    const friendOfFriendList = [];
+
+    userFriendsList.map(friend => {
+      friendList = friendsListGetter(friend);
+      friendList.map(friend => {
+        if(friend !== user) {
+          friendOfFriendList.push(friend);
+        }
+      })
+    })
+
+    return friendOfFriendList;
+  };
+
+  const userFriendsList = userFriendsListGetter(user);
+  const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
 
   return answer;
 }
