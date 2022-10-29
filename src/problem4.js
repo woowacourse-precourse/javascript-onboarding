@@ -35,10 +35,13 @@ class Frog {
   }
 
   getFrogDicTranslation() {
-    return Dictionary.momFor().reduce(
+    const momLanguage = Dictionary.momFor();
+    const frogLanguage = Dictionary.frogFor();
+
+    return momLanguage.reduce(
       (acc, cur, index) => ({
         ...acc,
-        [cur]: Dictionary.frogFor()[index],
+        [cur]: frogLanguage[index],
       }),
       {}
     );
