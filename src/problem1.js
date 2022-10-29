@@ -19,6 +19,11 @@ function problem1(pobi, crong) {
 
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
+
+  if (pobiScore === crongScore) return 0;
+  else if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return -1;
 }
 
 module.exports = problem1;
