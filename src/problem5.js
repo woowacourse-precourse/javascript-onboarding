@@ -52,6 +52,11 @@ function problem5(money) {
 
   //#2. 지갑을 배열로 반환하는 함수
 
+  function RETURN_WALLET_MONEY_LIST(walletObj) {
+    return (Object.values(walletObj)).reverse()
+
+  }
+
   //특이사항
   //!1. money는 1이상 1,000,000 이하인 자연수
 
