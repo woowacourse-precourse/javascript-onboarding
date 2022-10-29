@@ -4,6 +4,14 @@
 */
 
 class FlogTranslator {
+  translate(word) {
+    let flogWord = "";
+    for (const char of [...word]) {
+      flogWord += this._toFlogChar(char);
+    }
+    return flogWord;
+  }
+
   _toFlogChar(char) {
     let ascii;
     if ("A" <= char && char <= "Z") {
@@ -16,14 +24,6 @@ class FlogTranslator {
     const flogCode = ascii + 25 - Math.abs(ascii - char.charCodeAt());
     const flogChar = String.fromCharCode(flogCode);
     return flogChar;
-  }
-
-  translate(word) {
-    let flogWord = "";
-    for (const char of [...word]) {
-      flogWord += this._toFlogChar(char);
-    }
-    return flogWord;
   }
 }
 
