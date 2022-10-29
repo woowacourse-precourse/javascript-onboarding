@@ -20,6 +20,9 @@ function problem6(forms) {
       duplicateCrewEmail.pop();
     }
   }
+  const duplicateCrewEmailFinal = new Set(duplicateCrewEmail);
+  const sortedCrewEmail = [...duplicateCrewEmailFinal].sort();
+  return sortedCrewEmail;
 }
 
 module.exports = problem6;
