@@ -11,6 +11,16 @@ function problem4(word) {
 
   // 2. 암호 해독 기준값 배열
   const sumValArr = [cToAsc("a") + cToAsc("z"), cToAsc("A") + cToAsc("Z")];
+
+  // 3. 문자 -> 해독문자 변환 함수
+  const convertFrog = (c) => {
+    // 3.1. 문자가 대문자인지 소문자인지 판단
+    const isUpper = checkIsUpper(c);
+    const sumValArrIdx = isUpper ? 1 : 0;
+
+    const convertAscToAsc = cToAsc(c);
+    return ascToC(sumValArr[sumValArrIdx] - convertAscToAsc);
+  };
 }
 
 module.exports = problem4;
