@@ -3,9 +3,9 @@ function problem2(cryptogram) {
   let duplicatedChar = ""; //3자 이상의 중복일 경우를 위해 pop한 글자를 저장하는 변수
 
   for (let i = 1; i < cryptogram.length; i++) {
-    if (stack[stack.length - 1] !== cryptogram[i]) stack.push(cryptogram[i]);
-    else if (stack[stack.length - 1] === cryptogram[i])
-      duplicatedChar = stack.pop();
+    let top = stack.length - 1;
+    if (stack[top] !== cryptogram[i]) stack.push(cryptogram[i]);
+    else if (stack[top] === cryptogram[i]) duplicatedChar = stack.pop();
     else if (duplicatedChar === cryptogram[i]) continue;
   }
 
