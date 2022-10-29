@@ -23,6 +23,23 @@ function problem7(user, friends, visitors) {
 
     otherFriends = new Array(...otherFriends).sort();
 
+    // 3. Map으로 바꿔서 각 친구별로 점수 기록
+
+    let otherFriendsMap = new Map();
+    otherFriends.forEach((friend) => otherFriendsMap.set(friend, 0));
+
+    friends.forEach((friend) => {
+        if (otherFriendsMap.has(friend[1])) {
+            otherFriendsMap.set(friend[1], otherFriendsMap.get(friend[1]) + 10);
+        }
+    });
+
+    visitors.forEach((friend) => {
+        if (otherFriendsMap.has(friend)) {
+            otherFriendsMap.set(friend, otherFriendsMap.get(friend) + 1);
+        }
+    });
+
     return answer;
 }
 
