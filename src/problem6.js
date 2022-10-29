@@ -18,13 +18,12 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
-
-const isValidMail = (mail) => {
-  const domainResult = isValidDomain(mail);
-  const lengthResult = isValidLength(mail);
-  const resultValue = domainResult && lengthResult;
-
-  return resultValue;
+/* Nickname */
+const isValidName = (name) => {
+  // 닉네임은 한글만 가능
+  const KRResult = isKR(name);
+  // 길이는 1자 이상 20자 미만
+  const lengthResult = isValidLength(name, 1, 20);
 };
 
 const isValidDomain = (mail) => {
@@ -34,9 +33,9 @@ const isValidDomain = (mail) => {
   return resultValue;
 };
 
-const isValidLength = (mail) => {
+const isValidLength = (string, min, max) => {
   let resultValue;
-  if (11 <= mail.length && mail.length < 20) {
+  if (min <= string.length && string.length < max) {
     resultValue = true;
   } else {
     resultValue = false;
@@ -52,7 +51,7 @@ const isValidLength = (mail) => {
  ### 이메일
  1) 전체 길이는 11자 이상 20자 미만.
  2) 이메일 형식 체크 및 이메일은 email.com 도메인으로만 제한.
- 3) 
+
 
  ### 닉네임
  1) 닉네임은 한글만 가능
