@@ -1,8 +1,13 @@
 function problem6(forms) {
   const numberOfCheckedCrews = countCrews(forms);
+  const checkedDomain = checkDomain(forms);
 
   if (numberOfCheckedCrews !== "Not Error") {
     return numberOfCheckedCrews;
+  }
+
+  if (checkedDomain !== "Not Error") {
+    return checkedDomain;
   }
 
   const cutNames = cutNamesIntoTwoLetters(forms);
@@ -19,6 +24,21 @@ function countCrews(crews) {
 
   if (theNumberOfCrews < MINIMUM_NUMBER || theNumberOfCrews > MAXIMUM_NUMBER) {
     return "크루는 1명 이상 10,000명 이하이어야 합니다.";
+  }
+
+  return "Not Error";
+}
+
+function checkDomain(crews) {
+  const theNumberOfCrews = crews.length;
+
+  for (let crewIndex = 0; crewIndex < theNumberOfCrews; crewIndex++) {
+    const EMAIL_DOMAIN = "email.com";
+    const email = crews[crewIndex][0];
+
+    if (email.includes(EMAIL_DOMAIN) === false) {
+      return "도메인은 email.com만 이용 가능합니다.";
+    }
   }
 
   return "Not Error";
