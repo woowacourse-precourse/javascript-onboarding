@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let friendWithMe = [];
   let pointArr = [];
   friends.map((u) => {
@@ -35,22 +35,10 @@ function problem7(user, friends, visitors) {
       }
     }
   });
-  answer = pointArr;
+  pointArr.sort((a, b) => b.pnt - a.pnt);
+  pointArr.map((u) => {
+    answer.push(u.id);
+  });
   return answer;
 }
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
-
 module.exports = problem7;
