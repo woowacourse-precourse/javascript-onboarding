@@ -1,6 +1,14 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let answer;
+  let check = true;
+
+  while (check){
+    check = false;
+    if (cryptogram.length <= 1) {
+      return cryptogram;
+    }
+  }
+  return answer
 }
 
 module.exports = problem2;
