@@ -125,6 +125,26 @@ const problem1 = (pobi, crong) => {
     return EXCEPTIONAL_CASE_CODE;
   }
 
+  // pobi의 가장 큰 점수
+  const pobiMaxNum = getMaxNumber(pobi);
+  // crong의 가장 큰 점수
+  const crongMaxNum = getMaxNumber(crong);
+
+  // pobi가 이긴 경우
+  if (pobiMaxNum > crongMaxNum) {
+    return 1;
+  }
+
+  // crong이 이긴 경우
+  if (pobiMaxNum < crongMaxNum) {
+    return 2;
+  }
+
+  // 무승부인 경우
+  if (pobiMaxNum === crongMaxNum) {
+    return 0;
+  }
+
   // 예외사항
   return EXCEPTIONAL_CASE_CODE;
 };
