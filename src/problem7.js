@@ -52,6 +52,10 @@ function scoreSort(result) {
   });
 }
 
+function cutFiveFriend(result) {
+  return result.slice(0, 5);
+}
+
 function problem7(user, friends, visitors) {
   const dude = [];
   const score = {};
@@ -67,7 +71,7 @@ function problem7(user, friends, visitors) {
   scoreSort(result);
 
   if (result.length > 5) {
-    result = result.slice(0, 5);
+    result = cutFiveFriend(result);
   }
 
   result = result.map((arr) => {
