@@ -5,9 +5,6 @@ function problem1(pobi, crong) {
      pobi[0] === 1 || crong[0] === 1 || pobi[1] === 400 || crong[1] === 400) {
     return -1
   }
-  
-  return answer;
-}
 
 const bigNum = (arr) => {
   let big;
@@ -25,5 +22,15 @@ const bigNum = (arr) => {
   return big
 }
 
+if(bigNum(pobi) > bigNum(crong)) {
+  return 1
+} else if (bigNum(pobi) < bigNum(crong)) {
+  return 2
+} else if (bigNum(pobi) === bigNum(crong)) {
+  return 0
+}
+
+return answer;
+}
 
 module.exports = problem1;
