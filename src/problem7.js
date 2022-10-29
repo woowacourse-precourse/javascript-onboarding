@@ -15,18 +15,19 @@ function problem7(user, friends, visitors) {
 
   const FRIEND_SCORE = 10;
   const VISIT_SCORE = 1;
-  const scores = Array.from(friendRelation).map(([userId, friends]) => {
+  const scores = new Map();
+
+  Array.from(friendRelation).map(([userId, friends]) => {
     const score =
       Number(friends.filter((userId) => userFriends.includes(userId)).length) *
       FRIEND_SCORE;
-    return [userId, score];
+    scores.set(userId, score);
   });
 
-  const final_scores = scores.map(([userId, score]) => {
-    const final_score =
-      score +
-      Number(visitors.filter((id) => userId === id).length) * VISIT_SCORE;
-    return [userId, final_score];
+  visitors.forEach((userId) => {
+    if (scores.has(userId))
+      scores.set(userId, scores.get(userId) + VISIT_SCORE);
+    else scores.set(userId, VISIT_SCORE);
   });
 
   const answer = [];
