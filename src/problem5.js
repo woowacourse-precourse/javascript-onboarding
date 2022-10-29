@@ -2,6 +2,12 @@ function problem5(money) {
   let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   const moneyList = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
+  for (let i = 0; i < moneyList.length; i++) {
+    if (money >= moneyList[i]) {
+      answer[i] = parseInt(money / moneyList[i]);
+      money = money - moneyList[i] * answer[i];
+    }
+  }
   return answer;
 }
 
