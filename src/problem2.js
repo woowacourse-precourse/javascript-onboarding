@@ -13,11 +13,12 @@ function problem2(cryptogram) {
       str_to_remove = new RegExp(`[${alpha_arr[i]}]{2,}`, 'g'); // 2번 이상 반복되는 문자열을 매칭하기 위한 정규 표현식 
       if (str_to_remove.test(cryptogram)===true){ // 연속하는 중복 문자열이 있다면 계속 진행 
         check = true;
+        cryptogram = cryptogram.replace(str_to_remove, ''); // 연속하는 중복 문자열 삭제
       }
     }
 
   }
-  
+
   answer = cryptogram;
   return answer
 }
