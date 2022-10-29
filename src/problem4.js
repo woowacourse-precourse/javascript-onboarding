@@ -1,6 +1,15 @@
 function problem4(word) {
-  let answer;
+  let answer = '';
+  let frog_dict = makeFrogDictionary();
   const isAlpha = str => /^[a-zA-z]$/.test(str);
+
+  for (let i=0 ; i<word.length; i++){
+    if (isAlpha(word[i])){
+      answer += frog_dict[word[i]];
+      continue;
+    }
+    answer += word[i];
+  }
   return answer;
 }
 
