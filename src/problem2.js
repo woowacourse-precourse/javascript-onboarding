@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+    let answer = '';
+    const textArr = cryptogram.match(/(\w)\1*/g);
+    return answer;
 }
 
 module.exports = problem2;
