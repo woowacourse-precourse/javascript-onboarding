@@ -20,9 +20,18 @@ function getClapCount(n) {
   return clapCount;
 }
 
+/**
+ * 문제 2번의 입력인, 369게임의 마지막 숫자가 주어지면
+ * 1부터 해당 숫자까지 몇 번 손뼉을 치게 되는지 구한 후 반환한다.
+ * @param {number} number 369게임의 마지막 숫자
+ * @returns {number} 손뼉 횟수
+ */
 function problem3(number) {
-  var answer;
-  return answer;
+  let clapCount = 0;
+  for (let n = 1; n <= number; n++) {
+    clapCount += getClapCount(n);
+  }
+  return clapCount;
 }
 
 module.exports = problem3;
