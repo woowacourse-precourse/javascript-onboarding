@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  // 사용자와 친구관계인 사람 찾기
+  // 1. 사용자와 친구관계인 사람 찾기
   let current_friends = [];
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
@@ -11,10 +10,10 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  // 추천 친구 목록 만들기
+  // 2. 추천 친구 목록 만들기
+  // 2-2. 사용자와 함께 아는 친구 구하기
   let recommendations = [];
   for (let i = 0; i < current_friends.length; i++) {
-    // 2-1. 사용자 친구의 친구 찾기
     for (let j = 0; j < friends.length; j++) {
       for (let k = 0; k < 2; k++) {
         if (current_friends[i] == friends[j][k] && user != friends[j][1 - k]) {
@@ -57,7 +56,7 @@ function problem7(user, friends, visitors) {
     recommendations2.push({ name: recommendations[i][0], score: score_sum });
   }
 
-  // 4. 추천친구 중 가장 점수 높은 5명 리턴하기
+  // 4. 최종 추천친구 목록 정렬하기
   recommendations2.sort(function (a, b) {
     if (a.score < b.score) {
       return 1;
@@ -74,6 +73,8 @@ function problem7(user, friends, visitors) {
     }
     return 0;
   });
+
+  // 5. 최종 추천친구 중 가장 점수 높은 5명 리턴하기
 
   console.log(current_friends);
   console.log(recommendations2);
