@@ -42,6 +42,18 @@ function problem4(word) {
   //!3. 알파벳 대문자는 대문자, 소문자는 소문자로 변환
 
 
+  const result = [];
+
+  for (i of word) {
+    if (i === " ") {
+      result.push(" ");
+    } else {
+      result.push(RETURN_REVERSED_ALPHABET(i));
+    }
+  }
+
+  return result.join("");
+
 }
 
 module.exports = problem4;
