@@ -21,6 +21,8 @@ function problem5(money) {
 
   for (let x of map) {
     const cnt = moneyCalculator(x[0], sumMoney);
+    sumMoney -= x[0] * cnt;
+    answer[x[1]] = cnt;
   }
 
   return answer;
