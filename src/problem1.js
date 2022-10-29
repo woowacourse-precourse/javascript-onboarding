@@ -5,6 +5,14 @@ function problem1(pobi, crong) {
       .split('')
       .map((singleDigit) => +singleDigit),
   );
+
+  const scores = [];
+  singleDigitsOfBothPages.forEach((singleDigitsOfOnePage) => {
+    scores.push(
+      singleDigitsOfOnePage.reduce((prev, curr) => prev + curr),
+      singleDigitsOfOnePage.reduce((prev, curr) => prev * curr),
+    );
+  });
 }
 
 module.exports = problem1;
