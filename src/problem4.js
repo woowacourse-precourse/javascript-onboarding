@@ -53,13 +53,13 @@ function getArrayFromString(string) {
 }
 
 function getFrogWordArrayFromWordArray(wordArray) {
-  return wordArray.map(translateWithAscci);
+  return wordArray.map(translateWithAscii);
 }
 
-function translateWithAscci(v) {
+function translateWithAscii(v) {
   if (isAlphabet(v)) {
-    const ascci = getAscciFromChar(v);
-    const frogChar = getCharFromAscci(ascci);
+    const ascii = getAsciiFromChar(v);
+    const frogChar = getCharFromAscii(ascii);
     return frogChar;
   }
   return v;
@@ -73,7 +73,7 @@ function isAlphabet(v) {
   return MAPPING.alphabet.test(v);
 }
 
-function getAscciFromChar(v) {
+function getAsciiFromChar(v) {
   if (isLowerCase(v)) {
     return MAPPING.lowerMapper - v.charCodeAt(0);
   }
@@ -85,8 +85,8 @@ function isLowerCase(alpha) {
   return alpha === alpha.toLowerCase();
 }
 
-function getCharFromAscci(ascci) {
-  return String.fromCharCode(ascci);
+function getCharFromAscii(ascii) {
+  return String.fromCharCode(ascii);
 }
 
 module.exports = problem4;
