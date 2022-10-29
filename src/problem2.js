@@ -27,8 +27,8 @@ const convertToString = stringArray => {
 };
 
 const recursiveCheckDuplicateElement = (letterArray, currentIndex, pointArray) => {
-  const maxLength = letterArray.length;
   let _nextIndexPoint = currentIndex + 1;
+  const maxLength = letterArray.length;
 
   if (maxLength <= currentIndex) {
     return pointArray;
@@ -99,7 +99,24 @@ const recursiveTour = stringArray => {
   return recursiveTour(newStringArray);
 };
 
+const checkException = value => {
+  if (typeof value !== "string") {
+    throw new TypeError("Only string elements are possible.");
+  }
+
+  const valueLength = value.length;
+
+  // 1 이상 1000 이하 문자열
+  if (valueLength < 1 && 1000 < valueLength) {
+    throw new RangeError("Only strings greater than or equal to 1 and less than or equal to 1000.");
+  }
+
+  return false;
+};
+
 function problem2(cryptogram) {
+  checkException(cryptogram);
+
   const eachStringArray = convertToCharacterArray(cryptogram);
   const arrayAnswer = recursiveTour(eachStringArray);
   const stringAnswer = convertToString(arrayAnswer);
