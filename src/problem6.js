@@ -5,7 +5,7 @@ const NickNameChecker = {
     if (!this.checkForms(forms)) {
       return false;
     }
-    forms = forms.filter(emailString);
+    forms = forms.filter((form) => this.checkFormEmail(form[0]));
     return true;
   },
   checkForms: function (forms) {
