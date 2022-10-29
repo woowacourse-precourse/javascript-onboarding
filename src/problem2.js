@@ -68,6 +68,17 @@ const checkDuplicateLetter = stringArray => {
   return [firstPoint, ...restPointIndexArray];
 };
 
+const stringDeduplication = (pointArray, targetArray, _deleteCount = 2) => {
+  const copiedPointArray = copyArray(pointArray);
+  const copiedTargetArray = copyArray(targetArray);
+
+  each(copiedPointArray, pointIndex => copiedTargetArray.splice(pointIndex, _deleteCount));
+
+  const newResultArray = copyArray(copiedTargetArray);
+
+  return newResultArray;
+};
+
 function problem2(cryptogram) {
   var answer;
   return answer;
