@@ -1,9 +1,9 @@
 function lowercase(num) {
-  return String.fromCharCode(97 + (122 - num));
+  return 97 + (122 - num);
 }
 
 function uppercase(num) {
-  return String.fromCharCode(65 + (90 - num));
+  return 65 + (90 - num);
 }
 
 function problem4(word) {
@@ -11,16 +11,17 @@ function problem4(word) {
 
   for (let x of word) {
     const asciiX = x.charCodeAt();
+    let reverseAscii;
 
     if (asciiX >= 65 && asciiX <= 90) {
-      const reverseUpper = uppercase(asciiX);
-      answer += reverseUpper;
+      reverseAscii = uppercase(asciiX);
     } else if (asciiX >= 97 && asciiX <= 122) {
-      const reverseLower = lowercase(asciiX);
-      answer += reverseLower;
+      reverseAscii = lowercase(asciiX);
     } else {
-      answer += String.fromCharCode(asciiX);
+      reverseAscii = asciiX;
     }
+
+    answer += String.fromCharCode(reverseAscii);
   }
 
   return answer;
