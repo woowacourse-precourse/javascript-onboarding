@@ -74,25 +74,16 @@ function problem7(user, friends, visitors) {
     return 0;
   });
 
+  let answer = [];
   // 5. 최종 추천친구 중 가장 점수 높은 5명 리턴하기
-
-  console.log(current_friends);
-  console.log(recommendations2);
+  for (let i = 0; i < recommendations2.length; i++) {
+    if (i > 4) {
+      break;
+    }
+    answer.push(recommendations2[i].name);
+  }
 
   return answer;
 }
-
-problem7(
-  "mrko",
-  [
-    ["donut", "jun"],
-    ["donut", "andole"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 
 module.exports = problem7;
