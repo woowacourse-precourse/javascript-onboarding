@@ -7,8 +7,6 @@ function problem4(word) {
     LowerStr[String.fromCharCode(i)] = String.fromCharCode(219 - i);
     UpperStr[String.fromCharCode(i - 32)] = String.fromCharCode(219 - i - 32);
   }
-  console.log(LowerStr);
-  console.log(UpperStr);
 
   for (let i = 0; i < word.length; i++) {
     if (LowerStr[word[i]]) {
@@ -19,7 +17,7 @@ function problem4(word) {
       answer += word[i];
     }
   }
-  console.log(answer);
+
   return answer;
 }
 
