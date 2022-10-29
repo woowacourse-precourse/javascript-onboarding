@@ -76,6 +76,7 @@ function problem1(pobi, crong) {
   else if(maxPobi < maxCrong) answer = 2;
   else answer = 0;
   
+  console.log(answer);
   return answer;
 }
 
