@@ -1,3 +1,34 @@
+const findTop5 = (highscoreFriends) => {
+  const highscoreFriendsName = [];
+  for(let i=0; i<Math.min(highscoreFriends.length, 5); i++)
+    highscoreFriendsName.push(highscoreFriends[i].name);
+  return highscoreFriendsName;
+}
+
+const findHighScore = (friendsScore) => {
+  const highscoreFriends = [];
+
+  for (const [key, value] of Object.entries(friendsScore)) {
+    if(value === 0)
+      continue;
+    const tmp = {
+      name: key,
+      score: value
+    }
+    highscoreFriends.push(tmp);
+  }
+  highscoreFriends.sort(function(a, b){
+    if(a.score === b.score){
+      if(a.name > b.name)
+        return 1;
+      else
+        return -1;
+    }
+    return b.score - a.score;
+  });
+  return findTop5(highscoreFriends);
+}
+
 const visitorsPoints = (userFriends, visitors, friendsScore) => {
   for(let i=0; i<visitors.length; i++) {
     if(userFriends.includes(visitors[i]))
@@ -36,7 +67,7 @@ const setFriendsList = (friendsList, friends, friendsScore) => {
 
 function problem7(user, friends, visitors) {
   const friendsList = new Object();
-  const friendsScore = new Object();
+  let friendsScore = new Object();
   setFriendsList(friendsList, friends, friendsScore);
   const userFriends = [];
 
@@ -45,10 +76,7 @@ function problem7(user, friends, visitors) {
   }
   acquaintancePoints(user, userFriends, friendsList, friendsScore);
   visitorsPoints(userFriends, visitors, friendsScore)
-
-  console.log(friendsScore);
+  return findHighScore(friendsScore);
 }
-
-problem7("mrko", [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ], ["bedi", "bedi", "donut", "bedi", "shakevan"]);
 
 module.exports = problem7;
