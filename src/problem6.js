@@ -11,6 +11,7 @@ function problem6(forms) {
 
   if (!checkValidCrewNumber(forms, crew.minimum, crew.maximum)) return;
   if (!checkValidEmail(emailList)) return;
+  if (!checkValidNickname(nicknameList)) return;
 
   const dividedNicknameList = [].concat(...getBrokenNicknameList(nicknameList));
   const duplicatedwords = findDuplicates(dividedNicknameList);
@@ -62,6 +63,21 @@ function checkValidEmail(arr) {
       return false;
     }
     return true;
+  });
+}
+
+function checkValidNickname(arr) {
+  const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+  return arr.every((nickname) => {
+    if (nickname.length < 1 || nickname.length >= 20) {
+      console.error('닉네임은 1자 이상 20자 미만으로 입력해주세요');
+      return false;
+    }
+    if (!regex.test(nickname)) {
+      console.error('닉네임은 한글로 설정해주세요');
+      return false;
+    }
+    if (nickname) return true;
   });
 }
 
