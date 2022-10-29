@@ -17,7 +17,7 @@ const rule = {
  * @param {number[]} maxArr 페이지의 최대값이 저장되는 배열
  * @param {number} maxIdx pobi의 경우 rule.pobi, crong의 경우 rule.crong이다.
  */
-function getMax(arr, maxArr, maxIdx) {
+const getMax = (arr, maxArr, maxIdx) => {
   arr.map((v) => {
     const tmpArr = v
       .toString()
@@ -28,15 +28,20 @@ function getMax(arr, maxArr, maxIdx) {
     const tmpMultiple = tmpArr.reduce((p, c) => p * c);
     maxArr[maxIdx] = Math.max(maxArr[maxIdx], tmpSum, tmpMultiple);
   });
-}
+};
 
-function problem1(pobi, crong) {
+/**
+ * @param {number[]} pobi - 포비의 페이지가 담긴 배열
+ * @param {number[]} crong - 크롱의 페이지가 담긴 배열
+ * @returns {boolean} 요구하는 제한사항에 걸려 올바르지 못한 결과를 낼 수 있는 경우 해당 함수는 true를 반환하며, 문제가 없을 경우 false를 반환한다.
+ */
+const exceptionChecker = (pobi, crong) => {
   // 예외 상황 :: 포비 또는 크롱이 첫 페이지를 펼쳤을 때
   if (
     pobi[rule.leftPage] === rule.firstPage ||
     crong[rule.leftPage] === rule.firstPage
   ) {
-    return rule.exception;
+    return true;
   }
 
   // 예외 상황 :: 포비 또는 크롱이 마지막 페이지를 펼쳤을 때
@@ -44,7 +49,7 @@ function problem1(pobi, crong) {
     pobi[rule.rightPage] === rule.lastPage ||
     crong[rule.rightPage] === rule.lastPage
   ) {
-    return rule.exception;
+    return true;
   }
 
   // 예외상황 :: 왼쪽페이지 번호와 오른쪽 페이지 번호가 형식에 맞지 않을 떄
@@ -52,8 +57,12 @@ function problem1(pobi, crong) {
     pobi[rule.leftPage] + 1 !== pobi[rule.rightPage] ||
     crong[rule.leftPage] + 1 !== crong[rule.rightPage]
   ) {
-    return rule.exception;
+    return true;
   }
+};
+
+function problem1(pobi, crong) {
+  if (exceptionChecker(pobi, crong)) return rule.exception;
 
   const max = [Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
 
