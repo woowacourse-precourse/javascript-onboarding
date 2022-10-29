@@ -13,7 +13,7 @@ function problem1(pobi, crong) {
   if(result_value(pobi)==result_value(crong)){
     return 0
   }
-  
+
   return -1;
 }
 
@@ -25,7 +25,7 @@ function checkPage(pages){
   return true
 }
 
-function plus_value(page){
+function plusValue(page){
   let sum = 0;
   for(let i = 2;i>0;i--){
     let digit = Math.pow(10, i)
@@ -35,7 +35,7 @@ function plus_value(page){
   return sum+page
 }
 
-function multi_value(page){
+function multiValue(page){
   let sum = 1;
   let numbers = String(page).split("")
   if(numbers.includes('0')){return 0}
@@ -43,7 +43,7 @@ function multi_value(page){
   return sum
 }
 
-function result_value(member){
+function resultValue(member){
   for (let idx in member){
     member[idx] = Math.max(plus_value(member[idx]),multi_value(member[idx]))
   }
