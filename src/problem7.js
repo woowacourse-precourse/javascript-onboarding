@@ -23,17 +23,25 @@ function problem7(user, friends, visitors) {
         }
       }
     }
-    // 2-2. 사용자 타임라인 방문자 찾기
-    for (let j = 0; j < visitors.length; j++) {
-      // 사용자와 이미 친구라면
-      if (current_friends[i] == visitors[j]) {
-        continue;
+  }
+
+  // 2-2. 사용자 타임라인 방문자 찾기
+  for (let i = 0; i < visitors.length; i++) {
+    // 사용자와 이미 친구라면
+    isBreak = false;
+    for (let j = 0; j < current_friends.length; j++) {
+      if (visitors[i] == current_friends[j]) {
+        isBreak = true;
+        break;
       }
+    }
+    if (!isBreak) {
       // 추천친구목록에 추가
-      recommendations.push([visitors[j], 1]);
+      recommendations.push([visitors[i], 1]);
     }
   }
 
+  console.log(current_friends);
   console.log(recommendations);
 
   return answer;
