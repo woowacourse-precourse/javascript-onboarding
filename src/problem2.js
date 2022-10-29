@@ -25,4 +25,10 @@ function validRange(arr) {
   return (arr.length >= 1 && arr.length <= 1000);
 }
 
+function validLetters(str) {
+  const reg = /^[a-z]*$/;
+
+  return reg.test(str);
+}
+
 module.exports = problem2;
