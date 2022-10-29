@@ -7,6 +7,7 @@ function isUpperCase(ascii) {
 }
 
 function chgUpperCase(ascii) {
+  //참개구리 사전식 대문자 변환을 위해 ascii 코드를 변환
   return String.fromCharCode(77.5 + (77.5 - ascii));
 }
 
@@ -19,7 +20,7 @@ function isLowerCase(ascii) {
 }
 
 function chgLowerCase(ascii) {
-  //참개구리 사전식 변환을 위해 ascii 코드를 변환
+  //참개구리 사전식 소문자 변환을 위해 ascii 코드를 변환
   return String.fromCharCode(109.5 + (109.5 - ascii));
 }
 
