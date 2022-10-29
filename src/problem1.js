@@ -2,17 +2,24 @@ function isArrayIncludesZero(nums) {
   return nums.includes(0);
 }
 
-function calcMaxNumber(num) {
-  const nums = num.toString().split("").map(Number);
+function sumDigit(digits) {
+  return digits.reduce((a, b) => a + b, 0);
+}
 
-  if (isArrayIncludesZero(nums)) {
-    return nums.reduce((a, b) => a + b, 0);
-  }
+function multiplyDigit(digits) {
+  return digits.reduce((a, b) => a * b, 1);
+}
 
-  return Math.max(
-    nums.reduce((a, b) => a * b, 1),
-    nums.reduce((a, b) => a + b, 0)
+function calcMaxNumber(pages) {
+  const pageDigits = pages.map((page) => page.toString().split("").map(Number));
+
+  const [leftPageMaxNum, rightPageMaxNum] = pageDigits.map((pageDigit) =>
+    isArrayIncludesZero(pageDigit)
+      ? sumDigit(pageDigit)
+      : Math.max(sumDigit(pageDigit), multiplyDigit(pageDigit))
   );
+
+  return Math.max(leftPageMaxNum, rightPageMaxNum);
 }
 
 function isValidPage(pages) {
@@ -46,17 +53,8 @@ function problem1(pobi, crong) {
     return EXCEPTION;
   }
 
-  const [pobiLeftPage, pobiRightPage] = pobi;
-  const [crongLeftPage, crongRightPage] = crong;
-
-  const pobiMaxNum = Math.max(
-    calcMaxNumber(pobiLeftPage),
-    calcMaxNumber(pobiRightPage)
-  );
-  const crongMaxNum = Math.max(
-    calcMaxNumber(crongLeftPage),
-    calcMaxNumber(crongRightPage)
-  );
+  const pobiMaxNum = calcMaxNumber(pobi);
+  const crongMaxNum = calcMaxNumber(crong);
 
   if (pobiMaxNum > crongMaxNum) {
     return POBI_WIN;
