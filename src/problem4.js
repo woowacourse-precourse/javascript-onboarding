@@ -8,4 +8,13 @@ function checkAlphabet(char) {
   return regexp.test(char);
 }
 
+function reverseAlphabet(char) {
+  const isLowerCase = char === char.toLowerCase();
+  const start = isLowerCase ? 'a'.charCodeAt() : 'A'.charCodeAt();
+  const end = isLowerCase ? 'z'.charCodeAt() : 'Z'.charCodeAt();
+  const reverseCharCode = start + end - char.charCodeAt();
+
+  return String.fromCharCode(reverseCharCode);
+}
+
 module.exports = problem4;
