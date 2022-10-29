@@ -52,6 +52,12 @@ function problem7(user, friends, visitors) {
   scoreVisitors(recommendScore, visitors, userFriendList);
 
   let sortedScoreResult = [...recommendScore].sort((a, b) => b[1] - a[1]);
+  for (let i = 0; i < sortedScoreResult.length; i++) {
+    if (sortedScoreResult[i][1] !== 0) {
+      answer.push(sortedScoreResult[i][0]);
+    }
+  }
+  return answer;
 }
 
 module.exports = problem7;
