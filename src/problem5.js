@@ -1,7 +1,7 @@
 const moneyUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
 function problem5(money) {
-  let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   let price = money;
 
   if (money < 1 || money > 1000000) {
