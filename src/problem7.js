@@ -1,4 +1,4 @@
-function getNetwork(friends, network) {
+function updateNetwork(friends, network) {
   for (const friend of friends) {
     if (!network.has(friend[0])) {
       network.set(friend[0], []);
@@ -10,7 +10,7 @@ function getNetwork(friends, network) {
     network.get(friend[1]).push(friend[0]);
   }
 }
-function getNetworkScore(user, network, scoreMap) {
+function updateNetworkScore(user, network, scoreMap) {
   if (!network.has(user)) return;
   for (const friend of network.get(user)) {
     for (const other of network.get(friend)) {
@@ -21,7 +21,7 @@ function getNetworkScore(user, network, scoreMap) {
     }
   }
 }
-function getVisitScore(visitors, scoreMap) {
+function updateVisitScore(visitors, scoreMap) {
   for (const visitor of visitors) {
     if (!scoreMap.has(visitor)) scoreMap.set(visitor, 0);
     const score = scoreMap.get(visitor);
@@ -49,9 +49,9 @@ function problem7(user, friends, visitors) {
   var answer;
   const network = new Map();
   const scoreMap = new Map();
-  getNetwork(friends, network);
-  getNetworkScore(user, network, scoreMap);
-  getVisitScore(visitors, scoreMap);
+  updateNetwork(friends, network);
+  updateNetworkScore(user, network, scoreMap);
+  updateVisitScore(visitors, scoreMap);
   removeAlreadyFriend(user, network, scoreMap);
   const sortedArr = getSortedScoreArr(scoreMap);
   answer = select5Person(sortedArr);
