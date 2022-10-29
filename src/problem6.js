@@ -3,40 +3,31 @@ function problem6(forms) {
   let resultArr = [];
   for (let i = 1; i < forms.length ; i++) {
     let comparisonArr = [];
-    let comapredArr = [];
+    let comparedArr = [];
     let firstNick = forms[0][1];
-
-    makePossibleArr(firstNick);
-    console.log(makePossibleArr(firstNick));
-    
-    
-    
     let temp = forms[0];
-
     let length = forms.length - i;
-
-
-
-    for (let p = 1; p <= length; p++) {
-
-      // let comparedArr = [...forms[p][1]];
-      // let intersection = afterFilter.filter(x => comparedArr.includes(x));
-      // let overlap = intersection.join('');
-      // console.log(overlap);
-      // console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
-    }
     
+    comparisonArr = makeArrCases(firstNick);
+
+    for (let p = 1; p <= forms.length - i; p++) {
+      let remainderNick = forms[p][1];
+      comparedArr = makeArrCases(remainderNick);
+      let intersection = comparedArr.filter(x => comparisonArr.includes(x));
+      console.log(intersection);
+      if (intersection != '') {
+        resultArr.push(forms[p][0]);
+        resultArr.push(forms[0][0]);
+      }
+    }
     forms[0] = forms[length];
     forms[length] = temp;
-    
-    
-    
   }
   console.log(resultArr);
   return answer;
 }
 
-function makePossibleArr(string) {
+function makeArrCases(string) {
   let possibleArr =[];
   for (let k = 0; k < string.length; k++) {
     for (let j = 0; j < string.length + 1; j++) {
