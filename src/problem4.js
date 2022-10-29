@@ -18,7 +18,22 @@ function isLowerCase(char) {
 }
 
 function problem4(word) {
-  var answer;
+  const answer = [...word]
+    .map((char) => {
+      if (isUpperCase(char)) {
+        return String.fromCharCode(
+          ASCII_UPPERCASE_A + ASCII_UPPERCASE_Z - char.charCodeAt(0)
+        );
+      } else if (isLowerCase(char)) {
+        return String.fromCharCode(
+          ASCII_LOWERCASE_A + ASCII_LOWERCASE_Z - char.charCodeAt(0)
+        );
+      } else {
+        return char;
+      }
+    })
+    .join("");
+
   return answer;
 }
 
