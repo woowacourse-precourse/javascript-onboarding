@@ -15,6 +15,17 @@ function problem7(user, friends, visitors) {
   for (let visitor of visitors) {
     userPointList[visitor] += 1;
   }
+
+  // user의 친구 구하기
+  let myFriends = [];
+  for (let a of friends) {
+    if (a[0] === userName) {
+      myFriends.push(a[1]);
+    }
+    if (a[1] === userName) {
+      myFriends.push(a[0]);
+    }
+  }
 }
 
 module.exports = problem7;
