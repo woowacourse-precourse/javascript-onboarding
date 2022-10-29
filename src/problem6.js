@@ -23,19 +23,9 @@ function problem6(forms) {
       if (repeatTextObj[testText] > 1) overLappingWords.push(email);
     }
   });
-  return [...new Set(overLappingWords)].sort();
+
+  let answer = [...new Set(overLappingWords)].sort();
+  return answer;
 }
 
-console.log(
-  problem6([
-    ["jm@email.com", "이불이불엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
-
-// 같은 글자가 연속적으로 반복하되 같은 이름에서 반복될 경우는
-// 제외해주어야 한다
 module.exports = problem6;
