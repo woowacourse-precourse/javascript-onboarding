@@ -1,22 +1,27 @@
 function problem2(cryptogram) {
   if (cryptogram.length === 0) return "";
+
   function getNoContinuousWords(str) {
-    let obj = { 0: str[0] };
+    let noContinuousWordsObj = { 0: str[0] };
     for (let i = 1; i < str.length; i++) {
       if (str[i] !== str[i - 1]) {
-        obj[`${i}`] = str[i];
+        noContinuousWordsObj[i] = str[i];
       } else {
-        if (obj[`${i - 1}`]) {
-          delete obj[`${i - 1}`];
+        if (noContinuousWordsObj[i - 1]) {
+          delete noContinuousWordsObj[i - 1];
         }
       }
     }
-    let answerStr = Object.values(obj).join("");
+    let answerStr = Object.values(noContinuousWordsObj).join("");
+
     if (!answerStr) return "";
     if (answerStr === str) return str;
     return getNoContinuousWords(answerStr);
   }
+
   return getNoContinuousWords(cryptogram);
 }
+
+console.log(problem2("saddaas"));
 
 module.exports = problem2;
