@@ -15,6 +15,19 @@ function problem7(user, friends, visitors) {
   addScore(user, otherFriends, userFriends, score, 10);
   addScore(user, visitors, userFriends, score, 1);
 
+  answer = Object.entries(score)
+    .sort((a, b) => {
+      if (a[1] > b[1]) return -1;
+      else if (a[1] < b[1]) return 1;
+      else {
+        if (a[0] > b[0]) return 1;
+        if (a[0] < b[0]) return -1;
+        else return 0;
+      }
+    })
+    .map((e) => e[0]);
+  console.log(answer);
+  console.log(score);
   return answer;
 }
 
