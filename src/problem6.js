@@ -35,7 +35,37 @@ function nicknameDupleCheck(forms, dupliData) {
   });
   return dupleCheck.sort();
 }
+function nicknameCheck(nickname) {
+  let result = [];
+  const regExp = /^([가-힣]){1,19}$/gm;
+  nickname.map((name) => {
+    if (!name.match(regExp)) {
+      result.push(name);
+    }
+  });
+  return result.length === 0 ? true : false;
+}
+function emailCheck(email) {
+  let result = [];
+  const regExp = /^[a-z0-9가-힣]{1,9}@email.com/gm;
+  email.map((mail) => {
+    if (!mail.match(regExp)) {
+      result.push(mail);
+    }
+  });
+  return result.length === 0 ? true : false;
+}
+function isException(forms) {
+  const email = [];
+  const nickname = [];
+  forms.forEach((val) => {
+    email.push(val[0]);
+    nickname.push(val[1]);
+  });
+  return nicknameCheck(nickname) && emailCheck(email) ? false : true;
+}
 function problem6(forms) {
+  if (isException(forms)) return -1;
   let nicknameArray = [];
   let dupleCountMap = new Map();
   let dupliData = [];
