@@ -19,8 +19,6 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-module.exports = problem1;
-
 function checkExcept(pages){
   if (pages[1]!=pages[0]+1)
     return true
@@ -47,7 +45,6 @@ function calculateNum(nums){
   return Math.max(...scoreList)
 
 }
-
 
 
 module.exports = problem1;
