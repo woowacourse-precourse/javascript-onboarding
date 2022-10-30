@@ -19,10 +19,11 @@ function problem7(user, friends, visitors) {
   
   let UserwithScore = giveScore(acquaintance, 10)
   let totalScoreArr = UserwithScore.concat(giveScore(visitors, 1));
-  console.log(totalScoreArr);
 
   let finalScoreArr = sumScore(totalScoreArr);
   console.log(finalScoreArr);
+
+  // 배열 정렬하기
 
   return answer;
 }
@@ -53,12 +54,12 @@ console.log(
   problem7(
     "mrko",
     [
-      ["donut", "andole"],
       ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
       ["shakevan", "mrko"],
+      ["donut", "mrko"],
+      ["shakevan", "jun"],
+      ["donut", "andole"],
+      ["shakevan", "andole"],
     ],
     ["bedi", "bedi", "donut", "bedi", "shakevan"]
   )
