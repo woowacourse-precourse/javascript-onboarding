@@ -1,7 +1,13 @@
 function problem7(user, friends, visitors) {
   var answer = [];
   var myObj = new Object();
-  
+  var check = 0;
+  var realFriend = "";
+  var insideFriend = "";
+  var tmp = "";
+  var forAnswer = [];
+
+
   // 친구 관계 확인을 위한 오브젝트 생성 friends에서의 관계.
   friends.forEach(element => {
     if (myObj[element[0]]){
@@ -30,6 +36,31 @@ function problem7(user, friends, visitors) {
 
   //유저도 포함시켜, 유저에게 잘못된 점수를 주는것을 방지합니다.
   myObj[user].push(user);
+
+
+
+
+  //사용자와 함께 아는 친구의 수를 구하는 기능을 합니다.
+  for (let i=1; i < myObj[user].length-1 ; i++){
+    realFriend = myObj[user][i];
+    // console.log(realFriend);
+    for (let j=1; j < myObj[realFriend].length ; j++){
+      insideFriend = myObj[realFriend][j];
+
+      for(let k = 1; k < myObj[user].length ; k++){
+        if (insideFriend === myObj[user][k]){
+          check = 1;
+          break;
+        }
+      }
+      if (!check){
+        myObj[insideFriend][0] += 10;
+      }
+      else{
+        check = 0;
+      }
+    }
+  }
 
 
 
