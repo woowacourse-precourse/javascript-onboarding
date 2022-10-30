@@ -1,6 +1,6 @@
 function is369(number) {
   if (number !== 0 && number % 3 === 0) return 1;
-  else return 0;
+  return 0;
 }
 function countClap(number) {
   let ret = 0;
