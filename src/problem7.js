@@ -104,4 +104,19 @@ function sorting(recomendFriends) {
 
   return sort;
 }
+
+function getExceptionAcquaintance(friends){
+  const exceptionFriends = friends.filter(friends=>{
+    let count = 0;
+    for (let friend of friends){
+      if (myFriends.indexOf(friend) > -1){
+        count += 1;
+      }
+    }
+
+    return count === 2 ? false : true
+  })
+
+  return exceptionFriends
+}
 module.exports = problem7;
