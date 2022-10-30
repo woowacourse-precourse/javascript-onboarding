@@ -2,15 +2,18 @@ function problem4(word) {
   var answer = "";
 
   for (var i = 0; i < word.length; i++) {
-    if (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90) {
+    var asciiCodeNum = word.charCodeAt(i);
+    var changeAlphabet = word.charAt(i);
+
+    if (asciiCodeNum >= 65 && asciiCodeNum <= 90) {
       // 대문자인 경우
-      answer += String.fromCharCode(155 - word.charCodeAt(i));
-    } else if (word.charCodeAt(i) >= 97 && word.charCodeAt(i) <= 122) {
+      changeAlphabet = String.fromCharCode(155 - asciiCodeNum);
+    } else if (asciiCodeNum >= 97 && asciiCodeNum <= 122) {
       // 소문자인 경우
-      answer += String.fromCharCode(219 - word.charCodeAt(i));
-    } else {
-      answer += word.charAt(i);
+      changeAlphabet = String.fromCharCode(219 - asciiCodeNum);
     }
+
+    answer += changeAlphabet;
   }
 
   return answer;
