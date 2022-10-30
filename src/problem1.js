@@ -1,5 +1,10 @@
+function validateInput(input) {
+  return input[0] >= 1 && input[0] < 400 && input[1] - input[0] === 1;
+}
+
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+  if (!validateInput(pobi) || !validateInput(crong)) return -1;
   return answer;
 }
 
