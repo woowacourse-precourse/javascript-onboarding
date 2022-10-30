@@ -21,6 +21,7 @@ class ScoreData {
       });
     })
   }
+  scoreVisitors() { this.visitors.forEach((visitor) => this.giveScore(visitor, 1)); }
 }
 
 function getUserFriends(user, friends) {
