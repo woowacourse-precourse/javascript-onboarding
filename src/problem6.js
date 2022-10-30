@@ -1,22 +1,14 @@
 /**
- * check if the two given strings have same consequtive characters.
- * @param {string} name1 first string to check
- * @param {string} name2 second string to check
- * @returns {boolean} whether the two given strings have same consequtive characters or not
+ * cut the string into substrings of length 2
+ * @param {string} name given string
+ * @returns {string[]} string array of stusbrings of length 2
  */
-function isSimilar(name1, name2) {
-  const name1Length = name1.length;
-  const name2Length = name2.length;
-
-  for (let i = 0; i < name1Length - 1; i++) {
-    for (let j = 0; j < name2Length - 1; j++) {
-      if (name1[i] === name2[j] && name1[i + 1] === name2[j + 1]) {
-        return true;
-      }
-    }
+function toSubstr(name) {
+  substrArray = [];
+  for (let i = 0; i < name.length() - 1; i++) {
+    substrArr.push(name[i] + name[i + 1]);
   }
-
-  return false;
+  return substrArr;
 }
 
 function problem6(forms) {
