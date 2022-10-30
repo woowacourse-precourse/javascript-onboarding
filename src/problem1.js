@@ -32,9 +32,15 @@ function isContinuousPage(pages){
   return Math.abs(pages[0] - pages[1]) === 1;
 }
 
+// 시작 면이나 마지막 면인지 판별하는 기능
+function isNotStartOrEnd(pages) {
+  return (pages[0] !== 1) && (pages[1] !== 400);
+}
+
 // 포비와 크롱의 페이지가 둘 다 정상적인지 확인하는 함수
 function isCorrectBoth(pobi, crong) {
-  return isContinuousPage(pobi) && isContinuousPage(crong);
+  return isNotStartOrEnd(pobi) && isNotStartOrEnd(crong) 
+          && isContinuousPage(pobi) && isContinuousPage(crong);
 }
 
 function problem1(pobi, crong) {
