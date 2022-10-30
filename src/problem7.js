@@ -89,6 +89,17 @@ function problem7(user, friends, visitors) {
     });
   };
 
+  const find_answer = () => {
+    let answer = [];
+    for (let i = 0; i < recommendations2.length; i++) {
+      if (i > 4) {
+        break;
+      }
+      answer.push(recommendations2[i].name);
+    }
+    return answer;
+  };
+
   const solution = () => {
     find_current_friends();
     find_friends_of_friends();
@@ -98,17 +109,7 @@ function problem7(user, friends, visitors) {
   };
 
   solution();
-
-  let answer = [];
-  // 5. 최종 추천친구 중 가장 점수 높은 5명 리턴하기
-  for (let i = 0; i < recommendations2.length; i++) {
-    if (i > 4) {
-      break;
-    }
-    answer.push(recommendations2[i].name);
-  }
-
-  return answer;
+  return find_answer();
 }
 
 module.exports = problem7;
