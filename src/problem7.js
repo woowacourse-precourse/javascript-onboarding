@@ -43,6 +43,11 @@ function problem7(user, friends, visitors) {
  result.sort(function(a,b){
     return b[1]-a[1];
   })
+  for(let i=0;i<result.length;i++){
+    if(alreadyFriend.includes(result[i][0]) == false){
+      answer.push(result[i][0]);
+    }
+  }
 
   return answer;
 }
