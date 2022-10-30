@@ -18,22 +18,29 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  recommendList = recommendList.filter(name => name !== user);
+  recommendList = recommendList.filter((name) => name !== user);
 
   let countedNames = recommendList.reduce(function (allNames, name) {
     if (name in allNames) {
       allNames[name]++;
-    }
-    else {
+    } else {
       allNames[name] = 1;
     }
     return allNames;
   }, {});
 
- for(let friend of list) {
-   tempVisitor = tempVisitor.filter(name => name !== friend);
- }
-  
+  for (let friend of list) {
+    tempVisitor = tempVisitor.filter((name) => name !== friend);
+  }
+
+  let countedVisitor = tempVisitor.reduce(function (allNames, name) {
+    if (name in allNames) {
+      allNames[name]++;
+    } else {
+      allNames[name] = 1;
+    }
+    return allNames;
+  }, {});
 
   return answer;
 }
