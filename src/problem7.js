@@ -57,12 +57,6 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < 5; i++) {
     maxFiveList.push(pointArr[i]);
   }
-  // 점수가 0점일 경우 제외
-  for (let i = 0; i < maxFiveList.length; i++) {
-    if (maxFiveList[i][1] === 0) {
-      maxFiveList.splice(i, 1);
-    }
-  }
 
   // 추천 이름
   let result = [];
