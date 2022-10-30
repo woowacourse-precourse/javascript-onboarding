@@ -3,6 +3,9 @@ const getAlphabets = () =>
 
 const getAlphabetIdx = (alphabets, ch) => alphabets.indexOf(ch.toUpperCase());
 
+const judgeAlphabetCase = ({ target, origin }) =>
+  target.toUpperCase() === target ? origin : origin.toLowerCase();
+
 function problem4(word) {
   const alphabets = getAlphabets();
   const reversedAlphabets = [...alphabets].reverse();
@@ -11,7 +14,7 @@ function problem4(word) {
     .map((ch) => {
       if (ch === " ") return " ";
       const reversed = reversedAlphabets[getAlphabetIdx(alphabets, ch)];
-      return ch.toUpperCase() === ch ? reversed : reversed.toLowerCase();
+      return judgeAlphabetCase({ target: ch, origin: reversed });
     })
     .join("");
 }
