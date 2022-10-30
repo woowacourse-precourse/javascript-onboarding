@@ -20,12 +20,16 @@ function problem7(user, friends, visitors) {
     }
     suggestFriends.delete(user);
   })
-  
+
   visitors.map(visitor => {
     if(friendsOfUser.includes(visitor) === false){
       suggestFriends.set(visitor, (suggestFriends.get(visitor)||0)+1);
     }
   })
+
+  return [...suggestFriends].sort((a,b) => b[1]-a[1])
+  .map(friend => friend[0])
+  .slice(0,5);
 }
 
 module.exports = problem7;
