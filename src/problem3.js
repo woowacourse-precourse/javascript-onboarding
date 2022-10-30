@@ -1,5 +1,11 @@
 function problem3(number) {
   var answer;
+
+  // 예외처리
+  answer = errorHandler(number);
+  // 게임진행
+  answer = playGame(answer);
+
   return answer;
 }
 
@@ -15,8 +21,6 @@ function errorHandler(num) {
   else{
     for (i=1; i<num+1; i++) arr.push(i);
   }
-
-  console.log(arr);
 
   return arr;
 }
