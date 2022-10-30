@@ -7,7 +7,7 @@ function getUserFriend(user, friends){
   return userFriendList;
 }
 
-function getInterFriendNum(user, friends){
+function getInterFriendScore(user, friends){
   const userFriendList = getUserFriend(user, friends);
   const friendInclArr = [];
   let interFriendList = [];
@@ -23,18 +23,19 @@ function getInterFriendNum(user, friends){
 
   interFriendList = interFriendList.filter(v => !userFriendList.includes(v));
   interFriendList = interFriendList.filter(v => !v.includes(user));
-  const friendCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+  const friendCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 10 }), {});
   return friendCount(interFriendList);
 }
 
-function getVisitorNum(visitors){
+function getVisitorScore(visitors){
   const visitCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
   return visitCount(visitors);
 }
 
 function getScore(user, friends, visitors){
-  const friendScore = getInterFriendNum(user, friends);
-  const visitScore = getVisitorNum(visitors);
+  const interFriendScore = getInterFriendScore(user, friends);
+  const visitScore = getVisitorScore(visitors);
+
 }
 
 function problem7(user, friends, visitors) {
