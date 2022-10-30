@@ -8,6 +8,7 @@ function problem6(forms) {
   });
 
   const duplicates = [...duplicateSet];
+  return duplicates.sort(compareEmailAddress);
 }
 
 function getAdjacentStrings(string) {
@@ -39,6 +40,13 @@ function makeAdjacentMap(forms) {
 function checkDuplicate(nickname, adjacentMap) {
   const adjacentStrings = getAdjacentStrings(nickname);
   return adjacentStrings.some((string) => adjacentMap[string] > 1);
+}
+
+function compareEmailAddress(a, b) {
+  const domain = '@email.com';
+  const addressA = a.replace(domain, '');
+  const addressB = b.replace(domain, '');
+  return addressA.localeCompare(addressB);
 }
 
 module.exports = problem6;
