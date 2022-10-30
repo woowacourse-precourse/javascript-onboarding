@@ -36,11 +36,11 @@ function sortingEmails(emails) {
 }
 
 function checkEmailType(email) {
-  const email = email;
   const REG_EXP = /^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@email.com$/;
   if (email.length >= 11 && email.length < 20 && REG_EXP.test(email)) {
     return true;
   }
+  return false;
 }
 
 function nicknameType(nickname) {
