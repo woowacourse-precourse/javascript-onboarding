@@ -8,13 +8,17 @@ function problem1(pobi, crong) {
 
   function getMaxNumber(num) {
     let arr = String(num).split("");
-    let plusDigits = arr.reduce((acc, curr) => acc + +curr, 0);
-    let multipleDigits = arr.reduce((acc, curr) => acc * +curr, 1);
-    return Math.max(plusDigits, multipleDigits);
+    let plusAmount = 0;
+    let multipleAmount = 1;
+    for (let i = 0; i < arr.length; i++) {
+      plusAmount += +arr[i];
+      multipleAmount *= +arr[i];
+    }
+    return Math.max(plusAmount, multipleAmount);
   }
 
-  let pobiMaxNum = Math.max(getMaxNumber(pobi[0], pobi[1]));
-  let crongMaxNum = Math.max(getMaxNumber(crong[0], crong[1]));
+  let pobiMaxNum = Math.max(getMaxNumber(pobi[0]), getMaxNumber(pobi[1]));
+  let crongMaxNum = Math.max(getMaxNumber(crong[0]), getMaxNumber(crong[1]));
 
   if (pobiMaxNum > crongMaxNum) return 1;
   if (pobiMaxNum < crongMaxNum) return 2;
