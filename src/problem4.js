@@ -57,3 +57,9 @@ function alphabetGather() {
   ];
   return [lowerWord, upperWord];
 }
+
+function wordToArray(word) {
+  let wordArrays = word.split("");
+
+  return wordArrays;
+}
