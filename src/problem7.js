@@ -61,7 +61,7 @@ function problem7(user, friends, visitors) {
   const answer = [];
   for(let i = 0; (answer.length <= 5 && i < friendNames.length); i++){
     if(friendsScore(friendNames[i]) === 0) break;
-    if("not friend of a user") answer.push(friendNames[i]);
+    if(!friendGraph[user].includes(friendNames[i])) answer.push(friendNames[i]);
   }
   return answer;
 }
