@@ -26,7 +26,7 @@ function problem6(forms) {
         let list_index = forms.indexOf(crew);
         console.log(forms);
         forms.splice(list_index, 1);
-        console.log(list_index, ary, forms, crew);
+        console.log("ary", ary);
       }
     }
   }
