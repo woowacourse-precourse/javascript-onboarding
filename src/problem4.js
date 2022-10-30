@@ -6,7 +6,7 @@ function problem4(word) {
   for (let i = 0; i < word.length; i++) {
     s+= word[i];
     ss.push(s.charCodeAt(i)); //[65, 98, 32, ..]
-   
+    if (ss[i]===32){sss.push(' ')}
   }
   // let s='a' //word[i]
   // let ss = s.charCodeAt(0); //str -> uni
