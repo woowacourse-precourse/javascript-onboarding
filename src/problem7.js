@@ -81,6 +81,19 @@ function addOthersFriendsPoints(map, myFriends, othersFriends) {
 }
 
 /**
+ * @param {Map<string, number>} map
+ * @param {string[]} myFriends
+ * @param {string[]} visitors
+ */
+function addVisitorsPoints(map, myFriends, visitors) {
+  visitors.forEach((visitor) => {
+    if (!myFriends.includes(visitor)) {
+      setPointInMap(map, visitor, 1);
+    }
+  });
+}
+
+/**
  * @param {string} user
  * @param {[string, string][]} friends
  * @param {string[]} visitors
@@ -90,7 +103,8 @@ function problem7(user, friends, visitors) {
   const map = new Map();
   const { myFriends, othersFriends } = findMyFriends(user, friends);
   addOthersFriendsPoints(map, myFriends, othersFriends);
-  const result = [];
+  addVisitorsPoints(map, myFriends, visitors);
+  const result = [...map];
   return result;
 }
 
