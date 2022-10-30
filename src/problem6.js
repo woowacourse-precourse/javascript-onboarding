@@ -10,6 +10,16 @@ const getValuesOf = (target) => (forms) =>
     else throw new Error("해당 데이터는 존재하지 않습니다.");
   });
 
+const handleError = (forms) => {
+  const emails = getValuesOf("email")(forms);
+
+  for (let email of emails) {
+    const e = email.split("@")[1];
+    if (e !== "email.com") throw new Error("지원하지 않는 이메일 형식입니다.");
+  }
+  return forms;
+};
+
 const listDupCases = (nicknames) => {
   return nicknames.reduce((reduced, nickname) => {
     const copy = reduced.slice();
@@ -47,6 +57,7 @@ const sort = (arr) => arr.sort();
 
 function problem6(forms) {
   const result = compose(
+    handleError,
     getValuesOf("nickname"),
     listDupCases,
     findDups,
