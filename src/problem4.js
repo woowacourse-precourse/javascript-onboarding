@@ -75,3 +75,10 @@ function checkUpperCase(alphabet) {
     return true;
   }
 }
+
+function reverseWord(lowerWord, upperWord) {
+  const revLowerCase = [...lowerWord].reverse();
+  const revUpperCase = [...upperWord].reverse();
+
+  return [revLowerCase, revUpperCase];
+}
