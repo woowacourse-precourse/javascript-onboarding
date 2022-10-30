@@ -27,4 +27,25 @@ const getFriendsOfFriend = (user, friendRelation) => {
   return friendOfFriend;
 };
 
+const getScoreList = (user, friends, visitors) => {
+  const friendRelation = getFriendRelationList(friends),
+    friendOfFriend = getFriendsOfFriend(user, friendRelation),
+    scoreList = new Map(),
+    friendOfUser = friendRelation[user];
+  friendOfFriend.forEach((friend) => {
+    const friends = friendRelation[friend],
+      numOfFriends = friends.filter((friend) =>
+        friendOfUser.includes(friend)
+      ).length;
+    scoreList.set(friend, numOfFriends * 10);
+  });
+  visitors.forEach((visitor) => {
+    if (!friendOfUser.includes(visitor)) {
+      const score = scoreList.has(visitor) ? scoreList.get(visitor) + 1 : 1;
+      scoreList.set(visitor, score);
+    }
+  });
+  return [...scoreList];
+};
+
 module.exports = problem7;
