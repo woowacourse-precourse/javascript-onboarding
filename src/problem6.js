@@ -17,6 +17,22 @@ function splitNickname(forms){
   return twoWordArr;
 }
 
+function getCrewIndex(forms){
+  const crewIndex = [];
+  const twoWordArr = splitNickname(forms);
+  
+  for(let i = 0; i<twoWordArr.length ; i++){
+    for(let j = i+1 ; j<twoWordArr.length ; j++){
+      if(twoWordArr[i].filter(x=> twoWordArr[j].includes(x))!=""){
+        crewIndex.push(i, j);
+      }
+    }
+  }
+  const crewIndexArr = [...new Set(crewIndex)];
+
+  return crewIndexArr;
+}
+
 function problem6(forms) {
   forms.forEach(checkEmail); 
 }
