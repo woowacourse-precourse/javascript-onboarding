@@ -3,8 +3,6 @@ function problem6(forms) {
   //단 한번 탐색시 중복한 것들을 한번에 삭제 후 재 탐색 반복.
   let ObjForms = mapTheList(forms);
   let box = [];
-  const lastForms = [];
-
   for (let i = 0; i <forms.length; i++) {
     if (ObjForms.name[i].length >1) {
       box.push(FindArr(ObjForms.name[i],ObjForms));
@@ -14,8 +12,10 @@ function problem6(forms) {
   let setForms = new Set( box.reduce((acc,cur)=>{
     return acc.concat(...cur);
   },[]));
-  let arrForms = Array.from(setForms);
 
+  let arrForms = Array.from(setForms);
+  
+  const lastForms = [];
   for(let j=0;j<arrForms.length;j++){
     let LastCheckName = ObjForms.name.indexOf(arrForms[j]);
     let LastCheckEmail = lastForms.indexOf(ObjForms.email[j])
