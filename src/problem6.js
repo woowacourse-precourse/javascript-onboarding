@@ -15,6 +15,11 @@ function problem6(forms) {
             forms[a][1][c] + forms[a][1][c + 1] ==
               forms[b][1][d] + forms[b][1][d + 1]
           ) {
+            //중복 된 닉네임이 속해있는 이메일을 email_set에 저장한다
+            email_set[n] = forms[a][0];
+            n += 1;
+            email_set[n] = forms[b][0];
+            n += 1;
           }
         }
       }
