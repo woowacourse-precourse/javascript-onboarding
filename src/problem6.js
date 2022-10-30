@@ -1,5 +1,86 @@
 function problem6(forms) {
 
+  const inputForms = forms.slice()
+  const inputEmailList = inputForms.map(form => form[0])
+  const inputNickNameList = inputForms.map(form => form[1])
+
+  //특이사항
+  //!1. 이메일의 전체 길이는 11자 이상 20자 미만
+
+  function CHECK_EMAIL_LENGTH (email) {
+    if(email.length <11 || email.length >19){return false;}
+    else {return true;}
+  }
+
+  //!2. 신청할수 있는 이메일의 도메인은 email.com으로 제한
+
+  function CHECK_EMAIL_DOMAIN (email) {
+    
+    const inputEmail = email.split('@');
+    if(inputEmail[1] !== "email.com"){return false;}
+    else {return true;}
+
+  }
+  //!3. 닉네임은 한글만 가능
+
+  function CHECK_NICK_NAME_KOR (nickName){
+    const nickNameWordList = nickName.split('');
+    for(word of nickNameWordList){
+      if(/[가-힣]/.test(word) === false){
+        return false;
+      }      
+    }
+    return true;
+  }
+
+  //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
+
+  function CHECK_NICK_NAME_LENGTH(nickName){
+    if(nickName.length <1 || nickName.length >19){return false;}
+    else {return true;}
+  }
+
+  //!5. 이메일을 오름차순으로 정렬된 값을 반환하는 함수
+
+  function RETURN_ASC_EMAIL (mailList) {
+    return mailList.sort()
+  }
+
+  //!6. 이메일의 결과값의 중복된 내용은 제거
+
+  function RETURN_REMOVED_DUPLICATED_EMAIL (mailList ){
+    const newMailList = new Set(mailList)
+    return [...newMailList]
+  }
+
+  //[!1]
+  for(let email of inputEmailList){
+    if(CHECK_EMAIL_LENGTH(email) === false){
+      return '11자 미만이거나, 19자를 초과하는 이메일이 존재합니다.'
+    }
+  }
+
+  //[!2]
+  for(let email of inputEmailList){
+    if(CHECK_EMAIL_DOMAIN(email) === false){
+      return '형식에 맞지 않는 이메일이 존재합니다.'
+    }
+  }
+
+  //[!3]
+  for(let nickName of inputNickNameList){
+    if(CHECK_NICK_NAME_KOR(nickName) === false){
+      return '한글이 아닌 닉네임이 존재합니다.'
+    }
+  }
+
+  //[!4]
+  for(let nickName of inputNickNameList){
+    if(CHECK_NICK_NAME_LENGTH(nickName) === false){
+      return '1자 미만, 19자를 초과하는 닉네임이 존재합니다.'
+    }
+  }
+
   //필요변수
   //&1. 검사한 단어가 저장되는 배열
   const SEARCHED_WORD_LIST = [];
@@ -74,59 +155,12 @@ function problem6(forms) {
   }
 
 
-  //특이사항
-  //!1. 이메일의 전체 길이는 11자 이상 20자 미만
-
-  function CHECK_EMAIL_LENGTH (email) {
-    if(email.length <11 || email.length >19){return false;}
-    else {return true;}
-  }
-
-  //!2. 신청할수 있는 이메일의 도메인은 email.com으로 제한
-
-  function CHECK_EMAIL_DOMAIN (email) {
-    
-    const inputEmail = email.split('@');
-    if(inputEmail[1] !== "email.com"){return false;}
-    else {return true;}
-
-  }
-  //!3. 닉네임은 한글만 가능
-
-  function CHECK_NICK_NAME_KOR (nickName){
-    const nickNameWordList = nickName.split('');
-    for(word of nickNameWordList){
-      if(/[가-힣]/.test(word) === false){
-        return false;
-      }      
-    }
-    return true;
-  }
-
-  //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
-
-  function CHECK_NICK_NAME_LENGTH(nickName){
-    if(nickName.length <1 || nickName.length >19){return false;}
-    else {return true;}
-  }
-
-  //!5. 이메일을 오름차순으로 정렬된 값을 반환하는 함수
-
-  function RETURN_ASC_EMAIL (mailList) {
-    return mailList.sort()
-  }
-
-  //!6. 이메일의 결과값의 중복된 내용은 제거
-
-  function RETURN_REMOVED_DUPLICATED_EMAIL (mailList ){
-    const newMailList = new Set(mailList)
-    return [...newMailList]
-  }
 
 
 
-  
-  const inputForms = forms.slice()
+
+
+
 
   for(let index in inputForms){
 
@@ -148,11 +182,8 @@ function problem6(forms) {
 
                 INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index)
                 INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index +1 + +searchIndex)
-                
               }
-
             }
-
           }
         } 
       }
@@ -160,7 +191,11 @@ function problem6(forms) {
   }
 
   
-  return RETURN_EMAIL_LIST_WITH_INDEX()
+  const unsortedEmailList = RETURN_EMAIL_LIST_WITH_INDEX()
+  const removedDuplicatedEmailList = RETURN_REMOVED_DUPLICATED_EMAIL(unsortedEmailList);
+  const sortedEmailList = RETURN_ASC_EMAIL(removedDuplicatedEmailList);
+
+  return sortedEmailList
 }
 
 module.exports = problem6;
