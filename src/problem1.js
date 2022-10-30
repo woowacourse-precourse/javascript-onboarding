@@ -18,6 +18,12 @@ const sumAllDigit = (num) => {
   return numArr.reduce((acc, cur) => acc + cur, 0);
 }
 
+// 각 자리 숫자 곱하기
+const multiplyAllDigit = (num) => {
+  let numArr = String(num).split("").map(x=>+x);
+  return numArr.reduce((acc, cur) => acc * cur, 1);
+}
+
 // 메인 함수(점수를 계산하고 결과값 도출)
 function problem1(pobi, crong) {
   let result;
