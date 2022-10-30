@@ -47,6 +47,14 @@ function problem7(user, friends, visitors) {
       : resultMap.set(recommededFriend, score);
   }
 
+  resultMap = new Map(
+    [...resultMap].sort((a, b) => {
+      if (b[1] > a[1]) return 1;
+      else if (a[1] === b[1]) return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+      else if (a[1] > b[1]) return -1;
+    })
+  );
+
   return answer;
 }
 
