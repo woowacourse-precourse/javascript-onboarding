@@ -27,6 +27,7 @@ function problem6(forms) {
   }
 
   answer.sort();
+  answer = new Set(answer);
 
   return answer;
 }
