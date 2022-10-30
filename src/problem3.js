@@ -15,7 +15,16 @@ function problem3(number) {
   const regex = /[3,6,9]/g;
 
   if (number.toString().search(regex) != null) {
-    for (let i = 3; i <= number; i++) {}
+    for (let i = 3; i <= number; i++) {
+      let j = i;
+      while (j > 0) {
+        let sdc = j % 10;
+        if (sdc == 3 || sdc == 6 || sdc == 9) {
+          sum++;
+        }
+        j = parseInt(j / 10);
+      }
+    }
     answer = sum;
   } else {
     answer = 0;
