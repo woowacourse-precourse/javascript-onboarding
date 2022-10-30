@@ -1,9 +1,9 @@
 function problem4(word) {
   var answer;
-  var changed;
+  var changed = "";
 
   for (i = 0; i < word.length; i++) 
-    changed = changed + isAlpha(word[i]);   //변환된 값을 changed에 넣기
+    changed = changed + String.fromCharCode(isAlpha(word[i]));   //변환된 값을 changed에 넣기
 
   answer = changed;
   return answer;
