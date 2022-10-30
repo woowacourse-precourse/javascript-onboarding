@@ -14,6 +14,16 @@ function toSubstr(email, name) {
 
 function problem6(forms) {
   var answer;
+
+  let substrArr = [];
+  forms.foreach((profile) => {
+    const email = profile[0];
+    const name = profile[1];
+    toSubstr(email, name).foreach((e) => {
+      substrArr.push(e);
+    });
+  });
+
   return answer;
 }
 
