@@ -23,6 +23,9 @@ for (const components of dismantled){
 }
 
 const findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) !== index);
+const duplicates = findDuplicates(serialString);
+const duplicateSet = new Set(duplicates);
+const duplicateArray = [...duplicateSet];
 
 module.exports = problem6;
 
@@ -32,9 +35,9 @@ module.exports = problem6;
 //[x]모든 닉네임에 대하여 2글자의 연속 문자열이 발생할 수 있는 모든 경우의 수를 계산한다.
 //  [x] 모든 닉네임을 문자 단위로 분해한다.
 //  [x] 발생할 수 있는 2글자의 연속 문자열들을 모두 계산해 배열에 저장한다.
-//[]계산된 경우의 수를 토대로 하여 현재 유저들 사이에서 발생할 수 있는 중복값을 구한다.
+//[x]계산된 경우의 수를 토대로 하여 현재 유저들 사이에서 발생할 수 있는 중복값을 구한다.
 //  [x] 배열에서 중복된 값을 구하는 함수를 선언한다.
-//    [] 연속문자열 배열에서 중복값을 구하고, 중복되는 중복값은 삭제한다.
+//    [x] 연속문자열 배열에서 중복값을 구하고, 중복되는 중복값은 삭제한다.
 //[]중복값이 포함되어있는 닉네임을 판별하여 사용 제한 유저 목록에 저장한다.
 //[]사용 제한 유저들의 이메일 주소를 추출하여 저장한다.
 //[]사용 제한 유저 이메일 목록에서 중복을 제거한 후 오름차 정렬한다.
