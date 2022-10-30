@@ -10,6 +10,8 @@ function problem6(forms) {
         resultEmailList.push(forms[i][0], splitNamesMap.get(splitNames[j]));
         continue;
       }
+
+      splitNamesMap.set(splitNames[j], forms[i][0]);
     }
   }
 
