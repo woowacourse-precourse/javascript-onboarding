@@ -1,5 +1,22 @@
 function problem6(forms) {
   var answer;
+  let testArr = [];
+
+  for (let i = 0; i < forms.length; i++) {
+    if (forms[i][1]) {
+      for (let j = 0; j < forms[i].length; j++) {
+        let find = forms[i][1][j] + forms[i][1][j + 1];
+        if (forms[i][1][j + 1]) {
+          testArr.push(find);
+        }
+      }
+      
+    }
+  }
+  return testArr; //['제이','이엠','제이','이슨','워니','엠제',..] -> 우선 중복삭제하기
+
+  //
+
   let find = "문자";
   let regex = new RegExp(find, "g");
   answer = regex.test("문자열");
