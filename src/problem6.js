@@ -30,21 +30,25 @@ function getWords(forms) {
   return words;
 }
 
-function isIncludes(answer, nickname, email, word) {
-  if (nickname.includes(word)) answer.push(email);
-}
-
-function problem6(forms) {
-  const words = getWords(forms);
+function getAnswer(forms, words) {
   const answer = [];
 
-  for (const [email, nickname] of forms) {
-    for (const word of words) {
-      isIncludes(answer, nickname, email, word);
+  for (const word of words) {
+    const filtered = forms.filter(([_, nickname]) => nickname.includes(word));
+
+    for (const [email, _] of filtered) {
+      answer.push(email);
     }
   }
 
   return [...new Set(answer)].sort();
+}
+
+function problem6(forms) {
+  const words = getWords(forms);
+  const answer = getAnswer(forms, words);
+
+  return answer;
 }
 
 module.exports = problem6;
