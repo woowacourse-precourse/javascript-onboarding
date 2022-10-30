@@ -29,6 +29,21 @@ const recursiveClassifiers = (currentMoney, currentIndex, resultArray) => {
   return recursiveClassifiers(remainingMoney, nextIndex, newResultArray);
 };
 
+const checkException = value => {
+  if (typeof value !== "number") {
+    throw new TypeError("Only numeric elements are possible.");
+  }
+
+  // 1 이상 1,000,000 이하인 자연수
+  if (value < 1 || 1000000 < value) {
+    throw new RangeError(
+      "Only natural numbers greater than or equal to 1 and less than or equal to 1,000,000."
+    );
+  }
+
+  return false;
+};
+
 function problem5(money) {
   var answer;
   return answer;
