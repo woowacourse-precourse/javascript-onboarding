@@ -1,8 +1,8 @@
 function problem1(pobi, crong) {
   if(errorCheck(pobi,crong)) 
     return -1;
-  let pobiScoreSum = sumOfDigits(pobi);
-  let pobiScoreMul = mulOfDigits(crong);
+  let pobiScore = getMaxScore(pobi);
+  let crongScore = getMaxScore(crong);
 }
 
 function sumOfDigits(num) {
@@ -19,6 +19,10 @@ function mulOfDigits(num) {
     .reduce((acc, curr) => {
       return acc * Number(curr);
     },1);
+}
+
+function getMaxScore([leftScore, rightScore]) {
+  return Math.max(sumOfDigits(leftScore),mulOfDigits(leftScore),sumOfDigits(rightScore),mulOfDigits(rightScore));
 }
 
 function errorCheck(pobi,crong) {
