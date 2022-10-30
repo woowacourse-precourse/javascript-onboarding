@@ -77,6 +77,8 @@ const isAlphabet = charCode => {
   return false;
 };
 
+const convertToArray = string => [...string];
+
 function problem4(word) {
   var answer;
   return answer;
