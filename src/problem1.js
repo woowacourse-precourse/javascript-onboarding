@@ -13,36 +13,32 @@ const GAME_RESULT = Object.freeze({
 });
 
 const isValid = (pageArr) => {
-  return pageArr[1] - pageArr[0] !== 1;
+  if(pageArr[0] === 1 || pageArr[1] === 400) return true;
+  return (pageArr[1] - pageArr[0] !== 1);
 };
 
 const getMaxSum = (pageArr) => {
-  const sumArr = [];
-  pageArr.forEach((pageNum) =>
-    sumArr.push(
+  return Math.max(
+    ...pageArr.map((pageNum) =>
       String(pageNum)
         .split("")
         .reduce((acc, curr) => acc + Number(curr), 0)
     )
   );
-  return Math.max(...sumArr);
 };
 
 const getMaxMultiplication = (pageArr) => {
-  const mulArr = [];
-  pageArr.forEach((pageNum) =>
-    mulArr.push(
+  return Math.max(
+    ...pageArr.map((pageNum) =>
       String(pageNum)
         .split("")
         .reduce((acc, curr) => acc * Number(curr), 1)
     )
   );
-  return Math.max(...mulArr);
 };
 
 const getMaxNumber = (pageArr) => {
   return Math.max(getMaxSum(pageArr), getMaxMultiplication(pageArr));
 };
-
 
 module.exports = problem1;
