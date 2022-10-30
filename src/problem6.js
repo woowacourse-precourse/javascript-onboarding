@@ -1,30 +1,30 @@
 function problem6(forms) {
   
   const checkArray = Array(forms.length).fill(false);
-  const map = new Map();
-  const Answer = [];  
+  const dictionary = new Map();
+  const overlapUser = [];  
 
-  for ( let i = 0 ; i < checkArray.length ; i++) {
+  for ( let i = 0 ; i < forms.length ; i++) {
     for( let j = 1 ; j <= forms[i][1].length - 1; j++ ) {
-      if(map.has(forms[i][1][j - 1]+forms[i][1][j])){
-        map.set(forms[i][1][j - 1]+forms[i][1][j], map.get(forms[i][1][j - 1]+forms[i][1][j])+1);
-      }
-      else map.set(forms[i][1][j - 1]+forms[i][1][j], (map.get(forms[i][1][j - 1]+forms[i][1][j])||0)+1);  
+      const word = forms[i][1][j - 1]+forms[i][1][j];
+      dictionary.has(word) 
+      ? dictionary.set(word, dictionary.get(word)+1)
+      : dictionary.set(word, (dictionary.get(word)||0)+1);  
     }
   }
 
-  for(let [key,val] of map){
-    if(1 < val){
+  for(let [word, count] of dictionary){
+    if(1 < count){
       for( let i = 0 ; i < forms.length; i++){
-        if(forms[i][1].includes(key) && !checkArray[i]) {
-          Answer.push(forms[i][0]);
+        if(forms[i][1].includes(word) && !checkArray[i]) {
+          overlapUser.push(forms[i][0]);
           checkArray[i] = true;
         } 
       }
     }  
   }
   
-  return Answer.sort();
+  return overlapUser.sort();
 }
 
 module.exports = problem6;
