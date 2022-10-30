@@ -1,9 +1,9 @@
 function deleteDuplicates(arrays, fromIndex) {
-  var toIndex = fromIndex ^ 1;
-  var lastPush = null;
+  const toIndex = fromIndex ^ 1;
+  let lastPush = null;
 
   while (true) {
-    var lastPop = arrays[fromIndex].pop();
+    let lastPop = arrays[fromIndex].pop();
 
     if (lastPop === lastPush) {
       arrays[toIndex].pop();
@@ -21,8 +21,8 @@ function deleteDuplicates(arrays, fromIndex) {
 
 function problem2(cryptogram) {
   var answer;
-  var arrays = [cryptogram.split(''), []];
-  var fromIndex = 0;
+  let arrays = [cryptogram.split(''), []];
+  let fromIndex = 0;
 
   do {
     var fromLength = arrays[fromIndex].length;
