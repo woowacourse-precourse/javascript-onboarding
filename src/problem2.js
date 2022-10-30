@@ -1,20 +1,24 @@
 function problem2(cryptogram) {
-
-  let str = [...cryptogram];
+  let strArr = [...cryptogram];
   let duplicatedStrPosition = [];
-  while(true) {
-    for (let i = 0; i < str.length - 1; i++){
-      if (str[i] === str[i+1]) {
-        duplicatedStrPosition.unshift(i);
-      }
-    }
-    if (!duplicatedStrPosition.length) break;
-    duplicatedStrPosition.forEach(elem => {
-      str.splice(elem,2)
-    });
-    duplicatedStrPosition = [];
+  let hasDuplicatedStr = true;
+
+  while(hasDuplicatedStr) {
+    strArr.forEach((_, i, init) => {
+      if (init[i] === init[i+1]) duplicatedStrPosition = [i, ...duplicatedStrPosition];
+    })
+
+    hasDuplicatedStr = !duplicatedStrPosition.length ? false : true;
+
+    duplicatedStrPosition = duplicatedStrPosition.filter(elem => {
+      strArr = [...strArr.slice(0, elem), ...strArr.slice(elem + 2)];
+      return false;
+    })
   }
-  return str.join('');
+
+  return strArr.join('');
 }
+
+problem2("browoanoommnaon")
 
 module.exports = problem2;
