@@ -12,8 +12,7 @@ function createNumberArr(number) {
 }
 
 function getCount369(numberArr) {
-  let numberChaining = numberArr.join("");
-  return numberChaining.split("").filter((number) => number == 3 || number == 6 || number == 9).length;
+  return numberArr.join("").split("").filter((number) => number == 3 || number == 6 || number == 9).length;
 }
 
 module.exports = problem3;
