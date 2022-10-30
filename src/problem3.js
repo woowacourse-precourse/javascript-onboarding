@@ -1,6 +1,5 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  return getClapNumber(number);
 }
 
 function getClapNumber(number) {
