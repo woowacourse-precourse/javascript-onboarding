@@ -25,6 +25,23 @@ function genAlphaArr(isLower) {
   return Array.from({ length: 26 }, (v, idx) => String.fromCharCode(idx + 65));
 }
 
+function onReverse(char) {
+  const isalpha = checkAlpha(char);
+
+  if (!isalpha) {
+    return char;
+  }
+  const isLower = checkLower(char);
+
+  const alphaArr = genAlphaArr(isLower);
+
+  const idx = alphaArr.indexOf(char);
+
+  const reverseAlpha = alphaArr[alphaArr.length - (idx + 1)];
+
+  return reverseAlpha;
+}
+
 function problem4(word) {
   var answer;
   return answer;
