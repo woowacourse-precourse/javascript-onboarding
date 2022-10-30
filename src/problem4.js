@@ -23,11 +23,14 @@ function problem4(word) {
         }
     };
 
+    // 입력받은 문자열을 아스키코드로 변환
+    const asciiAlphabetArray = word.split("").map((el) => el.charCodeAt());
+
     // 3단계) 띄어쓰기를 제외하고 아스키코드배열의 모든 요소를 변환
     for (i = 0; i < asciiAlphabetArray.length; i++) {
         let asciiAlphabet = asciiAlphabetArray[i];
 
-        // 띄어쓰기는 변홚대상에서 제외
+        // 띄어쓰기는 변환대상에서 제외
         if (asciiAlphabet === 32) {
             continue;
         }
