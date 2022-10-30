@@ -52,6 +52,20 @@ function problem7(user, friends, visitors) {
 
   //4#. 타임 라인에 방문한 사용자들의 점수를 더하는 함수
 
+  function INPUT_VISIT_FRIENDS_POINT () {
+    const userFriendsList = FRIEND_RELATION_OBJ[user];
+    for(let visitor of visitors){
+      if(userFriendsList.includes(visitor) === false){
+        if(USER_POINT_CALCUL_OBJ[visitor] === undefined){
+          USER_POINT_CALCUL_OBJ[visitor] = 1
+        } else {
+          USER_POINT_CALCUL_OBJ[visitor] += 1
+        }
+      }
+    }    
+  }
+
+
   //특이사항
   //!1. user는 길이가 1 이상 30 이하
   //!2. friends는 길이가 1 이상 10,000 이하인 배열
