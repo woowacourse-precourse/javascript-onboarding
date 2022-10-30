@@ -56,3 +56,14 @@
           - visitors : `["bedi", "bedi", "donut", "bedi", "shakevan"]`
           - `"donut", "shakevan"`는 이미 user와 친구이다.
           - 따라서 `bedi` : 3점
+
+- 친구 추천 객체 이름과 점수 분리
+
+  - 분리하는 이유는 ?
+
+    - 저장한 객체는 `{ andole : 20, jun : 20, bedi : 3}`같은 형식으로 되어있다.
+    - 원하는 출력은 결과 조건에 따라 정렬이 된 친구들의 이름만이 필요한데 정렬을 하는 부분에 어려움이 있기 때문이다.
+
+  - `{ key : andole, score : 20 }`과 같은 형식으로 만든다.
+    - Object.keys(), Object.values() 를 사용하여 key, score 객체를 만든다.
+    - 위와 같이 key, score을 가진 객체를 배열에 넣는다.
