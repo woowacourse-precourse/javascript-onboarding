@@ -2,6 +2,12 @@ function problem7(user, friends, visitors) {
     let userFriends = [];
     let answer = [];
     let friendsObj = setList(friends, visitors);
+
+    friends.forEach(v=> {
+        const [A, B] = v;
+        if(A==user) userFriends.push(B);
+        if(B==user) userFriends.push(A);
+    });
 }
 
 function setList(friends, visitors) {
