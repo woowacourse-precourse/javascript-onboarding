@@ -63,3 +63,9 @@ function wordToArray(word) {
 
   return wordArrays;
 }
+
+function checkLowerCase(alphabet) {
+  if (alphabet !== " " && alphabet.toLowerCase() === alphabet) {
+    return true;
+  }
+}
