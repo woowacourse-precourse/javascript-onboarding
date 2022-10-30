@@ -1,33 +1,52 @@
 function problem1(pobi, crong) {
-    const maxScoreArr = [];
     if (exception(pobi, crong)) {
         return -1;
     }
-    maxScoreArr.push(maxNumberCheck(pobi));
-    maxScoreArr.push(maxNumberCheck(crong));
-    let answer = compScore(maxScoreArr);
-    return answer;
+    return compareMaxNumber(pobi, crong);
 }
 
-function maxNumberCheck(people) {
-    const score = [];
-    people.forEach(el => {
-        const str = String(el).split("");
-        const sum = str.reduce((acc, cur) => (Number(acc) + Number(cur)));
-        const mult = str.reduce((acc, cur) => acc * cur);
-        score.push(sum);
-        score.push(mult);
-    })
-    return Math.max(...score);
+function eachPagePlus(page) {
+    const pageSplit = page.toString().split("");
+    return pageSplit.reduce(plus, 0);
 }
 
-function compScore(maxScoreArr) {
-    const maxScore = Math.max(...maxScoreArr);
-    let result = maxScoreArr.indexOf(maxScore) + 1;
-    if ((maxScoreArr[0] === maxScoreArr[1])) {
-        result = 0;
-    }
+function plus(sum, eachDigit) {
+    sum += Number(eachDigit);
+    return sum;
+}
+
+function eachPageMultiply(page) {
+    const pageSplit = page.toString().split("");
+    return pageSplit.reduce(multiply, 1);
+}
+
+function multiply(result, eachDigit) {
+    result *= eachDigit;
     return result;
+}
+
+function calculationcollection(openBook) {
+    return [...openBook.map(eachPagePlus), ...openBook.map(eachPageMultiply)];
+}
+
+function maxNumberCheck(openBook) {
+    return Math.max(...calculationcollection(openBook));
+}
+
+function compareMaxNumber(people1, people2) {
+    const pobi = maxNumberCheck(people1);
+    const crong = maxNumberCheck(people2);
+    return maxNumberSame(pobi, crong) ? 0 : maxNumberDifferent(pobi, crong);
+}
+
+function maxNumberSame(people1, people2) {
+    return Number(people1 === people2);
+}
+
+function maxNumberDifferent(people1, people2) {
+    const maxScoreArr = [people1, people2];
+    const winner = Math.max(...maxScoreArr);
+    return maxScoreArr.indexOf(winner) + 1;
 }
 
 function exception(pobi, crong) {
