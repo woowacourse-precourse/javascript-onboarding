@@ -2,35 +2,59 @@ function problem7(user, friends, visitors) {
   var answer = solution(user, friends, visitors);
   return answer;
 }
+
+function getIntersections(A, B) {
+  let results = [];
+  A.forEach(a => {
+    if (B.includes(a)) {
+      results.push(a);
+    }
+  })
+  return results;
+}
+
 function solution(user, friends, visitors) {
-  let answer = []; recommend = [];
-  let map = new Map();
-  for(let friend of friends) {
-    if(!friend.includes(user)) {
-      for(let score of friend) {
-        map.set(score, 10);
-      }
+  let memo = {}
+  friends.forEach(friend => {
+    let [leftFriend, rightFriend] = friend;
+    if (memo[leftFriend]) {
+      memo[leftFriend].push(rightFriend);
     } else {
-      for(let score of friend) {
-        map.set(score, 0);
+      memo[leftFriend] = [];
+      memo[leftFriend].push(rightFriend);
+    }
+    if (memo[rightFriend]) {
+      memo[rightFriend].push(leftFriend);
+    } else {
+      memo[rightFriend] = [];
+      memo[rightFriend].push(leftFriend);
+    }
+  })
+  memo[user].forEach(userFriend => {
+    delete memo[userFriend];
+  })
+  let score = {};
+  Object.keys(memo).forEach(key => {
+    if (key !== user) {
+      score[key] = getIntersections(memo[user], memo[key]).length * 10;
+    }
+  })
+  visitors.forEach(visitor => {
+    if (!memo[user].includes(visitor)) {
+      if (score[visitor]) {
+        score[visitor] += 1
+      } else {
+        score[visitor] = 1
       }
     }
-  };
-  for(let visitor of visitors) {
-    if(!map.has(visitor)) {
-      map.set(visitor, 1);
-    } else if(map.get(visitor) !== 0) {
-      map.set(visitor, map.get(visitor) + 1);
-    }
-  };
-  result = [...map].sort((a, b) => b[1] - a[1]);
-  for(let i = 0; i < result.length; i++) {
-    if(result[i][1] === 0) {
-      continue;
+  })
+  let answer = Object.keys(score).sort((a, b) => {
+    if (score[a] === score[b]) {
+      return b - a;
     } else {
-      answer.push(result[i][0]);
+      return score[b] - score[a]
     }
-  };
+  });
   return answer;
 };
 module.exports = problem7;
