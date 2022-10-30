@@ -1,7 +1,7 @@
 /** 기능 목록
  *  1. 유저의 닉네임을 2글자씩 잘라 중복 횟수를 표시하는 객체 Dictionary를 생성
- *  2. 객체 Dictionary를 순회하며 forms의 각 요소의 닉네임에 Dictionary의 요소가 포함되어 있는지 확인
- *  3. 포함되어 있다면, 해당 유저의 Email을 반환 (오름차순 중복 제거)
+ *  2. 닉네임을 2글자씩 잘라 Dictionary와 비교해 중복 횟수가 2 이상인 유저의 이메일을 반환
+ *  3. 이메일을 중복 제거 후 오름차순으로 정렬
  */
 
 function problem6(forms) {
@@ -19,7 +19,7 @@ function problem6(forms) {
       return acc;
     }, {});
 
-  return forms.reduce((acc, form) => {
+  const emails = forms.reduce((acc, form) => {
     const nickname = form[1];
     for (let i = 0; i < nickname.length - 1; i++) {
       const word = nickname.slice(i, i + 2);
@@ -30,6 +30,8 @@ function problem6(forms) {
     }
     return acc;
   }, []);
+
+  return [...new Set(emails)].sort((a, b) => a.localeCompare(b));
 }
 
 module.exports = problem6;
