@@ -1,5 +1,5 @@
 function problem3(number) {
-  let countSum;
+  let countSum = 0;
   let eachCountArr = new Array(10).fill(0);
 
   for (let i = 1; i <= number; i++) {
