@@ -21,7 +21,7 @@ function problem7(user, friends, visitors) {
   }
 
   if (visitors.length > 0) {
-    isVisit.push(...visitors.filter((x) => !set.includes(x)));
+    isVisit.push(...visitors.filter((x) => !isFriends.includes(x)));
   }
 
   newFriends.sort();
