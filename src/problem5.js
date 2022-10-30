@@ -9,8 +9,6 @@ function getExchange(haveMoney, exchangeMoney) {
     };
 }
 
-console.log(problem5(15000));
-
 function problem5(money) {
     return exchange.map((toChange) => {
         if (money === 0) {
