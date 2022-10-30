@@ -4,11 +4,18 @@ function problem1(pobi, crong) {
   const CRONG_WIN = 2;
   const DRAW = 0;
   const EXCEPTIONS = -1;
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 400;
 
   const [leftPageByPobi, rightPageByPoi] = pobi;
   const [leftPageByCrong, rightPageByCrong] = crong;
+
   // 책의 페이지가 연속된 숫자이어야 한다. (예외사항)
   if (leftPageByPobi !== rightPageByPoi - 1 || leftPageByCrong !== rightPageByCrong - 1) return EXCEPTIONS;
+
+  // 페이지가 1~400 범위 밖의 값이라면 예외사항을 반환한다.
+  if (leftPageByPobi < MIN_PAGE || leftPageByCrong < MIN_PAGE) return EXCEPTIONS;
+  if (rightPageByPoi > MAX_PAGE || rightPageByCrong > MAX_PAGE) return EXCEPTIONS;
 
   // 페이지 번호의 각 자리 숫자를 더한 값과 곱한 값중 큰 값을 리턴한다.
   const getMaxScore = (pages) => {
