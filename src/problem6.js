@@ -4,11 +4,16 @@ function problem6(forms) {
   const errorUserEmail = []; 
 }
 
+for (const member of forms){
+  const nickname = member[1];
+  nicknameArray.push(nickname);
+}
+
 module.exports = problem6;
 
 //problem6 기능 목록
 //[x] 유저들의 닉네임, 사용 제한 유저, 사용 제한 유저 이메일을 저장하기 위한 배열을 생성한다.
-//[] forms에서 유저들의 닉네임만을 추출하여 nicknameArray에 저장한다.
+//[x] forms에서 유저들의 닉네임만을 추출하여 nicknameArray에 저장한다.
 //[]모든 닉네임에 대하여 2글자의 연속 문자열이 발생할 수 있는 모든 경우의 수를 계산한다.
 //  [] 모든 닉네임을 문자 단위로 분해한다.
 //  [] 발생할 수 있는 2글자의 연속 문자열들을 모두 계산해 배열에 저장한다.
