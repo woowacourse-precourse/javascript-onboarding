@@ -83,19 +83,39 @@ describe("problem5", () => {
   });
 });
 
-// describe("problem6", () => {
-//   test("case1", () => {
-//     expect(
-//       problem6([
-//         ["jm@email.com", "제이엠"],
-//         ["jason@email.com", "제이슨"],
-//         ["woniee@email.com", "워니"],
-//         ["mj@email.com", "엠제이"],
-//         ["nowm@email.com", "이제엠"],
-//       ])
-//     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
-//   });
-// });
+describe("problem6", () => {
+  test("case1", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+
+  test("case2", () => {
+    expect(
+      problem6([ 
+        ["jm@email.com", "제이엠"], 
+        ["jason@email.com", "제이슨"], 
+        ["woniee@email.com", "워니"], 
+        ["mj@email.com", "엠제이"], 
+        ["nowm@email.com", "이제엠"],
+        ["tkclzl97@email.com", "이정민"],
+        ["pjm382@email.com", "박정민"],
+      ])
+    ).toEqual([
+      'jason@email.com',
+      'jm@email.com',
+      'mj@email.com',
+      'pjm382@email.com',
+      'tkclzl97@email.com',
+    ]);
+  });
+});
 
 // describe("problem7", () => {
 //   test("case1", () => {
