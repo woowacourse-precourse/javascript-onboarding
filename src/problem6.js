@@ -16,15 +16,11 @@ function problem6(forms) {
     const letterList = nickName.split('')
     let tempLength = 2;
     for(let i=0; i<letterList.length;i++){
-
       for(let k=0; k<letterList.length; k++){
-
         if(k+tempLength >letterList.length){
           break;
         }
-
         outputList.push(letterList.slice(k,k+tempLength).join(''))
-
       }
       tempLength += 1;
     } 
@@ -41,9 +37,7 @@ function problem6(forms) {
   //#3. 닉네임에 검색어가 포함되는지 확인하는 함수 : True/False
 
   function CHECK_INCLUDE_WORD_IN_NICKNAME (word,nickName) {
-
     const checkWordList = RETURN_SEARCH_WORD_LIST_FROM_NICKNAME(nickName)
-    
     return checkWordList.includes(word)
   }
 
@@ -57,7 +51,6 @@ function problem6(forms) {
   //#5. 검색어가 '검사한 단어' 배열에 포함되는지 확인하는 함수 : T/F
 
   function CHECK_INCLUDE_WORD_IN_SEARCHED_WORD_LIST (word) {
-    
     return SEARCHED_WORD_LIST.includes(word)
 
   }
@@ -65,7 +58,6 @@ function problem6(forms) {
   //#6. 검사하려는 인덱스가 '중복된 인덱스'에 존재하는지 확인하는 함수 : T/F
 
   function CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST (index) {
-    
     return DUPLICATED_INDEX_LIST.includes(index)
 
   }
@@ -75,7 +67,6 @@ function problem6(forms) {
   function RETURN_EMAIL_LIST_WITH_INDEX () {
     const FORMS = forms.slice();
     const outputEmailList = [];
-
     for(let i of DUPLICATED_INDEX_LIST){
       outputEmailList.push(FORMS[i][0])
     }
@@ -85,6 +76,13 @@ function problem6(forms) {
 
   //특이사항
   //!1. 이메일의 전체 길이는 11자 이상 20자 미만
+
+  function CHECK_EMAIL_LENGTH (email) {
+    if(email.length <11 || email.length >19){return false;}
+    else {return true;}
+  }
+
+
   //!2. 신청할수 있는 이메일의 도메인은 email.com으로 제한
   //!3. 닉네임은 한글만 가능
   //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
