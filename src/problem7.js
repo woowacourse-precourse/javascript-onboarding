@@ -19,6 +19,12 @@ function problem7(user, friends, visitors) {
       notFriends[person] = 0;
   });
 
+  Object.keys(notFriends).forEach((notFriend) => {
+    notFriends[notFriend] += // notFriends 목록에 있는 사람들과 친구인 사용자가 user와 친구라면 10점을 더한다.
+      relationships[notFriend].filter((r) => relationships[user].includes(r))
+        .length * 10;
+  });
+
   return answer;
 }
 
