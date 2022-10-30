@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer = [];
   const users = new Map();
   const user_friends = [];
 
@@ -39,8 +39,13 @@ function problem7(user, friends, visitors) {
       if (users.has(id_a)) users.set(id_a, users.get(id_a) + 10);
     }
   }
-  
-  return answer;
+
+  for (let key of users.keys()) {
+    if (users.get(key) > 0) answer.push(key);
+  }
+
+  answer = [...users.entries()].sort((a, b) => b[1] - a[1]).map(x => x[0])
+  return answer.slice(0, 5);
 }
 
 module.exports = problem7;
