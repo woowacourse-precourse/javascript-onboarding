@@ -16,6 +16,21 @@ const isCapital = (alp) => {
     return true;
 };
 
+const transformAlphabet = (alp) => {
+  let invertedAlp;
+
+  if (isCapital(alp))
+    invertedAlp = String.fromCharCode(
+      "Z".charCodeAt() + "A".charCodeAt() - alp.charCodeAt()
+    );
+  else if (!isCapital(alp))
+    invertedAlp = String.fromCharCode(
+      "z".charCodeAt() + "a".charCodeAt() - alp.charCodeAt()
+    );
+
+  return invertedAlp;
+};
+
 function problem4(word) {
   var answer;
 
