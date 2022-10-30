@@ -77,6 +77,7 @@ function problem1(pobi, crong) {
       answer = -1;
     }
   } else {
+    // * 왼쪽 페이지와 오른쪽 페이지의 차이는 1이 아닐 때
     answer = -1;
   }
 
