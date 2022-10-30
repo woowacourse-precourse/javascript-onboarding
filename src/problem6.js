@@ -15,7 +15,15 @@ function problem6(forms) {
 
       return seperated;
     })
-    .flat();
+    .flat()
+    .reduce((count, seperatedNickName) => {
+      if (!count[seperatedNickName]) {
+        count[seperatedNickName] = 0;
+      }
+      count[seperatedNickName]++;
+
+      return count;
+    }, {});
 }
 
 module.exports = problem6;
