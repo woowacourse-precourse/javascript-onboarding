@@ -40,7 +40,7 @@ const getMaxNum = (player) => {
 
 const isValidPage = (player) => {
   const [leftPage, rightPage] = player;
-  if (leftPage < BOOK.FIRST_PAGE || rightPage > BOOK.LAST_PAGE) return false;
+  if (leftPage <= BOOK.FIRST_PAGE || rightPage >= BOOK.LAST_PAGE) return false;
   if (rightPage - leftPage !== 1) return false;
   return true;
 }
