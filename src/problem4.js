@@ -22,6 +22,7 @@ function problem4(word) {
       result += String.fromCharCode(reverse);
   }
   
+  if (word.length < 1 || word.length > 1000) result = "예외사항";
   return result;
 
 }
