@@ -1,5 +1,6 @@
 function problem4(word) {
   let input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let frogDict = 'ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba';
 }
 
 module.exports = problem4;
