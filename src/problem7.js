@@ -3,6 +3,7 @@ function problem7(user, friends, visitors) {
   let isFriends = [];
   let newFriends = [];
   let isVisit = [];
+  let count = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
@@ -25,6 +26,14 @@ function problem7(user, friends, visitors) {
 
   newFriends.sort();
   isVisit.sort();
+
+  for (let el of newFriends) {
+    count[el] = (count[el] || 0) + 10;
+  }
+
+  for (let el of isVisit) {
+    count[el] = (count[el] || 0) + 1;
+  }
 
   return answer;
 }
