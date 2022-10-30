@@ -1,24 +1,29 @@
 function problem6(forms) {
   var resultEmailList = [];
-  var nicknameSplitMap = new Map();
+  var splitNamesMap = new Map();
 
   for (var i = 0; i < forms.length; i++) {
-    var nameSplitStrings = getSplitStrings(forms[i][1]);
+    var splitNames = getSplitNames(forms[i][1]);
 
-    for (var j = 0; j < nameSplitArr.length; j++) {}
-
-    return resultEmailList;
+    for (var j = 0; j < splitNames.length; j++) {
+      if (splitNamesMap.has(splitNames[j])) {
+        resultEmailList.push(forms[i][0], splitNamesMap.get(splitNames[j]));
+        continue;
+      }
+    }
   }
+
+  return resultEmailList;
 }
 
-function getSplitStrings(nickname) {
-  var arr = [];
+function getSplitNames(nickname) {
+  var splitNames = [];
 
   for (var i = 0; i < nickname.length - 1; i++) {
-    arr.push(nickname.substr(i, 2));
+    splitNames.push(nickname.substr(i, 2));
   }
 
-  return arr;
+  return splitNames;
 }
 
 module.exports = problem6;
