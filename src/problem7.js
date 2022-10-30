@@ -25,6 +25,10 @@ function problem7(user, friends, visitors) {
         .length * 10;
   });
 
+  visitors.forEach((visiter) => {
+    if (relationships[user].includes(visiter)) return; // visiter와 이미 친구라면 친구추천에 띄울 필요가 없으므로 스킵한다.
+  });
+
   return answer;
 }
 
