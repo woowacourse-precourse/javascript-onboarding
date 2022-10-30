@@ -6,6 +6,21 @@ class ScoreData {
     this.visitors = visitors;
     this.userFriends = userFriends;
   }
+  isFriend(target, friend) {
+    return target === friend ? true : false;
+  }
+  giveScore(target, score) {
+    if(!this.scoreDictionary[target]) this.scoreDictionary[target] = score;
+    if(this.scoreDictionary[target]) this.scoreDictionary[target] += score;
+  }
+  scoreFriendOfFriend() {
+    this.friends.forEach(([firstPerson, secondPerson]) => {
+      this.userFriends((friend) => {
+        if(this.isFriend(firstPerson, friend)) this.giveScore(secondPerson, 10);
+        if(this.isFriend(secondPerson, friend)) this.giveScore(firstPerson, 10);
+      });
+    })
+  }
 }
 
 function getUserFriends(user, friends) {
