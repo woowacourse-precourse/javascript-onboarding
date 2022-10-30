@@ -30,6 +30,16 @@ function friendVisitCheck(visitors, set, obj) {
   }
   return obj;
 }
+
+function keyValueObject(answer, obj) {
+  let objKeys = Object.keys(obj);
+  let objScores = Object.values(obj);
+  for (let i = 0; i < objKeys.length; i++) {
+    answer.push({ key: objKeys[i], score: objScores[i] });
+  }
+  return answer;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
   var obj = {};
@@ -39,6 +49,7 @@ function problem7(user, friends, visitors) {
   friends = firstData.friends;
   obj = friendAddTen(friends, set, obj);
   obj = friendVisitCheck(visitors, set, obj);
+  answer = keyValueObject(answer, obj);
   return answer;
 }
 
