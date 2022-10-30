@@ -1,4 +1,14 @@
 function problem1(pobi, crong) {
+
+  //기능요구사항
+  //1~400
+  //왼 홀 오 짝 v
+  //시작, 마지막 면이 나오지 않게
+
+  //제한사항
+  //길이 2
+  //왼오
+  
   var answer;
   if (
     pobi[1] !== pobi[0] + 1 ||

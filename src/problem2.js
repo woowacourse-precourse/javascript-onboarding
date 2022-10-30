@@ -20,3 +20,5 @@ function problem2(cryptogram) {
 }
 
 module.exports = problem2;
+
+//연속 중복문자 삭제결과
