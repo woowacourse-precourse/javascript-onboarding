@@ -64,14 +64,34 @@ function findMyFriends(user, friends) {
 }
 
 /**
+ * @param {Map<string, number>} map
+ * @param {string[]} myFriends
+ * @param {[string, string][]} othersFriends
+ */
+function addOthersFriendsPoints(map, myFriends, othersFriends) {
+  othersFriends.forEach((friend) => {
+    const [first, second] = friend;
+    if (myFriends.includes(first)) {
+      setPointInMap(map, second, POINT.OTHERS_FRIEND);
+    }
+    if (myFriends.includes(second)) {
+      setPointInMap(map, first, POINT.OTHERS_FRIEND);
+    }
+  });
+}
+
+/**
  * @param {string} user
  * @param {[string, string][]} friends
  * @param {string[]} visitors
  * @returns {string[]} result
  */
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const map = new Map();
+  const { myFriends, othersFriends } = findMyFriends(user, friends);
+  addOthersFriendsPoints(map, myFriends, othersFriends);
+  const result = [];
+  return result;
 }
 
 module.exports = problem7;
