@@ -14,6 +14,9 @@ function problem7(user, friends, visitors) {
   
   // friends에서 내 친구 찾아 friendsMap에 넣기, 내 친구의 친구 관계 friendsmap에 넣기
   findFriends(friends, friendsMap, user);
+  friendsMap.get(user).forEach((person) => {
+    findFriends(friends, friendsMap, person);
+  })
 }
 
 module.exports = problem7;
