@@ -26,8 +26,8 @@ function problem7(user, friends, visitors) {
       }
     })
     .map((e) => e[0]);
-  console.log(answer);
-  console.log(score);
+  answer.splice(5);
+
   return answer;
 }
 
