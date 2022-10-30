@@ -23,7 +23,7 @@ function problem4(word) {
         }
     };
 
-    // 3단계) 띄어쓰기를 제외하고 아스키코드배열의 모든 요소를 변환합니다.
+    // 3단계) 띄어쓰기를 제외하고 아스키코드배열의 모든 요소를 변환
     for (i = 0; i < asciiAlphabetArray.length; i++) {
         let asciiAlphabet = asciiAlphabetArray[i];
 
@@ -35,6 +35,11 @@ function problem4(word) {
         let alphabetIndex = getAlphabetIndex(asciiAlphabet);
         asciiAlphabetArray[i] = changeAlphabet(asciiAlphabet, alphabetIndex);
     }
+
+    // 4단계) 아스키코드배열을 문자열로 변환한 뒤 문자열로 합친 결과를 리턴
+    const result = asciiAlphabetArray.map((el) => String.fromCharCode(el)).join("");
+
+    return result;
 }
 
 module.exports = problem4;
