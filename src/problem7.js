@@ -35,6 +35,18 @@ function problem7(user, friends, visitors) {
       else if (!friendsMap.get(user).includes(friendOfPerson) && friendOfPerson !== user) scoreMap.set(friendOfPerson, 10);
     })
   })
+
+  let sortScore = [...scoreMap];
+  sortScore.sort((a, b) => {
+    if(a[1] < b[1]) return 1;
+    if(a[1] > b[1]) return -1;
+    if(a[1] === b[1]){
+      if(a[0] > b[0]) return 1;
+      if(a[0] < b[0]) return -1;
+    }
+  })
+  
+  return sortScore.slice(0,5).map(score => score[0]);
 }
 
 module.exports = problem7;
