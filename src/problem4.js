@@ -8,7 +8,7 @@ function problem4(word) {
   for (w of word) {
     let tmp = w.charCodeAt(0);
     let str_tmp = "";
-    console.log(w, tmp);
+    // console.log(w, tmp);
 
     // 소문자이면 소문자로
     if (tmp >= 97) {
@@ -24,7 +24,7 @@ function problem4(word) {
     }
     answer = answer + str_tmp;
   }
-  console.log(answer);
+  // console.log(answer);
   return answer;
 }
 

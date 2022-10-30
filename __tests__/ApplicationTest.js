@@ -66,6 +66,22 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("case2", () => {
+    expect(
+      problem6([
+        ["hi@email.com", "하이"],
+        ["hiyun@email.com", "하이연"],
+        ["banga@email.com", "방가"],
+        ["banggayo@email.com", "방가요"],
+        ["kidec@email.com", "키득"],
+      ])
+    ).toEqual([
+      "hi@email.com",
+      "hiyun@email.com",
+      "banga@email.com",
+      "banggayo@email.com",
+    ]);
+  });
 });
 
 describe("problem7", () => {
