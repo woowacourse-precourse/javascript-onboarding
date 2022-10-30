@@ -1,6 +1,5 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const adjacentMap = makeAdjacentMap(forms);
 }
 
 function getAdjacentStrings(string) {
@@ -12,6 +11,21 @@ function getAdjacentStrings(string) {
   }
 
   return adjacentStrings;
+}
+
+function makeAdjacentMap(forms) {
+  const adjacentMap = {};
+
+  forms.forEach(([_, nickname]) => {
+    const adjacentStrings = getAdjacentStrings(nickname);
+
+    adjacentStrings.forEach((string) => {
+      if (!adjacentMap[string]) adjacentMap[string] = 0;
+      adjacentMap[string] += 1;
+    });
+  });
+
+  return adjacentMap;
 }
 
 module.exports = problem6;
