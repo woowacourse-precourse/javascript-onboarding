@@ -27,10 +27,12 @@ function problem4(word) {
     .join("");
 }
 
+/*
 // for test
 const words = ["I love you", "This is me being REASONABLE."];
 for (word of words) {
   console.log(problem4(word));
 }
+*/
 
 module.exports = problem4;
