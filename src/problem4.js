@@ -33,6 +33,12 @@ const transformAlphabet = (alp) => {
 
 function problem4(word) {
   var answer;
+  answer = "";
+
+  for (var letter of word) {
+    if (isAlphabet(letter)) answer += transformAlphabet(letter);
+    else answer += letter;
+  }
 
   return answer;
 }
