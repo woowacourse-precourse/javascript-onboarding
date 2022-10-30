@@ -64,7 +64,3 @@ const myScore = (player) => {
   return biggestNum(arr[0], arr[1])
 }
 
-
-
-
-module.exports = problem1;
