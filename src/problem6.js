@@ -1,5 +1,6 @@
 function problem6(forms) {
   let nameCheckBox = {};
+  let emailCheckBox = {};
 
   forms.forEach(userArray => {
     const userEmail = userArray[0];
@@ -8,9 +9,9 @@ function problem6(forms) {
 
     for(let i = 0; i < userName.length - 1; i++){
       userUnitName = userName[i] + userName[i+1]
-      console.log(userUnitName);
     }
   });
+  console.log(nameCheckBox);
 }
 
 problem6([["jm@email.com", "제이엠"],
