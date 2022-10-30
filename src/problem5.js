@@ -6,6 +6,13 @@ function problem5(money) {
   var answer;
   answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   moneyUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+  for (let i = 0; i < moneyUnit.length; i++) {
+    if (money >= moneyUnit[i]) {
+      answer[i] = parseInt(money / moneyUnit[i]);
+      money = withdraw(money, moneyUnit[i]);
+    }
+  }
   return answer;
 }
 
