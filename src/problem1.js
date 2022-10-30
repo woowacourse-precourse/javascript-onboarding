@@ -8,6 +8,14 @@ function problem1(pobi, crong) {
     pobiMax = Math.max(calculateAdd(pobi[i]), calculateMul(pobi[i]));
     crongMax = Math.max(calculateAdd(crong[i]), calculateMul(crong[i]));
   }
+
+  if (pobiMax > crongMax) {
+    return 1;
+  } else if (pobiMax < crongMax) {
+    return 2;
+  } else {
+    return 0;
+  }
 }
 
 function calculateAdd(num) {
