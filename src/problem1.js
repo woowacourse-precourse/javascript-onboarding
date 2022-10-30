@@ -25,6 +25,16 @@ function sumValue(arr) {
   return sum;
 }
 
+function multValue(arr){
+  let mult = 1;
+  do {
+    mult *= arr[0] % 10;
+    arr[0] = Math.floor(arr[0] / 10);
+  } while (arr[0] > 0);
+  return mult;
+}
+
+
 console.log(problem1([99, 100], [197, 198]));
 
 module.exports = problem1;
