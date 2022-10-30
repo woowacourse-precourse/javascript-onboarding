@@ -21,5 +21,14 @@ function problem4(word) {
   }
   return result;
 }
+function converCapital(type) {
+  // 청개구리 사전을 분리하고 매개변수로 들어온 글자와 같은 문자의 index를 알아낸다.
+  const index = CAPITAL.split("").indexOf(type);
+  return CAPITAL[25 - index];
+}
+function converSmall(type) {
+  const index = SMALL.split("").indexOf(type);
+  return SMALL[25 - index];
+}
 
 module.exports = problem4;
