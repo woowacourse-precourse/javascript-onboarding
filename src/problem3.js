@@ -107,7 +107,6 @@ function problem3(number) {
   
   answer = cnt;  
   
-  console.log(cnt);
   return answer;
 }
 
