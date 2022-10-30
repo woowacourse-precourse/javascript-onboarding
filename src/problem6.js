@@ -1,12 +1,13 @@
 function problem6(forms) {
-  const mailForm = forms.map((i) => i[0]);
-  const nameForm = forms.map((i) => i[1]);
-  const validMailArray = mailForm.map((i) => isValidMail(i));
-  const validNameArray = nameForm.map((i) => isValidName(i));
-  const validAccount = classifyValid(mailForm, validMailArray, validNameArray);
-  const duplicatedNames = checkDuplicate(nameForm);
-  //const answer = invalidAccount.filter((v) => v); //정렬 추가해야함.
-  const answer = validAccount;
+  const mailForms = forms.map((i) => i[0]);
+  const nameForms = forms.map((i) => i[1]);
+  const validMailForms = mailForms.map((i) => isValidMail(i));
+  const validNameForms = nameForms.map((i) => isValidName(i));
+  const validForms = classifyValid(mailForms, validMailForms, validNameForms);
+  // 여기까지 완료했고,
+  // 1. duplicatedName에서 validForms인지 확인하고,
+  // 2. const answer = invalidForms.filter((v) => v); //정렬 추가해야함.
+  const duplicatedNames = checkDuplicate(nameForms);
 
   return answer;
 }
@@ -14,13 +15,13 @@ function problem6(forms) {
 module.exports = problem6;
 
 /* classify  */
-const classifyValid = (mailForm, validMailArray, validNameArray) => {
-  const newArray = new Array(mailForm.length);
+const classifyValid = (mailForms, validMailForms, validNameForms) => {
+  const newArray = new Array(mailForms.length);
   newArray.fill(null);
-  const validAccount = newArray.map((v, i) => {
+  const validForms = newArray.map((v, i) => {
     let resultValue;
-    if (validMailArray[i] && validNameArray[i]) {
-      resultValue = mailForm[i];
+    if (validMailForms[i] && validNameForms[i]) {
+      resultValue = mailForms[i];
     } else {
       resultValue = false;
     }
@@ -28,12 +29,12 @@ const classifyValid = (mailForm, validMailArray, validNameArray) => {
     return resultValue;
   });
 
-  return validAccount;
+  return validForms;
 };
 
-const checkDuplicate = (nameForm) => {
+const checkDuplicate = (nameForms) => {
   let resultArray = [];
-  const srcArray = nameForm.map((v) => {
+  const srcArray = nameForms.map((v) => {
     const sliceArray = [];
     const len = v.length - 2;
     for (let i = 0; i <= len; i++) {
@@ -50,7 +51,7 @@ const checkDuplicate = (nameForm) => {
       for (let k = i + 1; k <= len; k++) {
         const isDuplicate = srcArray[k].includes(srcArray[i][j]);
         if (isDuplicate) {
-          resultArray.push(nameForm[k], nameForm[i]);
+          resultArray.push(nameForms[k], nameForms[i]);
         }
       }
     }
