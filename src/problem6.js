@@ -3,7 +3,7 @@ function problem6(forms) {
   var splitNicknamesMap = new Map();
 
   for (var i = 0; i < forms.length; i++) {
-    var splitNicknames = getSplitNames(forms[i][1]);
+    var splitNicknames = getSplitNicknames(forms[i][1]);
 
     for (var j = 0; j < splitNicknames.length; j++) {
       if (isDuplicated(splitNicknamesMap, splitNicknames[j])) {
