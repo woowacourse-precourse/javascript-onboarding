@@ -34,7 +34,11 @@ function multValue(arr){
   return mult;
 }
 
+function maximun([arr]){
+  return Math.max(arr);
+}
 
-console.log(problem1([99, 100], [197, 198]));
+// console.log(problem1([99, 100], [197, 198]));
+
 
 module.exports = problem1;
