@@ -19,7 +19,11 @@ function problem6(forms) {
         regex_email.test(forms[i][0])
       ) {
         // * 닉네임 1자 이상 20자 미만에 한글 확인
-        if (forms[i][1] >= 1 && forms[i][1] < 20 && korean.test(forms[i][1])) {
+        if (
+          forms[i][1].length >= 1 &&
+          forms[i][1].length < 20 &&
+          korean.test(forms[i][1])
+        ) {
           arr1 = forms[i][1].split("");
           name1 = forms[i][1];
           for (var j = i + 1; j < forms.length; j++) {
