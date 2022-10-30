@@ -1,21 +1,21 @@
 const socialGraph = {};
 const socialScore = {};
-function addVertex(node) {
-  if (!socialGraph[node]) {
-    socialGraph[node] = [];
+function addVertex(node, graph) {
+  if (!graph[node]) {
+    graph[node] = [];
   }
   return;
 }
 
-function addEdge(nodeA, nodeB) {
-  addVertex(nodeA);
-  addVertex(nodeB);
+function addEdge(nodeA, nodeB, graph) {
+  addVertex(nodeA, graph);
+  addVertex(nodeB, graph);
 
-  if (!socialGraph[nodeA].includes(nodeB)) {
-    socialGraph[nodeA].push(nodeB);
+  if (!graph[nodeA].includes(nodeB)) {
+    graph[nodeA].push(nodeB);
   }
-  if (!socialGraph[nodeB].includes(nodeA)) {
-    socialGraph[nodeB].push(nodeA);
+  if (!graph[nodeB].includes(nodeA)) {
+    graph[nodeB].push(nodeA);
   }
   return;
 }
@@ -23,7 +23,7 @@ function addEdge(nodeA, nodeB) {
 function problem7(user, friends, visitors) {
   var answer;
   friends.forEach((friend) => {
-    addEdge(friend[0], friend[1]);
+    addEdge(friend[0], friend[1], socialGraph);
   });
 
   return answer;
