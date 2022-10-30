@@ -5,6 +5,51 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+// 예외값 처리
+function isEven(num) {
+  let result = (num % 2 === 0);
+
+  return result;
+}
+
+function isOdd(num) {
+  let result = (num % 2 === 1);
+
+  return result;
+}
+
+function isValidRange(num) {
+  let minPage = 1;
+  let maxPage = 400;
+
+  let result = (num > minPage && num < maxPage);
+  
+  return result;
+}
+
+function isValidOrder(pages) {
+  let [leftPage, rightPage] = pages;
+  let result = (leftPage === rightPage - 1);
+
+  return result;
+}
+
+function isValidList(pages) {
+  let result;
+  result = (pages.length === 2);
+
+  return result;
+}
+
+function isValidInput(pages) {
+  let [leftPage, rightPage] = pages;
+  let result;
+  result = isOdd(leftPage) && isEven(rightPage) && isValidOrder(pages) && isValidRange(leftPage) && isValidRange(rightPage) && isValidList(pages);
+
+  return result;
+}
+
+
 function compare(a, b) {
   let maxValue = Math.max(a, b);
 
@@ -61,17 +106,25 @@ function pobiCrongMaxValue(pobi, crong) {
 function returnValue(pobi, crong) {
   let [pobiMaxValue, crongMaxValue] = pobiCrongMaxValue(pobi, crong);
   let result;
-  if(pobiMaxValue > crongMaxValue) {
-    result = 1;
-  } else if(pobiMaxValue < crongMaxValue) {
-    result = 2;
-  } else if (pobiMaxValue === crongMaxValue) {
-    result = 0;
-  } else {
-    result = -1;
+  const pobiWin = 1;
+  const crongWin = 2;
+  const draw = 0;
+  const exceptCase = -1;
+  result = isValidInput(pobi) && isValidInput(crong);
+
+  if(result === false) {
+    return exceptCase;
   }
+  else {
+    if(pobiMaxValue > crongMaxValue) {
+      result = pobiWin;
+    } else if(pobiMaxValue < crongMaxValue) {
+      result = crongWin;
+    } else if (pobiMaxValue === crongMaxValue) {
+      result = draw;
+    }
 
-  return result;
+    return result;
+  }
 }
-
 module.exports = problem1;
