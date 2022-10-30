@@ -57,9 +57,15 @@ const searchByFriends = (user, friends, friendOfUser) => {
   });
 
   const newFriends = newFriendsFilter.map((i) => i[1]);
-  const returnValue = newFriends.filter((v, i) => newFriends.indexOf(v) === i);
+  const friendScore = newFriends.reduce((acc, cur, i) => {
+    if (!acc[cur]) {
+      acc[cur] = 10;
+    }
 
-  return returnValue;
+    return acc;
+  }, {});
+
+  return friendScore;
 };
 
 /*
