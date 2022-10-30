@@ -117,6 +117,11 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  test("case2", () => {
+    expect(problem4("WoowaCoures!!!! Fighting@@!!3 123123")).toEqual(
+      "DlldzXlfivh!!!! Urtsgrmt@@!!3 123123"
+    );
+  });
 });
 
 describe("problem5", () => {
