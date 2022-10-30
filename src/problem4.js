@@ -9,10 +9,16 @@
  * 2. 알파벳 외 문자는 x
  */
 
+// exception 1
+const isOutOfRange = inputLength => !(inputLength >= 1 && inputLength <= 1000)
+
 function problem4(word) {
   let answer = [];
-
   let criterion = "";
+
+  if (isOutOfRange(word.length)) {
+    throw "Input lenth error"
+  }
 
   word.split("").map((char)=>{
 
