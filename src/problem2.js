@@ -19,6 +19,4 @@ function problem2(cryptogram) {
   return strArr.join('');
 }
 
-problem2("browoanoommnaon")
-
 module.exports = problem2;
