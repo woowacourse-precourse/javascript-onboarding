@@ -34,6 +34,8 @@ function problem7(user, friends, visitors) {
 
   const upToFiveFriends = sortObject.slice(0, 5);
 
+  const removeZeroPointFriends = upToFiveFriends.map(object => object[1] === 0 ? "" : object[0]);
+
   return answer;
 }
 
