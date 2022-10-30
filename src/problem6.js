@@ -110,8 +110,13 @@ function problem6(forms) {
     else {return true;}
   }
 
-  //!5. 결과값은 오름차순으로 정렬
-  //!6. 결과값의 중복된 내용은 제거
+  //!5. 이메일을 오름차순으로 정렬된 값을 반환하는 함수
+
+  function RETURN_ASC_EMAIL (mailList) {
+    return mailList.sort()
+  }
+  
+  //!6. 이메일의 결과값의 중복된 내용은 제거
 
 
   const inputForms = forms.slice()
