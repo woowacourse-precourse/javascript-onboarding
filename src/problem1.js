@@ -1,5 +1,13 @@
 function problem1(pobi, crong) {
-
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1 ) {
+    return -1;
+  } else if (largeNumber(pobi) > largeNumber(crong)) {
+    return 1;
+  } else if (largeNumber(pobi) < largeNumber(crong)) {
+    return 2;
+  } else if (largeNumber(pobi) === largeNumber(crong)) {
+    return 0;
+  }
 }
 
 // 최대값 구하는 함수
