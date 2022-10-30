@@ -50,6 +50,12 @@ function answerScoreSort(answer) {
   });
   return answer;
 }
+function answerId(answer) {
+  answer = answer.map((item) => {
+    return item.key;
+  });
+  return answer;
+}
 function problem7(user, friends, visitors) {
   var answer = [];
   var obj = {};
@@ -61,6 +67,7 @@ function problem7(user, friends, visitors) {
   obj = friendVisitCheck(visitors, set, obj);
   answer = keyValueObject(answer, obj);
   answer = answerScoreSort(answer);
+  answer = answerId(answer);
   return answer;
 }
 
