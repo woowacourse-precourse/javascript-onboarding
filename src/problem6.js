@@ -44,11 +44,18 @@ function returnEmail(forms, map) {
 function problem6(forms) {
   if (!errorHandling(forms)) return -1;
   else forms = errorHandling(forms);
-  console.log(forms);
   let map = nicknameWordMap(forms);
   let answer = returnEmail(forms, map);
   answer.sort();
   return answer;
 }
-
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 module.exports = problem6;
