@@ -8,9 +8,7 @@ function problem7(user, friends, visitors) {
 
   for (var i = 0; i < friends.length; i++) {
     /* 사용자 친구 목록과의 교집합 */
-    var interWithUserFreinds = friends[i].filter((element) =>
-      userFriends.includes(element)
-    );
+    var interWithUserFreinds = getInterWithUserFreinds(friends[i], userFriends);
 
     /* 추천 점수 10점 */
 
@@ -48,12 +46,15 @@ function problem7(user, friends, visitors) {
   }
 
   resultMap = sortByValue(resultMap);
-
   answer = getRecommendedFriends(resultMap);
 
   if (answer.length > 5) answer = getMaxRecommendedFriends(answer);
 
   return answer;
+}
+
+function getInterWithUserFreinds(friend, userFriends) {
+  return friend.filter((element) => userFriends.includes(element));
 }
 
 function sortByValue(resultMap) {
