@@ -22,7 +22,13 @@ function compare(scoreArr) {
 function problem1(pobi, crong) {
   let pobiScore = 0;
   let crongScore = 0;
-  if (pobi.includes(400 || 1) || crong.includes(400 || 1)) return -1;
+  if (
+    pobi.includes(400 || 1) ||
+    crong.includes(400 || 1) ||
+    pobi[1] - pobi[0] !== 1 ||
+    crong[1] - crong[0] !== 1
+  )
+    return -1;
   crongScore = compare(crong);
   pobiScore = compare(pobi);
   if (pobiScore === crongScore) return 0;
