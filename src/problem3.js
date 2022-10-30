@@ -1,19 +1,25 @@
-function getCount(num) {
+const getCrapCount = (curNum) => {
+  return [...curNum.toString()].reduce((acc, cur) => {
+    if (['3', '6', '9'].includes(cur)) {
+      acc++;
+    }
+
+    return acc;
+  }, 0);
+};
+
+const getTotalCount = (num) => {
   let cnt = 0;
   for (let i = 1; i <= num; i++) {
-    const curNum = i + '';
-    for (let j = 0; j < curNum.length; j++) {
-      if (curNum[j] === '3' || curNum[j] === '6' || curNum[j] === '9') {
-        cnt++;
-      }
-    }
+    cnt += getCrapCount(i);
   }
+
   return cnt;
-}
+};
 
 function problem3(number) {
-  const answer = getCount(number);
-  return answer;
+  const totalCrapCount = getTotalCount(number);
+  return totalCrapCount;
 }
 
 module.exports = problem3;
