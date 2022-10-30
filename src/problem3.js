@@ -12,7 +12,20 @@ function problem3(number) {
       -> 5자리라면 5번의 비교가 발생, 1~10000까지 비교시 50000이 안되는 비교가 발생
 */
 function getClapCount(number) {
-  return 0;
+  let count = 0;
+  while (number > 0) {
+    const unit = number % 10;
+    number = (number - unit) / 10;
+    count += isClap(unit) ? 1 : 0;
+  }
+  return count;
 }
+
+function isClap(unit) {
+  if (unit === 0) return 0;
+  return unit % 3 === 0;
+}
+
+problem3(33);
 
 module.exports = problem3;
