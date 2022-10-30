@@ -40,3 +40,10 @@ function pushSumOfBooks(book) {
 
   return sumOfBookPageArr;
 }
+
+function findMaxNum(book) {
+  const SumOfBookPageArr = pushSumOfBooks(book);
+  const bookMax = Math.max(...SumOfBookPageArr);
+
+  return bookMax;
+}
