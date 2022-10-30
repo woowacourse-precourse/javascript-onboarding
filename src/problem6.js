@@ -34,6 +34,11 @@ function getErrorUserEmail(formList, xName) {
         .map(([email]) => email);
 }
 
-function problem6(forms) {}
+function problem6(forms) {
+    const userNameCountList = checkNameCount(getNickName(forms));
+    const errorNickName = getErrorName(userNameCountList);
+    const result = new Set(getErrorUserEmail(forms, errorNickName).sort());
+    return [...result];
+}
 
 module.exports = problem6;
