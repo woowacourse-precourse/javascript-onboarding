@@ -3,6 +3,14 @@ function problem3(number) {
   return answer;
 }
 
+function divideNumTo10(number) {
+  while (number > 0) {
+    remainNum = number % 10;
+    numCheck(remainNum);
+    number /= 10;
+  }
+}
+
 module.exports = problem3;
 
 /*
