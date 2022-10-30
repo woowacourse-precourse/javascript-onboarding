@@ -8,6 +8,8 @@ function problem3(number) {
       if(matched_txt !== null) answer += matched_txt.length;
   }
   
+  // 예외처리
+  if(number < 1 || number > 1000) answer = "예외사항"
   return answer;
 }
 
