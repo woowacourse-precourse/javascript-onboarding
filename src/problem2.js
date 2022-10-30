@@ -8,13 +8,7 @@ const Cryptogram = {
     return true;
   },
   checkText: function (text) {
-    if (!this.checkTextLength(text)) {
-      return false;
-    }
-    if (!this.checkTextLow(text)) {
-      return false;
-    }
-    return true;
+    return this.checkTextLength(text) && this.checkTextLow(text);
   },
   checkTextLength: function (text) {
     return text.length >= 0 && this.chars <= 1000;
