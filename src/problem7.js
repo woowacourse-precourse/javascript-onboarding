@@ -45,15 +45,19 @@ function getWithKnowScore(userFriends, friends) {
   return withKnowScore;
 }
 
-function getVisitTimelineScore(visitors) {
+function getVisitTimelineScore(userFriends, visitors) {
   const visitTimelineScore = {};
-  visitors.forEach((visitor) => {
+  for (let visitor of visitors) {
+    if (userFriends.has(visitor)) {
+      continue;
+    }
+
     if (visitTimelineScore[visitor]) {
       visitTimelineScore[visitor]++;
     } else {
       visitTimelineScore[visitor] = 1;
     }
-  });
+  }
   return visitTimelineScore;
 }
 
