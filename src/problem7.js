@@ -10,6 +10,26 @@ function problem7(user, friends, visitors) {
     if (name[1] === userName) myFriends.push(a[0]);
   }
 
+  // friends 목록에서 user의 친구 제거
+  let removeUserArr = [];
+  for (let i = 0; i < friendsList.length; i++) {
+    if (!friendsList[i].includes(user)) {
+      removeUserArr.push(friendsList[i]);
+    }
+  }
+  // 목록에서 중복 제거
+  const removeMyFriends = (arr1, arr2) => {
+    return arr1.concat(arr2).filter(user => !arr1.includes(user) || !arr2.includes(user));
+  };
+
+  // 내 친구 제거 목록
+  let friendListOfRemoveMyFriend = removeMyFriends(removeUserArr.flat(), myFriends);
+  let visitorListOfRemoveMyFriend = removeMyFriends(visitorsList, myFriends);
+  let removeOverlapFriendAndVisitor = [
+    ...new Set(friendListOfRemoveMyFriend),
+    ...new Set(visitorListOfRemoveMyFriend),
+  ];
+
   // 점수 리스트
   const userPointList = Object.assign({}, ...delDupUserList.map((key, i) => ({[key]: 0})));
   // friends 점수 +10
@@ -41,14 +61,6 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < maxFiveList.length; i++) {
     if (maxFiveList[i][1] === 0) {
       maxFiveList.splice(i, 1);
-    }
-  }
-  // 내 친구 제외
-  for (let i = 0; i < maxFiveList.length; i++) {
-    for (let j = 0; j < myFriends.length; j++) {
-      if (maxFiveList[i][0] === myFriends[j]) {
-        maxFiveList.splice(i, 1);
-      }
     }
   }
 
