@@ -22,7 +22,7 @@
 
 5. problem5.js
 
-- [] problem5 기능 구현하기
+- [x] problem5 기능 구현하기
 - [] 리펙터링
 
 6. problem6.js
