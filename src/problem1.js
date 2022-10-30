@@ -1,6 +1,13 @@
 function problem1(pobi, crong) {
+  const RESULT = {
+    pobiWin: 1,
+    crongWin: 2,
+    draw: 0,
+    exception: -1,
+  };
+
   if (!isInPage(pobi) || !isInPage(crong)) {
-    return -1;
+    return RESULT.exception;
   }
 
   const pobiMaxValue = Math.max(
@@ -11,13 +18,13 @@ function problem1(pobi, crong) {
   );
 
   if (pobiMaxValue > crongMaxValue) {
-    return 1;
+    return RESULT.pobiWin;
   }
   if (pobiMaxValue < crongMaxValue) {
-    return 2;
+    return RESULT.crongWin;
   }
   if (pobiMaxValue === crongMaxValue) {
-    return 0;
+    return RESULT.draw;
   }
 }
 
