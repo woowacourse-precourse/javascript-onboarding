@@ -25,6 +25,10 @@ function problem6(forms) {
       }
     }
   }
+  //email_set에 속해있는 이메일을 중복제거하고, 오름차순 정렬한다
+  var set = new Set(email_set);
+  answer = [...set];
+  answer = answer.sort();
 
   return answer;
 }
