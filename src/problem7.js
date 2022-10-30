@@ -14,4 +14,17 @@ const getFriendRelationList = (friends) => {
   return friendRelation;
 };
 
+const getFriendsOfFriend = (user, friendRelation) => {
+  const friendOfFriend = new Set(),
+    friendOfUser = friendRelation[user];
+  friendOfUser.forEach((friend) => {
+    const friends = friendRelation[friend];
+    friends.forEach((friend) => {
+      if (friend != user && !friendOfUser.includes(friend))
+        friendOfFriend.add(friend);
+    });
+  });
+  return friendOfFriend;
+};
+
 module.exports = problem7;
