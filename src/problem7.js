@@ -14,6 +14,9 @@ function problem7(user, friends, visitors) {
   }
   const mutualFriends = [].concat(...EMPTY_ARRAY);
 
+  const concatenateAllSubArray = [].concat(...friends);
+  concatenateAllSubArray.map((friend) => EMPTY_OBJECT[friend] = 0); // 모든 친구들을 object에 추가
+
   return answer;
 }
 
