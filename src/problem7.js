@@ -1,20 +1,24 @@
 function problem7(user, friends, visitors) {
-  const find_current_friends = (user, friends) => {
-    let foundFriends = [];
+  let current_friends = [];
+  let recommendations = [];
+
+  const push_current_friend = (person) => {
+    current_friends.push(person);
+  };
+
+  const find_current_friends = () => {
     for (let i = 0; i < friends.length; i++) {
       for (let j = 0; j < 2; j++) {
         if (user == friends[i][j]) {
-          foundFriends.push(friends[i][1 - j]);
+          push_currnet_friend(friends[i][1 - j]);
         }
       }
     }
-    return foundFriends;
   };
 
-  let current_friends = find_current_friends(user, friends);
-
-  // 2. 추천 친구 목록 만들기
-  let recommendations = [];
+  const push_recommendations = (person, score) => {
+    recommendations.push([person, score]);
+  };
 
   const find_friends_of_friends = () => {
     for (let i = 0; i < current_friends.length; i++) {
@@ -24,8 +28,7 @@ function problem7(user, friends, visitors) {
             current_friends[i] == friends[j][k] &&
             user != friends[j][1 - k]
           ) {
-            // 추천친구목록에 추가
-            recommendations.push([friends[j][1 - k], 10]);
+            push_recommendations(friends[j][1 - k], 10);
           }
         }
       }
@@ -34,7 +37,6 @@ function problem7(user, friends, visitors) {
 
   const find_visitors = () => {
     for (let i = 0; i < visitors.length; i++) {
-      // 사용자와 이미 친구라면
       isBreak = false;
       for (let j = 0; j < current_friends.length; j++) {
         if (visitors[i] == current_friends[j]) {
@@ -43,14 +45,20 @@ function problem7(user, friends, visitors) {
         }
       }
       if (!isBreak) {
-        // 추천친구목록에 추가
-        recommendations.push([visitors[i], 1]);
+        push_recommendations(visitors[i], 1);
       }
     }
   };
 
-  find_friends_of_friends();
-  find_visitors();
+  const solution = () => {
+    find_current_friends();
+
+    find_friends_of_friends();
+
+    find_visitors();
+  };
+
+  solution();
 
   // 3. 최종 추천친구 목록 만들기
   let recommendations2 = [];
