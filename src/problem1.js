@@ -71,3 +71,4 @@ function problem1(firstBook, secondBook) {
 
   return -1;
 }
+module.exports = problem1;
