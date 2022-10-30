@@ -37,11 +37,13 @@ function problem7(user, friends, visitors) {
   const friendsList = getFriendsList(friends);
   const alreadyFriends = friendsList.get(user);
 
+  visitors.forEach((visitor) => setVisitorFriendsScore(visitor, friendsScore));
+
+  if (!alreadyFriends) return getMaxScoreFriends(user, friendsScore);
+
   alreadyFriends.forEach((alreadyFriend) =>
     setFriendsScore(friendsList.get(alreadyFriend), friendsScore)
   );
-
-  visitors.forEach((visitor) => setVisitorFriendsScore(visitor, friendsScore));
 
   setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore);
 
@@ -135,11 +137,15 @@ function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
 function getMaxScoreFriends(user, friendsScore) {
   return setMapToArray(friendsScore)
     .filter(([key]) => key !== user)
+    .filter(([_, value]) => value !== 0)
+    .map(([name, scroe]) => ({ name, scroe }))
     .sort((a, b) => {
-      if (a[1] === b[1]) return b[0] - a[0];
-      return b[1] - a[1];
+      if (a.scroe < b.scroe) return 1;
+      if (a.scroe > b.scroe) return -1;
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
     })
-    .map(([key]) => key)
+    .map(({ name }) => name)
     .slice(0, 5);
 }
 
