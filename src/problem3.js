@@ -1,10 +1,13 @@
+const getNumArr = (number) =>
+  Array.from({ length: number }, (_, i) => i + 1 + "");
+
+const matchedWith369 = (num) => num.match(/[369]/g);
+
 function problem3(number) {
-  let count = 0;
-  for (let i = 1; i <= number; i++) {
-    const matchedWith369 = i.toString().match(/[369]/g);
-    count += matchedWith369?.length ?? 0;
-  }
-  return count;
+  return getNumArr(number).reduce(
+    (acc, num) => acc + (matchedWith369(num)?.length ?? 0),
+    0
+  );
 }
 
 module.exports = problem3;
