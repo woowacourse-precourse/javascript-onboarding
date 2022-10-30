@@ -9,7 +9,7 @@ function returnSimilarName(forms){
     let preUserName = '';
     let preUserEmail = '';
 
-    if(isValidValue(userName, userEmail)){
+    if(!(isValidValue(userName, userEmail))){
       emailReturnBox[userEmail] = userName;
     }
 
@@ -27,7 +27,7 @@ function returnSimilarName(forms){
       }
     }
   });
-  return emailCheckBox;
+  return emailReturnBox;
 }
 
 function isValidValue(name, email){
@@ -42,14 +42,17 @@ function isValidValue(name, email){
 }
 
 function problem6(forms) {
-  console.log(returnSimilarName(forms));
+  let resultEmailArray = Object.keys(returnSimilarName(forms));
+  resultEmailArray.sort(); 
+
+  return resultEmailArray;
 }
 
-problem6([["jm@email.com", "제이엠"],
+console.log(problem6([["jm@email.com", "제이엠"],
 ["jason@email.com", "제이슨"], 
 ["woniee@email.com", "워니"], 
 ["mj@email.com", "엠제이"], 
-["nowm@email.com", "이제엠"]]);
+["nowm@email.com", "이제엠"]]));
 
 module.exports = problem6;
 
