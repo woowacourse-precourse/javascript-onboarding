@@ -8,6 +8,25 @@ function problem7(user, friends, visitors) {
         return value[1];
       } else return value[0];
     });
+
+  for (let i = 0; i < friends.length; i++) {
+    for (let j = 0; j < userFriendList.length; j++) {
+      if (
+        !friends[i].includes(user) &&
+        friends[i].includes(userFriendList[j])
+      ) {
+        const index = friends[i].findIndex(
+          (item) => item !== userFriendList[j]
+        );
+
+        if (friends[i][index] in scoreObj) {
+          scoreObj[friends[i][index]] += 10;
+        } else {
+          scoreObj[friends[i][index]] = 10;
+        }
+      }
+    }
+  }
 }
 
 module.exports = problem7;
