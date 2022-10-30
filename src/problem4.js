@@ -2,17 +2,9 @@ function problem4(word) {
 	var answer = [];
 
 	for (let i = 0; i < word.length; i++) {
-		if (word[i] != ' ') {
-			answer.push(String.fromCharCode(convertWord(word[i])));
-		} else {
-			answer.push(' ');
-		}
+		word[i] != ' '?answer.push(String.fromCharCode(convertWord(word[i]))):answer.push(' ')
 	}
-
-	answer = answer.join('');
-	console.log(answer);
-
-	return answer;
+	return answer.join('');
 }
 function convertWord(word) {
 	let result = 0;
