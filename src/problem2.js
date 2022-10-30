@@ -6,6 +6,16 @@ const problem2 = (cryptogram) => {
 
   if (!findDuplicate(cipherText)) return cipherText;
 
+  while (findDuplicate(cipherText)) {
+    const duplicates = findDuplicate(cipherText);
+
+    duplicates.forEach(
+      (duplicate) => (cipherText = cipherText.replace(duplicate, ''))
+    );
+
+    answer = cipherText;
+  }
+
   return answer;
 };
 
