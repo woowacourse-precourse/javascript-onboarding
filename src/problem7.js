@@ -24,6 +24,62 @@ function problem7(user, friends, visitors) {
       }
     });
 
+  // 2. 그 친구와 친구인 사람을 찾아서 새 이차원 배열 recommand에 [10, '이름'] 이렇게 넣고 이미 있으면 +10
+  let recommand = [];
+
+  userFriends.map((friend) => {
+    friends
+      .filter((array) => {
+        if (array.includes(friend)) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .filter((array) => {
+        if (array.includes(user)) {
+          return false;
+        } else {
+          return true;
+        }
+      })
+      .map((array) => {
+        if (array[0] === friend) {
+          let includeCheck = false;
+          recommand.map((orginArray) => {
+            if (orginArray.includes(array[1])) {
+              includeCheck = true;
+            }
+          });
+          if (includeCheck) {
+            recommand.map((originArray) => {
+              if (originArray.includes(array[1])) {
+                originArray[0] += 10;
+              }
+            });
+          } else {
+            recommand.push([10, array[1]]);
+          }
+        } else {
+          let includeCheck = false;
+          recommand.map((orginArray) => {
+            if (orginArray.includes(array[0])) {
+              includeCheck = true;
+            }
+          });
+          if (includeCheck) {
+            recommand.map((originArray) => {
+              if (originArray.includes(array[0])) {
+                originArray[0] += 10;
+              }
+            });
+          } else {
+            recommand.push([10, array[0]]);
+          }
+        }
+      });
+  });
+
   return answer;
 }
 
