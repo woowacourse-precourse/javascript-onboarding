@@ -7,14 +7,13 @@ function isDuplicateWord(forms, duplicateWords, word) {
 }
 
 function getDuplicateWords(forms, duplicateWords) {
-  const crew = forms[0][1];
-  forms.shift();
-
-  if (forms.length === 0) {
+  if (forms.length === 1) {
     return duplicateWords;
   }
 
+  const crew = forms[0][1];
   let index = 0;
+  forms.shift();
 
   while (index < crew.length - 1) {
     const word = crew.substring(index, index + 2);
