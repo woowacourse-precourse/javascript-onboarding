@@ -15,7 +15,7 @@ class ScoreData {
   }
   scoreFriendOfFriend() {
     this.friends.forEach(([firstPerson, secondPerson]) => {
-      this.userFriends((friend) => {
+      this.userFriends.forEach((friend) => {
         if(this.isFriend(firstPerson, friend)) this.giveScore(secondPerson, 10);
         if(this.isFriend(secondPerson, friend)) this.giveScore(firstPerson, 10);
       });
@@ -28,7 +28,15 @@ class ScoreData {
       if(this.scoreDictionary[friend]) delete this.scoreDictionary[friend];
     });
   }
-}
+
+  get getData() {
+    this.scoreFriendOfFriend();
+    this.scoreVisitors();
+    this.deleteUserAndFriend();
+
+    return this.scoreDictionary;
+  }
+};
 
 function getUserFriends(user, friends) {
   const userFriends = [];
@@ -39,13 +47,14 @@ function getUserFriends(user, friends) {
   });
 
   return userFriends;
-}
+};
 
 function problem7(user, friends, visitors) {
   var answer;
   const userFriends = getUserFriends(user, friends);
-  const ScoreData = new ScoreData(user, friends, visitors, userFriends);
+  const scoreData = new ScoreData(user, friends, visitors, userFriends).getData;
+
   return answer;
-}
+};
 
 module.exports = problem7;
