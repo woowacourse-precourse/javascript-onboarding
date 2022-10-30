@@ -17,7 +17,15 @@ const findMax = (page) => {
  * @returns {number}
  */
 function problem1(pobi, crong) {
-  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1;
+  if (
+    pobi[0] === 1 ||
+    crong[1] === 400 ||
+    pobi[0] % 2 !== 1 ||
+    crong[0] % 2 !== 1 ||
+    pobi[0] + 1 !== pobi[1] ||
+    crong[0] + 1 !== crong[1]
+  )
+    return -1;
 
   const pobiMax = Math.max(findMax(pobi[0]), findMax(pobi[1]));
   const crongMax = Math.max(findMax(crong[0]), findMax(crong[1]));
