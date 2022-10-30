@@ -33,6 +33,10 @@ function problem1(pobi, crong) {
   else if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     answer = -1;
   }
+  // 예외처리3: 각 페이지의 수가 1~400까지 안맞을 때
+  else if (pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400) {
+    answer = -1;
+  }
   return answer;
 }
 
