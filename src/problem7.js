@@ -70,35 +70,34 @@ function problem7(user, friends, visitors) {
     }
   };
 
+  const sort_recommendations2 = () => {
+    recommendations2.sort(function (a, b) {
+      if (a.score < b.score) {
+        return 1;
+      }
+      if (a.score > b.score) {
+        return -1;
+      }
+      // 점수 같을 경우
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+  };
+
   const solution = () => {
     find_current_friends();
-
     find_friends_of_friends();
-
     find_visitors();
-
     find_sum_of_score();
+    sort_recommendations2();
   };
 
   solution();
-
-  // 4. 최종 추천친구 목록 정렬하기
-  recommendations2.sort(function (a, b) {
-    if (a.score < b.score) {
-      return 1;
-    }
-    if (a.score > b.score) {
-      return -1;
-    }
-    // 점수 같을 경우
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    return 0;
-  });
 
   let answer = [];
   // 5. 최종 추천친구 중 가장 점수 높은 5명 리턴하기
