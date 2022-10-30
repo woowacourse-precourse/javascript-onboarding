@@ -1,11 +1,9 @@
 function problem7(user, friends, visitors) {
   const friendOfUser = friends.map((i) => i[0]);
-  const friendOfFriend = friemds.map((i) => {
-    let resultValue;
-    const friendValue = isCurrentFriend(i, friendOfUser);
-  });
+  const friendOfFriend = searchByFriends(user, friends, friendOfUser);
 
-  answer = 1;
+  console.log(friendOfFriend);
+  let answer;
   return answer;
 }
 
@@ -20,6 +18,32 @@ const isCurrentFriend = (name, friendOfUser) => {
 
   return resultValue;
 };
+
+/* 
+  1) friends의 두 번째 요소들과 visitor를 concat으로 합치기
+  2) 중복을 제거
+  3) object 생성.
+  
+*/
+const searchByFriends = (user, friends, friendOfUser) => {
+  const newFriendsFilter = friends.filter((i) => {
+    let resultValue;
+    const currentFriend = isCurrentFriend(i[1], friendOfUser);
+    if (i[1] !== user && !currentFriend) {
+      resultValue = true;
+    } else {
+      resultValue = false;
+    }
+
+    return resultValue;
+  });
+
+  const newFriends = newFriendsFilter.map((i) => i[1]);
+  const returnValue = newFriends.filter((v, i) => newFriends.indexOf(v) === i);
+
+  return returnValue;
+};
+
 /*
  친구 추천 알고리즘
  사용자와 함께 아는 친구의 수 = 10점
