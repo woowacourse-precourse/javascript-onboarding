@@ -3,6 +3,7 @@ function problem1(pobi, crong) {
     return -1;
   let pobiScore = getMaxScore(pobi);
   let crongScore = getMaxScore(crong);
+  resultLogic(pobiScore, crongScore);
 }
 
 function sumOfDigits(num) {
@@ -24,6 +25,13 @@ function mulOfDigits(num) {
 function getMaxScore([leftScore, rightScore]) {
   return Math.max(sumOfDigits(leftScore),mulOfDigits(leftScore),sumOfDigits(rightScore),mulOfDigits(rightScore));
 }
+
+function resultLogic(pobiScore, crongScore) {
+  if (pobiScore > crongScore)  return 1
+  else if(pobiScore < crongScore) return 2;
+  else return 0;
+}
+
 
 function errorCheck(pobi,crong) {
   if(pobi.length !== 2 || crong.length !== 2) return true;
