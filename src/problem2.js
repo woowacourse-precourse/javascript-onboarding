@@ -28,14 +28,11 @@ function problem2(cryptogram) {
         decryptedStack.push(codedMessage[i]);
         continue;
       }
-      if (
-        decryptedStack[decryptedStack.length - 1] === codedMessage[i] &&
-        i === messeageLength - 1
-      ) {
+      if (isEqualWithLastElement(decryptedStack, codedMessage[i]) && i === messeageLength - 1) {
         decryptedStack.pop();
         continue;
       }
-      if (decryptedStack[decryptedStack.length - 1] === codedMessage[i] && !isDuplicated) {
+      if (isEqualWithLastElement(decryptedStack, codedMessage[i]) && !isDuplicated) {
         isDuplicated = true;
         continue;
       }
@@ -45,7 +42,7 @@ function problem2(cryptogram) {
       }
       decryptedStack.push(codedMessage[i]);
     }
-    if (decryptedStack.length === 0 || decryptedStack.length === messeageLength) break;
+    if (isEmpty(decryptedStack) || decryptedStack.length === messeageLength) break;
     codedMessage = decryptedStack.join('');
     decryptedStack = [];
   }
@@ -54,6 +51,10 @@ function problem2(cryptogram) {
 
 function isEmpty(stack) {
   return stack.length === 0;
+}
+
+function isEqualWithLastElement(stack, character) {
+  return stack[stack.length - 1] === character;
 }
 
 module.exports = problem2;
