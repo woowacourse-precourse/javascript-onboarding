@@ -1,5 +1,12 @@
 function exceptionCheck(array) {
-
+  if (array[0] % 2 == 0)
+    throw
+  if (array[1] % 2 == 1)
+    throw
+  if (array[0] + 1 != array[1])
+    throw
+  if (array[0] == 1 || array[0] == 399)
+    throw
 }
 
 function getMultiplyOrSum(num) {
