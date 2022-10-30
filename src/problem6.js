@@ -24,6 +24,14 @@ function problem6(forms) {
 
       return count;
     }, {});
+
+  const duplicated = [];
+
+  for (const [key, value] of Object.entries(seperatedNickNameList)) {
+    if (value > 1) {
+      duplicated.push(key);
+    }
+  }
 }
 
 module.exports = problem6;
