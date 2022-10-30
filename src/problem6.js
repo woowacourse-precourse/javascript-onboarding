@@ -1,86 +1,72 @@
-//크루원 수의 미만과 초과
-function checkCrewOver(forms){
-  let crewnumber = forms.length;
-  if(crewnumber<1 || crewnumber>10000){
-    return "크루원 제한에 걸림"
-  }
-  return forms;
+//예외사항
+function exception(forms) {
+  let crew_total_number = forms.length;
+  if (crew_total_number < 1 || crew_total_number > 10000) return true;
+  return false;
 }
 
 //이메일 유효성 검사
-function checkEmailForm(forms){
-  let email_valid = new RegExp('[a-z0-9]+@email.com');
-  let new_crew_list = [];
-  forms.map((element)=>{
-    let email = element[0];
-    if(email.length<11 || email.length>20){
-      return false;
-    }
-    if(email_valid.test(email) == false){
-      return false;
-    }
-    new_crew_list.push(element);
-  })
-  return new_crew_list;
+function checkEmailValidity(forms) {
+  let email_validity = new RegExp("[a-z0-9]+@email.com");
+  let suitable_email_crews = [];
+  forms.map((crew) => {
+    let email = crew[0];
+    if (email.length < 11 || email.length > 20) return;
+    if (email_validity.test(email) == false) return;
+    suitable_email_crews.push(crew);
+  });
+  return suitable_email_crews;
 }
 
 //닉네임 한글 검사
-function checkNicknameKorean(forms){
-  let check_nickname_korean = new RegExp('^[가-힣]*$');
-  let new_crew_list = [];
-  forms.map((element)=>{
-    let nickname = element[1];
-    if(nickname.length<1 || nickname.length>20){
-      return false;
-    }
-    if(check_nickname_korean.test(nickname)== false){
-      return false;
-    }
-    new_crew_list.push(element);
-  })
-  return new_crew_list;
+function checkNicknameKorean(forms) {
+  let check_nickname_korean = new RegExp("^[가-힣]*$");
+  let korean_nickname_crews = [];
+  forms.map((crew) => {
+    let nickname = crew[1];
+    if (nickname.length < 1 || nickname.length > 20) return;
+    if (check_nickname_korean.test(nickname) == false) return;
+    korean_nickname_crews.push(crew);
+  });
+  return korean_nickname_crews;
 }
 
 //연속되는 두글자 추출
-function checkOverlapKeyword(forms){
-  let check_overlap_arr = [];
-  forms.map((element)=>{
-    crew_nickname = element[1];
-    for(i =0;i<crew_nickname.length-1;i++){
-      check_overlap_arr.push(crew_nickname.substr(i,2))
+function checkOverlapWord(forms) {
+  let split_words = [];
+  forms.map((crew) => {
+    let nickname = crew[1];
+    for (i = 0; i < nickname.length - 1; i++) {
+      split_words.push(nickname.substr(i, 2));
     }
-  })
-  let overlap_arr = check_overlap_arr.filter((element, index) => check_overlap_arr.indexOf(element) != index);
-  overlap_arr = new Set(overlap_arr)
-  overlap_arr = [...overlap_arr]
-  return overlap_arr
-}
-//중복된 크루원 이메일 추출 후 정렬
-function deduplication(forms,overlap_arr){
-  let email_arr = [];
-  forms.map((element)=>{
-    overlap_arr.map((overlap)=>{
-      if(element[1].indexOf(overlap) != -1){
-        email_arr.push(element[0])
-      }
-    })
-  })
-  email_arr = email_arr.sort();
-  return email_arr;
+  });
+  let overlap_words = split_words.filter(
+    (overlap_word, index) => split_words.indexOf(overlap_word) != index
+  );
+  overlap_words = new Set(overlap_words);
+  overlap_words = [...overlap_words];
+  return overlap_words;
 }
 
-  
+//중복된 크루원 이메일 추출 후 정렬
+function searchOverlapCrewEmail(forms, overlap_words) {
+  let overlap_crew_emails = [];
+  forms.map((crew) => {
+    overlap_words.map((overlap_word) => {
+      if (crew[1].indexOf(overlap_word) != -1)
+        overlap_crew_emails.push(crew[0]);
+    });
+  });
+  overlap_crew_emails = overlap_crew_emails.sort();
+  return overlap_crew_emails;
+}
 
 function problem6(forms) {
-  var answer;
-  let crew_info;
-  let overlap_keywords;
-  crew_info = checkCrewOver(forms)
-  crew_info = checkNicknameKorean(crew_info)
-  crew_info = checkEmailForm(crew_info)
-  overlap_keywords = checkOverlapKeyword(forms)
-  answer = deduplication(crew_info,overlap_keywords)
-  return answer;
+  if(exception(forms)) return "제한사항을 지켜주세요.";
+  let exact_crews = checkNicknameKorean(forms);
+  exact_crews = checkEmailValidity(exact_crews);
+  let overlap_words = checkOverlapWord(forms);
+  return searchOverlapCrewEmail(exact_crews, overlap_words);
 }
 
 module.exports = problem6;
