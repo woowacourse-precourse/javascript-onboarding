@@ -1,6 +1,6 @@
 const isSame = (a, b) => a === b;
 const loop = (cb, string) => cb(string);
-const popDuplicates = (string) => {
+const removeDuplicates = (string) => {
   let result = "";
   for (let i = 0; i < string.length; i++) {
     if (string[i] === string[i + 1]) i++;
@@ -8,9 +8,10 @@ const popDuplicates = (string) => {
   }
   return result;
 };
+
 const decrypt = (cryptogram) => {
-  if (!isSame(cryptogram, popDuplicates(cryptogram))) {
-    return loop(decrypt, popDuplicates(cryptogram));
+  if (!isSame(cryptogram, removeDuplicates(cryptogram))) {
+    return loop(decrypt, removeDuplicates(cryptogram));
   }
   return cryptogram;
 };
