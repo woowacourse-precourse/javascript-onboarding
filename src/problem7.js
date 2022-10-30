@@ -8,6 +8,18 @@ function problem7(user, friends, visitors) {
       }
     }
   })
+  let suggestFriends = new Map();
+
+  friends.map(friend => {
+    for(let i = 0; i < friend.length; i++){
+      for(let j = 0; j < friendsOfUser.length; j++){
+        if(friend[i] === friendsOfUser[j]){
+          i === 0? suggestFriends.set(friend[1],10) : suggestFriends.set(friend[0],10);
+        }
+      }
+    }
+    suggestFriends.delete(user);
+  })
 }
 
 module.exports = problem7;
