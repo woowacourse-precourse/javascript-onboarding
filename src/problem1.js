@@ -1,93 +1,62 @@
 function problem1(pobi, crong) {
   var answer = 0;
+  var pobi_result = 0;
+  var crong_result = 0;
+  // * 왼쪽 페이지와 오른쪽 페이지가 1 차이 나는 지 확인
+  const pageCheck = (bookpage) => {
+    if (bookpage[0] !== bookpage[1] - 1) {
+      return false;
+    } else return true;
+  };
+  console.log(
+    pageCheck(pobi) &&
+      pageCheck(crong) &&
+      pobi.length == 2 &&
+      crong.length == 2 &&
+      pobi[0] < pobi[1] &&
+      crong[0] < crong[1]
+  );
 
-  // * 포비와 크롱의 길이는 2이고, 포비와 크롱에는 왼쪽 페이지 번호, 오른쪽 페이지 번호가 순서대로 들어있을 때
+  // * 왼쪽 페이지 합,곱의 최대와 오른쪽 페이지 합, 곱의 최대를 비교 후 리턴
+  const pageCalculator = (bookpage) => {
+    var leftpage = bookpage[0].toString();
+    var rightpage = bookpage[1].toString();
+    var left_max = [0, 1];
+    var right_max = [0, 1];
+
+    for (var i = 0; i < leftpage.length; i++) {
+      left_max[0] += Number(leftpage[i]);
+      left_max[1] *= leftpage[i];
+    }
+    for (var i = 0; i < rightpage.length; i++) {
+      right_max[0] += Number(rightpage[i]);
+      right_max[1] *= rightpage[i];
+    }
+    return Math.max(left_max[0], left_max[1], right_max[0], right_max[1]);
+  };
+
   if (
+    pageCheck(pobi) &&
+    pageCheck(crong) &&
     pobi.length == 2 &&
-    crong.lengt == 2 &&
+    crong.length == 2 &&
     pobi[0] < pobi[1] &&
     crong[0] < crong[1]
   ) {
-    // * 왼쪽 페이지와 오른쪽 페이지의 차이는 1일 때
-    if (pobi[0] == pobi[1] - 1 && crong[0] == crong[1] - 1) {
-      // * 포비 왼쪽 페이지 합 => 각 자릿수를 문자열로 쪼개고, 쪼갠 문자를 정수로 변환 후, 합
-      var pobi_sum_arr1 = pobi[0]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc + cur, 0);
-      // * 포비 오른쪽 페이지 합
-      var pobi_sum_arr2 = pobi[1]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc + cur, 0);
-      // * 크롱 왼쪽 페이지 합
-      var crong_sum_arr1 = crong[0]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc + cur, 0);
-      // * 크롱 오른쪽 페이지 합
-      var crong_sum_arr2 = crong[1]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc + cur, 0);
-      // * 포비 왼쪽 페이지 곱
-      var pobi_mult_arr1 = pobi[0]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc * cur, 1);
-      // * 포비 오른쪽 페이지 곱
-      var pobi_mult_arr2 = pobi[1]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc * cur, 1);
-      // * 크롱 왼쪽 페이지 곱
-      var crong_mult_arr1 = crong[0]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc * cur, 1);
-      // * 크롱 오른쪽 페이지 곱
-      var crong_mult_arr2 = crong[1]
-        .toString()
-        .split("")
-        .map((x) => parseInt(x))
-        .reduce((acc, cur) => acc * cur, 1);
-      // * 포비 값들 중 가장 큰 값
-      var p_max = Math.max(
-        pobi_sum_arr1,
-        pobi_mult_arr1,
-        pobi_sum_arr2,
-        pobi_mult_arr2
-      );
-      // * 크롱 값들 중 가장 큰 값
-      var c_max = Math.max(
-        crong_sum_arr1,
-        crong_mult_arr1,
-        crong_sum_arr2,
-        crong_mult_arr2
-      );
+    pobi_result = pageCalculator(pobi);
+    crong_result = pageCalculator(crong);
 
-      // * 포비와 크롱 중 누가 큰지 비교
-      if (p_max > c_max) {
-        answer = 1;
-      } else if (p_max < c_max) {
-        answer = 2;
-      } else if (p_max == c_max) {
-        answer = 0;
-      } else {
-        answer = -1;
-      }
+    // * 점수 비교
+    if (pobi_result > crong_result) {
+      answer = 1;
+    } else if (pobi_result < crong_result) {
+      answer = 2;
+    } else if (pobi_result == crong_result) {
+      answer = 0;
     } else {
-      // * 왼쪽 페이지와 오른쪽 페이지의 차이는 1이 아닐 때
       answer = -1;
     }
-  }
+  } else answer = -1;
 
   return answer;
 }
