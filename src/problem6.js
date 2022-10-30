@@ -16,7 +16,7 @@ function problem6(forms) {
     });
   });
 
-  return duplicateEamil;
+  return Array.from(duplicateEamil).sort();
 }
 
 function getConsecutiveLetters(nickname) {
