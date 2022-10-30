@@ -10,14 +10,13 @@ function problem4(word) {
     if (alphabets.indexOf(word[i]) > -1) {
       index = alphabets.indexOf(word[i]);
       answer.push(reverseAlphabet[index]);
-
-      // 띄어쓰기일때
-    } else if (word[i] === " ") {
-      answer.push(" ");
+    } else if (alphabets.indexOf(word[i].toUpperCase()) > -1) {
       // 소문자일때
-    } else {
       index = alphabets.indexOf(word[i].toUpperCase());
       answer.push(reverseAlphabet[index].toLowerCase());
+    } else {
+      // 알파벳 외 다른 문자일 때
+      answer.push(word[i]);
     }
   }
 
