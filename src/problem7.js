@@ -46,28 +46,28 @@ function getFriendList(friends){
   return friend_dic;
 }
 
+function getPointWithFriend(user, friend_dic, friend_score){
+  for(let i = 0; i < friend_dic[user].length; i++){
+    let user_friend = friend_dic[user][i];
+    let with_friends = friend_dic[user_friend];
+    for(let j = 0; j < with_friends.length; j++){
+      if(with_friends[j] in friend_score){
+        friend_score[with_friends[j]] += 10;
+      } else{
+        friend_score[with_friends[j]] = 10;
+      }
+    }
+  }
+  return friend_score;
+}
 function problem7(user, friends, visitors) {
   let answer = [];
   let friend_dic = getFriendList(friends);
 
-  // 추천점수 저장 객체 만들기
-  let friend_score = {};
-  for(let key in friend_dic){
-    friend_score[key] = 0;
-  }
-
   // 함께 아는 친구 점수 획득
-  // console.log(friend_dic);
-  // console.log(friend_dic[user][0], friend_dic[user][1]);
-  for(let i = 0; i < friend_dic[user].length; i++){
-    let friend = friend_dic[user][i];
-    let temp = friend_dic[friend];
-    // console.log("temp:", temp);
-    for(let j = 0; j < temp.length; j++){
-      friend_score[temp[j]] += 10;
-    }
-  }
-
+  let friend_score = {};
+  friend_dic = getPointWithFriend(user, friend_dic, friend_score);
+  console.log(friend_score);
   // 방문자 점수 획득
   for(let i = 0; i < visitors.length; i++){
     if(visitors[i] in friend_score){
@@ -76,7 +76,8 @@ function problem7(user, friends, visitors) {
       friend_score[visitors[i]] = 1;
     }
   }
-  
+  console.log(friend_score);
+
 
   // 원래 user와 이미 친구인 사람 제거
   for(let i = 0; i < friend_dic[user].length; i++){
@@ -91,7 +92,7 @@ function problem7(user, friends, visitors) {
 }
 
 
-// problem7("mrko",	
-// [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
-// 	["bedi", "bedi", "donut", "bedi", "shakevan"]);
+problem7("mrko",	
+[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
+	["bedi", "bedi", "donut", "bedi", "shakevan"]);
 module.exports = problem7;
