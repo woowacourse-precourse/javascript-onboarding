@@ -18,7 +18,7 @@
 4. problem4.js
 
 - [x] problem4 기능 구현하기
-- [] 리펙터링
+- [x] 리펙터링
 
 5. problem5.js
 
