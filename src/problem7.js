@@ -13,7 +13,7 @@ function problem7(user, friends, visitors) {
     /* 추천 점수 10점 */
 
     if (interWithUserFreinds.length === 1) {
-      // 둘 중의 한명은 사용자 친구인 경우
+      // 둘 중의 한명만이 사용자의 친구인 경우
       var friend = friends[i][0];
       score = 10;
 
