@@ -3,6 +3,10 @@ function problem5(money) {
   return answer;
 }
 
+function howManyMoneys(money, mUnit) {
+  return parseInt(money / mUnit);
+}
+
 module.exports = problem5;
 
 /*
