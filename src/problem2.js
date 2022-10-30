@@ -1,6 +1,6 @@
 /*
   구현할 기능 목록
-  [ ] 암호문의 중복문자를 제거하여 새로운 문자열을 생성하는 기능. 
+  [O] 암호문의 중복문자를 제거하여 새로운 문자열을 생성하는 기능. 
       * 문자의 중복을 알려주는 변수, 중복된 문자가 제거된 문자열을 저장할 배열 필요
       * 암호문의 모든 문자에 대해 순서대로 아래의 case별로 처리
         - [O] 1. 배열이 비여있는 경우 => 배열의 마지막에 삽입 
@@ -14,49 +14,40 @@
 */
 
 function problem2(cryptogram) {
-  let decryptedCryptogramStack = [];
-  let beforeDecryptedCryptogram = cryptogram.slice();
+  let decryptedStack = [];
+  let codedMessage = cryptogram.slice();
 
   while (true) {
     let isDuplicated = false;
-    let cryptogramLength = beforeDecryptedCryptogram.length;
+    let messeageLength = codedMessage.length;
 
-    for (let i = 0; i < n; i++) {
-      if (decryptedCryptogramStack) {
-        decryptedCryptogramStack.push(beforeDecryptedCryptogram[i]);
+    for (let i = 0; i < messeageLength; i++) {
+      if (!decryptedStack.length) {
+        decryptedStack.push(codedMessage[i]);
         continue;
       }
       if (
-        decryptedCryptogramStack[decryptedCryptogramStack.length - 1] ===
-          beforeDecryptedCryptogram[i] &&
-        i === cryptogramLength - 1
+        decryptedStack[decryptedStack.length - 1] === codedMessage[i] &&
+        i === messeageLength - 1
       ) {
-        decryptedCryptogramStack.pop();
+        decryptedStack.pop();
         continue;
       }
-      if (
-        decryptedCryptogramStack[decryptedCryptogramStack.length - 1] ===
-          beforeDecryptedCryptogram[i] &&
-        !isDuplicated
-      ) {
+      if (decryptedStack[decryptedStack.length - 1] === codedMessage[i] && !isDuplicated) {
         isDuplicated = true;
         continue;
       }
       if (isDuplicated) {
-        decryptedCryptogramStack.pop();
+        decryptedStack.pop();
         isDuplicated = false;
       }
-      decryptedCryptogramStack.push(beforeDecryptedCryptogram[i]);
+      decryptedStack.push(codedMessage[i]);
     }
-    if (
-      decryptedCryptogramStack.length === 0 ||
-      decryptedCryptogramStack.length === cryptogramLength
-    )
-      break;
-    beforeDecryptedCryptogram = decryptedCryptogramStack.join('');
-    decryptedCryptogramStack = [];
+    if (decryptedStack.length === 0 || decryptedStack.length === messeageLength) break;
+    codedMessage = decryptedStack.join('');
+    decryptedStack = [];
   }
-  return decryptedCryptogramStack.join('');
+  return decryptedStack.join('');
 }
 
 module.exports = problem2;
