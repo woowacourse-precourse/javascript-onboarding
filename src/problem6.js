@@ -18,6 +18,15 @@ function problem6(forms) {
       }
     }
   }
+  for (i = 0; i < Object.keys(filter).length; i++) {
+    if (Object.values(filter)[i] > 1) {
+      for (j = 0; j < forms.length; j++) {
+        if (forms[j][1].includes(Object.keys(filter)[i])) {
+          result.push(forms[j][0]);
+        }
+      }
+    }
+  }
   return result;
 }
 
