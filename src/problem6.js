@@ -3,6 +3,21 @@ function problem6(forms) {
   return answer;
 }
 
+function getRepeatedWords(forms) {
+  let wordFrequencyCount = {}
+  let repeatedWords = []
+  forms.forEach((form) => {
+      let words = formAnalyzer(form).keys()
+      for (let word of words) {
+          wordFrequencyCount[word] ? wordFrequencyCount[word] += 1 : wordFrequencyCount[word] = 1
+      }
+  })
+  for (let word in wordFrequencyCount) {
+      if (wordFrequencyCount[word] > 1) repeatedWords.push(word)
+  }
+  return repeatedWords
+}
+
 function formAnalyzer(form) {
   const getSubstring = (nickname) => {
       let substring = []
