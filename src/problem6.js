@@ -52,3 +52,5 @@ function problem6(forms) {
 
   return answer.sort();
 }
+
+module.exports = problem6;
