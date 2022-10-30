@@ -1,16 +1,36 @@
 // 중복 문자 제거 함수
 function decryption(cryptogram) {
-  let result = [], 
-      prev = '';
+  let prev_step = '',
+      one_step,
+      prev_char,
+      has_continuos;
 
-  for (let chr of cryptogram) {
-    if (result.length === 0) result.push(chr); 
-    else if (chr === result[result.length-1]) prev = result.pop();
-    else if (chr === prev) continue;
-    else result.push(chr);
+  while (1) {
+    one_step = [];
+    prev_char = '';
+    has_continuos = false;
+    
+    for (let char of cryptogram) {
+      if (char === prev_char) {
+        if (one_step.length == 1) one_step.pop();
+        has_continuos = true;
+      }
+      else {
+        if (has_continuos) {
+          one_step.pop();
+          has_continuos = false;
+        }
+        one_step.push(char); 
+        prev_char = char;
+      }
+    }
+    
+    cryptogram = one_step.join('');
+    if (!cryptogram || (prev_step && cryptogram == prev_step)) break;
+    prev_step = cryptogram;
   }
 
-  return result.join('');
+  return cryptogram;
 }
 
 function problem2(cryptogram) {
