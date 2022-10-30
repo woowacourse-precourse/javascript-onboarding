@@ -21,11 +21,15 @@ function problem3(number) {
     return count;
   };
 
+  const three = 3;
+  const six = 6;
+  const nine = 9;
+
   const totalNumberArray = getTotalNumberArray(number);
 
-  const NumberThreeCount = getSpecificNumberCount(totalNumberArray, 3);
-  const NumberSixCount = getSpecificNumberCount(totalNumberArray, 6);
-  const NumberNineCount = getSpecificNumberCount(totalNumberArray, 9);
+  const NumberThreeCount = getSpecificNumberCount(totalNumberArray, three);
+  const NumberSixCount = getSpecificNumberCount(totalNumberArray, six);
+  const NumberNineCount = getSpecificNumberCount(totalNumberArray, nine);
   
   answer = NumberThreeCount + NumberSixCount + NumberNineCount;
 
