@@ -1,6 +1,23 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  return forms
+    .filter(duplicateNickname)
+}
+
+function duplicateNickname([,nickname], idx, origin) {
+  return origin.some(([, comparisonTarget], compareIdx) => {
+    if (comparisonTarget === nickname && compareIdx === idx) return false;
+    return (
+      subNickname(nickname, 2)
+        .filter(hasSubstring(comparisonTarget))
+        .length !== 0
+    );
+  });
+}
+
+
+function hasSubstring(comparisonTarget) {
+  return (substring) => comparisonTarget.includes(substring);
+
 }
 
 function subNickname(nickname, length) {
