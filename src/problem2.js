@@ -17,7 +17,6 @@ function checkCryptogramOnlyLowerCase(cryptogram) {
 }
 
 function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
-  // 문자열을 순회하면서 반복되는 부분의 데이터를 배열화하여 저장한다.
   for (let i = 0; i < cryptogram.length; i++) {
     if (cryptogram[i] !== cryptogram[i + 1]) {
       if (startIndex !== null) {
@@ -41,7 +40,6 @@ function makeWantDeleteArray(cryptogram, startIndex, endIndex, wantDeleteArr) {
 }
 
 function deleteRepeatedString(cryptogram, wantDeleteArr) {
-  // for문이 한번 끝나면 전체 문자열에 대한 순회가 한 번 끝난 것이다.
   for (let i = 0; i < wantDeleteArr.length; i++) {
     const str = wantDeleteArr[i][0];
 
