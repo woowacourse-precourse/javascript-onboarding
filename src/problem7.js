@@ -55,11 +55,15 @@ function problem7(user, friends, visitors) {
     })
   );
 
-  answer = Array.from(resultMap.keys());
+  answer = getRecommendedFriends(resultMap);
 
   if (answer.length > 5) answer = getMaxRecommendedFriends(answer);
 
   return answer;
+}
+
+function getRecommendedFriends(resultMap) {
+  return Array.from(resultMap.keys());
 }
 
 function getUserFriends(user, friends) {
