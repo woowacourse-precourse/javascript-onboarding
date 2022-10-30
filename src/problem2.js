@@ -1,52 +1,40 @@
 //문제 2 기능 목록
-//1. 문자열에서 '모든' 중복 문자 제거 
-//   -> 반복문 이용, 문자열의 어디 부분이 중복인지 알아야 함
-//새로운 문자열에 하나씩 저장, 탐색하는 문자가 이전 문자와 같다면 skip!
+//1. 중복된 구간이 있는지 체크 (제거할 필요가 있는 문자열인가?)
+//   -> 반복문 이용, 문자열의 중복된 부분 제외한 새로운 문자열 반환
+//2. 중복된 구간이 있다면, 중복된 구간을 제외하고 새로운 문자열에 저장하기
+//생각의 전환: 중복되지 않는다면, 내 앞뒤로 똑같은게 있으면 안돼.
 
-function deleteDuplicateIndex (string, array) {
-  //console.log(string,array);
-  const stringArr = Array.from(string);
-  //console.log("string to arr: ", stringArr);
-  
-  for (var i=array.length-1; i>0; i--){
-    stringArr.splice(array[i], 1);
-    console.log(stringArr);
-  }
- 
-  const deletedStr = stringArr.join("");
-  return deletedStr;
-}
-
-function checkDuplicate (string){
-   var newString = "";
-   var indexArray = [];
-   for (var i=0; i < string.length; i++){
-      if (i==0){
-        newString += string[i]
-      } else {
-        var index = newString.length - 1; // 현재 newString의 맨 마지막 인덱스
-        var last = newString[index]; //마지막 원소의 값
-        if (last == string[i]){
-          indexArray.push(parseInt(index)); 
-          continue
-        }
-        else {
-          newString += string[i];
-        }
+function checkDuplicate(string){ //중복된 구간이 있는지 체크
+  var flag = 0;
+  for(i=0; i<string.length; i++){
+    if (i == 0){ //문자열의 맨 첫 글자
+      if(string[i] == string[i+1]){
+        return true;
       }
-      console.log(newString, indexArray);
-      
+    } else if(i == string.length-1){ //문자열의 맨 마지막 글자
+      if(string[i]==string[i-1]) {
+        return true;
+      }
+    } else {
+      if (string[i] == string[i-1] || string[i] == string[i+1]){
+        return true;
+      }
+    }
   }
-   newString = deleteDuplicateIndex(newString,indexArray);
-   return newString
 }
 
 function problem2(cryptogram) {
   var answer;
-
-  answer = checkDuplicate(cryptogram);
+ 
+  if (checkDuplicate(cryptogram)){
+      console.log(cryptogram);
+      //cryptogram = deleteDuplicate(cryptogram);
+  } 
+  
+  answer = cryptogram;
   
   return answer;
 }
-console.log(problem2("browoanoommnaon"))
+//console.log(problem2("browoanoommnaon"))
+console.log(problem2("zyelleyz"));
 module.exports = problem2;
