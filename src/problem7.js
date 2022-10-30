@@ -36,6 +36,20 @@ function problem7(user, friends, visitors) {
   }
 
   //3#. user와 함께 아는 친구일때 점수를 더하는 함수
+
+  function INPUT_NEAR_FRIENDS_POINT () {
+    const userFriendsList = FRIEND_RELATION_OBJ[user];
+    for(let friend of userFriendsList){
+      if(userFriendsList.includes(friend) === false){
+        if(USER_POINT_CALCUL_OBJ[friend] === undefined){
+          USER_POINT_CALCUL_OBJ[friend] = 10
+        } else {
+          USER_POINT_CALCUL_OBJ[friend] += 10
+        }
+      }
+    }    
+  }
+
   //4#. 타임 라인에 방문한 사용자들의 점수를 더하는 함수
 
   //특이사항
