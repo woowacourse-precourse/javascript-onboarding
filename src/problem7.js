@@ -1,6 +1,8 @@
 function problem7(user, friends, visitors) {
     let userFriends = [];
+    let recommendFriends = [];
     let answer = [];
+
     let friendsObj = setList(friends, visitors);
 
     friends.forEach(v=> {
@@ -10,6 +12,10 @@ function problem7(user, friends, visitors) {
     });
 
     friendsObj = setScore(user, friends, visitors, userFriends, friendsObj);
+
+    recommendFriends = sortObj(user, userFriends, friendsObj);
+    recommendFriends.forEach(v=> answer.push(v.name));
+    return answer;
 }
 
 function setList(friends, visitors) {
@@ -37,6 +43,22 @@ function setScore(user, friends, visitors, userFriends, friendsObj) {
         friendsObj[v] +=1;
     });
     return friendsObj;
+}
+
+function sortObj(user, userFriends, friendsObj) {
+    let recommendFriends = [];
+    for(let friend in friendsObj) {
+        if(friendsObj[friend]!=0 && friend!=user && userFriends.indexOf(friend)==-1) {
+            recommendFriends.push({name: friend, num: friendsObj[friend]})
+        }
+    };
+    recommendFriends = recommendFriends.sort((a,b)=>{
+        if(a.name<b.name) return -1;
+        if(b.name<a.name) return 1;
+        return 0;
+    });
+    recommendFriends = recommendFriends.sort((a,b)=>b.num-a.num);
+    return recommendFriends;
 }
 
 module.exports = problem7;
