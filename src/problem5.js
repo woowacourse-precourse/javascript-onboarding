@@ -6,6 +6,11 @@ function problem5(money) {
 
   for(let i = 0; i < unit.length; i++){
     quo = Math.floor(money/unit[i]);
+    //2. 몫을 출력, 잔돈 계산
+    if (quo > 0){
+      answer[i] = quo;
+      money -= quo*unit[i];
+    }
   }
  
   
