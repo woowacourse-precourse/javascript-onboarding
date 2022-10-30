@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const idList = getIdSet(user, friends, visitors);
   const idFriendScoreMap = makeFriendScore(idList, friends);
+  scoreFriend(user, idFriendScoreMap);
   console.log(idFriendScoreMap);
   var answer;
   return answer;
@@ -52,6 +53,24 @@ const addFriendSet = (idFriendScoreMap, friend1, friend2) => {
       friendSet: idFriendScoreMap.get(friend1).friendSet.add(friend2),
       score: 0,
     });
+};
+
+/**
+ * user와 함께 아는 친구가 있다면 점수에 10점 추가한다
+ * @param {string} user - 사용자 아이디
+ * @param {Map<string, {friendSet: Set<string>, score: number}>} idFriendScoreMap - {key: 아이디, value: {친구 목록, 점수}}
+ */
+const scoreFriend = (user, idFriendScoreMap) => {
+  const userFriendSet = idFriendScoreMap.get(user).friendSet;
+  idFriendScoreMap.forEach((value, id) => {
+    if (id !== user && !userFriendSet.has(id)) {
+      let score = value.score;
+      value.friendSet.forEach((friend) => {
+        if (userFriendSet.has(friend)) score += 10;
+      });
+      idFriendScoreMap.set(id, { friendSet: value.friendSet, score });
+    }
+  });
 };
 
 module.exports = problem7;
