@@ -12,7 +12,6 @@ function problem7(user, friends, visitors) {
     .flat(Infinity)
     .filter(v => v !== user);
 
-  // 이 부분 추후 수정
   for (const friend of notFriends) {
     const [A, B] = friend;
     if (friendList.includes(A)) {

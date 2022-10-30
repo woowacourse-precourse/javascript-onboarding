@@ -11,9 +11,7 @@ function problem4(word) {
     Y: 'B', Z: 'A',
   };
 
-  const answer = [...word].map(v => upperObj[v] || lowObj[v] || v).join('');
-
-  return answer;
+  return [...word].map(v => upperObj[v] || lowObj[v] || v).join('');
 }
 
 module.exports = problem4;

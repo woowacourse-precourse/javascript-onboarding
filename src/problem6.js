@@ -6,24 +6,24 @@ function checkIsEmail(email) {
 }
 
 // 중복 글자 체크
-function checkOverlap(forms) {
-  const validWords = [];
+function checkOverlapWords(forms) {
+  const words = [];
 
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms[i][1].length; j++) {
       const word = forms[i][1].slice(j, j + 2);
       const searchOverlapWords = forms.filter(([_, name]) => word.length !== 1 && name.includes(word));
-      if (searchOverlapWords.length >= 2 && !validWords.includes(word)) validWords.push(word);
+      if (searchOverlapWords.length >= 2 && !words.includes(word)) words.push(word);
     }
   }
 
-  return validWords;
+  return words;
 }
 
 
 function problem6(forms) {
-  const overlapWords = checkOverlap(forms);
-  const checkNames = forms.filter(([_, name]) => overlapWords.some(v => name.includes(v)));
+  const validWords = checkOverlapWords(forms);
+  const checkNames = forms.filter(([_, name]) => validWords.some(v => name.includes(v)));
   const answer = checkNames.map(([email, _]) => email);
 
   return checkIsEmail(answer).sort();
