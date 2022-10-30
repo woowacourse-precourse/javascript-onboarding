@@ -41,8 +41,8 @@
       - 예시 :
         - user : "mrko"
         - friends : [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]
-          - "mrko"의 친구 : "donut", "shakevan"
-          - "mrko"의 친구의 친구관계 :
-            - "donut" : "andole", "jun"
-            - "shakevan" : "andole", "jun"
-              - 결과 : "andole" : 20점, "jun" : 20점
+        - "mrko"의 친구 : "donut", "shakevan"
+        - "mrko"의 친구의 친구관계 :
+          - "donut" : "andole", "jun"
+          - "shakevan" : "andole", "jun"
+        - 결과 : "andole" : 20점, "jun" : 20점
