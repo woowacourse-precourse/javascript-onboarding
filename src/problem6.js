@@ -4,6 +4,9 @@ const NICKNAME = "nickname";
 function problem6(forms) {
   return forms
     .filter(duplicateNickname)
+    .map(getUsers(EMAIL))
+    .filter(toUnique)
+    .sort();
 }
 
 function duplicateNickname(user, idx, origin) {
