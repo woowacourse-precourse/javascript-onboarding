@@ -22,3 +22,10 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### To do
+
+#### 제한사항
+
+#### 기능 구현
+
+- [x] 반복되는 문자열을 확인하여 return 값을 전달하는 함수를 만든다.
