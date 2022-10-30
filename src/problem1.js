@@ -19,12 +19,23 @@ function getScore(pages) {
   return leftPage > rightPage ? leftPage : rightPage;
 }
 
+function findWinner(pobiScore, crongScore) {
+  if (pobiScore > crongScore) {
+    return 1;
+  } else if (pobiScore < crongScore) {
+    return 2;
+  } else {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   let answer;
   if (!validateInput(pobi) || !validateInput(crong)) return -1;
 
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
+  answer = findWinner(pobiScore, crongScore);
   return answer;
 }
 
