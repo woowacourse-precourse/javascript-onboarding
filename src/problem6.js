@@ -27,6 +27,14 @@ const duplicates = findDuplicates(serialString);
 const duplicateSet = new Set(duplicates);
 const duplicateArray = [...duplicateSet];
 
+for (const item of nicknameArray){
+  for(i=0; i<duplicateArray.length; i++){
+    if(item.indexOf(duplicateArray[i]) > -1){
+    errorUser.push(item);
+    }
+  }
+}
+
 module.exports = problem6;
 
 //problem6 기능 목록
@@ -38,6 +46,6 @@ module.exports = problem6;
 //[x]계산된 경우의 수를 토대로 하여 현재 유저들 사이에서 발생할 수 있는 중복값을 구한다.
 //  [x] 배열에서 중복된 값을 구하는 함수를 선언한다.
 //    [x] 연속문자열 배열에서 중복값을 구하고, 중복되는 중복값은 삭제한다.
-//[]중복값이 포함되어있는 닉네임을 판별하여 사용 제한 유저 목록에 저장한다.
+//[x]중복값이 포함되어있는 닉네임을 판별하여 사용 제한 유저 목록에 저장한다.
 //[]사용 제한 유저들의 이메일 주소를 추출하여 저장한다.
 //[]사용 제한 유저 이메일 목록에서 중복을 제거한 후 오름차 정렬한다.
