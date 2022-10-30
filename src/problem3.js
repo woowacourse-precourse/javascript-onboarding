@@ -1,7 +1,14 @@
+// default : 1.1ms;
+
+// 스스로 문제를 해결해내지 못해서 인터넷 검색을 통하여 방법을 공부했다.
+// 아래에서 시도한 것처럼 Dynamic Programming을 이용하는 방법은 맞았
+// 지만 앞선 값들을 저장하여 재사용하는 memorization에 대한 이해도가
+// 낮아 제대로 활용하지 못한것이 문제였고 이를 통해서 완벽하게는 아니지만
+// memorization을 어떻게 활용해야 하는지 알 수 있었다.
+
 function problem3(number) {
   let n = 1;
   let clap = 0;
-  const a = "92";
 
   while (n <= number) {
     const numToString = n.toString();
@@ -19,101 +26,86 @@ function problem3(number) {
 
 module.exports = problem3;
 
-// const number = 49;
+// default : 3.5ms
 
-// function solution(number) {
-//   const divid = number.toString().split("");
-//   const length = divid.length - 1;
-//   const divided = [];
-//   for (let i = length; i >= 0; i--) {
-//     const ten = Math.pow(10, i);
-//     divided.push(divid[length - i] * ten);
-//   }
-//   PRINT(divided);
+function testCase(number) {
+  let n = 1;
+  let clap = 0;
 
-//   const Clap = (input, rootNum) => {
-//     const frontNumber = input[0] / 10;
-//     const length = input.length - 1;
-//     let count = 0;
+  while (n <= number) {
+    const numToString = n.toString();
+    if (numToString.includes(3) || numToString.includes(6) || numToString.includes(9)) {
+      for (let i = 0; i < numToString.length; i++) {
+        if (numToString[i] === "3" || numToString[i] === "6" || numToString[i] === "9") {
+          clap++;
+        }
+      }
+    }
+    n++;
+  }
+  return clap;
+}
 
-//     if (frontNumber % 3 === 0) {
-//       input.forEach((val, i) => {
-//         const tens = length - i;
-//         if (tens === 0) {
-//           for (let i = 1; i <= val; i++) {
-//             if (i % 3 === 0) {
-//               count += 2;
-//             } else {
-//               count++;
-//             }
-//           }
-//         } else if (tens === 1) {
-//           const frontNum = val / 10 / 3;
-//           count += 3 * (2 * frontNum + 1) + 13 * (frontNum - 1) + 1;
-//         }
-//       });
-//     } else {
-//       input.forEach((val, i) => {
-//         const tens = length - i;
-//         if (tens === 0) {
-//           for (let i = 1; i <= val; i++) {
-//             if (i % 3 === 0) {
-//               count += 2;
-//             } else {
-//               count++;
-//             }
-//           }
-//         } else if (tens === 1) {
-//           const frontNum = val / 10 / 3;
-//           count += 3 * (number - Math.floor(frontNum)) + 13 * Math.floor(frontNum);
-//         }
-//       });
-//     }
-//     PRINT(count);
+// 369 게임에서 법칙을 찾을 수 있지 않을까 하여 시도해본 방법이지만
+// 찾았다고 생각한 방법이 실수가 있어 법칙을 찾지 못하고 완성 시키지
+// 못했다. 또한 Dynamic Programming에서 memorization을 이용하면
+// 풀 수 있지 않을까라는 생각을해서 시도해보았지만 제대로 이해하지 못
+// 하고 사용하여 적용을 제대로 시키지 못하고 법칙을 찾지 못한 것에
+// 문제가 있어 해결하지 못했다.
 
-// let frontN;
-// for (let i = 0; i < 4; i++) {
-//   const number = input / Math.pow(10, i);
-//   if (number < 10) {
-//     length = i;
-//     frontN = number;
-//     break;
-//   }
-// }
+function attempt1(input, memo, floor, clap, multiply = null) {
+  if (input.length === 0) {
+    return clap;
+  }
+  if (multiply === null) {
+    multiply = 10 * floor + 3;
+  }
 
-// if (length === 0) {
-//   if (input <= 5) {
-//     return 1;
-//   } else if (input >= 6 && input < 9) {
-//     return 2;
-//   } else if (input === 9) {
-//     return 3;
-//   }
-// } else if (length === 1) {
-//   const clapNum = number / 3;
-//   return 3 * (number - Math.floor(clapNum)) + 13 * Math.floor(clapNum);
-// } else if (length === 2) {
-// }
-//   };
+  const value = memo.pop();
 
-//   Clap(divided, number);
-// }
+  const threeValue = input[0][1] > 0 ? input[0][1] - 1 : 0;
+  clap += value * input[0][0] + multiply * threeValue;
+  const tenCount = value * 7 + multiply * 3;
 
-// PRINT(solution(number));
+  memo.push(tenCount);
+  input.shift();
 
-// let n = 1;
-// let clap = 0;
-// const a = "92";
+  return ten(input, memo, floor + 1, clap, multiply * 3);
+}
 
-// while (n <= number) {
-//   const numToString = n.toString();
-//   if (numToString.includes(3) || numToString.includes(6) || numToString.includes(9)) {
-//     for (let i = 0; i < numToString.length; i++) {
-//       if (numToString[i] === "3" || numToString[i] === "6" || numToString[i] === "9") {
-//         clap++;
-//       }
-//     }
-//   }
-//   n++;
-// }
-// PRINT(clap)
+function attempt2(number, memo) {
+  let clap = 0;
+  const countNum = Math.floor(number / 10);
+  const divided = countNum.toString().split("").reverse();
+  const lastNum = number.toString().split("")[divided.length];
+
+  let needToCount = [];
+  for (let i = 1; i <= divided.length; i++) {
+    let count = 0;
+    let threeCount = 0;
+    for (let j = 0; j <= divided[i - 1]; j++) {
+      if (j % 3 === 0 && j !== 0) {
+        threeCount++;
+      } else {
+        count++;
+      }
+    }
+    needToCount.push([count, threeCount]);
+  }
+
+  if (countNum % 3 === 0) {
+    for (let i = 0; i <= lastNum; i++) {
+      if (i % 3 === 0) {
+        clap += 2;
+      } else {
+        clap += 1;
+      }
+    }
+  } else {
+    for (let i = 0; i <= lastNum; i++) {
+      if (i % 3 === 0) {
+        clap += 1;
+      }
+    }
+  }
+}
