@@ -24,6 +24,16 @@ function removeOverlap(cryptogram) {
 
 function problem2(cryptogram) {
   var answer;
+  var newCryptogram = 0;
+
+  newCryptogram = removeOverlap(cryptogram);
+
+  while (cryptogram != newCryptogram) {
+    cryptogram = newCryptogram;
+    newCryptogram = removeOverlap(cryptogram);
+  }
+
+  answer = newCryptogram;
   return answer;
 }
 
