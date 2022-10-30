@@ -5,8 +5,21 @@
  */
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const dictionary = forms
+    .map((form) => form[1])
+    .reduce((acc, nickname) => {
+      for (let i = 0; i < nickname.length - 1; i++) {
+        const word = nickname.slice(i, i + 2);
+        if (acc[word]) {
+          acc[word] += 1;
+        } else {
+          acc[word] = 1;
+        }
+      }
+      return acc;
+    }, {});
+
+  console.log(dictionary);
 }
 
 module.exports = problem6;
