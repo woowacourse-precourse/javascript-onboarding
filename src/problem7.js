@@ -43,6 +43,9 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  visitors.forEach((visitor) => {
+    addScore(visitor, 1, socialScore);
+  });
   return answer;
 }
 
