@@ -17,8 +17,8 @@ function problem1(pobi, crong) {
   if (leftPageByPobi < MIN_PAGE || leftPageByCrong < MIN_PAGE) return EXCEPTIONS;
   if (rightPageByPoi > MAX_PAGE || rightPageByCrong > MAX_PAGE) return EXCEPTIONS;
 
-  // 포비와 크롱이 펼친 페이지의 홀수 짝수 순서가 맞아야 한다.
-  if (leftPageByPobi % 2 !== leftPageByCrong % 2) return EXCEPTIONS;
+  // 왼쪽 페이지가 짝수이거나, 오른쪽 페이지가 홀수인 경우 예외사항을 반환한다.
+  if (leftPageByPobi % 2 === 0 || leftPageByCrong % 2 === 0 || rightPageByPoi === 1 || rightPageByCrong === 1) return EXCEPTIONS;
 
   // pobi와 crong의 배열 길이가 2가 아닌 경우 예외사항을 반환한다.
   if (pobi.length !== 2 || crong.length !== 2) return EXCEPTIONS;

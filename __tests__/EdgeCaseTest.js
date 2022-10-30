@@ -9,7 +9,12 @@ describe("problem1", () => {
     expect(problem1([93, 94], [401, 402])).toEqual(-1);
   });
 
-  test("포비의 왼쪽 페이지가 홀수일 때 크롱의 왼쪽 페이지가 짝수이라면? 누군가 다른 책을 핀 것이므로 예외사항을 반환해야 한다.", () => {
+  test("왼쪽 페이지가 홀수이어야 한다.", () => {
+    expect(problem1([98, 99], [193, 194])).toEqual(-1);
+    expect(problem1([99, 100], [196, 197])).toEqual(-1);
+  });
+
+  test("오른쪽 페이지가 짝수이어야 한다.", () => {
     expect(problem1([99, 100], [194, 195])).toEqual(-1);
     expect(problem1([100, 101], [193, 194])).toEqual(-1);
   });
