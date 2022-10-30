@@ -1,13 +1,31 @@
 function problem7(user, friends, visitors) {
   const friendOfUser = friends.map((i) => i[0]);
-  const friendOfFriend = searchByFriends(user, friends, friendOfUser);
+  const friendScore = searchByFriends(user, friends, friendOfUser);
+  const visitorScore = searchByVisitor(visitors, friendOfUser);
 
-  console.log(friendOfFriend);
+  const recommandScore = {};
+
   let answer;
   return answer;
 }
 
 module.exports = problem7;
+
+const searchByVisitor = (visitors, friendOfUser) => {
+  const visitScore = visitors.reduce((acc, cur, i) => {
+    if (friendOfUser.includes(cur)) return acc;
+
+    if (acc[cur]) {
+      acc[cur] += 1;
+    } else {
+      acc[cur] = 1;
+    }
+
+    return acc;
+  }, {});
+
+  return visitScore;
+};
 
 const isCurrentFriend = (name, friendOfUser) => {
   let resultValue;
