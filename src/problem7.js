@@ -41,6 +41,15 @@ function problem7(user, friends, visitors) {
     });
   });
 
+  // 점수 기준 내림차순 정렬 및 이름 기준 오름차순 정렬한다.
+  notFriendsList.sort((a, b) => {
+    if (a.score < b.score) return 1;
+    if (a.score > b.score) return -1;
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+
   return answer;
 }
 
