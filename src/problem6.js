@@ -1,5 +1,6 @@
 function problem6(forms) {
   const dictionary = {};
+  const result = [];
 
   forms.forEach((formList) => {
       const stack = [];
@@ -19,13 +20,13 @@ function problem6(forms) {
           }
       } 
   });
-  
-  for (let key in answer){
-    if (answer[key].length > 1){
-        result.push(...answer[key]);
+
+  for (let key in dictionary){
+    if (dictionary[key].length > 1){
+        result.push(...dictionary[key]);
     }
 }
-  
+ return result.filter((v, i) => result.indexOf(v) === i).sort(); 
 }
 
 module.exports = problem6;
