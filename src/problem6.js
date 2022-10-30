@@ -13,7 +13,7 @@ function problem6(forms) {
     중복 삭제 후 종료.
 */
 function checkForms(forms) {
-  const crewList = [];
+  let crewList = [];
   const subNicknameMap = new Map();
   const emailMap = new Map();
 
@@ -33,11 +33,11 @@ function checkForms(forms) {
       }
     }
   });
-
   emailMap.forEach(function(value, key) {
     if (value === 1) crewList.push(key);
   });
 
+  crewList = [...new Set(crewList)];
   crewList.sort();
   return crewList;
 }
