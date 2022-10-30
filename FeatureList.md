@@ -33,3 +33,15 @@
 <strong>- 마지막 글자와 넣어야하는 글자가 겹치면 pop</strong>
 
 <strong>- 새 배열에 남은 글자 result 값으로 저장</strong>
+
+---
+
+## [ 문제 3 ]
+
+![문제 3](https://user-images.githubusercontent.com/74524184/198863620-1e28ae2c-8be6-4d70-83a7-8326897a5b80.png)
+
+<strong>- 예외 조건 확인하기 ⇒ 1 ≤ number ≤ 10000 숫자이면 통과</strong>
+
+<strong>- 숫자 1부터 number까지 실행되는 반복문을 돌며 해당 숫자를 각 자리마다 잘라서 3, 6, 9가 있는지 확인 후, 있으면 clap +1</strong>
+
+<strong>- 최종 clap 수를 retrun</strong>
