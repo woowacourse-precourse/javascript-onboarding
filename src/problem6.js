@@ -1,22 +1,27 @@
+function findOverlapNickName(email, name, nickName, dict, result) {
+  for (let i = 0; i < name.length - 1; i++) {
+    const str = name[i] + name[i + 1];
+    if (nickName.has(str)) {
+      result.add(email);
+      result.add(dict[str]);
+    } else {
+      dict[str] = email;
+      nickName.add(str);
+    }
+  }
+  return result;
+}
+
 function problem6(forms) {
   const nickName = new Set();
-  let result = new Set();
   const dict = {};
+  let result = new Set();
 
-  forms.forEach((arr, idx) => {
+  forms.forEach((arr) => {
     const [email, name] = arr;
 
     if (name.length >= 2) {
-      for (let i = 0; i < name.length - 1; i++) {
-        const str = name[i] + name[i + 1];
-        if (nickName.has(str)) {
-          result.add(email);
-          result.add(dict[str]);
-        } else {
-          dict[str] = email;
-          nickName.add(str);
-        }
-      }
+      findOverlapNickName(email, name, nickName, dict, result);
     }
   });
 
