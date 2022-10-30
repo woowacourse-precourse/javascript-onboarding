@@ -12,6 +12,8 @@ const problem5 = (money) => {
     } else answer = [...answer, 0];
   };
 
+  targetMoneyList.forEach((targetMoney) => pushMoneyCount(targetMoney));
+
   return answer;
 };
 
