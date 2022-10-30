@@ -24,8 +24,20 @@ const isCrewForm = (forms) => {
 }
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  let result = [];
+  let duplicatedCount = [];
+
+  forms.map((form) => {
+    let [email, nickname] = form;
+    for (let i = 0; i < nickname.length - 1; i++) {
+      let criteriaStr = nickname.substr(i, 2);
+      if (criteriaStr in duplicatedCount) {
+        duplicatedCount[criteriaStr] += 1;
+      } else {
+        duplicatedCount[criteriaStr] = 1;
+      }
+    }
+  });
 }
 
 module.exports = problem6;
