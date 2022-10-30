@@ -1,7 +1,8 @@
 function problem5(money) {
   var answer;
-  let money_cnt=[];//각 동전의 갯수를 카운트할 배열
- 
+  let money_cnt=[];//각 동전의 갯수를 카운트할 배열 생성 
+  //동전의 갯수=money/동전 
+  //남은돈 =money%동전
   money_cnt[0]=parseInt(money/50000);
   money=parseInt(money%50000);
 
@@ -23,9 +24,9 @@ function problem5(money) {
   money_cnt[6]=parseInt(money/50);
   money=parseInt(money%50);
 
-  money_cnt[7]=parseInt(money/10);
+  money_cnt[7]=parseInt(money/10);//10원짜리 동전의 갯수
 
-  money_cnt[8]=parseInt(money%10);
+  money_cnt[8]=parseInt(money%10);//1원짜리 동전의 갯수 = 10원으로 나눈 나머지
 
   
   answer=money_cnt;
