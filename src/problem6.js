@@ -38,6 +38,24 @@ function problem6(forms) {
       }
     }
   });
+
+  forms.map((form) => {
+    let [email, nickname] = form;
+    for (let i in duplicatedCount) {
+      if (duplicatedCount[i] > 1 && nickname.includes(i)) {
+        result.push(email);
+      }
+    }
+  });
+
+  let duplicatedNicknameEmail = result.sort();
+
+  const uniqueEmail = new Set(duplicatedNicknameEmail);
+
+
+  if (!checkCrewNumber(forms)) { throw Error("1이상 10000이하의 크루 인원를 입력해주세요.") }
+  else if (!isCrewForm(forms)) { throw Error("이메일과 닉네임을 형식에 맞게 입력해주세요.") }
+  else return [...uniqueEmail];
 }
 
 module.exports = problem6;
