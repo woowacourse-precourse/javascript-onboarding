@@ -1,5 +1,13 @@
 function problem6(forms) {
   const adjacentMap = makeAdjacentMap(forms);
+  const duplicateSet = new Set();
+
+  forms.forEach(([email, nickname]) => {
+    const hasDuplicate = checkDuplicate(nickname, adjacentMap);
+    if (hasDuplicate) duplicateSet.add(email);
+  });
+
+  const duplicates = [...duplicateSet];
 }
 
 function getAdjacentStrings(string) {
@@ -26,6 +34,11 @@ function makeAdjacentMap(forms) {
   });
 
   return adjacentMap;
+}
+
+function checkDuplicate(nickname, adjacentMap) {
+  const adjacentStrings = getAdjacentStrings(nickname);
+  return adjacentStrings.some((string) => adjacentMap[string] > 1);
 }
 
 module.exports = problem6;
