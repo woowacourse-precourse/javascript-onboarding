@@ -14,7 +14,13 @@ function transCapital(asciiNum) {
   }
 }
 
-function transSmall(asciiNum) {}
+function transSmall(asciiNum) {
+  if (asciiNum <= m) {
+    return String.fromCharCode(asciiNum + (ALPHABET_DIFF - (asciiNum - a) * 2));
+  } else {
+    return String.fromCharCode(asciiNum - (ALPHABET_DIFF - (z - asciiNum) * 2));
+  }
+}
 
 function problem4(word) {
   let answer = "";
