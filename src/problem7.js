@@ -8,38 +8,8 @@
 6. 추천점수가 0점이 아닌 친구 중 점수가 높은 순으로 최대 5명 return
 */
 
-
-function sortArrayDecreaseValue(friend_score){
-  let result_score = [];
-  for(let score in friend_score){
-    result_score.push([score, friend_score[score]]);
-  }
-  result_score.sort(function(a, b){
-    return b[1] - a[1];
-  });
-
-  return result_score;
-}
-
-
-function getResult(result_score){
-  let answer = [];
-  for(let i = 0; i < result_score.length; i++){    
-    if(result_score[i][1] === 0){
-      break;
-    }
-    if(answer.length > 5){
-      break;
-    }
-    answer.push(result_score[i][0]);
-  }
-  return answer;
-}
-
-
 function getFriendList(friends){
   let friend_dic = {};
-
   for(let i = 0; i < friends.length; i++){
     let friend1 = friends[i][0];
     let friend2 = friends[i][1];
@@ -93,28 +63,52 @@ function getPointVisitor(visitors, friend_score){
   }
   return friend_score;
 }
-function problem7(user, friends, visitors) {
+
+
+function deleteAlreadyFriend(user, friend_dic, friend_score){
+  for(let i = 0; i < friend_dic[user].length; i++){
+    delete friend_score[friend_dic[user][i]];
+  }
+  delete friend_score[user]; 
+  return friend_score;
+}
+
+
+function sortArrayDecreaseValue(friend_score){
+  let result_score = [];
+  for(let score in friend_score){
+    result_score.push([score, friend_score[score]]);
+  }
+  result_score.sort(function(a, b){
+    return b[1] - a[1];
+  });
+
+  return result_score;
+}
+
+
+function getResult(result_score){
   let answer = [];
-  let friend_dic = getFriendList(friends);
-
-  // 친구 점수 획득
-  let friend_score = getPoint(user, friend_dic, visitors);
-  // console.log(friend_score);
-
-  // 원래 user와 이미 친구인 사람 제거
-  // for(let i = 0; i < friend_dic[user].length; i++){
-  //   delete friend_score[friend_dic[user][i]];
-  // }
-  // delete friend_score[user];
- 
-  // value 기준으로 내림차순 정렬
-  answer = getResult(sortArrayDecreaseValue(friend_score));
-  // console.log(answer);
+  for(let i = 0; i < result_score.length; i++){    
+    if(result_score[i][1] === 0){
+      break;
+    }
+    if(answer.length > 5){
+      break;
+    }
+    answer.push(result_score[i][0]);
+  }
   return answer;
 }
 
 
-problem7("mrko",	
-[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
-	["bedi", "bedi", "donut", "bedi", "shakevan"]);
+function problem7(user, friends, visitors) {
+  let answer = [];
+  let friend_dic = getFriendList(friends);
+  let friend_score = getPoint(user, friend_dic, visitors);
+  friend_score = deleteAlreadyFriend(user, friend_dic, friend_score);
+  answer = getResult(sortArrayDecreaseValue(friend_score));
+  return answer;
+}
+
 module.exports = problem7;
