@@ -1,43 +1,19 @@
 function problem3(number) {
-  class Digits {
+  class Game369 {
     constructor(number) {
       this.number = number;
     }
-    digitMaker() {
-      let digit = this.number;
-      const digits = [];
-      while (digit > 0) {
-        digits.push(digit % 10);
-        digit = parseInt(digit / 10);
+    handclap() {
+      let clap = 0;
+      const regex365 = /3|6|9/g;
+      for (let i = 1; i <= this.number; i++) {
+        clap += (String(i).match(regex365) || []).length;
       }
-      return digits;
+      return clap;
     }
   }
 
-  const sepatedDigits = new Digits(number).digitMaker();
-
-  class ValueTransfer {
-    constructor(sepatedDigits) {
-      this.sepatedDigits = sepatedDigits;
-    }
-    transfer() {
-      const values = [];
-      for (let i = 0; i < this.sepatedDigits.length; i++) {
-        if (this.sepatedDigits[i] < 3) {
-          values.push(0);
-        } else if (this.sepatedDigits[i] >= 3 && this.sepatedDigits[i] < 6) {
-          values.push(1);
-        } else if (this.sepatedDigits[i] >= 6 && this.sepatedDigits[i] < 9) {
-          values.push(2);
-        } else {
-          values.push(3);
-        }
-      }
-      return values;
-    }
-  }
-
-  const transferedValues = new ValueTransfer(sepatedDigits).transfer();
+  const answer = new Game369(number).handclap();
 
   return answer;
 }
