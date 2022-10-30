@@ -17,6 +17,8 @@ function problem7(user, friends, visitors) {
   const concatenateAllSubArray = [].concat(...friends);
   concatenateAllSubArray.map((friend) => EMPTY_OBJECT[friend] = 0); // 모든 친구들을 object에 추가
 
+  mutualFriends.map(name => EMPTY_OBJECT[name] += 10); // 공통 친구 추천 점수 +10
+
   return answer;
 }
 
