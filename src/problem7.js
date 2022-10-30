@@ -55,6 +55,8 @@ function problem7(user, friends, visitors) {
     })
   );
 
+  answer = Array.from(resultMap.keys());
+
   return answer;
 }
 
