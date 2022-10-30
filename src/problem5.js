@@ -1,3 +1,7 @@
+function withdraw(money, unit) {
+  return money - parseInt(money / unit) * unit;
+}
+
 function problem5(money) {
   var answer;
   answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
