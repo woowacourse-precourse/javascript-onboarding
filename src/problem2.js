@@ -1,6 +1,6 @@
 /**
  * 더이상 중복문자를 제거할 필요가 없는지 확인한다.
- * @param cryptogram
+ * @param {string} cryptogram
  * @return {boolean}
  */
 const isTaskFinished = (cryptogram) => {
@@ -13,8 +13,8 @@ const isTaskFinished = (cryptogram) => {
 
 /**
  * 문자열(cryptogram)을 받아 중복 문자를 제거한 문자열을 반환한다.
- * @param str - 문자열(cryptogram)
- * @return {string|*}
+ * @param {string} str - 문자열(cryptogram)
+ * @return {string}
  */
 const getRedundantDeletedString = (str) => {
   let processedOutput = str[0];
@@ -33,8 +33,8 @@ const getRedundantDeletedString = (str) => {
 
 /**
  * main 함수
- * @param cryptogram
- * @return {string|*}
+ * @param {string} cryptogram
+ * @return {string}
  */
 const problem2 = (cryptogram) => {
   let answer = cryptogram;
