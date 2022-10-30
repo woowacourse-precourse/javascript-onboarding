@@ -78,6 +78,12 @@ function problem6(forms) {
 
   tmpAnswer = compareNickName(nickName);
 
+  tmpAnswer.forEach(element => {
+    answer.push(myObj[element]);
+  });
+
+  answer.sort();
+
   return answer;
 }
 
