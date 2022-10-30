@@ -77,6 +77,16 @@ function problem7(user, friends, visitors) {
   //!6. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
   //!7. 동일한 친구 관계가 중복해서 주어지지 않음
 
+  for(let friend of friends){
+    INPUT_RELATION_FRIENDS(friend)
+  }
+
+  INPUT_NEAR_FRIENDS_POINT()
+  INPUT_VISIT_FRIENDS_POINT()
+
+  
+  return (Object.keys(USER_POINT_CALCUL_OBJ))
+  
 
 
 }
