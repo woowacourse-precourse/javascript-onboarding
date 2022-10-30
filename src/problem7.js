@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  const answer = getRecommendedUserList(user, friends, visitors);
   return answer;
 }
 
@@ -46,6 +46,21 @@ const getScoreList = (user, friends, visitors) => {
     }
   });
   return [...scoreList];
+};
+
+const getRecommendedUserList = (user, friends, visitors) => {
+  const limit = 5;
+  const scoreList = getScoreList(user, friends, visitors);
+  const sortedScoreList = scoreList.sort(([name1, score1], [name2, score2]) => {
+    if (score1 !== score2) return score2 - score1;
+    if (name1 > name2) return 1;
+    if (name1 < name2) return -1;
+    return 0;
+  });
+  const recommendedUserList = sortedScoreList
+    .slice(0, limit)
+    .map(([name]) => name);
+  return recommendedUserList;
 };
 
 module.exports = problem7;
