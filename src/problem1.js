@@ -1,3 +1,11 @@
+const isLeftOdd = (num) => {
+  return num % 2 === 1;
+};
+
+const isRightEven = (num) => {
+  return num % 2 === 0;
+};
+
 const isInvalidPageRange = (left, right) => {
   return left < 2 || right < 2 || left > 399 || right > 399;
 };
@@ -5,6 +13,8 @@ const isInvalidPageRange = (left, right) => {
 const isValidPage = (page) => {
   const [left, right] = page;
 
+  if (!isLeftOdd(left)) return false;
+  if (!isRightEven(right)) return false;
   if (isInvalidPageRange(left, right)) return false;
 
   return true;
