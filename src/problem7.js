@@ -1,39 +1,55 @@
 function problem7(user, friends, visitors) {
   const userFriends = []
-  const friendOfFriends = []
-  const result = {}
-  friends.forEach((element) => element.forEach((person, index, origin) => {
-    if(person === user){
-      if(index === 0) userFriends.push(origin[1])
-      else if(index === 1) userFriends.push(origin[0])
-    }
-  }))
-  friends.forEach((element) => element.forEach((person, index, origin) => {
-    if(userFriends.includes(person)){
-      if(index === 0 && origin[1] !== user && !friendOfFriends.includes(origin[1])) friendOfFriends.push(origin[1])
-      else if(index === 1 && origin[0] !== user && !friendOfFriends.includes(origin[0])) friendOfFriends.push(origin[0])
-    }
-  }))
-  
-  for(const i of friendOfFriends){
-    result[i] = 10
-  }
-  visitors.forEach((element) => {
-    if(Object.keys(result).includes(element)){
-      result[element] = result[element]+1
-    } else if(!userFriends.includes(element)){
-      result[element] = 1
+  const friendOfFriends = {}
+
+  friends.forEach((relation) => {
+    const friend = getFriend(relation, user)
+    if(friend){
+      userFriends.push(friend)
     }
   })
-  const answer = Object.keys(result)
-  answer.sort((a,b)=>{
-    if(result[a] < result[b]) return 1
-    else if(result[a] === result[b]){
+
+  friends.forEach((relation) =>{
+    const friendOfFriend = getFriendOfFriend(relation, userFriends, user)
+    if(friendOfFriend && !Object.keys(friendOfFriends).includes(friendOfFriend)){
+      friendOfFriends[friendOfFriend] = 10
+    }
+  })
+
+  visitors.forEach((visitor) => {
+    if(Object.keys(friendOfFriends).includes(visitor)){
+      friendOfFriends[visitor] = friendOfFriends[visitor] + 1
+    } else if(!userFriends.includes(visitor)){
+      friendOfFriends[visitor] = 1
+    }
+  })
+  
+  return changeObjToArray(friendOfFriends)
+}
+
+function getFriend(relation, user){
+  if(relation[0] === user) return relation[1]
+  else if(relation[1] === user) return relation[0]
+  else return null
+}
+
+function getFriendOfFriend(relation, friendsArray, user){
+  if(friendsArray.includes(relation[0]) && relation[1] !== user) return relation[1]
+  else if(friendsArray.includes(relation[1]) && relation[0] !== user) return relation[0]
+  else return null
+}
+
+function changeObjToArray(friendOfFriendsObj){
+  const result =  Object.keys(friendOfFriendsObj)
+  result.sort((a, b) => {
+    if(friendOfFriendsObj[a] < friendOfFriendsObj[b]) return 1
+    else if(friendOfFriendsObj[a] === friendOfFriendsObj[b]){
       if(a>b) return 1
       else if(a===b) return 0
       else return -1
     } else return -1
   })
-  return answer
+  return result
 }
+
 module.exports = problem7;
