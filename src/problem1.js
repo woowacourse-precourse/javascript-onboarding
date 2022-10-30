@@ -1,3 +1,15 @@
+const BOOK = {
+  FIRST_PAGE: 0,
+  LAST_PAGE: 400,
+}
+
+const RESULT = {
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+  DRAW: 0,
+  EXCEPTION: -1,
+}
+
 const calcSum = (num) => {
   let sum = 0;
   while (num > 0){
@@ -28,7 +40,7 @@ const getMaxNum = (player) => {
 
 const isValidPage = (player) => {
   const [leftPage, rightPage] = player;
-  if (leftPage < 1 || rightPage > 400) return false;
+  if (leftPage < BOOK.FIRST_PAGE || rightPage > BOOK.LAST_PAGE) return false;
   if (rightPage - leftPage !== 1) return false;
   return true;
 }
@@ -37,11 +49,11 @@ function problem1(pobi, crong) {
   const pobiMax = getMaxNum(pobi);
   const crongMax = getMaxNum(crong);
   if(isValidPage(pobi) && isValidPage(crong)){
-    if(pobiMax > crongMax) return 1;
-    if(pobiMax < crongMax) return 2;
-    if(pobiMax === crongMax) return 0;
+    if(pobiMax > crongMax) return RESULT.POBI_WIN;
+    if(pobiMax < crongMax) return RESULT.CRONG_WIN;
+    if(pobiMax === crongMax) return RESULT.DRAW;
   }
-  return -1;
+  return RESULT.EXCEPTION;
 }
 
 module.exports = problem1;
