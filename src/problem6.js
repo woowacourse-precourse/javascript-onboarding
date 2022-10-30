@@ -41,8 +41,17 @@ function duplicateWord(nickname){
   return new Set(id);
 }
 
-function problem6(forms) {
+function returnEmail(id, email){
   const answer = [];
+  id.map(i =>{
+      answer.push(email[i]);
+  })
+  return answer;
+}
+
+
+function problem6(forms) {
+
   if (!errorcheck(forms)){
     return '입력 형식을 확인해주세요';
   }
@@ -54,11 +63,7 @@ function problem6(forms) {
       nicknameList.push(user[1]);
     })
     const id = Array.from(duplicateWord(nicknameList));
-    id.map(i =>{
-      answer.push(emailList[i]);
-    })
-
-    return (Array.from(new Set(answer)).sort());
+    return (Array.from(new Set(returnEmail(id, emailList))).sort());
   }
 }
 
