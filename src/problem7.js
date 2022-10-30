@@ -35,6 +35,10 @@ function problem7(user, friends, visitors) {
     count[el] = (count[el] || 0) + 1;
   }
 
+  let sorted = Object.fromEntries(
+    Object.entries(count).sort(([, a], [, b]) => b - a)
+  );
+
   return answer;
 }
 
