@@ -16,6 +16,15 @@ function checkLower(alphabet) {
   }
 }
 
+function genAlphaArr(isLower) {
+  if (isLower) {
+    return Array.from({ length: 26 }, (v, idx) =>
+      String.fromCharCode(idx + 97)
+    );
+  }
+  return Array.from({ length: 26 }, (v, idx) => String.fromCharCode(idx + 65));
+}
+
 function problem4(word) {
   var answer;
   return answer;
