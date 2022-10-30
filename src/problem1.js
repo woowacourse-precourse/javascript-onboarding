@@ -38,7 +38,7 @@ const spreadNumberToNumberArray = (number) => {
 };
 
 const checkPage = ([left, right]) => {
-  if (right + 1 !== right) return false;
+  if (left + 1 !== right) return false;
   else if (right >= 400 || left <= 1) return false;
   else if (left % 2 === 0 || right % 2 === 1) return false;
 };
