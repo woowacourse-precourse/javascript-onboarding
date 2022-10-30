@@ -3,13 +3,36 @@ function getUserFriend(user, friends){
   const userInclList = userInclArr.reduce(function (acc, cur) {
     return [...acc, ...cur];
   });
-  const userFriend = userInclList.filter(v => !v.includes(user));
+  const userFriendList = userInclList.filter(v => !v.includes(user));
+  return userFriendList;
+}
 
-  return userFriend;
+function getInterFriendList(user, friends){
+  const userFriendList = getUserFriend(user, friends);
+  const friendInclArr = [];
+  let interFriendList = [];
+  for(let i = 0 ; i<friends.length ; i++){
+    if(userFriendList.filter(v => friends[i].includes(v)).length == 1){
+      friendInclArr.push(friends[i]);
+    }
+  }
+  interFriendList = friendInclArr.reduce(function (acc, cur) {
+    return [...acc, ...cur];
+  });
+  interFriendList = interFriendList.filter(v => !userFriendList.includes(v));
+  interFriendList = interFriendList.filter(v => !v.includes(user));
+
+  return interFriendList;
+}
+
+function getScore(user, friends, visitors){
+  const friendScore = getInterFriendList(user, friends);
+
 }
 
 function problem7(user, friends, visitors) {
-  console.log(getUserFriend(user, friends));
+  
+  return getScore(user, friends, visitors);
 }
 
 module.exports = problem7;
