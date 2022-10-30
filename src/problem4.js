@@ -109,3 +109,10 @@ function arrayToString(wordArray) {
 
   return wordArray;
 }
+
+function problem4(word) {
+  const convertedWordArray = convertAlphabet(word);
+  const answerWord = arrayToString(convertedWordArray);
+
+  return answerWord;
+}
