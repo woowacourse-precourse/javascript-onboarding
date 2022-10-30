@@ -1,3 +1,11 @@
+/**
+ * 1. split word into array of characters
+ * 2. map each character to converted character
+ * 3. join array of characters to word
+ * @param {string} word 
+ * @returns 
+ */
+
 function problem4(word) {
   const splitted = [...word];
   return splitted.map(frogConvert).join('');

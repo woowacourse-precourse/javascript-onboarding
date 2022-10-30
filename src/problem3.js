@@ -1,3 +1,11 @@
+/**
+ * 1. make array of numbers from 1 to number
+ * 2. filter numbers that include 3, 6, 9
+ * 3. return length of filtered array
+ * @param {number} number 
+ * @returns {number}
+ */
+
 function problem3(number) {
   let targetArr = [
     ...Array(number)

@@ -1,3 +1,17 @@
+/**
+ * 1. make adjacency list of users and their friends
+ * 2. make list of users
+ * 3. make map of users and their scores
+ * 4. add score of 10 for each friend of target
+ * 5. add score of 1 for each visitor of target
+ * 6. filter out target, target's friends, and users with 0 score
+ * 7. sort by score and name and return top 5 users
+ * @param {string} target 
+ * @param {string[][]} friends 
+ * @param {string[]} targetVisitors 
+ * @returns 
+ */
+
 function problem7(target, friends, targetVisitors) {
   const userMap = initAdjList(friends);
   const userList = [...userMap.keys()];

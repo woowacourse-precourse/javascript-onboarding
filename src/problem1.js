@@ -1,3 +1,12 @@
+/**
+ * 1. check if input is valid
+ * 2. get score of each page
+ * 3. compare scores 
+ * @param {[number,number]} p1 
+ * @param {[number,number]} p2 
+ * @returns {-1 | 0 | 1 | 2 }
+ */
+
 function problem1(p1, p2) {
   if (!isValidInput(p1) || !isValidInput(p2)) return -1;
 

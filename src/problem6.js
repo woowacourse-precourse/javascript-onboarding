@@ -1,3 +1,13 @@
+/**
+ * 1. slice nickname to length 2
+ * 2. create map of slice and set of emails
+ * 3. add email to set of slice
+ * 4. filter map to get slice with more than 1 email
+ * 5. return sorted array of emails 
+ * @param {number} forms 
+ * @returns {string[]}
+ */
+
 function problem6(forms) {
   // nickSliceMap: { slice : Set(email) }
   const nickSliceMap = new Map();

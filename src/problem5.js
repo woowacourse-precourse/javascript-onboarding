@@ -1,3 +1,10 @@
+/**
+ * 1. calculate money for each unit
+ * 2. return array of money for each unit
+ * @param {number} money 
+ * @returns {number[]} result
+ */
+
 function problem5(money) {
   const UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
