@@ -1,6 +1,14 @@
 function popCrew (forms,checkNickname) {
   const result = forms.filter(crew => crew[1] !== checkNickname);
-  console.log(result);
+  return result;
+}
+
+function getDuplicateNicknames(forms){
+  const duplNicknames = forms.filter(crew => crew[2])
+  let result = [];
+  duplNicknames.forEach(crew => result.push(crew[1]));
+  result = [...new Set(result)];
+  result.sort();
   return result;
 }
 
@@ -10,9 +18,7 @@ function problem6(forms) {
   forms.forEach(crew => crew[2] = false);
   
 
-  // 출력값 중복 제거 훅 오름차순 정렬
-  answer = [...new Set(answer)];
-  answer.sort();
+  answer = getDuplicateNicknames(forms);
   return answer;
 }
 
