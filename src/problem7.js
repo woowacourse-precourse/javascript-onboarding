@@ -24,6 +24,14 @@ function problem7(user, friends, visitors) {
 
   userFriendsArray.map(name => EMPTY_OBJECT[name] = 0); // 이미 친구면 추천 점수 0
 
+  // 점수가 큰 순서대로 정렬, 같은 점수는 알파벳 순으로 정렬
+  const sortObject = Object.entries(EMPTY_OBJECT).sort(([nameA, pointA], [nameB, pointB]) => {
+    if (pointA > pointB) return -1;
+    if (pointA < pointB) return 1;
+    if (nameA < nameB) return -1;
+    else return 1;
+  });
+
   return answer;
 }
 
