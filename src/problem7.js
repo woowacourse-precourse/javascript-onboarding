@@ -24,7 +24,7 @@ function problem7(user, friends, visitors) {
     }
   })
   
-  return changeObjToArray(friendOfFriends)
+  return changeObjToArray(friendOfFriends).slice(0, 5)
 }
 
 function getFriend(relation, user){
