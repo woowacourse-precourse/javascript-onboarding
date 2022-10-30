@@ -45,7 +45,10 @@ const checkException = value => {
 };
 
 function problem5(money) {
-  var answer;
+  checkException(money);
+
+  const answer = recursiveClassifiers(money, 0, []);
+
   return answer;
 }
 
