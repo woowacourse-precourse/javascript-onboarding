@@ -1,5 +1,5 @@
 function problem3(number) {
-  var answer = 0;
+  let answer = 0;
   const regex = /3|6|9/g;
 
   for(let i = 1; i<=number; i++) {

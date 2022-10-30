@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer;
   let wordArray = cryptogram.split("");
 
   for (let i = 0; i < wordArray.length; i++) {

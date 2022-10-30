@@ -1,5 +1,5 @@
 function problem5(money) {
-  var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   while(money >= 10) {
     if(money >= 50000) {

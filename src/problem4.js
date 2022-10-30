@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer = "";
+  let answer = "";
   let alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let alphabetLower = "abcdefghijklmnopqrstuvwxyz";
   const ascending = alphabetUpper.split("").concat(alphabetLower.split(""));

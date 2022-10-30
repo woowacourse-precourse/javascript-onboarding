@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
 
-  if(pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) return -1;
+  if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) return -1;
 
   let pobiLeft = String(pobi[0]).split("");
   let pobiRight = String(pobi[1]).split("");
@@ -11,7 +11,7 @@ function problem1(pobi, crong) {
   function pageSum(arr) {
     let sum = 0;
 
-    for(let i=0; i<arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       sum += Number(arr[i]);
     }
 
@@ -21,24 +21,24 @@ function problem1(pobi, crong) {
   function pageMulti(arr) {
     let multi = 1;
 
-    for(let i=0; i<arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       multi *= arr[i];
     }
 
     return multi;
   }
 
-  let pobiNum = [pageSum(pobiLeft), pageSum(pobiRight), pageMulti(pobiLeft), pageMulti(pobiRight)];
   //.sort(function(a,b) {return b-a;}) 내림차순으로 정렬
-  pobiNum.sort(function(a,b) {return b-a;});
+  let pobiNum = [pageSum(pobiLeft), pageSum(pobiRight), pageMulti(pobiLeft), pageMulti(pobiRight)];
+  pobiNum.sort(function (a, b) {return b - a;});
   let crongNum = [pageSum(crongLeft), pageSum(crongRight), pageMulti(crongLeft), pageMulti(crongRight)];
-  crongNum.sort(function(a,b) {return b-a;});
+  crongNum.sort(function (a, b) {return b - a;});
 
-  if(pobiNum[0] > crongNum[0]) {
+  if (pobiNum[0] > crongNum[0]) {
     answer = 1;
-  } else if(pobiNum[0] < crongNum[0]) {
+  } else if (pobiNum[0] < crongNum[0]) {
     answer = 2;
-  } else if(pobiNum[0] == crongNum[0]) {
+  } else if (pobiNum[0] == crongNum[0]) {
     answer = 0;
   } else {
     answer = -1;

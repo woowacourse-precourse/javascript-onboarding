@@ -13,7 +13,7 @@ function problem7(user, friends, visitors) {
   //방문 기록에서 친구 목록 가져오기
   const list2 = list1.concat(visitors);
 
-  //하나의 친구 목록으로 만들기(중복 제거 / 사용자, 사용자 친구 제외하기)
+  //하나의 친구 목록으로 만들기(사용자, 사용자 친구 제외하기)
   let friendsList = new Set(list2);
   friendsList.delete(user);
   friends.map((name) => {
