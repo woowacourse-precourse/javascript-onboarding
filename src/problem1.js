@@ -1,6 +1,3 @@
-const pobi = [97,98];
-const crong = [197,198];
-
 
 
 function score(userName){
@@ -12,14 +9,17 @@ function score(userName){
   
 
   const strNum = userName.map(v=>String(v));
-  const leftpageNums = strNum[0].split(''); //9,7
-  const rightpageNums = strNum[1].split(''); // 9,8
+  const leftpageNums = strNum[0].split(''); 
+  const rightpageNums = strNum[1].split(''); 
 
   for(let i =0;i<leftpageNums.length;i++){
     leftsum += parseInt(leftpageNums[i]);
-    rightsum += parseInt(rightpageNums[i]);
     leftmultiple *= parseInt(leftpageNums[i]);
-    rightmultiple *= parseInt(rightpageNums[i]);
+  }
+  
+  for(let j =0;j<rightpageNums.length;j++){
+    rightsum += parseInt(rightpageNums[j]);
+    rightmultiple *= parseInt(rightpageNums[j]);
   }
 
   scoreList.push(leftsum);
@@ -27,6 +27,7 @@ function score(userName){
   scoreList.push(leftmultiple);
   scoreList.push(rightmultiple);
   
+ 
   return Math.max(...scoreList)
 }
 
@@ -34,8 +35,6 @@ function score(userName){
 
 
 
-function problem1(pobi, crong) {
 
-}
 
 module.exports = problem1;
