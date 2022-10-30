@@ -76,8 +76,8 @@ function deleteAlreadyFriend(user, friend_dic, friend_score){
 
 function sortArrayDecreaseValue(friend_score){
   let result_score = [];
-  for(let score in friend_score){
-    result_score.push([score, friend_score[score]]);
+  for(let key in friend_score){
+    result_score.push([key, friend_score[key]]);
   }
   result_score.sort(function(a, b){
     return b[1] - a[1];
