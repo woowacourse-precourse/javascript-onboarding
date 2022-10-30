@@ -33,7 +33,18 @@ function addSameFriendPoint(userFriend, friendsObj, pointObj) {
   return pointObj;
 }
 //user의 timeline에 방문한 사람들의 점수를 계산한다.
-function addVisitorPoint(visitors, pointObj) {}
+function addVisitorPoint(visitors, pointObj) {
+  for (visitor of visitors) {
+    if (friendsObj[user].includes(visitor)) {
+      continue;
+    }
+    if (!(visitor in pointObj)) {
+      pointObj[visitor] = 0;
+    }
+    pointObj[visitor] += 1;
+  }
+  return pointObj;
+}
 //추천 친구와 점수를 저장하는 2차원 배열 result를 생성
 function makeResultArr(pointObj) {}
 //점수에 따라 정렬하고, 추천 점수가 같은 경우 이름 순으로 정렬한다.
