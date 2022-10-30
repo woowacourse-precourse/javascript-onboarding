@@ -23,11 +23,27 @@ const makeRelation = (friends) => {
   return relation;
 }
 
+// 함께 아는 친구 점수 계산
+const calcAcquaintanceScore = (scores, user, friends) => {
+  const relation = makeRelation(friends);
+  Object.keys(relation).map(friend => {
+    if(friend !== user && !relation[friend].includes(user)) {
+      scores[friend] = 0;
+      relation[friend].map(x => {
+        if(relation[x].includes(user)) {
+          scores[friend] += 10;
+        }
+      })
+    }
+  })
+}
 
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const scores = {};
+  let scoreArr = [];
+
+  calcAcquaintanceScore(scores, user, friends);
 }
 
 module.exports = problem7;
