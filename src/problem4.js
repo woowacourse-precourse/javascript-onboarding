@@ -116,3 +116,4 @@ function problem4(word) {
 
   return answerWord;
 }
+module.exports = problem4;
