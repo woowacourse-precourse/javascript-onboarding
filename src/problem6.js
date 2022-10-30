@@ -50,23 +50,26 @@ function createNicknameWordMap(forms) {
   return nicknameWordMap;
 }
 
-function problem6(forms) {
+function getDuplicateNicknameUserInfo(nicknameWordMap, info = "email") {
   const UNIQUE_NAME_USER_COUNT = 1;
-  const duplicateNicknameUserEmails = [];
+  const result = [];
 
-  /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
-  const nicknameWordMap = createNicknameWordMap(forms);
-
-  // duplicateNicknameUserEmails 완성하는 부분의 함수 분리
   for (const [_, { count, users }] of nicknameWordMap) {
     if (count > UNIQUE_NAME_USER_COUNT) {
-      users.forEach(({ email }) => duplicateNicknameUserEmails.push(email));
+      users.forEach((user) => result.push(user[info]));
     }
   }
 
-  const filteredUserEmails = getUniqueEmails(duplicateNicknameUserEmails);
+  return getUniqueEmails(result);
+}
 
-  return filteredUserEmails;
+function problem6(forms) {
+  /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
+  const nicknameWordMap = createNicknameWordMap(forms);
+  const duplicateNicknameUserEmails =
+    getDuplicateNicknameUserInfo(nicknameWordMap);
+
+  return duplicateNicknameUserEmails;
 }
 
 console.log(
