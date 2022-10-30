@@ -55,6 +55,13 @@ function problem6(forms) {
 
 
   //#5. 검색어가 '검사한 단어' 배열에 포함되는지 확인하는 함수 : T/F
+
+  function CHECK_INCLUDE_WORD_IN_SEARCHED_WORD_LIST (word) {
+    
+    return SEARCHED_WORD_LIST.includes(word)
+
+  }
+
   //#6. 검사하려는 인덱스가 '중복된 인덱스'에 존재하는지 확인하는 함수 : T/F
 
   //#7. 인덱스를 통해 이메일 리스트를 만드는 함수 : INPUT
