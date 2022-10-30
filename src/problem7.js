@@ -80,6 +80,25 @@ function problem7(user, friends, visitors) {
       });
   });
 
+  // 3. visitors 배열을 돌면서 recommand에 [1, '이름'] 이렇게 넣고 이미 있으면 +1
+  visitors.map((name) => {
+    let includeCheck = false;
+    recommand.map((orginArray) => {
+      if (orginArray.includes(name)) {
+        includeCheck = true;
+      }
+    });
+    if (includeCheck) {
+      recommand.map((originArray) => {
+        if (originArray.includes(name)) {
+          originArray[0] += 1;
+        }
+      });
+    } else {
+      recommand.push([1, name]);
+    }
+  });
+
   return answer;
 }
 
