@@ -29,7 +29,37 @@ function problem6(forms) {
     }
   }
 
-  answer.sort();
+  answer.sort((a,b) => a - b)
+  // console.log(compareArr);
+
+  // console.log(compareArr);
+
+  //배열로 변환한 뒤 2이상인 것만 뽑아 answer에 다시 넣기
+  // let lists = [...map];
+  // let answer = [];
+
+  // for (let list of lists) {
+  //   if (list[1] <= 1) {
+  //     continue;
+  //   } else {
+  //     answer.push(list[0]);
+  //   }
+  // }
+
+  // let result = [];
+  // //닉네임에 문자가 포함된다면 result 추가
+  // for (let i = 0; i < forms.length; i++) {
+  //   for (let x of answer) {
+  //     if (forms[i][1].includes(x)) {
+  //       result.push(forms[i][0]);
+  //     }
+  //   }
+  // }
+
+  // //문자열 오름차순 정렬
+  // result.sort();
+
+  // console.log(result);
 
   return answer;
 }
