@@ -45,3 +45,17 @@
 <strong>- 숫자 1부터 number까지 실행되는 반복문을 돌며 해당 숫자를 각 자리마다 잘라서 3, 6, 9가 있는지 확인 후, 있으면 clap +1</strong>
 
 <strong>- 최종 clap 수를 retrun</strong>
+
+---
+
+## [ 문제 4 ]
+
+![문제 4](https://user-images.githubusercontent.com/74524184/198872731-8c182835-20cf-4bb0-8d8e-bebe2cf3818a.png)
+
+<strong>- word 각 글자를 '대문자 / 소문자 / 그 외'로 판단하는 if문 생성</strong>
+
+<strong>- 각 if문 속에 newStr += 반대로 변환된 글자 기능 넣기</strong>
+
+<strong>- 1부터 word.length까지 실행되는 반복문을 돌며 앞에서부터 해당되는 if문 실행</strong>
+
+<strong>- 최종 newStr을 return</strong>
