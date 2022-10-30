@@ -30,4 +30,9 @@ function deleteDuplicatedNicknames(array2D, duplicatedWords) {
   return Array.from(new Set(duplicatedEmails));
 }
 
+function sortingEmails(emails) {
+  const sortedEmails = emails.sort();
+  return sortedEmails;
+}
+
 module.exports = problem6;
