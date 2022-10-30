@@ -20,7 +20,16 @@ function problem7(user, friends, visitors) {
         }
     }
   }
- 
+  for(let i=0;i<friends.length;i++){
+    for(let j=0;j<2;j++){
+      for(let friend in friendInfo){
+        if(friend === friends[i][j]){
+          friendInfo[friend] += 10;
+        }
+      }
+    }
+  }
+  
   return answer;
 }
 
