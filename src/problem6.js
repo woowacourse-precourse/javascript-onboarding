@@ -1,5 +1,4 @@
 function problem6(forms) {
-  var answer;
   const map = new Map();
   const mail_arr = [];
 
@@ -18,7 +17,8 @@ function problem6(forms) {
     }
   }
 
-  return answer;
+  const set = new Set(mail_arr.sort());
+  return [...set];
 }
 
 module.exports = problem6;
