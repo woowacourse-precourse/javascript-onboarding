@@ -24,10 +24,19 @@ function problem2(cryptogram) {
         continue;
       }
       if (
-        decryptedCryptogramStack[decryptedCryptogramStack.length - 1] &&
+        decryptedCryptogramStack[decryptedCryptogramStack.length - 1] ===
+          beforeDecryptedCryptogram[i] &&
         i === cryptogramLength - 1
       ) {
         decryptedCryptogramStack.pop();
+        continue;
+      }
+      if (
+        decryptedCryptogramStack[decryptedCryptogramStack.length - 1] ===
+          beforeDecryptedCryptogram[i] &&
+        !isDuplicated
+      ) {
+        isDuplicated = true;
         continue;
       }
     }
