@@ -19,6 +19,7 @@ function problem4(word) {
       result += String.fromCharCode([219-ascii]);
     }
   }
+  return result;
 }
 
 module.exports = problem4;
