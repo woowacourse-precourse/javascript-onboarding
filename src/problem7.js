@@ -50,6 +50,11 @@ function problem7(user, friends, visitors) {
     return 0;
   });
 
+  for (let notFriend of notFriendsList) {
+    if (answer.length > 5) break; // 최대 5명이 추천되도록 한다.
+    answer.push(notFriend.name);
+  }
+
   return answer;
 }
 
