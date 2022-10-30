@@ -1,11 +1,15 @@
 function problem7(user, friends, visitors) {
   var answer;
-  const friendList = makeFriendList(user,friends)
+  const friendList = makeFriendList(friends)
   const userFriend = friendList[user]
-  let recommendObj= sharedFriend(userFriend,friendList)
-  recommendObj = visitFriend(visitors, recommendObj)
+  let preRecommendObj= sharedFriend(userFriend,friendList)
+  preRecommendObj = visitFriend(visitors, preRecommendObj)
 
-  return answer;
+  
+
+
+
+  return recommendObj;
 }
 
 function makeFriendList(friends){
@@ -22,28 +26,49 @@ function makeFriendList(friends){
 }
 
 function sharedFriend(userFriend, friendList){
-  let recommendObj = {}
+  let sharedObj = {}
   for(let name of Object.keys(friendList)){
-    //user 제외
+    //user 제외 //이미 친구인 사람 제거.
+    if(isFriend(name, userFriend)){
+      continue
+    }
     if(name!==user){
-      let sharedFriend =userFriend.filter(friend=>friendList[name].includes(friend))
-      sharedFriend.length!==0?result[name]=sharedFriend.length*10:null
+      let sharedFriend =userFriend.filter(
+        friend=>friendList[name].includes(friend)
+      )
+      if(sharedFriend.length!==0){
+        sharedObj[name]=sharedFriend.length*10
+      }
     }
   }
-  return recommendObj
+  return sharedObj
 }
 
-function visitFriend(visitors, recommendObj){
-  return visitors.reduce(function(a,b){
-    if(!result[b]){
-        !userFriend.includes(b)?result[b]=1:null}
-    else{
-        result[b]+=1}
-    return a
+function visitFriend(userFriend, visitors, recommendObj){
+  return visitors.reduce(function(obj,item){
+    if(isFriend(item,userFriend)){
+      return obj
+    }
+    if(!obj[item]){
+      obj[item]=0
+    }
+    obj[item]+=1
+    return obj
   },recommendObj)
 }
 
+function isFriend(name, userFriend){
+  if(userFriend.includes(name)){
+    return true
+  }
+  return false
+}
+
+function preAnswer(preRecommendObj){
+  const sortable = Object.entries(result)
+}
 
 
 
-module.exports = problem7;
+
+module.exports = problem7
