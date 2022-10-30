@@ -19,7 +19,7 @@ function problem7(user, friends, visitors) {
       var friend = friends[i][0];
       score = 10;
 
-      recommededFriend = userFriends.includes(friend)
+      recommendedFriend = userFriends.includes(friend)
         ? friends[i][1]
         : friends[i][0];
 
@@ -56,6 +56,8 @@ function problem7(user, friends, visitors) {
   );
 
   answer = Array.from(resultMap.keys());
+
+  if (answer.length > 5) answer = answer.slice(0, 5);
 
   return answer;
 }
