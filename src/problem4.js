@@ -63,11 +63,9 @@ function problem4(word) {
   let translatedWord = ''
 
   for (const character of word) {
-    if (/[a-zA-Z]/.test(character)) {
-      translatedWord += translate(character)
-    } else {
-      translatedWord += character
-    }
+    ;/[a-zA-Z]/.test(character)
+      ? (translatedWord += translate(character))
+      : (translatedWord += character)
   }
 
   return translatedWord
