@@ -23,21 +23,21 @@ String.prototype.replaceAt = function (index, replacement) {
   if (index >= this.length) {
     return this.valueOf();
   }
-
   return this.substring(0, index) + replacement + this.substring(index + 1);
 }
 
 function frogDictionary(char, capitalOrSmall) {
   let changeChar;
+  let ascii;
 
   switch (capitalOrSmall) {
     case "capital":
-      let ascii1 = char.charCodeAt(0);
-      changeChar = String.fromCharCode(ascii1 + (25 - 2 * (ascii1 - 65)));
+      ascii = char.charCodeAt(0);
+      changeChar = String.fromCharCode(ascii + (25 - 2 * (ascii - 65)));
       return changeChar;
     case "small":
-      let ascii2 = char.charCodeAt(0);
-      changeChar = String.fromCharCode(ascii2 + (25 - 2 * (ascii2 - 97)));
+      ascii = char.charCodeAt(0);
+      changeChar = String.fromCharCode(ascii + (25 - 2 * (ascii - 97)));
       return changeChar;
   }
 }
