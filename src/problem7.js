@@ -1,4 +1,4 @@
-const { val } = require("jshint/src/options");
+const MAX_COUNT_RECOMMENDED_FRIEND = 5;
 
 function problem7(user, friends, visitors) {
   var answer;
@@ -57,7 +57,7 @@ function problem7(user, friends, visitors) {
 
   answer = Array.from(resultMap.keys());
 
-  if (answer.length > 5) answer = answer.slice(0, 5);
+  if (answer.length > 5) answer = getMaxRecommendedFriends(answer);
 
   return answer;
 }
@@ -78,6 +78,10 @@ function getUserFriends(user, friends) {
 
 function getUserFriendRelationship(user, friends) {
   return friends.filter((element) => element.includes(user));
+}
+
+function getMaxRecommendedFriends(answer) {
+  return answer.slice(0, MAX_COUNT_RECOMMENDED_FRIEND);
 }
 
 module.exports = problem7;
