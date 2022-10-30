@@ -1,10 +1,9 @@
-function recursion(word) {
+function decode(word) {
   var answer;
   let result = [];
   let temp = word[0];
-  let wordlen = word.length
   let count = 0;
-  for (let i = 0; i < (wordlen); i++) {
+  for (let i = 0; i < (word.length); i++) {
     if (temp == word[i + 1]) {
       count += 1;
       continue;
@@ -28,7 +27,7 @@ function problem2(cryptogram) {
     answer = cryptogram;
   } else {
     while (true) {
-      let tmp = recursion(cryptogram);
+      let tmp = decode(cryptogram);
       if (cryptogram === tmp) {
         break;
       } else {
