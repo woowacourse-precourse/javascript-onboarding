@@ -1,6 +1,6 @@
 function isAlpha(char) {
-  var upperRegExp = /[A-Z]/;
-  var lowerRegExp = /[a-z]/;
+  const upperRegExp = /[A-Z]/;
+  const lowerRegExp = /[a-z]/;
 
   if (upperRegExp.test(char)) {
     return 1;
@@ -12,7 +12,7 @@ function isAlpha(char) {
 }
 
 function convertChar(char) {
-  var newCharCode;
+  let newCharCode;
 
   switch (isAlpha(char)) {
     case 1:
@@ -30,7 +30,7 @@ function convertChar(char) {
 function problem4(word) {
   var answer = "";
 
-  for (var char of word) {
+  for (const char of word) {
     answer += convertChar(char);
   }
   return answer;
