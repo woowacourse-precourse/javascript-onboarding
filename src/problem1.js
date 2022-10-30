@@ -7,6 +7,24 @@ const isExcept = (pageL, pageR) => {
   return false;
 };
 
+const calScore = (digits) => {
+  const operations = {
+    '+': (digitArr) => digitArr.reduce((acc, digit) => acc + digit, 0),
+    '*': (digitArr) => digitArr.reduce((acc, digit) => acc * digit, 1),
+  };
+  const scores = Object.keys(operations).map((operator) =>
+    operations[operator](digits)
+  );
+
+  return Math.max(...scores);
+};
+
+const getDigits = (num) =>
+  num
+    .toString()
+    .split('')
+    .map((digit) => +digit);
+
 const getMaxScore = ([pageL, pageR]) => {
   if (isExcept(pageL, pageR)) return -1;
 
