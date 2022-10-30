@@ -9,6 +9,7 @@ function problem5(money) {
     money = count;
   }
 
+  answer = moneyArr;
   return answer;
 }
 
