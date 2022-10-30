@@ -11,14 +11,4 @@ function problem2(cryptogram) {
 
   return stack.join("");
 }
-
-/* 
-// for test
-const cryptograms = ["browoanoommnaon", "zyelleyz"];
-
-for (cryptogram of cryptograms) {
-  console.log(problem2(cryptogram));
-}  
-*/
-
 module.exports = problem2;

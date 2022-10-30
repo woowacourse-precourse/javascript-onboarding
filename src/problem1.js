@@ -43,23 +43,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-/**
-// for test 
-const pobi = [
-  [97, 98],
-  [131, 132],
-  [99, 102],
-];
-
-const crong = [
-  [197, 198],
-  [211, 212],
-  [211, 212],
-];
-
-for (let i = 0; i < pobi.length; i++) {
-  console.log(problem1(pobi[i], crong[i]));
-} 
-*/
-
 module.exports = problem1;

@@ -1,4 +1,4 @@
-const threeSixNine = [3, 6, 9];
+const THREE_SIX_NINE = [3, 6, 9];
 
 function problem3(number) {
   let answer = 0;
@@ -6,20 +6,11 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     const nums = String(i).split("");
     nums.forEach((num) => {
-      if (threeSixNine.includes(Number(num))) answer++;
+      if (THREE_SIX_NINE.includes(Number(num))) answer++;
     });
   }
 
   return answer;
 }
-
-/*
-// for test 
-const numbers = [13, 33];
-
-for (number of numbers) {
-  console.log(problem3(number));
-}
-*/
 
 module.exports = problem3;
