@@ -11,6 +11,18 @@ function checkIsLower(alpa) {
   }
 }
 
+function changeAlpa(alpa) {
+  let asciiNum = alpa.charCodeAt(0);
+  let flag = checkIsLower(asciiNum);
+  if (flag === 2) {
+    return String.fromCharCode(LOWER - asciiNum);
+  } else if (flag === 1) {
+    return String.fromCharCode(UPPER - asciiNum);
+  } else {
+    return String.fromCharCode(asciiNum);
+  }
+}
+
 function problem4(word) {
   var answer = "";
   return answer;
