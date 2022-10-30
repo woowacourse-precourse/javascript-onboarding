@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   var answer;
   let list = [];
   let recommendList = [];
+  let tempVisitor = visitors;
 
   friends.forEach((pair) => {
     if (pair.includes(user)) {
@@ -29,7 +30,10 @@ function problem7(user, friends, visitors) {
     return allNames;
   }, {});
 
-
+ for(let friend of list) {
+   tempVisitor = tempVisitor.filter(name => name !== friend);
+ }
+  
 
   return answer;
 }
