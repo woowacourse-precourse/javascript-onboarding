@@ -1,22 +1,21 @@
 function problem2(cryptogram) {
     let beforeStr = cryptogram;
-    let afterStr = overlapCheck(cryptogram);
+    let afterStr = reduplicationCheck(cryptogram);
     while (beforeStr.length !== afterStr.length) {
         beforeStr = afterStr;
-        afterStr = overlapCheck(beforeStr);
+        afterStr = reduplicationCheck(beforeStr);
     }
-    const answer = afterStr;
-    return answer;
+    return afterStr;
 }
 
-function overlapCheck(crypto) {
-    let str = '';
-    for (let i = 0; i < crypto.length; i++) {
-        if (crypto[i] !== crypto[i + 1] && (crypto[i - 1] !== crypto[i])) {
-            str += crypto[i];
-        }
-    }
-    return str;
+function reduplicationCheck(cryptogram) {
+    const cryptogramSplit = cryptogram.split("");
+    const uniqueArr = cryptogramSplit.filter(isUnique);
+    return uniqueArr.join("");
+}
+
+function isUnique(char, index, array) {
+    return (char !== array[index + 1] && (array[index - 1] !== char));
 }
 
 module.exports = problem2;
