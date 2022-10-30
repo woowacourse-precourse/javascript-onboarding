@@ -25,6 +25,9 @@ function changeAlpa(alpa) {
 
 function problem4(word) {
   var answer = "";
+  for (let i = 0; i < word.length; i++) {
+    answer += changeAlpa(word[i]);
+  }
   return answer;
 }
 
