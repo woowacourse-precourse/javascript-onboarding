@@ -21,11 +21,13 @@ function makeCheckWordList(nickname) {
 }
 
 function problem6(forms) {
-  var answer;
+  var answer = [];
   const isDuplicate = new Array(forms.length).fill(0);
 
   for (let i = 0; i < forms.length; i++) {
-    if (isLengthOne(forms[i][NICK_NAME])) {
+    const nickName = forms[i][NICK_NAME];
+    // 길이가 1인 문자열 단어일 경우
+    if (isLengthOne(nickName)) {
       for (let j = 0; j < forms.length; j++) {
         if (i == j) continue;
         if (isDuplicate[j] === 1) continue;
@@ -35,7 +37,22 @@ function problem6(forms) {
         }
       }
     }
+    // 길이가 2인 문자열인 경우
+    else {
+      const checkWordList = makeCheckWordList(nickName);
+      for (let j = 0; j < forms.length; i++) {
+        const targetNickname = forms[j][NICK_NAME];
+        if (isDuplicate[j] === 1) continue;
+        for (let t = 0; t < checkWordList.length; t++) {
+          if (targetNickName.includes(checkWordList[t])) {
+            isDuplicate[i] = 1;
+            isDuplicate[j] = 1;
+          }
+        }
+      }
+    }
   }
+
   return answer;
 }
 
