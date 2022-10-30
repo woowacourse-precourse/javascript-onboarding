@@ -6,22 +6,15 @@ function problem7(user, friends, visitors) {
   var insideFriend = "";
   var tmp = "";
   var forAnswer = [];
-  var cnt = 1;
+  var cnt = 0;
+
   // 친구 관계 확인을 위한 오브젝트 생성 friends에서의 관계.
   friends.forEach((element) => {
-    if (myObj[element[0]]) {
-      myObj[element[0]].push(element[1]);
-    } else {
-      myObj[element[0]] = [0];
-      myObj[element[0]].push(element[1]);
-    }
+    if (!myObj[element[0]]) myObj[element[0]] = [0];
+    myObj[element[0]].push(element[1]);
 
-    if (myObj[element[1]]) {
-      myObj[element[1]].push(element[0]);
-    } else {
-      myObj[element[1]] = [0];
-      myObj[element[1]].push(element[0]);
-    }
+    if (!myObj[element[1]]) myObj[element[1]] = [0]; 
+    myObj[element[1]].push(element[0]);
   });
 
   // 단순 방문자인 경우.
@@ -32,7 +25,13 @@ function problem7(user, friends, visitors) {
   });
 
   //유저도 포함시켜, 유저에게 잘못된 점수를 주는것을 방지합니다.
-  myObj[user].push(user);
+  if (myObj[user]) myObj[user].push(user)
+  else{
+    myObj[user] = [0];
+    myObj[user].push(user);
+  }
+
+  console.log(myObj);
 
   //사용자와 함께 아는 친구의 수를 구하는 기능을 합니다.
   for (let i = 1; i < myObj[user].length - 1; i++) {
@@ -95,17 +94,28 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  forAnswer.forEach((element) => {
-    if (element[0] != 0) {
-      answer.push(element[1]);
-      cnt += 1;
-    }
+  for(let i=0 ; i < forAnswer.length ; i++){
+    if (i >= 5) break;
+    if (forAnswer[i][0] != 0) answer.push(forAnswer[i][1]);
+  }
 
-    if (cnt > 5) return false;
-
-  });
 
   return answer;
 }
+problem7(
+  'andole',
+  [
+    ['andole', 'jun'],
+    ['donut', 'jun'],
+    ['donut', 'shakevan'],
+    ['shakevan', 'andole'],
+    ['shakevan', 'jun'],
+    ['shakevan', 'bedi'],
+    ['anne', 'jun'],
+  ],
+  ['donut', 'mrko', 'peter', 'sam'],
+)
+
+// ).toEqual(['donut', 'anne', 'bedi', 'mrko', 'peter']);
 
 module.exports = problem7;

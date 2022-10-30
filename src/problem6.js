@@ -34,7 +34,6 @@ const compareNickName = (forms) => {
     }
   }
 
-  console.log(sameNickName);
   return sameNickName;
 };
 
