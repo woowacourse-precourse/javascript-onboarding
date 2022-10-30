@@ -2,8 +2,11 @@ function problem6(forms) {
 
   //필요변수
   //&1. 검사한 단어가 저장되는 배열
+  const SEARCHED_WORD_LIST = [];
   //&2. 중복된 [이메일,이름]의 인덱스가 저장되는 배열
+  const DUPLICATED_INDEX_LIST = [];
   //&3. 중복된 이름을 가진 이메일 배열
+  const DUPLICATED_EMAIL_LIST = [];
 
   //필요함수
   //#1. 닉네임을 검색해야하는 리스트로 만들어 반환하는 함수 : []
