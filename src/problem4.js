@@ -69,3 +69,9 @@ function checkLowerCase(alphabet) {
     return true;
   }
 }
+
+function checkUpperCase(alphabet) {
+  if (alphabet !== " " && alphabet.toUpperCase() === alphabet) {
+    return true;
+  }
+}
