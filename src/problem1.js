@@ -1,5 +1,39 @@
 function problem1(pobi, crong) {
+  if (checkError(pobi) || checkError(crong)) {
+    return -1;
+  }
 
+  const pobiNum = getNum(pobi);
+  const crongNum = getNum(crong);
+
+  if (pobiNum > crongNum) {
+    return 1;
+  }
+
+  if (pobiNum < crongNum) {
+    return 2;
+  }
+
+  if (pobiNum === crongNum) {
+    return 0;
+  }
+}
+
+function checkError(arr) {
+  //왼쪽 숫자가 홀수가 아니거나 오른쪽 숫자가 홀수가 아닌 경우
+  if (arr[0] % 2 !== 1 || arr[1] % 2 !== 0) {
+    return true;
+  }
+
+  //왼쪽 숫자가 오른쪽 숫자보다 큰 경우
+  if (arr[0] - arr[1] >= 0) {
+    return true;
+  }
+
+  //연속된 숫자가 아닌 경우
+  if (arr[1] - arr[0] !== 1) {
+    return true;
+  }
 }
 
 function getNum(arr) {
