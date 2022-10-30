@@ -1,5 +1,10 @@
+// 이메일 검증 기능
+
+// 닉네임 검증 기능
+
 function problem6(forms) {
-  var answer;
+  let answer;
+
   return answer;
 }
 
