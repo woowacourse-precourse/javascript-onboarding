@@ -31,3 +31,12 @@ function plusAndMultiPages(book) {
 
   return [bookPageSumOfPlus, bookPageSumOfMultiple];
 }
+
+function pushSumOfBooks(book) {
+  const [bookPageSumOfPlus, bookPageSumOfMultiple] = plusAndMultiPages(book);
+  let sumOfBookPageArr = [];
+
+  sumOfBookPageArr.push(bookPageSumOfPlus, bookPageSumOfMultiple);
+
+  return sumOfBookPageArr;
+}
