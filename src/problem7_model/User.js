@@ -3,7 +3,7 @@ const UserRelation = require("./UserRelation");
 class User {
   constructor(name) {
     this._name = name;
-		this._relation = new UserRelation(this);
+		this._relation = new UserRelation();
   }
 	getName() {
 		return this._name;

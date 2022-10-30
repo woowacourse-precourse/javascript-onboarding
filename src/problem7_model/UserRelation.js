@@ -1,19 +1,23 @@
-const Recommendation = require("./Recommendation");
-
 class UserRelation {
-	constructor(user) {
-		this._visiters = [];
-		this._friends = [];
+	constructor() {
+		this._relatinos = [];
   }
-	addVisit() {
+	isRelative(otherUser, Relation) {
+
+		this._friends.includes(otherUser);
+	}
+	addRelation(otherUser, Relation) {
 
 	}
-	addFriend() {
-
+}
+/**
+ * @abstract
+ */
+class VisitRelation {
+	constructor() {
+		this._score = 10;
 	}
-	recommend() {
-
-	}
+	
 }
 
 module.exports = UserRelation;
