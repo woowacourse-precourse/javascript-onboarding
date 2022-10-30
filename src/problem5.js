@@ -11,7 +11,6 @@ function problem5(money) {
     m9 = 0;
 
   // * Math.floor()의 내림을 사용
-
   if (money >= 1 && money <= 1000000) {
     m1 = Math.floor(money / 50000); //오만원
     m2 = Math.floor((money % 50000) / 10000); //만원
