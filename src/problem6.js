@@ -3,11 +3,12 @@ function problem6(forms) {
   const nameForms = forms.map((i) => i[1]);
   const validMailForms = mailForms.map((i) => isValidMail(i));
   const validNameForms = nameForms.map((i) => isValidName(i));
-  const validForms = classifyValid(mailForms, validMailForms, validNameForms);
+  const validForms = classifyValid(forms, validMailForms, validNameForms);
   // 여기까지 완료했고,
   // 1. duplicatedName에서 validForms인지 확인하고,
   // 2. const answer = invalidForms.filter((v) => v); //정렬 추가해야함.
-  const duplicatedNames = checkDuplicate(nameForms);
+
+  const answer = validForms;
 
   return answer;
 }
@@ -15,13 +16,13 @@ function problem6(forms) {
 module.exports = problem6;
 
 /* classify  */
-const classifyValid = (mailForms, validMailForms, validNameForms) => {
-  const newArray = new Array(mailForms.length);
+const classifyValid = (forms, validMailForms, validNameForms) => {
+  const newArray = new Array(forms.length);
   newArray.fill(null);
   const validForms = newArray.map((v, i) => {
     let resultValue;
     if (validMailForms[i] && validNameForms[i]) {
-      resultValue = mailForms[i];
+      resultValue = forms[i];
     } else {
       resultValue = false;
     }
