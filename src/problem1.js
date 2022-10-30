@@ -30,4 +30,9 @@ const getMaxMultiplication = (pageArr) => {
   return Math.max(...mulArr);
 };
 
+const getMaxNumber = (pageArr) => {
+  return Math.max(getMaxSum(pageArr), getMaxMultiplication(pageArr));
+};
+
+
 module.exports = problem1;
