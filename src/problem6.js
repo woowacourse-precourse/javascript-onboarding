@@ -2,6 +2,15 @@ function problem6(forms) {
   var answer;
   const check = new Array(forms.length).fill(false);
 
+  forms.forEach((member, idx) => {
+    const nickname = member[1];
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const sliceNick = nickname[i] + nickname[i + 1];
+      for (let j = idx + 1; j < forms.length; j++) {
+        if (forms[j][1].indexOf(sliceNick) !== -1) console.log(sliceNick);
+      }
+    }
+  });
   return answer;
 }
 
