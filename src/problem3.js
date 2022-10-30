@@ -1,5 +1,5 @@
 const is_tsn = (digit) => {
-  if (digit === 3 || digit === 6 || digit === 9){
+  if ([3, 6, 9].includes(digit)){
     return 1
   } else {
     return 0

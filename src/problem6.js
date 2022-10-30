@@ -1,12 +1,10 @@
 const is_similar = (left, right) => {
-  for (let i = 0; i < left.length-1; i++){
-    if (right.includes(left.slice(i, i+2))){
-      return true
-    }
-  }
-  for (let i = 0; i < right.length-1; i++){
-    if (left.includes(right.slice(i, i+2))){
-      return true
+  temp = [[left,right], [right,left]]
+  for (let k=0; k<temp.length;k++ ){
+    for (let i = 0; i < temp[k][0].length-1; i++){
+      if (temp[k][1].includes(temp[k][0].slice(i, i+2))){
+        return true
+      }
     }
   }
   return false
@@ -26,14 +24,8 @@ function problem6(forms) {
       }
     }
   }
-  answer = forms.map((e, idx) => {
-    if (pk_list[idx]){
-      return e[0]
-    }
-  })
-  answer = answer.filter((e) => e !== undefined)
-  answer = answer.sort()
-
+  answer = forms.map((e, idx) => pk_list[idx] ? e[0] : undefined)
+  answer = answer.filter((e) => e !== undefined).sort()
   return answer;
 }
 
