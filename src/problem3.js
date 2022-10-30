@@ -7,6 +7,25 @@ const getDigitSplittedArr = (num) => {
   return num.toString().split("");
 };
 
+/**
+ * 쳐야할 박수 숫자를 반환한다.
+ * @param {number} num
+ * @return {number}
+ */
+const getClapsToAdd = (num) => {
+  const STANDARDS = ["3", "6", "9"];
+  const numDigitArr = getDigitSplittedArr(num);
+  let clapsToReturn = 0;
+
+  for (let singleDigit of numDigitArr) {
+    if (STANDARDS.includes(singleDigit)) {
+      clapsToReturn++;
+    }
+  }
+
+  return clapsToReturn;
+};
+
 function problem3(number) {
   var answer;
   return answer;
