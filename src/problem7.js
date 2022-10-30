@@ -3,8 +3,24 @@ let friendGraph = {};
 const shareFriendScore = 10;
 const visitScore = 1;
  
-const makeFriendGraph = (friends) => {
+const registerFriend = (friend) => {
+  if(friendGraph[friend[0]] === undefined){
+    friendGraph[friend[0]] = [friend[1]];
+  } else {
+    friendGraph[friend[0]].push(friend[1]);
+  }
 
+  if(friendGraph[friend[1]] === undefined){
+    friendGraph[friend[1]] = [friend[0]];
+  } else {
+    friendGraph[friend[1]].push(friend[0]);
+  }
+}
+
+const makeFriendGraph = (friends) => {
+  friends.forEach((friend) => {
+    registerFriend(friend);
+  })
 }
 
 const calculateShareFriendsScore = (user) => {
