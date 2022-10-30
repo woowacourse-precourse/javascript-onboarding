@@ -31,6 +31,8 @@ function problem6(forms) {
     if (checkWordIncluded(nickname)) answer.push(email);
   });
 
+  answer = [...new Set(answer)];
+  answer.sort();
   return answer;
 }
 
