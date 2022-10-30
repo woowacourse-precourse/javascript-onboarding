@@ -53,13 +53,30 @@ const calcVisitScore = (scores, user, friends, visitors) => {
   })
 }
 
+// 점수 배열 정렬
+const sortScore = (scoreArr) => {
+  scoreArr.sort((a, b) => {
+    [aName, aScore] = a;
+    [bName, bScore] = b;
+    
+    if(aScore > bScore) return -1;
+    if(aScore < bScore) return 1;
+    if(aScore === bScore) {
+      if(aName > bName) return 1;
+      if(aName <= bName) return -1;
+    }
+  });
+}
+
+
 function problem7(user, friends, visitors) {
   const scores = {};
   let scoreArr = [];
 
   calcAcquaintanceScore(scores, user, friends);
   calcVisitScore(scores, user, friends, visitors);
-  
+  scoreArr = [...Object.entries(scores)];
+  sortScore(scoreArr);
 }
 
 module.exports = problem7;
