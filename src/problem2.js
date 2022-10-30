@@ -1,4 +1,7 @@
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+  if (!checkException(cryptogram)) return;
+  return delDup(cryptogram);
+}
 
 function checkException(str) {
   const x = str.length >= 1 && str.length <= 1000;
