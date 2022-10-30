@@ -21,7 +21,7 @@ function problem6(forms) {
 }
 
 function isValid(targetEmail, targetNickName) {
-  const valPattern_nickName_number = /^[가-힣]{1,20}$/;
+  const valPattern_nickName_number = /^[가-힣]{1,19}$/;
   const valPattern_email = /^[a-zA-Z0-9]{1,9}(?=\@email\.com)/;
 
   if (
