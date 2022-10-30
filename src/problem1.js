@@ -6,7 +6,7 @@ function cal_max(num) {
     sum += num % 10;
     num = parseInt(num / 10);
   }
-  return Math.max(mul, sum)
+  return Math.max(mul, sum);
 }
 
 function problem1(pobi, crong) {
