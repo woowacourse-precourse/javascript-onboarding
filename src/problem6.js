@@ -15,6 +15,8 @@ function problem6(forms) {
     }
   }
 
+  var set = new Set(resultEmailList);
+
   return resultEmailList;
 }
 
