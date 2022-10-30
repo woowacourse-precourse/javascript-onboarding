@@ -6,6 +6,8 @@ function problem7(user, friends) {
         if (findUserFriend > 0) userFriend.push(friends[i][1 - findUserFriend]);
     }
     console.log(userFriend);
+
+    
   return answer;
 }
 

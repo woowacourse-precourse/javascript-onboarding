@@ -5,25 +5,41 @@ function problem7(user, friends, visitors) {
   
   const set = new Set(allUser);
   const userArr = [...set];
-  
-  let allUserArr = [];
-  for (let i = 0; i < userArr.length; i++) {
-    allUserArr.push([userArr[i], 0]);
-  }
-  
-  console.log(allUserArr);
 
   let userFriend = [];
   for (let i = 0; i < friends.length; i++) {
       let findUserFriend = friends[i].indexOf(user);
       if (findUserFriend > 0) userFriend.push(friends[i][1 - findUserFriend]);
   }
-  console.log(userFriend);
+  let acquaintanceArr = [];
+  for (let i = 0; i < userFriend.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      if (friends[j][i] != user) {
+        acquaintanceArr.push(friends[j][1 - i]);
+      }
+    }
+  }
+  let acquaintance = acquaintanceArr
+  .filter(x => !userFriend.includes(x))
+  .filter(x => x !== user);
+  
+  let UserwithScore = [];
+  for (let i = 0; i < acquaintance.length; i++) {
+    UserwithScore.push([acquaintance[i], 10]);
+  }
 
+  for (let i = 0; i < UserwithScore.length; i++) {
+    for (let j = i + 1; j < UserwithScore.length; j++) {
+      if (UserwithScore[i][0] == UserwithScore[j][0]) {
+        UserwithScore[i][1] += UserwithScore[j][1];
+        UserwithScore.splice(j, 1);
+        console.log(UserwithScore);
+      }
+    }
+  }
 
-
-
-
+  console.log(`ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ`);
+  console.log(UserwithScore);
 
   return answer;
 }
