@@ -1,26 +1,27 @@
 // main
 function problem2(cryptogram) {
-  // 예외처리
-  if (errorHandler(cryptogram)) {
-    console.log("Error : 글자수 제한");
-    return null;
-  }
-
   var answer;
-  // 암호해독
-  answer = splitWord(cryptogram);
+  // 예외처리
+  answer = errorHandler(cryptogram);
 
-  return answer;
+  // 암호해독
+  return solvePassword(answer);
 }
 
 function errorHandler(cryptogram) {
-  if (cryptogram.length > 1000) return true;
+  // 문자열 소문자로 변환
+  var text = cryptogram.toLowerCase();
+  // 문자 쪼개기
+  var arr = (text + '').split('');
+
+  // 자리수가 1000을 넘을경우 1001번째 자리부터 끝까지 소거
+  if (arr.length > 1000) arr = arr.splice(1000, arr.length - 1);
+
+  return arr;
 }
 
 // 암호해독 함수
-function splitWord(word) {
-  // 암호를 쪼개서 arr에 저장
-  var arr = (word + '').split('');
+function solvePassword(arr) {
   // 중복문자 유무를 판단하기 위한 flag
   var flag = false;
 
