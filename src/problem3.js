@@ -1,9 +1,15 @@
 function problem3(number) {
-  var answer = 0;
-  let pos = number.toString().indexOf("3");
-  while (pos !== -1) {
-    answer++;
-    pos = number.toString().indexOf("3", pos + 1);
+  let answer = 0;
+  if (number >= 1 && number <= 10000) {
+    for (let i = 1; i <= number; i++) {
+      if (
+        String(i).includes(3) ||
+        String(i).includes(6) ||
+        String(i).includes(9)
+      ) {
+        answer++;
+      }
+    }
   }
   return answer;
 }
