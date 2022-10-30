@@ -8,22 +8,28 @@ function problem4(word) {
   var arr_lower_ztoa = [...arr_lower_atoz].reverse();
   var arr_word = word.split("");
 
-  // 소문자인 경우 
+  var arr_upper_atoz = lower_atoz.toUpperCase().split("");
+  var arr_upper_ztoa = [...arr_upper_atoz].reverse();
+  var arr_word = word.split("");
+
+
   for (var i = 0; i < word.length; i++) {
-    var index = arr_lower_atoz.indexOf(word[i]);
+    str = arr_word[i].toUpperCase();
+    var lower_index = arr_lower_atoz.indexOf(word[i]);
+    var upper_index = arr_upper_atoz.indexOf(word[i]);
 
-    if (index == -1) {
+    // 대문자인 경우 
+    if(str === word[i] && upper_index != -1) {
+      answer.push(arr_upper_ztoa[upper_index]);
+    // 공백인 경우
+    } else if(lower_index === -1 && upper_index === -1) {
       answer.push(arr_word[i]);
+
+    // 소문자인 경우
     } else {
-      answer.push(arr_lower_ztoa[index]);
-      console.log(answer);
-    }
+      answer.push(arr_lower_ztoa[lower_index]);
+    } 
   }
-
-  //기존이 대문자인 경우 다시 대문자로 변경(알파벳이 소문자로)
-
   return answer.join("");
 }
-
-// console.log(problem4("I love you"));
 module.exports = problem4;
