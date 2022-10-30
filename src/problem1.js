@@ -13,7 +13,7 @@ function getBestNumber(number) {
 
 function problem1(pobi, crong) {
   // 이상한 인풋값 아닌지 확인
-  if (pobi[1] - pobi[0] === 1 && crong[1] - crong[0] === 1) {
+  if (pobi[1] - pobi[0] === 1 && crong[1] - crong[0] === 1&& pobi[0] > 1 && crong[1] < 400) {
     let answer;
 
     const pobiLeft = getBestNumber(pobi[0]); // 포비 왼쪽 페이지 높은 수
