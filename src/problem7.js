@@ -1,12 +1,5 @@
 // 함께아는 친구의 배열을 return하는 함수 findAcquaintances
-function findAcquaintances(user, friends) {
-  const userFriends = [];
-  // user와 친구 관계인 사람을 userFriends 배열에 담음.
-  friends.map((m) => {
-    if (m.includes(user)) {
-      userFriends.push(...m.filter((a) => a !== user));
-    }
-  });
+function findAcquaintances(user, friends, userFriends) {
   let arr = [...userFriends];
   let flag = false;
   // userFriends에 있는 사람과 친구 관계인 사람을 arr 배열에 담음.
@@ -30,8 +23,15 @@ function findAcquaintances(user, friends) {
 
 function problem7(user, friends, visitors) {
   let answer = [];
+  const userFriends = [];
+  // user와 친구 관계인 사람을 userFriends 배열에 담음.
+  friends.map((m) => {
+    if (m.includes(user)) {
+      userFriends.push(...m.filter((a) => a !== user));
+    }
+  });
   // user와 함께 아는 친구 관계인 배열 acquaintances.
-  const acquaintances = findAcquaintances(user, friends);
+  const acquaintances = findAcquaintances(user, friends, userFriends);
   let map = new Map();
   // Map 객체에 key로 유저이름, value로 사용자와 함께 아는 친구의 수 점수를 계산. (10점)
   acquaintances.map((m) => {
@@ -49,14 +49,23 @@ function problem7(user, friends, visitors) {
       map.set(m, 1);
     }
   });
+  // user의 친구들은 map 객체에서 제거
+  userFriends.map((m) => {
+    map.delete(m);
+  });
   // Map객체를 배열로 변환하고 value를 기준으로 내림차순 정렬
   map = [...map.entries()].sort((a, b) => b[1] - a[1]);
-  //
-  // map 배열에서 상위 3명의 이름을 반환
-  for (let i = 0; i < 3; i++) {
-    answer.push(map[i][0]);
+
+  // map 배열에서 상위 5명의 이름을 반환 5
+  if (map.length > 5) {
+    for (let i = 0; i < 5; i++) {
+      answer.push(map[i][0]);
+    }
+  } else {
+    for (let i = 0; i < map.length; i++) {
+      answer.push(map[i][0]);
+    }
   }
   return answer;
 }
-
 module.exports = problem7;
