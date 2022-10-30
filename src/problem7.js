@@ -1,7 +1,6 @@
 const getFriendsRelationMap = (friends) => {
   const relationMap = new Map();
 
-  // 교우관계 저장
   for (const [a, b] of friends) {
     const aFriends = relationMap.get(a);
     const bFriends = relationMap.get(b);
@@ -22,12 +21,12 @@ const getFriendsRelationMap = (friends) => {
 };
 
 function problem7(user, friends, visitors) {
-  const relation = getFriendsRelationMap(friends); // 교우관계 저장
-  const userFriends = relation.get(user) ?? []; // user 친구 저장
+  const relation = getFriendsRelationMap(friends);
+  const userFriends = relation.get(user) ?? [];
 
   const recommendCandidaters = [
     ...new Set(friends.flatMap((friend) => [...friend]).concat(visitors)),
-  ].filter((friend) => !userFriends.includes(friend) && friend !== user); // 친구 후보가 될 수 있는 사람 추가.
+  ].filter((friend) => !userFriends.includes(friend) && friend !== user);
 
   const recommandScore = new Map(
     [...recommendCandidaters].map((candidate) => [candidate, 0]),
@@ -36,9 +35,8 @@ function problem7(user, friends, visitors) {
   for (const candidate of recommendCandidaters) {
     let score = recommandScore.get(candidate);
     userFriends.forEach((friend) => {
-      const friendList = relation.get(friend); // 사용자 친구들 순회
+      const friendList = relation.get(friend);
       if (friendList.includes(candidate)) {
-        // 그 친구들 중에서 후보중에 있으면
         score += 10;
       }
     });
@@ -49,7 +47,7 @@ function problem7(user, friends, visitors) {
       ).length;
       score += visitCount;
     }
-    recommandScore.set(candidate, score); // 10점 추가
+    recommandScore.set(candidate, score);
   }
 
   const answer = [...recommandScore]

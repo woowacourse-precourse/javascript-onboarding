@@ -31,7 +31,6 @@ const checkPage = ([left, right]) => {
 };
 
 function problem1(pobi, crong) {
-  // 예외사항 : 우 - 좌가 1이 아니면 -1 처리
   if (!checkPage(pobi) || !checkPage(crong)) return -1;
 
   const pobiScore = getMaxScore(pobi);

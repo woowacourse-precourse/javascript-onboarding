@@ -1,5 +1,4 @@
 function problem2(cryptogram) {
-  // 연속하는 중복 문자 삭제
   var answer = "";
   const len = cryptogram.length;
 
