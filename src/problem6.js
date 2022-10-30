@@ -39,7 +39,7 @@ const findOverLappingWord = (nickname) => {
   return overLappingWord;
 };
 
-const checkWordIncluded = (nickname, overLappingWords) => {
+const checkWordIncluded = (nickname) => {
   for (let i = 0; i < nickname.length - 1; i++) {
     const tmp = nickname.slice(i, i + 2);
     if (overLappingWord.includes(tmp)) return true;
