@@ -10,6 +10,14 @@ function problem5(money) {
 
   //지폐 계수 배열
   const answer = [];
+
+  //지폐 종류별 갯수 구하는 함수
+  if(moneyRange(money) === true)
+  for(let i=0; i<moneyArr.length; i++){
+    answer.push(Math.floor(money/moneyArr[i]))
+    money = money%moneyArr[i];
+  }
+  return answer
 }
 
 module.exports = problem5;
