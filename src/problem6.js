@@ -16,6 +16,12 @@ function checkNameCount(name) {
     return nameList;
 }
 
+function getErrorName(obj) {
+    return Object.entries(obj)
+        .filter(([, count]) => count > 1)
+        .map(([name]) => name);
+}
+
 function problem6(forms) {}
 
 module.exports = problem6;
