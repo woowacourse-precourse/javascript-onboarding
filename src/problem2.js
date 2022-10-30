@@ -1,6 +1,3 @@
-function problem2(cryptogram) {
-  var answer;
-  return answer;
+function stringToArray(array) {
+  return [...array];
 }
-
-module.exports = problem2;
