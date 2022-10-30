@@ -14,10 +14,10 @@ function problem2(cryptogram) {
 function decode(cryptogram) {
   const stack = [];
   for(let i = 0 ; i < cryptogram.length ; i++) {
-    if (stack.length === 0) {
+    if (isEmpty(stack)) {
       stack.push(cryptogram[i]);
     } else {
-      if (stack[stack.length-1] === cryptogram[i]) {
+      if (isEqual(stack[stack.length-1], cryptogram[i])) {
         stack.pop();
       } else {
         stack.push(cryptogram[i]);
@@ -25,6 +25,14 @@ function decode(cryptogram) {
     }
   }
   return stack.join('');
+}
+
+function isEmpty(stack) {
+  return stack.length === 0;
+}
+
+function isEqual(a, b) {
+  return a === b;
 }
 
 module.exports = problem2;
