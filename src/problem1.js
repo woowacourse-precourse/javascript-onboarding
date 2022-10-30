@@ -7,8 +7,8 @@
  * - [x] pobi와 crong 배열의 값으로 포비와 크롱의 점수 구하기
  *    - [x] 왼쪽, 오른쪽 페이지의 각 자릿수의 합과 곱 중 큰 수 구하기
  *    - [x] 구한 두 수 중 큰 수를 반환하기
- * - [ ] 각 배열을 통해 구한 점수를 비교해서 요구사항에 맞도록 값을 반환하기
- *    - [ ] 두 수를 대소를 비교하는 기능
+ * - [x] 각 배열을 통해 구한 점수를 비교해서 요구사항에 맞도록 값을 반환하기
+ *    - [x] 두 수를 대소를 비교하는 기능
  */
 
 /**
@@ -27,7 +27,7 @@ function problem1(pobi, crong) {
   const pobiScore = getScore(pobi);
   const crongScore = getScore(crong);
 
-  return answer;
+  return compareTwoNumbers(pobiScore, crongScore);
 }
 
 /**
@@ -106,3 +106,20 @@ function getBiggerNumberBetweenSumAndProduct(number) {
 
   return sum > product ? sum : product;
 }
+
+/**
+ * 두 수의 값을 비교해서 같다면 0, number1이 크면 1, number2가 크면 2를 반환하는 함수
+ *
+ * @param {number} number1 1 이상의 정수
+ * @param {number} number2 1 이상의 정수
+ * @returns {number} 같다면 0, number1이 크면 1, number2가 크면 2
+ */
+function compareTwoNumbers(number1, number2) {
+  if (number1 === number2) {
+    return 0;
+  }
+
+  return number1 > number2 ? 1 : 2;
+}
+
+module.exports = problem1;
