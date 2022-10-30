@@ -44,6 +44,11 @@ function onReverse(char) {
 
 function problem4(word) {
   var answer;
+
+  const arr_word = word.split("");
+  arr_answer = arr_word.map((char) => onReverse(char));
+  answer = arr_answer.join("");
+
   return answer;
 }
 
