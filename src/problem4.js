@@ -1,6 +1,6 @@
 // 문자를 유니코드로 변환하는 기능
-function convertUnicode(splitedWord) {
-  const result = splitedWord.map((char) => char.charCodeAt());
+function convertUnicode(word) {
+  const result = word.map((char) => char.charCodeAt());
   return result;
 }
 
@@ -20,6 +20,12 @@ function reverseUpperCase(word) {
   return result;
 }
 
+// 유니코드를 다시 문자로 변환하는 기능
+function convertCharacter(word) {
+  const result = word.map((code) => String.fromCharCode(code));
+  return result;
+}
+
 // solution
 function solution(word) {
   const splitedWord = word.split("");
@@ -27,7 +33,7 @@ function solution(word) {
   console.log(unicodeWord);
   let reversedWord = reverseLowerCase(unicodeWord);
   reversedWord = reverseUpperCase(reversedWord);
-  console.log(reversedWord);
+  console.log(convertCharacter(reversedWord));
 }
 
 function problem4(word) {
