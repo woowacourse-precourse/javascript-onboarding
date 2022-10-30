@@ -6,6 +6,16 @@ function isDuplicateWord(forms, duplicateWords, word) {
   return forms.some((form) => form[1].includes(word));
 }
 
+function isCrewWithDuplicateWord(crew, duplicateWords) {
+  return duplicateWords.some((word) => crew.includes(word));
+}
+
+function removeDuplicateEmails(emails) {
+  const emailSet = new Set(emails);
+
+  return [...emailSet];
+}
+
 function getDuplicateWords(forms, duplicateWords) {
   if (forms.length === 1) {
     return duplicateWords;
@@ -29,16 +39,6 @@ function getDuplicateWords(forms, duplicateWords) {
   return getDuplicateWords(forms, duplicateWords);
 }
 
-function isCrewWithDuplicateWord(crew, duplicateWords) {
-  return duplicateWords.some((word) => crew.includes(word));
-}
-
-function removeDuplicateEmails(emails) {
-  const emailSet = new Set(emails);
-
-  return [...emailSet];
-}
-
 function problem6(forms) {
   const copiedForms = [...forms];
   const duplicateWords = getDuplicateWords(copiedForms, []);
@@ -52,36 +52,3 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
-
-function test() {
-  const forms = [
-    ['jm@email.com', '제이엠'],
-    ['jm@email.com', '제이워니'],
-    ['jm@email.com', '워니고'],
-    ['jm@email.com', '니고스'],
-    ['woniee@email.com', '워니'],
-    ['jason@email.com', '제이슨'],
-    ['nowm@email.com', '이제엠'],
-    ['mj@email.com', '엠제이'],
-    ['em@email.com', '이엠'],
-    ['em@email.com', '가나다'],
-  ];
-  const forms2 = [
-    ['jm@email.com', '제이엠'],
-    ['jason@email.com', '제이슨'],
-    ['woniee@email.com', '워니'],
-    ['mj@email.com', '엠제이'],
-    ['nowm@email.com', '이제엠'],
-  ];
-  const forms3 = [
-    ['jm@email.com', '제오'],
-    ['jason@email.com', '제이'],
-    ['woniee@email.com', '워니'],
-  ];
-
-  console.log(problem6(forms));
-  console.log(problem6(forms2));
-  console.log(problem6(forms3));
-}
-
-test();
