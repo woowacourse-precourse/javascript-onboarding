@@ -1,6 +1,5 @@
 function problem1(pobi, crong) {
   if (isValid(pobi) || isValid(crong)) return -1;
-  console.log(getMaxSum(pobi));
 }
 
 const isValid = (pageArr) => {
@@ -19,5 +18,16 @@ const getMaxSum = (pageArr) => {
   return Math.max(...sumArr);
 };
 
-problem1([377, 378], [133, 134]);
+const getMaxMultiplication = (pageArr) => {
+  const mulArr = [];
+  pageArr.forEach((pageNum) =>
+    mulArr.push(
+      String(pageNum)
+        .split("")
+        .reduce((acc, curr) => acc * Number(curr), 1)
+    )
+  );
+  return Math.max(...mulArr);
+};
+
 module.exports = problem1;
