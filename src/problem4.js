@@ -7,18 +7,20 @@ function problem4(word) {
 }
 
 function convertReverse(letter) {
-  const upperCaseStart = 65,
-    upperCaseEnd = 90;
-  const lowerCaseStart = 97,
-    lowerCaseEnd = 122;
+  const ASCII = {
+    upperCaseStart: 65,
+    upperCaseEnd: 90,
+    lowerCaseStart: 97,
+    lowerCaseEnd: 122,
+  };
 
-  const upperCaseReverse = upperCaseStart + upperCaseEnd - letter;
-  const lowerCaseReverse = lowerCaseStart + lowerCaseEnd - letter;
+  const upperCaseReverse = ASCII.upperCaseStart + ASCII.upperCaseEnd - letter;
+  const lowerCaseReverse = ASCII.lowerCaseStart + ASCII.lowerCaseEnd - letter;
 
-  if (letter >= upperCaseStart && letter <= upperCaseEnd) {
+  if (letter >= ASCII.upperCaseStart && letter <= ASCII.upperCaseEnd) {
     return String.fromCharCode(upperCaseReverse);
   }
-  if (letter >= lowerCaseStart && letter <= lowerCaseEnd) {
+  if (letter >= ASCII.lowerCaseStart && letter <= ASCII.lowerCaseEnd) {
     return String.fromCharCode(lowerCaseReverse);
   }
   return String.fromCharCode(letter);
