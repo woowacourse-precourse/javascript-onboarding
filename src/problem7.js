@@ -27,9 +27,14 @@ function getInterFriendNum(user, friends){
   return friendCount(interFriendList);
 }
 
+function getVisitorNum(visitors){
+  const visitCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+  return visitCount(visitors);
+}
+
 function getScore(user, friends, visitors){
   const friendScore = getInterFriendNum(user, friends);
-
+  const visitScore = getVisitorNum(visitors);
 }
 
 function problem7(user, friends, visitors) {
