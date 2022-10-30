@@ -24,6 +24,10 @@ const isValidPage = (page) => {
   return true;
 };
 
+const digitsSum = (digits) => {
+  return digits.reduce((num_1, num_2) => Number(num_1) + Number(num_2));
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
