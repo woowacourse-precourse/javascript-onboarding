@@ -22,6 +22,19 @@ function problem4(word) {
             return asciiAlphabet - (alphabetIndex - 13) * 2 + 1;
         }
     };
+
+    // 3단계) 띄어쓰기를 제외하고 아스키코드배열의 모든 요소를 변환합니다.
+    for (i = 0; i < asciiAlphabetArray.length; i++) {
+        let asciiAlphabet = asciiAlphabetArray[i];
+
+        // 띄어쓰기는 변홚대상에서 제외
+        if (asciiAlphabet === 32) {
+            continue;
+        }
+
+        let alphabetIndex = getAlphabetIndex(asciiAlphabet);
+        asciiAlphabetArray[i] = changeAlphabet(asciiAlphabet, alphabetIndex);
+    }
 }
 
 module.exports = problem4;
