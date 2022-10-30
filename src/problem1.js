@@ -8,3 +8,9 @@ function checkBookPageError(book) {
 
   return false;
 }
+
+function stringfyBookPageArr(book) {
+  const stringBookPageArr = book.map((item) => String(item));
+
+  return stringBookPageArr;
+}
