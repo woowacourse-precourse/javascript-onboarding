@@ -19,7 +19,7 @@ const asciiToReversedChar = (ascii) => {
 const charToAscii = (char) => char.charCodeAt();
 
 function problem4(word) {
-  let reversedWord = [...word].reduce((acc, cur) => {
+  const reversedWord = [...word].reduce((acc, cur) => {
     const ascii = charToAscii(cur);
     acc += asciiToReversedChar(ascii);
 
