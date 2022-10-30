@@ -4,6 +4,18 @@ function problem6(forms) {
   for(let i=0; i<forms.length;i++){
     form.push(forms[i][1]);
   }
+
+  for(let i=0; i<forms.length;i++){
+    for(let j=0; j<form.length-1;j++){
+      for(let q=0; q<forms.length-1;q++){
+        if(form[q].includes(form[i][j]+form[i][j+1]) && form[q] !== form[i]){
+          // console.log(form[q],form[i][j]+form[i][j+1]);
+          answer.push(forms[q][0]);
+        }
+      }
+    }
+  }
+  
   return answer;
 }
 
