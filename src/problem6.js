@@ -8,7 +8,15 @@ function problem6(forms) {
   for (let a = 0; a < forms.length; a++) {
     for (let b = 1; b < forms.length; b++) {
       for (let c = 0; c < forms[a][1].length - 1; c++) {
-        for (let d = 0; d < forms[b][1].length - 1; d++) {}
+        for (let d = 0; d < forms[b][1].length - 1; d++) {
+          //각 닉네임별로 두 글자 이상 중복이 있는지 확인한다
+          if (
+            forms[a][0] != forms[b][0] &&
+            forms[a][1][c] + forms[a][1][c + 1] ==
+              forms[b][1][d] + forms[b][1][d + 1]
+          ) {
+          }
+        }
       }
     }
   }
