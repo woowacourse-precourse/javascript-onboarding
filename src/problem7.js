@@ -23,7 +23,19 @@ function problem7(user, friends, visitors) {
     algorithmArr.push([visitors[index], 1]);
   }
 
-  return answer;
+  algorithmArr.sort(function (a, b) {
+    if (a > b) return 1;
+    if (a === b) return 0;
+    if (a < b) return -1;
+  });
+
+  for(index=0;index<5; index++){
+    if(algorithmArr[index]){
+      break;
+    }
+    answer.push(algorithmArr[index][0]);
+  }
+  return answer.sort();
 }
 
 module.exports = problem7;
