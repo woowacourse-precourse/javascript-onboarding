@@ -2,14 +2,57 @@ function problem7(user, friends, visitors) {
   const friendOfUser = friends.map((i) => i[0]);
   const friendScore = searchByFriends(user, friends, friendOfUser);
   const visitorScore = searchByVisitor(visitors, friendOfUser);
+  const answer = recommandByScore(friendScore, visitorScore);
 
-  const recommandScore = {};
-
-  let answer;
   return answer;
 }
 
 module.exports = problem7;
+
+const recommandByScore = (friendScore, visitorScore) => {
+  const totalScore = {};
+
+  Object.entries(visitorScore).map(([name, score]) => {
+    if (totalScore[name]) {
+      totalScore[name] += score;
+    } else {
+      totalScore[name] = score;
+    }
+  });
+
+  if (!friendScore) return totalScore;
+
+  Object.entries(friendScore).map(([name, score]) => {
+    if (totalScore[name]) {
+      totalScore[name] += score;
+    } else {
+      totalScore[name] = score;
+    }
+  });
+
+  const scoreArray = Object.entries(totalScore).map(([name, score]) => {
+    return { name: name, score: score };
+  });
+  console.log(scoreArray);
+
+  const sortedScoreArray = scoreArray.sort((x, y) => {
+    if (x.score < y.score) {
+      return 1;
+    } else if (x.score > y.score) {
+      return -1;
+    } else if (x.name < y.name) {
+      return -1;
+    } else if (x.name > y.name) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  const resultValue = sortedScoreArray.map((i) => i.name).slice(0.5);
+
+  return resultValue;
+};
 
 const searchByVisitor = (visitors, friendOfUser) => {
   const visitScore = visitors.reduce((acc, cur, i) => {
@@ -44,6 +87,8 @@ const isCurrentFriend = (name, friendOfUser) => {
   
 */
 const searchByFriends = (user, friends, friendOfUser) => {
+  if (!friends) return;
+
   const newFriendsFilter = friends.filter((i) => {
     let resultValue;
     const currentFriend = isCurrentFriend(i[1], friendOfUser);
