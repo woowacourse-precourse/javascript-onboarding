@@ -7,6 +7,16 @@ const moneyUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
 function problem5(money) {
   var answer;
+
+  // 지폐 배열 순회
+  moneyUnit.forEach((unit) => {
+    // 큰 지폐부터 추가
+    count = parseInt(money / unit);
+    answer.push(count);
+
+    // 나머지 금액 최신화
+    money = money % unit;
+  });
   return answer;
 }
 
