@@ -20,3 +20,18 @@ function cutTwoCharArray(array) {
   });
   return twoCharNameArr;
 }
+
+function pushOverlapArray(array) {
+  let overlapArray = [];
+  let toCheckArray = [];
+
+  array.forEach((twoCharName) => {
+    if (toCheckArray.includes(twoCharName) === true) {
+      overlapArray.push(twoCharName);
+    }
+    if (toCheckArray.includes(twoCharName) === false) {
+      toCheckArray.push(twoCharName);
+    }
+  });
+  return overlapArray;
+}
