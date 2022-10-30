@@ -193,4 +193,46 @@ describe("problem7", () => {
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+          ["bedi", "shakevan"],
+          ["bedi", "donut"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["bedi", "andole", "jun"]);
+  });
+  test("case3", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        []
+      )
+    ).toEqual(["andole", "jun"]);
+  });
+  test("case4", () => {
+    expect(problem7("mrko", [["donut", "andole"]], [])).toEqual([]);
+  });
+  test("case5", () => {
+    expect(
+      problem7("mrko", [["donut", "andole"]], ["a", "b", "b", "c"])
+    ).toEqual(["b", "a", "c"]);
+  });
 });
