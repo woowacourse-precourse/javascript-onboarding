@@ -41,7 +41,9 @@ const calculateShareFriendsScore = (user) => {
 };
 
 const calculateVisitScore = (visitors) => {
-
+  visitors.forEach((visitor) => {
+    addFriendScore(visitor, visitScore);
+  })
 }
 
 function problem7(user, friends, visitors) {
