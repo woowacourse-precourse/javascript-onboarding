@@ -23,8 +23,12 @@ function problem3(number) {
   return count;
 }
 
-function getInclude369(number) {
-  return number.toString().match(/3|6|9/gi);
+function isMatched369(number) {
+  return number.toString().match(/3|6|9/g);
+}
+
+function getIncluded369(number) {
+  return isMatched369(number).length;
 }
 
 module.exports = problem3;
