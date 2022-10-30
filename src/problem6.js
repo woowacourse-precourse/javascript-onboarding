@@ -32,3 +32,20 @@ function splitIntoTwo(form) {
   }
   return results;
 }
+/**
+ *
+ * @param {object} records : 2글자로 쪼갠 닉네임의 정보를 가진 object
+ */
+function findRepeated(records) {
+  const results = new Set();
+  const keys = Object.keys(records);
+  keys.forEach((key) => {
+    const values = records[key];
+    if (values.length > 1) {
+      for (let i = 0; i < values.length; i++) {
+        results.add(values[i]);
+      }
+    }
+  });
+  return results;
+}
