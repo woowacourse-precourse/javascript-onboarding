@@ -10,6 +10,7 @@ function problem5(money) {
   moneyUnit.map((elem) => {
     if (parseInt(money / elem) !== 0) {
       moneyCount.push(parseInt(money / elem));
+      money = money - elem * parseInt(money / elem);
     } else {
       moneyCount.push(0);
     }
