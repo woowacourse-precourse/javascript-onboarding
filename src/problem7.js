@@ -28,9 +28,9 @@ function problem7(user, friends, visitors) {
 
 function getMyFriend(user, friends) {
   const foundFriends = [];
-  friends.forEach((friend) => {
+  friends.forEach(friend => {
     if (friend.includes(user)) {
-      const friendName = friend.filter((friend) => friend !== user);
+      const friendName = friend.filter(friend => friend !== user);
       foundFriends.push(...friendName);
     }
   });
@@ -40,10 +40,10 @@ function getMyFriend(user, friends) {
 
 function getRecomendFriendList(user, myFriends, friends) {
   const recomendFriends = [];
-  myFriends.forEach((myFriend) => {
+  myFriends.forEach(myFriend => {
     for (let friend of friends) {
       if (friend.includes(myFriend) && friend.includes(user) === false) {
-        const recomendFriendName = friend.filter((friend) => friend !== myFriend);
+        const recomendFriendName = friend.filter(friend => friend !== myFriend);
         recomendFriends.push(...recomendFriendName);
       }
     }
@@ -56,7 +56,7 @@ function getStrangeVisitorList(myFriends, visitors) {
   let totalStrangeVisitorsList = visitors;
   for (let name of myFriends) {
     totalStrangeVisitorsList = totalStrangeVisitorsList.filter(
-      (visitor) => visitor !== name
+      visitor => visitor !== name
     );
   }
 
@@ -90,13 +90,13 @@ function sumScore(friends, visitors) {
 
 function sorting(recomendFriends) {
   const sort = Object.fromEntries(
-    Object.entries(recomendFriends).sort(([, a], [, b]) => {
-      if (a > b) {
+    Object.entries(recomendFriends).sort((a, b) => {
+      if (a[1] > b[1]) {
         return -1;
-      } else if (a < b) {
+      } else if (a[1] < b[1]) {
         return 1;
-      } else if (a === b) {
-        return a < b ? -1 : 1;
+      } else if (a[1] === b[1]) {
+        return a[0] < b[0] ? -1 : 1;
       }
     })
   );
