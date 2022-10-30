@@ -3,7 +3,8 @@ function problem7(user, friends, visitors) {
   const FRIEND_OF_FRIEND_SCORE = 10;
   const STRANGER_SCORE = 1;
   const myFriends = getMyFriend(user, friends);
-  const recomendFriendsList = getRecomendFriendList(user, myFriends, friends);
+  const exceptionAcquaintance = getExceptionAcquaintance(friends);
+  const recomendFriendsList = getRecomendFriendList(user, myFriends, exceptionAcquaintance);
   const strangeVisitorList = getStrangeVisitorList(myFriends, visitors);
   const recomendFriendsScore = scoreConversion(
     recomendFriendsList,
