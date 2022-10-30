@@ -1,6 +1,5 @@
 function isValidPages(pages) {
-  var leftPage = pages[0];
-  var rightPage = pages[1];
+  var [leftPage, rightPage] = pages;
 
   if (1 <= leftPage && leftPage <= 399 && leftPage + 1 == rightPage) {
     return (true);
