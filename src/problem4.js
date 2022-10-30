@@ -5,7 +5,7 @@ function isAlpha(char) {
   if (upperRegExp.test(char)) {
     return 1;
   }
-  if (lowerRegExp.teset(char)) {
+  if (lowerRegExp.test(char)) {
     return 2;
   }
   return 0;
@@ -28,7 +28,11 @@ function convertChar(char) {
 }
 
 function problem4(word) {
-  var answer;
+  var answer = "";
+
+  for (var char of word) {
+    answer += convertChar(char);
+  }
   return answer;
 }
 
