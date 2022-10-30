@@ -1,6 +1,6 @@
-function problem2(cryptogram) {
-  var answer;
+const problem2 = (cryptogram) => {
+  let answer;
   return answer;
-}
+};
 
 module.exports = problem2;
