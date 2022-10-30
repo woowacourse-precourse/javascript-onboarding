@@ -4,12 +4,20 @@ function problem7(user, friends, visitors) {
   //&1. 친구 관계를 나타내는 리스트를 가질 빈 객체
   const FRIEND_RELATION_OBJ = {}
 
-  //&2. user를 기준으로 점수가 저잘될 빈 객체
+  //&2. user를 기준으로 점수가 저장될 빈 객체
   const USER_POINT_CALCUL_OBJ = {}
 
   //필요함수
   
   //1#. &1의 객체 속에 친구이름이 있는지 확인하는 함수
+
+  function CHECK_EXIST_IN_FRIEND_RELATION_OBJ (userName) {
+
+    if(FRIEND_RELATION_OBJ[userName] === undefined){return false}
+    else {return true}
+    
+  }
+
   //2#. 친구와 친구 사이를 이어주는 함수
   //3#. user와 함께 아는 친구일때 점수를 더하는 함수
   //4#. 타임 라인에 방문한 사용자들의 점수를 더하는 함수
