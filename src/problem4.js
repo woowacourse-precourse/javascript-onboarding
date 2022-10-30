@@ -8,6 +8,8 @@ function problem4(word) {
       answer += String.fromCharCode(65 + (90 - ascii));
     } else if (97 <= ascii && ascii <= 122) {
       answer += String.fromCharCode(97 + (122 - ascii));
+    } else {
+      answer += String.fromCharCode(ascii);
     }
   }
   return answer;
