@@ -1,15 +1,22 @@
-let isChanged = false;
+let isChanged = true;
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  isChanged = true;
+
+  while (isChanged) {
+    isChanged = false;
+    console.log(cryptogram);
+    cryptogram = deleteOverlap(cryptogram);
+  }
+
+  return cryptogram;
 }
 
 function deleteOverlap(string) {
   let result = "";
 
-  for (let i = 0; i < string.length - 1; i++) {
-    if (string[i] == string[i + 1]) {
+  for (let i = 0; i < string.length; i++) {
+    if (i < string.length - 1 && string[i] == string[i + 1]) {
       i++;
       isChanged = true;
     } else {
