@@ -4,17 +4,16 @@ function problem4(word) {
   let sss = [];
 
   for (let i = 0; i < word.length; i++) {
-    s+= word[i];
+    s += word[i];
     ss.push(s.charCodeAt(i)); //[65, 98, 32, ..]
-    if (ss[i]===32){sss.push(' ')}
-    else if (ss[i]<=90){sss.push(String.fromCharCode(155-ss[i]))}
-    else sss.push(String.fromCharCode(219-ss[i]))
+    if (ss[i] === 32) {
+      sss.push(" ");
+    } else if (ss[i] <= 90) {
+      sss.push(String.fromCharCode(155 - ss[i]));
+    } else sss.push(String.fromCharCode(219 - ss[i]));
   }
-  // let s='a' //word[i]
-  // let ss = s.charCodeAt(0); //str -> uni
-  // let sss = String.fromCharCode(ss + 25); //uni -> str
 
-  return sss.join('')
+  return sss.join("");
 }
 
 module.exports = problem4;
