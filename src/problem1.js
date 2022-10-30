@@ -38,6 +38,18 @@ function compare(num1, num2, value = false) {
 
 function problem1(pobi, crong) {
   var answer;
+
+  if (!exception(pobi) || !exception(crong)) return -1;
+
+  const pobiLeftBest = compare(add(pobi[0]), multiply(pobi[0]), true);
+  const pobiRightBest = compare(add(pobi[1]), multiply(pobi[1]), true);
+  const crongLeftBest = compare(add(crong[0]), multiply(crong[0]), true);
+  const crongRightBest = compare(add(crong[1]), multiply(crong[1]), true);
+
+  const pobiScore = compare(pobiLeftBest, pobiRightBest, true);
+  const crongScore = compare(crongLeftBest, crongRightBest, true);
+  answer = compare(pobiScore, crongScore);
+
   return answer;
 }
 
