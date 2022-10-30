@@ -7,6 +7,22 @@ function getRegexStr(nickname){
   return regexPatternList.join('|');
 }
 
+function compareNickname(regex, nickname, forms){
+  const equalList = forms.reduce((acc,[compareEmail,compareNickname])=>{
+    if(nickname === compareNickname){
+      return acc;
+    }
+    const isEqual = regex.test(compareNickname);
+    if(isEqual){
+      return [...acc, compareEmail];
+    }
+    return acc;
+  },[]);
+
+  return equalList;
+}
+
+
 function problem6(forms) {
 }
 
