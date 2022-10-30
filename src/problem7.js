@@ -22,6 +22,12 @@ class ScoreData {
     })
   }
   scoreVisitors() { this.visitors.forEach((visitor) => this.giveScore(visitor, 1)); }
+  deleteUserAndFriend() {
+    if(this.scoreDictionary[this.user]) delete this.scoreDictionary[this.user];
+    this.userFriends.forEach((friend) => {
+      if(this.scoreDictionary[friend]) delete this.scoreDictionary[friend];
+    });
+  }
 }
 
 function getUserFriends(user, friends) {
