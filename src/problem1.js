@@ -2,6 +2,13 @@ function problem1(pobi, crong) {
   if (isValid(pobi) || isValid(crong)) return -1;
 }
 
+const GAME_RESULT = Object.freeze({
+  CRONG_WINNER: 2,
+  POBI_WINNER: 1,
+  DRAW: 0,
+  EXCEPTION: -1,
+});
+
 const isValid = (pageArr) => {
   return pageArr[1] - pageArr[0] !== 1;
 };
