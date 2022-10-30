@@ -63,6 +63,24 @@ function problem7(user, friends, visitors) {
   }
 
 
+  visitors.forEach(element => {
+    for (let i=1 ; i<myObj[user].length ; i++){
+      if (element === myObj[user][i]){
+        check = 1;
+        break;
+      }
+    }
+    if(!check){
+      myObj[element][0] += 1;
+    }
+    else{
+      check = 0;
+    }
+    
+    
+  });
+
+
 
   return answer;
 }
