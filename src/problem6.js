@@ -35,6 +35,17 @@ function makeOverlappingObj(forms){
   }
   return overlappingObj
 }
+
+function checkName(crew){
+  let overlappingObj = makeOverlappingObj(forms)
+  for (let name of makeOverlappingArr(crew)){
+    if(overlappingObj[name]>1){
+      return true
+    }
+  }
+  return false
+}
+
  
 
 
