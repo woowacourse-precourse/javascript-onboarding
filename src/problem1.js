@@ -42,7 +42,6 @@ if(pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1){
    return -1;
   }
 
-
 let pobimax = Math.max(pagemult(pobi[0]) , pagemult(pobi[1]), pagesum(pobi[0]) , pagesum(pobi[1]));
 let crongmax = Math.max(pagemult(crong[0]) , pagemult(crong[1]), pagesum(crong[0]) , pagesum(crong[1]));
 
