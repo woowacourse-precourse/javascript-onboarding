@@ -21,6 +21,15 @@ function problem7(user, friends, visitors) {
     if (!userFriends.includes(visitor)) recommendFriends.has(visitor) ? recommendFriends.set(visitor, recommendFriends.get(visitor) + 1) : recommendFriends.set(visitor, 1);
   });
 
+  const answer = [...recommendFriends].sort(([firstStr, firstNum], [secondStr, secondNum]) => {
+    if (firstNum === secondNum) {
+      return firstStr.localeCompare(secondStr);
+    } else {
+      return secondNum - firstNum;
+    }
+  });
+
+  return answer.map(x => x[0]).slice(0, 5);
 }
 
 module.exports = problem7;
