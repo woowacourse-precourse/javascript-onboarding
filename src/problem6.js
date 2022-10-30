@@ -4,11 +4,12 @@ function problem6(forms) {
   const validMailForms = mailForms.map((i) => isValidMail(i));
   const validNameForms = nameForms.map((i) => isValidName(i));
   const validForms = classifyValid(forms, validMailForms, validNameForms);
-  // 여기까지 완료했고,
-  // 1. duplicatedName에서 validForms인지 확인하고,
-  // 2. const answer = invalidForms.filter((v) => v); //정렬 추가해야함.
-
-  const answer = validForms;
+  const duplicatedNames = checkDuplicate(nameForms);
+  const duplicatedForms = validForms.filter((v, i) => {
+    const name = v[1];
+    return duplicatedNames.includes(name);
+  });
+  const answer = duplicatedForms.map((i) => i[0]).sort();
 
   return answer;
 }
