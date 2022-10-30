@@ -1,7 +1,23 @@
 function problem4(word) {
   var answer;
+  var changed;
+
+  for (i = 0; i < word.length; i++) 
+    changed.push(isAlpha(word[i]));   //변환된 값을 changed에 넣기
 
   return answer;
+}
+
+//변환된 값 ch를 반환
+function isAlpha(word) {
+  ch = word.charCodeAt(0);
+
+  if (ch >= 65 && ch <= 90)   //대문자
+    ch = upperToLower(ch);
+  else if (ch >= 97 && ch <= 122)   //소문자
+    ch = lowerToUpper(ch);
+  
+  return ch;   //결과값 ch return
 }
 
 module.exports = problem4;
