@@ -34,6 +34,10 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  var notUserFriends = visitors.filter(
+    (element) => !userFriends.includes(element)
+  );
+
   return answer;
 }
 
