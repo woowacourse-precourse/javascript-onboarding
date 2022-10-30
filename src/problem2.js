@@ -10,9 +10,12 @@ function problem2(cryptogram) {
         if (cryptogramArr[i] === cryptogramArr[sameStringIndex]) break;
         sameStringIndex++;
       }
+      // 2. 연속된 중복 문자의 시작 index와 끝 index에 해당하는 문자를 없애는 기능
+      for (let j = i; j <= sameStringIndex; j++) {
+        cryptogramArr[j] = '';
+      }
     }
   }
-
   return
 }
 
