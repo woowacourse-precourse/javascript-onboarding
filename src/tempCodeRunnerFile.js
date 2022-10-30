@@ -1,4 +1,5 @@
-        // let UpperArr = alphabetArr.toUpperCase;
-        // for (let i = 0 ; i < alphabetArr.length ; i++){
-        //   if (words[l] == UpperArr[i]){
-        //     answer.push(UpperArr[UpperArr.length -i -1]);
+순환
+  //   for(e in arr1[i].length){
+  //     if(arr1[i][e] == )
+  //   }
+  // }
