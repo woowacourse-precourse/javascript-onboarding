@@ -69,6 +69,14 @@ const toLowerCase = string => `${string}`.toLowerCase();
 
 const toUpperCase = string => `${string}`.toUpperCase();
 
+const isAlphabet = charCode => {
+  if (isLowerCase(charCode) || isUpperCase(charCode)) {
+    return true;
+  }
+
+  return false;
+};
+
 function problem4(word) {
   var answer;
   return answer;
