@@ -27,6 +27,15 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  for (item of visitors) {
+    if (userFriendList.includes(item)) continue;
+    else if (item in scoreObj) {
+      scoreObj[item] += 1;
+    } else {
+      scoreObj[item] = 1;
+    }
+  }
 }
 
 module.exports = problem7;
