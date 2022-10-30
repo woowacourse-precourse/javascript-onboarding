@@ -8,10 +8,7 @@ function exception_handler(pages) {
   // Each pages are between 2 and 399.
   const exception3 = !(1 < left && left < 400 && 1 < right && right < 400);
 
-  if (exception1 || exception2 || exception3) {
-    return true;
-  }
-  return false;
+  return exception1 || exception2 || exception3;
 }
 
 function get_digits_helper(num) {
