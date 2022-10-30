@@ -10,6 +10,27 @@ function problem6(forms) {
 
   //필요함수
   //#1. 닉네임을 검색해야하는 리스트로 만들어 반환하는 함수 : []
+
+  function RETURN_SEARCH_WORD_LIST_FROM_NICKNAME (nickName) {
+    const outputList = [];
+    const letterList = nickName.split('')
+    let tempLength = 2;
+    for(let i=0; i<letterList.length;i++){
+
+      for(let k=0; k<letterList.length; k++){
+
+        if(k+tempLength >letterList.length){
+          break;
+        }
+
+        outputList.push(letterList.slice(k,k+tempLength).join(''))
+
+      }
+      tempLength += 1;
+    } 
+  }
+
+
   //#2. 검색어를 '검사한 단어' 배열에 넣는 함수 : INPUT
   //#3. 닉네임에 검색어가 포함되는지 확인하는 함수 : True/False
   
