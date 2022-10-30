@@ -7,7 +7,7 @@ function problem2(cryptogram) {
     } else{
       result.push(char)
     }
-  } return result
+  } return result.join('')
 }
 
 
