@@ -26,15 +26,25 @@ function nicknameDuple(nickname) {
   });
   return dupliData;
 }
+function nicknameDupleCheck(forms, dupliData) {
+  let dupleCheck = [];
+  forms.map((info) => {
+    dupliData.forEach((dupli) => {
+      if (info[1].includes(dupli)) dupleCheck.push(info[0]);
+    });
+  });
+  return dupleCheck.sort();
+}
 function problem6(forms) {
-  let answer = [];
   let nicknameArray = [];
   let dupleCountMap = new Map();
   let dupliData = [];
+  let dupleDataCheck = [];
   nicknameArray = nicknameSplitTwoArray(forms);
   dupleCountMap = nicknameDupleCountMap(nicknameArray);
   dupliData = nicknameDuple(dupleCountMap);
-  return answer;
+  dupleDataCheck = nicknameDupleCheck(forms, dupliData);
+  return dupleDataCheck;
 }
 
 module.exports = problem6;
