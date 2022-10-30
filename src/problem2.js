@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = change(cryptogram);
   return answer;
 }
 
