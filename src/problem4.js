@@ -87,6 +87,17 @@ const convertToString = stringArray => {
   return "";
 };
 
+const breakCode = (eachString, charCode) => {
+  if (isLowerCase(charCode)) {
+    const upperCase = toUpperCase(eachString);
+    const result = getGreenFrogDictionary(upperCase);
+
+    return toLowerCase(result);
+  }
+
+  return getGreenFrogDictionary(eachString);
+};
+
 function problem4(word) {
   var answer;
   return answer;
