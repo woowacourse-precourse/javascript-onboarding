@@ -115,10 +115,17 @@ function problem6(forms) {
   function RETURN_ASC_EMAIL (mailList) {
     return mailList.sort()
   }
-  
+
   //!6. 이메일의 결과값의 중복된 내용은 제거
 
+  function RETURN_REMOVED_DUPLICATED_EMAIL (mailList ){
+    const newMailList = new Set(mailList)
+    return [...newMailList]
+  }
 
+
+
+  
   const inputForms = forms.slice()
 
   for(let index in inputForms){
