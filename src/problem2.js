@@ -1,11 +1,10 @@
-/*
+
 function problem2(cryptogram) {
-  var answer;
+  var answer=solution(cryptogram);
   return answer;
 }
 
 module.exports = problem2;
-*/
 
 // cryptogram이 유효한 문자열인지 확인
 function checkValid(c){
@@ -22,6 +21,7 @@ function deleteOverlap(c){
       else newC+=c[i];
   }
   if(newC[newC.length-1]!=c[c.length-1]){newC+=c[c.length-1];}
+  if(newC==c[c.length-1]) return "";
   return newC;
 }
 
@@ -45,6 +45,3 @@ function solution(c){
   }
   return c;
 }
-
-let cryptogram="browoanoommnaon";
-console.log(solution(cryptogram))
