@@ -16,6 +16,21 @@ function getUniqueEmails(emails) {
   return uniqueEmails;
 }
 
+function countWord({ word, wordMap, nickname, email }) {
+  if (wordMap.has(word)) {
+    const { count, users } = wordMap.get(word);
+
+    wordMap.set(word, {
+      count: count + 1,
+      users: [...users, { email, nickname }],
+    });
+
+    return;
+  }
+
+  wordMap.set(word, { count: 1, users: [{ email, nickname }] });
+}
+
 function createNicknameWordMap(forms) {
   const nicknameWordMap = new Map();
 
@@ -23,17 +38,12 @@ function createNicknameWordMap(forms) {
     const wordSet = extractWord(nickname);
 
     for (const word of wordSet) {
-      if (nicknameWordMap.has(word)) {
-        const { count, users } = nicknameWordMap.get(word);
-
-        nicknameWordMap.set(word, {
-          count: count + 1,
-          users: [...users, { email, nickname }],
-        });
-        continue;
-      }
-
-      nicknameWordMap.set(word, { count: 1, users: [{ email, nickname }] });
+      countWord({
+        word,
+        wordMap: nicknameWordMap,
+        email,
+        nickname,
+      });
     }
   }
 
@@ -58,5 +68,15 @@ function problem6(forms) {
 
   return filteredUserEmails;
 }
+
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
