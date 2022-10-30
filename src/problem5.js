@@ -13,11 +13,12 @@ function changeMoney(money) {
 
 // solution
 function solution(money) {
-  console.log(changeMoney(money));
+  const result = changeMoney(money);
+  return result;
 }
 
 function problem5(money) {
-  var answer;
+  const answer = solution(money);
   return answer;
 }
 
