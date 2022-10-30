@@ -1,5 +1,20 @@
+//예외가 안날경우 비교해서 승자를 리턴하는 함수
 function problem1(pobi, crong) {
   var answer;
+  maxpobi = Maxnum(pobi);
+  maxcrong = Maxnum(crong);
+  if(checkpage(pobi) && checkpage(crong))
+  {
+    if(maxpobi > maxcrong){
+      answer =1;
+    } else if(maxcrong > maxpobi){
+      answer =2;
+    } else if(maxcrong === maxpobi){
+      answer =0;
+    }
+  }
+  else
+    answer =-1;
   return answer;
 }
 
