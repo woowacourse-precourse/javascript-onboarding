@@ -1,3 +1,5 @@
+/* 최대 25억까지 계산 가능 */
+const SEARCH_ENDPOINT = 50000;
 /* 화폐 단위를 담은 배열 생성 */
 const baseAmonut = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
@@ -34,7 +36,7 @@ function withdraw(money) {
 function lessThan(base, money) {
   if(money < base) return 0;
   
-  let s = 1, e = base; // max 25억까지 계산 가능
+  let s = 1, e = SEARCH_ENDPOINT;
   while (s < e) {
     const mid = Math.floor((s + e) / 2);
     const total = mid * base;
@@ -49,5 +51,4 @@ function getProperCash(base, money) {
   return parseInt(money/base);
 }
 
-problem5(15000);
 module.exports = problem5;
