@@ -28,20 +28,12 @@ const BookPage = {
     return leftPage - rightPage == -1;
   },
   checkPages: function (pages) {
-    if (!this.checkPagesLength(pages)) {
-      return false;
-    }
-    if (!this.checkPagesRage(pages)) {
-      return false;
-    }
-    if (!this.checkPagesForm(pages)) {
-      return false;
-    }
-    if (!this.checkPagesDistance(pages)) {
-      return false;
-    }
-
-    return true;
+    return (
+      this.checkPagesLength(pages) &&
+      this.checkPagesRage(pages) &&
+      this.checkPagesForm(pages) &&
+      this.checkPagesDistance(pages)
+    );
   },
   getMulDigits: function (number) {
     let splitedNumber = String(number).split("");
