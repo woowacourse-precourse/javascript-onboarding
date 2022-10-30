@@ -32,6 +32,18 @@ function problem6(forms) {
       duplicated.push(key);
     }
   }
+
+  const answer = duplicated.map((key) => {
+    const emailList = [];
+
+    for (let i = 0; i < forms.length; i++) {
+      if (forms[i][1].indexOf(key) !== -1) {
+        emailList.push(forms[i][0]);
+      }
+    }
+
+    return emailList;
+  });
 }
 
 module.exports = problem6;
