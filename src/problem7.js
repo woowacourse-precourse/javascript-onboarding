@@ -31,22 +31,22 @@ const aboutUser = (myFriendObj, user) => {
 }
 
 const countFriends = (myFriendObj, user) => {
-  var realFriend = "";
-  var insideFriend = "";
+  var userFriend = "";
+  var friendOfFriend = "";
   var check = 0;
   for (let i = 1; i < myFriendObj[user].length - 1; i++) {
-    realFriend = myFriendObj[user][i];
-    for (let j = 1; j < myFriendObj[realFriend].length; j++) {
-      insideFriend = myFriendObj[realFriend][j];
+    userFriend = myFriendObj[user][i];
+    for (let j = 1; j < myFriendObj[userFriend].length; j++) {
+      friendOfFriend = myFriendObj[userFriend][j];
 
       for (let k = 1; k < myFriendObj[user].length; k++) {
-        if (insideFriend === myFriendObj[user][k]) {
+        if (friendOfFriend === myFriendObj[user][k]) {
           check = 1;
           break;
         }
       }
       if (!check) {
-        myFriendObj[insideFriend][0] += 10;
+        myFriendObj[friendOfFriend][0] += 10;
       } else {
         check = 0;
       }
