@@ -11,6 +11,10 @@ function problem4(word) {
     );
   }
 
+  [...word].forEach((w) => {
+    answer += w === " " ? " " : dic[w];
+  });
+
   return answer;
 }
 
