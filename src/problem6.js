@@ -1,23 +1,20 @@
+function overlapNickname(forms) {
+  return forms.reduce((map, user) => {
+    const [_, nickname] = user;
+
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const substrNickname = nickname.substring(i, i + 2);
+      const currentNicknameNum = map.get(substrNickname) || 0;
+      map.set(substrNickname, currentNicknameNum + 1);
+    }
+    return map;
+  }, new Map());
+}
+
 function problem6(forms) {
-  let user;
-
-  user = String(forms).split(",");
-
-  let temp = [];
-  for (let i = 1; i < user.length; i += 2) {
-    temp.push(overlapNickname(user[i]));
-  }
-  console.log(temp);
+  const nickname = overlapNickname(forms);
 }
 
-function overlapNickname(nickname) {
-  let overlap = new Array();
-
-  for (let i = 0; i < nickname.length; i++) {
-    overlap.push(nickname.substr(i, i + 2));
-  }
-  return overlap;
-}
 function testCode() {
   problem6([
     ["jm@email.com", "제이엠"],
