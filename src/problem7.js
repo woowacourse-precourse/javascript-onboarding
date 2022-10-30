@@ -1,17 +1,29 @@
 function problem7(user, friends, visitors) {
   var answer;
-  let emptyArr = [];
   
   let allUser = friendestoArr(friends).concat(visitors);
   
   const set = new Set(allUser);
   const userArr = [...set];
   
+  let allUserArr = [];
   for (let i = 0; i < userArr.length; i++) {
-    emptyArr.push([userArr[i], 0]);
+    allUserArr.push([userArr[i], 0]);
   }
   
-  console.log(emptyArr);
+  console.log(allUserArr);
+
+  let userFriend = [];
+  for (let i = 0; i < friends.length; i++) {
+      let findUserFriend = friends[i].indexOf(user);
+      if (findUserFriend > 0) userFriend.push(friends[i][1 - findUserFriend]);
+  }
+  console.log(userFriend);
+
+
+
+
+
 
   return answer;
 }
