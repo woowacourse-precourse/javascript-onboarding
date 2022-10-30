@@ -9,12 +9,9 @@
    페이지를 비정상적으로 펼친 경우, -1을 반환한다.
 3. 선정한 페이지 숫자의 각 자리수를 더하고, 선정한 페이지 숫자의 각 자리수를 곱한다.
 4. 각 자리수를 덧셈, 곱셈한 값을 비교하여 더 큰 값을 점수로 선정한다.
-5. 본인의 점수를 비교하여, 승부를 결정한다.
+5. 각 점수를 비교하여, 승부를 결정한다.
 */
-
 function problem1(pobi, crong) {
-  var answer = "";
-
   function SumOrMulti(Num) {
     let sum = 0;
     let multi = 1;
@@ -33,6 +30,12 @@ function problem1(pobi, crong) {
     if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
       const pNum = p[1] % 10 == 0 ? p[0] : p[1];
       const cNum = c[1] % 10 == 0 ? c[0] : c[1];
+      answer =
+        SumOrMulti(pNum) > SumOrMulti(cNum)
+          ? 1
+          : SumOrMulti(pNum) == SumOrMulti(cNum)
+          ? 0
+          : 2;
     } else answer = -1;
   } else answer = -1;
   return answer;
