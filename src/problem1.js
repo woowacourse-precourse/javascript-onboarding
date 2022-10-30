@@ -7,6 +7,22 @@ function problem1(pobi, crong) {
   let crong_max=Math.max(
     Math.max(sumDigits(crong[0]),mulDigits(crong[0])),
     Math.max(sumDigits(crong[1]),mulDigits(crong[1])));
+  
+  
+  if (pobi[1]-pobi[0]!==1 || crong[1]-crong[0]!==1){
+    answer=-1;
+    return answer
+  }
+
+  if (pobi[0]===1 || crong[0]===1){
+    answer=-1;
+    return answer
+  }
+
+  if (pobi[1]===400 || crong[1]===1){
+    answer=-1;
+    return answer
+  }
 
   if (pobi_max>crong_max){
     answer=1;
