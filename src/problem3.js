@@ -1,6 +1,5 @@
 function problem3(number) {
   var answer;
-  let count = 0;
   const arr = Array.from({ length: number }, (v, i) => i + 1);
   const str = arr.join("");
   let found_arr = [];
