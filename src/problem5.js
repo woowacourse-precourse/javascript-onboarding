@@ -5,8 +5,9 @@ function problem5(money) {
   var answer;
   for (let i = 0; i < 9; i++) {
     result[i] = Math.floor(money / arr[i]);
+    money %= arr[i];
   }
-  return answer;
+  return (answer = result);
 }
 
 module.exports = problem5;
