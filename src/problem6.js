@@ -8,15 +8,16 @@ function problem6(forms) {
 
 function getInvalidNames(names) {
   const invalidNames = [];
-  const invalidNameCases = [];
+  const instances = [];
 
   names.forEach((name) => {
     for (let i = 0; i < name.length - 1; i++) {
-      const invalidNameCase = name.slice(i, i + 2);
-      if (!invalidNames.includes(invalidNameCase) && invalidNameCases.includes(invalidNameCase)) {
-        invalidNames.push(invalidNameCase);
-      } else {
-        invalidNameCases.push(invalidNameCase);
+      const instance = name.slice(i, i + 2);
+      if (instances.includes(instance) && !invalidNames.includes(instance)) {
+        invalidNames.push(instance);
+      }
+      if (!instances.includes(instance)) {
+        instances.push(instance);
       }
     }
   });
@@ -25,7 +26,9 @@ function getInvalidNames(names) {
 }
 
 function getEmailsFromNames(forms, names) {
-  const filteredForms = forms.filter((form) => names.some((name) => form[1].includes(name)));
+  const filteredForms = forms.filter((form) =>
+    names.some((name) => form[1].includes(name))
+  );
   const emails = filteredForms.map((form) => form[0]);
 
   return emails;
