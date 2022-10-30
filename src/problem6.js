@@ -64,6 +64,12 @@ function problem6(forms) {
 
   //#6. 검사하려는 인덱스가 '중복된 인덱스'에 존재하는지 확인하는 함수 : T/F
 
+  function CHECK_INCLUDE_INDEX_IN_DUPLICATED_EMAIL_LIST (index) {
+    
+    return DUPLICATED_EMAIL_LIST.includes(index)
+
+  }
+
   //#7. 인덱스를 통해 이메일 리스트를 만드는 함수 : INPUT
   //#8. 이메일 리스트를 출력하는 함수 : []
 
