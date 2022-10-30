@@ -40,9 +40,19 @@
     - `저장한 user의 친구`의 친구라면 + 10점
       - 예시 :
         - user : "mrko"
-        - friends : [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]
-        - "mrko"의 친구 : "donut", "shakevan"
+        - friends : `[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]`
+        - "mrko"의 친구 : `"donut", "shakevan"`
         - "mrko"의 친구의 친구관계 :
-          - "donut" : "andole", "jun"
-          - "shakevan" : "andole", "jun"
-        - 결과 : "andole" : 20점, "jun" : 20점
+          - `"donut"` : `"andole", "jun"`
+          - `"shakevan"` : `"andole", "jun"`
+        - 결과 : `"andole"` : 20점, `"jun"` : 20점
+
+  - user의 타임라인 방문 수 = 1점
+
+    - visitors를 순회하여 `저장된 user의 친구`와 비교
+      - `저장한 user의 친구`의 친구라면 넘어간다.
+      - `저장한 user의 친구`가 아니라면 + 1점
+        - 예시 :
+          - visitors : `["bedi", "bedi", "donut", "bedi", "shakevan"]`
+          - `"donut", "shakevan"`는 이미 user와 친구이다.
+          - 따라서 `bedi` : 3점
