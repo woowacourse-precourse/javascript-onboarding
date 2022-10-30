@@ -24,6 +24,8 @@ function problem5(money) {
         while (Math.floor(changes / currencyUnit) > 0) {
             //  배열의 현재 인덱스에 몫을 할당
             currencyArray[i] += Math.floor(changes / currencyUnit);
+            // 3단계) 잔돈(changes)에서 지불한 비용만큼 제외
+            changes -= currencyUnit * Math.floor(changes / currencyUnit);
         }
     }
 }
