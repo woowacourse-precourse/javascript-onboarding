@@ -1,9 +1,22 @@
 function problem6(forms) {
-  let user = [];
+  let user;
 
   user = String(forms).split(",");
 
-  console.log(user);
+  let temp = [];
+  for (let i = 1; i < user.length; i += 2) {
+    temp.push(overlapNickname(user[i]));
+  }
+  console.log(temp);
+}
+
+function overlapNickname(nickname) {
+  let overlap = new Array();
+
+  for (let i = 0; i < nickname.length; i++) {
+    overlap.push(nickname.substr(i, i + 2));
+  }
+  return overlap;
 }
 function testCode() {
   problem6([
