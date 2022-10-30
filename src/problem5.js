@@ -1,5 +1,15 @@
 function problem5(money) {
   var answer;
+  const mUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let withdraw = [];
+
+  for (i = 0; i < mUnit.length; i++) {
+    withdraw.push(howManyMoneys(money, mUnit[i]));
+    money = parseInt(money / mUnit[i]);
+  }
+
+  answer = withdraw;
+
   return answer;
 }
 
