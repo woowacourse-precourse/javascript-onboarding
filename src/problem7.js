@@ -36,6 +36,21 @@ function problem7(user, friends, visitors) {
       scoreObj[item] = 1;
     }
   }
+
+  const result = Object.entries(scoreObj)
+    .sort((a, b) => {
+      if (a[1] > b[1]) return -1;
+      if (a[1] < b[1]) return 1;
+      if (a[1] === b[1]) {
+        if (a[0] > b[0]) return 1;
+        if (a[0] < b[0]) return -1;
+        else return 0;
+      }
+    })
+    .flatMap((item) => item[0])
+    .splice(0, 5);
+
+  return result;
 }
 
 module.exports = problem7;
