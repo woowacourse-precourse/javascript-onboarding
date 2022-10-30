@@ -1,11 +1,16 @@
+const EMAIL = "email";
+const NICKNAME = "nickname";
+
 function problem6(forms) {
   return forms
     .filter(duplicateNickname)
 }
 
-function duplicateNickname([,nickname], idx, origin) {
-  return origin.some(([, comparisonTarget], compareIdx) => {
-    if (comparisonTarget === nickname && compareIdx === idx) return false;
+function duplicateNickname(user, idx, origin) {
+  let nickname = getUsers(NICKNAME)(user);
+  return origin.some((comparisonTarget, compareIdx) => {
+    let comparisonCrewNickname = getUsers(NICKNAME)(comparisonTarget)
+    if (comparisonCrewNickname === nickname && compareIdx === idx) return false;
     return (
       subNickname(nickname, 2)
         .filter(hasSubstring(comparisonTarget))
@@ -14,6 +19,10 @@ function duplicateNickname([,nickname], idx, origin) {
   });
 }
 
+function getUsers(item) {
+  if (item === EMAIL) return ([email]) => email;
+  return ([, nickname]) => nickname;
+}
 
 function hasSubstring(comparisonTarget) {
   return (substring) => comparisonTarget.includes(substring);
