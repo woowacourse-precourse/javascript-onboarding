@@ -128,7 +128,11 @@ const checkException = value => {
 };
 
 function problem4(word) {
-  var answer;
+  checkException(word);
+
+  const stringArray = convertToArray(word);
+  const answer = startBreakCode(stringArray);
+
   return answer;
 }
 
