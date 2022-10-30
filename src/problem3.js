@@ -1,5 +1,9 @@
 function problem3(number) {
-  var answer;
+  var answer = 0;
+
+  for (var i = 1; i <= number; i++) {
+    answer += getCount(i, 3) + getCount(i, 9) + getCount(i, 9);
+  }
 
   return answer;
 }
