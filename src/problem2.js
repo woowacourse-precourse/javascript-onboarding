@@ -3,12 +3,11 @@ function problem2(cryptogram) {
   while (true) {
     let tf = true;
     let tmp = "";
-    let cryptogramArr = cryptogram.split("");
     for (let i = 0; i < cryptogram.length; i++) {
-      if (cryptogramArr[i] === cryptogramArr[i + 1]) {
+      if (cryptogram[i] === cryptogram[i + 1]) {
         tf = false;
         i++;
-      } else tmp += cryptogramArr[i];
+      } else tmp += cryptogram[i];
     }
     cryptogram = tmp;
     if (tf) break;
