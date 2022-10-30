@@ -46,8 +46,8 @@ npm test
 2. [문제 2](docs/PROBLEM2.md) - (해결 필요, 설명추가 필요)
 3. [문제 3](docs/PROBLEM3.md) - (해결, 설명 추가)
 4. [문제 4](docs/PROBLEM4.md) - (해결, 설명 추가)
-5. [문제 5](docs/PROBLEM5.md) - (해결 필요, 설명추가 필요)
-6. [문제 6](docs/PROBLEM6.md) - (해결 필요, 설명추가 필요)
+5. [문제 5](docs/PROBLEM5.md) - (해결, 설명 추가)
+6. [문제 6](docs/PROBLEM6.md) - (해결, 설명 추가)
 7. [문제 7](docs/PROBLEM7.md) - (해결 필요, 설명추가 필요)
 
 ---
