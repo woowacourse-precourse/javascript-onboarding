@@ -39,7 +39,17 @@ function keyValueObject(answer, obj) {
   }
   return answer;
 }
-
+function answerScoreSort(answer) {
+  answer.sort(function (a, b) {
+    if (a.score === b.score) {
+      if (a.key > b.key) return 1;
+      else if (b.key > a.key) return -1;
+      else return 0;
+    }
+    return b.score - a.score;
+  });
+  return answer;
+}
 function problem7(user, friends, visitors) {
   var answer = [];
   var obj = {};
@@ -50,6 +60,7 @@ function problem7(user, friends, visitors) {
   obj = friendAddTen(friends, set, obj);
   obj = friendVisitCheck(visitors, set, obj);
   answer = keyValueObject(answer, obj);
+  answer = answerScoreSort(answer);
   return answer;
 }
 
