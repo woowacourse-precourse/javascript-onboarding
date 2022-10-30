@@ -16,7 +16,6 @@ function problem6(forms) {
     for(let i = 0; i < nicknameFinal.length-1; i++) {
       let checkNameFinal = nicknameFinal[i] + nicknameFinal[i+1];
       if(checkMemo.includes(checkNameFinal)) repeatedNameFirst.push(forms[0]);
-      else checkMemo.push(checkName);
     } 
 
   let dedup = [...new Set(repeatedNameFirst)];
