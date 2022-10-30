@@ -17,6 +17,15 @@ function problem6(forms) {
     }
   }
 
+  for (let i = 0; i < forms.length; i++) {
+    for (let j of isSame) {
+      if (forms[i][1].includes(j)) {
+        answer.push(forms[i][0]);
+        break;
+      }
+    }
+  }
+
   return answer;
 }
 
