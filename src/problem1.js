@@ -47,3 +47,27 @@ function findMaxNum(book) {
 
   return bookMax;
 }
+function problem1(firstBook, secondBook) {
+  if (
+    checkBookPageError(firstBook) === true ||
+    checkBookPageError(secondBook) === true
+  ) {
+    return -1;
+  }
+  const firstBookSumArr = pushSumOfBooks(firstBook);
+  const secondBookSumArr = pushSumOfBooks(secondBook);
+
+  const firstBookMax = findMaxNum(firstBookSumArr);
+  const secondBookMax = findMaxNum(secondBookSumArr);
+  if (firstBookMax > secondBookMax) {
+    return 1;
+  }
+  if (firstBookMax < secondBookMax) {
+    return 2;
+  }
+  if (firstBookMax === secondBookMax) {
+    return 0;
+  }
+
+  return -1;
+}
