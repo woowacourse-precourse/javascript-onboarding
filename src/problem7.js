@@ -32,6 +32,8 @@ function problem7(user, friends, visitors) {
     else return 1;
   });
 
+  const upToFiveFriends = sortObject.slice(0, 5);
+
   return answer;
 }
 
