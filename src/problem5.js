@@ -8,6 +8,15 @@
 
 function problem5(money) {
   const won = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let answer = won.map((e, i) => {
+    let count = 0;
+    while (money - e >= 0) {
+      money = money - e;
+      count++;
+    }
+    return count;
+  });
+  return answer;
 }
 
 module.exports = problem5;
