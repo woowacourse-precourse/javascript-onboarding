@@ -7,6 +7,11 @@ function problem2(cryptogram) {
       return "";
     }
     strArr = countDuplicateChar(strArr, duplicateCnt);
+    if (checkArrIsNull(duplicateCnt)) {
+      break;
+    }
+    strArr = sliceArrStr(duplicateCnt, strArr);
+    duplicateCnt = [];
 
     return (answer = arrToStr(strArr));
   }
