@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const userFriends = [];
+  const recommendFriends = new Map();
+  
 }
 
 module.exports = problem7;
