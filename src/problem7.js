@@ -77,6 +77,16 @@ function problem7(user, friends, visitors) {
       check = 0;
     }
     
+
+    for(let el in myObj){
+      forAnswer.push([myObj[el][0], el]);
+    }
+  
+    // 숫자에 대한 정렬.
+    forAnswer.sort(function(a,b) {
+      return b[0] - a[0];
+    })
+  
     
   });
 
