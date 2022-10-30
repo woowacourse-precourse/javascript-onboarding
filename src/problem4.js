@@ -34,14 +34,12 @@ function solution(word) {
   reversedWord = reverseUpperCase(reversedWord);
   const convertedWord = convertCharacter(reversedWord);
   const joinedWord = convertedWord.join("");
-  console.log(joinedWord);
+  return joinedWord;
 }
 
 function problem4(word) {
-  var answer;
+  const answer = solution(word);
   return answer;
 }
-
-solution("I love you");
 
 module.exports = problem4;
