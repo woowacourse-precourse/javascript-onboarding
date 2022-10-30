@@ -2,6 +2,19 @@ function problem1(pobi, crong) {
 
 }
 
+function getNum(arr) {
+  const leftNum = getMax(arr[0]);
+  const rightNum = getMax(arr[1]);
+
+  if (leftNum > rightNum) {
+    return leftNum;
+  }
+
+  if (leftNum < rightNum) {
+    return rightNum;
+  }
+} 
+
 function getMax(num) {
   const sum = getAddResult(num);
   const mul = getMulResult(num);
