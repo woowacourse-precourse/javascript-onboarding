@@ -10,10 +10,63 @@
  * 4. 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만
  * 5. result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거
  */
+const setArrToJSON = arr => {
+  let result = [];
+
+  arr.map(item => {
+    result.push({
+      email: item[0], 
+      nickname: item[1],
+      isDuplicate: false
+    })
+  })
+
+  return result;
+}
+
+const getCombinations = str =>{
+  let combinations = [];
+
+  for (let i = 0 ;i < str.length; i++) {
+    for(let j = i + 1; j< str.length + 1; j++) {
+      if (str.slice(i, j).length > 1) {
+        combinations.push(str.slice(i , j));
+      }
+    }
+  }
+
+  return combinations;
+}
 
 function problem6(forms) {
-  let answer;
-  return answer;
+  let answer = setArrToJSON(forms);  
+  
+  answer.map((user)=>{
+    var c = getCombinations(user.nickname);
+    user.nameCombinations = c;
+  })
+  
+  for(let i = 0; i < answer.length; i++) {
+    answer[i].nameCombinations.map(char=>{
+      for(let j = i + 1; j < answer.length; j++) {
+        if(answer[j].nameCombinations.includes(char)){
+          answer[i].isDuplicate = true;
+          answer[j].isDuplicate = true;
+        }
+      }
+    })
+  }
+
+  let newArr = answer.filter((item)=>item.isDuplicate)
+
+  let newArr2 = [];
+  
+  newArr.map((item)=>{
+    newArr2.push(item.email)
+  })
+
+  return newArr2.sort();
 }
+
 module.exports = problem6;
 
