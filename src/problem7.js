@@ -36,6 +36,8 @@ function problem7(user, friends, visitors) {
 
   const removeZeroPointFriends = upToFiveFriends.map(object => object[1] === 0 ? "" : object[0]);
 
+  const answer = removeZeroPointFriends.filter(Boolean);
+
   return answer;
 }
 
