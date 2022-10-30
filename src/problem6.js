@@ -1,47 +1,61 @@
+const compose =
+  (...fns) =>
+  (initialValue) =>
+    fns.reduce((composed, fn) => fn(composed), initialValue);
+
+const getValuesOf = (target) => (forms) =>
+  forms.map(([email, nickname]) => {
+    if (target === "email") return email;
+    else if (target === "nickname") return nickname;
+    else throw new Error("해당 데이터는 존재하지 않습니다.");
+  });
+
+const listDupCases = (nicknames) => {
+  return nicknames.reduce((reduced, nickname) => {
+    const copy = reduced.slice();
+    for (let i = 0; i < nickname.length - 1; i++) {
+      copy.push(nickname.slice(i, i + 2));
+    }
+    return copy;
+  }, []);
+};
+
+const isPlural = (array, item) =>
+  array.indexOf(item) !== array.lastIndexOf(item);
+const isNotExisting = (array, item) => array.indexOf(item) === -1;
+
+const findDups = (cases) => {
+  return cases.reduce((reduced, cs) => {
+    const copy = reduced.slice();
+    if (isPlural(cases, cs) && isNotExisting(reduced, cs)) copy.push(cs);
+    return copy;
+  }, []);
+};
+
+const getMatchedForms = (forms) => (cases) => {
+  return forms.reduce((reduced, form) => {
+    const copy = reduced.slice();
+    const nick = form[1];
+    for (let cs of cases) {
+      if (nick.indexOf(cs) > -1) copy.push(form);
+    }
+    return copy;
+  }, []);
+};
+
+const sort = (arr) => arr.sort();
+
 function problem6(forms) {
-  const checkpoints = [];
-  const nicks = forms.map((form) => form[1]);
-  for (let nick of nicks) {
-    for (let i = 0; i < nick.length - 1; i++) {
-      const chars = nick.slice(i, i + 2);
-      checkpoints.push(chars);
-    }
-  }
+  const result = compose(
+    getValuesOf("nickname"),
+    listDupCases,
+    findDups,
+    getMatchedForms(forms),
+    getValuesOf("email"),
+    sort
+  )(forms);
 
-  const targets = checkpoints.reduce((reduced, cur) => {
-    if (checkpoints.indexOf(cur) !== checkpoints.lastIndexOf(cur)) {
-      if (reduced.indexOf(cur)) reduced.push(cur);
-    }
-    return reduced;
-  }, []);
-
-  const result = [];
-  for (let tg of targets) {
-    for (let nick of nicks) {
-      if (nick.indexOf(tg) > -1) {
-        result.push(nick);
-      }
-    }
-  }
-
-  const f = forms.reduce((reduced, form) => {
-    if (result.includes(form[1])) {
-      reduced.push(form[0]);
-    }
-    return reduced;
-  }, []);
-
-  const s = [...f].sort();
-  return s;
+  return result;
 }
 
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
 module.exports = problem6;
