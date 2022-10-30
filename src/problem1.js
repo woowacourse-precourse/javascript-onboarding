@@ -16,6 +16,14 @@ const problem1 = (pobi, crong) => {
     return -1;
   }
 
+  const pobiResults = pobiPages.map((page) => createResults(page)).flat();
+  const crongResults = crongPages.map((page) => createResults(page)).flat();
+
+  const pobiBest = Math.max(...pobiResults);
+  const crongBest = Math.max(...crongResults);
+
+  answer = pobiBest > crongBest ? 1 : pobiBest < crongBest ? 2 : 0;
+
   return answer;
 };
 
