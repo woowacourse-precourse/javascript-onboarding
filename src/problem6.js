@@ -1,5 +1,3 @@
-// const { set } = require("express/lib/application");
-
 function problem6(forms) {
   let answer=[];
   let cnt=0
