@@ -1,5 +1,11 @@
 function problem3(number) {
   var answer;
+  var cnt = 0;
+
+  for (i = 1; i <= number; i++) 
+    cnt += divideNumTo10(i, 0);
+
+  answer = cnt;
   return answer;
 }
 
@@ -7,8 +13,9 @@ function divideNumTo10(number, cnt) {
   while (number > 0) {
     remainNum = number % 10;
     cnt += numCheck(remainNum);
-    number /= 10;
+    number = number / 10;
   }
+  return cnt;
 }
 
 function numCheck(remainNum, cnt) {
