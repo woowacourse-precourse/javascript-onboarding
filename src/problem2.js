@@ -1,7 +1,3 @@
-// console.log("문제2");
-// console.log(problem2("browoanoommnaon"));
-// console.log(problem2("zyelleyz"));
-
 function problem2(cryptogram) {
   var answer;
 

@@ -1,7 +1,3 @@
-// console.log("문제 5");
-// console.log(problem5(50237));
-// console.log(problem5(15000));
-
 function problem5(money) {
   var answer;
 

@@ -1,7 +1,3 @@
-// console.log("문제3");
-// console.log(problem3(13));
-// console.log(problem3(33));
-
 function problem3(number) {
   var answer;
   accNum = 0;

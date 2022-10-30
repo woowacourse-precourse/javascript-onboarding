@@ -1,6 +1,3 @@
-// console.log("문제4");
-// console.log(problem4("I love you"));
-
 function problem4(word) {
   var answer;
   const wordArr = [...word].map((char) => char.charCodeAt());
