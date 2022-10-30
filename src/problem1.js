@@ -1,15 +1,12 @@
 function problem1(pobi, crong) {
-  if (!isRightPage(pobi) || !isRightPage(crong)) return -1;
-  let pobiScore=scoreCount(pobi);
-  let crongScore=scoreCount(crong);
-  let answer=(pobiScore>crongScore) ? 1 : ((pobiScore<crongScore) ? 2 : 0);
-  return answer;
+  if (!isRightPage(pobi) || !isRightPage(crong)) return -1;  
+  return winner(scoreCount(pobi),scoreCount(crong));
 };
 
 function isRightPage(pages) {
-  if (pages[1]-pages[0]!==1) return 0;
-  if (pages[0]===1 || pages[1]===400) return 0;
-  return 1;
+  if (pages[1]-pages[0]!==1) return false;
+  if (pages[0]===1 || pages[1]===400) return false;
+  return true;
 };
 
 function scoreCount(pages) {
@@ -24,6 +21,12 @@ function scoreCount(pages) {
     finalScore=Math.max(addScore,mulScore,finalScore);
   });
   return finalScore;
-}
+};
+
+function winner(pobiScore,crongScore) {
+  if (pobiScore>crongScore) return 1;
+  if (pobiScore<crongScore) return 2;
+  return 0;
+};
 
 module.exports = problem1;
