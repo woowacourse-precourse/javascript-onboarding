@@ -41,7 +41,15 @@ function problem6(forms) {
   const wordCountObj = getWordCount(slicedName);
   const duplicateArr = findDuplication(wordCountObj);
 
-  return answer;
+  duplicateArr.forEach((item) => {
+    forms.forEach((form) => {
+      if (form[1].includes(item)) {
+        answer.push(form[0]);
+      }
+    });
+  });
+
+  return answer.sort();
 }
 
 module.exports = problem6;
