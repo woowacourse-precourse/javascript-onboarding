@@ -1,5 +1,5 @@
 function isValidPages(pages) {
-  var [leftPage, rightPage] = pages;
+  const [leftPage, rightPage] = pages;
 
   if (1 <= leftPage && leftPage <= 399 && leftPage + 1 == rightPage) {
     return (true);
@@ -8,12 +8,12 @@ function isValidPages(pages) {
 }
 
 function getScore(pages) {
-  var score = 0;
+  let score = 0;
 
   pages.forEach(page => {
-    var pageDigits = String(page).split('');
-    var digitSum = 0;
-    var digitProduct = 1;
+    const pageDigits = String(page).split('');
+    let digitSum = 0;
+    let digitProduct = 1;
 
     pageDigits.forEach(digit => {
       digitSum += Number(digit);
@@ -30,8 +30,8 @@ function problem1(pobi, crong) {
   }
 
   var answer;
-  var pobiScore = getScore(pobi);
-  var crongScore = getScore(crong);
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
 
   if (pobiScore > crongScore) {
     answer = 1;
