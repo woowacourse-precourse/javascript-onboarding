@@ -5,7 +5,6 @@ function problem2(cryptogram) {
 
   while (isChanged) {
     isChanged = false;
-    console.log(cryptogram);
     cryptogram = deleteOverlap(cryptogram);
   }
 
