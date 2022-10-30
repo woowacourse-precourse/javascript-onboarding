@@ -7,7 +7,40 @@
  * @returns {string[]}
  */
 function problem7(user, friends, visitors) {
-  return [];
+  const hashMap = new Map();
+  const userFriendArr = [];
+
+  friends.forEach((friend) => {
+    if (friend.includes(user)) {
+      userFriendArr.push(friend.filter((name) => name !== user).pop());
+    }
+  });
+  userFriendArr.forEach((userFriend) => {
+    friends.forEach((friend) => {
+      if (friend.includes(userFriend)) {
+        const acquaintance = friend.filter((name) => name !== userFriend).pop();
+        if (acquaintance !== user) {
+          hashMap.set(
+            acquaintance,
+            hashMap.has(acquaintance) ? hashMap.get(acquaintance) + 10 : 10
+          );
+        }
+      }
+    });
+  });
+  visitors
+    .filter((visitor) => !userFriendArr.includes(visitor))
+    .forEach((visitor) =>
+      hashMap.set(visitor, hashMap.has(visitor) ? hashMap.get(visitor) + 1 : 1)
+    );
+  return [...hashMap.entries()]
+    .sort((a, b) => {
+      if (a[1] === b[1]) {
+        return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+      } else return b[1] - a[1];
+    })
+    .map((e) => e[0])
+    .slice(0, 5);
 }
 
 console.log(
