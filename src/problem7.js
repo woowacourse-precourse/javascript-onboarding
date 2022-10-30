@@ -2,6 +2,7 @@ const { val } = require("jshint/src/options");
 
 function problem7(user, friends, visitors) {
   var answer;
+  var resultMap = new Map();
   var userFriends = getUserFriends(user, friends);
 
   for (var i = 0; i < friends.length; i++) {
@@ -13,12 +14,23 @@ function problem7(user, friends, visitors) {
     if (interWithUserFreinds.length === 1) {
       var friend = friends[i][0];
       var recommendedFriend;
+      var score = 10;
 
       if (userFriends.includes(friend)) {
         recommendedFriend = friends[i][1];
       } else {
         recommendedFriend = friends[i][0];
       }
+
+      if (resultMap.has(recommendedFriend)) {
+        resultMap.set(
+          recommendedFriend,
+          resultMap.get(recommendedFriend) + score
+        );
+        continue;
+      }
+
+      resultMap.set(recommendedFriend, score);
     }
   }
 
