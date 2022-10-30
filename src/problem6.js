@@ -40,6 +40,13 @@ function problem6(forms) {
 
   //#3. 닉네임에 검색어가 포함되는지 확인하는 함수 : True/False
 
+  function CHECK_INCLUDE_WORD_IN_NICKNAME (word,nickName) {
+
+    const checkWordList = RETURN_SEARCH_WORD_LIST_FROM_NICKNAME(nickName)
+    
+    return checkWordList.includes(word)
+  }
+
 
   //#4. 중복된 이름이 가진 배열 인덱스를 '중복된 인덱스' 배열에 넣는 함수 : INPUT 
 
