@@ -2,7 +2,7 @@ function problem6(forms) {
   const nicknameArray = [];
   const errorUser = [];
   const errorUserEmail = []; 
-}
+
 
 for (const member of forms){
   const nickname = member[1];
@@ -41,6 +41,12 @@ for (const member of forms){
     }
 }
 
+const answerSet = new Set(errorUserEmail);
+const answerArray = [...answerSet];
+const answer = answerArray.sort();
+return answer;
+}
+
 module.exports = problem6;
 
 //problem6 기능 목록
@@ -54,4 +60,4 @@ module.exports = problem6;
 //    [x] 연속문자열 배열에서 중복값을 구하고, 중복되는 중복값은 삭제한다.
 //[x]중복값이 포함되어있는 닉네임을 판별하여 사용 제한 유저 목록에 저장한다.
 //[x]사용 제한 유저들의 이메일 주소를 추출하여 저장한다.
-//[]사용 제한 유저 이메일 목록에서 중복을 제거한 후 오름차 정렬한다.
+//[x]사용 제한 유저 이메일 목록에서 중복을 제거한 후 오름차 정렬한다.
