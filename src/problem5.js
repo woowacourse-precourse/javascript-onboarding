@@ -25,10 +25,10 @@ function problem5(money) {
   // 돈을 나누는 금액으로 하나씩 나누면서, 몫을 정답배열에 push
   // 나머지 돈은 다음 루프에서 다음 나눌 금액으로 나눈다.
   for (let devider of deviders) {
-    if (money === 0) break;
     answer.push(parseInt(money / devider));
     money = money % devider;
   }
+  console.log(answer);
   return answer;
 }
 
