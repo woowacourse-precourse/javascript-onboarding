@@ -25,6 +25,8 @@ function problem7(user, friends, visitors) {
   });
 
   visitors.forEach((visitor) => {
+    if (friendSet.has(visitor)) return;
+
     friendMap.set(
       visitor,
       friendMap.has(visitor) ? friendMap.get(visitor) + 1 : 1
@@ -39,7 +41,7 @@ function problem7(user, friends, visitors) {
       return 1;
     })
     .map((map) => map[0])
-    .slice(0, 3);
+    .slice(0, 5);
 
   return answer;
 }
