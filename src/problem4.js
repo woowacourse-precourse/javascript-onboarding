@@ -35,9 +35,9 @@ function problem4(word) {
   // word를 순회하며 알파벳의 경우 배열의 인덱스를 이용해 청개구리의 말로 바꾸어 반환한다.
   const answer = word
     .split("")
-    .map((alphabet) => {
-      const upperCaseIndex = upperCaseArr.findIndex((element) => element === alphabet);
-      const lowerCaseIndex = lowerCaseArr.findIndex((element) => element === alphabet);
+    .map((element) => {
+      const upperCaseIndex = upperCaseArr.findIndex((alphabet) => alphabet === element);
+      const lowerCaseIndex = lowerCaseArr.findIndex((alphabet) => alphabet === element);
 
       if (upperCaseIndex !== -1) {
         return reversedUpperCaseArr[upperCaseIndex];
@@ -46,7 +46,7 @@ function problem4(word) {
         return reversedLowerCaseArr[lowerCaseIndex];
       }
 
-      return alphabet;
+      return element;
     })
     .join("");
 
