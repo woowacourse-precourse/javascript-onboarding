@@ -16,7 +16,6 @@ function problem6(forms) {
         forms[i][1].charCodeAt(j + 1).toString(16);
 
       if (uni in obj) {
-        console.log(forms[i][0]);
         if (isFound === false) {
           isFound = true;
           answer.push(forms[i][0]);
