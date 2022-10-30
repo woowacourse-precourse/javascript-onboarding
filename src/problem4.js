@@ -79,6 +79,14 @@ const isAlphabet = charCode => {
 
 const convertToArray = string => [...string];
 
+const convertToString = stringArray => {
+  if (Array.isArray(stringArray)) {
+    return stringArray.join("");
+  }
+
+  return "";
+};
+
 function problem4(word) {
   var answer;
   return answer;
