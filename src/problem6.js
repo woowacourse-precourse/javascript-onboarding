@@ -82,8 +82,16 @@ function problem6(forms) {
     else {return true;}
   }
 
-
   //!2. 신청할수 있는 이메일의 도메인은 email.com으로 제한
+
+  function CHECK_EMAIL_DOMAIN (email) {
+    
+    const inputEmail = email.split('@');
+    if(inputEmail[1] !== "email.com"){return false;}
+    else {return true;}
+
+  }
+
   //!3. 닉네임은 한글만 가능
   //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
   //!5. 결과값은 오름차순으로 정렬
