@@ -45,3 +45,13 @@
 3. problem6 : 2글자씩만 추출
 4. problem6 : 2글자 추출한 form 이후의 form들에서 해당 글자가 있는지 확인 후 있으면 중복된 닉네임 모으는 배열에 push
 5. problem6 : 중복된 닉네임가진 이메일들의 배열을 중복된 님네임과 함께 객체에 담기
+
+# 문제 7 기능 목록
+
+1. problem7 : user와 친구인 사람 목록 뽑기
+2. problem7 : user의 친구의 친구 뽑기(중복된 횟수만큼 이름들이 나옴)
+3. problem7 : 방문자 배열에서 원래 친구 제거
+4. problem7 : 배열과 점수 입력하면 객체에 점수 더해주는 scorer 함수 제작
+5. problem7 : 친구의 친구 배열, 친구 제거한 방문자 배열 scorer 함수 통해 점수 가산하여 recommendUserObj에 이름과 점수 기록
+6. problem7 : recommendUserObj의 각 user와점수의 객체로 이루어진 recommendUserList 생성 하는 함수 제작
+7. problem7 : recommendUserList 점수(이름)를 기준으로 정렬 후 최대 5명만 최종 제출
