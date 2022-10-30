@@ -22,3 +22,9 @@ function countClap(numArray) {
 
   return count;
 }
+function problem3(number) {
+  const numArray = numberToArray(number);
+  const answer = countClap(numArray);
+
+  return answer;
+}
