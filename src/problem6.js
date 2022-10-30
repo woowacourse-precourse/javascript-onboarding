@@ -1,4 +1,4 @@
-function problem6(forms) {
+function returnSimilarName(){
   let nameCheckBox = {};
   let emailCheckBox = {};
 
@@ -19,10 +19,14 @@ function problem6(forms) {
         emailCheckBox[userEmail] = userName;
       }
       else{
+        nameCheckBox[userUnitName] = [userName, userEmail];
       }
     }
   });
-  console.log(nameCheckBox);
+  return emailCheckBox;
+}
+function problem6(forms) {
+  returnSimilarName(forms);
 }
 
 problem6([["jm@email.com", "제이엠"],
