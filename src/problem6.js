@@ -10,12 +10,25 @@ const findOverLappingWord = (nickname) => {
   return overLappingWord;
 };
 
+const checkWordIncluded = (nickname, overLappingWords) => {
+  for (let i = 0; i < nickname.length - 1; i++) {
+    const tmp = nickname.slice(i, i + 2);
+    if (overLappingWord.includes(tmp)) return true;
+  }
+  return false;
+};
+
 function problem6(forms) {
-  const answer = [];
+  let answer = [];
 
   forms.map((form) => {
     const [, nickname] = form;
     findOverLappingWord(nickname);
+  });
+
+  forms.map((form) => {
+    const [email, nickname] = form;
+    if (checkWordIncluded(nickname)) answer.push(email);
   });
 
   return answer;
