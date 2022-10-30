@@ -7,32 +7,30 @@ const ASCII_LOWER_A = 97;
 const ASCII_LOWER_Z = 122;
 
 const reverseUpper = (letter) => {
-  return String.fromCharCode(ASCII_UPPER_A + (ASCII_UPPER_Z - letter.charCodeAt(0)));
+  return String.fromCharCode(ASCII_UPPER_A + (ASCII_UPPER_Z - letter.charCodeAt()));
 };
 
 const reverseLower = (letter) => {
-  return String.fromCharCode(ASCII_LOWER_A + (ASCII_LOWER_Z - letter.charCodeAt(0)));
+  return String.fromCharCode(ASCII_LOWER_A + (ASCII_LOWER_Z - letter.charCodeAt()));
+};
+
+const reverseAlphabet = (letter) => {
+  if (UPPER_ALPHABET.test(letter)) return reverseUpper(letter);
+  else if (LOWER_ALPHABET.test(letter)) return reverseLower(letter);
+  else return letter;
 };
 
 function problem4(word) {
-  const answer = [];
-
-  for (let i = 0; i < word.length; i++) {
-    const letter = word[i];
-    if (UPPER_ALPHABET.test(letter)) answer.push(reverseUpper(letter));
-    else if (LOWER_ALPHABET.test(letter)) answer.push(reverseLower(letter));
-    else answer.push(letter);
-  }
-
-  return answer.join("");
+  return word
+    .split("")
+    .map((letter) => reverseAlphabet(letter))
+    .join("");
 }
 
-/*
 // for test
 const words = ["I love you", "This is me being REASONABLE."];
 for (word of words) {
   console.log(problem4(word));
 }
-*/
 
 module.exports = problem4;
