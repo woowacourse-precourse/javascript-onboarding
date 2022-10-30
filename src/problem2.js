@@ -7,6 +7,10 @@
 function problem2(cryptogram) {
   const regex = new RegExp("([a-z])\\1+", "g");
   let answer = cryptogram;
+
+  while (regex.test(answer)) {
+    answer = answer.replace(regex, "");
+  }
   return answer;
 }
 
