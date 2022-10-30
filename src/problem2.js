@@ -3,6 +3,19 @@ function problem2(cryptogram) {
   return answer;
 }
 
+function change(word) {
+  let size = word.length;
+  while (true) {
+    word = remove(word);
+
+    if (word.length === size) {
+      return word;
+    }
+
+    size = word.length;
+  }
+}
+
 function remove(word) {
   let str = "";
   if (word.length <= 1) {
