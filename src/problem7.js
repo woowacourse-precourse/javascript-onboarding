@@ -23,10 +23,6 @@ const removeUserAndUserBfs = (user, friends) => (bfs) => {
   );
 };
 
-const excludeUsers =
-  (...users) =>
-  () => {};
-
 const recordScore = (friends) => {
   return friends.reduce((reduced, friend) => {
     const copy = { ...reduced };
