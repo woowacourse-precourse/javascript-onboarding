@@ -31,9 +31,20 @@ const getRedundantDeletedString = (str) => {
   return processedOutput;
 };
 
-function problem2(cryptogram) {
-  var answer;
+/**
+ * main 함수
+ * @param cryptogram
+ * @return {string|*}
+ */
+const problem2 = (cryptogram) => {
+  let answer = cryptogram;
+
+  // 중복문자가 없을때까지 반복
+  while (!isTaskFinished(answer)) {
+    answer = getRedundantDeletedString(answer);
+  }
+
   return answer;
-}
+};
 
 module.exports = problem2;
