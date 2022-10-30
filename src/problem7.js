@@ -49,11 +49,28 @@ function getUserFriends(user, friends) {
   return userFriends;
 };
 
+function compare([friendA, scoreA], [friendB, scoreB]) {
+  const scoreDifference = scoreA - scoreB;
+  switch(true) {
+    case scoreDifference > 0:
+      return -1;
+    case scoreDifference < 0:
+      return 1;
+    case scoreDifference === 0:
+      if(friendA > friendB) return 1;
+      if(friendA <= friendB) return -1; 
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const userFriends = getUserFriends(user, friends);
   const scoreData = new ScoreData(user, friends, visitors, userFriends).getData;
-
+  const recommandFriendLsit = Object.entries(scoreData)
+  .sort(compare)
+  .map(([friend]) => friend)
+  .slice(0, 5);
+  answer = recommandFriendLsit;
   return answer;
 };
 
