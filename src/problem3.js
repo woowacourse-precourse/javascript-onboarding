@@ -1,6 +1,10 @@
 function isValid(number) {
-  if (typeof number !== 'number') return false;
-  if (number < 1 || number > 10000) return false;
+  if (typeof number !== 'number') {
+    return false;
+  }
+  if (number < 1 || number > 10000) {
+    return false;
+  }
   return true;
 }
 
@@ -10,14 +14,19 @@ function strToArr(strIter) {
 }
 
 function findThreeSixNineElement(element, index, array) {
-  if (["3", "6", "9"].includes(element)) array[index] = 1;
-  else array[index] = 0;
+  // if (["3", "6", "9"].includes(element)) array[index] = 1;
+  // else array[index] = 0;
+  array[index] = ["3", "6", "9"].includes(element) ? 1 : 0;
+}
+
+function getSumArrIter(arrIter) {
+  return arrIter.reduce(function add(sum, currValue) {return sum + currValue}, 0);
 }
 
 function threeSixNine(strIter) {
   const arrIter = strToArr(strIter);
   arrIter.forEach(findThreeSixNineElement);
-  return arrIter.reduce(function add(sum, currValue) {return sum + currValue}, 0);
+  return getSumArrIter(arrIter);
 }
 
 function playGame(number) {
@@ -30,7 +39,9 @@ function playGame(number) {
 }
 
 function problem3(number) {
-  if (!isValid(number)) return 0;
+  if (!isValid(number)) {
+    return 0;
+  }
   return playGame(number);
 }
 
