@@ -34,5 +34,15 @@
 - 친구 추천 알고리즘
 
   - user와 함께 아는 친구의 수 = 10점
+
+    - friends를 user가 존재한다면 제거
     - user의 친구는 따로 저장
-    - 저장한 user의 친구의 친구라면 + 10점
+    - `저장한 user의 친구`의 친구라면 + 10점
+      - 예시 :
+        - user : "mrko"
+        - friends : [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]
+          - "mrko"의 친구 : "donut", "shakevan"
+          - "mrko"의 친구의 친구관계 :
+            - "donut" : "andole", "jun"
+            - "shakevan" : "andole", "jun"
+              - 결과 : "andole" : 20점, "jun" : 20점
