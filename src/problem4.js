@@ -1,17 +1,26 @@
-function problem4(word) {
-  let answer = word.split('');
-  for (let i = 0; i < word.length; i++) {
-    if (answer[i] >= 'A' && answer[i] <= 'Z') {
-      const convertWord = 90 - (answer[i].charCodeAt(0) - 65);
-      answer[i] = String.fromCharCode(convertWord);
-    } else if (answer[i] >= 'a' && answer[i] <= 'z') {
-      const convertWord = 122 - (answer[i].charCodeAt(0) - 97);
-      answer[i] = String.fromCharCode(convertWord);
-    }
-  }
-  answer = answer.join('');
+function problem4(words) {
+  let answer = words.split('').map(word => convertWord(word)).join('');
 
   return answer;
 }
 
+function convertWord(word){
+  if(betweenUpper(word)){
+    const convertWord = 90 - (word.charCodeAt(0) - 65);
+    return  String.fromCharCode(convertWord);
+  } else if (betweenLower(word)){
+    const convertWord = 122 - (word.charCodeAt(0) - 97);
+    return  String.fromCharCode(convertWord);
+  }
+
+  return word
+}
+
+function betweenLower(word){
+  return word >= 'a' && word <= 'z';
+}
+
+function betweenUpper(word){
+  return word >= 'A' && word <= 'Z';
+}
 module.exports = problem4;
