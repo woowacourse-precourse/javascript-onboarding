@@ -13,6 +13,7 @@ function problem5(money) {
     result.push(parseInt(money/i));
     money = money%i;
   }
+  return result;
 }
 
 module.exports = problem5;
