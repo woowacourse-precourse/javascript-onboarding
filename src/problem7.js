@@ -26,6 +26,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  users.delete(user);
+  user_friends.forEach((friend) => {
+    users.delete(friend);
+  })
+  
   return answer;
 }
 
