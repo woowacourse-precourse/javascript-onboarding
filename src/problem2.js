@@ -9,6 +9,20 @@
 
 function problem2(cryptogram) {
   let answer;
+  let i = 0;
+  let arrFromCryptogram = cryptogram.split("")
+
+  while (i !== arrFromCryptogram.length) {
+    if(arrFromCryptogram[i]  === arrFromCryptogram[i + 1]) {
+      arrFromCryptogram.splice(i, 2);
+      i = 0;
+    } else {
+      i += 1;
+    }
+  }
+
+  answer = arrFromCryptogram.join("")
+
   return answer;
 }
 
