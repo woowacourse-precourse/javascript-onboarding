@@ -25,20 +25,6 @@ function problem1(pobi, crong) {
     return result;
   };
 
-  // 왼쪽과 오른쪽 중 가장 큰수를 구하는 함수
-  function compareValue(left, right) {
-    let result;
-    if (!left > right) {
-      if (left > right) {
-        result = left;
-      } else {
-        result = right;
-      }
-    } else {
-      answer = -1;
-    }
-  }
-
   // pobi 와 crong중 더 큰수를 반환하는 함수
   function resultValue(pobi, crong) {
     if (pobi > crong) {
