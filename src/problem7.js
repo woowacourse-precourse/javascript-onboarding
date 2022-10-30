@@ -11,21 +11,23 @@ function makeFriendsObj(friends) {
   }
   return friendsObj;
 }
-//추천 점수를 저장하는 pointObj를 생성한다.
-function makePointObj() {}
+//user에 해당하는 추천 점수를 저장하는 pointObj를 생성한다.
+function makePointObj(user, friendsObj, visitors) {}
 //user와 같은 친구를 가진 사람들의 점수를 계산한다.
-function addSameFriendPoint() {}
+function addSameFriendPoint(userFirend, friendsObj, pointObj) {}
 //user의 timeline에 방문한 사람들의 점수를 계산한다.
-function addVisitorPoint() {}
+function addVisitorPoint(visitors, pointObj) {}
+//추천 친구와 점수를 저장하는 2차원 배열 result를 생성
+function makeResultArr(pointObj) {}
 //점수에 따라 정렬하고, 추천 점수가 같은 경우 이름 순으로 정렬한다.
-function sortWithPoint() {}
+function sortWithPoint(result) {}
 //정답 배열을 생성한다.
-function makeAnswerArr() {}
+function makeAnswerArr(result) {}
 
 function problem7(user, friends, visitors) {
   var answer = [];
   let friendObj = makeFriendsObj(friends);
-
+  let pointObj = makePointObj(user, friendObj, visitors);
   return answer;
 }
 
