@@ -23,7 +23,7 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ---
-## problem 5 기능 목록
+## problem 6 기능 목록
 ### 예외 처리에 관하여
 - 입력값은 위의 제한 사항을 지킨 값이라고 판단하였다.
 - 따라서 위의 제한 사항에 대한 별도의 예외 처리는 하지 않았다.
