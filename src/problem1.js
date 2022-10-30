@@ -3,6 +3,17 @@ function exception(pages) {
   else return true;
 }
 
+function add(pageNum) {
+  let addResult = 0;
+  pageNum = pageNum.toString();
+
+  for (let i = 0; i < pageNum.length; i++) {
+    addResult += parseInt(pageNum[i], 10);
+  }
+
+  return addResult;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
