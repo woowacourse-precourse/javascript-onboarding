@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const result = [];
+  return result;
 }
-
 module.exports = problem7;
