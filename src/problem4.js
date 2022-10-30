@@ -1,7 +1,15 @@
 function problem4(word) {
   var answer;
 
+  let check_eng = /[a-zA-Z]/; //알파벳 확인
+
   //제한 사항
+  if(word < 1 || word > 1000){
+    return -1;
+  } else if(check_eng.test(word) != true){
+    console.log("no");
+    return -1;
+  }
 
   //대소문자 배열
   const arr_upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -17,14 +25,14 @@ function problem4(word) {
   //문자열 변환 계산
   let str = "";
 
-  for(let i = 0; i < arr.length; i++){
+  for(let i = 0; i < arr.length; i++){  //대문자일 때
     if(arr_upper.includes(arr[i])==true){
       str += re_arr_upper[arr_upper.indexOf(arr[i])];
     
-    } else if(arr_lower.includes(arr[i])==true){
+    } else if(arr_lower.includes(arr[i])==true){  //소문자일 때
       str += re_arr_lower[arr_lower.indexOf(arr[i])];
 
-    } else if (arr[i] == ' ') {
+    } else if (arr[i] == ' ') {  //공백일 때
       str += arr[i];
     }
   }
