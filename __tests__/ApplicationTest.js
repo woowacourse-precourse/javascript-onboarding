@@ -38,13 +38,13 @@ describe("problem3", () => {
   });
 });
 
-describe("problem4", () => {
+describe.only("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
 
-describe.only("problem5", () => {
+describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
   });
