@@ -47,14 +47,31 @@ function problem7(user, friends, visitors) {
       friend_score[visitors[i]] = 1;
     }
   }
-  
+
+
   // 원래 user와 친구였던 사람 제거
   for(let i = 0; i < friend_dic[user].length; i++){
     delete friend_score[friend_dic[user][i]];
   }
   delete friend_score[user];
-  // console.log(friend_score);
-  // friend_score.sort(key=lambda x:x[1])
+ 
+  // value 기준으로 내림차순 정렬
+  let result_score = sortDecreaseValue(friend_score);
+
+  for(let i = 0; i < result_score.length; i++){    
+    if(result_score[i][1] === 0){
+      break;
+    }
+    if(answer.length > 5){
+      break;
+    }
+    answer.push(result_score[i][0]);
+  }
+  // console.log(answer);
+  return answer;
+}
+
+function sortDecreaseValue(friend_score){
   let result_score = [];
   for(let score in friend_score){
     result_score.push([score, friend_score[score]]);
@@ -62,14 +79,9 @@ function problem7(user, friends, visitors) {
   result_score.sort(function(a, b){
     return b[1] - a[1];
   });
-  // console.log(result_score);
-  for(let i = 0; i < result_score.length; i++){
-    answer.push(result_score[i][0]);
-  }
-  // console.log(answer);
-  return answer;
-}
 
+  return result_score;
+}
 
 // problem7("mrko",	
 // [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
