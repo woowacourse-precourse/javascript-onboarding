@@ -16,4 +16,16 @@ function Maxnum(page) {
   
 }
 
+//페이지 예외상황이 나는지 확인하는 함수
+function checkpage(page) {
+  if(page[1]-page[0] ===1 && page[0] >=1 && page[1] <=400)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 module.exports = problem1;
