@@ -9,4 +9,26 @@ function checkException(arr) {
   return 1;
 }
 
+function multiplyPage(num) {
+  let ret = 1;
+  while (parseInt(num / 10) !== 0) {
+    ret *= num % 10;
+    num = parseInt(num / 10);
+  }
+  ret *= num;
+  return ret;
+}
+function addPage(num) {
+  let ret = 0;
+  while (parseInt(num / 10) !== 0) {
+    ret += num % 10;
+    num = parseInt(num / 10);
+  }
+  ret += num;
+  return ret;
+}
+function getMax(a, b) {
+  return a > b ? a : b;
+}
+
 module.exports = problem1;
