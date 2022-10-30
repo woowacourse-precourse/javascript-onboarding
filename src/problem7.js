@@ -86,6 +86,22 @@ function problem7(user, friends, visitors) {
     forAnswer.sort(function(a,b) {
       return b[0] - a[0];
     })
+    
+
+    // 점수가 동일한 경우 이름을 사전순으로 정렬합니다.
+    for(let i=0 ; i<forAnswer.length-1 ; i++){
+      if(forAnswer[i][0] === forAnswer[i+1][0]){
+        for(let j=0 ; j<forAnswer.length - 1 - i; j++){
+          if(forAnswer[j][1] > forAnswer[j+1][1] && forAnswer[j][0] === forAnswer[j+1][0]){
+            // console.log(`${forAnswer[i][1]} and ${forAnswer[j][1]} 교환`);
+            tmp = forAnswer[j][1];
+            forAnswer[j][1] = forAnswer[j+1][1];
+            forAnswer[j+1][1] = tmp;
+          }
+        }
+        tmp = "";
+      }
+    }
   
     
   });
