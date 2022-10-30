@@ -14,9 +14,25 @@ function getSlicedName(arr) {
   return slicedName;
 }
 
+function getWordCount(arr) {
+  const wordCountObj = {};
+
+  arr.forEach((item) => {
+    if (wordCountObj.hasOwnProperty(item)) {
+      wordCountObj[item] += 1;
+      return;
+    }
+
+    wordCountObj[item] = 1;
+  });
+
+  return wordCountObj;
+}
+
 function problem6(forms) {
   const answer = [];
   const slicedName = getSlicedName(forms);
+  const wordCountObj = getWordCount(slicedName);
 
   return answer;
 }
