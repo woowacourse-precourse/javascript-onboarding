@@ -23,3 +23,24 @@
 | [97, 98]   | [197, 198] | 0      |
 | [131, 132] | [211, 212] | 1      |
 | [99, 102]  | [211, 212] | -1     |
+
+### 구현할 기능 목록
+1. 예외사항 판별하는 check_valid 함수 구현 :white_check_mark:
+- 매개변수 : arr(pobi 또는 crong의 펼친 페이지 배열)
+- return값 : isValid (boolean) true 이면 정상, false이면 오류값
+- 왼쪽 페이지가 짝수이거나 오른쪽 페이지가 홀수인 경우 오류
+- (오른쪽페이지-왼쪽페이지)==1 이 아닌 경우(연속된 페이지가 아닌 경우) 오류
+- 페이지가 1~400 사이가 아닌 경우 오류(시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.)
+2. 펼친 페이지의 각 자리 수를 계산하기 위해 자리수를 쪼개는 div_num 함수 구현 :white_check_mark:
+- 매개변수 : pobi,crong의 왼쪽 또는 오른쪽 페이지 번호 (정수값)
+- return값 : arr(배열) - 받은 숫자의 자리수를 나누어 저장한 배열
+3. div_num 함수를 통해 얻은 각 자리수 배열에 대해, 덧셈-곱셈 후 가장 큰 수 구하는 cal_arr 함수 구현 :white_check_mark:
+- 매개변수 : arr - 각 자리수 배열
+- return값 : bigger - 각 자리수에 대해 덧셈, 곱셈을 진행 후 계산결과 중 더 큰 값(정수값)
+4. pobi,crong 의 점수 구하기 :white_check_mark:
+- 왼쪽페이지, 오른쪽 페이지에 대해 cal_arr 함수 연산 후, 더 큰 값이 본인의 점수임.
+5. pobi,crong 중 승자 구하기 :white_check_mark:
+- answer = 1 : 포비가 이기는 경우
+- answer = 2 : 크롱이 이기는 경우
+- answer = 0 :무승부
+- answer = -1 : 예외사항(check_valid 함수 return값이 false 인 경우)
