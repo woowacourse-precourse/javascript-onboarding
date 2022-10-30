@@ -1,12 +1,12 @@
 function problem4(word) {
-  let input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let frogDict = 'ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba';
+  const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const frogDict = 'ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba';
   const findIndex = (x) => input.indexOf(x);
   function translate(x) {if (findIndex(x) > -1){
     return frogDict[findIndex(x)]
   } return x;
 }
-let answer = word.split('').map(translate).join('');
+const answer = word.split('').map(translate).join('');
 return answer;
 }
 
