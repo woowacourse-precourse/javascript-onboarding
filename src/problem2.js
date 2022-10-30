@@ -5,6 +5,6 @@ function problem2(cryptogram) {
     decode = decode.replace(pattern, '');
     console.log(decode);
   }
-  return decode ? decode : '';
+  return decode;
 }
 module.exports = problem2;
