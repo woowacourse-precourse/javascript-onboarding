@@ -26,9 +26,19 @@ const getClapsToAdd = (num) => {
   return clapsToReturn;
 };
 
-function problem3(number) {
-  var answer;
+/**
+ * 메인 함수
+ * @param {number} number
+ * @return {number}
+ */
+const problem3 = (number) => {
+  let answer = 0;
+
+  for (let i = 1; i <= number; i++) {
+    answer += getClapsToAdd(i);
+  }
+
   return answer;
-}
+};
 
 module.exports = problem3;
