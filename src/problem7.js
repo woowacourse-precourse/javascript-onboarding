@@ -2,7 +2,10 @@ function problem7(user, friends, visitors) {
 
   //필요변수
   //&1. 친구 관계를 나타내는 리스트를 가질 빈 객체
+  const FRIEND_RELATION_OBJ = {}
+
   //&2. user를 기준으로 점수가 저잘될 빈 객체
+  const USER_POINT_CALCUL_OBJ = {}
 
   //필요함수
   
