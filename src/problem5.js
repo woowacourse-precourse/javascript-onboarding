@@ -1,5 +1,5 @@
 function problem5(money) {
-  let answer = countMoneyType(money);
+  const answer = countMoneyType(money);
   return answer;
 }
 
