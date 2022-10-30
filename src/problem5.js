@@ -5,6 +5,9 @@ function problem5(money) {
     result[i] = parseInt(money/temp[i])
     money -= result[i] * temp[i]
   }
+  
+  // 예외사항
+  if (money < 1 || money > 1000000) result = "예외사항";
   return result;
 }
 
