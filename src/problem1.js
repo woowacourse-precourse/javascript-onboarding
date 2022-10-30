@@ -13,9 +13,18 @@ function calculatePageNumber(page) {
   return add > multiply ? add : multiply;
 }
 
+function getScore(pages) {
+  const leftPage = calculatePageNumber(pages[0]);
+  const rightPage = calculatePageNumber(pages[1]);
+  return leftPage > rightPage ? leftPage : rightPage;
+}
+
 function problem1(pobi, crong) {
   let answer;
   if (!validateInput(pobi) || !validateInput(crong)) return -1;
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
   return answer;
 }
 
