@@ -17,7 +17,13 @@ function solution(forms) {
       records[s].push(idx);
     });
   });
-  console.log(records);
+
+  const results = [];
+  const repeated = findRepeated(records);
+  repeated.forEach((r) => {
+    results.push(forms[r][0]);
+  });
+  return results.sort();
 }
 /**
  *
