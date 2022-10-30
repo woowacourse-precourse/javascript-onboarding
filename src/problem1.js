@@ -1,7 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
-  validChecker(pobi, crong);
-
+  validChecker(pobi, crong)
+    ? (answer = -1)
+    : (answer = winnerChecker(maxValChecker(pobi), maxValChecker(crong)));
   return answer;
 }
 
@@ -11,7 +12,7 @@ function validChecker(pobi, crong) {
   );
 }
 
-function valueChecker(pages) {
+function maxValChecker(pages) {
   const num1 = String(pages[0]),
     num2 = String(pages[1]);
 
@@ -30,6 +31,10 @@ function valueChecker(pages) {
     num2M = num2M * parseInt(i);
   }
   return Math.max(Math.max(num1P, num1M), Math.max(num2P, num2M));
+}
+
+function winnerChecker(pobiMaxNum, crongMaxNum) {
+  return pobiMaxNum > crongMaxNum ? 1 : (pobiMaxNum = crongMaxNum ? 0 : 2);
 }
 
 module.exports = problem1;
