@@ -4,9 +4,9 @@
  * - [x] pobi와 crong 배열이 올바르게 입력되었는지 확인하기
  *    - [x] pobi와 crong 배열의 각 값이 1이상 400 이하의 수로 이루어졌는지 확인하기
  *    - [x] pobi와 crong 배열의 각 값이 연속된 오름차순으로 이루어졌는지 확인하기
- * - [ ] pobi와 crong 배열의 값으로 포비와 크롱의 점수 구하기
- *    - [ ] 왼쪽, 오른쪽 페이지의 각 자릿수의 합과 곱 중 큰 수 구하기
- *    - [ ] 구한 두 수 중 큰 수를 반환하기
+ * - [x] pobi와 crong 배열의 값으로 포비와 크롱의 점수 구하기
+ *    - [x] 왼쪽, 오른쪽 페이지의 각 자릿수의 합과 곱 중 큰 수 구하기
+ *    - [x] 구한 두 수 중 큰 수를 반환하기
  * - [ ] 각 배열을 통해 구한 점수를 비교해서 요구사항에 맞도록 값을 반환하기
  *    - [ ] 두 수를 대소를 비교하는 기능
  */
@@ -23,6 +23,9 @@ function problem1(pobi, crong) {
   if (!validatePages(pobi) || !validatePages(crong)) {
     return -1;
   }
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
 
   return answer;
 }
@@ -73,4 +76,33 @@ function areConsecutive(numbers) {
   }
 
   return true;
+}
+
+/**
+ * 입력받은 두 페이지의 각 페이지로부터 구할 수 있는 큰 수를 서로 비교해서 큰 수를 반환하는 함수
+ *
+ * @param {number[]} pages 연속된 오름차순으로 이루어진 길이가 2인 정수 배열
+ * @returns {number} 왼쪽, 오른쪽 페이지로 구한 수 중 큰 수
+ */
+function getScore(pages) {
+  const [leftPage, rightPage] = pages;
+
+  const maxLeft = getBiggerNumberBetweenSumAndProduct(leftPage);
+  const maxRight = getBiggerNumberBetweenSumAndProduct(rightPage);
+
+  return maxLeft > maxRight ? maxLeft : maxRight;
+}
+
+/**
+ * 입력받은 수의 각 자릿수의 합과 곱 중에서 큰 수를 반환하는 함수
+ *
+ * @param {number} number 1 이상의 정수
+ * @returns {number} 입력받은 수의 각 자릿수의 합과 곱 중에 큰 수
+ */
+function getBiggerNumberBetweenSumAndProduct(number) {
+  const digits = number.toString().split("").map(Number);
+  const sum = digits.reduce((acc, cur) => acc + cur, 0);
+  const product = digits.reduce((acc, cur) => acc * cur, 1);
+
+  return sum > product ? sum : product;
 }
