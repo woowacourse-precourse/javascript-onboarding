@@ -14,3 +14,20 @@ function stringfyBookPageArr(book) {
 
   return stringBookPageArr;
 }
+
+function plusAndMultiPages(book) {
+  const stringBookPageArr = stringfyBookPageArr(book);
+  let [bookPageSumOfPlus, bookPageSumOfMultiple] = [0, 0];
+  let i = 0;
+
+  for (; i < 2; i++) {
+    bookPageSumOfPlus = [...stringBookPageArr[i]].reduce((acc, cur) => {
+      return acc + parseInt(cur);
+    }, 0);
+    bookPageSumOfMultiple = [...stringBookPageArr[i]].reduce((acc, cur) => {
+      return acc * parseInt(cur);
+    }, 1);
+  }
+
+  return [bookPageSumOfPlus, bookPageSumOfMultiple];
+}
