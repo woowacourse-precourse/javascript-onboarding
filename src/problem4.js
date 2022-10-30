@@ -3,7 +3,7 @@ function problem4(word) {
   var changed;
 
   for (i = 0; i < word.length; i++) 
-    changed.push(isAlpha(word[i]));   //변환된 값을 changed에 넣기
+    changed = changed + isAlpha(word[i]);   //변환된 값을 changed에 넣기
 
   answer = changed;
   return answer;
