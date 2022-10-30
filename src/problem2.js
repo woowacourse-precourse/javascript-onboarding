@@ -31,9 +31,7 @@ function removeDuplicate(cryptogram) {
 
 function problem2(cryptogram) {
   let answer = removeDuplicate(cryptogram);
-  console.log(answer);
   return answer;
 }
-problem2('aabbba');
 
 module.exports = problem2;

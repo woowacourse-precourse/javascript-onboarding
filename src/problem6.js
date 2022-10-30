@@ -1,32 +1,55 @@
 /*
   기능목록
-  1.이메일, 닉네임만 따로 저장하는 배열 구현
-  2.연속적으로 포함된 닉네임 판별 및 인덱스 리턴
-  2-1. 중복되는 인덱스는 받지않도록 set자료구조 활용
-  3. 해당 인덱스의 이메일만 따로 저장하는 배열 구현
-  4. 이메일 배열 정렬 후 result 출력 
+  1. 이메일, 닉네임만 따로 저장하는 배열 구현
+  2. 닉네임을 받으면 두글자씩 가능한 모든 경우의 수를 배열에 담아 리턴해주는 함수 구현
+  3. 두글자씩 모든 경우를 담은 배열에서 같은글자가 타겟닉네임에 포함되어있는지 체크하는 함수 구현
+  4. 같은글자가 포함된 경우의 인덱스 배열 set으로 해당 크루의 인덱스를 (중복없이) 저장
+  5. 저장된 인덱스의 이메일만 정답 배열에 담는다
+  6. 오름차순 정렬 후 정답 리턴
 */
+function allTwoWordArr(str) {
+  const twoWordArr = [];
+  for(let i =0; i<str.length-1; i++) {
+    twoWordArr.push(str.substr(i,2));
+  }
+  return twoWordArr;
+}
+
+function is_wordIncludes(wordArr,targetNickname) {
+  let isInclude = false;
+  wordArr.map((word) => {
+    if(targetNickname.includes(word)) {  
+      isInclude =  true;
+    }
+  })
+  return isInclude;
+}
+
 function problem6(forms) {
-  let answer;
+  const answer = [];
   const emails = [];
   const nicknames = [];
-  const duplicateCrewIdx = [];
+  const alramToCrewIdx = new Set();
 
   forms.map((crew) => {
     emails.push(crew[0]);
     nicknames.push(crew[1]);
   })
 
-  
+  for(let i =0; i<nicknames.length-1; i++) {
+    const twoWords = allTwoWordArr(nicknames[i]);
+    for(let j = i+1; j<nicknames.length; j++) {
+      if(is_wordIncludes(twoWords,nicknames[j])) {
+        alramToCrewIdx.add(i);
+        alramToCrewIdx.add(j);
+      }
+    }
+  }
 
-
-  // console.log(forms);
-  console.log(emails);
-  console.log(nicknames);
-
-  return answer;
+  for(let value of alramToCrewIdx) {
+    answer.push(emails[value]);
+  }
+  return answer.sort();
 }
-
-problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
 
 module.exports = problem6;
