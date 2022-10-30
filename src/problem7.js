@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   let answer;
   const friends_map = makeFriendsMap(friends);
   const candidates_map = makeCandidatesMap(user, friends_map);
+  calculateByOverlapFriendsNum(user, friends_map, candidates_map); 
   return answer;
 }
 
@@ -26,7 +27,7 @@ function makeFriendsMap(friends){
 function makeCandidatesMap(user, friends_map){
   const candidates_map = new Map(); // 추천친구 후보목록을 Map객체로 저장
   const user_friends_set = friends_map.get(user); // user의 친구들 저장
-  for(const id of friends_map.keys()){
+  for (const id of friends_map.keys()){
     if (id != user && !user_friends_set.has(id)){ // user와 친구가 아니면 후보 목록에 추가
       candidates_map.set(id, 0); // key: 아이디, value: 추천점수
     }
@@ -34,4 +35,18 @@ function makeCandidatesMap(user, friends_map){
   //console.log([...candidates_map]);
   return candidates_map;
 }
+
+function calculateByOverlapFriendsNum(user, friends_map, candidates_map){
+  const user_friends_set = friends_map.get(user); // user의 친구들 저장
+  //console.log([...candidates_map]);
+  for (const candidate of candidates_map.keys()){
+    for (const candidate_friend of friends_map.get(candidate)){ // candidate의 친구들 순회
+      if (user_friends_set.has(candidate_friend)){ // 겹치는 친구가 있으면 점수+10
+        candidates_map.set(candidate, candidates_map.get(candidate)+10);
+      }
+    }
+  }
+  //console.log([...candidates_map]);
+}
+
 module.exports = problem7;
