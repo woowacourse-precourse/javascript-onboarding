@@ -65,6 +65,10 @@ const isUpperCase = charCode => {
   return false;
 };
 
+const toLowerCase = string => `${string}`.toLowerCase();
+
+const toUpperCase = string => `${string}`.toUpperCase();
+
 function problem4(word) {
   var answer;
   return answer;
