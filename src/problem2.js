@@ -1,4 +1,5 @@
 function problem2(cryptogram) {
+  if (cryptogram !== cryptogram.toLowerCase()) throw new TypeError('매개변수는 소문자만 입력할 수 있습니다.')
   let strArr = [...cryptogram];
   let duplicatedStrPosition = [];
   let hasDuplicatedStr = true;
