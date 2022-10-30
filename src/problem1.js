@@ -1,5 +1,13 @@
 function problem1(pobi, crong) {
   if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
+
+  let pobiMax = 0,
+    crongMax = 0;
+
+  for (let i = 0; i < pobi.length; i++) {
+    pobiMax = Math.max(calculateAdd(pobi[i]), calculateMul(pobi[i]));
+    crongMax = Math.max(calculateAdd(crong[i]), calculateMul(crong[i]));
+  }
 }
 
 function calculateAdd(num) {
