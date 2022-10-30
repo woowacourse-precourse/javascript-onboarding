@@ -31,6 +31,10 @@ function problem7(user, friends, visitors) {
     notFriends[visiter] += 1;
   });
 
+  Object.keys(notFriends).forEach((notFriend) => {
+    if (notFriends[notFriend] === 0) return; //점수가 0인 유저는 추천되지 않도록 한다.
+  });
+
   return answer;
 }
 
