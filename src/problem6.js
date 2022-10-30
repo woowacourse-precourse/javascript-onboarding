@@ -14,6 +14,7 @@ function problem6(forms) {
               if (!dictionary.hasOwnProperty(x)){
                 dictionary[x] = [formList[0]]
               }
+              stack.shift();
               
           }
       } 
