@@ -1,7 +1,12 @@
 function problem5(money) {
   let currency = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   let answer = [];
+
   let currentMoney = [];
+  currentMoney.push(money);
+
+  let result = (currentMoney[0] -(currentMoney[0] % item))/item;
+  answer.push(result);
 }
 
 module.exports = problem5;
