@@ -43,7 +43,7 @@ function getRecomendFriendList(user, myFriends, friends) {
   myFriends.forEach((myFriend) => {
     for (let friend of friends) {
       if (friend.includes(myFriend) && friend.includes(user) === false) {
-        const recomendFriendName = filter(friend, (friend) => friend !== myFriend);
+        const recomendFriendName = friend.filter((friend) => friend !== myFriend);
         recomendFriends.push(...recomendFriendName);
       }
     }
@@ -102,14 +102,5 @@ function sorting(recomendFriends) {
   );
 
   return sort;
-}
-
-function filter(array, func) {
-  const result = [];
-  for (let i = 0; i < array.length; i++) {
-    func(array[i], i, array) ? result.push(array[i]) : null;
-  }
-
-  return result;
 }
 module.exports = problem7;
