@@ -107,12 +107,14 @@ function problem7(user, friends, visitors) {
     return finalRecommnedList;
   }
 
+  const recommendUserCount = 5;
+
   const userFriendsList = userFriendsListGetter(user);
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
   const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
   const recommendUserObj = recommendTotalScorer(friendOfFriendList, onlyVisitorList);
   const recommendUserList = recommendUserListGetter(recommendUserObj);
-  const finalRecommnedList = listSoter(recommendUserList,5);
+  const finalRecommnedList = listSorter(recommendUserList, recommendUserCount);
 
   answer = finalRecommnedList;
 
