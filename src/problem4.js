@@ -14,6 +14,13 @@ const reverseAscii = (elem) => {
   return elem;
 };
 
-function problem4(word) {}
+function problem4(word) {
+  let answer = "";
+  let wordArr = [...word];
+  wordArr.map((elem) => {
+    answer += reverseAscii(elem);
+  });
+  return answer;
+}
 
 module.exports = problem4;
