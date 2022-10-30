@@ -122,7 +122,7 @@ function cutNamesIntoTwoLetters(crews) {
       standardCutIndex < standardNameLength - 1;
       standardCutIndex++
     ) {
-      const standardCutName = standardName.subname(standardCutIndex, 2);
+      const standardCutName = standardName.substr(standardCutIndex, 2);
 
       for (
         let comparedNameIndex = standardNameIndex + 1;
@@ -137,7 +137,7 @@ function cutNamesIntoTwoLetters(crews) {
           comparedCutIndex < comparedNameLength - 1;
           comparedCutIndex++
         ) {
-          const comparedCutName = comparedName.subname(comparedCutIndex, 2);
+          const comparedCutName = comparedName.substr(comparedCutIndex, 2);
 
           if (standardCutName === comparedCutName) {
             duplicatedNameIndexList[standardNameIndex] += 1;
