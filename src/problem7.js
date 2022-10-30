@@ -5,6 +5,8 @@ function problem7(user, friends, visitors) {
   const findUserFriends = friends.map(friendList => friendList.includes(user) && friendList);
   const userFriendsArray = [].concat(...findUserFriends.filter(Boolean)).filter(name => name !== user);
 
+  const removeUserFriends = friends.map(friendList => !friendList.includes(user) && friendList);
+
   return answer;
 }
 
