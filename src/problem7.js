@@ -19,21 +19,16 @@ function problem7(user, friends, visitors) {
       var friend = friends[i][0];
       score = 10;
 
-      if (userFriends.includes(friend)) {
-        recommendedFriend = friends[i][1];
-      } else {
-        recommendedFriend = friends[i][0];
-      }
+      recommededFriend = userFriends.includes(friend)
+        ? friends[i][1]
+        : friends[i][0];
 
-      if (resultMap.has(recommendedFriend)) {
-        resultMap.set(
-          recommendedFriend,
-          resultMap.get(recommendedFriend) + score
-        );
-        continue;
-      }
-
-      resultMap.set(recommendedFriend, score);
+      resultMap.has(recommendedFriend)
+        ? resultMap.set(
+            recommendedFriend,
+            resultMap.get(recommendedFriend) + score
+          )
+        : resultMap.set(recommendedFriend, score);
     }
   }
 
@@ -47,12 +42,9 @@ function problem7(user, friends, visitors) {
     recommededFriend = notUserFriends[i];
     score = 1;
 
-    if (resultMap.has(recommededFriend)) {
-      resultMap.set(recommededFriend, resultMap.get(recommededFriend) + 1);
-      continue;
-    }
-
-    resultMap.set(recommededFriend, 1);
+    resultMap.has(recommededFriend)
+      ? resultMap.set(recommededFriend, resultMap.get(recommededFriend) + score)
+      : resultMap.set(recommededFriend, score);
   }
 
   return answer;
