@@ -21,6 +21,7 @@ function problem6(forms) {
       }
     }
   })
+  return mailList.map(crew => crew[0]).sort();
 }
 
 module.exports = problem6;
