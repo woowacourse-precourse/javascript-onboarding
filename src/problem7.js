@@ -22,6 +22,14 @@ function friendAddTen(friends, set, obj) {
   });
   return obj;
 }
+function friendVisitCheck(visitors, set, obj) {
+  for (value of visitors) {
+    if (set.has(value)) continue;
+    if (!obj[value]) obj[value] = 1;
+    else obj[value] += 1;
+  }
+  return obj;
+}
 function problem7(user, friends, visitors) {
   var answer = [];
   var obj = {};
@@ -30,6 +38,7 @@ function problem7(user, friends, visitors) {
   set = firstData.set;
   friends = firstData.friends;
   obj = friendAddTen(friends, set, obj);
+  obj = friendVisitCheck(visitors, set, obj);
   return answer;
 }
 
