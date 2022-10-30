@@ -12,6 +12,10 @@ function problem2(cryptogram) {
           answer = answer.replace(regExp[i], "");
       }
   }
+
+  // 예외처리, 예외사항이면 문자 그대로 출력
+  if (cryptogram.length < 1 && cryptogram.length > 1000) answer = cryptogram;
+  else if (cryptogram.match(/[a-z]/g).length === cryptogram.length) answer = cryptogram;
   
   return answer;
 }
