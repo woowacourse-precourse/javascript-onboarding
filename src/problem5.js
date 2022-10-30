@@ -1,3 +1,7 @@
+const copyArray = targetArray => {
+  return [...targetArray];
+};
+
 function problem5(money) {
   var answer;
   return answer;
