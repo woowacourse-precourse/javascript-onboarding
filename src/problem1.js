@@ -9,12 +9,24 @@ const isValidPages = (pages) => {
   return true;
 }
 
-const calculateDigitAddition = (num) => {
+const getDigits = (num) => {
+  const nums = [];
+  while(num !== 0){
+    nums.push(num%10);
+    num = Math.floor(num / 10);
+  }
 
+  return nums;
+}
+
+const calculateDigitAddition = (num) => {
+  const digits = getDigits(num);
+  return digits.reduce((pre, cur) => pre + cur, 0);
 }
 
 const calculateDigitMutiplication = (num) => {
-
+  const digits = getDigits(num);
+  return digits.reduce((pre, cur) => pre * cur, 1);
 }
 
 const getGameScore = (pages) => {
