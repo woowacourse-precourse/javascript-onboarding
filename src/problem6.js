@@ -33,17 +33,25 @@ function problem6(forms) {
     }
   }
 
-  const answer = duplicated.map((key) => {
-    const emailList = [];
+  const answer = duplicated
+    .map((key) => {
+      const emailList = [];
 
-    for (let i = 0; i < forms.length; i++) {
-      if (forms[i][1].indexOf(key) !== -1) {
-        emailList.push(forms[i][0]);
+      for (let i = 0; i < forms.length; i++) {
+        if (forms[i][1].indexOf(key) !== -1) {
+          emailList.push(forms[i][0]);
+        }
       }
-    }
 
-    return emailList;
-  });
+      return emailList;
+    })
+    .flat()
+    .sort();
+
+  const set = new Set(answer);
+  const newArr = [...set];
+
+  return newArr;
 }
 
 module.exports = problem6;
