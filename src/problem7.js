@@ -50,9 +50,28 @@ function problem7(user, friends, visitors) {
     return onlyVisitor;
   };
 
+  const scorer = (list, score, recommendUserObj) => {
+
+    list.map(person => {
+      recommendUserObj[person] = recommendUserObj[person] === undefined ? score : recommendUserObj[person] + score;
+    });
+  };
+
+  const recommendScorer = (friendOfFriendList, visitors) => {
+
+    const recommendUserObj = {};
+
+    scorer(friendOfFriendList, 10, recommendUserObj);
+    scorer(visitors, 1, recommendUserObj);
+
+    return recommendUserObj;
+  };
+
+
   const userFriendsList = userFriendsListGetter(user);
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
   const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
+  const recommendUserObj = recommendScorer(friendOfFriendList, onlyVisitorList);
 
   return answer;
 }
