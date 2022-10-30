@@ -30,6 +30,18 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  SortedFriendScore = Object.keys(friendScore).sort(function(a,b){return friendScore[b]-friendScore[a]})
+  for (let r = 0; r<SortedFriendScore.length; r++){
+    if (SortedFriendScore[r] == user){
+      continue
+    }
+    else if(userFriend.includes(SortedFriendScore[r]) == true){
+      continue
+    }
+    else{
+      answer.push(SortedFriendScore[r])
+    }
+  }
   return answer;
 }
 module.exports = problem7;
