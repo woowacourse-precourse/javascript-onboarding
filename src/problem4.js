@@ -8,7 +8,6 @@
 function problem4(word) {
   var result = "";
   var wordArr = word.toString().split("").map(x=> x.charCodeAt([0]));
-  console.log(wordArr);
 
   for (const ascii of wordArr){
     if (ascii == 32){
