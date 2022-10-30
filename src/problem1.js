@@ -5,8 +5,10 @@ function problem1(pobi, crong) {
   const DRAW = 0;
   const EXCEPTIONS = -1;
 
+  const [leftPageByPobi, rightPageByPoi] = pobi;
+  const [leftPageByCrong, rightPageByCrong] = crong;
   // 책의 페이지가 연속된 숫자이어야 한다. (예외사항)
-  if (pobi[0] !== pobi[1] - 1 || crong[0] !== crong[1] - 1) return EXCEPTIONS;
+  if (leftPageByPobi !== rightPageByPoi - 1 || leftPageByCrong !== rightPageByCrong - 1) return EXCEPTIONS;
 
   // 페이지 번호의 각 자리 숫자를 더한 값과 곱한 값중 큰 값을 리턴한다.
   const getMaxScore = (pages) => {
