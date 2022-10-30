@@ -22,6 +22,12 @@ function problem2(cryptogram) {
     }
   }
 
+  // 배열을 문자열로 변경해 주는 기능 구현
+  let result = answer.join();
+  for (let i = 0; i <= result.length; i++) {
+    result = result.replace(",", "");
+  }
+
   return result;
 }
 
