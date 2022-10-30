@@ -1,9 +1,11 @@
+//문제 1번 기능목록
+//1. 
 function gameScore(page){
   var pageAdd = 0; //
   var pageMulti = 1; //각 자리 숫자를 모두 곱한 결과
   var tmp = String(page);
     
-  for ( let i = 0; i < tmp.length; i++) {
+  for (var i = 0; i < tmp.length; i++) {
     pageAdd += parseInt(tmp[i]); //각 자리 숫자 모두 더하기
     pageMulti *= parseInt(tmp[i]); //각 자리 숫자 모두 곱하기
   }
@@ -63,9 +65,9 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-console.log("1st case: ",problem1([399,400], [197, 198]));
+//console.log("1st case: ",problem1([399,400], [197, 198]));
 
-console.log("2nd case: ",problem1([131,132], [211, 212]));
+//console.log("2nd case: ",problem1([131,132], [211, 212]));
 
 //console.log(problem1([99, 102], [211, 212]));
 module.exports = problem1;

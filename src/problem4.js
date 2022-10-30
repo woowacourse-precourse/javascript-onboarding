@@ -1,6 +1,6 @@
-function problem4(word) {
+function problem5(money) {
   var answer;
   return answer;
 }
 
-module.exports = problem4;
+module.exports = problem5;
