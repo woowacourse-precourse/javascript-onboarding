@@ -15,9 +15,36 @@
  * 6. Map 객체를 점수 순으로 정렬한다.
  * 7. Map 객체의 key 값을 순서대로 result 배열에 추가한다.
  * 8. result 배열의 크기가 5 이상이거나 Map 객체의 값을 모두 가져왔다면 result 배열을 return 한다.
- *
+ */
+
+/**
  * @param {string} user
- * @param {Array<[string, string]>} friends
+ * @param {[string, string][]} friends
+ * @returns {{myFriends: string[], othersFriends: [string, string][]}}
+ */
+function findMyFriends(user, friends) {
+  const myFriends = [];
+  const othersFriends = friends.filter((friend) => {
+    if (friend[0] === user) {
+      myFriends.push(friend[1]);
+      return false;
+    }
+    if (friend[1] === user) {
+      myFriends.push(friend[0]);
+      return false;
+    }
+    return true;
+  });
+
+  return {
+    myFriends,
+    othersFriends,
+  };
+}
+
+/**
+ * @param {string} user
+ * @param {[string, string][]} friends
  * @param {string[]} visitors
  * @returns {string[]} result
  */
