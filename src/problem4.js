@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  return getTreeFrogWord(word);
 }
 
 function getTreeFrogWord(word) {
