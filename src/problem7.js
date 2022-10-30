@@ -29,7 +29,14 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  
+  for(let i=0;i<visitors.length;i++){
+    if(visitors[i] in friendInfo && visitors[i] != user){
+      friendInfo[visitors[i]] += 1;
+    }else {
+      friendInfo[visitors[i]] = 1;
+    }
+  }
+
   return answer;
 }
 
