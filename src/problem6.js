@@ -33,14 +33,20 @@ function isCrewWithDuplicateWord(crew, duplicateWords) {
   return duplicateWords.some((word) => crew.includes(word));
 }
 
+function removeDuplicateEmails(emails) {
+  const emailSet = new Set(emails);
+
+  return [...emailSet];
+}
+
 function problem6(forms) {
   const copiedForms = [...forms];
   const duplicateWords = getDuplicateWords(copiedForms, []);
 
-  const answer = forms
+  const crewEmails = forms
     .filter((form) => isCrewWithDuplicateWord(form[1], duplicateWords))
-    .map((form) => form[0])
-    .sort();
+    .map((form) => form[0]);
+  const answer = removeDuplicateEmails(crewEmails).sort();
 
   return answer;
 }
