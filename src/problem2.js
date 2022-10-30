@@ -10,7 +10,7 @@ function problem2(cryptogram) {
     }
   }
   //stack에 저장되어 있는 인덱스는 answer에 추가해주지 않는다.
-  for (i = 0; i < crypto.length; i++) {
+  for (let i = 0; i < crypto.length; i++) {
     if (!stack.includes(i)) {
       answer.push(crypto[i]);
     }

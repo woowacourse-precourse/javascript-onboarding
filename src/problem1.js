@@ -7,7 +7,7 @@ function problem1(pobi, crong) {
   function maxNumber(character) {
     const Pages = character.map((v) => v.toString().split('').map(Number));
     const numList = [];
-    for (i of Pages) {
+    for (let i of Pages) {
       numList.push(i.reduce((acc, v) => acc + v));
       numList.push(i.reduce((acc, v) => acc * v));
     }
