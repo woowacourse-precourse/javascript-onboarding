@@ -19,17 +19,16 @@ function problem6(forms) {
   };
 
   const confirm = (checkArr, originArr) => {
-    const t = originArr.filter((c) => {
+    return originArr.filter((c) => {
       for (let index = 0; index < checkArr.length; index++) {
         if (c[1].includes(checkArr[index])) {
           return true;
         }
       }
     });
-    return t;
   };
 
-  const repeatNickname = (forms) => {
+  const showrepeatNickname = (forms) => {
     const arr = [];
     while (forms.length !== 0) {
       const key = forms.splice(0, 1);
@@ -41,6 +40,6 @@ function problem6(forms) {
     }
     return [...new Set(arr)].map((x) => x[0]).sort();
   };
-  return repeatNickname(forms);
+  return showrepeatNickname(forms);
 }
 module.exports = problem6;

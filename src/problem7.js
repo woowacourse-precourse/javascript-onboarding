@@ -20,8 +20,9 @@ function problem7(user, friends, visitors) {
   };
 
   const visitedCnt = (visitors, alreadyFrineds) => {
-    visitors = visitors.filter((x) => !alreadyFrineds.includes(x));
-    return visitors.map((x) => [x, 1]);
+    return visitors
+      .filter((x) => !alreadyFrineds.includes(x))
+      .map((x) => [x, 1]);
   };
 
   const highScore = (arr) => {

@@ -12,19 +12,26 @@ function problem1(pobi, crong) {
     return add >= mutli ? add : mutli;
   };
 
-  if (checkPages(pobi) || checkPages(crong)) {
-    return -1;
-  } else {
-    const pobiBest =
-      calcNum(pobi[0]) >= calcNum(pobi[1])
-        ? calcNum(pobi[0])
-        : calcNum(pobi[1]);
-    const crongBest =
-      calcNum(crong[0]) >= calcNum(crong[1])
-        ? calcNum(crong[0])
-        : calcNum(crong[1]);
-    return pobiBest >= crongBest ? (pobiBest === crongBest ? 0 : 1) : 2;
-  }
+  const compare = (person1, person2) => {
+    if (checkPages(person1) || checkPages(person2)) {
+      return -1;
+    } else {
+      const person1Best =
+        calcNum(person1[0]) >= calcNum(person1[1])
+          ? calcNum(person1[0])
+          : calcNum(person1[1]);
+      const person2Best =
+        calcNum(person2[0]) >= calcNum(person2[1])
+          ? calcNum(person2[0])
+          : calcNum(person2[1]);
+      return person1Best >= person2Best
+        ? person1Best === person2Best
+          ? 0
+          : 1
+        : 2;
+    }
+  };
+  return compare(pobi, crong);
 }
 
 module.exports = problem1;
