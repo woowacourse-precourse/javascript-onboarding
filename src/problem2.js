@@ -2,7 +2,7 @@ function problem2(cryptogram) {
   const decryptString = (string) => {
     let finishedDecryption = true;
     for (let i = 0; i < string.length - 1; i++) {
-      for (let j = i + 1; j < string.length - 1; j++) {
+      for (let j = i + 1; j < string.length; j++) {
         if (string[i] != string[j]) {
           break;
         }
