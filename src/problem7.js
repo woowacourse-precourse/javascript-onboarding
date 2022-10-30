@@ -54,13 +54,13 @@ function problem7(user, friends, visitors) {
   calculateShareFriendsScore(user);
   calculateVisitScore(visitors);
 
-  const friendNames = friendsScore.keys();
+  const friendNames = Object.keys(friendsScore);
   friendNames.sort();
   friendNames.sort((a, b) => friendsScore[b] - friendsScore[a])
 
   const answer = [];
   for(let i = 0; (answer.length <= 5 && i < friendNames.length); i++){
-    if(friendsScore(friendNames[i]) === 0) break;
+    if(friendsScore[friendNames[i]] === 0) break;
     if(!friendGraph[user].includes(friendNames[i])) answer.push(friendNames[i]);
   }
   return answer;
