@@ -2,7 +2,10 @@ function problem7(user, friends, visitors) {
   let answer;
   const friends_map = makeFriendsMap(friends);
   const candidates_map = makeCandidatesMap(user, friends_map);
-  calculateByOverlapFriendsNum(user, friends_map, candidates_map); 
+
+  calculateByOverlapFriendsNum(user, friends_map, candidates_map);
+  calculateByVisitNum(user, visitors, friends_map, candidates_map);
+
   return answer;
 }
 
@@ -45,6 +48,22 @@ function calculateByOverlapFriendsNum(user, friends_map, candidates_map){
         candidates_map.set(candidate, candidates_map.get(candidate)+10);
       }
     }
+  }
+  //console.log([...candidates_map]);
+}
+
+function calculateByVisitNum(user, visitors, friends_map, candidates_map){
+  const user_friends_set = friends_map.get(user); // user의 친구들 저장
+  //console.log([...candidates_map]);
+  for (const visitor of visitors){
+    if (user_friends_set.has(visitor)){ // visitor가 user의 친구라면 다음으로 넘어감
+      continue;
+    }
+    if (!candidates_map.has(visitor)){ // 추천친구 후보목록에 없다면 목록에 추가
+      candidates_map.set(visitor, 0); // key: 아이디, value: 추천점수
+    }
+    // visitor는 점수+1
+    candidates_map.set(visitor, candidates_map.get(visitor)+1);
   }
   //console.log([...candidates_map]);
 }
