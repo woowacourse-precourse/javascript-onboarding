@@ -4,7 +4,7 @@ function problem5(money) {
 
   unit.map(el=>{
     num = Math.floor(money / el); // 화폐 갯수
-    money %= el;ㄴ
+    money %= el;
 
     result.push(num);
   })
