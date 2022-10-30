@@ -19,7 +19,17 @@ function problem6(forms) {
       return acc;
     }, {});
 
-  console.log(dictionary);
+  return forms.reduce((acc, form) => {
+    const nickname = form[1];
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const word = nickname.slice(i, i + 2);
+      if (dictionary[word] > 1) {
+        acc.push(form[0]);
+        break;
+      }
+    }
+    return acc;
+  }, []);
 }
 
 module.exports = problem6;
