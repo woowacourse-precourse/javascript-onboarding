@@ -103,8 +103,13 @@ function problem6(forms) {
     return true;
   }
 
-
   //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
+
+  function CHECK_NICK_NAME_LENGTH(nickName){
+    if(nickName.length <1 || nickName.length >19){return false;}
+    else {return true;}
+  }
+
   //!5. 결과값은 오름차순으로 정렬
   //!6. 결과값의 중복된 내용은 제거
 
