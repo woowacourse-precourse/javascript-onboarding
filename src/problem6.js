@@ -1,23 +1,30 @@
 function problem6(forms) {
 
   let checkMemo = [];
-  let repeatedName = [forms[0]];
+  let repeatedNameFirst = [forms[0]];
 
   for(let el of forms) {
     let nickname = el[1];
     for(let i = 0; i < nickname.length-1; i++) {
-      let checkName = nickname[i] + nickname[i+1];
-      if(checkMemo.includes(checkName)) repeatedName.push(el);
-      else checkMemo.push(checkName);
+      let checkNameFirst = nickname[i] + nickname[i+1];
+      if(checkMemo.includes(checkNameFirst)) repeatedNameFirst.push(el);
+      else checkMemo.push(checkNameFirst);
     } 
   }
 
-  let dedup = [...new Set(repeatedName)];
+  let nicknameFinal = forms[0][1];
+    for(let i = 0; i < nicknameFinal.length-1; i++) {
+      let checkNameFinal = nicknameFinal[i] + nicknameFinal[i+1];
+      if(checkMemo.includes(checkNameFinal)) repeatedNameFirst.push(forms[0]);
+      else checkMemo.push(checkName);
+    } 
+
+  let dedup = [...new Set(repeatedNameFirst)];
   let result = [];
-  
   for(let el of dedup) {
     result.push(el[0]);
     }
+
   return result.sort();
 }
 
