@@ -30,4 +30,13 @@ describe("problem1", () => {
     expect(problem1([null, 102], [21, 22])).toEqual(-1);
     expect(problem1([101, 102], [21, null])).toEqual(-1);
   });
+
+  test("페이지의 값이 정상적으로 들어오지 않으면 예외사항을 반환해야 한다.", () => {
+    expect(problem1(undefined, [193, 194])).toEqual(-1);
+    expect(problem1([101, 102], undefined)).toEqual(-1);
+    expect(problem1(null, [21, 22])).toEqual(-1);
+    expect(problem1([101, 102], null)).toEqual(-1);
+    expect(problem1(null)).toEqual(-1);
+    expect(problem1("정상적이지 않은 값")).toEqual(-1);
+  });
 });
