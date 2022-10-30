@@ -7,7 +7,7 @@ function getUserFriend(user, friends){
   return userFriendList;
 }
 
-function getInterFriendList(user, friends){
+function getInterFriendNum(user, friends){
   const userFriendList = getUserFriend(user, friends);
   const friendInclArr = [];
   let interFriendList = [];
@@ -16,17 +16,19 @@ function getInterFriendList(user, friends){
       friendInclArr.push(friends[i]);
     }
   }
+
   interFriendList = friendInclArr.reduce(function (acc, cur) {
     return [...acc, ...cur];
   });
+
   interFriendList = interFriendList.filter(v => !userFriendList.includes(v));
   interFriendList = interFriendList.filter(v => !v.includes(user));
-
-  return interFriendList;
+  const friendCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+  return friendCount(interFriendList);
 }
 
 function getScore(user, friends, visitors){
-  const friendScore = getInterFriendList(user, friends);
+  const friendScore = getInterFriendNum(user, friends);
 
 }
 
