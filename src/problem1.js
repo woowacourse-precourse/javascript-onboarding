@@ -27,12 +27,13 @@ function isException(person) {
 
   return false;
 }
+
 /**
  * 정수의 각 자릿수의 합과 곱을 계산하고, 더 큰 값을 리턴하는 함수
  * 
  * 
  * @param number 책의 왼쪽 또는 오른쪽 페이지로 정수형이다.
- * @return 정숭의 각 자릿수의 합과 곱중에 더 큰 값이다.
+ * @return 정수의 각 자릿수의 합과 곱중에 더 큰 값이다.
  */
 function calculate(number) {
   let plus = 0;
