@@ -1,12 +1,14 @@
 function problem6(forms) {
   var hashMap = new Map();
+
   for (var form of forms) {
-    for (var i = 0; i < form[1].length - 1; i++) {
-      var nickname = form[1].slice(i, i + 2);
+    var [email, user] = form;
+    for (var i = 0; i < user.length - 1; i++) {
+      var nickname = user.slice(i, i + 2);
       if (hashMap.has(nickname)) {
         var emails = hashMap.get(nickname);
-        hashMap.set(nickname, [...emails, form[0]]);
-      } else hashMap.set(nickname, [form[0]]);
+        hashMap.set(nickname, [...emails, email]);
+      } else hashMap.set(nickname, [email]);
     }
   }
 

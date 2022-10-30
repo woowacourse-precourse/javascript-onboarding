@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   var [cLeft, cRight] = crong;
   if (pRight - pLeft !== 1 || cRight - cLeft !== 1) return -1;
 
-  function sliceNum(num) {
+  function SliceNumMakeArr(num) {
     var numArr = [];
     do {
       var q = parseInt(num % 10);
@@ -12,10 +12,10 @@ function problem1(pobi, crong) {
     } while (num > 1);
     return numArr;
   }
-  pLeft = sliceNum(pLeft);
-  pRight = sliceNum(pRight);
-  cLeft = sliceNum(cLeft);
-  cRight = sliceNum(cRight);
+  pLeft = SliceNumMakeArr(pLeft);
+  pRight = SliceNumMakeArr(pRight);
+  cLeft = SliceNumMakeArr(cLeft);
+  cRight = SliceNumMakeArr(cRight);
 
   function sumArr(arr) {
     return arr.reduce((a, b) => a + b);
