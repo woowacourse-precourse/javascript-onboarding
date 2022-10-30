@@ -89,7 +89,7 @@ function problem7(user, friends, visitors) {
     });
   };
 
-  const find_answer = () => {
+  const find_5_recommendations = () => {
     let answer = [];
     for (let i = 0; i < recommendations2.length; i++) {
       if (i > 4) {
@@ -109,7 +109,7 @@ function problem7(user, friends, visitors) {
   };
 
   solution();
-  return find_answer();
+  return find_5_recommendations();
 }
 
 module.exports = problem7;
