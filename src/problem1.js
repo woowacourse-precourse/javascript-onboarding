@@ -1,26 +1,36 @@
 function problem1(pobi, crong) {
   const isValid = (pages) => {
     return (
-      isInRange(pages) &&
+      isInValidRange(pages) &&
       isNumber(pages) &&
-      isLeftOdd(pages) &&
-      isContinious(pages)
+      isLeftPageOdd(pages) &&
+      isConsecutivePages(pages)
     );
   };
-  const isInRange = ([firstPage, secondPage]) => {
+
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 400;
+  const isInValidRange = ([leftPage, rightPage]) => {
     return (
-      firstPage > 0 && firstPage <= 400 && secondPage > 0 && secondPage <= 400
+      leftPage >= MIN_PAGE &&
+      leftPage <= MAX_PAGE &&
+      rightPage > MIN_PAGE &&
+      rightPage <= MAX_PAGE
     );
   };
-  const isNumber = ([firstPage, secondPage]) => {
-    return typeof firstPage === 'number' && typeof secondPage === 'number';
+
+  const isNumber = ([leftPage, rightPage]) => {
+    return typeof leftPage === 'number' && typeof rightPage === 'number';
   };
-  const isLeftOdd = ([fisrtPage]) => {
-    return fisrtPage % 2 === 1;
+
+  const isLeftPageOdd = ([leftPage]) => {
+    return leftPage % 2 === 1;
   };
-  const isContinious = ([firstPage, secondPage]) => {
-    return secondPage === firstPage + 1;
+
+  const isConsecutivePages = ([leftPage, rightPage]) => {
+    return rightPage === leftPage + 1;
   };
+
   const getScoreList = ([firstPage, secondPage]) => {
     return [
       getScore(firstPage, multiplyCallback),
@@ -29,22 +39,28 @@ function problem1(pobi, crong) {
       getScore(secondPage, addCallback),
     ];
   };
+
   const getScore = (page, calculateCallback) => {
-    return getDigitNumberList(page).reduce(calculateCallback);
+    return getEachDigitList(page).reduce(calculateCallback);
   };
-  const getDigitNumberList = (page) => [...String(page)];
+
+  const getEachDigitList = (page) => [...String(page)];
+
   const multiplyCallback = (acc, cur) => Number(cur) * Number(acc);
   const addCallback = (acc, cur) => Number(cur) + Number(acc);
   const getMaxScore = (scores) => {
     return scores.reduce((acc, cur) => Math.max(acc, cur));
   };
+
   const compareScores = (oneScore, anotherScore) => {
     if (oneScore > anotherScore) {
       return 1;
     }
+
     if (oneScore < anotherScore) {
       return 2;
     }
+
     return 0;
   };
 
