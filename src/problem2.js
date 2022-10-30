@@ -1,22 +1,21 @@
 function problem2(cryptogram) {
-  var answer;
-    let temp = [];
-    temp.push(cryptogram[0]);
+  var answer = [];
+  answer.push(cryptogram[0]);
 
     for(let i=1; i<cryptogram.length; i++) {
-      if(temp.length === 0) {
-        temp.push(cryptogram[i]);
+      if(answer.length === 0) {
+        answer.push(cryptogram[i]);
       }
       else {
-        if(temp[temp.length-1] === cryptogram[i]) {
-          temp.pop();
+        if(answer[answer.length-1] === cryptogram[i]) {
+          answer.pop();
         }
         else{
-          temp.push(cryptogram[i])
+          answer.push(cryptogram[i])
         }
       }
     }
-  return temp.join("");
+  return answer.join("");
 }
 
 
