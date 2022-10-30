@@ -12,6 +12,8 @@
 5. 각 점수를 비교하여, 승부를 결정한다.
 */
 function problem1(pobi, crong) {
+  var answer = "";
+
   function SumOrMulti(Num) {
     let sum = 0;
     let multi = 1;
@@ -27,9 +29,9 @@ function problem1(pobi, crong) {
   }
 
   if (Between(pobi[0], 1, 399) && Between(crong[0], 1, 399)) {
-    if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
-      const pNum = p[1] % 10 == 0 ? p[0] : p[1];
-      const cNum = c[1] % 10 == 0 ? c[0] : c[1];
+    if (pobi[0] + 1 == pobi[1] && crong[0] + 1 == crong[1]) {
+      const pNum = pobi[1] % 10 == 0 ? pobi[0] : pobi[1];
+      const cNum = crong[1] % 10 == 0 ? crong[0] : crong[1];
       answer =
         SumOrMulti(pNum) > SumOrMulti(cNum)
           ? 1
