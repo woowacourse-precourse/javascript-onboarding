@@ -1,6 +1,7 @@
 function decrypting(cryptogram) {
-  while(cryptogram !== cryptogram.replace(/(\w)\1/g, ""))
-    cryptogram = cryptogram.replace(/(\w)\1/g, "");
+  const regExp = /(\w)\1+/g;
+  while(cryptogram !== cryptogram.replace(regExp, ""))
+    cryptogram = cryptogram.replace(regExp, "");
   return cryptogram;
 }
 
