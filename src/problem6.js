@@ -52,9 +52,7 @@ function duplicateCheckApp(CrewDataArr) {
       }
     }
     if(delCrewDataIndexArr.length>0){
-      delCrewDataIndexArr.push(i);
-      delCrewDataIndexArr.sort((a,b)=>b-a);
-      delCrewDataIndexArr.map((idx)=>{
+      delCrewDataIndexArr.push(i).sort((a,b)=>b-a).map((idx)=>{
         duplicateDataArr.push(CrewDataArr[idx][0]);
         CrewDataArr.splice(idx, 1);
         i--;
