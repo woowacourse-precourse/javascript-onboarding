@@ -49,7 +49,7 @@ function problem4(words) {
       result += wordMap.get(word).toLowerCase();
     }
   }
-  console.log(result);
+  return result;
 }
 
 problem4("I love you");
