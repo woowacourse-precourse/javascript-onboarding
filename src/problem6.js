@@ -91,8 +91,19 @@ function problem6(forms) {
     else {return true;}
 
   }
-
   //!3. 닉네임은 한글만 가능
+
+  function CHECK_NICK_NAME_KOR (nickName){
+    const nickNameWordList = nickName.split('');
+    for(word of nickNameWordList){
+      if(/[가-힣]/.test(word) === false){
+        return false;
+      }      
+    }
+    return true;
+  }
+
+
   //!4. 닉네임의 전체 길이는 1자 이상, 20자 미만
   //!5. 결과값은 오름차순으로 정렬
   //!6. 결과값의 중복된 내용은 제거
