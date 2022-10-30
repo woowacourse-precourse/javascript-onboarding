@@ -1,7 +1,7 @@
 function problem6(forms) {
 
   let checkMemo = [];
-  let repeatedNameFirst = [forms[0]];
+  let repeatedNameFirst = [];
 
   for(let el of forms) {
     let nickname = el[1];
