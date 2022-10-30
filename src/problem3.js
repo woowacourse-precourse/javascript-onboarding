@@ -1,3 +1,5 @@
+const TARGET_NUMBER = [3, 6, 9];
+
 /**
  * @name problem3
  * @description
@@ -26,7 +28,7 @@ function createNumberArray(number) {
 }
 
 function isMatched369(number) {
-  return number.toString().match(/3|6|9/g);
+  return number.toString().match(new RegExp(TARGET_NUMBER.join("|"), "g"));
 }
 
 function getIncluded369(number) {

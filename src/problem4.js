@@ -1,3 +1,8 @@
+const ASCII_UPPER_A = 65;
+const ASCII_UPPER_Z = 90;
+const ASCII_LOWER_A = 97;
+const ASCII_LOWER_Z = 122;
+
 /**
  * @name problem4
  * @description
@@ -41,13 +46,13 @@ function getLowerReverseWord(char) {
 
 function isUpperCase(char) {
   const ascii = char.charCodeAt();
-  if (ascii >= 65 && ascii <= 90) return true;
+  if (ascii >= ASCII_UPPER_A && ascii <= ASCII_UPPER_Z) return true;
   return false;
 }
 
 function isLowerCase(char) {
   const ascii = char.charCodeAt();
-  if (ascii >= 97 && ascii <= 122) return true;
+  if (ascii >= ASCII_LOWER_A && ascii <= ASCII_LOWER_Z) return true;
   return false;
 }
 

@@ -1,3 +1,8 @@
+const POBI_CASE = 1;
+const CRONG_CASE = 2;
+const DRAW_CASE = 0;
+const EXCEPTION_CASE = -1;
+
 /**
  * @name problem1
  * @description
@@ -26,20 +31,25 @@
  */
 
 function problem1(pobi, crong) {
-  if (!isValidPage(pobi) || !isValidPage(crong)) return -1;
-  if (!isSequenceNumber(pobi) || !isSequenceNumber(crong)) return -1;
+  if (!isValidPage(pobi) || !isValidPage(crong)) return EXCEPTION_CASE;
+  if (!isSequenceNumber(pobi) || !isSequenceNumber(crong))
+    return EXCEPTION_CASE;
 
   const pobiMaxNumber = getMaxNumber(pobi);
   const crongMaxNumber = getMaxNumber(crong);
 
-  if (pobiMaxNumber > crongMaxNumber) return 1;
-  else if (pobiMaxNumber < crongMaxNumber) return 2;
-  else if (pobiMaxNumber === crongMaxNumber) return 0;
-  else return -1;
+  if (pobiMaxNumber > crongMaxNumber) return POBI_CASE;
+  if (pobiMaxNumber < crongMaxNumber) return CRONG_CASE;
+  if (pobiMaxNumber === crongMaxNumber) return DRAW_CASE;
+  return EXCEPTION_CASE;
 }
 
 function isValidPage(numbers) {
-  if (numbers.indexOf(1) === -1 || numbers.indexOf(400) === -1) return true;
+  if (
+    numbers.indexOf(1) === EXCEPTION_CASE ||
+    numbers.indexOf(400) === EXCEPTION_CASE
+  )
+    return true;
   return false;
 }
 

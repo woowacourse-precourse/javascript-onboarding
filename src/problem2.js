@@ -1,3 +1,6 @@
+const CRYPTOGRAM_MIN_LENGTH = 1;
+const CRYPTOGRAM_MAX_LENGTH = 1000;
+
 /**
  * @name problem2
  * @description
@@ -23,7 +26,11 @@
  */
 
 function problem2(cryptogram) {
-  if (cryptogram.length <= 1) return cryptogram;
+  if (
+    cryptogram.length < CRYPTOGRAM_MIN_LENGTH ||
+    cryptogram.length > CRYPTOGRAM_MAX_LENGTH
+  )
+    return -1;
   return getNoRepeatCryptogram(cryptogram);
 }
 

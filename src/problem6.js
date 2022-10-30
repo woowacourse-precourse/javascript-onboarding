@@ -1,3 +1,9 @@
+const EMAIL_MIN_LENGTH = 11;
+const EMAIL_MAX_LENGTH = 20;
+const NICKNAME_MIN_LENGTH = 1;
+const NICKNAME_MAX_LENGTH = 20;
+const SEQUENCE_MIN_LENGTH = 2;
+
 /**
  * @function problem6
  * @description
@@ -60,7 +66,8 @@ function vaildateEmailDomain(email) {
  */
 
 function vaildateEmailLength(email) {
-  if (email.length >= 11 && email.length < 20) return true;
+  if (email.length >= EMAIL_MIN_LENGTH && email.length < EMAIL_MAX_LENGTH)
+    return true;
   return false;
 }
 
@@ -86,7 +93,11 @@ function validateNicknameType(nickname) {
  */
 
 function validateNicknameLength(nickname) {
-  if (nickname.length >= 1 && nickname.length < 20) return true;
+  if (
+    nickname.length >= NICKNAME_MIN_LENGTH &&
+    nickname.length < NICKNAME_MAX_LENGTH
+  )
+    return true;
   return false;
 }
 
@@ -109,7 +120,7 @@ function getSplitNickname(nickname) {
       )
     )
     .flat()
-    .filter((string) => string.length >= 2);
+    .filter((string) => string.length >= SEQUENCE_MIN_LENGTH);
 }
 
 /**
