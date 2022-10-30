@@ -6,10 +6,8 @@
 * 5. 코드 정리
 */
 
-
 function problem4(word) {
-  var answer;
-  return answer;
+  var wordArr = word.toString().split("");
 }
 
 module.exports = problem4;
