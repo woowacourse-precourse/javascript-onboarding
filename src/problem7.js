@@ -15,11 +15,12 @@ function makeFriendsObj(friends) {
 function makePointObj(user, friendsObj, visitors) {
   let pointObj = {};
   let userFriend = friendsObj[user];
-  pointObj = addSameFriendPoint(userFriend, friendsObj, pointObj);
-  pointObj = addVisitorPoint(visitors, pointObj);
+  pointObj = addSameFriendPoint(user, userFriend, friendsObj, pointObj);
+  pointObj = addVisitorPoint(friendsObj, user, visitors, pointObj);
+  return pointObj;
 }
 //user와 같은 친구를 가진 사람들의 점수를 계산한다.
-function addSameFriendPoint(userFriend, friendsObj, pointObj) {
+function addSameFriendPoint(user, userFriend, friendsObj, pointObj) {
   for (friend of userFriend) {
     for (nearFriend of friendsObj[friend]) {
       if (nearFriend == user) {
@@ -33,7 +34,7 @@ function addSameFriendPoint(userFriend, friendsObj, pointObj) {
   return pointObj;
 }
 //user의 timeline에 방문한 사람들의 점수를 계산한다.
-function addVisitorPoint(visitors, pointObj) {
+function addVisitorPoint(friendsObj, user, visitors, pointObj) {
   for (visitor of visitors) {
     if (friendsObj[user].includes(visitor)) {
       continue;
@@ -65,13 +66,28 @@ function sortWithPoint(result) {
   return result;
 }
 //정답 배열을 생성한다.
-function makeAnswerArr(result) {}
+function makeAnswerArr(result, answer) {
+  if (result.length < 5) {
+    for (userName of result) {
+      answer.push(userName[0]);
+    }
+  } else {
+    for (let i = 0; i < 5; i++) {
+      answer.push(result[i][0]);
+    }
+  }
+  return answer;
+}
 
 function problem7(user, friends, visitors) {
   var answer = [];
-  let friendObj = makeFriendsObj(friends);
-  let pointObj = makePointObj(user, friendObj, visitors);
+  let friendsObj = makeFriendsObj(friends);
+
+  let pointObj = makePointObj(user, friendsObj, visitors);
+
   let result = makeResultArr(pointObj);
+
+  answer = makeAnswerArr(result, answer);
 
   return answer;
 }
