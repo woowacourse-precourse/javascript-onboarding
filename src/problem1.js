@@ -1,33 +1,25 @@
-function isError(arr) {
-  let [left, right] = arr;
+function isError(pages) {
+  let [left, right] = pages;
   if (left < 1 || right > 400) return 1;
   if (left % 2 == 0) return 1;
   if (left + 1 !== right) return 1;
   return 0;
 }
-function pageNumSum(num) {
-  let ret = 0;
-  while (num) {
-    ret = ret + (num % 10);
-    num = Math.trunc(num / 10);
+function maxBetweenSumAndMult(page) {
+  let sum = 0;
+  let mult = 1;
+  while (page) {
+    sum += page % 10;
+    mult *= page % 10;
+    page = Math.trunc(page / 10);
   }
-  return ret;
+  return Math.max(sum, mult);
 }
-function pageNumMult(num) {
-  let ret = 1;
-  while (num) {
-    ret = ret * (num % 10);
-    num = Math.trunc(num / 10);
-  }
-  return ret;
-}
-function findMaxValue(arr) {
-  let [left, right] = arr;
-  const leftSum = pageNumSum(left);
-  const rightSum = pageNumSum(right);
-  const leftMult = pageNumMult(left);
-  const rightMult = pageNumMult(right);
-  const maxValue = Math.max(leftSum, leftMult, rightSum, rightMult);
+function findMaxValue(pages) {
+  let [left, right] = pages;
+  const leftMax = maxBetweenSumAndMult(left);
+  const rightMax = maxBetweenSumAndMult(right);
+  const maxValue = Math.max(leftMax, rightMax);
   return maxValue;
 }
 function problem1(pobi, crong) {
