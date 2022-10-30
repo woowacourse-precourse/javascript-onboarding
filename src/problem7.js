@@ -12,7 +12,12 @@ function makeFriendsObj(friends) {
   return friendsObj;
 }
 //user에 해당하는 추천 점수를 저장하는 pointObj를 생성한다.
-function makePointObj(user, friendsObj, visitors) {}
+function makePointObj(user, friendsObj, visitors) {
+  let pointObj = {};
+  let userFriend = friendsObj[user];
+  pointObj = addSameFriendPoint(userFriend, friendsObj, pointObj);
+  pointObj = addVisitorPoint(visitors, pointObj);
+}
 //user와 같은 친구를 가진 사람들의 점수를 계산한다.
 function addSameFriendPoint(userFirend, friendsObj, pointObj) {}
 //user의 timeline에 방문한 사람들의 점수를 계산한다.
