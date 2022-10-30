@@ -6,19 +6,19 @@ function problem4(word) {
   );
   const reversedAlphas = [...alphas].reverse();
 
-  let result = "";
-  for (let char of word) {
+  return word.split("").reduce((reduced, char) => {
+    let copy = reduced;
     const idx = alphas.indexOf(char.toUpperCase());
     if (idx === -1) {
-      result += " ";
+      copy += " ";
     } else {
-      result += isUpperCase(char)
+      copy += isUpperCase(char)
         ? reversedAlphas[idx]
         : reversedAlphas[idx].toLowerCase();
     }
-  }
 
-  return result;
+    return copy;
+  }, "");
 }
 
 module.exports = problem4;
