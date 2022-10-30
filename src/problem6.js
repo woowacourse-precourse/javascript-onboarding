@@ -3,16 +3,39 @@ function overlapNickname(forms) {
     const [_, nickname] = user;
 
     for (let i = 0; i < nickname.length - 1; i++) {
-      const substrNickname = nickname.substring(i, i + 2);
-      const currentNicknameNum = map.get(substrNickname) || 0;
-      map.set(substrNickname, currentNicknameNum + 1);
+      const substringNickname = nickname.substring(i, i + 2);
+      const currNicknameNum = map.get(substringNickname) || 0;
+      map.set(substringNickname, currNicknameNum + 1);
     }
+
     return map;
   }, new Map());
 }
 
+function getEmail({ forms, nickNameMap }) {
+  const duplicateEmail = forms.reduce((set, user) => {
+    const [email, nickname] = user;
+
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const substringNickName = nickname.substring(i, i + 2);
+      console.log(substringNickName);
+      const currNicknameNum = nickNameMap.get(substringNickName);
+      console.log(currNicknameNum);
+
+      if (currNicknameNum > 1) set.add(email);
+    }
+
+    return set;
+  }, new Set());
+  return [...duplicateEmail];
+}
+
 function problem6(forms) {
-  const nickname = overlapNickname(forms);
+  const nickNameMap = overlapNickname(forms);
+  getEmail({
+    forms,
+    nickNameMap,
+  });
 }
 
 function testCode() {
