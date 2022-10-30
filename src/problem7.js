@@ -19,7 +19,19 @@ function makePointObj(user, friendsObj, visitors) {
   pointObj = addVisitorPoint(visitors, pointObj);
 }
 //user와 같은 친구를 가진 사람들의 점수를 계산한다.
-function addSameFriendPoint(userFirend, friendsObj, pointObj) {}
+function addSameFriendPoint(userFriend, friendsObj, pointObj) {
+  for (friend of userFriend) {
+    for (nearFriend of friendsObj[friend]) {
+      if (nearFriend == user) {
+        continue;
+      } else if (!(nearFriend in pointObj)) {
+        pointObj[nearFriend] = 0;
+      }
+      pointObj[nearFriend] += 10;
+    }
+  }
+  return pointObj;
+}
 //user의 timeline에 방문한 사람들의 점수를 계산한다.
 function addVisitorPoint(visitors, pointObj) {}
 //추천 친구와 점수를 저장하는 2차원 배열 result를 생성
