@@ -1,12 +1,12 @@
 function problem5(money) {
-  let currency = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  let answer = [];
+  const currency = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  const answer = [];
 
-  let currentMoney = [];
+  const currentMoney = [];
   currentMoney.push(money);
 
   for(item of currency){
-    let result = (currentMoney[0] -(currentMoney[0] % item))/item;
+    const result = (currentMoney[0] -(currentMoney[0] % item))/item;
     answer.push(result);
     currentMoney.push(currentMoney[0] - item * result)
     currentMoney.shift();
