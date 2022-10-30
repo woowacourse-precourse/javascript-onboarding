@@ -1,11 +1,5 @@
 function problem7(user, friends, visitors) {
   var answer;
-  
-  let allUser = friendestoArr(friends).concat(visitors);
-  
-  const set = new Set(allUser);
-  const userArr = [...set];
-
   let userFriend = [];
   for (let i = 0; i < friends.length; i++) {
       let findUserFriend = friends[i].indexOf(user);
@@ -23,32 +17,34 @@ function problem7(user, friends, visitors) {
   .filter(x => !userFriend.includes(x))
   .filter(x => x !== user);
   
-  let UserwithScore = [];
-  for (let i = 0; i < acquaintance.length; i++) {
-    UserwithScore.push([acquaintance[i], 10]);
-  }
+  let UserwithScore = giveScore(acquaintance, 10)
+  let totalScoreArr = UserwithScore.concat(giveScore(visitors, 1));
+  console.log(totalScoreArr);
 
-  for (let i = 0; i < UserwithScore.length; i++) {
-    for (let j = i + 1; j < UserwithScore.length; j++) {
-      if (UserwithScore[i][0] == UserwithScore[j][0]) {
-        UserwithScore[i][1] += UserwithScore[j][1];
-        UserwithScore.splice(j, 1);
-        console.log(UserwithScore);
-      }
-    }
-  }
-
-  console.log(`ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ`);
-  console.log(UserwithScore);
+  let finalScoreArr = sumScore(totalScoreArr);
+  console.log(finalScoreArr);
 
   return answer;
 }
 
-function friendestoArr(arr) {
-  let result = arr.reduce((acc, cur) => {
-    return acc.concat(cur);
-  });
+function giveScore(arr, score) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push([arr[i], score]);
+  }
   return result;
+}
+
+function sumScore(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i][0] == arr[j][0]) {
+        arr[i][1] += arr[j][1];
+        arr.splice(j, 1);
+      }
+    }
+  }
+  return arr;
 }
 
 module.exports = problem7;
