@@ -3,9 +3,10 @@ function problem2(cryptogram) {
   var answer;
   // 예외처리
   answer = errorHandler(cryptogram);
-
   // 암호해독
-  return solvePassword(answer);
+  answer = solvePassword(answer);
+
+  return answer;
 }
 
 function errorHandler(cryptogram) {
