@@ -15,12 +15,10 @@
  */
 
 function problem3(number) {
-  let count = 0;
-  for (let i = 1; i <= number; i++) {
-    const includes = getInclude369(i);
-    if (includes) count += includes.length;
-  }
-  return count;
+  return createNumberArray(number)
+    .filter((num) => isMatched369(num))
+    .map((num) => getIncluded369(num))
+    .reduce((acc, cur) => acc + cur, 0);
 }
 
 function createNumberArray(number) {
