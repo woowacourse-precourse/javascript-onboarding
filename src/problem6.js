@@ -8,6 +8,9 @@ function problem6(forms) {
               stack.push(letter);
           if (stack.length === 2){
               x = stack.join('')
+              if (dictionary.hasOwnProperty(x)){
+                dictionary[x].push(formList[0])
+              }
               if (!dictionary.hasOwnProperty(x)){
                 dictionary[x] = [formList[0]]
               }
