@@ -8,7 +8,12 @@ function problem2(cryptogram) {
   while(bool){
     var new_string= "";
     for(var i = 0; i < before_length - 1; i++){
-      if(old_string[i] == old_string[i+1]) i++;
+      if(old_string[i] == old_string[i+1]) {
+        const flg = old_string[i];
+        while(old_string[i+1] == flg){
+          i++;
+        }
+      }
       else new_string += old_string[i];
     }
     if(old_string[old_string.length-1] != old_string[old_string.length-2]) new_string += old_string[old_string.length-1];
