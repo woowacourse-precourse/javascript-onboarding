@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const usersList = getListOfUserAndFriends(friends);
+  const friendsOfUsersList = findFriendOfUser(user, friends);
 }
 
 function getListOfUserAndFriends(userFriends) {
@@ -28,6 +29,30 @@ function getListOfUserAndFriends(userFriends) {
   scoreTable.shift();
 
   return scoreTable;
+}
+
+function findFriendOfUser(currentUser, userFriends) {
+  let friendsList = new Array().fill(0);
+  let twoFriendsIndex, userIndex, friendIndex;
+
+  userFriends.forEach((twoFriends) => {
+    twoFriendsIndex = userFriends.indexOf(twoFriends);
+
+    twoFriends.forEach((friend) => {
+      if (friend === currentUser) {
+        userIndex = twoFriends.indexOf(friend);
+
+        if (userIndex === 0) {
+          friendIndex = 1;
+        }
+        friendIndex = 0;
+
+        friendsList.push(userFriends[twoFriendsIndex][friendIndex]);
+      }
+    });
+  });
+
+  return friendsList;
 }
 
 module.exports = problem7;
