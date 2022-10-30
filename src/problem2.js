@@ -9,8 +9,7 @@ function problem2(cryptogram) {
     }
   });
 
-  return answer;
-  //2. answer를 문자열로 변환해 반환한다.
+  return answer.join('');
 }
 
 module.exports = problem2;
