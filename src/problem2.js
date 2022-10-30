@@ -5,10 +5,14 @@ function problem2(cryptogram) {
         if (alphabet === word[index - 1]) return;
 
         if (alphabet !== word[index + 1]) return alphabet;
-        // alphabet === word[index]
+
         return "";
       })
       .join("");
+
+  if (findDuplicateWord(cryptogram) === cryptogram) return cryptogram;
+
+  return problem2(findDuplicateWord(cryptogram));
 }
 
 module.exports = problem2;
