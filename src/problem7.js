@@ -38,12 +38,28 @@ const calcAcquaintanceScore = (scores, user, friends) => {
   })
 }
 
+// 사용자의 타임라인 방문 점수 계산 
+const calcVisitScore = (scores, user, friends, visitors) => {
+  const relation = makeRelation(friends);
+  visitors.map(visitor => {
+    if(!relation[user].includes(visitor)) {
+      if(!Object.keys(scores).includes(visitor)) {
+        scores[visitor] = 1;
+      }
+      else {
+        scores[visitor] += 1;
+      }
+    }
+  })
+}
 
 function problem7(user, friends, visitors) {
   const scores = {};
   let scoreArr = [];
 
   calcAcquaintanceScore(scores, user, friends);
+  calcVisitScore(scores, user, friends, visitors);
+  
 }
 
 module.exports = problem7;
