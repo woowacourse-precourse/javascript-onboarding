@@ -1,6 +1,13 @@
 function isValid(money) {
-  if (typeof money !== 'number') return false;
-  if (money < 1 || money > 1000000) return false;
+  if (typeof money !== 'number') {
+    return false;
+  }
+  if (money < 1 || money > 1000000) {
+    return false;
+  }
+  if (money !== Math.floor(money)) {
+    return false;
+  }
   return true;
 }
 
@@ -19,7 +26,9 @@ function getMoneyArr(money) {
 }
 
 function problem5(money) {
-  if (!isValid(money)) return ;
+  if (!isValid(money)) {
+    return;
+  }
   return getMoneyArr(money);
 }
 
