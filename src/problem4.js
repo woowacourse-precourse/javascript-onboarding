@@ -8,6 +8,14 @@ const isAlphabet = (str) => {
     return true;
 };
 
+const isCapital = (alp) => {
+  if (
+    "A".charCodeAt() <= alp.charCodeAt() &&
+    alp.charCodeAt() <= "Z".charCodeAt()
+  )
+    return true;
+};
+
 function problem4(word) {
   var answer;
 
