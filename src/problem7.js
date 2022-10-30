@@ -1,10 +1,33 @@
+function sortArrayDecreaseValue(friend_score){
+  let result_score = [];
+  for(let score in friend_score){
+    result_score.push([score, friend_score[score]]);
+  }
+  result_score.sort(function(a, b){
+    return b[1] - a[1];
+  });
+
+  return result_score;
+}
 
 
-
-
-function problem7(user, friends, visitors) {
+function getResult(result_score){
   let answer = [];
+  for(let i = 0; i < result_score.length; i++){    
+    if(result_score[i][1] === 0){
+      break;
+    }
+    if(answer.length > 5){
+      break;
+    }
+    answer.push(result_score[i][0]);
+  }
+  return answer;
+}
+
+function getFriendList(friends){
   let friend_dic = {};
+
   for(let i = 0; i < friends.length; i++){
     let friend1 = friends[i][0];
     let friend2 = friends[i][1];
@@ -20,6 +43,12 @@ function problem7(user, friends, visitors) {
       friend_dic[friend2] = [friend1];
     }  
   }
+  return friend_dic;
+}
+
+function problem7(user, friends, visitors) {
+  let answer = [];
+  let friend_dic = getFriendList(friends);
 
   // 추천점수 저장 객체 만들기
   let friend_score = {};
@@ -47,41 +76,20 @@ function problem7(user, friends, visitors) {
       friend_score[visitors[i]] = 1;
     }
   }
+  
 
-
-  // 원래 user와 친구였던 사람 제거
+  // 원래 user와 이미 친구인 사람 제거
   for(let i = 0; i < friend_dic[user].length; i++){
     delete friend_score[friend_dic[user][i]];
   }
   delete friend_score[user];
  
   // value 기준으로 내림차순 정렬
-  let result_score = sortDecreaseValue(friend_score);
-
-  for(let i = 0; i < result_score.length; i++){    
-    if(result_score[i][1] === 0){
-      break;
-    }
-    if(answer.length > 5){
-      break;
-    }
-    answer.push(result_score[i][0]);
-  }
+  answer = getResult(sortArrayDecreaseValue(friend_score));
   // console.log(answer);
   return answer;
 }
 
-function sortDecreaseValue(friend_score){
-  let result_score = [];
-  for(let score in friend_score){
-    result_score.push([score, friend_score[score]]);
-  }
-  result_score.sort(function(a, b){
-    return b[1] - a[1];
-  });
-
-  return result_score;
-}
 
 // problem7("mrko",	
 // [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
