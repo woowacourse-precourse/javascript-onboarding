@@ -16,7 +16,10 @@ function problem6(forms) {
         }
     });
 
-    return [...result.values()].sort().map((email) => `${email}@email.com`);
+    return [...result.values()]
+        .flat()
+        .sort()
+        .map((email) => `${email}@email.com`);
 }
 
 module.exports = problem6;
