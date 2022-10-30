@@ -11,7 +11,9 @@ function problem4(word) {
   const Array = word.split("");
   let Chung_Array = Array.map((e) => {
     if (e.charCodeAt() >= 65 && e.charCodeAt() <= 90) {
+      return String.fromCharCode(155 - e.charCodeAt());
     } else if (e.charCodeAt() >= 97 && e.charCodeAt() <= 122) {
+      return String.fromCharCode(219 - e.charCodeAt());
     } else return e;
   });
   answer = Chung_Array.join("");
