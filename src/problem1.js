@@ -20,6 +20,9 @@ function problem1(pobi, crong) {
   // 포비와 크롱이 펼친 페이지의 홀수 짝수 순서가 맞아야 한다.
   if (leftPageByPobi % 2 !== leftPageByCrong % 2) return EXCEPTIONS;
 
+  // pobi와 crong의 배열 길이가 2가 아닌 경우 예외사항을 반환한다.
+  if (pobi.length !== 2 || crong.length !== 2) return EXCEPTIONS;
+
   // 페이지 번호의 각 자리 숫자를 더한 값과 곱한 값중 큰 값을 리턴한다.
   const getMaxScore = (pages) => {
     return Math.max(

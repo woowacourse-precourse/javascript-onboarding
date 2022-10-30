@@ -13,4 +13,9 @@ describe("problem1", () => {
     expect(problem1([99, 100], [194, 195])).toEqual(-1);
     expect(problem1([100, 101], [193, 194])).toEqual(-1);
   });
+
+  test("pobi와 crong의 배열 길이가 2가 아닌 경우 예외사항을 반환해야 한다.", () => {
+    expect(problem1([1, 2, 3], [193, 194])).toEqual(-1);
+    expect(problem1([100, 101], [20, 21, 22])).toEqual(-1);
+  });
 });
