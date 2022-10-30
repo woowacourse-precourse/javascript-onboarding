@@ -1,3 +1,9 @@
+const MIN_LEN = 11;
+const MAX_LEN = 19;
+const SUBSTR_LEN = 2;
+const IS_NOT_FOUND = 0;
+const WILL_BE_ADDED = 1;
+
 function problem6(forms) {
   const answer = checkForms(forms);
   return answer;
@@ -26,9 +32,9 @@ function checkForms(forms) {
       const existEmail = subNicknameMap.get(subNickname);
       if (existEmail === undefined) {
         subNicknameMap.set(subNickname, email);
-        emailMap.set(email, 0);
+        emailMap.set(email, IS_NOT_FOUND);
       } else {
-        emailMap.set(existEmail, 1);
+        emailMap.set(existEmail, WILL_BE_ADDED);
         if (crewList.includes(email) === false) crewList.push(email);
       }
     }
@@ -44,7 +50,7 @@ function checkForms(forms) {
 
 /* 2글자 분리 함수 */
 function getSubNickname(nickname, idx) {
-  return nickname.substr(idx, 2);
+  return nickname.substr(idx, SUBSTR_LEN);
 }
 
 /* 양식 확인 함수 */
@@ -55,13 +61,13 @@ function isProperForm(form) {
 
 /* 이메일 양식 확인 함수 (11~19자) */
 function isProperEmail(email) {
-  if (email.length < 11 || email.length > 19) return false;
+  if (email.length < MIN_LEN || email.length > MAX_LEN) return false;
   return email.match(/^[a-zA-Z0-9]*@email.com$/) === null ? false : true;
 }
 
 /* 닉네임 확인 함수 (한글만 가능, 1~19자) */
 function isProperNickname(nickname) {
-  if (nickname.length < 1 || nickname.length > 19) return false;
+  if (nickname.length < 1 || nickname.length > MAX_LEN) return false;
   return nickname.match(/^[ㄱ-ㅎ가-힣]*$/) === null ? false : true;
 }
 
