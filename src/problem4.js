@@ -8,6 +8,14 @@ function checkAlpha(char) {
   return (char >= "a" && char <= "z") || (char >= "A" && char <= "Z");
 }
 
+function checkLower(alphabet) {
+  if (alphabet === alphabet.toLowerCase()) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function problem4(word) {
   var answer;
   return answer;
