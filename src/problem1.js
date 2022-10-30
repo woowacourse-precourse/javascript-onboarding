@@ -1,16 +1,14 @@
 function problem1(pobi, crong) {
-  if (pobi[0], crong[0] === 1 || pobi[0], crong[0] === 399) {
-    //시작 면[1, 2]이나 마지막 면[399, 400]이 나오도록 책을 펼치지 않는다.
+  if (pobi[0], crong[0] < 1 || pobi[0], crong[0] > 400) {
     return -1;
   } else if (pobi.length != 2 || crong.length != 2) {
-    //pobi와 crong의 길이는 2이다.
     return -1;
-  } else if (pobi[0] % 2, crong[0] % 2 != 1 || pobi[1] % 2, crong[1] % 2 != 0 || pobi[0]+1 != pobi[1] || crong[0]+1 != crong[1]) {
+  } else if (pobi[0] % 2, crong[0] % 2 != 1 || pobi[1] % 2, crong[1] % 2 != 0 || pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
     //pobi와 crong에는 [왼쪽 페이지 번호(홀수), 오른쪽 페이지 번호(짝수)]가 순서대로 들어있다.
     return -1;
   }
 
-  var answer;
+  let answer;
 
   let pobiBiggest = isBigger(sumOrMultipy(pobi[0]), sumOrMultipy(pobi[1]));
   let crongBiggest = isBigger(sumOrMultipy(crong[0]), sumOrMultipy(crong[1]));
@@ -22,36 +20,27 @@ function problem1(pobi, crong) {
   } else if (crongBiggest === pobiBiggest) {
     answer = 0;
   }
-  
+
   return answer;
 }
 
 function sumOrMultipy(page) {
-  var hundred = Math.floor(page / 100);
-  var ten = Math.floor((page % 100) / 10);
-  var one = page % 10;
+  let hundred = Math.floor(page / 100);
+  let ten = Math.floor((page % 100) / 10);
+  let one = page % 10;
 
-  var sum = hundred + ten + one;
-  var multiply = 0;
+  let sum = hundred + ten + one;
+  let multiply = 0;
 
-  if(page<100 && page>=10){
+  if (page < 100 && page >= 10) {
     multiply = ten * one;
-  }
-  else if(page<10){
+  } else if (page < 10) {
     multiply = one;
-  }
-  else{
-    var multiply = hundred * ten * one;
+  } else {
+    multiply = hundred * ten * one;
   }
 
-  if (sum > multiply) {
-    return sum;
-  } else if (multiply > sum) {
-    return multiply;
-  } else if (multiply === sum) {
-    //sum, multiply 변수 중 아무거나 반환해도 무관
-    return sum;
-  }
+  return isBigger(sum, multiply);
 }
 
 function isBigger(n1, n2) {
