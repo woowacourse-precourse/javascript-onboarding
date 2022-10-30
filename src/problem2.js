@@ -15,6 +15,8 @@ function duplicateStr(str){
   let strArr = str.split('')
   let newArr = []
 
+  // 반복문을 통해 새로운 배열에 스플릿 된 문장을 하나씩 담아낸다.
+  // 후 담은 배열의 인덱스와 기존의 인덱스와 비교후 추가 제거.
   for(i=0; i<strArr.length; i++){
     if(newArr.length === 0) newArr.push(strArr[i])
     else if (newArr[newArr.length - 1] == strArr[i]) {
