@@ -1,22 +1,27 @@
-function problem2(cryptogram) {
-  let strArr = cryptogram.split("");
-
+function removeOverlap(array) {
   let stack = [];
-
-  strArr.forEach((str) => {
+  array.forEach((str) => {
     if (!stack.length) {
       stack.push(str);
     } else {
       if (stack[stack.length - 1] === str) {
-        flag = true;
         stack.pop();
       } else {
         stack.push(str);
       }
     }
   });
+  return stack;
+}
 
-  return stack.join("");
+function problem2(cryptogram) {
+  let strArr = cryptogram.split("");
+
+  const result = removeOverlap(strArr);
+
+  return result.join("");
 }
 
 module.exports = problem2;
+
+console.log(problem2("browoanoommnaon"));
