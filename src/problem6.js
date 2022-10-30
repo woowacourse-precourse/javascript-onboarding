@@ -19,12 +19,21 @@ function nicknameDupleCountMap(nickname) {
   }, new Map());
   return nickNameMap;
 }
+function nicknameDuple(nickname) {
+  let dupliData = [];
+  nickname.forEach((count, dupli) => {
+    if (count > 1) dupliData.push(dupli);
+  });
+  return dupliData;
+}
 function problem6(forms) {
   let answer = [];
   let nicknameArray = [];
   let dupleCountMap = new Map();
+  let dupliData = [];
   nicknameArray = nicknameSplitTwoArray(forms);
   dupleCountMap = nicknameDupleCountMap(nicknameArray);
+  dupliData = nicknameDuple(dupleCountMap);
   return answer;
 }
 
