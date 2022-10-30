@@ -4,25 +4,25 @@ function checkEmail(crew, idx, forms){
   }
 }
 
-function splitNickname(forms){
-  const twoWordArr = [];
+function sliceNickname(forms){
+  const sliceNickArr = [];
 
   for(let i = 0 ; i<forms.length ; i++){
-    const add = [];
+    const sliceTwoLetter = [];
     for(let j = 0; j<forms[i][1].length - 1 ; j++){
-      add.push(forms[i][1].substr(j,2));
+      sliceTwoLetter.push(forms[i][1].slice(j,j+2));
     }
-    twoWordArr.push(add);
+    sliceNickArr.push(sliceTwoLetter);
   }
-  return twoWordArr;
+  return sliceNickArr;
 }
 
 function getCrewIndex(forms){
   const crewIndex = [];
-  const twoWordArr = splitNickname(forms);
-  for(let i = 0; i<twoWordArr.length ; i++){
-    for(let j = i+1 ; j<twoWordArr.length ; j++){
-      if(twoWordArr[i].filter(x=> twoWordArr[j].includes(x))!=""){
+  const sliceNickArr = sliceNickname(forms);
+  for(let i = 0; i<sliceNickArr.length ; i++){
+    for(let j = i+1 ; j<sliceNickArr.length ; j++){
+      if(sliceNickArr[i].filter(x=> sliceNickArr[j].includes(x))!=""){
         crewIndex.push(i, j);
       }
     }
@@ -34,10 +34,10 @@ function getCrewIndex(forms){
 
 function getCrewEmail(forms){
   const crewEmailArr = [];
-  const crewIndex = getCrewIndex(forms);
+  const crewIndexArr = getCrewIndex(forms);
 
-  for(let i = 0 ; i<crewIndex.length ; i++){
-    crewEmailArr.push(forms[crewIndex[i]][0]);
+  for(let i = 0 ; i<crewIndexArr.length ; i++){
+    crewEmailArr.push(forms[crewIndexArr[i]][0]);
   }
   crewEmailArr.sort();
 
@@ -46,7 +46,6 @@ function getCrewEmail(forms){
 
 function problem6(forms) {
   forms.forEach(checkEmail);  
-  
   return getCrewEmail(forms);
 }
 
