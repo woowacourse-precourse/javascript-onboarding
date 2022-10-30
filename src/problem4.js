@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 }
 
 module.exports = problem4;
