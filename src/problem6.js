@@ -1,12 +1,13 @@
 /**
  * cut the string into substrings of length 2
  * @param {string} name given string
- * @returns {string[]} string array of stusbrings of length 2
+ * @param {string} email given email
+ * @returns {[string, string][]} [string, string] array of stusbrings of length 2 and email
  */
-function toSubstr(name) {
+function toSubstr(email, name) {
   substrArray = [];
   for (let i = 0; i < name.length() - 1; i++) {
-    substrArr.push(name[i] + name[i + 1]);
+    substrArr.push([name[i] + name[i + 1], email]);
   }
   return substrArr;
 }
