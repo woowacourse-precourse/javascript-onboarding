@@ -2,6 +2,8 @@ const POBI_CASE = 1;
 const CRONG_CASE = 2;
 const DRAW_CASE = 0;
 const EXCEPTION_CASE = -1;
+const SELECTED_PAGE = 2;
+const SEQUENCE_CASE = 1;
 
 /**
  * @name problem1
@@ -31,6 +33,8 @@ const EXCEPTION_CASE = -1;
  */
 
 function problem1(pobi, crong) {
+  if (!isExactSelectedPage(pobi) || !isExactSelectedPage(crong))
+    return EXCEPTION_CASE;
   if (!isValidPage(pobi) || !isValidPage(crong)) return EXCEPTION_CASE;
   if (!isSequenceNumber(pobi) || !isSequenceNumber(crong))
     return EXCEPTION_CASE;
@@ -46,7 +50,7 @@ function problem1(pobi, crong) {
 
 function isValidPage(numbers) {
   if (
-    numbers.indexOf(1) === EXCEPTION_CASE ||
+    numbers.indexOf(1) === EXCEPTION_CASE &&
     numbers.indexOf(400) === EXCEPTION_CASE
   )
     return true;
@@ -54,7 +58,13 @@ function isValidPage(numbers) {
 }
 
 function isSequenceNumber(numbers) {
-  if (numbers.reduce((acc, cur) => Math.abs(acc - cur), 0) === 1) return true;
+  const [leftPage, rightPage] = numbers;
+  if (rightPage - leftPage === SEQUENCE_CASE) return true;
+  return false;
+}
+
+function isExactSelectedPage(numbers) {
+  if (numbers.length === SELECTED_PAGE) return true;
   return false;
 }
 
