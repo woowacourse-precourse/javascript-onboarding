@@ -2,6 +2,13 @@ const { val } = require("jshint/src/options");
 
 function problem7(user, friends, visitors) {
   var answer;
+  var userFriends = getUserFriends(user, friends);
+
+  for (var i = 0; i < friends.length; i++) {
+    var interWithUserFreinds = friends[i].filter((element) =>
+      userFriends.includes(element)
+    ); // 사용자 친구 목록과의 교집합
+  }
 
   return answer;
 }
