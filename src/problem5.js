@@ -10,6 +10,6 @@ function problem5(money) {
   return answer;
 }
 
-//
+//-- case
 
 module.exports = problem5;
