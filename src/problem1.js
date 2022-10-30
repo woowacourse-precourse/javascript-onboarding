@@ -29,12 +29,12 @@ const calcProduct = (num) => {
 }
 
 const getMaxNum = (player) => {
-  const [odd, even] = player;
+  const [leftPage, rightPage] = player;
   return Math.max(
-    calcSum(odd), 
-    calcSum(even), 
-    calcProduct(odd), 
-    calcProduct(even)
+    calcSum(leftPage), 
+    calcSum(rightPage), 
+    calcProduct(leftPage), 
+    calcProduct(rightPage)
   );
 }
 
