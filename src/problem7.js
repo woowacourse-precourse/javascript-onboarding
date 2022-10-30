@@ -2,8 +2,8 @@ function problem7(user, friends, visitors) {
   var answer;
   const friendList = makeFriendList(user,friends)
   const userFriend = friendList[user]
-  const recommendObj= recommendFriend(userFriend,friendList)
-
+  let recommendObj= sharedFriend(userFriend,friendList)
+  recommendObj = visitFriend(visitors, recommendObj)
 
   return answer;
 }
@@ -21,7 +21,7 @@ function makeFriendList(friends){
   },{})
 }
 
-function recommendFriend(userFriend, friendList){
+function sharedFriend(userFriend, friendList){
   let recommendObj = {}
   for(let name of Object.keys(friendList)){
     //user 제외
@@ -31,6 +31,16 @@ function recommendFriend(userFriend, friendList){
     }
   }
   return recommendObj
+}
+
+function visitFriend(visitors, recommendObj){
+  return visitors.reduce(function(a,b){
+    if(!result[b]){
+        !userFriend.includes(b)?result[b]=1:null}
+    else{
+        result[b]+=1}
+    return a
+  },recommendObj)
 }
 
 
