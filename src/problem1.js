@@ -7,6 +7,12 @@ function problem1(pobi, crong) {
   const MIN_PAGE = 1;
   const MAX_PAGE = 400;
 
+  // pobi와 crong의 값이 배열 형태가 아니라면 예외사항을 반환한다.
+  if (!Array.isArray(pobi) || !Array.isArray(crong)) return EXCEPTIONS;
+
+  // pobi와 crong의 배열 길이가 2가 아닌 경우 예외사항을 반환한다.
+  if (pobi.length !== 2 || crong.length !== 2) return EXCEPTIONS;
+
   const [leftPageByPobi, rightPageByPobi] = pobi;
   const [leftPageByCrong, rightPageByCrong] = crong;
 
@@ -19,9 +25,6 @@ function problem1(pobi, crong) {
 
   // 왼쪽 페이지가 짝수이거나, 오른쪽 페이지가 홀수인 경우 예외사항을 반환한다.
   if (leftPageByPobi % 2 === 0 || leftPageByCrong % 2 === 0 || rightPageByPobi === 1 || rightPageByCrong === 1) return EXCEPTIONS;
-
-  // pobi와 crong의 배열 길이가 2가 아닌 경우 예외사항을 반환한다.
-  if (pobi.length !== 2 || crong.length !== 2) return EXCEPTIONS;
 
   // 페이지 번호의 각 자리 숫자를 더한 값과 곱한 값중 큰 값을 리턴한다.
   const getMaxScore = (pages) => {
