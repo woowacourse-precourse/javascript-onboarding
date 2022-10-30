@@ -30,18 +30,30 @@ function score(userName){
   return Math.max(...scoreList)
 }
 
+function isVaild(userName){
+  if(JSON.stringify(userName) === '[1,2]' || JSON.stringify(userName) === '[399,400]' ){
+    return false;
+  } else if(userName[1]-userName[0] != 1){
+    return false;
+  } else {
+    return true;
+  }
+}
 
 function problem1(pobi, crong) {
-  if(score(pobi)>score(crong)){
+  if(isVaild(pobi) === false || isVaild(crong) === false){
+    return -1;
+  } else if(score(pobi) > score(crong)){
     return 1;
-  } else if(score(pobi)<score(crong)){
+  } else if(score(pobi) < score(crong)){
     return 2;
   } else if(score(pobi) === score(crong)){
     return 0;
-  } else {
-    return -1
   }
-  
+
+}
+
+
 
 
 module.exports = problem1;
