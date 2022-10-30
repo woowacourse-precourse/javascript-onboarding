@@ -3,11 +3,18 @@ function problem2(cryptogram) {
   for(let i=0; i<cryptogram.length;i++){
     stackcryptogram.push(cryptogram[i]);
   }
-
+  let repeat = 0;
   for(i=0; i<stackcryptogram.length;i++){
+    
     if (stackcryptogram[i] === stackcryptogram[i+1]) {
-      stackcryptogram.splice(i,2);
-      i=-1;
+      repeat++;
+    }
+    else{
+      if (repeat !== 0) {
+        stackcryptogram.splice(i-repeat,repeat+1);
+        repeat=0;
+        i=-1;
+      }
     }
   }
 

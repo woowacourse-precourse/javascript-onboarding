@@ -29,7 +29,7 @@ function problem1(pobi, crong) {
   let pobiBiggest = 0;
   let crongBiggest = 0;
 
-  if( (pobiRightnumber-pobiLeftnumber)!==1 || (crongRightnumber-crongLeftnumber)!==1 || pobiLeftnumber>pobiRightnumber || crongLeftnumber>crongRightnumber ){
+  if( (pobiRightnumber-pobiLeftnumber)!==1 || (crongRightnumber-crongLeftnumber)!==1 || pobiLeftnumber>pobiRightnumber || crongLeftnumber>crongRightnumber || pobiLeftnumber<=0 || crongLeftnumber<=0 || pobiRightnumber>400 || crongRightnumber>400 ){
     answer = -1;
     return answer;
   }
