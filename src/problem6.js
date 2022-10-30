@@ -1,6 +1,35 @@
 const partOfWord = [];
 const overLappingWord = [];
 
+const checkCrew = (number) => {
+  if (number < 1 || number > 10000) return true;
+  return false;
+};
+
+const checkEmail = (email) => {
+  if (email.length < 11 || email.length >= 20 || !email.endsWith('email.com'))
+    return true;
+  return false;
+};
+
+const checkNickname = (nickname) => {
+  const regex = /^[ㄱ-ㅎ|가-힣|]+$/;
+  if (nickname.length < 1 || nickname.length >= 20 || !regex.test(nickname))
+    return true;
+  return false;
+};
+
+const checkValid = (forms) => {
+  if (checkCrew(forms.length)) return true;
+
+  for (let i = 0; i < forms.length; i++) {
+    const [email, nickname] = forms[i];
+    if (checkEmail(email) || checkNickname(nickname)) return true;
+    else continue;
+  }
+  return false;
+};
+
 const findOverLappingWord = (nickname) => {
   for (let i = 0; i < nickname.length - 1; i++) {
     const tmp = nickname.slice(i, i + 2);
@@ -20,6 +49,8 @@ const checkWordIncluded = (nickname, overLappingWords) => {
 
 function problem6(forms) {
   let answer = [];
+
+  if (checkValid(forms)) return false;
 
   forms.map((form) => {
     const [, nickname] = form;
