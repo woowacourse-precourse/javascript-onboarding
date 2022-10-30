@@ -32,9 +32,9 @@ function setWithKnowScore(withKnowScore, friend) {
   return withKnowScore;
 }
 
-function getWithKnowScore(userFriends, friends) {
+function getWithKnowScore(userFriends, newFriends) {
   let withKnowScore = {};
-  friends.forEach((friend) => {
+  newFriends.forEach((friend) => {
     const [friend1, friend2] = friend;
     if (userFriends.has(friend1)) {
       withKnowScore = setWithKnowScore(withKnowScore, friend2);
