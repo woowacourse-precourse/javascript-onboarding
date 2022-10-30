@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   const scores = getScores(user, friends, visitors);
-  const pointsArr = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const usersAndScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
-  return pointsArr.map((user) => user[0]);
+  return usersAndScores.map((userAndScore) => userAndScore[0]);
 }
 
 function getUserFriends(user, friends) {
@@ -22,14 +22,12 @@ function getUserFriends(user, friends) {
 
 function getScores(user, friends, visitors) {
   const scores = {};
-  const userFriends = getUserFriends(user,friends);
+  const userFriends = getUserFriends(user, friends);
 
   userFriends.forEach((friend) => {
     const mutualFriends = getUserFriends(friend, friends);
     mutualFriends.forEach((mutualFriend) => {
-      if (mutualFriend === user) {
-        return;
-      }
+      if (mutualFriend === user) return;
       if (scores[mutualFriend] === undefined) {
         scores[mutualFriend] = 10;
       }
@@ -40,14 +38,13 @@ function getScores(user, friends, visitors) {
   });
 
   visitors.forEach((visitor) => {
-    if (userFriends.includes(visitor)) {
-      return;
-    }
+    if (userFriends.includes(visitor)) return;
     if (scores[visitor] === undefined) {
       scores[visitor] = 1;
-      return;
     }
-    scores[visitor] += 1;
+    if (scores[visitor] !== undefined) {
+      scores[visitor] += 1;
+    }
   });
 
   return scores;
