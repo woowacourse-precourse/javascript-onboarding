@@ -14,14 +14,14 @@ function problem6(forms) {
     if (checkDomain.test(forms[i][0]) && 10 < forms[i][0].length < 20) {
       if (checkKorean.test(forms[i][1]) && 1 <= forms[i][1].length < 20) {
         nicknameStack.push(forms[i][1])
-        //address stack
+        //기능 목록3. 이메일 제한사항 확인기능.
         for (let j of forms[i][0]) {
           if (j === addressStack[addressStack.length - 1]) {
             continue outer;
           }
           addressStack.push(j);
         }
-        // nickname storage
+        // 기능목록 4. 닉네임 제한사항 확인기능.
         for (let u = 0; u < nicknameStack[i].length - 1; u++) {
           nicknameStorage.push(nicknameStack[i].slice(u, u + 2));
           if (!nicknameStorage.indexOf(nicknameStack[i].slice(u, u + 2))) {
