@@ -71,9 +71,7 @@ function problem7(user, friends, visitors) {
     const recommendUserList = [];
 
     for(const recommendUser in recommendUserObj) {
-      const userInfo = {};
-      userInfo[recommendUser] = recommendUserObj[recommendUser];
-      recommendUserList.push(userInfo);
+      recommendUserList.push({name : recommendUser, recommendScore : recommendUserObj[recommendUser]});
     }
 
     return recommendUserList;
@@ -84,7 +82,9 @@ function problem7(user, friends, visitors) {
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
   const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
   const recommendUserObj = recommendTotalScorer(friendOfFriendList, onlyVisitorList);
-  const recommendUserList = recommendUserListGetter
+  const recommendUserList = recommendUserListGetter(recommendUserObj);
+
+  console.log(recommendUserList);
 
   return answer;
 }
