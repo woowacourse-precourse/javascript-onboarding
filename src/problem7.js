@@ -19,6 +19,8 @@ function problem7(user, friends, visitors) {
 
   mutualFriends.map(name => EMPTY_OBJECT[name] += 10); // 공통 친구 추천 점수 +10
 
+  Array.from(new Set(visitors), name => EMPTY_OBJECT[name] = 0); // 방문자도 object에 추가
+
   return answer;
 }
 
