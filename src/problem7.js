@@ -4,6 +4,8 @@ function problem7(user, friends, visitors) {
   // 2. 그 친구와 친구인 사람을 찾아서 새 이차원 배열 recommand에 [10, '이름'] 이렇게 넣고 이미 있으면 +10
   // 3. visitors 배열을 돌면서 recommand에 [1, '이름'] 이렇게 넣고 이미 있으면 +1
   // 4. 내림차순으로 정렬하고 5개까지 자르고 이름만 뽑아서 새 배열 result에 넣기
+  // 5. 이미 친구인 사람 빼고 넣기
+  
 
   // 1. friends 안에서 user랑 같은 배열에 있는 친구를 찾고 userFriends 배열로 넣기
   let userFriends = [];
@@ -98,6 +100,15 @@ function problem7(user, friends, visitors) {
       recommand.push([1, name]);
     }
   });
+
+  // 4. 내림차순으로 정렬하고 5개까지 자르고 이름만 뽑아서 새 배열 result에 넣기
+  let result = [];
+  recommand
+    .sort((a, b) => b[0] - a[0])
+    .slice(0, 5)
+    .map((array) => {
+      result.push(array[1]);
+    });
 
   return answer;
 }
