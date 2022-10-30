@@ -51,10 +51,19 @@ function makeResultArr(pointObj) {
   for (userName in pointObj) {
     result.push([userName, pointObj[userName]]);
   }
+  result = sortWithPoint(result);
   return result;
 }
 //점수에 따라 정렬하고, 추천 점수가 같은 경우 이름 순으로 정렬한다.
-function sortWithPoint(result) {}
+function sortWithPoint(result) {
+  result = result.sort(function (prev, cur) {
+    if (prev[1] > cur[1]) return -1;
+    if (prev[1] < cur[1]) return 1;
+    if (prev[0] > cur[0]) return 1;
+    if (prev[0] < cur[0]) return -1;
+  });
+  return result;
+}
 //정답 배열을 생성한다.
 function makeAnswerArr(result) {}
 
