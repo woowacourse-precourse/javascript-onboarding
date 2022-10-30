@@ -1,6 +1,8 @@
-function problem6(forms) {
-  var answer;
-  return answer;
-}
+function crewNameArray(array) {
+  let crewNameArr = [];
 
-module.exports = problem6;
+  array.forEach((item) => {
+    crewNameArr.push(item[1]);
+  });
+  return crewNameArr;
+}
