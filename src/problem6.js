@@ -1,6 +1,6 @@
 function returnSimilarName(forms){
   let nameCheckBox = {};
-  let emailCheckBox = {};
+  let emailReturnBox = {};
 
   forms.forEach(userArray => {
     const userEmail = userArray[0];
@@ -9,7 +9,9 @@ function returnSimilarName(forms){
     let preUserName = '';
     let preUserEmail = '';
 
-    isValidValue(userName, userEmail);
+    if(isValidValue(userName, userEmail)){
+      emailReturnBox[userEmail] = userName;
+    }
 
     for(let i = 0; i < userName.length - 1; i++){
       userUnitName = userName[i] + userName[i+1];
@@ -17,8 +19,8 @@ function returnSimilarName(forms){
         preUserName = nameCheckBox[userUnitName][0]
         preUserEmail = nameCheckBox[userUnitName][1]
 
-        emailCheckBox[preUserEmail] = preUserName;
-        emailCheckBox[userEmail] = userName;
+        emailReturnBox[preUserEmail] = preUserName;
+        emailReturnBox[userEmail] = userName;
       }
       else{
         nameCheckBox[userUnitName] = [userName, userEmail];
@@ -29,10 +31,14 @@ function returnSimilarName(forms){
 }
 
 function isValidValue(name, email){
-  const regex = /^[ㄱ-ㅎ|가-힣]{1,19}$/;
-  if(regex.test(name)){
-    console.log(name);
+  const regexName = /^[ㄱ-ㅎ|가-힣]{1,19}$/;
+  const regexEmail = new RegExp('^[a-z0-9]+@email.com+$');
+  let valid = false;
+
+  if(regexName.test(name) && regexEmail.test(email)){
+    valid = true; 
   }
+  return valid;
 }
 
 function problem6(forms) {
