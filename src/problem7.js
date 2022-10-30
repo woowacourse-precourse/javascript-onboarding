@@ -23,6 +23,9 @@ function problem7(user, friends, visitors) {
     isVisit.push(...visitors.filter((x) => !set.includes(x)));
   }
 
+  newFriends.sort();
+  isVisit.sort();
+
   return answer;
 }
 
