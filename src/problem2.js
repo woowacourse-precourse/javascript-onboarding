@@ -1,14 +1,14 @@
 function findDup(str){
   const strArray = [...str];
   const resultArray = [];
-  for (let i = 0; i < strArray.length; i++){
-    if (strArray[i] === resultArray[resultArray.length -1]){
+  strArray.map(now => {
+    if (now === resultArray.at(-1)){
       resultArray.pop();
     }
     else{
-      resultArray.push(strArray[i]);
+      resultArray.push(now);
     }
-  }
+  })
   return resultArray.join('');
 }
 
