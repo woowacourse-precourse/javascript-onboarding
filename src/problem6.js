@@ -21,6 +21,6 @@ function problem6(forms) {
     }
   }
 
-  return answer;
+  return (answer = result.sort());
 }
 module.exports = problem6;
