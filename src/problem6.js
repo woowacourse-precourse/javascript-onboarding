@@ -1,13 +1,15 @@
-function returnSimilarName(){
+function returnSimilarName(forms){
   let nameCheckBox = {};
   let emailCheckBox = {};
 
   forms.forEach(userArray => {
     const userEmail = userArray[0];
-    let userName = userArray[1];
+    const userName = userArray[1];
     let userUnitName = '';
     let preUserName = '';
     let preUserEmail = '';
+
+    isValidValue(userName, userEmail);
 
     for(let i = 0; i < userName.length - 1; i++){
       userUnitName = userName[i] + userName[i+1];
@@ -25,8 +27,16 @@ function returnSimilarName(){
   });
   return emailCheckBox;
 }
+
+function isValidValue(name, email){
+  const regex = /^[ㄱ-ㅎ|가-힣]{1,19}$/;
+  if(regex.test(name)){
+    console.log(name);
+  }
+}
+
 function problem6(forms) {
-  returnSimilarName(forms);
+  console.log(returnSimilarName(forms));
 }
 
 problem6([["jm@email.com", "제이엠"],
