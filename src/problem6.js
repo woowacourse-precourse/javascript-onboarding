@@ -1,5 +1,4 @@
 function problem6(forms) {
-  var answer;
   const result = new Set([]);
 
   forms.forEach((form, index) => {
@@ -13,6 +12,8 @@ function problem6(forms) {
     }
   });
 
+  const answer = Array.from(result);
+  answer.sort();
   return answer;
 }
 
