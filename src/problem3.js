@@ -9,20 +9,21 @@
  * @param {number} [number]
  * @return {number} 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return
  * @throws number는 1 이상 10,000 이하인 자연수이다.
- * @todo 1. 숫자에 3, 6, 9가 포함된 갯수의 배열을 리턴하는 함수
- * @todo 2. number 만큼 순회하면서 답 카운트
+ * @todo 1. 숫자에 3, 6, 9가 포함되었는지 판별하는 함수
+ * @todo 2. 숫자에 3, 6, 9가 몇개 포함 되었는지 리턴하는 함수
+ * @todo 3. 3, 6, 9가 포함 된 갯수를 reduce로 누적
  */
 
 function problem3(number) {
   let count = 0;
   for (let i = 1; i <= number; i++) {
-    const includes = getIncluded369(i);
+    const includes = getInclude369(i);
     if (includes) count += includes.length;
   }
   return count;
 }
 
-function getIncluded369(number) {
+function getInclude369(number) {
   return number.toString().match(/3|6|9/gi);
 }
 
