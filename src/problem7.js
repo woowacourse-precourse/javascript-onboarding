@@ -25,7 +25,12 @@ function countYourFriend(user, friends, notRecommendationFriends){
 }
 
 function countVisitFriend(visitors, notRecommendationFriends, recommendationScore){
-  return ""
+  for(const visitUser of visitors){
+    if((visitUser in notRecommendationFriends)) { continue; }
+    if(!(visitUser in recommendationScore)) { recommendationScore[visitUser] = 0; }
+    recommendationScore[visitUser] += 1;
+  }
+  return recommendationScore;
 }
 
 function problem7(user, friends, visitors) {
@@ -34,10 +39,10 @@ function problem7(user, friends, visitors) {
 
   [notRecommendationFriends, recommendationScore] = countYourFriend(user, friends, notRecommendationFriends);
   recommendationScore = countVisitFriend(visitors, notRecommendationFriends, recommendationScore);
-
+  
   return recommendationScore;
 }
 
-problem7("mrko", 	[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"], ["andole", "jun", "bedi"])
+console.log(problem7("mrko", 	[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
 
 module.exports = problem7;
