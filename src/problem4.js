@@ -49,6 +49,22 @@ const getGreenFrogDictionary = upperCase => {
   return greenFrogDictionary[upperCase];
 };
 
+const isLowerCase = charCode => {
+  if (97 <= charCode && charCode <= 122) {
+    return true;
+  }
+
+  return false;
+};
+
+const isUpperCase = charCode => {
+  if (65 <= charCode && charCode <= 90) {
+    return true;
+  }
+
+  return false;
+};
+
 function problem4(word) {
   var answer;
   return answer;
