@@ -59,3 +59,19 @@
 <strong>- 1부터 word.length까지 실행되는 반복문을 돌며 앞에서부터 해당되는 if문 실행</strong>
 
 <strong>- 최종 newStr을 return</strong>
+
+---
+
+## [ 문제 5 ]
+
+![문제 5](https://user-images.githubusercontent.com/74524184/198880130-4e6451ca-408f-442e-b14c-70c8eee30175.png)
+
+<strong>- 금액 단위 배열, 0으로 초기화된 지갑 배열 생성</strong>
+
+<strong>- (입력값 -= 금액요소) 실행 후 지갑 배열 요소 +1 하기</strong>
+
+<strong>- '입력값 < 금액요소' 만족할 때까지 (입력값 -= 금액요소) 반복</strong>
+
+<strong>- for문으로 금액 배열 끝까지 순회</strong>
+
+<strong>- 최종 지갑 배열을 return</strong>
