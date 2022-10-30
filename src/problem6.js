@@ -4,6 +4,22 @@ function isLengthOne(nickname) {
   return nickname.length === 1;
 }
 
+function makeCheckWordList(nickname) {
+  const result = [];
+  for (let i = 2; i <= nickname.length; i++) {
+    let start = 0;
+    let end = start + i - 1;
+
+    while (end < nickname.length) {
+      result.push(nickname.substr(start, i));
+      start++;
+      end++;
+    }
+  }
+
+  return result;
+}
+
 function problem6(forms) {
   var answer;
   const isDuplicate = new Array(forms.length).fill(0);
