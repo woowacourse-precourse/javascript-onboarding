@@ -1,8 +1,7 @@
 function problem6(forms) {
   const checkList=makeCheckList(forms);
-  var answer;
-  return answer;;
-  //3. 기능2에서 작성한 함수를 활용해 배열을 비교해 같은 값이 있으면 Set객체에 이메일을 추가해 반환하는 함수 작성.
+  var result = getResult(checkList)
+  return result;
   //4. 기능3의 함수 반환값을 배열로 변환해 정렬해 반환.
 }
 
@@ -29,4 +28,17 @@ function makeCheckList(forms){
     checkList.push(obj);
   });
   return checkList;
+}
+
+function getResult(arr){
+  var result = new Set();
+  for(var i=0;i<arr.length;i++){
+    for(var j=0;j<arr.length-i-1;j++){
+      if(arr[i].check.filter((el)=>arr[j].check.includes(el)).length>0){
+        result.add(arr[i].email);
+        result.add(arr[j].email);
+      }
+    }
+  }
+  return [...result];
 }
