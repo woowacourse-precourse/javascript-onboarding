@@ -77,7 +77,7 @@ function problem7(user, friends, visitors) {
     return recommendUserList;
   }
 
-  const listSoter = (recommendUserList, recommendCount) => {
+  const listSorter = (recommendUserList, recommendCount) => {
     
     const finalRecommnedList = [];
     
