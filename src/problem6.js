@@ -22,8 +22,22 @@ function compareNickname(regex, nickname, forms){
   return equalList;
 }
 
+function getEmailArr(forms){
+  const emailList = forms.reduce((acc,[,nickname])=>{
+    const regexStr = getRegexStr(nickname);
+    const regex = new RegExp(`(${regexStr})`);
+    const equalList = compareNickname(regex, nickname, forms);
+
+    return Array.from(new Set([...acc, ...equalList]));
+  },[]);
+
+  return emailList;
+}
 
 function problem6(forms) {
+  const emailList = getEmailArr(forms);
+  
+  return emailList.sort();
 }
 
 module.exports = problem6;
