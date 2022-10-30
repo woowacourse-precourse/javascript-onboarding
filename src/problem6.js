@@ -17,4 +17,17 @@ function separateTwoWord(array2D) {
   return Array.from(new Set(duplicateIndex));
 }
 
+function deleteDuplicatedNicknames(array2D, duplicatedWords) {
+  const nicknames = array2D;
+  const duplicatedEmails = [];
+  for (let i = 0; i < nicknames.length; i++) {
+    for (let j = 0; j < nicknames[i][1].length - 1; j++) {
+      if (duplicatedWords.includes(nicknames[i][1].substr(j, 2))) {
+        duplicatedEmails.push(nicknames[i][0]);
+      }
+    }
+  }
+  return Array.from(new Set(duplicatedEmails));
+}
+
 module.exports = problem6;
