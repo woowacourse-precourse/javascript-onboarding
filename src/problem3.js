@@ -60,7 +60,7 @@ const checkException = value => {
   }
 
   // 1 이상 10,000 이하인 자연수
-  if (value < 1 && 10000 < value) {
+  if (value < 1 || 10000 < value) {
     throw new RangeError(
       "Only natural numbers greater than or equal to 1 and less than or equal to 10,000."
     );
