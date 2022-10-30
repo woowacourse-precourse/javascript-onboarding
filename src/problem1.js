@@ -11,6 +11,11 @@ const problem1 = (pobi, crong) => {
   let answer;
   const pobiPages = pobi;
   const crongPages = crong;
+
+  if (pobiPages[1] - pobiPages[0] > 1 || crongPages[1] - crongPages[0] > 1) {
+    return -1;
+  }
+
   return answer;
 };
 
