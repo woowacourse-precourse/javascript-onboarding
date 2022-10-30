@@ -8,7 +8,7 @@ function problem5(money) {
       answer[i] = parseInt(copy_money / arrNumber[i]);
       copy_money = copy_money - arrNumber[i] * parseInt(copy_money / arrNumber[i]);
     } else if(parseInt(copy_money / arrNumber[i]) == 0) {
-      answer[i] = 0
+      answer[i] = 0;
     }
   } 
 
