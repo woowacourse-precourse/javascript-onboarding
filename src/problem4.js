@@ -7,8 +7,7 @@ const ASCII_LOWER_Z = 122;
 
 function problem4(word) {
   let wordArr = word.split("");
-
-  wordArr.map((char) => reverseAlphabet(char));
+  wordArr = wordArr.map((char) => reverseAlphabet(char));
   return wordArr.join("");
 }
 
