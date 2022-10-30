@@ -1,7 +1,7 @@
 function problem3(number) {
   let numberArray = Array.from({ length: number }, (_, n) => n + 1);
   const countThreeSixNine = numberArray.map((n) => isIncludeThreeSixNine(n));
-  const sum = countThreeSixNine.reduce((acc, cur) => acc + Number(cur), 0);
+  const sum = countThreeSixNine.reduce((total, num) => total + Number(num), 0);
   return sum;
 }
 
