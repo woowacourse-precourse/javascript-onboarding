@@ -77,6 +77,13 @@ function problem1(pobi, crong) {
     crongScore = crongLeft;
   }
 
+  if (pobiScore === crongScore) {
+    answer = 0;
+  } else if (pobiScore > crongScore) {
+    answer = 1;
+  } else {
+    answer = 2;
+  }
   return answer;
 }
 
