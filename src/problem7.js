@@ -20,11 +20,28 @@ function addEdge(nodeA, nodeB, graph) {
   return;
 }
 
+function addScore(node, value, graph) {
+  if (!graph[node]) {
+    graph[node] = 0;
+  }
+
+  graph[node] += value;
+  return;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   friends.forEach((friend) => {
     addEdge(friend[0], friend[1], socialGraph);
   });
+
+  for (let i = 0; i < friends.length; i++) {
+    socialGraph[user].forEach((userFriend) => {
+      if (socialGraph[friends[i]].includes(userFriend)) {
+        addScore(friends[i], 10, socialScore);
+      }
+    });
+  }
 
   return answer;
 }
