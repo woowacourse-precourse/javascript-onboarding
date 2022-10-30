@@ -1,17 +1,20 @@
 function problem6(forms) {
   var resultEmailList = [];
-  var splitNamesMap = new Map();
+  var splitNicknamesMap = new Map();
 
   for (var i = 0; i < forms.length; i++) {
-    var splitNames = getSplitNames(forms[i][1]);
+    var splitNickNames = getSplitNames(forms[i][1]);
 
-    for (var j = 0; j < splitNames.length; j++) {
-      if (splitNamesMap.has(splitNames[j])) {
-        resultEmailList.push(forms[i][0], splitNamesMap.get(splitNames[j]));
+    for (var j = 0; j < splitNickNames.length; j++) {
+      if (isDuplicated(splitNicknamesMap, splitNickNames[j])) {
+        resultEmailList.push(
+          forms[i][0],
+          splitNicknamesMap.get(splitNickNames[j])
+        );
         continue;
       }
 
-      splitNamesMap.set(splitNames[j], forms[i][0]);
+      splitNicknamesMap.set(splitNickNames[j], forms[i][0]);
     }
   }
 
@@ -19,6 +22,10 @@ function problem6(forms) {
   resultEmailList = Array.from(set);
 
   return resultEmailList.sort();
+}
+
+function isDuplicated(splitNicknamesMap, splitNickname) {
+  return splitNicknamesMap.has(splitNickname);
 }
 
 function getSplitNames(nickname) {
