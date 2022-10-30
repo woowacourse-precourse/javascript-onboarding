@@ -26,6 +26,4 @@ function isClap(unit) {
   return unit % 3 === 0;
 }
 
-problem3(33);
-
 module.exports = problem3;
