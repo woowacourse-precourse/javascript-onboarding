@@ -11,6 +11,10 @@ function problem6(forms) {
       }
     }
   });
+
+  for (let [key, value] of twoLettersMap.entries()) {
+    if (value < 2) twoLettersMap.delete(key);
+  }
 }
 
 module.exports = problem6;
