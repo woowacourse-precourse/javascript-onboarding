@@ -38,11 +38,7 @@ const getTargetScoreObj = (user, relations, totalScore) => {
 
 const getTotalScoreObj = (scoreObj, visitors) => {
   const totalScore = visitors.reduce((acc, visitor) => {
-    if (visitor in acc) {
-      acc[visitor] += 1;
-    } else {
-      acc[visitor] = 1;
-    }
+    acc[visitor] = (acc[visitor] || 0) + 1;
 
     return acc;
   }, scoreObj);
@@ -55,11 +51,7 @@ const getRelationScoreObj = (user, relations) => {
   if (user in relations) {
     relationScore = relations[user].reduce((acc, directFriend) => {
       for (let friend of relations[directFriend]) {
-        if (friend in acc) {
-          acc[friend] += 10;
-        } else {
-          acc[friend] = 10;
-        }
+        acc[friend] = (acc[friend] || 0) + 10;
       }
 
       return acc;
@@ -84,6 +76,7 @@ const getRelationsObj = (friends) => {
 
     return acc;
   }, {});
+  console.log(relations);
 
   return relations;
 };
