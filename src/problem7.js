@@ -11,8 +11,12 @@ function problem7(user, friends, visitors) {
 
   friends.forEach((relation) =>{
     const friendOfFriend = getFriendOfFriend(relation, userFriends, user)
-    if(friendOfFriend && !Object.keys(friendOfFriends).includes(friendOfFriend)){
-      friendOfFriends[friendOfFriend] = 10
+    if(friendOfFriend){
+      if(friendOfFriends[friendOfFriend] === undefined){
+        friendOfFriends[friendOfFriend] = 10
+      } else {
+        friendOfFriends[friendOfFriend] += 10
+      }
     }
   })
 
