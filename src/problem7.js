@@ -1,3 +1,14 @@
+/*
+[기능 목록]
+1. 친구 목록 만들기
+2. 사용자와 함께 아는 친구 점수 계산
+3. 사용자의 타임 라인에 방문한 친구 점수 계산
+4. 원래 친구였던 사람 제거
+5. value값 기준으로 내림차순 정렬
+6. 추천점수가 0점이 아닌 친구 중 점수가 높은 순으로 최대 5명 return
+*/
+
+
 function sortArrayDecreaseValue(friend_score){
   let result_score = [];
   for(let score in friend_score){
@@ -25,6 +36,7 @@ function getResult(result_score){
   return answer;
 }
 
+
 function getFriendList(friends){
   let friend_dic = {};
 
@@ -46,6 +58,15 @@ function getFriendList(friends){
   return friend_dic;
 }
 
+
+function getPoint(user, friend_dic, visitors){
+  let friend_score = {};
+  friend_score = getPointWithFriend(user, friend_dic, friend_score);
+  friend_score = getPointVisitor(visitors, friend_score);
+  return friend_score;
+}
+
+
 function getPointWithFriend(user, friend_dic, friend_score){
   for(let i = 0; i < friend_dic[user].length; i++){
     let user_friend = friend_dic[user][i];
@@ -60,15 +81,9 @@ function getPointWithFriend(user, friend_dic, friend_score){
   }
   return friend_score;
 }
-function problem7(user, friends, visitors) {
-  let answer = [];
-  let friend_dic = getFriendList(friends);
 
-  // 함께 아는 친구 점수 획득
-  let friend_score = {};
-  friend_dic = getPointWithFriend(user, friend_dic, friend_score);
-  console.log(friend_score);
-  // 방문자 점수 획득
+
+function getPointVisitor(visitors, friend_score){
   for(let i = 0; i < visitors.length; i++){
     if(visitors[i] in friend_score){
       friend_score[visitors[i]] += 1;
@@ -76,14 +91,21 @@ function problem7(user, friends, visitors) {
       friend_score[visitors[i]] = 1;
     }
   }
-  console.log(friend_score);
+  return friend_score;
+}
+function problem7(user, friends, visitors) {
+  let answer = [];
+  let friend_dic = getFriendList(friends);
 
+  // 친구 점수 획득
+  let friend_score = getPoint(user, friend_dic, visitors);
+  // console.log(friend_score);
 
   // 원래 user와 이미 친구인 사람 제거
-  for(let i = 0; i < friend_dic[user].length; i++){
-    delete friend_score[friend_dic[user][i]];
-  }
-  delete friend_score[user];
+  // for(let i = 0; i < friend_dic[user].length; i++){
+  //   delete friend_score[friend_dic[user][i]];
+  // }
+  // delete friend_score[user];
  
   // value 기준으로 내림차순 정렬
   answer = getResult(sortArrayDecreaseValue(friend_score));
