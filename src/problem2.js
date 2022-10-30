@@ -1,17 +1,40 @@
+function deleteDuplicates(arrays, fromIndex) {
+  var toIndex = fromIndex ^ 1;
+  var lastPush = null;
+
+  while (true) {
+    var lastPop = arrays[fromIndex].pop();
+
+    if (lastPop === lastPush) {
+      arrays[toIndex].pop();
+      while (lastPop == lastPush) {
+        lastPop = arrays[fromIndex].pop();
+      }
+    }
+    if (!lastPop) {
+      break;
+    }
+    arrays[toIndex].push(lastPop);
+    lastPush = lastPop;
+  }
+}
+
 function problem2(cryptogram) {
   var answer;
-  var cryptoPop;
-  var cryptoArray = cryptogram.split('');
-  var answerArray = [];
+  var arrays = [cryptogram.split(''), []];
+  var fromIndex = 0;
 
-  while (cryptoPop = cryptoArray.pop()) {
-    if (cryptoPop == answerArray[answerArray.length - 1]) {
-      answerArray.pop();
-    } else {
-      answerArray.push(cryptoPop);
-    }
+  do {
+    var fromLength = arrays[fromIndex].length;
+    var toIndex = fromIndex ^ 1;
+
+    deleteDuplicates(arrays, fromIndex);
+    fromIndex ^= 1;
+  } while (fromLength != arrays[toIndex].length);
+  if (toIndex & 1) {
+    arrays[toIndex].reverse();
   }
-  answer = answerArray.reverse().join('');
+  answer = arrays[toIndex].join('');
   return answer;
 }
 
