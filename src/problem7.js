@@ -20,6 +20,12 @@ function problem7(user, friends, visitors) {
     }
     suggestFriends.delete(user);
   })
+  
+  visitors.map(visitor => {
+    if(friendsOfUser.includes(visitor) === false){
+      suggestFriends.set(visitor, (suggestFriends.get(visitor)||0)+1);
+    }
+  })
 }
 
 module.exports = problem7;
