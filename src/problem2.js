@@ -14,6 +14,9 @@ function problem2(cryptogram) {
       for (let j = i; j <= sameStringIndex; j++) {
         cryptogramArr[j] = '';
       }
+      // 3. 2번에서 없앤 문자를 제외한 새로운 배열에서 다시 연속된 중복 문자를 찾는 기능
+      cryptogramArr = cryptogramArr.join('').split('');
+      break;
     }
   }
   return
