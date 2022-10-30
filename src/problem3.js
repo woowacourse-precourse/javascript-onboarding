@@ -3,12 +3,17 @@ function problem3(number) {
   return answer;
 }
 
-function divideNumTo10(number) {
+function divideNumTo10(number, cnt) {
   while (number > 0) {
     remainNum = number % 10;
-    numCheck(remainNum);
+    cnt += numCheck(remainNum);
     number /= 10;
   }
+}
+
+function numCheck(remainNum, cnt) {
+  if (remainNum == 3 || remainNum == 6 || remainNum == 9) return 1;
+  return 0;
 }
 
 module.exports = problem3;
