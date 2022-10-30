@@ -25,6 +25,17 @@ function multiply(pageNum) {
   return multiplyResult;
 }
 
+function compare(num1, num2, value = false) {
+  if (value) {
+    if (num1 >= num2) return num1;
+    else return num2;
+  } else {
+    if (num1 > num2) return 1;
+    else if (num1 < num2) return 2;
+    else return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
