@@ -1,4 +1,7 @@
 function problem7(user, friends, visitors) {
+  const RECOMMEND_SCORE = 10;
+  const VISIT_SCORE = 1;
+  const MAX = 5;
   const friendGroup = {};
   const recommendScore = {};
 
@@ -12,13 +15,13 @@ function problem7(user, friends, visitors) {
   for (const [name, friendSet] of Object.entries(friendGroup)) {
     for (const friend of friendSet) {
       if (directFriends.has(friend)) {
-        recommendScore[name] = (recommendScore[name] || 0) + 10;
+        recommendScore[name] = (recommendScore[name] || 0) + RECOMMEND_SCORE;
       }
     }
   }
 
   for (const visitor of visitors) {
-    recommendScore[visitor] = (recommendScore[visitor] || 0) + 1;
+    recommendScore[visitor] = (recommendScore[visitor] || 0) + VISIT_SCORE;
   }
 
   return Object.keys(recommendScore)
@@ -35,7 +38,7 @@ function problem7(user, friends, visitors) {
       if (nameA > nameB) return 1;
       return nameA < nameB ? -1 : 0;
     })
-    .slice(0, 5);
+    .slice(0, MAX);
 }
 
 module.exports = problem7;
