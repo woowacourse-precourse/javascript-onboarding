@@ -1,6 +1,13 @@
-const getUserFriends = (user, friends) => {
+function problem7(user, friends, visitors) {
+  const scores = getScores(user, friends, visitors);
+  const pointsArr = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+  return pointsArr.map((user) => user[0]);
+}
+
+function getUserFriends(user, friends) {
   const userFriends = [];
-  
+
   friends.forEach((friend) => {
     if (friend.includes(user) && friend[0] === user) {
       userFriends.push(friend[1]);
@@ -11,9 +18,9 @@ const getUserFriends = (user, friends) => {
   });
 
   return userFriends;
-};
+}
 
-const getScores = (user, friends, visitors) => {
+function getScores(user, friends, visitors) {
   const scores = {};
   const userFriends = getUserFriends(user,friends);
 
@@ -44,13 +51,6 @@ const getScores = (user, friends, visitors) => {
   });
 
   return scores;
-};
-
-function problem7(user, friends, visitors) {
-  const scores = getScores(user, friends, visitors);
-  const pointsArr = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
-  return pointsArr.map((user) => user[0]);
 }
 
 module.exports = problem7;
