@@ -8,3 +8,17 @@ function numberToArray(number) {
 
   return numArray;
 }
+
+function countClap(numArray) {
+  let count = 0;
+
+  numArray.forEach((numArray) =>
+    numArray.forEach((num) => {
+      if (num === "3" || num === "6" || num === "9") {
+        count = count + 1;
+      }
+    })
+  );
+
+  return count;
+}
