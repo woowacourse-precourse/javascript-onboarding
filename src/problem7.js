@@ -4,8 +4,7 @@ function problem7(user, friends, visitors) {
   const userFriendSet = idFriendScoreMap.get(user).friendSet; // 사용자 친구
   scoreFriend(user, userFriendSet, idFriendScoreMap);
   scoreVisitor(visitors, userFriendSet, idFriendScoreMap);
-  console.log(idFriendScoreMap);
-  var answer;
+  var answer = getFriendTop5(user, userFriendSet, idFriendScoreMap);
   return answer;
 }
 
@@ -89,6 +88,28 @@ const scoreVisitor = (visitors, userFriendSet, idFriendScoreMap) => {
         score: idFriendScoreMap.get(visitor).score + 1,
       });
   });
+};
+
+/**
+ * 점수를 정렬해 상위 5명을 구한다 (단, 본인과 친구는 제외한다)
+ * @param {string} user - 사용자 아이디
+ * @param {Set<string>} userFriendSet - 사용자 친구 목록
+ * @param {Map<string, {friendSet: Set<string>, score: number}>} idFriendScoreMap - {key: 아이디, value: {친구 목록, 점수}}
+ * @returns {Array<string>} 점수 높은 상위 5명
+ */
+const getFriendTop5 = (user, userFriendSet, idFriendScoreMap) => {
+  const newFriendList = [];
+  idFriendScoreMap.forEach((value, id) => {
+    if (id !== user && !userFriendSet.has(id))
+      newFriendList.push({ id, score: value.score });
+  });
+  newFriendList.sort((a, b) => {
+    if (a.score === b.score) {
+      a.id.localeCompare(b.id);
+    }
+    return b.score - a.score;
+  });
+  return newFriendList.reduce((prev, cur) => [...prev, cur.id], []).slice(0, 5);
 };
 
 module.exports = problem7;
