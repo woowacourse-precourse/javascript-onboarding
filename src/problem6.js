@@ -22,6 +22,18 @@ function getErrorName(obj) {
         .map(([name]) => name);
 }
 
+function getErrorUserEmail(formList, xName) {
+    return formList
+        .filter((info) => {
+            for (let i = 0; i < xName.length; i++) {
+                if (info[1].includes(xName[i])) {
+                    return info;
+                }
+            }
+        })
+        .map(([email]) => email);
+}
+
 function problem6(forms) {}
 
 module.exports = problem6;
