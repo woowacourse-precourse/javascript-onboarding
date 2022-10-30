@@ -32,6 +32,17 @@ const digitsMul = (digits) => {
   return digits.reduce((num_1, num_2) => Number(num_1) * Number(num_2));
 };
 
+const getMaxScore = (page) => {
+  const [left, right] = page;
+
+  const leftDigit = left.toString().split("");
+  const rightDigit = right.toString().split("");
+
+  const maxScore = Math.max(digitsSum(leftDigit), digitsMul(rightDigit));
+
+  return maxScore;
+};
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
