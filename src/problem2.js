@@ -15,7 +15,6 @@ function problem2(cryptogram) {
   let word = cryptogram.split("");
   while (nowInd < word.length) {
     const dupliIndex = findDuplicatedIndex(word, nowInd);
-    console.log(nowInd, word.join(""));
     if (dupliIndex !== -1) {
       word.splice(dupliIndex, 2);
       nowInd = dupliIndex - 1;
