@@ -57,7 +57,7 @@ function problem7(user, friends, visitors) {
     });
   };
 
-  const recommendScorer = (friendOfFriendList, visitors) => {
+  const recommendTotalScorer = (friendOfFriendList, visitors) => {
 
     const recommendUserObj = {};
 
@@ -67,11 +67,24 @@ function problem7(user, friends, visitors) {
     return recommendUserObj;
   };
 
+  const recommendUserListGetter = recommendUserObj => {
+    const recommendUserList = [];
+
+    for(const recommendUser in recommendUserObj) {
+      const userInfo = {};
+      userInfo[recommendUser] = recommendUserObj[recommendUser];
+      recommendUserList.push(userInfo);
+    }
+
+    return recommendUserList;
+  }
+
 
   const userFriendsList = userFriendsListGetter(user);
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
   const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
-  const recommendUserObj = recommendScorer(friendOfFriendList, onlyVisitorList);
+  const recommendUserObj = recommendTotalScorer(friendOfFriendList, onlyVisitorList);
+  const recommendUserList = recommendUserListGetter
 
   return answer;
 }
