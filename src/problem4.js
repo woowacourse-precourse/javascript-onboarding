@@ -21,5 +21,4 @@ function problem4(word) {
       return replaced_answer;
   }
 
-  
 module.exports = problem4;
