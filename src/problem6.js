@@ -1,6 +1,23 @@
 function problem6(forms) {
   var answer;
+  if (checkType(forms)) return;
+  const separatedTwoWord = separateTwoWord(forms);
+  const duplicatedEmails = deleteDuplicatedNicknames(forms, separatedTwoWord);
+  answer = sortingEmails(duplicatedEmails);
   return answer;
+}
+
+function checkType(forms) {
+  for (let i = 0; i < forms.length; i++) {
+    if (!checkEmailType(forms[i][0])) {
+      console.log("이메일 형식이 잘못되었습니다.");
+      return true;
+    }
+    if (!nicknameType(forms[i][1])) {
+      console.log("닉네임 형식이 잘못되었습니다.");
+      return true;
+    }
+  }
 }
 
 function separateTwoWord(array2D) {
