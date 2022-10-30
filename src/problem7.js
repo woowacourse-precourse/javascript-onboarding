@@ -46,7 +46,13 @@ function addVisitorPoint(visitors, pointObj) {
   return pointObj;
 }
 //추천 친구와 점수를 저장하는 2차원 배열 result를 생성
-function makeResultArr(pointObj) {}
+function makeResultArr(pointObj) {
+  let result = [];
+  for (userName in pointObj) {
+    result.push([userName, pointObj[userName]]);
+  }
+  return result;
+}
 //점수에 따라 정렬하고, 추천 점수가 같은 경우 이름 순으로 정렬한다.
 function sortWithPoint(result) {}
 //정답 배열을 생성한다.
@@ -56,6 +62,8 @@ function problem7(user, friends, visitors) {
   var answer = [];
   let friendObj = makeFriendsObj(friends);
   let pointObj = makePointObj(user, friendObj, visitors);
+  let result = makeResultArr(pointObj);
+
   return answer;
 }
 
