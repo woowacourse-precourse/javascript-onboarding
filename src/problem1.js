@@ -2,7 +2,7 @@ function problem1(pobi, crong) {
   const isValid = (pages) => {
     return (
       isInValidRange(pages) &&
-      isNumber(pages) &&
+      isNumberType(pages) &&
       isLeftPageOdd(pages) &&
       isConsecutivePages(pages)
     );
@@ -19,7 +19,7 @@ function problem1(pobi, crong) {
     );
   };
 
-  const isNumber = ([leftPage, rightPage]) => {
+  const isNumberType = ([leftPage, rightPage]) => {
     return typeof leftPage === 'number' && typeof rightPage === 'number';
   };
 
