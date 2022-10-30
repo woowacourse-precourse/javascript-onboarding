@@ -1,6 +1,10 @@
-function problem3(number) {
-  var answer;
-  return answer;
-}
+function numberToArray(number) {
+  let numArray = [];
+  let i = 0;
 
-module.exports = problem3;
+  for (; i <= number; i++) {
+    numArray.push(String(i).split(""));
+  }
+
+  return numArray;
+}
