@@ -77,16 +77,47 @@ function problem7(user, friends, visitors) {
     return recommendUserList;
   }
 
+  const listSoter = (recommendUserList, recommendCount) => {
+    
+    const finalRecommnedList = [];
+    
+    recommendUserList.sort((a,b) => {
+      if(a.recommendScore < b.recommendScore) {
+        return 1;
+      }
+      if(a.recommendScore > b.recommendScore) {
+        return -1;
+      }
+      if(a.recommendScore === b.recommendScore) {
+        if(a.name > b.name) {
+          return 1;
+        }
+        if(a.name < b.name) {
+          return -1;
+        }
+      }
+    })
+
+    for(let i=0; i<recommendCount; i++){
+      if(recommendUserList[i] !== undefined){
+        finalRecommnedList.push(recommendUserList[i].name);  
+      }
+    }
+
+    return finalRecommnedList;
+  }
 
   const userFriendsList = userFriendsListGetter(user);
   const friendOfFriendList = friendOfFriendListGetter(userFriendsList);
   const onlyVisitorList = noFriendVisitorCollector(visitors, userFriendsList);
   const recommendUserObj = recommendTotalScorer(friendOfFriendList, onlyVisitorList);
   const recommendUserList = recommendUserListGetter(recommendUserObj);
+  const finalRecommnedList = listSoter(recommendUserList,5);
 
-  console.log(recommendUserList);
+  answer = finalRecommnedList;
 
   return answer;
 }
 
 module.exports = problem7;
+
