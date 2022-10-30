@@ -1,7 +1,9 @@
 function problem7(user, friends, visitors) {
   const idList = getIdSet(user, friends, visitors);
   const idFriendScoreMap = makeFriendScore(idList, friends);
-  scoreFriend(user, idFriendScoreMap);
+  const userFriendSet = idFriendScoreMap.get(user).friendSet; // 사용자 친구
+  scoreFriend(user, userFriendSet, idFriendScoreMap);
+  scoreVisitor(visitors, userFriendSet, idFriendScoreMap);
   console.log(idFriendScoreMap);
   var answer;
   return answer;
@@ -56,12 +58,12 @@ const addFriendSet = (idFriendScoreMap, friend1, friend2) => {
 };
 
 /**
- * user와 함께 아는 친구가 있다면 점수에 10점 추가한다
+ * user와 함께 아는 친구가 있다면 점수에 10점 추가한다 (단, 친구는 제외한다)
  * @param {string} user - 사용자 아이디
+ * @param {Set<string>} userFriendSet - 사용자 친구 목록
  * @param {Map<string, {friendSet: Set<string>, score: number}>} idFriendScoreMap - {key: 아이디, value: {친구 목록, 점수}}
  */
-const scoreFriend = (user, idFriendScoreMap) => {
-  const userFriendSet = idFriendScoreMap.get(user).friendSet;
+const scoreFriend = (user, userFriendSet, idFriendScoreMap) => {
   idFriendScoreMap.forEach((value, id) => {
     if (id !== user && !userFriendSet.has(id)) {
       let score = value.score;
@@ -70,6 +72,22 @@ const scoreFriend = (user, idFriendScoreMap) => {
       });
       idFriendScoreMap.set(id, { friendSet: value.friendSet, score });
     }
+  });
+};
+
+/**
+ * user의 타임 라인에 방문한 횟수마다 점수에 1점 추가한다 (단, 친구는 제외한다)
+ * @param {Array<string>} visitors - 사용자 타임 라인 방문 기록
+ * @param {Set<string>} userFriendSet - 사용자 친구 목록
+ * @param {Map<string, {friendSet: Set<string>, score: number}>} idFriendScoreMap - {key: 아이디, value: {친구 목록, 점수}}
+ */
+const scoreVisitor = (visitors, userFriendSet, idFriendScoreMap) => {
+  visitors.forEach((visitor) => {
+    if (!userFriendSet.has(visitor))
+      idFriendScoreMap.set(visitor, {
+        friendSet: idFriendScoreMap.get(visitor).friendSet,
+        score: idFriendScoreMap.get(visitor).score + 1,
+      });
   });
 };
 
