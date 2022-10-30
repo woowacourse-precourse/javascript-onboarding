@@ -20,7 +20,7 @@ function splitNickname(forms){
 function getCrewIndex(forms){
   const crewIndex = [];
   const twoWordArr = splitNickname(forms);
-  
+
   for(let i = 0; i<twoWordArr.length ; i++){
     for(let j = i+1 ; j<twoWordArr.length ; j++){
       if(twoWordArr[i].filter(x=> twoWordArr[j].includes(x))!=""){
@@ -31,6 +31,18 @@ function getCrewIndex(forms){
   const crewIndexArr = [...new Set(crewIndex)];
 
   return crewIndexArr;
+}
+
+function getCrewEmail(forms){
+  const crewEmailArr = [];
+  const crewIndex = getCrewIndex(forms);
+
+  for(let i = 0 ; i<crewIndex.length ; i++){
+    crewEmailArr.push(forms[crewIndex[i]][0]);
+  }
+  crewEmailArr.sort();
+
+  return crewEmailArr;
 }
 
 function problem6(forms) {
