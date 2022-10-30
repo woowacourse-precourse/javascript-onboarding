@@ -82,3 +82,24 @@ function reverseWord(lowerWord, upperWord) {
 
   return [revLowerCase, revUpperCase];
 }
+
+function convertAlphabet(word) {
+  const [lowerWord, upperWord] = alphabetGather();
+  const [revLowerCase, revUpperCase] = reverseWord(lowerWord, upperWord);
+
+  let convertedWordArray = wordToArray(word);
+
+  convertedWordArray.forEach((alphabet, index) => {
+    if (checkLowerCase(alphabet) === true) {
+      let wordLowerIndex = lowerWord.indexOf(alphabet);
+      convertedWordArray[index] = revLowerCase[wordLowerIndex];
+    }
+
+    if (checkUpperCase(alphabet) === true) {
+      let wordUpperIndex = upperWord.indexOf(alphabet);
+      convertedWordArray[index] = revUpperCase[wordUpperIndex];
+    }
+  });
+
+  return convertedWordArray;
+}
