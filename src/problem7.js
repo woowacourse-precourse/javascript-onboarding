@@ -23,8 +23,21 @@ const makeFriendGraph = (friends) => {
   })
 }
 
+const addFriendScore = (name, score) => {
+  if(friendsScore[name]===undefined) friendsScore[name] = score;
+  else friendsScore[name] += score;
+}
+
 const calculateShareFriendsScore = (user) => {
-  
+  if(friendGraph[user] === undefined) return;
+  const userFriends = friendGraph[user];
+  userFriends.forEach((f) => {
+    const userFriendFriends = friendGraph[f];
+    userFriendFriends.forEach((ff) => {
+      if(ff === user) return;
+      addFriendScore(ff, shareFriendScore);
+    })
+  })
 };
 
 const calculateVisitScore = (visitors) => {
