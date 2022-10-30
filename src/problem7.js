@@ -15,10 +15,26 @@ function problem7(user, friends, visitors) {
 
     if(FRIEND_RELATION_OBJ[userName] === undefined){return false}
     else {return true}
-    
+
   }
 
   //2#. 친구와 친구 사이를 이어주는 함수
+
+  function INPUT_RELATION_FRIENDS ([userName1,userName2]) {
+    
+    if(CHECK_EXIST_IN_FRIEND_RELATION_OBJ(userName1) === false){
+      FRIEND_RELATION_OBJ[userName1] = []
+    }
+
+    if(CHECK_EXIST_IN_FRIEND_RELATION_OBJ(userName2) === false){
+      FRIEND_RELATION_OBJ[userName2] = []
+    }
+    
+    FRIEND_RELATION_OBJ[userName1].push(userName2)
+    FRIEND_RELATION_OBJ[userName2].push(userName1)
+
+  }
+
   //3#. user와 함께 아는 친구일때 점수를 더하는 함수
   //4#. 타임 라인에 방문한 사용자들의 점수를 더하는 함수
 
