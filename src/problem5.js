@@ -13,12 +13,12 @@ function problem5(money) {
     };
 
     // 1단계) 요소를 0으로 채운 길이가 9인 배열 생성
-    const arr = Array.from({ length: 9 }, (el) => 0);
+    const currencyArray = Array.from({ length: 9 }, (el) => 0);
 
     let changes = money;
 
     // 2단계) 배열의 길이만큼 for문을 시행
-    for (i = 0; i < arr.length; i++) {
+    for (i = 0; i < currencyArray.length; i++) {
         let currencyUnit = values[i];
         //  지불하려는 화폐의 단위로 나눈 몫이 0보다 크면
         while (Math.floor(changes / currencyUnit) > 0) {
@@ -28,6 +28,7 @@ function problem5(money) {
             changes -= currencyUnit * Math.floor(changes / currencyUnit);
         }
     }
+    return currencyArray;
 }
 
 module.exports = problem5;
