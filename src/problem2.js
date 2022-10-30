@@ -1,4 +1,5 @@
 function problem2(cryptogram) {
+  const answer = decode(cryptogram);
   return answer;
 }
 
@@ -10,6 +11,21 @@ function problem2(cryptogram) {
         같다면 top 문자 pop 
         다르다면 현재 문자 push
 */
+function decode(cryptogram) {
+  const stack = [];
+  for(let i = 0 ; i < cryptogram.length ; i++) {
+    if (stack.length === 0) {
+      stack.push(cryptogram[i]);
+    } else {
+      if (stack[stack.length-1] === cryptogram[i]) {
+        stack.pop();
+      } else {
+        stack.push(cryptogram[i]);
+      }
+    }
+  }
+  return stack.join('');
+}
 
 module.exports = problem2;
 
