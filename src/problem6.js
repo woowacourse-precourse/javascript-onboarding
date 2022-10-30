@@ -26,7 +26,8 @@ function problem6(forms) {
     }
   });
 
-  return emailList.sort();
+  const emailSet = new Set(emailList.sort());
+  return [...emailSet];
 }
 
 module.exports = problem6;
