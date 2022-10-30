@@ -6,7 +6,13 @@ const a = 97,
   m = 109;
 const ALPHABET_DIFF = 25;
 
-function transCapital(asciiNum) {}
+function transCapital(asciiNum) {
+  if (asciiNum <= M) {
+    return String.fromCharCode(asciiNum + (ALPHABET_DIFF - (asciiNum - A) * 2));
+  } else {
+    return String.fromCharCode(asciiNum - (ALPHABET_DIFF - (Z - asciiNum) * 2));
+  }
+}
 
 function transSmall(asciiNum) {}
 
