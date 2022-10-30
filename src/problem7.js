@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
   const FRIEND_OF_FRIEND_SCORE = 10;
   const STRANGER_SCORE = 1;
   const myFriends = getMyFriend(user, friends);
-  const exceptionAcquaintance = getExceptionAcquaintance(friends);
+  const exceptionAcquaintance = getExceptionAcquaintance(myFriends,friends);
   const recomendFriendsList = getRecomendFriendList(user, myFriends, exceptionAcquaintance);
   const strangeVisitorList = getStrangeVisitorList(myFriends, visitors);
   const recomendFriendsScore = scoreConversion(
@@ -106,7 +106,7 @@ function sorting(recomendFriends) {
   return sort;
 }
 
-function getExceptionAcquaintance(friends){
+function getExceptionAcquaintance(myFriends,friends){
   const exceptionFriends = friends.filter(friends=>{
     let count = 0;
     for (let friend of friends){
