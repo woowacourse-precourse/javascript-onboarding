@@ -15,8 +15,8 @@ function problem6(forms) {
       }
     }
   }
-  
-  return answer;
+  //console.log([...new Set(answer.sort())]);
+  return [...new Set(answer.sort())];
 }
 
 module.exports = problem6;
