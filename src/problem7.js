@@ -110,7 +110,7 @@ const sortAboutName = (friendList) => {
 
 function problem7(user, friends, visitors) {
   var answer = [];
-  
+  var myFriendObj = new Object();
   var friendList = [];
   // 친구 관계 확인을 위한 오브젝트 생성 friends에서의 관계.
   myFriendObj = areWeFriend(friends);
