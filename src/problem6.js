@@ -43,4 +43,12 @@ function checkEmailType(email) {
   }
 }
 
+function nicknameType(nickname) {
+  const REG_EXP = /^[가-힣]+$/;
+  if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname)) {
+    return true;
+  }
+  return false;
+}
+
 module.exports = problem6;
