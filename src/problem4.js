@@ -6,6 +6,11 @@ const numericVars = {
   LETTER_COUNT: 26,
 };
 
+const makeReverseList = (endNumber) =>
+  Array.from({ length: numericVars.LETTER_COUNT }).map((_, i) =>
+    String.fromCharCode(endNumber - i)
+  );
+
 const problem4 = (word) => {
   const answer = '';
 
