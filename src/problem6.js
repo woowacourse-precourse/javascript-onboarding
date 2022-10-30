@@ -1,6 +1,13 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let email = []
+  let repeatedWords = getRepeatedWords(forms)
+  for (let word of repeatedWords) {
+      forms.forEach((form) => {
+          if (formAnalyzer(form).has(word)) email.push(formAnalyzer(form).get(word))
+      })
+  }
+  let removeRepeatedEmail = new Set([...email])
+  return [...removeRepeatedEmail].sort()
 }
 
 function getRepeatedWords(forms) {
