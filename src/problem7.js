@@ -5,11 +5,9 @@ function problem7(user, friends, visitors) {
   let preRecommendObj= sharedFriend(userFriend,friendList)
   preRecommendObj = visitFriend(visitors, preRecommendObj)
 
-  
-
-
-
-  return recommendObj;
+  let sortedArr = sortedScore(preRecommendObj)
+  answer = preAnswer(sortedArr)
+  return answer;
 }
 
 function makeFriendList(friends){
@@ -64,11 +62,29 @@ function isFriend(name, userFriend){
   return false
 }
 
-function preAnswer(preRecommendObj){
-  const sortable = Object.entries(result)
+function sortedScore(preRecommendObj){
+  const sortable = Object.entries(preRecommendObj)
+  const sortedArr = sortable.sort(function([name,score],[nextName,nextScore]){
+    if(score<nextScore){
+      return 1
+    }if(score>nextScore){
+      return -1
+    }if(score==nextScore){
+      let result=0 ;
+      name>nextName?result=1:
+                    name<nextName?result=-1:result=0
+      return result
+    }
+  })
+  return sortedArr
 }
 
-
+function preAnswer(sortedArr){
+  return sortedArr.reduce(function(arr,name){
+    arr.push(name[0])
+    return arr
+  },[])
+}
 
 
 module.exports = problem7
