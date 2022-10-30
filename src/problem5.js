@@ -7,54 +7,38 @@ function forwalletcount(Money,union, wallet, index){
 function problem5(money) {
   let wallet = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // 오만원, 만원, 오천원, 천원, 오백원, 백원, 오십원, 십원, 일원
   let Money = money;
-  let chunwon = 1000;
-  let obakwon = 500;
-  let bakwon = 100;
-  let oshipwon = 50;
-  let shipwon = 10;
-  let won = 1;
-  
   while(Money>0){
-
-    if(Money >=omanwon) {
-      Money = forwalletcount(Money,50000, wallet, 0)
+    if(Money >=50000) {
+      Money = forwalletcount(Money,50000, wallet, 0);
     }
-    if(Money >=manwon) {
-      Money = forwalletcount(Money,10000, wallet, 1)
+    if(Money >=10000) {
+      Money = forwalletcount(Money,10000, wallet, 1);
     }
-    if(Money >=ochunwon) {
-      Money = forwalletcount(Money,5000, wallet, 2)
+    if(Money >=5000) {
+      Money = forwalletcount(Money,5000, wallet, 2);
     }
-    if(Money >=chunwon) {
-      wallet[3]+= parseInt(Money/chunwon);
-      Money-= parseInt(chunwon*parseInt(Money/chunwon));
+    if(Money >=1000) {
+      Money = forwalletcount(Money,1000, wallet, 3);
     }
-    if(Money >=obakwon) {
-      wallet[4]+= parseInt(Money/obakwon);
-      Money-= parseInt(obakwon*parseInt(Money/obakwon));
+    if(Money >=500) {
+      Money = forwalletcount(Money,500, wallet, 4);
     }
-    if(Money >=bakwon) {
-      wallet[5]+= parseInt(Money/bakwon);
-      Money-= parseInt(bakwon*parseInt(Money/bakwon));
+    if(Money >=100) {
+      Money = forwalletcount(Money,100, wallet, 5);
     }
-    if(Money >=oshipwon) {
-      wallet[6]+= parseInt(Money/oshipwon);
-      Money-= parseInt(oshipwon*parseInt(Money/oshipwon));
+    if(Money >=50) {
+      Money = forwalletcount(Money,50, wallet, 6);
     }
-    if(Money >=shipwon) {
-      wallet[7]+= parseInt(Money/shipwon);
-      Money-= parseInt(shipwon*parseInt(Money/shipwon));
+    if(Money >=10) {
+      Money = forwalletcount(Money,10, wallet, 7);
     }
-    if(Money >=won) {
-      wallet[8]+= parseInt(Money/won);
-      Money-= parseInt(won*parseInt(Money/won));
+    if(Money >= 1) {
+      Money = forwalletcount(Money,1, wallet, 8);
     }
   }
-
   var answer;
   answer = wallet;
   return answer;
 }
 
-problem5(15000);
-//module.exports = problem5;
+module.exports = problem5;
