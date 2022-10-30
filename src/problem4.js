@@ -98,6 +98,20 @@ const breakCode = (eachString, charCode) => {
   return getGreenFrogDictionary(eachString);
 };
 
+const startBreakCode = stringArray => {
+  const resultArray = map(stringArray, eachString => {
+    const charCode = getCharCode(eachString);
+
+    if (!isAlphabet(charCode)) {
+      return eachString;
+    }
+
+    return breakCode(eachString, charCode);
+  });
+
+  return convertToString(resultArray);
+};
+
 function problem4(word) {
   var answer;
   return answer;
