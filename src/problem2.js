@@ -1,13 +1,13 @@
 function problem2(cryptogram) {
-  let array = [];
+  let decrypted = [];
   for(i = 0; i < cryptogram.length; i++){
-    array.push(cryptogram[i]);
-    if(array[array.length - 1] === array[array.length - 2]){
-      array.pop();
-      array.pop();
+    decrypted.push(cryptogram[i]);
+    if(decrypted[decrypted.length - 1] === decrypted[decrypted.length - 2]){
+      decrypted.pop();
+      decrypted.pop();
     }
   }
-  let answer = array.join('');
+  let answer = decrypted.join('');
   return answer;
 }
 
