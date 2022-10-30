@@ -11,4 +11,5 @@ function problem2(cryptogram) {
   }
   return answer.join('')
 }
+
 module.exports = problem2;
