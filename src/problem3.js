@@ -11,6 +11,7 @@ function problem3(number) {
     var numArr = i.toString().split("");
     count += numArr.filter(num => '3' === num || '6' === num || '9'===num).length;
   }
+  return count;
 }
 
 module.exports = problem3;
