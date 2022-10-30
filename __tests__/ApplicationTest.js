@@ -138,6 +138,55 @@ describe('problem6', () => {
       ])
     ).toEqual(['jason@email.com', 'jm@email.com', 'mj@email.com'])
   })
+
+  test('case2', () => {
+    expect(
+      problem6([
+        ['abc@email.com', '에이비ㅆ'],
+        ['abcd@email.com', '에이비씨디'],
+        ['abcde@email.com', '에이비씨디이'],
+        ['abcdef@email.com', '에이비씨디이에프'],
+      ])
+    ).toEqual([
+      'abc@email.com',
+      'abcd@email.com',
+      'abcde@email.com',
+      'abcdef@email.com',
+    ])
+  })
+
+  test('case3', () => {
+    expect(problem6([['toolonglongemail@email.com', '제이엠']])).toEqual(
+      INVALID_INPUT
+    )
+  })
+
+  test('case4', () => {
+    expect(problem6([])).toEqual(INVALID_INPUT)
+  })
+
+  test('case5', () => {
+    expect(problem6([['jm@notemail.com', '제이엠']])).toEqual(INVALID_INPUT)
+  })
+
+  test('case6', () => {
+    expect(problem6([['제이엠', 'jm@email.com']])).toEqual(INVALID_INPUT)
+  })
+
+  test('case7', () => {
+    expect(problem6([['jm@email.com', '제이엠K']])).toEqual(INVALID_INPUT)
+  })
+
+  test('case8', () => {
+    expect(
+      problem6([
+        [
+          'jm@email.com',
+          '제이제이제이제이제이제이제이제이제이제이제이제이제이제이제이제이',
+        ],
+      ])
+    ).toEqual(INVALID_INPUT)
+  })
 })
 
 describe('problem7', () => {
