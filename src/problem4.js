@@ -30,10 +30,11 @@ function convertCharacter(word) {
 function solution(word) {
   const splitedWord = word.split("");
   const unicodeWord = convertUnicode(splitedWord);
-  console.log(unicodeWord);
   let reversedWord = reverseLowerCase(unicodeWord);
   reversedWord = reverseUpperCase(reversedWord);
-  console.log(convertCharacter(reversedWord));
+  const convertedWord = convertCharacter(reversedWord);
+  const joinedWord = convertedWord.join("");
+  console.log(joinedWord);
 }
 
 function problem4(word) {
@@ -41,6 +42,6 @@ function problem4(word) {
   return answer;
 }
 
-solution("Ab cd");
+solution("I love you");
 
 module.exports = problem4;
