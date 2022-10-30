@@ -23,4 +23,11 @@ describe("problem1", () => {
     expect(problem1([1, 2, 3], [193, 194])).toEqual(-1);
     expect(problem1([100, 101], [20, 21, 22])).toEqual(-1);
   });
+
+  test("시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.", () => {
+    expect(problem1([undefined, 2], [193, 194])).toEqual(-1);
+    expect(problem1([101, 102], [21, undefined])).toEqual(-1);
+    expect(problem1([null, 102], [21, 22])).toEqual(-1);
+    expect(problem1([101, 102], [21, null])).toEqual(-1);
+  });
 });
