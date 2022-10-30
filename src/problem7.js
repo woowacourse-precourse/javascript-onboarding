@@ -27,6 +27,8 @@ function problem7(user, friends, visitors) {
 
   visitors.forEach((visiter) => {
     if (relationships[user].includes(visiter)) return; // visiter와 이미 친구라면 친구추천에 띄울 필요가 없으므로 스킵한다.
+    if (!Object.keys(notFriends).includes(visiter)) notFriends[visiter] = 0; // notFriends 목록에 없다면 새로 추가한다.
+    notFriends[visiter] += 1;
   });
 
   return answer;
