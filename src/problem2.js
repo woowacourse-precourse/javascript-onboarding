@@ -1,4 +1,8 @@
 function problem2(cryptogram) {
+  return decrypt(cryptogram);
+}
+
+function decrypt(cryptogram) {
   const lettersCount = [];
   let hasDuplicates = false;
   for (let i = 0; i < cryptogram.length; i++) {
@@ -13,10 +17,11 @@ function problem2(cryptogram) {
 
   const oneLetters = lettersCount.filter((letterCount) => letterCount[1] === 1);
   const letters = oneLetters.map((oneLetter) => oneLetter[0]);
+  const decrypted = letters.join('');
 
-  if (hasDuplicates) return problem2(letters.join(''));
+  if (hasDuplicates) return decrypt(decrypted);
 
-  return letters.join('');
+  return decrypted;
 }
 
 module.exports = problem2;
