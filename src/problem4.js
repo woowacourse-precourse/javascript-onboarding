@@ -12,9 +12,7 @@ function problem4(word) {
   }
 
   for (let j = 0 ; j < word.length; j++) {
-    console.log(word[j])
     if ( word[j] === word[j].toUpperCase() && word[j] !== ' ') {
-      console.log('Upper')
       target = alpha.indexOf(word[j].toLowerCase())
       answer += reversedAlpha[target].toUpperCase()
     } else if ( word[j] !== ' ') {
