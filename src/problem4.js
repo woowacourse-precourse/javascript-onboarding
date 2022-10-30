@@ -6,10 +6,10 @@ const ASCII_LOWER_A = 97;
 const ASCII_LOWER_Z = 122;
 
 function problem4(word) {
-  return word
-    .split("")
-    .map((char) => reverseAlphabet(char))
-    .join("");
+  let wordArr = word.split("");
+
+  wordArr.map((char) => reverseAlphabet(char));
+  return wordArr.join("");
 }
 
 // 주어진 문자를 청개구리로 반환하는 함수
