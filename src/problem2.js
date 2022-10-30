@@ -1,13 +1,15 @@
 function problem2(cryptogram) {
+  var word = [...cryptogram]
+  var answer = [];
 
-  var answer = "";
-
-  return [...new Set(cryptogram)].join('')
-
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === answer[answer.length - 1]) {
+      answer.pop()
+    } else {
+      answer.push(word[i])
+    }
+  }
+  return answer.join('')
 }
 
-console.log(problem2("browoanoommnaon"))
-
-/*
 module.exports = problem2;
-*/
