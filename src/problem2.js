@@ -1,13 +1,12 @@
 function problem2(cryptogram) {
-  let stack = [];
-  let splitted = [...cryptogram];
+  const duplReg = /(\w)\1+/g;
+  let testCrypto = cryptogram;
 
-  splitted.forEach((spl) => {
-    if (stack.length < 1) stack.push(spl);
-    else if (spl === stack[stack.length - 1]) stack.pop();
-    else stack.push(spl);
-  });
+  while (duplReg.test(testCrypto)) {
+    testCrypto = testCrypto.replace(duplReg, '');
+  }
 
-  return stack.join('');
+  return testCrypto;
 }
+
 module.exports = problem2;
