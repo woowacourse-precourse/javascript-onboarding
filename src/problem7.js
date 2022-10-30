@@ -26,6 +26,15 @@ function problem7(user, friends, visitors) {
     }
     else if (!friendsMap.get(user).includes(visitor)) scoreMap.set(visitor, 1);
   })
+  
+  friendsMap.get(user).forEach((person) => {
+    friendsMap.get(person).forEach((friendOfPerson) => {
+      if (scoreMap.has(friendOfPerson)) {
+        scoreMap.set(friendOfPerson, scoreMap.get(friendOfPerson) + 10);
+      }
+      else if (!friendsMap.get(user).includes(friendOfPerson) && friendOfPerson !== user) scoreMap.set(friendOfPerson, 10);
+    })
+  })
 }
 
 module.exports = problem7;
