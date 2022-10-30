@@ -1,19 +1,19 @@
 function problem5(money) {
   var answer = solution(money);
   return answer;
-};
+}
 function solution(money) {
   let currency = [50000,10000,5000,1000,500,100,50,10,1];
-  let count = [];
-  let withdraw = 1;
+  let counts = [];
   for(let i = 0; i < currency.length; i++) {
-    if(Math.floor(money / currency[i] !== 0)) {
-      count.push(Math.floor(money / currency[i]))
-      money -= withdraw * (currency[i] * Math.floor(money / currency[i]))
+		let currCount = Math.floor(money / currency[i]);
+    if(currCount !== 0) {
+      counts.push(currCount);
+      money -= currency[i] * currCount;
     } else {
-      count.push(0)
+      counts.push(0);
     }
-  };
-  return count
-};
+  }
+  return counts;
+}
 module.exports = problem5;
