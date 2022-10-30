@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
-  if (isValid(pobi) || isValid(crong)) return -1;
+  if (isValid(pobi) || isValid(crong)) return GAME_RESULT.EXCEPTION;
+  if (getMaxNumber(pobi) > getMaxNumber(crong)) return GAME_RESULT.POBI_WINNER;
+  if (getMaxNumber(pobi) < getMaxNumber(crong)) return GAME_RESULT.CRONG_WINNER;
+  if (getMaxNumber(pobi) === getMaxNumber(crong)) return GAME_RESULT.DRAW;
 }
 
 const GAME_RESULT = Object.freeze({
