@@ -9,9 +9,12 @@ function problem5(money) {
   return answer;
 }
 
+/*
+// for test
 const wallet = [50237, 15000];
 for (money of wallet) {
   console.log(problem5(money));
 }
+*/
 
 module.exports = problem5;
