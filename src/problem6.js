@@ -16,6 +16,15 @@ function checkEmail(email){
   return false
 }
 
+function makeOverlappingArr(crewName){
+  let overlappingPart = []
+  for (let i=0;i<crewName.length-1;i++){
+    overlappingPart.push(crewName.substr(i,2))
+  }
+  return overlappingPart 
+}
+
+
 
 
 module.exports = problem6;
