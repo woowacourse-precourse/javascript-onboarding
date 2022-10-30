@@ -9,9 +9,10 @@
 
 ## Problem2
 
-- `cryptogram`에서 연속된 중복 문자열이 존재하지 않을 때까지 순회
-- 연속된 중복 문자열 여부 확인
-- 삭제 or 종료
+- `cryptogram` 순회
+- `char`가 이전 문자와 같지 않고 `stack`의 마지막 문자와 같지 않을 때만 `stack`에 `push`
+- 이전 문자 업데이트
+- 위 조건을 만족하지 않으면서 `char`가 `stack`의 마지막 문자와 같을 때는 `pop`
 
 ## Problem3
 
