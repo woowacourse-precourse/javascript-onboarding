@@ -1,90 +1,57 @@
-const compareNickName = (nickName) => {
-  // String 메소드인 substring을 사용하여 값을 비교할 수 있음.
-  // nickName[idx].substring(left, right);
+const isThereNickName = (email, name, sameNickName) => {
+  var i = 0;
+
+  while (i < sameNickName.length) {
+    if (email === sameNickName[i][0] && name === sameNickName[i][1]) return 0;
+    i += 1;
+  }
+
+  return 1; //배열안에 중복 된 값이 존재하지 않을때.
+};
+
+const compareNickName = (forms) => {
   var left = 0;
   var right = 2;
-
-  var tLeft = 0;
-  var tRight = 2;
   var value = "";
   var idx = 0;
-  var tIdx = 1;
-  var check = 0;
-  
-  var outCheck = 0;
-  var reAns = [];
-  
-  while (idx < nickName.length){
-    value = nickName[idx].substring(left, right);
-  
-    while (tIdx < nickName.length){
-      while(tRight <= nickName[tIdx].length){
-        if (value === nickName[tIdx].substring(tLeft, tRight)){
-          reAns.push(nickName.splice(tIdx, 1));
-          check = 1;
-          outCheck = 1;
-          break;
-        }
-        else{
-          tLeft += 1;
-          tRight += 1;
-        }
-      }
-      
-      if (check){
-        tIdx -= 1;
-        check = 0;
-      } 
-      tIdx += 1;
-      tLeft = 0 ;
-      tRight = 2;
-    }
-    
-    if (check){
-      nickName.splice(idx, 1);
-      check = 0;
-    }
+  var sameNickName = [];
 
+  while (idx < forms.length) {
+    // value값이 다른 닉네임에도 존재하는지 확인하는 과정.
+    value = forms[idx][1].substring(left, right);
+    for (let j = 0; j < forms.length; j++) {
+      if (forms[j][1].includes(value) && idx != j) {
+        if (isThereNickName(forms[j][0], forms[j][1], sameNickName)) sameNickName.push([forms[j][0], forms[j][1]]);
+        if (isThereNickName(forms[idx][0], forms[idx][1], sameNickName)) sameNickName.push([forms[idx][0], forms[idx][1]]);
+      }
+    }
     left += 1;
     right += 1;
-
-    if (right > nickName[idx].length || outCheck == 1){
-      if (outCheck){
-        reAns.push(nickName.splice(idx, 1));
-        idx -= 1;
-        outCheck = 0;
-      }
+    if (left > forms[idx][1].length - 2) {
       idx += 1;
       left = 0;
       right = 2;
     }
-
   }
-  return reAns;
-}
+
+  console.log(sameNickName);
+  return sameNickName;
+};
 
 function problem6(forms) {
   var answer = [];
-  var nickName = [];
-  var myObj = new Object();
   var tmpAnswer = [];
 
+  tmpAnswer = compareNickName(forms);
 
-  // 닉네임만 따로 뽑아냅니다.
-  forms.forEach(element => {
-    nickName.push(element[1]);
-    myObj[`${element[1]}`] = element[0];
-  });
-
-  tmpAnswer = compareNickName(nickName);
-
-  tmpAnswer.forEach(element => {
-    answer.push(myObj[element]);
+  tmpAnswer.forEach((element) => {
+    answer.push(element[0]);
   });
 
   answer.sort();
 
   return answer;
 }
+
 
 module.exports = problem6;

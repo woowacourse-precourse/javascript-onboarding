@@ -6,7 +6,7 @@ function problem7(user, friends, visitors) {
   var insideFriend = "";
   var tmp = "";
   var forAnswer = [];
-
+  var cnt = 1;
   // 친구 관계 확인을 위한 오브젝트 생성 friends에서의 관계.
   friends.forEach((element) => {
     if (myObj[element[0]]) {
@@ -98,7 +98,11 @@ function problem7(user, friends, visitors) {
   forAnswer.forEach((element) => {
     if (element[0] != 0) {
       answer.push(element[1]);
+      cnt += 1;
     }
+
+    if (cnt > 5) return false;
+
   });
 
   return answer;
