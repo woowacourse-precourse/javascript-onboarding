@@ -108,16 +108,17 @@
   + 이메일 길이가 11자이상 20자 미만이 아니면 제거
 
 * 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
-  + 입력된 배열 `CrewDataArr` 길이만큼 계속해서 반복.
+  + **(+추가) 전체닉네임 `CrewDataArr[i][1]` 에 대한 2글자씩 잘라서 `Set객체`인 `TwoLetterNameSet` 에 넣어서 저장한다.**
+  + 입력된 배열 `CrewDataArr` 길이만큼 중복닉네임을 걸러내는 작업 반복.
   + ~~함수 `getDuplicateDataArr`에 `CrewDataArr`와 `CrewNickName`를 입력 후 함수 반환값을 return 한다.~~
-  + `CrewNickName`(닉네임)으로 함수 `getNameByTwoLetterArr`을 호출하여, 출력값을 배열 `TwoLetterNameArr`(닉네임검사리스트)에 저장 
+  + ~~`CrewNickName`(닉네임)으로 함수 `getNameByTwoLetterArr`을 호출하여, 출력값을 배열 `TwoLetterNameArr`(닉네임검사리스트)에 저장 ~~
   + `CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우, **(+추가) 임시 배열 `delCrewDataIndexArr`에 index 저장 한다.**  
   + 탐색이 완료하면, 배열 `delCrewDataIndexArr`의 데이터 여부를 확인하고, 데이터가 있을 경우, 탐색대상인 크루정보와 함께  `delCrewDataIndexArr`에 저장된 인덱스를 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.
   + return 값 : 배열 `duplicateDataArr`
 
 * 닉네임을 2글자씩 잘라서 배열로 return 해주는 `getNameByTwoLetterArr` 함수 구현.
 
-* `CrewNickName`(닉네임)과 `twoLetter`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.
+* `CrewNickName`(닉네임)과 `TwoLetterNameSet`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.
 
 ***
 
