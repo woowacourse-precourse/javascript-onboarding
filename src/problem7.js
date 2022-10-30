@@ -39,6 +39,12 @@ function problem7(user, friends, visitors) {
     Object.entries(count).sort(([, a], [, b]) => b - a)
   );
 
+  for (let i = 0; i < 5; i++) {
+    if (!Object.keys(sorted)[i] !== true) {
+      answer.push(Object.keys(sorted)[i]);
+    }
+  }
+
   return answer;
 }
 
