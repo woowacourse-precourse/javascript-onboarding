@@ -16,6 +16,11 @@ function problem7(user, friends, visitors) {
       }
     }
   });
+
+  visitors.forEach(visitor => {
+    if (!userFriends.includes(visitor)) recommendFriends.has(visitor) ? recommendFriends.set(visitor, recommendFriends.get(visitor) + 1) : recommendFriends.set(visitor, 1);
+  });
+
 }
 
 module.exports = problem7;
