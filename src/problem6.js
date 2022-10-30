@@ -30,10 +30,10 @@ function problem6(forms) {
       if (filterResult[k] === false) continue; // 비교 대상이 이미 연속포함명단에 있을경우
       const compareNick = nicknames[k]; // 비교 대상 닉네임
 
-      // 만약 중복이 아니라면
+      // 만약 사용불가 닉네임이 아니라면
       if (!isOverLapped(nick, compareNick)) {
         continue;
-        // 중복이라면
+        // 사용불가 닉네임이라면
       } else {
         // 결과 체크하고 탈출
         filterResult[i] = false;
