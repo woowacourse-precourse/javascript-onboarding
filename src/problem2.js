@@ -1,6 +1,7 @@
 function stringToArray(array) {
   return [...array];
 }
+
 function problem2(cryptogram) {
   let cryptogramArray = stringToArray(cryptogram);
   let compareArray = [];
@@ -16,3 +17,4 @@ function problem2(cryptogram) {
 
   return compareArray.join("");
 }
+module.exports = problem2;
