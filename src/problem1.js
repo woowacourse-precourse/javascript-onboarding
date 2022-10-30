@@ -1,3 +1,10 @@
+const gameState = {
+  pobiWin: 1,
+  crongWin: 2,
+  draw: 0,
+  exception: -1,
+};
+
 const isNextPage = (left, right) => {
   return right - left === 1;
 };
@@ -43,9 +50,21 @@ const getMaxScore = (page) => {
   return maxScore;
 };
 
+const getWinner = (pobi, crong) => {
+  const winner =
+    getMaxScore(pobi) > getMaxScore(crong)
+      ? gameState.pobiWin
+      : getMaxScore(pobi) === getMaxScore(crong)
+      ? gameState.draw
+      : gameState.crongWin;
+
+  return winner;
+};
+
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!isValidPage(pobi) || !isValidPage(crong)) return gameState.exception;
+
+  return getWinner(pobi, crong);
 }
 
 module.exports = problem1;
