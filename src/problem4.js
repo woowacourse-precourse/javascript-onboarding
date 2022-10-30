@@ -8,6 +8,17 @@
 function problem4(word) {
   var result = "";
   var wordArr = word.toString().split("").map(x=> x.charCodeAt([0]));
+  console.log(wordArr);
+
+  for (const ascii of wordArr){
+    if (ascii == 32){
+      result += " ";
+    }else if(ascii <= 90){
+      result += String.fromCharCode([155-ascii]);
+    }else{
+      result += String.fromCharCode([219-ascii]);
+    }
+  }
 }
 
 module.exports = problem4;
