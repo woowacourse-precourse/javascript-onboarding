@@ -47,8 +47,12 @@ function problem6(forms) {
     return checkWordList.includes(word)
   }
 
-
   //#4. 중복된 이름이 가진 배열 인덱스를 '중복된 인덱스' 배열에 넣는 함수 : INPUT 
+
+  function INPUT_INDEX_TO_DUPLICATED_INDEX_LIST (index) {
+    DUPLICATED_INDEX_LIST.push(index)
+  }
+
 
   //#5. 검색어가 '검사한 단어' 배열에 포함되는지 확인하는 함수 : T/F
   //#6. 검사하려는 인덱스가 '중복된 인덱스'에 존재하는지 확인하는 함수 : T/F
