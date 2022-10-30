@@ -14,6 +14,17 @@ function add(pageNum) {
   return addResult;
 }
 
+function multiply(pageNum) {
+  let multiplyResult = 1;
+  pageNum = pageNum.toString();
+
+  for (let i = 0; i < pageNum.length; i++) {
+    multiplyResult *= parseInt(pageNum[i], 10);
+  }
+
+  return multiplyResult;
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
