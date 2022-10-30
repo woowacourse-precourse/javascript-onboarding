@@ -7,6 +7,14 @@ function problem5(money) {
   const moneyUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   var moneyCount = [];
   let idx = 0;
+  moneyUnit.map((elem) => {
+    if (parseInt(money / elem) !== 0) {
+      moneyCount.push(parseInt(money / elem));
+    } else {
+      moneyCount.push(0);
+    }
+  });
+  return moneyCount;
 }
 
 module.exports = problem5;
