@@ -3,15 +3,17 @@ function problem2(cryptogram) {
   return answer;
 };
 function solution(cryptogram) {
-  let decode = [];
+  let tempStack = [];
   for (let i = 0; i < cryptogram.length; i++) {
-    if (decode[decode.length - 1] === cryptogram.charAt(i)) {
-      decode.pop();
+    let last = tempStack[tempStack.length - 1];
+    let curr = cryptogram[i];
+    if (last === curr) {
+      tempStack.pop();
     } else {
-      decode.push(cryptogram.charAt(i));
+      tempStack.push(curr);
     }
   }
-  let answer = decode.length === 0 ? "" : decode.join("");
+  let answer = tempStack.length === 0 ? "" : tempStack.join("");
   return answer;
 };
 module.exports = problem2;
