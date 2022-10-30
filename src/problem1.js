@@ -19,5 +19,10 @@ function problem1(pobi, crong) {
         }
     return Math.max(...score);
   }
+  let gameResult = getScore(pobi) - getScore(crong);
+  
+  return gameResult > 0 ? 1 :
+         gameResult < 0 ? 2 : 0;
 }
+
 module.exports = problem1;
