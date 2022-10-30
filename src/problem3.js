@@ -1,19 +1,23 @@
 function problem3(number) {
-    let answer = toNumber(number);
-    return answer;
+    return toLastNumberIteratation(number);
 }
 
-function numCheck(num) {
-    const str = String(num).split("");
-    const threeSixNineArr = str.filter(element => element === '3' || element === '6' || element === '9');
+function threeSixNineCount(num) {
+    const numSplit = String(num).split("");
+    const threeSixNineArr = numSplit.filter(isThreeSixNineCheck);
     return threeSixNineArr.length;
 }
 
-function toNumber(num) {
-    let cnt = 0;
-    for (let i = 1; i <= num; i++) {
-        cnt += numCheck(i);
-    }
-    return cnt;
+function isThreeSixNineCheck(digit) {
+    return digit === '3' || digit === '6' || digit === '9';
 }
+
+function toLastNumberIteratation(number) {
+    let count = 0;
+    for (let num = 1; num <= number; num++) {
+        count += threeSixNineCount(num);
+    }
+    return count;
+}
+
 module.exports = problem3;
