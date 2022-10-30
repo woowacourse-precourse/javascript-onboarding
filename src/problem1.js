@@ -9,8 +9,21 @@ const isValidPages = (pages) => {
   return true;
 }
 
+const calculateDigitAddition = (num) => {
+
+}
+
+const calculateDigitMutiplication = (num) => {
+
+}
+
 const getGameScore = (pages) => {
-  return 100;
+  const scores= [];
+  pages.forEach((page)=>{
+    scores.push(calculateDigitAddition(page));
+    scores.push(calculateDigitMutiplication(page));
+  })
+  return Math.max(...scores);
 }
 
 function problem1(pobi, crong) {
