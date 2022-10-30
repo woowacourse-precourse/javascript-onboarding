@@ -14,7 +14,22 @@ const makeReverseList = (endNumber) => {
 };
 
 const problem4 = (word) => {
-  const answer = '';
+  let answer = '';
+
+  const { UPPER_END, LOWER_END, UPPER_START, LOWER_START } = numericVars;
+
+  const upperReverseList = makeReverseList(UPPER_END);
+  const lowerReverseList = makeReverseList(LOWER_END);
+
+  [...word].forEach(
+    (char) =>
+      (answer +=
+        char === ' '
+          ? ' '
+          : char === char.toUpperCase()
+          ? upperReverseList[char.charCodeAt(0) - UPPER_START]
+          : lowerReverseList[char.charCodeAt() - LOWER_START])
+  );
 
   return answer;
 };
