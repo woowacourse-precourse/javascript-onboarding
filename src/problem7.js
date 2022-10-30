@@ -57,9 +57,11 @@ function addFriendDecidedByAnotherSideIndex(friend, anotherSide, addToThisArr) {
 
 function getAlreadyFriends(user, friends, alreadyFriends) {
   for (let i = 0; i < friends.length; i++) {
-    if (friends[i].includes(user)) {
-      addFriendDecidedByAnotherSideIndex(friends[i], user, alreadyFriends);
+    if (!friends[i].includes(user)) {
+      continue;
     }
+
+    addFriendDecidedByAnotherSideIndex(friends[i], user, alreadyFriends);
   }
 }
 
@@ -70,13 +72,15 @@ function checkMyFriendsLinkedWithUnknown(
   i
 ) {
   for (let j = 0; j < alreadyFriends.length; j++) {
-    if (friends[i].includes(alreadyFriends[j])) {
-      addFriendDecidedByAnotherSideIndex(
-        friends[i],
-        alreadyFriends[j],
-        friendOfFreinds
-      );
+    if (!friends[i].includes(alreadyFriends[j])) {
+      continue;
     }
+
+    addFriendDecidedByAnotherSideIndex(
+      friends[i],
+      alreadyFriends[j],
+      friendOfFreinds
+    );
   }
 }
 
