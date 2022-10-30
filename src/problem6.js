@@ -1,8 +1,11 @@
 function problem6(forms) {
   const checkList=makeCheckList(forms);
-  var result = getResult(checkList)
+  var result = getResult(checkList).sort((a,b)=>{
+    if(a>b) return 1;
+    else if(b>a) return -1;
+    else return 0;
+  });
   return result;
-  //4. 기능3의 함수 반환값을 배열로 변환해 정렬해 반환.
 }
 
 module.exports = problem6;
