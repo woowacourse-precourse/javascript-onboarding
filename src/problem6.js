@@ -11,15 +11,8 @@ function checkReduplicate(username) {
   return permutation;
 }
 
-function problem6(forms) {
-  var answer = new Set();
-  const tempList = [];
-  for (let i = 0; i < forms.length; i++) {
-    tempList.push(...checkReduplicate(forms[i][1].split("")));
-  }
-
-  const permutationList = new Set(tempList);
-  permutationList.forEach((checkWord) => {
+function saveReplicatedIndex(forms, arr, result) {
+  arr.forEach((checkWord) => {
     let saveIndex = [];
     for (let i = 0; i < forms.length; i++) {
       if (forms[i][1] !== checkWord && forms[i][1].indexOf(checkWord) > -1) {
@@ -28,9 +21,21 @@ function problem6(forms) {
     }
     if (saveIndex.length > 1)
       saveIndex.map((val) => {
-        answer.add(forms[val][0]);
+        result.add(forms[val][0]);
       });
   });
+}
+
+function problem6(forms) {
+  var answer = new Set();
+  const tempList = [];
+  for (let i = 0; i < forms.length; i++) {
+    tempList.push(...checkReduplicate(forms[i][1].split("")));
+  }
+
+  const permutationList = new Set(tempList);
+
+  saveReplicatedIndex(forms, permutationList, answer);
 
   answer = Array.from(answer);
 
@@ -40,5 +45,15 @@ function problem6(forms) {
     else return 0;
   });
 }
+
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
