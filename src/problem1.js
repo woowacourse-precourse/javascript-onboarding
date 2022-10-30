@@ -76,7 +76,11 @@ function problem1(pobi, crong) {
     return 2;
   }
 
-  return 0;
+  if (pobiScore === crongScore) {
+    return 0;
+  }
+
+  return -1;
 }
 
 module.exports = problem1;
