@@ -1,3 +1,5 @@
+const isUpperCase = (char) => char.toUpperCase() === char;
+
 function problem4(word) {
   const alphas = Array.from({ length: 26 }, (_, i) =>
     String.fromCharCode(i + 65)
@@ -10,10 +12,9 @@ function problem4(word) {
     if (idx === -1) {
       result += " ";
     } else {
-      result +=
-        char.toUpperCase() === char
-          ? reversedAlphas[idx]
-          : reversedAlphas[idx].toLowerCase();
+      result += isUpperCase(char)
+        ? reversedAlphas[idx]
+        : reversedAlphas[idx].toLowerCase();
     }
   }
 
