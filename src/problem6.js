@@ -70,8 +70,17 @@ function problem6(forms) {
 
   }
 
-  //#7. 인덱스를 통해 이메일 리스트를 만드는 함수 : INPUT
-  //#8. 이메일 리스트를 출력하는 함수 : []
+  //#7. 인덱스를 통해 이메일 리스트를 반환하는 함수 : INPUT
+
+  function RETURN_EMAIL_LIST_WITH_INDEX () {
+    const FORMS = forms.slice();
+    const outputEmailList = [];
+    for(let i of DUPLICATED_INDEX_LIST){
+      outputEmailList.push(FORMS[i][0])
+    }
+    return outputEmailList;
+  }
+
 
   //특이사항
   //!1. 이메일의 전체 길이는 11자 이상 20자 미만
