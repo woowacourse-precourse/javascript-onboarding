@@ -3,7 +3,6 @@ const addPageFunction = (el) => {
   el = el.toString();
 
   for(let i=0; i<el.length; i++){
-    console.log(el[i]);
     addValue += parseInt(el[i]);
   }
 
@@ -29,10 +28,11 @@ const checkException = (leftPage, rightPage) => {
 }
 
 function problem1(pobi, crong) {
-  var answer;
+  var answer = 0;
   var pobiArray = [];
   var crongArray = [];
-
+  var MAX_POBI = 0;
+  var MAX_CRONG = 0;
   // 예외사항 발견시 -1을 리턴하고 종료합니다.
   // 발생가능한 예외사항으로는 왼쪽 페이지와 오른쪽 페이지가 서로 연속되지 않을 수 있습니다.
   if (!checkException(pobi[0], pobi[1])){
@@ -61,7 +61,15 @@ function problem1(pobi, crong) {
       crongArray.push(multiPageFunction(page));
     }
   }
-  
+
+  // Math 객체를 사용하여 Array속 최댓값을 찾아낼 수 있습니다.
+  MAX_POBI = Math.max(...pobiArray);
+  MAX_CRONG = Math.max(...crongArray);
+
+  // 조건문을 사용하여 각 값들을 비교합니다.
+  if (MAX_POBI > MAX_CRONG) answer = 1;
+  else if(MAX_POBI < MAX_CRONG) answer = 2;
+  else answer = 0;
 
   return answer;
 }

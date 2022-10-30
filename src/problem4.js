@@ -1,4 +1,4 @@
-const crypto = (element) => {
+const problem4 = (element) => {
   var answer;
 
   return answer;
