@@ -2,7 +2,7 @@ function problem6(forms) {
   forms = forms
     .filter((form) => form[1].length > 1)
     .map((form) => form.concat(splitNickname(form[1])));
-  var answer = compareAllCrews(forms);
+  var answer = sortEmail(compareAllCrews(forms));
   return answer;
 }
 
@@ -31,7 +31,6 @@ const compareAllCrews = (forms) => {
       emailSet.add(email);
     });
   });
-  console.log("emailSet", emailSet);
   return [...emailSet];
 };
 
@@ -60,6 +59,15 @@ const compareNicknames = (myEmail, myNicknameSet, myIndex, forms) => {
     }
   });
   return duplicatedEmailList;
+};
+
+/**
+ * 이메일 리스트를 오름차순으로 정렬한다
+ * @param {Array<string>} emailList - 이메일 리스트
+ * @returns {Array<string>} 정렬된 이메일 리스트
+ */
+const sortEmail = (emailList) => {
+  return emailList.sort((a, b) => a.localeCompare(b));
 };
 
 module.exports = problem6;
