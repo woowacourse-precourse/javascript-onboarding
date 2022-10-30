@@ -18,6 +18,27 @@
  */
 
 /**
+ * @enum {number}
+ */
+const POINT = {
+  OTHERS_FRIEND: 10,
+  VISITOR: 1,
+};
+
+/**
+ * @param {Map<string, number>} map
+ * @param {string} target
+ * @param {POINT} point
+ */
+function setPointInMap(map, target, point) {
+  if (map.has(target)) {
+    map.set(target, map.get(target) + point);
+  } else {
+    map.set(target, point);
+  }
+}
+
+/**
  * @param {string} user
  * @param {[string, string][]} friends
  * @returns {{myFriends: string[], othersFriends: [string, string][]}}
@@ -52,8 +73,5 @@ function problem7(user, friends, visitors) {
   var answer;
   return answer;
 }
-const map = new Map();
-
-map.set();
 
 module.exports = problem7;
