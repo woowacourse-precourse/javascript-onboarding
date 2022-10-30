@@ -103,3 +103,9 @@ function convertAlphabet(word) {
 
   return convertedWordArray;
 }
+
+function arrayToString(wordArray) {
+  wordArray = wordArray.join("");
+
+  return wordArray;
+}
