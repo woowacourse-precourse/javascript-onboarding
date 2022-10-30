@@ -47,6 +47,18 @@ function problem7(user, friends, visitors) {
   scoresArray = scoresArray.sort((a, b) => b[1] - a[1]);
 
   // 정렬한 scores를 순회하며 반환할 배열에 조건에 맞게 푸쉬한다. (user와 이미 친구이거나, result의 길이가 5에 도달했을 때, user 본인일 때 푸쉬하지 않는다.)
+  const result = [];
+
+  scoresArray.forEach((element) => {
+    const name = element[0];
+
+    // user와 이미 친구라면, 친구 추천할 사람이 5명이 넘은 경우, user 본인인 경우를 제외한다.
+    if (!userFriends.includes(name) && result.length <= 5 && name !== user) {
+      result.push(name);
+    }
+  });
+
+  return result;
 }
 
 module.exports = problem7;
