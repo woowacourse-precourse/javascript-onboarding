@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   let answer = [];
   const relationships = {};
   const notFriends = {};
+  const notFriendsList = [];
 
   friends.forEach((friend) => {
     //사용자간의 관계를 초기화한다.
@@ -33,6 +34,11 @@ function problem7(user, friends, visitors) {
 
   Object.keys(notFriends).forEach((notFriend) => {
     if (notFriends[notFriend] === 0) return; //점수가 0인 유저는 추천되지 않도록 한다.
+    // 친구가 아닌 유저의 정보를 각각의 객체로 만들어 배열에 저장한다.
+    notFriendsList.push({
+      name: notFriend,
+      score: notFriends[notFriend],
+    });
   });
 
   return answer;
