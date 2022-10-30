@@ -8,8 +8,9 @@
         - [O] 3. 배열의 마지막 요소와 문자가 같고, 문자가 중복되지 않은 상태인 경우 => 문자의 중복 상태 여부 True로 변경
         - [O] 4. 배열의 마지막 요소와 문자가 다르고, 문자의 중복 상태 여부가 True인 경우 => 배열의 마지막 요소를 제거하고, 문자의 중복 상태 여부 False로 변경 후, 문자를 배열 끝에 삽입
         - [O] 5. 배열의 마지막 요소와 문자가 다르고, 문자의 중복 상태 여부가 False인 경우 => 문자를 배열의 끝에 삽입
-      [ ] 반목분 break 조건 : 중복 문자 제거 후 문자열의 길이가 0이거나, 제거 전 문자열과 동일한 경우
-      [ ] 다음 반복문을 위한 재조정: 배열의 문자열을 이용하여 다음 iterate의 cryptogram으로 사용. 배열 clear
+      [O] 반목분 break 조건 : 중복 문자 제거 후 문자열의 길이가 0이거나, 제거 전 문자열과 동일한 경우
+          *break 후 배열의 문자들을 조합하여 정답 반환
+      [O] 다음 반복문을 위한 재조정: 배열의 문자열을 이용하여 다음 iterate의 cryptogram으로 사용. 배열 clear
 */
 
 function problem2(cryptogram) {
@@ -52,7 +53,10 @@ function problem2(cryptogram) {
       decryptedCryptogramStack.length === cryptogramLength
     )
       break;
+    beforeDecryptedCryptogram = decryptedCryptogramStack.join('');
+    decryptedCryptogramStack = [];
   }
+  return decryptedCryptogramStack.join('');
 }
 
 module.exports = problem2;
