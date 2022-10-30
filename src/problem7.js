@@ -39,8 +39,10 @@ function solution(user, friends, visitors) {
   const scoreBoard = getScoreBoard(friends, visitors);
   gradeFriendsScore(user, graph, scoreBoard);
   gradeVisitorsScore(visitors, scoreBoard);
-  const refinedBoard = refindBoard(scoreBoard, user, graph);
-  return getNewFriendsList(refinedBoard);
+  const refinedBoard = refineBoard(scoreBoard, user, graph);
+  const friendList = getNewFriendsList(refinedBoard);
+
+  return friendList;
 }
 
 function addVertex(graph, vertex) {
@@ -128,7 +130,7 @@ function gradeVisitorsScore(visitors, scoreBoard) {
   );
 }
 
-function refindBoard(scoreBoard, user, graph) {
+function refineBoard(scoreBoard, user, graph) {
   const refinedBoard = removeUserAndFriendId(scoreBoard, user, graph);
   return sortScoreBoard(refinedBoard);
 }
@@ -148,7 +150,25 @@ function isFriend(id, friends) {
 }
 
 function sortScoreBoard(scoreBoard) {
-  return scoreBoard.sort((a, b) => b.score - a.score);
+  sortInAlphabeticalOrder(scoreBoard);
+  sortInAscendingOrder(scoreBoard);
+  return scoreBoard;
+}
+
+function sortInAlphabeticalOrder(scoreBoard) {
+  scoreBoard.sort((x, y) => {
+    if (x.id < y.id) {
+      return -1;
+    }
+    if (x.id > y.id) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+function sortInAscendingOrder(scoreBoard) {
+  scoreBoard.sort((a, b) => b.score - a.score);
 }
 
 function getNewFriendsList(sortedBoard) {
@@ -341,10 +361,10 @@ function checkVisitorsElement(visitors) {
 problem7(
   'jeunghoon',
   [
-    ['donut', 'andole'],
+    ['donut', 'fndole'],
     ['donut', 'cun'],
     ['donut', 'jeunghoon'],
-    ['shakevan', 'andole'],
+    ['shakevan', 'fndole'],
     ['shakevan', 'cun'],
     ['shakevan', 'jeunghoon'],
   ],
