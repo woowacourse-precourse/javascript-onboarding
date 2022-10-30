@@ -84,6 +84,10 @@ function problem1(pobi, crong) {
   } else {
     answer = 2;
   }
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) {
+    answer = -1;
+  }
+
   return answer;
 }
 
