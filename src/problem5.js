@@ -4,6 +4,7 @@ function problem5(money) {
 
   for (let i = 0; i < bill.length; i++) {
     result.push(Math.floor(money / bill[i]));
+    money %= bill[i]
   } 
 
   return result;
