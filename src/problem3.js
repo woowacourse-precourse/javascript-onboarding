@@ -1,6 +1,10 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let array = [];
+  for(i = 0; i <= number; i++) {
+    if(countClapTimes(i) !== 0) {
+      array.push(countClapTimes(i))
+    }
+  }
 }
 
 module.exports = problem3;
