@@ -1,6 +1,5 @@
-function problem7(user, friends, visitors) {
+function countYourFriend(user, friends, notRecommendationFriends){
   let friendGraph = {};
-  let notRecommendationFriends = {};
   let recommendationScore = {};
 
   friends.forEach(friendArray => {
@@ -22,7 +21,21 @@ function problem7(user, friends, visitors) {
     });
   });
 
-  console.log(recommendationScore);
+  return [notRecommendationFriends, recommendationScore];
+}
+
+function countVisitFriend(visitors, notRecommendationFriends, recommendationScore){
+  return ""
+}
+
+function problem7(user, friends, visitors) {
+  let notRecommendationFriends = {};
+  let recommendationScore = {};
+
+  [notRecommendationFriends, recommendationScore] = countYourFriend(user, friends, notRecommendationFriends);
+  recommendationScore = countVisitFriend(visitors, notRecommendationFriends, recommendationScore);
+
+  return recommendationScore;
 }
 
 problem7("mrko", 	[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"], ["andole", "jun", "bedi"])
