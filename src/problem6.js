@@ -18,9 +18,7 @@ function getEmail({ forms, nickNameMap }) {
 
     for (let i = 0; i < nickname.length - 1; i++) {
       const substringNickName = nickname.substring(i, i + 2);
-      console.log(substringNickName);
       const currNicknameNum = nickNameMap.get(substringNickName);
-      console.log(currNicknameNum);
 
       if (currNicknameNum > 1) set.add(email);
     }
@@ -32,10 +30,11 @@ function getEmail({ forms, nickNameMap }) {
 
 function problem6(forms) {
   const nickNameMap = overlapNickname(forms);
-  getEmail({
+  const email = getEmail({
     forms,
     nickNameMap,
   });
+  return email.sort();
 }
 
 function testCode() {
