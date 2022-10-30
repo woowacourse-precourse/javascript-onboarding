@@ -23,6 +23,10 @@ function problem3(number) {
   return count;
 }
 
+function createNumberArray(number) {
+  return Array.from({ length: number }, (_, i) => i + 1);
+}
+
 function isMatched369(number) {
   return number.toString().match(/3|6|9/g);
 }
