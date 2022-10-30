@@ -1,3 +1,9 @@
+const DUPLICATE_REGEX = /(\w)\1+/g;
+
+const checkDuplicate = (cryptogram) => {
+  return DUPLICATE_REGEX.test(cryptogram);
+}
+
 function problem2(cryptogram) {
   const answerStack = [cryptogram[0]]; 
   let duplicateChar = '';   
