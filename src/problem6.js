@@ -1,16 +1,19 @@
 function problem6(forms) {
   var answer=[];
-  let overlappingObj = makeOverlappingObj(forms)
-  
-  return answer;
+    for(let crew of forms){
+      if(checkEmail(crew[0]) || checkName(crew[1], forms)){
+        answer.push(crew[0])
+      }
+    }
+    return preAnswer(answer);
 }
 
 function checkEmail(email){
   if(email.length<11 || email.length>=20){
     return true
   }
-  let emailArr = email.split("@")
-  if(emailArr.includes("email.com")){
+  let emailDomain = email.split("@")
+  if(!emailDomain.includes("email.com")){
     return true
   }
   return false
@@ -36,7 +39,7 @@ function makeOverlappingObj(forms){
   return overlappingObj
 }
 
-function checkName(crew){
+function checkName(crew, forms){
   let overlappingObj = makeOverlappingObj(forms)
   for (let name of makeOverlappingArr(crew)){
     if(overlappingObj[name]>1){
@@ -46,9 +49,10 @@ function checkName(crew){
   return false
 }
 
- 
-
-
+function preAnswer(emailArr){
+  const answer =[... new Set(emailArr)]
+  return answer.sort()
+}
 
 
 module.exports = problem6;

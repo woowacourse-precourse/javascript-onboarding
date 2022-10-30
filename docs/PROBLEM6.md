@@ -13,8 +13,9 @@
     - obj의 value가 1보다 크면 true
     - 포함되지 않는 경우에는 false
 
-4. 이메일과 이름을 확인 후, `answer`에 email 추가.
-5. 만들어진 `answer` 배열 전처리
+4. 이메일과 이름을 확인 후, <answer>에 email 추가.
+
+5. 만들어진 <answer> 배열 전처리 `preAnswer`
     - 오름차순 / - 중복 제거
 
 ### 제한사항
