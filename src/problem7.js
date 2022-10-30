@@ -10,7 +10,7 @@ function problem7(user, friends, visitors) {
     for (let i = 0; i < friends.length; i++) {
       for (let j = 0; j < 2; j++) {
         if (user == friends[i][j]) {
-          push_currnet_friend(friends[i][1 - j]);
+          push_current_friend(friends[i][1 - j]);
         }
       }
     }
