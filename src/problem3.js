@@ -10,8 +10,16 @@
 
 function problem3(number) {
   var answer;
+  let sum = 0;
+
   const regex = /[3,6,9]/g;
 
+  if (number.toString().search(regex) != null) {
+    for (let i = 3; i <= number; i++) {}
+    answer = sum;
+  } else {
+    answer = 0;
+  }
   return answer;
 }
 
