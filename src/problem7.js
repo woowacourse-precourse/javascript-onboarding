@@ -5,7 +5,7 @@ function problem7(user, friends, visitors) {
   const visitTimelineScore = getVisitTimelineScore(userFriends, visitors);
   const recommendScore = getRecommendScore(withKnowScore, visitTimelineScore);
 
-  return answer;
+  return recommendScore;
 }
 
 function getSeparateFrieds(user, friends) {
@@ -58,13 +58,27 @@ function getVisitTimelineScore(visitors) {
 }
 
 function getRecommendScore(withKnowScore, visitTimelineScore) {
-  for (visitor in visitTimelineScore) {
+  for (let visitor in visitTimelineScore) {
     if (withKnowScore[visitor]) {
       withKnowScore[visitor] += visitTimelineScore[visitor];
     } else {
       withKnowScore[visitor] = visitTimelineScore[visitor];
     }
-    return withKnowScore;
   }
+  const recommendScore = sortRecommendScore(withKnowScore).slice(0, 5);
+  return recommendScore.map((items) => {
+    return items[0];
+  });
 }
+
+function sortRecommendScore(recommendScore) {
+  const sortedRecommendScore = Object.entries(recommendScore).sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] > b[0] ? 1 : -1;
+    }
+    return b[1] - a[1];
+  });
+  return sortedRecommendScore;
+}
+
 module.exports = problem7;
