@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
-  let recommendationFriends = new Map();
+  const SCORE = { mutualFriend: 10, visitor: 1 };
 
+  const recommendationFriends = new Map();
   const alreadyFriends = findAlreadyFriends(user, friends);
   const tempRecommendationFriends = findTempRecommendationFriends(
     user,
@@ -12,18 +13,17 @@ function problem7(user, friends, visitors) {
     addRecommendationFriends(
       recommendationFriends,
       tempRecommendationFriend,
-      10
+      SCORE.mutualFriend
     );
   });
 
   visitors.map((visitor) => {
     if (visitor !== user && !alreadyFriends.includes(visitor)) {
-      addRecommendationFriends(recommendationFriends, visitor, 1);
+      addRecommendationFriends(recommendationFriends, visitor, SCORE.visitor);
     }
   });
 
   const answerTopFive = descendingSort(recommendationFriends);
-
   return Array.from(answerTopFive.keys()).slice(0, 5);
 }
 
