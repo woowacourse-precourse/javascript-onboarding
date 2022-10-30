@@ -4,8 +4,9 @@ function problem6(forms) {
   const nickname = [];
 
   forms.forEach((user) => {
-    email.push(user[0]);
-    nickname.push(user[1]);
+    const [userEmail, userName] = user;
+    email.push(userEmail);
+    nickname.push(userName);
   });
 
   const dividedUserInfo = {};
