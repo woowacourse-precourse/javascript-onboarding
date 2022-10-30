@@ -1,36 +1,31 @@
 function problem2(cryptogram) {
-  const isLowerCase = (cryptogram) => {
-    const check = cryptogram.replace(/[^a-z]/, '');
-    return cryptogram === check;
+  const CRYPTOGRAM_REGEX = /^[a-z]{1,1000}&/;
+  const isValidCryptogram = (cryptogram) => {
+    return CRYPTOGRAM_REGEX.test(cryptogram);
   };
 
-  if (
-    !(cryptogram.length >= 1 && cryptogram.length <= 1000) ||
-    !isLowerCase(cryptogram)
-  ) {
-    throw new Error(
-      'cryptogram은 길이가 1이상이고 1000이하인 소문자 알파벳 문자열이어야한다'
-    );
+  if (isValidCryptogram(cryptogram)) {
+    throw new Error('1이상 1000이하의 영어 소문자만 입력 가능합니다.');
   }
 
-  const decrypto = (cryptogram) => {
+  const decryptCryptogram = (cryptogram) => {
     if (cryptogram.length === 0) return cryptogram;
     const decrypted = [];
-    let pointer = '';
-    let isContinious = false;
+    let currentCharacter = '';
+    let isRepeated = false;
     [...cryptogram].forEach((character) => {
-      if (!isContinious) {
-        pointer = decrypted.pop() || '';
+      if (!isRepeated) {
+        currentCharacter = decrypted.pop() || '';
       }
 
-      if (pointer === character) {
-        isContinious = true;
+      if (currentCharacter === character) {
+        isRepeated = true;
       } else {
-        if (!isContinious) {
-          decrypted.push(pointer);
+        if (!isRepeated) {
+          decrypted.push(currentCharacter);
         }
         decrypted.push(character);
-        isContinious = false;
+        isRepeated = false;
       }
     });
     const decryptogram = decrypted.join('');
@@ -38,10 +33,10 @@ function problem2(cryptogram) {
     if (decryptogram === cryptogram) {
       return cryptogram;
     }
-    return decrypto(decryptogram);
+    return decryptCryptogram(decryptogram);
   };
 
-  return decrypto(cryptogram);
+  return decryptCryptogram(cryptogram);
 }
 
 module.exports = problem2;
