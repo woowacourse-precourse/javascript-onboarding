@@ -9,4 +9,11 @@ function calculateAdd(num) {
   return result;
 }
 
+function calculateMul(num) {
+  let result = 1,
+    str = num + "";
+  [...str].forEach((s) => (result *= Number(s)));
+  return result;
+}
+
 module.exports = problem1;
