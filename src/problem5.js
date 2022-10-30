@@ -5,7 +5,7 @@ function problem5(money) {
 
   for (i = 0; i < mUnit.length; i++) {
     withdraw.push(howManyMoneys(money, mUnit[i]));
-    money = parseInt(money / mUnit[i]);
+    money = money % mUnit[i];
   }
 
   answer = withdraw;
