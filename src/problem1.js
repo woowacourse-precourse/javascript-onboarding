@@ -8,7 +8,7 @@ function problem1(pobi, crong) {
   var pobiRightPage = pobi[1].toString();
 
   // pobi 왼쪽 페이지 시작
-  for (i = 0; i < pobiLeftPage.length; i++) {
+  for (var i = 0; i < pobiLeftPage.length; i++) {
     sum += Number(pobiLeftPage[i]);
     multiply *= Number(pobiLeftPage[i]);
   }
@@ -21,7 +21,7 @@ function problem1(pobi, crong) {
   // pobi 오른쪽 페이지 시작
   sum = 0;
   multiply = 1;
-  for (i = 0; i < pobiRightPage.length; i++) {
+  for (var i = 0; i < pobiRightPage.length; i++) {
     sum += Number(pobiRightPage[i]);
     multiply *= Number(pobiRightPage[i]);
   }
@@ -38,7 +38,7 @@ function problem1(pobi, crong) {
   // crong 왼쪽 페이지 시작
   sum = 0;
   multiply = 1;
-  for (i = 0; i < crongLeftPage.length; i++) {
+  for (var i = 0; i < crongLeftPage.length; i++) {
     sum += Number(crongLeftPage[i]);
     multiply *= Number(crongLeftPage[i]);
   }
@@ -51,7 +51,7 @@ function problem1(pobi, crong) {
   // crong 오른쪽 페이지 시작
   sum = 0;
   multiply = 1;
-  for (i = 0; i < crongRightPage.length; i++) {
+  for (var i = 0; i < crongRightPage.length; i++) {
     sum += Number(crongRightPage[i]);
     multiply *= Number(crongRightPage[i]);
   }
