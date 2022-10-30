@@ -1,3 +1,12 @@
+// 기능 따로 빼서 함수 만들어야할듯 (코드 가독성 낮음 문제)
+// 1. (List) friends -> (Obj) id_obj
+//    { id : [friend1, friend2, ...] ,.. }
+// 2. (Obj) scores
+//    { id : score ,.. }
+//    * key : id_obj[user][i] 인 value 참고해서 
+//     친구의 친구인 id만 score의 key로 생성, 점수+10
+// 3. visitors 로 score[id]+1
+// 4. key List 생성 -> sort
 function problem7(user, friends, visitors) {
   let answer;
   let id_obj = {};

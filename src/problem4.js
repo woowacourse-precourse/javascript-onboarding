@@ -1,3 +1,5 @@
+//1. A-Z, a-z 아스키코드값 활용해서 뒤집기
+//2. 대문자 <-> 소문자 바꾸기
 function problem4(word){
   var answer;
   const [code_A, code_Z, code_a, code_z] =
