@@ -21,8 +21,8 @@ function problem6(forms) {
   for (let i = 0; i < (forms.length - 1); i++) {
     for (let j = i + 1; j < forms.length; j++) {
       if (compare(names[i], names[j])) {
-        answer.push(emails[i])
-        answer.push(emails[j])
+        answer.push(emails[i]);
+        answer.push(emails[j]);
       }
     }
   }
