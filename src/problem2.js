@@ -12,6 +12,7 @@ function problem2(cryptogram) {
       }
 
       if (tracker != 0) {
+        //만약 중복수가 answer[0]에서 시작한다면,
         if ((i - tracker) === 0) {
           answer = answer.slice(i + 1, answer.length);
         } else if ((i - tracker) != 0) {
