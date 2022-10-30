@@ -1,6 +1,3 @@
-// [] return -1 처리의 경우 - 1 / 숫자가 연속(홀-짝 순서)되지 않을 경우 바로 return -1
-// [] return -1 처리의 경우 - 2 / 시작 면(1-2) or 마지막 면(399-400)이 나온 경우 바로 return -1
-
 // [✅] 자릿 수 만큼 더하게 하기 곱하게 하기
 // 자릿 수 만큼 더하기 / result += num;
 // 자릿 수 만큼 곱하기 / 0에 곱하면 0이되니, 첫 값은 result에 넣고 시작, result *= num;
@@ -13,6 +10,11 @@
 // if(pobi > crong) return 1;
 // if(pobi < crong) return 2;
 // 그 외 return -1;
+
+// [✅] return -1 처리의 경우 - 1 / 숫자가 홀-짝 순서가 되지 않을 경우
+// [✅] return -1 처리의 경우 - 2 / 시작 면(1-2) or 마지막 면(399-400)이 나온 경우
+// [✅] return -1 처리의 경우 - 3 / 각 유저의 페이지 숫자들이 동일한 번호인 경우
+// [✅] return -1 처리의 경우 - 4 / 각 유저의 페이지 숫자들의 차이가 2이상인 경우
 
 // 더 큰 값 비교
 function islarger(a, b) {
@@ -79,11 +81,75 @@ function result(userName1, userName2) {
     return 2;
   }
 }
+// 예외 처리 (-1)
+function exceptionHandling(userName1, userName2) {
+  if (isFirstNumberEven(userName1)) {
+    return -1;
+  }
+  if (isFirstNumberEven(userName2)) {
+    return -1;
+  }
+  if (isBothEnds(userName1)) {
+    return -1;
+  }
+  if (isBothEnds(userName2)) {
+    return -1;
+  }
+  if (isSameNumber(userName1)) {
+    return -1;
+  }
+  if (isSameNumber(userName2)) {
+    return -1;
+  }
+  if (isIncreaseRegular(userName1)) {
+    return -1;
+  }
+  if (isIncreaseRegular(userName2)) {
+    return -1;
+  }
+}
+// 각 유저의 첫번째 수가 짝수인 경우
+function isFirstNumberEven(user) {
+  if (isEqual(user[0] % 2, 0)) {
+    return true;
+  }
+}
+// 각 유저의 숫자 중, 1페이지, 400페이지가 포함되어있는 경우
+function isBothEnds(user) {
+  const left = getPageSide('left');
+  const right = getPageSide('right');
+  if (
+    user[left] === 1 ||
+    user[left] === 400 ||
+    user[right] === 1 ||
+    user[right] === 400
+  ) {
+    return true;
+  }
+}
+// 각 유저의 숫자가 동일한 번호인가?
+function isSameNumber(user) {
+  if (isEqual(user[getPageSide('left')], user[getPageSide('right')])) {
+    return true;
+  }
+}
+// 각 유저의 페이지 숫자들의 차이가 2이상인 경우
+function isIncreaseRegular(user) {
+  const differenceNums = Math.abs(
+    user[getPageSide('right')] - user[getPageSide('left')]
+  );
+  if (differenceNums > 1) {
+    return true;
+  }
+}
 // 정답
 function problem1(pobi, crong) {
+  if (exceptionHandling(pobi, crong) === -1) {
+    return -1;
+  }
   return result(pobi, crong);
 }
 
-console.log(problem1([97, 98], [197, 198]));
+console.log(problem1([131, 132], [211, 212]));
 
 module.exports = problem1;
