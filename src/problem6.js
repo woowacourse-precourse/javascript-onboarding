@@ -1,30 +1,28 @@
 function problem6(forms) {
-  let twoLetterMap = new Map();
-  let duplicateEmailSet = new Set();
+  const twoLetterMap = new Map();
+  const duplicateEmailSet = new Set();
 
   forms.map((form) => {
     setMapTwoLetter(form, twoLetterMap);
   });
-
   forms.map((form) => {
     isDuplicateNickname(form, duplicateEmailSet, twoLetterMap);
   });
 
-  let answer = [...duplicateEmailSet];
-  answer.sort();
-
+  const answer = [...duplicateEmailSet].sort();
   return answer;
 }
 
 function setMapTwoLetter(form, twoLetterMap) {
   const [, nickname] = form;
+  let twoLetter = "";
+  let duplicateCount = 0;
 
   if (nickname.length >= 2) {
     for (let i = 0; i < nickname.length - 1; i++) {
-      let twoLetter = nickname.slice(i, i + 2);
-
+      twoLetter = nickname.slice(i, i + 2);
       if (twoLetterMap.has(twoLetter)) {
-        let duplicateCount = twoLetterMap.get(twoLetter);
+        duplicateCount = twoLetterMap.get(twoLetter);
         twoLetterMap.set(twoLetter, duplicateCount + 1);
         continue;
       }
@@ -35,9 +33,11 @@ function setMapTwoLetter(form, twoLetterMap) {
 
 function isDuplicateNickname(form, duplicateEmailSet, twoLetterMap) {
   const [email, nickname] = form;
+  let twoLetter = "";
+
   if (nickname.length >= 2) {
     for (let i = 0; i < nickname.length - 1; i++) {
-      let twoLetter = nickname.slice(i, i + 2);
+      twoLetter = nickname.slice(i, i + 2);
       if (twoLetterMap.get(twoLetter) > 1) {
         duplicateEmailSet.add(email);
         break;
