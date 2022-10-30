@@ -7,11 +7,19 @@ function problem6(forms) {
     for (let i = 0; i < nickname.length - 1; i++) {
       let twoChar = nickname[i] + nickname[i + 1];
       for (let j = index + 1; j < forms.length; j++) {
-        console.log(twoChar, forms[j]);
+        if (forms[j][1].includes(twoChar) && !arr.has(forms[j][0])) {
+          arr.add(forms[j][0]);
+          state = true;
+        }
       }
     }
     index++;
+    if (state) {
+      arr.add(email);
+    }
   }
+  const answer = [...arr].sort();
+  return answer;
 }
 
 module.exports = problem6;
