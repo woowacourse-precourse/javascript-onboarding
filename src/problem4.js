@@ -9,6 +9,12 @@
 */
 function problem4(word) {
   const Array = word.split("");
+  let Chung_Array = Array.map((e) => {
+    if (e.charCodeAt() >= 65 && e.charCodeAt() <= 90) {
+    } else if (e.charCodeAt() >= 97 && e.charCodeAt() <= 122) {
+    } else return e;
+  });
+  answer = Chung_Array.join("");
   return answer;
 }
 
