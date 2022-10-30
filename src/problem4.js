@@ -5,6 +5,7 @@ function problem4(word) {
   for (i = 0; i < word.length; i++) 
     changed.push(isAlpha(word[i]));   //변환된 값을 changed에 넣기
 
+  answer = changed;
   return answer;
 }
 
@@ -24,6 +25,11 @@ function upperAlphaChange(ch) {
   //(65, 90), (66, 89), (67, 88)...이렇게 대응
   //각 순서쌍의 합은 155, 즉 155-ch return
   return 155 - ch;
+}
+
+function lowerAlphaChange(ch) {
+  //(97, 122) -> 97 + 122 = 219
+  return 219 - ch;
 }
 
 module.exports = problem4;
