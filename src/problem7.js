@@ -28,7 +28,6 @@ function problem7(user, friends, visitors) {
       friendList.set(friend[1], [friend[0]]);
     }
   });
-  console.debug(friendList);
 
   // 추천알고리즘을 위해 추천 점수를 매기기 위한 Map을 만들어 준다.
   for (let name of friendList.keys()) {
@@ -65,23 +64,16 @@ function problem7(user, friends, visitors) {
     } else return b[1] - a[1];
   });
 
+  // 정렬된 배열 내에서 점수별로
   sortedPointList.map((point) => {
-    if (point[1] !== 0) answer.push(point[0]);
+    if (answer.length < 5) {
+      if (point[1] !== 0) answer.push(point[0]);
+    } else {
+      return answer;
+    }
   });
 
   return answer;
 }
 
 module.exports = problem7;
-
-// 사용자와 함께 아는 친구의 수 10
-// 사용자의 타임 라인에 방문한 횟수 1
-// 친구관계 friends, 타임라인 방문기록 visitors
-// 점수가 가장 높은 순으로 정렬, 최대 5명을 리턴,
-// 점수가 0일경우 리턴 x, 만약 점수가 같은 경우 이름 순으로.
-
-// 도넛 안돌 준 마르코
-// 안돌 도넛 사케반
-// 마르코 도넛 사케반
-// 사케반 안돌 준 마르코
-// 준 도넛 사케반
