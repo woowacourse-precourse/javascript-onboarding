@@ -40,11 +40,13 @@ function problem7(user, friends, visitors) {
   function INPUT_NEAR_FRIENDS_POINT () {
     const userFriendsList = FRIEND_RELATION_OBJ[user];
     for(let friend of userFriendsList){
-      if(userFriendsList.includes(friend) === false){
-        if(USER_POINT_CALCUL_OBJ[friend] === undefined){
-          USER_POINT_CALCUL_OBJ[friend] = 10
-        } else {
-          USER_POINT_CALCUL_OBJ[friend] += 10
+      for(let friendOfFriend of FRIEND_RELATION_OBJ[friend]){
+        if(friendOfFriend!==user && userFriendsList.includes(friendOfFriend) === false){
+          if(USER_POINT_CALCUL_OBJ[friendOfFriend] === undefined){
+            USER_POINT_CALCUL_OBJ[friendOfFriend] = 10
+          } else {
+            USER_POINT_CALCUL_OBJ[friendOfFriend] += 10
+          }
         }
       }
     }    
@@ -55,7 +57,7 @@ function problem7(user, friends, visitors) {
   function INPUT_VISIT_FRIENDS_POINT () {
     const userFriendsList = FRIEND_RELATION_OBJ[user];
     for(let visitor of visitors){
-      if(userFriendsList.includes(visitor) === false){
+      if(visitor!==user && userFriendsList.includes(visitor) === false){
         if(USER_POINT_CALCUL_OBJ[visitor] === undefined){
           USER_POINT_CALCUL_OBJ[visitor] = 1
         } else {
@@ -75,8 +77,8 @@ function problem7(user, friends, visitors) {
   //!6. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
   //!7. 동일한 친구 관계가 중복해서 주어지지 않음
 
-  var answer;
-  return answer;
+
+
 }
 
 module.exports = problem7;
