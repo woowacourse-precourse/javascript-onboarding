@@ -4,22 +4,32 @@ function findAtIndex(email) {
 
 function isValidEmail(forms) {
   for (let i = 0; i < forms.length; i++) {
-    if (forms[i][0].length < 11 || forms[i][0].length > 19) return false;
-    if (!(forms[i][0].slice(findAtIndex(forms[i][0])) === "@email.com")) return false;
+    if (forms[i][0].length < 11 || forms[i][0].length > 19) {
+      return false;
+    }
+    if (!(forms[i][0].slice(findAtIndex(forms[i][0])) === "@email.com")) {
+      return false;
+    }
   }
   return true;
 }
 
-function checkKor(str) {
-  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g; 
-  if (regExp.test(str)) return true;
+function checkKorean(str) {
+  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+  if (regExp.test(str)) {
+    return true;
+  }
   return false;
 }
 
 function isValidNickName(forms) {
   for (i = 0; i < forms.length; i++) {
-    if (forms[i][1].length < 1 || forms[i][1].length > 19) return false;
-    if (!checkKor(forms[i][1])) return false;
+    if (forms[i][1].length < 1 || forms[i][1].length > 19) {
+      return false;
+    }
+    if (!checkKorean(forms[i][1])) {
+      return false;
+    }
   }
   return true;
 }
@@ -45,34 +55,44 @@ function sortArr(returnArr) {
   return returnArr;
 }
 
-function checkOverlap(forms) {
-  const returnArr = new Array();
+function getCheckArr(forms) {
   const checkArr = new Array();
   for (let i = 0; i < forms.length; i++) {
-    const tmpArr = substrNickName(forms[i][1]);
-    checkArr.push(...tmpArr);
+    const substrNickNameArr = substrNickName(forms[i][1]);
+    checkArr.push(...substrNickNameArr);
   }
+  return checkArr;
+}
+
+function getOverlapArr(forms, checkArr) {
+  const overlapArr = new Array();
   for (let i = 0; i < forms.length; i++) {
-    const tmpArr = substrNickName(forms[i][1]);
-    for (let j = 0; j < tmpArr.length; j++) {
-      if (checkArr.filter(element => tmpArr[j] === element).length !== 1) {
-        returnArr.push(forms[i][0]);
+    const substrNickNameArr = substrNickName(forms[i][1]);
+    for (let j = 0; j < substrNickNameArr.length; j++) {
+      if (checkArr.filter(element => substrNickNameArr[j] === element).length !== 1) {
+        overlapArr.push(forms[i][0]);
         break;
       }
     }
   }
-  return sortArr(returnArr);
+  return overlapArr;
+}
+
+function checkOverlap(forms) {
+  const checkArr = getCheckArr(forms);
+  const overlapArr = getOverlapArr(forms, checkArr);
+  return sortArr(overlapArr);
 }
 
 function problem6(forms) {
-  if (!isValidEmail(forms)) return ;
-  if (!isValidNickName(forms)) return ;
+  if (!isValidEmail(forms)) return;
+  if (!isValidNickName(forms)) return;
   return checkOverlap(forms);
 }
 
 module.exports = problem6;
 
 
-console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]));
+console.log(problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
 
 // console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "ejm"] ]));
