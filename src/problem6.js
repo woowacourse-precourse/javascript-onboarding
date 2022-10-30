@@ -6,7 +6,7 @@ function popCrew (forms,checkNickname) {
 function getDuplicateNicknames(forms){
   const duplNicknames = forms.filter(crew => crew[2])
   let result = [];
-  duplNicknames.forEach(crew => result.push(crew[1]));
+  duplNicknames.forEach(crew => result.push(crew[0]));
   result = [...new Set(result)];
   result.sort();
   return result;
