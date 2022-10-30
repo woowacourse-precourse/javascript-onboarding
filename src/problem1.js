@@ -24,10 +24,19 @@ const multiplyAllDigit = (num) => {
   return numArr.reduce((acc, cur) => acc * cur, 1);
 }
 
+// 4가지 값 중에서 가장 큰 값 구하기
+const calcMaxNum = (arr) => {
+  return Math.max(sumAllDigit(arr[0]), sumAllDigit(arr[1]), multiplyAllDigit(arr[0]), multiplyAllDigit(arr[1]));
+}
+
 // 메인 함수(점수를 계산하고 결과값 도출)
 function problem1(pobi, crong) {
   let result;
+  const pobiScore = calcMaxNum(pobi);
+  const crongScore = calcMaxNum(crong);
+
   if(!checkValid(pobi) || !checkValid(crong)) result = -1;
+
   return result;
 }
 
