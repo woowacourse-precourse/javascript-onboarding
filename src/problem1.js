@@ -27,14 +27,21 @@ function score(userName){
   scoreList.push(leftmultiple);
   scoreList.push(rightmultiple);
   
- 
   return Math.max(...scoreList)
 }
 
 
-
-
-
+function problem1(pobi, crong) {
+  if(score(pobi)>score(crong)){
+    return 1;
+  } else if(score(pobi)<score(crong)){
+    return 2;
+  } else if(score(pobi) === score(crong)){
+    return 0;
+  } else {
+    return -1
+  }
+  
 
 
 module.exports = problem1;
