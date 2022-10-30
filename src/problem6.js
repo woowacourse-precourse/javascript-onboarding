@@ -64,9 +64,9 @@ function problem6(forms) {
 
   //#6. 검사하려는 인덱스가 '중복된 인덱스'에 존재하는지 확인하는 함수 : T/F
 
-  function CHECK_INCLUDE_INDEX_IN_DUPLICATED_EMAIL_LIST (index) {
+  function CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST (index) {
     
-    return DUPLICATED_EMAIL_LIST.includes(index)
+    return DUPLICATED_INDEX_LIST.includes(index)
 
   }
 
@@ -75,6 +75,7 @@ function problem6(forms) {
   function RETURN_EMAIL_LIST_WITH_INDEX () {
     const FORMS = forms.slice();
     const outputEmailList = [];
+
     for(let i of DUPLICATED_INDEX_LIST){
       outputEmailList.push(FORMS[i][0])
     }
@@ -91,8 +92,41 @@ function problem6(forms) {
   //!6. 결과값의 중복된 내용은 제거
 
 
-  var answer;
-  return answer;
+  const inputForms = forms.slice()
+
+  for(let index in inputForms){
+
+    if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(+index) === false){
+      
+      const tempWordList = RETURN_SEARCH_WORD_LIST_FROM_NICKNAME(inputForms[index][1]);
+      const tempFormSearchList = inputForms.slice(+index+1).map(form => form[1]);
+      for(let tempWord of tempWordList){
+  
+        if(CHECK_INCLUDE_WORD_IN_SEARCHED_WORD_LIST(tempWord) === false){
+          
+          INPUT_WORD_TO_SEARCHED_WORD_LIST(tempWord)
+  
+          for(let searchIndex in tempFormSearchList){
+            
+
+            if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(+index + +searchIndex) === false){
+              if(CHECK_INCLUDE_WORD_IN_NICKNAME(tempWord,tempFormSearchList[searchIndex]) === true){
+
+                INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index)
+                INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index +1 + +searchIndex)
+                
+              }
+
+            }
+
+          }
+        } 
+      }
+    }
+  }
+
+  
+  return RETURN_EMAIL_LIST_WITH_INDEX()
 }
 
 module.exports = problem6;
