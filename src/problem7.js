@@ -36,6 +36,13 @@ function problem7(user, friends, visitors) {
       friendInfo[visitors[i]] = 1;
     }
   }
+  
+  for(let friend in friendInfo){
+    result.push([friend,friendInfo[friend]]);
+  }
+ result.sort(function(a,b){
+    return b[1]-a[1];
+  })
 
   return answer;
 }
