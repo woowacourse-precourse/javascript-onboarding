@@ -1,15 +1,22 @@
+const ASCII_a = "a".charCodeAt(0);
+const ASCII_z = "z".charCodeAt(0);
+const ASCII_A = "A".charCodeAt(0);
+const ASCII_Z = "Z".charCodeAt(0);
+function isLowerCase(alphaAscii) {
+  return ASCII_a <= alphaAscii && alphaAscii <= ASCII_z;
+}
+function isUpperCase(alphaAscii) {
+  return ASCII_A <= alphaAscii && alphaAscii <= ASCII_Z;
+}
 function transformAlpha(alpha) {
   let retAlpha = alpha;
   const alphaAscii = alpha.charCodeAt(0);
-  const aAscii = "a".charCodeAt(0);
-  const zAscii = "z".charCodeAt(0);
-  const AAscii = "A".charCodeAt(0);
-  const ZAscii = "Z".charCodeAt(0);
-  if (aAscii <= alphaAscii && alphaAscii <= zAscii) {
-    const retAscii = aAscii + zAscii - alphaAscii;
+  if (isLowerCase(alphaAscii)) {
+    const retAscii = ASCII_a + ASCII_z - alphaAscii;
     retAlpha = String.fromCharCode(retAscii);
-  } else if (AAscii <= alphaAscii && alphaAscii <= ZAscii) {
-    const retAscii = AAscii + ZAscii - alphaAscii;
+  }
+  if (isUpperCase(alphaAscii)) {
+    const retAscii = ASCII_A + ASCII_Z - alphaAscii;
     retAlpha = String.fromCharCode(retAscii);
   }
   return retAlpha;
