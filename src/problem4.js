@@ -112,6 +112,21 @@ const startBreakCode = stringArray => {
   return convertToString(resultArray);
 };
 
+const checkException = value => {
+  if (typeof value !== "string") {
+    throw new TypeError("Only string elements are possible.");
+  }
+
+  const valueLength = value.length;
+
+  // 1 이상 1000 이하 문자열
+  if (valueLength < 1 || 1000 < valueLength) {
+    throw new RangeError("Only strings greater than or equal to 1 and less than or equal to 1000.");
+  }
+
+  return false;
+};
+
 function problem4(word) {
   var answer;
   return answer;
