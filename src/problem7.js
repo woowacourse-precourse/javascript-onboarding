@@ -23,6 +23,7 @@ function problem7(user, friends, visitors) {
     }
     answer.push(recomendFriends[i]);
   }
+  
   return answer;
 }
 
