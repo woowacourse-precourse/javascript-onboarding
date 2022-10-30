@@ -24,6 +24,19 @@ function makeOverlappingArr(crewName){
   return overlappingPart 
 }
 
+function makeOverlappingObj(forms){
+  let overlappingObj={};
+  for(let crew of forms){
+    let wordArr = makeOverlappingArr(crew[1]);
+    
+    for(let word of wordArr){
+      !overlappingObj[word]?overlappingObj[word]=1: overlappingObj[word]+=1;
+    }
+  }
+  return overlappingObj
+}
+ 
+
 
 
 
