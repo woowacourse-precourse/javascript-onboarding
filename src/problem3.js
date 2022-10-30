@@ -14,7 +14,6 @@ function problem3(number) {
     while (temp_cnt >= 1){    
       temp_cnt = temp_cnt * 0.1
       temp_digit = Math.round(10*(temp_cnt - Math.floor(temp_cnt)), 0)
-      console.log(temp_digit)
       answer += is_tsn(temp_digit) 
       temp_cnt = Math.floor(temp_cnt)
     }
