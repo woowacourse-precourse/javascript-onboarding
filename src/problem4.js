@@ -3,4 +3,6 @@ function problem4(word) {
   return answer;
 }
 
+console.log('b' - 'a')
+
 module.exports = problem4;
