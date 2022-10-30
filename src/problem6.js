@@ -1,3 +1,4 @@
+const EMAIL = 0;
 const NICK_NAME = 1;
 
 function isLengthOne(nickname) {
@@ -40,11 +41,13 @@ function problem6(forms) {
     // 길이가 2인 문자열인 경우
     else {
       const checkWordList = makeCheckWordList(nickName);
-      for (let j = 0; j < forms.length; i++) {
+      for (let j = 0; j < forms.length; j++) {
         const targetNickname = forms[j][NICK_NAME];
         if (isDuplicate[j] === 1) continue;
+        if (i == j) continue;
         for (let t = 0; t < checkWordList.length; t++) {
-          if (targetNickName.includes(checkWordList[t])) {
+          if (targetNickname.includes(checkWordList[t])) {
+            console.log("포함됩니다.", targetNickname);
             isDuplicate[i] = 1;
             isDuplicate[j] = 1;
           }
@@ -52,6 +55,14 @@ function problem6(forms) {
       }
     }
   }
+
+  for (let i = 0; i < isDuplicate.length; i++) {
+    if (isDuplicate[i] === 1) {
+      answer.push(forms[i][EMAIL]);
+    }
+  }
+
+  answer.sort();
 
   return answer;
 }
