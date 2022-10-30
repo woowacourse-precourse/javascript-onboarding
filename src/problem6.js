@@ -18,7 +18,13 @@ function problem6(forms) {
               
           }
       } 
-  })
+  });
+  
+  for (let key in answer){
+    if (answer[key].length > 1){
+        result.push(...answer[key]);
+    }
+}
   
 }
 
