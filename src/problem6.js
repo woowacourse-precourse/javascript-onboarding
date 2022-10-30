@@ -29,10 +29,17 @@ function getWordCount(arr) {
   return wordCountObj;
 }
 
+function findDuplication(obj) {
+  const duplicateArr = Object.keys(obj).filter((item) => obj[item] >= 2);
+
+  return duplicateArr;
+}
+
 function problem6(forms) {
   const answer = [];
   const slicedName = getSlicedName(forms);
   const wordCountObj = getWordCount(slicedName);
+  const duplicateArr = findDuplication(wordCountObj);
 
   return answer;
 }
