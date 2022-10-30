@@ -14,6 +14,8 @@ const map = (array, func) => {
   return resultArray;
 };
 
+const getCharCode = eachString => `${eachString}`.charCodeAt(0);
+
 function problem4(word) {
   var answer;
   return answer;
