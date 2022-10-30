@@ -1,7 +1,14 @@
 let subnamesWithMails = {};
 
 const saveMailForEverySubname = (mail, name) => {
-  // do something
+  for(let i = 0; i < name.length - 1; i++){
+    const subname = name.slice(i, i+2);
+    if(subnamesWithMails[subname] === undefined){
+      subnamesWithMails[subname] = new Set([mail])
+    } else {
+      subnamesWithMails[subname].add(mail);
+    }
+  }
 }
 
 function problem6(forms) {
@@ -15,7 +22,7 @@ function problem6(forms) {
   const mailSet = new Set();
 
   for(const subname in subnamesWithMails){
-    if(subnamesWithMails[subname].length < 2) continue;
+    if(subnamesWithMails[subname].size < 2) continue;
     subnamesWithMails[subname].forEach((mail) => {
       mailSet.add(mail);
     })
