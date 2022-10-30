@@ -1,5 +1,6 @@
 function problem6(forms) {
-  var answer = new Set(); //이메일 중복 허용X
+  var answer;
+  let emailSet = new Set(); //이메일 중복 허용X
   
   for (var index=0; index<forms.length-1; index++){
     let nowCrew = forms[index]; //현재 크루
@@ -15,12 +16,15 @@ function problem6(forms) {
         const flag = compareNickname.includes(nameSubstr); //다른 크루의 nickname에 해당 단어가 있는지 확인
 
         if(flag){
-          answer.add(nowEmail)
-          answer.add(compareEmail);
+          emailSet.add(nowEmail)
+          emailSet.add(compareEmail);
         }        
       }
     }
   }
+  
+  answer = Array.from(emailSet);
+  answer.sort();
   return answer;
 }
 
