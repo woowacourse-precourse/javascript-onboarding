@@ -1,10 +1,25 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  const friendOfUser = friends.map((i) => i[0]);
+  const friendOfFriend = friemds.map((i) => {
+    let resultValue;
+    const friendValue = isCurrentFriend(i, friendOfUser);
+  });
+
+  answer = 1;
   return answer;
 }
 
 module.exports = problem7;
 
+const isCurrentFriend = (name, friendOfUser) => {
+  let resultValue;
+  if (friendOfUser.includes(name)) {
+    resultValue = true;
+  }
+  resultValue = false;
+
+  return resultValue;
+};
 /*
  친구 추천 알고리즘
  사용자와 함께 아는 친구의 수 = 10점
