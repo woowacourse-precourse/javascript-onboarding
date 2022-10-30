@@ -104,7 +104,11 @@ function problem7(user, friends, visitors) {
   const { myFriends, othersFriends } = findMyFriends(user, friends);
   addOthersFriendsPoints(map, myFriends, othersFriends);
   addVisitorsPoints(map, myFriends, visitors);
-  const result = [...map];
+  const result = [...map]
+    .sort()
+    .sort((a, b) => b[1] - a[1])
+    .map((data) => data[0])
+    .slice(0, 5);
   return result;
 }
 
