@@ -1,10 +1,10 @@
 function problem2(cryptogram) {
-  let answer = isContinuous(cryptogram);
+  const answer = isContinuous(cryptogram);
   return answer;
 }
 
 function isContinuous(cryptogram) {
-  let newCryptogram = continuousRemoval(cryptogram);
+  const newCryptogram = continuousRemoval(cryptogram);
 
   if (newCryptogram === cryptogram) {
     return newCryptogram;
