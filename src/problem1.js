@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   var answer = 0;
+
   var sum = 0;
   var multiply = 1;
   // pobi 시작
@@ -60,13 +61,23 @@ function problem1(pobi, crong) {
     crongRight = sum;
   }
 
-  console.log(crongRightPage);
-  console.log(sum);
-  console.log(multiply);
-  console.log(crongRight);
+  // pobi 와 crong 의 본인 점수 시작
+  // pobi 의 점수
+
+  if (pobiLeft < pobiRight) {
+    var pobiScore = pobiRight;
+  } else {
+    pobiScore = pobiLeft;
+  }
+
+  // crong 의 점수
+  if (crongLeft < crongRight) {
+    var crongScore = crongRight;
+  } else {
+    crongScore = crongLeft;
+  }
 
   return answer;
 }
 
 module.exports = problem1;
-console.log(problem1([97, 98], [197, 198]));
