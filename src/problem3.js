@@ -1,11 +1,18 @@
 function problem3(number) {
   var answer;
   let stringNum = '';
-  
+  let count = 0;
+
   for(let i = 1; i <= number; i++) {
     stringNum += i;
   }
-
+  for(let k = 0; k < stringNum.length; k++) {
+    if(['3', '6', '9'].includes(stringNum[k])) {
+      count++;
+    }
+  }
+  answer = count;
+  
   return answer;
 }
 module.exports = problem3;
