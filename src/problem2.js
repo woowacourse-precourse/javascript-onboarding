@@ -6,12 +6,14 @@ function problem2(cryptogram) {
   return cryptogram;
 }
 
+const searchDuplicateRegExp = /([a-z])\1+/g;
+
 const removeDuplicate = (cryptogram) => {
-  return cryptogram.replace(/([a-z])\1+/g, "");
+  return cryptogram.replace(searchDuplicateRegExp, "");
 };
 
 const isNotDuplicate = (cryptogram) => {
-  return !/([a-z])\1+/g.test(cryptogram);
+  return !searchDuplicateRegExp.test(cryptogram);
 };
 
 module.exports = problem2;
