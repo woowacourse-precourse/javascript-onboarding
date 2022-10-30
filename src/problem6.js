@@ -1,3 +1,9 @@
+function popCrew (forms,checkNickname) {
+  const result = forms.filter(crew => crew[1] !== checkNickname);
+  console.log(result);
+  return result;
+}
+
 function problem6(forms) {
   let answer = [];
   // 중복 여부 확인을 위한 값 추가
