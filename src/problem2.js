@@ -13,7 +13,7 @@ function decode(word) {
         temp = word[i + 1];
       } else {
         temp = word[i + 1];
-        count = 0
+        count = 0;
       }
     }
   }
