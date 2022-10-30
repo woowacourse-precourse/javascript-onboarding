@@ -30,7 +30,7 @@ function addScore(node, value, graph) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   friends.forEach((friend) => {
     addEdge(friend[0], friend[1], socialGraph);
   });
@@ -49,6 +49,13 @@ function problem7(user, friends, visitors) {
   visitors.forEach((visitor) => {
     addScore(visitor, 1, socialScore);
   });
+
+  const scoreGraphKey = Object.keys(socialScore);
+
+  for (let i = 0; i < scoreGraphKey.length; i++) {
+    if (socialGraph[user].includes(scoreGraphKey[i])) continue;
+    answer.push(scoreGraphKey[i]);
+  }
   return answer;
 }
 
