@@ -13,6 +13,18 @@
 */
 
 function problem1(pobi, crong) {
+  var answer = "";
+
+  function SumOrMulti(Num) {
+    let sum = 0;
+    let multi = 1;
+    while (Num >= 1) {
+      sum += Num % 10;
+      multi *= Num % 10;
+      Num = parseInt(Num / 10);
+    }
+    return sum > multi ? sum : multi;
+  }
   function Between(x, min, max) {
     return x > min && x < max;
   }
