@@ -11,8 +11,8 @@ const isOutOfRange = money => {
 }
 
 function problem5(money) {
-  var answer = [];
-  var units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let answer = [];
+  let units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
   if(isOutOfRange(money)) {
     throw 'Input range error!'

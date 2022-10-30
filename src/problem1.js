@@ -12,7 +12,7 @@
  * 4. 왼쪽 페이지는 무조건 홀수 => 왼쪽페이지 % 2 === 1
  */
 
-var isExceptions = false;
+let isExceptions = false;
 
 // Exception 1
 const isLengthError = (player1, player2) => {
@@ -36,8 +36,8 @@ const compareNumWithNum = (num1, num2) => {
 }
 
 const getMaxValOnPage = page => {
-  var sumVal = 0;
-  var mulVal = 1;
+  let sumVal = 0;
+  let mulVal = 1;
 
   String(page).split("").map(num => {
     sumVal += Number(num);
@@ -48,8 +48,8 @@ const getMaxValOnPage = page => {
 }
 
 const getMaxValOnPages = pages => {
-  var leftScore = getMaxValOnPage(pages[0]);
-  var rightScore = getMaxValOnPage(pages[1]);
+  let leftScore = getMaxValOnPage(pages[0]);
+  let rightScore = getMaxValOnPage(pages[1]);
   
   if (
     isDisorder(pages[0], pages[1]) || 
@@ -64,9 +64,9 @@ const getMaxValOnPages = pages => {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  var pobiScore = getMaxValOnPages(pobi);
-  var crongScore = getMaxValOnPages(crong);
+  let answer;
+  let pobiScore = getMaxValOnPages(pobi);
+  let crongScore = getMaxValOnPages(crong);
 
   if (isLengthError(pobi, crong)) {
     isExceptions = true;

@@ -10,9 +10,9 @@
  */
 
 function problem4(word) {
-  var answer = [];
+  let answer = [];
 
-  var criterion = "";
+  let criterion = "";
 
   word.split("").map((char)=>{
 
@@ -25,8 +25,8 @@ function problem4(word) {
     }
 
     if (criterion) {
-      var charToOrder = char.charCodeAt() - criterion.charCodeAt(0);
-      var orderToUnicode = 25 - charToOrder + criterion.charCodeAt(0);
+      let charToOrder = char.charCodeAt() - criterion.charCodeAt(0);
+      let orderToUnicode = 25 - charToOrder + criterion.charCodeAt(0);
 
       answer.push(String.fromCharCode(orderToUnicode));
     } else {

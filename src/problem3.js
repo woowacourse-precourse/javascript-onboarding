@@ -14,9 +14,9 @@ const isOutOfRange = num => {
 }
 
 function problem3(number) {
-  var answer = 0;
-  var turn;
-  var targets = [3, 6, 9]
+  let answer = 0;
+  let turn;
+  let targets = [3, 6, 9]
 
   if (isOutOfRange(number)) {
     throw 'Input range error'
