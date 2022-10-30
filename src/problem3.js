@@ -8,7 +8,18 @@ const count369 = (arr) => {
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  var tmp = "";
+  var arr = [];
+
+
+  //1부터 number까지 반복문을 돌리면서 답을 도출해냅니다.
+  for(let i=1; i<=number ; i++){
+    tmp = i.toString();
+    arr = [...tmp];
+    answer += count369(arr);
+    arr = [];
+  }
 
 
   return answer;
