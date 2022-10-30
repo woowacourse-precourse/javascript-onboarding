@@ -36,7 +36,10 @@ function problem1(pobi, crong) {
   const crongScore = calcMaxNum(crong);
 
   if(!checkValid(pobi) || !checkValid(crong)) result = -1;
-
+  else if(pobiScore === crongScore) result = 0;
+  else if(pobiScore > crongScore) result = 1;
+  else if(pobiScore < crongScore) result = 2;
+  
   return result;
 }
 
