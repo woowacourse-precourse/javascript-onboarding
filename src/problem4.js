@@ -1,5 +1,5 @@
 function problem4(word) {
-  let answer;
+  let answer = '';
   const isAlpha = word => {
     return /[a-zA-Z]/.test(word);
   }
@@ -32,6 +32,11 @@ function problem4(word) {
     
     return isUpperCase(word) ? getConvertedUpperWord(word) : getConvertedLowerWord(word);
   }
+
+  [...word].forEach((ele) => {
+      answer += convertWord(ele)
+  }
+      );
   return answer;
 }
 
