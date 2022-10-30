@@ -32,7 +32,14 @@ function problem6(forms) {
 
 
   //#2. 검색어를 '검사한 단어' 배열에 넣는 함수 : INPUT
+
+  function INPUT_WORD_TO_SEARCHED_WORD_LIST (word) {
+    SEARCHED_WORD_LIST.push(word)
+  }
+
   //#3. 닉네임에 검색어가 포함되는지 확인하는 함수 : True/False
+  
+
   
   //#4. 중복된 이름이 가진 배열 인덱스를 '중복된 인덱스' 배열에 넣는 함수 : INPUT 
 
