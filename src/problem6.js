@@ -12,9 +12,12 @@ function toSubstr(email, name) {
   return substrArr;
 }
 
-function problem6(forms) {
-  var answer;
-
+/**
+ * cut the form into substrings of length 2
+ * @param {[string, string][]} form given form
+ * @returns {[string, string][]} [string, string] array of stusbrings of length 2 and email
+ */
+function cutStrings(forms) {
   let substrArr = [];
   forms.foreach((profile) => {
     const email = profile[0];
@@ -23,6 +26,13 @@ function problem6(forms) {
       substrArr.push(e);
     });
   });
+  return substrArr;
+}
+
+function problem6(forms) {
+  var answer;
+
+  const substrArr = cutStrings(forms);
 
   return answer;
 }
