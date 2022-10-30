@@ -6,9 +6,20 @@ function problem6(forms) {
     const userEmail = userArray[0];
     let userName = userArray[1];
     let userUnitName = '';
+    let preUserName = '';
+    let preUserEmail = '';
 
     for(let i = 0; i < userName.length - 1; i++){
-      userUnitName = userName[i] + userName[i+1]
+      userUnitName = userName[i] + userName[i+1];
+      if(userUnitName in nameCheckBox){
+        preUserName = nameCheckBox[userUnitName][0]
+        preUserEmail = nameCheckBox[userUnitName][1]
+
+        emailCheckBox[preUserEmail] = preUserName;
+        emailCheckBox[userEmail] = userName;
+      }
+      else{
+      }
     }
   });
   console.log(nameCheckBox);
