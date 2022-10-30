@@ -24,6 +24,10 @@ function getUsers(item) {
   return ([, nickname]) => nickname;
 }
 
+function toUnique(email, idx, origin) {
+  return origin.indexOf(email) === idx;
+}
+
 function hasSubstring(comparisonTarget) {
   return (substring) => comparisonTarget.includes(substring);
 
