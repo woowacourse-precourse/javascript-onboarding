@@ -6,6 +6,7 @@ function problem2(cryptogram) {
     if (checkArrIsNull(strArr)) {
       return "";
     }
+    strArr = countDuplicateChar(strArr, duplicateCnt);
 
     return (answer = arrToStr(strArr));
   }
@@ -15,6 +16,13 @@ function problem2(cryptogram) {
 
 const checkArrIsNull = (arr) => {
   return arr.length === 0 ? true : false;
+};
+
+const countDuplicateChar = (arr, cnt) => {
+  arr.reduce((accStr, curStr, idx, accStrArr) => {
+    accStrArr[idx - 1] === curStr ? cnt.push(idx - 1, idx) : null;
+  });
+  return arr;
 };
 
 module.exports = problem2;
