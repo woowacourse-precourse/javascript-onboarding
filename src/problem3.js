@@ -106,8 +106,16 @@ function problem3(number) {
   }
   
   answer = cnt;  
-  
+  console.log(cnt);
+
   return answer;
 }
+
+//테스트 케이스 #1
+problem3(13);
+
+//테스트 케이스 #2
+problem3(33);
+
 
 module.exports = problem3;

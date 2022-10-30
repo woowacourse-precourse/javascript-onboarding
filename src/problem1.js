@@ -3,12 +3,13 @@ function game_calc(arr){
   let left_sum, left_mul, right_sum, right_mul;
   let arr_max;
   
-  if(arr[0] <= 1 || arr[1] >= 400 || arr[1] != arr[0]+1 || arr[0]%2 != 1 || arr[1]%2 !=0)
+  //제한 사항
+  if(arr[0] <= 1 || arr[1] >= 400 || arr[1] != (parseInt(arr[0])+1) || arr[0]%2 != 1 || arr[1]%2 !=0)
   {
-    console.log("-1");
     return -1;
   }
 
+  
   if(arr[1] >= 100) { //3자리수 계산
 
     left_l = parseInt(arr[0]/100);
@@ -58,7 +59,6 @@ function problem1(pobi, crong) {
     
   pobi_max = game_calc(pobi);
   crong_max = game_calc(crong);
-  //console.log(pobi_max,crong_max);
   
   //포비, 크롱 최대값 비교
   if(pobi_max == -1 || crong_max == -1){
@@ -74,7 +74,18 @@ function problem1(pobi, crong) {
     //console.log("0");
     answer = 0;
   } 
+
+  console.log(answer);
   return answer;
 }
+
+//테스트 케이스 #1
+problem1(['97','98'], ['197', '198']);
+
+//테스트 케이스 #2
+problem1(['131', '132'], ['211', '212']);
+
+//테스트 케이스 #3
+problem1(['99', '102'], ['211', '212']);
 
 module.exports = problem1;

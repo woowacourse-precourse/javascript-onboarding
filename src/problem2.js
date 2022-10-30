@@ -30,7 +30,15 @@ function problem2(cryptogram) {
 
   answer = temp;
 
+  console.log(temp);
+
   return answer;
 }
+
+//테스트 케이스 #1
+problem2('browoanoommnaon');
+
+//테스트 케이스 #2
+problem2('zyelleyz');
 
 module.exports = problem2;
