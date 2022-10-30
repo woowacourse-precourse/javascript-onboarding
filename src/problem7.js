@@ -35,10 +35,13 @@ function problem7(user, friends, visitors) {
     addEdge(friend[0], friend[1], socialGraph);
   });
 
-  for (let i = 0; i < friends.length; i++) {
+  const graphKey = Object.keys(socialGraph);
+
+  for (let i = 0; i < graphKey.length; i++) {
+    if (user === graphKey[i]) continue;
     socialGraph[user].forEach((userFriend) => {
-      if (socialGraph[friends[i]].includes(userFriend)) {
-        addScore(friends[i], 10, socialScore);
+      if (socialGraph[graphKey[i]].includes(userFriend)) {
+        addScore(graphKey[i], 10, socialScore);
       }
     });
   }
