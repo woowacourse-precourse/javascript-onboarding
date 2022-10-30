@@ -1,3 +1,13 @@
+class ScoreData {
+  constructor(user, friends, visitors, userFriends) {
+    this.scoreDictionary = {};
+    this.user = user;
+    this.friends = friends;
+    this.visitors = visitors;
+    this.userFriends = userFriends;
+  }
+}
+
 function getUserFriends(user, friends) {
   const userFriends = [];
 
@@ -12,6 +22,7 @@ function getUserFriends(user, friends) {
 function problem7(user, friends, visitors) {
   var answer;
   const userFriends = getUserFriends(user, friends);
+  const ScoreData = new ScoreData(user, friends, visitors, userFriends);
   return answer;
 }
 
