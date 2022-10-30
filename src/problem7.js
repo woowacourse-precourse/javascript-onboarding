@@ -9,18 +9,18 @@ function problem7(user, friends, visitors) {
 }
 
 function getSeparateFrieds(user, friends) {
-  const separateFriends = [[], []];
+  const [userFriends, newFriends] = [[], []];
   friends.forEach((friend) => {
     const [friend1, friend2] = friend;
     if (friend1 === user) {
-      separateFriends[0].push(friend2);
+      userFriends.push(friend2);
     } else if (friend2 === user) {
-      separateFriends[0].push(friend1);
+      userFriends.push(friend1);
     } else {
-      separateFriends[1].push(friend);
+      newFriends.push(friend);
     }
   });
-  return separateFriends;
+  return [userFriends, newFriends];
 }
 
 function setWithKnowScore(withKnowScore, friend) {
