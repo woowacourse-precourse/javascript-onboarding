@@ -20,6 +20,12 @@ function isAlpha(word) {
   return ch;   //결과값 ch return
 }
 
+function upperAlphaChange(ch) {
+  //(65, 90), (66, 89), (67, 88)...이렇게 대응
+  //각 순서쌍의 합은 155, 즉 155-ch return
+  return 155 - ch;
+}
+
 module.exports = problem4;
 
 /*
