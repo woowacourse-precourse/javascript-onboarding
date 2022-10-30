@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  let decrypted = [];
+  const decrypted = [];
   for(i = 0; i < cryptogram.length; i++){
     decrypted.push(cryptogram[i]);
     if(decrypted[decrypted.length - 1] === decrypted[decrypted.length - 2]){
@@ -7,7 +7,7 @@ function problem2(cryptogram) {
       decrypted.pop();
     }
   }
-  let answer = decrypted.join('');
+  const answer = decrypted.join('');
   return answer;
 }
 
