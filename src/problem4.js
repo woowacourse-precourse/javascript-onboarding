@@ -13,9 +13,9 @@ function isAlpha(word) {
   ch = word.charCodeAt(0);
 
   if (ch >= 65 && ch <= 90)   //대문자
-    ch = upperToLower(ch);
+    ch = upperAlphaChange(ch);
   else if (ch >= 97 && ch <= 122)   //소문자
-    ch = lowerToUpper(ch);
+    ch = lowerAlphaChange(ch);
   
   return ch;   //결과값 ch return
 }
