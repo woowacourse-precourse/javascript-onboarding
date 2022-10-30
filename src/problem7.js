@@ -1,9 +1,7 @@
 function problem7(user, friends, visitors) {
   const userName = user;
   const friendsList = friends;
-  const delDupUserList = [...new Set([...new Set(allUserList), ...new Set(visitors)])].filter(
-    arr => arr !== userName
-  );
+  const visitorsList = visitors.filter(arr => arr !== userName);
 
   // 내(user) 친구 구하기
   let myFriends = [];
