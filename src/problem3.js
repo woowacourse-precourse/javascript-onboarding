@@ -13,7 +13,7 @@ function divideNumTo10(number, cnt) {
   while (number > 0) {
     remainNum = number % 10;
     cnt += numCheck(remainNum);
-    number = number / 10;
+    number = parseInt(number / 10);
   }
   return cnt;
 }
