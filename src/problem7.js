@@ -62,24 +62,22 @@ function getCrewScores(user, relations, visitors) {
   return crewScores;
 }
 
-function getSortedCrews(crews) {
+function sortCrews(crews) {
   const sortedCrewsByName = crews.sort();
   const sortedCrewsByScore = sortedCrewsByName.sort(
     (prev, cur) => cur[1] - prev[1]
   );
-  const sortedCrews = sortedCrewsByScore.map((crew) => crew[0]);
 
-  return sortedCrews;
+  return sortedCrewsByScore;
 }
 
 function problem7(user, friends, visitors) {
   const relations = getRelations(friends);
-
   const crewScores = getCrewScores(user, relations, visitors);
-  const crewScoreArray = Object.entries(crewScores);
 
+  const crewScoreArray = Object.entries(crewScores);
   const validCrews = filterValidScore(crewScoreArray);
-  const answer = getSortedCrews(validCrews);
+  const answer = sortCrews(validCrews).map((crew) => crew[0]);
 
   if (answer.length > 5) {
     answer.splice(5);

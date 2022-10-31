@@ -54,3 +54,4 @@
 - [x] user와 user friends 선 필터링 (validVisitors, validRelations)
 - [x] 크루 총합 점수 함수 분리 (getCrewScores)
 - [x] 필터 함수 수정 (filterValidCrew, filterValidScore)
+- [x] 크루 이름 추출 분리
