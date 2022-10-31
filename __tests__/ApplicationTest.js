@@ -31,7 +31,6 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
-  
 });
 
 describe("problem3", () => {

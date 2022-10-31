@@ -17,6 +17,11 @@ const deleteOverride = (left, cryptogram) => {
   return cryptogram;
 };
 
+const isLeftAndRightIsSame = (cryptogram, left, right) =>{
+  if (cryptogram[left] === cryptogram[right]) return 1;
+  return 0;
+} 
+
 function problem2(cryptogram) {
   var answer = "";
   var left = 0;
@@ -30,10 +35,10 @@ function problem2(cryptogram) {
 
   while (true) {
     // 중복이 2개 이상인 경우도 고려해줍니다.
-    if (cryptogram[left] === cryptogram[right]) {
+    if (isLeftAndRightIsSame(cryptogram, left, right)) {
       cryptogram = deleteOverride(left, cryptogram);
       check = 1;
-      // 중복을 제거하고 제거된 위치
+      // 중복을 제거하고 제거된 위치로 이동.
       left -= 1;
       right -= 1;
     }
