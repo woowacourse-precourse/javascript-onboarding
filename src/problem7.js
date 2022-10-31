@@ -4,11 +4,9 @@
 // 3. visitors들의 점수를 1점씩 올려준다.
 // 4. 점수가 있는 친구들을 점수 순서대로 정렬한다.
 
-function problem7(user, friends, visitors) {
-  let score = {};
-
+const changeArrToObj = (arr) => {
   let obj = {};
-  for(let [a, b] of friends) {
+  for(let [a, b] of arr) {
     if(obj[a]) obj[a].push(b);
     else obj[a] = [b];
 
@@ -16,6 +14,13 @@ function problem7(user, friends, visitors) {
     else obj[b] = [a];
   }
 
+  return obj
+}
+
+function problem7(user, friends, visitors) {
+  let obj = changeArrToObj(friends);
+
+  let score = {};
   let alreadyFriend = [];
   for(let key in obj) {
     if(obj[key].includes(user)) {
