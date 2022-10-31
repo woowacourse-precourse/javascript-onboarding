@@ -2,16 +2,7 @@
 // friends = [["donut", "andole"],["donut", "jun"],["donut", "mrko"],["shakevan", "andole"],["shakevan", "jun"],["shakevan", "mrko"],]
 // visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
 
-user = 'andole';
-friends = [['andole', 'jun'],
-  ['donut', 'jun'],
-  ['donut', 'shakevan'],
-  ['shakevan', 'andole'],
-  ['shakevan', 'jun'],
-  ['shakevan', 'bedi'],
-  ['anne', 'jun'],
-];
-visitors = ['donut', 'mrko', 'peter', 'sam'];
+
 
 function problem7(user, friends, visitors) {
   let answer;
@@ -178,15 +169,19 @@ function maxFive(scoreArray) {
       if (scoreArray[i][1] === 0) { 
         break;
       } else {
+        console.log(scoreArray[i][0]);
         answer.push(scoreArray[i][0]);
       }
     }
   } else {
     for (score of scoreArray) {
+      console.log("score: ", score);
       if (score[1] === 0) {
         break;
       } else {
-        answer.push(scoreArray[0]);
+        console.log("????");
+        console.log(score[0]);
+        answer.push(score[0]);
       }
     }
   }
@@ -194,6 +189,6 @@ function maxFive(scoreArray) {
   return answer;
 }
 
-problem7(user,friends, visitors);
+// problem7(user,friends, visitors);
 
-// module.exports = problem7;
+module.exports = problem7;
