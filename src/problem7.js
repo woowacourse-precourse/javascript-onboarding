@@ -72,6 +72,9 @@ const SnsFriendRecomander = {
     this.calculateScore();
     let scoresArray = Object.entries(this.scores);
     scoresArray.sort((a, b) => {
+      if (a[1] === b[1]) {
+        return a[0] > b[0];
+      }
       return a[1] - b[1];
     });
     scoresArray = scoresArray.splice(0, 5);
