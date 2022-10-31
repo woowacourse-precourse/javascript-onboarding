@@ -21,7 +21,7 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
-// user의 친구의 친구 구하는 함수
+// user의 친구의 친구를 구하는 함수
 function findUserFriendsOfFriends(user, friends, userFriends) {
   let IdScoreObj = {};
 
@@ -45,14 +45,8 @@ function findUserFriendsOfFriends(user, friends, userFriends) {
   return IdScoreObj;
 }
 
-function problem7(user, friends, visitors) {
-  // 점수가 높은 순으로 최대 5명 정렬
-  let answer = [];
-
-  let userFriends = findUserFriends(user, friends);
-  let IdScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
-
-  // visitors 배열 요소들 각 1점씩
+// visitors 배열의 요소에게 1점씩 부여하는 함수
+function getOneScore(visitors, userFriends, IdScoreObj) {
   visitors.map((el) => {
     // user의 친구가 아니고
     if (!userFriends.includes(el)) {
@@ -62,6 +56,17 @@ function problem7(user, friends, visitors) {
       else IdScoreObj[el] = 1;
     }
   });
+
+  return IdScoreObj;
+}
+
+function problem7(user, friends, visitors) {
+  // 점수가 높은 순으로 최대 5명 정렬
+  let answer = [];
+  let userFriends = findUserFriends(user, friends);
+  let IdScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
+
+  IdScoreObj = getOneScore(visitors, userFriends, IdScoreObj);
 
   // sort시키기 위해 객체인 IdScoreObj를 배열로 만들기
   let sortable = [];
