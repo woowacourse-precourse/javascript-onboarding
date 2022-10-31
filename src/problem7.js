@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer = [];
+  let answer = [];
   
   // 1. 친구 관계 객체 생성
   let friendsList = {}

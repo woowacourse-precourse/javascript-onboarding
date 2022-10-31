@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer = [];
+  let answer = [];
 
   for(let i=0;i<word.length;i++){
     let originChar = word[i];
