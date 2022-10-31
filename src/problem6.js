@@ -23,4 +23,23 @@ function getNickname(forms) {
   return nicknames;
 }
 
+function getEverySeqLetters(nicknames) {
+  let seqLettersCount = {};
+  let seqLetters = "";
+
+  for (let nickname of nicknames) {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      seqLetters = nickname.slice(i, i + 2);
+      if (seqLettersCount[seqLetters]) {
+        seqLettersCount[seqLetters]++;
+      } else {
+        seqLettersCount[seqLetters] = 1;
+      }
+      seqLetters = "";
+    }
+  }
+
+  return seqLettersCount;
+}
+
 module.exports = problem6;
