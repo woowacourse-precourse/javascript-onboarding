@@ -1,4 +1,5 @@
 function problem5(money) {
+  var currentMoney = money;
   var answer;
   var mapper = new Map([
     [50000, 0],
@@ -13,10 +14,10 @@ function problem5(money) {
   ]);
 
   mapper.forEach((_, key) => {
-    var quotient = parseInt(money / key);
+    var quotient = parseInt(currentMoney / key);
     if (quotient > 0) {
       mapper.set(key, quotient);
-      money = money - key * quotient;
+      currentMoney = currentMoney - key * quotient;
     }
   });
 
