@@ -6,12 +6,16 @@ function problem4(word) {
     let charAsc = word.charCodeAt(i);
     let upperCaseStart = 65;
     let upperCaseEnd = 90;
+    let upperCaseTotal = upperCaseStart + upperCaseEnd;
     let lowerCaseStart = 97;
     let lowerCaseEnd = 122;
+    let lowerCaseTotal = lowerCaseStart + lowerCaseEnd;
 
     if(charAsc >= upperCaseStart && charAsc <= upperCaseEnd) {
+      reverseWord += String.fromCharCode(upperCaseTotal-charAsc);
     }
     else if(charAsc >= lowerCaseStart && charAsc <= lowerCaseEnd) {
+      reverseWord += String.fromCharCode(lowerCaseTotal-charAsc);
     }
   }
   answer = reverseWord;
