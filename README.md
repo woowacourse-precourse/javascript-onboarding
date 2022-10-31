@@ -92,4 +92,8 @@ npm test
 
 ### problem6
 
+1. 배열메서드 search(~) !== -1 를 통해 두개의 문자가 forms에 존재하는지 단어들에 포함되는지를 확인한다.
+2. 중복을 제거하기 위해 object로 바꿔준다.
+3. object를 이메일을 기준으로 정렬해주며 return 해준다.
+
 ### problem7
