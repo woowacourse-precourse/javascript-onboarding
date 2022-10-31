@@ -46,6 +46,13 @@ function hasManyOverlaps(nameSlice, count, forms, result) {
   }
 }
 
+function getEmails(allSlices, forms, result) {
+  for (let [nameSlice, count] of allSlices) {
+    //모든 중복 문자열 종류마다 반복문을 실행한다.
+    hasManyOverlaps(nameSlice, count, forms, result); //중복 문자열 출현 빈도 수에 따른 결과 저장
+  }
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
