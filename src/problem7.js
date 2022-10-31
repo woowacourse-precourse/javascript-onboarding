@@ -3,7 +3,7 @@ const SnsFreindrRecomander = {
   friends: [],
   visitors: [],
   relations: {},
-  others: Set(),
+  scores: {},
   inputDatas: function (user, friends, visitors) {
     if (this.checkDatas(user, friends, visitors)) {
       return false;
@@ -34,7 +34,6 @@ const SnsFreindrRecomander = {
     return words.every((word) => /^[A-Za-z0-9]*$/.test(word));
   },
   makeRelations: function () {
-    this.others.add(this.user);
     this.friends.forEach((friend) => {
       this.addRelation(friend[0], friend[1]);
       this.addRelation(friend[1], friend[0]);
@@ -42,10 +41,19 @@ const SnsFreindrRecomander = {
   },
   addRelation: function (one, two) {
     if (!(one in this.relations)) {
-      this.relations["data"] = [];
-      this.others.add(one);
+      this.relations[one] = [];
+      this.scores[one] = 0;
     }
-    this.relations[data].push(two);
+    this.relations[one].push(two);
+  },
+  calculateScore: function () {
+    for (const score in this.scores) {
+      this.relations[score].forEach((other) => {
+        if (this.relations[other].find(user)) {
+          this.scores[score] += 10;
+        }
+      });
+    }
   },
 };
 
