@@ -39,6 +39,19 @@ const getScoreMap = (friends, score) => {
   }, new Map());
 };
 
+// merge
+const mergeScoreMap = (map1, map2) => {
+  let scoreMap = new Map(map1);
+  for (const [key, value] of map2) {
+    if (scoreMap.has(key)) {
+      scoreMap.set(key, scoreMap.get(key) + value);
+    } else {
+      scoreMap.set(key, value);
+    }
+  }
+  return scoreMap;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -56,6 +69,9 @@ function problem7(user, friends, visitors) {
 
   // 방문 규칙(2번 규칙) 점수화
   const visitScore = getScoreMap(visitorsExceptFriend, VISIT_SCORE);
+
+  // 1, 2번 규칙 점수 합치기
+  const unorderedRecommendMap = mergeScoreMap(friendScore, visitScore);
 
   return answer;
 }
