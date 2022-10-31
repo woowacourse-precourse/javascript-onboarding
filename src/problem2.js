@@ -16,6 +16,7 @@ function problem2(cryptogram) {
     }
   } while (count > 0);
 
+  answer = cryptogram;
   return answer;
 }
 
