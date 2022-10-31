@@ -1,5 +1,14 @@
 function problem7(user, friends, visitors) {
   var answer;
+  const usersFriends = [];
+  // 1) 유저의 친구목록을 만듭니다
+  usersFriends.push(...findUsersFriend(friends, user));
+
+  // 2) 유저의 친구의 친구목록을 만듭니다
+  let relation = [];
+  for (const usersFriend of usersFriends) {
+    relation.push(...findUsersFriend(friends, usersFriend));
+  }
   return answer;
 }
 
