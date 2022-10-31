@@ -1,11 +1,12 @@
 function problem3(number) {
   let answer = 0;
-  if (number >= 1 && number <= 10000) {
-    for (let i = 1; i <= number; i++) {
+  for (let i = 1; i <= number; i++) {
+    let num = i.toString().split("");
+    for (let j = 0; j < num.length; j++) {
       if (
-        String(i).includes(3) ||
-        String(i).includes(6) ||
-        String(i).includes(9)
+        num[j].includes("3") ||
+        num[j].includes("6") ||
+        num[j].includes("9")
       ) {
         answer++;
       }
