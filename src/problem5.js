@@ -1,4 +1,8 @@
 function problem5(money) {
+  // 7) 제한사항 구현
+  if (money < 1 || money > 1000000 || typeof money !== "number") {
+    return "입력받은 계좌금액이 이상합니다";
+  }
   // 지폐의 종류를 담은 배열과 answer 초기화
   const AMOUNT_OF_BILL = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   const answer = Array.from({ length: 9 }).fill(0);
