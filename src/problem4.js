@@ -3,6 +3,10 @@ function isAlphabet(letter) {
   return tester.test(letter);
 }
 
+function isUpperCase(letter) {
+  return letter === letter.toUpperCase();
+}
+
 function problem4(word) {
   let answer = '';
   for (let i = 0; i < word.length; i++) {
