@@ -35,10 +35,10 @@
 > C안 선택 ~~B안 선택~~: A안은 예외상황 발생: "zyelleyyez" > 기대값: "zyz" / 출력값 : "zez" 단계별로 삭제가 되지 않아 문제발생 (1단계에서 'll' 과 'yy'가 먼저 삭제된 후 2단계에서 'eee'가 한번에 지워져야함.)
 B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들어가야함.
 
-* [ ] A안 : Stack 배열을 만들어서 한글자씩 중복문자 체크하며, `push()` / `pop()` 으로 채워넣는 방안.
+* [ ] A안 : Stack 배열을 만들어서 한글자씩 중복문자 체크하며, `push()` / `pop()` 으로 채워넣는 방법.
   + 단계별로 삭제가 아닌 앞에서부터 하나씩 소거해가면서 처리.
-* [ ] B안 : 문자 하나씩 앞에서부터 연속된 글자를 파악 후 단계별로 삭제하는 방안.
-* [x] C안 : Queue를 이용하여 재귀하여, 단계적으로 삭제가능 하는 방안. 
+* [ ] B안 : 문자 하나씩 앞에서부터 연속된 글자를 파악 후 단계별로 삭제하는 방법.
+* [x] C안 : Queue의 원리를 이용하며, 함수를 재귀하여, 단계적으로 삭제하는 방법. 
 
 * 전체 프로세서 관리 `cryptogramSolver` 함수 생성
   + ~~[B안]문자열을 배열로 담아둘 `cryptogramArr` 변수 생성~~
@@ -48,9 +48,9 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
 
 * 연속된 중복문자를 제거할 함수 `removeDuplicateChar` 생성
   + **(+추가)** 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
-  + **(+추가)** 현재 글자가 queue의 글자와 다를 때까지 배열 `queueArr`에 쌓아둠. 
-    - `isQueueDuplicate` : `queueArr`에 쌓이는 중이면 `true`, `queue`가 비워지면 `false`
-    - `isDeleteStep` : 한 번이 라도 `queueArr`에 2개이상 쌓이면 `true`. (재귀가 시작될 때, `false`가 default 값)
+  + **(+추가)** 이전 글자를 변수 `beforeCharFromCryptogram`에 넣어둠. 
+    - `isBeforeDuplicate` : [이전 단계]에 `beforeCharFromCryptogram`와 `cryptogramArr[i]`가 같았다면`true`, 달랐다면 `false`
+    - `isDeleteStep` : `beforeCharFromCryptogram`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
   + **(+추가)** 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
