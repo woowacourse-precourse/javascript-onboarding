@@ -42,7 +42,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  
+
   for(let i = 0;i < visitors.length;i++){
     if(!nameMap.has(visitors[i])){
       nameMap.set(visitors[i],1);
@@ -52,6 +52,12 @@ function problem7(user, friends, visitors) {
       nameMap.set(visitors[i],tmp+1);
     }
   }
+
+
+  for(let i = 0;i < arrFriends.length;i++){
+    nameMap.delete(arrFriends[i]);
+  }
+  nameMap.delete(user);
   return answer;
 }
 
