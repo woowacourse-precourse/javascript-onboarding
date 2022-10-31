@@ -26,7 +26,7 @@
 1. cryptogram 문자열을 배열로 변환하는 convert_str_to_arr 함수 구현 :white_check_mark:
 - 매개변수 : str - cryptogram 문자열(string)
 - return값 : convert_arr - 문자열을 배열로 변환한 값
-2. cryptogram 배열에 중복 문자가 있는지 확인하는 check_repeat 함수 구현
+2. cryptogram 배열에 중복 문자가 있는지 확인하는 check_repeat 함수 구현 :white_check_mark:
 - 매개변수 : arr - cryptogram 배열
 - return값 : isRepeat(boolean)
 - 반복되는 연속된 문자열이 있는 경우 isRepeat = true, 없는 경우 isRepeat = false
