@@ -1,120 +1,118 @@
 const INPUT = {
   minLength: 1,
   maxLength: 1000,
-  stringType: 'string',
+  strType: 'string',
 };
 
 const RESULT = {
-  exception: -1,
+  invalidInput: -1,
 };
 
 function problem2(cryptogram) {
-  if (isWrongInput(cryptogram)) {
-    return RESULT.exception;
+  if (!checkInput(cryptogram)) {
+    return RESULT.invalidInput;
   }
 
-  return decodeCryptogram(cryptogram);
+  return solution(cryptogram);
 }
 
-function isWrongInput(input) {
-  if (isWrongValueOfInput(input)) {
-    return true;
-  }
-
-  if (isWrongTypeOfInput(typeof input)) {
-    return true;
-  }
-
-  if (isWrongLengthOfInput(input.length)) {
-    return true;
-  }
-
-  if (isWrongFormatOfInput(input)) {
-    return true;
-  }
-
-  return false;
-}
-
-function isWrongValueOfInput(v) {
-  return !v;
-}
-
-function isWrongTypeOfInput(type) {
-  return type !== INPUT.stringType;
-}
-
-function isWrongLengthOfInput(length) {
-  return length < INPUT.minLength || length > INPUT.maxLength;
-}
-
-function isWrongFormatOfInput(input) {
-  return input === input.toUpperCase();
-}
-
-function decodeCryptogram(cryptogram) {
-  const cryptogramArr = getArrayFromString(cryptogram);
-  const res = decodeCycle(cryptogramArr);
-
-  return getStringFromArray(res);
-}
-
-function getArrayFromString(string) {
-  return Array.from(string);
-}
-
-function decodeCycle(cryptogramArr) {
-  const decodeRes = decodeInit(cryptogramArr);
-
-  while (true) {
-    decodeRes.res = decode(decodeRes.res);
-    if (noChangeLength(decodeRes.res.length, decodeRes.prevLength)) {
-      break;
-    }
-    recordLength(decodeRes);
-  }
-
-  return decodeRes.res;
-}
-
-function recordLength(decodeRes) {
-  decodeRes.prevLength = decodeRes.res.length;
-}
-
-function decodeInit(cryptogramArr) {
-  return {
-    res: decode(cryptogramArr),
-    prevLength: decode(cryptogramArr).length,
-  };
-}
-
-function decode(cryptogramArr) {
-  return cryptogramArr.filter(removeDup, { dupElement: false });
-}
-
-function removeDup(v, i, arr) {
-  if (isDupWithNextElement(v, arr[i + 1])) {
-    this.dupElement = true;
+function checkInput(input) {
+  if (!checkValue(input)) {
     return false;
   }
 
-  if (this.dupElement) {
-    this.dupElement = false;
+  if (!checkType(typeof input, INPUT.strType)) {
+    return false;
+  }
+
+  if (!checkLength(input.length, INPUT.minLength, INPUT.maxLength)) {
+    return false;
+  }
+
+  if (!checkLowercase(input)) {
     return false;
   }
 
   return true;
 }
 
-function isDupWithNextElement(curElement, nextElement) {
+function checkValue(v) {
+  return Boolean(v);
+}
+
+function checkType(type, checker) {
+  return type === checker;
+}
+
+function checkLength(length, minLength, maxLength) {
+  return length >= minLength && length <= maxLength;
+}
+
+function checkLowercase(input) {
+  return input === input.toLowerCase();
+}
+
+function solution(cryptogram) {
+  const cryptogramArr = convertStringToArray(cryptogram);
+  const clearTextArr = decodeCryptogram(cryptogramArr);
+  const clearText = convertArrayToString(clearTextArr);
+
+  return clearText;
+}
+
+function convertStringToArray(cryptogram) {
+  return Array.from(cryptogram);
+}
+
+function decodeCryptogram(cryptogramArr) {
+  const clearText = clearTextInit(cryptogramArr);
+
+  while (isDiffLength(clearText.text.length, clearText.prevLength)) {
+    clearText.prevLength = updatePrevLength(clearText.text.length);
+    clearText.text = decode(clearText.text);
+  }
+
+  return clearText.text;
+}
+
+function clearTextInit(cryptogramArr) {
+  return {
+    text: decode(cryptogramArr),
+    prevLength: 0,
+  };
+}
+
+function decode(cryptogramArr) {
+  return cryptogramArr.filter(removeDup, { sameElement: false });
+}
+
+function updatePrevLength(curLength) {
+  return curLength;
+}
+
+function removeDup(v, i, arr) {
+  if (isSameElement(v, arr[i + 1])) {
+    this.sameElement = true;
+    return false;
+  }
+
+  if (this.sameElement) {
+    this.sameElement = false;
+    return false;
+  }
+
+  return true;
+}
+
+function isSameElement(curElement, nextElement) {
   return curElement === nextElement;
 }
 
-function noChangeLength(length, prevLength) {
-  return length === prevLength;
+function isDiffLength(curLength, prevLength) {
+  return curLength !== prevLength;
 }
 
-function getStringFromArray(array) {
+function convertArrayToString(array) {
   return array.join('');
 }
 

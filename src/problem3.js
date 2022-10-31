@@ -1,60 +1,60 @@
 const RESULT = {
-  exception: -1,
+  invalidInput: -1,
 };
 
 const INPUT = {
-  number: 'number',
+  numType: 'number',
   minRange: 1,
   maxRange: 10000,
 };
 
 function problem3(number) {
-  if (isWrongInput(number)) {
-    return RESULT.exception;
+  if (!checkInput(number)) {
+    return RESULT.invalidInput;
   }
 
-  return countClap(number);
+  return solution(number);
 }
 
-function isWrongInput(input) {
-  if (isWrongValueOfInput(input)) {
-    return true;
+function checkInput(input) {
+  if (!checkValue(input)) {
+    return false;
   }
 
-  if (isWrongTypeOfInput(typeof input)) {
-    return true;
+  if (!checkType(typeof input, INPUT.numType)) {
+    return false;
   }
 
-  if (isWrongRangeOfInput(input)) {
-    return true;
+  if (!checkRange(input, INPUT.minRange, INPUT.maxRange)) {
+    return false;
   }
 
-  return false;
+  return true;
 }
 
-function isWrongValueOfInput(v) {
-  return !v;
+function checkValue(v) {
+  return Boolean(v);
 }
 
-function isWrongTypeOfInput(type) {
-  return type !== INPUT.number;
+function checkType(type, checker) {
+  return type === checker;
 }
 
-function isWrongRangeOfInput(input) {
-  return input < INPUT.minRange || input > INPUT.maxRange;
+function checkRange(input, minRange, maxRange) {
+  return input >= minRange && input <= maxRange;
 }
 
-function countClap(number) {
-  let clapNum = 0;
+function solution(number) {
+  const clap = { num: 0 };
 
   for (let i = 3; i <= number; i++) {
-    const strArr = getStringArrayFromNumber(i);
-    clapNum += count369(strArr);
+    const strArr = convertNumberToStrArr(i);
+    clap.num += count369(strArr);
   }
-  return clapNum;
+  return clap.num;
 }
 
-function getStringArrayFromNumber(number) {
+function convertNumberToStrArr(number) {
   return Array.from(String(number));
 }
 
@@ -63,7 +63,7 @@ function count369(strArr) {
 }
 
 function isMultipleOfThree(v) {
-  num = Number(v);
+  const num = Number(v);
 
   return num && num % 3 === 0;
 }

@@ -9,15 +9,12 @@ const INPUT = {
   maxMail: 20,
   domain: '@email.com',
   strType: 'string',
-  koChar: /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/,
-  enChar: /[a-zA-Z]/,
-  numChar: /[0-9]/,
-  specialNickChar: /[~!#@\#$%<>^&*]/,
-  specialMailChar: /[~!#\#$%<>^&*]/,
+  validNickChar: /^[ㄱ-ㅎ|가-힣]+$/,
+  validMailChar: /^[a-z|A-Z|0-9|@.]+$/,
 };
 
 const RESULT = {
-  exception: -1,
+  invalidInput: -1,
 };
 
 const INDEX = {
@@ -26,222 +23,281 @@ const INDEX = {
 };
 
 function problem6(forms) {
-  if (isWrongInput(forms)) {
-    return RESULT.exception;
+  if (!checkInput(forms)) {
+    return RESULT.invalidInput;
   }
 
   return solution(forms);
 }
 
-function solution(forms) {
-  const newForms = changeNicknameTypeToArray(forms);
-  const obj = getObject(newForms);
-  const arr = getDupArrayCycle(obj);
-  const cleanSet = removeDupInArray(arr);
-  const cleanArr = getArrayFromSet(cleanSet);
-  const sortedArr = sortArrWithString(cleanArr);
-
-  return sortedArr;
-}
-
-function changeNicknameTypeToArray(twoArr) {
-  return twoArr.map(arr => arr.map(splitNickname));
-}
-
-function splitNickname(v, i) {
-  if (i === INDEX.email) {
-    return v;
+function checkInput(input) {
+  if (!checkTwoDimensionalArray(input)) {
+    return false;
   }
 
-  return getArrayFromString(v);
-}
-
-function getArrayFromString(string) {
-  return Array.from(string);
-}
-
-function getObject(threeArr) {
-  const obj = {};
-
-  threeArr.forEach((twoArr, i) => {
-    twoArr.forEach((arr, i) => {
-      if (i === INDEX.email) {
-        return;
-      }
-      arr.forEach((v, i) => {
-        if (!existWordInObject(obj, v)) {
-          obj[v] = {};
-        }
-        if (i === arr.length - 1) {
-          return;
-        }
-        if (!existWordInObject(obj[v], arr[i + 1])) {
-          obj[v][arr[i + 1]] = [];
-        }
-        obj[v][arr[i + 1]].push(twoArr[INDEX.email]);
-      });
-    });
-  });
-
-  return obj;
-}
-
-function existWordInObject(obj, v) {
-  return obj.hasOwnProperty(v);
-}
-
-function getDupArrayCycle(obj) {
-  const arr = [];
-
-  for (let key1 in obj) {
-    if (Object.keys(obj[key1]).length >= 1) {
-      for (let key2 in obj[key1]) {
-        if (Object.keys(obj[key1][key2]).length > 1) {
-          arr.push(...obj[key1][key2]);
-        }
-      }
-    }
+  if (!checkOneDimensionalArray(input)) {
+    return false;
   }
 
-  return arr;
-}
-
-function removeDupInArray(arr) {
-  return new Set(arr);
-}
-
-function getArrayFromSet(set) {
-  return Array.from(set);
-}
-
-function sortArrWithString(arr) {
-  return arr.sort();
-}
-
-function isWrongInput(input) {
-  if (isWrongTwoDimensionalArray(input)) {
-    return true;
+  if (!checkElement(input)) {
+    return false;
   }
 
-  if (isWrongArray(input)) {
-    return true;
-  }
-
-  if (isWrongElement(input)) {
-    return true;
-  }
-
-  return false;
+  return true;
 }
 
-function isWrongTwoDimensionalArray(twoArr) {
-  if (isWrongValue(twoArr)) {
-    return true;
+function checkTwoDimensionalArray(form2DArray) {
+  if (!checkValue(form2DArray)) {
+    return false;
   }
 
-  if (isNotArray(twoArr)) {
-    return true;
+  if (!checkArray(form2DArray)) {
+    return false;
   }
 
-  if (isWrongLength(twoArr.length, INPUT.minCrew, INPUT.maxCrew)) {
-    return true;
+  if (!checkLength(form2DArray.length, INPUT.minCrew, INPUT.maxCrew)) {
+    return false;
   }
+
+  return true;
 }
 
-function isWrongArray(twoArr) {
-  return twoArr.some(arr => {
-    if (isWrongValue(arr)) {
-      return true;
+function checkOneDimensionalArray(form2DArray) {
+  return form2DArray.every(oneArr => {
+    if (!checkValue(oneArr)) {
+      return false;
     }
 
-    if (isNotArray(arr)) {
-      return true;
+    if (!checkArray(oneArr)) {
+      return false;
     }
 
-    if (isWrongLength(arr.length, INPUT.minForm, INPUT.maxForm)) {
-      return true;
+    if (!checkLength(oneArr.length, INPUT.minForm, INPUT.maxForm)) {
+      return false;
     }
+
+    return true;
   });
 }
 
-function isWrongElement(twoArr) {
-  return twoArr.some(arr => {
-    if (isWrongFormat(arr[INDEX.email], arr[INDEX.nickname])) {
-      return true;
+function checkElement(form2DArray) {
+  return form2DArray.every(arr => {
+    if (!checkFormat(arr[INDEX.email], arr[INDEX.nickname])) {
+      return false;
     }
-    return arr.some(v => {
-      if (isWrongValue(v)) {
-        return true;
+
+    return arr.every(v => {
+      if (!checkValue(v)) {
+        return false;
       }
 
-      if (isWrongType(typeof v, INPUT.strType)) {
-        return true;
+      if (!checkType(typeof v, INPUT.strType)) {
+        return false;
       }
+
+      return true;
     });
   });
 }
 
-function isWrongFormat(email, nickname) {
-  if (isWrongLanguage(email, nickname)) {
-    return true;
+function checkFormat(email, nickname) {
+  if (!checkLanguage(email, nickname)) {
+    return false;
   }
 
   if (
-    isWrongLength(email.length, INPUT.minMail, INPUT.maxMail) ||
-    isWrongLength(nickname.length, INPUT.minNick, INPUT.maxNick)
+    !checkLength(email.length, INPUT.minMail, INPUT.maxMail) ||
+    !checkLength(nickname.length, INPUT.minNick, INPUT.maxNick)
   ) {
-    return true;
+    return false;
   }
 
-  if (isWrongDomain(email, INPUT.domain)) {
-    return true;
+  if (!checkDomain(email, INPUT.domain)) {
+    return false;
   }
 
-  return false;
+  return true;
 }
 
-function isWrongLanguage(email, nickname) {
-  if (isWrongEmail(email)) {
-    return true;
+function checkLanguage(email, nickname) {
+  if (!checkEmail(email)) {
+    return false;
   }
 
-  if (isWrongNickname(nickname)) {
-    return true;
+  if (!checkNickname(nickname)) {
+    return false;
   }
 
-  return false;
+  return true;
 }
 
-function isWrongEmail(email) {
-  return INPUT.koChar.test(email) || INPUT.specialMailChar.test(email);
+function checkEmail(email) {
+  return INPUT.validMailChar.test(email);
 }
 
-function isWrongNickname(nickname) {
-  return (
-    INPUT.enChar.test(nickname) ||
-    INPUT.numChar.test(nickname) ||
-    INPUT.specialNickChar.test(nickname)
+function checkNickname(nickname) {
+  return INPUT.validNickChar.test(nickname);
+}
+
+function checkType(type, checker) {
+  return type === checker;
+}
+
+function checkDomain(email, domain) {
+  return email.includes(domain);
+}
+
+function checkValue(v) {
+  return Boolean(v);
+}
+
+function checkArray(arr) {
+  return Array.isArray(arr);
+}
+
+function checkLength(len, min, max) {
+  return len >= min && len <= max;
+}
+
+function solution(forms) {
+  const newForm3DArr = accessNicknameInforms2DArray(forms);
+  const hashTable = createHashTable(newForm3DArr);
+  const usersEmailArr = getUserEmail(hashTable);
+  const cleanEmailArr = removeDuplicateEmail(usersEmailArr);
+  const sortedEmailArr = sortEmail(cleanEmailArr);
+
+  return sortedEmailArr;
+}
+
+function accessNicknameInforms2DArray(form2DArray) {
+  return form2DArray.map(arr => arr.map(splitNickname));
+}
+
+function splitNickname(v, i) {
+  if (isEmail(i)) {
+    return v;
+  }
+
+  return convertStringToArray(v);
+}
+
+function isEmail(i) {
+  return i === INDEX.email;
+}
+
+function convertStringToArray(string) {
+  return Array.from(string);
+}
+
+function createHashTable(form3DArray) {
+  const hashTable = {};
+
+  form3DArray.forEach(fillHashTable, { hashTable: hashTable });
+
+  return hashTable;
+}
+
+function fillHashTable(form2DArray) {
+  form2DArray.forEach(accessNicknameTable, { hashTable: this.hashTable });
+}
+
+function accessNicknameTable(arr, i, form2DArray) {
+  if (isEmail(i)) {
+    return;
+  }
+
+  arr.forEach(fillNicknameTable, {
+    hashTable: this.hashTable,
+    email: form2DArray[INDEX.email],
+  });
+}
+
+function fillNicknameTable(word, i, arr) {
+  this.hashTable[word] = createWordTable(this.hashTable, word);
+  if (isEndOfIndex(arr, i)) {
+    return;
+  }
+  const nextWord = arr[i + 1];
+  this.hashTable[word][nextWord] = createNextWordTable(
+    this.hashTable[word],
+    nextWord,
+  );
+  this.hashTable[word][nextWord] = pushEmailInNextWordTable(
+    this.hashTable[word][nextWord],
+    this.email,
   );
 }
 
-function isWrongType(type, checker) {
-  return type !== checker;
+function createWordTable(hashTable, word) {
+  if (existWord(hashTable, word)) {
+    return {
+      ...hashTable[word],
+    };
+  }
+
+  return {};
 }
 
-function isWrongDomain(email, domain) {
-  return !email.includes(domain);
+function existWord(obj, key) {
+  return obj.hasOwnProperty(key);
 }
 
-function isWrongValue(v) {
-  return !v;
+function isEndOfIndex(arr, i) {
+  return i === arr.length - 1;
 }
 
-function isNotArray(arr) {
-  return !Array.isArray(arr);
+function createNextWordTable(hashTable, nextWord) {
+  if (existWord(hashTable, nextWord)) {
+    return [...hashTable[nextWord]];
+  }
+
+  return [];
 }
 
-function isWrongLength(len, min, max) {
-  return len < min || len > max;
+function pushEmailInNextWordTable(hashTable, email) {
+  return [...hashTable, email];
+}
+
+function getUserEmail(hashTable) {
+  let emailArr = [];
+
+  for (let word in hashTable) {
+    emailArr = searchWordTable(emailArr, hashTable[word]);
+  }
+
+  return [...emailArr];
+}
+
+function searchWordTable(emailArr, hashTable) {
+  for (let nextWord in hashTable) {
+    emailArr = searchNextWordTable(emailArr, hashTable[nextWord]);
+  }
+
+  return [...emailArr];
+}
+
+function searchNextWordTable(emailArr, hashTable) {
+  if (haveLessThanOneMail(hashTable)) {
+    return [...emailArr];
+  }
+
+  return pushEmailInEmailArray(emailArr, hashTable);
+}
+
+function haveLessThanOneMail(hashTable) {
+  return Object.keys(hashTable).length <= 1;
+}
+
+function pushEmailInEmailArray(emailArr, email) {
+  return [...emailArr, ...email];
+}
+
+function removeDuplicateEmail(emailArr) {
+  return emailArr.filter((v, i, emailArr) => emailArr.indexOf(v) === i);
+}
+
+function sortEmail(emailArr) {
+  return emailArr.sort();
 }
 
 module.exports = problem6;

@@ -1,69 +1,67 @@
 const INPUT = {
-  numberType: 'number',
+  numType: 'number',
   minRange: 1,
   maxRange: 1000000,
 };
 
 const RESULT = {
-  exception: -1,
+  invalidInput: -1,
 };
 
 const MONEY = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
 function problem5(money) {
-  if (isWrongInput(money)) {
-    return RESULT.exception;
+  if (!checkInput(money)) {
+    return RESULT.invalidInput;
   }
 
-  return fillWallet(money);
+  return solution(money);
 }
 
-function isWrongInput(input) {
-  if (isWrongValueOfInput(input)) {
-    return true;
+function checkInput(input) {
+  if (!checkValue(input)) {
+    return false;
   }
 
-  if (isWrongTypeOfInput(typeof input)) {
-    return true;
+  if (!checkType(typeof input, INPUT.numType)) {
+    return false;
   }
 
-  if (isWrongRangeOfInput(input)) {
-    return true;
+  if (!checkRange(input, INPUT.minRange, INPUT.maxRange)) {
+    return false;
   }
 
-  return false;
+  return true;
 }
 
-function isWrongValueOfInput(v) {
-  return !v;
+function checkValue(v) {
+  return Boolean(v);
 }
 
-function isWrongTypeOfInput(type) {
-  return type !== INPUT.numberType;
+function checkType(type, checker) {
+  return type === checker;
 }
 
-function isWrongRangeOfInput(range) {
-  return range < INPUT.minRange || range > INPUT.maxRange;
+function checkRange(range, minRange, maxRange) {
+  return range >= minRange && range <= maxRange;
 }
 
-function fillWallet(money) {
-  const wallet = [];
+function solution(money) {
+  let balance = money;
 
-  for (let i = 0; i < MONEY.length; i++) {
-    const moneyNum = exchangeMoney(money, MONEY[i]);
-    money = updateMoney(money, moneyNum * MONEY[i]);
-    wallet.push(moneyNum);
-  }
-
-  return wallet;
+  return MONEY.map(v => {
+    const billNum = getBill(balance, v);
+    balance = updateMoney(balance, billNum * v);
+    return billNum;
+  });
 }
 
-function exchangeMoney(money, exchanger) {
-  return Math.floor(money / exchanger);
+function getBill(balance, exchanger) {
+  return Math.floor(balance / exchanger);
 }
 
-function updateMoney(money, exchangedMoney) {
-  return money - exchangedMoney;
+function updateMoney(balance, exchangedMoney) {
+  return balance - exchangedMoney;
 }
 
 module.exports = problem5;

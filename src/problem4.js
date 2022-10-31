@@ -4,7 +4,7 @@ const INPUT = {
 };
 
 const RESULT = {
-  exception: -1,
+  invalidInput: -1,
 };
 
 const MAPPING = {
@@ -14,66 +14,63 @@ const MAPPING = {
 };
 
 function problem4(word) {
-  if (isWrongInput(word)) {
-    return RESULT.exception;
+  if (!checkInput(word)) {
+    return RESULT.invalidInput;
   }
 
-  return translateWord(word);
+  return solution(word);
 }
 
-function isWrongInput(input) {
-  if (isWrongValueOfInput(input)) {
-    return true;
+function checkInput(input) {
+  if (!checkValue(input)) {
+    return false;
   }
 
-  if (isWrongLengthOfInput(input.length)) {
-    return true;
+  if (!checkLength(input.length, INPUT.minLength, INPUT.maxLength)) {
+    return false;
   }
 
-  return false;
+  return true;
 }
 
-function isWrongValueOfInput(v) {
-  return !v;
+function checkValue(v) {
+  return Boolean(v);
 }
 
-function isWrongLengthOfInput(length) {
-  return length < INPUT.minLength || length > INPUT.maxLength;
+function checkLength(length, minLength, maxLength) {
+  return length >= minLength && length <= maxLength;
 }
 
-function translateWord(word) {
-  const wordArray = getArrayFromString(word);
-  const frogWordArray = getFrogWordArrayFromWordArray(wordArray);
+function solution(word) {
+  const wordArray = convertStringToArray(word);
+  const frogWordArray = covertWordToFrogWord(wordArray);
+  const frogWord = convertArrayToString(frogWordArray);
 
-  return getStringFromArray(frogWordArray);
+  return frogWord;
 }
 
-function getArrayFromString(string) {
+function convertStringToArray(string) {
   return Array.from(String(string));
 }
 
-function getFrogWordArrayFromWordArray(wordArray) {
-  return wordArray.map(translateWithAscii);
+function covertWordToFrogWord(wordArray) {
+  return wordArray.map(translateWord);
 }
 
-function translateWithAscii(v) {
+function translateWord(v) {
   if (isAlphabet(v)) {
-    const ascii = getAsciiFromChar(v);
-    const frogChar = getCharFromAscii(ascii);
-    return frogChar;
+    const ascii = getAscii(v);
+    const frogWord = getFrogWord(ascii);
+    return frogWord;
   }
   return v;
-}
-
-function getStringFromArray(arr) {
-  return arr.join('');
 }
 
 function isAlphabet(v) {
   return MAPPING.alphabet.test(v);
 }
 
-function getAsciiFromChar(v) {
+function getAscii(v) {
   if (isLowerCase(v)) {
     return MAPPING.lowerMapper - v.charCodeAt(0);
   }
@@ -85,8 +82,12 @@ function isLowerCase(alpha) {
   return alpha === alpha.toLowerCase();
 }
 
-function getCharFromAscii(ascii) {
+function getFrogWord(ascii) {
   return String.fromCharCode(ascii);
+}
+
+function convertArrayToString(arr) {
+  return arr.join('');
 }
 
 module.exports = problem4;

@@ -1,7 +1,6 @@
 const INPUT = {
   length: 2,
-  objectType: 'object',
-  numberType: 'number',
+  numType: 'number',
   minPage: 3,
   maxPage: 398,
 };
@@ -12,74 +11,94 @@ const REDUCING = {
 };
 
 const RESULT = {
-  pobi: 1,
-  crong: 2,
-  exception: -1,
+  invalidInput: -1,
   draw: 0,
+  pobiWin: 1,
+  crongWin: 2,
 };
 
 function problem1(pobi, crong) {
-  if (isWrongInput(pobi) || isWrongInput(crong)) {
-    return RESULT.exception;
+  if (!isValidInput(pobi) || !isValidInput(crong)) {
+    return RESULT.invalidInput;
   }
 
-  return compareScore(getScore(pobi), getScore(crong));
+  return solution(pobi, crong);
 }
 
-function isWrongInput(input) {
-  if (isWrongValueOfInput(input)) {
-    return true;
+function isValidInput(input) {
+  if (!checkInput(input)) {
+    return false;
   }
 
-  if (isWrongTypeOfInput(typeof input)) {
-    return true;
+  if (!checkElement(input)) {
+    return false;
   }
 
-  if (isWrongLengthOfInput(input.length)) {
-    return true;
-  }
-
-  if (isWrongValueOfElement(input[0]) || isWrongValueOfElement(input[1])) {
-    return true;
-  }
-
-  if (isWrongTypeOfElement(typeof input[0], typeof input[1])) {
-    return true;
-  }
-
-  if (isWrongFormatOfElement(input[0], input[1])) {
-    return true;
-  }
-
-  if (isWrongRangeOfElement(input[0], input[1])) {
-    return true;
-  }
-
-  return false;
+  return true;
 }
 
-function isWrongValueOfInput(v) {
-  return !v;
+function checkInput(input) {
+  if (!checkValue(input)) {
+    return false;
+  }
+
+  if (!checkArray(input)) {
+    return false;
+  }
+
+  if (!checkLength(input.length, INPUT.length)) {
+    return false;
+  }
+
+  return true;
 }
 
-function isWrongTypeOfInput(type) {
-  return type !== INPUT.objectType;
+function checkValue(v) {
+  return Boolean(v);
 }
 
-function isWrongLengthOfInput(length) {
-  return length !== INPUT.length;
+function checkArray(arr) {
+  return Array.isArray(arr);
 }
 
-function isWrongValueOfElement(v) {
-  return !v;
+function checkLength(length, checker) {
+  return length === checker;
 }
 
-function isWrongTypeOfElement(type1, type2) {
-  return type1 !== INPUT.numberType || type2 !== INPUT.numberType;
+function checkElement(input) {
+  if (!checkValueOfElement(input)) {
+    return false;
+  }
+
+  if (!checkTypeOfElement(input)) {
+    return false;
+  }
+
+  if (!checkFormOfElement({ e1: input[0], e2: input[1] })) {
+    return false;
+  }
+
+  if (!checkRangeOfElement({ e1: input[0], e2: input[1] })) {
+    return false;
+  }
+
+  return true;
 }
 
-function isWrongFormatOfElement(e1, e2) {
-  return isEven(e1) || isOdd(e2) || e1 !== e2 - 1;
+function checkValueOfElement(input) {
+  return input.every(v => checkValue(v));
+}
+
+function checkTypeOfElement(input) {
+  return input.every(v => checkType(typeof v, INPUT.numType));
+}
+
+function checkType(type, checker) {
+  return type === checker;
+}
+
+function checkFormOfElement({ e1, e2 }) {
+  return isOdd(e1) && isEven(e2) && e1 === e2 - 1;
 }
 
 function isEven(num) {
@@ -90,59 +109,71 @@ function isOdd(num) {
   return num % 2 === 1;
 }
 
-function isWrongRangeOfElement(e1, e2) {
-  return e1 < INPUT.minPage || e2 > INPUT.maxPage;
+function checkRangeOfElement({ e1, e2 }) {
+  return e1 >= INPUT.minPage && e2 <= INPUT.maxPage;
 }
 
-function getScore(arr) {
-  const numArr = splitNum(arr);
-  const addtionScoreArr = getAddtionScore(numArr);
-  const multipleScoreArr = getMultipleScore(numArr);
+function solution(pobi, crong) {
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
 
-  return Math.max(...addtionScoreArr, ...multipleScoreArr);
+  return compareScore(pobiScore, crongScore);
+}
+
+function getScore(player) {
+  const numArr = splitNum(player);
+  const additionScoreArr = getAdditionScoreArr(numArr);
+  const multipleScoreArr = getMultipleScoreArr(numArr);
+
+  return pickHighestScore(additionScoreArr, multipleScoreArr);
 }
 
 function splitNum(arr) {
-  return arr.map(v => Array.from(String(v), Number));
+  return arr.map(v => getNumberArrayFromNumber(v));
 }
 
-function getAddtionScore(numArr) {
-  const arr = numArr.map(v => {
-    return v.reduce((acc, cur) => {
-      return (acc += cur);
-    }, REDUCING.additionInit);
-  });
-
-  return arr;
+function getNumberArrayFromNumber(number) {
+  return Array.from(String(number), Number);
 }
 
-function getMultipleScore(numArr) {
-  const arr = numArr.map(v => {
-    return v.reduce((acc, cur) => {
-      return (acc *= cur);
-    }, REDUCING.multiplicationInit);
-  });
+function getAdditionScoreArr(numArr) {
+  return numArr.map(gradeScoreByAdding);
+}
 
-  return arr;
+function getMultipleScoreArr(numArr) {
+  return numArr.map(gradeScoreByMultiplying);
+}
+
+function gradeScoreByAdding(v) {
+  return v.reduce(addScore, REDUCING.additionInit);
+}
+
+function gradeScoreByMultiplying(v) {
+  return v.reduce(multiplyScore, REDUCING.multiplicationInit);
+}
+
+function addScore(acc, cur) {
+  return (acc += cur);
+}
+
+function multiplyScore(acc, cur) {
+  return (acc *= cur);
+}
+
+function pickHighestScore(additionScoreArr, multipleScoreArr) {
+  return Math.max(...additionScoreArr, ...multipleScoreArr);
 }
 
 function compareScore(pobiScore, crongScore) {
-  if (pobiScore === crongScore) {
-    return RESULT.draw;
+  if (pobiScore > crongScore) {
+    return RESULT.pobiWin;
   }
 
-  const winner = Math.max(pobiScore, crongScore);
-  switch (winner) {
-    case pobiScore: {
-      return RESULT.pobi;
-    }
-    case crongScore: {
-      return RESULT.crong;
-    }
-    default: {
-      return RESULT.exception;
-    }
+  if (pobiScore < crongScore) {
+    return RESULT.crongWin;
   }
+
+  return RESULT.draw;
 }
 
 module.exports = problem1;
