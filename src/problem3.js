@@ -1,5 +1,5 @@
 function problem3(number) {
-  var answer;
+  var answer = clapNumber(number);
   return answer;
 }
 function countNumber(number) {
