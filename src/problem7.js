@@ -1,14 +1,15 @@
 function problem7(user, friends, visitors) {
   var answer;
   let user_dict = calculate_score(user, friends, visitors);
-
-  // console.log(user_dict);
   let user_list = [];
   let key = Object.keys(user_dict);
+
+  //기능 6 - 예외처리 중, 점수가 0점이면 추천하지 않음
   key.map((k) => {
     if (user_dict[k] !== 0) user_list.push([k, user_dict[k]]);
   });
 
+  //기능 5 - 정렬
   user_list.sort((a, b) => {
     let a_name = a[0];
     let b_name = b[0];
@@ -20,20 +21,22 @@ function problem7(user, friends, visitors) {
     else if (a_name > b_name) return 1;
     else if (a_name < b_name) return -1;
   });
-  // console.log(user_list);
+
   answer = user_list.map((user) => {
     return user[0];
   });
 
+  //기능 6 - 예외처리 중, 최대 5명만 추천하도록 제한함.
   if (answer.length > 5) {
     answer = answer.slice(0, 5);
   }
+
   return answer;
 }
 
 module.exports = problem7;
 
-// 1. 친구 명단 구하기
+// 기능 1 - 친구 명단 만들기 기능
 function find_friend_list(user, friends) {
   let friend_list = new Set();
   friends.map((friend) => {
@@ -43,7 +46,7 @@ function find_friend_list(user, friends) {
   return Array.from(friend_list);
 }
 
-//2. 친구의 친구 명단 구하기
+//기능 3 -친구가 아닌 사람 중에서, 친구와 겹치는지인의 명단을 만드는 기능
 function common_friend(user, friends) {
   let friend_list = find_friend_list(user, friends);
   let common_friend_list = [];
@@ -57,7 +60,7 @@ function common_friend(user, friends) {
   return Array.from(common_friend_list);
 }
 
-//3. 친구가 아닌 사람의 명단 구하기
+//기능 2 - 친구가 아닌 사람의 명단 만들기 기능
 function people_list(user, friends, visitors) {
   let user_list = new Set();
   //friends와 visitors에 있는 모든 인원을 추가하고, 본인과 본인의 친구 명단은 모두 삭제함.
@@ -80,14 +83,18 @@ function people_list(user, friends, visitors) {
   }
   return dictObj;
 }
-// 3. 점수계산
+// 기능 4 - 점수 계산 기능
 function calculate_score(user, friends, visitors) {
   let user_dict = people_list(user, friends, visitors);
   let common_friend_list = common_friend(user, friends);
   let friend_list = find_friend_list(user, friends);
+
+  //친구의 친구이면 10점 추가
   common_friend_list.map((common) => {
     user_dict[common] += 10;
   });
+
+  //방문한 사람이면 1점 추가
   visitors.map((visitor) => {
     if (!friend_list.includes(visitor)) user_dict[visitor] += 1;
   });
