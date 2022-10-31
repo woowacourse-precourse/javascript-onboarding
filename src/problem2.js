@@ -1,6 +1,6 @@
-const check = (cryptogram) => {
+const isCryptogram = (cryptogram) => {
   const lowerCaseStr = cryptogram.toLowerCase();
-  if (cryptogram.length < 1 ) return false;
+  if (cryptogram.length < 1) return false;
   if (cryptogram.length > 1000) return false;
   if (cryptogram !== lowerCaseStr) return false;
   return true;
@@ -29,7 +29,7 @@ const removeDuplicate = (cryptogram) => {
 function problem2(cryptogram) {
   let result = removeDuplicate(cryptogram);
 
-  if (!check(cryptogram)) { throw Error("1이상 1000이하 길이의 알파벳 소문자 문자열을 입력해주세요.") }
+  if (!isCryptogram(cryptogram)) { throw Error("1이상 1000이하 길이의 알파벳 소문자 문자열을 입력해주세요.") }
   else return result;
 }
 

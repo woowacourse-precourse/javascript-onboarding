@@ -1,4 +1,4 @@
-const check = (word) => {
+const isWord = (word) => {
   if (word.length < 1 || 1000 < word.length) return false;
   return true;
 }
@@ -24,7 +24,7 @@ const reverseWord = (word) => {
 function problem4(word) {
   let result = reverseWord(word);
 
-  if (!check(word)) { throw Error("1이상 1000이하의 문자열을 입력해주세요.") }
+  if (!isWord(word)) { throw Error("1이상 1000이하의 문자열을 입력해주세요.") }
   else return result;
 }
 

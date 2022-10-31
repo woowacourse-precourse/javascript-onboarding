@@ -1,4 +1,4 @@
-const check = (number) => {
+const isNumber = (number) => {
   if (number < 1 || 10000 < number) return false;
   return true;
 }
@@ -20,7 +20,7 @@ function countClap(number) {
 function problem3(number) {
   let result = countClap(number)
 
-  if (!check(number)) { throw Error("1이상 10,000이하 자연수를 입력해주세요.") }
+  if (!isNumber(number)) { throw Error("1이상 10,000이하 자연수를 입력해주세요.") }
   else return result;
 }
 

@@ -1,4 +1,4 @@
-const check = (money) => {
+const isMoney = (money) => {
   if (money < 1 || 1000000 < money) return false;
   return true;
 }
@@ -18,7 +18,7 @@ function changeMoney(money) {
 function problem5(money) {
   let result = changeMoney(money)
 
-  if (!check(money)) { throw Error("1이상 1,000,000이하 자연수를 입력해주세요.") }
+  if (!isMoney(money)) { throw Error("1이상 1,000,000이하 자연수를 입력해주세요.") }
   else return result;
 }
 
