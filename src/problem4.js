@@ -9,3 +9,6 @@ const isAlpha = (charcode) =>
 
 const stringToCharcodeArr = (word) =>
   word.split("").map((char) => char.charCodeAt(0));
+
+const gap = (a, b) => a - b;
+
