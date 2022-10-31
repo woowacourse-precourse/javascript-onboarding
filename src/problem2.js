@@ -1,14 +1,6 @@
 function problem2(cryptogram) {
-  const RepetitionWords = [...cryptogram];
+  const words = [...cryptogram];
   let answer = "";
-
-  for (let i = 0; i < RepetitionWords.length; i++) {
-    RepetitionWords[i] === RepetitionWords[i + 1]
-      ? i++
-      : (answer += RepetitionWords[i]);
-  }
-
-  return answer === RepetitionWords.join("") ? answer : problem2(answer);
 }
-
+problem2("zyelleyz");
 module.exports = problem2;
