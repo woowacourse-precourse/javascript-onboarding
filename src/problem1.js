@@ -24,7 +24,7 @@ function problem1(pobi, crong) {
   let pobiScore = getScore(pobi);
   let crongScore = getScore(crong);
 
-  return pobiScore > crongScore? 1 : (pobiScore < crongScore ? -1 : 0);
+  return pobiScore > crongScore? 1 : (pobiScore < crongScore ? 2 : 0);
 }
 
 module.exports = problem1;
