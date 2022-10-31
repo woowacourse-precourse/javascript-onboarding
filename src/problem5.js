@@ -1,6 +1,6 @@
 function calculate(money) {
   let dividedMoney = [];
-  let kindOfMoney = [50000, 10000, 5000, 1000, 500, 100, 50 , 10, 1];
+  const kindOfMoney = [50000, 10000, 5000, 1000, 500, 100, 50 , 10, 1];
 
   kindOfMoney.forEach(function(num) {
     dividedMoney.push(Math.floor(money / num));
