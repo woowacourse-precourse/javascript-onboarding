@@ -1,30 +1,55 @@
-function problem2(cryptogram) {
-  const check = (word) => {
-    let before = '';
-    for (const el of word) {
-      if (el == before) return true;
-      else before = el;
-    }
-  };
+const isAlphabetLowerCase = (word) => {
+  for (const element of word) {
+    const charCode = element.charCodeAt(0);
+    if (charCode < 97 || charCode > 122) return false;
+  }
+  return true;
+};
 
-  let checkWord = cryptogram;
+const isRepeat = (word) => {
+  let results = false;
+  let before = '';
 
-  while (check(checkWord)) {
-    let answer = [];
-    let before = '';
-    for (const el of checkWord.split('')) {
-      if (el == before) {
-        answer.pop();
-        continue;
-      } else {
-        answer.push(el);
-        before = el;
-      }
-    }
-    checkWord = answer.join('');
+  for (const element of word) {
+    if (element == before) {
+      results = true;
+      break;
+    } else before = element;
   }
 
-  return checkWord;
+  return results;
+};
+
+const removeRepeated = (word) => {
+  let result = [];
+  let before = '';
+
+  for (const element of word.split('')) {
+    if (element === before) {
+      result.pop();
+      continue;
+    } else {
+      result.push(element);
+      before = element;
+    }
+  }
+
+  return result.join('');
+};
+
+function problem2(cryptogram) {
+  //예외사항1
+  if (cryptogram.length < 1 || cryptogram.length > 1000) return 'ERROR';
+  //예외사항2
+  if (!isAlphabetLowerCase(cryptogram)) return 'ERROR';
+
+  let results = cryptogram;
+
+  while (isRepeat(results)) {
+    results = removeRepeated(results);
+  }
+
+  return results;
 }
 
 module.exports = problem2;
