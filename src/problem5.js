@@ -4,7 +4,14 @@ function problem5(money) {
 }
 function intoArr (money){
   let moneyArr = [];
+  const resultArr = [];
+  let remains = [];
+
   moneyArr.push(money);
+
+  function switches(n){
+    remains.push((moneyArr[0] - n*(parseInt(moneyArr[0]/n))));
+  }
 }
 
 module.exports = problem5;
