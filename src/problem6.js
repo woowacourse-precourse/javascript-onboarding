@@ -35,9 +35,9 @@ function checkDuplicateName(forms, list) {
 }
 
 function isNameOK(name) {
-  const hangul = /^[ㄱ-ㅎ|가-힣]+$/;
+  const korean = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+$/;
 
-  if (hangul.test(name) == false)
+  if (korean.test(name) == false)
     return false;
   if (name.length < 1 || name.length >= 20)
     return false;
