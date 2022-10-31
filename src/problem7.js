@@ -82,6 +82,17 @@ function problem7(user, friends, visitors) {
   }
 
   //!2. friends는 길이가 1 이상 10,000 이하인 배열
+
+  function CHECK_FRIENDS_LIST_LENGHT (friendsList) {
+
+    if(friendsList.length <1 || friendsList.length >10000){
+      return false;
+    } else {
+      return true;
+    }
+
+  }
+
   //!3. friends의 각 원소는 길이가 2인 배열
   //!4. visitors는 길이가 0 이상 10,000 이하인 배열
   //!5. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
