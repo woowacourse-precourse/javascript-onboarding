@@ -16,45 +16,26 @@ function problem1(pobi, crong) {
   let sum_b = 0;
   let multiple_b = 0;
 
-  a = a.toString().split(',');
   a = a.toString().split('');
 
-  for (let i = 0; i < a.length; i++){
+  for (let i = 0; i < a.length; i++) {
     if (a[i] !== ',') {
       sum_a += parseInt(a[i])
       multiple_a *= parseInt(a[i])
     }
   }
 
-  b = b.toString().split(',');
   b = b.toString().split('');
 
-  for (let i = 0; i < b.length; i++){
+  for (let i = 0; i < b.length; i++) {
     if (b[i] !== ',') {
       sum_b += parseInt(b[i])
       multiple_b *= parseInt(b[i])
     }
   }
 
-  console.log(a, max_a)
-
-  // for (let i = 0; i < a.length; i++) {
-  //
-  // }
-  //
-
-
-  // for (let i = 0; i < a.length; i++){
-  //   sum += parseInt(a[i]);
-  //   console.log(sum);
-  //   // if (typeof(tempInt) === 'number') {
-  //   //   sum += tempInt
-  //   // }
-  //   // console.log(sum);
-  // return sum;
-  // }
+  console.log(a, b, sum_a, sum_b, multiple_a, multiple_a)
 }
-
 
 module.exports = problem1;
 
