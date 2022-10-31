@@ -6,12 +6,8 @@ const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
-
-describe("problem3", () => {
+describe("problem4", () => {
   test("case1", () => {
-    expect(problem3(13)).toEqual(4);
-  });
-  test("case2", () => {
-    expect(problem3(33)).toEqual(14);
+    expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
