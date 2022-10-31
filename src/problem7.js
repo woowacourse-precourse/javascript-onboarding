@@ -112,6 +112,12 @@ function isUserId(user, friends, visitors) {
   }
 }
 
+function isUserIdLengthValid(user) {
+  if (user.length < 1 || user.length > 30) {
+    throw "user의 길이는 1 이상 30 이하 문자열만 가능합니다.";
+  }
+}
+
 function problem7(user, friends, visitors) {
   const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
