@@ -1,8 +1,4 @@
-function isDuplicateWord(forms, duplicateWords, word) {
-  if (duplicateWords.includes(word)) {
-    return false;
-  }
-
+function isDuplicateWord(forms, word) {
   return forms.some((form) => form[1].includes(word));
 }
 
@@ -29,7 +25,7 @@ function getDuplicateWords(forms, duplicateWords) {
     const word = crew.substring(index, index + 2);
     index += 1;
 
-    if (!isDuplicateWord(forms, duplicateWords, word)) {
+    if (!isDuplicateWord(forms, word) || duplicateWords.includes(word)) {
       continue;
     }
 

@@ -38,3 +38,4 @@
 - [x] 크루 필터 조건 개선 (find, 정규식 -> some, includes)
 - [x] 중복 단어 판별 분리 isDuplicateWord
 - [x] getDuplicateWords 반환 조건 개선 (shift, length === 0 -> length === 1)
+- [x] 중복 단어 판별 조건 분리
