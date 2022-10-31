@@ -46,6 +46,10 @@ function problem6(forms) {
             }
         }
     }
+
+    // 7단계) 중복을 제거하고 오름차순으로 정렬한 배열을 반환합니다.
+    const result = new Set([...resultIdArray]);
+    return [...result].sort();
 }
 
 module.exports = problem6;
