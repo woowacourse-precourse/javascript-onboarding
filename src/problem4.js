@@ -1,5 +1,16 @@
+function isAlphabet(letter) {
+  let tester = /[a-zA-z]/;
+  return tester.test(letter);
+}
+
 function problem4(word) {
-  var answer;
+  let answer = '';
+  for (let i = 0; i < word.length; i++) {
+    if (!isAlphabet(word[i])) {
+      answer += word[i];
+      continue;
+    }
+  }
   return answer;
 }
 
