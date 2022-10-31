@@ -6,7 +6,7 @@ const setNicknameObj = (form, nicknameObj) => {
       nicknameObj[subStr] += 1;
     } else nicknameObj[subStr] = 1;
   }
-}
+};
 
 const getErrCrewEmail = (form, nicknameObj) => {
   const [email, nickname] = form;
@@ -15,7 +15,7 @@ const getErrCrewEmail = (form, nicknameObj) => {
     if (nicknameObj[subStr] >= 2) return email;
   }
   return null;
-}
+};
 
 const problem6 = (forms) => {
   let result = new Set();
@@ -33,6 +33,6 @@ const problem6 = (forms) => {
   });
 
   return [...result].sort();
-}
+};
 
 module.exports = problem6;
