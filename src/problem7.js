@@ -93,7 +93,6 @@ function problem7(user, friends, visitors) {
   let idScoreArr = makeObjToArr(idScoreObj);
 
   sortable(idScoreArr);
-
   // answer 배열에 이름만 담기
   idScoreArr.map((el) => answer.push(el[0]));
   // answer은 최대 5명
