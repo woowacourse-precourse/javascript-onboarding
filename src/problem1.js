@@ -19,11 +19,11 @@ function except(pobi=[], crong=[]){
 
 
   //3.숫자는 3미만 398초과은 아웃
-  //추가 - isNaN으로 숫자인지 확인
+  //추가 - typeof로 숫자인지 확인
   //숫자가 아니면 true를 리턴한다. 
   for(let i=0; i<2 ; i++){
 
-    if(isNaN(pobi[i])==true || isNaN(crong[i])==true){
+    if(typeof(pobi[i])!="number" || typeof(crong[i])!="number"){
       console.log("isNaN")
       return -1;
     }
@@ -32,7 +32,7 @@ function except(pobi=[], crong=[]){
     if(Number.isInteger(pobi[i])!=true ||
     Number.isInteger(crong[i])!=true){
       console.log("not integer")
-      return -1;
+      return -1;s
     }
 
     if(3 > pobi[i] || 398 < pobi[i]

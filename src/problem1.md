@@ -19,6 +19,6 @@ pobi, crong은 배열,길이 2
 
 -추가
 배열인지 확인(Array.isArray)
-isNaN() 으로 숫자인지 확인
+typeof로 숫자인지 확인
 Number.isInteger() 정수인지 판별
 두 숫자는 인접해야 하고 오른쪽이 더 커야함
