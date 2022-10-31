@@ -1,12 +1,11 @@
+/** 문자열에 연속되는 문자열을 찾아 삭제하는 함수 **/
 function removeOverlap(cryptogram) {
   cryptogram = [...cryptogram];
 
   for (var i = 0; i < cryptogram.length - 1; i++) {
-    console.log(i);
     if (cryptogram[i] === cryptogram[i + 1]) {
       var startIndex = i;
       var overlapLength = 2;
-      checkOverlap = true;
       i++;
       while (cryptogram[i] === cryptogram[i + 1]) {
         overlapLength++;
@@ -28,6 +27,7 @@ function problem2(cryptogram) {
 
   newCryptogram = removeOverlap(cryptogram);
 
+  // 문자열에 연속되는 문자열이 존재하지 않을 때 까지 연속 문자열을 삭제하는 기능
   while (cryptogram != newCryptogram) {
     cryptogram = newCryptogram;
     newCryptogram = removeOverlap(cryptogram);
