@@ -68,14 +68,21 @@ function problem7(user, friends, visitors) {
     recommendations2.push({ name: person, score: score });
   };
 
-  const find_sum_of_score = () => {
+  const is_same_person = (person1, person2) => {
+    return person1 == person2;
+  };
+
+  const remove_overlapped_score = (index, cnt) => {
+    recommendations.splice(index, cnt);
+  };
+
+  const find_sum_of_score_in_recommendations = () => {
     for (let i = 0; i < recommendations.length - 1; i++) {
       let score_sum = recommendations[i][1];
       for (let j = i + 1; j < recommendations.length; j++) {
-        // 같은 사람인 경우
-        if (recommendations[i][0] == recommendations[j][0]) {
+        if (is_same_person(recommendations[i][0], recommendations[j][0])) {
           score_sum += recommendations[j][1];
-          recommendations.splice(j, 1);
+          remove_overlapped_score(j, 1);
           j--;
         }
       }
@@ -117,7 +124,7 @@ function problem7(user, friends, visitors) {
     find_current_friends();
     find_friends_of_friends();
     find_visitors();
-    find_sum_of_score();
+    find_sum_of_score_in_recommendations();
     sort_recommendations2();
   };
 
