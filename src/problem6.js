@@ -32,7 +32,7 @@ function isValidNickName(forms) {
 }
 
 function substrNickName(nickName) {
-  const substrNickNameArr = new Array();
+  const substrNickNameArr = [];
   for (let i = 0; i < nickName.length - 1; i++) {
     substrNickNameArr.push(nickName.substring(i, i + 2));
   }
@@ -40,7 +40,7 @@ function substrNickName(nickName) {
 }
 
 function getCheckArr(forms) {
-  const checkArr = new Array();
+  const checkArr = [];
   for (let i = 0; i < forms.length; i++) {
     const substrNickNameArr = substrNickName(forms[i][1]);
     checkArr.push(...substrNickNameArr);
@@ -63,7 +63,7 @@ function isOverlapForm(form, checkArr) {
 }
 
 function getOverlapArr(forms, checkArr) {
-  const overlapArr = new Array();
+  const overlapArr = [];
   for (let i = 0; i < forms.length; i++) {
     if (isOverlapForm(forms[i], checkArr)) {
       overlapArr.push(forms[i][0]);
