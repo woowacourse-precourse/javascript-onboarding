@@ -21,6 +21,12 @@ function clapCount(number) {
 
 function problem3(number) {
   if (isException(number)) return -1;
+  let cumulativeSum = 0;
+
+  for (let i = 1; i < number + 1; ++i) {
+    cumulativeSum += clapCount(i);
+  }
+  return cumulativeSum;
 }
 
 module.exports = problem3;
