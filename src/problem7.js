@@ -24,6 +24,10 @@ function problem7(user, friends, visitors) {
   bothFriendCheck(relation, userFriends, score);
   console.log(score); // { donut: 0, andole: 20, jun: 20, shakevan: 0 }
 
+  // 기능 4
+  checkVisitors(visitors, score);
+  console.log(score); // { donut: 1, andole: 20, jun: 20, shakevan: 1, bedi: 1 }
+
   return answer;
 }
 
@@ -77,8 +81,8 @@ function bothFriendCheck(relation, userFriends, score) {
     // console.log(tmp);
 
     for (let f of tmp) {
-      console.log("f: ", f);
-      console.log("userFriends: ", userFriends);
+      // console.log("f: ", f);
+      // console.log("userFriends: ", userFriends);
 
       if (userFriends.includes(f)) { // 함께 아는 친구인 경우
         count += 10;
@@ -88,6 +92,28 @@ function bothFriendCheck(relation, userFriends, score) {
     score[friend] += count;
   }
 
+  return;
+}
+
+// 기능 4. 방문 횟수 확인
+function checkVisitors(visitors, score) {
+  let scoreKey = Object.keys(score); // "key"값만
+  console.log(scoreKey);
+  console.log(visitors);
+
+  for (let v of visitors) {
+    console.log("v: ", v);
+    if (scoreKey.includes(v)) { // score 배열에 이미 존재하는 경우
+      console.log("이미 존재");
+      score[v] += 1;
+    } else { // 존재하지 않는 경우
+      console.log("존재하지 않음");
+      score[v] = 1;
+      scoreKey = Object.keys(score); // "key"값만
+    }
+    console.log(score);
+  }
+  
   return;
 }
 
