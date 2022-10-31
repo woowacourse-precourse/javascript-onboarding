@@ -1,6 +1,7 @@
 function problem5(money) {
   var answer;
   const moneyList = [];
+  // 해당 자리수로 나눈 몫, 그리고 나머지를 구함
   money / 50000 ? moneyList.push(Math.floor(money / 50000)) : moneyList.push(0);
   money = money % 50000;
   money / 10000 ? moneyList.push(Math.floor(money / 10000)) : moneyList.push(0);
@@ -22,6 +23,4 @@ function problem5(money) {
   return answer;
 }
 
-problem5(50237);
-console.log(problem5(15000));
 module.exports = problem5;

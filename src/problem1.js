@@ -16,16 +16,19 @@ function problem1(pobi, crong) {
     pobiScoreRightSum += parseInt(pobiRight[i]);
     pobiScoreRightMul *= parseInt(pobiRight[i]);
   }
+  // 포비 왼쪽 페이지 번호 계산
   if (pobiScoreLeftSum > pobiScoreLeftMul) {
     pobiScoreLeft = pobiScoreLeftSum;
   } else {
     pobiScoreLeft = pobiScoreLeftMul;
   }
+  // 포비 오른쪽 페이지 번호 계산
   if (pobiScoreRightSum > pobiScoreRightMul) {
     pobiScoreRight = pobiScoreRightSum;
   } else {
     pobiScoreRight = pobiScoreRightMul;
   }
+  // 포비 최고 점수 계산
   if (pobiScoreLeft > pobiScoreRight) {
     pobiScore = pobiScoreLeft;
   } else {
@@ -48,22 +51,25 @@ function problem1(pobi, crong) {
     crongScoreRightSum += parseInt(crongRight[i]);
     crongScoreRightMul *= parseInt(crongRight[i]);
   }
+  // 크롱 왼쪽 페이지 번호 계산
   if (crongScoreLeftSum > crongScoreLeftMul) {
     crongScoreLeft = crongScoreLeftSum;
   } else {
     crongScoreLeft = crongScoreLeftMul;
   }
+  // 크롱 오른쪽 페이지 번호 계산
   if (crongScoreRightSum > crongScoreRightMul) {
     crongScoreRight = crongScoreRightSum;
   } else {
     crongScoreRight = crongScoreRightMul;
   }
+  // 크롱 최고 점수 계산
   if (crongScoreLeft > crongScoreRight) {
     crongScore = crongScoreLeft;
   } else {
     crongScore = crongScoreRight;
   }
-
+  // 포비와 크롱의 최고 점수 비교
   if (pobiScore > crongScore) {
     answer = 1;
   } else if (pobiScore < crongScore) {
@@ -76,6 +82,5 @@ function problem1(pobi, crong) {
 
   return answer;
 }
-problem1([97, 98], [197, 198]);
 
 module.exports = problem1;
