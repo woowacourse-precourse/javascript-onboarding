@@ -9,23 +9,23 @@
 function problem6(forms) {
   var answer = [];
   const nickNameEmail = {};
-  const strPart = {};
+  const subStringObj = {};
 
   forms.forEach((element) => {
     nickNameEmail[element[1]] = element[0];
   });
 
-  function saveString(strLength, nickName) {
+  function addSubString(strLength, nickName) {
     let start = 0;
     let end = 0 + strLength;
     while (end <= nickName.length) {
-      const checkStr = nickName.slice(start, end);
-      if (checkStr in strPart) {
-        strPart[checkStr][0].push(nickName);
-        strPart[checkStr][1] += 1;
+      const subString = nickName.slice(start, end);
+      if (subString in subStringObj) {
+        subStringObj[subString][0].push(nickName);
+        subStringObj[subString][1] += 1;
       } else {
-        strPart[checkStr] = [[], 1];
-        strPart[checkStr][0].push(nickName);
+        subStringObj[subString] = [[], 1];
+        subStringObj[subString][0].push(nickName);
       }
       start += 1;
       end += 1;
@@ -34,7 +34,7 @@ function problem6(forms) {
 
   function splitNickname(nickName) {
     for (let i = 2; i < nickName.length + 1; i++) {
-      saveString(i, nickName);
+      addSubString(i, nickName);
     }
   }
 
@@ -42,9 +42,9 @@ function problem6(forms) {
     splitNickname(element[1]);
   });
 
-  for (part in strPart) {
-    if (strPart[part][1] > 1) {
-      strPart[part][0].forEach((element) => {
+  for (subStirng in subStringObj) {
+    if (subStringObj[subStirng][1] > 1) {
+      subStringObj[subStirng][0].forEach((element) => {
         answer.push(nickNameEmail[element]);
       });
     }
