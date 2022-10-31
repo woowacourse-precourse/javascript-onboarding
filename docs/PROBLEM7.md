@@ -31,7 +31,7 @@
 - friend_dict = {이름 : [친구1,친구2,...]} 형식의 object
 - score = {이름 : 점수, 이름:점수, ...} 형식의 object
 2. friend_dict 오브젝트에 'user'의 친구에 대한 정보 user_friend로 저장하고, friend_dict 오브젝트에서 삭제.:white_check_mark:
-3. user가 친구들이 있을 경우, friend_dict 오브젝트를 순회하면서 user와 친구들이 겹치는 사람의 score를 +10 증가시키는 friendScore 함수 구현
+3. user가 친구들이 있을 경우, friend_dict 오브젝트를 순회하면서 user와 친구들이 겹치는 사람의 score를 +10 증가시키는 friendScore 함수 구현 :white_check_mark:
 - 매개변수 : friend_dict, score, user_friend(user의 친구들을 담은 배열)
 - return : score
 4. 사용자의 타임라인에 방문한 사람의 기록인 visitors 배열을 순회하여 방문한 사람의 점수 +1 증가시키는 visitorScore 함수 구현

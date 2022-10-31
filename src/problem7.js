@@ -20,6 +20,16 @@ function makeObject(friends,friend_dict,score){
   return friend_dict,score;
 }
 
+function friendScore(friend_dict,score,user_friend){
+  for (let i = 0; i < user_friend.length; i++) {
+      Object.keys(friend_dict).forEach(function(ele, idx) {
+        if (friend_dict[ele].includes(user_friend[i]))  
+          score[ele] += 10
+      });
+  }
+  return score;
+}
+
 function problem7(user, friends, visitors) {
   let answer;
   let friend_dict={};
@@ -27,6 +37,8 @@ function problem7(user, friends, visitors) {
   friend_dict,score = makeObject(friends,friend_dict,score);
   let user_friend = friend_dict[user]
   delete friend_dict[user]
+  if (user_friend!==undefined) 
+    score = friendScore(friend_dict,score,user_friend);
   return answer;
 }
 
