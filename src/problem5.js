@@ -28,7 +28,6 @@ function problem5(money) {
     answer.push(parseInt(money / devider));
     money = money % devider;
   }
-  console.log(answer);
   return answer;
 }
 
