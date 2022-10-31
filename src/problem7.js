@@ -1,4 +1,10 @@
 function problem7(user, friends, visitors) {
+  if(user < 1 || user > 30) return false;
+  if(friends < 1 || friends > 10000) return false;
+  if(visitors < 0 || visitors > 10000) return false;
+  for(let x of user) {
+    if(x === x.toUpperCase()) return false;
+  }
   let answer = [];
   for (let i in friends) {
     if (answer.findIndex((x) => x[0] === friends[i][0]) === -1)
@@ -30,4 +36,16 @@ function problem7(user, friends, visitors) {
   answer.sort((a, b) => (b[1] > a[1] ? a[0] - b[0] : b[1] - a[1]));
   return answer.filter((x) => x[1] > 0).map((x) => x[0]).slice(0, 5);
 }
+console.log( problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+))
 module.exports = problem7;
