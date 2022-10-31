@@ -19,6 +19,9 @@ function problem7(user, friends, visitors) {
     if (!friendList.get(user).includes(visitorId))
       visitPoint(recommend, visitorId);
   }
+  answer = [...recommend]
+    .sort((a, b) => (a[1] === b[1] ? sortCondition(a[0], b[0]) : b[1] - a[1]))
+    .map((item) => item[0]);
 
   return answer;
 }
@@ -40,4 +43,11 @@ function visitPoint(recommend, visitorId) {
     recommend.set(visitorId, recommend.get(visitorId) + 1);
   } else recommend.set(visitorId, 1);
 }
+
+function sortCondition(prev, cur) {
+  if (prev > cur) return 1;
+  if (prev < cur) return -1;
+  if (prev === cur) return 0;
+}
+
 module.exports = problem7;
