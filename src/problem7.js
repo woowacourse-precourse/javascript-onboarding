@@ -20,14 +20,12 @@ function problem7(user, friends, visitors) {
           usersFriendList.includes(friend[1]))
     )
     .reduce((acc, cur) => {
-      if (cur[1] === user) {
-        return acc;
-      }
+      const targetUser = usersFriendList.includes(cur[0]) ? cur[1] : cur[0];
 
-      if (acc[cur[1]]) {
-        acc[cur[1]] += 10;
+      if (acc[targetUser]) {
+        acc[targetUser] += 10;
       } else {
-        acc[cur[1]] = 10;
+        acc[targetUser] = 10;
       }
       return acc;
     }, {});
