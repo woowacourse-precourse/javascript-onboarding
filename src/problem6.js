@@ -24,6 +24,9 @@ function problem6(forms) {
     }
     forms.shift();
   }
+  // set을 배열로 전환
+  // 문자열 오름차순 정렬
+  answer = [...answer].sort();
   return answer;
 }
 
