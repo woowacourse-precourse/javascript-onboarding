@@ -29,9 +29,9 @@ function compareScore(pobiScore, crongScore) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
   if(!exceptionChecker(pobi) || !exceptionChecker(crong)) return -1;
-  answer = compareScore(getScore(pobi), getScore(crong));
+  const answer = compareScore(getScore(pobi), getScore(crong));
+
   return answer;
 }
 

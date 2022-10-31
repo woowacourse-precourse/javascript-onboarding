@@ -21,7 +21,6 @@ function checkDuplicatePattern(wordSet, patterns, emailSet, email) {
 function setToSortedArray(set) { return Array.from(set).sort(); }
 
 function problem6(forms) {
-  var answer;
   const emailSet = new Set();
   const patterns = {};
 
@@ -30,7 +29,7 @@ function problem6(forms) {
     checkDuplicatePattern(wordSet, patterns, emailSet, email);
   });
 
-  answer = setToSortedArray(emailSet);
+  const answer = setToSortedArray(emailSet);
   return answer;
 }
 

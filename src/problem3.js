@@ -9,8 +9,8 @@ function countClap(number) {
 }
 
 function problem3(number) {
-  var answer;
-  answer = countClap(number);
+  const answer = countClap(number);
+
   return answer;
 }
 

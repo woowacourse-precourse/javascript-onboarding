@@ -6,8 +6,8 @@ function decrypting(cryptogram) {
 }
 
 function problem2(cryptogram) {
-  var answer;
-  answer = decrypting(cryptogram);
+  const answer = decrypting(cryptogram);
+
   return answer;
 }
 

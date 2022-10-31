@@ -30,8 +30,8 @@ function convertTextFroggy(word) {
 
 
 function problem4(word) {
-  var answer;
-  answer = convertTextFroggy(word);
+  const answer = convertTextFroggy(word);
+
   return answer;
 }
 

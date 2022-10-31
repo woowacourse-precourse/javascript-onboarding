@@ -11,8 +11,8 @@ function withDraw(money) {
 }
 
 function problem5(money) {
-  var answer;
-  answer = withDraw(money);
+  const answer = withDraw(money);
+
   return answer;
 }
 

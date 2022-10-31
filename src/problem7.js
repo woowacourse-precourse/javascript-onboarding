@@ -63,14 +63,14 @@ function compare([friendA, scoreA], [friendB, scoreB]) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
   const userFriends = getUserFriends(user, friends);
   const scoreData = new ScoreData(user, friends, visitors, userFriends).getData;
   const recommandFriendLsit = Object.entries(scoreData)
   .sort(compare)
   .map(([friend]) => friend)
   .slice(0, 5);
-  answer = recommandFriendLsit;
+  const answer = recommandFriendLsit;
+
   return answer;
 };
 
