@@ -6,7 +6,7 @@
  */
 function isRepeatedNickname(nickname, target) {
   for (let i = 0; i < target.length; i++) {
-    const targetString = target.substring(i, 2);
+    const targetString = target.substring(i, i + 2);
 
     if (targetString.length === 2 && nickname.includes(targetString)) {
       return true;
