@@ -54,7 +54,7 @@ describe('problem5', () => {
     });
 });
 
-describe.only('problem6', () => {
+describe('problem6', () => {
     test('case1', () => {
         expect(
             problem6([
