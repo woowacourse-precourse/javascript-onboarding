@@ -39,6 +39,32 @@ const giveFriendPoint = (user, friendList, score) => {
   score[user] = -Infinity;
 }
 
+const getTopFive = score => {
+  let topFiveList = [];
+  score = Object.entries(score);
+
+  score.sort((a, b) => {
+    if (a[1] > b[1])
+      return -1;
+    else if (a[1] < b[1])
+      return 1;
+
+    if (a[0] < b[0])
+      return -1;
+    else
+      return 1;
+  });
+
+  const answerLength = Math.min(5, score.length);
+  for (let i = 0; i < answerLength; i++) {
+    if (score[i][1] <= 0)
+      break;
+    topFiveList.push(score[i][0]);
+  }
+
+  return topFiveList;
+}
+
 const problem7 = (user, friends, visitors) => {
   let friendList = {};
   let score = {};
@@ -46,6 +72,9 @@ const problem7 = (user, friends, visitors) => {
   makeFriendList(friends, friendList);
   giveVisitPoint(visitors, score);
   giveFriendPoint(user, friendList, score);
+
+  const answer = getTopFive(score);
+  return answer;
 }
 
 module.exports = problem7;
