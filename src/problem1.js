@@ -1,20 +1,31 @@
 function problem1(pobi, crong) {
+  if (pobi.length !== 2 || crong.length !== 2)
+    throw new RangeError("pobi, crong의 길이는 2 여야 합니다.");
+
   const [pobiLeft, pobiRight] = pobi;
   const [crongLeft, crongRight] = crong;
-  
+
   if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) return -1;
 
-  const sum = str => str.split('').map(v => +v).reduce((acc,cur) => acc+cur,0);
-  const multiply = str => str.split('').map(v => +v).reduce((acc,cur) => acc*cur,1);
+  const sum = (str) =>
+    str
+      .split("")
+      .map((v) => +v)
+      .reduce((acc, cur) => acc + cur, 0);
+  const multiply = (str) =>
+    str
+      .split("")
+      .map((v) => +v)
+      .reduce((acc, cur) => acc * cur, 1);
 
-  const getMax = (left,right) => {
-    const leftMax = Math.max(sum(String(left)),multiply(String(left)));
-    const rightMax = Math.max(sum(String(right)),multiply(String(right)))
-    return Math.max(leftMax, rightMax)
-  }
+  const getMax = (left, right) => {
+    const leftMax = Math.max(sum(String(left)), multiply(String(left)));
+    const rightMax = Math.max(sum(String(right)), multiply(String(right)));
+    return Math.max(leftMax, rightMax);
+  };
 
-  const pobiMax = getMax(pobiLeft,pobiRight)
-  const crongMax = getMax(crongLeft,crongRight);
+  const pobiMax = getMax(pobiLeft, pobiRight);
+  const crongMax = getMax(crongLeft, crongRight);
 
   return pobiMax > crongMax ? 1 : pobiMax < crongMax ? 2 : 0;
 }
