@@ -1,4 +1,7 @@
 function problem6(forms) {
+  if(forms.length<1 || forms.length >10000){
+    return -1;
+  }
   let answer = [];
   let nameSet = [];
   let emailSet = [];
