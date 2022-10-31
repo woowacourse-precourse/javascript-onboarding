@@ -4,21 +4,21 @@ const A = 65,
 const a = 97,
   z = 122,
   m = 109;
-const ALPHABET_DIFF = 25;
+const ALPHABET_GAP = 25;
 
 function transCapital(asciiNum) {
   if (asciiNum <= M) {
-    return String.fromCharCode(asciiNum + (ALPHABET_DIFF - (asciiNum - A) * 2));
+    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - A) * 2));
   } else {
-    return String.fromCharCode(asciiNum - (ALPHABET_DIFF - (Z - asciiNum) * 2));
+    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (Z - asciiNum) * 2));
   }
 }
 
 function transSmall(asciiNum) {
   if (asciiNum <= m) {
-    return String.fromCharCode(asciiNum + (ALPHABET_DIFF - (asciiNum - a) * 2));
+    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - a) * 2));
   } else {
-    return String.fromCharCode(asciiNum - (ALPHABET_DIFF - (z - asciiNum) * 2));
+    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (z - asciiNum) * 2));
   }
 }
 
