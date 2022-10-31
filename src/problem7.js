@@ -10,8 +10,66 @@
 //   - [o] 정렬된 배열을 5개로 잘라 이름만 return 하도록 한다.
 
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer;
+  let usersFriend = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i][0] == user) {
+      usersFriend.push(friends[i][1]);
+    } else if (friends[i][1] == user) {
+      usersFriend.push(friends[i][0]);
+    }
+  }
+
+  let candidate = {};
+  let count = 10;
+  
+  for (let i = 0; i < usersFriend.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      if (usersFriend[i] == friends[j][0] && friends[j][1] !== user) {
+        if (!candidate[friends[j][1]]) {
+          candidate[friends[j][1]] = count;
+        } else {
+          candidate[friends[j][1]] += count;
+        }
+      } else if (usersFriend[i] == friends[j][1] && friends[j][0] !== user) {
+        if (!candidate[friends[j][0]]) {
+          candidate[friends[j][0]] = count;
+        } else {
+          candidate[friends[j][0]] += count;
+        }
+      }
+    }
+  }
+  
+  let visitorCount = 1;
+
+  for (let i = 0; i < visitors.length; i++) {
+    if (!usersFriend.includes(visitors[i])) { 
+      if (!candidate[visitors[i]]) {
+        candidate[visitors[i]] = visitorCount;
+      } else {
+        candidate[visitors[i]] += visitorCount;
+      }
+    }
+  }
+
+  candidate = Object.entries(candidate).sort((a, b) => {
+    if (b[1] == a[1]) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+  
+  answer = candidate.slice(0, 5);
+  answer = answer.map((item) => item[0]);
+
   return answer;
 }
+
+const user = "mrko";
+const friends = [ ["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"], ["asdf", "mrko"], ["asdf", "yujin"] ];
+const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+problem7(user, friends, visitors);
 
 module.exports = problem7;
