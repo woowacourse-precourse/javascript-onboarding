@@ -5,8 +5,9 @@ function problem4(word) {
   let result = "";
 
   for (let i = 0; i < word.length; i++) {
-    if (word[i] === " ") result += " ";
-    else result += changeLetter(word[i]);
+    if (UPPERCASE.includes(word[i]) || LOWERCASE.includes(word[i]))
+      result += changeLetter(word[i]);
+    else result += word[i];
   }
 
   return result;
