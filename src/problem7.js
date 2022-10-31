@@ -65,6 +65,17 @@ const convertPointMapToSortedPointArray = (args) => {
   return { ...args, pointArray };
 };
 
+const selectTopFive = (args) => {
+  const { pointArray } = args;
+  arrayLength = Math.min(5, pointArray.length);
+  const result = [];
+  for (let i = 0; i < arrayLength; i += 1) {
+    result.push(pointArray[i][0]);
+  }
+
+  return result;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
