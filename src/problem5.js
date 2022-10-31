@@ -10,6 +10,6 @@ const problem5 = (money) => {
     result.push(cnt);
   })
   return result;
-}
+};
 
 module.exports = problem5;
