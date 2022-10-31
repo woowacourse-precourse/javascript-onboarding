@@ -1,9 +1,10 @@
 function problem4(word) {
   var answer = "";
+  var asciiCodeNum, changeAlphabet;
 
   for (var i = 0; i < word.length; i++) {
-    var asciiCodeNum = word.charCodeAt(i);
-    var changeAlphabet = word.charAt(i);
+    asciiCodeNum = word.charCodeAt(i);
+    changeAlphabet = word.charAt(i);
 
     if (asciiCodeNum >= 65 && asciiCodeNum <= 90) {
       // 대문자인 경우
