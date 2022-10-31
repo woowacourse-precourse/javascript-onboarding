@@ -3,19 +3,17 @@ function problem7(user, friends, visitors) {
   const othersFriends = getOthersFriends(user, friends);
   const rank = new Map();
 
-  for ( let friend of userFriends ) {
     for( let [A, B] of othersFriends ) {
-      if( A === friend ){
+      if( userFriends.includes(A) && !userFriends.includes(B) ) {
         rank.has(B) 
         ? rank.set(B, rank.get(B)+10)
         : rank.set(B, (rank.get(B)||0)+10);  
-      } else if ( B === friend) {
+      } else if ( userFriends.includes(B) && !userFriends.includes(A) ) {
         rank.has(A) 
         ? rank.set(A, rank.get(A)+10)
         : rank.set(A, (rank.get(A)||0)+10);
       }
     }
-  }
 
   for ( let name of visitors ) {
     if(rank.has(name)) rank.set(name, rank.get(name)+1)
