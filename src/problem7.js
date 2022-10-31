@@ -36,8 +36,8 @@ function notHasUserHasUserFriendsNotUserFriends(user, friends, userFriends) {
   return filteredArr;
 }
 
-// user의 친구의 친구를 구하는 함수
-function findUserFriendsOfFriends(user, friends, userFriends) {
+// user의 친구의 친구에게 10점씩 부여하는 함수
+function giveTenScoreToUserFriendsOfFriends(user, friends, userFriends) {
   let idScoreObj = {};
   let filteredArr = notHasUserHasUserFriendsNotUserFriends(
     user,
@@ -97,7 +97,11 @@ function problem7(user, friends, visitors) {
   // 점수가 높은 순으로 최대 5명 정렬
   let answer = [];
   let userFriends = findUserFriends(user, friends);
-  let idScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
+  let idScoreObj = giveTenScoreToUserFriendsOfFriends(
+    user,
+    friends,
+    userFriends
+  );
 
   idScoreObj = getOneScore(visitors, userFriends, idScoreObj);
 
