@@ -45,10 +45,7 @@ function problem7(user, friends, visitors) {
 
     getUserMap() {
       const userMap = new Map();
-      this.user; //?
-      const userObject = new User(this.user);
-      userMap.set(this.user, userObject);
-
+      this.setUserMapByUser(this.user, userMap);
       this.friends.forEach((relation) => {
         this.setUserMapByFriends(relation, userMap);
       });
@@ -56,15 +53,22 @@ function problem7(user, friends, visitors) {
       return userMap;
     }
 
+    setUserMapByUser(user, userMap) {
+      const userObject = new User(this.user);
+      userMap.set(this.user, userObject);
+    }
+
     setUserMapByFriends([userId1, userId2], userMap) {
       if (userMap.get(userId1) === undefined) {
         const userObject = new User(userId1);
         userMap.set(userId1, userObject);
       }
+
       if (userMap.get(userId2) === undefined) {
         const userObject = new User(userId2);
         userMap.set(userId2, userObject);
       }
+
       const userObject1 = userMap.get(userId1);
       const userObject2 = userMap.get(userId2);
       userObject1.addFriend(userId2);
@@ -88,6 +92,7 @@ function problem7(user, friends, visitors) {
       this.id = userId;
       this.friends = [];
     }
+
     addFriend(friend) {
       this.friends.push(friend);
     }
@@ -120,12 +125,14 @@ function problem7(user, friends, visitors) {
       const candidates = [...scoreBoard.keys()].filter((candidate) => {
         return this.userMap.get(candidate).friends.length !== 0;
       });
+
       candidates.forEach((candidate) => {
         const candidatesFriendList = this.userMap.get(candidate).friends;
         const userFriendList = this.user.friends;
         const intersection = candidatesFriendList.filter((user) => userFriendList.includes(user));
         scoreBoard.set(candidate, scoreBoard.get(candidate) + 10 * intersection.length);
       });
+
       this.recommandationScoreBoard = scoreBoard;
       return this;
     }
@@ -159,7 +166,6 @@ function problem7(user, friends, visitors) {
 
   const sns = new SNS(user, friends, visitors);
   const snsUserMap = sns.getUserMap();
-
   const userRecommandationSystem = new UserRecommandationSystem(user, snsUserMap);
   const result = userRecommandationSystem
     .initBoard()
