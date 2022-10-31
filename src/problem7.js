@@ -1,17 +1,17 @@
 function problem7(user, friends, visitors) {
-  var answer;
-
   const userContainer = new UserContainer();
-  user.addUser(user);
+  userContainer.addUser(user);
 
   friends.forEach((friend) => {
     const [nameA, nameB] = friend;
-    userContainer.addFriend(nameA, nameB);
+    userContainer.addFriends(nameA, nameB);
   });
 
   userContainer.calcVisitors(visitors);
+  userContainer.calcKnownPerson(user);
 
-  return answer;
+  const recommendation = userContainer.recommendUser(user);
+  return recommendation;
 }
 
 module.exports = problem7;
@@ -26,7 +26,7 @@ module.exports = problem7;
  *  2. 확인된 경우 점수를 추가
  *  3. 너무 오래 걸리진 않을까? O(N*N)
  * 4. 이런 전략을 따른다 하더라도 생성된 user는 어떻게 관리할 수 있을것인가?
- *
+ * 5. 이미 친구인 경우에도 추천하지 않는다는 숨겨진 조항이 있는 것 같다.
  */
 
 class User {
@@ -58,6 +58,7 @@ class UserContainer {
   }
   calcVisitors(visitors) {
     visitors.forEach((visitor) => {
+      this.addUser(visitor);
       this.container[visitor].addScore(1);
     });
   }
@@ -84,5 +85,24 @@ class UserContainer {
         }
       }
     });
+  }
+  recommendUser(pivotUserName) {
+    const users = Object.values(this.container);
+    // 유저들을 점수 순대로 정리
+    users.sort((a, b) => {
+      if (a.score !== b.score) return b.score - a.score;
+      else return;
+    });
+
+    const recommendation = users
+      .filter((user) => {
+        if (user.name === pivotUserName) return false;
+        if (user.friends.includes(pivotUserName)) return false;
+        return true;
+      })
+      .map((user) => user.name);
+
+    if (recommendation.length > 5) recommendation.length = 5;
+    return recommendation;
   }
 }
