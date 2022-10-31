@@ -1,20 +1,21 @@
-const ARRAY_369 = [3, 6, 9];
+const CLAP_NUMBER_REGEX = /[369]/;
+const CLAP_NUMBERS = [3, 6, 9];
 
-function getClapCount(numberStr) {
-  const digits = numberStr.split('').map((n) => parseInt(n, 10));
+function hasClapNumber(number) {
+  return CLAP_NUMBER_REGEX.test(`${number}`);
+}
 
-  return digits.filter((digit) => ARRAY_369.includes(digit)).length;
+function getClapCount(number) {
+  return `${number}`.split('').filter((digit) => CLAP_NUMBERS.includes(+digit))
+    .length;
 }
 
 function problem3(number) {
   let answer = 0;
-  const regex369 = /[369]{1}/;
 
   for (let i = 1; i <= number; i++) {
-    const numberStr = `${i}`;
-
-    if (regex369.test(numberStr)) {
-      answer += getClapCount(numberStr);
+    if (hasClapNumber(i)) {
+      answer += getClapCount(i);
     }
   }
 
