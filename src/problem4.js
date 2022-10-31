@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  var answer = "";
   let frogDict = {
     A: "Z",
     B: "Y",
@@ -34,17 +34,18 @@ function problem4(word) {
     for (const [key, value] of Object.entries(frogDict)) {
       if (word[i] === key) {
         // 대문자
-        console.log(`${key}: ${value}`);
+        answer += value;
       } else if (word[i] === key.toLowerCase()) {
         // 소문자
-        console.log(`${key}: ${value}`);
+        answer += value.toLowerCase();
       }
+    }
+    if (word[i] === " ") {
+      answer += " "
     }
     i++;
   } while (i < word.length)
 
-
   return answer;
 }
-
 module.exports = problem4;
