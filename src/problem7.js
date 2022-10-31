@@ -8,15 +8,15 @@
 // - 최대 5명의 친구 추천
 
 function problem7(user, friends, visitors) {
-  const mateObj = {};
+  const friendsObj = {};
   var answer = [];
 
   function saveFriend(one, two) {
-    if (one in mateObj) {
-      mateObj[one][0].push(two);
+    if (one in friendsObj) {
+      friendsObj[one][0].push(two);
     } else {
-      mateObj[one] = [[], 0];
-      mateObj[one][0].push(two);
+      friendsObj[one] = [[], 0];
+      friendsObj[one][0].push(two);
     }
   }
 
@@ -25,31 +25,31 @@ function problem7(user, friends, visitors) {
     saveFriend(element[1], element[0]);
   });
 
-  const userFriendsSet = new Set(mateObj[user][0]);
+  const userFriendsSet = new Set(friendsObj[user][0]);
 
-  for (const key in mateObj) {
+  for (const key in friendsObj) {
     if (key === user) {
       continue;
     }
-    mateObj[key][0].forEach((element) => {
+    friendsObj[key][0].forEach((element) => {
       if (userFriendsSet.has(element)) {
-        mateObj[key][1] += 10;
+        friendsObj[key][1] += 10;
       }
     });
   }
 
   visitors.forEach((element) => {
-    if (element in mateObj) {
-      mateObj[element][1] += 1;
+    if (element in friendsObj) {
+      friendsObj[element][1] += 1;
     } else {
-      mateObj[element] = [[], 1];
+      friendsObj[element] = [[], 1];
     }
   });
 
   const newMate = [];
-  for (mate in mateObj) {
-    if (mateObj[mate][1] > 0) {
-      newMate.push([mate, mateObj[mate][1]]);
+  for (mate in friendsObj) {
+    if (friendsObj[mate][1] > 0) {
+      newMate.push([mate, friendsObj[mate][1]]);
     }
   }
 
@@ -61,7 +61,7 @@ function problem7(user, friends, visitors) {
     answer.push(newMate[i][0]);
   }
 
-  console.log(answer);
+  console.log(friendsObj);
 
   return answer;
 }
