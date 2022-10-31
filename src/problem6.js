@@ -5,7 +5,7 @@ function problem6(forms) {
   // 주어진 닉네임에서 나올 수 있는 두 글자 모두 찾기
   let twoLetterArray = [];
   for (let index = 0; index < maxNameLength; index++) {
-    everyNameArray.map(name => name.length > index + 1 && twoLetterArray.push(name.slice(index, index + 2)))
+    everyNameArray.map(name => name.length > index + 1 && twoLetterArray.push(name.slice(index, index + 2)));
   }
 
   // 중복 글자 찾기
