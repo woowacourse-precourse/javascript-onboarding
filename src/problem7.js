@@ -197,5 +197,4 @@ function scoreReturn(score) {
   return topName;
 }
 
-// problem7();
 module.exports = problem7;
