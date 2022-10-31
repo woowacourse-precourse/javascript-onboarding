@@ -26,18 +26,20 @@ function problem7(user, friends, visitors) {
   let userFriendArray = [...userFriend];
   
   for (let i = 0; i < userList.length; i++){
-    if (userList[i] === user) continue;
+    if (userList[i] === user || userFriend.has(userList[i])) continue;
 
     let newUserInfo = userInfo.get(userList[i]);
     for (let k = 0; k < userFriendArray.length; k++) {
       if (userInfo.get(userList[i])["friendList"].has(userFriendArray[k]))
-        newUserInfo["score"] = userInfo.get(visitors[i])["score"] + 10;
+        newUserInfo["score"] = userInfo.get(userList[i])["score"] + 10;
     }
     userInfo.set(userList[i], newUserInfo);
   }
 
   // user SNS에 방문자했으면 + 1
   for (let i = 0; i < visitors.length; i++){
+    if (userFriend.has(visitors[i])) continue;
+
     let newUserInfo = userInfo.get(visitors[i]);
     newUserInfo["score"] = userInfo.get(visitors[i])["score"] + 1;
     userInfo.set(visitors[i], newUserInfo);
@@ -57,7 +59,7 @@ function problem7(user, friends, visitors) {
   // 점수가 0점이 아닌 경우 answer에 이메일 추가
   for (let i = 0; i < 5; i++){
     if (userInfo[i][1]["score"] && !userFriend.has(userInfo[i][0])) 
-      answer.push(userInfo[i][0])
+      answer.push(userInfo[i][0]);
     else break;
   }
   return answer;
