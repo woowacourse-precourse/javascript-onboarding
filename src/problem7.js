@@ -28,8 +28,10 @@ function problem7(user, friends, visitors) {
   const userFriendsSet = new Set(mateObj[user][0]);
 
   for (const key in mateObj) {
+    if (key === user) {
+      continue;
+    }
     mateObj[key][0].forEach((element) => {
-      if (key === user) return;
       if (userFriendsSet.has(element)) {
         mateObj[key][1] += 10;
       }
@@ -58,6 +60,8 @@ function problem7(user, friends, visitors) {
     if (userFriendsSet.has(newMate[i][0])) continue;
     answer.push(newMate[i][0]);
   }
+
+  console.log(answer);
 
   return answer;
 }
