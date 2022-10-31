@@ -43,9 +43,10 @@ function common_friend(user, friends) {
   let friend_list = find_friend_list(user, friends);
   let common_friend_list = new Set();
   friends.map((friend) => {
+    //친구명단에 있는 친구의 친구이며, 나 또는 나의 친구가 아닌 친구면 추가
     if (friend_list.includes(friend[0]) && !friend_list.includes(friend[1]) && friend[1] != user)
       common_friend_list.add(friend[1]);
-    if (friend_list.includes(friend[1]) && !friend_list.includes(friend[1]))
+    if (friend_list.includes(friend[1]) && !friend_list.includes(friend[0]) && friend[0] != user)
       common_friend_list.add(friend[0]);
   });
   return Array.from(common_friend_list);
@@ -83,5 +84,6 @@ function calculate_score(user, friends, visitors) {
   visitors.map((visitor) => {
     if (common_friend_list.includes(visitor)) user_dict[visitor] += 1;
   });
+
   return user_dict;
 }
