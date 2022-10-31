@@ -10,6 +10,16 @@ function findFriends(friends, user) {
   return friendsArr;
 }
 
+function findRecommendFriends(recommendFrindsArr, user, closeFriend, friends) {
+  for (const friend of friends) {
+    if (friend[0] === closeFriend && friend[1] !== user) {
+      recommendFrindsArr.push(friend[1]);
+    } else if (friend[1] === closeFriend && friend[0] !== user) {
+      recommendFrindsArr.push(friend[0]);
+    }
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const friendsArr = findFriends(friends, user);
