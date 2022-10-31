@@ -39,6 +39,19 @@ const giveFriendAlgorithmPoint = (args) => {
   return { ...args, pointMap };
 };
 
+const giveVisitorPoint = (args) => {
+  const { visitors, pointMap, friendSet } = args;
+  const copyPointMap = { ...pointMap };
+  visitors.forEach((visitor) => {
+    if (!friendSet.has(visitor)) {
+      if (copyPointMap.hasOwnProperty(visitor)) copyPointMap[visitor] += 1;
+      else copyPointMap[visitor] = 1;
+    }
+  });
+
+  return { ...args, pointMap: copyPointMap };
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
