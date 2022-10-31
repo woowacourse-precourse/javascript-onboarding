@@ -8,6 +8,25 @@
 
 function problem6(forms) {}
 
+const getAllEmailsOfSimilarNickName = (forms) => {
+  const allEmailsOfSimilarNickname = [];
+
+  forms.forEach((targetUser) => {
+    const [targetUserEmail, targetUserNickname] = targetUser;
+
+    if (!allEmailsOfSimilarNickname.includes(targetUserEmail)) {
+      const emailsOfSimilarNickName = getEmailsOfSimilarNickname(targetUserNickname, forms, getAllSerialCases(targetUserNickname));
+
+      if (emailsOfSimilarNickName.length > 0) {
+        allEmailsOfSimilarNickname.push(targetUserEmail);
+        allEmailsOfSimilarNickname.push(...emailsOfSimilarNickName);
+      }
+    }
+  });
+
+  return allEmailsOfSimilarNickname;
+};
+
 const getAllSerialCases = (nickname) => {
   const allSerialCases = [];
 
