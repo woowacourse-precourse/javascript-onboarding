@@ -6,6 +6,13 @@ function problem7(user, friends, visitors) {
 
 module.exports = problem7;
 
+const ID_SIZE_MIN = 1;
+const ID_SIZE_MAX = 30;
+const LIST_LENGTH_MIN = 1;
+const LIST_LENGTH_MAX = 10000;
+const VISITER_LENGTH_MIN = 0;
+const VISITER_LENGTH_MAX = 10000;
+
 //유저아이디가 포함된 친구 목록을 반환.
 function myFriendsList(userId, AllFriends) {
   // let temp = JSON.stringify();
@@ -87,8 +94,33 @@ function sortingMap(points) {
   return sortedArr;
 }
 
+//입력정보 유효성 검사
+function vaildate(userId, list, visiter) {
+  const friendsList = list.flat();
+
+  if (userId.length < ID_SIZE_MIN || userId.length > ID_SIZE_MAX) return false;
+  if (list.length < LIST_LENGTH_MIN || list.length > LIST_LENGTH_MAX)
+    return false;
+  if (
+    visiter.length < VISITER_LENGTH_MIN ||
+    visiter.length > VISITER_LENGTH_MAX
+  )
+    return false;
+
+  for (let i = 0; i < friendsList.length; i++) {
+    let friends = friendsList[i];
+    if (friends.length < ID_SIZE_MIN || friends.length > ID_SIZE_MAX)
+      return false;
+  }
+  return true;
+}
+
 //메인함수
 function friendsRecomand(userId, list, visiter) {
+  if (!vaildate(userId, list, visiter)) {
+    alert("올바른 정보를 입력해주세요");
+    return null;
+  }
   let filteredList = myFriendsList(userId, list);
   let friendsList = removeMyUsername(userId, filteredList);
   let friendsFriendList = friendsFilter(friendsList, list, userId);
@@ -96,5 +128,6 @@ function friendsRecomand(userId, list, visiter) {
   let allPoint = allPoints(friendsPoint, visiter, friendsList);
   let sortedList = sortingMap(allPoint);
   const result = new Map(sortedList);
+
   return [...result.keys()];
 }
