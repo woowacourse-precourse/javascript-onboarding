@@ -4,7 +4,9 @@ function problem7(user, friends, visitors) {
   }
 
   const userFriendList = makeUserFriendList(user, friends)
-  return userFriendList
+  const withoutUserList = makeWithoutUserList(user, friends)
+
+  // return [userFriendList, withoutUserList]
 }
 
 function makeUserFriendList(user, friends) {
@@ -15,6 +17,15 @@ function makeUserFriendList(user, friends) {
     }
   })
   return userFriend
+}
+
+function makeWithoutUserList(user, friends) {
+  const withoutUser = [];
+  friends.forEach((v) => {
+    if (!v.includes(user))
+      withoutUser.push(v)
+  })
+  return withoutUser
 }
 
 function checkInputValid(user, friends, visitors) {
