@@ -21,6 +21,18 @@ function getScore(page) {
 
 function problem1(pobi, crong) {
   var answer;
+
+  let pobiScroe = getScore(pobi);
+  let crongScroe = getScore(crong);
+
+  // pobi와 crong의 점수를 비교해 답 구하기
+  if (pobiScroe > crongScroe)
+    answer = 1;
+  else if (pobiScroe < crongScroe)
+    answer = 2;
+  else if (pobiScroe == crongScroe)
+    answer = 0;
+
   return answer;
 }
 
