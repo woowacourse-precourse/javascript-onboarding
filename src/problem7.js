@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer=[];
   let FR=[];
   for(let i=0;i<friends.length;i++){//user와 친구인 friends 찾기
     if(friends[i][0]===user){
@@ -76,7 +76,9 @@ function problem7(user, friends, visitors) {
     }
    }
   });
-
+  for(let i=0;i<result_Score.length;i++){//점수를 제외한 추천친구배열
+    answer.push(result_Score[i][1]);
+  }
   return answer;
 }
 module.exports = problem7;
