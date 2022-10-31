@@ -12,8 +12,12 @@ function problem1(pobi, crong) {
     return SCORE.ERROR;
   }
 
-  pobi = pobi.map((el) => getMaxNumberPlusOrMutiplication(String(el)))
-  crong = crong.map((el) => getMaxNumberPlusOrMutiplication(String(el)))
+  // sort 함수를 통해 왼쪽, 오른쪽 페에지 번호 중 큰 점수를 자신에게 적용
+  pobi = pobi.map((el) => getMaxNumberPlusOrMutiplication(String(el))).sort((a,b) => b - a)[0];
+  crong = crong.map((el) => getMaxNumberPlusOrMutiplication(String(el))).sort((a,b) => b - a)[0];
+
+  // 조건을 통하여 점수 반환
+  return pobi > crong ? SCORE.POBI_WIN : pobi == crong ? SCORE.TIE : SCORE.CRONG_WIN;
 }
 
 // 번호의 각 자리 숫자를 모두 더하거나 곱해서 가장 큰 수를 구한다.
