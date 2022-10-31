@@ -23,6 +23,18 @@ function problem6(forms) {
       result.push(list[0]);
     }
   }
+  // console.log(result);
+
+  let answer = [];
+
+  for (let i = 0; i < forms.length; i++) {
+    for (let x of result) {
+      if (forms[i][1].includes(x)) {
+        answer.push(forms[i][0]);
+      }
+    }
+  }
+  // console.log(answer);
   return answer;
 }
 
