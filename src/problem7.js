@@ -1,20 +1,21 @@
-function problem7(user, friends, visitors) {
-  const RECOMMEND_SCORE = 10;
-  const VISIT_SCORE = 1;
-  const MAX = 5;
-  const friendGroup = {};
-  const recommendScore = {};
+const getFriendGrpah = (friends) => {
+  const friendGraph = {};
 
   for (const [nameA, nameB] of friends) {
-    friendGroup[nameA] = (friendGroup[nameA] || new Set()).add(nameB);
-    friendGroup[nameB] = (friendGroup[nameB] || new Set()).add(nameA);
+    friendGraph[nameA] = (friendGraph[nameA] || new Set()).add(nameB);
+    friendGraph[nameB] = (friendGraph[nameB] || new Set()).add(nameA);
   }
+  return friendGraph;
+};
 
-  const directFriends = friendGroup[user];
+const getRecommendScore = (recommends, userFriends, visitors) => {
+  const RECOMMEND_SCORE = 10;
+  const VISIT_SCORE = 1;
+  const recommendScore = {};
 
-  for (const [name, friendSet] of Object.entries(friendGroup)) {
+  for (const [name, friendSet] of Object.entries(recommends)) {
     for (const friend of friendSet) {
-      if (directFriends.has(friend)) {
+      if (userFriends.has(friend)) {
         recommendScore[name] = (recommendScore[name] || 0) + RECOMMEND_SCORE;
       }
     }
@@ -23,22 +24,38 @@ function problem7(user, friends, visitors) {
   for (const visitor of visitors) {
     recommendScore[visitor] = (recommendScore[visitor] || 0) + VISIT_SCORE;
   }
+  return recommendScore;
+};
+
+const isRecommendFriend = (name, recommendObj, userName, userFriends) => {
+  const MIN_SCORE = 1;
+
+  if (name === userName) return false;
+  if (userFriends.has(name)) return false;
+  if (recommendObj[name] < MIN_SCORE) return false;
+  return true;
+};
+
+function problem7(user, friends, visitors) {
+  const MAX_NUMBER = 5;
+  const friendGraph = getFriendGrpah(friends);
+  const userFriends = friendGraph[user];
+  const recommendScore = getRecommendScore(friendGraph, userFriends, visitors);
 
   return Object.keys(recommendScore)
-    .filter(
-      (name) =>
-        recommendScore[name] && !directFriends.has(name) && name !== user
+    .filter((name) =>
+      isRecommendFriend(name, recommendScore, user, userFriends)
     )
     .sort((nameA, nameB) => {
-      const score1 = recommendScore[nameB];
-      const score2 = recommendScore[nameA];
+      const scoreA = recommendScore[nameA];
+      const scoreB = recommendScore[nameB];
 
-      if (score1 > score2) return 1;
-      if (score1 < score2) return -1;
+      if (scoreA < scoreB) return 1;
+      if (scoreA > scoreB) return -1;
       if (nameA > nameB) return 1;
       return nameA < nameB ? -1 : 0;
     })
-    .slice(0, MAX);
+    .slice(0, MAX_NUMBER);
 }
 
 module.exports = problem7;
