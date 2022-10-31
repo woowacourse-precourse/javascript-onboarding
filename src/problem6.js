@@ -104,6 +104,24 @@ const getDuplicateNicknames = (nicknames, cutLine = 1) => {
   return resultArray;
 };
 
+const sortByAscendingOrder = targetArray => {
+  const copiedArray = copyArray(targetArray);
+
+  copiedArray.sort((nameA, nameB) => {
+    if (nameA < nameB) {
+      return -1;
+    }
+
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  return copiedArray;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
