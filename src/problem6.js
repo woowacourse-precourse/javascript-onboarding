@@ -10,8 +10,8 @@ function findEmail(temp_str,idx,nickname,email,result){
         }
       }
   }
-  result = result.sort()
   return result;
+  
 }
 
 function problem6(forms) {
@@ -30,6 +30,8 @@ function problem6(forms) {
         result = findEmail(temp_str,idx,nickname,email,result);
       }
   })
+  result = result.sort();
+  return result;
 }
 
 module.exports = problem6;
