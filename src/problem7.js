@@ -1,8 +1,7 @@
 function problem7(user, friends, visitors) {
   const scores = getScores(user, friends, visitors);
-  const usersAndScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
-  return usersAndScores.map((userAndScore) => userAndScore[0]);
+  const usersAndScores = Object.entries(scores);
+  return sortScoreOrder(usersAndScores);
 }
 
 function getUserFriends(user, friends) {
@@ -27,7 +26,7 @@ function getScores(user, friends, visitors) {
   userFriends.forEach((friend) => {
     const mutualFriends = getUserFriends(friend, friends);
     mutualFriends.forEach((mutualFriend) => {
-      if (mutualFriend === user) return;
+      if (mutualFriend === user || userFriends.includes(mutualFriend)) return;
       if (scores[mutualFriend] === undefined) {
         scores[mutualFriend] = 10;
       }
@@ -48,6 +47,14 @@ function getScores(user, friends, visitors) {
   });
 
   return scores;
+}
+
+function sortScoreOrder(usersAndScores) {
+  usersAndScores.sort((a, b) => b[1] - a[1]);
+  const highestScore = usersAndScores[0][1];
+  const highestUsers = usersAndScores.filter(([user, score]) => score === highestScore).map(([user, score]) => user).sort();
+  const elseUsers = usersAndScores.filter(([user, score]) => score !== highestScore).map(([user, score]) => user).sort();
+  return [...highestUsers, ...elseUsers].slice(0, 5);
 }
 
 module.exports = problem7;
