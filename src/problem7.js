@@ -32,6 +32,13 @@ function problem7(user, friends, visitors) {
     if (score.has(x)) score.set(x, score.get(x) + 10);
     else score.set(x, 10);
   }
+
+  for (let visitor of visitors) {
+    if (!realUserFriend.includes(visitor)) {
+      if (score.has(visitor)) score.set(visitor, score.get(visitor) + 1);
+      else score.set(visitor, 1);
+    }
+  }
 }
 
 module.exports = problem7;
