@@ -33,11 +33,37 @@ function findFriendsOfUser(user, friends) {
   return friendsOfUser;
 }
 
+/**
+ * add friend score to each user
+ * @param {Map<string, number>} scoreOfUsers current score of users in <string, number> map
+ * @param {Set<string>} friendsOfUser friends of given user in string set
+ * @param {[string, string][]} friends friends lists in [string, string] array
+ * @returns {Map<string, number>} score of users in <string, number> map
+ */
+function addFriendScore(scoreOfUsers, friendsOfUser, friends) {
+  const newScoreOfUsers = new Map(scoreOfUsers);
+  friends.forEach((relation) => {
+    const friend1 = relation[0];
+    const friend2 = relation[1];
+    if (friendsOfUser.has(friend1))
+      newScoreOfUsers.set(friend2, newScoreOfUsers.get(friend2) + 10);
+    if (friendsOfUser.has(friend2))
+      newScoreOfUsers.set(friend1, newScoreOfUsers.get(friend1) + 10);
+  });
+  return newScoreOfUsers;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
-  const UserList = findUserList(friends, visitors);
+  const userList = findUserList(friends, visitors);
   const friendsOfUser = findFriendsOfUser(user, friends);
+
+  let scoreOfUsers = addFriendScore(
+    new Map(userList.map((u) => [u, 0])),
+    new Set(friendsOfUser),
+    friends
+  );
 
   return answer;
 }
