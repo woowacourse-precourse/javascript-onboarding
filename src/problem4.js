@@ -1,70 +1,70 @@
 function problem4(word) {
   var answer;
-  const wordArr = makeCapitalAlphabetArray(word);
-  const forwardArr = makeAlphabetArray();
-  const reverseArr = makeReverseAlphabetArray();
-  const recordCapitalArr = recordCapitalAlphabet(word);
-  const indexOfWordArr = checkIndexOfAlphabet(wordArr, forwardArr);
-  const reverseWordArr = convertReverseAlphabet(indexOfWordArr, reverseArr);
-  answer = checkCapitalAlphabet(reverseWordArr, recordCapitalArr).join("");
+  const capitalWords = makeCapitalAlphabet(word);
+  const forwardAlphabets = makeForwardAlphabet();
+  const reverseAlphabets = makeReverseAlphabet();
+  const recordCapitals = recordCapitalAlphabet(word);
+  const wordIndexs = checkWordIndex(capitalWords, forwardAlphabets);
+  const greenFrogWords = convertGreenFrogWord(wordIndexs, reverseAlphabets);
+  answer = checkCapitalAlphabet(greenFrogWords, recordCapitals).join("");
   return answer;
 }
 
-function makeAlphabetArray() {
-  const alphabet = new Array(26)
+function makeForwardAlphabet() {
+  const alphabets = new Array(26)
     .fill()
     .map((_, i) => String.fromCharCode(i + 65));
-  return alphabet;
+  return alphabets;
 }
 
-function makeReverseAlphabetArray() {
-  const reverseAlphabet = makeAlphabetArray();
-  reverseAlphabet.reverse();
-  return reverseAlphabet;
+function makeReverseAlphabet() {
+  const reverseAlphabets = makeForwardAlphabet();
+  reverseAlphabets.reverse();
+  return reverseAlphabets;
 }
 
 function recordCapitalAlphabet(word) {
-  const wordArray = word.split("");
-  const recordCapital = wordArray.map((i) => i === i.toUpperCase());
-  return recordCapital;
+  const words = word.split("");
+  const records = words.map((i) => i === i.toUpperCase());
+  return records;
 }
 
-function makeCapitalAlphabetArray(word) {
-  const capitalWordArray = word.toUpperCase().split("");
-  return capitalWordArray;
+function makeCapitalAlphabet(word) {
+  const words = word.toUpperCase().split("");
+  return words;
 }
 
-function checkIndexOfAlphabet(wordArr, forwardArr) {
-  const indexOfWord = [];
-  for (let i = 0; i < wordArr.length; i++) {
-    for (let j = 0; j < forwardArr.length; j++) {
-      if (!(wordArr[i].charCodeAt(0) > 64 && wordArr[i].charCodeAt(0) < 91)) {
-        indexOfWord.push(wordArr[i]);
+function checkWordIndex(words, forwardAlphabets) {
+  const results = [];
+  for (let i = 0; i < words.length; i++) {
+    for (let j = 0; j < forwardAlphabets.length; j++) {
+      if (!(words[i].charCodeAt(0) > 64 && words[i].charCodeAt(0) < 91)) {
+        results.push(words[i]);
         break;
       }
-      if (wordArr[i] === forwardArr[j]) {
-        indexOfWord.push(forwardArr.indexOf(forwardArr[j]));
+      if (words[i] === forwardAlphabets[j]) {
+        results.push(forwardAlphabets.indexOf(forwardAlphabets[j]));
         break;
       }
     }
   }
-  return indexOfWord;
+  return results;
 }
 
-function convertReverseAlphabet(indexArr, reverseArr) {
+function convertGreenFrogWord(indexs, reverseAlphabets) {
   const result = [];
-  for (let i = 0; i < indexArr.length; i++) {
-    if (isNaN(indexArr[i]) || indexArr[i] === " ") result.push(indexArr[i]);
-    else result.push(reverseArr[indexArr[i]]);
+  for (let i = 0; i < indexs.length; i++) {
+    if (isNaN(indexs[i]) || indexs[i] === " ") result.push(indexs[i]);
+    else result.push(reverseAlphabets[indexs[i]]);
   }
   return result;
 }
 
-function checkCapitalAlphabet(reverseWordArr, recordCapitalArr) {
+function checkCapitalAlphabet(greenFrogWords, records) {
   const result = [];
-  for (let i = 0; i < reverseWordArr.length; i++) {
-    if (recordCapitalArr[i]) result.push(reverseWordArr[i]);
-    else result.push(reverseWordArr[i].toLowerCase());
+  for (let i = 0; i < greenFrogWords.length; i++) {
+    if (records[i]) result.push(greenFrogWords[i]);
+    else result.push(greenFrogWords[i].toLowerCase());
   }
   return result;
 }
