@@ -13,10 +13,9 @@ function problem7(user, friends, visitors) {
         !(friends.includes(x[0]) && friends.includes(x[1]))
     );
 
-    const foafPerson = foafRel.map((x) =>
-      friends.includes(x[0]) ? x[1] : x[0]
+    return foafRel.map((x) =>
+      friends.includes(x[0]) ? [x[1], 10] : [x[0], 10]
     );
-    return foafPerson.map((x) => [x, 10]);
   };
 
   const visitedCnt = (visitors, alreadyFrineds) => {

@@ -9,21 +9,15 @@ function problem1(pobi, crong) {
     const mutli = (num + "")
       .split("")
       .reduce((acc, curr) => acc * parseInt(curr));
-    return add >= mutli ? add : mutli;
+    return Math.max(add, mutli);
   };
 
   const compare = (person1, person2) => {
     if (checkPages(person1) || checkPages(person2)) {
       return -1;
     } else {
-      const person1Best =
-        calcNum(person1[0]) >= calcNum(person1[1])
-          ? calcNum(person1[0])
-          : calcNum(person1[1]);
-      const person2Best =
-        calcNum(person2[0]) >= calcNum(person2[1])
-          ? calcNum(person2[0])
-          : calcNum(person2[1]);
+      const person1Best = Math.max(calcNum(person1[0]), calcNum(person1[1]));
+      const person2Best = Math.max(calcNum(person2[0]), calcNum(person2[1]));
       return person1Best >= person2Best
         ? person1Best === person2Best
           ? 0
