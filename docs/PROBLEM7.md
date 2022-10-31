@@ -74,4 +74,26 @@
         }
     ````
 
-  - 함수 안에는 userFriend라는 새로운 배열을 만들고, friends목록을 순회하며 user라는 이름이 포함되어 있지 않는 요소만 userFriend배열에 추가하는 함수 ❗️
+  - 함수 안에는 ```userFriend```라는 새로운 배열을 만들고, ```friends```목록을 순회하며 ```user```라는 이름이 포함되어 있지 않는 요소만 ```userFriend```배열에 추가하는 함수 ❗️
+
+</br> 
+
+### ✔️ 기능 3. 입력받은 user 를 활용하여 유저가 포함되지 않은 배열 선별하는 함수
+<br>
+
+  - 문제 자체가 친구 추천 알고리즘이기에, 입력값 ```friends```에서 ```user```값을 제외해야 한다.
+
+  - ```user```를 제외하고 남은 배열이 친구의 친구이거나 지인일 가능성이 높아지기에 2차적으로 선별.
+    ```javascript
+      function makeWithoutUserList(user, friends) {
+        const withoutUser = [];
+        friends.forEach((v) => {
+          if (v.includes(user)) {
+            withoutUser.push(v)
+          }
+        })
+        return withoutUser
+        }
+    ````
+
+  - 함수 안에는 ```withoutUser```라는 새로운 배열을 만들고, ```friends```목록을 순회하며 ````user````라는 이름이 포함되어 있지 않는 요소만 ```withoutUser```배열에 추가하는 함수 ❗️
