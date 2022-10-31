@@ -8,10 +8,7 @@ function problem1(pobi, crong) {
         player.includes(1) |
         player.includes(2) |
         player.includes(399) |
-        player.includes(400) |
-        (player.length !== 2) |
-        (player[0] % 2 == 0) |
-        (player[1] % 2 == 1)
+        player.includes(400)
     ).length > 0
   )
     return (answer = -1);
