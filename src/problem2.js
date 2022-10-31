@@ -22,4 +22,11 @@ function checkOverlap(cryptogram) {
   return notOverlappedArray;
 }
 
+function problem2(cryptogram) {
+  const notOverlappedArray = checkOverlap(cryptogram);
+  const answer = notOverlappedArray.join("");
+
+  return answer;
+}
+
 module.exports = problem2;
