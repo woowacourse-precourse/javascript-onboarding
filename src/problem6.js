@@ -1,7 +1,6 @@
 function problem6(forms) {
   const nickNames = getAllNickName(forms);
-  const twoLetters = combinateTwoLetter(nickNames);
-  const duplicateLetters = duplicatedTwoLetters(nickNames, twoLetters);
+  const duplicateLetters = duplicatedTwoLetters(nickNames);
   const duplicatedNickName = findDuplicatedNickName(
     nickNames,
     duplicateLetters
@@ -30,18 +29,15 @@ function combinateTwoLetter(nickNames) {
   return twoLetters;
 }
 
-function duplicatedTwoLetters(nickNames, twoLetters) {
+function duplicatedTwoLetters(nickNames) {
+  const twoLetters = combinateTwoLetter(nickNames);
   const duplicateLetters = [];
   for (let i = 0; i < twoLetters.length; i++) {
     let duplicate = 0;
     for (let j = 0; j < nickNames.length; j++) {
-      if (nickNames[j].includes(twoLetters[i])) {
-        duplicate++;
-      }
+      if (nickNames[j].includes(twoLetters[i])) duplicate++;
     }
-    if (duplicate > 1) {
-      duplicateLetters.push(twoLetters[i]);
-    }
+    if (duplicate > 1) duplicateLetters.push(twoLetters[i]);
   }
   return duplicateLetters;
 }
@@ -50,9 +46,8 @@ function findDuplicatedNickName(nickNames, duplicateLetters) {
   let duplicatedNickName = [];
   for (let i = 0; i < nickNames.length; i++) {
     for (let j = 0; j < duplicateLetters.length; j++) {
-      if (nickNames[i].includes(duplicateLetters[j])) {
+      if (nickNames[i].includes(duplicateLetters[j]))
         duplicatedNickName.push(nickNames[i]);
-      }
     }
   }
   duplicatedNickName = Array.from(new Set(duplicatedNickName));
