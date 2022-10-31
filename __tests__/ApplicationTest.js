@@ -51,7 +51,7 @@ describe("problem2", () => {
     expect(problem2("zyellleyz")).toEqual("");
   });
   test("case4", () => {
-    expect(problem2("zyalllelyz")).toEqual("zyaelyz");
+    expect(problem2("zzzyallllelyz")).toEqual("yaelyz");
   });
   test("case5", () => {
     expect(problem2("aabba")).toEqual("a");
