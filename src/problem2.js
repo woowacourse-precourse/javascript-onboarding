@@ -7,6 +7,10 @@ function sol(n){
     if(n[i]==result[point]){
       point=point-1;
     }
+    else{
+      point=point+1;
+      result[point]=n[i];
+    }
   }
   return result.slice(0,point+1);
 }
