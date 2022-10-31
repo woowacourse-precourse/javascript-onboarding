@@ -19,6 +19,13 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  let realNewFriend = [];
+  for (let friend of newFriend) {
+    if (!realUserFriend.includes(friend)) {
+      realNewFriend.push(friend);
+    }
+  }
 }
 
 module.exports = problem7;
