@@ -40,6 +40,7 @@ const addDuplicatedEmail = ([email, name], dictionary) => {
 
   getSubStringArr(name).forEach((str) => {
     if (isDuplicated(str, clone)) {
+      // 기능 1: 같은 글자가 연속적으로 포함된 닉네임 선별
       clone[str] = [...clone[str], email];
     } else {
       addNewEmail([str, email], clone);
@@ -68,6 +69,7 @@ function problem6(forms) {
     }
   });
 
+  // 기능 2, 3: 같은 글자를 연속으로 사용한 닉네임을 작성한 지원자의 이메일 목록 추출 및 오름차순 정렬하고 중복 제거
   return getDuplicatedNicknameArr(dictionary).sort();
 }
 
