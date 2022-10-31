@@ -17,7 +17,6 @@ function problem1(pobi, crong) {
   let multiple_b = 1;
 
   if (a[0] === 1 || b[1] === 400 || (a[1]-a[0]) !== 1 || (b[1]-b[0]) !== 1) {
-    console.log(-1)
     return -1
   }
 
@@ -43,20 +42,14 @@ function problem1(pobi, crong) {
   let max_b = Math.max(sum_b, multiple_b)
 
   if (max_a > max_b) {
-    console.log(1)
     return 1
   } else if (max_a === max_b) {
-    console.log(0)
     return 0
   } else if (max_a < max_b) {
-    console.log(2)
     return 2
   } else {
-    console.log(-1)
     return -1
   }
 }
 
 module.exports = problem1;
-
-problem1([99, 102],[211, 212])
