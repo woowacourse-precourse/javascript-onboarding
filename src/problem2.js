@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = cryptogram;
   const regex = /(.+)\1/;
+
+  answer = answer.replace(regex, '');
 
   return answer;
 }
