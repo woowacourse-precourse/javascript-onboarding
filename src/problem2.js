@@ -1,14 +1,18 @@
 function count(str, i) {
-  while(i < str.length() - 1){
-    if(str[i] === str[i + 1])
+  let cnt = str[i];
+  while(i < str.length - 1){
+    if(str[i] === str[i + 1]){
+      cnt += str[i + 1];
       i++;
+    }
+    else break;
   }
-  return i;
+  return cnt;
 }
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+ 
+  return cryptogram;
 }
 
 module.exports = problem2;
