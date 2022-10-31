@@ -1,32 +1,21 @@
 function problem6(forms) {
   //0번째 부터 ~ n번째 까지 모두 탐색을 함. 
   //단 한번 탐색시 중복한 것들을 한번에 삭제 후 재 탐색 반복.
-  let ObjForms = mapTheList(forms);
+  let ObjForms = Obj_Convert(forms);
   let box = [];
-  for (let i = 0; i <forms.length; i++) {
-    if (ObjForms.name[i].length >1) {
-      box.push(FindArr(ObjForms.name[i],ObjForms));
+  for (let i = 0; i < forms.length; i++) {
+    if (ObjForms.name[i].length > 1) {
+      box.push(Find_Arr(ObjForms.name[i], ObjForms,ObjForms.email[i]));
     };
   };
-  
-  let setForms = new Set( box.reduce((acc,cur)=>{
+  let Set_Forms = new Set( box.reduce((acc, cur) => {
     return acc.concat(...cur);
-  },[]));
-
-  let arrForms = Array.from(setForms);
-  
-  const lastForms = [];
-  for(let j=0;j<arrForms.length;j++){
-    let LastCheckName = ObjForms.name.indexOf(arrForms[j]);
-    let LastCheckEmail = lastForms.indexOf(ObjForms.email[j])
-    if(LastCheckName>-1 && LastCheckEmail===-1){
-      lastForms.push(ObjForms.email[LastCheckName]);
-    }
-  }
-  return lastForms.sort();
+  }, []));
+  let Arr_Forms = Array.from(Set_Forms);
+  return Arr_Forms.sort();
 }
 
-function mapTheList(list) {
+function Obj_Convert(list) {
   return list.reduce((acc, row) => {
     const [email, nickname] = row;
     acc['email'] = [...(acc['email'] || []), email];
@@ -35,16 +24,16 @@ function mapTheList(list) {
   }, {});
 };
 
-function FindArr(nickname,ObjForms) {
+function Find_Arr(nickname, ObjForms,email) {
   let newForms = [];
   let checkname = "";
-  for (let i = 0; i <nickname.length-1; i++) {
-    checkname = nickname[i] + nickname[i+1];
+  for (let i = 0; i < nickname.length - 1; i++) {
+    checkname = nickname[i] + nickname[i + 1];
     let checkbox = ObjForms.name.filter((item) => item.includes(checkname));
-    if(checkbox.length >1){
-      newForms.push(checkbox)
+    if (checkbox.length > 1) {
+      newForms.push(email);
     };
-  }
+  };
   return newForms;
 };
 module.exports = problem6;
