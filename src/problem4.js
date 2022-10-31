@@ -34,6 +34,7 @@ function problem4(word) {
   }
   word_arr = convertByDict(word_arr,dictionary);
   word_arr = checkCase(origin_word,word_arr);
+  answer = word_arr.join('');
   return answer;
 }
 
