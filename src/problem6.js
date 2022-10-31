@@ -122,6 +122,22 @@ const sortByAscendingOrder = targetArray => {
   return copiedArray;
 };
 
+const getDuplicateDestinationEmailSet = (formArray, duplicatedNickNameArray) => {
+  const emailSet = new Set();
+  const copiedFormArray = copyArray(formArray);
+  const copiedDuplicatedNickNameArray = copyArray(duplicatedNickNameArray);
+
+  each(copiedFormArray, ([email, nickName]) => {
+    categorizeNicknames(nickName, eachName => {
+      if (copiedDuplicatedNickNameArray.includes(eachName)) {
+        emailSet.add(email);
+      }
+    });
+  });
+
+  return emailSet;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
