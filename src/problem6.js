@@ -15,7 +15,7 @@ const createArr = (data) => {
 
     return splicing
   })
-  
+
   //2번의 각 인덱스에 해당하는 값이 중복되는지 확인
   for (let i =0; i <splicing.length; i++){
     for (let j =i+1; j < splicing.length; j++){
@@ -29,6 +29,11 @@ const createArr = (data) => {
     } 
   }
 
+  //중복되는 이메일 출력
+  const noticeTargetEmails = emailArr.filter((_, idx) => checkArr[idx])
+  
+  //오름차순으로 정렬 후 중복 제거
+  return noticeTargetEmails.sort((a,b) => a.localeCompare(b))
 }
  
 // function problem6(forms) {
