@@ -16,16 +16,13 @@ class Bank {
     new ErrorCase(money);
 
     this.money = money;
-  }
-
-  getMoneyUnitList() {
-    return [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+    this._moneyUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   }
 
   giveChange() {
-    const result = this.getMoneyUnitList().map(() => 0);
+    const result = this._moneyUnit.map(() => 0);
 
-    this.getMoneyUnitList().forEach((unit, index) => {
+    this._moneyUnit.forEach((unit, index) => {
       const share = Math.floor(this.money / unit);
 
       if (share > 0) {
