@@ -23,11 +23,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  
+
   var arrFriends = [];
   for(let i = 0;i < friends.length;i++){
     if(findFriends(user,friends[i]) !== 0){
       arrFriends.push(findFriends(user,friends[i]));
+    }
+  }
+
+  
+  var tmp = 0;
+  for(let i = 0;i < arrFriends.length;i++){
+    for(let j = 0;j < friends.length;j++){
+      if(findFriends(arrFriends[i],friends[j]) !== 0 && findFriends(arrFriends[i],friends[j]) !== user){
+        tmp = nameMap.get(findFriends(arrFriends[i],friends[j]));
+        nameMap.set(findFriends(arrFriends[i],friends[j]),tmp+10);
+      }
     }
   }
   return answer;
