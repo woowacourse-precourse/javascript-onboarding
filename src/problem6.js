@@ -12,6 +12,17 @@ function problem6(forms) {
       }
     }
   }
+
+  let lists = [...map];
+  let result = [];
+
+  for (let list of lists) {
+    if (list[1] <= 1) {
+      continue;
+    } else {
+      result.push(list[0]);
+    }
+  }
   return answer;
 }
 
