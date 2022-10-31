@@ -61,7 +61,7 @@ function getRecommendFriendList(user, visitors, friendsList) {
         }
 
         // 만약 user의 타임라인에 방문한 친구인 경우 횟수당 1점 추가
-        point += visitors.filter((elem) => elem === friendsList[friendsList[user][friend]][otherFrienda]).length;
+        point += visitors.filter((elem) => elem === friendsList[friendsList[user][friend]][otherFriend]).length;
 
         // 최종점수와 함께 이름을 추천리스트에 저장
         setRecommendFriendList(recommendFriendList ,[friendsList[friendsList[user][friend]][otherFriend], point]);
@@ -90,7 +90,7 @@ function setRecommendFriendList(recommendFriendList, [name, point]) {
   }
 
   for (let i = 0; i < 5; i++ ) {
-    if (reList[i] === undefined) {
+    if (recommendFriendList[i] === undefined) {
       recommendFriendList.push([name, point]);
       return;
     }
