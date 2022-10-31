@@ -7,6 +7,7 @@
 // - 이메일 오름차순 정렬
 
 function problem6(forms) {
+  var answer = [];
   const nickNameEmail = {};
   const strPart = {};
 
@@ -40,6 +41,14 @@ function problem6(forms) {
   forms.forEach((element) => {
     splitNickname(element[1]);
   });
+
+  for (part in strPart) {
+    if (strPart[part][1] > 1) {
+      strPart[part][0].forEach((element) => {
+        answer.push(nickNameEmail[element]);
+      });
+    }
+  }
 
   return answer;
 }
