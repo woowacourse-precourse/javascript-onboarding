@@ -21,21 +21,32 @@ function problem7(user, friends, visitors) {
     recommendations.push([person, score]);
   };
 
+  const is_current_friends = (current_friend, person) => {
+    return current_friend == person;
+  };
+
+  const is_not_user = (user, person) => {
+    return user != person;
+  };
+
+  const is_not_current_friend = (person) => {
+    return !current_friends.includes(person);
+  };
+
   const find_friends_of_friends = () => {
     for (let i = 0; i < current_friends.length; i++) {
       for (let j = 0; j < friends.length; j++) {
         for (let k = 0; k < 2; k++) {
           if (
-            current_friends[i] == friends[j][k] &&
-            friends[j][1 - k] != user &&
-            !current_friends.includes(friends[j][1 - k])
+            is_current_friends(current_friends[i], friends[j][k]) &&
+            is_not_user(user, friends[j][1 - k]) &&
+            is_not_current_friend(friends[j][1 - k])
           ) {
             push_recommendations(friends[j][1 - k], 10);
           }
         }
       }
     }
-    console.log(recommendations);
   };
 
   const find_visitors = () => {
