@@ -15,37 +15,45 @@ function stringfyBookPageArr(book) {
   return stringBookPageArr;
 }
 
-function plusAndMultiPages(book) {
+function plusPage(book) {
   const stringBookPageArr = stringfyBookPageArr(book);
-  let [bookPageSumOfPlus, bookPageSumOfMultiple] = [0, 0];
   let i = 0;
-
+  let bookPageSumOfPlus = [];
   for (; i < 2; i++) {
     bookPageSumOfPlus = [...stringBookPageArr[i]].reduce((acc, cur) => {
       return acc + parseInt(cur);
     }, 0);
+  }
+  return bookPageSumOfPlus;
+}
+
+function mutiplePage(book) {
+  const stringBookPageArr = stringfyBookPageArr(book);
+  let i = 0;
+  let bookPageSumOfMultiple = [];
+
+  for (; i < 2; i++) {
     bookPageSumOfMultiple = [...stringBookPageArr[i]].reduce((acc, cur) => {
       return acc * parseInt(cur);
     }, 1);
   }
-
-  return [bookPageSumOfPlus, bookPageSumOfMultiple];
+  return bookPageSumOfMultiple;
 }
 
 function pushSumOfBooks(book) {
-  const [bookPageSumOfPlus, bookPageSumOfMultiple] = plusAndMultiPages(book);
+  const bookPageSumOfPlus = plusPage(book);
+  const bookPageSumOfMultiple = mutiplePage(book);
   let sumOfBookPageArr = [];
 
   sumOfBookPageArr.push(bookPageSumOfPlus, bookPageSumOfMultiple);
-
   return sumOfBookPageArr;
 }
 
 function findMaxNum(book) {
-  const SumOfBookPageArr = pushSumOfBooks(book);
-  const bookMax = Math.max(...SumOfBookPageArr);
+  const sumOfBookPageArr = pushSumOfBooks(book);
+  const bookPageMax = Math.max(...sumOfBookPageArr);
 
-  return bookMax;
+  return bookPageMax;
 }
 function problem1(firstBook, secondBook) {
   if (
