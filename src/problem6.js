@@ -10,6 +10,14 @@ const each = (iterable, func) => {
   return;
 };
 
+const getLength = element => {
+  if (!element.length) {
+    return 0;
+  }
+
+  return element.length;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
