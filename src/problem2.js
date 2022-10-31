@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
   var answer = cryptogram;
 
+  while(1) {
     // 1. 중복 문자 체크
     var temp = answer[0];
     var bool = [];
@@ -27,8 +28,12 @@ function problem2(cryptogram) {
     }
 
     // 3. 중복 문자 제거
-    bool.length > 2 ? answer = answer.slice(0, idx - cnt + 1) + answer.slice(idx + 1) : answer = '';
-
+    if(!bool.includes(true)) 
+      break;
+    else 
+      bool.length > 2 ? answer = answer.slice(0, idx - cnt + 1) + answer.slice(idx + 1) : answer = '';
+  }
+  
   return answer;
 }
 
