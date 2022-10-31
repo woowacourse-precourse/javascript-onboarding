@@ -10,7 +10,32 @@
 
 ### 실행 결과 예시
 
-| money | result |
-| --- | --- |
-| 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
-| 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+| money | result                      |
+| ----- | --------------------------- |
+| 50237 | [1, 0, 0, 0, 0, 2, 0, 3, 7] |
+| 15000 | [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+# problem5 구현 코드
+
+## 메인 함수
+
+```
+function problem5(money) {
+  var answer = [];
+  const coins = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  getNumOfCoins(answer, coins, money);
+  return answer;
+}
+```
+
+## 출금하는 화폐단위의 각 화폐 갯수를 배열에 담아 리턴하는 함수
+
+```
+function getNumOfCoins(result, coins, money){
+  let moneyLeft = money;
+  for(let i = 0; i < 9; i++){
+    result.push(parseInt(moneyLeft / coins[i]));
+    moneyLeft %= coins[i];
+  }
+}
+```
