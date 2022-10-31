@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능 목록
+1. 같은 문자들을 지워주는 함수
+2. 메인 함수

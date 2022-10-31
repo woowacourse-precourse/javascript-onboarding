@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. map에 string이 이미 있는지 없는지 확인하는 함수
+2. map을 순회하며 중복되는 유저의 이메일을 찾는 함수
+3. same중 같은 이메일을 지우는 함수
+4. 메인 함수
