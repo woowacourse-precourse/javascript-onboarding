@@ -3,6 +3,7 @@ function problem7(user, friends, visitors) {
   let recommendationObj = {};
 
   const allRelationships = findAllRelationship(friends);
+  findMutualFriends(user, allRelationships, recommendationObj);
 
   return answer;
 }
@@ -25,6 +26,21 @@ function findAllRelationship(friends) {
   }
 
   return allRelationships;
+}
+
+function findMutualFriends(user, allRelationships, recommendation) {
+  for (let person in allRelationships) {
+    if (allRelationships[user].includes(person)) {
+      for (let friend of allRelationships[person]) {
+        if (!allRelationships[user].includes(friend) && friend !== user) {
+          if (!recommendation[friend]) {
+            recommendation[friend] = 0;
+          }
+          recommendation[friend] += 10;
+        }
+      }
+    }
+  }
 }
 
 module.exports = problem7;
