@@ -8,7 +8,17 @@ function problem4(word) {
   for (let i = 0; i < word.length; i++) {
     // 예외사항 - 공백일 때
     if (word[i] === ' ') result += ' ';
+
+    // 대문자
+    else if (word[i] === word[i].toUpperCase()) {
+      result += alphabetReverse[word[i].charCodeAt() - 65].toUpperCase();
+    }
+    // 소문자
+    else if (word[i] === word[i].toLowerCase()) {
+      result += alphabetReverse[word[i].charCodeAt() - 97];
+    }
   }
+  return result;
 }
 
 module.exports = problem4;
