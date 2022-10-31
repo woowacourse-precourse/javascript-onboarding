@@ -5,23 +5,27 @@
 // - 1원 화폐 개수 추가
 
 function problem5(money) {
-  const moneyArr = [50000, 10000, 5000, 1000, 500, 100, 50, 10];
   var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const moneyArr = [50000, 10000, 5000, 1000, 500, 100, 50, 10];
+  let totalMoney = money;
 
-  function divideMoney(total, operator, index) {
-    const moneyCnt = parseInt(total / operator);
-    answer[index] += moneyCnt;
-    const remainMoney = total % operator;
-    money = remainMoney;
-    return;
+  function getMoneyCount(total, currentMoney) {
+    const moneyCount = parseInt(total / currentMoney);
+    return moneyCount;
+  }
+
+  function getRemainMoney(total, currentMoney) {
+    const remainMoney = total % currentMoney;
+    return remainMoney;
   }
 
   for (let i = 0; i < moneyArr.length; i++) {
-    divideMoney(money, moneyArr[i], i);
+    answer[i] += getMoneyCount(totalMoney, moneyArr[i]);
+    totalMoney = getRemainMoney(totalMoney, moneyArr[i]);
   }
 
-  if (money !== 0) {
-    answer[answer.length - 1] = money;
+  if (totalMoney !== 0) {
+    answer[answer.length - 1] = totalMoney;
   }
 
   return answer;
