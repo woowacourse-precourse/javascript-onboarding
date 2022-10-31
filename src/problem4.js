@@ -16,9 +16,12 @@ function isNotWord(word) {
 
 function caseSensitive(word) {
   const LOWERCASE_ASCII_NUM = 219;
+  const UPPERCASE_ASCII_NUM = 155;
   const CLASSIFYING_ASCII_NUM = 96;
   if (word.charCodeAt() > CLASSIFYING_ASCII_NUM)
     return String.fromCharCode(LOWERCASE_ASCII_NUM - word.charCodeAt());
+  if (word.charCodeAt() <= CLASSIFYING_ASCII_NUM)
+    return String.fromCharCode(UPPERCASE_ASCII_NUM - word.charCodeAt());
 }
 
 function convertWord(word) {
