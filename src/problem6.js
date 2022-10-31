@@ -29,3 +29,6 @@ const listDupCases = (nicknames) => {
     return copy;
   }, []);
 };
+
+const isPlural = (array, item) =>
+  array.indexOf(item) !== array.lastIndexOf(item);
