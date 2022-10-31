@@ -15,7 +15,14 @@ function exceptionPage(arr) {
 
 function problem1(pobi, crong) {
   var answer;
-  var answer;
+  
+  //예외처리
+  const except_Pobi = exceptionPage(pobi);
+  const except_Crong = exceptionPage(crong);
+  if(!except_Pobi || !except_Crong){
+      answer = -1;
+      return answer;
+  }
   const pobiScore = [];
   const crongScore = [];
 
