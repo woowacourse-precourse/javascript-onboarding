@@ -2,72 +2,108 @@ const { assertModuleDeclaration } = require("@babel/types");
 
 function problem7(user, friends, visitors) {
   var answer;
-  console.log("값확인",friends)
-  console.log("값확인",user)
-
-  const peple = []
+  
+  let people = {}
+  let score = 0
+  let peple = []
   for (p = 0; p < friends.length ; p++) { 
     for (q = 0 ; q < friends[p].length; q++){
       peple.push(friends[p][q])
     }
-  }
-  console.log("사람수 확인",peple)
-  //추천친구 배열 만들기
-  
-  const arr = []
-  let nums = 0
+  } 
+  peple = peple.concat(visitors)  
+  console.log("사람수", peple)
+
 
   for (i = 0;  i < peple.length ; i ++) {
-    arr.push([peple[i],nums])
+    people[peple[i]] = score
   }
-  console.log("점수배열 이름",arr)
-  //[[추천친구],[점수]]배열 만들기
+  console.log ("사람 딕셔너리", people)
+  //사람 딕셔너리 만들기(0으로 초기화)
 
-  for ( k = 0 ; k < arr.length ; k++){
-    if( arr[k][0] == user) {
-      arr.splice(k,1)
-    } 
-  } console.log("유저이름 제외",arr)
-  //친구리스트 유저이름 제외
+  let friend = {}
 
-  for ( l = 0 ; l < arr.length ; l++){
-    const arr_2 = arr[l][0]
-    for(m = l+1; m < arr.length; m++) {
-      if(arr_2 == arr[m][0]) {
-        arr.splice(m,1)
+  for (i = 0;  i < peple.length ; i ++) {
+    friend[peple[i]] = []
+  }
+  console.log("친구 딕셔너리", friend)
+  //친구 딕셔너리 만들기([]으로 초가화)
+
+  for ( i = 0 ; i <friends.length ; i ++) {
+    let curr = friends[i];
+    friend[curr[0]].push(curr[1])
+    friend[curr[1]].push(curr[0])
+  }
+  console.log("친구목록",friend)
+  //친구 목록 채우기
+
+  let overfriends = []
+  let userfriend = friend[user]
+  for ( i = 0 ; i < userfriend.length ; i++) {
+    let friend_2 = friend[userfriend[i]]
+    overfriends = overfriends.concat(friend_2) 
+    }
+  console.log("2차 친구 목록",overfriends)
+
+  let setfriends = new Set(overfriends);
+
+  overfriends = [...setfriends]
+
+  console.log("중복제거 확인", overfriends)
+  //유저 2차친구 목록 만들기 (중복제외)
+
+  for ( i = 0 ; i < overfriends.length ; i++) {
+    people[overfriends[i]] += 10
+  }
+  //추천점수 넣기(+10)
+  for ( i = 0 ; i < visitors.length ; i++) {
+    people[visitors[i]] += 1
+  }
+
+  console.log("점수확인",people)
+  //방문점수 넣기(+1)
+
+  for ( i = 0 ; i < userfriend.length ; i++) {
+    people[userfriend[i]] = 0
+  }
+
+  people[user] = 0
+
+  console.log("최종점수확인",people)
+  //유저 1차지인 삭제
+
+  let last_people = Object.entries(people)
+
+  console.log("배열로 바꾸기",last_people)
+
+  last_people.sort(
+    (a, b) => {
+    if (a[1] === b[1]) {
+      if(a[0] > b[0]) {
+        return 1
+      } else if (a[0] < b[0]) {
+        return -1
+      } else {
+        return 0
       }
-    } 
-  } console.log("중복이름 제외_1",arr)
+    } else {
+      return b[1] - a[1]
+    }
+  })
+
+  console.log("점수별 정렬", last_people)
+
+  answer = []
+
+  for (i = 0 ; i < last_people.length ; i++) {
+    if (last_people[i][1] < 1) {
+      break
+    }
+    answer.push(last_people[i][0])
+  }
+  //점수별 정렬 && 동일점수 이름별 정렬
+  return answer
 }
-  //중복 이름 삭제
 
-  /*for( i = 0 ; i < arr.length ; i++) {
-    const arr_1 = arr[i][0];
-    
-    for(j = i+1; j < arr.length; j++) {
-      if(arr_1 == arr[j][0]) {
-        arr[i][1] += 10
-      }
-    } 
-  }console.log("중복친구 점수 + 10",arr)
-  //중복 인자 갯수 * 10 점수에 더하기
-
-
-  
-  for( n = 0 ; n < arr.length ; n++) {
-    const arr_1 = arr[n][0];
-    
-    for(o = n+1; o < arr.length; o++) {
-      if(arr_1 == visitors[o]) {
-        arr[i][1] += 1
-      }
-    } console.log("한자리점수 확인",arr)
-  
-
-  //중복 이름 + visitors 내 중복 인자 확인
-  //중복인자 확인 된 숫자 * 1 점수에 더하기
-  //[점수]배열 기준 오름차순 배열 만들기
-  //[추천친구] 이름 도출 
-  return answer;*/
 
 module.exports = problem7;
