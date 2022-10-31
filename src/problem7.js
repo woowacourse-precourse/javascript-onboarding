@@ -44,6 +44,20 @@ function problem7(user, friends, visitors) {
     }
     return acc;
   }, {});
+
+  const recommendUserWithScore = Object.keys({
+    ...commonFriendScore,
+    ...visitorsScore,
+  }).reduce((acc, cur) => {
+    if (commonFriendScore[cur] && visitorsScore[cur]) {
+      acc[cur] = commonFriendScore[cur] + visitorsScore[cur];
+    } else if (commonFriendScore[cur]) {
+      acc[cur] = commonFriendScore[cur];
+    } else {
+      acc[cur] = visitorsScore[cur];
+    }
+    return acc;
+  }, {});
 }
 
 module.exports = problem7;
