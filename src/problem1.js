@@ -46,13 +46,9 @@ function problem1(pobi, crong) {
   let crongScore = Math.max(crongLeftMaxValue, crongRightMaxValue);
 
   // //  점수 비교하기
-  if (pobiScore === crongScore) {
-    return 0;
-  } else if (pobiScore > crongScore) {
-    return 1;
-  } else if (pobiScore < crongScore) {
-    return 2;
-  }
+  if (pobiScore === crongScore) return 0;
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
 }
 
 module.exports = problem1;
