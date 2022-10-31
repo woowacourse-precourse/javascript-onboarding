@@ -1,8 +1,3 @@
-function errorHandling(number) {
-  if (number < 1 || number > 10000) return false;
-  if (!Number.isInteger(number)) return false;
-  return true;
-}
 function makeArray(number) {
   const arr = new Array(number).fill().map((_, index) => String(index + 1));
   return arr;
@@ -20,7 +15,6 @@ function clap(numberArray) {
 }
 
 function problem3(number) {
-  if (!errorHandling(number)) return -1;
   const numberArray = makeArray(number);
   const answer = clap(numberArray);
   return answer;
