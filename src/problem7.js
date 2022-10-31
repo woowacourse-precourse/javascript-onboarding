@@ -41,4 +41,10 @@ function getScores(array, score) {
   return results;
 }
 
+function combineFriendsVistors(friends, visitors) {
+  const results = [];
+  results.push(...friends, ...visitors);
+  return sortingScores(results);
+}
+
 module.exports = problem7;
