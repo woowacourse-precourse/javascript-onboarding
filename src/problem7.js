@@ -4,13 +4,33 @@ function problem7(user, friends, visitors) {
   makeRelations(user, friends, visitors);
   exceptFriendsInVisotor(visitors);
   calculateVisitor(visitors);
-
+  calculateFriend(friends, user);
   return answer;
 }
 
 const calculateVisitor = (visitors) => {
   visitors.map((e) => {
     checkScore(e, 1);
+  });
+};
+
+const checkScore = (personName, score) => {
+  Object.keys(recommendationlist).find((key) =>
+    recommendationlist[key].name === personName
+      ? (recommendationlist[key].score += score)
+      : null
+  );
+};
+
+const calculateFriend = (friends, user) => {
+  friends.map((e) => {
+    frinedList.map((alreadyFriend) => {
+      if (alreadyFriend == e[0]) {
+        checkScore(e[1], 10);
+      } else if (alreadyFriend == e[1]) {
+        checkScore(e[0], 10);
+      }
+    });
   });
 };
 
