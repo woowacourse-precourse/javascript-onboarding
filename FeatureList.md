@@ -75,3 +75,21 @@
 <strong>- for문으로 금액 배열 끝까지 순회</strong>
 
 <strong>- 최종 지갑 배열을 return</strong>
+
+---
+
+## [ 문제 6 ]
+
+![문제 6](https://user-images.githubusercontent.com/74524184/199018545-5e1a37c6-4eb3-40f5-b971-b7cb23daee66.png)
+
+<strong>- 입력 배열을 { email: arr[0], nickname: arr[1] } 형식의 새 배열로 형성</strong>
+
+<strong>- index 증가시켜가며 닉네임 2글자씩 잘라 비교 기준 생성</strong>
+
+<strong>- for문으로 새 배열 끝까지 순회하며 닉네임 중복 검사</strong>
+
+<strong>- 닉네임 중복 있는 배열의 email값 새 배열로 옮기기</strong>
+
+<strong>- email 옮긴 새 배열에서의 중복 검사</strong>
+
+<strong>- 최종 email 배열 오름차순으로 정렬해 return</strong>
