@@ -53,7 +53,7 @@ function problem7(user, friends, visitors) {
   scoreArr = [...score].sort((a, b) => b[1] - a[1]);
   answer = scoreArr.slice(0, 5).map((score) => score[0]);
 
-  return answer;
+  return answer.length > 0 ? answer : false;
 }
 
 module.exports = problem7;
