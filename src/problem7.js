@@ -29,7 +29,6 @@ function problem7(user, friends, visitors) {
 
   for (let j of friendGraph[user]) {
     for (let i of friendGraph[j]) {
-      console.log(i, friendGraph[user]);
       if (i === user || friendGraph[user].includes(i)) continue;
       objectAddNumber(recommend, i, 10);
     }
