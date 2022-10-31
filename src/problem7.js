@@ -29,6 +29,16 @@ const differenceOfSet = (args) => {
   return { ...args, acquaintanceSet: differenceSet };
 };
 
+const giveFriendAlgorithmPoint = (args) => {
+  const { acquaintanceSet } = args;
+  const pointMap = {};
+  for (const acquaintance of acquaintanceSet) {
+    pointMap[acquaintance] = 10;
+  }
+
+  return { ...args, pointMap };
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
