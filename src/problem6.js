@@ -35,9 +35,10 @@ function problem6(forms) {
   const copiedForms = [...forms];
   const duplicateWords = getDuplicateWords(copiedForms, []);
 
-  const crewEmails = forms
-    .filter((form) => isCrewWithDuplicateWord(form[1], duplicateWords))
-    .map((form) => form[0]);
+  const filteredCrews = forms.filter((form) =>
+    isCrewWithDuplicateWord(form[1], duplicateWords)
+  );
+  const crewEmails = filteredCrews.map((form) => form[0]);
   const answer = removeDuplicateEmails(crewEmails).sort();
 
   return answer;

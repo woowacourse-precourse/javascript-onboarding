@@ -41,3 +41,4 @@
 - [x] 중복 단어 판별 조건 분리
 - [x] boolean 함수 선언식 -> 표현식 (다른 문제와 컨벤션 통일)
 - [x] 중복 문자 판별 조건 수정 (조건 부합하지 않을 시 continue -> 조건에 부합할 시 push)
+- [x] 필터링과 이메일 추출 분리 (crewEmails -> filteredCrews, crewEmails)
