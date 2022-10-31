@@ -1,3 +1,12 @@
+function eliminating(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i - 1]) {
+      arr.splice(i - 1, 2);
+      break;
+    }
+  }
+  return arr;
+}
 function problem2(cryptogram) {
   let cryptoArray = cryptogram.split("");
   let arrayLength = cryptoArray.length;
