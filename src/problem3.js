@@ -6,7 +6,7 @@
 */
 
 /**
- * Main functino - count 3,6,9 claps
+ * Main function - count 3,6,9 claps
  * @param {number} number 
  * @returns {number} clap - count number of 3,6,9
  */
@@ -16,7 +16,7 @@ function problem3(number) {
   while (number) {
     if (number % 10 === 3 || number % 10 === 6 || number % 10 === 9) {
       clap++;
-      number = number / 10;
+      number = parseInt(number / 10);
     }
   }
 
