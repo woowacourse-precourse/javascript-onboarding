@@ -61,20 +61,23 @@ function problem1(pobi, crong) {
 
   const getError = pagesArr => {
 
-    const isError1 = pagesArr[1] - pagesArr[0] !== 1 ? -1 : 1;
-    const isError2 = pagesArr[0]%2 === 1 ? 1 : -1; 
-    const isError3 = pagesArr[1]%2 === 0 ? 1 : -1;
+    const isError1 = pagesArr[1] - pagesArr[0] !== 1 ? true : false;
+    const isError2 = pagesArr[0]%2 !== 1 ? true : false; 
+    const isError3 = pagesArr[1]%2 !== 0 ? true : false;
+    const isError4 = (pagesArr[0] > 400 || pagesArr[0] < 1 || pagesArr[1] > 400 || pagesArr[1] < 1) ? true : false;
     
-    const isError = isError1 * isError2 * isError3;
+    const isError = isError1 || isError2 || isError3 || isError4;
 
     return isError;
   }
 
   const getTotalError = (totalPeoplePagesArr) => {
-    let totalError = 1;
+    let totalError = false;
 
      totalPeoplePagesArr.map(personsPage => {
-      totalError = totalError * getError(personsPage);
+       console.log(personsPage);
+       console.log(getError(personsPage));
+      totalError = totalError || getError(personsPage);
      })
 
      return totalError
@@ -92,7 +95,7 @@ function problem1(pobi, crong) {
   const totalPeoplePagesArr = getTotalPeoplePagesArr(arguments);
   const pageError = getTotalError(totalPeoplePagesArr);
 
-  answer = pageError === -1 ? pageError :  getWinner(totalPeoplePagesArr);
+  answer = pageError ? -1 :  getWinner(totalPeoplePagesArr);
 
   return answer;
 }
