@@ -1,5 +1,5 @@
 function problem6(forms) {
-    const answer = [];
+    const answer = new Set();
 
     let myMap = new Map();
     forms.forEach((form) => {
@@ -15,10 +15,10 @@ function problem6(forms) {
         const [email, nickname] = form;
         for (let i = 0; i < nickname.length - 1; i++) {
             const str = nickname.substring(i, i + 2);
-            if (myMap.get(str) > 1) answer.push(email);
+            if (myMap.get(str) > 1) answer.add(email);
         }
     });
-    return answer.sort();
+    return [...answer].sort();
 }
 
 module.exports = problem6;

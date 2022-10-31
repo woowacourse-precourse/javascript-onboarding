@@ -23,8 +23,6 @@ function problem7(user, friends, visitors) {
     const queue = [];
     const myMap = new Map();
 
-    console.log(compare);
-
     //bfs, 함께 아는 친구 처리
     for (let key of Object.keys(friendsList)) {
         if (key === user) continue;
@@ -33,7 +31,7 @@ function problem7(user, friends, visitors) {
         while (queue.length) {
             let current = queue.shift();
             for (let x of friendsList[current]) {
-                if (compare.includes(x)) {
+                if (compare?.includes(x)) {
                     myMap.set(key, myMap.get(key) + 10);
                 }
             }
@@ -50,13 +48,18 @@ function problem7(user, friends, visitors) {
     }
 
     for (let [key, value] of myMap.entries()) {
+        if (compare?.includes(key)) continue;
         answer.push([key, value]);
     }
 
     // 배열 정렬
     answer.sort((a, b) => {
         if (a[1] === b[1]) {
-            return a[0] - b[0];
+            if (a < b) {
+                return -1;
+            } else {
+                return 1;
+            }
         } else {
             return b[1] - a[1];
         }
@@ -65,9 +68,26 @@ function problem7(user, friends, visitors) {
     console.log(answer);
 
     return answer
-        .filter((e) => e[1] !== 0 && !compare.includes(e[0]))
+        .filter((e) => e[1] !== 0)
         .map((e) => e[0])
         .splice(0, 5);
 }
 
+console.log(
+    problem7(
+        'mrko',
+        [
+            ['mrko', 'jun'],
+            ['bedi', 'jun'],
+            ['bedi', 'donut'],
+            ['donut', 'jun'],
+            ['donut', 'mrko'],
+            ['shakevan', 'andole'],
+            ['jun', 'andole'],
+            ['shakevan', 'jun'],
+            ['shakevan', 'mrko'],
+        ],
+        ['donut', 'shakevan']
+    )
+);
 module.exports = problem7;
