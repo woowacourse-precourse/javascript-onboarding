@@ -21,3 +21,20 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 목록
+
+- [x] 각 크루의 닉네임을 두글자씩 쪼개 `Set`을 만드는 함수를 만든다
+- [x] 닉네임이 한 글자인 경우는 제외한다
+- [x] 크루 한 명마다 모든 크루의 닉네임과 비교하고, 겹치면 크루의 이메일을 `Set`에 추가하는 함수를 만든다
+- [x] 위에서 만든 `Set`을 배열로 바꾼다
+- [x] 이메일을 오름차순으로 정렬하는 함수를 만든다
+
+## 배우고 느낀 점
+
+- [Commit message with scope](https://www.conventionalcommits.org/en/v1.0.0/#commit-message-with-scope)를 참고해 `git commit message`에 번호를 부여해봤다. `type`과 `description` 사이의 띄어쓰기도 바꿨다. 이전에 커밋한 내역은 그냥 두고 앞으로는 이렇게 작성하려고 한다.
+- 분명 더 깔끔하게 잘 짜는 방법이 있을 것이다. 7번까지 풀고 다시 고민해봐야겠다.
+- `JSDoc`을 이용해봤다. 7번에도 적용할 예정이고, 앞서 풀었던 문제들에도 나중에 추가해야겠다.
+- `localeCompare`를 사용하니까 쉽게 정렬이 되었다.
