@@ -21,15 +21,10 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
-function problem7(user, friends, visitors) {
-  // 점수가 높은 순으로 최대 5명 정렬
-  let answer = [];
-  // 아이디를 키로, 점수를 값으로 가지는 객체
-  let IdScore = {};
+// user의 친구의 친구 구하는 함수
+function findUserFriendsOfFriends(user, friends, userFriends) {
+  let IdScoreObj = {};
 
-  let userFriends = findUserFriends(user, friends);
-
-  // user의 친구의 친구 구하기
   for (let i = 0; i < userFriends.length; i++) {
     for (let j = 0; j < friends.length; j++) {
       // userFriends 요소를 가지고 있지만, userFriends 요소도 아니고, user도 아닐 때
@@ -38,29 +33,40 @@ function problem7(user, friends, visitors) {
         userFriends[i] === friends[j][0] &&
         !friends[j].includes(user)
       ) {
-        // IdScore객체에 키가 있을 때
-        if (IdScore.hasOwnProperty(friends[j][1])) IdScore[friends[j][1]] += 10;
-        // IdScore객체에 키가 없을 때
-        else IdScore[friends[j][1]] = 10;
+        // IdScoreObj객체에 키가 있을 때
+        if (IdScoreObj.hasOwnProperty(friends[j][1]))
+          IdScoreObj[friends[j][1]] += 10;
+        // IdScoreObj객체에 키가 없을 때
+        else IdScoreObj[friends[j][1]] = 10;
       }
     }
   }
+
+  return IdScoreObj;
+}
+
+function problem7(user, friends, visitors) {
+  // 점수가 높은 순으로 최대 5명 정렬
+  let answer = [];
+
+  let userFriends = findUserFriends(user, friends);
+  let IdScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
 
   // visitors 배열 요소들 각 1점씩
   visitors.map((el) => {
     // user의 친구가 아니고
     if (!userFriends.includes(el)) {
-      // IdScore객체에 키가 있을 때
-      if (IdScore.hasOwnProperty(el)) IdScore[el] += 1;
-      // IdScore객체에 키가 없을 때
-      else IdScore[el] = 1;
+      // IdScoreObj객체에 키가 있을 때
+      if (IdScoreObj.hasOwnProperty(el)) IdScoreObj[el] += 1;
+      // IdScoreObj객체에 키가 없을 때
+      else IdScoreObj[el] = 1;
     }
   });
 
-  // sort시키기 위해 객체인 IdScore를 배열로 만들기
+  // sort시키기 위해 객체인 IdScoreObj를 배열로 만들기
   let sortable = [];
-  for (let id in IdScore) {
-    sortable.push([id, IdScore[id]]);
+  for (let id in IdScoreObj) {
+    sortable.push([id, IdScoreObj[id]]);
   }
   // 점수 높은 순으로 정렬
   sortable.sort((a, b) => {
