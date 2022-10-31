@@ -41,7 +41,15 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  return recommendUser;
+  const recommendUserArr = Array.from(recommendUser, ([name, cnt]) => ({
+    name,
+    cnt,
+  }));
+
+  return recommendUserArr
+    .sort((a, b) => (b.cnt === a.cnt ? b.name - a.name : b.cnt - a.cnt))
+    .splice(0, 5)
+    .map((user) => user.name);
 }
 
 module.exports = problem7;
