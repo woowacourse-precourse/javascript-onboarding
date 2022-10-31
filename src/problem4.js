@@ -13,8 +13,7 @@ function problem4(word) {
       continue;
     }
     const asci = char.charCodeAt(0);
-    const code =
-      aCharCodeAt <= asci <= zCharCodeAt ? lowercase - asci : uppercase - asci;
+    const code = aCharCodeAt <= asci ? lowercase - asci : uppercase - asci;
     answer += String.fromCharCode(code);
   }
   return answer;
