@@ -28,7 +28,7 @@ function problem7(user, friends, visitors) {
     userFriendsList.map(friend => {
       friendList = friendsListGetter(friend);
       friendList.map(friend => {
-        if(friend !== user) {
+        if(friend !== user && userFriendsList.indexOf(friend) === -1) {
           friendOfFriendList.push(friend);
         }
       })
@@ -122,3 +122,5 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+
