@@ -38,4 +38,4 @@ function LeftOrRight(arr) {
 
 function errorCheck(arr) {
   if (arr[0] != arr[1] - 1) return -1;
-}
+} // 왼쪽 페이지가 짝수인지 확인 필요
