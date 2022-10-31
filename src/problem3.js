@@ -13,12 +13,12 @@ const countClap = (number) => {
 }
 
 function problem3(number) {
-  let count = 0;
+  let totalClapcount = 0;
   for (let i = 1; i <= number; i += 1) {
     let num = splitSingleDigit(i);
-    count += countClap(num);
+    totalClapcount += countClap(num);
   }
-return count;
+return totalClapcount;
 }
 
 module.exports = problem3;
