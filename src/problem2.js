@@ -1,17 +1,18 @@
 function problem2(cryptogram) {
-  const map = new Map();
-  let result = "";
+  const stack = [];
+  let removed = "";
+  cryptogram = Array.from(cryptogram);
   for (let i = 0; i < cryptogram.length; i++) {
-    map.set(
-      cryptogram.split("")[i],
-      (map.get(cryptogram.split("")[i]) || 0) + 1
-    );
-  }
-  for (const [key, value] of map) {
-    if (value % 2 == 1) {
-      result += key;
+    let current = cryptogram[i];
+    if (current === stack[stack.length - 1]) {
+      stack.pop();
+      removed = current;
+    }
+    if (removed !== current) {
+      stack.push(current);
+      removed = "";
     }
   }
-  return result;
+  return stack.join("");
 }
 module.exports = problem2;
