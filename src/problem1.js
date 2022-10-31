@@ -1,10 +1,9 @@
 function problem1(pobi, crong) {
   var answer;
-  if (isException(pobi) === true || isException(crong) === true) {
-    answer = -1;
-  } else {
-    const pobiMax = calcNum(pobi);
-    const crongMax = calcNum(crong);
+  if (isException(pobi) || isException(crong)) answer = -1;
+  else {
+    const pobiMax = calcMax(pobi);
+    const crongMax = calcMax(crong);
     if (pobiMax > crongMax) answer = 1;
     else if (pobiMax === crongMax) answer = 0;
     else answer = 2;
@@ -18,7 +17,7 @@ const isException = (arr) => {
   else return false;
 };
 
-const calcNum = (arr) => {
+const calcMax = (arr) => {
   let calc = [];
   arr = arr.map((e) => e.toString());
   arr.forEach((num) => {
@@ -45,3 +44,5 @@ module.exports = problem1;
 // 예외 사항
 // 1. 좌우 페이지의 차이가 1 이상인 경우
 // 2. [1,2] [399,400] 페이지가 나오는 경우
+
+console.log(problem1([131, 132], [211, 212]));
