@@ -84,6 +84,8 @@ function makeDict(user, friends) {
 function checkFriend(user, friendsScoreDict, friendsConnection) {
   const userFriend = friendsConnection[user];
 
+  if (userFriend == undefined) return friendsScoreDict; // user의 친구가 없는 경우
+
   userFriend.forEach((item) => {
     const friendsFriends = friendsConnection[item];
 
@@ -120,6 +122,8 @@ function checkVisited(friendsScoreDict, visitors) {
 function sortFriends(usersFriendsSet, friendsTotalScore) {
   const sortedFriends = [];
   const recommendedFriends = [];
+
+  if (usersFriendsSet == undefined) usersFriendsSet = new Set(); // user의 친구가 없는 경우
 
   for (const name in friendsTotalScore) {
     if (!usersFriendsSet.has(name)) sortedFriends.push([name, friendsTotalScore[name]]);
