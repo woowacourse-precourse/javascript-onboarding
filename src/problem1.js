@@ -32,6 +32,10 @@ function pageCheck(left,right){
   return true;
 }
 
+function maxNum(lsum,rsum,lmul,rmul){
+  return Math.max(lsum,rsum,lmul,rmul);
+}
+
 
 function problem1(pobi, crong) {
   var answer;
