@@ -10,12 +10,20 @@ function problem3(number) {
   for (let i = 1; i < last_number+1; i++) {
     i = String(i)
     array.push(...i.split(''))
-    console.log(array)
+  }
+  console.log(array)
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === '3') {
+      count += 1;
+    } else if (array[i] === '6') {
+      count += 1;
+    } else if (array[i] === '9') {
+      count += 1;
+    }
   }
 
-
+  return count;
 }
 
 module.exports = problem3;
-
-problem3(12)
