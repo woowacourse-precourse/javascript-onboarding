@@ -1,23 +1,11 @@
 function calculate(money) {
   let dividedMoney = [];
+  let kindOfMoney = [50000, 10000, 5000, 1000, 500, 100, 50 , 10, 1];
 
-  dividedMoney.push(Math.floor(money / 50000));
-  money = money % 50000;
-  dividedMoney.push(Math.floor(money / 10000));
-  money = money % 10000;
-  dividedMoney.push(Math.floor(money / 5000));
-  money = money % 5000;
-  dividedMoney.push(Math.floor(money / 1000));
-  money = money % 1000;
-  dividedMoney.push(Math.floor(money / 500));
-  money = money % 500;
-  dividedMoney.push(Math.floor(money / 100));
-  money = money % 100;
-  dividedMoney.push(Math.floor(money / 50));
-  money = money % 50;
-  dividedMoney.push(Math.floor(money / 10));
-  money = money % 10;
-  dividedMoney.push(money);
+  kindOfMoney.forEach(function(num) {
+    dividedMoney.push(Math.floor(money / num));
+    money = money % num;
+  })
   return dividedMoney;
 }
 
