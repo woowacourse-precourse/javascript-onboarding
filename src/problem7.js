@@ -2,10 +2,10 @@ function problem7(user, friends, visitors) {
   const scoreSet = new Map();
   const excepts = new Set();
   let score = new Set();
+  const answer = [];
   let firstscore = 0,
     secondscore = 0,
     thirdscore = 0;
-
   excepts.add(user);
 
   for (let x of friends) {
@@ -28,6 +28,7 @@ function problem7(user, friends, visitors) {
       score.add(secondscore);
     }
   }
+
   for (let x of visitors) {
     if (x === undefined) continue;
     if (!excepts.has(x)) {
@@ -36,6 +37,28 @@ function problem7(user, friends, visitors) {
       score.add(thirdscore);
     }
   }
+
+  const sortScore = [...score].sort((a, b) => b - a);
+  let index = 0;
+  while (index < sortScore.length) {
+    const local = [];
+    for (let [name, score] of scoreSet) {
+      if (score === sortScore[index] && !excepts.has(name)) {
+        local.push(name);
+      }
+    }
+    local.sort();
+    for (let i = 0; i < local.length; i++) {
+      if (answer.length < 5) {
+        answer.push(local[i]);
+      }
+      if (answer.length === 5) {
+        return answer;
+      }
+    }
+    index++;
+  }
+  return answer;
 }
 
 module.exports = problem7;
