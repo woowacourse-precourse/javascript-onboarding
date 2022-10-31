@@ -1,5 +1,4 @@
 function problem3(number) {
-<<<<<<< HEAD
   let answer;
 
   answer = countNumberOfClap(number);
@@ -19,10 +18,4 @@ function countNumberOfClap(number) {
   return result;
 }
 
-=======
-  var answer;
-  return answer;
-}
-
->>>>>>> 8458e00876e77cbdada319f34b483ab3683b5124
 module.exports = problem3;
