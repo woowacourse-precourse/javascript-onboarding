@@ -1,6 +1,6 @@
 function problem6(forms) {
   let wordArray = checkDuplicateWord(forms);
-  removeDuplicateArray(wordArray);
+  return Object.keys(removeDuplicateArray(wordArray));
 }
 function checkDuplicateWord(forms) {
   const result = [];
