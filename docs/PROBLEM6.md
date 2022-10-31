@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 🛠 기능 목록
+
+* [ ] **forms의 요소들을 도는 반복문**  
+  * 반복문 안에 if문, 함수 호출로 중복 여부 검사
+* [ ] **모든 이름을 두글자 기준으로 중복 글자가 있는지 검사하는 함수**  
+ * 중복 글자가 있다면, true를 반환하여 해당 인덱스의 이메일을 배열에 추가 
+* [ ] **이메일의 중복을 제거하고, 오름차순으로 정렬하는 함수**
