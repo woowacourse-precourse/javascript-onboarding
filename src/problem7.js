@@ -35,6 +35,14 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  visitors.forEach((element) => {
+    if (element in mateObj) {
+      mateObj[element][1] += 1;
+    } else {
+      mateObj[element] = [[], 1];
+    }
+  });
+
   return answer;
 }
 
