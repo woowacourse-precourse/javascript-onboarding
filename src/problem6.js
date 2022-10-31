@@ -3,7 +3,6 @@ function problem6(forms) {
   const errorUser = [];
   const errorUserEmail = []; 
 
-
 for (const member of forms){
   const nickname = member[1];
   nicknameArray.push(nickname);
@@ -17,7 +16,7 @@ for (const item of nicknameArray){
 
 const serialString = []; 
 for (const components of dismantled){
-  for(i = 0; i < components.length-1; i++){
+  for(let i = 0; i < components.length-1; i++){
     serialString.push(components[i]+components[i+1]);
     }
 }
@@ -28,7 +27,7 @@ const duplicateSet = new Set(duplicates);
 const duplicateArray = [...duplicateSet];
 
 for (const item of nicknameArray){
-  for(i=0; i<duplicateArray.length; i++){
+  for(let i=0; i<duplicateArray.length; i++){
     if(item.indexOf(duplicateArray[i]) > -1){
     errorUser.push(item);
     }
