@@ -30,8 +30,9 @@ function isValidPage(pageNumbers) {
     isValid = false;
   } else if (pageNumLeft % 2 === 0) {
     isValid = false;
+  } else {
+    isValid = true;
   }
-  isValid = true;
 
   return isValid;
 }
