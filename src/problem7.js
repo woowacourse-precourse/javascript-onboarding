@@ -5,25 +5,27 @@ function problem7(user, friends, visitors) {
 const userArr = [];
 const friendsArr = [];
 const visitorsArr = [];
-const ten = [];
-const one = [];
-const zero = [];
+const scored = [];
 
-function sns(user, friends, visitors){
+function setPeople(user, friends, visitors){
   userArr.push(user);
-  function setPeople(people,peopleArr) {
-    for(i = 0; i < people.length; i++) {
-      peopleArr.push(people[i]);
+    for(i = 0; i < friends.length; i++) {
+      friendsArr.push(friends[i]);
     }
+    for(i = 0; i < visitors.length; i++){
+      visitorsArr.push(visitors[i])
+    }
+    setScore(user, friends, visitors);
   }
-  const setFriends = new setPeople(friends,friendsArr);
-  const setVisitors = new setPeople(visitors,visitorsArr);
-  for(i = 0; i < friends.length; i++){
-    if(friendsArr[i][1] !== user){
-      ten.push(friendsArr[i][1]);
-    } else if(friendsArr[i][1] === user){
-      zero.push(friendsArr[i][0]);
+
+function setScore(user, friends, visitors) {
+  for(j = 0; j < 10; j++){    //10점 얻는 user 친구의 친구들을 배열에 정리
+    for(i = 0; i < friends.length; i++){  
+      if(friendsArr[i][1] !== user){
+        scored.push(friendsArr[i][1]);
+      }
     }
   }
 }
+
 module.exports = problem7;
