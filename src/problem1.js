@@ -1,6 +1,6 @@
 function problem1(pobi, crong) {
-  if (errorCheck(pobi) === -1) return -1;
-  if (errorCheck(crong) === -1) return -1;
+  if (!errorCheck(pobi)) return -1;
+  if (!errorCheck(crong)) return -1;
   if (LeftOrRight(pobi) === LeftOrRight(crong)) return 0;
   if (LeftOrRight(pobi) > LeftOrRight(crong)) return 1;
   if (LeftOrRight(pobi) < LeftOrRight(crong)) return 2;
@@ -34,6 +34,20 @@ function LeftOrRight(arr) {
   }
 }
 
-function errorCheck(arr) {
-  if (arr[0] != arr[1] - 1) return -1;
+function errorCheck(page) {
+  const left = page[0];
+  const right = page[1];
+  if (
+    left % 2 === 0 ||
+    right % 2 === 1 ||
+    left < 1 ||
+    right < 1 ||
+    left > 400 ||
+    right > 400 ||
+    left - right !== -1 ||
+    page.length > 2 ||
+    page.length === 0
+  )
+    return false;
+  return true;
 } // 왼쪽 페이지가 짝수인지 확인 필요

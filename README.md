@@ -97,3 +97,10 @@ npm test
 3. object를 이메일을 기준으로 정렬해주며 return 해준다.
 
 ### problem7
+
+1. user의 친구를 확인하는 함수 구현
+2. 친구관계가 아닌 사람들 point의 key 값으로 추가하는 함수
+3. point의 key로 있는 사람들의 친구들 중 user의 친구로 있다면 value +10해주는 함수 구현
+   4.visitor는 돌면서 userFriends 에 없고 point의 키값으로 없으면 point의 키로 등록하면서 동시에 value + 1
+4. userFriends 에 없고 point의 키값으로 있으면 value + 1 userFriends 에 있으면 무시 하는 함수 구현
+5. point 객체 value를 기반으로 정렬 , 같다면 사전순 정렬 하여 상위 5개의 값 result 에 추가하는 함수
