@@ -31,7 +31,7 @@ function convertWord(word) {
 
 function problem4(word) {
   const convertWords = word.split("").map((alphabet) => convertWord(alphabet));
-  return convertWords;
+  return convertWords.join("");
 }
 
 module.exports = problem4;
