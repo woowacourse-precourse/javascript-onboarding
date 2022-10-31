@@ -42,8 +42,11 @@ function getMaxScore(page) {
  * @returns {number} pobi가 이겼다면 1, crong이 이겼다면 2, 무승부라면 0, 예외사항은 -1을 반환합니다.
  */
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (isCorrectPages(pobi) && isCorrectPages(crong)) {
+    let answer;
+
+    return answer;
+  } else return -1;
 }
 
 module.exports = problem1;
