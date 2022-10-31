@@ -13,7 +13,8 @@ function problem1(pobi, crong) {
       const stringToNum = numbers.map(x => parseInt(x))
       const summation = stringToNum.reduce((prevValue, currValue) => prevValue + currValue);
       const multiplication = stringToNum.reduce((prevValue, currValue) => prevValue * currValue);
-      biggest = Math.max(summation, multiplication);
+      const biggerOne = Math.max(summation, multiplication);
+      if (biggest < biggerOne) biggest = biggerOne;
     }
     return biggest;
   }
