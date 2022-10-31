@@ -12,6 +12,41 @@ const UPPER_MIN1_CHARCODE = 77;
 const UPPER_MIN2_CHARCODE = 75;
 const UPPER_Z_CHARCODE = 90;
 
+function convert(prevCharCode) {
+  let convertedCharCode;
+  // A - M
+  if (UPPER_A_CHARCODE <= prevCharCode && prevCharCode <= UPPER_MIN1_CHARCODE) {
+    diff = prevCharCode - UPPER_A_CHARCODE;
+    convertedCharCode = UPPER_Z_CHARCODE - diff;
+  }
+  // N - Z
+  else if (
+    UPPER_MIN2_CHARCODE <= prevCharCode &&
+    prevCharCode <= UPPER_Z_CHARCODE
+  ) {
+    diff = UPPER_Z_CHARCODE - prevCharCode;
+    convertedCharCode = UPPER_A_CHARCODE + diff;
+  }
+  // a - m
+  else if (
+    LOWER_A_CHARCODE <= prevCharCode &&
+    prevCharCode <= LOWER_MIN1_CHARCODE
+  ) {
+    diff = prevCharCode - LOWER_A_CHARCODE;
+    convertedCharCode = LOWER_Z_CHARCODE - diff;
+  }
+  // n - z
+  else if (
+    LOWER_MIN2_CHARCODE <= prevCharCode &&
+    prevCharCode <= LOWER_Z_CHARCODE
+  ) {
+    diff = LOWER_Z_CHARCODE - prevCharCode;
+    convertedCharCode = LOWER_A_CHARCODE + diff;
+  }
+
+  return convertedCharCode;
+}
+
 function problem4(word) {
   var answer = "";
   for (let i = 0; i < word.length; i++) {
@@ -20,39 +55,8 @@ function problem4(word) {
     if (prevCharCode === SPACE_CHARCODE) {
       answer = answer + word[i];
     } else {
-      // A - M
-      if (
-        UPPER_A_CHARCODE <= prevCharCode &&
-        prevCharCode <= UPPER_MIN1_CHARCODE
-      ) {
-        diff = prevCharCode - UPPER_A_CHARCODE;
-        prevCharCode = UPPER_Z_CHARCODE - diff;
-      }
-      // N - Z
-      else if (
-        UPPER_MIN2_CHARCODE <= prevCharCode &&
-        prevCharCode <= UPPER_Z_CHARCODE
-      ) {
-        diff = UPPER_Z_CHARCODE - prevCharCode;
-        prevCharCode = UPPER_A_CHARCODE + diff;
-      }
-      // a - m
-      else if (
-        LOWER_A_CHARCODE <= prevCharCode &&
-        prevCharCode <= LOWER_MIN1_CHARCODE
-      ) {
-        diff = prevCharCode - LOWER_A_CHARCODE;
-        prevCharCode = LOWER_Z_CHARCODE - diff;
-      }
-      // n - z
-      else if (
-        LOWER_MIN2_CHARCODE <= prevCharCode &&
-        prevCharCode <= LOWER_Z_CHARCODE
-      ) {
-        diff = LOWER_Z_CHARCODE - prevCharCode;
-        prevCharCode = LOWER_A_CHARCODE + diff;
-      }
-      answer = answer + String.fromCharCode(prevCharCode);
+      let convertedCharCode = convert(prevCharCode);
+      answer = answer + String.fromCharCode(convertedCharCode);
     }
   }
   return answer;
