@@ -114,3 +114,30 @@
 
   - 2차원 배열로 이뤄어진 ```withoutUserList```에서 ```map()```으로 1차로 외부적 순회.
   - 그 다음 큰 배열 아이템 안에는 두 명의 친구 관계가 있기 때문에 ```filter()``` 로 2차적 내부 순회.
+
+</br> 
+
+### ✔️ 기능 5. 함께 아는 친구의 수와 방문 횟수로 추천 점수를 카운팅하는 함수
+<br>
+
+  - 기능 4번으로 인해 ```const bestRecommendFriend = makeBestRecommendFriend(withoutUserList, userFriendList);```에는 ```user```와 함께 아는 친구의 수가 담기게 된다
+  - 그 이후엔 점수를 카운팅함으로써 순위에 우선성을 부여해야함.
+
+  - 점수를 부여할 땐, 함께 아는 친구의 수(+10)인 경우와 방문 횟수(+1)로 구분하여야 한다.
+
+  - 점수를 부여하기 전, ```const scoreBoard = {};```라는 Object를 만들고, 그 안에 ```{name : score}```식으로 저장할 예정.
+    ```javascript
+        bestRecommendFriend.forEach((el) => {
+          if (scoreBoard[el]) scoreBoard[el] += dudeScore
+          else scoreBoard[el] = dudeScore
+        })
+        
+        visitors.forEach((el) => {
+          if (userFriendList.includes(el)) return
+          else if (scoreBoard[el]) scoreBoard[el] += visitScore
+          else scoreBoard[el] = visitScore
+        })
+    ````
+
+  - 첫 forEach문은 함께 아는 친구 수 -> ```scoreBoard```에 해당하는 이름(key)의 값(value)이 존재하면, 해당 값에 +10 / 없으면 `scoreBoard[name] = 10`
+  - 두번째 forEach문은 방문 횟수 -> ```scoreBoard```에 해당하는 이름(key)의 값(value)이 존재하면, 해당 값에 +1 / 없으면 `scoreBoard[name] = 1`
