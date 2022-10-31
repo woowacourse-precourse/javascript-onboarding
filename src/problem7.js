@@ -52,7 +52,14 @@ function problem7(user, friends, visitors) {
 
   function sorting(scoreMap) {
     var resultArray;
-
+    resultArray = Array.from(scoreMap)
+      .sort((a, b) => {
+        if (a[1] == b[1]) a[0] - b[0];
+        else b[1] - a[1];
+      })
+      .slice(0, 5)
+      .filter((score) => score[1] !== 0)
+      .map((score) => score[0]);
     return resultArray;
   }
 
