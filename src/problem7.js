@@ -52,20 +52,11 @@ function problem7(user, friends, visitors) {
     }
   }
   friendsPoint.sort((a, b) => b[1] - a[1]);
+  for (let i = 0; i < friendsPoint.length; i++) {
+    answer.push(friendsPoint[i][0]);
+  }
 
   return answer;
 }
-user = "mrko";
-friends = [
-  ["mrko", "jun"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["jun", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
 
-console.log(problem7(user, friends, visitors));
 module.exports = problem7;
