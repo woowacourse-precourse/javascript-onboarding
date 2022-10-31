@@ -16,6 +16,14 @@ function getDuplicateValidator(cryptogram) {
   }
   return duplicateValidator;
 }
+function getNextCryptogram(cryptogram) {
+  let nextCryptogram = "";
+  const duplicateValidator = getDuplicateValidator(cryptogram);
+  for (let x = 0; x < cryptogram.length; x++) {
+    if (!duplicateValidator[x]) nextCryptogram = nextCryptogram + cryptogram[x];
+  }
+  return nextCryptogram;
+}
 
 function checkValidation(cryptogram) {
   return checkLength(cryptogram) && checkLowercase(cryptogram);
