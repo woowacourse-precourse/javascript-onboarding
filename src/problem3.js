@@ -1,5 +1,13 @@
+function createString(n){
+  let s = '';
+  for(let i=1;i<=n;i++){
+      s+=i;
+  }
+  return s;
+}
 function problem3(number) {
-  var answer;
+  let answer;
+
   return answer;
 }
 
