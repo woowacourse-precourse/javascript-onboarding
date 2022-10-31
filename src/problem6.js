@@ -1,6 +1,30 @@
 function problem6(forms) {
-  var answer;
+  var answer = checkDuplication(forms);
   return answer;
+}
+// 중복 검사하기
+function checkDuplication(forms) {
+  let tmp = [];
+  let test_slice = [];
+
+  for (let i = 0; i < forms.length; i++) {
+    tmp.push(separateString(forms[i]));
+  }
+
+  for (let i = 0; i < forms.length; i++) {
+    test_slice.push(forms.slice(i + 1));
+  }
+
+  // 중복 검사
+  let result = checkDuplicationNickName(test_slice, forms, tmp);
+  console.log(result);
+
+  // set을 배열로 변환
+  let duplicationResult = setToArray(result);
+  console.log(setToArray(result));
+
+  // 오름 차순 정렬
+  return duplicationResult.sort();
 }
 // set()을 배열로 변경
 function setToArray(duplicationList) {
