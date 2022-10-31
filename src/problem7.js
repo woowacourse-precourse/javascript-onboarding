@@ -61,4 +61,28 @@ class UserContainer {
       this.container[visitor].addScore(1);
     });
   }
+  calcKnownPerson(pivotName) {
+    const pivotUser = this.container[pivotName];
+    const userNames = Object.keys(this.container);
+
+    userNames.forEach((userName) => {
+      if (userName === pivotName) return;
+
+      const user = this.container[userName];
+
+      const pivotFriends = pivotUser.friends;
+      const userFriends = user.friends;
+
+      for (let i = 0; i < pivotFriends.length; i++) {
+        for (let j = 0; j < userFriends.length; j++) {
+          const pFriend = pivotFriends[i];
+          const uFriend = userFriends[i];
+          if (pFriend === uFriend) {
+            user.addScore(10);
+            break;
+          }
+        }
+      }
+    });
+  }
 }
