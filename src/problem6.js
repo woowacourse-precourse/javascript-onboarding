@@ -28,6 +28,19 @@ function problem6(forms) {
     }
   }
 
+  //중복 제거
+  let checking = [...new Set(answer)];
+  answer = [];
+  
+  //중복 닉네임에 해당하는 메일 배열에 push
+  for(let i = 0; i<checking.length; i++){
+    answer.push(forms[checking[i]][0]);
+  }
+
+  //오름차순
+  answer.sort();
+  return answer;
+
 
 }
 
