@@ -15,6 +15,7 @@ function problem6(forms) {
     }
   }
   const removeDuplicated = result => result.filter((v, i) => result.indexOf(v) === i);
+  const isStackFull = stack => stack.length === maxStackLength;
   const pushEmailToExistedProperty = (x, info) => dictionary[x].push(info[userMail])
   const createNewProperty = (x, info) => dictionary[x] = [info[userMail]]
   /**
@@ -23,9 +24,9 @@ function problem6(forms) {
   forms.forEach((personalInfo) => {
       const stack = [];
       for (let info of personalInfo[userId]){
-          if (stack.length < maxStackLength)
+          if (!isStackFull(stack))
               stack.push(info);
-          if (stack.length === maxStackLength){
+          if (isStackFull(stack)){
               x = stack.join('')
               if (dictionary.hasOwnProperty(x)){
                 pushEmailToExistedProperty(x, personalInfo);
