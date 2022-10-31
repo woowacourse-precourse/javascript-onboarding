@@ -4,15 +4,19 @@
 2. 페이지 값에 따른 더하기 점수 계산
 3. 페이지 값에 따른 곱하기 점수 계산
 4. pobi, crong의 점수 결정
-4. pobi, crong의 승패 판정
+5. pobi, crong의 승패 판정
 */
 
 
 // pobi, crong => length : 2, type : int
 // return => pobi win : 1, crong win : 2, draw : 0, excep : -1
 function problem1(pobi, crong) {
-	var answer;
-	return answer;
+	if(!isValid(pobi) || !isValid(crong)) return -1;
+	
+	var p_score = Math.max(getSumScore(pobi), getMulScore(pobi));
+	var c_score = Math.max(getSumScore(crong), getMulScore(crong));
+
+	return -1;
 }
 
 // 1. 전달받은 pobi, crong 내부 값 범위 검사 (각 1~400)
