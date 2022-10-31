@@ -36,4 +36,14 @@ function find_max_num(character) {
   return Math.max(...character_max_arr);
 }
 
+function error_case(character) {
+  // 에러 케이스 핸들링하는 함수.
+  let num1 = character[0];
+  let num2 = character[1];
+  if (num2 - num1 !== 1) return true;
+  if (num1 === 1 || num2 === 400) return true;
+
+  return false;
+}
+
 module.exports = problem1;
