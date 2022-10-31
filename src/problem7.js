@@ -30,15 +30,4 @@ function problem7(user, friends, visitors) {
   answer.sort((a, b) => (b[1] > a[1] ? a[0] - b[0] : b[1] - a[1]));
   return answer.filter((x) => x[1] > 0).map((x) => x[0]).slice(0, 5);
 }
-// slack 테스트 케이스 출력 
-console.log((problem7(
-  "andole",
-  [
-    ["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"]
-  ],
-  ["donut", "mrko", "peter", "sam"]
-)))
-/*"donut", "anne", "bedi", "mrko", "peter"]
- donut = 21, anne = 10, bedi = 10, mrko = 1, peter = 1, sam = 1
-Solution은 최대 5명을 return하기 때문에 sam도 1점이지만 리턴되지 않습니다. */
 module.exports = problem7;
