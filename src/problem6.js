@@ -1,6 +1,8 @@
 function problem6(forms) {
   
-  let namearray =[];
+  let namearray =[],
+      duplicate =[];
+  const twoword =[];
 
   for ( let i=0; i<forms.length; i++){
     let arr = [];
@@ -10,6 +12,22 @@ function problem6(forms) {
     };
     namearray.push(arr);
   };
+
+  for ( let i=0; i<namearray.length; i++){
+    for( let v=0; v<namearray[i].length; v++){
+      twoword.push(namearray[i][v]);
+    };
+  };
+
+  for ( let i=0; i<twoword.length; i++){
+    const m = twoword[i];
+    for( let v=i+1; v<twoword.length; v++){
+      if(m == twoword[v]) duplicate.push(twoword[v]);
+    };
+  }; 
+
+  const Duplicate = [...new Set(duplicate)];
+
 
 }
 
