@@ -53,7 +53,7 @@ const getMatchedForms = (forms) => (cases) => {
   }, []);
 };
 
-const sort = (arr) => arr.sort();
+const sort = (arr) => [...arr].sort();
 
 function problem6(forms) {
   const result = compose(
