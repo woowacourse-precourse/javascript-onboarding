@@ -6,6 +6,8 @@ function problem6(forms) {
     nickNames,
     duplicateLetters
   );
+  const answer = findEmails(forms, duplicatedNickName);
+  return answer;
 }
 
 function getAllNickName(forms) {
@@ -46,5 +48,16 @@ function duplicatedTwoLetters(nickNames, twoLetters) {
 
 function findDuplicatedNickName(nickNames, duplicateLetters) {
   return nickNames.filter((nickname) => nickname.includes(duplicateLetters));
+}
+
+function findEmails(forms, duplicatedNickName) {
+  let emails = [];
+  for (let i = 0; i < duplicatedNickName.length; i++) {
+    for (let j = 0; j < forms.length; j++) {
+      if (duplicatedNickName[i] === forms[j][1]) emails.push(forms[j][0]);
+    }
+  }
+  emails = Array.from(new Set(emails)).sort();
+  return emails;
 }
 module.exports = problem6;
