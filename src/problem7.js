@@ -26,6 +26,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 4) 방문자에겐 1점을 더해줍니다.
+  for (const visitor of visitors) {
+    if (usersFriends.includes(visitor)) {
+      continue;
+    } else if (recommendList[visitor] === undefined) {
+      recommendList[visitor] = 1;
+    } else if (recommendList[visitor]) {
+      recommendList[visitor] += 1;
+    }
+  }
+
   return answer;
 }
 
