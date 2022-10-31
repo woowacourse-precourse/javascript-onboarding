@@ -34,6 +34,13 @@ function countVisitFriend(friendMap, recommendFriend, user, visitors) {
   });
 }
 
+function compare(a, b) {
+  if(a[1] === b[1]){
+    return a[0].localeCompare(b[0]);
+  }
+  return b[1] - a[1];
+}
+
 function problem7(user, friends, visitors) {
   const friendMap = getFriendMap(friends);
   const recommendFriend = new Map();
@@ -42,12 +49,10 @@ function problem7(user, friends, visitors) {
   countVisitFriend(friendMap, recommendFriend, user, visitors)
 
   const mapToArray = Array.from(recommendFriend);
-
-  mapToArray.sort((a, b) => b[1] - a[1]);
+  mapToArray.sort((a,b) => compare(a,b));
 
   const answer = Array.from(mapToArray,([name,_])=> name );
-  
   return answer.slice(0,5);
 }
-
+  
 module.exports = problem7;
