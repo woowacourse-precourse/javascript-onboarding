@@ -31,6 +31,17 @@ const getScoreFriendOfFriend = (friendOfFriendList) => {
   return score;
 };
 
+const getScoreVisitors = (visitors) => {
+  visitors.map((visitor) => {
+    if (!friendList.includes(visitor)) {
+      score.has(visitor)
+        ? score.set(visitor, score.get(visitor) + 1)
+        : score.set(visitor, 1);
+    }
+  });
+  return score;
+};
+
 function problem7(user, friends, visitors) {
   let answer;
   return answer;
