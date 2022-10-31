@@ -4,7 +4,20 @@ function problem6(forms) {
   const userMail = 0;
   const userId = 1;
   const maxLetterLength = 2;
+  
+  const StoreDuplicatedIdFromObj = (result, dictionary) => {
+    const isDuplicated = dictionary => dictionary[key].length > 1;
 
+    for (let key in dictionary){
+      if (isDuplicated(dictionary)){
+          result.push(...dictionary[key]);
+        }
+    }
+  }
+
+  /**
+   * forms들을 순회하며 dictionary에 중복 포함 저장하는 로직
+   */
   forms.forEach((personalInfo) => {
       const stack = [];
       for (let info of personalInfo[userId]){
@@ -24,12 +37,8 @@ function problem6(forms) {
       } 
   });
 
-  for (let key in dictionary){
-    if (dictionary[key].length > 1){
-        result.push(...dictionary[key]);
-    }
-}
- return result.filter((v, i) => result.indexOf(v) === i).sort(); 
+  StoreDuplicatedIdFromObj();
+  return result.filter((v, i) => result.indexOf(v) === i).sort(); 
 }
 
 module.exports = problem6;
