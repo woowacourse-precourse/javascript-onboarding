@@ -88,7 +88,7 @@ class SocialNetwork {
 
     // 점수 순으로 정렬 및 상위 5개 잘라내기
     const friendRecommendations = Object.entries(scores)
-      .sort(([usernameA, scoreA], [usernameB, scoreB]) => scoreB - scoreA)
+      .sort(([usernameA, scoreA], [usernameB, scoreB]) => scoreB - scoreA || usernameA.localeCompare(usernameB))
       .slice(0, 5)
       .map(([username, score]) => username);
 
