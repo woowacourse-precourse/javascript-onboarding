@@ -2,7 +2,15 @@ function problem6(forms) {
   var answer;
   return answer;
 }
-
+// 중복값 찾기
+function checkArray(i, forms, array) {
+  for (let j = 0; j < array[i].length; j++) {
+    if (forms[1].includes(array[i][j]) === true) {
+      console.log(forms[1]);
+      return forms[0];
+    }
+  }
+}
 // 문자열을 2글자씩 나누기
 function separateString(string) {
   let array = [];
