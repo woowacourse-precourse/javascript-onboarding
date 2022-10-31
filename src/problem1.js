@@ -15,7 +15,7 @@ function problem1(pobi, crong) {
     return Math.max(getSum(left), getSum(right), getMul(left), getMul(right));
   }
 
-  function winner(pobiScore, crongScore) {
+  function calculateWinner(pobiScore, crongScore) {
     if (pobiScore > crongScore) {
       return 1;
     }
@@ -47,6 +47,8 @@ function problem1(pobi, crong) {
   if (isError(pobi) || isError(crong)) {
     return -1;
   }
+
+  return calculateWinner(getMaxScore(pobi), getMaxScore(crong));
 }
 
 module.exports = problem1;
