@@ -1,3 +1,9 @@
+// 기능 목록
+// 1. 예외 사항 처리 하기
+// 2. 페이지 합,곱 구하기
+// 3. pobi와 crong의 가장큰수 구하기
+// 4. 승패 결과 처리하기
+
 function problem1(pobi, crong) {
   
   const [pobileft, pobiright] = pobi;
