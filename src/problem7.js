@@ -1,7 +1,11 @@
 function problem7(user, friends, visitors) {
   let friendHash = setFriends(friends, new Map());
   let scores = getFriendsScores(user, friendHash, new Map());
-}
+  for (const friends of visitors) {
+    scores.get(friends) === undefined
+      ? scores.set(friends, 1)
+      : scores.set(friends, scores.get(friends) + 1);
+  }
 function setFriends(friend, hash) {
   for (const [a, b] of friend) {
     hash = set(hash, a, b);
