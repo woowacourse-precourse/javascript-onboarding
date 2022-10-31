@@ -20,6 +20,14 @@ function devidePeople(forms) {
         case crews[j].substr(0,2) === crews[i].substr(1,2):
           peopleToChange.push(emails[j]);
           peopleToChange.push(emails[i]);        
+        
+        case crews[j].substr(1,2) === crews[i].substr(0,2):
+          peopleToChange.push(emails[j]);
+          peopleToChange.push(emails[i]);
+
+        case crews[j].substr(1,2) === crews[i].substr(1,2):
+          peopleToChange.push(emails[j]);
+          peopleToChange.push(emails[i]);
         break;
       }
     }
