@@ -208,6 +208,11 @@ function problem7(user, friends, visitors) {
     return outputList
   }
 
+  //6#. 배열에 저장된 객체들의 key값을 5개까지 배열로 반환하는 함수
+
+  function RETURN_LIST_OF_SORTED_OBJ_LIST () {
+    return RETURN_OBJ_TO_LIST_SOTRED_BY_POINT().map(friend => Object.keys(friend)[0]).slice(0,5)
+  }
 
   //해답 코드
 
@@ -229,10 +234,8 @@ function problem7(user, friends, visitors) {
   INPUT_NEAR_FRIENDS_POINT();
   INPUT_VISIT_FRIENDS_POINT();
 
-  // console.log(USER_POINT_CALCUL_OBJ)
 
-
-  return (RETURN_OBJ_TO_LIST_SOTRED_BY_POINT().map(friend => Object.keys(friend)[0]).slice(0,5));
+  return RETURN_LIST_OF_SORTED_OBJ_LIST();
   
 
 }
