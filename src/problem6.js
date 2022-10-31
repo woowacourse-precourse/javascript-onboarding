@@ -1,5 +1,6 @@
 function problem6(forms) {
   const twoLetterName = checkDuplicateChar(forms);
+  const duplicateNick = howManyNickname(twoLetterName);
 }
 
 function checkDuplicateChar(forms){
@@ -11,6 +12,12 @@ function checkDuplicateChar(forms){
     }
   }
   return twoLetterNick; 
+}
+function howManyNickname(forms){
+  const getNickNumber = {};
+  forms.forEach((x) => {
+  getNickNumber[x] = (getNickNumber[x] || 0)+1});
+  return getNickNumber;
 }
 
 module.exports = problem6;
