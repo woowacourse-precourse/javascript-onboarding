@@ -110,7 +110,7 @@ function getRecommandScore(user, friendList, visitors) {
 
 function getSameValueArr(value, recommandScore) {
   const recommandScoreKey = Object.keys(recommandScore);
-  const sameValueArr = new Array();
+  const sameValueArr = [];
   for (let i = 0; i < recommandScoreKey.length; i++) {
     if (recommandScore[recommandScoreKey[i]] === value) {
       sameValueArr.push(recommandScoreKey[i]);
@@ -122,7 +122,7 @@ function getSameValueArr(value, recommandScore) {
 function sortResult(recommandScore) {
   const recommandScoreValue = new Set(Object.values(recommandScore).sort(
     function (a, b) { return b - a; }));
-  const resultArr = new Array();
+  const resultArr = [];
   recommandScoreValue.delete(0);
   for (let value of recommandScoreValue.values()) {
     resultArr.push(...getSameValueArr(value, recommandScore));
