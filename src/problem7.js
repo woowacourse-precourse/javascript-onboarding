@@ -9,11 +9,7 @@ function findUsersFriends(friends, user) {
     );
 }
 
-function problem7(user, friends, visitors) {
-  const score = {};
-
-  const usersFriends = findUsersFriends(friends, user);
-
+function giveScoreByCommonFriends(user, usersFriends, friends, score) {
   // 함께 아는 친구 수 기준으로 점수 매기기
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < usersFriends.length; j++) {
@@ -30,7 +26,9 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+}
 
+function giveScoreByNumberOfVisit(usersFriends, visitors, score) {
   // 방문횟수 기준으로 점수 매기기
   for (let i = 0; i < visitors.length; i++) {
     if (usersFriends.includes(visitors[i])) continue;
@@ -40,6 +38,16 @@ function problem7(user, friends, visitors) {
       score[visitors[i]] = 1;
     }
   }
+}
+
+function problem7(user, friends, visitors) {
+  const score = {};
+
+  const usersFriends = findUsersFriends(friends, user);
+
+  giveScoreByCommonFriends(user, usersFriends, friends, score);
+
+  giveScoreByNumberOfVisit(usersFriends, visitors, score);
 
   // 정렬하여 최종 결과 내기
   const result = Object.entries(score)
