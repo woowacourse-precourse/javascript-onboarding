@@ -26,6 +26,16 @@ const getLength = element => {
   return element.length;
 };
 
+const checkRangeException = (targetLength, min, max) => {
+  if (targetLength < min || max < targetLength) {
+    throw new RangeError(
+      `Only natural numbers greater than or equal to ${min} and less than or equal to ${max}.`
+    );
+  }
+
+  return false;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
