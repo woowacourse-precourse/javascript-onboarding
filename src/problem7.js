@@ -10,7 +10,14 @@ function problem7(user, friends, visitors) {
   }
   const visitorFriends = friendsList.concat(visitors);
   let justFriends = new Set(visitorFriends);
-  console.log(justFriends);
+  justFriends.delete(user);
+  friends.map((name) => {
+    if (name.includes(user)) {
+      justFriends.delete(name.filter((name) => name !== user).join());
+    }
+  });
+  justFriends = [...justFriends];
+
   return answer;
 }
 user = "mrko";
