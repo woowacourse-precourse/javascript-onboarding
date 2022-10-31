@@ -3,6 +3,19 @@ function problem7(user, friends, visitors) {
   return getTop5Ids(finalScores);
 }
 
+function getScores(friends, user, visitors) {
+  let [userFriends, scores] = updateOverlappingFriendScore(friends, user);
+  return updateVisitorScore(visitors, userFriends, { ...scores });
+}
+
+function updateOverlappingFriendScore(friends, user) {
+  const relationships = getRelationships(friends, user);
+  return [
+    new Set(relationships[user]),
+    getOverlappingFriendScore(relationships, user),
+  ];
+}
+
 function getRelationships(friends, user) {
   return friends.reduce((relationships, [id1, id2]) => {
     if (id2 !== user) relationships[id1] = [...(relationships[id1] || []), id2];
@@ -11,23 +24,13 @@ function getRelationships(friends, user) {
   }, {});
 }
 
-function getScores(friends, user, visitors) {
-  let [userFriends, scores] = updateOverlappingFriendScore(friends, user, []);
-  return updateVisitorScore(visitors, userFriends, { ...scores });
-}
-
-function updateOverlappingFriendScore(friends, user) {
-  const relationships = getRelationships(friends, user);
-  // 이걸 함수로 쪼개야 함
-  return [
-    new Set(relationships[user]),
-    relationships[user].reduce((scores, overlappedFriend) => {
-      relationships[overlappedFriend].forEach((id) => {
-        scores[id] = scores[id] || 0 + 10;
-      });
-      return scores;
-    }, {}),
-  ];
+function getOverlappingFriendScore(relationships, user) {
+  return relationships[user].reduce((scores, overlappedFriend) => {
+    relationships[overlappedFriend].forEach((id) => {
+      scores[id] = scores[id] || 0 + 10;
+    });
+    return scores;
+  }, {});
 }
 
 function updateVisitorScore(visitors, userFriends, scores) {
