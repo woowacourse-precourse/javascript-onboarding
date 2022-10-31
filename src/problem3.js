@@ -12,30 +12,24 @@ function find369(number) {
 }
 
 function problem3(number) {
-  let clap = 0;
+  let clapNum = 0;
 
-  function count369(s) {
+  function count369InStr(s) {
     for (let letter of s) {
-      const translatedNum = parseInt(letter);
-
-      if (
-        (translatedNum === 3) |
-        (translatedNum === 6) |
-        (translatedNum === 9)
-      ) {
-        clap += 1;
+      if ((letter === "3") | (letter === "6") | (letter === "9")) {
+        clapNum += 1;
       }
     }
   }
 
-  const arr = find369(number);
+  const found369Num = find369(number);
 
-  for (let element of arr) {
+  for (let element of found369Num) {
     const translatedStr = element.toString();
-    count369(translatedStr);
+    count369InStr(translatedStr);
   }
 
-  return clap;
+  return clapNum;
 }
 
 module.exports = problem3;
