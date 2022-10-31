@@ -16,7 +16,7 @@ function problem6(forms) {
     });
   });
 
-  return answer;
+  return answer.sort();
 }
 
 //단어를 나눌수 있는 모든 경우의 수를 구한다.
