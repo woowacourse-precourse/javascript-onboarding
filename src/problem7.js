@@ -112,12 +112,6 @@ function isUserId(user, friends, visitors) {
   }
 }
 
-function isUserIdLengthValid(user) {
-  if (user.length < 1 || user.length > 30) {
-    throw "user의 길이는 1 이상 30 이하 문자열만 가능합니다.";
-  }
-}
-
 function isLengthValid(arr, minimumLen, maximumLen, ErroMessage) {
   if (arr.length < minimumLen || arr.length > maximumLen) {
     throw ErroMessage;
@@ -126,7 +120,7 @@ function isLengthValid(arr, minimumLen, maximumLen, ErroMessage) {
 
 function isValid(user, friends, visitors) {
   isUserId(user, friends, visitors);
-  isUserIdLengthValid(user);
+  isLengthValid(user, 1, 30, "user는 1이상, 30이하로 작성해주세요");
   isLengthValid(
     friends,
     1,
