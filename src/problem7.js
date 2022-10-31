@@ -52,6 +52,19 @@ const giveVisitorPoint = (args) => {
   return { ...args, pointMap: copyPointMap };
 };
 
+const convertPointMapToSortedPointArray = (args) => {
+  const { pointMap } = args;
+  const pointArray = Object.entries(pointMap).sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    else if (a[1] < b[1]) return 1;
+
+    if (a[0] < b[0]) return -1;
+    else return 1;
+  });
+
+  return { ...args, pointArray };
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
