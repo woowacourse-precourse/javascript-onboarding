@@ -7,7 +7,8 @@ function problem1(pobi, crong) {
     const [p1, p2] = pages;
     const check1 = Math.abs(p1 - p2) === 1;
     const check2 = p1 % 2 && !(p2 % 2);
-    return check1 && check2;
+    const check3 = 0 < p1 && p1 <= 400 && 0 < p2 && p2 <= 400;
+    return check1 && check2 && check3;
   };
 
   if (!checkValidation(pobi) || !checkValidation(crong)) return -1;
