@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = cutString(cryptogram);
   return answer;
 }
 function cutString(cryptogram) { 
@@ -14,6 +14,7 @@ function cutString(cryptogram) {
       }
     }
   }
+  return alphaItem.join('');
 }
 
 module.exports = problem2;
