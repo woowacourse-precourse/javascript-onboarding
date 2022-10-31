@@ -5,6 +5,7 @@ function problem5(money) {
   for (let i = 0; i < CURRENCIES.length; i++) {
     result[i] = Math.floor(money / CURRENCIES[i]);
     money = money % CURRENCIES[i];
+    if (money === 0) break;
   }
   return result;
 }
