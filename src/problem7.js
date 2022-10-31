@@ -5,6 +5,16 @@ function problem7(user, friends, visitors) {
 function result(user, friends, visitors) {
   const userMap = new Map();
   friends.forEach((item) => setUserMap(userMap, item));
+
+  const scoreMap = new Map();
+  userMap.forEach((value, key) => {
+    if (key === user) return;
+    setScoreMap(scoreMap, key, getEachScore(userMap.get(user), value));
+  });
+
+  visitors.forEach((item) => {
+    setScoreMap(scoreMap, item, ADD_VISITED_SCORE);
+  });
 }
 
 const ADD_FRIEND_SCORE = 10;
