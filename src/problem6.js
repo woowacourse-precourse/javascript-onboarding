@@ -1,11 +1,11 @@
 class ErrorCase {
   constructor(forms) {
-    this.forms = forms;
+    this._forms = forms;
     this.checkAllError();
   }
 
   checkFormsLimit() {
-    return 1 <= this.forms.length && this.forms.length <= 10000;
+    return 1 <= this._forms.length && this._forms.length <= 10000;
   }
 
   isOnlyKOR(name) {
@@ -21,7 +21,7 @@ class ErrorCase {
   }
 
   checkKORName() {
-    return this.forms
+    return this._forms
       .map((form) => form[1])
       .every(
         (name) => this.isOnlyKOR(name) && 1 <= name.length && name.length < 20
@@ -29,7 +29,7 @@ class ErrorCase {
   }
 
   checkEmail() {
-    return this.forms
+    return this._forms
       .map((form) => form[0])
       .every(
         (email) =>
@@ -58,7 +58,7 @@ class UAHTechCourse {
   constructor(forms) {
     new ErrorCase(forms);
 
-    this.forms = forms;
+    this._forms = forms;
   }
 
   changeNameToTwoWord(name) {
@@ -69,7 +69,7 @@ class UAHTechCourse {
   }
 
   getEmailBook() {
-    return this.forms.flatMap(([email, name]) => ({
+    return this._forms.flatMap(([email, name]) => ({
       twoWords: this.changeNameToTwoWord(name),
       email: email,
     }));
