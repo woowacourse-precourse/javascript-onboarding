@@ -43,4 +43,21 @@ function addScoreByTogetherFriends(scoreObj, togetherFriends) {
   return newScoreObj;
 }
 
+function addScoreByVisitors(scoreObj, visitors) {
+  const newScoreObj = { ...scoreObj };
+  visitors.forEach((visitor) => {
+    if (newScoreObj[visitor]) {
+      newScoreObj[visitor] += 1;
+    } else {
+      newScoreObj[visitor] = 1;
+    }
+  });
+  return newScoreObj;
+}
+
+function addScore(scoreObj, togetherFriends, visitors) {
+  const freindsScoreObj = addScoreByTogetherFriends(scoreObj, togetherFriends);
+  return addScoreByVisitors(freindsScoreObj, visitors);
+}
+
 module.exports = problem7;
