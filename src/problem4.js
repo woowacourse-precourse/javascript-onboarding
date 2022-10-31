@@ -23,7 +23,8 @@ function checkCase(origin_word,converted_word){
 
 function problem4(word) {
   let answer;
-  let word_arr = [...word]
+  let word_arr = [...word];
+  let origin_word = [...word];
   const dictionary = {
     'A':'Z','B':'Y','C':'X','D':'W',
     'E':'V','F':'U','G':'T','H':'S',
