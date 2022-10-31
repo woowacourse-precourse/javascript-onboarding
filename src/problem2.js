@@ -11,8 +11,9 @@ function problem2(cryptogram) {
   for (const s of cryptogram) {
     if (standard === s) {
       continue;
-    } else if (stack.at(-1) !== s) {
+    } else if (stack[stack.length - 1] !== s) {
       stack.push(s);
+      standard = "";
     } else standard = stack.pop();
   }
 
