@@ -76,8 +76,8 @@ function problem7(user, friends, visitors) {
   const crewScores = getCrewScores(user, relations, visitors);
 
   const crewScoreArray = Object.entries(crewScores);
-  const validCrews = filterValidScore(crewScoreArray);
-  const answer = sortCrews(validCrews).map((crew) => crew[0]);
+  const validCrewScores = filterValidScore(crewScoreArray);
+  const answer = sortCrews(validCrewScores).map((crew) => crew[0]);
 
   if (answer.length > 5) {
     answer.splice(5);

@@ -55,3 +55,4 @@
 - [x] 크루 총합 점수 함수 분리 (getCrewScores)
 - [x] 필터 함수 수정 (filterValidCrew, filterValidScore)
 - [x] 크루 이름 추출 분리
+- [x] 변수명 수정 (validCrews -> validCrewScores)
