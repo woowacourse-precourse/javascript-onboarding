@@ -6,8 +6,8 @@
  */
 
 function problem5(money) {
-  var answer;
-  return answer;
+  const moneyChanged = changeMoney(money);
+  return moneyChanged;
 }
 
 function calMoneyChange(moneyUnit, money) {
