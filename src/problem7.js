@@ -3,6 +3,8 @@ function problem7(user, friends, visitors) {
   const scoreObject = {};
   const scoreListKeyArray = new Set();
   let userFriendShipArray = [];
+  let newFriends = [];
+  let score10PeopleArray = [];
 
   for (let friend of friends.flat()) {
     scoreListKeyArray.add(friend);
@@ -14,7 +16,23 @@ function problem7(user, friends, visitors) {
   addVisitorScore(visitors, scoreObject);
 
   console.log(userFriendShipArray);
-  return answer;
+
+  newFriends = friends.filter((friend) => !friend.includes(user));
+
+  for (let newFriend of newFriends) {
+    for (let userFriendShip of userFriendShipArray) {
+      if (newFriend.includes(userFriendShip)) {
+        score10PeopleArray.push(newFriend);
+        score10PeopleArray = score10PeopleArray.flat().filter((item) => item !== userFriendShip);
+      }
+    }
+  }
+
+  for (let score10People of score10PeopleArray) {
+    if (scoreObject.hasOwnProperty(score10People)) scoreObject[score10People] += 10;
+  }
+
+  return scoreObject;
 }
 
 const createScoreObj = (scoreKeySet, scoreObj) => {
