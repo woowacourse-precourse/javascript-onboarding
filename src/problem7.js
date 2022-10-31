@@ -31,28 +31,31 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  const recommendFriendList = {}; // 추천 친구 리스트 점수 부여
-  // 관련 친구 점수 부여하기
-  friends.forEach((friend) => {
-    const [A, B] = friend;
+  const recommendFriendList = { ...visitorList }; // 추천 친구 리스트 점수 부여
 
-    if (userFriend.includes(A) && !recommendFriendList[B] && B !== user) {
-      recommendFriendList[B] = 10;
-    } else if (
-      userFriend.includes(B) &&
-      !recommendFriendList[A] &&
-      A !== user
-    ) {
-      recommendFriendList[A] = 10;
-    } else if (recommendFriendList[A] && recommendFriendList[B]) {
-      recommendFriendList[A] += 10;
-      recommendFriendList[B] += 10;
-    } else if (recommendFriendList[A]) {
-      recommendFriendList[A] += 10;
-    } else if (recommendFriendList[B]) {
-      recommendFriendList[B] += 10;
-    }
-  });
+  // 관련 친구 점수 부여하기
+  if (userFriend.length) {
+    friends.forEach((friend) => {
+      const [A, B] = friend;
+
+      if (userFriend.includes(A) && !recommendFriendList[B] && B !== user) {
+        recommendFriendList[B] = 10;
+      } else if (
+        userFriend.includes(B) &&
+        !recommendFriendList[A] &&
+        A !== user
+      ) {
+        recommendFriendList[A] = 10;
+      } else if (recommendFriendList[A] && recommendFriendList[B]) {
+        recommendFriendList[A] += 10;
+        recommendFriendList[B] += 10;
+      } else if (recommendFriendList[A]) {
+        recommendFriendList[A] += 10;
+      } else if (recommendFriendList[B]) {
+        recommendFriendList[B] += 10;
+      }
+    });
+  }
 
   const recommendFriendScoreList = [];
   for (let id in recommendFriendList) {
@@ -62,7 +65,7 @@ function problem7(user, friends, visitors) {
     });
   }
 
-  const totalList = [...visitorScoreList, ...recommendFriendScoreList];
+  const totalList = [...recommendFriendScoreList];
   totalList.sort((a, b) => {
     if (a.score > b.score) {
       return -1;
