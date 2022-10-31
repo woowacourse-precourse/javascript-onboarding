@@ -1,7 +1,16 @@
-// user = "mrko",
-// friends = [["donut", "andole"],["donut", "jun"],["donut", "mrko"],["shakevan", "andole"],["shakevan", "jun"],["shakevan", "mrko"],]
-// visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
-
+// user = "hello",
+// friends =         [
+//           ['andole', 'jun'],
+//           ['andole', 'bedi'],
+//           ['jun', 'shakevan'],
+//           ['jun', 'kane'],
+//           ['jun', 'sam'],
+//           ['bedi', 'shakevan'],
+//           ['bedi', 'anne'],
+//           ['bedi', 'sam'],
+//           ['anne', 'mrko'],
+//         ]
+// visitors = ['donut', 'anne', 'mrko', 'mrko', 'sam']
 
 
 function problem7(user, friends, visitors) {
@@ -65,8 +74,10 @@ function makeScore(relation, userFriends, user) {
     if (id === user) { // 본인 제외
       continue;
     }
-    if (userFriends.includes(id)) { // 이미 친구인 경우 제외
-        continue;
+    if (userFriends !== undefined) {
+      if (userFriends.includes(id)) { // 이미 친구인 경우 제외
+          continue;
+      }
     }
     score[id] = 0;
   }
@@ -85,8 +96,10 @@ function bothFriendCheck(relation, userFriends, score, user) {
     if (friend === user) { // 본인 제외
       continue;
     }
-    if (userFriends.includes(friend)) { // 이미 친구인 경우 제외
-      continue;
+    if (userFriends !== undefined) {
+      if (userFriends.includes(friend)) { // 이미 친구인 경우 제외
+        continue;
+      }
     }
 
     let tmp = relation[friend]; // 한 사람의 친구 목록
@@ -96,8 +109,10 @@ function bothFriendCheck(relation, userFriends, score, user) {
       // console.log("f: ", f);
       // console.log("userFriends: ", userFriends);
 
-      if (userFriends.includes(f)) { // 함께 아는 친구인 경우
-        count += 10;
+      if (userFriends !== undefined) {
+        if (userFriends.includes(f)) { // 함께 아는 친구인 경우
+          count += 10;
+        }
       }
     }
 
@@ -116,8 +131,10 @@ function checkVisitors(userFriends, visitors, score) {
   for (let v of visitors) {
     console.log("v: ", v);
 
-    if (userFriends.includes(v)) { // 이미 친구인 경우 제외
-      continue;
+    if (userFriends !== undefined) {
+      if (userFriends.includes(v)) { // 이미 친구인 경우 제외
+        continue;
+      }
     }
 
     if (scoreKey.includes(v)) { // score 배열에 이미 존재하는 경우
