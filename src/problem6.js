@@ -53,4 +53,23 @@ function findDuplicatedLetters(seqLettersCount) {
   return seqLettersDuplicated;
 }
 
+function findIndexOfNicknames(nicknames, seqLettersDuplicated) {
+  let nicknameIndexes = [];
+  let nicknameCount = 0;
+  for (let seqLetters of seqLettersDuplicated) {
+    for (let i = 0; i < nicknames.length; i++) {
+      if (nicknames[i].includes(seqLetters)) {
+        nicknameIndexes.push(i);
+        nicknameCount++;
+      }
+    }
+    if (nicknameCount < 2) {
+      nicknameIndexes = nicknameIndexes.slice(0, -1);
+    }
+    nicknameCount = 0;
+  }
+  nicknameIndexes = [...new Set(nicknameIndexes)];
+  return nicknameIndexes;
+}
+
 module.exports = problem6;
