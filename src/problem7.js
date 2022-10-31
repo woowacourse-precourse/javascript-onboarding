@@ -31,7 +31,13 @@ function problem7(user, friends, visitors) {
   const userFriends = findUserFriends(user, friends);
   const friendFriends = findfriendFriends(userFriends, friends, user);
 
-  // 사용자와 함께 아는 친구에게 추천 점수 부여 기능
+  for (let x of friendFriends) {
+    if (recommend.has(x)) {
+      recommend.set(x, recommend.get(x) + 10);
+    } else {
+      recommend.set(x, 10);
+    }
+  }
 
   // 사용자의 타임 라인에 방문한 사용자와 함께 아는 친구에게 추천 점수 부여 기능
 
