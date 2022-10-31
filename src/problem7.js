@@ -26,9 +26,7 @@ function problem7(user, friends, visitors) {
   recommendUserArray.sort((a, b) => sortMorePoint(a, b));
   recommendUserArray.sort((a, b) => sortNamePoint(a, b));
 
-  return recommendUserArray.map((user) => {
-    return user[0];
-  });
+  return recommendUserArray.map((user) => user[0]).slice(0, 5);
 }
 
 function getNotUserFriendsArray(user, friends, visitors, USER_FRIENDS) {
