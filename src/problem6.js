@@ -42,3 +42,14 @@ const arrangeDups = (cases) => {
     return copy;
   }, []);
 };
+
+const getMatchedForms = (forms) => (cases) => {
+  return forms.reduce((reduced, form) => {
+    const copy = reduced.slice();
+    const nick = form[1];
+    for (let cs of cases) {
+      if (nick.indexOf(cs) > -1) copy.push(form);
+    }
+    return copy;
+  }, []);
+};
