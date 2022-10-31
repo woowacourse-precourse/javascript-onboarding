@@ -1,4 +1,4 @@
-# 미션 - 온보딩
+# 1주차 미션
 
 ## 🚀 기능 요구 사항
 
@@ -28,3 +28,13 @@
 
 - [x] 미션은 [javascript-onboarding](https://github.com/woowacourse-precourse/javascript-onboarding) 저장소를 Fork & Clone해 시작한다.
 - [x] 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 👀️ 리뷰
+
+테스트 케이스가 적어서 테스트에 통과는 했지만, 과연 이게 코테였다면 All Pass 가능 코드인가 생각하면 자신이 없다.. ㅎㅎ
+
+최적화를 진행 중인데, 특히 문제7이 너무 어렵다.
+
+1주차 세션을 통해 기능 단위의 commit 작성법과 최적화된 코드는 어떤지 배우고 싶다.
