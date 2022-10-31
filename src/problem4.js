@@ -1,7 +1,5 @@
 function problem4(words) {
-  let answer = words.split('').map(word => convertWord(word)).join('');
-
-  return answer;
+  return words.split('').map(word => convertWord(word)).join('');
 }
 
 function convertWord(word){
