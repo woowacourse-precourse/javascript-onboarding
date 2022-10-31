@@ -1,32 +1,34 @@
 function problem1(pobi, crong) {
-  let answer;
   if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) {
     return -1;
   }
   if (pobi[0] === 1 || pobi[1] === 400 || crong[0] === 1 || crong[1] === 400) {
     return -1;
   }
-  if (pobi[0] % 2 === 0 || crong[0] % 2 === 0){
+  if (pobi[0] % 2 === 0 || crong[0] % 2 === 0) {
     return -1;
   }
   const pobiScore = Math.max.apply(
     null,
-    pobi.map((pageNumber) => getMaxNumber(pageNumber))
+    pobi.map(pageNumber => getMaxNumber(pageNumber))
   );
   const crongScore = Math.max.apply(
     null,
-    crong.map((pageNumber) => getMaxNumber(pageNumber))
+    crong.map(pageNumber => getMaxNumber(pageNumber))
   );
-
-  if (pobiScore > crongScore) {
-    answer = 1;
-  } else if (pobiScore < crongScore) {
-    answer = 2;
-  } else if (pobiScore === crongScore) {
-    answer = 0;
-  }
+  let answer = comparison(pobiScore, crongScore);
 
   return answer;
+}
+
+function comparison(pobiScore, crongScore) {
+  if (pobiScore > crongScore) {
+    return 1;
+  } else if (pobiScore < crongScore) {
+    return 2;
+  } else if (pobiScore === crongScore) {
+    return 0;
+  }
 }
 
 function getMaxNumber(value) {
