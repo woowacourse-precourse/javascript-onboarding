@@ -23,7 +23,4 @@ function problem4(word) {
   return transformedWord;
 }
 
-// let word = "I love you";
-// console.log(problem4(word));
-
 module.exports = problem4;
