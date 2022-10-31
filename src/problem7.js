@@ -61,7 +61,7 @@ const SnsFriendRecomander = {
       });
     }
     this.visitors.forEach((visitor) => {
-      if (!(visitor in this.socres)) {
+      if (!(visitor in this.scores)) {
         this.addScoreUser(visitor);
       }
       this.scores[visitor] += 1;
