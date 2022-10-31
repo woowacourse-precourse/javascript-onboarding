@@ -13,6 +13,11 @@ function result(forms) {
     setNickNameMap(twoElementNickNameMap, subNickNameTwoElement(nickname));
   });
 
+  const getKeyDuplicateNickName = [];
+  twoElementNickNameMap.forEach((value, key) => {
+    if (value > 1) getKeyDuplicateNickName.push(key);
+  });
+
   return forms;
 }
 
