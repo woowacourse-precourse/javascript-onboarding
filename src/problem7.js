@@ -9,7 +9,6 @@ function filterRealFriends(user, friends) {
   }
   return array;
 }
-
 function scoreInFriends(user, friends, realFriends) {
   let key;
   let dict = {};
@@ -48,7 +47,6 @@ function scoreInVisitors(visitors, realFriends, dict) {
     }
   }
 }
-
 function sortDictionary(dict) {
   // 이름 순 정렬. 같은 점수일 때, 미리 이름 순 먼저 정렬.
   const sortedDictByKey = {};
