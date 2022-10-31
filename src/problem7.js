@@ -70,12 +70,22 @@ function problem7(user, friends, visitors) {
 
   //특이사항
   //!1. user는 길이가 1 이상 30 이하
+
+  function CHECK_USER_NAME_LENGTH (userName) {
+
+    if(userName.length <1 || userName.length >30){
+      return false;
+    } else {
+      return true;
+    }
+  
+  }
+
   //!2. friends는 길이가 1 이상 10,000 이하인 배열
   //!3. friends의 각 원소는 길이가 2인 배열
-  //!4. 아이디는 길이가 1 이상 30 이하
-  //!5. visitors는 길이가 0 이상 10,000 이하인 배열
-  //!6. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
-  //!7. 동일한 친구 관계가 중복해서 주어지지 않음
+  //!4. visitors는 길이가 0 이상 10,000 이하인 배열
+  //!5. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
+  //!6. 동일한 친구 관계가 중복해서 주어지지 않음
 
   for(let friend of friends){
     INPUT_RELATION_FRIENDS(friend)
