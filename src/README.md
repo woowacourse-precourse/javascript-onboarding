@@ -1,6 +1,6 @@
 # 📋 [Problem1 Solving]
 📝[ 문제 1](https://github.com/woowacourse-precourse/javascript-onboarding/blob/main/docs/PROBLEM1.md)  <br><br>
-💁‍♂️[ 문제 1 풀이 ](https://www.youtube.com/watch?v=L2p1mdpxD5w)
+💁‍♂️[ 문제 1 풀이 ](https://github.com/soohyun-dev/javascript-onboarding/blob/soohyun-dev/src/problem1.js)
 
 ## 📌 요구사항
 
