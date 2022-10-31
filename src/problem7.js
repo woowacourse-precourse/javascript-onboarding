@@ -44,6 +44,14 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  for (let i = 0; i < visitors.length; i++) {
+    for (let j = 0; j < friendsPoint.length; j++) {
+      if (friendsPoint[j][0] === visitors[i]) {
+        friendsPoint[j][1] += 1;
+      }
+    }
+  }
+  console.log(friendsPoint);
   return answer;
 }
 user = "mrko";
