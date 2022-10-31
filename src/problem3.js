@@ -12,7 +12,7 @@ function problem3(number) {
   let answer = 0;
 
   for (let i = 1; i <= number; i++) {
-    let cnt = clapCalculator(i);
+    const cnt = clapCalculator(i);
     answer += cnt;
   }
 
