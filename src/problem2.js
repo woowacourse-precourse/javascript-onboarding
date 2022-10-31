@@ -4,10 +4,17 @@
 
 function problem2(cryptogram) {
   let answer = "";
+  // 바로 직전 문자
+  let lastChar = "";
 
   for (let i = 0; i < cryptogram.length; i++) {
-    if (answer[answer.length - 1] !== cryptogram[i]) answer += cryptogram[i];
-    else answer = answer.slice(0, -1);
+    if (
+      answer[answer.length - 1] !== cryptogram[i] &&
+      lastChar !== cryptogram[i]
+    ) {
+      answer += cryptogram[i];
+      lastChar = cryptogram[i];
+    } else answer = answer.slice(0, -1);
   }
 
   return answer;
