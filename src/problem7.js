@@ -44,6 +44,12 @@ const getScoreVisitors = (visitors) => {
 
 function problem7(user, friends, visitors) {
   let answer;
+
+  findFriend(user, friends);
+  findFriendOfFriend(user, friends, friendList);
+  getScoreFriendOfFriend(friendOfFriendList);
+  getScoreVisitors(visitors);
+
   return answer;
 }
 
