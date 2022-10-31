@@ -81,4 +81,28 @@ const onlyFive = (score,result) =>{
   }
 }
 
+//메인 함수
+function problem7(user,friends,visitors){
+  let myFriends = [];
+  let userFriendTogether = [];
+  let score = {};
+  let result = [];
+
+  //내 친구 배열 생성 
+  makeMyFriends(friends, user, myFriends);
+  //함께 아는 친구 배열 생성 
+  makeMyFriendsKnow(user, myFriends, friends, userFriendTogether);
+  //10점 짜리 점수 계산 
+  calculateTen(userFriendTogether, myFriends, score);
+  //1점 짜리 점수 계산
+  calculateOne(visitors, myFriends, score);
+  console.log(score)
+  //이름순으로 정렬 
+  score = sortName(score);
+  //점수순으로 정렬 
+  score = sortScore(score);
+  //상위 5개만 출력
+  onlyFive(score,result);
+  return result;
+}
 module.exports = problem7;
