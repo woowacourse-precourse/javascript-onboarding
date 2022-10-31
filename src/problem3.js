@@ -4,8 +4,11 @@ function numberOf369(string) {
 
 function problem3(number) {
   const result = Array.from({ length: number })
-    .map((_, i) => `${i + 1}`)
-    .reduce((clap, i) => clap + numberOf369(i), 0);
+    .reduce((clap, _, idx) => {
+      const cur = String(idx + 1);
+      
+      return clap + numberOf369(cur);
+    }, 0);
 
   return result;
 }
