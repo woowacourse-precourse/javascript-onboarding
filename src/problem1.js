@@ -14,6 +14,18 @@ function problem1(pobi, crong) {
     const [left, right] = pages;
     return Math.max(getSum(left), getSum(right), getMul(left), getMul(right));
   }
+
+  function winner(pobiScore, crongScore) {
+    if (pobiScore > crongScore) {
+      return 1;
+    }
+    if (crongScore > pobiScore) {
+      return 2;
+    }
+    if (crongScore === pobiScore) {
+      return 0
+    }
+  }
 }
 
 module.exports = problem1;
