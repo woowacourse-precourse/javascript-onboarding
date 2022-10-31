@@ -14,3 +14,13 @@ function digitSum(number) {
   }
   return sum;
 }
+
+// function that returns multiplied digits
+function digitMultiply(number) {
+  let multiply = 1;
+  while (number > 0) {
+      multiply *= number % 10;
+      number = Math.floor(number / 10);
+  }
+  return multiply;
+}
