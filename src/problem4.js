@@ -5,14 +5,14 @@ function problem4(word) {
 
   for (w of word) {
     // 기능 1
-    answer += checkAndTransform(w);
+    answer += checkAndTransform(w, dict);
   }
 
   return answer;
 }
 
 // 기능 1. 문자 확인 후 변환하기
-function checkAndTransform(w) {
+function checkAndTransform(w, dict) {
   if (w in dict) { // 사전에 존재하는 경우
     return dict[w];
   } else {
