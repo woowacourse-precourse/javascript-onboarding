@@ -5,6 +5,14 @@ function getRecommendedFriendList({ user, friends, visitors }) {
     friendInfo,
     visitors,
   });
+  const userFriends = friendInfo[user];
+
+  return Object.entries(recommendScoreInfo)
+    .filter(([id, _]) => !userFriends.includes(id))
+    .filter(([_, score]) => score > 0)
+    .sort(compare)
+    .map(([id, _]) => id)
+    .slice(0, 5);
 }
 
 function getFriendInfo(friends) {
@@ -38,8 +46,6 @@ function getRecommendScoreInfo({ user, friendInfo, visitors }) {
     recommendScoreInfo,
   );
 
-  console.log(recommendScoreInfo);
-
   return recommendScoreInfo;
 }
 
@@ -66,7 +72,7 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
   if (type === 'VISITORS') {
     const { user, visitors } = data;
     visitors.forEach((visitorId) => {
-      if (user !== visitorId) {
+      if (visitorId !== user) {
         if (recommendScoreInfo[visitorId]) {
           recommendScoreInfo[visitorId]++;
         } else {
@@ -77,25 +83,18 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
   }
 }
 
+function compare([id_A, score_A], [id_B, score_B]) {
+  if (score_A === score_B) {
+    return id_A - id_B;
+  }
+
+  return score_B - score_A;
+}
+
 function problem7(user, friends, visitors) {
   const answer = getRecommendedFriendList({ user, friends, visitors });
 
   return answer;
 }
-
-console.log(
-  problem7(
-    'mrko',
-    [
-      ['donut', 'andole'],
-      ['donut', 'jun'],
-      ['donut', 'mrko'],
-      ['shakevan', 'andole'],
-      ['shakevan', 'jun'],
-      ['shakevan', 'mrko'],
-    ],
-    ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'],
-  ),
-);
 
 module.exports = problem7;
