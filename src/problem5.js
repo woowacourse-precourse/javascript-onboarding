@@ -1,14 +1,10 @@
-// #1
-// 이번 문제도 풀어봤던 경험이 있어서 금방 풀 수 있었다
-// 조건으로 주어진 모든 단위들에 대해서
-// 더 높은 단위가 낮은 단위의 배수기 때문에 그리디 알고리즘을 적용할 수 있었다
-
 function problem5(money) {
   const unit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  const answer = new Array(unit.length).fill(0);
+  const changes = new Array(unit.length).fill(0); //잔돈 갯수 세줄 배열 만들기
   let remainMoney = money;
   let index = 0;
 
+  //남은 돈이 없을때까지 반복
   while (remainMoney > 0) {
     const checkUnit = unit[index];
 
@@ -16,15 +12,13 @@ function problem5(money) {
       index++;
       continue;
     }
-    const quotient = Math.floor(remainMoney / checkUnit);
-    const thisRemain = remainMoney % checkUnit;
-    answer[index] = quotient;
-    remainMoney = thisRemain;
+    const quotient = Math.floor(remainMoney / checkUnit); //나눠준 몫만큼 해당 금액의 숫자 추가
+    changes[index] = quotient;
+    remainMoney = remainMoney % checkUnit; //남은 돈 최신화
     index++;
   }
 
-  return answer;
+  return changes;
 }
-problem5(82304);
 
 module.exports = problem5;

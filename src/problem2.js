@@ -1,10 +1,3 @@
-// #1
-// 풀긴 풀었는데 시간이 너무 오래 걸렸다
-// 맘대로 안풀려서 if문을 계속 추가하고 맞을때까지 계속 체크했는데 좋은것같진않다
-
-// #2
-// 테스트케이스를 통해서 틀린부분 한군데를 더 수정할 수 있었다
-
 function problem2(cryptogram) {
   var answer;
   let prev = "";
@@ -20,7 +13,7 @@ function problem2(cryptogram) {
     let buffer = "";
 
     if (remainStr.length === 1) return remainStr;
-    // 중복검사 루프 시작
+
     for (let i = 0; i < remainStr.length; i++) {
       const current = remainStr[i];
 

@@ -1,27 +1,19 @@
-//#1
-// 크루원들의 데이터를 조회하기 전에 구조화 시키는데, 닉네임을 key 값으로 구조화 하는게 맞나 싶다
-// 닉네임이 중복해서 들어오면 어떡하지 싶다..
-// 이메일이 중복되거나 이메일이 오는 형식의 오류가 있으면 걸러주지 못하는게 문제다..
-// 이처럼 문제 조건에는 부합하는데 그 이외에 예외상황들이 발생하면 바로 에러가 날 것 같다
-
 function problem6(forms) {
   const [crewData, global] = setCrewData(forms);
-  const overLapErrorList = [];
+  const overLapErrorList = []; //닉네임 중복된 크루들 체크할 배열 생성
 
-  // console.log(crewData, global);
   for (let crewForm of forms) {
     const [email, nickName] = crewForm;
     try {
       checkEmail(email);
       checkNickNameIsKorean(nickName);
-      checkNickNameIsOverlap(nickName, crewData, global);
+      checkNickNameIsOverlap(nickName, crewData, global); //주어진 조건 체크
     } catch (e) {
-      // console.log(e);
       const { type, result, message, data } = e;
 
       if (type === "overLap") {
         overLapErrorList.push(data.nickName);
-      }
+      } //중복되는 닉네임을 가진 크루들 배열에 저장
     }
   }
 
@@ -34,7 +26,7 @@ function problem6(forms) {
 
 /**
  * @param {string} email 확인할 이메일 주소
- * @return {type:string, result:boolean, message:string} Response 조건 확인 결과값.
+ * @return {{type:string, result:boolean, message:string}} Response 조건 확인 결과값.
 
  */
 
@@ -60,7 +52,7 @@ function checkEmail(email) {
 
 /**
  * @param {string} nickName 확인할 닉네임
- * @return {type:string, result:boolean, message:string, data:{object}} Response 조건 확인 결과값. 
+ * @return {{type:string, result:boolean, message:string, data:{object}}} Response 조건 확인 결과값. 
 
  */
 function checkNickNameIsKorean(nickName) {
@@ -81,14 +73,13 @@ function checkNickNameIsKorean(nickName) {
 
 /**
  * @param {string} nickName 확인할 닉네임
- * @return {type:string, result:boolean, message:string, data:{object}} Response 조건 확인 결과값.
+ * @return {{type:string, result:boolean, message:string, data:{object}}} Response 조건 확인 결과값.
  */
 
 function checkNickNameIsOverlap(nickName, crewData, global) {
   const [email, nickNameArray] = crewData[nickName];
   for (let i = 0; i < nickNameArray.length; i++) {
     const checkWord = nickNameArray[i];
-    // console.log("뭐가 중복인거지", checkWord, global[checkWord]);
     if (global[checkWord].length)
       throw {
         type: "overLap",
@@ -102,10 +93,8 @@ function checkNickNameIsOverlap(nickName, crewData, global) {
 
 /**
  *
- * @param {[email:string, nickName:string], {[checkWord in string] : string[]}} forms
- * 인풋값으로 주어진 forms를 받아서, 크루 개인의 중복 아이디를 체크할 수 있는 문자열을 저장하는 새로운 data 생성
- * @returns {{ [nickName in string]:[email:string, overlapNickNameData:string[]] }} crewData
- * 닉네임을 키값으로 이메일과 중복아이디 데이터를 가지고있는 객체 리턴
+ * @param {[email:string, nickName:string], {[checkWord in string] : string[]}} forms 인풋값으로 주어진 forms를 받아서, 크루 개인의 중복 아이디를 체크할 수 있는 문자열을 저장하는 새로운 data 생성
+ * @returns {{ [nickName : string]:[email:string, overlapNickNameData:string[]] }} crewData 닉네임을 키값으로 이메일과 중복아이디 데이터를 가지고있는 객체 리턴
  */
 function setCrewData(forms) {
   const crewData = {};
