@@ -124,4 +124,67 @@ describe("problem7", () => {
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
+  test('friends의 길이가 1인 경우', () => {
+    expect(problem7('mrko', [['donut', 'andole']], [])).toEqual([]);
+  });
+  test('visitors의 길이가 0인 경우', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['donut', 'andole'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        []
+      )
+    ).toEqual(['andole', 'jun']);
+  });
+  test('5명까지 출력', () => {
+    expect(
+      problem7(
+        'andole',
+        [
+          ['andole', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'shakevan'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'bedi'],
+          ['atom', 'jun'],
+        ],
+        ['donut', 'mrko', 'yura', 'cruella']
+      )
+    ).toEqual(['donut', 'atom', 'bedi', 'cruella', 'mrko']);
+  });
+  test('같은 점수는 정렬해서 출력', () => {
+    expect(problem7('mrko', [['mrko', 'jun']], ['shakevan', 'andole', 'donut', 'bedi'])).toEqual([
+      'andole',
+      'bedi',
+      'donut',
+      'shakevan',
+    ]);
+  });
+  test('user의 친구가 없음', () => {
+    expect(
+      problem7(
+        'yura',
+        [
+          ['andole', 'jun'],
+          ['andole', 'bedi'],
+          ['jun', 'shakevan'],
+          ['jun', 'kane'],
+          ['jun', 'spoon'],
+          ['bedi', 'shakevan'],
+          ['bedi', 'atom'],
+          ['bedi', 'spoon'],
+          ['atom', 'mrko'],
+        ],
+        ['donut', 'atom', 'mrko', 'mrko', 'spoon']
+      )
+    ).toEqual(['mrko', 'atom', 'donut', 'spoon']);
+  });
 });
