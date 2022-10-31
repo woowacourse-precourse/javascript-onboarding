@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 정리
+(solution 메소드) 
+- 주어진 배열을 순회하며 닉네임의 첫글자부터 순차적으로 두글자씩 자른다.( ex) "제이엠" -> "제이", "이엠" )
+: 이 때 잘려진 글자가 맵의 key값으로 존재한다면 -> tmp 배열에 현재 배열의 위치의 이메일과 맵에서 해당 key값을 가지는 value(이메일)값을 추가한다.
+: 잘려진 글자가 맵의 key값으로 존재하지 않는다면 -> 잘려진 글자들을 맵의 key값으로, 현재 배열의 위치의 이메일을 value 값으로 저장한다.
+( ex) [["jm@email.com","제이엠"]] -> '제이' => 'jm@email.com','이엠' => 'jm@email.com' )
+- set함수를 통해 tmp배열의 중복값을 제거하여 answer에 저장한다.
+- sort함수를 통해 answer배열을 오름차순으로 정렬한다.
