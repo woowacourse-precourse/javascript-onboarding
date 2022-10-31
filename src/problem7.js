@@ -1,5 +1,10 @@
 function problem7(user, friends, visitors) {
-  const friendsOfUserList = getFriends(user, friends); // ["donut", "shakevan"]
+  const friendsOfUserList = getFriends(user, friends);
+  const friendsOfFriendsList = getFriendsOfFriends(
+    friendsOfUserList,
+    friends,
+    user
+  );
 }
 
 function getFriends(user, buddies) {
@@ -12,6 +17,15 @@ function getFriends(user, buddies) {
 
 function eliminateUser(userList, user) {
   return [].concat(...userList).filter((person) => person !== user);
+}
+
+function getFriendsOfFriends(buddies, friends, user) {
+  const buddyOfBuddy = [];
+  buddies.forEach((person, i) => {
+    buddyOfBuddy.push(getFriends(person, friends));
+  });
+
+  return eliminateUser(buddyOfBuddy, user);
 }
 
 module.exports = problem7;
