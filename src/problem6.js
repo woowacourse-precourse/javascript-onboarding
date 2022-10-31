@@ -14,7 +14,13 @@ function problem6(forms) {
   }
 
   function filtering(dictionaryMap, forms) {
-    var filteredArray;
+    var filteredArray = [];
+    dictionaryMap.forEach((reuse, word) => {
+      reuse > 0 &&
+        forms.forEach((crew) => {
+          if (crew[1].includes(word)) filteredArray.push(crew[0]);
+        });
+    });
     return filteredArray;
   }
 
