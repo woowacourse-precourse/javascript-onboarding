@@ -3,7 +3,8 @@ function problem7(user, friends, visitors) {
   const userfriends = [],
         friendoffriends = [],
         unfriendvisitors = [],
-        score = new Map();
+        score = new Map(),
+        answer = [];
 
   friends.filter((a) => a.includes(user)).filter((a) => {
     for (let i = 0; i < a.length; i++) {
@@ -40,6 +41,12 @@ function problem7(user, friends, visitors) {
     }
   };
 
+  const sortedScore = [...score].sort().sort((a, b) => b[1]- a[1]);
+
+  sortedScore.map((a) => answer.push(a[0]));
+  if (answer.length > 5) answer.slice(0, 5);
+
+  return answer;
 }
 
 module.exports = problem7;
