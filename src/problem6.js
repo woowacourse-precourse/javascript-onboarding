@@ -14,6 +14,14 @@ function problem6(forms) {
   );
   const duplicates = [...new Set(findDuplicates(twoLetterArray))];
 
+  // 중복 닉네임 찾기
+  let duplicatedNameArray = [];
+  for (let index = 0; index < maxNameLength; index++) {
+    forms.map(
+      crew => duplicates.length === 0 ? "" : crew[1].includes(duplicates[index]) && duplicatedNameArray.push(crew)
+    );
+  }
+
   return answer;
 }
 
