@@ -13,6 +13,7 @@ const rule = {
 };
 
 /**
+ * @author 허민
  * @param {number[]} arr 페이지수를 구하고자 하는 사람의 배열 (ex. pobi 또는 crong)
  * @param {number[]} maxArr 페이지의 최대값이 저장되는 배열
  * @param {number} maxIdx pobi의 경우 rule.pobi, crong의 경우 rule.crong이다.
