@@ -40,8 +40,8 @@ function problem6(forms) {
   function enterDict(accountInfo) {
     accountInfo.forEach((account) => {
       let nickName = account[1].split("");
-      makeResult = makeKeys(nickName);
-      makeResult.map((key) => {
+      let makeResult = makeKeys(nickName);
+      makeResult.forEach((key) => {
         if (nickNameCnt[key]) nickNameCnt[key] += 1;
         else nickNameCnt[key] = 1;
       });
@@ -49,8 +49,8 @@ function problem6(forms) {
     return;
   }
 
-  function checkValue(dict) {
-    let keys = Object.keys(dict).filter((key) => dict[key] > 1);
+  function checkValue(checkDict) {
+    let keys = Object.keys(checkDict).filter((key) => checkDict[key] > 1);
     return keys;
   }
 

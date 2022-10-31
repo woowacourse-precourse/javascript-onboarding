@@ -32,7 +32,7 @@ function problem4(word) {
   }
 
   let result = "";
-  word.split("").map((str) => {
+  word.split("").forEach((str) => {
     result += str !== " " ? frogDict(str.charCodeAt(0)) : " ";
   });
 

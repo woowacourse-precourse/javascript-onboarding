@@ -56,12 +56,12 @@ function problem7(user, friends, visitors) {
     });
   }
 
-  function cntKnowScore(target) {
-    let nearFriends = friendsInfo[idIndexInfo[target]];
+  function cntKnowScore(USER) {
+    let nearFriends = friendsInfo[idIndexInfo[USER]];
     nearFriends.forEach((nearName) => {
       let farFriends = friendsInfo[idIndexInfo[nearName]];
-      farFriends.forEach((farName) => {
-        friendsScore[idIndexInfo[farName]] += 10;
+      farFriends.forEach((target) => {
+        friendsScore[idIndexInfo[target]] += 10;
       });
     });
   }
@@ -91,8 +91,8 @@ function problem7(user, friends, visitors) {
     }
     const sortedList = sortList(tmpList);
     const memberList = Object.keys(idIndexInfo);
-    sortedList.forEach((v) => {
-      result.push(memberList[v[1] - 1]);
+    sortedList.forEach((userIdx) => {
+      result.push(memberList[userIdx[1] - 1]);
     });
 
     return result;
