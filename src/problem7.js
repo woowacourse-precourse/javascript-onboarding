@@ -45,3 +45,17 @@ const addVisitScore = (visitors) => (scores) => {
 
 const getNames = (users) => Object.keys(users);
 
+function problem7(user, friends, visitors) {
+  const result = compose(
+    getUserBfs(user),
+    getBfsOfBfs(friends),
+    removeDupUsers(user, ...getUserBfs(user)(friends)),
+    recordScore,
+    addVisitScore(removeDupUsers(user, ...getUserBfs(user)(friends))(visitors)),
+    getNames
+  )(friends);
+
+  return result;
+}
+
+module.exports = problem7;
