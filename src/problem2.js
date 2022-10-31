@@ -26,6 +26,7 @@ function problem2(cryptogram) {
 
     cryptogramList.splice(leftPointer, rightPoiner - leftPointer);
     
+    rightPoiner = leftPointer + 1;
    
     }
     return cryptogramList.join("");
