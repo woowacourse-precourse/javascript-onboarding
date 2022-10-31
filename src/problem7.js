@@ -8,6 +8,9 @@ function problem7(user, friends, visitors) {
 
   addFriendPoint(pointMap, friendsGraph, user, twoDistanceFriends);
   addVisitorPoint(pointMap, friendsGraph, user, visitors);
+
+  const pointEntries = Object.entries(pointMap);
+  pointEntries.sort(comparePoint);
 }
 
 function makeFriendsGraph(friends) {
@@ -124,6 +127,13 @@ function addVisitorPoint(pointMap, friendsGraph, user, visitors) {
       pointMap[visitor] += VISITOR_POINT;
     }
   });
+}
+
+function comparePoint([nameA, pointA], [nameB, pointB]) {
+  if (pointA === pointB) {
+    return nameA.localeCompare(nameB);
+  }
+  return pointB - pointA;
 }
 
 module.exports = problem7;
