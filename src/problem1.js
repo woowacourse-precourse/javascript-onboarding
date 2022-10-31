@@ -10,5 +10,18 @@ function exceptions(arr) {
   return true;
 }
 
+function MaxNumber(arr) {
+  let mnum = 0;
 
+  for (let i = 0; i < arr.length; i++) {
+    // 배열을 쪼개 문자열을 숫자로 변환한 뒤 합산, 초기값 0
+    let plus = arr[i].toString().split("").reduce((accumulator, currentnum) => accumulator + Number(currentnum), 0);
+    // 배열을 쪼개 문자열을 숫자로 변환한 뒤 곱산 후 합산, 초기값 1(0으로 주면 0반환)
+    let multiply = arr[i].toString().split("").reduce((accumulator, currentnum) => accumulator * Number(currentnum), 1);
+    // 최댓값 산출
+    mnum = Math.max(mnum, plus, multiply);
+  }
+
+  return mnum;
+}
 module.exports = problem1;
