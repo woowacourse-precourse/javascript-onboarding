@@ -12,6 +12,10 @@ function problem6(forms) {
     const indexOfLetter = twoLetters.indexOf(letter);
     return indexOfLetter !== twoLetters.lastIndexOf(letter) && indexOfLetter === index;
   });
+
+  const duplicateNicknames = nicknames.filter((nickname) =>
+    duplicateLetters.map((letter) => nickname.includes(letter)).includes(true),
+  );
 }
 
 module.exports = problem6;
