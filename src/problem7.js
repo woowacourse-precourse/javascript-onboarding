@@ -2,9 +2,10 @@ function problem7(user, friends, visitors) {
   const scoreSet = new Map();
   const excepts = new Set();
   let score = new Set();
-
   let firstscore = 0,
-    secondscore = 0;
+    secondscore = 0,
+    thirdscore = 0;
+
   excepts.add(user);
 
   for (let x of friends) {
@@ -25,6 +26,14 @@ function problem7(user, friends, visitors) {
       secondscore = scoreSet.has(x[1]) ? scoreSet.get(x[1]) + 10 : 10;
       scoreSet.set(x[1], secondscore);
       score.add(secondscore);
+    }
+  }
+  for (let x of visitors) {
+    if (x === undefined) continue;
+    if (!excepts.has(x)) {
+      thirdscore = scoreSet.has(x) ? scoreSet.get(x) + 1 : 1;
+      scoreSet.set(x, thirdscore);
+      score.add(thirdscore);
     }
   }
 }
