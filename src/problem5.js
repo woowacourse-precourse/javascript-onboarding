@@ -17,4 +17,18 @@ function calMoneyChange(moneyUnit, money) {
   return [moneyCount, moneyLeft];
 }
 
+function changeMoney(money) {
+  const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let moneyChanged = [];
+  let moneyCount = 0;
+  let moneyLeft = money;
+
+  for (let moneyUnit of moneyUnits) {
+    [moneyCount, moneyLeft] = calMoneyChange(moneyUnit, moneyLeft);
+    moneyChanged.push(moneyCount);
+  }
+
+  return moneyChanged;
+}
+
 module.exports = problem5;
