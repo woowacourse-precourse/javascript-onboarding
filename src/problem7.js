@@ -1,4 +1,4 @@
-function duduChecker(user, friends, dude) {
+function duduChecker({ user, friends, dude }) {
   friends.forEach((arr) => {
     const [A, B] = arr;
     if (A === user) {
@@ -9,21 +9,21 @@ function duduChecker(user, friends, dude) {
   });
 }
 
-function canFriendScore(friend, user, target, another) {
+function canFriendScore({ friend, user, target, another }) {
   return target === friend && another !== user;
 }
 
-function friendScore(dude, friends, score, user) {
+function friendScore({ dude, friends, score, user }) {
   dude.forEach((friend) => {
     friends.forEach((arr) => {
       const [A, B] = arr;
-      if (canFriendScore(friend, user, A, B)) {
+      if (canFriendScore({ friend, user, target: A, another: B })) {
         if (score[B]) {
           score[B] += 10;
         } else {
           score[B] = 10;
         }
-      } else if (canFriendScore(friend, user, B, A)) {
+      } else if (canFriendScore({ friend, user, target: B, another: A })) {
         if (score[A]) {
           score[A] += 10;
         } else {
@@ -34,7 +34,7 @@ function friendScore(dude, friends, score, user) {
   });
 }
 
-function visitedScore(visitors, dude, score) {
+function visitedScore({ visitors, dude, score }) {
   visitors.forEach((name) => {
     if (!dude.includes(name)) {
       if (score[name]) {
@@ -71,11 +71,11 @@ function problem7(user, friends, visitors) {
   const dude = [];
   const score = {};
 
-  duduChecker(user, friends, dude);
+  duduChecker({ user, friends, dude });
 
-  friendScore(dude, friends, score, user);
+  friendScore({ dude, friends, score, user });
 
-  visitedScore(visitors, dude, score);
+  visitedScore({ visitors, dude, score });
 
   let result = Object.entries(score);
 
