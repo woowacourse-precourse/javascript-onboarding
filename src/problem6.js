@@ -29,6 +29,12 @@ function checkDuplicate(charCases, target) {
   return false;
 }
 
+function sortEmails(set) {
+  const convertedArray = Array.from(set);
+  convertedArray.sort();
+  return convertedArray;
+}
+
 function problem6(forms) {
   var answer;
   return answer;
