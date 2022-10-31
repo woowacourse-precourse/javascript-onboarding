@@ -29,7 +29,7 @@ function eliminateUser(userList, user) {
 
 function getFriendsOfFriends(buddies, friends, user) {
   const buddyOfBuddy = [];
-  buddies.forEach((person, i) => {
+  buddies.forEach((person) => {
     buddyOfBuddy.push(getFriends(person, friends));
   });
 
@@ -83,7 +83,7 @@ function mergeRecommendList(overlapList, visitorList) {
     return mergedList.every((person) => person.name !== visitor.name);
   });
 
-  mergedList.push(visitOnly);
+  mergedList.push(...visitOnly);
 
   return mergedList;
 }
