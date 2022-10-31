@@ -6,6 +6,12 @@ function problem7(user, friends, visitors) {
       ? scores.set(friends, 1)
       : scores.set(friends, scores.get(friends) + 1);
   }
+  return Array.from(scores)
+    .filter(([friend]) => friend !== user)
+    .filter(([friend]) => {
+      if (friendHash.get(user) === undefined) return true;
+      return friendHash.get(user).every((i) => i !== friend);
+    })
 function setFriends(friend, hash) {
   for (const [a, b] of friend) {
     hash = set(hash, a, b);
