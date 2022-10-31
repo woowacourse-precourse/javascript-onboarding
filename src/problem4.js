@@ -21,6 +21,24 @@ function findUpperArr(word) {
   return UpperArr;
 }
 
+function findLowerArr(word) {
+  let alphabetLowerArr = Array.from({ length: 26 }, (v, i) =>
+    String.fromCharCode(i + 97)
+  );
+
+  let LowerArr = [];
+  for (let i = 0; i < word.split("").length; i++) {
+    let changeLowerCase = alphabetLowerArr.indexOf(findUpperArr(word)[i]);
+
+    if (alphabetLowerArr[26 - (changeLowerCase + 1)]) {
+      LowerArr.push(alphabetLowerArr[26 - (changeLowerCase + 1)]);
+    } else {
+      LowerArr.push(findUpperArr(word)[i]);
+    }
+  }
+  return LowerArr;
+}
+
 console.log(problem4("I love you"));
 
 module.exports = problem4;
