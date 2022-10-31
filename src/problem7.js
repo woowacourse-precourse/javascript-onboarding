@@ -138,7 +138,6 @@ function problem7(user, friends, visitors) {
   getScores(scores, user, friendsList, visitors);
 
   const answer = getResult(scores);
-  console.log(scores);
   return answer;
 }
 
