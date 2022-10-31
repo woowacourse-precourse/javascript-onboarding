@@ -12,7 +12,7 @@ function problem6(forms) {
     }
   }
 
-  // 배열의 중복 없애는 함수
+  // 배열의 중복만 남도록 하는 함수
   function isOverlapChecking(arr) {
     return arr.filter((item, index) => arr.indexOf(item) !== index);
   }
