@@ -25,7 +25,11 @@ const getMax = (pages) => {
 };
 
 const isValid = (pages) => {
+  if (pages.length > 2) return false;
+
   const [left, right] = [pages[0], pages[1]];
+  if (left === 1 || right === 400) return false;
+  if (left % 2 === 0 || right % 2 === 1) return false;
   if (left < 1 || right > 400) return false;
   if (left + 1 !== right) return false;
   return true;
