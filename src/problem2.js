@@ -24,6 +24,11 @@ class Stack {
   }
 }
 
+/**
+ * 연속하는 중복 문자들을 모두 제거한다
+ * @param {string} word - 입력값 임의의 문자열
+ * @returns {string} 연속하는 중복 문자들을 삭제한 문자열
+ */
 const removeDuplicated = (word) => {
   const stack = new Stack();
   word.split("").forEach((alphabet) => {
