@@ -1,4 +1,12 @@
 /**
+ * 승자가 결정되지 않은 결과에 대한 값들
+ */
+const Result = Object.freeze({
+  DRAW: 0,
+  EXCEPTION: -1,
+});
+
+/**
  * 주어진 책 페이지 배열 입력이 올바른지 검증합니다.
  * @param {number[]} pages 책 페이지 배열
  *
@@ -61,7 +69,7 @@ function problem1(pobi, crong) {
   try {
     players.forEach(player => verifyPages(player.pages));
   } catch (e) {
-    return -1;
+    return Result.EXCEPTION;
   }
 
   // 점수 계산 및 정렬
@@ -71,7 +79,7 @@ function problem1(pobi, crong) {
   const [winner, loser] = [players[0], players[players.length - 1]];
 
   // 동점일 경우 0 반환
-  if (winner.score === loser.score) return 0;
+  if (winner.score === loser.score) return Result.DRAW;
 
   return winner.id;
 }
