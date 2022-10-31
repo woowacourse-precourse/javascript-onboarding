@@ -9,8 +9,8 @@
 
 
 function problem1(pobi, crong) {
-  let a = [97, 98];
-  let b = [197, 198];
+  let a = pobi;
+  let b = crong;
   let sum_a = 0;
   let multiple_a = 1;
   let sum_b = 0;
@@ -37,9 +37,21 @@ function problem1(pobi, crong) {
   let max_a = Math.max(sum_a, multiple_a)
   let max_b = Math.max(sum_b, multiple_b)
 
-  console.log(a, b, sum_a, sum_b, multiple_a, multiple_a, max_a, max_b)
+  if (max_a > max_b) {
+    console.log(1)
+    return 1
+  } else if (max_a === max_b) {
+    console.log(0)
+    return 0
+  } else if (max_a < max_b) {
+    console.log(2)
+    return 2
+  } else {
+    console.log(-1)
+    return -1
+  }
 }
 
 module.exports = problem1;
 
-problem1()
+problem1([97, 98],[197, 198])
