@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
+  const noFriend = findNoFriend(user, friends, userFriend);
 }
 
 function findFriend(user, friends) {
@@ -16,6 +17,11 @@ function findFriend(user, friends) {
 function getAllName(friends) {
   const allNameSet = new Set(friends.flat());
   return Array.from(allNameSet);
+}
+
+function findNoFriend(user, friends, userFriend) {
+  const allName = getAllName(friends);
+  return allName.filter((name) => name !== user && !userFriend.includes(name));
 }
 
 module.exports = problem7;
