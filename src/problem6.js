@@ -1,4 +1,6 @@
 function problem6(forms) {
+
+  let emailList = [];
   
   const formsMap = new Map(forms);
   const nickName = Array.from(formsMap.values());
@@ -14,6 +16,11 @@ function problem6(forms) {
       }
     }
   }
+
+  //중복되는 크루들의 이메일을 담는 기능
+  formsMap.forEach((value, key) => {
+    if (check(value)) emailList.push(key);
+  })
 }
 
 problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ])
