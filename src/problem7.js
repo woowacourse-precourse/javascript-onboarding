@@ -2,6 +2,7 @@ const problem7 = (user, friends, visitors) => {
   let answer = [];
   let friendsOfUser = [];
   let scoreList = new Map();
+  let results = {};
 
   friends.forEach((friend) => {
     if (friend.includes(user)) {
@@ -35,6 +36,10 @@ const problem7 = (user, friends, visitors) => {
   [...friendsOfUser, user].forEach((deleteTarget) =>
     scoreList.delete(deleteTarget)
   );
+
+  // prettier-ignore
+  [...scoreList.entries()].forEach(([name, score]) =>
+    (results = { ...results, [name]: score }));
 
   return answer;
 };
