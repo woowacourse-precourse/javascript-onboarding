@@ -2,6 +2,20 @@ function problem7(user, friends, visitors) {
   var answer;
   return answer;
 }
+// 방문자 수 체크
+function checkVisitor(visitorsList, friends) {
+  let score = {};
+  for (let i = 0; i < visitorsList.length; i++) {
+    if (!friends.includes(visitorsList[i])) {
+      if (visitorsList[i] in score) {
+        score[visitorsList[i]]++;
+      } else {
+        score[visitorsList[i]] = 1;
+      }
+    }
+  }
+  return score;
+}
 // 함께 아는 친구 체크
 function findAcquaintance(user, friends, friendsList) {
   let findResult = {};
