@@ -1,6 +1,8 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const MIN = 1;
+  const MAX = 400;
+
+
 }
 
 module.exports = problem1;
