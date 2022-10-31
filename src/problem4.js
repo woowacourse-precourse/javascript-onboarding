@@ -15,7 +15,7 @@ function isUpper(ascii) {
 }
 
 function isLower(ascii) {
-  if (ascii <= 97 && ascii <= 122) return true;
+  if (ascii >= 97 && ascii <= 122) return true;
   return false;
 }
 module.exports = problem4;
