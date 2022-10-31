@@ -4,16 +4,16 @@
 //    [예외처리] 3으로 나누어 떨어지는 수 중 0은 제외
 
 function problem3(number) {
-  var answer = 0;
-  while(number > 0) {
-    var n = number % 10;
-    if(n != 0 && n % 3 == 0) answer++;
-    number = Math.floor(number/10); // 소수점 버림
+  if(number <= 0) return 0;
+  else {
+    var n = number;
+    var answer = 0;
+    while(n > 0) {
+      if(n % 10 != 0 && (n % 10) % 3 == 0) answer++; // 박수
+      n = Math.floor(n/10); // 소수점 버림
+    }
+    return answer + problem3(number-1); // number 박수 횟수 + 1 ~ (number-1)까지의 박수 횟수
   }
-
-  return answer;
 }
-
-console.log(problem3(30));
 
 module.exports = problem3;
