@@ -10,11 +10,7 @@ function cntClap(number) {
     let current_num = i;
 
     while (current_num > 0) {
-      if (
-        current_num % 10 == 3 ||
-        current_num % 10 == 6 ||
-        current_num % 10 == 9
-      ) {
+      if (check369(current_num)) {
         cnt += 1;
       }
       current_num = Math.floor(current_num / 10);
@@ -22,6 +18,12 @@ function cntClap(number) {
   }
 
   return cnt;
+}
+
+function check369(number) {
+  // 해당하는 숫자의 나머지가 3, 6, 9이면 true를 return
+  if (number % 10 == 3 || number % 10 == 6 || number % 10 == 9) return true;
+  return false;
 }
 
 module.exports = problem3;
