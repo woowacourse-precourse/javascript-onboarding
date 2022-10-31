@@ -6,6 +6,7 @@ const countThreeSixNine = (currentNumber) => {
       (eachNumber) =>
         eachNumber === "3" || eachNumber === "6" || eachNumber === "9"
     );
+
   return filterThreeSixNine.length;
 };
 
