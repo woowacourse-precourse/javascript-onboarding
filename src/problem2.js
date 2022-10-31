@@ -14,18 +14,20 @@ function problem2(cryptogram) {
   const isValidRange = () => {
     return leftPointer >= 0 && rightPoiner < cryptogramList.length;
   }
- 
+  
   while (isValidRange()){
     if (cryptogramList[leftPointer] !== cryptogramList[rightPoiner]){
       pointerMoveForward();
       continue;
     }
-    
-   
-    } 
-    return cryptogramList.join("");
-  }   
-  
+    while (cryptogramList[leftPointer] === cryptogramList[rightPoiner]){
+        rightPoiner ++;
+    }
 
+  
+   
+    }
+    return cryptogramList.join("");
+  }
 
 module.exports = problem2;
