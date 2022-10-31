@@ -24,6 +24,15 @@ function problem6(forms) {
             }
         }
     }
+
+    // 4단계) 패턴이 포함된 횟수를 각각 카운트
+    for (let i = 0; i < patternArray.length; i++) {
+        for (let k = 0; k < includedPatternArray.length; k++) {
+            if (patternArray[i][0].includes(includedPatternArray[k][1])) {
+                patternArray[i][1] += 1;
+            }
+        }
+    }
 }
 
 module.exports = problem6;
