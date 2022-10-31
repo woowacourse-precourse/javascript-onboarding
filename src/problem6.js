@@ -14,4 +14,13 @@ function problem6(forms) {
   return answer;
 }
 
+function getNickname(forms) {
+  let nicknames = [];
+  for (let form of forms) {
+    nicknames.push(form[1]);
+  }
+
+  return nicknames;
+}
+
 module.exports = problem6;
