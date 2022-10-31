@@ -1,13 +1,19 @@
 function problem4(word) {
   var answer;
 
-  if(word.charCodeAt[i]>=97 && word.charCodeAt[i]<=122 ){
-    answer= answer+ (219-word.charCodeAt[i]);
+  for(let i=0; i<word.length;i++){
+    let x=word.charCodeAt[i]; 
+    if(x>=97 && x<=122 ){
+      answer= answer+ (219-x);
+    }
+    else if(x>=65 && x<=97){
+      answer= answer+ 155-x;
+    }
+    else answer= answer+x;
   }
-  else if(word.charCodeAt[i]>=65 && word.charCodeAt[i]<=97){
-    answer= answer+ 155-word.charCodeAt[i];
-  }
-  else answer= answer+word.charCodeAt[i];
+
+
+ 
 
   return answer;
 }
