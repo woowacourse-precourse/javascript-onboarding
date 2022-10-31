@@ -25,6 +25,16 @@ function calcFriendScore(friends, userFriends) {
   return recommendationScore;
 }
 
+function calcVisitorScore(visitors, userFriends, recommendationScore) {
+  for (let i = 0; i < visitors.length; i += 1) {
+    if (userFriends.has(visitors[i])) continue;
+
+    recommendationScore[visitors[i]] = recommendationScore[visitors[i]] + 1 || 1;
+  }
+
+  return recommendationScore;
+}
+
 function problem7(user, friends, visitors) {
   let recommendationResult; 
 
