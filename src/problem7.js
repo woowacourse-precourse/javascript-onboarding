@@ -6,6 +6,7 @@ function problem7(user, friends, visitors) {
   addFriends(user, friends, userFriends, point);
   addTenPoint(user, friends, userFriends, point);
   addOnePoint(userFriends, point, visitors);
+  return sortByValue(point);
 }
 function checkUserFriends(user, friends, userFriends) {
   for (let i = 0; i < friends.length; i++) {
@@ -58,5 +59,17 @@ function addOnePoint(userFriends, point, visitors) {
       point[visitors[i]] = 1;
     }
   }
+}
+function sortByValue(point) {
+  let sortable = [];
+  let result = [];
+  for (let name in point) {
+    sortable.push([name, point[name]]);
+  }
+  sortable.sort((a, b) => b[1] - a[1]);
+  for (let i = 0; i < sortable.length; i++) {
+    result.push(sortable[i][0]);
+  }
+  return result;
 }
 module.exports = problem7;
