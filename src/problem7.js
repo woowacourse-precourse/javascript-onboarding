@@ -1,10 +1,3 @@
-/*
-  ["andole", "jun", "bedi"]
-  사용자와 친구 dount, shakevan
-  사용자의 친구와 함께 아는 친구 andole - 20, jun - 20
-  사용자의 타임라인 방문한 사람 bedi - 3
-  사용자와 친구인 사람은 목록에서 제외 
-*/
 function problem7(user, friends, visitors) {
   const FRIENDS_LENGTH = 2;
   const UFV_LIST = {
@@ -28,26 +21,25 @@ function problem7(user, friends, visitors) {
       continue;
     }
     for (let j = 0; j < FRIENDS_LENGTH; j++) {
-      if (FRIENDS_LIST.indexOf(UFV_LIST.friends[i][j]) >= 0) {
-        if (UFV_LIST.friends[i][1 - j] in RECOMMEND_LIST) {
-          RECOMMEND_LIST[UFV_LIST.friends[i][1 - j]] += 10;
-        }
-        else {
-          RECOMMEND_LIST[UFV_LIST.friends[i][1 - j]] = 10;
-        }
-      };
+      if (!(FRIENDS_LIST.indexOf(UFV_LIST.friends[i][j]) >= 0)) {
+        continue;
+      }
+      if (!(UFV_LIST.friends[i][1 - j] in RECOMMEND_LIST)) {
+        RECOMMEND_LIST[UFV_LIST.friends[i][1 - j]] = 10;
+        continue;
+      }
+      RECOMMEND_LIST[UFV_LIST.friends[i][1 - j]] += 10;
     }
   };
 
   for (let i = 0; i < UFV_LIST.visitors.length; i++) {
     if (!(FRIENDS_LIST.indexOf(UFV_LIST.visitors[i]) === -1))
       continue;
-    if (UFV_LIST.visitors[i] in RECOMMEND_LIST) {
-      RECOMMEND_LIST[UFV_LIST.visitors[i]] += 1;
-    }
-    else {
+    if (!(UFV_LIST.visitors[i] in RECOMMEND_LIST)) {
       RECOMMEND_LIST[UFV_LIST.visitors[i]] = 1;
+      continue;
     }
+    RECOMMEND_LIST[UFV_LIST.visitors[i]] += 1;
   };
   let LAST_LIST = Object.entries(RECOMMEND_LIST).sort((a, b) => {
     if (a[1] === b[1]) {
