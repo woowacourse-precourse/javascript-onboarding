@@ -67,6 +67,11 @@ function problem7(user, friends, visitors) {
     else return a[0].localeCompare(b[0]);
   });
 
+  // 5개로 자르기 + 점수 정보 자르기
+  while(answer.length > 5) answer.pop();
+  for(var i = 0; i < answer.length; i++)
+    answer[i] = answer[i][0];
+
   return answer;
 }
 
