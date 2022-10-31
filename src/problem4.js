@@ -24,8 +24,11 @@ function replaceChar(char, type) {
 }
 
 function problem4(word) {
-  var answer;
-  return answer;
+  const result = [];
+  for (let i = 0; i < word.length; i++) {
+    result.push(replaceChar(word[i], checkChar(word[i])));
+  }
+  return result.join("");
 }
 
 module.exports = problem4;
