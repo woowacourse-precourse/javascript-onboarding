@@ -1,25 +1,21 @@
-//2글자 이상 연속 중복되는 글자 있는지 확인해주는 함수
-//중복o - 연속 중복 구간의 시작 글자 return
-//중복x - false return
-const checkCyrp=(cyrp)=>{
-  for(let i=0; i<cyrp.length-1; i++){
-      if (cyrp[i]===cyrp[i+1]){
-          return cyrp[i];
-      }
-  }
-  return false;
+function eraseCycle(word){
+  let answer = [];
+  const indexs = [];
+  [...word].forEach((letter)=>{
+      letter!==answer[answer.length-1]
+      ? answer.push(letter)
+      : indexs.includes(answer.length-1)||indexs.push(answer.length-1)
+  });
+  answer = answer.filter((_,index)=>indexs.indexOf(index)===-1);
+  return answer.join('');
 }
-//중복 구간 확인 + 삭제 task 반복
-//아직 세부적인 수정 필요 !
+
 function problem2(cryptogram){
-  let regex;
-  let word = checkCyrp(cryptogram);
-  while(word){
-      regex = new RegExp(`${word}${word}+`, 'g');
-      cryptogram = cryptogram.replace(regex, '')
-      word = checkCyrp(cryptogram)
-  }
-  return cryptogram;
+    let result = eraseCycle(cryptogram);
+    while(cryptogram!==result){
+        [cryptogram, result] = [result, eraseCycle(result)];
+    }
+    return result;
 }
 
 module.exports = problem2;
