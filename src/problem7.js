@@ -73,3 +73,21 @@ function checkSoreOfFriendsOfFriends(friends, visitors) {
 
   return map;
 }
+
+function checkSoreOfVisitor(friends, visitors) {
+  const combinedArr = makeCombinedArr(friends, visitors);
+  let map = checkSoreOfFriendsOfFriends(friends, visitors);
+
+  combinedArr.forEach((friend) => {
+    let i = 0;
+    let count = 1;
+
+    for (; i < visitors.length; i++) {
+      if (visitors[i] === friend) {
+        map.set(friend, count);
+        count = count + 1;
+      }
+    }
+  });
+  return map;
+}
