@@ -11,7 +11,7 @@ function getInterFriendScore(user, friends){
   const userFriendList = getUserFriend(user, friends);
   const friendInclArr = [];
   let interFriendList = [];
-  
+
   for(let i = 0 ; i<friends.length ; i++){
     if(userFriendList.filter(v => friends[i].includes(v)).length == 1){
       friendInclArr.push(friends[i]);
@@ -33,27 +33,27 @@ function getVisitList(user, friends, visitors){
    return visitList;
 }
 
-function getScore(user, friends, visitors){
-  const interFriendScore = getInterFriendScore(user, friends);
+function getCrewScore(user, friends, visitors){
+  const crewScore = getInterFriendScore(user, friends);
   const visitList = getVisitList(user, friends, visitors);
   
   for(let i = 0; i<visitList.length ; i++){
-    if(interFriendScore.hasOwnProperty(visitList[i])){
-      interFriendScore[visitList[i]]+=1;
+    if(crewScore.hasOwnProperty(visitList[i])){
+      crewScore[visitList[i]]+=1;
     }
     else{
-      interFriendScore[visitList[i]] = 0;
-      interFriendScore[visitList[i]] +=1;
+      crewScore[visitList[i]] = 0;
+      crewScore[visitList[i]] +=1;
     }
   }
-  return interFriendScore;
+  return crewScore;
 }
 
 function problem7(user, friends, visitors) {
-  const scoreObj = getScore(user, friends, visitors);
-  const obj = Object.keys(scoreObj);
+  const crewScore = getCrewScore(user, friends, visitors);
+  const crewName = Object.keys(crewScore);
 
-  return obj;
+  return crewName;
 }
 
 module.exports = problem7;
