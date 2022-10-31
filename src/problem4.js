@@ -16,6 +16,15 @@ const getCharFromAsciiCode = (charCode) => {
   return String.fromCharCode(charCode);
 };
 
+/**
+ * 문자로부터 변환한 아스키코드를 반환한다.
+ * @param {string} char - 문자
+ * @return {number}
+ */
+const getAsciiCodeFromChar = (char) => {
+  return char.charCodeAt(0);
+};
+
 function problem4(word) {
   var answer;
   return answer;
