@@ -51,6 +51,17 @@ function getResult(resultObj) {
     return result.slice(0, 5);
 }
 
-function problem7(user, friends, visitors) {}
-
+function problem7(user, friends, visitors) {
+    const userFriendObj = getUserFriend(user, friends);
+    const newFriendList = exceptUserList(user, friends);
+    const friendScoreObj = addFriendOfFriendScore(
+        getFriendOfFriend(userFriendObj, newFriendList)
+    );
+    const resultScore = addVisitorsScore(
+        friendScoreObj,
+        visitors,
+        userFriendObj
+    );
+    return getResult(resultScore);
+}
 module.exports = problem7;
