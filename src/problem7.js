@@ -6,6 +6,16 @@ function getUserFriend(pair, user, userFriends) {
   }
 }
 
+function getTheirFriend(pair, user, userFriends, theirFriends) {
+  for (let friend of userFriends) {
+    // user의 친구 목록 중 각 친구(friend)마다 반복문을 수행하며
+    if (pair.includes(friend) && !pair.includes(user)) {
+      // 전체 친구 관계 목록 중 friend를 포함하고 user를 포함하지 않는(user 친구의 친구인 경우)
+      theirFriends.add(pair.filter((name) => name !== friend)[0]); // user의 친구가 아닌 친구의 친구를 theirFriends에 저장한다.
+    }
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   answer = [];
@@ -16,6 +26,11 @@ function problem7(user, friends, visitors) {
   for (let pair of friends) {
     // user의 친구 목록 전체에 대해 반복문을 수행하며
     getUserFriend(pair, user, userFriends); // user의 친구 추출
+  }
+
+  for (let pair of friends) {
+    // user의 친구 목록 전체에 대해 반복문을 수행하며
+    getTheirFriend(pair, user, userFriends, theirFriends); // user 친구의 친구 추출
   }
 
   return answer;
