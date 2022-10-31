@@ -32,4 +32,25 @@ function isValidPage(pageNumbers) {
   return isValid;
 }
 
+function calcMaxNum(number) {
+  const numStrings = number.toString();
+  let addNum = 0;
+  let mulNum = 1;
+  let maxNum;
+
+  for (let numString of numStrings) {
+    let num = parseInt(numString);
+    addNum += num;
+    mulNum *= num;
+  }
+
+  if (addNum >= mulNum) {
+    maxNum = addNum;
+  } else {
+    maxNum = mulNum;
+  }
+
+  return maxNum;
+}
+
 module.exports = problem1;
