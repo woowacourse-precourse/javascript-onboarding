@@ -16,4 +16,10 @@ function checkDuplicateWord(forms) {
   return result;
 }
 
+function removeDuplicateArray(wordArray) {
+  wordArray.reduce((obj, curr) => {
+    obj[curr[0]] = null;
+  }, {});
+  return obj;
+}
 module.exports = problem6;
