@@ -26,6 +26,18 @@ function problem7(user, friends, visitors) {
       };
     }
   }
+
+  function calcFriendsScore(table, user) {
+    const myFriends = table[user].friends;
+
+    for (let friend of myFriends) {
+      for (let test of table[friend].friends) {
+        if (test !== user) {
+          table[test].score += FRIEND_WITH_USER_SCORE;
+        }
+      }
+    }
+  }
 }
 
 module.exports = problem7;
