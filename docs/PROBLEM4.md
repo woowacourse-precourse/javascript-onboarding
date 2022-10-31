@@ -22,9 +22,9 @@
 
 
 ### 구현할 기능 목록
-1. word 문자열을 배열로 변환
+1. word 문자열을 배열로 변환 :white_check_mark:
 - spread operator를 이용
-2. 문제에서 주어진 청개구리 사전 선언
+2. 문제에서 주어진 청개구리 사전 선언 :white_check_mark:
 - object 로 정의
 3. 1에서 배열로 바꾼 word_arr를 순회하면서, 대문자로 바꾸고 dictionary에 따라 변환하는 convertByDict 함수 구현
 - 매개변수 : word_arr(word 배열), dictionary(청개구리 사전)
