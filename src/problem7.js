@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
   calculateNoFriendScore(friends, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
   const sortedCandidate = sortCandidate(candidateObj);
+  const fiveCandidate = getFiveCandidate(sortedCandidate);
 }
 
 function findFriend(user, friends) {
@@ -60,6 +61,12 @@ function sortCandidate(candidateObj) {
     if (a[1] === b[1]) a[0] - b[0];
     else b[1] - a[1];
   });
+}
+
+function getFiveCandidate(sortedCandidate) {
+  return sortedCandidate.length > 5
+    ? sortedCandidate.splice(0, 5)
+    : sortedCandidate;
 }
 
 module.exports = problem7;
