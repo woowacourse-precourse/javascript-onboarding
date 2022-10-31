@@ -14,7 +14,7 @@ function problem7(user, friends, visitors) {
 
   const usersFriends = findUsersFriends(friends, user);
 
-  // 함께 하는 친구 수 기준으로 점수 매기기
+  // 함께 아는 친구 수 기준으로 점수 매기기
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < usersFriends.length; j++) {
       if (!friends[i].includes(user) && friends[i].includes(usersFriends[j])) {
