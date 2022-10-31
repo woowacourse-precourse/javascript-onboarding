@@ -12,7 +12,7 @@ function isValid(money) {
 }
 
 function fillMoneyArr(money, unitMoney) {
-  const moneyArr = new Array();
+  const moneyArr = [];
   for (let i = 0; i < unitMoney.length; i++) {
     moneyArr.push(Math.floor(money / unitMoney[i]));
     money -= Math.floor(money / unitMoney[i]) * unitMoney[i];
