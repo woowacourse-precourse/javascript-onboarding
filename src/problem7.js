@@ -13,3 +13,7 @@ const getUserBfs = (user) => (friends) => {
     return copy;
   }, []);
 };
+
+const getBfsOfBfs = (friends) => (users) => {
+  return users.reduce((reduced, user) => getUserBfs(user)(friends), []);
+};
