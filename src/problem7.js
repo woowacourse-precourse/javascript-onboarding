@@ -6,8 +6,23 @@ function problem7(user, friends, visitors) {
   const userFriendList = makeUserFriendList(user, friends)
   const withoutUserList = makeWithoutUserList(user, friends)
   const bestRecommendFriend = makeBestRecommendFriend(withoutUserList, userFriendList);
-  
-  // return bestRecommendFriend
+
+  const scoreBoard = {};
+  const dudeScore = 10;
+  const visitScore = 1;
+
+  bestRecommendFriend.forEach((el) => {
+    if (scoreBoard[el]) scoreBoard[el] += dudeScore;
+    else scoreBoard[el] = dudeScore;
+  })
+
+  visitors.forEach((el) => {
+    if (userFriendList.includes(el)) return
+    else if (scoreBoard[el]) scoreBoard[el] += visitScore;
+    else scoreBoard[el] = visitScore;
+  })
+
+  // return scoreBoard
 }
 
 function makeBestRecommendFriend(withoutUserList, userFriendList) {
