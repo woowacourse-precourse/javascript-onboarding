@@ -1,16 +1,16 @@
 function problem2(cryptogram) {
   let stack = [];
-  let flag = false;
+  let isRepeated = false; 
 
   for (let i = 0; i < cryptogram.length; i++) {
     if (stack[stack.length - 1] === cryptogram[i]) {
-      flag = true;
+      isRepeated = true;
       continue;
     }
 
-    if (flag) {
+    if (isRepeated) {
       stack.splice(-1, 1);
-      flag = false;
+      isRepeated = false;
       i--;
       continue;
     }
@@ -18,7 +18,7 @@ function problem2(cryptogram) {
     stack.push(cryptogram[i]);
   }
 
-  if (flag) {
+  if (isRepeated) {
     stack.splice(-1, 1);
   }
 
