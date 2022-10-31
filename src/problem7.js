@@ -50,4 +50,13 @@ function checkFriend(user, friendsScoreDict, friendsConnection) {
   return friendsScoreDict;
 }
 
+function checkVisited(friendsScoreDict, visitors) {
+  visitors.forEach((item) => {
+    if (friendsScoreDict[item] == undefined) friendsScoreDict[item] = 0;
+    friendsScoreDict[item] += 1
+  });
+
+  return friendsScoreDict;
+}
+
 module.exports = problem7;
