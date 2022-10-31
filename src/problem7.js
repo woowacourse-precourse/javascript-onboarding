@@ -138,8 +138,15 @@ function sortUserScore(userScores){
 }
 
 function getAnswer(userScores, answer){
-  for(let i = 0; i < userScores.length; i++){
-    answer.push(userScores[i].name);
+  if(userScores.length <= 5){
+    for(let i = 0; i < userScores.length; i++){
+      answer.push(userScores[i].name);
+    }
+  }
+  else{
+    for(let i = 0; i < 5; i++){
+      answer.push(userScores[i].name);
+    }
   }
 }
 
