@@ -12,11 +12,22 @@ const makeFriendList = (friends, friendList) => {
   }
 }
 
+const giveVisitPoint = (visitors, score) => {
+  for (let i = 0; i < visitors.length; i++) {
+    const currentVisitor = visitors[i];
+
+    if (!score.hasOwnProperty(currentVisitor))
+      score[currentVisitor] = 0;
+    score[currentVisitor]++;
+  }
+}
+
 const problem7 = (user, friends, visitors) => {
   let friendList = {};
   let score = {};
 
   makeFriendList(friends, friendList);
+  giveVisitPoint(visitors, score);
 }
 
 module.exports = problem7;
