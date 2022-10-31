@@ -29,6 +29,9 @@ function returnMult(pageNum){
   } 
   return tmp;
 }
+function returnMaxScore(player){
+  return Math.max(returnSum(player[0]), returnMult(player[0]), returnSum(player[1]), returnMult(player[1]))
+}
 function problem1(pobi, crong) {
   var answer;
   // 예외처리
