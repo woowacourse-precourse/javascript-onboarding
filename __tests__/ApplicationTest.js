@@ -42,6 +42,9 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  test("case2", () => {
+    expect(problem4("HELLO    world")).toEqual("SVOOL    dliow");
+  });
 });
 
 describe("problem5", () => {
