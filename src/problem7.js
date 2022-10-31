@@ -15,7 +15,8 @@ const SnsFreindrRecomander = {
     return (
       this.checkUserLength(user) &&
       this.checkFriendsLength(friends) &&
-      this.checkVisitersLength(visitors)
+      this.checkVisitersLength(visitors) &&
+      this.checkEnglish(user, ...friends, ...visitors)
     );
   },
   checkUserLength: function (user) {
@@ -26,6 +27,9 @@ const SnsFreindrRecomander = {
   },
   checkVisitersLength: function (visitors) {
     return visitors.length >= 0 && visitors.length <= 10000;
+  },
+  checkEnglish: function (...words) {
+    return words.every((word) => /^[A-Za-z0-9]*$/.test(word));
   },
 };
 
