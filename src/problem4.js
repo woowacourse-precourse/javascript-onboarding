@@ -23,14 +23,12 @@ function problem4(word) {
   const reg = /^[a-z]|[A-Z]$/;
 
   for (let s of word) {
-    console.log("s 테스트", s, reg.test(s));
     if (reg.test(s)) {
       answer += translate[s];
       continue;
     }
     answer += s;
   }
-  console.log(answer);
   return answer;
 }
 

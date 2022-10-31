@@ -11,8 +11,6 @@ function problem2(cryptogram) {
   let remainStr = cryptogram;
   let isEnd = false;
 
-  //abcdeeffggg
-
   while (!isEnd) {
     // i-1과 i번째 문자를 비교
 

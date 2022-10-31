@@ -6,22 +6,18 @@
 function problem5(money) {
   const unit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   const answer = new Array(unit.length).fill(0);
-  console.log(answer);
   let remainMoney = money;
   let index = 0;
 
   while (remainMoney > 0) {
     const checkUnit = unit[index];
-    console.log(index, remainMoney, checkUnit);
 
     if (checkUnit > remainMoney) {
-      console.log("pass");
       index++;
       continue;
     }
     const quotient = Math.floor(remainMoney / checkUnit);
     const thisRemain = remainMoney % checkUnit;
-    console.log("몫,나머지", quotient, thisRemain);
     answer[index] = quotient;
     remainMoney = thisRemain;
     index++;

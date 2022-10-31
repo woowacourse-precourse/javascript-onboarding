@@ -5,10 +5,20 @@
 
 // #2
 // 테스트코드를 작성하는 이유가 있구나 여러 예외에 대해 생각해보고 빠르게 확인하여 수정할 수 있구나
+function problem1(pobi, crong) {
+  var answer;
 
+  //포비 크롱 중 예외사항 발생할 경우 -1 리턴
+  if (isExceptCase(pobi) || isExceptCase(crong)) return -1;
+
+  //최대값 확인
+  const pobiMax = Math.max(splitAndSum(pobi), splitAndMultiply(pobi));
+  const crongMax = Math.max(splitAndSum(crong), splitAndMultiply(crong));
+  answer = compare({ pobi: pobiMax, crong: crongMax });
+
+  return answer;
+}
 const isExceptCase = (arr) => {
-  /* arr = [num,num] */
-
   // array에 제대로 된 값이 아닐 경우 false 리턴
   if (!arr.length || arr.length !== 2) return true;
 
@@ -53,19 +63,5 @@ const compare = ({ pobi, crong }) => {
   else if (pobi < crong) return 2;
   else return 0;
 };
-
-function problem1(pobi, crong) {
-  var answer;
-
-  //포비 크롱 중 예외사항 발생할 경우 -1 리턴
-  if (isExceptCase(pobi) || isExceptCase(crong)) return -1;
-
-  //최대값 확인
-  const pobiMax = Math.max(splitAndSum(pobi), splitAndMultiply(pobi));
-  const crongMax = Math.max(splitAndSum(crong), splitAndMultiply(crong));
-  answer = compare({ pobi: pobiMax, crong: crongMax });
-
-  return answer;
-}
 
 module.exports = problem1;
