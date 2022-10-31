@@ -13,6 +13,24 @@
  * @returns {-1 | 0 | 1 | 2}
  */
 function problem1(pobi, crong) {
+  /** 1 예외 처리 */
+  if (
+    pobi[0] < 1 ||
+    pobi[0] > 400 ||
+    pobi[1] < 1 ||
+    pobi[1] > 400 ||
+    crong[0] < 1 ||
+    crong[0] > 400 ||
+    crong[1] < 1 ||
+    crong[1] > 400 ||
+    pobi[0] % 2 === 0 ||
+    pobi[1] % 2 === 1 ||
+    crong[0] % 2 === 0 ||
+    crong[1] % 2 === 1 ||
+    pobi[1] - pobi[0] !== 1 ||
+    crong[1] - crong[0] !== 1
+  )
+    return -1;
   var answer;
   return answer;
 }
