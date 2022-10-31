@@ -33,13 +33,9 @@ function problem6(forms) {
 // 가능한 연속된 문자열 추출 함수
 function words(name) {
   const wordOfCases = [];
-  let end = name.length;
 
-  for (let index = 0; index < name.length; index++) {
-    for (let count = 2; count <= end; count++) {
-      wordOfCases.push(name.substr(index, count));
-    }
-    end -= 1;
+  for (let index = 0; index < name.length - 1; index++) {
+    wordOfCases.push(name.substr(index, 2));
   }
 
   return wordOfCases;
