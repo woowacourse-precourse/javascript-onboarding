@@ -53,6 +53,14 @@ const calculateOne = (visitors, myFriends, score) =>{
   }
 };
 
+//이름순 정렬 함수
+const sortName = (score) => {
+  score = Object.fromEntries(
+    Object.entries(score).sort(([a],[b]) => a < b? -1: 1 )
+    );
+  return score;
+};
+
 }
 
 module.exports = problem7;
