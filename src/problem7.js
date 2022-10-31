@@ -7,8 +7,25 @@ const getFriends = (me, friends) => {
   }, []);
 };
 
+const getMyFriendsFriends = (myFriends, friendMap) => {
+  return myFriends.reduce(
+    (acc, myFriend) => [...acc, getFriends(myFriend, friendMap)],
+    []
+  );
+};
+
+const getAcquaintance = (me, [myFriends, friendMap]) => {
+  const myFriendsFriends = getMyFriendsFriends(myFriends, friendMap);
+};
+
+const caculateScore = (acquaintance, visitors) => {
+  
+};
+
 function problem7(user, friends, visitors) {
   const myFriends = getFriends(user, friends);
+  const acquaintance = getAcquaintance(user, [myFriends, friends]);
+  console.log(acquaintance);
   return 0;
 }
 
