@@ -10,6 +10,11 @@ function eliminating(arr) {
 function problem2(cryptogram) {
   let cryptoArray = cryptogram.split("");
   let arrayLength = cryptoArray.length;
+  while (cryptoArray.length > 0) {
+    cryptoArray = eliminating(cryptoArray);
+    if (arrayLength === cryptoArray.length) break;
+    arrayLength = cryptoArray.length;
+  }
 }
 
 module.exports = problem2;
