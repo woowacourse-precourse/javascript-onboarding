@@ -2,14 +2,15 @@ function problem7(user, friends, visitors) {
   let answer;
   const scoreObject = {};
   const scoreListKeyArray = new Set();
+  let userFriendShipArray = [];
 
   for (let friend of friends.flat()) {
     scoreListKeyArray.add(friend);
   }
 
-  console.log(scoreListKeyArray);
-  console.log(createScoreObj(scoreListKeyArray, scoreObject));
-  console.log(addVisitorScore(visitors, scoreObject));
+  createScoreObj(scoreListKeyArray, scoreObject);
+  findFiendOfFriend(userFriendShipArray, friends, user);
+  addVisitorScore(visitors, scoreObject);
   return answer;
 }
 
@@ -18,6 +19,16 @@ const createScoreObj = (scoreKeySet, scoreObj) => {
     scoreObj[item] = 0;
   }
   return scoreObj;
+};
+
+const findFiendOfFriend = (userFriendArray, friends, user) => {
+  for (let friend of friends) {
+    if (friend.includes(user)) userFriendArray.push(friend);
+  }
+
+  userFriendArray = userFriendArray.flat().filter((item) => item !== user);
+  console.log(userFriendArray, "함수");
+  return userFriendArray;
 };
 
 const addVisitorScore = (visitors, scoreObj) => {
