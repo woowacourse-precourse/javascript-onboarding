@@ -54,11 +54,9 @@ function problem1(firstBook, secondBook) {
   ) {
     return -1;
   }
-  const firstBookSumArr = pushSumOfBooks(firstBook);
-  const secondBookSumArr = pushSumOfBooks(secondBook);
 
-  const firstBookMax = findMaxNum(firstBookSumArr);
-  const secondBookMax = findMaxNum(secondBookSumArr);
+  const firstBookMax = findMaxNum(firstBook);
+  const secondBookMax = findMaxNum(secondBook);
   if (firstBookMax > secondBookMax) {
     return 1;
   }
