@@ -69,6 +69,16 @@ const sortScore = (score) => {
   return score;
 };
 
+//상위 5개 출력 함수
+const onlyFive = (score,result) =>{
+  let count = 0;
+  for(let key in score){
+      if(count === 5){
+        return result;
+      }
+      result.push(key);
+      count++;
+  }
 }
 
 module.exports = problem7;
