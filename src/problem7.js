@@ -1,6 +1,7 @@
 const problem7 = (user, friends, visitors) => {
   let answer = [];
   let friendsOfUser = [];
+  let scoreList = new Map();
 
   friends.forEach((friend) => {
     if (friend.includes(user)) {
@@ -10,6 +11,10 @@ const problem7 = (user, friends, visitors) => {
       ];
     }
   });
+
+  [...new Set(friends.flat()), ...new Set(visitors)].forEach((person) =>
+    scoreList.set(person, 0)
+  );
 
   return answer;
 };
