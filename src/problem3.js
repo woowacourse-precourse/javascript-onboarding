@@ -1,6 +1,9 @@
 function problem3(number) {
-  let answer;
-  return answer;
+  let clapCnt = 0;
+  for (let i = 1; i <= number; i++) {
+    clapCnt += countClap(splitNum(i));
+  }
+  return clapCnt;
 }
 function splitNum(num) {
   let splitNumArr = num.toString().split("");
