@@ -1,3 +1,9 @@
+const GAME_RESULT = {
+  DRAW: 0,
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+};
+
 function problem1(pobi, crong) {
   const [pobisLeftPage, pobisRightPage] = pobi;
   const [crongsLeftPage, crongsRightPage] = crong;
@@ -49,14 +55,13 @@ function calcScore(leftPage, rightPage) {
 }
 
 function getWinnerResult(player1Score, player2Score) {
-  let result = 0;
   if (player1Score > player2Score) {
-    result = 1;
+    return GAME_RESULT.POBI_WIN;
   } else if (player1Score < player2Score) {
-    result = 2;
+    return GAME_RESULT.CRONG_WIN;
   }
 
-  return result;
+  return GAME_RESULT.DRAW;
 }
 
 module.exports = problem1;
