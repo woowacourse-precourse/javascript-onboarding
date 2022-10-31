@@ -15,7 +15,7 @@ function problem6(forms) {
     return pre;
   }, {});
 
-  return reduceAnswer;
+  return Object.keys(reduceAnswer).sort();
 }
 let forms = [
   ["jm@email.com", "제이엠"],
