@@ -32,4 +32,21 @@ function isAns(str) {
     return true;
 }
 
+// 3. 연속 중복 문자 삭제 기능
+// return => 하나의 중복된 문자들이 삭제된 문자열 (ex : aaabbbb => bbbb 반환)
+function delDups(str) {
+    var left, right=0, curr=0;
+
+    while(right < str.length){
+        left = curr, right = curr +1;
+        if(str[left] == str[right]){
+            while(str[right] == str[right+1] && right < str.length){
+                right++;
+            }
+            return str.slice(0,left) + str.slice(right+1,str.length);
+        }
+        curr++;
+    }
+}
+
 module.exports = problem2;
