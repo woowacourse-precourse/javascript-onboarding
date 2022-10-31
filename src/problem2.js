@@ -8,8 +8,12 @@ function problem2(cryptogram) {
       i++;
     }
   }
-}
+  const decipherArr = newArr.join("");
 
-let cryptogram = "browoanoommnaon";
-console.log(problem2(cryptogram));
+  if (decipherArr === cryptogram) {
+    return decipherArr;
+  } else {
+    return problem2(decipherArr);
+  }
+}
 module.exports = problem2;
