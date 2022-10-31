@@ -1,4 +1,6 @@
 function problem6(forms) {
+  const MINIMUM_SPLIT_UNIT = 2;
+
   var resultEmailList = [];
   var splitNicknamesMap = new Map();
   var splitNicknames, nickName, email;
@@ -42,7 +44,7 @@ function getSplitNicknames(nickname) {
   var splitNames = [];
 
   for (var i = 0; i < nickname.length - 1; i++) {
-    splitNames.push(nickname.substr(i, 2));
+    splitNames.push(nickname.substr(i, MINIMUM_SPLIT_UNIT));
   }
 
   return splitNames;
