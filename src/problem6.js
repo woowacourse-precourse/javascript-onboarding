@@ -13,6 +13,27 @@ function problem6(forms) {
       }
     }
   }
+  // map의 key중 2번 이상 나온 key만 answer 배열에 push
+  let mapList = [...map];
+  let answerTok = [];
+  for (item of mapList) {
+    if (item[1] <= 1) continue;
+    else {
+      answerTok.push(item[0]);
+    }
+  }
+  // answerTok의 token을 포함한 nickname의 이메일을 answer 배열에 push
+  for (let i = 0; i < forms.length; i++) {
+    let nname = forms[i][1];
+    for (let token of answerTok) {
+      if (nname.includes(token)) {
+        answer.push(forms[i][0]);
+      }
+    }
+  }
+  // anwer 배열을 오름차순 정렬
+  answer = answer.sort();
+  return answer;
 }
 
 module.exports = problem6;
