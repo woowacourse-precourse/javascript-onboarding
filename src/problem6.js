@@ -66,7 +66,6 @@ function checkNickname(forms, map, rejectIndex){
       }
     }
   }
-  rejectIndex.sort();
 }
 
 function deduplicate(rejectIndex){
