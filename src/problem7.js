@@ -18,15 +18,15 @@ function problem7(user, friends, visitors) {
 
   // 기능 2
   score = makeScore(relation, userFriends);
-  console.log(score); // { donut: 0, andole: 0, jun: 0, shakevan: 0 }
+  console.log(score); // { andole: 0, jun: 0 }
 
   // 기능 3
   bothFriendCheck(relation, userFriends, score);
-  console.log(score); // { donut: 0, andole: 20, jun: 20, shakevan: 0 }
+  console.log(score); // { andole: 20, jun: 20 }
 
   // 기능 4
   checkVisitors(visitors, score);
-  console.log(score); // { donut: 1, andole: 20, jun: 20, shakevan: 1, bedi: 1 }
+  console.log(score); // { andole: 20, jun: 20, bedi: 3, donut: 1, shakevan: 1 }
 
   return answer;
 }
@@ -56,7 +56,7 @@ function makeScore(relation, userFriends) {
     if (id === user) { // 본인 제외
       continue;
     }
-    if (id in userFriends) { // 이미 친구인 경우 제외
+    if (userFriends.includes(id)) { // 이미 친구인 경우 제외
         continue;
     }
     score[id] = 0;
@@ -74,6 +74,9 @@ function bothFriendCheck(relation, userFriends, score) {
     // console.log(friend);
 
     if (friend === user) { // 본인 제외
+      continue;
+    }
+    if (userFriends.includes(friend)) { // 이미 친구인 경우 제외
       continue;
     }
 
