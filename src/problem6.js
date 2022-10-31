@@ -15,6 +15,20 @@ const createArr = (data) => {
 
     return splicing
   })
+  
+  //2번의 각 인덱스에 해당하는 값이 중복되는지 확인
+  for (let i =0; i <splicing.length; i++){
+    for (let j =i+1; j < splicing.length; j++){
+      const mergeSubstrings = [...splicing[i], ...splicing[j]]
+      const check = new Set(mergeSubstrings)
+      
+      if (mergeSubstrings.length !== check.size){
+        checkArr[i]=true
+        checkArr[j]=true
+      } 
+    } 
+  }
+
 }
  
 // function problem6(forms) {
