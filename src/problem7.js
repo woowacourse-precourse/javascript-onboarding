@@ -6,15 +6,10 @@
 // 5. 단, 동점을 경우 이름순으로 정렬하기
 // 6. answer는 최대 5명
 
-function problem7(user, friends, visitors) {
-  // 점수가 높은 순으로 최대 5명 정렬
-  let answer = [];
-  // 유저의 친구
+// user의 친구를 구하는 함수
+function findUserFriends(user, friends) {
   let userFriends = [];
-  // 아이디를 키로, 점수를 값으로 가지는 객체
-  let IdScore = {};
 
-  // user의 친구 구하기
   friends
     .filter((el) => el.includes(user))
     .filter((el) => {
@@ -22,6 +17,17 @@ function problem7(user, friends, visitors) {
         if (el[i] !== user) userFriends.push(el[i]);
       }
     });
+
+  return userFriends;
+}
+
+function problem7(user, friends, visitors) {
+  // 점수가 높은 순으로 최대 5명 정렬
+  let answer = [];
+  // 아이디를 키로, 점수를 값으로 가지는 객체
+  let IdScore = {};
+
+  let userFriends = findUserFriends(user, friends);
 
   // user의 친구의 친구 구하기
   for (let i = 0; i < userFriends.length; i++) {
