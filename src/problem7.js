@@ -88,6 +88,13 @@ function computeTotalFriendScore(...friendScores) {
   return friendScore;
 }
 
+function getValidFriendRecommendation({ user, friendsMap, scoreMap }) {
+  return [...scoreMap].filter(
+    ([friend, score]) =>
+      !isAlreadyFriend({ user, friend, friendsMap }) && isValidScore(score)
+  );
+}
+
 function cutListByComparison(compareFunction, array, maxCount = 5) {
   return array.sort(compareFunction).slice(0, maxCount);
 }
@@ -96,7 +103,7 @@ function problem7(user, friends, visitors) {
   const MAX_COUNT = 5;
   const friendsMap = createFriendsMap(friends);
 
-  const totalFriendScoreMap = computeTotalFriendScore(
+  const friendsScoreMap = computeTotalFriendScore(
     computeFriendScoreBySerperation({
       user,
       friendsMap,
@@ -104,15 +111,16 @@ function problem7(user, friends, visitors) {
     computeFriendScoreByVisiting(visitors)
   );
 
-  const filteredFriedScores = [...totalFriendScoreMap].filter(
-    ([friend, score]) =>
-      !isAlreadyFriend({ user, friend, friendsMap }) && isValidScore(score)
-  );
+  const filteredFriendScores = getValidFriendRecommendation({
+    user,
+    friendsMap,
+    scoreMap: friendsScoreMap,
+  });
 
   const slicedTotalFriendScore = cutListByComparison(
     ([nameA, scoreA], [nameB, scoreB]) =>
       scoreB - scoreA || nameA.localeCompare(nameB),
-    filteredFriedScores,
+    filteredFriendScores,
     MAX_COUNT
   );
 
