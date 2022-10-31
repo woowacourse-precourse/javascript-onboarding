@@ -1,4 +1,4 @@
-// 인자가 3,6,9 인지 확인하는 기능
+/** 인자가 3,6,9 인지 확인하는 기능 **/
 function find369(number) {
   if (number === "3" || number === "6" || number === "9") return true;
   else return false;
