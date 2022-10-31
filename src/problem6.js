@@ -31,6 +31,17 @@ class RenamingTargetListMaker {
         this.targetEmailList.add(email);
     }
   };
+
+  actionAboutAllForm(action, needInformationList) {
+    for (const form of this.forms) {
+      const [email, nickName] = form;
+      const informations = { email, nickName };
+      const params = needInformationList.map(
+        (information) => informations[information]
+      );
+      action(...params);
+    }
+  }
 }
 
 module.exports = problem6;
