@@ -51,7 +51,8 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  console.log(friendsPoint);
+  friendsPoint.sort((a, b) => b[1] - a[1]);
+
   return answer;
 }
 user = "mrko";
