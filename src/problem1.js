@@ -32,4 +32,14 @@ function splitPageNumbers(page) {
   return pageEl.map((el) => Number(el));
 }
 
+function setScore([left, right]) {
+  return Math.max(
+    // 가장 최대값
+    sumPageNum(left),
+    multiplyPageNum(left),
+    sumPageNum(right),
+    multiplyPageNum(right)
+  );
+}
+
 module.exports = problem1;
