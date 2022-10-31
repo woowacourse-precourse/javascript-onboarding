@@ -2,7 +2,7 @@ function problem3(number) {
   var answer;
 
   answer = 0;
-  for (i = 1; i <= number; i++) {
+  for (let i = 1; i <= number; i++) {
     if (i % 10 == 3 || i % 10 == 6 || i % 10 == 9){   //i를 10으로 나누었을 때 나머지가 3, 6, 9이면
       answer++; //answer 증가
     }
