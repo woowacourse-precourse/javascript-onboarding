@@ -21,26 +21,74 @@ function makeFriendsGraph(friends) {
 
 function getTwoDistanceFriends(start, graph) {
   const visited = new Set();
-  const queue = [];
+  const queue = new Queue();
   const result = [];
 
-  queue.push([start, 0]);
+  queue.enqueue([start, 0]);
   visited.add(start);
 
-  while (queue.length > 0 && queue[0][1] < 3) {
-    const [name, distance] = queue.pop();
+  while (!queue.isEmpty() && queue.head.value[1] < 3) {
+    const [name, distance] = queue.dequeue();
     if (distance === 2) result.push(name);
 
     const friends = graph[name] || [];
     friends.forEach((friend) => {
       if (!visited.has(friend)) {
-        queue.push([friend, distance + 1]);
+        queue.enqueue([friend, distance + 1]);
         visited.add(friend);
       }
     });
   }
 
   return result;
+}
+
+class Node {
+  constructor(value) {
+    this.value = value || null;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  enqueue(value) {
+    const newNode = new Node(value);
+
+    if (this.head === null) {
+      this.head = this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.size += 1;
+  }
+
+  dequeue() {
+    if (this.head === null) return;
+
+    const deletedValue = this.head.value;
+
+    if (this.head.next === null) {
+      this.head = this.tail = null;
+    } else {
+      this.head = this.head.next;
+    }
+
+    this.size -= 1;
+
+    return deletedValue;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
 }
 
 module.exports = problem7;
