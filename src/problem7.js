@@ -31,7 +31,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  
+
   var tmp = 0;
   for(let i = 0;i < arrFriends.length;i++){
     for(let j = 0;j < friends.length;j++){
@@ -39,6 +39,17 @@ function problem7(user, friends, visitors) {
         tmp = nameMap.get(findFriends(arrFriends[i],friends[j]));
         nameMap.set(findFriends(arrFriends[i],friends[j]),tmp+10);
       }
+    }
+  }
+
+  
+  for(let i = 0;i < visitors.length;i++){
+    if(!nameMap.has(visitors[i])){
+      nameMap.set(visitors[i],1);
+    }
+    else{
+      tmp = nameMap.get(visitors[i]);
+      nameMap.set(visitors[i],tmp+1);
     }
   }
   return answer;
