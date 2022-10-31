@@ -1,27 +1,13 @@
 function problem5(money) {
-    var answer;
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    const smallAbc = alphabet.split("");
-    const bigAbc = alphabet.toUpperCase().split("");
-    const maxIndex = alphabet.length - 1;
+    var answer = [];
 
-    let wordArr = word.split("");
-    let answerArr = [];
-
-    const isUpperCase = (e) => {
-        return e.toUpperCase() === e;
-    };
-
-    for (let i = 0; i < wordArr.length; i++) {
-        if (wordArr[i] == " ") {
-            answerArr.push(wordArr[i]);
-        } else if (isUpperCase(wordArr[i])) {
-            answerArr.push(bigAbc[maxIndex - bigAbc.indexOf(wordArr[i])]);
-        } else if (!isUpperCase(wordArr[i])) {
-            answerArr.push(smallAbc[maxIndex - smallAbc.indexOf(wordArr[i])]);
-        }
+    const moneyIndex = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+    for (let i = 0; i < moneyIndex.length; i++) {
+        let paperCount = Math.floor(money / moneyIndex[i]);
+        answer.push(paperCount);
+        money -= moneyIndex[i] * paperCount;
     }
-    answer = answerArr.join("");
+
     return answer;
 }
 
