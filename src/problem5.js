@@ -1,17 +1,16 @@
 function problem5(money) {
   const MONEYUNIT = [10000, 1000, 100, 10, 1]
-  const WALLET = [];
   
-  MONEYUNIT.map((unit, i) => {
-    if(i === 4) return WALLET.push(money);
+  const answer = MONEYUNIT.map((unit, i) => {
+    if(i === 4) return money;
     else {
       const Q = money / unit;
-      const R = money % unit
-      WALLET.push(...calculate(Q))
-      money = R;
+      money = money % unit
+      return calculate(Q)
     } 
   })
-  return WALLET;
+
+  return answer.flat();
 }
 
 function calculate(Q) {
