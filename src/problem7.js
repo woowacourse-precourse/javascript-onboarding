@@ -1,5 +1,9 @@
 function problem7(user, friends, visitors) {
   var answer;
+
+  const friendsTotalScore = calScore(user, friends, visitors);
+  const userFriendSet = getConnection(friends)[user];
+  answer = sortFriends(userFriendSet, friendsTotalScore);
   return answer;
 }
 
