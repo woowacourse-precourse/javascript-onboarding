@@ -3,6 +3,19 @@
 // 결과 set을 정렬하는 함수 구현
 // 구현된 함수를 이용하여 forms 각각의 중복을 체크하는 problem6 함수 구현
 
+function makeCharCases(charCases, forms) {
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 0; j < forms[i][1].length - 1; j++) {
+      const twoLengthChar = forms[i][1][j] + forms[i][1][j + 1];
+      if (charCases[twoLengthChar] === undefined) {
+        charCases[twoLengthChar] = 1;
+      } else {
+        charCases[twoLengthChar]++;
+      }
+    }
+  }
+}
+
 function problem6(forms) {
   var answer;
   return answer;
