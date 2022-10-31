@@ -4,8 +4,8 @@ function problem3(number) {
   const allNumbers = Array.from({length: number}, (_,i) => i+1).join('')
 
   // 모든 문자열에서 3, 6, 9 문자는 모두 배열에 담아져서 반환이 됩니다. 
-  const answer = allNumbers.match(/[3|6|9]/g);
-
+  const answer = allNumbers.match(/[3|6|9]/g) ?? [];
+  
   // 해당 배열이 곧 3, 6, 9의 갯수이므로 length로 반환을 합니다.
   return answer.length;
 }
