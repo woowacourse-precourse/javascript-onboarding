@@ -23,8 +23,13 @@ function counting(num) {
 
 function problem3(number) {
   var answer;
-  if(number>=1 || number<=10){
-
+  if(number>=1 || number<=10000){
+    let arr = toNum(number);
+  let res = 0;
+  for (let i = 0; i < arr.length; i++) {
+    res += counting(arr[i]);
+  }
+  answer = res;
   }
   else{return null;}
   return answer;
