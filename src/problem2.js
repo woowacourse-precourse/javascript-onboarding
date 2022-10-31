@@ -1,7 +1,5 @@
 function problem2(cryptogram) {
-  let answer;
-  answer = decodeCryptogram(cryptogram);
-  return answer;
+  return decodeCryptogram(cryptogram);
 }
 
 function decodeCryptogram(cryptogram) {
