@@ -7,6 +7,12 @@ function problem7(user, friends, visitors) {
       : scores.set(friends, scores.get(friends) + 1);
   }
   return Array.from(scores)
+    .sort(([leftUser, leftScore], [rightUser, rightScore]) => {
+      if (rightScore !== leftScore) return rightScore - leftScore;
+      if (leftUser < rightUser) return -1;
+      else if (leftUser > rightUser) return 1;
+      return 0;
+    })
     .filter(([friend]) => friend !== user)
     .filter(([friend]) => {
       if (friendHash.get(user) === undefined) return true;
