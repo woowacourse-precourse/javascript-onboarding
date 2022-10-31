@@ -22,8 +22,20 @@ function checkStack(stack, currentValue) {
 }
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const stack = [];
+  let latestDeleted = null;
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (checkLastDeleted(latestDeleted, cryptogram[i])) {
+      continue;
+    } else {
+      latestDeleted = null;
+    }
+
+    if (checkStack(stack, cryptogram[i])) {
+      latestDeleted = cryptogram[i];
+    }
+  }
+  return stack.join("");
 }
 
 module.exports = problem2;
