@@ -21,8 +21,9 @@ function problem6(forms) {
   formsMap.forEach((value, key) => {
     if (check(value)) emailList.push(key);
   })
+
+  //중복된 크루들의 이메일의 목록에서 중복을 제거하고, 오름차순으로 정렬하는 기능
+  return emailList = [...new Set(emailList)].sort()
 }
 
-problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ])
-
-// module.exports = problem6;
+module.exports = problem6;
