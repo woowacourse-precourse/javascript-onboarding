@@ -47,8 +47,8 @@ function compareResult({ pobiResult, crongResult, pobi, crong }) {
 }
 
 function exceptions(pages) {
-  if (Math.abs(pages[0] - pages[1]) !== 1) return 1;
-  if (pages.length < 2) return 1;
+  if (Math.abs(pages[0] - pages[1]) !== 1) return true;
+  if (pages[0] === 1 && pages[1] === 400) return true;
 }
 
 module.exports = problem1;
