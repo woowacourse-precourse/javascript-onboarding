@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
   const noFriend = findNoFriend(user, friends, userFriend);
   const candidateObj = {};
-  calculateNoFriendScore(userFriend, noFriend, candidateObj);
+  calculateNoFriendScore(user, friends, userFriend, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
   const sortedCandidate = sortCandidate(candidateObj);
   const fiveCandidate = getFiveCandidate(sortedCandidate);
@@ -32,15 +32,26 @@ function findNoFriend(user, friends, userFriend) {
   return allName.filter((name) => name !== user && !userFriend.includes(name));
 }
 
-function calculateNoFriendScore(userFriend, noFriend, candidateObj) {
+function calculateNoFriendScore(
+  user,
+  friends,
+  userFriend,
+  noFriend,
+  candidateObj
+) {
+  const noFriendWithUserFriend = [];
+  for (let i = 0; i < userFriend.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      if (friends[j].includes(userFriend[i]) && !friends[j].includes(user))
+        noFriendWithUserFriend.push(friends[j]);
+    }
+  }
   for (let i = 0; i < noFriend.length; i++) {
     let inclusionCounter = 0;
-    for (let j = 0; j < userFriend.length; j++) {
-      if (userFriend[j].includes(noFriend[i])) {
-        inclusionCounter++;
-      }
+    for (let j = 0; j < noFriendWithUserFriend.length; j++) {
+      if (noFriendWithUserFriend[j].includes(noFriend[i])) inclusionCounter++;
     }
-    candidateObj[noFriend[i]] = inclusionCounter * 10;
+    if (inclusionCounter > 0) candidateObj[noFriend[i]] = inclusionCounter * 10;
   }
 }
 
