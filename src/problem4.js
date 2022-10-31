@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  var answer = makeString(word);
   return answer;
 }
 const alphabetArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -40,6 +40,7 @@ function makeString(word) {
     });
     return outWord.toString().replace(/,/g,"");
   }
+  return transWord();
 }
 
 module.exports = problem4;
