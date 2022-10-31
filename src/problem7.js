@@ -46,13 +46,15 @@ function problem7(user, friends, visitors) {
   };
 
   const getTopFiveRecommendation = function (scoreSet) {
+    let cuttedScoreSet = [];
+
     scoreSet = [...scoreSet];
     scoreSet.sort((a, b) => {
       b[1] - a[1];
     });
-    scoreSet.slice(0, 4);
-
-    for (let [name, score] of scoreSet) {
+    
+    cuttedScoreSet = scoreSet.slice(0, 4);
+    for (let [name, score] of cuttedScoreSet) {
       answer.push(name);
     }
   };
