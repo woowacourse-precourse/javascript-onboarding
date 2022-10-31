@@ -7,7 +7,7 @@
   [O] user의 타임라인에 방문한 사람인 경우, 방문 횟수 당 score를 1씩 증가시키는 기능 | 함수명 : addScoreForVisiting
   [O] Map객체를 배열로 convert하는 기능 | 함수명 : convertMapToArr
   [O] score가 0일 때 리스트에서 제거하는 기능 | 함수명 : deleteZeroElement
-  [ ] 추천 친구를 점수가 가장 높은 순, 점수가 같은 경우 이름 순으로 정렬하는 기능
+  [O] 추천 친구를 점수가 가장 높은 순, 점수가 같은 경우 이름 순으로 정렬하는 기능 | compare 함수와 sort 메서드 사용 
   [ ] 리스트에서 사람 이름만 추출하여 배열로 반환하는 기능
   [ ] 리스트를 앞에서부터 최대 5개로 자르는 기능
 */
@@ -37,6 +37,8 @@ function problem7(user, friends, visitors) {
 
   let convertedScoreList = convertMapToArr(scoreList);
   let deleteZeroScoreList = deleteZeroElement(convertedScoreList);
+
+  deleteZeroScoreList.sort((a, b) => compare(a, b));
 }
 
 function initFriendsList(friendsList, person1, person2) {
@@ -81,6 +83,12 @@ function convertMapToArr(scoreList) {
 
 function deleteZeroElement(arr) {
   return arr.filter((el) => el[1] != 0);
+}
+
+function compare(a, b) {
+  if (a[1] !== b[1]) {
+    return a[0] - b[0] < 0 ? -1 : a[0] - b[0] > 0 ? 1 : 0;
+  }
 }
 
 module.exports = problem7;
