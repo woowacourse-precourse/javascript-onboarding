@@ -48,9 +48,9 @@ function problem7(user, friends, visitors) {
       if (a[1] !== b[1]) {
         return b[1] - a[1];
       }
-      a[0].localeCompare(b[0]);
+      return a[0].localeCompare(b[0]);
     });
-    if (scores.length > 6) {
+    if (scores.length > 5) {
       while (scores.length !== 5) {
         scores.pop();
       }
