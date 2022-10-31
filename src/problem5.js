@@ -20,6 +20,10 @@ const isPossibleToUseSelectedMoneyKind = (moneyLeft, moneyKind) => {
 const problem5 = (money) => {
   const answer = new Array(9).fill(0);
 
+  const moneyKinds = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]; // 화폐 종류
+  let moneyKindIndexToUse = 0; // 화폐 종류 포인터
+  let moneyLeft = money; // 처리해야 할 돈
+
   return answer;
 }
 
