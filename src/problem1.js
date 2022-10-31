@@ -26,6 +26,20 @@ function problem1(pobi, crong) {
     return result;
   }
 
+  function getPobiMaxResult(pobiPage) {
+    const leftResult = getAddResult(pobiPage[0]);
+    const rightResult = getMultiplyResult(pobiPage[1]);
+
+    return Math.max(leftResult, rightResult);
+  }
+
+  function getCrongMaxResult(crongPage) {
+    const leftResult = getAddResult(crongPage[0]);
+    const rightResult = getMultiplyResult(crongPage[1]);
+
+    return Math.max(leftResult, rightResult);
+  }
+
   return answer;
 }
 
