@@ -39,6 +39,13 @@ function addEmail(nameSlice, forms, result) {
   }
 }
 
+function hasManyOverlaps(nameSlice, count, forms, result) {
+  if (count > 1) {
+    //allSlices 내에 해당 중복 문자열(key)의 출현 빈도 수(value)가 1개 이상이라면
+    addEmail(nameSlice, forms, result); //이메일을 추가한다
+  }
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
