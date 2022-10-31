@@ -26,6 +26,9 @@ function problem7(user, friends, visitors) {
       if (map.get(v) !== 0) map.set(v, map.get(v) + 1);
     }
   }
+  // 정답 리스트 가공
+  answer = makeAnswer(map);
+  return answer;
 }
 
 function getUserFriends(user, friends) {
@@ -36,6 +39,18 @@ function getUserFriends(user, friends) {
     }
   }
   return u_friends;
+}
+
+function makeAnswer(map) {
+  let tmp = [...map];
+  let answer = [];
+  tmp = tmp
+    .sort((a1, a2) => (a2[1] === a1[1] ? a2[0] - a1[0] : a2[1] - a1[1]))
+    .filter((val) => val[1] !== 0);
+  for (a of tmp) {
+    answer.push(a[0]);
+  }
+  return answer;
 }
 
 module.exports = problem7;
