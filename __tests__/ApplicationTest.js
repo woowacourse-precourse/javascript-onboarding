@@ -18,6 +18,22 @@ describe('problem1', () => {
     test('case3', () => {
         expect(problem1([99, 102], [211, 212])).toEqual(-1);
     });
+
+    test('case4', () => {
+        expect(problem1([99, 103], [211, 212])).toEqual(-1);
+    });
+
+    test('case5', () => {
+        expect(problem1([399, 400], [211, 212])).toEqual(-1);
+    });
+
+    test('case6', () => {
+        expect(problem1([401, 402], [211, 212])).toEqual(-1);
+    });
+
+    test('case7', () => {
+        expect(problem1([99, 100], [-1, 0])).toEqual(-1);
+    });
 });
 
 describe('problem2', () => {
@@ -27,6 +43,17 @@ describe('problem2', () => {
     test('case2', () => {
         expect(problem2('zyelleyz')).toEqual('');
     });
+    test('case3', () => {
+        expect(problem2('zyellleyz')).toEqual('');
+    });
+
+    test('case4', () => {
+        expect(problem2('zyalllelyz')).toEqual('zyaelyz');
+    });
+
+    test('case4', () => {
+        expect(problem2('aabba')).toEqual('a');
+    });
 });
 
 describe('problem3', () => {
@@ -35,6 +62,12 @@ describe('problem3', () => {
     });
     test('case2', () => {
         expect(problem3(33)).toEqual(14);
+    });
+    test('case3', () => {
+        expect(problem3(333)).toEqual(228);
+    });
+    test('case4', () => {
+        expect(problem3(2)).toEqual(0);
     });
 });
 
