@@ -34,6 +34,14 @@ function problem7(user, friends, visitors) {
       sortable.push([key, score[key]]);
   }
 
+  // 5. 최고점 5명 정렬
+  var best = sortable.sort().sort((a, b) =>  b[1] - a[1]);
+
+  for(var n = 0; n < best.length; n++) {
+    answer.push(best[n][0]);
+    if(n >= 4) break;
+  }
+  
   return answer;
 }
 
