@@ -13,4 +13,10 @@ strangeAlphabetArr.forEach(element => {
   upperStrangeAlphabetArr.push(element.toUpperCase());
 });
 
+function makeString(word) {
+  let alphaItem = [];
+  for(i = 0; i < word.length; i++) {
+    alphaItem.push(word.substring(i, i+1));
+  }
+}
 module.exports = problem4;
