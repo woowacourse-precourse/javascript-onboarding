@@ -48,7 +48,6 @@ function problem4(word) {
 
   for (i = 0; i < word.length; i++) {
     if (checkEnglish(word[i])) {
-      console.log(word[i]);
       wordArr.push(getFrogSpelling(word[i]));
     } else {
       wordArr.push(word[i]);
