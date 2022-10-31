@@ -9,4 +9,18 @@ function problem3(number) {
   return answer;
 }
 
+function countClap(number) {
+  const clapNumbers = [3, 6, 9];
+  const numStrings = number.toString();
+  let clap = 0;
+
+  for (let numString of numStrings) {
+    if (clapNumbers.includes(parseInt(numString))) {
+      clap++;
+    }
+  }
+
+  return clap;
+}
+
 module.exports = problem3;
