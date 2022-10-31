@@ -5,7 +5,11 @@
   2. [x] number <- number / 10
 */
 
-
+/**
+ * Main functino - count 3,6,9 claps
+ * @param {number} number 
+ * @returns {number} clap - count number of 3,6,9
+ */
 function problem3(number) {
   let clap = 0;
 
