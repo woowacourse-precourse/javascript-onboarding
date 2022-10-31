@@ -1,36 +1,38 @@
-const splitNumber = (number) => {
-  const numberToString = number.toString();
-  const splittedNumber = numberToString.split("");
-  const stringToNumber = splittedNumber.map((item) => Number(item));
-  return stringToNumber;
+const getSplittedNumber = (number) => {
+  return number
+    .toString()
+    .split("")
+    .map((item) => Number(item));
 };
-const sumOfNumber = (number) => {
-  const splittedNumber = splitNumber(number);
+const getSumOfNumber = (number) => {
+  const splittedNumber = getSplittedNumber(number);
   const sum = splittedNumber.reduce(
     (accumulator, currentNumer) => accumulator + currentNumer,
     0
   );
+
   return sum;
 };
-const productOfNumber = (number) => {
-  const splittedNumber = splitNumber(number);
+const getProductOfNumber = (number) => {
+  const splittedNumber = getSplittedNumber(number);
   const product = splittedNumber.reduce(
     (accumulator, currentNumer) => accumulator * currentNumer,
     1
   );
+
   return product;
 };
-const findMaximumNumber = (book) => {
-  const [leftPage, rightPage] = book;
+const getMaximumNumber = ([leftPage, rightPage]) => {
   const maximumLeftPage = Math.max(
-    sumOfNumber(leftPage),
-    productOfNumber(leftPage)
+    getSumOfNumber(leftPage),
+    getProductOfNumber(leftPage)
   );
   const maximumRightPage = Math.max(
-    sumOfNumber(rightPage),
-    productOfNumber(rightPage)
+    getSumOfNumber(rightPage),
+    getProductOfNumber(rightPage)
   );
   const maximumNumber = Math.max(maximumLeftPage, maximumRightPage);
+
   return maximumNumber;
 };
 
@@ -70,12 +72,13 @@ function problem1(pobi, crong) {
     return EXCEPTION_OCCURRED;
   }
 
-  const pobiMax = findMaximumNumber(pobi);
-  const crongMax = findMaximumNumber(crong);
+  const pobiMaximumNumber = getMaximumNumber(pobi);
+  const crongMaximumNumber = getMaximumNumber(crong);
 
-  if (pobiMax > crongMax) answer = POBI_WIN;
-  if (pobiMax < crongMax) answer = CRONG_WIN;
-  if (pobiMax === crongMax) answer = DRAW;
+  if (pobiMaximumNumber > crongMaximumNumber) answer = POBI_WIN;
+  if (pobiMaximumNumber < crongMaximumNumber) answer = CRONG_WIN;
+  if (pobiMaximumNumber === crongMaximumNumber) answer = DRAW;
+
   return answer;
 }
 
