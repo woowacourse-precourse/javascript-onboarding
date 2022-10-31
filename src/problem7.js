@@ -27,10 +27,15 @@ const caculateScore = (acquaintance, visitors) => {};
 function problem7(user, friends, visitors) {
   const myFriends = getFriends(user, friends);
   const acquaintance = getAcquaintance(user, [myFriends, friends]);
-  // const scoreObj = acquaintance.reduce((acc, acquaintanceFriends) => {
-  //   return {...acc, []}
-  // }, {});
-  console.log(acquaintance);
+  const scoreObj = acquaintance.reduce(
+    (acc, friend) => ({ ...acc, [friend]: (acc[friend] || 0) + 10 }),
+    {}
+  );
+  const scoreObjWithVisitors = visitors.reduce((acc, visitor) => {
+    if (myFriends.includes(visitor)) return acc;
+    return { ...acc, [visitor]: (acc[visitor] || 0) + 1 };
+  }, scoreObj);
+  console.log(scoreObjWithVisitors);
   return 0;
 }
 
