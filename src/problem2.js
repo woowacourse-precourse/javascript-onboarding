@@ -1,16 +1,14 @@
-const duplicatedStringExist = (string) => {
-  const duplicateExist = string.search(/([a-zA-Z])\1/);
-  return duplicateExist !== -1;
+const duplicateStringExists = (string) => {
+  return string.search(/([a-zA-Z])\1/) !== -1;
 };
 
-const trimDuplicateString = (string) => {
-  const trimedString = string.replace(/([a-zA-Z])\1+/g, "");
-  return trimedString;
+const cutDuplicateString = (string) => {
+  return string.replace(/([a-zA-Z])\1+/g, "");
 };
 
 function problem2(cryptogram) {
-  while (duplicatedStringExist(cryptogram)) {
-    cryptogram = trimDuplicateString(cryptogram);
+  while (duplicateStringExists(cryptogram)) {
+    cryptogram = cutDuplicateString(cryptogram);
   }
   return cryptogram;
 }
