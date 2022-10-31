@@ -30,13 +30,11 @@ function problem7(user, friends, visitors) {
 
   scoreOverZero.sort((x, y) => {
     if (scores[x] === scores[y]) {
-      if (x > y) {
-        return 1;
-      }else if (x < y){
-        return -1;
-      }else{
-        return 0;
-      }
+      
+      if (x > y) return 1;
+      else if (x < y) return - 1;
+      else return 0;
+
     } else {
       return scores[y] - scores[x];
     }
