@@ -1,11 +1,9 @@
 function problem6(forms) {
     var answer = [];
-    let nicknames = [];
 
     // 1. 연속된 중복 글자가 있는지 확인
-    for (let i = 0; i < forms.length; i++) {
-        nicknames.push(forms[i][1]);
-    }
+    const nicknames = forms.map((form) => form[1]);
+
     function checkNickname(nickname, nicknames) {
         let isUnique;
         for (let i = 0; i < nickname.length; i++) {
@@ -36,5 +34,13 @@ function problem6(forms) {
 
     return answer;
 }
+
+problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+]);
 
 module.exports = problem6;
