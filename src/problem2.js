@@ -25,7 +25,7 @@ function deduplication(cryptogram) {
   return cryptogram;
 }
 
-console.log(problem2("browoanoommnaon"));
+console.log(problem2("zyellleyz"));
 
 
 module.exports = problem2;
