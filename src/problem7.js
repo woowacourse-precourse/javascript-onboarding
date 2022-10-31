@@ -28,6 +28,25 @@ function problem7(user, friends, visitors) {
   checkVisitors(visitors, score);
   console.log(score); // { andole: 20, jun: 20, bedi: 3, donut: 1, shakevan: 1 }
 
+  // 기능 5
+  // score = Object.keys(score).sort((x, y) => {
+  //   if (score[x] > score[y])
+  //       return -1;
+  //   else if (score[x] < score[y])
+  //       return 1;
+  //   else
+  //       return x - y;
+  // }).map(x => {
+  //   return {
+  //       [x]: score[x]
+  //   }
+  // });
+  scoreArray = sortScore(score);
+
+  console.log("scoreArray: ", scoreArray);
+
+  console.log(score);
+
   return answer;
 }
 
@@ -118,6 +137,31 @@ function checkVisitors(visitors, score) {
   }
   
   return;
+}
+
+// 기능 5. 점수는 내림차순, 이름은 오름차순
+function sortScore(score) {
+  let scoreArray = Object.entries(score);
+
+  scoreArray.sort(function(a, b) {
+    if (a[1] > b[1]) {
+      return -1;
+    }
+    if (a[1] < b[1]) {
+      return 1;
+    }
+    if (a[1] == b[1]) {
+      if (a[0] > b[0]) {
+        return 1;
+      }
+      if (a[0] < b[0]) {
+        return -1;
+      }
+    }
+    
+  });
+
+  return scoreArray;
 }
 
 
