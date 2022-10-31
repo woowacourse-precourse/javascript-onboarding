@@ -7,6 +7,10 @@ function problem7(user, friends, visitors) {
   );
   const overlapfriendsWithScore = getOverlapFriendObject(friendsOfFriendsList);
   const visitorWithScore = getVisitorObject(visitors, friendsOfUserList);
+  const mergedRecommendList = mergeRecommendList(
+    overlapfriendsWithScore,
+    visitorWithScore
+  );
 }
 
 function getFriends(user, buddies) {
@@ -62,4 +66,23 @@ function getVisitorObject(visitors, alreadyFriends) {
   return visitorWithScore;
 }
 
+function mergeRecommendList(overlapList, visitorList) {
+  const mergedList = [...overlapList];
+
+  mergedList.forEach((person) => {
+    visitorList.forEach((visitor) => {
+      if (person.name === visitor.name) {
+        person.score += visitor.score;
+      }
+    });
+  });
+
+  const visitOnly = visitorList.filter((visitor) => {
+    return mergedList.every((person) => person.name !== visitor.name);
+  });
+
+  mergedList.push(visitOnly);
+
+  return mergedList;
+}
 module.exports = problem7;
