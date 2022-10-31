@@ -97,11 +97,13 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
 ## :mag: [문제 5] 구현할 기능 목록
 
 * 전체 프로세서 관리할 `withdrawApp` 함수 생성.
-  + 각 지폐 종류를 저장하고 있는 `billType`을 선언.
+  + 각 지폐 종류를 저장하고 있는 배열 `billTypeArr`을 선언.
   + `calcWithdraw`에서 return 해주는 잔여금액을 변수 `currAccount`에 저장.
   + `calcWithdraw`에서 return 해주는 지폐 수를 배열 `currBillCount`에 저장.
   + ~~잔여 금액이 0원이 될 때 까지~~,(예외 입력값이 들어올 경우 무한 루프에 빠질 수 있기 때문에 변경함.) billType의 크기만큼, `calcWithdraw`을 호출함.
   + ~~잔여 금액이 0원이 되면,~~ billType의 크기만큼, `curMoney`를 return 한다.
+
+* 지폐 종류가 담긴 배열을 만들어주는 함수 `createBillTypeArr()` 생성.
 
 * `money`(현재 금액)과 `billType`(출금할 지폐 크기)를 입력하면, `currAccount`(남은 금액)과 `billCount`(최대 지폐수)를 출력하는 함수 `calcWithdraw`를 구현.
 
