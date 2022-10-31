@@ -9,11 +9,22 @@ function checkNum(money) {
   return flag;
 }
 
+// 기능2
+function withdraw(money, wallet) {
+  moneyList.map((v, i) => {
+    wallet[i] = Math.floor(money / moneyList[i]);
+    money -= wallet[i] * moneyList[i];
+  });
+  return wallet;
+}
+
 function problem5(money) {
   if (checkNum(money)) return;
 
   const listLength = moneyList.length;
   let answer = Array.from({ length: listLength }, () => 0);
+
+  answer = withdraw(money, answer);
 
   return answer;
 }
