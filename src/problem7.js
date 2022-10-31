@@ -1,6 +1,72 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  var answer = [];
+  let users = {};
+  let score = {};
+  let friend = [];
+
+  // listing
+  for (let val of friends) {
+    if (!users.hasOwnProperty(val[0]))
+      users[val[0]] = [val[1]];
+    else if (users.hasOwnProperty(val[0]))
+      users[val[0]].push(val[1]);
+
+    if (!users.hasOwnProperty(val[1]))
+      users[val[1]] = [val[0]];
+    else if (users.hasOwnProperty(val[1]))
+      users[val[1]].push(val[0]);
+
+    if (!score.hasOwnProperty(val[0]))
+      score[val[0]] = 0;
+    if (!score.hasOwnProperty(val[1]))
+      score[(val[1])] = 0;
+  }
+  
+  // scoring
+  for (let usr in users) {
+    if (users[usr].includes(user)) {
+      friend.push(usr);
+      for (let recomFriend of users[usr])
+        score[recomFriend] += 10;
+    }
+  }
+  for (let recomVisitors of visitors) {
+    if (!score.hasOwnProperty(recomVisitors))
+      score[recomVisitors] = 1;
+    else
+      score[recomVisitors] += 1;
+  }
+  
+  // excluding user and user's friends
+  for (let fri of friend) {
+    if (score.hasOwnProperty(fri))
+      delete score[fri];
+  }
+  if (score.hasOwnProperty(user))
+    delete score[user];
+
+  
+  let sorted = Object.entries(score).sort((a,b) => 
+  {
+    b[1] - a[1]; if (b[1]===a[1]) b[0]-a[0];
+  });
+  for (let ele of sorted) {
+    answer.push(ele[0])
+  }
+  return answer.slice(0,4);
+}
+
+function list(user, friends) {
+  let users = {};
+
+
+  return users;
+}
+
+function RecommendScore(users) {
+  let score = {};
+
+  return score;
 }
 
 module.exports = problem7;
