@@ -18,16 +18,16 @@ function friendScore(dude, friends, score, user) {
     friends.forEach((arr) => {
       const [A, B] = arr;
       if (canFriendScore(friend, user, A, B)) {
-        if (!score[B]) {
-          score[B] = 10;
-        } else {
+        if (score[B]) {
           score[B] += 10;
+        } else {
+          score[B] = 10;
         }
       } else if (canFriendScore(friend, user, B, A)) {
-        if (!score[A]) {
-          score[A] = 10;
-        } else {
+        if (score[A]) {
           score[A] += 10;
+        } else {
+          score[A] = 10;
         }
       }
     });
@@ -37,10 +37,10 @@ function friendScore(dude, friends, score, user) {
 function visitedScore(visitors, dude, score) {
   visitors.forEach((name) => {
     if (!dude.includes(name)) {
-      if (!score[name]) {
-        score[name] = 1;
-      } else {
+      if (score[name]) {
         score[name] += 1;
+      } else {
+        score[name] = 1;
       }
     }
   });
