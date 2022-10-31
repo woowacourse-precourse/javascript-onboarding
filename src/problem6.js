@@ -2,6 +2,26 @@ function problem6(forms) {
   var answer;
   return answer;
 }
+
+// 중복 닉네임 찾아서 set()으로 생성
+function checkDuplicationNickName(test_slice, forms, tmp) {
+  let obj = {};
+  let result = new Set();
+
+  for (let i = 0; i < test_slice.length; i++) {
+    for (let j = 0; j < test_slice[i].length; j++) {
+      obj.name = forms[i][0];
+      obj.dup = checkArray(i, test_slice[i][j], tmp);
+      console.log(obj);
+      // dup에 값이 있으면 이름 저장해라
+      if (obj["dup"] !== undefined) {
+        result.add(obj.name);
+        result.add(obj.dup);
+      }
+    }
+  }
+  return result;
+}
 // 중복값 찾기
 function checkArray(i, forms, array) {
   for (let j = 0; j < array[i].length; j++) {
