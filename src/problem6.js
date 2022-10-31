@@ -33,6 +33,12 @@ function includeDuplicate(n){
 
 function problem6(forms) {
     let answer;
+    answer=(includeDuplicate(forms)); 
+
+    answer=answer.filter((val,idx)=>{
+        return answer.indexOf(val)===idx;
+    });
+    answer.sort();
     return answer;
 }
 module.exports = problem6;
