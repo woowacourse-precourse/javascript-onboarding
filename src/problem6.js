@@ -1,48 +1,62 @@
-function problem6(forms) {
-  const check = (word1, word2, answer) => {
-    for (let i = 0; i < word1[1].length; i++) {
-      for (let j = 0; j < word2[1].length; j++) {
-        if (word1[1][i] === word2[1][j]) {
-          if (word1[1][i + 1] && word1[1][i + 1] === word2[1][j + 1]) {
-            answer.push(word1[0]);
-            answer.push(word2[0]);
-            return;
-          }
+const checkOverLapped = (crewOne, crewTwo) => {
+  const crewOneNickName = crewOne[1];
+  const crewTwoNickName = crewTwo[1];
+
+  for (let i = 0; i < crewOneNickName.length; i++) {
+    for (let j = 0; j < crewTwoNickName.length; j++) {
+      if (crewOneNickName[i] === crewTwoNickName[j]) {
+        if (
+          crewOneNickName[i + 1] &&
+          crewOneNickName[i + 1] === crewTwoNickName[j + 1]
+        ) {
+          return true;
         }
       }
     }
-  };
+  }
+  return false;
+};
 
-  const answer = [];
+const checkRightForm = (forms) => {
+  const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+  for (const form of forms) {
+    const [email, nickname] = form;
+    let isKorean = true;
+    //예외사항2
+    if (email.length < 11 || email.length >= 20) return false;
+    //예외사항3
+    if (email.split('@')[1] !== 'email.com') return false;
+    //예외사항4
+    if (nickname.length < 1 || nickname.length >= 20) return false;
+    //예외사항5
+    nickname.split('').forEach((element) => {
+      if (!korean.test(element)) isKorean = false;
+    });
+    if (!isKorean) return false;
+  }
+  return true;
+};
+
+function problem6(forms) {
+  //예외사항1
+  if (forms.length < 1 || forms.length > 1000) return 'ERROR';
+  //예외사항 나머지 종합
+  if (!checkRightForm(forms)) return 'ERROR';
+
+  const results = [];
 
   for (let i = 0; i < forms.length; i++) {
     for (let j = i + 1; j < forms.length; j++) {
-      check(forms[i], forms[j], answer);
+      if (checkOverLapped(forms[i], forms[j])) {
+        results.push(forms[i][0], forms[j][0]);
+      }
     }
   }
 
-  return Array.of(...new Set(answer)).sort();
-}
+  const settedResultArray = Array.of(...new Set(results));
 
-const testcase = [
-  [
-    ['jm@email.com', '제이엠'],
-    ['jason@email.com', '제이슨'],
-    ['woniee@email.com', '워니'],
-    ['mj@email.com', '엠제이'],
-    ['nowm@email.com', '이제엠'],
-  ],
-  [
-    ['jm@email.com', '원피스'],
-    ['jason@email.com', '제이슨'],
-    ['woniee@email.com', '원피수'],
-    ['mj@email.com', '엠제이'],
-    ['nowm@email.com', '수원피'],
-  ],
-];
-
-for (let i = 0; i < testcase.length; i++) {
-  console.log(`${i + 1} ${problem6(testcase[i])}`);
+  return settedResultArray.sort();
 }
 
 module.exports = problem6;
