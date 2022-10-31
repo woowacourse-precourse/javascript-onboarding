@@ -28,7 +28,7 @@
 ------------------------------
 <br>
 
-## [작성자] : 김동우(DongWooKim97) 
+## [작성자] : 김동우(DongWooKim97)  
 </br> 
 
 ## 📝 구현할 기능 목록
@@ -50,3 +50,28 @@
     - 사용자의 아이디가 알파벳 소문자로만 이루어져 있는지 확인 -> ```userIdValueCase()```
 
     - 동일한 친구 관계가 중복되어 있는지 확인 -> ```duplicateFriendship()```
+  
+</br> 
+
+### ✔️ 기능 2. 입력받은 user / friends 를 활용하여 유저의 친구 목록을 만드는 함수
+<br>
+
+  - 입력받은 user는 사용자의 이름이고, friends는 유저의 친구목록을 포함해 유저 친구의 친구 목록이 포함된 배열이다.
+
+  - 친구 추천 알고리즘을 구현하고자 하는 문제이기에, 유저의 친구는 점수를 카운팅하면 안됨 ❗️
+    - 친구 추천❓ -> 새로운 친구를 추천해주는 시스템으로, 이미 친구인 사람을 추천해주면 ❌
+
+  - 따라서, user와 친구 목록 배열인 friends을 용해 유저의 친구들을 1차적으로 선별한다.
+    ```javascript
+      function makeUserFriendList(user, friends) {
+        const userFriend = []
+        friends.forEach((v) => {
+          if (v.includes(user)) {
+            userFriend.push(v.filter(i => i !== user).join(''));
+          }
+        })
+        return userFriend
+        }
+    ````
+
+  - 함수 안에는 userFriend라는 새로운 배열을 만들고, friends목록을 순회하며 user라는 이름이 포함되어 있지 않는 요소만 userFriend배열에 추가하는 함수 ❗️
