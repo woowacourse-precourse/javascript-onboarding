@@ -27,14 +27,39 @@ function getInterFriendScore(user, friends){
   return friendCount(interFriendList);
 }
 
-function getVisitorScore(visitors){
-  const visitCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
-  return visitCount(visitors);
+// function getVisitorScore(user, friends, visitors){
+//   const userFriendList = getUserFriend(user, friends);
+//   const visitList = visitList.filter(v => !userFriendList.includes(v));
+//   const visitCount = (arr) => arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+//   return visitCount(visitors);
+// }
+
+function getVisitList(user, friends, visitors){
+   const userFriendList = getUserFriend(user, friends);
+   const visitList = visitors.filter(v => !userFriendList.includes(v));
+
+   return visitList;
 }
 
 function getScore(user, friends, visitors){
   const interFriendScore = getInterFriendScore(user, friends);
-  const visitScore = getVisitorScore(visitors);
+  const visitList = getVisitList(user, friends, visitors);
+
+  
+  for(let i = 0; i<visitList.length ; i++){
+    if(interFriendScore.hasOwnProperty(visitList[i])){
+      console.log(visitList[i]+"있음!");
+      interFriendScore[visitList[i]]+=1;
+    }
+    else{
+      console.log(visitList[i]+"없음!")
+      interFriendScore[visitList[i]] = 0;
+      interFriendScore[visitList[i]] +=1;
+      console.log(interFriendScore[visitList[i]]);
+
+    }
+  }
+  console.log(interFriendScore);
 
 }
 
