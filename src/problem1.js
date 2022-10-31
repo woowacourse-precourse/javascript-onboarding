@@ -1,5 +1,5 @@
-const START_PAGE_NUMBER = 1;
-const END_PAGE_NUMBER = 400;
+const FIRST_PAGE_NUMBER = 1;
+const LAST_PAGE_NUMBER = 400;
 
 function isInvalidPageNumbers(pageNumbers) {
   switch (true) {
@@ -7,7 +7,7 @@ function isInvalidPageNumbers(pageNumbers) {
       return true;
     case isImpossiblePage(pageNumbers):
       return true;
-    case hasBoundaryPageNumber(pageNumbers):
+    case isBoundaryPage(pageNumbers):
       return true;
     default:
       return false;
@@ -16,13 +16,11 @@ function isInvalidPageNumbers(pageNumbers) {
 
 function isOutOfBound(pageNumbers) {
   return pageNumbers.some(
-    (pn) => pn < START_PAGE_NUMBER || pn > END_PAGE_NUMBER,
+    (pn) => pn < FIRST_PAGE_NUMBER || pn > LAST_PAGE_NUMBER,
   );
 }
 
-function isImpossiblePage(pageNumbers) {
-  const [leftPageNumber, rightPageNumber] = pageNumbers;
-
+function isImpossiblePage([leftPageNumber, rightPageNumber]) {
   return (
     leftPageNumber % 2 !== 1 ||
     rightPageNumber % 2 !== 0 ||
@@ -30,65 +28,53 @@ function isImpossiblePage(pageNumbers) {
   );
 }
 
-function hasBoundaryPageNumber(pageNumbers) {
+function isBoundaryPage(pageNumbers) {
   return (
-    pageNumbers.includes(START_PAGE_NUMBER) ||
-    pageNumbers.includes(END_PAGE_NUMBER)
-  );
-}
-
-function getMaxScore(pageNumbers) {
-  return Math.max(getMaxSum(pageNumbers), getMaxMultiplication(pageNumbers));
-}
-
-function getMaxSum(pageNumbers) {
-  const sums = pageNumbers.map((pn) => getSum(pn));
-
-  return Math.max(...sums);
-}
-
-function getSum(pageNumber) {
-  const digits = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
-
-  return digits.reduce((prevSum, digit) => prevSum + digit, 0);
-}
-
-function getMaxMultiplication(pageNumbers) {
-  const multiplications = pageNumbers.map((pn) => getMultiplication(pn));
-
-  return Math.max(...multiplications);
-}
-
-function getMultiplication(pageNumber) {
-  const digits = `${pageNumber}`.split('').map((pn) => parseInt(pn, 10));
-
-  return digits.reduce(
-    (prevMultiplication, digit) => prevMultiplication * digit,
-    1,
+    pageNumbers.includes(FIRST_PAGE_NUMBER) ||
+    pageNumbers.includes(LAST_PAGE_NUMBER)
   );
 }
 
 function getWinner(pobiScore, crongScore) {
-  if (pobiScore > crongScore) {
-    return 1;
-  }
+  const POBI_WIN = 1;
+  const CRONG_WIN = 2;
+  const DRAW = 0;
 
-  if (pobiScore < crongScore) {
-    return 2;
+  switch (true) {
+    case pobiScore > crongScore:
+      return POBI_WIN;
+    case crongScore > pobiScore:
+      return CRONG_WIN;
+    default:
+      return DRAW;
   }
+}
 
-  return 0;
+function calcMaxScore(pageNumbers) {
+  return Math.max(
+    ...pageNumbers.map(calcSum),
+    ...pageNumbers.map(calcMultiplication),
+  );
+}
+
+function calcSum(pageNumber) {
+  return `${pageNumber}`.split('').reduce((prev, cur) => prev + +cur, 0);
+}
+
+function calcMultiplication(pageNumber) {
+  return `${pageNumber}`.split('').reduce((prev, cur) => prev * +cur, 1);
 }
 
 function problem1(pobi, crong) {
+  const EXCEPTION = -1;
+
   if (isInvalidPageNumbers(pobi) || isInvalidPageNumbers(crong)) {
-    return -1;
+    return EXCEPTION;
   }
 
-  const pobiScore = getMaxScore(pobi);
-  const crongScore = getMaxScore(crong);
+  const answer = getWinner(calcMaxScore(pobi), calcMaxScore(crong));
 
-  return getWinner(pobiScore, crongScore);
+  return answer;
 }
 
 module.exports = problem1;
