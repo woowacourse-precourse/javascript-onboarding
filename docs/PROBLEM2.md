@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 💡 기능 목록
+- 연속하는 중복 문자들을 삭제하는 기능
+- 연속하는 중복 문자가 없을 때까지 반복하는 기능
