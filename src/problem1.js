@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   //console.log("기본값",pobi, crong)
+  var answer;
   const N = 2;
 
   //실패 조건 검사
@@ -96,8 +97,10 @@ function problem1(pobi, crong) {
   } else if ( pobi_max == crong_max) {
     res = 0
   }
+
+  answer = res
   
-  return res
+  return answer
 
 }
 
