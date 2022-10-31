@@ -1,5 +1,6 @@
 function problem2(cryptogram) {
   const answer = decode(cryptogram);
+  console.log(answer);
   return answer;
 }
 
@@ -13,19 +14,32 @@ function problem2(cryptogram) {
 */
 function decode(cryptogram) {
   const stack = [];
+  let isDup = false;
   for(let i = 0 ; i < cryptogram.length ; i++) {
-    if (isEmpty(stack)) {
-      stack.push(cryptogram[i]);
-    } else {
-      if (isEqual(stack[stack.length-1], cryptogram[i])) {
-        stack.pop();
+    const current = cryptogram[i];
+    if (isEmpty(stack)) stack.push(current);
+    else {
+      const top = stack.length-1;
+      if (isEqual(current, stack[top])) {
+        isDup = true;
       } else {
-        stack.push(cryptogram[i]);
+        if (isEqual(isDup, true)) {
+          stack.pop();
+          isDup = false;
+          i--;
+        } else {
+          stack.push(current);
+        }
       }
+    }
+    if (isEqual(isDup,true) && isEqual(i, cryptogram.length-1)) {
+      stack.pop();
     }
   }
   return stack.join('');
 }
+
+problem2("zyellleyz");
 
 function isEmpty(stack) {
   return stack.length === 0;
