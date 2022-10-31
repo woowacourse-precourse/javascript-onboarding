@@ -8,7 +8,7 @@ function problem3(number) {
         }
     }
   }
-  var answer;
+  var answer = threeSixNineCount;
   return answer;
 }
 
