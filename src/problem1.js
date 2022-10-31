@@ -5,7 +5,7 @@ function problem1(pobi, crong) {
 
 function errorTestPass(leftPage, rightPage) {
   return (
-      rangeTest(leftPage) && rangeTest(rightPage) && pageTest(leftPage, rightPage)
+    rangeTest(leftPage) && rangeTest(rightPage) && pageTest(leftPage, rightPage)
   );
 }
 
@@ -38,8 +38,8 @@ function judBigTotalNum(addPageNum, multiplyPageNum) {
 
 function judBigPageNum(leftPageNumsSum, rightPageNumsSum) {
   return leftPageNumsSum > rightPageNumsSum
-      ? leftPageNumsSum
-      : rightPageNumsSum;
+    ? leftPageNumsSum
+    : rightPageNumsSum;
 }
 
 function CalculateBiggestPageNum(pages) {
@@ -49,7 +49,6 @@ function CalculateBiggestPageNum(pages) {
     const pageMultiply = multiplyPageNum(page);
     result.push(judBigTotalNum(pageAdd, pageMultiply));
   });
-
   return result;
 }
 
@@ -61,16 +60,14 @@ function CalculateBiggestPageNum(pages) {
 function judWinner(pobi, crong) {
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
-
   if (
-      !errorTestPass(pobiLeftPage, pobiRightPage) &&
-      errorTestPass(crongLeftPage, crongRightPage)
+    !errorTestPass(pobiLeftPage, pobiRightPage) &&
+    errorTestPass(crongLeftPage, crongRightPage)
   )
     return -1;
 
   const pobiResult = CalculateBiggestPageNum(pobi);
   const crongResult = CalculateBiggestPageNum(crong);
-
   const pobiBiggestNum = judBigPageNum(pobiResult[0], pobiResult[1]);
   const crongBiggestNum = judBigPageNum(crongResult[0], crongResult[1]);
 

@@ -12,7 +12,6 @@ function moneyExchange(money) {
     wallet[index] = bills;
     return change;
   }, money);
-
   return wallet;
 }
 

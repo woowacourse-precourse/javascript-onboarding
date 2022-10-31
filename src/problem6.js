@@ -1,9 +1,3 @@
-/***
- * 두글자 단위로 싹 파싱하여 자료구조에 저장 ObjectType {key: value [parsingNickname] : e-mail}
- * 중복되면 이메일 배열에 추
- * @param forms {Array}
- * @returns {*}
- */
 function problem6(forms) {
   var answer = makeDuplicateList(forms);
   return answer;

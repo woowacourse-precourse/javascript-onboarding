@@ -7,7 +7,6 @@ function recommendFriends(user, friends, visitors) {
   const resultPointMap = createResultMap(user, friends, visitors);
   const friendsMap = makeFriendsMap(friends);
   const userFriends = friendsMap[user];
-
   return removeUserFriends(sortList(resultPointMap), userFriends).slice(0, 5);
 }
 
@@ -36,15 +35,13 @@ function visitorsPointCounter(pointMap, visitors) {
       ? (prevPointMap[visitor] = 1)
       : (prevPointMap[visitor] += 1);
   });
-
   return prevPointMap;
 }
 
 function friendsPointCounter(user, friends) {
   const friendsMap = makeFriendsMap(friends);
-  let pointMap = {};
-
   const userFriends = friendsMap[user];
+  let pointMap = {};
 
   const friendsRelation = userFriends.reduce((acc, cur) => {
     acc.push(...searchFriends(user, friendsMap[cur]));
@@ -53,7 +50,6 @@ function friendsPointCounter(user, friends) {
   friendsRelation.forEach((friend) => {
     !pointMap[friend] ? (pointMap[friend] = 10) : (pointMap[friend] += 10);
   });
-
   return pointMap;
 }
 
