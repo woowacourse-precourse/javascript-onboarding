@@ -15,7 +15,8 @@ function problem6(forms) {
 
   const duplicateCollector = forms => {
 
-    const duplicateFormsBasket = {};
+    const duplicateForms = [];
+    const duplicateNickName = [];
 
     for(let i=0 ; i < forms.length ; i++){
 
@@ -24,29 +25,31 @@ function problem6(forms) {
       for(let j=0 ; j < stringArr.length-1 ; j++){
 
         string = stringArr[j] + stringArr[j+1];
-
-        if(!(duplicateFormsBasket[string])){
-          const duplicateForms = []; 
-        
-          for(let k=i ; k < forms.length ; k++){
-            if(forms[k][1].indexOf(string) !== -1) {
-              duplicateForms.push(forms[k][0]);
-            }
-          }
-          if(duplicateForms.length !== 1) {
-            duplicateFormsBasket[string] = duplicateForms.sort();
+        const formsForInput = []
+      
+        for(let k=i+1 ; k < forms.length ; k++){
+          if(forms[k][1].indexOf(string) !== -1 && duplicateForms.indexOf(forms[k][0]) === -1) {
+            formsForInput.push(forms[k][0]);
           }
         }
+
+        if(formsForInput.length !== 0) {
+          formsForInput.push(forms[i][0]);
+        }
+        
+        duplicateForms.push(...formsForInput);
       }
     }
 
-    return duplicateFormsBasket;
+    duplicateForms.sort();
+
+    return duplicateForms;
   };
 
   const filteredForms = singleNickNameDeleter(forms);
   const duplicateForms = duplicateCollector(filteredForms);
 
-  answer = Object.keys(duplicateForms).length === 1 ? duplicateForms[Object.keys(duplicateForms)[0]] : duplicateForms;
+  answer = duplicateForms;
 
   return answer;
 }

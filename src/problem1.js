@@ -75,8 +75,6 @@ function problem1(pobi, crong) {
     let totalError = false;
 
      totalPeoplePagesArr.map(personsPage => {
-       console.log(personsPage);
-       console.log(getError(personsPage));
       totalError = totalError || getError(personsPage);
      })
 
