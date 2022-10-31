@@ -25,7 +25,7 @@ function problem6(forms) {
       }
     }
   }
-  return answer;
+  return answer.sort();
 }
 
 module.exports = problem6;
