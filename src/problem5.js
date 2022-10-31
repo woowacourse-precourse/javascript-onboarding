@@ -1,5 +1,4 @@
 function returnCount(money, coin) {
-  console.log(money, coin, Math.floor(money / coin));
   return Math.floor(money / coin);
 }
 
