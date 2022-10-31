@@ -43,11 +43,11 @@ class Password {
   }
 
   getNoOverlapDecryption() {
-    let decryption = this.decrypt();
+    let decryption = this.decryptForOverlap();
 
     while (decryption.length !== this._cryptogram.length) {
       this._cryptogram = decryption;
-      decryption = this.decrypt();
+      decryption = this.decryptForOverlap();
     }
 
     return decryption;
