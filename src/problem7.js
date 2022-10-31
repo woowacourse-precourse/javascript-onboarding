@@ -58,6 +58,13 @@ function problem7(user, friends, visitors) {
     }
     return acc;
   }, {});
+
+  return Object.keys(recommendUserWithScore).sort((a, b) => {
+    if (recommendUserWithScore[a] === recommendUserWithScore[b]) {
+      return a.localeCompare(b);
+    }
+    return recommendUserWithScore[b] - recommendUserWithScore[a];
+  });
 }
 
 module.exports = problem7;
