@@ -9,9 +9,7 @@ function solve_cryptogram(str) {
     // If the character is same with the top of stack, delete the duplicated characters
     if (stack[stack.length - 1] === str[i]) {
       for (let j = i + 1; j < str.length; ++j) {
-        if (str[i] === str[j]) {
-          continue;
-        } else if (str[i] !== str[j]) {
+        if (str[i] !== str[j]) {
           i = j - 1;
           break;
         }
