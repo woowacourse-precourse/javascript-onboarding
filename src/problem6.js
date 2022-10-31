@@ -32,6 +32,11 @@ function deleteOverlap(arr) {
   return uniqueArr;
 }
 
+function sortByAscending(arr) {
+  let sortedArr = arr.sort();
+  return sortedArr;
+}
+
 module.exports = problem6;
 problem6([
   ["jm@email.com", "제이엠"],
