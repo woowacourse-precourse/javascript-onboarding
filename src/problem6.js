@@ -28,6 +28,7 @@ function problem6(forms) {
 }
 
 function compare(word1, word2) {
+  // a
   for (var i = 0; i < word1.length - 1; i++) {
     var having = word2.indexOf(word1.substring(i, 2)); // 연속하는 두 단어가 포함 되어 있는지 확인하는 변수
     if (having != -1) {
