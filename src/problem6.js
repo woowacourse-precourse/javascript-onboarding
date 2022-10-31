@@ -1,8 +1,3 @@
-function problem6(forms) {
-  console.log(divideEmail(forms));
-  console.log(divideNickname(forms));
-}
-
 // 이메일 배열
 function divideEmail(forms) {
   const emailArr = [...new Map(forms).keys()];
@@ -13,6 +8,12 @@ function divideEmail(forms) {
 function divideNickname(forms) {
   const nickArr = [...new Map(forms).values()];
   return nickArr;
+}
+
+// 중복 확인 배열
+function checkArray(forms) {
+  const checkArr = new Array(forms.length).fill(false);
+  return checkArr;
 }
 
 // 배열 중복 제거
@@ -34,29 +35,47 @@ function divideTwoWord(forms) {
     twoWordIndex = deleteOverlap(twoWordIndex);
     return twoWordIndex;
   })
-  console.log(twoWordArr);
+  // console.log(twoWordArr);
   return twoWordArr;
 }
 
-// 닉네임당 비교하기
-function compareNickname(twoWordArr, emailArr) {
+// 닉네임당 비교해서 check배열 채우기
+function compareNickname(twoWordArr, forms) {
+  const checkArr = checkArray(forms);
+
 	for (let i = 0; i < twoWordArr.length; i++) {
 		for (let j = i + 1; j < twoWordArr.length; j++) {
 			const combineArr = [...twoWordArr[i], ...twoWordArr[j]];
-      console.log(combineArr);
-			const arrangeArr = new Set(combineArr);
+			const cleanArr = new Set(combineArr);
 
-			if (combineArr.length !== arrangeArr.size) {
-				arrangeArr[i] = true;
-				arrangeArr[j] = true;
+			if (combineArr.length !== cleanArr.size) {
+				checkArr[i] = true;
+				checkArr[j] = true;
 			}
 		}
 	}
-  const overlapEmails = emailArr.filter((_, i) => arrangeArr[i]);
+
+  return checkArr;
+  // console.log(checkArr);
+  // const overlapEmails = emailArr.filter((_, i) => checkArr[i]);
+  // console.log(overlapEmails);
+  // return overlapEmails;
+}
+
+// check배열로 결과값 도출
+function checkResult(emailArr, checkArr) {
+  const overlapEmails = emailArr.filter((_, i) => checkArr[i]);
   return overlapEmails;
 }
 
-divideTwoWord([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
+function problem6(forms) {
+  const emailArr = divideEmail(forms);
+  const checkArr = compareNickname(divideTwoWord(forms), forms);
+  const Result = checkResult(emailArr, checkArr);
+  return ;
+}
+
+problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
 
 module.exports = problem6;
 
