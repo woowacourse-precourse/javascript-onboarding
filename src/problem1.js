@@ -1,10 +1,8 @@
 function problem1(pobi, crong) {
   let answer;
 
-  const checkPobiValidation =
-    checkIsContinuous(pobi) && checkPageIsInRange(pobi);
-  const checkCrongValidation =
-    checkIsContinuous(crong) && checkPageIsInRange(crong);
+  const checkPobiValidation = isContinuous(pobi) && isInRange(pobi);
+  const checkCrongValidation = isContinuous(crong) && isInRange(crong);
   if (!checkPobiValidation || !checkCrongValidation) {
     answer = -1;
     return answer;
@@ -17,7 +15,7 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-function checkIsContinuous(inputArr) {
+function isContinuous(inputArr) {
   const diff = inputArr[0] - inputArr[1];
   if (diff !== -1) {
     return false;
@@ -25,11 +23,16 @@ function checkIsContinuous(inputArr) {
   return true;
 }
 
-function checkPageIsInRange(inputArr) {
-  if (inputArr[1] !== 1 || inputArr[0] !== 400) {
-    return true;
+function isInRange(inputArr) {
+  if (
+    inputArr[0] < 1 ||
+    inputArr[0] > 400 ||
+    inputArr[1] < 1 ||
+    inputArr[1] > 400
+  ) {
+    return false;
   }
-  return false;
+  return true;
 }
 
 function findMaxValue(inputArr) {
