@@ -5,9 +5,7 @@ function problem3(number) {
   for (let i=1; i<=number; i++) {
     const matchNum = i.toString().match(clapNum);
 
-    if(matchNum !== null) { // match된 3, 6, 9가 있을 경우
-      clap += matchNum.length;
-    } 
+    if (matchNum !== null) clap += matchNum.length;
   }
 
   return clap;
