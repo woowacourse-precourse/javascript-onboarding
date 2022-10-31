@@ -36,5 +36,6 @@ function devidePeople(forms) {
       }
     }
   }
+  return [...new Set(peopleToChange.sort())];
 }
 module.exports = problem6;
