@@ -28,11 +28,20 @@ function problem7(user, friends, visitors) {
       } else recommendPoint[visitor] = 1;
     }
   })
+
+  //최대 5명의 추천 친구를 점수 순으로 정렬하는 기능
+  const friendList = (list) => {
+    let listArr = Object.entries(list)
+    .sort((pa, pb) => pb[1] - pa[1])
+
+    let listObj = Object.fromEntries(listArr)
+    let listName = Object.keys(listObj)
+    listName = listName.slice(0, 5)
+
+    return listName
+  }
+
+  return friendList(recommendPoint)
 }
 
-problem7(
-  "mrko", 
-  [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-)
-// module.exports = problem7;
+module.exports = problem7;
