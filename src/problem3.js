@@ -23,4 +23,13 @@ function countClap(number) {
   return clap;
 }
 
+function countTotalClap(number) {
+  let totalClap = 0;
+  for (let i = 1; i <= number; i++) {
+    totalClap += countClap(i);
+  }
+
+  return totalClap;
+}
+
 module.exports = problem3;
