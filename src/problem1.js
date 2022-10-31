@@ -27,8 +27,9 @@ function problem1(pobi, crong) {
 function isValid(book) {
 	var left, right;
 	left = book[0]; right = book[1];
-	if((right - left) != 1) return false;				// 한 페이지 차이인지 검사
-	if(left % 2 != 1 || right % 2 != 0) return false;	// 왼쪽이 홀수, 오른쪽이 짝수인지 검사
+	if(left < 1 || left > 400 || right < 1 || right > 400) return false;	// 1~400 인지 검사
+	if((right - left) != 1) return false;									// 한 페이지 차이인지 검사
+	if(left % 2 != 1 || right % 2 != 0) return false;						// 왼쪽이 홀수, 오른쪽이 짝수인지 검사
 
 	return true;
 }
