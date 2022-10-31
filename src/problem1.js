@@ -48,12 +48,21 @@ function compare(scoreA, scoreB) {
   if (scoreA === scoreB) return 0;
 }
 
-
+/**
+ * 각 자리 숫자의 합
+ * @param {Number} 
+ * @returns 각 자리 숫자의 합
+ */
 function sum(n) {
   let sumArr = (n+"").split("").map(x => parseInt(x))
   return sumArr.reduce((acc, cur) => acc + cur, 0)
 }
 
+/**
+ * 각 자리 숫자의 곱
+ * @param {Number} 
+ * @returns 각 자리 숫자의 곱
+ */
 function multiply(n) {
   let multiplyArr = (n+"").split("").map(x => parseInt(x))
   return multiplyArr.reduce((acc, cur) => acc * cur)
