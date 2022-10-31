@@ -37,6 +37,10 @@ function problem6(forms) {
     }
   }
 
+  forms.forEach((element) => {
+    splitNickname(element[1]);
+  });
+
   return answer;
 }
 
