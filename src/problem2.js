@@ -19,57 +19,38 @@ class ErrorCase {
   }
 }
 
-class Stack {
-  constructor() {
-    this._arr = [];
-  }
-
-  toString() {
-    return this._arr.join("");
-  }
-
-  isEmpty() {
-    return this._arr.length === 0;
-  }
-
-  peek() {
-    return this._arr[this._arr.length - 1];
-  }
-
-  pop() {
-    return this._arr.pop();
-  }
-
-  push(value) {
-    this._arr.push(value);
-  }
-}
-
 class Password {
   constructor(cryptogram) {
     new ErrorCase(cryptogram);
 
-    this.stack = new Stack();
-    this.cryptogramList = cryptogram.split("");
-    this.prevPopValue = "";
+    this._cryptogram = cryptogram;
   }
 
-  decrypt(char) {
-    if (!this.stack.isEmpty() && this.stack.peek() === char) {
-      this.stack.pop();
-      this.prevPopValue = char;
-    } else if (this.prevPopValue !== char) {
-      this.stack.push(char);
-      this.prevPopValue = "";
+  getUseCharList() {
+    return [...new Set(this._cryptogram.split(""))];
+  }
+
+  decrypt() {
+    const usingCharList = this.getUseCharList();
+    let result = this._cryptogram;
+
+    for (const char of usingCharList) {
+      const regex = new RegExp(`${char}{2,}`, "g");
+      result = result.replace(regex, "");
     }
+
+    return result;
   }
 
   getDecryption() {
-    for (let char of this.cryptogramList) {
-      this.decrypt(char);
+    let decryption = this.decrypt();
+
+    while (decryption.length !== this._cryptogram.length) {
+      this._cryptogram = decryption;
+      decryption = this.decrypt();
     }
 
-    return this.stack.toString();
+    return decryption;
   }
 }
 
