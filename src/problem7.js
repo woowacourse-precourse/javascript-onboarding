@@ -56,6 +56,24 @@ const getAlreadyFriendArray = (friedArray, targetUser) => {
   return copyArray(alreadyFriendSet);
 };
 
+const excludeFriendsFunc = (friendsArray, alreadyFriendList, user) => {
+  const resultArray = [];
+
+  each(friendsArray, ([idA, idB]) => {
+    each(alreadyFriendList, alreadyFriend => {
+      if (idA === alreadyFriend) {
+        resultArray.push(idB);
+      }
+
+      if (idB === alreadyFriend) {
+        resultArray.push(idA);
+      }
+    });
+  });
+
+  return resultArray.filter(friend => friend !== user);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
