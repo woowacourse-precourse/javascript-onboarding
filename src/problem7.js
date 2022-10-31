@@ -33,7 +33,6 @@ function problem7(user, friends, visitors) {
       return graph;
     }
   }
-
   const userGraph = new AdjacencyList(
     friends,
     relatedUsers
@@ -45,21 +44,66 @@ function problem7(user, friends, visitors) {
       this.relatedUsers = relatedUsers;
       this.userGraph = userGraph;
     }
-    finduserFrined() {
+    findUserFriend() {
       const alreadyFriends = userGraph[relatedUsers.indexOf(user)];
       let alreadyFriendsDict = {};
       for (let i = 0; i < alreadyFriends.length; i++) {
-        const key = relatedUsers[alreadyFriends[i]]
-        alreadyFriendsDict[key] = 0;
+        alreadyFriendsDict[relatedUsers[alreadyFriends[i]]] = alreadyFriends[i];
       }
       return alreadyFriendsDict;
     }
   }
-  const userFined = new FindFrined(
+  const userFriend = new FindFrined(
     user,
     relatedUsers,
     userGraph
-  ).finduserFrined();
+  ).findUserFriend();
+  
+  class RecommendFriend {
+    constructor(userFriend,userGraph,relatedUsers){
+      this.userFriend = userFriend
+      this.userGraph = userGraph
+      this.relatedUsers = relatedUsers
+    }
+    recommend(){
+      let values = Object.values(userFriend)
+      let weightValues = {}
+      values.forEach((cur) => {
+        const nxts = userGraph[cur]
+        nxts.forEach((nxt) => {
+          const key = relatedUsers[nxt]
+          if(key in weightValues){
+            weightValues[key] += 10
+          }
+          else{
+            weightValues[key] = 10
+          }
+        })
+      })
+      return weightValues
+    }
+  }
+  const recommendedUser = new RecommendFriend(userFriend,userGraph,relatedUsers).recommend()
+  
+  class Visit{
+    constructor(visitors,recommendedUser){
+      this.visitors = visitors
+      this.recommendedUser = recommendedUser
+    }
+    countVisit(){
+      visitors.forEach((key) =>{
+        if(key in recommendedUser){
+          recommendedUser[key] += 1
+        }
+        else {
+          recommendedUser[key] = 1
+        }
+      })
+      return recommendedUser
+    }
+  }
+  const answers = new Visit(visitors,recommendedUser).countVisit()
+  console.log(answers)
 
 }
 
