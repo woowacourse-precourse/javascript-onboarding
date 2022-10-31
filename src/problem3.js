@@ -5,9 +5,9 @@ function problem3(number) {
 
 function gameMatcher(number){
   let result = 0;
-  const condition = /[3|6|9]/;
+  const condition = /3|6|9/g;
   for (let i =1; i<=number; i ++)
-    result+= [...i.toString().matchAll(condition)].length;
+    result+= [...i.toString().matchAll(condition)]?.length||0;
   return result;
 }
 
