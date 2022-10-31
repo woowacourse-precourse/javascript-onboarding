@@ -4,7 +4,7 @@
 // 2. 이메일 리스트를 오름차순으로 정렬하고 중복은 제거하는 기능
 
 function problem6(forms) {
-  var answer;
+  var answer = [];
 
   for(var f of forms) {
     for(var i = 0; i < f[1].length-1; i++) {
@@ -16,6 +16,11 @@ function problem6(forms) {
       }
     }
   }
+
+  // 이메일 중복 제거 및 정렬
+  answer = answer.sort().filter(function(item, idx, array) {
+      return !idx || item != array[idx - 1];
+    });
   return answer;
 }
 
