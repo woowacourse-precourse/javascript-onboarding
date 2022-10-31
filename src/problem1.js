@@ -1,20 +1,12 @@
 function problem1(pobi, crong) {
-
-  //기능요구사항
-  //1~400
-  //왼 홀 오 짝 v
-  //시작, 마지막 면이 나오지 않게
-
-  //제한사항
-  //길이 2
-  //왼오
-  
   var answer;
   if (
     pobi[1] !== pobi[0] + 1 ||
     crong[1] !== crong[0] + 1 ||
     pobi[0] % 2 === 0 ||
-    crong[0] % 2 === 0
+    crong[0] % 2 === 0 ||
+    (pobi[0] < 3 || pobi[0] > 398) ||
+    (crong[0] < 3 || crong[0] > 398)
   ) {
     return -1;
   }
@@ -40,5 +32,6 @@ function problem1(pobi, crong) {
   } else answer = 2;
   return answer;
 }
+
 
 module.exports = problem1;
