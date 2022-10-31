@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
 
   const allRelationships = findAllRelationship(friends);
   findMutualFriends(user, allRelationships, recommendationObj);
+  findNewVisitors(visitors, allRelationships, user, recommendationObj);
 
   return answer;
 }
@@ -39,6 +40,17 @@ function findMutualFriends(user, allRelationships, recommendation) {
           recommendation[friend] += 10;
         }
       }
+    }
+  }
+}
+
+function findNewVisitors(visitors, allRelationships, user, recommendation) {
+  for (let visitor of visitors) {
+    if (!allRelationships[user].includes(visitor)) {
+      if (!recommendation[visitor]) {
+        recommendation[visitor] = 0;
+      }
+      recommendation[visitor] += 1;
     }
   }
 }
