@@ -52,6 +52,13 @@ const calculateScore10 = (score10PeopleArray, scoreObj) => {
   }
 };
 
+const deleteScore0 = (scoreObj) => {
+  const objKeys = Object.keys(scoreObj);
+  objKeys.forEach((objKey) => {
+    if (scoreObj[objKey] === 0) scoreObj[objKey].delete;
+  });
+};
+
 function problem7(user, friends, visitors) {
   const scoreObject = {};
   const scoreListKeyArray = new Set();
@@ -70,6 +77,8 @@ function problem7(user, friends, visitors) {
   addVisitorScore(findPureVisitor(visitors, findUserFriendShip(friends, user)), scoreObject);
 
   calculateScore10(make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user)), scoreObject);
+
+  deleteScore0(scoreObject);
 
   const sortScoreObj = Object.keys(scoreObject)
     .sort((a, b) => scoreObject[b] - scoreObject[a])
