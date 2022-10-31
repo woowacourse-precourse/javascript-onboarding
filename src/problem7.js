@@ -118,6 +118,11 @@ function isUserIdLengthValid(user) {
   }
 }
 
+function isLengthValid(arr, minimumLen, maximumLen, ErroMessage) {
+  if (arr.length < minimumLen || arr.length > maximumLen) {
+    throw ErroMessage;
+  }
+}
 function problem7(user, friends, visitors) {
   const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
