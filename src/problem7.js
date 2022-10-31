@@ -29,7 +29,16 @@ function algorithm(user, friends, visitors){
       }
     }
   }
-
+  //기능목록2: 사용자 타임라인에 방문한 횟수 점수
+  for(var i=0; i<visitors.length; i++){
+    if(userFriends.has(visitors[i])==false){
+      if(visitors[i] in score){
+        score[visitors[i]]+=1;
+      }else{
+        score[visitors[i]]=1;
+      }
+    }
+  }
 }
 function problem7(user, friends, visitors) {
   var answer;
