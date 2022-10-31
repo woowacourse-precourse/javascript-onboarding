@@ -1,6 +1,7 @@
 function problem5(money) {
-  var answer;
+  const answer = [];
   return answer;
 }
-
+let money = 50237;
+console.log(problem5(money));
 module.exports = problem5;
