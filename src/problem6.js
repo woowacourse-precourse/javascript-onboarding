@@ -21,8 +21,9 @@ function makeContinueNick(forms) {
 // 기능2
 function checkContinueNick(continueArr) {
   let continueNickArr = [];
-  for (let i = 0; i < continueArr.length - 1; i++) {
-    for (let j = i + 1; j < continueArr.length; j++) {
+  const length = continueArr.length;
+  for (let i = 0; i < length - 1; i++) {
+    for (let j = i + 1; j < length; j++) {
       for (let k = 0; k < continueArr[i][1].length; k++) {
         if (continueArr[i][1].includes(continueArr[j][1][k])) {
           continueNickArr.push(i, j);
