@@ -5,7 +5,7 @@
   [O] 해당 사람이 user의 friend인지 확인하는 기능 | 함수명 : isFriendWithUser
   [O] user와 함께 아는 친구인 경우가 있는 사람인 경우, 아는 친구 한명 당 score를 10씩 증가시키는 기능 | 함수명 : addScoreForMutualFriend
   [O] user의 타임라인에 방문한 사람인 경우, 방문 횟수 당 score를 1씩 증가시키는 기능 | 함수명 : addScoreForVisiting
-  [ ] Map객체를 배열로 convert하는 기능
+  [O] Map객체를 배열로 convert하는 기능 | 함수명 : convertMapToArr
   [ ] score가 0일 때 리스트에서 제거하는 기능
   [ ] 추천 친구를 점수가 가장 높은 순, 점수가 같은 경우 이름 순으로 정렬하는 기능
   [ ] 리스트에서 사람 이름만 추출하여 배열로 반환하는 기능
@@ -34,6 +34,8 @@ function problem7(user, friends, visitors) {
   visitors.forEach((visitor) => {
     addScoreForVisiting(scoreList, userFriendsList, visitor);
   });
+
+  let convertedScoreList = convertMapToArr(scoreList);
 }
 
 function initFriendsList(friendsList, person1, person2) {
@@ -70,6 +72,10 @@ function addScoreForVisiting(scoreList, userFriendsList, visitor) {
   } else {
     scoreList.set(visitor, scoreList.get(visitor) + 1);
   }
+}
+
+function convertMapToArr(scoreList) {
+  return Array.from(scoreList);
 }
 
 module.exports = problem7;
