@@ -8,6 +8,16 @@ function divideString(n) {
     }
     return result;
 }
+function findDuplicate(n){
+    let result=[];
+    for(let i=0;i<n.length;i++){
+        if(i!==n.indexOf(n[i])){
+            result.push(n[i]);
+        }
+    }
+    return result;
+}
+
 function problem6(forms) {
     let answer;
     return answer;
