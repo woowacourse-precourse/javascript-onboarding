@@ -14,6 +14,11 @@ function getMulti(n) {
   return multi;
 }
 
+// 각 페이지별로 각 자리 숫자를 모두 더하거나 곱해서 나온 수들 중 최댓값을 반환하는 기능
+function getScore(page) {
+  return Math.max(getSum(page[0]), getMulti(page[0]), getSum(page[1]), getMulti(page[1]));
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
