@@ -44,12 +44,19 @@ function findDuplicateUser(duplicateUserWordArr, forms) {
   return [...new Set(duplicatedUser)];
 }
 
+function getEmail(userArr) {
+  emailArr = [];
+  userArr.map((user) => emailArr.push(user[0]));
+  return [...new Set(emailArr)];
+}
+
 function problem6(forms) {
-  var answer;
   const userNameArr = getUserName(forms);
   const cutUserNameArr = cutUserName(userNameArr);
   const duplicateUserWordArr = findDuplicateUserWord(cutUserNameArr);
   const duplicateUserArr = findDuplicateUser(duplicateUserWordArr, forms);
+  const answer = getEmail(duplicateUserArr);
+
   return answer;
 }
 
