@@ -41,6 +41,11 @@ function problem7(user, friends, visitors) {
         : answer.set(element, 1)
       : "";
   });
+
+  const sort_score = [...answer].sort((a, b) => b[1] - a[1]);
+  const sort_name = sort_score.sort((a, b) => a[0] - b[0]);
+  answer = sort_name.map((e) => e[0]);
+  return answer;
 }
 
 module.exports = problem7;
