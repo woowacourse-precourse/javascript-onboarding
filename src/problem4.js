@@ -20,6 +20,8 @@ function problem4(word) {
       answer += String.fromCharCode(219 - char.charCodeAt(0));
     } else if (isLowerCase(char)) {
       answer += String.fromCharCode(155 - char.charCodeAt(0));
+    } else {
+      answer += char;
     }
   });
   return answer;
