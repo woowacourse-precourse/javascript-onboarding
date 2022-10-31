@@ -79,4 +79,11 @@ function recommendationList(arr) {
   return results;
 }
 
+function checkUserFriendsInResults(userFriend, recomLists) {
+  for (let i = 0; i < userFriend.length; i++) {
+    recomLists.splice(recomLists.indexOf(userFriend[i]), 1);
+  }
+  return recomLists;
+}
+
 module.exports = problem7;
