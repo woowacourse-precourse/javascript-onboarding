@@ -69,8 +69,13 @@ function deleteZeroValue(sortedMap) {
   return sortedMapToArr;
 }
 
+function sliceFiveUser(deletedZeroValue) {
+  let username = [];
+  deletedZeroValue.slice(0, 5).map((user) => username.push(user[0]));
+  return username;
+}
+
 function problem7(user, friends, visitors) {
-  var answer;
   const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
   const recommendFrindsArr = getRecommendFriendsArr(friends, friendsArr, user);
@@ -79,6 +84,8 @@ function problem7(user, friends, visitors) {
   addFriendsToMap(friendsArr, scoreMap);
   const sortedMap = sortMap(scoreMap);
   const deletedZeroValue = deleteZeroValue(sortedMap);
+  const answer = sliceFiveUser(deletedZeroValue);
+
   return answer;
 }
 
