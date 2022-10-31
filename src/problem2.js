@@ -1,10 +1,10 @@
 function problem2(cryptogram) {
-  let stack=[];
+  let answer=[];
   for (let word of cryptogram) {
-    if (stack[stack.length-1] != word) stack.push(word);
-    else stack.pop();
+    if (answer[answer.length-1] != word) answer.push(word);
+    else answer.pop();
   };
-  return stack.join('');
+  return answer.join('');
 };
 
 module.exports = problem2;
