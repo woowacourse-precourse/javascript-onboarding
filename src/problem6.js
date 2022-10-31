@@ -7,8 +7,21 @@ function includeSameChar(nick1, nick2){
   }
   return false;
 }
+
 function problem6(forms) {
   var answer;
+  const set = new Set();
+  for(let i = 0 ; i < forms.length-1 ; i++){
+    for(let j = i+1 ; j < forms.length ; j++){
+      // 이미 존재하는 경우 넘어감
+      if(set.has(forms[i][0]) && set.has(forms[j][0]))
+        continue;
+      if(includeSameChar(forms[i][1], forms[j][1])){
+        set.add(forms[i][0]);
+        set.add(forms[j][0]);
+      }
+    }
+  }
   return answer;
 }
 
