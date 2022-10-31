@@ -72,7 +72,6 @@ function problem6(forms) {
   }
   // 오름차순으로 정렬
   answer.sort();
-
   return answer;
 }
 
