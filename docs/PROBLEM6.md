@@ -28,4 +28,4 @@
 3. 모든 닉네임의 연속된 2글자 부분집합을 key로 갖는 dictionary 생성(value는 count값)
 4. 각 닉네임의 2글자 부분집합을 key로 dictionary value 검사
 5. 해당 key의 value가 2 이상일 경우 해당 이메일을 answer 배열에 push
-6. answer 배열을 정렬해 반환
+6. answer 배열의 중복을 제거하고 정렬해 반환
