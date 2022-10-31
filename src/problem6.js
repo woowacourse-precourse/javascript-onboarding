@@ -7,12 +7,12 @@ function problem6(forms) {
     let name = e[1];
     let email = e[0];
 
-    for (let i = 0; i < name.length - 1; i++){
+    for (let i = 0; i < name.length - 1; i++) {
       let str2 = name[i];
-      for (let j  = i + 1; j < name.length; j++){
+      for (let j = i + 1; j < name.length; j++) {
         str2 += name[j];
-        if(str[str2]){
-        str[str2] = [email, ...str[str2]];
+        if (str[str2]) {
+          str[str2] = [email, ...str[str2]];
         } else {
           str[str2] = [email];
         }
