@@ -1,3 +1,6 @@
+const MIN_LENGTH = 1;
+const MAX_LENGTH = 10000;
+
 function problem6(forms) {
   if (!checkValidation(forms)) throw new Error("입력오류입니다.");
   var answer = getEmailList(forms);
@@ -41,7 +44,7 @@ function checkValidation(forms) {
   return checkLength(forms) && checkEmail(forms) && checkNickname(forms);
 }
 function checkLength(forms) {
-  if (forms.length >= 1 && forms.length <= 10000) return true;
+  if (forms.length >= MIN_LENGTH && forms.length <= MAX_LENGTH) return true;
   return false;
 }
 function checkEmail(forms) {
