@@ -36,6 +36,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (const visitor of visitors) {
+    if (visitor in friendScore) {
+      friendScore[visitor] += 1;
+    } else {
+      friendScore[visitor] = 1;
+    }
+  }
+
   return friendScore;
 }
 
