@@ -7,9 +7,10 @@ const groupCharByN = (str = "", n = 0) => {
   return res;
 };
 
-const findDuplicates = (arr) => [
-  ...new Set(arr.filter((v, i) => arr.indexOf(v) !== i)),
-];
+const removeDuplicates = (arr) => [...new Set(arr)];
+
+const findDuplicates = (arr) =>
+  removeDuplicates(arr.filter((v, i) => arr.indexOf(v) !== i));
 
 function problem6(forms) {
   const duplicatedWords = findDuplicates(
@@ -24,9 +25,9 @@ function problem6(forms) {
     return isIncluded;
   });
 
-  const unDuplicatedSortedEmails = [
-    ...new Set(duplicatedCrews.map(([email, _]) => email)),
-  ].sort();
+  const unDuplicatedSortedEmails = removeDuplicates(
+    duplicatedCrews.map(([email, _]) => email)
+  ).sort();
 
   return unDuplicatedSortedEmails;
 }
