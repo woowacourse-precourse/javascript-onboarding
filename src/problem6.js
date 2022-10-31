@@ -42,6 +42,10 @@ class RenamingTargetListMaker {
       action(...params);
     }
   }
+
+  sortEmailAscending = () => {
+    return Array.from(this.targetEmailList).sort((a, b) => (a < b ? -1 : 1));
+  };
 }
 
 module.exports = problem6;
