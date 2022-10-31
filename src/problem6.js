@@ -16,7 +16,6 @@ function problem6(forms) {
   const duplicateCollector = forms => {
 
     const duplicateForms = [];
-    const duplicateNickName = [];
 
     for(let i=0 ; i < forms.length ; i++){
 
@@ -26,7 +25,7 @@ function problem6(forms) {
 
         string = stringArr[j] + stringArr[j+1];
         const formsForInput = []
-      
+        
         for(let k=i+1 ; k < forms.length ; k++){
           if(forms[k][1].indexOf(string) !== -1 && duplicateForms.indexOf(forms[k][0]) === -1) {
             formsForInput.push(forms[k][0]);
@@ -40,7 +39,6 @@ function problem6(forms) {
         duplicateForms.push(...formsForInput);
       }
     }
-
     duplicateForms.sort();
 
     return duplicateForms;
