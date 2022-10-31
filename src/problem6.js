@@ -37,13 +37,12 @@ const getNewEmail = ([str, email], dictionary) => {
   else return { ...dictionary, [str]: [email] };
 };
 
-const addDuplicatedEmail = ([email, name], dictionary) => {
+const getDuplicatedEmailObj = ([email, name], dictionary) => {
   let clone = deepClone(dictionary);
-
-  getSubStringArr(name).forEach((str) => {
-    clone = getNewEmail([str, email], clone);
-  });
-  return clone;
+  return getSubStringArr(name).reduce(
+    (acc, str) => ({ ...acc, ...getNewEmail([str, email], acc) }),
+    clone
+  );
 };
 
 const getDuplicatedNicknameArr = (dictionary) => {
@@ -61,7 +60,7 @@ function problem6(forms) {
 
   forms.forEach(([email, name]) => {
     if (isValidLimit({ email, name })) {
-      const newDictionary = addDuplicatedEmail([email, name], dictionary);
+      const newDictionary = getDuplicatedEmailObj([email, name], dictionary);
       dictionary = newDictionary;
     }
   });
