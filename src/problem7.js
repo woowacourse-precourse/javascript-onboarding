@@ -8,7 +8,7 @@ function problem7(user, friends, visitors) {
       friendsList.push(ele);
     });
   }
-
+  const visitorFriends = friendsList.concat(visitors);
   return answer;
 }
 
