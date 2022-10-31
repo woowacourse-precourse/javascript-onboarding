@@ -28,10 +28,20 @@ function getRecommendFriendsArr(friends, friendsArr, user) {
   return recommendFrindsArr;
 }
 
+function addRecommendFriendsToMap(recommendFrindsArr, map) {
+  for (let recommendFriend of recommendFrindsArr) {
+    map.has(recommendFriend)
+      ? map.set(recommendFriend, map.get(recommendFriend) + 10)
+      : map.set(recommendFriend, 10);
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
+  const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
   const recommendFrindsArr = getRecommendFriendsArr(friends, friendsArr, user);
+  addRecommendFriendsToMap(recommendFrindsArr, scoreMap);
   return answer;
 }
 
