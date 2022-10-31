@@ -18,11 +18,17 @@ function makeNameList(forms) {
 function checking(nameList, forms) {
   let resultList = [];
   let nameListLength = nameList.length;
+  let email = 0;
 
   for(let curNameIndex = 0; curNameIndex < nameListLength-1; curNameIndex++) {
     let nameLength = nameList[curNameIndex].length;
     for(let curCharIndex = 0; curCharIndex < nameLength-1; curCharIndex++) {
       let check = nameList[curNameIndex].substr(curCharIndex, 2);
+      for(let comparedNameIndex = curNameIndex+1; comparedNameIndex < nameListLength; comparedNameIndex++) {
+        if(nameList[comparedNameIndex].includes(check)) {
+          resultList.push(forms[comparedNameIndex][email])
+        }
+      }
     } 
   }
   return resultList;
