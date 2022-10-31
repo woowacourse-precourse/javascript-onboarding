@@ -12,4 +12,10 @@ function findFriend(user, friends) {
   }
   return userFriend;
 }
+
+function getAllName(friends) {
+  const allNameSet = new Set(friends.flat());
+  return Array.from(allNameSet);
+}
+
 module.exports = problem7;
