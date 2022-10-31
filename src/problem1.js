@@ -35,28 +35,28 @@ function getWinner(pobi, crong) {
   else if (pobiMax < crongMax) return 2;
   else return -1;
 }
-function checkValidation(Array1, Array2) {
-  const continuous = checkContinuous(Array1) && checkContinuous(Array2);
-  const range = checkRange(Array1) && checkRange(Array2);
-  const sniffling = checkSniffling(Array1) && checkSniffling(Array2);
+function checkValidation(array1, array2) {
+  const continuous = checkContinuous(array1) && checkContinuous(array2);
+  const range = checkRange(array1) && checkRange(array2);
+  const sniffling = checkSniffling(array1) && checkSniffling(array2);
   if (continuous && range && sniffling) {
     return true;
   }
   return false;
 }
-function checkContinuous(Array) {
-  if (Array[0] + 1 == Array[1]) return true;
+function checkContinuous(array) {
+  if (array[0] + 1 == array[1]) return true;
   else return false;
 }
-function checkRange(Array) {
+function checkRange(array) {
   let check = false;
-  Array.forEach((num) => {
+  array.forEach((num) => {
     if (num >= 1 && num <= 400) check = true;
   });
   return check;
 }
-function checkSniffling(Array) {
-  if (Array[0] % 2 == 1 && Array[1] % 2 == 0) return true;
+function checkSniffling(array) {
+  if (array[0] % 2 == 1 && array[1] % 2 == 0) return true;
   else return false;
 }
 module.exports = problem1;
