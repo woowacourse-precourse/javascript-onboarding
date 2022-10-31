@@ -8,4 +8,18 @@
 
 function problem6(forms) {}
 
+const getAllSerialCases = (nickname) => {
+  const allSerialCases = [];
+
+  for (let i = 2; i <= nickname.length; i++) {
+    for (let j = 0; j <= nickname.length - j; j++) {
+      const serialString = nickname.slice(j, j + i);
+      if (serialString.length !== i) continue;
+      allSerialCases.push(nickname.slice(j, j + i));
+    }
+  }
+
+  return allSerialCases;
+};
+
 module.exports = problem6;
