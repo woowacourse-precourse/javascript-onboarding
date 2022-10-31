@@ -6,7 +6,9 @@
 
 */
 
-function problem6(forms) {}
+function problem6(forms) {
+  return getAllEmailsOfSimilarNickName(forms).sort();
+}
 
 const getAllEmailsOfSimilarNickName = (forms) => {
   const allEmailsOfSimilarNickname = [];
