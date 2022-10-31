@@ -40,6 +40,11 @@ function problem7(user, friends, visitors) {
       }
     }
   });
+
+  // entries()는 객체가 가지고 있는 모든 프로퍼티를 키와 값 쌍으로 배열 형태로 반환
+  const scoreArr = Object.entries(scoreObj);
+
+  return scoreArr;
 }
 
 function friendCheck(user, friends, alreadyFriend) {
