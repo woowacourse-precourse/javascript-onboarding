@@ -13,41 +13,33 @@
  * 3. 변환된 배열을 return 한다.
  */
 
-/**
- * @type {number[]}
- */
-const MONEY_UNITS = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-
-/**
- * @param {number} money
- * @returns {number} index
- */
-function findConvertibleUnitIndex(money) {
-  return MONEY_UNITS.findIndex((unit) => unit <= money);
-}
-
-/**
- * @param {number} money
- * @returns {number[]} result (an array of length 9)
- */
-function convertMoney(money) {
-  const units = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  let result = money;
-  while (result > 0) {
-    const convertibleUnitIndex = findConvertibleUnitIndex(result);
-    const convertibleUnit = MONEY_UNITS[convertibleUnitIndex];
-    units[convertibleUnitIndex] = Math.floor(result / convertibleUnit);
-    result %= convertibleUnit;
-  }
-  return units;
-}
+const units = {
+  UNITS: [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1],
+  getConvertibleIndex(money) {
+    return this.UNITS.findIndex((unit) => unit <= money);
+  },
+  getUnit(index) {
+    return this.UNITS[index];
+  },
+  convert(money) {
+    const unitsCnt = new Array(this.UNITS.length).fill(0);
+    let result = money;
+    while (result > 0) {
+      const index = this.getConvertibleIndex(result);
+      const unit = this.getUnit(index);
+      unitsCnt[index] = Math.floor(result / unit);
+      result %= unit;
+    }
+    return unitsCnt;
+  },
+};
 
 /**
  * @param {number} money
  * @returns {number[]} result (an array of length 9)
  */
 function problem5(money) {
-  const result = convertMoney(money);
+  const result = units.convert(money);
   return result;
 }
 
