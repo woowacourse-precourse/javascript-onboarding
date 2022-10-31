@@ -21,6 +21,11 @@ function problem7(user, friends, visitors) {
 
   recommendList = recommendList.filter((name) => name !== user);
 
+  recommendList = recommendList.filter((name) => name !== user);
+  for (let i = 0; i < list.length; i++) {
+    recommendList = recommendList.filter((a) => a !== list[i]);
+  }
+  
   let countedNames = recommendList.reduce(function (allNames, name) {
     if (name in allNames) {
       allNames[name]++;
