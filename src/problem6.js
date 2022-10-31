@@ -20,8 +20,15 @@ function isInclued(arr, string) {
 }
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  let names = forms.map((item) => item[1]);
+
+  let subsetsOfNames = names.map((ele) => subsets(ele)).flat();
+  let duplicatedName = FindDuplicates(subsetsOfNames);
+
+  return forms
+    .filter((item) => isInclued(duplicatedName, item[1]))
+    .map((item) => item[0])
+    .sort();
 }
 
 module.exports = problem6;
