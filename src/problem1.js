@@ -42,8 +42,7 @@ function getMaxNumber(value) {
     .split('')
     .map(Number)
     .reduce((total, current) => total * current, 1);
-  const max = Math.max(sum, multiply);
 
-  return max;
+  return Math.max(sum, multiply);
 }
 module.exports = problem1;
