@@ -13,6 +13,15 @@ function isLowerCase(c) {
 
 function problem4(word) {
   var answer;
+  answer = '';
+  word = [...word];
+  word.forEach(char => {
+    if (isUpperCase(char)) {
+      answer += String.fromCharCode(219 - char.charCodeAt(0));
+    } else if (isLowerCase(char)) {
+      answer += String.fromCharCode(155 - char.charCodeAt(0));
+    }
+  });
   return answer;
 }
 
