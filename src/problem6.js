@@ -1,6 +1,5 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const MIN_WORD_LENGTH = 2;
 }
 
 module.exports = problem6;
