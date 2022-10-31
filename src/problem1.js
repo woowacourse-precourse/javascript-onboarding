@@ -14,6 +14,13 @@ function problem1(pobi, crong) {
     return Page;
   };
 
+  const pobiBest = Math.max(sum(pobileft),sum(pobiright),multiply(pobileft),multiply(pobiright));
+  const crongBest = Math.max(sum(crongleft),sum(crongright),multiply(crongleft),multiply(crongright));
+
+  if(pobiBest>crongBest) return 1;
+  else if (pobiBest<crongBest) return 2;
+  else return 0;
+
 }
 
 module.exports = problem1;
