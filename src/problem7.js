@@ -8,6 +8,10 @@ function getUserFriend(user, friendList) {
         }, {});
 }
 
+function exceptUserList(user, friendList) {
+    return friendList.filter((name) => !name.includes(user));
+}
+
 function problem7(user, friends, visitors) {}
 
 module.exports = problem7;
