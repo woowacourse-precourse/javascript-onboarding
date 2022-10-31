@@ -110,4 +110,10 @@ function validVisitors(visitors) {
   return 0 <= visitors.length && visitors.length <= 10000 && typeof (visitors) == "object";
 }
 
+function validID(id) {
+  const reg = /^[a-z]*$/;
+
+  return reg.test(id) && 1 <= id.length && id.length <= 30 && typeof (id) == "string";
+}
+
 module.exports = problem7;
