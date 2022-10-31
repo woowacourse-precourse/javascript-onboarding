@@ -29,6 +29,8 @@ function problem7(user, friends, visitors) {
       map.set(visitor, map.get(visitor) + 1);
     }
   }
+  // 점수 기준 내림차순
+  result = [...map].sort((r1, r2) => r2[1] - r1[1]);
 
   return answer;
 }
