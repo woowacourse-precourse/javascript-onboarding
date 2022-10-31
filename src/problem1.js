@@ -3,8 +3,8 @@ function calculateMaxNum(page){
   let rightNum = page[1];
   let leftSum = 0;
   let rightSum = 0;
-  let leftMulti = 0;
-  let rightMulti = 0;
+  let leftMulti = 1;
+  let rightMulti = 1;
   //왼쪽 합, 곱 계산 -> 둘 중 큰 수 찾기
   do {
     leftSum += leftNum%10;
