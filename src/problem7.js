@@ -61,6 +61,10 @@ function problem7(user, friends, visitors) {
       }
     })
   );
+
+  return Object.keys(sortScore)
+    .filter((item) => !userFriends?.includes(item) && sortScore[item] !== 0)
+    .slice(0, 5);
 }
 
 module.exports = problem7;
