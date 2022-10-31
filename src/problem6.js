@@ -24,19 +24,19 @@ const getNamePieces = (forms) => {
   return namePieces;
 };
 
-const getEmailsToNotice = (nicknamePieces, formObj) =>
+const getEmailsToNotice = (nicknamePieces, nameToEmail) =>
   Object.values(nicknamePieces)
     .reduce(
       (names, nameSet) => (nameSet.size >= 2 ? [...names, ...nameSet] : names),
       []
     )
-    .map((nickname) => formObj[nickname])
+    .map((nickname) => nameToEmail[nickname])
     .sort((a, b) => a.localeCompare(b));
 
 function problem6(forms) {
-  const formObj = connectNameToEmail(forms);
+  const nameToEmail = connectNameToEmail(forms);
   const nicknamePieces = getNamePieces(forms);
-  const emailsToNotice = getEmailsToNotice(nicknamePieces, formObj);
+  const emailsToNotice = getEmailsToNotice(nicknamePieces, nameToEmail);
   return [...new Set(emailsToNotice)];
 }
 
