@@ -23,5 +23,22 @@ function problem6(forms) {
     return false;
   }
 
+  /**
+   * 닉네임 문자열을 2글자씩 자르고 중복되는 경우만 배열에 저장
+   * @param {string[][]} forms 
+   * @returns {string[]} 중복된 문자열들이 저장된 배열
+   */
+  function writeOverlapWord (forms){
+    const nicknameWord = [];
+    forms.forEach(([_,nickname]) => {
+      for (let i = 0; i < nickname.length - 1; i++){
+        const word = nickname.substring(i,i+2);
+        nicknameWord.push(word);
+      };
+    });
+    const filtered = nicknameWord.filter((item, index) => nicknameWord.indexOf(item) !== index);
+    return [...new Set(filtered)];
+  }
+
 }
 module.exports = problem6;
