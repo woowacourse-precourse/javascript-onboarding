@@ -36,16 +36,4 @@ function problem7(user, friends, visitors) {
   answer.sort((a, b) => (b[1] > a[1] ? a[0] - b[0] : b[1] - a[1]));
   return answer.filter((x) => x[1] > 0).map((x) => x[0]).slice(0, 5);
 }
-console.log( problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-))
 module.exports = problem7;
