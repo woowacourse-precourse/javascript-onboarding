@@ -22,6 +22,8 @@ function problem6(forms) {
     );
   }
 
+  const duplicatedNameUserEmail = duplicatedNameArray.map(user => user[0]).filter(Boolean);
+
   return answer;
 }
 
