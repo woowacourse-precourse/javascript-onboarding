@@ -1,24 +1,21 @@
 function problem2(cryptogram) {
-  var answer;
-
-  return answer;
+  return;
 }
 
-function deduplication(string) {
-  let answerArr = [string[0]];
-
-  for (let i = 1; i < string.length; i++) {
-    let top = answerArr[answerArr.length - 1];
-    if (top !== string[i]) {
-      answerArr.push(string[i]);
+function deduplication(cryptogram) {
+  let cryptArr = cryptogram.split("");
+  for (let i = cryptArr.length - 1; i >= 0; i--) {
+    if (cryptArr[i] === cryptArr[i + 1]) {
+      cryptArr[i] = "";
+      cryptArr[i + 1] = "";
+    } else {
+      cryptArr[i];
     }
   }
-  return answerArr;
+  return cryptArr.join("");
 }
 
 // console.log(problem2("browoanoommnaon"));
 console.log(deduplication("browoanoommnaon"));
-
-//중복제거 알고리즘 구현중
 
 module.exports = problem2;
