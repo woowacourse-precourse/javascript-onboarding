@@ -19,14 +19,14 @@ function sameWordCheck(firstName,secondName) {
 };
 
 function isPositionRight(sameWords,compareName) {
-  for (let index=0;index<sameWords.length-1;index++) {
-    if (compareName.includes(sameWords.substring(index, index+2))) return true;
+  for (let k=0;k<sameWords.length-1;k++) {
+    if (compareName.includes(sameWords.substring(k, k+2))) return true;
   }
   return false
 }
 
-function sortEmail(emailArray) {
-  return emailArray.sort()
+function sortEmail(emails) {
+  return emails.sort()
 }
 
 module.exports = problem6;
