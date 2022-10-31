@@ -48,6 +48,8 @@ function problem7(user, friends, visitors) {
       }
   }
 
+  // 정렬 기능
+
   return answer;
 }
 
