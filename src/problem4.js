@@ -6,6 +6,17 @@ function problem4(word) {
   var referenceIndex = 0;
 
   var wordArray = Array.from(word);
+  for (let index = 0; index < word.length; index++) {
+    if (uppercaseOrdered.includes(wordArray[index])) {
+        referenceIndex = uppercaseOrdered.indexOf(wordArray[index]);
+        wordArray[index] = uppercaseReverseOrdered[referenceIndex];
+    } else if (lowercaseOrdered.includes(wordArray[index])) {
+        referenceIndex = lowercaseOrdered.indexOf(wordArray[index]);
+        wordArray[index] = lowercaseReverseOrdered[referenceIndex];
+    } else {
+        continue;
+    }
+}
   var answer;
   return answer;
 }
