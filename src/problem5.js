@@ -8,7 +8,19 @@ function isValid(money) {
 
 function problem5(money) {
   let answer = [];
+  let moneyArr = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
   isValid(money);
+  moneyArr.map((currency) => {
+    let numberOfCurrency = 0;
+
+    if (money > 0) {
+      numberOfCurrency = Math.floor(money / currency);
+      money %= currency;
+    }
+
+    answer.push(numberOfCurrency);
+  });
   return answer;
 }
 
