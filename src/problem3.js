@@ -10,7 +10,10 @@ function count(num){
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  for(i = 1; i <= number; i++){
+    answer += count(i);
+  }
   return answer;
 }
 
