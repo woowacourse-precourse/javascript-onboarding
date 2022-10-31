@@ -1,3 +1,6 @@
+// 기능 목록
+// 1. 연속하는 중복 문자열 모두 제거
+
 function problem2(cryptogram) {
   
   const array = cryptogram.split('');
@@ -11,7 +14,7 @@ function problem2(cryptogram) {
   };
 
   return answer.join('');
-  
+
 }
 
 module.exports = problem2;
