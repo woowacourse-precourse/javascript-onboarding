@@ -2,11 +2,15 @@ function problem1(pobi, crong) {
   var answer;
   const pobiResult = comparePages(separateDigit(pobi));
   const crongResult = comparePages(separateDigit(crong));
-  if (exceptions(pobi) || exceptions(crong)) answer = -1;
-  else if (pobiResult > crongResult) answer = 1;
-  else if (pobiResult < crongResult) answer = 2;
-  else if (pobiResult === crongResult) answer = 0;
+  answer = compareResult({ pobiResult, crongResult, pobi, crong });
   return answer;
+}
+
+function compareResult({ pobiResult, crongResult, pobi, crong }) {
+  if (exceptions(pobi) || exceptions(crong)) return -1;
+  if (pobiResult > crongResult) return 1;
+  if (pobiResult < crongResult) return 2;
+  if (pobiResult === crongResult) return 0;
 }
 
 function exceptions(pages) {
