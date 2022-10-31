@@ -13,7 +13,6 @@
  */
 
 let isExceptions = false;
-
 const isLengthError = (player1, player2) => player1.length !== 2 || player2.length !== 2
 const isOutOfRange = page => !(page > 2 && page < 399)
 const isDisorder = (firstPage, SecondPage) => SecondPage !== firstPage + 1
@@ -33,7 +32,6 @@ const getMaxValOnPage = page => {
 const getMaxValOnPages = pages => {
   let leftScore = getMaxValOnPage(pages[0]);
   let rightScore = getMaxValOnPage(pages[1]);
-  
   if (
     isDisorder(pages[0], pages[1]) || 
     isOutOfRange(pages[0]) || 
@@ -47,25 +45,21 @@ const getMaxValOnPages = pages => {
 }
 
 function problem1(pobi, crong) {
-  let answer;
   let pobiScore = getMaxValOnPages(pobi);
   let crongScore = getMaxValOnPages(crong);
-
   if (isLengthError(pobi, crong)) {
     isExceptions = true;
   }
 
-  if(isExceptions) return -1;
-
-  if (pobiScore > crongScore) {
-    answer = 1;
+  if(isExceptions) {
+    return -1;
+  } else if (pobiScore > crongScore) {
+    return 1;
   } else if (pobiScore < crongScore) {
-    answer = 2;
+    return 2;
   } else if (pobiScore === crongScore) {
-    answer = 0;
+    return 0;
   }
-
-  return answer;
 }
 
 module.exports = problem1;

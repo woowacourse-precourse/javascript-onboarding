@@ -11,6 +11,33 @@
  * 4. 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만
  * 5. result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거
  */
+
+const isOutOfRange = crew => !(crew.length >= 1 && crew.length <= 10000)
+const isMailLengthError = mail => !(mail.length >= 11 && mail.length < 20)
+const isCorrectDomain = mail => mail.slice(-10) === "@email.com"
+const isNameLengthError = name => !(name.length >= 1 && name.length < 20)
+const regExp = /^[가-힣]*$/;
+const checkKor = str => regExp.test(str) ? true : false
+const validations = forms => {
+  if (isOutOfRange(forms)) {
+    throw "input length error"
+  }
+  forms.map(form => {
+    if(!isCorrectDomain(form[0])) {
+      throw "Domain error"
+    }
+    if(isMailLengthError(form[0])) {
+      throw "Email length error"
+    }
+    if (!checkKor(form[1])) {
+      throw "nickname must be kor"
+    }
+    if (isNameLengthError(form[1])) {
+      throw "nickname length error"
+    }
+  })
+}
+
 const changeToJSON = originForm => {
   let newForm = [];
   originForm.map(item => {
@@ -46,31 +73,6 @@ const setIsDuplicated = forms => {
       }
     })
   }
-}
-const isOutOfRange = crew => !(crew.length >= 1 && crew.length <= 10000)
-const isMailLengthError = mail => !(mail.length >= 11 && mail.length < 20)
-const isCorrectDomain = mail => mail.slice(-10) === "@email.com"
-const isNameLengthError = name => !(name.length >= 1 && name.length < 20)
-const regExp = /^[가-힣]*$/;
-const checkKor = str => regExp.test(str) ? true : false
-const validations = forms => {
-  if (isOutOfRange(forms)) {
-    throw "input length error"
-  }
-  forms.map(form => {
-    if(!isCorrectDomain(form[0])) {
-      throw "Domain error"
-    }
-    if(isMailLengthError(form[0])) {
-      throw "Email length error"
-    }
-    if (!checkKor(form[1])) {
-      throw "nickname must be kor"
-    }
-    if (isNameLengthError(form[1])) {
-      throw "nickname length error"
-    }
-  })
 }
 
 function problem6(forms) {

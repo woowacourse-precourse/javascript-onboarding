@@ -14,44 +14,6 @@
  * 6. 추천할 친구가 없는 경우는 주어지지 않는다.
  */
 
-const getScoreByVisitors = (visitors, score) => {
-  visitors.map(visitor => {
-    score[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
-  })
-}
-const getMyFriends = (user, friends) => {
-  let myFriends = []
-  friends.map(friendPair => {
-    if (friendPair.includes(user)) {
-      myFriends.push(friendPair.filter(friend => friend !== user)[0])
-    }
-  })
-
-  return myFriends;
-}
-const getScoreByFriends = (friends, myFriends, score) => {
-  friends.map(friendPair => {
-    if (myFriends.includes(friendPair[0])) {
-      if(score[friendPair[1]]) {
-        score[friendPair[1]] += 10
-      } else {
-        score[friendPair[1]] = 10
-      }
-    } else if (myFriends.includes(friendPair[1])) {
-      if(score[friendPair[0]]) {
-        score[friendPair[0]] += 10
-      } else {
-        score[friendPair[0]] = 10
-      }
-    }
-  })
-}
-const sortScore = score => Object.fromEntries(Object.entries(score).sort(([,a], [,b]) => a > b ? -1 : 1))
-const filterKey = (conditions, me, score) => {
-  conditions.push(me)
-
-  return Object.keys(score).filter(userId => !(conditions.includes(userId)));
-}
 const isIDLengthError = id => !(id.length >= 1 && id.length <= 30)
 const isLowerCase = id => id === id.toLowerCase()
 const validationsOfUser = user => {
@@ -96,6 +58,45 @@ const validations = (user, friends, visitors) => {
   validationsOfUser(user);
   validationsOfFriends(friends);
   validationsOfVisitors(visitors);  
+}
+
+const getScoreByVisitors = (visitors, score) => {
+  visitors.map(visitor => {
+    score[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
+  })
+}
+const getMyFriends = (user, friends) => {
+  let myFriends = []
+  friends.map(friendPair => {
+    if (friendPair.includes(user)) {
+      myFriends.push(friendPair.filter(friend => friend !== user)[0])
+    }
+  })
+
+  return myFriends;
+}
+const getScoreByFriends = (friends, myFriends, score) => {
+  friends.map(friendPair => {
+    if (myFriends.includes(friendPair[0])) {
+      if(score[friendPair[1]]) {
+        score[friendPair[1]] += 10
+      } else {
+        score[friendPair[1]] = 10
+      }
+    } else if (myFriends.includes(friendPair[1])) {
+      if(score[friendPair[0]]) {
+        score[friendPair[0]] += 10
+      } else {
+        score[friendPair[0]] = 10
+      }
+    }
+  })
+}
+const sortScore = score => Object.fromEntries(Object.entries(score).sort(([,a], [,b]) => a > b ? -1 : 1))
+const filterKey = (conditions, me, score) => {
+  conditions.push(me)
+
+  return Object.keys(score).filter(userId => !(conditions.includes(userId)));
 }
 
 function problem7(user, friends, visitors) {
