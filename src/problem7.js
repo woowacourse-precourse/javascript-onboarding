@@ -44,7 +44,7 @@ const SnsFriendRecomander = {
   },
   addRelation: function (one, two) {
     if (!(one in this.relations)) {
-      this.relations[one] = [];
+      this.relations[one] = [one];
       this.scores[one] = 0;
     }
     this.relations[one].push(two);
@@ -78,16 +78,10 @@ const SnsFriendRecomander = {
         }
         return b[1] - a[1];
       })
-      .map((score) => {
-        if (
-          score[0] !== 0 &&
-          !this.relations[this.user].find((e) => e === score[0])
-        ) {
-          return score[0];
-        }
-      })
+      .filter((score) => score[1] !== 0)
+      .map((score) => score[0])
+      .filter((others) => !this.relations[this.user].find((e) => e === others))
       .filter((other) => other !== undefined)
-      .filter((other) => other !== this.user)
       .splice(0, 5);
   },
 };
