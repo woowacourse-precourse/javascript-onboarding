@@ -102,6 +102,8 @@ function checkFriendId(friends) {
   friends.forEach((friend) => {
     if (!checkID(friend[0])) check = false;
     if (!checkID(friend[1])) check = false;
+    if (!checkNodeLength(friend[0])) check = false;
+    if (!checkNodeLength(friend[1])) check = false;
   });
   return check;
 }
