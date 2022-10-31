@@ -5,7 +5,7 @@
 //    [예외처리] 첫번째 element가 짝수이다.
 //    [예외처리] 첫번째 element와 두번째 element의 차가 1이 아니다.
 // 2. 포비와 크롱의 점수를 결정한다.
-// 2. 포비와 크롱의 점수를 비교해서 return 한다.
+// 3. 포비와 크롱의 점수를 비교해서 return 한다.
 
 function problem1(pobi, crong) {
   var answer;  
