@@ -45,6 +45,28 @@ function makeRecommendScore(user, relations, visitors, result) {
   });
 }
 
+function deleteUserFriend(user, result, relations) {
+  relations[user].forEach((name) => delete result[name]);
+}
+
+function resultSortSlice(result) {
+  const names = Object.keys(result);
+  names.sort(function (a, b) {
+    if (result[b] === result[a]) {
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    }
+    return result[b] - result[a];
+  });
+
+  return names.slice(0, 5);
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
