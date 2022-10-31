@@ -17,6 +17,14 @@ function problem5(money) {
 
   function convert(priceMap, money) {
     var resultArray;
+    priceMap.forEach((_, key) => {
+      var quotient = parseInt(money / key);
+      if (quotient >= 1) {
+        priceMap.set(key, quotient);
+        money -= key * quotient;
+      }
+    });
+    resultArray = Array.from(priceMap.values());
     return resultArray;
   }
 
