@@ -1,4 +1,5 @@
 function problem1(pobi, crong) {
+  let answer = -1;
   if (checkException(pobi) === -1 || checkException(crong) === -1) return -1;
   pobiMax = getMax(
     getMax(multiplyPage(pobi[0]), addPage(pobi[0])),
@@ -8,9 +9,10 @@ function problem1(pobi, crong) {
     getMax(multiplyPage(crong[0]), addPage(crong[0])),
     getMax(multiplyPage(crong[1]), addPage(crong[1]))
   );
-  if (pobiMax > crongMax) return 1;
-  else if (pobiMax < crongMax) return 2;
-  else return 0;
+  if (pobiMax > crongMax) answer = 1;
+  else if (pobiMax < crongMax) answer = 2;
+  else answer = 0;
+  return answer;
 }
 
 function checkException(arr) {
