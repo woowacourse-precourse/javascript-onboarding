@@ -24,6 +24,4 @@ function problem5(money) {
   }
   return count;
 }
-
-console.log(problem5(50237));
 module.exports = problem5;
