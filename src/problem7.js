@@ -62,6 +62,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  //친구의 아이디와 점수, visitors 아이디와 점수를 한 곳에 모은다
+  for (let i = 0; i < visitors_number.length; i++) {
+    friends_number.push(visitors_number[i]);
+  }
+
   return answer;
 }
 
