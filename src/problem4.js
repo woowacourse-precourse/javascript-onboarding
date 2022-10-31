@@ -19,10 +19,14 @@ const isLowerCase = (alpha) => {
   return alpha.match(/[a-z]/) ? true : false;
 };
 
+const isAlphabet = (alpha) => {
+  return alpha.match(/[a-zA-Z]/) ? true : false;
+};
+
 function problem4(word) {
   var answer;
   answer = word.split("").map((item) => {
-    return item.match(/[a-zA-Z]/) ? convert(item) : item;
+    return isAlphabet(item) ? convert(item) : item;
   });
   return answer.join("");
 }
