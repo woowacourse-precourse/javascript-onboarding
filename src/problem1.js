@@ -34,6 +34,11 @@ function problem1(pobi, crong) {
   if(pageCheck(pobi) == 0 || pageCheck(crong) == 0)
     return -1;
   
+  const [pobiLeft, pobiRight] = pobi;
+  pobiNum = compare(compare(plusSum(pobiLeft),multiSum(pobiLeft)),compare(plusSum(pobiRight),multiSum(pobiRight)));
+
+  const [crongLeft, crongRight] = crong;
+  crongNum = compare(compare(plusSum(crongLeft),multiSum(crongLeft)),compare(plusSum(crongRight),multiSum(crongRight)));
 }
 
 module.exports = problem1;
