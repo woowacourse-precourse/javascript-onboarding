@@ -11,12 +11,12 @@
 function problem7(user, friends, visitors) {
   var answer = [];
   var score = []; // 친구 추천 점수
-  var user_firends = []; // user의 친구 목록
+  var user_friends = []; // user의 친구 목록
   
   // user_firends 설정 (사용자의 친구 목록)
   for(f of friends) {
-    if(f[0] == user) user_firends.push(f[1]);
-    else if(f[1] == user) user_firends.push(f[0]);
+    if(f[0] == user) user_friends.push(f[1]);
+    else if(f[1] == user) user_friends.push(f[0]);
   }
 
   // answer 초기화 (추천 친구 후보들)
@@ -30,7 +30,7 @@ function problem7(user, friends, visitors) {
 
   answer = answer.sort().filter(function(item, idx, array) {
       if(item == user) return false; // user 제외
-      for(f of user_firends) {// user 친구들 제외
+      for(f of user_friends) {// user 친구들 제외
         if(f == item) return false;
       }
       return !idx || item != array[idx - 1]; // 중복값 제외
@@ -39,22 +39,7 @@ function problem7(user, friends, visitors) {
   // score 초기화
   for(var i = 0; i < answer.length; i++) score[i] = 0;
 
-  return answer;
+  return score;
 }
-
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
 
 module.exports = problem7;
