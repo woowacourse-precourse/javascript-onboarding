@@ -6,7 +6,7 @@ function problem4(word) {
   let lowerFrog = frog.map((e) => e.toLowerCase())
   let frogSay = '';
 
-const frogConvertor = (str) => {
+const frogtranslator = (str) => {
   if (mother.includes(str)) {
     let idx = mother.indexOf(str)
     return frog[idx]
@@ -18,12 +18,10 @@ const frogConvertor = (str) => {
 }
 
 for (let i = 0; i < word.length; i++) {
-  frogSay += frogConvertor(word[i])
+  frogSay += frogtranslator(word[i])
 }
 
-console.log(frogSay)
 return frogSay;
 }
 
-problem4('I love you')
 module.exports = problem4;
