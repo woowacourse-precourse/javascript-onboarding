@@ -31,3 +31,19 @@ function findNotUserfriends(friends) {
 
   return notUserFriends;
 }
+
+function deleteDuplicatesVisitorArray(friends, visitors) {
+  let visitorsArray = [];
+  const userFriends = findUserFriends(friends);
+
+  visitors.forEach((visitor) => {
+    if (
+      visitorsArray.includes(visitor) === false &&
+      userFriends.includes(visitor) === false
+    ) {
+      visitorsArray.push(visitor);
+    }
+  });
+
+  return visitorsArray;
+}
