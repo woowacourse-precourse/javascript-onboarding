@@ -66,6 +66,17 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("Problem6_DuplicatedEmail_Return[jason@email.com]", () => {
+    expect(
+      problem6([
+        ["jason@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["jason@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com"]);
+  });
 });
 
 describe("problem7", () => {
