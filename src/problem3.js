@@ -15,10 +15,10 @@
 
 function problem3(number) {
   function cntNum(num) {
-    let cutNum = String(num)
+    let restNum = String(num)
       .split("")
       .filter((str) => str === "3" || str === "6" || str === "9");
-    return cutNum.length;
+    return restNum.length;
   }
   let cnt = 0;
   for (let i = 1; i <= number; i++) {

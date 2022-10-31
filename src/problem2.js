@@ -20,7 +20,7 @@
 function problem2(cryptogram) {
   function deleteWords(words) {
     let [newWords, check, nextRepeat] = [[], false, false];
-    words.split("").map((word) => {
+    words.split("").forEach((word) => {
       if (newWords[newWords.length - 1] === word) {
         [check, nextRepeat] = [true, true];
       } else {
