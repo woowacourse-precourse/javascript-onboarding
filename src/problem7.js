@@ -94,6 +94,13 @@ const excludeVisitorsFunc = (visitorsArray, alreadyFriendList) => {
   return recursiveTour(copiedVisitors, copiedAlreadyFriendList, 0);
 };
 
+const extractAlreadyFriend = (user, frieds, alreadyFriendList, behaviorFunc) => {
+  const copiedFrieds = copyArray(frieds);
+  const copiedAlreadyFriendList = copyArray(alreadyFriendList);
+
+  return behaviorFunc(copiedFrieds, copiedAlreadyFriendList, user);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
