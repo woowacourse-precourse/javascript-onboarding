@@ -1,7 +1,9 @@
 function problem1(pobi, crong) {
   var answer;
-  const pobiResult = maximumPages(separateDigit(pobi));
-  const crongResult = maximumPages(separateDigit(crong));
+  const pobiPages = separateDigit(pobi);
+  const crongPages = separateDigit(crong);
+  const pobiResult = maximumPages(pobiPages);
+  const crongResult = maximumPages(crongPages);
   answer = compareResult({ pobiResult, crongResult, pobi, crong });
   return answer;
 }
