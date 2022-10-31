@@ -52,10 +52,7 @@ const SnsFriendRecomander = {
   calculateScore: function () {
     for (const score in this.scores) {
       this.relations[score].forEach((other) => {
-        if (
-          this.relations[other].find((e) => e === this.user) &&
-          !this.relations[score].find((e) => e === this.user)
-        ) {
+        if (!this.isRelationFriendWithUser(other, score)) {
           this.scores[score] += 10;
         }
       });
@@ -66,6 +63,12 @@ const SnsFriendRecomander = {
       }
       this.scores[visitor] += 1;
     });
+  },
+  isRelationFriendWithUser: function (friend, noFriend) {
+    return (
+      this.relations[friend].includes[this.user] &&
+      !this.relations[noFriend].includes[this.user]
+    );
   },
   friendRecomander: function () {
     this.makeRelations();
@@ -80,8 +83,7 @@ const SnsFriendRecomander = {
       })
       .filter((score) => score[1] !== 0)
       .map((score) => score[0])
-      .filter((others) => !this.relations[this.user].find((e) => e === others))
-      .filter((other) => other !== undefined)
+      .filter((other) => !this.relations[this.user].includes(other))
       .splice(0, 5);
   },
 };
