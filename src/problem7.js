@@ -35,9 +35,8 @@ function getVisitorUser(visitors) {
 }
 
 function getFriendUser(user, friends) {
-  const friend = [];
-  // const friendGrade = [];
-  // let crossFriend = [];
+  let friend = [];
+  const friendGrade = [];
   for (let i = 0; i < friends.length; i++) {
     const includeUser = friends[i].includes(user);
     if (includeUser) {
@@ -54,11 +53,18 @@ function getFriendUser(user, friends) {
     }
   }
 
+  for (let i = 0; i < friend.length; i++) {
+    if (friend[i] === user) {
+      friend.splice(i, 1);
+      i--;
+    }
+  }
+
   // for (let i = 0; i < friend.length; i++) {
   //   friendGrade[i] = 1 * 10;
   // }
   console.log(friend);
-  // return friend;
+  // console.log(friendGrade);
   // return [friend, friendGrade];
 }
 
