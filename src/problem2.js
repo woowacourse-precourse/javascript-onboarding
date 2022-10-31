@@ -1,21 +1,21 @@
 function eraseCycle(word){
-  let answer = [];
+  let result = [];
   const indexs = [];
   [...word].forEach((letter)=>{
-      letter!==answer[answer.length-1]
-      ? answer.push(letter)
-      : indexs.includes(answer.length-1)||indexs.push(answer.length-1)
+      letter!==result[result.length-1]
+      ? result.push(letter)
+      : result.includes(result.length-1)||indexs.push(result.length-1)
   });
-  answer = answer.filter((_,index)=>indexs.indexOf(index)===-1);
-  return answer.join('');
+  result = result.filter((_,index)=>indexs.indexOf(index)===-1);
+  return result.join('');
 }
 
 function problem2(cryptogram){
-    let result = eraseCycle(cryptogram);
-    while(cryptogram!==result){
-        [cryptogram, result] = [result, eraseCycle(result)];
+    let answer = eraseCycle(cryptogram);
+    while(cryptogram!==answer){
+        [cryptogram, answer] = [answer, eraseCycle(answer)];
     }
-    return result;
+    return answer;
 }
 
 module.exports = problem2;
