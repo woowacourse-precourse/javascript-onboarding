@@ -38,6 +38,11 @@ function problem6(forms) {
       .filter(value => value.length > 1)
       .reduce((acc, curr) => acc.concat(curr), []);
   }
+
+  const segmentsTable = createSegmentsTable();
+  const duplicateList = getDuplicateNameList(segmentsTable);
+
+  return duplicateList.sort();
 }
 
 module.exports = problem6;
