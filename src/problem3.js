@@ -4,8 +4,16 @@
 //    [예외처리] 3으로 나누어 떨어지는 수 중 0은 제외
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  while(number > 0) {
+    var n = number % 10;
+    if(n != 0 && n % 3 == 0) answer++;
+    number = Math.floor(number/10); // 소수점 버림
+  }
+
   return answer;
 }
+
+console.log(problem3(30));
 
 module.exports = problem3;
