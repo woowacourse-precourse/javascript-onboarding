@@ -12,4 +12,11 @@ function problem2(cryptogram) {
   return answer;
 }
 
+// 1. 전달받은 cryptogram 길이 검사 기능
+// return => valid : true, not valid : false
+function isValid(str) {
+  if(str.lenth < 1 || str.lenth > 1000) return false;
+  return true;
+}
+
 module.exports = problem2;
