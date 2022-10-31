@@ -44,7 +44,7 @@ function Exception(pobi, crong){
   else if (crong[1]-crong[0] != 1){
     return false
   }
-  else if (pobi[0] == 1 || pobi[1] == 400 || crong[0]==1 || crong[1] == 400){
+  else if (pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400){
     return false
   }
   else{
