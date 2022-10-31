@@ -67,10 +67,16 @@ function isValidPage(leftPageNumber, rightPageNumber) {
   if (leftPageNumber >= 400) {
     return false;
   }
-  if (rightPageNumber <= 1) {
+  if (rightPageNumber <= 1 || leftPageNumber <= 1) {
     return false;
   }
   if (rightPageNumber - leftPageNumber !== 1) {
+    return false;
+  }
+  if (leftPageNumber % 2 === 0) {
+    return false;
+  }
+  if (rightPageNumber % 2 === 1) {
     return false;
   }
   return true;
