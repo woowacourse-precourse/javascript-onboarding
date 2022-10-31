@@ -12,6 +12,21 @@ function getFriendList(friends) {
   return friendDict;
 }
 
+function sortDict(dict, user) {
+  let result = [];
+  let sorted = Object.entries(dict).sort((a, b) => b[1] - a[1]);
+
+  for (let element of sorted) {
+    if (element[0] === user) {
+      continue;
+    }
+    result.push(element[0]);
+    console.log(element[0] + ": " + element[1]);
+  }
+
+  return result;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let userFriend = [];
@@ -43,6 +58,7 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  answer = sortDict(scoreDict, user);
 
   return answer;
 }
