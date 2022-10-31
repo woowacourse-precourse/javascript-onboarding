@@ -69,6 +69,12 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  for (let arrayScore of arrayScores) {
+    // 친구 추천 목록에서 모든 원소에 대해 반복문을 수행하며
+    let name = arrayScore[0]; // 추천 이름만을 추출하고
+    answer.push(name); // answer 배열에 추가한다.
+  }
+
   return answer;
 }
 
