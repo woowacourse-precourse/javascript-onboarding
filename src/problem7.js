@@ -1,8 +1,13 @@
 function problem7(user, friends, visitors) {
-  const friendOfUser = searchUserFriends(user, friends);
+  const [curFriends, notFriends] = separateFriendByType(user, friends);
+  const friendOfUser = curFriends;
+  //console.log(`1 :`, friendOfUser);
   const friendScore = searchByFriends(user, friends, friendOfUser);
+  //console.log(`2 :`, friendScore);
   const visitorScore = searchByVisitor(visitors, friendOfUser);
+  //console.log(`3 : `, visitorScore);
   const answer = recommandByScore(friendScore, visitorScore);
+  //console.log(`4 : `, answer);
 
   return answer;
 }
@@ -10,16 +15,41 @@ function problem7(user, friends, visitors) {
 module.exports = problem7;
 
 const searchUserFriends = (user, friends) => {
-  const userFriends = friends.filter((i) => i.includes(user));
-  const friendsName = userFriends.map((i) => {
+  const [curFriends, notFriends] = separateFriendByType(user, friends);
+
+  return;
+};
+
+const separateFriendByType = (user, friends) => {
+  let curFriends = [];
+  let notFriends = [];
+  for (let i of friends) {
+    if (i.includes(user)) {
+      curFriends.push(i);
+    } else {
+      notFriends.push(i);
+    }
+  }
+
+  curFriends = curFriends.map((i) => {
     return isNotUser(user, i);
   });
 
-  return friendsName;
+  notFriends = notFriends.map((i) => {
+    return isNotCurrentFriend(user, i);
+  });
+
+  return [curFriends, notFriends];
 };
 
 const isNotUser = (user, array) => {
   return array.filter((i) => i !== user)[0];
+};
+
+const isNotCurrentFriend = (curFriends, array) => {
+  if (curFriends.includes(array[0]) || curFriends.includes(array[1])) {
+    return array.filter((v, i) => !curFriends.includes(v))[0];
+  }
 };
 
 const recommandByScore = (friendScore, visitorScore) => {
@@ -104,14 +134,6 @@ const isCurrentFriend = (name, friendOfUser) => {
 
 const searchByFriends = (user, friends, friendOfUser) => {
   if (!friends) return;
-
-  console.log(user);
-  console.log(friend);
-  console.log(friendOfUser);
-  //user와 친구인 배열 찾기.
-  // 해당 배열의 0번째 인덱스 찾기
-  // 해당 데이터를 가지고 있는 배열 찾기.
-  // 해당 배열에서 나머지 데이터 찾기.
 
   const newFriendsFilter = friends.filter((i) => {
     let resultValue;
