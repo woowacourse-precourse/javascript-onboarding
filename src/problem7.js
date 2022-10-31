@@ -40,10 +40,14 @@ function findUserFriendsOfFriends(user, friends, userFriends) {
 // user의 친구의 친구에게 10점씩 부여하는 함수
 function giveTenScoreToUserFriendsOfFriends(user, friends, userFriends) {
   let idScoreObj = {};
-  let filteredArr = findUserFriendsOfFriends(user, friends, userFriends);
+  let userFriendsOfFriends = findUserFriendsOfFriends(
+    user,
+    friends,
+    userFriends
+  );
 
-  for (let i = 0; i < filteredArr.length; i++) {
-    let name = filteredArr[i];
+  for (let i = 0; i < userFriendsOfFriends.length; i++) {
+    let name = userFriendsOfFriends[i];
     // idScoreObj객체에 키가 있을 때
     if (idScoreObj.hasOwnProperty(name)) idScoreObj[name] += 10;
     // idScoreObj객체에 키가 없을 때
