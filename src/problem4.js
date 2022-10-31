@@ -26,8 +26,8 @@ function problem4(word) {
   const answer = [];
   word.split("").forEach((char) => {
     if (!isAlphabet(char)) answer.push(char);
-    else if (isUpperCase(char)) answer.push(getUpperReverseWord(char));
-    else if (isLowerCase(char)) answer.push(getLowerReverseWord(char));
+    if (isUpperCase(char)) answer.push(getUpperReverseWord(char));
+    if (isLowerCase(char)) answer.push(getLowerReverseWord(char));
   });
   return answer.join("");
 }
