@@ -21,7 +21,7 @@ function problem2(cryptogram) {
   }
 }
 
-console.log(problem2("browoanoommnaon")) // "brown"
-console.log(problem2("zyelleyz")) // ""
+// console.log(problem2("browoanoommnaon")) // "brown"
+// console.log(problem2("zyelleyz")) // ""
 
 module.exports = problem2;

@@ -12,7 +12,7 @@ function problem5(money) {
   return answer;
 }
 
-console.log(problem5(50237));
-console.log(problem5(15000));
+// console.log(problem5(50237));
+// console.log(problem5(15000));
 
 module.exports = problem5;

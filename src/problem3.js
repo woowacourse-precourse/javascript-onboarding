@@ -16,8 +16,8 @@ function problem3(number) {
   return answer;
 }
 
-console.log(problem3(13)); // 4
-console.log(problem3(33)); // 14
+// console.log(problem3(13)); // 4
+// console.log(problem3(33)); // 14
 // console.log(`${'3' in ['1', '2', '3']}`);
 // console.log(`${['1', '2', '3'].includes('3')}`);
 // console.log(`${'123'.split("")}`);
