@@ -3,6 +3,13 @@ function problem5(money) {
   let moneyList = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   let result = [];
 
+  for(let i = 0; i < moneyList.length; i++) {
+    let quotient = Math.floor(money/moneyList[i]);
+    result.push(quotient);
+    money -= (quotient * moneyList[i]);
+  }
+  answer = result;
+
   return answer;
 }
 
