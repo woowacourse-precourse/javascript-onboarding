@@ -1,12 +1,12 @@
 function problem7(user, friends, visitors) {
-  let removeMrko = friends.map((v) => v.filter((v) => v !== user));
+  let mrkoFriends = friends.map((v) => v.filter((v) => v !== user));
 
-  const findFriends = removeMrko
+  const findFriends = mrkoFriends
     .filter((v) => v.length === 1)
     .flatMap((v) => v);
 
   for (const value of findFriends) {
-    removeMrko = removeMrko
+    mrkoFriends = mrkoFriends
       .flatMap((v) => v)
       .filter((v) => v !== value)
       .sort();
@@ -16,12 +16,12 @@ function problem7(user, friends, visitors) {
       .sort();
   }
 
-  const selectFriends = [...new Set(removeMrko)];
+  const selectFriends = [...new Set(mrkoFriends)];
   const selectVisitors = [...new Set(visitors)];
 
   const object = {};
   for (const value of selectFriends) {
-    object[value] = removeMrko.filter((v) => v === value).length * 10;
+    object[value] = mrkoFriends.filter((v) => v === value).length * 10;
   }
   for (const value of selectVisitors) {
     object[value] !== undefined
