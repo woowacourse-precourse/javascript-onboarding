@@ -23,6 +23,7 @@ function maxPageValue(pageArr) {
   pageValueList[2] = pageRight.reduce((acc, cur) => acc + cur, 0);
   pageValueList[3] = pageRight.reduce((acc, cur) => acc * cur, 1);
 
+  // 왼쪽 페이지, 오른쪽 페이지 계산된 값 중 가장 큰 값 반환
   return Math.max(...pageValueList);
 }
 
@@ -33,6 +34,7 @@ function problem1(pobi, crong) {
   const pobiMax = maxPageValue(pobi);
   const crongMax = maxPageValue(crong);
 
+  // 조건에 맞게 값 비교해서 정답 반환
   if (pobiMax > crongMax) answer = 1;
   else if (pobiMax < crongMax) answer = 2;
   else if (pobiMax === crongMax) answer = 0;
