@@ -15,26 +15,35 @@ function divideNickname(forms) {
   return nickArr;
 }
 
+// 배열 중복 제거
+function deleteOverlap(Arr) {
+  Arr = [...new Set(Arr)];
+  return Arr;
+}
+
 // 닉네임당 두 글자씩 나누기
-function divideTwoWord(nickname) {
+function divideTwoWord(forms) {
+  const nickname = divideNickname(forms);
   const twoWordArr = nickname.map(nickname => {
-    let twoWordArr = [];
+    let twoWordIndex = [];
     for(let i = 1; i < nickname.length; i++) {
-      const twoWord = nickname[i- 1] + nickname[i];
-      twoWordArr.push(twoWord);
+      const twoWord = nickname[i - 1] + nickname[i];
+      twoWordIndex.push(twoWord);
     }
-  
-    twoWordArr = [...new Set(twoWordArr)]
-    console.log(twoWordArr);
-    return twoWordArr;
+
+    twoWordIndex = deleteOverlap(twoWordIndex);
+    return twoWordIndex;
   })
+  console.log(twoWordArr);
+  return twoWordArr;
 }
 
 // 닉네임당 비교하기
 function compareNickname(twoWordArr, emailArr) {
 	for (let i = 0; i < twoWordArr.length; i++) {
 		for (let j = i + 1; j < twoWordArr.length; j++) {
-			const combineArr = [...twoWordArr[i], ...twoWordArr[j]]
+			const combineArr = [...twoWordArr[i], ...twoWordArr[j]];
+      console.log(combineArr);
 			const arrangeArr = new Set(combineArr);
 
 			if (combineArr.length !== arrangeArr.size) {
@@ -47,8 +56,7 @@ function compareNickname(twoWordArr, emailArr) {
   return overlapEmails;
 }
 
-// problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
-divideTwoWord(divideNickname([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
+divideTwoWord([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
 
 module.exports = problem6;
 
