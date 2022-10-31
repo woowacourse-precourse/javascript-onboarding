@@ -16,6 +16,23 @@ function mul(num){
   return mulRes;
 }
 
+function pageCheck(left,right){
+  if(left === 1 || right === 400){
+    return false;
+  }
+  if(left < 3 || right > 398){
+    return false;
+  }
+  if((left%2) !== 1 || (right%2) !== 0){
+    return false;
+  }
+  if((right-left) !== 1){
+    return false;
+  }
+  return true;
+}
+
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
