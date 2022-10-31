@@ -13,6 +13,16 @@ function checkChar(char) {
   }
 }
 
+function replaceChar(char, type) {
+  if (type === 1) {
+    return String.fromCharCode(155 - char.charCodeAt());
+  } else if (type === 2) {
+    return String.fromCharCode(219 - char.charCodeAt());
+  } else {
+    return char;
+  }
+}
+
 function problem4(word) {
   var answer;
   return answer;
