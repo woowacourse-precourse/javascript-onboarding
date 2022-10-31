@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   var answer = result(user, friends, visitors);
   return answer;
 }
+
 function result(user, friends, visitors) {
   const userMap = new Map();
   friends.forEach((item) => setUserMap(userMap, item));
@@ -28,10 +29,15 @@ function result(user, friends, visitors) {
     else if (a[0] > b[0]) return 1;
     else return -1;
   });
+
+  return recommendedFriend
+    .flatMap(([user]) => user)
+    .slice(0, MAX_RECOMMENDED_FRIENDS);
 }
 
 const ADD_FRIEND_SCORE = 10;
 const ADD_VISITED_SCORE = 1;
+const MAX_RECOMMENDED_FRIENDS = 5;
 
 const setUserMap = (userMap, [userA, userB]) => {
   userMap.set(userA, [...(userMap.get(userA) || []), userB]);
