@@ -14,6 +14,14 @@ function getNumberToArr(number) {
   return numberArr;
 }
 
+function clap(number) {
+  let result = 0;
+  if (number === 3 || number === 6 || number === 9) {
+    result += 1;
+  }
+  return result;
+}
+
 function problem3(number) {
   let answer = 0;
 
