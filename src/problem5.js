@@ -3,9 +3,9 @@ function problem5(money) {
   let userMoney = money;
   let answer = [];
 
-  coins.forEach((item) => {
-    answer.push(Math.floor(userMoney / item));
-    userMoney = userMoney % item;
+  coins.forEach((coin) => {
+    answer.push(Math.floor(userMoney / coin));
+    userMoney = userMoney % coin;
   });
 
   return answer;
