@@ -54,6 +54,12 @@ function answerId(answer) {
   answer = answer.map((item) => {
     return item.key;
   });
+  if (answer.length > 5) {
+    answer = answer.filter((item, index) => {
+      if (index > 4) return false;
+      else return item;
+    });
+  }
   return answer;
 }
 function problem7(user, friends, visitors) {
