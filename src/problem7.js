@@ -68,8 +68,12 @@ function resultSortSlice(result) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const relations = {};
+  const result = {};
+  makeRelations(friends, relations);
+  makeRecommendScore(user, relations, visitors, result);
+  deleteUserFriend(user, result, relations);
+  return resultSortSlice(result);
 }
 
 module.exports = problem7;
