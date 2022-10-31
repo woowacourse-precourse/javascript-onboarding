@@ -98,4 +98,8 @@ function sortFriends(usersFriendsSet, friendsTotalScore) {
   return recommendedFriends;
 }
 
+function validUser(user) {
+  return 1 <= user.length && user.length <= 30 && typeof(user) == "string";
+}
+
 module.exports = problem7;
