@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
     return -1;
   let pobiScore = getMaxScore(pobi);
   let crongScore = getMaxScore(crong);
-  resultLogic(pobiScore, crongScore);
+  return resultLogic(pobiScore, crongScore);
 }
 
 function sumOfDigits(num) {
