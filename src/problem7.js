@@ -49,7 +49,7 @@ function setScore(user, friends, visitors, userFriends, friendsObj) {
 function sortObj(user, userFriends, friendsObj) {
     let recommendFriends = [];
     for(let friend in friendsObj) {
-        if(friendsObj[friend] !=0 && friend != user && userFriends.indexOf(friend) == -1) {
+        if(friendsObj[friend] != 0 && friend != user && userFriends.indexOf(friend) == -1) {
             recommendFriends.push({name: friend, num: friendsObj[friend]});
         }
     }
