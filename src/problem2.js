@@ -1,11 +1,8 @@
 function checkStringDuplication(str) {
   let beforeWord = '';
   for (i = 0; i < str.length; i++) {
-    if (beforeWord === str[i]) {
-      return true;
-    } else {
-      beforeWord = str[i];
-    }
+    if (beforeWord === str[i]) return true;
+    beforeWord = str[i];
   }
   return false;
 }
@@ -14,11 +11,8 @@ function getDuplicateIndex(str, startIndex) {
   const COMPARISON = str[startIndex];
   let endIndex = startIndex;
   for (i = startIndex; i < str.length; i++) {
-    if (str[i] === COMPARISON) {
-      endIndex = i;
-    } else {
-      break;
-    }
+    if (str[i] !== COMPARISON) break;
+    endIndex = i;
   }
   return [startIndex, endIndex];
 }
