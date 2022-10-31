@@ -34,30 +34,14 @@ const findMaximumNumber = (book) => {
   return maximumNumber;
 };
 
-const checkEvenOrOdd = (book) => {
-  let exception = false;
-  const [leftPage, rightPage] = book;
-  if (leftPage % 2 !== 1) {
-    exception = true;
-  }
-  if (rightPage % 2 !== 0) {
-    exception = true;
-  }
-  return exception;
+const checkEvenOrOdd = ([leftPage, rightPage]) => {
+  return leftPage % 2 !== 1 || rightPage % 2 !== 0;
 };
-const checkConsecutiveNumber = (book) => {
-  let exception = false;
-  const [leftPage, rightPage] = book;
-  if (rightPage - leftPage !== 1) {
-    exception = true;
-  }
-  return exception;
+const checkConsecutiveNumber = ([leftPage, rightPage]) => {
+  return rightPage - leftPage !== 1;
 };
-const checkPageRange = (book) => {
-  let exception = false;
-  const [leftPage, rightPage] = book;
-  if (leftPage < 0 || rightPage > 400) exception = true;
-  return exception;
+const checkPageRange = ([leftPage, rightPage]) => {
+  return leftPage < 0 || rightPage > 400;
 };
 const checkException = (pobi, crong) => {
   let exception = false;
@@ -70,6 +54,7 @@ const checkException = (pobi, crong) => {
   if (checkPageRange(pobi) || checkPageRange(crong)) {
     exception = true;
   }
+
   return exception;
 };
 
