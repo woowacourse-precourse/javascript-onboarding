@@ -61,12 +61,11 @@ function problem7(user, friends, visitors) {
     if (i < 5) recommendList.push(pointArr[i]);
   }
 
-  // 추천 이름
-  let result = [];
-  for (let i = 0; i < maxFiveList.length; i++) {
-    result.push(maxFiveList[i][0]);
+  let recommendName = [];
+  for (let i = 0; i < recommendList.length; i++) {
+    recommendName.push(recommendList[i][0]);
   }
-  return result;
+  return recommendName;
 }
 
 module.exports = problem7;
