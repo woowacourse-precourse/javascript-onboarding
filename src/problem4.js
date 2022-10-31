@@ -51,9 +51,24 @@ const getReversedAlphabetMap = () => {
   return reversedAlphabetMap;
 };
 
-function problem4(word) {
-  var answer;
+/**
+ * 메인 함수
+ * @param {string} word
+ * @return {string}
+ */
+const problem4 = (word) => {
+  const reversedAlphabetMap = getReversedAlphabetMap();
+  let answer = "";
+
+  for (let singleChar of word) {
+    if (isAlphabet(singleChar)) {
+      answer += reversedAlphabetMap.get(singleChar);
+    } else {
+      answer += singleChar;
+    }
+  }
+
   return answer;
-}
+};
 
 module.exports = problem4;
