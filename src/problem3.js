@@ -12,13 +12,10 @@ const isValidNumber = (number) => {
 
 function problem3(number) {
   if (!isValidNumber(number)) return;
-
   let clap = 0;
-
   for (let i = 1; i <= number; i++) {
     clap += game369(i);
   }
-
   return clap;
 }
 
