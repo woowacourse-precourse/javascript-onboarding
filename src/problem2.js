@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
+  let answer;
   if (!checkException(cryptogram)) return;
-  return delDup(cryptogram);
+  answer = delDup(cryptogram);
+  return answer;
 }
 
 function checkException(str) {
@@ -18,7 +20,7 @@ function delDup(str) {
     if (!isDup(stack, str[i]) || i === 0) stack.push(str[i]);
     else stack.pop();
   }
-  console.log(stack);
+  //console.log(stack);
   return stack.join("");
 }
 module.exports = problem2;
