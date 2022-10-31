@@ -3,8 +3,8 @@ const mother = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 const son = ["z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"];
 
 function problem4(word) {
-  if (word === "---") {
-    return "---";
+  if (word.length < 1) {
+    return "";
   }
 
   const words = word.split(" ");
@@ -14,10 +14,6 @@ function problem4(word) {
     let sonWord = "";
     for (let j = 0; j < words[i].length; j++) {
       if (isWords(words[i][j])) {
-        if (typeof words[i][j] !== "string") {
-          sonWord += "-";
-          continue;
-        }
         const motherIndex = mother.indexOf(words[i][j].toUpperCase());
 
         if (isUpperCase(words[i][j])) {
@@ -27,12 +23,10 @@ function problem4(word) {
         }
       } else {
         sonWord += words[i][j];
-        continue;
       }
     }
     answer.push(sonWord);
   }
-
   return answer.join(" ");
 }
 
