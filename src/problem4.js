@@ -1,13 +1,14 @@
 function problem4(word) {
-  // 아스키코드
-  // A-Z 65-90
-  // a-z 97-122
+  const ASCII_A = 65;
+  const ASCII_Z = 90;
+  const ASCII_a = 97;
+  const ASCII_z = 122;
   let answer = "";
   for (let i = 0; i < word.length; i++) {
     let val = word.charCodeAt(i);
-    if (val >= 65 && val <= 90) {
+    if (val >= ASCII_A && val <= ASCII_Z) {
       answer += String.fromCharCode(155 - val);
-    } else if (val >= 97 && val <= 122) {
+    } else if (val >= ASCII_a && val <= ASCII_z) {
       answer += String.fromCharCode(219 - val);
     } else {
       answer += word[i];
