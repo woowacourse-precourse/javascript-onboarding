@@ -7,6 +7,8 @@ function problem2(cryptogram) {
       ? i++
       : (answer += duplicationCheck[i]);
   }
+
+  return answer === duplicationCheck.join("") ? answer : problem2(answer);
 }
 
 module.exports = problem2;
