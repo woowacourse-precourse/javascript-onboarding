@@ -12,6 +12,6 @@ const problem3 = (number) => {
     answer += cnt;
   }
   return answer;
-}
+};
 
 module.exports = problem3;
