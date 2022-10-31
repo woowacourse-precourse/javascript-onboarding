@@ -6,7 +6,8 @@
   2. user와 친구인 사람인 '친구의 친구'를 찾는다. 
   3. '친구의 친구' 사람(key)을 Map에 넣고 value = 10으로 설정한다.
   4. visitors를 참고해 방문객을 Map에 넣고, value+=1 점씩 매긴다.
-  5. 점수순(내림차순), 이름순(오름차순)으로 정렬한다.  
+  5. 추천 친구를 점수순(내림차순), 이름순(오름차순)으로 정렬한다.
+  6. 추천 친구를 최대 5명으로 제한한다.
 */
 
 function problem7(user, friends, visitors) {
@@ -44,7 +45,7 @@ function problem7(user, friends, visitors) {
 
   const sort_score = [...answer].sort((a, b) => b[1] - a[1]);
   const sort_name = sort_score.sort((a, b) => a[0] - b[0]);
-  answer = sort_name.map((e) => e[0]);
+  answer = sort_name.slice(0, 5).map((e) => e[0]);
   return answer;
 }
 
