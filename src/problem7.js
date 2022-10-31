@@ -27,9 +27,9 @@ function problem7(user, friends, visitors) {
   });
 
   for (const [key] of Object.entries(newFriendScore)) {
-    const hi = newFriendScore[key].reduce((a, b) => a + b);
+    const value = newFriendScore[key].reduce((a, b) => a + b);
 
-    newRecommendScore.push({ name: key, score: hi });
+    newRecommendScore.push({ name: key, score: value });
   }
 
   const scoreList = setHighScore(newRecommendScore);
