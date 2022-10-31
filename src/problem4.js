@@ -1,3 +1,8 @@
+/**
+ * 청개구리 사전의 방식으로 변환한 문자열을 반환합니다.
+ * @param {string} word 1 이상 1,000 이하인 문자열입니다.
+ * @returns {string} 알파벳을 반대로 변환한 문자열입니다.
+ */
 function problem4(word) {
   let answer;
   const LOWER = 'a'.charCodeAt(0) + 'z'.charCodeAt(0);
