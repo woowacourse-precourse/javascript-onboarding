@@ -6,6 +6,8 @@ const userArr = [];
 const friendsArr = [];
 const visitorsArr = [];
 const scored = [];
+const zero = [];
+const zero2 = [];
 
 function setPeople(user, friends, visitors){
   userArr.push(user);
@@ -32,6 +34,15 @@ function setScore(user, friends, visitors) {
     }
   }
 
+  for(j = 0; j < zero.length-1; j++) {  //1점 얻는 user의 타임라인에 방문한 사람을 배열에 정리
+    for(i = 0; i < visitors.length; i++){
+      if(visitorsArr[i] !== zero[j] && visitorsArr[i] !== zero[j+1]){
+        scored.push(visitorsArr[i])
+      } else if(visitorsArr[i] === zero[j] || visitorsArr[i] === zero[j+1]){  //이미 user의 친구
+        zero2.push(visitorsArr[i])
+      }
+    }
+  }
 }
 
 module.exports = problem7;
