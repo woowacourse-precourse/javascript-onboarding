@@ -60,6 +60,13 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 추천 점수가 높은 순으로 정렬, 같을 경우 이름 순
+  answer.sort(function(a, b) {
+    if(a[1] < b[1]) return 1;
+    else if(a[1] > b[1]) return -1;
+    else return a[0].localeCompare(b[0]);
+  });
+
   return answer;
 }
 
