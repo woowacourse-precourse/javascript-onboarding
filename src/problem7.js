@@ -5,9 +5,9 @@ const LIMIT = 5;
 const getUsersFriends = (user, relationship) => {
   let friends = relationship.reduce((acc, [personA, personB]) => {
     if (personA === user) {
-      acc.push(personB);
+      return acc.concat(personB);
     } else if (personB === user) {
-      acc.push(personA);
+      return acc.concat(personA);
     }
     return acc;
   }, []);
@@ -22,9 +22,9 @@ const getExceptFriend = (friendArray, usersFriends) => {
 
 const getFriendOfFriend = (user, usersFriends, relationship) => {
   const result = usersFriends.reduce((acc, usersFriend) => {
-    acc.push(...getUsersFriends(usersFriend, relationship));
-    acc.splice(acc.indexOf(user), 1);
-    return acc;
+    const friends = getUsersFriends(usersFriend, relationship);
+    friends.splice(friends.indexOf(user), 1);
+    return acc.concat(friends);
   }, []);
   return getExceptFriend(result, usersFriends); // 내 친구와 친구가 서로 친구인 경우를 제외하여 건너 건너 친구만 리턴하게끔
 };
