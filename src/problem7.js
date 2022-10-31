@@ -1,7 +1,8 @@
 function problem7(user, friends, visitors) {
-  const result = [];
-
+  getFriendsAdjacencyList(friends);
   const userFriend = getFriendUser(user, friends);
+
+  // console.log(userFriend);
 }
 
 function getFriendUser(user, friends) {
@@ -9,10 +10,12 @@ function getFriendUser(user, friends) {
   for (let i = 0; i < friends.length; i++) {
     const includeUser = friends[i].includes(user);
     if (includeUser) {
-      console.log(String(friends[i]).replace(user && ",", ""));
-      friend.push(String(friends[i]).replace(user && ",", ""));
+      const temp = String(friends[i]).replace(user, "");
+      friend.push(String(temp).replace(",", ""));
     }
   }
+  console.log(friend);
+
   return friend;
 }
 
