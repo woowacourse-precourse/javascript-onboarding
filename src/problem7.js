@@ -15,7 +15,8 @@ function problem7(user, friends, visitors) {
 
     recommendFriends = sortObj(user, userFriends, friendsObj);
     recommendFriends.forEach(v=> answer.push(v.name));
-    return answer;
+    if(recommendFriends.length > 5) return answer.slice(0,5);
+    return answer
 }
 
 function setList(friends, visitors) {
@@ -48,16 +49,16 @@ function setScore(user, friends, visitors, userFriends, friendsObj) {
 function sortObj(user, userFriends, friendsObj) {
     let recommendFriends = [];
     for(let friend in friendsObj) {
-        if(friendsObj[friend]!=0 && friend!=user && userFriends.indexOf(friend)==-1) {
-            recommendFriends.push({name: friend, num: friendsObj[friend]})
+        if(friendsObj[friend] !=0 && friend != user && userFriends.indexOf(friend) == -1) {
+            recommendFriends.push({name: friend, num: friendsObj[friend]});
         }
-    };
+    }
     recommendFriends = recommendFriends.sort((a,b)=>{
-        if(a.name<b.name) return -1;
-        if(b.name<a.name) return 1;
+        if(a.name < b.name) return -1;
+        if(b.name < a.name) return 1;
         return 0;
-    });
-    recommendFriends = recommendFriends.sort((a,b)=>b.num-a.num);
+    })
+    recommendFriends = recommendFriends.sort((a,b)=> b.num-a.num);
     return recommendFriends;
 }
 
