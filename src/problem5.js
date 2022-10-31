@@ -1,7 +1,5 @@
 function problem5(money) {
-  var answer;
-
-  let map = new Map([
+  let changeMap = new Map([
     [50000, 0],
     [10000, 0],
     [5000, 0],
@@ -15,14 +13,16 @@ function problem5(money) {
 
   let remain = money;
   let count = 0;
-  for (let subtract of map.keys()) {
-    count = Math.floor(remain / subtract)
-    remain = remain - (subtract * count);
-    map.set(subtract, count);
+
+  for (let change of changeMap.keys()) {
+    count = Math.floor(remain / change)
+
+    remain = remain - (change * count);
+
+    changeMap.set(change, count);
   }
 
-  answer = Array.from(map.values());
-  return answer;
+  return Array.from(changeMap.values());
 }
 
 module.exports = problem5;

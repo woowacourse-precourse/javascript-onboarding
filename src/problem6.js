@@ -1,36 +1,10 @@
 function problem6(forms) {
-  var answer;
-
   let dupEmailList = getDupEmailList(forms);
 
-  answer = dupEmailList;
-
-  return answer;
+  return dupEmailList;
 }
 
 module.exports = problem6;
-
-function checkEmailLength(email) {
-  if (email.length >= 11 && email.length < 20) return true;
-  else return false;
-}
-
-function checkEmailDomain(email) {
-  const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@email.com$/;
-  if (regExp.test(email)) return true;
-  else return false;
-}
-
-function checkNickNameLength(nickname) {
-  if (nickname.length >= 1 && nickname.length < 20) return true;
-  else return false;
-}
-
-function checkNickNameKo(nickname) {
-  const regExp = /^[ㄱ-ㅎ|가-힣]+$/;
-  if (regExp.test(nickname)) return true;
-  else return false;
-}
 
 function getDupEmailList(forms) {
   let userMap = new Map(forms);

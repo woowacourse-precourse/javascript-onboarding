@@ -1,21 +1,34 @@
 function problem4(word) {
-  var answer;
+  let invertCaseTable = setInvertCaseTable();
 
-  // 문자열 변환표(객체)
-  let invertCase = {};
+  return reverseWord(word, invertCaseTable);
+}
+
+function setInvertCaseTable() {
+  let invertCaseTable = {}; // 문자열 변환표
+
   let gap = 25;
+  let lowerCaseOffset = 32;
+
   for (let i = "A".codePointAt(0); i <= "Z".codePointAt(0); i++) {
-    invertCase[String.fromCodePoint(i)] = String.fromCodePoint(i + gap);
-    invertCase[String.fromCodePoint(i + 32)] = String.fromCodePoint(
-      i + 32 + gap
-    );
+    // 대문자
+    invertCaseTable[String.fromCodePoint(i)] = String.fromCodePoint(i + gap);
+
+    // 소문자
+    invertCaseTable[String.fromCodePoint(i + lowerCaseOffset)] =
+      String.fromCodePoint(i + lowerCaseOffset + gap);
     gap -= 2;
   }
 
-  // 문자열 뒤집기
+  return invertCaseTable;
+}
+
+function reverseWord(word, invertCaseTable) {
   let reversedWord = "";
   for (let char of word) {
-    char == " " ? (reversedWord += " ") : (reversedWord += invertCase[char]);
+    char == " "
+      ? (reversedWord += " ")
+      : (reversedWord += invertCaseTable[char]);
   }
 
   answer = reversedWord;
