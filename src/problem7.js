@@ -38,13 +38,33 @@ function problem7(user, friends, visitors) {
     .sort((a, b) => {
       if (a[1] === b[1]) {
         if (a[0] > b[0]) return 1;
-        else return 1;
+        else return -1;
       } else if (a[1] > b[1]) return -1;
       return 1;
     });
-  answer = answer.flatMap((x) => x).filter((x, idx) => idx % 2 === 0);
+  answer = answer
+    .flatMap((x) => x)
+    .filter((x, idx) => idx % 2 === 0 && !myFriends.includes(x)).slice(0,5);
+
+  console.log(userScoreList);
 
   return answer;
 }
+
+console.log(
+  problem7(
+    "andole",
+    [
+      ["andole", "jun"],
+      ["donut", "jun"],
+      ["donut", "shakevan"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "bedi"],
+      ["anne", "jun"],
+    ],
+    ["donut", "mrko", "peter", "sam"]
+  )
+);
 
 module.exports = problem7;
