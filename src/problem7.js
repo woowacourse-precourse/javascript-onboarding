@@ -99,7 +99,11 @@ function sortFriends(usersFriendsSet, friendsTotalScore) {
 }
 
 function validUser(user) {
-  return 1 <= user.length && user.length <= 30 && typeof(user) == "string";
+  return 1 <= user.length && user.length <= 30 && typeof (user) == "string";
+}
+
+function validFriends(friends) {
+  return 1 <= friends.length && friends.length <= 10000 && typeof (friends) == "object";
 }
 
 module.exports = problem7;
