@@ -17,10 +17,9 @@ function problem2(cryptogram) {
       ptr1++;
       ptr2++;
     } else if (seperate[ptr1] === seperate[ptr2]) {
-      const beforIndex = ptr1 - 1;
       seperate.splice(ptr1, 2);
-      ptr1 = beforIndex;
-      ptr2 = beforIndex + 1;
+      ptr2 = ptr1;
+      ptr1 = ptr1 - 1;
     }
   }
 
