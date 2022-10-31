@@ -19,6 +19,20 @@ function problem3(number) {
 }
 
 /**
+ * 숫자를 각 자릿수로 분할한 후에 조건에 맞는다면 박수 수를 늘리는 함수
+ *
+ * @callback getCountCallback
+ * @param {number} number
+ * @returns
+ */
+function countClap(number) {
+  const digits = number.toString().split("").map(Number);
+  const clapCount = digits.filter((digit) => isMultiple(digit)).length;
+
+  return clapCount;
+}
+
+/**
  * multiple의 배수가 맞는 지 확인하는 함수
  *
  * @param {number} number 배수인지 확인할 숫자
