@@ -58,6 +58,9 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  test('이모지 및 특수문자', () => {
+    expect(problem4('This is Good!!!👍')).toEqual('Gsrh rh Tllw!!!👍');
+  });
 });
 
 describe("problem5", () => {
