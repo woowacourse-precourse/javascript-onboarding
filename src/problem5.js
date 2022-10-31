@@ -18,7 +18,8 @@ const isPossibleToUseSelectedMoneyKind = (moneyLeft, moneyKind) => {
 };
 
 const problem5 = (money) => {
-  var answer;
+  const answer = new Array(9).fill(0);
+
   return answer;
 }
 
