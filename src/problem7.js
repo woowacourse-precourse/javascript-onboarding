@@ -7,6 +7,16 @@ function problem7(user, friends, visitors) {
     if(friendsMap.hasOwnProperty(b)) friendsMap[b].push(a);
     else friendsMap[b] = [a];
   })
+
+  const score = {};
+
+  for(const name in friendsMap) {
+    if(name === user) continue;
+    if(friendsMap[user].includes(name)) continue;
+
+    const mutualFriends = friendsMap[name].filter(a => friendsMap[user].includes(a));
+    score[name] = mutualFriends.length * 10;
+  }
 }
 
 module.exports = problem7;
