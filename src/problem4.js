@@ -6,7 +6,7 @@ function problem4(word) {
   for (let i=0; i<arr.length; i++) {
     newArr.push(arr[i].charCodeAt(arr[i]));
   }  
-  
+
   for (let j=0; j<newArr.length; j++) {
     if (newArr[j] > 64 && newArr[j] < 91) {
       newArr[j] = 155 - newArr[j];
@@ -14,6 +14,9 @@ function problem4(word) {
       newArr[j] = 219 - newArr[j];
     }
   }
+
+  newArr = String.fromCharCode(...newArr);
+  answer = newArr;
   return answer;
 }
 
