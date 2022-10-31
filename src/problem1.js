@@ -10,17 +10,17 @@ function isValidPages(pages) {
 function getScore(pages) {
   let score = 0;
 
-  pages.forEach(page => {
+  for (const page of pages) {
     const pageDigits = String(page).split('');
     let digitSum = 0;
     let digitProduct = 1;
 
-    pageDigits.forEach(digit => {
+    for (const digit of pageDigits) {
       digitSum += Number(digit);
       digitProduct *= digit;
-    });
+    }
     score = Math.max(score, digitSum, digitProduct);
-  });
+  }
   return score;
 }
 
