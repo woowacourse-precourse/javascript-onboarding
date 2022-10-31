@@ -9,7 +9,7 @@ function problem4(word) {
       answer = answer + ' ';
     }
   }
-  console.log(answer);
+
   return answer;
 }
 

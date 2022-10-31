@@ -27,8 +27,3 @@ function problem5(money) {
 }
 
 module.exports = problem5;
-
-console.log(problem5(50237));
-console.log(problem5(15000));
-console.log(problem5(0));
-console.log(problem5(1000000));
