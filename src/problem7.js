@@ -22,6 +22,14 @@ function compare(arr1 = [], arr2) {
   return arr1.reduce((a, c) => a + arr2.includes(c), 0);
 }
 
+//규칙대로 점수 계산하기
+function calculateScore(togetherKnow, visits) {
+  return Object.keys({ ...togetherKnow, ...visits }).reduce((acc, curr) => {
+    acc[curr] = (togetherKnow[curr] || 0) * 10 + (visits[curr] || 0);
+    return acc;
+  }, {});
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
