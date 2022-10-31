@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  let answer = [];
   const userFriendList = [];
   const newFriendList = [];
   const scoreMap = new Map();
@@ -38,9 +37,13 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  const sortedScoreMap = new Map([...scoreMap.entries()].sort().sort((a, b) => b[1] - a[1]));
-  answer = [...sortedScoreMap.keys()].slice(0, 5);
-  return answer;
+  const sortedRecommendationList = [...scoreMap.entries()].sort(([name1, score1], [name2, score2]) => {
+    if (score1 > score2) return -1;
+    if (score1 < score2) return 1;
+    return name1 > name2 ? 1 : -1;
+  });
+
+  return sortedRecommendationList.map(([name]) => name).slice(0, 5);
 }
 
 module.exports = problem7;
