@@ -1,7 +1,8 @@
 function problem7(user, friends, visitors) {
   
   const userfriends = [],
-        friendoffriends = [];
+        friendoffriends = [],
+        unfriendvisitors = [];
 
   friends.filter((a) => a.includes(user)).filter((a) => {
     for (let i = 0; i < a.length; i++) {
@@ -16,6 +17,10 @@ function problem7(user, friends, visitors) {
         friendoffriends.push((friends[j].filter((a) => !a.includes(userfriends[i]))).join(""));
       } 
     } 
+  };
+
+  for (let i = 0; i < visitors.length; i++) {
+    if (!userfriends.includes(visitors[i])) unfriendvisitors.push(visitors[i]);
   };
 
 }
