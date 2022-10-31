@@ -3,8 +3,16 @@ function problem7(user, friends, visitors) {
 
   makeRelations(user, friends, visitors);
   exceptFriendsInVisotor(visitors);
+  calculateVisitor(visitors);
+
   return answer;
 }
+
+const calculateVisitor = (visitors) => {
+  visitors.map((e) => {
+    checkScore(e, 1);
+  });
+};
 
 const exceptFriendsInVisotor = (visitors) => {
   let deleteIdx = [];
