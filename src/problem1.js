@@ -38,9 +38,20 @@ function findMaxNumber(n){
   result = Math.max(...n);
   return result;
 }
-
+function exception(n){
+  if(!(n[0]-n[1]==-1))
+    return 1;
+  
+}
 function problem1(pobi, crong) {
-    let answer;
+    let answer=0;
+
+    if((exception(pobi)||exception(crong))){
+      return -1;
+    }
+
+    answer=compareScore(findMaxNumber(pobi),findMaxNumber(crong));
+
     return answer;
 }
 module.exports = problem1;
