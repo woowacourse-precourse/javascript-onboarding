@@ -26,35 +26,39 @@ const getScore = ([left, right]) => {
   );
 };
 
-const checkException = (array) => {
-  const [left, right] = array;
+const isValid = ([left, right]) => {
+  if (right - left !== 1) {
+    return false;
+  }
 
-  // 왼쪽 페이지 < 오른쪽 페이지 (두 값의 차이가 1인지)
-  if (right - left === 1) {
-    if (left % 2 !== 1) return false; // 왼쪽 페이지가 홀수값이 아니라면
-  } else return false; // 두 페이지 값의 차이가 1이 아니라면
+  if (left % 2 === 0) {
+    return false;
+  }
 
-  // 페이지의 값이 범위 내에 있는지 검사
-  if (right >= 2 && right <= 400 && left >= 1 && left <= 399) return true;
-  return false; // 범위 밖이라면
+  if (left < 1 || left > 399 || right < 2 || right > 400) {
+    return false;
+  }
+
+  return true;
 };
 
 function problem1(pobi, crong) {
-  var answer;
+  // var answer;
 
-  if (!checkException(pobi) || !checkException(crong)) return ERROR;
+  if (!isValid(pobi) || !isValid(crong)) return ERROR;
 
   const scorePobi = getScore(pobi);
-
   const scoreCrong = getScore(crong);
 
-  answer =
-    scorePobi >= scoreCrong
-      ? scorePobi === scoreCrong
-        ? DRAW
-        : POBI_WIN
-      : CRONG_WIN;
-  return answer;
+  if (scorePobi === scoreCrong) {
+    return DRAW;
+  } else if (scorePobi > scoreCrong) {
+    return POBI_WIN;
+  } else if (scorePobi < scoreCrong) {
+    return CRONG_WIN;
+  } else {
+    return ERROR;
+  }
 }
 
 module.exports = problem1;
