@@ -23,3 +23,12 @@ const removeDupUsers =
     (array) => {
       return array.filter((v) => users.indexOf(v) === -1);
     };
+
+const recordScore = (friends) => {
+  return friends.reduce((reduced, friend) => {
+    const copy = { ...reduced };
+    if (copy[friend]) copy[friend] += 10;
+    else copy[friend] = 10;
+    return copy;
+  }, {});
+};
