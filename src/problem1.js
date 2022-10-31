@@ -35,11 +35,13 @@ function problem1(pobi, crong) {
    * */
 
   // 예외사항 체크
-  if(pobi[1] !== pobi[0] + 1){
+  // 책 페이지
+  // 시작면이나 마지막면 X
+  if((pobi[1] !== pobi[0] + 1)|| pobi[0] >= 400 || pobi[0] <= 1 || pobi[1] >= 400 || pobi[1] < 1 || pobi.length !== 2){
     return -1;
   }
 
-  if(crong[1] !== crong[0] +1){
+  if((crong[1] !== crong[0] +1) || crong[0] >= 400 || crong[0] <= 1 || crong[1] >= 400 || crong[1] < 1|| crong.length !== 2){
     return -1;
   }
 
