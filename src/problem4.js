@@ -19,9 +19,9 @@ function isAlphabet(letter) {
 }
 
 function reverseAlphabet(letter) {
-  const letterAscii = letter.charCodeAt(0);
+  const letterCharCode = letter.charCodeAt(0);
   let reversePoint = 0;
-  let reverseAscii = 0;
+  let reverseCharCode = 0;
 
   if (isUpperCase(letter)) {
     reversePoint = UPPER_CASE_START_CHARCODE + UPPER_CASE_END_CHARCODE;
@@ -31,8 +31,8 @@ function reverseAlphabet(letter) {
     reversePoint = LOWER_CASE_START_CHARCODE + LOWER_CASE_END_CHARCODE;
   }
 
-  reverseAscii = reversePoint - letterAscii;
-  return String.fromCharCode(reverseAscii);
+  reverseCharCode = reversePoint - letterCharCode;
+  return String.fromCharCode(reverseCharCode);
 }
 
 function problem4(word) {

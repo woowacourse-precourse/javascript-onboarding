@@ -35,3 +35,4 @@
 
 - [x] 중복 코드 삭제 (reverseAlphabet)
 - [x] 대문자 소문자 범위 코드 상수화
+- [x] 변수명 수정 (ascii -> charCode)
