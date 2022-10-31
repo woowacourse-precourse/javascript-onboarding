@@ -1,5 +1,4 @@
 function problem5(money) {
-  var answer;
   return answer;
 }
 
