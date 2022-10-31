@@ -21,7 +21,7 @@ function problem7(user, friends, visitors) {
     recommendations.push([person, score]);
   };
 
-  const is_current_friends = (person) => {
+  const is_current_friend = (person) => {
     return current_friends.includes(person);
   };
 
@@ -35,7 +35,7 @@ function problem7(user, friends, visitors) {
 
   const can_be_recommendations = (i, j) => {
     return (
-      is_current_friends(friends[i][j]) &&
+      is_current_friend(friends[i][j]) &&
       is_not_user(friends[i][1 - j]) &&
       is_not_current_friend(friends[i][1 - j])
     );
@@ -54,11 +54,9 @@ function problem7(user, friends, visitors) {
   const find_visitors = () => {
     for (let i = 0; i < visitors.length; i++) {
       isBreak = false;
-      for (let j = 0; j < current_friends.length; j++) {
-        if (visitors[i] == current_friends[j]) {
-          isBreak = true;
-          break;
-        }
+      if (is_current_friend(visitors[i])) {
+        isBreak = true;
+        break;
       }
       if (!isBreak) {
         push_recommendations(visitors[i], 1);
