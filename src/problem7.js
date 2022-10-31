@@ -45,7 +45,7 @@ function problem7(user, friends, visitors) {
     } else return b[1] - a[1];
   });
 
-  return recommendArray.map((v) => v[0]);
+  return recommendArray.map((v) => v[0]).slice(0, 5);
 }
 
 module.exports = problem7;
