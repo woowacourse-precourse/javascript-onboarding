@@ -1,6 +1,6 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let answer = 0;
+  const rule = "369";
 }
 
 module.exports = problem3;
