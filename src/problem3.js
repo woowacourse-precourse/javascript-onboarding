@@ -1,14 +1,14 @@
 function problem3(number) {
+  const regex = /3|6|9/g;
   let resultCount = 0;
   for(let nowNumber = 1; nowNumber < number + 1; nowNumber++){
-    const nowNumberArray = nowNumber.toString().split("");
-    nowNumberArray.forEach(element => {
-      if(element === '3' || element == '6' || element == '9') { resultCount += 1 }
-    });
+    const matchNumberArray = nowNumber.toString().match(regex);
+    if(matchNumberArray == null) { continue; }
+    resultCount += matchNumberArray.length;
   }
   return resultCount;
 }
 
-console.log(problem3(33));
+console.log(problem3(13));
 
 module.exports = problem3;
