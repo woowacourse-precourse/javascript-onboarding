@@ -10,6 +10,32 @@ function filterRealFriends(user, friends) {
   return array;
 }
 
+function scoreInFriends(user, friends, realFriends) {
+  let key;
+  let dict = {};
+  for (let i = 0; i < friends.length; i++) {
+    for (let j = 0; j < realFriends.length; j++) {
+      if (friends[i].includes(realFriends[j])) {
+        let index = friends[i].indexOf(realFriends[j]);
+        if (index === 0) {
+          key = friends[i][1];
+        } else {
+          key = friends[i][0];
+        }
+        // user 자기 자신은 제외.
+        if (key !== user) {
+          if (dict[key]) {
+            dict[key] += 10;
+          } else {
+            dict[key] = 10;
+          }
+        }
+      }
+    }
+  }
+  return dict;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
   let realFriends;
@@ -18,6 +44,9 @@ function problem7(user, friends, visitors) {
 
   // user의 친구를 담은 배열 realFriends 만들기.
   realFriends = filterRealFriends(user, friends);
+
+  // friends 배열에서 추천 점수 매기기
+  dict = scoreInFriends(user, friends, realFriends);
   return answer;
 }
 
