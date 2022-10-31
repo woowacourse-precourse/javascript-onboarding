@@ -53,4 +53,19 @@ function calcMaxNum(number) {
   return maxNum;
 }
 
+function calcUserMaxNum(numbers) {
+  const [num1, num2] = numbers;
+  const maxNum1 = calcMaxNum(num1);
+  const maxNum2 = calcMaxNum(num2);
+  let maxNum;
+
+  if (maxNum1 >= maxNum2) {
+    maxNum = maxNum1;
+  } else {
+    maxNum = maxNum2;
+  }
+
+  return maxNum;
+}
+
 module.exports = problem1;
