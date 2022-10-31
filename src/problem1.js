@@ -12,9 +12,9 @@ function problem1(pobi, crong) {
   let a = [97, 98];
   let b = [197, 198];
   let sum_a = 0;
-  let multiple_a = 0;
+  let multiple_a = 1;
   let sum_b = 0;
-  let multiple_b = 0;
+  let multiple_b = 1;
 
   a = a.toString().split('');
 
