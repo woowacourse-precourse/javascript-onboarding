@@ -29,7 +29,7 @@ function problem6(forms) {
     // 중복된 단어가 여러개 일 경우(예외처리)
     for (j = 0; j < word.length; j++) {
       if (forms[i][1].includes(word[j])) {
-        resultEmail.push(forms[i][0]);
+        resultEmail.add(forms[i][0]);
       }
     }
   }
