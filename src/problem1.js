@@ -9,10 +9,10 @@ function validCheck(left, right){
 }
 
 function calcScore(left, right){
-  leftSum = 0;
-  leftMul = 1;
-  rightSum = 0;
-  rightMul = 1;
+  let leftSum = 0;
+  let leftMul = 1;
+  let rightSum = 0;
+  let rightMul = 1;
 
   for(let i = left; i > 0; i = parseInt(i / 10)){
     leftSum += i%10;
@@ -27,14 +27,14 @@ function calcScore(left, right){
 }
 
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
   
   if(!(validCheck(pobi[0], pobi[1]) && validCheck(crong[0], crong[1]))){
     answer = -1;
     return answer;
   }
-  pobiScore = calcScore(pobi[0], pobi[1]);
-  crongScore = calcScore(crong[0], crong[1]); 
+  const pobiScore = calcScore(pobi[0], pobi[1]);
+  const crongScore = calcScore(crong[0], crong[1]); 
   answer = pobiScore > crongScore ? 1 : pobiScore === crongScore ? 0 : 2;
 
   return answer;
