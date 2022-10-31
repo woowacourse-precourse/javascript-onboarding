@@ -29,6 +29,7 @@ function problem7(user, friends, visitors) {
   }, {});
 
   const scoreById = {};
+
   for (const value of Object.values(recommandList)) {
     value.forEach((id) => {
       if (!scoreById[id]) scoreById[id] = 0;
@@ -41,6 +42,25 @@ function problem7(user, friends, visitors) {
 
     scoreById[visitor] += 1;
   });
+
+  const idByScore = {};
+
+  for (const [key, value] of Object.entries(scoreById)) {
+    if (bestFriends.find((id) => id === key)) continue;
+
+    if (!idByScore[value]) idByScore[value] = [];
+    idByScore[value].push(key);
+  }
+
+  const keys = Object.keys(idByScore);
+  keys.sort((a, b) => b - a);
+
+  const answer = [];
+  keys.forEach((key) => {
+    answer.push(...idByScore[key].sort());
+  });
+
+  return answer.splice(0, 5);
 }
 
 module.exports = problem7;
