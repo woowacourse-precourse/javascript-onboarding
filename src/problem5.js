@@ -7,8 +7,7 @@
 function problem5(money) {
     var answer;
     let tmpmoney = money;
-    let moneyArray = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-    let leftArray = {,,,,,,,, };
+    let moneyArray = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
     if (tmpmoney > 1000000 || tmpmoney < 1) {
         answer = "The value of money must be between 1 and 1000000";
@@ -17,9 +16,10 @@ function problem5(money) {
     else {
         for (let i = 0; i < moneyArray.length; i++) {
             let share = tmpmoney / moneyArray[i];
-            moneyArray[i] = parseInt(share);
             tmpmoney = tmpmoney % moneyArray[i];
+            moneyArray[i] = parseInt(share);
         }
+        answer = moneyArray;
     }
 
     return answer;
