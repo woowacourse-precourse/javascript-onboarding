@@ -97,3 +97,20 @@
     ````
 
   - 함수 안에는 ```withoutUser```라는 새로운 배열을 만들고, ```friends```목록을 순회하며 ````user````라는 이름이 포함되어 있지 않는 요소만 ```withoutUser```배열에 추가하는 함수 ❗️
+
+</br> 
+
+### ✔️ 기능 4. user의 친구들과 친구 관계인 목록 작성 함수
+<br>
+
+  - ```user```가 포함되지 않은 배열 ```withoutUserList```에서 순회하며 ```userFriendsList```배열에 포함되지 않은 요소만을 선별
+
+    -   그렇게 되면 ```user```와도 친구가 아니고, ```userFriendsList```에도 포함되지 않은 '친구의 친구' 혹은 '지인'에 해당하기 떄문 ❗️
+    ```javascript
+      function makeBestRecommendFriend(withoutUserList, userFriendList) {
+       return withoutUserList.map((v) => v.filter((x) => !userFriendList.includes(x))).map(i => i.join(''))
+      }
+    ````
+
+  - 2차원 배열로 이뤄어진 ```withoutUserList```에서 ```map()```으로 1차로 외부적 순회.
+  - 그 다음 큰 배열 아이템 안에는 두 명의 친구 관계가 있기 때문에 ```filter()``` 로 2차적 내부 순회.
