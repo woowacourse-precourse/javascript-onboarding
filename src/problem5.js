@@ -17,7 +17,7 @@ const isPossibleToUseSelectedMoneyKind = (moneyLeft, moneyKind) => {
   return moneyLeft >= moneyKind;
 };
 
-function problem5(money) {
+const problem5 = (money) => {
   var answer;
   return answer;
 }
