@@ -38,7 +38,11 @@ function problem1(pobi, crong) {
     return playerMax;
   }
 
-  function result(player1, player2) {}
+  function result(player1, player2) {
+    if (player1 == player2) return 0;
+    else if (player1 > player2) return 1;
+    else if (player1 < player2) return 2;
+  }
 
   if (exception(pobi, crong)) answer = -1;
   else answer = result(score(pobi), score(crong));
