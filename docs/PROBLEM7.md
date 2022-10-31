@@ -25,9 +25,10 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ## 🎯 TODO 리스트
-- user 친구들과 그들의 친구들을 정리 
-- friends 배열에 있는 친구의 친구 점수 추적
-- visitor 배열에 있는 사용자 점수 추적 
+- user 친구들 정리 
+- user 친구들의 친구들 점수 정리 
+- visitor 점수 정리 
 - 추천 점수 정렬
   - 높은 점수 -> 낮은 점수
   - 오름차순 
+  - 최대 다섯명의 사용자 
