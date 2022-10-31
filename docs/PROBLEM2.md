@@ -22,3 +22,10 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 풀이방법
+
+- 스택 선언후 비어있으면 push
+- 같은 문자 나오면 pop
+- 같은 문자 계속 나올때 까지 while
+- 같은 문자 없으면 push
+- join으로 stack 문자열로 변환
