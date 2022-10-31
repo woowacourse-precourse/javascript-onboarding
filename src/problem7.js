@@ -34,9 +34,10 @@ function friendVisitCheck(visitors, set, obj) {
 function keyValueObject(answer, obj) {
   let objKeys = Object.keys(obj);
   let objScores = Object.values(obj);
-  for (let i = 0; i < objKeys.length; i++) {
-    answer.push({ key: objKeys[i], score: objScores[i] });
-  }
+  answer = objKeys.reduce((acc, _, index) => {
+    acc.push({ key: objKeys[index], score: objScores[index] });
+    return acc;
+  }, []);
   return answer;
 }
 function answerScoreSort(answer) {
