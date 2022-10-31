@@ -40,8 +40,8 @@
 
 
 - ### user의 친구 찾는 기능
-  - [] 이차원 배열 friends에서 user를 찾는다.
-  - [] user의 옆 문자열을 user의 친구에 추가한다.
+  - [x] 이차원 배열 friends에서 user를 찾는다.
+  - [x] user의 옆 문자열을 user의 친구에 추가한다.
 
 - ### user 친구의 친구 찾는 기능
   - [] 이차원 배열 friends에서 'user의 친구'를 찾는다.
