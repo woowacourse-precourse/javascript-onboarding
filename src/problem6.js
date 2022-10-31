@@ -8,7 +8,10 @@ function problem6(forms) {
         if (form === forms[i]) {
           continue;
         }
-        if (forms[i][1].includes(nickName.substr(j, 2))) {
+        if (
+          !emailList.includes(forms[i][0]) &&
+          forms[i][1].includes(nickName.substr(j, 2))
+        ) {
           emailList.push(forms[i][0]);
         }
       }
