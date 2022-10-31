@@ -30,7 +30,7 @@ class Password {
     return [...new Set(this._cryptogram.split(""))];
   }
 
-  decrypt() {
+  decryptForOverlap() {
     const usingCharList = this.getUseCharList();
     let result = this._cryptogram;
 
@@ -42,7 +42,7 @@ class Password {
     return result;
   }
 
-  getDecryption() {
+  getNoOverlapDecryption() {
     let decryption = this.decrypt();
 
     while (decryption.length !== this._cryptogram.length) {
@@ -56,7 +56,7 @@ class Password {
 
 function problem2(cryptogram) {
   const password = new Password(cryptogram);
-  return password.getDecryption();
+  return password.getNoOverlapDecryption();
 }
 
 module.exports = problem2;
