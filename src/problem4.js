@@ -30,4 +30,13 @@ function changeAlphabetGreenFrog(inputLetter) {
   return outputLetter;
 }
 
+function changeWordGreenFrog(word) {
+  let frogWord = "";
+  for (let letter of word) {
+    frogWord += changeAlphabetGreenFrog(letter);
+  }
+
+  return frogWord;
+}
+
 module.exports = problem4;
