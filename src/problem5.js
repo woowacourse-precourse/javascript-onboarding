@@ -3,7 +3,7 @@ function exchange(num){
   const ans = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   for(i = 0; i < 9; i++) {
     if(num - wallet[i] >= 0){
-      ans[i] = num / wallet[i];
+      ans[i] = parseInt(num / wallet[i]);
       num %= wallet[i];
     }
   }
@@ -11,8 +11,7 @@ function exchange(num){
 }
 
 function problem5(money) {
-  var answer;
-  return answer;
+  return exchange(money);
 }
 
 module.exports = problem5;
