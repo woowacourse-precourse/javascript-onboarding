@@ -16,8 +16,27 @@ function isRepeatedNickname(nickname, target) {
   return false;
 }
 
+/**
+ * 중복 제거 및 email을 기준으로 오름차순 정렬한 email 배열을 반환합니다.
+ * @param {string[]} list [email, nickname] 쌍으로 이뤄진 배열입니다.
+ * @returns {string[]} 오름차순으로 정렬된 email 배열입니다.
+ */
+function getUniqueList(list) {
+  const uniqueList = [];
+
+  for (const [email] of list) {
+    if (!uniqueList.includes(email)) {
+      uniqueList.push(email);
+    }
+  }
+
+  uniqueList.sort();
+
+  return uniqueList;
+}
+
 function problem6(forms) {
-  var answer;
+  let answer = [];
   const repeatedCrews = [];
 
   for (const [, nickname] of forms) {
@@ -27,6 +46,8 @@ function problem6(forms) {
       )
     );
   }
+
+  answer = getUniqueList(repeatedCrews);
 
   return answer;
 }
