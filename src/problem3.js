@@ -6,22 +6,16 @@ function problem3(number) {
    * 4. 0은 3으로 나누어도 나머지가 0이므로 0일 때는 그대로 놔둠
    * 5. 이중 배열 속 합을 구해 맵핑하고 배열의 합을 구해 결과 반환
    */
-  let countArray = [];
-
+  const countArray = [];
+  let count = 0;
   for (let i = 1; i <= number; i++) {
     countArray.push(String(i).split(""));
   }
-  let answer = countArray
-    .map((arr) =>
-      arr
-        .map((number) => {
-          return (Number(number) !== 0 && Number(number) % 3) === 0 ? 1 : 0;
-        })
-        .reduce((a, b) => a + b)
-    )
-    .reduce((a, b) => a + b);
+  countArray.flat().map((number) => {
+    (Number(number) !== 0 && Number(number) % 3) === 0 && count++;
+  });
 
-  return answer;
+  return count;
 }
 
 module.exports = problem3;
