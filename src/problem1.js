@@ -6,18 +6,6 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-function compareResult({ pobiResult, crongResult, pobi, crong }) {
-  if (exceptions(pobi) || exceptions(crong)) return -1;
-  if (pobiResult > crongResult) return 1;
-  if (pobiResult < crongResult) return 2;
-  if (pobiResult === crongResult) return 0;
-}
-
-function exceptions(pages) {
-  if (Math.abs(pages[0] - pages[1]) !== 1) return 1;
-  if (pages.length < 2) return 1;
-}
-
 function separateDigit(pages) {
   const leftPage = String(pages[0])
     .split("")
@@ -26,6 +14,13 @@ function separateDigit(pages) {
     .split("")
     .map((i) => Number(i));
   return [leftPage, rightPage];
+}
+
+function comparePages(pages2D) {
+  const maxSum = sumOfPages(pages2D);
+  const maxMultiple = multipleOfPages(pages2D);
+  if (maxSum > maxMultiple) return maxSum;
+  else return maxMultiple;
 }
 
 function sumOfPages(pages2D) {
@@ -42,11 +37,16 @@ function multipleOfPages(pages2D) {
   else return RightPage;
 }
 
-function comparePages(pages2D) {
-  const maxSum = sumOfPages(pages2D);
-  const maxMultiple = multipleOfPages(pages2D);
-  if (maxSum > maxMultiple) return maxSum;
-  else return maxMultiple;
+function compareResult({ pobiResult, crongResult, pobi, crong }) {
+  if (exceptions(pobi) || exceptions(crong)) return -1;
+  if (pobiResult > crongResult) return 1;
+  if (pobiResult < crongResult) return 2;
+  if (pobiResult === crongResult) return 0;
+}
+
+function exceptions(pages) {
+  if (Math.abs(pages[0] - pages[1]) !== 1) return 1;
+  if (pages.length < 2) return 1;
 }
 
 module.exports = problem1;
