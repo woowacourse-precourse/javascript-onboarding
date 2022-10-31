@@ -8,8 +8,9 @@ const getReverseAlphabet = (char) => {
 }
 
 function problem4(word) {
-  let reverseWord = word.split('').map(c => getReverseAlphabet(c)).join('');
-  return reverseWord;    
+  const splitWord = word.split('');
+  const reverseSplitWord = splitWord.map(c => getReverseAlphabet(c));
+  return reverseSplitWord.join();    
 }
 
 module.exports = problem4;
