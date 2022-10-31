@@ -21,6 +21,17 @@ function problem6(forms) {
     return table;
   }
 
+  function getSegments(name) {
+    const result = [];
+
+    for (let i = MIN_WORD_LENGTH; i <= name.length; i++) {
+      for (let j = 0; j <= name.length - i; j++) {
+        result.push(name.substring(j, i + j));
+      }
+    }
+
+    return result;
+  }
 }
 
 module.exports = problem6;
