@@ -1,5 +1,5 @@
 function problem6(forms) {
-  let answer = []
+  let answer = [];
   let nickname;
 
   let duplicatedList = forms
@@ -12,6 +12,14 @@ function problem6(forms) {
       return acc;
     }, {});
 
+  for (let key in duplicatedList) {
+    for (let i = 0; i < forms.length; i++) {
+      if (duplicatedList[key] > 1 && forms[i][1].includes(key)) {
+        answer.push(forms[i][0]);
+      }
+    }
+  }
+  
   return;
 }
 
