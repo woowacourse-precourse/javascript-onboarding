@@ -23,7 +23,6 @@ const getExceptFriend = (friendArray, usersFriends) => {
 const getFriendOfFriend = (user, usersFriends, relationship) => {
   const result = usersFriends.reduce((acc, usersFriend) => {
     acc.push(...getUsersFriends(usersFriend, relationship));
-    acc = [...new Set(acc)];
     acc.splice(acc.indexOf(user), 1);
     return acc;
   }, []);
