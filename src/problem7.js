@@ -38,6 +38,17 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  function calcVisitorsScore(table, visitors) {
+    for (let visitor of visitors) {
+      if (table[visitor]) {
+        table[visitor].score += VISIT_SCORE;
+      }
+      else {
+        table[visitor] = { score: VISIT_SCORE };
+      }
+    }
+  }
 }
 
 module.exports = problem7;
