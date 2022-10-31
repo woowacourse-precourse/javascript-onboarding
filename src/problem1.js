@@ -18,10 +18,6 @@ function problem1(pobi, crong) {
   //예외처리
   if (isWrong()) return -1;
 
-  //연산
-  let pScore = 0;
-  let cScore = 0;
-
   //기능목록 2-1,2-2 구현
   const makeNum = num => {
     let sum = 0;
@@ -34,18 +30,21 @@ function problem1(pobi, crong) {
     return Math.max(sum, times);
   };
 
+  //연산
   //기능목록 2-3 구현
-  for (let i = 0; i < 2; i++) {
-    pScore = Math.max(pScore, makeNum(pobi[i]));
-    cScore = Math.max(cScore, makeNum(crong[i]));
-  }
+  const pScore = Math.max(...pobi.map(page => makeNum(page)));
+  const cScore = Math.max(...crong.map(page => makeNum(page)));
 
   //출력값 구하기
-  //기능목록 3-1 구현
   let answer;
-  if (pScore > cScore) answer = 1;
-  else if (pScore < cScore) answer = 2;
-  else answer = 0;
+  //기능목록 3-1 구현
+  if (pScore > cScore) {
+    answer = 1;
+  } else if (pScore < cScore) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
 
   return answer;
 }
