@@ -72,4 +72,14 @@ function findIndexOfNicknames(nicknames, seqLettersDuplicated) {
   return nicknameIndexes;
 }
 
+function findEmails(forms, nicknameIndexes) {
+  let emails = [];
+  for (let i = 0; i < forms.length; i++) {
+    if (nicknameIndexes.includes(i)) {
+      emails.push(forms[i][0]);
+    }
+  }
+  return emails;
+}
+
 module.exports = problem6;
