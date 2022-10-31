@@ -17,6 +17,7 @@ function problem1(pobi, crong) {
 
   //예외처리
   if (isWrong()) return -1;
+
   //연산
   let pScore = 0;
   let cScore = 0;
