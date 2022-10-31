@@ -74,6 +74,15 @@ const checkTimeline = (visitors) => {
   }
 };
 
+const calculatePoints = (user, friends, visitors) => {
+  checkAcquaintance(user, friends);
+  checkTimeline(visitors);
+};
+
+const deleteUserFromPointMap = (user) => {
+  pointMap.delete(user);
+};
+
 function problem7(user, friends, visitors) {
   const answer = [];
 
@@ -81,12 +90,9 @@ function problem7(user, friends, visitors) {
 
   findUsersFriends(user, friends);
 
-  checkAcquaintance(user, friends);
+  calculatePoints(user, friends, visitors);
 
-  checkTimeline(visitors);
-
-  // user 제거
-  pointMap.delete(user);
+  deleteUserFromPointMap(user);
 
   const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
   for (let i = 0; i < 5; i++) {
