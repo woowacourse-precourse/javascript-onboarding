@@ -1,6 +1,21 @@
+function eliminating(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i - 1]) {
+      arr.splice(i - 1, 2);
+      break;
+    }
+  }
+  return arr;
+}
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let cryptoArray = cryptogram.split("");
+  let arrayLength = cryptoArray.length;
+  while (cryptoArray.length > 0) {
+    cryptoArray = eliminating(cryptoArray);
+    if (arrayLength === cryptoArray.length) break;
+    arrayLength = cryptoArray.length;
+  }
+  return cryptoArray.join("");
 }
 
 module.exports = problem2;
