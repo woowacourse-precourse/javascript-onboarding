@@ -22,7 +22,8 @@ function getDuplicatedCrew(map) {
 function solution(forms) {
   const nicknameMap = getNicknameMap(forms);
   const emails = [...new Set(getDuplicatedCrew(nicknameMap))];
-  console.log(emails);
+  const sortedemails = emails.sort();
+  console.log(sortedemails);
 }
 
 function problem6(forms) {
