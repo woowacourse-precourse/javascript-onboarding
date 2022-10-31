@@ -14,11 +14,25 @@ function makeRelationship(friends) {
 
 function problem7(user, friends, visitors) {
   const result = [];
-
   const friendsRelaion = makeRelationship(friends);
-  console.log(friendsRelaion)
-}
+  const scoreBoard = new Object();
+  const inputedUsersFriends = friendsRelaion[user];
 
-console.log(problem7("mrko", [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
+  for (let key in friendsRelaion){
+    if (key === user) continue;
+    if (!friendsRelaion[key].includes(user)){
+      inputedUsersFriends.forEach((friend) => {
+        if (friendsRelaion[key].includes(friend) && scoreBoard.hasOwnProperty(key)){
+          scoreBoard[key] += 10;
+        }
+        if (friendsRelaion[key].includes(friend) && !scoreBoard.hasOwnProperty(key)){
+          scoreBoard[key] = 10;
+        }
+      })
+    }
+
+  }
+
+}
 
 module.exports = problem7;
