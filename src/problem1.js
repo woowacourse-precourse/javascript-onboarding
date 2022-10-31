@@ -5,6 +5,10 @@ function problem1(pobi, crong) {
   function getSum(page) {
     return String(page).split("").reduce((acc, curr) => acc += Number(curr), 0);
   }
+
+  function getMul(page) {
+    return String(page).split("").reduce((acc, curr) => acc *= Number(curr), 1);
+  }
 }
 
 module.exports = problem1;
