@@ -7,12 +7,9 @@ function problem2(cryptogram) {
   return answer;
 }
 function decryption(cryptogram) {
-  let nextCryptogram = getNextCryptogram(cryptogram);
-  while (cryptogram != nextCryptogram) {
-    cryptogram = nextCryptogram;
-    nextCryptogram = getNextCryptogram(cryptogram);
-  }
-  return cryptogram;
+  const nextCryptogram = getNextCryptogram(cryptogram);
+  if (cryptogram == nextCryptogram) return cryptogram;
+  return decryption(nextCryptogram);
 }
 function getDuplicateValidator(cryptogram) {
   const duplicateValidator = new Array(cryptogram.length).fill(false);
