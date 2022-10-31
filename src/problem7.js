@@ -12,36 +12,36 @@ function getFriendMap(friends){
   return friendMap;
 }
 
-function countRelationFriend(friendMap, recomandFriend, user) {
+function countRelationFriend(friendMap, recommendFriend, user) {
   friendMap.get(user).forEach((name)=>{
     if(friendMap.has(name)){
       friendMap.get(name).forEach((friendName)=>{
-        const prevCnt = recomandFriend.get(friendName);
+        const prevCnt = recommendFriend.get(friendName);
         if(friendName !== user){
-          prevCnt? recomandFriend.set(friendName, prevCnt + 10) : recomandFriend.set(friendName, 10);
+          prevCnt? recommendFriend.set(friendName, prevCnt + 10) : recommendFriend.set(friendName, 10);
         }
       })
     }
   });
 }
 
-function countVisitFriend(friendMap, recomandFriend, user, visitors) {
+function countVisitFriend(friendMap, recommendFriend, user, visitors) {
   visitors.forEach((name)=>{
     if(!friendMap.get(user).includes(name)){
-      const prevCnt = recomandFriend.get(name);
-      prevCnt? recomandFriend.set(name, prevCnt + 1) : recomandFriend.set(name, 1);
+      const prevCnt = recommendFriend.get(name);
+      prevCnt? recommendFriend.set(name, prevCnt + 1) : recommendFriend.set(name, 1);
     }
   });
 }
 
 function problem7(user, friends, visitors) {
   const friendMap = getFriendMap(friends);
-  const recomandFriend = new Map();
+  const recommendFriend = new Map();
 
-  countRelationFriend(friendMap, recomandFriend, user);
-  countVisitFriend(friendMap, recomandFriend, user, visitors)
+  countRelationFriend(friendMap, recommendFriend, user);
+  countVisitFriend(friendMap, recommendFriend, user, visitors)
 
-  const mapToArray = Array.from(recomandFriend);
+  const mapToArray = Array.from(recommendFriend);
 
   mapToArray.sort((a, b) => b[1] - a[1]);
 
