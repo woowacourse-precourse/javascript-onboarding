@@ -1,3 +1,5 @@
+const MIN_CRYPTOGRAM_LENGTH = 1;
+const MAX_CRYPTOGRAM_LENGTH = 1000;
 function problem2(cryptogram) {
   var answer;
   if (!checkValidation(cryptogram)) throw new Error("잘못된 입력입니다.");
@@ -33,7 +35,11 @@ function checkValidation(cryptogram) {
   return checkLength(cryptogram) && checkLowercase(cryptogram);
 }
 function checkLength(cryptogram) {
-  if (cryptogram.length >= 1 && cryptogram.length <= 1000) return true;
+  if (
+    cryptogram.length >= MIN_CRYPTOGRAM_LENGTH &&
+    cryptogram.length <= MAX_CRYPTOGRAM_LENGTH
+  )
+    return true;
   else return false;
 }
 function checkLowercase(cryptogram) {
