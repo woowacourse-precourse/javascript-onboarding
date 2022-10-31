@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   let answer;
 
-  if (!checkIsPageValid(pobi, crong)) return -1;
+  if (!getIsPageValid(pobi, crong)) return -1;
   let pobiMax = calcMaxValue(pobi);
   let crongMax = calcMaxValue(crong);
 
@@ -12,7 +12,7 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-function checkIsPageValid(pobi, crong) {
+function getIsPageValid(pobi, crong) {
   let isValid = true;
 
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) isValid = false;
