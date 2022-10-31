@@ -14,8 +14,8 @@
  * @returns {string} 조건에 맞게 변경된 문자열
  */
 function problem4(word) {
-  var answer;
-  return answer;
+  const reversedAlphabets = word.split("").map(convertAlphabet);
+  return reversedAlphabets.join("");
 }
 
 /**
