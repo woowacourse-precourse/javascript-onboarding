@@ -28,6 +28,19 @@ function problem4(word) {
     Z: "A",
     a: "z",
   };
+  let answer = "";
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === " ") {
+      answer += word[i];
+    } else {
+      if (word[i].toUpperCase() === word[i]) {
+        answer += upperCaseDic[word[i]];
+      } else {
+        answer += upperCaseDic[word[i].toUpperCase()].toLowerCase();
+      }
+    }
+  }
+  return answer;
 }
 
 module.exports = problem4;
