@@ -4,6 +4,17 @@ function problem1(pobi, crong) {
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     return -1;
   }
+
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
+    return -1;
+  }
+
+  if (pobiMaxNum > crongMaxNum) {
+    return 1;
+  }
+  if (pobiMaxNum < crongMaxNum) {
+    return 2;
+  } else return 0;
 }
 
 const calculateMaxNum = (num) => {
