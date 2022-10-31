@@ -1,4 +1,5 @@
 function problem4(word) {
+<<<<<<< HEAD
   let answer;
 
   answer = "";
@@ -33,4 +34,10 @@ function convertSymmetry(character) {
   return String.fromCharCode(asciiCode);
 }
 
+=======
+  var answer;
+  return answer;
+}
+
+>>>>>>> 8458e00876e77cbdada319f34b483ab3683b5124
 module.exports = problem4;
