@@ -20,7 +20,7 @@ function reverseChar(char) {
   else ascii = 97;
 
   let point = Math.abs(ascii - char.charCodeAt());  // 시작점으로부터 떨어진 거리
-  let reverseCode = (ascii+25) - point; // 제일 끝에서 떨어진거리만큼 앞으로 이동
+  let reverseCode = (ascii+25) - point; // 반대편에서 떨어진거리만큼 앞으로 이동
   result = String.fromCharCode(reverseCode);
 
   return result;

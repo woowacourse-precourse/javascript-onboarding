@@ -27,10 +27,10 @@ function addVisitorsPoint(recommendPoints,userFriends,visitors) {
   })
 }
 
-function addFriendsPoint(user,recommendPoints,userFriends,friends) {
+function addFriendsPoint(recommendPoints,userFriends,friends,user) {
   userFriends.map((userFriend)=> {
     friends.map((friends)=> {
-      if(friends.includes(userFriend) && !friends.includes(user)) {  // 사용자친구의 친구이면서 사용자 본인은 아닌경우에
+      if(friends.includes(userFriend) && !friends.includes(user)) {  // 사용자친구의 친구이면서 사용자 본인은 아닌경우
         if(friends[0] !== userFriend && !userFriends.includes(friends[0])) { // 사용자친구의 친구만(사용자친구의 친구가 사용자의 친구는 아니여야함)
           recommendPoints.set(friends[0],recommendPoints.get(friends[0]) ? recommendPoints.get(friends[0])+10 : 10)
         }else if(friends[1] !== userFriend && !userFriends.includes(friends[1])){
@@ -57,10 +57,10 @@ function sortRecommendList(recommendPoints) {
 function problem7(user, friends, visitors) {
   const answer = [];
   const recommendPoints = new Map();
-  let user_friends = findFriends(user,friends);
+  let userFriends = findFriends(user,friends);
 
-  addVisitorsPoint(recommendPoints,user_friends,visitors);
-  addFriendsPoint(user,recommendPoints,user_friends,friends);
+  addVisitorsPoint(recommendPoints,userFriends,visitors);
+  addFriendsPoint(recommendPoints,userFriends,friends,user);
 
   const sortedList = sortRecommendList(recommendPoints);
 

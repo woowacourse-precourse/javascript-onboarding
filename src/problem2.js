@@ -6,15 +6,15 @@
 
 function removeDuplicate(cryptogram) {
   let find_duplicate = true;  // 연속하는 중복 문자 존재 여부
-  while(find_duplicate) { // 연속하는 중복 문자가 존재하는 동안 루프
-    find_duplicate = false; // 존재하지 않는 상태(false)로 가정하고 시작.
+  while(find_duplicate) { 
+    find_duplicate = false; 
     let target_str = '';
     for(let i =0; i<cryptogram.length; i++) {
       if(cryptogram[i] === cryptogram[i+1]) {
         find_duplicate = true;  // 연속된 중복 문자가 존재하므로 (true) 로 변경
         let target = cryptogram[i+1];
         let compare_idx = i+1;
-        let duplicate_count = 0; // 중복된 문자 개수.
+        let duplicate_count = 0; // 중복된 문자 개수 카운트
         while(cryptogram[i] === target ) {
           ++duplicate_count;
           target = cryptogram[++compare_idx];

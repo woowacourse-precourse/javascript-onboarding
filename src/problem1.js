@@ -34,6 +34,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-console.log(problem1([99, 100], [87, 88]));
-
 module.exports = problem1;
