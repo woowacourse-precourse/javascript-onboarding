@@ -45,7 +45,13 @@ function problem2(cryptogram) {
       if (convert_arr[i] == convert_arr[i + 1]) {
         start_idx = i;
         end_idx = i + 1;
-        findRepeat = find_scope(start_idx,end_idx,convert_arr)
+        for (end_idx; end_idx < convert_arr.length; end_idx++) {
+          if (convert_arr[start_idx] != convert_arr[end_idx]) {
+            end_idx = end_idx - 1
+            findRepeat = true;
+            break;
+          }
+        }
         if (findRepeat) {
           break;
         }
