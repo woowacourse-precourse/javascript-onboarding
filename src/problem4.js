@@ -5,7 +5,7 @@
 // - 청개구리 사전에 따른 문자열 생성
 
 function problem4(word) {
-  let answer = "";
+  var answer = "";
   let originAlphabet = [];
   let reversedAlphabet = [];
   const alphabetObj = {};
@@ -28,6 +28,8 @@ function problem4(word) {
       answer += " ";
     } else if (word[i] !== word[i].toLowerCase()) {
       answer += alphabetObj[word[i].toLowerCase()].toUpperCase();
+    } else if (!(word[i] in alphabetObj)) {
+      answer += word[i];
     } else {
       answer += alphabetObj[word[i]];
     }
