@@ -26,7 +26,7 @@ const sortRule = (a, b) => (a[1] === b[1] ? a[0] > b[0] : b[1] - a[1]);
 
 const getRecommendedFriends = (scoreObj) => {
   const sortedScoreArr = Object.entries(scoreObj).sort(sortRule);
-  return sortedScoreArr.slice(0, 5);
+  return sortedScoreArr.slice(0, 5).map(([friend, _]) => friend);
 };
 
 function problem7(user, friends, visitors) {
