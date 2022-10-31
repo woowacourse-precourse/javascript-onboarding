@@ -1,22 +1,24 @@
-// 중복 문자 제거 함수
+function removeContinuos(word) {
+  let removed_word = [],
+      prev_char = '';
+
+  for (let char of word) {
+    if (char === prev_char && char === removed_word[removed_word.length - 1]) removed_word.pop();
+    if (char !== prev_char) {
+      removed_word.push(char); 
+      prev_char = char;
+    }
+  }
+
+  return removed_word.join('');
+}
+
+
 function decryption(cryptogram) {
-  let prev_step = '',
-      current_step,
-      prev_char;
+  let prev_step = '';
 
   while (1) {
-    current_step = [];
-    prev_char = '';
-    
-    for (let char of cryptogram) {
-      if (char === prev_char && char === current_step[current_step.length - 1]) current_step.pop();
-      if (char !== prev_char) {
-        current_step.push(char); 
-        prev_char = char;
-      }
-    }
-    
-    cryptogram = current_step.join('');
+    cryptogram = removeContinuos(cryptogram);
     if (!cryptogram || (cryptogram === prev_step)) break;
     prev_step = cryptogram;
   }
