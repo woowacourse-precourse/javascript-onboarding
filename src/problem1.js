@@ -48,9 +48,7 @@ function validation(arr) {
   return true;
 }
 
-/* function getNumberLength(num) {
-  return Math.ceil(Math.log10(num + 1));
-}
+/* 
 console.log(problem1([97, 98], [197, 198]));
 console.log(problem1([131, 132], [211, 212]));
 console.log(problem1([99, 102], [211, 212])); */
