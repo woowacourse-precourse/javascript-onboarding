@@ -1,12 +1,13 @@
 function problem2(cryptogram) {
   const decrypted = [];
-  for(i = 0; i < cryptogram.length; i++){
+  for(let i = 0; i < cryptogram.length; i++){
     decrypted.push(cryptogram[i]);
     if(decrypted[decrypted.length - 1] === decrypted[decrypted.length - 2]){
       decrypted.pop();
       decrypted.pop();
     }
   }
+  
   const answer = decrypted.join('');
   return answer;
 }
