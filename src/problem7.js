@@ -21,17 +21,33 @@ function getConnection(friends) {
 }
 
 function makeDict(user, friends) {
-  const friendsDict = {};
+  const friendsScoreDict = {};
 
   for (let i = 0; i < friends.length; i++) {
     const friendName1 = friends[i][0];
     const friendName2 = friends[i][1];
 
-    if (!Object.keys(friendsDict).includes(friendName1) && friendName1 != user) friendsDict[friendName1] = 0;
-    if (!Object.keys(friendsDict).includes(friendName2) && friendName2 != user) friendsDict[friendName2] = 0;
+    if (!Object.keys(friendsScoreDict).includes(friendName1) && friendName1 != user) friendsScoreDict[friendName1] = 0;
+    if (!Object.keys(friendsScoreDict).includes(friendName2) && friendName2 != user) friendsScoreDict[friendName2] = 0;
   }
 
-  return friendsDict;
+  return friendsScoreDict;
+}
+
+function checkFriend(user, friendsScoreDict, friendsConnection) {
+  const userFriend = friendsConnection[user];
+
+  console.log(userFriend)
+
+  userFriend.forEach((item) => {
+    const friendsFriends = friendsConnection[item];
+
+    friendsFriends.forEach((item) => {
+      if (item != user && !friendsConnection[item].has(user)) friendsScoreDict[item] += 10;
+    })
+  })
+
+  return friendsScoreDict;
 }
 
 module.exports = problem7;
