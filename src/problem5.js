@@ -1,4 +1,4 @@
-// [] 잔돈을 의미하는 change 변수 생성
+// [✅] 잔돈을 의미하는 change 변수 생성
 // [] result 배열 생성
 // [] money를 5만원권으로 나누고 몫은 result[0]에 저장, 나머지는 change에 저장
 // [] money를 1만원권으로 나누고 몫은 result[1]에 저장, 나머지는 change에 저장
@@ -13,6 +13,7 @@
 
 function problem5(money) {
   let change = 0;
+  const result = [];
   return result;
 }
 
