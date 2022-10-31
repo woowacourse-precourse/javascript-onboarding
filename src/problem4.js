@@ -17,15 +17,14 @@ function reverseAlphabet(letter) {
   let reverseAscii = 0;
 
   if (isUpperCase(letter)) {
-    reversePoint = 155;
-    reverseAscii = reversePoint - letterAscii;
-
-    return String.fromCharCode(reverseAscii);
+    reversePoint = 65 + 90;
   }
 
-  reversePoint = 219;
-  reverseAscii = reversePoint - letterAscii;
+  if (isLowerCase(letter)) {
+    reversePoint = 97 + 122;
+  }
 
+  reverseAscii = reversePoint - letterAscii;
   return String.fromCharCode(reverseAscii);
 }
 
