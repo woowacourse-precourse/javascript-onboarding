@@ -17,7 +17,7 @@ const getReverseAlphabet = (char) => {
 function problem4(word) {
   const splitWord = word.split('');
   const reverseSplitWord = splitWord.map(c => getReverseAlphabet(c));
-  return reverseSplitWord.join();    
+  return reverseSplitWord.join('');    
 }
 
 module.exports = problem4;
