@@ -48,4 +48,21 @@ function scoreCommonFriend(friendsOfFriend) {
   return scores;
 }
 
+function scoreVisitor(visitors, userFriends) {
+  const VISIT_SCORE = 1;
+  let scores = {};
+
+  for (let visitor of visitors) {
+    if (!userFriends.includes(visitor)) {
+      if (scores[visitor]) {
+        scores[visitor] += VISIT_SCORE;
+      } else {
+        scores[visitor] = VISIT_SCORE;
+      }
+    }
+  }
+
+  return scores;
+}
+
 module.exports = problem7;
