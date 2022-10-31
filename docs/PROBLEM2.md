@@ -55,6 +55,6 @@
 
  2-2. 두 포인터가 가리키는 문자가 다르다.
  - [V] 각각 포인터를 한칸씩 앞으로 전진한다.
- - [] 만약 앞서 같았더라면, cryptogramList를 rightpointer - leftpointer만큼 제거한다.
+ - [V] 만약 앞서 같았더라면, cryptogramList를 rightpointer - leftpointer만큼 제거한다.
 
- - [] 중복 판단의 과정을 지워지는 글자가 없을 때 까지 반복한다.
+ - [V] 중복 판단의 과정을 지워지는 글자가 없을 때 까지 반복한다.

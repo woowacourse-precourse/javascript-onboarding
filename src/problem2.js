@@ -14,7 +14,11 @@ function problem2(cryptogram) {
   const isValidRange = () => {
     return leftPointer >= 0 && rightPoiner < cryptogramList.length;
   }
-  
+  let isRemoved = true;
+  while (isRemoved){
+    leftPointer = 0;
+    rightPoiner = 1;
+    isRemoved = false
   while (isValidRange()){
     if (cryptogramList[leftPointer] !== cryptogramList[rightPoiner]){
       pointerMoveForward();
@@ -25,11 +29,13 @@ function problem2(cryptogram) {
     }
 
     cryptogramList.splice(leftPointer, rightPoiner - leftPointer);
-    
+    isRemoved = true;
     rightPoiner = leftPointer + 1;
    
     }
-    return cryptogramList.join("");
-  }
     
+  }
+  return cryptogramList.join("");
+}
+
 module.exports = problem2;
