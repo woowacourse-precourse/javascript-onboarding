@@ -19,5 +19,15 @@ function howManyNickname(forms){
   getNickNumber[x] = (getNickNumber[x] || 0)+1});
   return getNickNumber;
 }
+function checkContainDuplicate(forms){
+  let duplicateCotianName = [];
+  let NickNumberArr = (Object.entries(forms));
+  for(let i = 0; i < NickNumberArr[i][1]; i++){
+    if(NickNumberArr[i][1] > 1){
+      duplicateCotianName.push(NickNumberArr[i][0]);
+    }
+  }
+  return duplicateCotianName;
+}
 
 module.exports = problem6;
