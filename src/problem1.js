@@ -2,11 +2,14 @@
 // - 페이지 번호를 더하는 함수 생성
 // - 페이지 번호를 곱하는 함수 생성
 // - 포비와 크롱의 최댓값을 구하는 함수 생성
-// - 최댓값을 비교해 승자를 판별하는 함수 생성
+// - 승자를 판별하는 함수 생성
 // - 예외사항을 처리하는 Error 함수 생성
 
 function problem1(pobi, crong) {
-  var answer;
+  let WINNER;
+  const POBI = 1;
+  const CRONG = 2;
+  const NOBODY = 0;
 
   function getAddResult(pageNum) {
     pageNum = String(pageNum);
@@ -40,7 +43,22 @@ function problem1(pobi, crong) {
     return Math.max(leftResult, rightResult);
   }
 
-  return answer;
+  function getWinner() {
+    const pobiResult = getPobiMaxResult(pobi);
+    const crongResult = getCrongMaxResult(crong);
+
+    if (pobiResult > crongResult) {
+      WINNER = POBI;
+    } else if (pobiResult < crongResult) {
+      WINNER = CRONG;
+    } else {
+      WINNER = NOBODY;
+    }
+  }
+
+  getWinner();
+
+  return WINNER;
 }
 
 module.exports = problem1;
