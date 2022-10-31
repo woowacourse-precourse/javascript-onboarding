@@ -12,9 +12,7 @@ function problem2(cryptogram) {
     }
   });
 
-  let answer;
-  answer = stack.join('');
-  return answer;
+  return stack.join('');
 }
 
 module.exports = problem2;
