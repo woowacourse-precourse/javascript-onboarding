@@ -1,13 +1,15 @@
 function makeRelationship(friends) {
+  const friendA = 0;
+  const friendB = 1;
   const relation = new Object();
 
   friends.forEach((friendSet) => {
-    relation[friendSet[0]] = [];
-    relation[friendSet[1]] = [];
+    relation[friendSet[friendA]] = [];
+    relation[friendSet[friendB]] = [];
   })
   friends.forEach((friendSet) => {
-    relation[friendSet[0]].push(friendSet[1]);
-    relation[friendSet[1]].push(friendSet[0]);
+    relation[friendSet[friendA]].push(friendSet[friendB]);
+    relation[friendSet[friendB]].push(friendSet[friendA]);
   })
   return relation;
 }
