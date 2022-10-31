@@ -159,17 +159,29 @@ function maxFive(scoreArray) {
 
   if (scoreLength > 5) {
     for (let i = 0; 5; i++) {
-      answer.push(score[0]);
+      if (checkZero(i) == true) { // 기능 7
+        answer.push(score[i][0]);
+      }
     }
   } else {
     for (score of scoreArray) {
-      answer.push(score[0]);
+      if (checkZero(i) == true) { // 기능 7
+        answer.push(score[0]);
+      }
     }
   }
 
   return answer;
 }
 
+// 기능 7. 추천 점수가 0인 경우 확인
+function checkZero(score) {
+  if (score[1] === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 
 problem7(user,friends, visitors);
