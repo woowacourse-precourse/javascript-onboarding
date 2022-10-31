@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록  
+
+- [ ] 이메일 유효성 검사
+- [ ] 닉네임 유효성 검사
+- [ ] 같은 글자가 연속적으로 포함되는 경우를 카운팅한다.
+- [ ] 카운팅이 1 이상일 경우의 email을 모아 배열로 반환한다.
