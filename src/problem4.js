@@ -31,4 +31,8 @@ function isAlphabet(character) {
   );
 }
 
+function isUpperCase(character) {
+  return character.toUpperCase() === character;
+}
+
 module.exports = problem4;
