@@ -53,7 +53,7 @@ function findMaxNumber(pagesArr) {
         return (prev *= parseInt(cur));
       }, 1);
     //곱하거나 더해준 값 중 가장 높은 숫자를 구한다
-    maxNum = Math.max(plusResult, multiplyResult);
+    maxNum = Math.max(pusResult, multiplyResult);
   }
 
   return maxNum;
