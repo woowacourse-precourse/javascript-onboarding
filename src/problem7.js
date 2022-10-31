@@ -17,7 +17,12 @@ const getMyFriendsFriends = (myFriends, friendMap) => {
 const getAcquaintance = (me, [myFriends, friendMap]) => {
   const myFriendsFriends = getMyFriendsFriends(myFriends, friendMap);
   return myFriendsFriends.reduce(
-    (acc, friends) => [...acc, ...friends.filter((friend) => friend !== me)],
+    (acc, friends) => [
+      ...acc,
+      ...friends.filter(
+        (friend) => friend !== me && !myFriends.includes(friend)
+      ),
+    ],
     []
   );
 };
@@ -54,16 +59,19 @@ function problem7(user, friends, visitors) {
 
 console.log(
   problem7(
-    "mrko",
+    "Eliza",
     [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
+      ["Cecil", "Hobart"],
+      ["Austyn", "Mara"],
+      ["Adonis", "Eliza"],
+      ["Lamont", "Retha"],
+      ["Jan", "Christa"],
+      ["Milton", "Retha"],
+      ["Josh", "Eliza"],
+      ["Eliza", "Jesus"],
+      ["Retha", "Eliza"],
     ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+    ["Retha", "Rosalia", "Hobart", "Jayne"]
   )
 );
 module.exports = problem7;
