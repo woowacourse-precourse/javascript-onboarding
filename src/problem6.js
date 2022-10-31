@@ -13,7 +13,7 @@ function isInvalidName(name1, name2) {
 }
 
 function invalidEmails(forms) {
-  let result = [];
+  const result = [];
   for (student of forms) {
     let name = student[1];
     for (target of forms) {
@@ -32,7 +32,7 @@ function invalidEmails(forms) {
 }
 
 function problem6(forms) {
-  var answer;
+  let answer;
   answer = invalidEmails(forms).sort();
   return answer;
 }
