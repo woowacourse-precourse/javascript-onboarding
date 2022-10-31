@@ -10,6 +10,9 @@
 function problem1(pobi, crong) {
   var answer;  
   if (!(vaildate(pobi) && vaildate(crong))) answer = -1;
+  
+  var pobi_score = get_score(pobi);
+  var crong_score = get_score(crong);
 
   return answer;
 }
@@ -19,6 +22,28 @@ function vaildate(pages) {
   if(pages[0] % 2 == 0) return false;
   if(pages[1] - pages[0] != 1) return false;
   return true;
+}
+
+function get_score(pages) {
+  var s0 = Math.max(get_addScore(pages[0]), get_multiScore(pages[0]));
+  var s1 = Math.max(get_addScore(pages[1]), get_multiScore(pages[1]));
+  return Math.max(s0, s1);
+}
+function get_addScore(num) {
+  var result = 0;
+  while(num > 0) {
+    result += num % 10;
+    num = Math.floor(num/10); // 소수점 버림
+  }
+  return result;
+}
+function get_multiScore(num) {
+  var result = 1;
+  while(num > 0) {
+    result *= num % 10;
+    num = Math.floor(num/10); // 소수점 버림
+  }
+  return result;
 }
 
 module.exports = problem1;
