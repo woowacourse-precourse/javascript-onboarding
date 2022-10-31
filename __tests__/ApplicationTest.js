@@ -18,10 +18,22 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
-  // test("왼쪽 페이지가 홀수이어야 한다.", () => {
-  //   expect(problem1([98, 99], [193, 194])).toEqual(-1);
-  //   expect(problem1([99, 100], [196, 197])).toEqual(-1);
-  // });
+  test("왼쪽 페이지가 홀수이어야 한다.", () => {
+    expect(problem1([98, 99], [193, 194])).toEqual(-1);
+    expect(problem1([99, 100], [196, 197])).toEqual(-1);
+  });
+  test("시작면, 마지막면 제외", () => {
+    expect(problem1([0, 99], [193, 194])).toEqual(-1);
+    expect(problem1([99, 100], [399, 400])).toEqual(-1);
+  });
+  test("범위를 벗어난 페이지", () => {
+    expect(problem1([-1, 0], [193, 194])).toEqual(-1);
+    expect(problem1([99, 100], [401, 402])).toEqual(-1);
+  });
+  test("예외 처리 통합", () => {
+    expect(problem1([98, 99], [1, 2])).toEqual(-1);
+    expect(problem1([399, 400], [401, 402])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
