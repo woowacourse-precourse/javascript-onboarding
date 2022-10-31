@@ -4,13 +4,18 @@
 
 function problem3(number) {
   let last_number = number;
+  let array = [];
   let count = 0;
 
-  for (let i = 0; i < last_number; i++) {
-    console.log(i)
+  for (let i = 1; i < last_number+1; i++) {
+    i = String(i)
+    array.push(...i.split(''))
+    console.log(array)
   }
+
+
 }
 
 module.exports = problem3;
 
-problem3(13)
+problem3(12)
