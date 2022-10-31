@@ -3,4 +3,8 @@ function problem6(forms) {
   return answer;
 }
 
+function isRightDomain(email) {
+  return email.indexOf("email.com");
+}
+
 module.exports = problem6;
