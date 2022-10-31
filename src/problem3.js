@@ -1,6 +1,10 @@
 function problem3(number) {
   let answer;
 
+  let arr = numberArr(number);
+
+  answer = findNumber(arr, "3") + findNumber(arr, "6") + findNumber(arr, "9");
+  
   return answer;
 }
 
