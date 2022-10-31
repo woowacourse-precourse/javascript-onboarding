@@ -19,6 +19,22 @@ function isCorrectPages(pages) {
   } else return false;
 }
 
+/**
+ * 각 자릿수를 곱한 값과 더한 값 중 큰 수를 반환합니다.
+ * @param {number} page 값을 구하고 싶은 페이지입니다.
+ * @returns {number} 각 자릿수를 곱하거나 더해 큰 값만 반환합니다.
+ */
+function getMaxScore(page) {
+  const hundred = parseInt(page / 100);
+  const ten = parseInt(page / 10) % 10;
+  const one = page % 10;
+
+  return Math.max(
+    (hundred || 1) * (ten || 1) * (one || 1),
+    (hundred || 0) + (ten || 0) + (one || 0)
+  );
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
