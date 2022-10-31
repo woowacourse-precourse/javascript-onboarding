@@ -2,7 +2,7 @@
  * 기능 정의
  *
  * - [x] 알파벳인지 판별하는 기능
- * - [ ] 대소문자를 구분하는 기능
+ * - [x] 대소문자를 구분하는 기능
  * - [ ] 알파벳 기준 반대의 알파벳을 반환하는 기능
  */
 
@@ -28,6 +28,44 @@ function isAlphabet(char) {
   const regExp = /^[a-zA-Z]*$/;
 
   return regExp.test(char);
+}
+
+/**
+ * 입력받은 UTF-16코드가 대소문자 혹은 다른 문자열인지 확인하는 함수
+ *
+ * @param {number} charCode UTF-16 코드를 나타내는 0부터 65535 사이의 정수
+ * @returns {number} 대문자면 1, 소문자면 2, 둘다 아닌 경우 0 반환
+ */
+function checkCase(charCode) {
+  if (isUpperCase(charCode)) {
+    return 1;
+  }
+
+  if (isLowerCase(charCode)) {
+    return 2;
+  }
+
+  return 0;
+}
+
+/**
+ * 입력받은 UTF-16코드가 대문자인지 확인하는 함수
+ *
+ * @param {number} charCode UTF-16 코드를 나타내는 0부터 65535 사이의 정수
+ * @returns {boolean} 대문자라면 true 아니면 false반환
+ */
+function isUpperCase(charCode) {
+  return 65 <= charCode && charCode <= 90;
+}
+
+/**
+ * 입력받은 UTF-16코드가 소문자인지 확인하는 함수
+ *
+ * @param {number} charCode UTF-16 코드를 나타내는 0부터 65535 사이의 정수
+ * @returns {boolean} 소문자라면 true 아니면 false반환
+ */
+function isLowerCase(charCode) {
+  return 97 <= charCode && charCode <= 122;
 }
 
 module.exports = problem4;
