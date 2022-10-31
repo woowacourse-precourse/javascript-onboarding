@@ -3,14 +3,14 @@ function problem2(cryptogram) {
     let removeList = [];
     cryptogram.split("").forEach((x, idx) => {
       if (x === cryptogram[idx + 1]) {
-        removeList.push(idx);
+        removeList.push(idx,idx+1);
       }
     });
-    removeList.forEach((removeIdx, idx) => {
-      cryptogram =
-        cryptogram.slice(0, removeIdx) + cryptogram.slice(removeIdx + 2);
-      removeList[idx + 1] -= 2;
-    });
+    removeList = [...new Set(removeList)];
+
+    for(let i=0;i<removeList.length;i++){
+      cryptogram = cryptogram.slice(0, removeList[0]) + cryptogram.slice(removeList[0]+1);
+    }
     if (removeList.length === 0) break;
   }
   return cryptogram;
