@@ -20,9 +20,18 @@ function findRecommendFriends(recommendFrindsArr, user, closeFriend, friends) {
   }
 }
 
+function getRecommendFriendsArr(friends, friendsArr, user) {
+  const recommendFrindsArr = [];
+  [...friendsArr].map((friend) =>
+    findRecommendFriends(recommendFrindsArr, user, friend, friends)
+  );
+  return recommendFrindsArr;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const friendsArr = findFriends(friends, user);
+  const recommendFrindsArr = getRecommendFriendsArr(friends, friendsArr, user);
   return answer;
 }
 
