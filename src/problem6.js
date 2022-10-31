@@ -1,5 +1,14 @@
 function problem6(forms) {
   var answer;
+
+  const nickName = [];
+
+  for (i = 0; i < forms.length; i++) {
+    nickName.push(forms[i][1]);
+    for (j = 0; j + 1 < nickName[i].length; j++) 
+        subStr = nickName[i].slice(j, j + 2);
+  }
+
   return answer;
 }
 
