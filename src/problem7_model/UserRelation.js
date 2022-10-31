@@ -18,6 +18,13 @@ class UserRelation {
 	 * @param {User} user2
 	 */
 	setRelation(user1, user2) {}
+	
+	/**
+	 * @abstract
+	 * @param {User} user
+	 */
+	 calculateScore(user) {}
+
 }
 
 class FriendUserRelation extends UserRelation{
