@@ -15,7 +15,7 @@ function remove_duplicated_email(map) {
 function get_duplication(forms) {
   let map = new Map(); // substr, [email]
   for (let [email, name] of forms) {
-    if (email.includes("@email.com") && name.length === 1) {
+    if (!email.includes("@email.com") || name.length === 1) {
       continue;
     }
     for (let i = 0; i < name.length - 1; ++i) {
