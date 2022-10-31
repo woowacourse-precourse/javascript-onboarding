@@ -12,6 +12,22 @@ function makeFriendsList(friendsList, friends) {
     friendsList.get(friend[1]).push(friend[0]);
   }
 }
+function scoreFriends(
+  recommendScore,
+  friendsList,
+  friendNames,
+  user,
+  userFriendList
+) {
+  for (let friendname of friendNames) {
+    let friendsListValues = friendsList.get(friendname);
+    for (let value of friendsListValues) {
+      if (!userFriendList.includes(value) && value !== user) {
+        recommendScore.set(value, recommendScore.get(value) + 10);
+      }
+    }
+  }
+}
 function problem7(user, friends, visitors) {
   var answer = [];
 
@@ -19,6 +35,10 @@ function problem7(user, friends, visitors) {
   let friendsList = new Map();
   initializing(recommendScore, friendsList, friends);
   makeFriendsList(friendsList, friends);
+
+  let userFriendList = friendsList.get(user);
+  let friendNames = Array.from(friendsList.keys());
+  scoreFriends(recommendScore, friendsList, friendNames, user, userFriendList);
   return answer;
 }
 
