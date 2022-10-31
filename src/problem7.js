@@ -1,3 +1,4 @@
+// user의 friends를 찾는 함수
 const findFriendsOfUser = (user, friends) => {
   let arr = [];
 
@@ -12,6 +13,7 @@ const findFriendsOfUser = (user, friends) => {
   return arr;
 };
 
+// friends의 점수를 계산하는 함수
 const calcScoreOfFriends = (user, friends, friendsOfUser) => {
   let obj = {};
   let name;
@@ -42,6 +44,7 @@ const calcScoreOfFriends = (user, friends, friendsOfUser) => {
   return obj;
 };
 
+// visitors의 점수를 계산하는 함수
 const calcScoreOfVisitors = (visitors, friendsOfUser, scoreOfFriends) => {
   let name;
 
@@ -57,6 +60,7 @@ const calcScoreOfVisitors = (visitors, friendsOfUser, scoreOfFriends) => {
   }
 };
 
+// 점수에 따른 정렬, 이름순 정렬을 구현하는 함수
 const sortFriends = (scoreOfFriends) => {
   let arr = Object.entries(scoreOfFriends).sort((a, b) => {
     if (a[1] === b[1]) {
@@ -81,6 +85,7 @@ function problem7(user, friends, visitors) {
   calcScoreOfVisitors(visitors, friendsOfUser, scoreOfFriends);
   answer = sortFriends(scoreOfFriends);
 
+  // 결과값 산출
   return answer;
 }
 
