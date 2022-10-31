@@ -6,9 +6,14 @@
 
 function problem4(word) {
   let originAlphabet = [];
+  let reversedAlphabet = [];
 
   for (let i = 97; i <= 122; i++) {
     originAlphabet.push(String.fromCharCode(i));
+  }
+
+  for (let i = 122; i >= 97; i--) {
+    reversedAlphabet.push(String.fromCharCode(i));
   }
 
   return answer;
