@@ -1,21 +1,17 @@
 function problem2(cryptogram) {
-  // 문자열을 배열로 바꾼다.
-  let cryptogramArray = Array.from(cryptogram);
-  // index + 1의 값을 환인할 변수 / 연속된 값이 있는지 없는지 확인할 수 있는 키로 적용
-  let tmpIndex = null;
+  // 정규식 선언
+  const reg = /(.)\1+/;
 
-  // 배열을 하나씩 돌면서 연속된 값을 제거한다.
-  cryptogramArray = cryptogramArray.map((ele, index) => {
-    if(tmpIndex === index) return false;
-    if(ele === cryptogramArray[index+1]) {
-      tmpIndex = index+1;
-      return false;
-    }
-    else return ele;
-  }).filter((ele) => ele);
-  
-  if(tmpIndex) return problem2(cryptogramArray.join(""));
-  else return cryptogramArray.join("");
+  // 연속된 문자를 찾는다.
+  // 없다면 문자 반환
+  if(!reg.test(cryptogram)) {
+    return cryptogram;
+  } else {
+    // 있다면 replace를 통해 연속된 문자들을 공백으로 변경한다.
+    const newCryptogram = cryptogram.replace(reg, "");
+    // 재귀함수를 호출하여 해당 내용을 반복한다.
+    return problem2(newCryptogram);
+  }
 }
 
 module.exports = problem2;
