@@ -20,7 +20,10 @@ function checking(nameList, forms) {
   let nameListLength = nameList.length;
 
   for(let curNameIndex = 0; curNameIndex < nameListLength-1; curNameIndex++) {
-    
+    let nameLength = nameList[curNameIndex].length;
+    for(let curCharIndex = 0; curCharIndex < nameLength-1; curCharIndex++) {
+
+    } 
   }
   return resultList;
 }
