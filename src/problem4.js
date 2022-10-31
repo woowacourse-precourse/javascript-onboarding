@@ -1,14 +1,3 @@
-function errorHandling(word) {
-  if (word.length < 1 || word.length > 1000) return false;
-  if (
-    word === null ||
-    word === undefined ||
-    word === "" ||
-    (word !== null && typeof word !== "string")
-  )
-    return false;
-  return true;
-}
 function change(word) {
   let result = "";
   for (let i = 0; i < word.length; i++) {
@@ -27,7 +16,6 @@ function change(word) {
   return result;
 }
 function problem4(word) {
-  if (!errorHandling(word)) return -1;
   let answer = change(word);
   return answer;
 }
