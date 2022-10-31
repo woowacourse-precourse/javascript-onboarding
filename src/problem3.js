@@ -6,8 +6,16 @@ function isValid(number) {
   }
 }
 
+function getNumberToArr(number) {
+  const stringNum = String(number);
+  const convertToNumberTypeFn = (num) => Number(num);
+  const numberArr = Array.from(stringNum, convertToNumberTypeFn);
+
+  return numberArr;
+}
+
 function problem3(number) {
-  var answer;
+  let answer = 0;
 
   isValid(number);
   return answer;
