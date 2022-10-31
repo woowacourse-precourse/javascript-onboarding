@@ -16,18 +16,35 @@ function reverseEng(n) {
   );
   const arrEngRev = [...arrEng].reverse();
 
-  const arrIndex = arrEng.forEach((value, index) => {
-    if (n === value) {
-      return index;
+  let x;
+  for(l in arrEng) {
+    if (n === arrEng[l]){
+      x = l;
     }
-  });
+  }
 
-  return arrEng[index];
+  return arrEngRev[x];
+}
+
+// 대소문자 구분하는 함수
+function checkUppLow(k) {
+  if (k === k.toUpperCase()) {
+    return reverseEng(k.toLowerCase()).toUpperCase();
+  } else if (k === k.toLowerCase()) {
+    return reverseEng(k)
+  }
 }
 
 // main 함수
 function problem4(word) {
-  let answer;
+  let answer = "";
+  for (i of word) {
+    if (checkAlphabet(i) === false) {
+      answer += i;
+    } else if (checkAlphabet(i) === true) {
+      answer += checkUppLow(i)
+    }
+  }
   return answer;
 }
 
