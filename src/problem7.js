@@ -8,7 +8,7 @@ function problem7(user, friends, visitors) {
     acc[key2] = [...(acc[key2] || []), cur[0]];
     return acc;
   }, {});
-  let userFriendList = obj[user]; // donut, shakevan
+  let userFriendList = obj[user] || []; // donut, shakevan
   for (let friend of Object.keys(obj)) {
     if (friend === user) {
       continue;
@@ -33,9 +33,11 @@ function problem7(user, friends, visitors) {
   for (let name in score) {
     sortScore.push([name, score[name]]);
   }
-  sortScore.sort((a, b) => {
+  sortScore = sortScore.sort((a, b) => {
     if (a[1] === b[1]) {
-      return a[0] - b[0];
+      if (a[0] > b[0]) return 1;
+      else if (a[0] < b[0]) return -1;
+      else return 0;
     } else {
       return b[1] - a[1];
     }
@@ -43,10 +45,27 @@ function problem7(user, friends, visitors) {
   sortScore = sortScore.filter((arr) => {
     return !userFriendList.includes(arr[0]);
   });
+  console.log(sortScore);
   answer = sortScore.map((arr) => arr[0]);
+  console.log(answer);
   if (answer.length > 5) {
-    answer = answer.slice(4);
+    answer = answer.slice(0, 5);
   }
   return answer;
 }
+console.log(
+  problem7(
+    "andole",
+    [
+      ["andole", "jun"],
+      ["donut", "jun"],
+      ["donut", "shakevan"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "bedi"],
+      ["anne", "jun"],
+    ],
+    ["donut", "mrko", "peter", "sam"]
+  )
+);
 module.exports = problem7;
