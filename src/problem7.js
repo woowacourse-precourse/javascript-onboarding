@@ -25,6 +25,15 @@ function problem7(user, friends, visitors) {
   visitors.filter((visitor) => !userFriends.includes(visitor)).forEach((visitor) => {
     recommendScore[visitor] ? recommendScore[visitor] += SCORE.VISITOR : recommendScore[visitor] = SCORE.VISITOR; 
   });
+
+  let scoreArray = Object.entries(recommendScore);
+  
+  // 이름순 정렬 뒤 점수순 정렬 후 5개 반환
+  return scoreArray.sort(( [nameA, scoreA], [nameB, scoreB] )=> {
+    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+  })
+  .sort(( [nameA, scoreA], [nameB, scoreB] ) => scoreB - scoreA)
+  .map(([name, _])=> name).splice(0, 5);
 }
 
 // 매개변수 user의 친구들을 찾는 함수
