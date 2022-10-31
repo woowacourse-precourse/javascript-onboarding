@@ -5,7 +5,13 @@ function problem6(forms) {
   const userId = 1;
   const maxStackLength = 2;
   
-  const StoreDuplicatedIdFromObj = (result, dictionary) => {
+  /**
+   * 인자 배열에 중복된 이메일만 담아주는 함수.
+   * @param {Array} result 
+   * @param {Object} dictionary 
+   * @return {undefined}
+   */
+  const storeDuplicatedIdFromObj = (result, dictionary) => {
     const isDuplicatedFromObj = key => dictionary[key].length > 1;
 
     for (let key in dictionary){
@@ -16,32 +22,35 @@ function problem6(forms) {
   }
   const removeDuplicated = result => result.filter((v, i) => result.indexOf(v) === i);
   const isStackFull = stack => stack.length === maxStackLength;
-  const pushEmailToExistedProperty = (x, info) => dictionary[x].push(info[userMail])
-  const createNewProperty = (x, info) => dictionary[x] = [info[userMail]]
+  const pushEmailToExistedProperty = (letters, email) => dictionary[letters].push(email)
+  const createNewProperty = (letters, email) => dictionary[letters] = [email]
+  /**
+   * 스택에 2글자가 모이면 dict에 넣는 함수
+   * @param {array} stack 
+   * @param {String} email 
+   * @return {undefined}
+   */
+  const pushEmailIntoDict = (stack, email) => {
+    LengthTwoLetters = stack.join('')
+    dictionary.hasOwnProperty(LengthTwoLetters) ? pushEmailToExistedProperty(LengthTwoLetters, email) : createNewProperty(LengthTwoLetters, email);
+    
+  }
+
   /**
    * forms들을 순회하며 dictionary에 중복 포함 저장하는 로직
    */
   forms.forEach((personalInfo) => {
       const stack = [];
       for (let info of personalInfo[userId]){
-          if (!isStackFull(stack))
-              stack.push(info);
+          stack.push(info);
           if (isStackFull(stack)){
-              x = stack.join('')
-              if (dictionary.hasOwnProperty(x)){
-                pushEmailToExistedProperty(x, personalInfo);
-              }
-              if (!dictionary.hasOwnProperty(x)){
-                createNewProperty(x, personalInfo);
-              }
+              pushEmailIntoDict(stack, personalInfo[userMail])
               stack.shift();
-              
           }
       } 
   });
-
-  StoreDuplicatedIdFromObj(result, dictionary);
+  
+  storeDuplicatedIdFromObj(result, dictionary);
   return removeDuplicated(result).sort(); 
 }
-
 module.exports = problem6;
