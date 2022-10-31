@@ -13,6 +13,9 @@ function problem6(forms) {
       }
     }
   });
+  const uniqueStrArr = new Set([...duplStrArr]);
+  const uniqueEmail = [...uniqueStrArr];
+  return uniqueEmail.sort();
 }
 
 module.exports = problem6;
