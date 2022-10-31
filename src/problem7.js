@@ -14,14 +14,19 @@ function getFriendList(friends) {
 
 function sortDict(dict, user) {
   let result = [];
-  let sorted = Object.entries(dict).sort((a, b) => b[1] - a[1]);
+  let sorted = Object.entries(dict).sort((a, b) => {
+    if (b[1] - a[1] !== 0) {
+      return b[1] - a[1];
+    } else {
+      return b[0] - a[0];
+    }
+  });
 
   for (let element of sorted) {
     if (element[0] === user) {
       continue;
     }
     result.push(element[0]);
-    console.log(element[0] + ": " + element[1]);
   }
 
   return result;
