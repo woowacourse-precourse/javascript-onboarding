@@ -13,40 +13,39 @@ function problem1(pobi, crong) {
   let crongRightPageNum = pageRightSplit(crong);
 
   // 최대 값 계산기
-  const maxValueFn = nums => {
-    let multiAllValue = 1;
-    let addAllValue = 0;
+  const calcMaxSum = page => {
+    let result = 0;
 
-    // 더한 값
-    const addNums = nums => {
-      for (let i = 0; i < nums.length; i++) {
-        addAllValue += parseInt(nums[i]);
-      }
-      return addAllValue;
-    };
+    for (let i = 0; i < page.length; i++) {
+      result += parseInt(page[i]);
+    }
+    return result;
+  };
 
-    // 곱한 값
-    const multiNums = nums => {
-      for (let i = 0; i < nums.length; i++) {
-        multiAllValue *= parseInt(nums[i]);
-      }
-      return multiAllValue;
-    };
+  const calcMaxMultiply = page => {
+    let result = 1;
 
-    return Math.max(multiNums(nums), addNums(nums));
+    for (let i = 0; i < page.length; i++) {
+      result *= parseInt(page[i]);
+    }
+    return result;
+  };
+
+  const getMaxValue = num => {
+    return Math.max(calcMaxSum(num), calcMaxMultiply(num));
   };
 
   // 각 페이지 최대 값
-  let pobiLeftMaxValue = maxValueFn(pobiLeftPageNum);
-  let pobiRightMaxValue = maxValueFn(pobiRightPageNum);
-  let crongLeftMaxValue = maxValueFn(crongLeftPageNum);
-  let crongRightMaxValue = maxValueFn(crongRightPageNum);
+  let pobiLeftMaxValue = getMaxValue(pobiLeftPageNum);
+  let pobiRightMaxValue = getMaxValue(pobiRightPageNum);
+  let crongLeftMaxValue = getMaxValue(crongLeftPageNum);
+  let crongRightMaxValue = getMaxValue(crongRightPageNum);
 
   // 유저 점수
   let pobiScore = Math.max(pobiLeftMaxValue, pobiRightMaxValue);
   let crongScore = Math.max(crongLeftMaxValue, crongRightMaxValue);
 
-  //  점수 비교하기
+  // //  점수 비교하기
   if (pobiScore === crongScore) {
     return 0;
   } else if (pobiScore > crongScore) {
