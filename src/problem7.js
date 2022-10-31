@@ -1,12 +1,8 @@
 function problem7(user, friends, visitors) {
   const [currentFriends, notFriends] = separateFriendByType(user, friends);
-  //console.log(`1 :`, friendOfUser);
   const friendScore = searchByFriends(notFriends);
-  //console.log(`2 :`, friendScore);
   const visitorScore = searchByVisitor(visitors, currentFriends);
-  //console.log(`3 : `, visitorScore);
   const answer = recommandByScore(friendScore, visitorScore);
-  //console.log(`4 : `, answer);
 
   return answer;
 }
@@ -28,9 +24,11 @@ const separateFriendByType = (user, friends) => {
     return isNotUser(user, i);
   });
 
-  notFriends = notFriends.map((i) => {
-    return isNotCurrentFriend(user, i);
-  });
+  notFriends = notFriends
+    .map((i) => {
+      return isNotCurrentFriend(currentFriends, i);
+    })
+    .filter((i) => i);
 
   return [currentFriends, notFriends];
 };
@@ -68,7 +66,7 @@ const recommandByScore = (friendScore, visitorScore) => {
 
   const totalScoreArray = convertArray(totalScore);
   const totalScoreSortedArray = sortByScore(totalScoreArray);
-  const resultValue = totalScoreSortedArray.map((i) => i.name).slice(0.5);
+  const resultValue = totalScoreSortedArray.map((i) => i.name).slice(0, 5);
 
   return resultValue;
 };
@@ -99,9 +97,9 @@ const convertArray = (totalScore) => {
   return resultValue;
 };
 
-const searchByVisitor = (visitors, friendOfUser) => {
-  const visitScore = visitors.reduce((acc, cur, i) => {
-    if (friendOfUser.includes(cur)) return acc;
+const searchByVisitor = (visitors, currentFriends) => {
+  const visitScore = visitors.reduce((acc, cur) => {
+    if (currentFriends.includes(cur)) return acc;
 
     if (acc[cur]) {
       acc[cur] += 1;
