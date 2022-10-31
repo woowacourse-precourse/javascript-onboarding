@@ -20,3 +20,4 @@
 - [X]  answer 배열화.  
 - [X]  Math.floor()함수를 이용하여 나눠지는 값의 몫을 구한 뒤, answer배열에 push().  
 - [X]  for … of 문을 통한 반복.  
+⭕️ 테스트 성공
