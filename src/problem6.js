@@ -4,9 +4,38 @@ function problem6(forms) {
 
   if (!checkValue(forms)) return;
 
+  const nicknameList = forms.map((form) => form[1]);
+
+  let splitNicknames = nicknameList
+    .map((email) => splitEmail(email))
+    .reduce((acc, val) => acc.concat(val), []);
+
+  let duplicateNameList = findDuplicatedName(splitNicknames);
+
   var answer;
   return answer;
 }
+
+const splitEmail = (nickname) => {
+  let subset = [];
+  for (let i = 0, nicknameLen = nickname.length - 1; i < nicknameLen; i++) {
+    subset[i] = nickname.substr(i, 2);
+  }
+
+  return subset;
+};
+
+const findDuplicatedName = (splitNicknames) => {
+  // Array.filter(callback(element, index, array)) array : filter를 호출한 배열
+  return [
+    ...new Set(
+      splitNicknames.filter(
+        (splitNickname, idx, splitNicknameArr) =>
+          splitNicknameArr.indexOf(splitNickname) !== idx
+      )
+    ),
+  ];
+};
 
 const checkValue = (forms) => {
   for (let i = 0, formsLen = forms.length; i < formsLen; i++) {
