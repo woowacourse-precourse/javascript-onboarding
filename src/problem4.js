@@ -17,6 +17,10 @@ function changeString(n){
       if(n[i]==dictionary[j][0]){
         result+=dictionary[j][1];
       }
+      if(n[i]===' '){
+        result+=' ';
+        break;
+      }
     }
   }
   
