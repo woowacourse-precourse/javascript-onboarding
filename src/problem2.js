@@ -2,7 +2,8 @@ function problem2(cryptogram) {
   if (
     cryptogram.length < 1 ||
     cryptogram.length > 1000 ||
-    typeof cryptogram !== 'string'
+    typeof cryptogram !== 'string' ||
+    cryptogram !== cryptogram.toLowerCase()
   ) {
     return false;
   }
