@@ -1,33 +1,48 @@
+function check(num) {
+  let local = num.split("");
+  let sum = 0,
+    div = 1;
+  for (let x of local) {
+    sum += Number(x);
+    div *= Number(x);
+  }
+
+  return sum > div ? sum : div;
+}
+
 function problem1(pobi, crong) {
   let pobimax = 0;
   let crongmax = 0;
-  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+  let pobiLeft = pobi[0];
+  let pobiRight = pobi[1];
+  let crongLeft = crong[0];
+  let crongRigth = crong[1];
 
-  function check(num) {
-    let local = num.split("");
-    let sum = 0,
-      div = 1;
-    for (let x of local) {
-      sum += Number(x);
-      div *= Number(x);
-    }
-    return sum > div ? sum : div;
+  if (pobiRight - pobiLeft !== 1 || crongRigth - crongLeft !== 1) return -1;
+  if (pobiLeft % 2 !== 1 || crongLeft % 2 !== 1) {
+    return -1;
   }
 
-  for (let i of pobi) {
-    if (i < 3 || i > 398) return -1;
-    let num = check(String(i));
-    num > pobimax ? (pobimax = num) : num;
+  if (pobiRight % 2 !== 0 || crongRigth % 2 !== 0) {
+    return -1;
   }
+  if (crongLeft < 3 || pobiLeft < 3) return -1;
+  if (crongRigth > 398 || pobiRight > 398) return -1;
 
-  for (let i of crong) {
-    if (i < 3 || i > 398) return -1;
-    let num = check(String(i));
-    num > crongmax ? (crongmax = num) : num;
-  }
+  let pobiLeftnum = check(String(pobiLeft));
+  let pobiRightnum = check(String(pobiRight));
+  pobiLeftnum > pobiRightnum
+    ? (pobimax = pobiLeftnum)
+    : (pobimax = pobiRightnum);
+
+  let crongLeftnum = check(String(crongLeft));
+  let crongRightnum = check(String(crongRigth));
+  crongLeftnum > crongRightnum
+    ? (crongmax = crongLeftnum)
+    : (crongmax = crongRightnum);
+
   if (pobimax > crongmax) return 1;
   if (pobimax < crongmax) return 2;
   if (pobimax === crongmax) return 0;
 }
-
 module.exports = problem1;
