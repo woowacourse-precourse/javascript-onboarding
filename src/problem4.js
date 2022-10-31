@@ -1,8 +1,11 @@
-const alphabetArray = Array.from({ length: 26 }, (v, i) =>
-  String.fromCharCode(i + 65)
-);
+function problem4(word) {
+  return convertWords(word);
+}
 
 function findAlphabet(alphabet) {
+  const alphabetArray = Array.from({ length: 26 }, (v, i) =>
+    String.fromCharCode(i + 65)
+  );
   let convertedAlphabet =
     alphabetArray[25 - alphabetArray.indexOf(alphabet.toUpperCase())];
   return convertedAlphabet;
@@ -23,10 +26,6 @@ function convertWords(words) {
   });
 
   return newWord;
-}
-
-function problem4(word) {
-  return convertWords(word);
 }
 
 module.exports = problem4;

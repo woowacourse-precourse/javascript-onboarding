@@ -1,3 +1,11 @@
+function problem2(cryptogram) {
+  let newCryptogram = deleteDuplicatedWord(cryptogram);
+  while (!isUniqueWords(newCryptogram)) {
+    newCryptogram = deleteDuplicatedWord(newCryptogram);
+  }
+  return newCryptogram;
+}
+
 function deleteDuplicatedWord(words) {
   let wordsArray = words.split("");
   let newWordsArray = wordsArray;
@@ -25,17 +33,8 @@ function isUniqueWords(words) {
       isUnique = false;
     }
   });
+
   return isUnique;
-}
-
-function problem2(cryptogram) {
-  let newCryptogram = deleteDuplicatedWord(cryptogram);
-
-  while (!isUniqueWords(newCryptogram)) {
-    newCryptogram = deleteDuplicatedWord(newCryptogram);
-  }
-
-  return newCryptogram;
 }
 
 module.exports = problem2;

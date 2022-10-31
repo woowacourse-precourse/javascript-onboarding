@@ -1,3 +1,8 @@
+function problem6(forms) {
+  const sortEmailArray = gatherCrew(forms).sort();
+  return sortEmailArray;
+}
+
 function getSameWord(crew1Name, crew2Name) {
   const crew1Array = crew1Name.split("");
   const crew2Array = crew2Name.split("");
@@ -49,11 +54,6 @@ function gatherCrew(forms) {
 
   const uniqueEmailSet = new Set(crewEmailArray);
   return [...uniqueEmailSet];
-}
-
-function problem6(forms) {
-  const sortEmailArray = gatherCrew(forms).sort();
-  return sortEmailArray;
 }
 
 module.exports = problem6;

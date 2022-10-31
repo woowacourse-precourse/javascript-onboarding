@@ -1,3 +1,7 @@
+function problem3(number) {
+  return getClapNumber(number);
+}
+
 function getClapNumber(number) {
   let clapNumber = 0;
   let presentNumber = 3;
@@ -11,10 +15,6 @@ function getClapNumber(number) {
   }
 
   return clapNumber;
-}
-
-function problem3(number) {
-  return getClapNumber(number);
 }
 
 module.exports = problem3;

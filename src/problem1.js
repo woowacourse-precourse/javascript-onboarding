@@ -1,3 +1,13 @@
+function problem1(pobi, crong) {
+  if (!(checkAvailablePages(pobi) && checkAvailablePages(crong))) return -1;
+  else {
+    if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
+    else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
+    else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) return 0;
+    else return -1;
+  }
+}
+
 function checkAvailablePages(pages) {
   let isAvailable = true;
   if (pages[0] <= 1 || pages[0] >= 399) {
@@ -33,16 +43,6 @@ function compareTwoNumbers(pages) {
   const pageLeft = calculateNumber(pages[0]);
   const pageRight = calculateNumber(pages[1]);
   return pageLeft >= pageRight ? pageLeft : pageRight;
-}
-
-function problem1(pobi, crong) {
-  if (!(checkAvailablePages(pobi) && checkAvailablePages(crong))) return -1;
-  else {
-    if (compareTwoNumbers(pobi) > compareTwoNumbers(crong)) return 1;
-    else if (compareTwoNumbers(pobi) < compareTwoNumbers(crong)) return 2;
-    else if (compareTwoNumbers(pobi) == compareTwoNumbers(crong)) return 0;
-    else return -1;
-  }
 }
 
 module.exports = problem1;

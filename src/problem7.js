@@ -1,3 +1,15 @@
+function problem7(user, friends, visitors) {
+  const friendsOfUser = findFriendsOfUser(user, friends);
+  const friendsOfFriend = findFriendsOfFriend(user, friendsOfUser, friends);
+  const candidatesArray = makeCandidatesScore(
+    friendsOfFriend,
+    visitors,
+    friendsOfUser
+  );
+
+  return getRecommendFriends(sortCandidatesArray(candidatesArray));
+}
+
 function findFriendsOfUser(user, friends) {
   let friendsArray = [];
 
@@ -84,18 +96,6 @@ function getRecommendFriends(candidatesArray) {
   });
 
   return recommendFriends;
-}
-
-function problem7(user, friends, visitors) {
-  const friendsOfUser = findFriendsOfUser(user, friends);
-  const friendsOfFriend = findFriendsOfFriend(user, friendsOfUser, friends);
-  const candidatesArray = makeCandidatesScore(
-    friendsOfFriend,
-    visitors,
-    friendsOfUser
-  );
-
-  return getRecommendFriends(sortCandidatesArray(candidatesArray));
 }
 
 module.exports = problem7;
