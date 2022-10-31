@@ -9,6 +9,12 @@ function problem5(money) {
   return answer;
 }
 
+/**
+ * 돈이 지폐나 동전으로 바꿀 수 있다면 바꾼다
+ * @param {number} money - 돈
+ * @param {number} billCoin - 지폐 또는 동전
+ * @returns {[number, number]} [남은 돈, 바뀐 지폐 또는 동전 개수]
+ */
 const countMoney = (money, billCoin) => {
   return money >= billCoin
     ? [
