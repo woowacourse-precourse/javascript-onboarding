@@ -1,37 +1,39 @@
-function isNotWord(word) {
-  const WORD_ASCII_CODE_FIRST = 65;
-  const WORD_ASCII_CODE_SECOND = 90;
-  const WORD_ASCII_CODE_THIRD = 97;
-  const WORD_ASCII_CODE_FOURTH = 122;
-  if (word.charCodeAt() < WORD_ASCII_CODE_FIRST) return true;
+function isNotAlphabet(alphabet) {
+  const ALPHABET_ASCII_CODE_FIRST = 65;
+  const ALPHABET_ASCII_CODE_SECOND = 90;
+  const ALPHABET_ASCII_CODE_THIRD = 97;
+  const ALPHABET_ASCII_CODE_FOURTH = 122;
+  if (alphabet.charCodeAt() < ALPHABET_ASCII_CODE_FIRST) return true;
   if (
-    word.charCodeAt() > WORD_ASCII_CODE_SECOND &&
-    word.charCodeAt() < WORD_ASCII_CODE_THIRD
+    alphabet.charCodeAt() > ALPHABET_ASCII_CODE_SECOND &&
+    alphabet.charCodeAt() < ALPHABET_ASCII_CODE_THIRD
   )
     return true;
-  if (word.charCodeAt() > WORD_ASCII_CODE_FOURTH) return true;
+  if (alphabet.charCodeAt() > ALPHABET_ASCII_CODE_FOURTH) return true;
 
   return false;
 }
 
-function caseSensitive(word) {
+function caseSensitive(alphabet) {
   const LOWERCASE_ASCII_NUM = 219;
   const UPPERCASE_ASCII_NUM = 155;
   const CLASSIFYING_ASCII_NUM = 96;
-  if (word.charCodeAt() > CLASSIFYING_ASCII_NUM)
-    return String.fromCharCode(LOWERCASE_ASCII_NUM - word.charCodeAt());
-  if (word.charCodeAt() <= CLASSIFYING_ASCII_NUM)
-    return String.fromCharCode(UPPERCASE_ASCII_NUM - word.charCodeAt());
+  if (alphabet.charCodeAt() > CLASSIFYING_ASCII_NUM)
+    return String.fromCharCode(LOWERCASE_ASCII_NUM - alphabet.charCodeAt());
+  if (alphabet.charCodeAt() <= CLASSIFYING_ASCII_NUM)
+    return String.fromCharCode(UPPERCASE_ASCII_NUM - alphabet.charCodeAt());
 }
 
-function convertWord(word) {
-  if (isNotWord(word)) return word;
-  return caseSensitive(word);
+function convertAlphabet(alphabet) {
+  if (isNotAlphabet(alphabet)) return alphabet;
+  return caseSensitive(alphabet);
 }
 
 function problem4(word) {
-  const convertWords = word.split("").map((alphabet) => convertWord(alphabet));
-  return convertWords.join("");
+  const convertedAlphabet = word
+    .split("")
+    .map((alphabet) => convertAlphabet(alphabet));
+  return convertedAlphabet.join("");
 }
 
 module.exports = problem4;
