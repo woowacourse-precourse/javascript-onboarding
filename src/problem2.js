@@ -21,10 +21,12 @@ function problem2(cryptogram) {
     while (checkText(text) === true) {
         let textArray = [];
         for (let i = 0; i < text.length; i++) {
+            let letter = text[i];
+            let nextLetter = text[i + 1];
             if (i === 0) {
-                text[i] !== text[i + 1] ? textArray.push(text[i]) : null;
-            } else if (text[i] !== text[i + 1] && text[i] !== text[i - 1]) {
-                textArray.push(text[i]);
+                letter !== nextLetter ? textArray.push(letter) : null;
+            } else if (letter !== nextLetter && letter !== nextLetter) {
+                textArray.push(letter);
             }
         }
         text = textArray;
