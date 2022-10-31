@@ -1,52 +1,38 @@
-const splitName = (crewName) => {
+const getSplittedNames = (crewName) => {
   const splittedLetter = [];
-  for (
-    let firstLetterIdx = 0;
-    firstLetterIdx < crewName.length - 1;
-    firstLetterIdx++
-  ) {
-    splittedLetter.push(crewName.substr(firstLetterIdx, 2));
+  for (let i = 0; i < crewName.length - 1; i++) {
+    splittedLetter.push(crewName.substring(i, i + 2));
   }
-  return splittedLetter;
+
+  return [...new Set(splittedLetter)];
 };
 
-const isDuplicated = (forms, currentIdx) => {
+const insertNamesToMap = (names, map) => {
+  names.forEach((name) => map.set(name, (map.get(name) || 0) + 1));
+};
+
+const isDuplicatedName = (names, map) => {
   let duplicate = false;
-  const currentCrew = forms[currentIdx];
-  const currentCrewName = currentCrew[1];
-  const splittedName = splitName(currentCrewName);
+  names.forEach((name) => map.get(name) >= 2 && (duplicate = true));
 
-  forms.forEach((otherCrew, idx) => {
-    if (duplicate) return;
-    if (idx === currentIdx) return;
-
-    const otherCrewName = otherCrew[1];
-    splittedName.forEach((word) => {
-      if (otherCrewName.includes(word)) duplicate = true;
-    });
-  });
   return duplicate;
 };
 
-const getDuplicateNames = (forms) => {
-  const duplicatedCrew = [];
-  forms.forEach((crew, idx) => {
-    if (isDuplicated(forms, idx)) duplicatedCrew.push(crew);
-  });
-  return duplicatedCrew;
-};
-
-const getCrewEmail = (crewList) => {
-  const crewEmailList = crewList.map((crew) => crew[0]);
-  const removedDuplicatedEmailList = [...new Set(crewEmailList)];
-  const sortedEmailList = removedDuplicatedEmailList.sort();
-  return sortedEmailList;
-};
-
 function problem6(forms) {
-  const duplicatedNameList = getDuplicateNames(forms);
-  const duplicatedNameCrewEmailList = getCrewEmail(duplicatedNameList);
-  return duplicatedNameCrewEmailList;
+  const splittedNameMap = new Map();
+  const emails = [];
+
+  forms.forEach(([, crewName]) => {
+    const splittedNames = getSplittedNames(crewName);
+    insertNamesToMap(splittedNames, splittedNameMap);
+  });
+
+  forms.forEach(([crewEmail, crewName]) => {
+    const splittedNames = getSplittedNames(crewName);
+    isDuplicatedName(splittedNames, splittedNameMap) && emails.push(crewEmail);
+  });
+
+  return [...new Set(emails)].sort();
 }
 
 module.exports = problem6;
