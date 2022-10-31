@@ -14,7 +14,16 @@ function getFriendList(friends) {
 
 function problem7(user, friends, visitors) {
   var answer;
+  let userFriend = [];
   let friendDict = getFriendList(friends);
+  userFriend = friendDict[user];
+  let notUserFriend = [];
+  let allPeople = Object.keys(friendDict);
+  for (let i = 0; i < allPeople.length; i++) {
+    if (!userFriend.includes(allPeople[i])) {
+      notUserFriend.push(allPeople[i]);
+    }
+  }
 
   return answer;
 }
