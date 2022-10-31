@@ -3,7 +3,9 @@ function problem7(user, friends, visitors) {
   const userFriends = getUserFriends(user, friends);
   recommendList = getFriendOfFriendPoint(user, friends, userFriends);
   recommendList = getVisitPoint(recommendList ,visitors, userFriends);
-  recommendList = toSortLimitedRecommendList([...recommendList], 5);
+  recommendList = toSortRecommendList([...recommendList]);
+  const limitedLength = 5;
+  if(recommendList.length > limitedLength)recommendList = recommendList.splice(0, limitedLength);
   return recommendList;
 }
 
@@ -45,29 +47,21 @@ function getVisitPoint(recommendList, visitorList, userFriends) {
   return recommendList;
 }
 
-function toSortLimitedRecommendList(recommendList, LimitedNumber) {
-  let sortedList = [];
-  let tiePointUsers = new Set();
-  recommendList.sort((a,b) => {
-    return b[1] - a[1];
+function toSortRecommendList(recommendList) {
+  recommendList.sort((user1, user2) => {    
+    const user1ID = user1[0];    
+    const user1Point = user1[1];
+    const user2ID = user2[0];    
+    const user2Point = user2[1];
+    if(user1Point > user2Point) return -1;
+    if(user1Point < user2Point) return 1;
+    if(user1ID < user2ID) return -1;
+    return 1;
   });    
-  for(let i = 0; i < recommendList.length; i++) {
-    const userID = recommendList[i][0];    
-    const userPoint = recommendList[i][1];
-    const nextUserID = recommendList[i + 1]?.[0];     
-    const nextUserPoint = recommendList[i + 1]?.[1];  
-    tiePointUsers.add(userID); 
-    if(userPoint === nextUserPoint) {
-      tiePointUsers.add(nextUserID);
-      continue;
-    }
-    sortedList.push(...([...tiePointUsers].sort()));
-    tiePointUsers = new Set();
-    if(sortedList.length > LimitedNumber) {
-      sortedList = sortedList.splice(0, LimitedNumber);
-      break;
-    }
-  }
+  let sortedList = recommendList.map(recommendedUser => {
+    const recommendedUserID = recommendedUser[0];
+    return recommendedUserID;
+  });
   return sortedList;
 }
 
