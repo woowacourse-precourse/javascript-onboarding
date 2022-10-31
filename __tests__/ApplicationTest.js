@@ -81,7 +81,7 @@ describe("problem7", () => {
           ["shakevan", "jun"],
           ["shakevan", "mrko"],
         ],
-        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+        ["bedi", "jun", "donut", "andole", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
