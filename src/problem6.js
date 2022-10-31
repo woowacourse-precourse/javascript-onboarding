@@ -58,3 +58,4 @@ const limit = (number) => (arr) => arr.slice(number);
 
 const sort = (arr) => [...arr].sort();
 
+const removeDups = (arr) => [...new Set(arr)];
