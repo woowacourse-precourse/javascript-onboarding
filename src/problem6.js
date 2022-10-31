@@ -1,40 +1,49 @@
 function problem6(forms) {
   const nickname = [];
+  const finded_duplicate_nickname = [];
   const answer = [];
-  const real_answer = [];
+  let separated_name;
 
   for (let i = 0; i < forms.length; i++) {
     nickname.push(forms[i][1]);
   }
 
-  for (let j = 0; j < nickname.length; j++) {
-    if (nickname[j].includes(duplication(nickname).join())) answer.push(nickname[j]);
-  }
+  separated_name = separate(nickname);
 
-  for (let k = 0; k < forms.length; k++) {
-    for (let l = 0; l < answer.length; l++) {
-      if (forms[k][1] === answer[l]) real_answer.push(forms[k][0]);
+  finded_duplicate_nickname.push(...new Set(find_duplicate(separated_name)));
+
+  for (let j = 0; j < forms.length; j++) {
+    for (let k = 0; k < finded_duplicate_nickname.length; k++) {
+      if (forms[j][1].includes(finded_duplicate_nickname[k])) {
+        answer.push(forms[j][0]);
+      }
     }
   }
-
-  return [...new Set(real_answer.sort())];
+  return Array(...new Set(answer.sort()));
 }
 
-function duplication(arr) {
-  let seperate_name_arr = [];
+function separate(arr) {
+  const duplicate_nickname = [];
 
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length - 1; j++) {
-      seperate_name_arr.push(arr[i][j] + arr[i][j + 1]);
+    const separate_name = arr[i];
+    for (let j = 0; j < separate_name.length - 1; j++) {
+      duplicate_nickname.push(Array(separate_name[j], separate_name[j + 1]).join(""));
     }
   }
+  return duplicate_nickname;
+}
 
-  const findDuplicates = (seperate_name_arr) =>
-    seperate_name_arr.filter((item, index) => seperate_name_arr.indexOf(item) !== index);
+function find_duplicate(arr) {
+  const duplicate = [];
 
-  const duplicates = findDuplicates(seperate_name_arr);
-
-  return [...new Set(duplicates)];
+  for (let i = 0; i < arr.length; i++) {
+    const current_el = arr[i];
+    for (let j = i + 1; j < arr.length; j++) {
+      if (current_el === arr[j]) duplicate.push(current_el);
+    }
+  }
+  return duplicate;
 }
 
 module.exports = problem6;
