@@ -25,6 +25,9 @@ function problem7(user, friends, visitors) {
     return user[0];
   });
 
+  if (answer.length > 5) {
+    answer = answer.slice(0, 5);
+  }
   return answer;
 }
 
@@ -91,34 +94,3 @@ function calculate_score(user, friends, visitors) {
 
   return user_dict;
 }
-
-console.log(
-  problem7(
-    "yaena",
-    [
-      ["yaena", "ming"],
-      ["ming", "siun"],
-      ["yaena", "bbang"],
-      ["bbang", "siun"],
-      ["yaena", "zzi"],
-      ["zzi", "siun"],
-      ["lala", "baba"],
-    ],
-    ["ming", "ming", "siun", "bbang", "zzi"]
-  )
-);
-
-// console.log(
-//   problem7(
-//     "mrko",
-//     [
-//       ["donut", "andole"],
-//       ["donut", "jun"],
-//       ["donut", "mrko"],
-//       ["shakevan", "andole"],
-//       ["shakevan", "jun"],
-//       ["shakevan", "mrko"],
-//     ],
-//     ["bedi", "bedi", "donut", "bedi", "shakevan"]
-//   )
-// );
