@@ -7,6 +7,7 @@ function problem7(user, friends, visitors) {
     mutualFriendArr.push(...createfriendArr(friends, friend, friendArr));
     visitors = visitors.filter((visit) => visit !== friend);
   }
+
 //친구 추천 규칙에 따라 점수를 부여
 const recommendArr = [
   ...new Set([
@@ -42,6 +43,18 @@ recommendArr.forEach((name) => {
 });
 return result;
 };
- 
+
+ //점수 높은 순으로 정렬하여 최대 5명을 반환
+ const createfriendArr = (rekatuibshipArr, friendCompare, friendArr = []) => {
+  const result = [];
+  rekatuibshipArr.forEach((relationship) => {
+    if (relationship.includes(friendCompare)) {
+      const friendName =
+        relationship[relationship.findIndex((name) => name !== friendCompare)];
+      if (!friendArr.includes(friendName)) result.push(friendName);
+    }
+  });
+  return result;
+};
 
 module.exports = problem7;
