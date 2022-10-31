@@ -11,9 +11,15 @@
   4. [x] 알파벳 외의 문자는 그대로 answer에 추가
 */
 
+/**
+ * Main function - replace string
+ * @param {string} word 
+ * @returns {stirng} answer
+ */
 function problem4(word) {
   // 0. 예외처리
   if (word.length <= 0) return word;
+  
   const upperA = "A".charCodeAt(0);
   const upperZ = "Z".charCodeAt(0);
   const lowerA = "a".charCodeAt(0);
