@@ -66,3 +66,17 @@ npm test
 
 - 미션은 [javascript-onboarding](https://github.com/woowacourse-precourse/javascript-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 📝 기능 목록
+
+1. [문제 1](src/problem1.js)
+   - [ ] 예외 처리 코드 작성 -> 바로 -1 return
+     - [ ] 각 입력 값의 왼쪽 페이지가 짝수일 경우
+     - [ ] 각 입력 값의 오른쪽 페이지가 홀수일 경우
+     - [ ] 각 페이지 번호가 연속되지 않을 경우
+     - [ ] 입력 값이 1보다 작거나 400보다 클 경우
+   - [ ] 게임 규칙 2, 3에 따라 입력된 각 페이지(왼쪽, 오른쪽) 번호에 대해서 가장 큰 수를 구하는 함수 작성
+   - [ ] 함수를 통해 구한 pobi의 점수와 crong의 점수 비교
+   - [ ] 비교값에 따른 결과 반환
