@@ -11,6 +11,12 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+
+/**
+ * 추천 점수 계산 메소드
+ * parameter: 입력으로 주어지는 user, friends, visitors
+ * return: 각 사용자의 아이디와 점수로 구성된 딕셔너리
+ */
 function calScore(user, friends, visitors) {
   const friendsConnection = getConnection(friends);
   const friendsScore = makeDict(user, friends);
@@ -20,7 +26,7 @@ function calScore(user, friends, visitors) {
   
   return friendsTotalScore;
 }
-
+// 각 사용자의 친구 관계를 딕셔너리로 만드는 메소드
 function getConnection(friends) {
   const friendsConnection = {};
 
@@ -40,7 +46,7 @@ function getConnection(friends) {
 
   return friendsConnection;
 }
-
+// 추천 점수 계산에 사용되는 사용자 이름(key), 사용자 점수(value)로 구성된 딕셔너리를 생성하는 메소드
 function makeDict(user, friends) {
   const friendsScoreDict = {};
 
@@ -54,7 +60,7 @@ function makeDict(user, friends) {
 
   return friendsScoreDict;
 }
-
+// 사용자와 함께 아는 친구의 수에 따른 점수 계산 메소드
 function checkFriend(user, friendsScoreDict, friendsConnection) {
   const userFriend = friendsConnection[user];
 
@@ -68,7 +74,7 @@ function checkFriend(user, friendsScoreDict, friendsConnection) {
 
   return friendsScoreDict;
 }
-
+// 사용자 타임라인 방문 기록에 따른 점수 계산 메소드
 function checkVisited(friendsScoreDict, visitors) {
   visitors.forEach((item) => {
     if (friendsScoreDict[item] == undefined) friendsScoreDict[item] = 0;
@@ -78,6 +84,12 @@ function checkVisited(friendsScoreDict, visitors) {
   return friendsScoreDict;
 }
 
+
+/**
+ * 각 점수에 따라 정렬 후 추천 친구를 return하는 메소드
+ * Parameter: user와 친구관계인 사용자 집합, 각 사용자의 아이디와 점수로 구성된 딕셔너리
+ * return: 사용자의 점수와 이름으로 정렬된 추천친구 배열
+ */
 function sortFriends(usersFriendsSet, friendsTotalScore) {
   const sortedFriends = [];
   const recommendedFriends = [];
@@ -105,6 +117,10 @@ function sortFriends(usersFriendsSet, friendsTotalScore) {
   return recommendedFriends;
 }
 
+
+/**
+ * 예외 처리
+ */
 function validUser(user) {
   return 1 <= user.length && user.length <= 30 && typeof (user) == "string";
 }
