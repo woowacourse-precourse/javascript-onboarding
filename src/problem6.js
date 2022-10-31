@@ -37,9 +37,21 @@ function areDuplicates(crews, crewIndex, otherCrew) {
 
 function problem6(forms) {
   var answer;
-  let crews = new Array(forms.length);
+  const crewCount = forms.length;
+  let crews = new Array(crewCount);
+  let resultSet = new Set();
 
   getCrewsInfo(forms, crews);
+  for (let crewIndex = 0; crewIndex < crewCount - 1; ++crewIndex) {
+    for (let otherCrew = crewIndex + 1; otherCrew < crewCount; ++otherCrew) {
+      if (areDuplicates(crews, crewIndex, otherCrew)) {
+        resultSet.add(crews[crewIndex].email);
+        resultSet.add(crews[otherCrew].email);
+      }
+    }
+  }
+  answer = Array.from(resultSet);
+	answer.sort();
   return answer;
 }
 
