@@ -12,7 +12,7 @@ const badFrog = (word) => {
     charCode = LOWER_CASE_START_CODE + LOWER_CASE_END_CODE - charCode;
   }
   return String.fromCharCode(charCode);
-}
+};
 
 const problem4 = (word) => {
   let result = '';
@@ -20,6 +20,6 @@ const problem4 = (word) => {
     result += badFrog(w);
   })
   return result;
-}
+};
 
 module.exports = problem4;
