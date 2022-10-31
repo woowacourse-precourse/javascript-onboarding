@@ -47,4 +47,36 @@ function combineFriendsVistors(friends, visitors) {
   return sortingScores(results);
 }
 
+function sortingScores(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (arr[j][1] === arr[j - 1][1]) {
+        const sorted = sortingNames([arr[j - 1][0], arr[j][0]]);
+        arr[j - 1][0] = sorted[0];
+        arr[j][0] = sorted[1];
+      }
+      if (arr[j][1] > arr[j - 1][1]) {
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+      } else {
+        break;
+      }
+    }
+  }
+  return arr;
+}
+
+function sortingNames(arr) {
+  return arr.sort();
+}
+
+function recommendationList(arr) {
+  const results = [];
+  for (let i = 0; i < arr.length; i++) {
+    results.push(arr[i][0]);
+  }
+  return results;
+}
+
 module.exports = problem7;
