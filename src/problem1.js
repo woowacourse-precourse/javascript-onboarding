@@ -2,8 +2,12 @@ function problem1(pobi, crong) {
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
 
-  if (Math.abs(pobiLeftPage - pobiRightPage) !== 1) return -1;
-  if (Math.abs(crongLeftPage - crongRightPage) !== 1) return -1;
+  const getIsInvalidPage = (leftPage, rightPage) => {
+    return rightPage - leftPage !== 1;
+  };
+
+  if (getIsInvalidPage(pobiLeftPage, pobiRightPage)) return -1;
+  if (getIsInvalidPage(crongLeftPage, crongRightPage)) return -1;
 
   const getSum = (page) => {
     return page
@@ -34,8 +38,8 @@ function problem1(pobi, crong) {
   );
 
   if (pobiScore > crongScore) return 1;
-  else if (pobiScore < crongScore) return 2;
-  else return 0;
+  if (pobiScore < crongScore) return 2;
+  return 0;
 }
 
 module.exports = problem1;
