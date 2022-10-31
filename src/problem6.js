@@ -1,43 +1,43 @@
-function crewNameArray(array) {
+function crewNameArray(duplicateArray) {
   let crewNameArr = [];
 
-  array.forEach((item) => {
+  duplicateArray.forEach((item) => {
     crewNameArr.push(item[1]);
   });
   return crewNameArr;
 }
 
-function cutTwoCharArray(array) {
+function cutTwoLetterArray(array) {
   const crewNameArr = crewNameArray(array);
-  let twoCharNameArr = [];
+  let twoLetterNameArr = [];
 
-  crewNameArr.forEach((item) => {
+  crewNameArr.forEach((name) => {
     let i = 0;
 
-    for (; i < item.length - 1; i++) {
-      twoCharNameArr.push(item.slice(i, i + 2));
+    for (; i < name.length - 1; i++) {
+      twoLetterNameArr.push(name.slice(i, i + 2));
     }
   });
-  return twoCharNameArr;
+  return twoLetterNameArr;
 }
 
 function pushOverlapArray(array) {
   let overlapArray = [];
   let toCheckArray = [];
 
-  array.forEach((twoCharName) => {
-    if (toCheckArray.includes(twoCharName) === true) {
-      overlapArray.push(twoCharName);
+  array.forEach((twoLetterName) => {
+    if (toCheckArray.includes(twoLetterName) === true) {
+      overlapArray.push(twoLetterName);
     }
-    if (toCheckArray.includes(twoCharName) === false) {
-      toCheckArray.push(twoCharName);
+    if (toCheckArray.includes(twoLetterName) === false) {
+      toCheckArray.push(twoLetterName);
     }
   });
   return overlapArray;
 }
 function problem6(forms) {
-  const twoCharNameArr = cutTwoCharArray(forms);
-  const overlapArray = pushOverlapArray(twoCharNameArr);
+  const twoLetterNameArr = cutTwoLetterArray(forms);
+  const overlapArray = pushOverlapArray(twoLetterNameArr);
   let answer = [];
 
   forms.forEach((nameAndEmail) => {
