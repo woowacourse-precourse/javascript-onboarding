@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   if(checkValid(pobi,crong)){
     let pobiMax = getMaxValue(pobi);
     let crongMax = getMaxValue(crong);
-    answer = 1;
+    answer = returnAnswer(pobiMax,crongMax);
   } else{
     answer = -1;
   }
@@ -43,6 +43,12 @@ function problem1(pobi, crong) {
     else return b;
   }
 
+  function returnAnswer(pobi,crong){
+    if(pobi>crong) return 1;
+    else if(pobi<crong) return 2;
+    else return 0;
+  }
+  
   return answer;
 }
 
