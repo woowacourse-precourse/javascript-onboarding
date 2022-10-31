@@ -3,13 +3,9 @@
 - [x] feat1. 특정 유저로 접근하면 친구 배열을 값으로 받는 object
   - relationship = {userName: []}로 friends 인풋 정리
   - userFriends 만 set()로 따로 받아두기!
-- [ ] feat2. 모든 점수 scores 배열과 top5를 갱신하는 highetScored stack
-  - [x] scores: {userName: score}
-  - [ ] highestScored: 길이가 5가 되면 5개니까 대충 pop(), push()로 새로운 숫자 넣고 조정함..
-  - [ ] relationships[]
-- [x] feat3. 겹치는 친구에게 +10점 하는 함수
-- [x] feat4. visitors 배열을 for문으로 순회하여 +1
-- 효율성? 5개만 뽑으면 되는데 굳이 다 sort 하면 효율성이 떨어지는 것 같다! 점수 업데이트 할 때 마다 비교하고 정렬하는 식으로 가야하나?
+- [x] feat2. 겹치는 친구에게 +10점 하는 함수
+- [x] feat3. visitors 배열을 for문으로 순회하여 +1
+- 효율성? 5개만 뽑으면 되는데 굳이 다 sort 하면 효율성이 떨어지는 것 같다! 점수 업데이트 할 때 마다 비교하고 정렬하는 식으로 가야하나?ㅜㅜ
 
 ## 학습
 
