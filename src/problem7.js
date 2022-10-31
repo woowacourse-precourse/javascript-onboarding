@@ -32,7 +32,11 @@ function problem7(user, friends, visitors) {
     if (scoreObject.hasOwnProperty(score10People)) scoreObject[score10People] += 10;
   }
 
-  return scoreObject;
+  const sortScoreObj = Object.keys(scoreObject)
+    .sort((a, b) => scoreObject[b] - scoreObject[a])
+    .slice(0, 5);
+
+  return sortScoreObj;
 }
 
 const createScoreObj = (scoreKeySet, scoreObj) => {
