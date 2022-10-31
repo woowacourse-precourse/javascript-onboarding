@@ -4,20 +4,21 @@ function problem1(pobi, crong) {
 };
 
 function isRightPage(pages) {
-  if (pages[1]-pages[0]!==1) return false;
-  if (pages[0]===1 || pages[1]===400) return false;
+  let leftPage=pages[0], rightPage=pages[1];
+  if (rightPage-leftPage!==1) return false;
+  if (leftPage===1 || rightPage===400) return false;
   return true;
 };
 
 function scoreCount(pages) {
   let finalScore=0;
-  pages.forEach((page)=> {
+  pages.forEach((eachPage)=> {
     let addScore=0, mulScore=1;
     do {
-      addScore+=page%10;
-      mulScore*=page%10;
-      page=Math.floor(page/10);
-    } while(page>0);
+      addScore+=eachPage%10;
+      mulScore*=eachPage%10;
+      eachPage=Math.floor(eachPage/10);
+    } while(eachPage>0);
     finalScore=Math.max(addScore,mulScore,finalScore);
   });
   return finalScore;
