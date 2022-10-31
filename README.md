@@ -85,6 +85,11 @@ npm test
 
 ### problem5
 
+1. result 배열과 moneyUnit 배열 생성
+2. 큰 단위부터 그 금액보다 크다면 계속 빼면서 result += 1 하는 함수 구현
+3. 반복문을 통해 2번 함수 실행
+4. result 배열 반환
+
 ### problem6
 
 ### problem7
