@@ -7,12 +7,18 @@
 // - 이메일 오름차순 정렬
 
 function problem6(forms) {
-  var answer = [];
   const nickNameEmail = {};
   const subStringObj = {};
+  const selectedEmail = [];
 
   forms.forEach((element) => {
-    nickNameEmail[element[1]] = element[0];
+    const EMAIL = element[0];
+    const NICK_NAME = element[1];
+
+    if (!(NICK_NAME in nickNameEmail)) {
+      nickNameEmail[NICK_NAME] = [];
+    }
+    nickNameEmail[NICK_NAME].push(EMAIL);
   });
 
   function addSubString(strLength, nickName) {
@@ -44,14 +50,16 @@ function problem6(forms) {
 
   for (subStirng in subStringObj) {
     if (subStringObj[subStirng][1] > 1) {
-      subStringObj[subStirng][0].forEach((element) => {
-        answer.push(nickNameEmail[element]);
+      subStringObj[subStirng][0].forEach((nickNames) => {
+        nickNameEmail[nickNames].forEach((email) => {
+          selectedEmail.push(email);
+        });
       });
     }
   }
-
+  const setSelectedEmail = new Set(selectedEmail);
+  const answer = Array.from(setSelectedEmail);
   answer.sort();
-  //중복제거
 
   return answer;
 }
