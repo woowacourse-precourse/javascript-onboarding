@@ -4,22 +4,22 @@ function problem7(user, friends, visitors) {
   var answer;
   var resultMap = new Map();
   var userFriends = getUserFriends(user, friends);
-  var recommededFriend, score;
+  var interWithUserFriends, friendship, recommededFriend, score;
 
   for (var i = 0; i < friends.length; i++) {
     /* 사용자 친구 목록과의 교집합 */
-    var interWithUserFreinds = getInterWithUserFreinds(friends[i], userFriends);
+    friendship = friends[i];
+    interWithUserFriends = getInterWithUserFreinds(friendship, userFriends);
 
     /* 추천 점수 10점 */
 
     if (interWithUserFreinds.length === 1) {
       // 둘 중의 한명만이 사용자의 친구인 경우
-      var friend = friends[i][0];
       score = 10;
 
-      recommendedFriend = userFriends.includes(friend)
-        ? friends[i][1]
-        : friends[i][0];
+      recommendedFriend = userFriends.includes(friendship[0])
+        ? friendship[1]
+        : friendship[0];
 
       resultMap.has(recommendedFriend)
         ? resultMap.set(
@@ -48,7 +48,8 @@ function problem7(user, friends, visitors) {
   resultMap = sortByValue(resultMap);
   answer = getRecommendedFriends(resultMap);
 
-  if (answer.length > 5) answer = getMaxRecommendedFriends(answer);
+  if (answer.length > MAX_COUNT_RECOMMENDED_FRIEND)
+    answer = getMaxRecommendedFriends(answer);
 
   return answer;
 }
@@ -66,7 +67,7 @@ function sortByValue(resultMap) {
     })
   );
 }
-function getRecommendedFriends(resultMap) {
+function convertT(resultMap) {
   return Array.from(resultMap.keys());
 }
 
