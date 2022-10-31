@@ -18,6 +18,66 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+  test("case4 숫자가 아닐때, ", () => {
+    expect(problem1(["123", 102], [211, 212])).toEqual(-1);
+  });
+  const case5 = [
+    [
+      [0, 1],
+      [211, 212],
+    ],
+  ];
+  test.each(case5)("case5 시작 면이 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case6 = [
+    [
+      [399, 400],
+      [1, 2],
+    ],
+    [
+      [1, 2],
+      [399, 400],
+    ],
+  ];
+  test.each(case6)("case6 마지막 면이 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case7 = [
+    [
+      [356, 355],
+      [1, 2],
+    ],
+    [
+      [357, 355],
+      [1, 2],
+    ],
+  ];
+  test.each(case7)("case7 페이지 값이 반대로 들어있을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
+  const case8 = [
+    [
+      [355, 356, 357],
+      [1, 2],
+    ],
+    [[357], [1, 2]],
+    [
+      [[], 2],
+      [1, 2],
+    ],
+    [
+      [{}, 2],
+      [1, 2],
+    ],
+  ];
+  test.each(case8)("case8 입력값이 잘못되었을때", (arr) => {
+    const [a, b] = arr;
+    expect(problem1(a, b)).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
@@ -26,6 +86,18 @@ describe("problem2", () => {
   });
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
+  });
+  test("case3", () => {
+    expect(problem2("gooooooooooooooooooo")).toEqual("g");
+  });
+  test("case4", () => {
+    expect(problem2("ooooooooooooooooooo")).toEqual("");
+  });
+  test("case5", () => {
+    expect(problem2("g")).toEqual("g");
+  });
+  test("case6", () => {
+    expect(problem2("ga")).toEqual("ga");
   });
 });
 
@@ -36,11 +108,19 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
+  test("case3", () => {
+    expect(problem3(1)).toEqual(0);
+  });
 });
 
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
+  });
+  test("case2", () => {
+    expect(problem4("WoowaCoures!!!! Fighting@@!!3 123123")).toEqual(
+      "DlldzXlfivh!!!! Urtsgrmt@@!!3 123123"
+    );
   });
 });
 
@@ -51,6 +131,9 @@ describe("problem5", () => {
 
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+  });
+  test("case2", () => {
+    expect(problem5(1000000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 });
 
@@ -65,6 +148,24 @@ describe("problem6", () => {
         ["nowm@email.com", "이제엠"],
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+  test("case1", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+        ["sangjun@email.com", "상제이제"],
+      ])
+    ).toEqual([
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+      "sangjun@email.com",
+    ]);
   });
 });
 
