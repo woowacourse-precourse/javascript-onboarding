@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer = removeDuplicated(cryptogram).join("");
+  var answer = removeDuplicated(cryptogram);
   return answer;
 }
 
@@ -35,7 +35,7 @@ const removeDuplicated = (word) => {
     if (stack.size() > 0 && stack.peek() === alphabet) stack.pop();
     else stack.push(alphabet);
   });
-  return stack.reverse();
+  return stack.reverse().join("");
 };
 
 module.exports = problem2;
