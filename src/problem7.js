@@ -5,7 +5,6 @@ function problem7(user, friends, visitors) {
   //!1. user는 길이가 1 이상 30 이하
 
   function CHECK_USER_NAME_LENGTH (userName) {
-
     if(userName.length <1 || userName.length >30){
       return false;
     } else {
@@ -17,7 +16,6 @@ function problem7(user, friends, visitors) {
   //!2. friends는 길이가 1 이상 10,000 이하인 배열
 
   function CHECK_FRIENDS_LIST_LENGHT (friendsList) {
-
     if(friendsList.length <1 || friendsList.length >10000){
       return false;
     } else {
@@ -29,40 +27,33 @@ function problem7(user, friends, visitors) {
   //!3. friends의 각 원소는 길이가 2인 배열
 
   function CHECK_FRIENDS_LIST_ELEMENTS_LENGHT (elementList) {
-
     if(elementList.length === 2){
       return true;
     } else {
       return false;
     }
-
   }
 
   //!4. visitors는 길이가 0 이상 10,000 이하인 배열
 
   function CHECK_VISITORS_LIST_LENGHT (visitors) {
-
     if(visitors.length <0 || visitors.length >10000){
       return false;
     } else {
       return true;
     }
-
   }
 
   //!5. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
 
   function CHECK_USER_NAME_IS_LOWER_ALPHABET (userName) {
-   
     const lowerAlphabet = /[a-z]/;
-
     for(let i of userName){
       if(lowerAlphabet.test(i) === false){
         return false;
       }
     }
     return true;
-
   }
 
 
