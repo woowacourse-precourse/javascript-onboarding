@@ -26,6 +26,19 @@ const makeMyFriendsKnow = (user, myFriends, friends, userFriendTogether) =>{
   }
 };
 
+//10점 짜리 계산
+const calculateTen = (userFriendTogether, myFriends, score) =>{
+  
+  for(let ten_user of userFriendTogether){
+    if (!myFriends.includes(ten_user)) {
+      if (!score[ten_user]) {
+        score[ten_user] = 0;
+      }
+        score[ten_user] += 10;
+    } 
+  }
+};
+
 }
 
 module.exports = problem7;
