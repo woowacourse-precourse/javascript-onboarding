@@ -37,7 +37,9 @@ function divide(money) {
   return resultArray;
 }
 function checkValidation(money) {
-  return checkIsNumber(money) && checkNumberRange(money);
+  return (
+    checkIsNumber(money) && checkNumberRange(money) && checkNaturalNumber(money)
+  );
 }
 function checkNumberRange(money) {
   if (money >= MIN_MONEY && money <= MAX_MONEY) return true;
@@ -46,5 +48,9 @@ function checkNumberRange(money) {
 function checkIsNumber(money) {
   if (typeof money == "number") return true;
   return false;
+}
+function checkNaturalNumber(money) {
+  const NaturalNum = Math.floor(money);
+  return NaturalNum == money;
 }
 module.exports = problem5;
