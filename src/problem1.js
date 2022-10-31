@@ -22,15 +22,14 @@ function compareNumber(num1, num2) {
   if (num1 > num2) return num1;
   else return num2;
 }
+function getMaxNumber(array) {
+  sumMax = compareNumber(sumDigits(array[0]), sumDigits(array[1]));
+  mulMax = compareNumber(multiplyDigits(array[0]), multiplyDigits(array[1]));
+  return compareNumber(sumMax, mulMax);
+}
 function getWinner(pobi, crong) {
-  const pobiMax = compareNumber(
-    compareNumber(sumDigits(pobi[0]), sumDigits(pobi[1])),
-    compareNumber(multiplyDigits(pobi[0]), multiplyDigits(pobi[1]))
-  );
-  const crongMax = compareNumber(
-    compareNumber(sumDigits(crong[0]), sumDigits(crong[1])),
-    compareNumber(multiplyDigits(crong[0]), multiplyDigits(crong[1]))
-  );
+  const pobiMax = getMaxNumber(pobi);
+  const crongMax = getMaxNumber(crong);
   if (pobiMax == crongMax) return 0;
   else if (pobiMax > crongMax) return 1;
   else if (pobiMax < crongMax) return 2;
