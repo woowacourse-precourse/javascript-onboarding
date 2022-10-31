@@ -1,10 +1,12 @@
 function problem2(cryptogram) {
-  var answer;
-  answer = removeDuplChars(cryptogram);
-  console.log(answer);
+  let answer = cryptogram;
+  let iter_length = cryptogram.length;
+  for (let j = 0; j < iter_length; j++) {
+    //중복문자를 찾아 length만큼 제거한다
+    answer = removeDuplChars(answer);
+  }
   return answer;
 }
-
 function removeDuplChars(cryptogram) {
   //한 단어에서 걸쳐 중복되는 문자열들을 찾아서 제거한다
   let before = -1;    //moving index
@@ -28,7 +30,4 @@ function removeDuplChars(cryptogram) {
   }
   return cryptogram;
 }
-
 module.exports = problem2;
-
-problem2("browoanoommnaon");
