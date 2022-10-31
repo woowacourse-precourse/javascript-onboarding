@@ -14,9 +14,9 @@ function isValidEmail(forms) {
   return true;
 }
 
-function checkKorean(str) {
+function checkKorean(char) {
   const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
-  return (regExp.test(str)) ? true : false;
+  return (regExp.test(char)) ? true : false;
 }
 
 function isValidNickName(forms) {
@@ -48,20 +48,26 @@ function getCheckArr(forms) {
   return checkArr;
 }
 
-function fillOverlapArr(form, overlapArr, checkArr) {
+function isOverlapInCheckArr(checkArr, substrNickName) {
+  return (checkArr.filter(element => substrNickName === element).length !== 1) ? true : false;
+}
+
+function isOverlapForm(form, checkArr) {
   const substrNickNameArr = substrNickName(form[1]);
-  for (let i = 0; i < substrNickNameArr.length; i++) {
-    if (checkArr.filter(element => substrNickNameArr[i] === element).length !== 1) {
-      overlapArr.push(form[0]);
-      break;
+  for (let j = 0; j < substrNickNameArr.length; j++) {
+    if (isOverlapInCheckArr(checkArr, substrNickNameArr[j])) {
+      return true;
     }
   }
+  return false;
 }
 
 function getOverlapArr(forms, checkArr) {
   const overlapArr = new Array();
   for (let i = 0; i < forms.length; i++) {
-    fillOverlapArr(forms[i], overlapArr, checkArr);
+    if (isOverlapForm(forms[i], checkArr)) {
+      overlapArr.push(forms[i][0]);
+    }
   }
   return overlapArr;
 }
@@ -73,10 +79,7 @@ function checkOverlap(forms) {
 }
 
 function problem6(forms) {
-  if (!isValidEmail(forms)) {
-    return;
-  }
-  if (!isValidNickName(forms)) {
+  if (!isValidEmail(forms) || !isValidNickName(forms)) {
     return;
   }
   return checkOverlap(forms);
@@ -87,4 +90,4 @@ module.exports = problem6;
 
 console.log(problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
 
-// console.log(problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "ejm"] ]));
+// console.log(problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "ejm"]]));
