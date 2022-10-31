@@ -17,6 +17,7 @@ function problem6(forms) {
       }
     }
   }
+  return [...new Set(targetEmail)].sort()
 } 
 
 module.exports = problem6;
