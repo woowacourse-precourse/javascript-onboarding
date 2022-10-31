@@ -17,9 +17,16 @@ const changeArrToObj = (arr) => {
   return obj
 }
 
-function problem7(user, friends, visitors) {
-  let obj = changeArrToObj(friends);
+const changeObjToArr = (obj) => {
+  let arr = [];
+  for(let key in obj) {
+    arr.push([key, obj[key]]);
+  }
 
+  return arr;
+}
+
+const searchFriendOfFriend = (obj, user) => {
   let score = {};
   let alreadyFriend = [];
   for(let key in obj) {
@@ -32,6 +39,10 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  return [score, alreadyFriend];
+}
+
+const searchVisitor = (score, alreadyFriend, visitors) => {
   for(let visitor of visitors) {
     if(alreadyFriend.includes(visitor)) continue;
 
@@ -39,16 +50,25 @@ function problem7(user, friends, visitors) {
     else score[visitor] = 1;
   }
 
-  let sortable = [];
-  for(let key in score) {
-    sortable.push([key, score[key]]);
-  }
+  return score;
+}
 
+function problem7(user, friends, visitors) {
+  // 배열 -> 객체
+  let obj = changeArrToObj(friends);
+
+  // 점수 부여
+  let [score, alreadyFriend] = searchFriendOfFriend(obj, user);
+  score = searchVisitor(score, alreadyFriend, visitors);
+
+  // 정렬
+  let sortable = changeObjToArr(score);
   sortable.sort((a, b) => {
     if(a[1] === b[1]) return a[0] - b[1];
     else return b[1] - a[1];
   });
 
+  // 이름만 가져오기 
   let result = sortable.map(v => v[0]);
   return result;
 }
