@@ -22,4 +22,8 @@ const getEachScore = (userAFriend, userBFriend) => {
   return count * ADD_FRIEND_SCORE;
 };
 
+const setScoreMap = (map, user, score) => {
+  map.set(user, (map.get(user) | 0) + score);
+};
+
 module.exports = problem7;
