@@ -31,7 +31,7 @@ const calcMaxNum = (arr) => {
 
 // 메인 함수(점수를 계산하고 결과값 도출)
 function problem1(pobi, crong) {
-  let result;
+  let result = -1;
   const pobiScore = calcMaxNum(pobi);
   const crongScore = calcMaxNum(crong);
 
