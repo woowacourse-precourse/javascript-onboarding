@@ -14,4 +14,22 @@ const gap = (a, b) => a - b;
 
 const stringFormatter = (arr) => arr.join("");
 
+function problem4(word) {
+  const result = stringToCharcodeArr(word).reduce((reduced, charcode) => {
+    const copy = reduced.slice();
+    if (isAlpha(charcode)) {
+      const isLower = charcode >= head_l;
+      const reversedCharcode = isLower
+        ? tail_l - gap(charcode, head_l)
+        : tail_u - gap(charcode, head_u);
 
+      copy.push(String.fromCharCode(reversedCharcode));
+    } else copy.push(String.fromCharCode(charcode));
+
+    return copy;
+  }, []);
+
+  return stringFormatter(result);
+}
+
+module.exports = problem4;
