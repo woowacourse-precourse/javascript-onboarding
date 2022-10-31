@@ -39,6 +39,29 @@ function algorithm(user, friends, visitors){
       }
     }
   }
+  //기능목록3: 점수 높은 순으로 최대 5명 정렬
+  var sortable = [];
+  for(var name in score){
+    sortable.push([name,score[name]]);
+  }
+  sortable.sort(function(a,b){
+    if(a[1]!=b[1]){
+      return b[1] - a[1]; 
+    }else{
+      if(a[0]<b[0]){
+        return -1;
+      }
+      if(a[0]>b[0]){
+        return 1;
+      }
+    }
+  })
+  for(var i=0; i<5; i++){
+    if(sortable[i]!=undefined){
+      result.push(sortable[i][0])
+    }
+  }
+  return result;
 }
 function problem7(user, friends, visitors) {
   var answer;
