@@ -4,6 +4,7 @@ const getSplittedNumber = (number) => {
     .split("")
     .map((item) => Number(item));
 };
+
 const getSumOfNumber = (number) => {
   const splittedNumber = getSplittedNumber(number);
   const sum = splittedNumber.reduce(
@@ -13,6 +14,7 @@ const getSumOfNumber = (number) => {
 
   return sum;
 };
+
 const getProductOfNumber = (number) => {
   const splittedNumber = getSplittedNumber(number);
   const product = splittedNumber.reduce(
@@ -22,6 +24,7 @@ const getProductOfNumber = (number) => {
 
   return product;
 };
+
 const getMaximumNumber = ([leftPage, rightPage]) => {
   const maximumLeftPage = Math.max(
     getSumOfNumber(leftPage),
@@ -31,20 +34,22 @@ const getMaximumNumber = ([leftPage, rightPage]) => {
     getSumOfNumber(rightPage),
     getProductOfNumber(rightPage)
   );
-  const maximumNumber = Math.max(maximumLeftPage, maximumRightPage);
 
-  return maximumNumber;
+  return Math.max(maximumLeftPage, maximumRightPage);
 };
 
 const checkExceptionEvenOrOdd = ([leftPage, rightPage]) => {
   return leftPage % 2 !== 1 || rightPage % 2 !== 0;
 };
+
 const checkExceptionConsecutive = ([leftPage, rightPage]) => {
   return rightPage - leftPage !== 1;
 };
+
 const checkExceptionPageRange = ([leftPage, rightPage]) => {
   return leftPage < 0 || rightPage > 400;
 };
+
 const checkException = (pobi, crong) => {
   let exception = false;
   if (checkExceptionEvenOrOdd(pobi) || checkExceptionEvenOrOdd(crong)) {
