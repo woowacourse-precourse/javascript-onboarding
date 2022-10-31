@@ -7,7 +7,7 @@ function problem4(word) {
   let afterChange = "";
 
   for (item of beforeChange) {
-    const item_status = charCase(item);
+    let item_status = charCase(item);
     if (item_status === 0) afterChange += upperChange(item);
     else if (item_status === 1) afterChange += lowerChange(item);
     else afterChange += " ";
@@ -30,4 +30,17 @@ function charCase(item) {
   else return 2; // space면 2를 return
 }
 
+function upperChange(item) {
+  // 대문자일때 반대로 변환하는 함수.
+  const weight = item - 65;
+  const convert_num = 90 - weight;
+  return String.fromCharCode(convert_num);
+}
+
+function lowerChange(item) {
+  // 소문자일때 반대로 변환하는 함수.
+  const weight = item - 97;
+  const convert_num = 122 - weight;
+  return String.fromCharCode(convert_num);
+}
 module.exports = problem4;
