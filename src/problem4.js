@@ -9,6 +9,12 @@ function problem4(word) {
     return cToAsc(c) <= cToAsc("Z");
   };
 
+  // 1.3. 알파벳 여부 확인 함수
+  const checkAlpha = (c) => {
+    const alpha = /^[A-Za-z]+$/;
+    return c.match(alpha);
+  };
+
   // 2. 암호 해독 기준값 배열
   const sumValArr = [cToAsc("a") + cToAsc("z"), cToAsc("A") + cToAsc("Z")];
 
@@ -26,7 +32,7 @@ function problem4(word) {
   let ret = "";
   const arr = word.split("");
   arr.forEach((c) => {
-    ret += c === " " ? " " : convertFrog(c);
+    ret += checkAlpha(c) ? convertFrog(c) : c;
   });
   return ret;
 }
