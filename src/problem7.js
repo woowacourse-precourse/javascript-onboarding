@@ -53,6 +53,20 @@ function addFriendScore(scoreOfUsers, friendsOfUser, friends) {
   return newScoreOfUsers;
 }
 
+/**
+ * add visitor score to each user
+ * @param {Map<string, number>} scoreOfUsers current score of users in <string, number> map
+ * @param {string[]} visitors visitor list in string array
+ * @returns {Map<string, number>} score of users in <string, number> map
+ */
+function addVisitorScore(scoreOfUsers, visitors) {
+  const newScoreOfUsers = new Map(scoreOfUsers);
+  visitors.forEach((visitor) => {
+    newScoreOfUsers.set(visitor, newScoreOfUsers.get(visitor) + 1);
+  });
+  return newScoreOfUsers;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -64,6 +78,7 @@ function problem7(user, friends, visitors) {
     new Set(friendsOfUser),
     friends
   );
+  scoreOfUsers = addVisitorScore(scoreOfUsers, visitors);
 
   return answer;
 }
