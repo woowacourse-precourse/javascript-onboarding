@@ -4,6 +4,21 @@ function isValid(word) {
   }
 }
 
+function reverseAlpha(alphabet) {
+  const upperAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowAlpha = "abcdefghijklmnopqrstuvwxyz";
+
+  if (upperAlpha.includes(alphabet)) {
+    const upperIndex = upperAlpha.indexOf(alphabet);
+    return upperAlpha[upperAlpha.length - (upperIndex + 1)];
+  } else if (lowAlpha.includes(alphabet)) {
+    const lowerIndex = lowAlpha.indexOf(alphabet);
+    return lowAlpha[lowAlpha.length - (lowerIndex + 1)];
+  } else {
+    return alphabet;
+  }
+}
+
 function problem4(word) {
   let answer = "";
 
