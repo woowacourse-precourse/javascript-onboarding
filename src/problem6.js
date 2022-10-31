@@ -1,5 +1,14 @@
+function makeForms(forms) {
+  for (let i = 0; i < forms.length; i++) {
+    forms[i][1] = Array.from(forms[i][1]);
+  }
+  return forms;
+}
+
 function problem6(forms) {
   var answer;
+  makeForms(forms);
+
   return answer;
 }
 
