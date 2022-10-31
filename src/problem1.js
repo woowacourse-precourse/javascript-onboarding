@@ -19,7 +19,8 @@ function checkBigger(num) {
 
   if (num_sum > num_times) {
     return num_sum;
-  } else {
+  }
+  if (num_times > num_sum) {
     return num_times;
   }
 }
