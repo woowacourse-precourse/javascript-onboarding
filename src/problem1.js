@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   //예외사항: 페이지가 연속되지 않을 경우 -> 1. 앞페이지 >= 뒷페이지, 뒷페이지 - 앞페이지 !== 1 | 숫자 값이 아닌 경우 | 배열 길이가 2가 아님
   function checkExceptions(arr){
-    if ((arr[0] >= arr[1]) || (arr[1] - arr[0] !== 1) || (Number.isNaN(arr[0]) || Number.isNaN(arr[1])) || arr.length !== 2) return true;
+    if ((arr[0] >= arr[1]) || (arr[1] - arr[0] !== 1) || (Number.isNaN(arr[0]) || Number.isNaN(arr[1])) || arr.length !== 2 || arr[0] > 400 || arr[1] > 400 || arr[0] < 1 || arr[1] < 1) return true;
     return false;
   }
   if (checkExceptions(pobi) || checkExceptions(crong)) return -1;
