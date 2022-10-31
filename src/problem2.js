@@ -11,7 +11,7 @@ function removeSameWord(cryptogram) {
 }
 
 function problem2(cryptogram) {
-  var answer;
+  let answer;
 
   answer = cryptogram;
   let prevLength = answer.length;
