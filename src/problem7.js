@@ -1,6 +1,10 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  let friendScoreObj = {};
+  const userFriendsArr = getUserFriends(user, friends);
+  score10(friends, userFriendsArr, friendScoreObj);
+  score1(visitors, userFriendsArr, friendScoreObj);
+
+  return result(friendScoreObj);
 }
 
 function getUserFriends(user, friends) {
