@@ -5,8 +5,13 @@ function problem7(user, friends, visitors) {
 
   const userFriendList = makeUserFriendList(user, friends)
   const withoutUserList = makeWithoutUserList(user, friends)
+  const bestRecommendFriend = makeBestRecommendFriend(withoutUserList, userFriendList);
+  
+  // return bestRecommendFriend
+}
 
-  // return [userFriendList, withoutUserList]
+function makeBestRecommendFriend(withoutUserList, userFriendList) {
+  return withoutUserList.map((v) => v.filter((x) => !userFriendList.includes(x))).map(i => i.join(''))
 }
 
 function makeUserFriendList(user, friends) {
