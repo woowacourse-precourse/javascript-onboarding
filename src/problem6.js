@@ -1,16 +1,15 @@
-const emailFormat = /[a-z0-9]+@email.com/;
-const koreanFormat = /^[ㄱ-ㅎ|가-힣]+$/;
-// TODO: +$
+const emailRegExp = /[a-z0-9]+@email.com/;
+const koreanRegExp = /^[ㄱ-ㅎ|가-힣]+$/;
 
 const isAvailableEmail = (email) => {
   if (email.length < 11 || email.length >= 20) return false;
-  if (!emailFormat.test(email)) return false;
+  if (!emailRegExp.test(email)) return false;
   return true;
 };
 
 const isAvailableNickname = (nickname) => {
   if (nickname.length < 1 || nickname >= 20) return false;
-  if (!koreanFormat.test(nickname)) return false;
+  if (!koreanRegExp.test(nickname)) return false;
   return true;
 };
 
