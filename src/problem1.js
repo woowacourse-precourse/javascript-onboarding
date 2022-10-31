@@ -4,6 +4,8 @@ const DRAW_CASE = 0;
 const EXCEPTION_CASE = -1;
 const SELECTED_PAGE = 2;
 const SEQUENCE_CASE = 1;
+const FIRST_PAGE = 1;
+const LAST_PAGE = 400;
 
 /**
  * @name problem1
@@ -50,8 +52,8 @@ function problem1(pobi, crong) {
 
 function isValidPage(numbers) {
   if (
-    numbers.indexOf(1) === EXCEPTION_CASE &&
-    numbers.indexOf(400) === EXCEPTION_CASE
+    numbers.indexOf(FIRST_PAGE) === EXCEPTION_CASE &&
+    numbers.indexOf(LAST_PAGE) === EXCEPTION_CASE
   )
     return true;
   return false;
