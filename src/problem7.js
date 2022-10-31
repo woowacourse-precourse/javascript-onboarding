@@ -8,10 +8,10 @@ function problem7(user, friends, visitors) {
     2. 방문자인 경우 +1점
 */
 function recommandFriends(user, friends, visitors) {
-  const friendMap = makeFriendMap(user, friends);
+  const [friendMap, userHasFriend] = makeFriendMap(user, friends);
   /* 추천할 사람들의 목록 */
   const recommandList = {};
-  scoreForFriends(recommandList, friendMap);
+  if (isEqual(userHasFriend, true)) scoreForFriends(recommandList, friendMap);
   scoreForVisitors(recommandList, visitors);
   /* 낯선 사람 목록 */
   const recommands = filterRecommandList(recommandList, friendMap.get(user));
@@ -32,7 +32,7 @@ function filterRecommandList(recommandList, usersFriends) {
   const recommands = [];
   const people = Object.keys(recommandList);
   for (const person of people) {
-    if(usersFriends.includes(person)) continue;
+    if (usersFriends !== undefined && usersFriends.includes(person)) continue;
     recommands.push([person, recommandList[person]]);
   }
   recommands.sort(comapreRecommands);
@@ -80,8 +80,8 @@ function makeFriendMap(user, friends) {
     addFrienMap(user, friendMap, friend1, friend2);
     addFrienMap(user, friendMap, friend2, friend1);
   });
-  removeNotUsersFriends(user, friendMap);
-  return friendMap;
+  const userHasFriend = removeNotUsersFriends(user, friendMap);
+  return [friendMap, userHasFriend];
 }
 
 function addFrienMap(user, friendMap, friendA, friendB) {
@@ -93,11 +93,13 @@ function addFrienMap(user, friendMap, friendA, friendB) {
 
 function removeNotUsersFriends(user, friendMap) {
   const usersFriends = friendMap.get(user);
+  if (isEqual(usersFriends, undefined)) return false;
   const allFriends = friendMap.keys();
   for (const friend of allFriends) {
     if (isEqual(friend, user) || usersFriends.includes(friend)) continue;
     friendMap.delete(friend); 
   }
+  return true;
 }
 
 function isEqual(a, b) {
