@@ -23,8 +23,10 @@ function violationChk(forms) {
           // 닉네임 길이 제한 검사
           if (nickName.length >= 1 && nickName.length < 20) {
             // 닉네임이 한글인지 검사
-            if (korChk(nickName)) {
-              result = true;
+            for (var i = 0; i < nickName.length; i++) {
+              if (!korChk(nickName[i])) {
+                result = false;
+              }
             }
           }
         }
@@ -38,6 +40,17 @@ function violationChk(forms) {
 // 도메인 제한 검사 함수
 function domainChk(emailAddr) {
   return emailAddr.substr(emailAddr.length - 10) === "@email.com";
+}
+
+// 닉네임이 한글인지 체크하는 함수
+function korChk(str) {
+  // 정규식을 이용하여 검사
+  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+  if (regExp.test(str)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 module.exports = problem6;
