@@ -38,7 +38,7 @@ function problem7(user, friends, visitors) {
   }
 
   for (let key of users.keys()) {
-    if (users.get(key) > 0) answer.push(key);
+    if (users.get(key) === 0) users.delete(key);
   }
 
   answer = [...users.entries()].sort((a, b) => b[1] - a[1]).map(x => x[0])
