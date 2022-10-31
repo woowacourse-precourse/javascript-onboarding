@@ -1,8 +1,8 @@
 function get369Count(num) {
   let count = 0;
   const stringNum = String(num);
-  for (i = 0; i < stringNum.length; i++) {
-    if (+stringNum[i] !== 0 && +stringNum[i] % 3 === 0) {
+  for (let i = 0; i < stringNum.length; i++) {
+    if (['3', '6', '9'].includes(stringNum[i])) {
       count++;
     }
   }
@@ -13,7 +13,7 @@ function get369Count(num) {
 function problem3(number) {
   var answer = 0;
 
-  for (j = 1; j < number + 1; j++) {
+  for (let j = 1; j < number + 1; j++) {
     answer += get369Count(j);
   }
 
