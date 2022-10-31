@@ -36,6 +36,26 @@ const checkRangeException = (targetLength, min, max) => {
   return false;
 };
 
+const getAlreadyFriendArray = (friedArray, targetUser) => {
+  const alreadyFriendSet = new Set();
+  const copiedFriedArray = copyArray(friedArray);
+
+  each(copiedFriedArray, ([idA, idB]) => {
+    checkRangeException(getLength(idA), 1, 30);
+    checkRangeException(getLength(idB), 1, 30);
+
+    if (idA === targetUser) {
+      alreadyFriendSet.add(idB);
+    }
+
+    if (idB === targetUser) {
+      alreadyFriendSet.add(idA);
+    }
+  });
+
+  return copyArray(alreadyFriendSet);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
