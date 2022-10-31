@@ -19,6 +19,17 @@ function problem7(user, friends, visitors) {
   }
   // console.log(map);
 
+  // visitors 확인
+  for (let visitor of visitors) {
+    // 신규 친구 = map 에 없으면 1점
+    if (!map.has(visitor)) {
+      map.set(visitor, 1);
+    } else if (map.get(visitor) !== 0) {
+      // 0점이 아니고 점수가 있다면 1점 추가
+      map.set(visitor, map.get(visitor) + 1);
+    }
+  }
+
   return answer;
 }
 
