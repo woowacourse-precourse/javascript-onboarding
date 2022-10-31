@@ -67,4 +67,30 @@ function checkVisited(friendsScoreDict, visitors) {
   return friendsScoreDict;
 }
 
+function sortFriends(usersFriendsSet, friendsTotalScore) {
+  const sortedFriends = [];
+
+  for (const name in friendsTotalScore) {
+    if (!usersFriendsSet.has(name)) sortedFriends.push([name, friendsTotalScore[name]]);
+  }
+
+  sortedFriends.sort((a, b) => {
+    if (a[1] == b[1]) { // 만약, 비교하는 두 점수가 같다면 이름을 오름차순으로 정렬
+      if (a[0] > b[0]) return 1;
+      if (a[0] < b[0]) return -1;
+      return 0;
+    };
+
+    return b[1] - a[1]; // 비교하는 두 점수가 다르다면 점수를 내림차순으로 정렬
+  });
+
+  for (let i = 0; i < Object.keys(sortFriends); i++) { // 정렬된 점수 딕셔너리에서 점수가 0이 아니라면 정답 배열에 추가
+    if (sortedFriends[i] != 0) sortFriends.push(sortedFriends[i]);
+
+    if (sortedFriends.length == 5) break; // 정답 배열에 추가하는 과정 중, 길이가 5가 된다면 for문 중지
+  }
+
+  return sortedFriends;
+}
+
 module.exports = problem7;
