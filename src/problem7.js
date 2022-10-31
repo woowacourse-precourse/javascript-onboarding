@@ -71,7 +71,7 @@ function processData(array) {
   return result;
 }
 function problem7(user, friends, visitors) {
-  var answer = [];
+  let answer = [];
 
   answer = processData(selectFriendsToRecommend(user, friends, visitors));
   return answer;
