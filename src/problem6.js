@@ -1,6 +1,4 @@
-function problem6(forms) {
-  var answer;
-  return answer;
-}
-
-module.exports = problem6;
+const compose =
+  (...fns) =>
+    (initialValue) =>
+      fns.reduce((composed, fn) => fn(composed), initialValue);
