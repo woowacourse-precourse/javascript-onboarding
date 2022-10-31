@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  const friendOfUser = friends.map((i) => i[0]);
+  const friendOfUser = searchUserFriends(user, friends);
   const friendScore = searchByFriends(user, friends, friendOfUser);
   const visitorScore = searchByVisitor(visitors, friendOfUser);
   const answer = recommandByScore(friendScore, visitorScore);
@@ -8,6 +8,19 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+const searchUserFriends = (user, friends) => {
+  const userFriends = friends.filter((i) => i.includes(user));
+  const friendsName = userFriends.map((i) => {
+    return isNotUser(user, i);
+  });
+
+  return friendsName;
+};
+
+const isNotUser = (user, array) => {
+  return array.filter((i) => i !== user)[0];
+};
 
 const recommandByScore = (friendScore, visitorScore) => {
   const totalScore = {};
@@ -89,14 +102,16 @@ const isCurrentFriend = (name, friendOfUser) => {
   return resultValue;
 };
 
-/* 
-  1) friends의 두 번째 요소들과 visitor를 concat으로 합치기
-  2) 중복을 제거
-  3) object 생성.
-*/
-
 const searchByFriends = (user, friends, friendOfUser) => {
   if (!friends) return;
+
+  console.log(user);
+  console.log(friend);
+  console.log(friendOfUser);
+  //user와 친구인 배열 찾기.
+  // 해당 배열의 0번째 인덱스 찾기
+  // 해당 데이터를 가지고 있는 배열 찾기.
+  // 해당 배열에서 나머지 데이터 찾기.
 
   const newFriendsFilter = friends.filter((i) => {
     let resultValue;
