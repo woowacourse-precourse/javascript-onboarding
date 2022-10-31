@@ -78,6 +78,10 @@ describe("problem3", () => {
   test('number가 10000 이하가 아닌 경우 "Error: number는 10000이하이어야 합니다"라는 문자열을 반환한다.', () => {
     expect(problem3(10001)).toEqual("Error: number는 10000이하이어야 합니다");
   });
+
+  test('number가 자연수가 아닌 경우 "Error: number는 자연수이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem3(10.123)).toEqual("Error: number는 자연수이어야 합니다");
+  });
 });
 
 describe("problem7", () => {
