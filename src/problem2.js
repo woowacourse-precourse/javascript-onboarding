@@ -1,13 +1,18 @@
+function SumLetter(letterArray) {
+  if (letterArray.length === 0) return "";
+  return letterArray.join("");
+}
+
 function problem2(cryptogram) {
-  const answer = [];
-  for (let x of cryptogram) {
-    if (answer[answer.length - 1] !== x) {
-      answer.push(x);
-    } else {
-      answer.pop();
+  const letterArray = [];
+  for (let letter of cryptogram) {
+    if (letterArray[letterArray.length - 1] === letter) {
+      letterArray.pop();
+      continue;
     }
+    letterArray.push(letter);
   }
-  return answer.length === 0 ? "" : answer.join("");
+  return SumLetter(letterArray);
 }
 
 module.exports = problem2;
