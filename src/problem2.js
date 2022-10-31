@@ -10,8 +10,8 @@
  */
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const decodedLetters = decodeCryptogram(cryptogram);
+  return decodedLetters;
 }
 
 function removeDupLetters(letters) {
