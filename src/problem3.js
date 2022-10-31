@@ -8,6 +8,12 @@
  */
 
 /**
+ * @param {number} acc
+ * @param {number} cur
+ */
+const sum = (acc, cur) => acc + cur;
+
+/**
  * @param {string} char
  */
 const check369Includes = (char) => ["3", "6", "9"].includes(char);
@@ -15,15 +21,8 @@ const check369Includes = (char) => ["3", "6", "9"].includes(char);
 /**
  * @param {string} number
  */
-const count369InNumber = (number) => {
-  let cnt = 0;
-  for (const char of number) {
-    if (check369Includes(char)) {
-      cnt++;
-    }
-  }
-  return cnt;
-};
+const count369InNumber = (number) =>
+  number.split("").filter(check369Includes).length;
 
 /**
  * @param {number} number
@@ -37,12 +36,8 @@ function createNumbers(number) {
  * @returns {number} result
  */
 function problem3(number) {
-  let result = 0;
   const numbers = createNumbers(number);
-  numbers.forEach((element) => {
-    result += count369InNumber(element);
-  });
-  return result;
+  return numbers.map(count369InNumber).reduce(sum, 0);
 }
 
 module.exports = problem3;
