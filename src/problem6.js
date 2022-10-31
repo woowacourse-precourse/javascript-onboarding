@@ -7,12 +7,13 @@ function problem6(forms) {
 }
 
 function makeNameList(forms) {
-  let nicknameList = [];
+  let nameList = [];
+  let name = 1;
   for(let i = 0; i < forms.length; i++) {
-    nicknameList.push(forms[i][1]);
+    nameList.push(forms[i][name]);
   }
 
-  return nicknameList;
+  return nameList;
 }
 
 
