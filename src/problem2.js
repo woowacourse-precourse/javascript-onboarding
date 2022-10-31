@@ -35,7 +35,7 @@ function problem2(cryptogram) {
   do{
     beforeString = afterString;
     afterString = removeDuplication(beforeString)
-  } while (beforeString !== afterString) // 달라지지 않을 때 까지 반복
+  } while (beforeString !== afterString); // 달라지지 않을 때 까지 반복
   
   answer = afterString; 
   return answer;
