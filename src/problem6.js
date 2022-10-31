@@ -1,15 +1,19 @@
 function problem6(forms) {
+  let emailArr = [];
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms.length - 1; j++) {
       let [name1, name2] = [forms[i][1], forms[j][1]];
+      let [email1, email2] = [forms[i][0], forms[j][0]];
       if (name1 === name2) {
         break;
       }
-      console.log(checkOverlap(name1, name2));
       if (checkOverlap(name1, name2)) {
+        emailArr.push(email1);
+        emailArr.push(email2);
       }
     }
   }
+  console.log(emailArr);
 }
 
 function checkOverlap(name1, name2) {
