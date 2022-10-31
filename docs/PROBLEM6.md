@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br>
+
+## ✅ 기능 목록
+
+- 닉네임에서 나올 수 있는 두 글자 찾기
+- 같은 글자가 연속적으로 포함된 중복 닉네임 찾기 (ex. '제이엠'과 '제이슨'은 중복 닉네임)
+- 중복 닉네임을 가진 크루들의 이메일 찾기
+- 이메일의 중복을 제거하고 오름차순으로 정렬하기
+- return
+  - 중복 닉네임을 가진 크루들의 이메일이 오름차순으로 담긴 배열
