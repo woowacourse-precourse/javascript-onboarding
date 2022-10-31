@@ -186,8 +186,20 @@ const limitLength = (targetArray, maximum) => {
 };
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
-}
+  checkRangeException(getLength(user), 1, 30);
+  checkRangeException(getLength(friends), 1, 10000);
+  checkRangeException(getLength(visitors), 0, 10000);
 
+  const alreadyFriends = getAlreadyFriendArray(friends, user);
+  const newFriedArray = extractAlreadyFriend(user, friends, alreadyFriends, excludeFriendsFunc);
+  const newVisitorArray = extractAlreadyFriend(user, visitors, alreadyFriends, excludeVisitorsFunc);
+  const friedScoreResultArray = calculateFriendScore(newFriedArray, 10);
+  const visitorScoreResultArray = calculateFriendScore(newVisitorArray, 1);
+  const unsortedResutArray = calculateRank([...friedScoreResultArray, ...visitorScoreResultArray]);
+  const sortedResutArray = sortTo(unsortedResutArray);
+  const userResultArray = map(sortedResutArray, ([userId, _score]) => userId);
+  const resultsOfUpToFivePeople = limitLength(userResultArray, 5);
+
+  return resultsOfUpToFivePeople;
+}
 module.exports = problem7;
