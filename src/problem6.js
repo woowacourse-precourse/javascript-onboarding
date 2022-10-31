@@ -5,7 +5,6 @@ function problem6(forms) {
   handleExcept(forms, rejectIndex);
   setMap(forms, map);
   checkNickname(forms, map, rejectIndex);
-  deduplicate(rejectIndex);
   pushAnswer(answer, forms, rejectIndex);
   return answer;
 }
@@ -66,12 +65,6 @@ function checkNickname(forms, map, rejectIndex){
       }
     }
   }
-}
-
-function deduplicate(rejectIndex){
-  rejectIndex = rejectIndex.filter(function(item, index){
-    return rejectIndex.indexOf(item) === index;
-  });
 }
 
 function pushAnswer(answer, forms, rejectIndex){
