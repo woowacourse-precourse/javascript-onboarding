@@ -7,7 +7,9 @@
 */
 
 /**
- * 
+ * count clap
+ * @param {number} number 
+ * @returns {number} clap count number of 3,6,9
  */
 const check369 = (number) => {
   let clap = 0;
@@ -23,9 +25,9 @@ const check369 = (number) => {
 }
 
 /**
- * Main function - count 3,6,9 claps
+ * Main function - refeat check369 function while 1~number
  * @param {number} number 
- * @returns {number} clap - count number of 3,6,9
+ * @returns {number} clap - all clap 
  */
 function problem3(number) {
   let clap = 0;
