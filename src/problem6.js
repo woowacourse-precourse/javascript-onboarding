@@ -46,6 +46,7 @@ function problem6(forms) {
     }
   }
 
+  answer = [...answer].sort();
   return answer;
 }
 
