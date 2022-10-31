@@ -1,11 +1,14 @@
 function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
   const noFriend = findNoFriend(user, friends, userFriend);
+  const candidateObj = {};
   calculateNoFriendScore(friends, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
   const sortedCandidate = sortCandidate(candidateObj);
   const fiveCandidate = getFiveCandidate(sortedCandidate);
   const withoutZeroScore = isScoreOverZero(fiveCandidate);
+  const answer = getAnswer(withoutZeroScore);
+  return answer;
 }
 
 function findFriend(user, friends) {
@@ -72,5 +75,13 @@ function getFiveCandidate(sortedCandidate) {
 
 function isScoreOverZero(fiveCandidate) {
   return Object.values(fiveCandidate).filter((value) => value !== 0);
+}
+
+function getAnswer(withoutZeroScore) {
+  const answer = [];
+  for (let i = 0; i < withoutZeroScore.length; i++) {
+    answer.push(withoutZeroScore[i][0]);
+  }
+  return answer;
 }
 module.exports = problem7;
