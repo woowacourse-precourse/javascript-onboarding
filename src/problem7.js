@@ -29,6 +29,16 @@ function problem7(user, friends, visitors) {
       recommendUser.set(person, 10);
     }
   }
+
+  for (const visitor of visitors) {
+    if (userFriends.includes(visitor)) continue;
+    if (recommendUser.has(visitor)) {
+      recommendUser.set(visitor, recommendUser.get(visitor) + 1);
+    } else {
+      recommendUser.set(visitor, 1);
+    }
+  }
+
   return recommendUser;
 }
 
