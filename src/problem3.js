@@ -1,8 +1,14 @@
 function problem3(number) {
-  numToArr(number);
+  let count = 0;
+  
+  let arrStr = String(numToArr(number));
+  let strDiv = arrStr.split('');
+  for (const element of strDiv)
+    if (element == 3 || element == 6 || element == 9){
+      count += 1;
+    }
 
-  var answer;
-  return answer;
+  return count;
 }
 
 function numToArr(num){
@@ -10,9 +16,10 @@ function numToArr(num){
   for (let i = 1; i < num + 1; i++){
     numArr.push(i);
   }
-  console.log(numArr);
+  return numArr;
 }
 
 module.exports = problem3;
 
-problem3(13);
+console.log(problem3(13));
+console.log(problem3(33));
