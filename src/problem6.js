@@ -21,6 +21,20 @@ function getCrewsInfo(forms, crews) {
   }
 }
 
+function areDuplicates(crews, crewIndex, otherCrew) {
+  const crewTokens = crews[crewIndex].tokens;
+  const tokenCount = crewTokens.length;
+
+  for (let tokenIndex = 0; tokenIndex < tokenCount; ++tokenIndex) {
+    for (const token of crews[otherCrew].tokens) {
+      if (token == crewTokens[tokenIndex]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 function problem6(forms) {
   var answer;
   let crews = new Array(forms.length);
