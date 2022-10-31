@@ -75,10 +75,10 @@ function answerReturnFunc(answer, obj) {
   return answer;
 }
 function problem7(user, friends, visitors) {
-  var answer = [];
-  var obj = {};
-  var set = new Set();
-  var firstData = friendOfFriend(user, friends, set);
+  let answer = [];
+  let obj = {};
+  let set = new Set();
+  let firstData = friendOfFriend(user, friends, set);
   set = firstData.set;
   friends = firstData.friends;
   obj = objectReturnFunc(friends, set, obj, visitors);
