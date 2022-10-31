@@ -10,10 +10,11 @@
   + 두 값을 받아서 같으면 0, A가 크면 1, B가 크면 2 를 리턴                                                                         
 
 * 수를 받아서 각 자리를 배열로 return 하는 `splitNumber` 함수 구현
-  > B안 선택: 변수의 형태가 변형되지 않도록 하는 것이 합산시 오류발생이 낮아 택함.
-  + [ ] A안: `split()` 내부 함수로 구현하는 방법
+  > ~~B안 선택~~: 변수의 형태가 변형되지 않도록 하는 것이 합산시 오류발생이 낮아 택함.
+  > A안 선택: 코드를 줄여서 코드 가독성을 늘리는 것으로 정함. `.map(Number)`를 통하여 반환할 때 숫자형으로 변경 후 리턴함.
+  + [x] A안: `split()` 내부 함수로 구현하는 방법
     - 주의사항: 형이 String으로 바뀌는 문제가 발생할 수 있음.
-  + [x] B안: 10으로 나눈 나머지로 일자리부터 빼서 배열 구현 하는 방법
+  + [ ] B안: 10으로 나눈 나머지로 일자리부터 빼서 배열 구현 하는 방법
     - ~~일자리부터 처리 되긴 하지만 문제없어보임.~~
     - 내부함수 `unshift()`로 자리수 대로 index 위치 맞춰서 구현.
 
@@ -48,9 +49,9 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
 
 * 연속된 중복문자를 제거할 함수 `removeDuplicateChar` 생성
   + **(+추가)** 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
-  + **(+추가)** 이전 글자를 변수 `beforeCharFromCryptogram`에 넣어둠. 
-    - `isBeforeDuplicate` : [이전 단계]에 `beforeCharFromCryptogram`와 `cryptogramArr[i]`가 같았다면`true`, 달랐다면 `false`
-    - `isDeleteStep` : `beforeCharFromCryptogram`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
+  + **(+추가)** 이전 글자를 변수 `beforeChar`에 넣어둠. 
+    - `isBeforeDuplicate` : [이전 단계]에 `beforeChar`와 `nowChar`가 같았다면`true`, 달랐다면 `false`
+    - `isDeleteStep` : `beforeChar`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
   + **(+추가)** 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
