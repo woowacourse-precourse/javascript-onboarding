@@ -73,10 +73,9 @@ class Game {
 }
 class Pages {
   /**
-   * @param {Player} player
+   * @param {Player} param
    */
-  constructor(player) {
-    const [left, right] = player;
+  constructor([left, right]) {
     this.left = left;
     this.right = right;
   }
@@ -98,37 +97,31 @@ class Pages {
    * @param {Page} page
    */
   getPage(page) {
-    if (this.contains(page)) {
-      return this[page];
-    }
+    return this[page];
   }
+
+  /**
+   * @param {number} number
+   */
+  getNumToArray(number) {
+    return number.toString().split("").map(Number);
+  }
+
+  sum = (pre, cur) => pre + cur;
+  multiply = (pre, cur) => pre * cur;
 
   /**
    * @param {Page} page
    */
   getSumOfAllNumber(page) {
-    let result = 0;
-    let number = this.getPage(page);
-    while (number > 0) {
-      const last = number % 10;
-      result += last;
-      number = Math.floor(number / 10);
-    }
-    return result;
+    return this.getNumToArray(this.getPage(page)).reduce(this.sum, 0);
   }
 
   /**
    * @param {Page} page
    */
   getMultiplyOfAllNumber(page) {
-    let result = 1;
-    let number = this.getPage(page);
-    while (number > 0 && result > 0) {
-      const last = number % 10;
-      result *= last;
-      number = Math.floor(number / 10);
-    }
-    return result;
+    return this.getNumToArray(this.getPage(page)).reduce(this.multiply, 1);
   }
 
   getBiggestNumber() {
@@ -149,8 +142,7 @@ class Pages {
 function problem1(pobi, crong) {
   const game = new Game(pobi, crong);
   game.start();
-  const result = game.result;
-  return result;
+  return game.result;
 }
 
 module.exports = problem1;
