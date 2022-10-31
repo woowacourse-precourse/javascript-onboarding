@@ -146,6 +146,9 @@ function problem7(user, friends, visitors) {
 
   function INPUT_NEAR_FRIENDS_POINT () {
     const userFriendsList = FRIEND_RELATION_OBJ[user];
+    if(userFriendsList === undefined){
+      return ;
+    }
     for(let friend of userFriendsList){
       for(let friendOfFriend of FRIEND_RELATION_OBJ[friend]){
         if(friendOfFriend!==user && userFriendsList.includes(friendOfFriend) === false){
@@ -163,13 +166,14 @@ function problem7(user, friends, visitors) {
 
   function INPUT_VISIT_FRIENDS_POINT () {
     const userFriendsList = FRIEND_RELATION_OBJ[user];
+
     for(let visitor of visitors){
 
       if(CHECK_USER_NAME_IS_LOWER_ALPHABET(visitor) === false){
         return '주어진 유저의 이름이 전부 알파벳 소문자가 아닙니다.';
       }
 
-      if(visitor!==user && userFriendsList.includes(visitor) === false){
+      if(visitor!==user && !!userFriendsList?.includes(visitor) === false){
         if(USER_POINT_CALCUL_OBJ[visitor] === undefined){
           USER_POINT_CALCUL_OBJ[visitor] = 1;
         } else {
@@ -225,7 +229,7 @@ function problem7(user, friends, visitors) {
   INPUT_NEAR_FRIENDS_POINT();
   INPUT_VISIT_FRIENDS_POINT();
 
-
+  // console.log(USER_POINT_CALCUL_OBJ)
 
 
   return (RETURN_OBJ_TO_LIST_SOTRED_BY_POINT().map(friend => Object.keys(friend)[0]).slice(0,5));
