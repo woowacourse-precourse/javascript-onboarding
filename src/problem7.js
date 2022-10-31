@@ -5,10 +5,11 @@ const createScoreObj = (scoreKeySet, scoreObj) => {
   return scoreObj;
 };
 
-const findUserFriendShip = (friends, user, userFriendShipArray = []) => {
+const findUserFriendShipArray = (friends, user, userFriendShipArray = []) => {
   for (let friend of friends) {
     if (friend.includes(user)) userFriendShipArray.push(friend);
   }
+
   return userFriendShipArray.flat().filter((item) => item !== user);
 };
 
@@ -34,9 +35,9 @@ const findPureVisitor = (visitors, userFriendShipArray) => {
   return visitors;
 };
 
-const make10ScoreArray = (expectUserFriendsArray, findUserFriendShip, score10PeopleArray = []) => {
+const make10ScoreArray = (expectUserFriendsArray, findUserFriendShipArray, score10PeopleArray = []) => {
   for (let expectUserFriend of expectUserFriendsArray) {
-    for (let userFriendShip of findUserFriendShip) {
+    for (let userFriendShip of findUserFriendShipArray) {
       if (expectUserFriend.includes(userFriendShip)) {
         score10PeopleArray.push(expectUserFriend);
         score10PeopleArray = score10PeopleArray.flat().filter((item) => item !== userFriendShip);
@@ -64,19 +65,17 @@ function problem7(user, friends, visitors) {
   const scoreListKeyArray = new Set();
   const expectUserFriendsArray = friends.filter((friend) => !friend.includes(user));
 
-  findUserFriendShip(friends, user);
+  make10ScoreArray(expectUserFriendsArray, findUserFriendShipArray(friends, user));
 
-  make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user));
+  addScoreListKey(scoreListKeyArray, findPureVisitor(visitors, findUserFriendShipArray(friends, user)));
 
-  addScoreListKey(scoreListKeyArray, findPureVisitor(visitors, findUserFriendShip(friends, user)));
-
-  addScoreListKey(scoreListKeyArray, make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user)));
+  addScoreListKey(scoreListKeyArray, make10ScoreArray(expectUserFriendsArray, findUserFriendShipArray(friends, user)));
 
   createScoreObj(scoreListKeyArray, scoreObject);
 
-  addVisitorScore(findPureVisitor(visitors, findUserFriendShip(friends, user)), scoreObject);
+  addVisitorScore(findPureVisitor(visitors, findUserFriendShipArray(friends, user)), scoreObject);
 
-  calculateScore10(make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user)), scoreObject);
+  calculateScore10(make10ScoreArray(expectUserFriendsArray, findUserFriendShipArray(friends, user)), scoreObject);
 
   deleteScore0(scoreObject);
 
