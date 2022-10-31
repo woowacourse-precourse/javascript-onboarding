@@ -22,4 +22,14 @@ function addFriends(user, friends, userFriends, point) {
     }
   }
 }
+
+function addFriends(user, friends, userFriends, point) {
+  for (let i = 0; i < friends.length; i++) {
+    for (let k = 0; k < 2; k++) {
+      if (!userFriends.includes(friends[i][k]) && friends[i][k] !== user) {
+        point[friends[i][k]] = 0;
+      }
+    }
+  }
+}
 module.exports = problem7;
