@@ -1,7 +1,8 @@
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
-- 사용자와 함께 아는 친구의 수 = 10점 
+
+- 사용자와 함께 아는 친구의 수 = 10점
 - 사용자의 타임 라인에 방문한 횟수 = 1점
 
 사용자 아이디 user와 친구 관계를 담은 이차원 배열 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
@@ -25,7 +26,10 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ---
+
 ### 기능 목록
+
 1. friends와 visitors 배열을 하나로 합쳐 set으로 중복을 제거한 형태의 배열을 만든다.
 2. 1번에서 만든 배열의 index를 매칭시켜 friends 배열의 이름을 node로 하고 친구인 관계를 vertex로 하는 인접리스트로 구현한다.
-3.  
+3. user에 매칭되는 index의 값을 queue에 node별로 넣어주고 queue에서 값을 하나씩 꺼내 user의 친구의 친구에게 가중치 10을 부여하고 queue가 빌때까지 반복한다.
+4. 
