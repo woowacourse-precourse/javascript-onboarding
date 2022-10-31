@@ -30,11 +30,15 @@ const recommandByScore = (friendScore, visitorScore) => {
     }
   });
 
-  const scoreArray = Object.entries(totalScore).map(([name, score]) => {
-    return { name: name, score: score };
-  });
+  const totalScoreArray = convertArray(totalScore);
+  const totalScoreSortedArray = sortByScore(totalScoreArray);
+  const resultValue = totalScoreSortedArray.map((i) => i.name).slice(0.5);
 
-  const sortedScoreArray = scoreArray.sort((x, y) => {
+  return resultValue;
+};
+
+const sortByScore = (totalScoreArray) => {
+  const resultValue = totalScoreArray.sort((x, y) => {
     if (x.score < y.score) {
       return 1;
     } else if (x.score > y.score) {
@@ -48,7 +52,13 @@ const recommandByScore = (friendScore, visitorScore) => {
     }
   });
 
-  const resultValue = sortedScoreArray.map((i) => i.name).slice(0.5);
+  return resultValue;
+};
+
+const convertArray = (totalScore) => {
+  const resultValue = Object.entries(totalScore).map(([name, score]) => {
+    return { name: name, score: score };
+  });
 
   return resultValue;
 };
