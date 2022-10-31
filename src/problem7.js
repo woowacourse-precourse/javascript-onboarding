@@ -44,7 +44,7 @@ recommendArr.forEach((name) => {
 return result;
 };
 
- //점수 높은 순으로 정렬하여 최대 5명을 반환
+//점수 높은 순으로 정렬하여 최대 5명을 반환
  const createfriendArr = (rekatuibshipArr, friendCompare, friendArr = []) => {
   const result = [];
   rekatuibshipArr.forEach((relationship) => {
