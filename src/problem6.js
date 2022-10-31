@@ -1,5 +1,19 @@
 function problem6(forms) {
-  var answer;
+  let answer;
+  let emailList = [];
+  forms.forEach((form) => {
+    let nickName = form[1];
+    for (let i = 0; i < forms.length; i++) {
+      for (let j = 0; j < nickName.length - 1; j++) {
+        if (form === forms[i]) {
+          continue;
+        }
+        if (forms[i][1].includes(nickName.substr(j, 2))) {
+          emailList.push(forms[i][0]);
+        }
+      }
+    }
+  });
   return answer;
 }
 
