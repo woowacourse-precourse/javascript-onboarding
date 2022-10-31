@@ -7,8 +7,11 @@
  */
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const usersFriendList = friends
+    .filter((friend) => friend.includes(user))
+    .map((item) => (item[0] === user ? item[1] : item[0]));
+
+  console.log("usersFriendList: ", usersFriendList);
 }
 
 module.exports = problem7;
