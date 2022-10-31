@@ -28,6 +28,12 @@ const getScoreObjWithAcquaintance = (acquaintance) =>
     {}
   );
 
+const getScoreObjWithVisitors = ([myFriends, visitors], scoreObj) =>
+  visitors.reduce((acc, visitor) => {
+    if (myFriends.includes(visitor)) return acc;
+    return { ...acc, [visitor]: (acc[visitor] || 0) + 1 };
+  }, scoreObj);
+
 const sortRule = (a, b) => (a[1] === b[1] ? a[0] > b[0] : b[1] - a[1]);
 
 const getRecommendedFriends = (scoreObj) => {
@@ -38,18 +44,12 @@ const getRecommendedFriends = (scoreObj) => {
 function problem7(user, friends, visitors) {
   const myFriends = getFriends(user, friends);
   const acquaintance = getAcquaintance(user, [myFriends, friends]);
-  const objWithAcquaintance = getScoreObjWithAcquaintance(acquaintance);
-  console.log(objWithAcquaintance);
-  // const scoreObj = acquaintance.reduce(
-  //   (acc, friend) => ({ ...acc, [friend]: (acc[friend] || 0) + 10 }),
-  //   {}
-  // );
-  // const scoreObjWithVisitors = visitors.reduce((acc, visitor) => {
-  //   if (myFriends.includes(visitor)) return acc;
-  //   return { ...acc, [visitor]: (acc[visitor] || 0) + 1 };
-  // }, scoreObj);
-  // return getRecommendedFriends(scoreObjWithVisitors);
-  return 0;
+  const acquaintanceObj = getScoreObjWithAcquaintance(acquaintance);
+  const scoreObj = getScoreObjWithVisitors(
+    [myFriends, visitors],
+    acquaintanceObj
+  );
+  return getRecommendedFriends(scoreObj);
 }
 
 console.log(
