@@ -5,7 +5,7 @@ function problem7(user, friends, visitors) {
   friendCheck(user, friends, alreadyFriend);
 }
 
-function alreadyFriend(user, friends, alreadyFriend) {
+function friendCheck(user, friends, alreadyFriend) {
   // friends 원소 0또는 1자리에 원소가 user와 일치하면 1또는 0자리는 user와 친구인 사용자의 아이디 일 것이다.
   friends.forEach((element) => {
     if (element[0] === user) {
