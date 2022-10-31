@@ -50,8 +50,8 @@ const SnsFriendrRecomander = {
     for (const score in this.scores) {
       this.relations[score].forEach((other) => {
         if (
-          this.relations[other].find(user) &&
-          !this.relations[score].find(user)
+          this.relations[other].find((e) => e === this.user) &&
+          !this.relations[score].find((e) => e === this.user)
         ) {
           this.scores[score] += 10;
         }
