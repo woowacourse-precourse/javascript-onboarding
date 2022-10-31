@@ -1,6 +1,7 @@
 const problem6 = (forms) => {
   let answer = [];
   let namePieces = [];
+  let duplicateIndex = [];
 
   const nameList = forms.map((form) => form[1].split(""));
 
