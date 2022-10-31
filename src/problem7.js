@@ -30,27 +30,34 @@ const aboutUser = (myFriendObj, user) => {
   return myFriendObj;
 }
 
+const isUsersFriend = (friendOfFriend, myFriendObj, user) => {
+  // user와 직접 친구인 경우 점수에서 제외
+  for (let k = 1; k < myFriendObj[user].length; k++) {
+    if (friendOfFriend === myFriendObj[user][k]) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+const searchUserFriends = (friendOfFriend, myFriendObj, userFriend ,user) => {
+  for (let j = 1; j < myFriendObj[userFriend].length; j++) {
+    friendOfFriend = myFriendObj[userFriend][j];
+    if(!isUsersFriend(friendOfFriend, myFriendObj, user)){
+      myFriendObj[friendOfFriend][0] += 10;
+    }
+  }
+  return myFriendObj;
+}
+
 const countFriends = (myFriendObj, user) => {
   var userFriend = "";
   var friendOfFriend = "";
-  var check = 0;
-  for (let i = 1; i < myFriendObj[user].length - 1; i++) {
-    userFriend = myFriendObj[user][i];
-    for (let j = 1; j < myFriendObj[userFriend].length; j++) {
-      friendOfFriend = myFriendObj[userFriend][j];
 
-      for (let k = 1; k < myFriendObj[user].length; k++) {
-        if (friendOfFriend === myFriendObj[user][k]) {
-          check = 1;
-          break;
-        }
-      }
-      if (!check) {
-        myFriendObj[friendOfFriend][0] += 10;
-      } else {
-        check = 0;
-      }
-    }
+  for (let i = 1; i < myFriendObj[user].length - 1; i++) {
+    //user의 친구들을 차례대로 방문함
+    userFriend = myFriendObj[user][i];
+    myFriendObj = searchUserFriends(friendOfFriend, myFriendObj, userFriend ,user);
   }
 
   return myFriendObj;
