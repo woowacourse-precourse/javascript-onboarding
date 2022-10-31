@@ -1,4 +1,4 @@
-const SnsFreindrRecomander = {
+const SnsFriendrRecomander = {
   user: "",
   friends: [],
   visitors: [],
@@ -49,11 +49,25 @@ const SnsFreindrRecomander = {
   calculateScore: function () {
     for (const score in this.scores) {
       this.relations[score].forEach((other) => {
-        if (this.relations[other].find(user)) {
+        if (
+          this.relations[other].find(user) &&
+          !this.relations[score].find(user)
+        ) {
           this.scores[score] += 10;
         }
       });
     }
+    this.visitors.forEach((visitor) => {
+      this.scores[visitor] += 1;
+    });
+  },
+  friendrRecomander: function () {
+    this.makeRelations();
+    this.calculateScore();
+    let scoresArray = Object.entries(this.scores);
+    scoresArray.sort((a, b) => a[1] - b[1]);
+    scoresArray = scoresArray.splice(0, 5);
+    return scoresArray.map((score) => score[0]);
   },
 };
 
