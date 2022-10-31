@@ -8,6 +8,8 @@ function problem4(word) {
   return answer;
 }
 
+
+// 정답을 return 하는 메소드 (공백인 경우, 그대로 정답 배열에 추가)
 function checkLetter(word) {
   const reversedArray = []
   for (let i = 0; i < word.length; i++) {
@@ -21,10 +23,13 @@ function checkLetter(word) {
   return reversedArray.join("");
 }
 
+
+// 알파벳을 반대로 변환하는 메소드 (알파벳이 아닌 경우 변환하지 않는다)
 function reverseLetter(letter) {
   const letterASCII = letter.charCodeAt();
   if (97 <= letterASCII && letterASCII <= 122) return reverseLower(letter);
-  return reverseUpper(letter);
+  if (65 <= letterASCII && letterASCII <= 90) return reverseUpper(letter);
+  return letter;
 }
 
 function reverseLower(letter) {
@@ -39,6 +44,8 @@ function reverseUpper(letter) {
   return String.fromCharCode(90 + index);
 }
 
+
+// 예외 처리
 function validRange(word) {
   return 1 <= word.length && word.length <= 1000;
 }
