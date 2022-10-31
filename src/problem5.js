@@ -3,6 +3,7 @@ function problem5(money) {
   const result = [];
 
   result.push(Math.floor(money / monetaryUnits[0]));
+  money %= monetaryUnits[0];
 }
 
 module.exports = problem5;
