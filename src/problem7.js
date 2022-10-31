@@ -1,52 +1,32 @@
 function problem7(user, friends, visitors) {
-  const scoremap = new Map();
-  const arr = new Set();
+  const scoreSet = new Map();
+  const excepts = new Set();
+  let score = new Set();
+
+  let firstscore = 0,
+    secondscore = 0;
+  excepts.add(user);
 
   for (let x of friends) {
+    if (x[0] === undefined || x[1] === undefined) continue;
     if (x.includes(user)) {
-      arr.add(x[0] === user ? x[1] : x[0]);
-      continue;
+      excepts.add(x[0] === user ? x[1] : x[0]);
     }
-    scoremap.set(x[0], 0);
-    scoremap.set(x[1], 0);
   }
-  let num = 0;
+
   for (let x of friends) {
-    if (x.includes(user)) continue;
-
-    if (arr.has(x[0])) {
-      num = scoremap.has(x[1]) ? scoremap.get(x[1]) + 10 : 10;
-      scoremap.set(x[1], num);
-      scoreSet.add(num);
-      continue;
+    if (x[0] === undefined || x[1] === undefined) continue;
+    if (!excepts.has(x[0])) {
+      firstscore = scoreSet.has(x[0]) ? scoreSet.get(x[0]) + 10 : 10;
+      scoreSet.set(x[0], firstscore);
+      score.add(firstscore);
     }
-    if (arr.has(x[1])) {
-      num = scoremap.has(x[0]) ? scoremap.get(x[0]) + 10 : 10;
-      scoremap.set(x[0], num);
-      scoreSet.add(num);
-      continue;
+    if (!excepts.has(x[1])) {
+      secondscore = scoreSet.has(x[1]) ? scoreSet.get(x[1]) + 10 : 10;
+      scoreSet.set(x[1], secondscore);
+      score.add(secondscore);
     }
-  }
-
-  for (let x of visitors) {
-    if (arr.has(x)) continue;
-    num = scoremap.has(x) ? scoremap.get(x) + 1 : 1;
-    scoremap.set(x, num);
-    scoreSet.add(num);
   }
 }
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 
 module.exports = problem7;
