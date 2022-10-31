@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let friend_list = new Map().set(user, []);
-  let score_list = new Map().set(user, 0);
+  let score_list = new Map();
 
   for (let e of friends) {  // Map 초기화
     if (friend_list.has(e[0])) {
