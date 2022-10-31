@@ -1,15 +1,15 @@
 function problem6(forms) {
-  let arr = new Array();
+  let wordsArray = new Array();
   let resultEmail = new Array();
   let duplicateWord = "";
 
   forms.map(([email, nickname]) => {
     for (let i = 1; i < nickname.length; i++) {
-      arr.push(nickname[i - 1] + nickname[i]);
+      wordsArray.push(nickname[i - 1] + nickname[i]);
     }
   });
-  arr.map((v, i) => {
-    if (arr.indexOf(v) !== i) {
+  wordsArray.map((v, i) => {
+    if (wordsArray.indexOf(v) !== i) {
       duplicateWord = v;
     }
   });
