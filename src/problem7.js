@@ -18,10 +18,12 @@ function getAcquaintance(friends, user) {
 function getAcquaintanceScore(acquaintance, user) {
   let score = {};
 
-  acquaintance[user].forEach(friend => {
+  if (acquaintance[user]) acquaintance[user].forEach(friend => {
     acquaintance[friend].forEach(recommend => {
-      if (score[recommend]) score[recommend] += 10;
-      else score[recommend] = 10;
+      if (!acquaintance[user].includes(recommend)){
+        if (score[recommend]) score[recommend] += 10;
+        else score[recommend] = 10;
+      }
     })
   });
 
@@ -31,8 +33,8 @@ function getAcquaintanceScore(acquaintance, user) {
 function getVisitScore(acquaintance, visitors, user) {
   let score = {};
 
-  visitors.forEach(visitor => {
-    if (!acquaintance[user].includes(visitor)) {
+  if (visitors) visitors.forEach(visitor => {
+    if (!acquaintance[user] || !acquaintance[user].includes(visitor)) {
       if (score[visitor]) score[visitor] += 1;
       else score[visitor] = 1;
     }
@@ -43,8 +45,18 @@ function getVisitScore(acquaintance, visitors, user) {
 
 function getRecommandScore(acquaintance, visitors, user) {
   const acquaintance_score = getAcquaintanceScore(acquaintance, user),
-        visit_score = getVisitScore(acquaintance, visitors, user),
-        recommend_friends = {...acquaintance_score, ...visit_score};
+        visit_score = getVisitScore(acquaintance, visitors, user);
+
+  let recommend_friends = {};
+
+  for (let friend in acquaintance_score) {
+    recommend_friends[friend] = acquaintance_score[friend];
+  }
+
+  for (let friend in visit_score) {
+    if (recommend_friends[friend]) recommend_friends[friend] += visit_score[friend];
+    else recommend_friends[friend] = visit_score[friend];
+  }
 
   return recommend_friends;
 }
@@ -67,7 +79,7 @@ function problem7(user, friends, visitors) {
   const acquaintance = getAcquaintance(friends, user),
         recommend_friends = getRecommandScore(acquaintance, visitors, user),
         sorted_friends = sortFriends(recommend_friends);
-
+  
   return sorted_friends.slice(0, 5);
 }
 
