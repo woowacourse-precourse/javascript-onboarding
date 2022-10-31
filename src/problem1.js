@@ -5,8 +5,8 @@ function problem1(pobi, crong) {
   return -1;
 }
 
-function validationArr(arr) {
-  return !arr.some((page) => 1 > page || page > 400) && arr[1] - arr[0] == 1 ? true : false;
+function validationArr([leftPage,rightPage]) {
+  return ![leftPage,rightPage].some((page) => 1 > page || page > 400) && rightPage - leftPage == 1 ? true : false;
 }
 
 function pageGameApp(numArrA, numArrB) {
