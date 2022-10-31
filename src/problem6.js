@@ -27,6 +27,10 @@ function problem6(forms) {
      if(overlapNameCheck[nicknameSubText] > 1) answer.add(email);
    }
  });
+
+ // Set을 Array로 바꾼뒤 반환한다.
+ answer = Array.from(answer);
+ return answer.sort();
 }
 
 // 이메일, 닉네임 유효성 검사
