@@ -1,4 +1,5 @@
 const friendList = [];
+const friendOfFriendList = [];
 
 const findFriend = (user, friends) => {
   friends.map((friend) => {
