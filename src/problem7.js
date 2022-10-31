@@ -10,7 +10,7 @@ function problem7(user, friends, visitors) {
     scoreVisitor(user, relationGraph, visitor, scoreList)
   );
 
-  return recommendFriend(scoreList, LENGTH_RECOMMEND_FRIEND);
+  return recommendFriends(scoreList, LENGTH_RECOMMEND_FRIEND);
 }
 
 // 주어진 친구쌍을 그래프로 만드는 함수
@@ -57,7 +57,7 @@ function scoreVisitor(user, graph, visitor, scoreList) {
 }
 
 // 추천 친구의 이름만 반환하는 함수
-function recommendFriend(scoreList, length) {
+function recommendFriends(scoreList, length) {
   let ArrScoreList = [...scoreList]; // 배열로 만들기
   ArrScoreList.sort(ascendingSort);
 
