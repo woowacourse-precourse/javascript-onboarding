@@ -1,5 +1,12 @@
 function problem7(user, friends, visitors) {
   var answer;
+  const usersFriend = getUsersFriend(user, friends);
+  const friendsList = FriendsOfFriends(usersFriend, friends, user);
+  const friendsScore = getScores(friendsList, 10);
+  const visitorsScore = getScores(visitors, 1);
+  const friendsAndVistors = combineFriendsVistors(friendsScore, visitorsScore);
+  const recommendation = recommendationList(friendsAndVistors);
+  answer = checkUserFriendsInResults(usersFriend, recommendation);
   return answer;
 }
 
