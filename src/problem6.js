@@ -17,7 +17,7 @@ function problem6(forms) {
         .map((_, i) => form[1][i] + form[1][i + 1])
         .slice(0, -1),
     ];
-    seqArr.push(...seq);
+    seqArr.push(...new Set(seq));
     mailObj[form[0]] = seq;
   });
   seqArr.forEach((seq) =>
