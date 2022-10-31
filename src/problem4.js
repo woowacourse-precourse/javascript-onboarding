@@ -15,6 +15,16 @@ function problem4(word) {
 
     const uppercase = makeObject(alphabet, frog);
     const lowercase = makeObject(alphabet.toLowerCase(), frog.toLowerCase());
+
+    for (let x of word) {
+        if (!uppercase.hasOwnProperty(x) && !lowercase.hasOwnProperty(x)) {
+            answer += x;
+        } else if (x === x.toLowerCase()) {
+            answer += lowercase[x];
+        } else if (x === x.toUpperCase()) {
+            answer += uppercase[x];
+        }
+    }
     return answer;
 }
 
