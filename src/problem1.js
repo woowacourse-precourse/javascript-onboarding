@@ -3,7 +3,6 @@ const isExcept = (pageL, pageR) => {
   if (Math.abs(pageL - pageR) > 1) return true;
   if (!(pageL % 2)) return true;
   if (pageR % 2) return true;
-
   return false;
 };
 
@@ -15,7 +14,6 @@ const calScore = (digits) => {
   const scores = Object.keys(operations).map((operator) =>
     operations[operator](digits)
   );
-
   return Math.max(...scores);
 };
 
@@ -30,18 +28,21 @@ const getMaxScore = ([pageL, pageR]) => {
 
   const leftDigits = getDigits(pageL);
   const rightDigits = getDigits(pageR);
-
   return Math.max(calScore(leftDigits), calScore(rightDigits));
 };
 
 function problem1(pobi, crong) {
+  const EXCEPTION = -1;
+  const TIE = 0;
+  const POBI_WIN = 1;
+  const CRONG_WIN = 2;
   const pobiScore = getMaxScore(pobi);
   const crongScore = getMaxScore(crong);
 
-  if (pobiScore === -1) return -1;
-  if (crongScore === -1) return -1;
-  if (pobiScore === crongScore) return 0;
-  return pobiScore > crongScore ? 1 : 2;
+  if (pobiScore === EXCEPTION) return EXCEPTION;
+  if (crongScore === EXCEPTION) return EXCEPTION;
+  if (pobiScore === crongScore) return TIE;
+  return pobiScore > crongScore ? POBI_WIN : CRONG_WIN;
 }
 
 module.exports = problem1;
