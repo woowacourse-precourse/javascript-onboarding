@@ -54,7 +54,7 @@ function problem7(user, friends, visitors) {
   });
 
   return recommendedFrieds
-    .flatMap(([user]) => user)
+    .map(([user]) => user)
     .slice(0, MAX_RECOMMENDED_NUMBER);
 }
 
