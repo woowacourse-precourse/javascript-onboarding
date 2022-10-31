@@ -16,20 +16,28 @@ const isKorea = (nickname) => {
 };
 
 const subNickNameTwoElement = (nickname) => {
-  const lettersArr = [];
+  const elementsArr = [];
   [...nickname].forEach((char, idx) => {
     if (idx === nickname.length - 1) return;
-    const letter = char + nickname[idx + 1];
-    lettersArr.push(letter);
+    const element = char + nickname[idx + 1];
+    elementsArr.push(element);
   });
 
-  return lettersArr;
+  return elementsArr;
 };
 
-const setNickNameMap = (nickNameMap, lettersArr) => {
-  lettersArr.forEach((letter) =>
-    nickNameMap.set(letter, (nickNameMap.get(letter) || 0) + 1)
+const setNickNameMap = (nickNameMap, elementsArr) => {
+  elementsArr.forEach((element) =>
+    nickNameMap.set(element, (nickNameMap.get(element) || 0) + 1)
   );
+};
+
+const isDuplicateNickName = (arr, nickname) => {
+  const elementsArr = subNickNameTwoElement(nickname);
+
+  return elementsArr.some((element) => {
+    return arr.includes(element);
+  });
 };
 
 module.exports = problem6;
