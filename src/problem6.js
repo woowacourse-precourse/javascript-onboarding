@@ -32,6 +32,18 @@ const isRedundantName = (crewName, nameMap) => {
 const problem6 = forms => {
   let nameMap = new Map();
   let emailSet = new Set();
+
+  for (let i = 0; i < forms.length; i++) {
+    addName(forms[i][1], nameMap);
+  }
+
+  for (let i = 0; i < forms.length; i++) {
+    if (isRedundantName(forms[i][1], nameMap))
+      emailSet.add(forms[i][0]);
+  }
+
+  let answer = Array.from(emailSet).sort();
+  return answer;
 }
 
 module.exports = problem6;
