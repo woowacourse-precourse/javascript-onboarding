@@ -79,4 +79,18 @@ function addScore(friendScore, visitScore) {
   return totalScore;
 }
 
+function findFeaturedFriend(score) {
+  const MAX_NUM = 5;
+  let featuredFriend = [];
+  let scoreList = Object.keys(score).map((key) => [score[key], key]);
+
+  scoreList.sort(sortFunction);
+  if (scoreList.length > MAX_NUM) {
+    scoreList = scoreList.slice(0, MAX_NUM);
+  }
+  scoreList.forEach((x) => featuredFriend.push(x[1]));
+
+  return featuredFriend;
+}
+
 module.exports = problem7;
