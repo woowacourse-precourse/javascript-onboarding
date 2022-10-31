@@ -1,6 +1,5 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const newForms = forms.map((arr) => ({ email: arr[0], nickname: arr[1] }));
 }
 
 module.exports = problem6;
