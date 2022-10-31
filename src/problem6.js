@@ -48,4 +48,19 @@ function problem6(forms) {
   return result.sort();
 }
 
+function deplicateCheck(nickName1, nickName2) {
+  // 문자열로 되어있는 닉네임을 한글자씩 나눈다.
+  nickName1 = nickName1.split("");
+  nickName2 = nickName2.split("");
+  for (let i = 0; i < nickName1.length - 1; i++) {
+    for (let j = 0; j < nickName2.length - 1; j++) {
+      // 각각 닉네임마다 연속되는 두 자리를 만들고 이를 비교해서 같다면 true를 반환한다.
+      const substring1 = nickName1[i] + nickName1[i + 1];
+      const substring2 = nickName2[j] + nickName2[j + 1];
+      if (substring1 === substring2) return true;
+    }
+  }
+  return false;
+}
+
 module.exports = problem6;
