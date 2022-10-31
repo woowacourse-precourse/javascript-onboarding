@@ -1,6 +1,6 @@
 function problem5(money) {
-  let answer = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  answer = answer.map(unit => {
+  const units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  const answer = units.map(unit => {
     const result = withdraw(unit, money);
     money = result.balance;
     return result.sheets;
