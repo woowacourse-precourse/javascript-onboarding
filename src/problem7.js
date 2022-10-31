@@ -2,9 +2,21 @@ function problem7(user, friends, visitors) {
   var answer;
 
   makeRelations(user, friends, visitors);
-
+  exceptFriendsInVisotor(visitors);
   return answer;
 }
+
+const exceptFriendsInVisotor = (visitors) => {
+  let deleteIdx = [];
+  visitors.map((visitor, vIdx) => {
+    frinedList.map((friend) => {
+      friend == visitor ? deleteIdx.push(vIdx) : null;
+    });
+  });
+  deleteIdx.reverse().map((e) => {
+    visitors.splice(e, 1);
+  });
+};
 
 const makeRelations = (user, friends, visitors) => {
   let list1 = [];
