@@ -39,10 +39,7 @@ function checkValidation(array1, array2) {
   const continuous = checkContinuous(array1) && checkContinuous(array2);
   const range = checkRange(array1) && checkRange(array2);
   const sniffling = checkSniffling(array1) && checkSniffling(array2);
-  if (continuous && range && sniffling) {
-    return true;
-  }
-  return false;
+  return continuous && range && sniffling;
 }
 function checkContinuous(array) {
   if (array[0] + 1 == array[1]) return true;
