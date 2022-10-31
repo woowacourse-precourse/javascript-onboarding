@@ -20,9 +20,13 @@ function problem6(forms) {
   }
 
   var set = new Set(resultEmailList);
-  resultEmailList = Array.from(set);
+  resultEmailList = convertSetToArray(set);
 
   return resultEmailList.sort();
+}
+
+function convertSetToArray(set) {
+  return Array.from(set);
 }
 
 function isDuplicated(splitNicknamesMap, splitNickname) {
