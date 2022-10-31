@@ -81,13 +81,13 @@ function problem6(forms) {
     }
   }
 
+
   //필요변수
   //&1. 검사한 단어가 저장되는 배열
   const SEARCHED_WORD_LIST = [];
   //&2. 중복된 [이메일,이름]의 인덱스가 저장되는 배열
   const DUPLICATED_INDEX_LIST = [];
-  //&3. 중복된 이름을 가진 이메일 배열
-  const DUPLICATED_EMAIL_LIST = [];
+
 
   //필요함수
   //#1. 닉네임을 검색해야하는 리스트로 만들어 반환하는 함수 : []
@@ -155,44 +155,45 @@ function problem6(forms) {
   }
 
 
-
-
-
-
-
-
+  // 해답 로직
 
   for(let index in inputForms){
 
-    if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(+index) === false){
-      
-      const tempWordList = RETURN_SEARCH_WORD_LIST_FROM_NICKNAME(inputForms[index][1]);
-      const tempFormSearchList = inputForms.slice(+index+1).map(form => form[1]);
-      for(let tempWord of tempWordList){
-  
-        if(CHECK_INCLUDE_WORD_IN_SEARCHED_WORD_LIST(tempWord) === false){
+    index = Number(index)
+
+    //#6. [이미 중복 인덱스 리스트에 검사하려는 인덱스(이름)이 있다면 다음 인덱스로 넘어감]
+    if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(index) === true){continue;}  
+    
+    const tempWordList = RETURN_SEARCH_WORD_LIST_FROM_NICKNAME(inputForms[index][1]);
+    const tempFormSearchList = inputForms.slice(index+1).map(form => form[1]);
+    
+    for(let tempWord of tempWordList){
+
+      //#5. [이미 검사한 단어 리스트에 검사하려는 단어가 있다면 다음 단어로 넘어감]
+      if(CHECK_INCLUDE_WORD_IN_SEARCHED_WORD_LIST(tempWord) === true){continue}    
+        INPUT_WORD_TO_SEARCHED_WORD_LIST(tempWord)
+        
+        for(let searchIndex in tempFormSearchList){
+
+          //#6. [이미 중복 인덱스 리스트에 검사하려는 인덱스(이름)이 있다면 다음 인덱스로 넘어감]
+          if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(index + +searchIndex) === true){continue}
+
+          //#3. [닉네임에 검색어가 포함되어 있지 않다면 다음 단어로 넘어감]
+          if(CHECK_INCLUDE_WORD_IN_NICKNAME(tempWord,tempFormSearchList[searchIndex]) ===false){continue}
           
-          INPUT_WORD_TO_SEARCHED_WORD_LIST(tempWord)
-  
-          for(let searchIndex in tempFormSearchList){
-            
-
-            if(CHECK_INCLUDE_INDEX_IN_DUPLICATED_INDEX_LIST(+index + +searchIndex) === false){
-              if(CHECK_INCLUDE_WORD_IN_NICKNAME(tempWord,tempFormSearchList[searchIndex]) === true){
-
-                INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index)
-                INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(+index +1 + +searchIndex)
-              }
-            }
-          }
+          INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(index)
+          INPUT_INDEX_TO_DUPLICATED_INDEX_LIST(index +1 + +searchIndex)
         } 
       }
-    }
   }
+
+
 
   
   const unsortedEmailList = RETURN_EMAIL_LIST_WITH_INDEX()
+  //[!5]
   const removedDuplicatedEmailList = RETURN_REMOVED_DUPLICATED_EMAIL(unsortedEmailList);
+  //[!6]
   const sortedEmailList = RETURN_ASC_EMAIL(removedDuplicatedEmailList);
 
   return sortedEmailList
