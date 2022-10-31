@@ -3,6 +3,16 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+function calScore(user, friends, visitors) {
+  const friendsConnection = getConnection(friends);
+  const friendsScore = makeDict(user, friends);
+
+  let friendsTotalScore = checkFriend(user, friendsScore, friendsConnection);
+  friendsTotalScore = checkVisited(friendsTotalScore, visitors);
+  
+  return friendsTotalScore;
+}
+
 function getConnection(friends) {
   const friendsConnection = {};
 
@@ -36,8 +46,6 @@ function makeDict(user, friends) {
 
 function checkFriend(user, friendsScoreDict, friendsConnection) {
   const userFriend = friendsConnection[user];
-
-  console.log(userFriend)
 
   userFriend.forEach((item) => {
     const friendsFriends = friendsConnection[item];
