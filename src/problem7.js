@@ -9,6 +9,9 @@ function problem7(user, friends, visitors) {
   for (const usersFriend of usersFriends) {
     relation.push(...findUsersFriend(friends, usersFriend));
   }
+  // 문제발생) 유저도 결국 그들의 친구여서 중복되는 현상 발생
+  // 문제해결 1) 다음단계로 가기 전에 _지금단계에서_ 유저를 배열에서 지우는거 [o]
+  relation = relation.filter((nickname) => nickname !== user);
   return answer;
 }
 
