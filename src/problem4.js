@@ -3,7 +3,7 @@
  *
  * - [x] 알파벳인지 판별하는 기능
  * - [x] 대소문자를 구분하는 기능
- * - [ ] 알파벳 기준 반대의 알파벳을 반환하는 기능
+ * - [x] 알파벳 기준 반대의 알파벳을 반환하는 기능
  */
 
 /**
@@ -16,6 +16,24 @@
 function problem4(word) {
   var answer;
   return answer;
+}
+
+/**
+ * 입력받은 문자가 알파벳인지 확인하고, 알파벳이라면 반대의 알파벳을 반환하는 함수
+ *
+ * @param {string} char 특수문자, 기호, 영문 등 다양한 문자
+ * @returns
+ */
+function convertAlphabet(char) {
+  if (!isAlphabet(char)) {
+    return char;
+  }
+
+  const charCode = char.charCodeAt(0);
+  const casing = checkCase(charCode);
+  const reversedCharCode = convertAlphabetReverse(charCode, casing);
+
+  return String.fromCharCode(reversedCharCode);
 }
 
 /**
@@ -66,6 +84,30 @@ function isUpperCase(charCode) {
  */
 function isLowerCase(charCode) {
   return 97 <= charCode && charCode <= 122;
+}
+
+/**
+ * UTF-16코드를 이용해 알파벳 기준 반대의 UTF-16코드를 반환하는 함수.
+ * 예) a => z, A => Z의 UTF-16코드
+ *
+ * @param {number} charCode UTF-16 코드를 나타내는 0부터 65535 사이의 정수
+ * @param {number} casing 대문자면 1, 소문자면 2, 둘다 아닌 경우 0
+ * @returns
+ */
+function convertAlphabetReverse(charCode, casing) {
+  const ALPHABET_LENGTH = 26;
+  const UPPER_START = 65;
+  const UPPER_END = 90;
+  const LOWER_START = 97;
+  const LOWER_END = 122;
+
+  let charCodeStart = casing === 1 ? UPPER_START : LOWER_START;
+  let charCodeEnd = casing === 1 ? UPPER_END : LOWER_END;
+
+  const baseCharCode = (charCode - charCodeStart) % ALPHABET_LENGTH;
+  const reversedCharCode = charCodeEnd - baseCharCode;
+
+  return reversedCharCode;
 }
 
 module.exports = problem4;
