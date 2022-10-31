@@ -1,5 +1,5 @@
 function problem6(forms) {
-  let overLappingWords = [];
+  let emailArr = [];
   let repeatTextObj = {};
 
   forms.map((form, index) => {
@@ -20,11 +20,13 @@ function problem6(forms) {
     const [email, nickname] = form;
     for (let j = 0; j < nickname.length - 1; j++) {
       const testText = nickname[j] + nickname[j + 1];
-      if (repeatTextObj[testText] > 1) overLappingWords.push(email);
+      if (repeatTextObj[testText] > 1) {
+        emailArr = [...emailArr, email];
+      }
     }
   });
 
-  let answer = [...new Set(overLappingWords)].sort();
+  let answer = [...new Set(emailArr)].sort();
   return answer;
 }
 
