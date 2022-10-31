@@ -136,6 +136,15 @@ function problem7(user, friends, visitors) {
 
   //!6. 동일한 친구 관계가 중복해서 주어지지 않음
 
+  function CHECK_ALREADY_CHECK_RELATION (user1,user2) {
+
+    if(FRIEND_RELATION_OBJ[user1]){return false}
+    if(FRIEND_RELATION_OBJ[user2]){return false}
+    return true
+
+  }
+
+
 
 
   
