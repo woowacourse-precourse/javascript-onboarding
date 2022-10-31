@@ -1,3 +1,5 @@
+console.log(problem3(33));
+
 function problem3(number) {
   return game369App(number);
 }
@@ -12,7 +14,7 @@ function createNumberArr(number) {
 }
 
 function getCount369(numberArr) {
-  return numberArr.join("").split("").filter((number) => number == 3 || number == 6 || number == 9).length;
+  return numberArr.join("").split("").filter((number) => ['3','6','9'].includes(number)).length;
 }
 
 module.exports = problem3;
