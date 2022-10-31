@@ -28,6 +28,14 @@ function getSum(num) {
   return sum;
 }
 
+function getMul(num) {
+  let mul = 1;
+  for (let i = 0; i < num.length; i++) {
+    mul *= num[i];
+  }
+  return mul;
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (!isValid(pobi) || !isValid(crong)) return -1;
