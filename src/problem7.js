@@ -26,7 +26,8 @@ function findUserFriends(user, friends) {
 }
 
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = [];
+  const recommend = new Map();
 
   const userFriends = findUserFriends(user, friends);
   const friendFriends = findfriendFriends(userFriends, friends, user);
@@ -48,10 +49,13 @@ function problem7(user, friends, visitors) {
       }
   }
 
-  const recommendSort = [...recommend].sort((a, b) => {
+  let recommendSort = [...recommend].sort((a, b) => {
     if (b[0] > b[1]) return 1;
     else if (b[0] === b[1]) return a[0] - a[1];
   });
+
+  if (recommendSort.length > 5) recommendSort = recommendSort.slice(0, 5);
+  for (let x of recommendSort) answer.push(x[0]);
 
   return answer;
 }
