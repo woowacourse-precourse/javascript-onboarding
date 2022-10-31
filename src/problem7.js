@@ -6,7 +6,8 @@ function problem7(user, friends, visitors) {
 }
 
 function getGrade(user, userFriend, visitorObject) {
-  console.log(userFriend);
+  // console.log(userFriend);
+  let grade = [];
   for (let i = 0; i < visitorObject.length; i++) {
     if (visitorObject[0][i] === user) {
       delete visitorObject[0][i];
@@ -14,7 +15,7 @@ function getGrade(user, userFriend, visitorObject) {
     }
   }
 
-  console.log(visitorObject);
+  // console.log(visitorObject);
 }
 
 function getVisitorUser(visitors) {
@@ -35,19 +36,30 @@ function getVisitorUser(visitors) {
 
 function getFriendUser(user, friends) {
   const friend = [];
-  const friendGrade = [];
+  // const friendGrade = [];
+  // let crossFriend = [];
   for (let i = 0; i < friends.length; i++) {
     const includeUser = friends[i].includes(user);
     if (includeUser) {
       const temp = String(friends[i]).replace(",", "");
-      friend.push(String(temp).replace(user, ""));
+      const crossFriend = String(temp).replace(user, "");
+
+      for (let j = 0; j < friends.length; j++) {
+        const cross = friends[j].includes(crossFriend);
+        if (cross) {
+          const crossTemp = String(friends[j]).replace(",", "");
+          friend.push(String(crossTemp).replace(crossFriend, ""));
+        }
+      }
     }
   }
-  for (let i = 0; i < friend.length; i++) {
-    friendGrade[i] = 1 * 10;
-  }
 
-  return [friend, friendGrade];
+  // for (let i = 0; i < friend.length; i++) {
+  //   friendGrade[i] = 1 * 10;
+  // }
+  console.log(friend);
+  // return friend;
+  // return [friend, friendGrade];
 }
 
 function testCode() {
