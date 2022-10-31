@@ -22,10 +22,7 @@ function problem7(user, friends, visitors) {
     else if (!userFriends.includes(name)) rank.set(name, (rank.get(name)||0)+1);  
   }   
 
-  console.log(userFriends)
-  console.log(othersFriends)
-  console.log(rank)
-
+  return [...rank].sort(sortAlgorithm).flat().filter((v) => isNaN(v));
 }
 
 function getUserFreinds(user, relationship) {
@@ -37,6 +34,12 @@ function getUserFreinds(user, relationship) {
 function getOthersFriends(user, relationship) {
   return relationship.filter((v) => !(v.includes(user)));
 } 
+
+function sortAlgorithm(a, b) {
+  if ( a[1] < b[1] ) return 1;
+  if ( a[1] > b[1] ) return -1;
+  if ( a[0] < b[0] ) return -1;
+}
 
 const user = "mrko";
 const friends =  [
