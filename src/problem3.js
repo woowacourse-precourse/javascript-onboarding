@@ -11,7 +11,7 @@ function count(num) {
 }
 
 function problem3(number) {
-  var answer;
+  let answer;
   let sum = 0;
 
   for (let n = 0; n <= number; n++) {
