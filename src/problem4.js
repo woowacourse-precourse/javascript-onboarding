@@ -30,4 +30,11 @@ function handleSmallCase(char) {
   return changeChar(lowerArr, char);
 }
 
+function changeChar(arr, char) {
+  const reverseArr = [...arr].reverse();
+  const index = arr.indexOf(char);
+  const result = reverseArr[index];
+  return result;
+}
+
 module.exports = problem4;
