@@ -39,6 +39,9 @@ const SnsFriendRecomander = {
       this.addRelation(friend[1], friend[0]);
     });
   },
+  addScoreUser: function (user) {
+    this.scores[user] = 0;
+  },
   addRelation: function (one, two) {
     if (!(one in this.relations)) {
       this.relations[one] = [];
@@ -58,6 +61,9 @@ const SnsFriendRecomander = {
       });
     }
     this.visitors.forEach((visitor) => {
+      if (!(visitor in this.socres)) {
+        this.addScoreUser(visitor);
+      }
       this.scores[visitor] += 1;
     });
   },
