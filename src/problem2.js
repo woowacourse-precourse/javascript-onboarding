@@ -1,6 +1,16 @@
 function problem2(cryptogram) {
   let answer;
+  let decryption = '';
 
+  while (true) {
+    decryption = decrypt(cryptogram);
+    if (decryption === cryptogram) {
+      answer = decryption;
+      break;
+    } else {
+      cryptogram = decryption;
+    }
+  }
   return answer;
 }
 
