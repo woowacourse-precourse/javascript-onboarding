@@ -5,7 +5,7 @@ function problem6(forms) {
 
   const passForms = checkRule(forms);
   const result = duplicate(passForms);
-  
+
   if (result !== false) {
     set = new Set(result);
     temp = [...set];
@@ -33,14 +33,13 @@ function duplicate(passForms) {
     return false;
 
   let result = [];
-  for (let i=0; i<=passForms.length-1; i++) {
+  for (let i=0; i<=passForms.length-2; i++) {
     if (passForms[i][1].length <= 1)
       continue;
     
     for (let j=0; j<=passForms[i][1].length-2; j++) {
-      const sliceNickName = passForms[i][1].slice(j, j+1);
+      const sliceNickName = passForms[i][1].slice(j, j+2);
       result = passForms.filter( ([email, nickname]) => nickname.includes(sliceNickName));
-
     }
   }
 
