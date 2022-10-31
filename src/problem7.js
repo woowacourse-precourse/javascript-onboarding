@@ -10,6 +10,10 @@ function problem7(user, friends, visitors) {
         .flatMap((friend) => friend.filter((id) => id !== userFriend && id !== user)),
     )
     .filter((id) => !userFriends.includes(id));
+
+  const strangeVisitors = visitors.filter(
+    (visitor) => visitor !== user && !userFriends.includes(visitor),
+  );
 }
 
 module.exports = problem7;
