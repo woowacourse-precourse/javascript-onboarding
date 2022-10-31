@@ -6,7 +6,16 @@ function problem2(cryptogram) {
   let crypt = cryptogram;
   console.log(crypt)
   console.log(crypt.replace(/([a-z])\1+/g, ""));
+  let temp_length = 0;
 
+  while (true) {
+    crypt = crypt.replace(/([a-z])\1+/g, "")
+    if (temp_length === crypt.length) {
+      break
+    }
+    temp_length = crypt.length
+    console.log(crypt)
+  }
   return crypt;
 }
 
