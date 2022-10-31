@@ -26,4 +26,19 @@ function isValid(book) {
 	return true;
 }
 
+// 2. 페이지 값에 따른 더하기 점수 계산
+function getSumScore(book) {
+	var left, right, l_score = 0, r_score = 0;
+	left = book[0]; right = book[1];
+	while(left > 0) {
+		l_score += left % 10;
+		left = parseInt(left / 10);
+	}
+	while(right > 0) {
+		r_score += right % 10;
+		right = parseInt(right / 10);
+	}
+	return Math.max(l_score, r_score);
+}
+
 module.exports = problem1;
