@@ -6,14 +6,13 @@ function reversAlphabet(input) {
   if (isAlphabet.test(input)) {
     charCode = input.charCodeAt(0);
     var numberOfAlphabet = isBigAlphabet.test(input)
-      ? 65 - charCode
-      : 97 - charCode;
+      ? charCode - 65
+      : charCode - 97;
 
     charCode = charCode + (25 - 2 * numberOfAlphabet);
     input = String.fromCharCode(charCode);
-
-    return input;
   }
+  return input;
 }
 
 function problem4(word) {
