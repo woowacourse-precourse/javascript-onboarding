@@ -1,6 +1,11 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let result=[];
+  let nickname =[]
+  let email = []
+  forms.forEach(function(ele){
+    nickname.push(ele[1])
+    email.push(ele[0])
+  });
 }
 
 module.exports = problem6;
