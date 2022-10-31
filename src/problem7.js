@@ -19,21 +19,42 @@ function problem7(user, friends, visitors) {
       this.relatedUsers = relatedUsers;
     }
     makeAdjacencyList() {
-      let graph = Array.from(new Array(relatedUsers.length), () => new Array().fill([]))
+      let graph = Array.from(new Array(relatedUsers.length), () =>
+        new Array().fill([])
+      );
       for (let i = 0; i < friends.length; i++) {
-        console.log(relatedUsers,friends[i][0],friends[i][1])
-        graph[relatedUsers.indexOf(friends[i][0])].push(relatedUsers.indexOf(friends[i][1]))
-        graph[relatedUsers.indexOf(friends[i][1])].push(relatedUsers.indexOf(friends[i][0]))
+        graph[relatedUsers.indexOf(friends[i][0])].push(
+          relatedUsers.indexOf(friends[i][1])
+        );
+        graph[relatedUsers.indexOf(friends[i][1])].push(
+          relatedUsers.indexOf(friends[i][0])
+        );
       }
-      return graph
+      return graph;
     }
   }
+
   const userGraph = new AdjacencyList(
     friends,
     relatedUsers
   ).makeAdjacencyList();
-  console.log(userGraph)
-  // return answer;
+
+  class FindFrined {
+    constructor(user, relatedUsers, userGraph) {
+      this.user = user;
+      this.relatedUsers = relatedUsers;
+      this.userGraph = userGraph;
+    }
+    finduserFrined() {
+      return userGraph[relatedUsers.indexOf(user)];
+    }
+  }
+  const userFrined = new FindFrined(
+    user,
+    relatedUsers,
+    userGraph
+  ).finduserFrined();
+  
 }
 
 module.exports = problem7;

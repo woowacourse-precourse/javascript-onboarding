@@ -32,4 +32,4 @@
 1. friends와 visitors 배열을 하나로 합쳐 set으로 중복을 제거한 형태의 배열을 만든다.
 2. 1번에서 만든 배열의 index를 매칭시켜 friends 배열의 이름을 node로 하고 친구인 관계를 vertex로 하는 인접리스트로 구현한다.
 3. user에 매칭되는 index의 값을 queue에 node별로 넣어주고 queue에서 값을 하나씩 꺼내 user의 친구의 친구에게 가중치 10을 부여하고 queue가 빌때까지 반복한다.
-4. 
+4. 이미 친구 관계인 사람을 따로 dictionary에 저장해 둔다.
