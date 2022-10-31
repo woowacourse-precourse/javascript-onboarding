@@ -10,14 +10,20 @@ function problem7(user, friends, visitors) {
       userAndFriendSet.add(idB);
     }
 
-    if (hashMap.has(idA)) {
-      var scoreA = hashMap.get(idA);
-      hashMap.set(idA, scoreA + 10);
-    } else hashMap.set(idA, 10);
-    if (hashMap.has(idB)) {
-      var scoreB = hashMap.get(idB);
-      hashMap.set(idB, scoreB + 10);
-    } else hashMap.set(idB, 10);
+    if (userAndFriendSet.size !== 0) {
+      getTenScore(idA, idB);
+    }
+  }
+
+  function getTenScore(userA, userB) {
+    if (hashMap.has(userA)) {
+      var scoreA = hashMap.get(userA);
+      hashMap.set(userA, scoreA + 10);
+    } else hashMap.set(userA, 10);
+    if (hashMap.has(userB)) {
+      var scoreB = hashMap.get(userB);
+      hashMap.set(userB, scoreB + 10);
+    } else hashMap.set(userB, 10);
   }
 
   for (var visitor of visitors) {
