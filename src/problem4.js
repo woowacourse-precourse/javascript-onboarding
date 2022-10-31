@@ -16,6 +16,18 @@ function problem4(word) {
     return word.charCodeAt(index);
   }
 
+  function getReverseCharByLetterCase(ascii) {
+    if (UPPER.A <= ascii && ascii <= UPPER.Z) {
+      return String.fromCharCode(UPPER.sum - ascii);
+    }
+
+    if (LOWER.a <= ascii && ascii <= LOWER.z) {
+      return String.fromCharCode(LOWER.sum - ascii);
+    }
+
+    return String.fromCharCode(ascii)
+  }
+
   return answer;
 }
 
