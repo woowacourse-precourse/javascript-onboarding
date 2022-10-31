@@ -14,5 +14,3 @@ function problem4(word) {
 }
 
 module.exports = problem4;
-
-problem4('I love you');
