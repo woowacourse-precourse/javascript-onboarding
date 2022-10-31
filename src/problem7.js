@@ -4,6 +4,8 @@ function problem7(user, friends, visitors) {
   let result = [];
   checkUserFriends(user, friends, userFriends);
   addFriends(user, friends, userFriends, point);
+  addTenPoint(user, friends, userFriends, point);
+  addOnePoint(userFriends, point, visitors);
 }
 function checkUserFriends(user, friends, userFriends) {
   for (let i = 0; i < friends.length; i++) {
