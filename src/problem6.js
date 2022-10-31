@@ -1,6 +1,6 @@
 function problem6(forms) {
     let nicknameSet = new Set([]);
-    // 1단계) 모든 연속되는 패턴을 찾아 집합으로 만들기
+    // 1단계) 모든 연속되는 패턴을 찾아 집합으로 만들기 ===> ex) ["제이", "이엠", ~]
     for (let i = 0; i < forms.length; i++) {
         let nickname = forms[i][1];
         for (let j = 0; j < nickname.length - 1; j++) {
@@ -25,7 +25,7 @@ function problem6(forms) {
         }
     }
 
-    // 4단계) 패턴이 포함된 횟수를 각각 카운트
+    // 4단계) 패턴이 포함된 횟수를 각각 카운트 ===> ex) [pattern1, 0], [pattern2, 2], [pattern3, 3]
     for (let i = 0; i < patternArray.length; i++) {
         for (let k = 0; k < includedPatternArray.length; k++) {
             if (patternArray[i][0].includes(includedPatternArray[k][1])) {
@@ -34,10 +34,10 @@ function problem6(forms) {
         }
     }
 
-    // 5단계) 중복패턴만을 담은 배열 생성
+    // 5단계) 중복패턴만을 담은 배열 생성 => [pattern, 2이상]
     const repetitionArray = patternArray.filter((el) => el[1] >= 2);
 
-    // 6단계) 중복패턴을 포함하는 아이디만을 담은 배열 생성
+    // 6단계) 중복패턴을 포함하는 아이디만을 담은 배열 생성 ===> ex) ["jm@email.com", "jason@email.com", ~]
     const resultIdArray = [];
     for (let i = 0; i < includedPatternArray.length; i++) {
         for (let j = 0; j < repetitionArray.length; j++) {
@@ -47,7 +47,7 @@ function problem6(forms) {
         }
     }
 
-    // 7단계) 중복을 제거하고 오름차순으로 정렬한 배열을 반환합니다.
+    // 7단계) 중복을 제거하고 오름차순으로 정렬한 배열을 반환
     const result = new Set([...resultIdArray]);
     return [...result].sort();
 }
