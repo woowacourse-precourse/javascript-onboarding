@@ -4,10 +4,22 @@
 // - 손뼉 회수 count
 
 function problem3(number) {
+  const targetArr = ["3", "6", "9"];
+
   function createStringArr(number) {
     const changedNum = String(number);
     const resultArr = changedNum.split("");
     return resultArr;
+  }
+
+  function countTargetNum(originArr) {
+    let targetCnt = 0;
+    originArr.forEach((element) => {
+      if (targetArr.includes(element)) {
+        targetCnt += 1;
+      }
+    });
+    return targetCnt;
   }
 
   return answer;
