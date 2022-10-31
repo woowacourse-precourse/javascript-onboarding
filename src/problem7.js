@@ -32,4 +32,19 @@ function addFriends(user, friends, userFriends, point) {
     }
   }
 }
+function addTenPoint(user, friends, userFriends, point) {
+  for (let j = 0; j < friends.length; j++) {
+    for (let i = 0; i < Object.keys(point).length; i++) {
+      if (friends[j].includes(Object.keys(point)[i])) {
+        if (
+          userFriends.includes(
+            friends[j][1 - friends[j].indexOf(Object.keys(point)[i])]
+          )
+        ) {
+          point[Object.keys(point)[i]] += 10;
+        }
+      }
+    }
+  }
+}
 module.exports = problem7;
