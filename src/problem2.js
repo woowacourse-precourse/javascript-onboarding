@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer;
   let stack = [];
   for (let i = 0; i < cryptogram.length; i++) {
     stack.push(cryptogram.slice(i, i + 1));
