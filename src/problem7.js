@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
   var answer = [];
 
-  const visitorList = {};
+  const visitorList = {}; // 방문자 객체 리스트
   // 방문자 객체로 만들고 점수 부여하기
   visitors.forEach((visitor) => {
     if (visitorList[visitor] === undefined) {
@@ -31,7 +31,7 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  const recommendFriendList = {};
+  const recommendFriendList = {}; // 추천 친구 리스트 점수 부여
   // 관련 친구 점수 부여하기
   friends.forEach((friend) => {
     const [A, B] = friend;
@@ -82,7 +82,7 @@ function problem7(user, friends, visitors) {
 
   for (let i = 0; i < filterUserList.length; i++) {
     if (answer.length >= 5) break;
-    answer.push(totalList[i].name);
+    answer.push(filterUserList[i].name);
   }
 
   return answer;
