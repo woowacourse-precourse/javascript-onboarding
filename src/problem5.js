@@ -8,11 +8,11 @@ function problem5(money) {
 
   // 반복문을 순회하면서 돈 카운트
   for (let i = 0; i < moneyCount.length; i++) {
-    answer.push(Math.floor(money / moneyCount[i]));
+    result.push(Math.floor(money / moneyCount[i]));
     money = money % moneyCount[i];
   }
 
-  return answer;
+  return result;
 }
 
 module.exports = problem5;
