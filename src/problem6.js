@@ -7,24 +7,18 @@ function makeWordSet(nickName) {
 }
 
 function checkDuplicatePattern(wordSet, patterns, emailSet, email) {
-  wordSet.forEach(([firstLetter, secondLetter]) => {
-    if(!patterns[firstLetter] ) {
-      patterns[firstLetter] = { [secondLetter] : email };
-      return;
-    }
-    if(!patterns[firstLetter][secondLetter]) {
-      patterns[firstLetter][secondLetter] = email;
+  wordSet.forEach((word) => {
+    if(!patterns[word]) {
+      patterns[word] = email;
       return;
     }
 
     emailSet.add(email);
-    emailSet.add(patterns[firstLetter][secondLetter]);
+    emailSet.add(patterns[word]);
   });
 }
 
-function setToSortedArray(set) {
-  return Array.from(set).sort();
-}
+function setToSortedArray(set) { return Array.from(set).sort(); }
 
 function problem6(forms) {
   var answer;
