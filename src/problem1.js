@@ -1,4 +1,7 @@
 const checkException = (player1, player2) => {
+  if ((player1[0] === 1 || player1[1] === 400) || (player2[0] === 1 || player2[1] === 400)) {
+    return true;
+  }
   return (player1[1] - player1[0] !== 1) || (player2[1] - player2[0] !== 1);
 };
 
