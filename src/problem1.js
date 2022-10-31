@@ -18,11 +18,6 @@ const mul = (arr) => {
 };
 
 const exceptionCheck = (pobi, crong) => {
-  // 최대 페이지 수 판단
-  if(pobi[1] > 400 || crong[1] > 400) {
-    return false;
-  }
-
   // 페이지 수가 이어지는지 판단
   if(pobi[1]-pobi[0] !== 1 || crong[1]-crong[0] !== 1) {
     return false;
