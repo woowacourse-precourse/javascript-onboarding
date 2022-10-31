@@ -7,7 +7,8 @@
 // 6. 점수순 최대 5명 리턴 -> 점수 0 제외 -> 동일한 점수 이름순 정렬
 
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = [];
+  let result;
 
   let recommend_points = new Map();
   let fridens_relation = new Map();
@@ -47,7 +48,17 @@ function problem7(user, friends, visitors) {
     recommend_points.delete(i);
   }
 
-  console.log(recommend_points);
+  // 점수순 최대 5명 리턴 -> 점수 0 제외 -> 동일한 점수 이름순 정렬
+  result = Array.from(recommend_points);
+  result.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    else if (a[1] === b[1]) return a[0] - b[0];
+  });
+
+  for (const [name, score] of result) {
+    if (answer.length > 5) break;
+    if (score !== 0) answer.push(name);
+  }
 
   return answer;
 }
