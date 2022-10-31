@@ -1,0 +1,1 @@
+      console.log(isOverlapInCheckArr(checkArr, subNicknameArr[j]));
