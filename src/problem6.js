@@ -2,7 +2,7 @@ function problem6(forms) {
   let answer = [];
   let nameList = [];
 
-  if (checkValidation(forms) < 0) return -1;
+  // if (checkValidation(forms) < 0) return -1;
 
   forms = getValidateForms(forms);
 
@@ -49,11 +49,11 @@ function getValidateForms(forms) {
 }
 
 console.log(problem6([
-        ["kim@email.com", "김ㅡ이"],
-        ["nam@email.com", "ㅡ이야"],
-        ["choi@email.com", "최강"],
-        ["lee@email.com", "강합니다"],
-        ["jun@email.com", "왜ㅇㅡ이야"],
+        ["onepiece@email.com", "원피수"],
+        ["jason@email.com", "제이슨"],
+        ["onepisu@email.com", "원피수"],
+        ["mj@email.com", "엠제이"],
+        ["suonepi@email.com", "수원피"],
       ]))
 
 module.exports = problem6;
