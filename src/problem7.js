@@ -79,6 +79,13 @@ function problem7(user, friends, visitors) {
   for(let i=0;i<result_Score.length;i++){//점수를 제외한 추천친구배열
     answer.push(result_Score[i][1]);
   }
+  for(let i=0;i<FR.length;i++){
+    for(let j=0;j<answer.length;j++){
+      if(FR[i]===answer[j]){
+        answer.splice(j,1);//추천친구 명단에서 이미 친구인 친구는 제외
+      }
+    }
+  }
   return answer;
 }
 module.exports = problem7;
