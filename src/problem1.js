@@ -1,11 +1,13 @@
 //유저의 점수를 분리해주는 함수
 function scoreSplit(user,amount,index,array){
+const scoreSplit = (user,amount,index,array) => {
   array.push(Math.floor(user[index] / amount));
   user[index] = user[index] % amount;
 }
 
 //유저의 가장 높은 점수를 판별하는 함수
 function getBestScore(array, best){
+const getBestScore = (array, best) => {
   const plus = array.reduce((sum, cur) => sum + cur);
   const mul = array.reduce((sum, cur) => sum * cur);
   best = best < plus? plus : best;
@@ -15,6 +17,7 @@ function getBestScore(array, best){
 
 //유저의 점수를 계산하는 함수
 function calculateScore(user){
+const calculateScore = (user) => {
   let best = 0; //최고 점수 
   for(let i = 0; i < user.length; i++){
     let array = [];
@@ -32,6 +35,7 @@ function calculateScore(user){
 
 //예외처리 함수
 function check(user){
+const check = (user) => {
   //연속된 페이지가 아닌경우 / 첫페이지,마지막페이지를 펼치는 경우
   if ((user[1] - user[0] !== 1) || (user[0] <= 1)||(user[1] >= 400)) {
     return 1;
@@ -41,6 +45,7 @@ function check(user){
 
 //최종 점수 판별 함수
 function getWinner(user1, user2){
+const getWinner = (user1, user2) => {
   if (user1 > user2) {
   return 1;
   }
