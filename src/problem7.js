@@ -52,13 +52,61 @@ const getVisitorScore = (visitors, scores) => {
   }
 }
 
+const dictToArray = (scores) => {
+  const newArr = new Array;
+  for(let key in scores) {
+    newArr.push([scores[key], key])
+  }
+  return newArr;
+}
+
+const arrayFilter = (name, user, friendsDictObj) => {
+  if(name === user) return false;
+  if(friendsDictObj[user].includes(name)) return false;
+  return true;
+}
+
+const makeScoreArray = (user, friendsDictObj, scores) => {
+  const newArr = dictToArray(scores);
+  const filteredArr = newArr.filter((element) => {
+    return arrayFilter(element[1], user, friendsDictObj);
+  })
+  return filteredArr;
+}
+
+const compareName = (nameA, nameB) => {
+  if(nameA < nameB) return -1;
+  else return 1;
+}
+
+const sortFunction = (a, b) => {
+  if(a[0] == b[0]) return compareName(a[1], b[1]);
+  else return b[0] - a[0];
+}
+
+const sortScoreArray = (filteredArr) => {
+  const sortedArr = filteredArr.sort(sortFunction);
+  return sortedArr;
+}
+
+const arrayLengthLimit = (sortedArr) => {
+  const arrLength = Math.min(sortedArr.length, 5);
+  const answer = new Array;
+  for(let i=0; i<arrLength; i++) {
+    answer.push(sortedArr[i][1]);
+  }
+  return answer;
+}
+
 function problem7(user, friends, visitors) {
   const friendsDictObj = makeFriendsDictObj(friends);
   const scores = makeScoreDict(friendsDictObj, visitors); 
   getFriendsScore(friendsDictObj, scores, user);
   getVisitorScore(visitors, scores);
-  return scores;
+  const filteredArr = makeScoreArray(user, friendsDictObj, scores);
+  const sortedArr = sortScoreArray(filteredArr);
+  const answer = arrayLengthLimit(sortedArr);
+  return answer;
 }
 
 module.exports = problem7;
-console.log(problem7("mrko", [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
