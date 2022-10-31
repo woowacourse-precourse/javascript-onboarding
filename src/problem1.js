@@ -135,7 +135,6 @@ function problem1(pobi, crong) {
   }
 
   // 실행
-  let answer;
 
   const pobiNumList = pobi.slice();
   const pobiNumCalculList = [];
@@ -162,26 +161,28 @@ function problem1(pobi, crong) {
   // 예외 통과시 처리
 
   pobiNumList.forEach((number) =>
-    pobiNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
+    {
+      pobiNumCalculList.push(
+        RETURN_LARGE_COMPARED_TWO_NUMBER(RETURN_EACH_DIGIT_ADDED(number),
+        RETURN_EACH_DIGIT_MULTIPLIED(number)))
+    }
   );
-  pobiNumList.forEach((number) =>
-    pobiNumCalculList.push(RETURN_WINNER_COMPARED_TWO_NUMBER(number))
-  );
-
-  pobiMaxNum = RETURN_MAX_NUM_IN_LIST(pobiNumCalculList);
 
   crongNumList.forEach((number) =>
-    crongNumCalculList.push(RETURN_EACH_DIGIT_MULTIPLIED(number))
+  {
+    crongNumCalculList.push(
+      RETURN_LARGE_COMPARED_TWO_NUMBER(RETURN_EACH_DIGIT_ADDED(number),
+      RETURN_EACH_DIGIT_MULTIPLIED(number)))
+  }
   );
-  crongNumList.forEach((number) =>
-    crongNumCalculList.push(RETURN_WINNER_COMPARED_TWO_NUMBER(number))
-  );
 
-  crongMaxNum = RETURN_MAX_NUM_IN_LIST(crongNumCalculList);
 
-  answer = RETURN_WINNER_COMPARED_TWO_NUMBER(pobiMaxNum, crongMaxNum);
+  pobiMaxNum = RETURN_LARGE_COMPARED_TWO_NUMBER(pobiNumCalculList[0],pobiNumCalculList[1])
+  crongMaxNum = RETURN_LARGE_COMPARED_TWO_NUMBER(crongNumCalculList[0],crongNumCalculList[1])
 
-  return answer;
+
+  return RETURN_WINNER_COMPARED_TWO_NUMBER(pobiMaxNum,crongMaxNum)
+
 }
 
 module.exports = problem1;
