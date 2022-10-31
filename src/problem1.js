@@ -14,27 +14,11 @@
 
 let isExceptions = false;
 
-// Exception 1
-const isLengthError = (player1, player2) => {
-  return (player1.length !== 2 || player2.length !== 2)
-}
-// Exception 2
-const isOutOfRange = page => {
-  return !(page > 2 && page < 399)
-}
-// Exception 3
-const isDisorder = (firstPage, SecondPage) => {
-  return (SecondPage !== firstPage + 1)
-}
-// Exception 4
-const isFirstPageOdd = firstPage => {
-  return (firstPage % 2 == 1)
-}
-
-const compareNumWithNum = (num1, num2) => {
-  return num1 >= num2 ? num1 : num2;
-}
-
+const isLengthError = (player1, player2) => player1.length !== 2 || player2.length !== 2
+const isOutOfRange = page => !(page > 2 && page < 399)
+const isDisorder = (firstPage, SecondPage) => SecondPage !== firstPage + 1
+const isFirstPageOdd = firstPage => firstPage % 2 == 1
+const compareNumWithNum = (num1, num2) => num1 >= num2 ? num1 : num2;
 const getMaxValOnPage = page => {
   let sumVal = 0;
   let mulVal = 1;
@@ -46,7 +30,6 @@ const getMaxValOnPage = page => {
 
   return compareNumWithNum(sumVal, mulVal);
 }
-
 const getMaxValOnPages = pages => {
   let leftScore = getMaxValOnPage(pages[0]);
   let rightScore = getMaxValOnPage(pages[1]);

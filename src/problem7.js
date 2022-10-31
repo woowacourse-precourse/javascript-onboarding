@@ -19,7 +19,6 @@ const getScoreByVisitors = (visitors, score) => {
     score[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
   })
 }
-
 const getMyFriends = (user, friends) => {
   let myFriends = []
   friends.map(friendPair => {
@@ -30,7 +29,6 @@ const getMyFriends = (user, friends) => {
 
   return myFriends;
 }
-
 const getScoreByFriends = (friends, myFriends, score) => {
   friends.map(friendPair => {
     if (myFriends.includes(friendPair[0])) {
@@ -48,17 +46,14 @@ const getScoreByFriends = (friends, myFriends, score) => {
     }
   })
 }
-
-const sortScore = score => Object.fromEntries(Object.entries(score).sort(([,a], [,b]) => a > b? -1: 1))
-
+const sortScore = score => Object.fromEntries(Object.entries(score).sort(([,a], [,b]) => a > b ? -1 : 1))
 const filterKey = (conditions, me, score) => {
   conditions.push(me)
+
   return Object.keys(score).filter(userId => !(conditions.includes(userId)));
 }
-
 const isIDLengthError = id => !(id.length >= 1 && id.length <= 30)
 const isLowerCase = id => id === id.toLowerCase()
-
 const validationsOfUser = user => {
   if (isIDLengthError(user)) {
     throw "user ID length error"
@@ -97,7 +92,6 @@ const validationsOfVisitors = visitors => {
     }
   })
 }
-
 const validations = (user, friends, visitors) => {
   validationsOfUser(user);
   validationsOfFriends(friends);
@@ -108,9 +102,7 @@ function problem7(user, friends, visitors) {
   let answer;
   let score = {};
   let myFriends = getMyFriends(user, friends);
-
   validations(user, friends, visitors);
-
   getScoreByVisitors(visitors, score);
   getScoreByFriends(friends, myFriends, score);
   score = sortScore(score)

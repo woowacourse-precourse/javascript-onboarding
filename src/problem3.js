@@ -9,24 +9,21 @@
  * 1. 1 ~ 10000 이하의 자연수
  */
 
-const isOutOfRange = num => {
-  return !(num >= 1 && num <= 10000)
-}
+const isOutOfRange = num => !(num >= 1 && num <= 10000)
 
 function problem3(number) {
   let answer = 0;
   let turn;
   let targets = [3, 6, 9]
-
   if (isOutOfRange(number)) {
     throw 'Input range error'
   }
-
   for (turn = 1; turn <= number; turn++) {
     String(turn).split("").map((digit) => {
       if(targets.includes(Number(digit))) answer += 1
     })
   }
+  
   return answer;
 }
 

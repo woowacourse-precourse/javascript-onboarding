@@ -7,23 +7,18 @@
  * 2. cryptogram은 알파벳 소문자로만 이루어져 있다.
  */
 
-// exception 1
 const isOutOfRange = inputLength => !(inputLength >= 1 && inputLength <= 1000)
-// exception 2
 const isLowerCase = char => char === char.toLowerCase()
 
 function problem2(cryptogram) {
   let answer = cryptogram.split("");
   let i = 0;
-
   if (isOutOfRange(cryptogram.length)) {
     throw "Input range error"
   }
-
   if (!isLowerCase(cryptogram)) {
     throw "Input must be small letter"
   }
-
   while (i !== answer.length) {
     if(answer[i]  === answer[i + 1]) {
       answer.splice(i, 2);
