@@ -48,7 +48,10 @@ function problem7(user, friends, visitors) {
       }
   }
 
-  // 정렬 기능
+  const recommendSort = [...recommend].sort((a, b) => {
+    if (b[0] > b[1]) return 1;
+    else if (b[0] === b[1]) return a[0] - a[1];
+  });
 
   return answer;
 }
