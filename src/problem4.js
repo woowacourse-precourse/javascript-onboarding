@@ -23,7 +23,6 @@ function problem4(word) {
   var answer = "";
 
   for (alphabet of word) {
-    console.log(frogResult(alphabet));
     answer = answer + frogResult(alphabet);
   }
 
