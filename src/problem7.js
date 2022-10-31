@@ -17,80 +17,62 @@
  * 8. result 배열의 크기가 5이하가 되도록 자른 후 return 한다.
  */
 
-/**
- * @enum {number}
- */
-const POINT = {
-  OTHERS_FRIEND: 10,
-  VISITOR: 1,
-};
-
-/**
- * @param {Map<string, number>} map
- * @param {string} target
- * @param {POINT} point
- */
-function setPointInMap(map, target, point) {
-  if (map.has(target)) {
-    map.set(target, map.get(target) + point);
-  } else {
-    map.set(target, point);
-  }
-}
-
-/**
- * @param {string} user
- * @param {[string, string][]} friends
- * @returns {{myFriends: string[], othersFriends: [string, string][]}}
- */
-function findMyFriends(user, friends) {
-  const myFriends = [];
-  const othersFriends = friends.filter((friend) => {
-    if (friend[0] === user) {
-      myFriends.push(friend[1]);
-      return false;
-    }
-    if (friend[1] === user) {
-      myFriends.push(friend[0]);
-      return false;
-    }
-    return true;
-  });
-
-  return {
-    myFriends,
-    othersFriends,
+class Recommend {
+  POINT = {
+    OTHERS_FRIEND: 10,
+    VISITOR: 1,
   };
-}
-
-/**
- * @param {Map<string, number>} map
- * @param {string[]} myFriends
- * @param {[string, string][]} othersFriends
- */
-function addOthersFriendsPoints(map, myFriends, othersFriends) {
-  othersFriends.forEach((friend) => {
-    const [first, second] = friend;
-    if (myFriends.includes(first)) {
-      setPointInMap(map, second, POINT.OTHERS_FRIEND);
+  constructor(user) {
+    this.user = user;
+    this.myFriends = [];
+    this.point = new Map();
+  }
+  getPoint() {
+    return [...this.point]
+      .sort()
+      .sort((a, b) => b[1] - a[1])
+      .map((data) => data[0])
+      .slice(0, 5);
+  }
+  setPoint(key, point) {
+    if (this.point.has(key)) {
+      this.point.set(key, this.point.get(key) + point);
+    } else {
+      this.point.set(key, point);
     }
-    if (myFriends.includes(second)) {
-      setPointInMap(map, first, POINT.OTHERS_FRIEND);
-    }
-  });
-}
-
-/**
- * @param {Map<string, number>} map
- * @param {string[]} myFriends
- * @param {string[]} visitors
- */
-function addVisitorsPoints(map, myFriends, visitors) {
-  visitors.forEach((visitor) => {
-    if (!myFriends.includes(visitor)) {
-      setPointInMap(map, visitor, 1);
-    }
-  });
+  }
+  classifyNotMyFriends(friends) {
+    const othersFriends = friends.filter((friend) => {
+      if (friend[0] === this.user) {
+        this.myFriends.push(friend[1]);
+        return false;
+      }
+      if (friend[1] === this.user) {
+        this.myFriends.push(friend[0]);
+        return false;
+      }
+      return true;
+    });
+    return othersFriends;
+  }
+  setOtherFriendsPoint(othersFriends) {
+    othersFriends.forEach((friend) => {
+      const [first, second] = friend;
+      if (this.myFriends.includes(first)) {
+        this.setPoint(second, this.POINT.OTHERS_FRIEND);
+      }
+      if (this.myFriends.includes(second)) {
+        this.setPoint(first, this.POINT.OTHERS_FRIEND);
+      }
+    });
+  }
+  setVisitorsPoint(visitors) {
+    visitors.forEach((visitor) => {
+      if (!this.myFriends.includes(visitor)) {
+        this.setPoint(visitor, this.POINT.VISITOR);
+      }
+    });
+  }
 }
 
 /**
@@ -100,16 +82,11 @@ function addVisitorsPoints(map, myFriends, visitors) {
  * @returns {string[]} result
  */
 function problem7(user, friends, visitors) {
-  const map = new Map();
-  const { myFriends, othersFriends } = findMyFriends(user, friends);
-  addOthersFriendsPoints(map, myFriends, othersFriends);
-  addVisitorsPoints(map, myFriends, visitors);
-  const result = [...map]
-    .sort()
-    .sort((a, b) => b[1] - a[1])
-    .map((data) => data[0])
-    .slice(0, 5);
-  return result;
+  const recommend = new Recommend(user);
+  const othersFriends = recommend.classifyNotMyFriends(friends);
+  recommend.setOtherFriendsPoint(othersFriends);
+  recommend.setVisitorsPoint(visitors);
+  return recommend.getPoint();
 }
 
 module.exports = problem7;
