@@ -16,6 +16,9 @@ function problem1(pobi, crong) {
 	var p_score = Math.max(getSumScore(pobi), getMulScore(pobi));
 	var c_score = Math.max(getSumScore(crong), getMulScore(crong));
 
+	if(p_score > c_score) return 1;
+	if(p_score < c_score) return 2;
+	if(p_score == c_score) return 0;
 	return -1;
 }
 
