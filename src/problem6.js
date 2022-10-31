@@ -34,7 +34,7 @@ function problem6(forms) {
     })
     .map(([email, nickname]) => email);
 
-  return answer.sort();
+  return [...new Set(answer.sort())];
 }
 
 module.exports = problem6;
