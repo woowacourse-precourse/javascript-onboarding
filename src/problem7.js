@@ -41,7 +41,13 @@ function problem7(user, friends, visitors) {
     if (users.get(key) === 0) users.delete(key);
   }
 
-  answer = [...users.entries()].sort((a, b) => b[1] - a[1]).map(x => x[0])
+  const arr = [...users.entries()].sort((a, b) => b[1] - a[1]);
+  answer = arr.sort((a, b) => {
+    if (a[1] === b[1]) {
+      if (a[0] > b[0]) return 1;
+      if (a[0] < b[0]) return -1;
+    };
+  }).map(x => x[0])
   return answer.slice(0, 5);
 }
 
