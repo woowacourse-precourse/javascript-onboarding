@@ -1,3 +1,8 @@
+function firstSlice(nameSlice, allSlices) {
+  let count = allSlices.get(nameSlice);
+  allSlices.set(nameSlice, count + 1);
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
