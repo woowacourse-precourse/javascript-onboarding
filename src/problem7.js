@@ -53,6 +53,21 @@ function problem7(user, friends, visitors) {
   function isAlreadyFriend(table, user, target) {
     return table[user].friends.indexOf(target) > -1;
   }
+
+  // indexOf보다 set이 좀더 빠를거같긴 함
+  function getRecommendList(table) {
+    const result = [];
+    for (let name of Object.keys(table)) {
+      if (isAlreadyFriend(table, user, name)) {
+        continue;
+      }
+      if (table[name].score > 0) {
+        result.push({ name, score: table[name].score });
+      }
+    }
+
+    return result;
+  }
 }
 
 module.exports = problem7;
