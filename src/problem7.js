@@ -26,6 +26,19 @@ const getFriendOfFriend = (user, usersFriends, relationship) => {
   return getExceptFriend(result, usersFriends); // 내 친구와 친구가 서로 친구인 경우를 제외하여 건너 건너 친구만 리턴하게끔
 };
 
+// getScore
+const getScoreMap = (friends, score) => {
+  // TODO Q 보통 acc 그대로 쓰나 아님 이름을 바꾸나?
+  return friends.reduce((acc, name) => {
+    if (acc.has(name)) {
+      acc.set(name, acc.get(name) + score);
+    } else {
+      acc.set(name, score);
+    }
+    return acc;
+  }, new Map());
+};
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -37,6 +50,9 @@ function problem7(user, friends, visitors) {
 
   // 내 타임라인 방문자 중 이미 친구인 유저 제외
   const visitorsExceptFriend = getExceptFriend(visitors, usersFriends);
+
+  // 친구의 친구 규칙(1번 규칙) 점수화
+  const friendScore = getScoreMap(friendsOfFriend, FRIEND_SCORE);
 
   return answer;
 }
