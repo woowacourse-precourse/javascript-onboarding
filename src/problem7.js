@@ -15,9 +15,10 @@ function problem7(user, friends, visitors) {
     friendList = findUserFriend(user, friends[i], friendList);
 
   //friendList와 친구인 사람들, count 저장
-  linkedFriends = score;  //score의 초기 setting 복사하여 사용
+  linkedFriends = Object.assign({}, score);  //score의 초기 setting 복사하여 사용
   for (i = 0; i < friends.length; i++) 
     linkedFriends = ch_linkedFriends(friends[i], friendList, linkedFriends); //친구관계리스트 검사
+  delete (linkedFriends[user]);
 
   return answer;
 }
