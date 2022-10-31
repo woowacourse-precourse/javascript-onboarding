@@ -7,6 +7,7 @@ function problem7(user, friends, visitors) {
   const alreadyFriendArr = findUserFriend(friends, user);
   delAlreadyFriend(alreadyFriendArr);
   findKnowTogether(friends, alreadyFriendArr);
+  findVisitorNum(visitors);
 
   return answer;
 
@@ -52,6 +53,12 @@ function findKnowTogether(friends, alreadyFriendArr) {
       }
     });
   }
+}
+
+function findVisitorNum(visitors) {
+  visitors.forEach((visitor) => {
+    if (hash.hasOwnProperty(visitor)) hash[visitor] += 1;
+  });
 }
 
 module.exports = problem7;
