@@ -12,7 +12,11 @@ function isInclude369(n) {
 }
 
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  for (let i = 1; i <= number; i++) {
+    answer += isInclude369(i);
+  }
+
   return answer;
 }
 
