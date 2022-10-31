@@ -1,6 +1,14 @@
-function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
-}
+function findUserFriends(friends) {
+  let userFriends = [];
 
-module.exports = problem7;
+  friends.forEach((friend) => {
+    if (friend[0] === user) {
+      userFriends.push(friend[1]);
+    }
+    if (friend[1] === user) {
+      userFriends.push(friend[0]);
+    }
+  });
+
+  return userFriends;
+}
