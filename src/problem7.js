@@ -103,7 +103,25 @@ function problem7(user, friends, visitors) {
     }
   }
   const answers = new Visit(visitors,recommendedUser).countVisit()
-  console.log(answers)
+
+  class DeleteFriends{
+    constructor(user,userFriend){
+      this.user = user
+      this.userFriend = userFriend
+    }
+    deleteAlreadyFriendandMe(){
+      const temp = Object.keys(userFriend)
+      const deleteList = temp.concat([user])
+      return deleteList
+    }
+  }
+  const notRecommendList = new DeleteFriends(user, userFriend).deleteAlreadyFriendandMe()
+
+  notRecommendList.forEach((name) => {
+    if(name in answers){
+      answers[name] = 0
+    }
+  })
 
 }
 
