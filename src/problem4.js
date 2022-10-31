@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  let answer;
   const LOWER = 'a'.charCodeAt(0) + 'z'.charCodeAt(0);
   const UPPER = 'A'.charCodeAt(0) + 'Z'.charCodeAt(0);
   const isLower = /[a-z]/;
@@ -15,6 +15,8 @@ function problem4(word) {
       result.push(w.charCodeAt(0));
     }
   }
+
+  answer = String.fromCharCode(...result);
 
   return answer;
 }
