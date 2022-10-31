@@ -13,7 +13,14 @@ function problem1(pobi, crong) {
       rightMultValue(crong),
     ]);
 
-    return Math.max(maximumPobi, maximumCrong);
+    if(maximumPobi>maximumCrong){
+      return 1;
+    }else if(maximumPobi<maximumCrong){
+      return 2;
+    }else{
+      return 0;
+    }
+    
   }
   return -1;
 }
@@ -68,6 +75,6 @@ function maximum(arr) {
   return Math.max(...arr);
 }
 
-console.log(problem1([187, 188], [197, 198]));
+console.log(problem1([297, 298], [197, 198]));
 
 module.exports = problem1;
