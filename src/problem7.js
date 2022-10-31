@@ -1,5 +1,6 @@
 const friendList = [];
 const friendOfFriendList = [];
+let score = new Map();
 
 const findFriend = (user, friends) => {
   friends.map((friend) => {
@@ -19,6 +20,15 @@ const findFriendOfFriend = (user, friends, friendList) => {
     });
   });
   return friendOfFriendList;
+};
+
+const getScoreFriendOfFriend = (friendOfFriendList) => {
+  friendOfFriendList.map((friendOfFriend) => {
+    score.has(friendOfFriend)
+      ? score.set(friendOfFriend, score.get(friendOfFriend) + 10)
+      : score.set(friendOfFriend, 10);
+  });
+  return score;
 };
 
 function problem7(user, friends, visitors) {
