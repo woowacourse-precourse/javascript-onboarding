@@ -21,6 +21,18 @@ function problem6(forms) {
       }
     }
   }
+  // 2개 이상 중복된 key값인 경우 그리고 해당 유저의 닉네임에 Key값이 포함되었다면
+  // 그 유저의 이메일을 result에 add.
+  for (let key in dict) {
+    for (let i = 0; i < forms.length; i++) {
+      if (dict[key] > 1 && forms[i][1].includes(key)) {
+        result.add(forms[i][0]);
+      }
+    }
+  }
+  // set을 배열로 변환.
+  answer = [...result];
+  answer.sort();
   return answer;
 }
 
