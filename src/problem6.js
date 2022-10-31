@@ -35,6 +35,9 @@ function problem6(forms) {
     }
   }
   // console.log(answer);
+
+  answer.sort();
+  // console.log(answer);
   return answer;
 }
 
