@@ -141,3 +141,50 @@
 
   - 첫 forEach문은 함께 아는 친구 수 -> ```scoreBoard```에 해당하는 이름(key)의 값(value)이 존재하면, 해당 값에 +10 / 없으면 `scoreBoard[name] = 10`
   - 두번째 forEach문은 방문 횟수 -> ```scoreBoard```에 해당하는 이름(key)의 값(value)이 존재하면, 해당 값에 +1 / 없으면 `scoreBoard[name] = 1`
+
+</br> 
+
+### ✔️ 기능 6. 생성한 객체를 객체 배열로 만드는 기능 작성.
+<br>
+
+  - 기능 5번으로 인해, ```scoreBoard```은 ```{이름 : 스코어}```형식으로 데이터가 저장되어있는 객체가 생성됨.
+  - 제출 조건에 따라, 점수 혹은 이름을 정렬해야 하기 때문에 새로운 배열 ```scoreObj```에 ```{key : name , score : score}``` 형식으로 타입을 맞춰줌.
+      ```javascript
+      const scoreObj = [];
+      const keysArr = Object.keys(scoreBoard);
+      const valueArr = Object.values(scoreBoard);
+
+      for (let i = 0; i < keysArr.length; i++) {
+        scoreObj.push({
+          key: keysArr[i],
+          score: valueArr[i]
+          })
+        }
+    ```
+
+  - 또한 이렇게 만든 ```scoreObj```에 두 번의 정렬을 시킨다.
+    - 1️⃣ 번째 정렬 -> ```score```의 값으로 먼저 정렬을 한다. 
+      - 왜 두 번 정렬하고, ```score```로 먼저하나요 ❓ -> ```score```가 동일할 때는 해당하는 아이템들의 ```name```만 따로 정렬해야 하는데<br>
+    <제한사항> 점수가 가장 높은 순으로 정렬 + 점수로 정렬하게 되면 동일한 값을 볼 수가 있기 때문 ❗️
+
+    - 2️⃣ 번째 정렬 -> ```name```의 값으로 나중에 정렬을 한다. 
+      - 우선적으로, 점수가 가장 높은 순이 먼저가 되어야하고, 그에 따라 동일한 값이 있을 때 확인을 할 수 있기 때문 ❗️
+
+    <해당 함수 코드>
+
+
+    ```javascript
+    function scoreSort(answer) {
+      return answer.sort((a, b) => b.score - a.score);
+    }
+
+    function keySort(scoreObj) {
+      return scoreObj.sort((a, b) => {
+        if (a.key > b.key) return 1
+        if (a.key === b.key) return 0
+        if (a.key < b.key) return -1
+      });
+    }
+    ```
+
+    
