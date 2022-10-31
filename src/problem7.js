@@ -1,6 +1,6 @@
 function problem7(user, friends, visitors) {
-  const usersList = getListOfUsers(friends, visitors);
   const friendsOfUsersList = findFriendOfUser(user, friends);
+  const usersList = getListOfUsers(friends, visitors, friendsOfUsersList, user);
   const friendsUserknowWithUserFriendList = findFriendsUserknowWithUserFriend(
     friends,
     friendsOfUsersList,
@@ -20,18 +20,25 @@ function problem7(user, friends, visitors) {
   return result;
 }
 
-function getListOfUsers(userFriends, userVisitors) {
+function getListOfUsers(userFriends, userVisitors, friendsList, currentUser) {
   let member = new Array().fill(0);
   let scoreTable = [member];
 
   userFriends.forEach((twoFriends) => {
     twoFriends.forEach((friend) => {
-      addInformationIntoScoreTable(scoreTable, friend);
+      if (
+        Object.values(friendsList).includes(friend) === false &&
+        friend !== currentUser
+      ) {
+        addInformationIntoScoreTable(scoreTable, friend);
+      }
     });
   });
 
   userVisitors.forEach((visitor) => {
-    addInformationIntoScoreTable(scoreTable, visitor);
+    if (Object.values(friendsList).includes(visitor) === false) {
+      addInformationIntoScoreTable(scoreTable, visitor);
+    }
   });
 
   scoreTable.shift();
@@ -122,7 +129,10 @@ function countScoreOfFriendsUserknowWithUserFriend(scoreTable, users) {
 function countUsersVisitedTimeline(scoreTable, users) {
   users.forEach((user) => {
     const result = scoreTable.find((item) => item.name === user);
-    result.score += 1;
+
+    if (result !== undefined) {
+      result.score += 1;
+    }
   });
 
   return scoreTable;
