@@ -1,21 +1,24 @@
+/**
+ * problem 2
+ * @param {string} cryptogram 암호문
+ * @returns {string}
+ */
 function problem2(cryptogram) {
   const answer = reduceWord(cryptogram);
-  // console.log(`prev : ${cryptogram}`)
-  // console.log(`next : ${answer}`)
   return answer;
 }
 
+/**
+ * 평문이 될 때 까지 연속된 중복 문자들을 삭제하는 함수
+ * @param {string} word 암호문 
+ * @returns {string} 평문
+ */
 const reduceWord = (word) => {
-  let charSet = Array.from(new Set(word.split('')));
-  let new_word = word
-  for(let i = 0 ; i<charSet.length; i++){
-    for(let j = 0 ; j<new_word.length; j++){
-      // console.log(new_word.match(/(\w)\1/))
-      // new_word = new_word.replace(/(\w)\1/,'')
-      new_word = new_word.replace(/([a-z])\1{1,}/,'')
-    }
+  let new_word = word;
+  for (let i = 0; i < word.length; i++) { //글자 수 만큼
+    new_word = new_word.replace(/([a-z])\1{1,}/, ''); // 2번 이상 연속된 글자를 삭제
   }
-  return new_word
+  return new_word;
 }
 
 module.exports = problem2;
