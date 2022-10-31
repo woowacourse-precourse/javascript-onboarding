@@ -1,6 +1,6 @@
-function problem6(forms) {
-  const MINIMUM_SPLIT_UNIT = 2;
+const MINIMUM_SPLIT_UNIT = 2;
 
+function problem6(forms) {
   var resultEmailList = [];
   var splitNicknamesMap = new Map();
   var splitNicknames, nickName, email;

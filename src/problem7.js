@@ -9,11 +9,11 @@ function problem7(user, friends, visitors) {
   for (var i = 0; i < friends.length; i++) {
     /* 사용자 친구 목록과의 교집합 */
     friendship = friends[i];
-    interWithUserFriends = getInterWithUserFreinds(friendship, userFriends);
+    interWithUserFriends = getInterWithUserFriends(friendship, userFriends);
 
     /* 추천 점수 10점 */
 
-    if (interWithUserFreinds.length === 1) {
+    if (interWithUserFriends.length === 1) {
       // 둘 중의 한명만이 사용자의 친구인 경우
       score = 10;
 
@@ -54,7 +54,7 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-function getInterWithUserFreinds(friend, userFriends) {
+function getInterWithUserFriends(friend, userFriends) {
   return friend.filter((element) => userFriends.includes(element));
 }
 
@@ -67,7 +67,7 @@ function sortByValue(resultMap) {
     })
   );
 }
-function convertT(resultMap) {
+function getRecommendedFriends(resultMap) {
   return Array.from(resultMap.keys());
 }
 
