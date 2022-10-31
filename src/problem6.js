@@ -73,6 +73,25 @@ const categorizeNicknames = (nickname, callbackFunc) => {
   return;
 };
 
+const getNicknameCountMap = forms => {
+  const nickNameMap = new Map();
+  const copiedFormArray = copyArray(forms);
+
+  each(copiedFormArray, ([email, nickName]) => {
+    isEmailException(email);
+    isNickNameException(nickName);
+    categorizeNicknames(nickName, separatedNickname => {
+      if (!nickNameMap.has(separatedNickname)) {
+        nickNameMap.set(separatedNickname, 0);
+      }
+
+      nickNameMap.set(separatedNickname, nickNameMap.get(separatedNickname) + 1);
+    });
+  });
+
+  return nickNameMap;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
