@@ -54,7 +54,6 @@ const getMatchedForms = (forms) => (cases) => {
 };
 
 const sort = (arr) => [...arr].sort();
-
 const removeDups = (arr) => [...new Set(arr)];
 
 function problem6(forms) {
