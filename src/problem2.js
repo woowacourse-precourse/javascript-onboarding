@@ -4,20 +4,16 @@ function isLower(cryptogram) {
       return false;
     }
   }
+
   return true;
 }
 
 function isValidCripto(cryptogram) {
-  if (typeof cryptogram !== 'string') {
-    return false;
-  }
-  if (cryptogram.length < 1 || cryptogram.length > 1000) {
-    return false;
-  }
-  if (!isLower(cryptogram)) {
-    return false;
-  }
-  return true;
+  return (
+    typeof cryptogram !== 'string' ||
+    (cryptogram.length < 1 || cryptogram.length > 1000) ||
+    !isLower(cryptogram)
+  ) ? false : true;
 }
 
 function findStartIndex(cryptoArray) {
@@ -26,17 +22,16 @@ function findStartIndex(cryptoArray) {
       return i;
     }
   }
+
   return -1;
 }
 
 function strToArr(cryptogram) {
-  const cryptoArray = cryptogram.split('');
-  return cryptoArray;
+  return cryptogram.split('');
 }
 
 function arrToStr(cryptoArray) {
-  const returnCriptogram = cryptoArray.join('');
-  return returnCriptogram;
+  return cryptoArray.join('');
 }
 
 function findEndIndex(cryptoArray, startIndex) {
@@ -47,6 +42,7 @@ function findEndIndex(cryptoArray, startIndex) {
     }
     endIndex++;
   }
+
   return endIndex;
 }
 
@@ -59,6 +55,7 @@ function solveCripto(cryptoArray) {
     const endIndex = findEndIndex(cryptoArray, startIndex);
     cryptoArray.splice(startIndex, endIndex);
   }
+
   return arrToStr(cryptoArray);
 }
 
@@ -67,6 +64,7 @@ function problem2(cryptogram) {
     return cryptogram;
   }
   const cryptoArray = strToArr(cryptogram);
+
   return solveCripto(cryptoArray);
 }
 
