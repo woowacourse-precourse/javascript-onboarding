@@ -47,4 +47,14 @@ function addTenPoint(user, friends, userFriends, point) {
     }
   }
 }
+
+function addOnePoint(userFriends, point, visitors) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (Object.keys(point).includes(visitors[i])) {
+      point[visitors[i]] += 1;
+    } else if (!userFriends.includes(visitors[i])) {
+      point[visitors[i]] = 1;
+    }
+  }
+}
 module.exports = problem7;
