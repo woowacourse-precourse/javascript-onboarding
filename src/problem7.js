@@ -46,6 +46,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  //visitors 아이디에 1점씩 부여한다
+  for (let i = 0; i < visitors.length; i++) {
+    visitors_number.push([visitors[i], 1]);
+  }
+
   return answer;
 }
 
