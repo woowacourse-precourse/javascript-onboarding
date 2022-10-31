@@ -1,6 +1,7 @@
 function problem1(pobi, crong) {
   // 예외 사항
-  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1 ||
+      pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400) {
     return -1;
   }
 
@@ -27,7 +28,7 @@ function getScore(page) {
     add_score += Number(e);
     mul_score *= Number(e);
   }
-
+  
   return Math.max(add_score, mul_score);
 }
 
