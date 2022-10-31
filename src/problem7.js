@@ -123,7 +123,7 @@ const swap = (topScore, i, j) => {
  */
 const sortFriends = (topScore, scoreInfo) => {
   // 점수 순 정렬 (버블 sort)
-  for (let i=0; i<topScore.length; i++) {
+  for (let i = 0; i < topScore.length; i++) {
     if (scoreInfo[topScore[i]] < scoreInfo[topScore[i + 1]]) {
       swap(topScore, i, i + 1);
     }
