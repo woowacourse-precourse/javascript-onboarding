@@ -10,10 +10,22 @@ let dictionary = [
     ['s','h'],['t','g'],['u','f'],['v','e'],['w','d'],['x','c'],
     ['y','b'],['z','a']
 ]
-
+function changeString(n){
+  let result='';
+  for(let i=0;i<n.length;i++){
+    for(let j=0;j<dictionary.length;j++){
+      if(n[i]==dictionary[j][0]){
+        result+=dictionary[j][1];
+      }
+    }
+  }
+  
+  return result;
+}
 
 function problem4(word) {
   let answer;
+  answer=changeString(word);
   return answer;
 }
 
