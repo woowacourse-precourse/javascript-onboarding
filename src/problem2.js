@@ -5,19 +5,17 @@
  * @returns {string}
  */
 function problem2(cryptogram) {
-  let loop = true;
+  const stack = [cryptogram[0]];
+  let temp;
 
-  while (loop) {
-    loop = false;
-    for (let i = 0; i < cryptogram.length; i++) {
-      if (cryptogram[i] === cryptogram[i + 1]) {
-        loop = true;
-        cryptogram = cryptogram.replace(cryptogram[i].repeat(2), "");
-        i--;
-      }
-    }
+  for (let i = 1; i < cryptogram.length; i++) {
+    const last = stack[stack.length - 1];
+    if (cryptogram[i] !== last && cryptogram[i] !== temp) {
+      stack.push(cryptogram[i]);
+      temp = "";
+    } else if (cryptogram[i] === last) temp = stack.pop();
   }
-  return cryptogram;
+  return stack.join("");
 }
 
 console.log(problem2("browoanoommnaon")); // "brown"
