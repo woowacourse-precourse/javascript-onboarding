@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   let answer;
   
-  isvalid(pobi, crong) ? null : answer = "조건을 다시 확인 하세요";
+  isvalidinit(pobi, crong) ? null : answer = "조건을 다시 확인 하세요";
 
   for (let i = 0; i < 1; i++) {
     let pobiScore, crongScore = 0;
@@ -46,13 +46,18 @@ function isvalidinit(pobi, crong) {
  * @param {Array} 책 페이지 값 들어오기 때문에 길이는 2 
  * @returns 각 자리 숫자의 합과 곱 중 가장 큰 수를 반환
  */
+
 function setScore(arr) {
   let score = 0;
+  
   for (let i = 0; i < 1; i++) {
+    if(arr[i+1] - arr[i] !== 1) return -1
     score = Math.max(sum(arr[i]), sum(arr[i+1]), multiply(arr[i]), multiply(arr[i+1]))
   }
   return score
 }
+
+
 
 function sum(n) {
   let sumArr = (n+"").split("").map(x => parseInt(x))
