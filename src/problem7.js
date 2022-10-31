@@ -1,4 +1,15 @@
 const MAX_RETURN_LENGTH = 5;
+const ACQUAINTANCE_SCORE = 10;
+const VISIT_SCORE = 1;
+
+// 점수를 계산하는 함수
+const calcScores = (user, friends, visitors) => {
+  const scores = {};
+  const relation = makeRelation(friends);
+  calcAcquaintanceScore(scores, user, relation);
+  calcVisitScore(scores, user, visitors, relation);
+  return scores;
+}
 
 // 친구 관계를 저장하기 위한 그래프 생성
 const makeRelation = (friends) => {
@@ -21,19 +32,20 @@ const makeRelation = (friends) => {
       relation[x[1]].push(x[0]);
     }
   });
+
+  console.log(relation);
   
   return relation;
 }
 
 // 함께 아는 친구 점수 계산
-const calcAcquaintanceScore = (scores, user, friends) => {
-  const relation = makeRelation(friends);
+const calcAcquaintanceScore = (scores, user, relation) => {
   Object.keys(relation).map(friend => {
     if(friend !== user && !relation[friend].includes(user)) {
       scores[friend] = 0;
       relation[friend].map(x => {
         if(relation[x].includes(user)) {
-          scores[friend] += 10;
+          scores[friend] += ACQUAINTANCE_SCORE;
         }
       })
     }
@@ -41,15 +53,14 @@ const calcAcquaintanceScore = (scores, user, friends) => {
 }
 
 // 사용자의 타임라인 방문 점수 계산 
-const calcVisitScore = (scores, user, friends, visitors) => {
-  const relation = makeRelation(friends);
+const calcVisitScore = (scores, user, visitors, relation) => {
   visitors.map(visitor => {
     if(!relation[user].includes(visitor)) {
       if(!Object.keys(scores).includes(visitor)) {
-        scores[visitor] = 1;
+        scores[visitor] = VISIT_SCORE;
       }
       else {
-        scores[visitor] += 1;
+        scores[visitor] += VISIT_SCORE;
       }
     }
   })
@@ -82,15 +93,10 @@ const printResult = (scoreArr) => {
 
 // 메인 함수 
 function problem7(user, friends, visitors) {
-  const scores = {};
-  let scoreArr = [];
-
-  calcAcquaintanceScore(scores, user, friends);
-  calcVisitScore(scores, user, friends, visitors);
-  scoreArr = [...Object.entries(scores)];
+  let scoreArr = [...Object.entries(calcScores(user, friends, visitors))];
   sortScore(scoreArr);
-
-  return [...printResult(scoreArr)]
+  scoreArr = [...printResult(scoreArr)];
+  return scoreArr;
 }
 
 module.exports = problem7;
