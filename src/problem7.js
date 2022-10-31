@@ -25,6 +25,8 @@ function problem7(user, friends, visitors) {
   let friend_dict={};
   let score={};
   friend_dict,score = makeObject(friends,friend_dict,score);
+  let user_friend = friend_dict[user]
+  delete friend_dict[user]
   return answer;
 }
 
