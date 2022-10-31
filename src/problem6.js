@@ -2,13 +2,11 @@ function problem6(forms) {
   let answer = [];
   let nameList = [];
 
-  // if (checkValidation(forms) < 0) return -1;
-
   forms = getValidateForms(forms);
 
   forms.forEach((form) => {
     let splitedNameSet = new Set();
-    const [, nickname] = form;
+    const [email, nickname] = form;
 
     for (let i = 2; i <= nickname.length; i++) {
       for (let j = 0; j < nickname.length - 1; j++) {
@@ -19,10 +17,10 @@ function problem6(forms) {
   });
 
   for (let i = 0; i < nameList.length; i++) {
-    const [aEmail] = nameList[i][0];
+    const [aEmail, aName] = nameList[i][0];
     const a = nameList[i][1];
     for (let j = i + 1; j < nameList.length; j++) {
-      const [bEmail] = nameList[j][0];
+      const [bEmail,bName] = nameList[j][0];
       const b = nameList[j][1];
       a.forEach((x) => {
         if (b.includes(x)) {
@@ -35,25 +33,13 @@ function problem6(forms) {
   return [...new Set(answer)].sort();
 }
 
-function checkValidation(forms) {
-  if (forms.length < 1 || forms.length > 10000) return -1;
-}
-
 function getValidateForms(forms) {
   return forms.filter((form) => {
-    const [email,nickname] = form;
+    const [email, nickname] = form;
     const regex = "email.com";
-    
+
     return email.match(regex) && nickname.match(/[ㄱ-ㅎ가-힣]+/gi);
   });
 }
-
-console.log(problem6([
-        ["onepiece@email.com", "원피수"],
-        ["jason@email.com", "제이슨"],
-        ["onepisu@email.com", "원피수"],
-        ["mj@email.com", "엠제이"],
-        ["suonepi@email.com", "수원피"],
-      ]))
 
 module.exports = problem6;

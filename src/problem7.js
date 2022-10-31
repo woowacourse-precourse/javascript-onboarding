@@ -32,7 +32,7 @@ function problem7(user, friends, visitors) {
 
   answer = Object.entries(userScoreList)
     .filter((userScore) => {
-      const [, score] = userScore;
+      const [name, score] = userScore;
       return score > 0;
     })
     .sort((a, b) => {
@@ -46,6 +46,8 @@ function problem7(user, friends, visitors) {
     .flatMap((x) => x)
     .filter((x, idx) => idx % 2 === 0 && !myFriends.includes(x))
     .slice(0, 5);
+
+
 
   return answer;
 }
