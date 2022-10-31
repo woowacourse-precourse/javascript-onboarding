@@ -31,9 +31,13 @@ function problem7(user, friends, visitors) {
   ];
 
   // 점수 리스트
-  const userPointList = Object.assign({}, ...delDupUserList.map((key, i) => ({[key]: 0})));
+  const createPointList = Object.assign(
+    {},
+    ...removeOverlapFriendAndVisitor.map((key, i) => ({[key]: 0}))
+  );
   // friends 점수 +10
   for (let friends of friendListOfRemoveMyFriend) {
+    console.log(friends);
     createPointList[friends] += 10;
   }
   // visitors 점수 +1
