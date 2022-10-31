@@ -1,16 +1,19 @@
 function problem1(pobi, crong) {
   var answer;
 
-  if (validExceptions(pobi, crong)) {
-    answer = selectWinner(pobi, crong);
-    return answer;
-  }
+  if (!validExceptions(pobi, crong)) return -1;
 
-  return -1;
+  answer = selectWinner(pobi, crong);
+  return answer;
 }
 
 
 // 각 페이지의 연산과 관련된 메소드
+/**
+ * 페이지 각 자리의 합을 구하는 메소드 
+ * @param {number} num 특정 페이지의 숫자
+ * @returns {number} 페이지 각 자리의 합
+ */
 function sumDigits(num) {
   let sumResult = 0;
   while (num > 0) {
@@ -20,7 +23,11 @@ function sumDigits(num) {
 
   return sumResult;
 }
-
+/**
+ * 페이지 각 자리의 곱을 구하는 메소드
+ * @param {number} num 특정 페이지의 숫자
+ * @returns {number} 페이지 각 자리의 곱
+ */
 function multiplyDigits(num) {
   let multiplyResult = 1;
   while (num > 0) {
@@ -33,6 +40,12 @@ function multiplyDigits(num) {
 
 
 // 연산 결과를 바탕으로 승자를 고르는 메소드
+/**
+ * 연산 결과를 바탕으로 승자를 고르는 메소드
+ * @param {number[]} pobi pobi의 페이지 리스트
+ * @param {number[]} crong crong의 페이지 리스트
+ * @returns {number} 승자에 따른 결과 (0: 무승부, 1: 포비 승, 2: 크롱 승)
+ */
 function selectWinner(pobi, crong) {
   const pobiNumber = Math.max(sumDigits(pobi[0]), sumDigits(pobi[1]), multiplyDigits(pobi[0]), multiplyDigits(pobi[1]));
   const crongNumber = Math.max(sumDigits(crong[0]), sumDigits(crong[1]), multiplyDigits(crong[0]), multiplyDigits(crong[1]));
