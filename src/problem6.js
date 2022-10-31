@@ -22,7 +22,7 @@ function checking(nameList, forms) {
   for(let curNameIndex = 0; curNameIndex < nameListLength-1; curNameIndex++) {
     let nameLength = nameList[curNameIndex].length;
     for(let curCharIndex = 0; curCharIndex < nameLength-1; curCharIndex++) {
-
+      let check = nameList[curNameIndex].substr(curCharIndex, 2);
     } 
   }
   return resultList;
