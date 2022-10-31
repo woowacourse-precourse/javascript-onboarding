@@ -12,10 +12,15 @@ function problem6(forms) {
 
   let duplicateNameList = findDuplicatedName(splitNicknames);
 
-  var answer;
+  var answer = forms
+    .filter((form) => isDuplicated(form[1], duplicateNameList))
+    .map((form) => form[0])
+    .sort();
+
   return answer;
 }
 
+// 닉네임을 두 글자씩 나누는 함수
 const splitEmail = (nickname) => {
   let subset = [];
   for (let i = 0, nicknameLen = nickname.length - 1; i < nicknameLen; i++) {
@@ -25,6 +30,7 @@ const splitEmail = (nickname) => {
   return subset;
 };
 
+// 중복되는 닉네임을 찾는 함수
 const findDuplicatedName = (splitNicknames) => {
   // Array.filter(callback(element, index, array)) array : filter를 호출한 배열
   return [
@@ -35,6 +41,10 @@ const findDuplicatedName = (splitNicknames) => {
       )
     ),
   ];
+};
+
+const isDuplicated = (nickname, duplicateNameList) => {
+  return nickname.includes(...duplicateNameList);
 };
 
 const checkValue = (forms) => {
@@ -54,16 +64,17 @@ const isEmailTypeValid = (email) => {
     return false;
   }
 
-  const isNicknameTypeValid = (nickname) => {
-    const re = /[ㄱ-ㅎ|가-힣]/;
-    if (nickname.length < 1 || 20 <= nickname.length || !re.test(nickname)) {
-      console.log("닉네임 형식이 잘못되었습니다");
-      return false;
-    }
+  return true;
+};
 
-    return true;
-  };
+const isNicknameTypeValid = (nickname) => {
+  const re = /[ㄱ-ㅎ|가-힣]/;
+  if (nickname.length < 1 || 20 <= nickname.length || !re.test(nickname)) {
+    console.log("닉네임 형식이 잘못되었습니다");
+    return false;
+  }
 
   return true;
 };
+
 module.exports = problem6;
