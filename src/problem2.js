@@ -43,6 +43,13 @@ const duplicationSection = (curCryptogram) => {
     curChar = curCryptogram[i];
   }
 
+  if (duplicationCount > 1) {
+    duplicationArr.push([
+      curCryptogramLength - duplicationCount,
+      curCryptogramLength,
+    ]);
+  }
+
   return duplicationArr;
 };
 
