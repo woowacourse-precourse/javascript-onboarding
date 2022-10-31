@@ -1,4 +1,4 @@
-const points = new Map();
+const pointMap = new Map();
 const myFriend = new Set();
 
 const isMyFriend = (user, friends, 찾으려는친구) => {
@@ -22,17 +22,23 @@ const getCount = (friends, friend) => {
   return count;
 };
 
+const makeInitialPointMap = (friends, visitors) => {
+  for (let i = 0; i < friends.length; i++) {
+    const [idA, idB] = friends[i];
+    if (!pointMap.has(idA)) pointMap.set(idA, 0);
+    if (!pointMap.has(idB)) pointMap.set(idB, 0);
+  }
+
+  for (let i = 0; i < visitors.length; i++) {
+    const id = visitors[i];
+    if (!pointMap.has(id)) pointMap.set(id, 0);
+  }
+}; // pointMap: ["donut" => 0, "andole" => 0, "jun" => 0, "mrko" => 0, "shakevan" => 0, "andole" => 0]
+
 function problem7(user, friends, visitors) {
   const answer = [];
 
-  // 사람 채워 넣음
-  for (let i = 0; i < friends.length; i++) {
-    if (!points.has(friends[i][0])) points.set(friends[i][0], 0);
-    if (!points.has(friends[i][1])) points.set(friends[i][1], 0);
-  }
-  for (let i = 0; i < visitors.length; i++) {
-    if (!points.has(visitors[i])) points.set(visitors[i], 0);
-  }
+  makeInitialPointMap(friends, visitors);
 
   // 친구 넣음
   for (let i = 0; i < friends.length; i++) {
@@ -45,25 +51,25 @@ function problem7(user, friends, visitors) {
   }
 
   // 1) 함께 아는 친구
-  const friendsList = [...points.keys()];
+  const friendsList = [...pointMap.keys()];
   for (let i = 0; i < friendsList.length; i++) {
     // 일단 내 친구면 패스
     if (isMyFriend(user, friends, friendsList[i])) continue;
     const 함께아는친구수 = getCount(friends, friendsList[i]);
-    const currentPoint = points.get(friendsList[i]);
-    points.set(friendsList[i], currentPoint + 함께아는친구수 * 10); // 나중에 10 매직넘버 처리
+    const currentPoint = pointMap.get(friendsList[i]);
+    pointMap.set(friendsList[i], currentPoint + 함께아는친구수 * 10); // 나중에 10 매직넘버 처리
   }
 
   // 2) 타임라인 방문
   for (let i = 0; i < visitors.length; i++) {
-    const currentPoint = points.get(visitors[i]);
-    points.set(visitors[i], currentPoint + 1);
+    const currentPoint = pointMap.get(visitors[i]);
+    pointMap.set(visitors[i], currentPoint + 1);
   }
 
   // user 제거
-  points.delete(user);
+  pointMap.delete(user);
 
-  const candidates = [...points].sort((a, b) => b[1] - a[1]);
+  const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
   for (let i = 0; i < 5; i++) {
     // 원래 친구가 아니면 출력
     if (!myFriend.has(candidates[i][0])) answer.push(candidates[i][0]);
@@ -71,16 +77,16 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-const user = "mrko";
-const friends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-console.log(problem7(user, friends, visitors));
+// const user = "mrko";
+// const friends = [
+//   ["donut", "andole"],
+//   ["donut", "jun"],
+//   ["donut", "mrko"],
+//   ["shakevan", "andole"],
+//   ["shakevan", "jun"],
+//   ["shakevan", "mrko"],
+// ];
+// const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+// console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
