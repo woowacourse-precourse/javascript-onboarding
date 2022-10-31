@@ -9,9 +9,9 @@ function findDuplicated(splited) {
       if (!duplicated[i - 1]) {
         duplicated[i] = 1;
         duplicated[i - 1] = 1;
-      } else {
-        duplicated[i] = 1;
+        continue;
       }
+      duplicated[i] = 1;
     }
 
     pre = splited[i];
