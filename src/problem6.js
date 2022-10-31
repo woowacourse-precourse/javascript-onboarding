@@ -38,7 +38,7 @@ function problem6(forms) {
   );
 
   getSplitNicknameMap(filteredForms).forEach(
-    (value) => value.length >= 2 && answer.push(...value)
+    (value) => value.length >= SEQUENCE_MIN_LENGTH && answer.push(...value)
   );
 
   return removeRepeatString(answer).sort();
@@ -60,14 +60,6 @@ function validateNicknameType(nickname) {
   return false;
 }
 
-/**
- * @function validateNicknameLength
- * @description
- * 닉네임 길이를 검증해주는 함수
- * @param {string} [nickname]
- * @returns {boolean}
- */
-
 function validateNicknameLength(nickname) {
   if (
     nickname.length >= NICKNAME_MIN_LENGTH &&
@@ -76,16 +68,6 @@ function validateNicknameLength(nickname) {
     return true;
   return false;
 }
-
-/**
- * @function getSplitNickname
- * @description
- * 경우의 수에 속하는 연속된 닉네임들을 반환하는 함수
- * @example
- * "제이엠" -> ["제이", "이엠", "제이엠"]
- * @param {string} [nickname]
- * @returns {string[]}
- */
 
 function getSplitNickname(nickname) {
   return nickname
