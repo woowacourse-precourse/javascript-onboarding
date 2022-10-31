@@ -17,6 +17,11 @@ function makeEdge(friends) {
   return edge;
 }
 
+//함께 아는 친구가 몇명인지 세기
+function compare(arr1 = [], arr2) {
+  return arr1.reduce((a, c) => a + arr2.includes(c), 0);
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
