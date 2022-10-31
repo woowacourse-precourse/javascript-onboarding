@@ -17,6 +17,15 @@ function problem1(pobi, crong) {
     return result;
   }
 
+  function getMultiplyResult(pageNum) {
+    pageNum = String(pageNum);
+    let result = 1;
+    for (let i = 0; i < pageNum.length; i++) {
+      result = result * Number(pageNum[i]);
+    }
+    return result;
+  }
+
   return answer;
 }
 
