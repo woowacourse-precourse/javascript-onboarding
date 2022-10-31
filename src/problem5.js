@@ -10,4 +10,11 @@ function problem5(money) {
   return answer;
 }
 
+function calMoneyChange(moneyUnit, money) {
+  const moneyCount = Math.floor(money / moneyUnit);
+  const moneyLeft = money % moneyUnit;
+
+  return [moneyCount, moneyLeft];
+}
+
 module.exports = problem5;
