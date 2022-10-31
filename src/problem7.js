@@ -1,6 +1,4 @@
-function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
-}
-
-module.exports = problem7;
+const compose =
+  (...fns) =>
+    (initialValue) =>
+      fns.reduce((composed, fn) => fn(composed), initialValue);
