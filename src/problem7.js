@@ -1,3 +1,21 @@
+const checkCrewForm = (user, friends, visitors) => {
+  let checkId = /[a-z|,]/g;
+  let checkIdFriends = friends.join("");
+  let checkIdvisitors = visitors.join("");
+
+
+  if (user.length < 1 || 30 < user.length) return false;
+  if (friends.length < 1 || 10000 < friends.length) return false;
+  if (visitors.length < 0 || 30 < visitors.length) return false;
+  if (!checkId.test(user)) return false;
+  if (!checkId.test(checkIdFriends)) return false;
+  if (!checkId.test(checkIdvisitors)) {
+    if(visitors.length === 0) return true
+    else return false;
+  }
+  return true;
+}
+
 function problem7(user, friends, visitors) {
   let realUserFriend = [];
   let newFriend = [];
@@ -9,6 +27,7 @@ function problem7(user, friends, visitors) {
       realUserFriend.push(friends[i][0]);
     }
   }
+
 
   for (let i = 0; i < realUserFriend.length; i++) {
     for (let j = 0; j < friends.length; j++) {
@@ -48,7 +67,10 @@ function problem7(user, friends, visitors) {
   }));
 
   answer = [...sortedScore.keys()].slice(0, 5);
-  return answer;
+
+
+  if (!checkCrewForm(user, friends, visitors)) { throw Error("제한사항에 알맞게 입력하세요.") }
+  else return answer;
 }
 
 module.exports = problem7;
