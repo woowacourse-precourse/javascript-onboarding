@@ -57,6 +57,7 @@ function problem6(forms) {
   const duplicateUserArr = findDuplicateUser(duplicateUserWordArr, forms);
   const answer = getEmail(duplicateUserArr);
 
+  answer.sort();
   return answer;
 }
 
