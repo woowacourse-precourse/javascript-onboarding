@@ -8,7 +8,6 @@ function makeSubstrArr(nickname) {
     const substr = nickname.substr(i, 2);
     substrArr.push(substr);
   });
-  console.log(substrArr);
   return substrArr;
 }
 
