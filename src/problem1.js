@@ -6,28 +6,31 @@
 // - 예외사항을 처리하는 Error 함수 생성
 
 function problem1(pobi, crong) {
-  let WINNER;
+  var answer;
   const POBI = 1;
   const CRONG = 2;
   const NOBODY = 0;
+  let isError = false;
 
   function checkError(pageArr) {
-    if (pageArr[0] >= pageArr[1]) {
+    const leftPage = pageArr[0];
+    const rightPage = pageArr[1];
+    if (leftPage >= rightPage) {
       isError = true;
     }
-    if (pageArr[0] % 2 === 0 || pageArr[1] % 2 === 1) {
+    if (leftPage % 2 === 0 || rightPage % 2 === 1) {
       isError = true;
     }
-    if (pageArr[1] - pageArr[0] !== 1) {
+    if (rightPage - leftPage !== 1) {
       isError = true;
     }
-    if (pageArr[0] === 0 && pageArr[1] === 1) {
+    if (leftPage === 0 && rightPage === 1) {
       isError = true;
     }
-    if (pageArr[0] === 399 && pageArr[1] === 400) {
+    if (leftPage === 399 && rightPage === 400) {
       isError = true;
     }
-    if (pageArr[0] <= 0 || pageArr[0] >= 400) {
+    if (leftPage <= 0 || leftPage >= 400) {
       isError = true;
     }
     return isError;
@@ -74,17 +77,17 @@ function problem1(pobi, crong) {
     const crongResult = getCrongMaxResult(crong);
 
     if (pobiResult > crongResult) {
-      WINNER = POBI;
+      answer = POBI;
     } else if (pobiResult < crongResult) {
-      WINNER = CRONG;
+      answer = CRONG;
     } else {
-      WINNER = NOBODY;
+      answer = NOBODY;
     }
   }
 
   getWinner();
 
-  return WINNER;
+  return answer;
 }
 
 module.exports = problem1;
