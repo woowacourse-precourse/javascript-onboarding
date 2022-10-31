@@ -10,11 +10,9 @@ describe("problem1", () => {
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
   });
-
   test("case2", () => {
     expect(problem1([131, 132], [211, 212])).toEqual(1);
   });
-
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
@@ -48,7 +46,6 @@ describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
   });
-
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
