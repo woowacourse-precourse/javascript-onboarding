@@ -35,4 +35,9 @@ function violationChk(forms) {
   return result;
 }
 
+// 도메인 제한 검사 함수
+function domainChk(emailAddr) {
+  return emailAddr.substr(emailAddr.length - 10) === "@email.com";
+}
+
 module.exports = problem6;
