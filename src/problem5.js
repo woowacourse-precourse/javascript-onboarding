@@ -1,6 +1,20 @@
 function problem5(money) {
-  var answer;
+  let answer = Array(9).fill(0);
+  let possibleChange = [50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1];
+  let moneyLeft = money;
+
+  for (let i = 0; i < possibleChange.length; i++) {
+    while (moneyLeft >= possibleChange[i]) {
+      moneyLeft = moneyLeft - possibleChange[i];
+      answer[i]++;
+    }
+  }
+
   return answer;
 }
 
 module.exports = problem5;
+
+/**
+ * money에서 while문으로 오만원권 ~ 일원 동전까지 반복하며 차감
+ */
