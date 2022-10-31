@@ -23,6 +23,12 @@ function getDuplicateIndex(cryptogram) {
   return duplicatedIndexArr;
 }
 
+function deleteDuplicateWord(duplicatedIndexArr, cryptogramToArray) {
+  duplicatedIndexArr.map((i) => {
+    cryptogramToArray.splice(i - 1, 1, undefined);
+  });
+}
+
 function problem2(cryptogram) {
   var answer;
   isValid(cryptogram);
@@ -34,6 +40,8 @@ function problem2(cryptogram) {
   for (let i = 0; i < n; i++) {
     const duplicatedIndexArr = getDuplicateIndex(cryptogramToArray);
     if (duplicatedIndexArr.length === 0) break;
+
+    deleteDuplicateWord(duplicatedIndexArr, cryptogramToArray);
   }
   return answer;
 }
