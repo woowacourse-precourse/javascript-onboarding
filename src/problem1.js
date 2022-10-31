@@ -29,15 +29,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-let pobi = [
-  [97, 98],
-  [131, 132],
-  [99, 102],
-];
-let crong = [
-  [197, 198],
-  [211, 212],
-  [211, 212],
-];
-
 module.exports = problem1;
