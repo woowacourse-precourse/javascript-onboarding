@@ -1,5 +1,3 @@
-<br>
-
 # 📋 [Problem1 Solving]
 
 <br>
