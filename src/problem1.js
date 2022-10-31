@@ -29,9 +29,21 @@ function addDigits(page) {
 }
 
 function isPagesCorrect(pages) {
-  // 짝수, 홀수 올바른가
-  return pages[0] % 2 === 0 || pages[1] % 2 || pages[1] - pages[0] !== 1
+  return isEven(pages[0]) || isOdd(pages[1]) || isConsecutive(pages)
     ? false
     : true;
 }
+
+function isOdd(page) {
+  return page % 2 === 1;
+}
+
+function isEven(page) {
+  return page % 2 === 0;
+}
+
+function isConsecutive(pages) {
+  return pages[1] - pages[0] !== 1;
+}
+
 module.exports = problem1;
