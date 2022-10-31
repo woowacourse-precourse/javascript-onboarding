@@ -33,6 +33,11 @@ function problem7(user, friends, visitors) {
     getTheirFriend(pair, user, userFriends, theirFriends); // user 친구의 친구 추출
   }
 
+  // 친구의 친구인 경우에는 추천 점수를 10점 부여한다.
+  theirFriends.forEach((friend) => {
+    scores.set(friend, 10);
+  });
+
   return answer;
 }
 
