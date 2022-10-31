@@ -34,6 +34,12 @@ function problem7(user, friends, visitors) {
   }
 
   function relationScore(scoreMap, relationMap, user) {
+    relationMap.get(user).forEach((userFriend) => {
+      relationMap.get(userFriend).forEach((newFriend) => {
+        scoreMap.has(newFriend) &&
+          scoreMap.set(newFriend, scoreMap.get(newFriend) + 10);
+      });
+    });
     return scoreMap;
   }
 
