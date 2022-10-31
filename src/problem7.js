@@ -96,6 +96,14 @@ function problem7(user, friends, visitors) {
     answer[i] = friends_number[i][0];
   }
 
+  //최종 5명 중에서 사용자와 친구인 아이디는 제외시킨다.
+  for (let i = 0; i < answer.length; i++) {
+    for (let j = 0; j < user_friends.length; j++) {
+      if (answer[i] == user_friends[j]) {
+        answer.splice(i, 1);
+      }
+    }
+  }
   return answer;
 }
 
