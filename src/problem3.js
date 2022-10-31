@@ -1,5 +1,16 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  let numString = "";
+  for (let i = 1; i <= number; i++) {
+    numString += i;
+  }
+
+  [...numString].forEach((x) => {
+    if (+x == 3 || +x == 6 || +x == 9) {
+      return answer++;
+    }
+  });
+
   return answer;
 }
 
