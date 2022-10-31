@@ -24,7 +24,8 @@ const checkMap = (index,string,maps) => {
   }
 };
 const removeSame = (same) => {
-  return [...new Set(same)]
+  same = [...new Set(same)];
+  return same;
 }
 //메인  함수
 function problem6(forms){
