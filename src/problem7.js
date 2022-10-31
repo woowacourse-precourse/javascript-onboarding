@@ -75,6 +75,10 @@ function problem7(user, friends, visitors) {
     answer.push(name); // answer 배열에 추가한다.
   }
 
+  if (answer.length > 5)
+    // answer 배열의 크기가 5를 초과하면
+    answer = answer.slice(0, 5); // 5명까지만 return 한다.
+
   return answer;
 }
 
