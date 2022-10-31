@@ -13,8 +13,7 @@ function problem7(user, friends, visitors) {
     }
     else{
       nameList.push(idA); //아이디A의 친구목록 생성 후 아이디B 추가
-      let newIndexA = nameList.length-1;
-      friendsList[newIndexA] = [idB];
+      friendsList.push([idB]);
     }
 
     const indexB = nameList.indexOf(idB);
@@ -23,8 +22,7 @@ function problem7(user, friends, visitors) {
     }
     else{
       nameList.push(idB);
-      let newIndexB = nameList.length-1;
-      friendsList[newIndexB] = [idA];
+      friendsList.push([idA]);
     }
   }
 
@@ -51,15 +49,38 @@ function problem7(user, friends, visitors) {
           }
           else{ //점수 목록 생성 후 점수 초기화(10점)
             recommendedUserList.push(FOAF);
-            let newIndexFOAF = recommendedUserList.length-1;
-            recommendedUserScore[newIndexFOAF] = 10; //push와 동일
+            recommendedUserScore.push(10);
           }
         }
       }   
     }
-  }  
+  }
+
+  //visitors 점수 주기
+  for (var visitor of visitors){
+    const indexVisitor = recommendedUserList.indexOf(visitor);
+    if(visitor == user){ //본인의 타임라인에 방문했다면 pass
+      continue;
+    }
+    if(indexVisitor!=-1){
+      recommendedUserScore[indexVisitor] += 1;
+    }
+    else{
+      recommendedUserList.push(visitor);
+      recommendedUserScore.push(1);
+    }
+  }
+
+  //출력
+  console.log("점수 있는 사용자들 : ", recommendedUserList);
+  console.log("사용자들의 각 점수 : ", recommendedUserScore);
+  for (var i=0; i<recommendedUserList.length; i++){
+    console.log(recommendedUserList[i],"의 친구 목록 : ",recommendedUserScore[i]);
+  }
+  
   
   return answer;
 }
 
+problem7("mrko", [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ], ["bedi", "bedi", "donut", "bedi", "shakevan"]);
 module.exports = problem7;
