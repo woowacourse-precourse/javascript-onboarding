@@ -1,5 +1,14 @@
 function problem1(pobi, crong) {
   if (!passExceptions(pobi, crong)) return -1;
+  const pobiBiggestScore = getScore(pobi);
+  const crongBiggestScore = getScore(crong);
+}
+
+function getScore(pageArr) {
+  const biggestNumArr = pageArr.map((page) => {
+    return Math.max(addDigits(page), multiplyDigits(page));
+  });
+  return Math.max(...biggestNumArr);
 }
 
 function addDigits(number) {
