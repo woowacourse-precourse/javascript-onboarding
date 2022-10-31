@@ -1,13 +1,13 @@
 function problem4(word) {
   let answer = "";
-  for (let i = 0; i < word.length; i++) {
-    const ASCII = word.charCodeAt(i);
+  [...word].forEach((e) => {
+    const ASCII = e.charCodeAt();
     let newASCII = 32;
     if (ASCII >= 65 && ASCII <= 90) newASCII = 90 - (ASCII - 65);
     else if (ASCII >= 97 && ASCII <= 122) newASCII = 122 - (ASCII - 97);
     else newASCII = ASCII;
     answer += String.fromCharCode(newASCII);
-  }
+  });
   return answer;
 }
 
@@ -19,5 +19,3 @@ module.exports = problem4;
 //    소문자의 경우 122-(현재문자-97)
 //    알파벳 외의 글자는 그대로 번역
 // 3. 번역 결과 출력
-
-problem4("I love you1234");
