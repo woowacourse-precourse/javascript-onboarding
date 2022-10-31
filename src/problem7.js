@@ -68,6 +68,11 @@ function problem7(user, friends, visitors) {
 
     return result;
   }
+
+  function sortFriendByScore(recommendList) {
+    return recommendList.sort((a, b) => b.score - a.score).slice(0, 5);
+  }
+
 }
 
 module.exports = problem7;
