@@ -6,6 +6,14 @@ function problem2(cryptogram) {
   answer = decryption(cryptogram);
   return answer;
 }
+function decryption(cryptogram) {
+  let nextCryptogram = getNextCryptogram(cryptogram);
+  while (cryptogram != nextCryptogram) {
+    cryptogram = nextCryptogram;
+    nextCryptogram = getNextCryptogram(cryptogram);
+  }
+  return cryptogram;
+}
 function getDuplicateValidator(cryptogram) {
   const duplicateValidator = new Array(cryptogram.length).fill(false);
   for (let x = 0; x < cryptogram.length - 1; x++) {
