@@ -20,7 +20,7 @@ function problem1(pobi, crong) {
 
 function checkValue(arr) {
   let result =
-    arr[0] % 2 == 1 && arr[1] % 2 == 0 && arr[1] - arr[0] == 1 ? true : false;
+    arr[0] % 2 === 1 && arr[1] % 2 === 0 && arr[1] - arr[0] === 1 ? true : false;
   return result;
 }
 

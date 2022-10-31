@@ -1,6 +1,8 @@
 function problem4(word) {
-  var answer;
+  let answer ;
+
   return answer;
 }
+
 
 module.exports = problem4;
