@@ -106,3 +106,11 @@ npm test
    - [ ] forms 순회를 마치고 pair 정보 담은 Map에서 value의 길이가 2일 경우 element들을 모두 Set에 add
    - [ ] Set을 Array화 하고 정렬 수행
    - [ ] 정렬된 배열에 element마다 @+도메인 추가해 반환
+7. [문제 7](src/problem7.js)
+   - [ ] friends를 순회하며 각 친구 관계를 key, value & value, key로 저장(value는 array)
+   - [ ] 각 key 값에 대해 방문 여부 위한 visited object, score Map 생성
+   - [ ] user를 기준으로 dfs 수행 -> depth 2일 경우 score Map의 값 + 10
+   - [ ] visitors를 순회하며 score Map의 점수 + 1
+   - [ ] score Map -> array 변환
+   - [ ] 정렬한 array 정렬(점수 기준, 동일할 경우 이름 순)
+   - [ ] array의 index 0만 반환
