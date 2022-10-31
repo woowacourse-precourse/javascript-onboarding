@@ -76,7 +76,6 @@ const getRelationsObj = (friends) => {
 
     return acc;
   }, {});
-  console.log(relations);
 
   return relations;
 };
