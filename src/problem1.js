@@ -42,6 +42,10 @@ function pageNumCalc(who) {
 }
 
 function exceptionCheck(who) {
+  if (who.length > 2) {
+    return false;
+  }
+
   if (who[0] < 1 || who[0] > 400 || who[1] < 1 || who[1] > 400) {
     return false;
   }
