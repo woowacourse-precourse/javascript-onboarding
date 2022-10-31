@@ -30,6 +30,23 @@ function divideTwoWord(nickname) {
   })
 }
 
+// 닉네임당 비교하기
+function compareNickname(twoWordArr, emailArr) {
+	for (let i = 0; i < twoWordArr.length; i++) {
+		for (let j = i + 1; j < twoWordArr.length; j++) {
+			const combineArr = [...twoWordArr[i], ...twoWordArr[j]]
+			const arrangeArr = new Set(combineArr);
+
+			if (combineArr.length !== arrangeArr.size) {
+				arrangeArr[i] = true;
+				arrangeArr[j] = true;
+			}
+		}
+	}
+  const overlapEmails = emailArr.filter((_, i) => arrangeArr[i]);
+  return overlapEmails;
+}
+
 // problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
 divideTwoWord(divideNickname([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]));
 
