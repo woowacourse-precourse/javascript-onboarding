@@ -1,6 +1,6 @@
 const friendList = [];
 
-const findFriendList = (user, friends) => {
+const findFriend = (user, friends) => {
   friends.map((friend) => {
     const [A, B] = friend;
     if (A == user) friendList.push(B);
