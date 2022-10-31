@@ -36,7 +36,6 @@ function deleteUndefinedWord(cryptogramToArray) {
 }
 
 function problem2(cryptogram) {
-  var answer;
   isValid(cryptogram);
 
   let tempCryptogram = cryptogram;
