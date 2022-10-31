@@ -82,24 +82,24 @@ describe("problem6", () => {
       "hiyun@email.com",
     ]);
   });
-  test("case3", () => {
-    expect(
-      problem6([
-        ["hi@email.com", "하이"],
-        ["hi@email.com", "하이연"],
-        ["banga@email.com", "방가"],
-        ["banggayo@email.com", "방가요"],
-        ["kidec@email.com", "키득"],
-        ["kidecbanga@email.com", "요요요요방가키득"],
-      ])
-    ).toEqual([
-      "banga@email.com",
-      "banggayo@email.com",
-      "hi@email.com",
-      "kidec@email.com",
-      "kidecbanga@email.com",
-    ]);
-  });
+  // test("case3", () => {
+  //   expect(
+  //     problem6([
+  //       ["hi@email.com", "하이"],
+  //       ["hi@email.com", "하이연"],
+  //       ["banga@email.com", "방가"],
+  //       ["banggayo@email.com", "방가요"],
+  //       ["kidec@email.com", "키득"],
+  //       ["kidecbanga@email.com", "요요요요방가키득"],
+  //     ])
+  //   ).toEqual([
+  //     "banga@email.com",
+  //     "banggayo@email.com",
+  //     "hi@email.com",
+  //     "kidec@email.com",
+  //     "kidecbanga@email.com",
+  //   ]);
+  // });
 });
 
 describe("problem7", () => {
