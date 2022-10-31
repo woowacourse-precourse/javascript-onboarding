@@ -1,6 +1,6 @@
-function problem6(forms) {
-  var answer = [];
-  const isLimitNickname = new Map();
+const isLimitNickname = new Map();
+
+function sliceNickname(forms){
   forms.forEach((student) => {
     const [email, nickname] = student;
     for(let i =0;  i< nickname.length-1;i++) {
@@ -9,6 +9,9 @@ function problem6(forms) {
       else isLimitNickname.set(tempStr, 1);
     }
   });
+}
+
+function checkSameNickName(answer,forms) {
   forms.forEach((student) => {
     const [email, nickname] = student;
     for(let i =0;  i< nickname.length-1 ;i++) {
@@ -16,6 +19,12 @@ function problem6(forms) {
       if(isLimitNickname.get(tempStr) > 1) answer.push(email);
     }
   });
+}
+
+function problem6(forms) {
+  var answer = [];
+  sliceNickname(forms);
+  checkSameNickName(answer,forms);
   answer = [...new Set(answer.sort())];
   return answer;
 }
