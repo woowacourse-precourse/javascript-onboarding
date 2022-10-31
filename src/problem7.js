@@ -6,6 +6,7 @@ function problem7(user, friends, visitors) {
   arrangeFriends();
   const alreadyFriendArr = findUserFriend(friends, user);
   delAlreadyFriend(alreadyFriendArr);
+  findKnowTogether(friends, alreadyFriendArr);
 
   return answer;
 
@@ -39,6 +40,18 @@ function findUserFriend(friends, user) {
 
 function delAlreadyFriend(alreadyFriendArr) {
   alreadyFriendArr.forEach((friend) => delete hash[friend]);
+}
+
+function findKnowTogether(friends, alreadyFriendArr) {
+  for (let alreadyFriend of alreadyFriendArr) {
+    friends.forEach((relation) => {
+      if (relation[0] === alreadyFriend) {
+        if (hash.hasOwnProperty(relation[1])) hash[relation[1]] += 10;
+      } else if (relation[1] === alreadyFriend) {
+        if (hash.hasOwnProperty(relation[0])) hash[relation[0]] += 10;
+      }
+    });
+  }
 }
 
 module.exports = problem7;
