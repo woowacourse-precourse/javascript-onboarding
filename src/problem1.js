@@ -1,4 +1,21 @@
 function problem1(pobi, crong) {
+  if (!Array.isArray(pobi) || !Array.isArray(crong)) {
+    return -1;
+  }
+
+  if (
+    pobi[0] % 2 !== 1 ||
+    pobi[1] % 2 !== 0 ||
+    crong[0] % 2 !== 1 ||
+    crong[1] % 2 !== 0
+  ) {
+    return -1;
+  }
+
+  if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) {
+    return -1;
+  }
+
   const maxNum = (pageArr) => {
     const resultArr = [];
 
