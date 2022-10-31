@@ -3,9 +3,9 @@ function problem4(word) {
 
   function toAscii(wordString) {
     var originArray;
+    originArray = wordString.split("").map((each) => each.charCodeAt());
     return originArray;
   }
-
   function convert(originArray) {
     var newArray;
     return newArray;
