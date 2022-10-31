@@ -17,6 +17,7 @@ function problem6(forms) {
       }
     }
   });
+  answer = emailList.sort();
   return answer;
 }
 
