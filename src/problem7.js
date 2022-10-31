@@ -18,6 +18,14 @@ const map = (array, func) => {
   return resultArray;
 };
 
+const getLength = element => {
+  if (!element.length) {
+    return 0;
+  }
+
+  return element.length;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
