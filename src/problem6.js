@@ -19,3 +19,13 @@ const getValuesOf = (target) => (forms) =>
     else if (target === "nickname") return nickname;
     else throw new Error("해당 데이터는 존재하지 않습니다.");
   });
+
+const listDupCases = (nicknames) => {
+  return nicknames.reduce((reduced, nickname) => {
+    const copy = reduced.slice();
+    for (let i = 0; i < nickname.length - 1; i++) {
+      copy.push(nickname.slice(i, i + 2));
+    }
+    return copy;
+  }, []);
+};
