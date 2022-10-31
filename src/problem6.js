@@ -9,6 +9,19 @@ function problem6(forms) {
     for (let i = 0; i < nickname.length - 1; i++) {
       temp.push(nickname[i] + nickname[i + 1]);
     }
+    // 1번째 유저부터 비교를 해나간다
+    for (let j = 1; j < forms.length; j++) {
+      const nicknameForCompare = forms[j][1];
+      for (const twoLetters of temp) {
+        if (nicknameForCompare.includes(twoLetters)) {
+          const emailOfDuplicate = forms[j][0];
+          answer.add(emailOfDuplicate);
+          answer.add(email);
+          // 하나라도 발견하면 answer에 더해주고, 탐색을 중지
+          break;
+        }
+      }
+    }
     forms.shift();
   }
   return answer;
