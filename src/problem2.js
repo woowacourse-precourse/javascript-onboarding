@@ -24,10 +24,11 @@ function problem2(cryptogram) {
         rightPoiner ++;
     }
 
-  
+    cryptogramList.splice(leftPointer, rightPoiner - leftPointer);
+    
    
     }
     return cryptogramList.join("");
   }
-
+    
 module.exports = problem2;

@@ -50,8 +50,8 @@
 2. 중복 판단
  2-1. 두 포인터가 가리키는 문자가 같다.
  - [V] 해당 포인터 위치부터 rightpointer를 계속해서 더해준다.
- - [] rightpointer와 leftpointer가 달라지는 시점, cryptogramList를 그만큼 제거한다.
- - []rightpointer를 leftpointer + 1 로 바꾸고 다음 중복을 계속해서 위의 과정으로 제거 해나간다.
+ - [V] rightpointer와 leftpointer가 달라지는 시점, cryptogramList를 그만큼 제거한다.
+ - [] rightpointer를 leftpointer + 1 로 바꾸고 다음 중복을 계속해서 위의 과정으로 제거 해나간다.
 
  2-2. 두 포인터가 가리키는 문자가 다르다.
  - [V] 각각 포인터를 한칸씩 앞으로 전진한다.
