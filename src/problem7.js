@@ -31,6 +31,9 @@ function problem7(user, friends, visitors) {
   for (i = 0; i < visitors.length; i++)   //visitors 배열에 따라 score점수 계산
     score[visitors[i]] += 1;
 
+  for (i = 0; i < friendList.length; i++) //이미 친구인 유저는 추천 리스트에서 삭제
+    delete(score[friendList[i]]);
+
   //정렬
   let sortedScore = [];
   for (let value in score) 
@@ -57,7 +60,7 @@ function updateScoreList(user, friends, score) {
 }
 
 //friendList를 생성하는 함수
-function findUserFriend(user, friends) {
+function findUserFriend(user, friends, friendList) {
   if (user === friends[0])
     friendList.push(friends[1])
   if (user === friends[1])
