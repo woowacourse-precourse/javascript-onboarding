@@ -42,6 +42,26 @@ function problem7(user, friends, visitors) {
   }
   removeFollowback();
 
+  function getAnswer() {
+    scores = Object.entries(scores);
+    scores.sort((a, b) => {
+      if (a[1] !== b[1]) {
+        return b[1] - a[1];
+      }
+      a[0].localeCompare(b[0]);
+    });
+    if (scores.length > 6) {
+      while (scores.length !== 5) {
+        scores.pop();
+      }
+    }
+    answer = scores.map((element) => {
+      return element[0];
+    });
+  }
+
+  getAnswer();
+
   return answer;
 }
 
