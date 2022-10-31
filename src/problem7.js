@@ -26,6 +26,14 @@ function problem7(user, friends, visitors) {
     score[visitors[i]] === undefined ? score[visitors[i]] = 1 : score[visitors[i]]++;
   }
 
+  // 4. 사용자와 원래 친구인 사람 제외한 사람들만 추가
+  var sortable = [];
+    
+  for(const key in score) {
+    if(key !== user && !userFriends.includes(key))
+      sortable.push([key, score[key]]);
+  }
+
   return answer;
 }
 
