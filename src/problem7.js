@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
   const noFriend = findNoFriend(user, friends, userFriend);
+  calculateNoFriendScore(friends, noFriend, candidateObj);
 }
 
 function findFriend(user, friends) {
@@ -22,6 +23,18 @@ function getAllName(friends) {
 function findNoFriend(user, friends, userFriend) {
   const allName = getAllName(friends);
   return allName.filter((name) => name !== user && !userFriend.includes(name));
+}
+
+function calculateNoFriendScore(friends, noFriend, candidateObj) {
+  for (let i = 0; i < noFriend.length; i++) {
+    let inclusionCounter = 0;
+    for (let j = 0; j < friends.length; j++) {
+      if (friends[j].includes(noFriend[i])) {
+        inclusionCounter++;
+      }
+    }
+    candidateObj[noFriend[i]] = inclusionCounter * 10;
+  }
 }
 
 module.exports = problem7;
