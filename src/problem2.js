@@ -11,8 +11,9 @@ function problem2(cryptogram) {
 }
 
 /**
+ * @description 입력값으로 받은 문자열중 중첩문자를 감지해 인덱스를 숫자 배열로 반환합니다.
  * @param {string[]} strArray  문자열배열
- * @returns 중복되어 문자들의 인덱스를 숫자배열에 담아 반환합니다.
+ * @returns {number[]} dupIndexs 숫자배열
  */
 function getDupIndexs(strArray) {
   const dupIndexs = [];

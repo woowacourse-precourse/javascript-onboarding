@@ -14,8 +14,9 @@ function problem5(money) {
 }
 
 /**
+ * @description 현재 단위의 5배수와 나머지를 숫자 배열로 반환합니다.
  * @param {number} Q 숫자타입의 몫값 
- * @returns 현재 단위의 5배수와 나머지를 숫자 배열로 반환합니다.
+ * @returns {number[]}
  */
 function calculate(Q) {
     return [parseInt(Q/5, 10), parseInt(Q%5, 10)];
