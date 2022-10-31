@@ -6,6 +6,6 @@ const problem2 = (cryptogram) => {
     copiedCryptogram = copiedCryptogram.replaceAll(regex, '');
   }
   return copiedCryptogram;
-}
+};
 
 module.exports = problem2;
