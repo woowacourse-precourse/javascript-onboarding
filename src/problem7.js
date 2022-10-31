@@ -1,7 +1,21 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  answer = checkFriends(user, friends, visitors);
   return answer;
 }
+// 친구 추천 알고리즘 구현 후 최대 5명만 추천하기
+function checkFriends(user, friendsList, visitors) {
+  let friends = findFriends(user, friendsList);
+  let acqScore = findAcquaintance(user, friends, friendsList);
+  let visitorsScore = checkVisitor(visitors, friends);
+  let combine = combineResult(visitorsScore, acqScore);
+  let result = orderFriedsList(combine);
+
+  if (result.length > 5) {
+    result = result.slice(0, 5);
+  }
+  return result;
+}
+
 // 추천 리스트 점수가 높은 순으로 정렬
 // 추천 점수가 같은 경우 이름순으로 정렬
 function orderFriedsList(combine) {
