@@ -25,4 +25,6 @@ function solution(m){
     remainder=m%unitArr[i]; //나머지
     m=remainder; 
   }
+
+  return resultArr;
 }
