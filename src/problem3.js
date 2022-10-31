@@ -6,11 +6,8 @@ function problem3(number) {
       .toString()
       .split("")
       .map((e) => parseInt(e));
-
     gameNum.forEach((e) => {
-      if (game.includes(e)) {
-        answer++;
-      }
+      if (game.includes(e)) answer++;
     });
   }
   return answer;
@@ -23,5 +20,4 @@ module.exports = problem3;
 // 2. i를 문자열로 변환 후 split해 배열로 변환
 // 3. i의 원소 하나씩 돌며 game에 해당원소가 있으면 answer를 올려줌
 
-// console.log("1".split(""));
 problem3(33);
