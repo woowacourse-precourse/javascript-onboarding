@@ -23,3 +23,141 @@
 | [97, 98]   | [197, 198] | 0      |
 | [131, 132] | [211, 212] | 1      |
 | [99, 102]  | [211, 212] | -1     |
+
+# problem1 구현 코드
+
+## 메인 함수
+
+```javascript
+function problem1(pobi, crong) {
+  if (!handleExcept(pobi, crong)) {
+    return -1;
+  }
+  var answer;
+  let pobiMaxNum, crongMaxNum;
+  pobiMaxNum = getMaxNum(pobi);
+  crongMaxNum = getMaxNum(crong);
+  answer = getResult(pobiMaxNum, crongMaxNum);
+  return answer;
+}
+```
+
+## 입력 예외처리 함수
+
+- 왼쪽 페이지가 짝수 or 오른쪽 페이지가 홀수일 경우
+- 두 페이지의 차이가 1이 아닐 경우
+- 입력된 페이지가 정수가 아닐 경우
+- 입력된 페이지가 책의 페이지 범위가 아닐 경우(1~400)
+
+```
+function handleExcept(pobi, crong){
+  if((pobi[0] % 2 == 0) || (crong[0] % 2 == 0) || (pobi[1] % 2 == 1) || (crong[1] % 2 == 1)){
+    return false;
+  }
+  if(((pobi[0] + 1 != pobi[1])) || ((crong[0] + 1) != crong[1])){
+    return false;
+  }
+  if(!((Number.isInteger(pobi[0])) && (Number.isInteger(pobi[1])) && (Number.isInteger(crong[0])) && (Number.isInteger(crong[1])))){
+    return false;
+  }
+  if((pobi[0] < 1 || pobi[0] > 399) || (pobi[1] < 2 || pobi[1] > 400) || (crong[0] < 1 || crong[1] > 399) || (crong[1] < 2 || crong[1] > 400)){
+    return false;
+  }
+  return true;
+}
+```
+
+## 플레이어의 가장 큰 수를 구하는 함수
+
+```
+function getMaxNum(player){
+  let sum, mul;
+  sum = getMaxSum(player[0], player[1]);
+  mul = getMaxMul(player[0], player[1]);
+  if(sum < mul){
+    return mul;
+  }
+  return sum;
+}
+```
+
+## 왼쪽/오른쪽 페이지의 숫자합을 비교해 더 큰 합을 반환하는 함수
+
+```
+function getMaxSum(left, right){
+  let leftSum = 0, rightSum = 0;
+  leftSum = getSum(left);
+  rightSum = getSum(right);
+  if(leftSum > rightSum){
+    return leftSum;
+  }
+  else{
+    return rightSum;
+  }
+}
+```
+
+## 왼쪽/오른쪽 페이지의 숫자곱을 비교해 구해 더 큰 곱을 반환하는 함수
+
+```
+function getMaxMul(left, right){
+  let leftMul = 1, rightMul = 1;
+  leftMul = getMul(left);
+  rightMul = getMul(right);
+  if(leftMul > rightMul){
+    return leftMul;
+  }
+  else{
+    return rightMul;
+  }
+}
+```
+
+## 페이지의 각 자리수 숫자를 더해 숫자합을 리턴하는 함수
+
+```
+function getSum(num){
+  let number = num, divider = 100, sum = 0;
+  for(let i = 0; i < 3; i++){
+    sum += parseInt(number / divider);
+    number %= divider;
+    divider /= 10;
+  }
+  return sum;
+}
+```
+
+## 페이지의 각 자리수 숫자를 곱해 숫자곱을 리턴하는 함수
+
+```
+function getMul(num){
+  let number = num, divider = 100, mul = 1;
+  for(let i = 0; i < 3; i++){
+    if(parseInt(number / divider) == 0){
+      mul *= 1;
+    }
+    else{
+      mul *= parseInt(number / divider);
+    }
+    number %= divider;
+    divider /= 10;
+  }
+  return mul;
+}
+```
+
+## 승패 결과를 리턴하는 함수
+
+```
+function getResult(pobiNum, crongNum){
+  if(pobiNum > crongNum){
+    return(1);
+  }
+  else if(pobiNum < crongNum){
+    return(2);
+  }
+  else{
+    return(0);
+  }
+}
+```
