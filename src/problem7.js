@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   const initPoint = parseInt(0);
   let list = [];
   let recommendList = [];
@@ -70,6 +70,23 @@ function problem7(user, friends, visitors) {
         nameInList[1] += countedVisitor[visitorInCounted];
       }
     }
+  }
+
+  finalList.sort((a, b) => {
+    if (a > b) return 1;
+    else if (b > a) return -1;
+    else return 0;
+  });
+
+  finalList.sort((a, b) => {
+    return b[1] - a[1];
+  });
+
+  for (let i = 0; i < 5; i++) {
+    if (i === finalList.length) {
+      break;
+    }
+    answer.push(finalList[i][0]);
   }
 
   return answer;
