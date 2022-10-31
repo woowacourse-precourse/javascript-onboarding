@@ -51,6 +51,9 @@ function problem6(forms) {
       send_email = send_email.concat(add_elements);
     }
   });
+
+  answer = [...new Set(send_email)].sort();
+  return answer;
 }
 
 module.exports = problem6;
