@@ -39,7 +39,8 @@ const getScoreObjWithVisitors = ([myFriends, visitors], scoreObj) =>
     return { ...acc, [visitor]: (acc[visitor] || 0) + 1 };
   }, scoreObj);
 
-const sortRule = (a, b) => (a[1] === b[1] ? a[0] > b[0] : b[1] - a[1]);
+const sortRule = (a, b) =>
+  a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1];
 
 const getRecommendedFriends = (scoreObj) => {
   const sortedScoreArr = Object.entries(scoreObj).sort(sortRule);
