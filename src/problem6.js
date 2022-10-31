@@ -56,3 +56,5 @@ const getMatchedForms = (forms) => (cases) => {
 
 const limit = (number) => (arr) => arr.slice(number);
 
+const sort = (arr) => [...arr].sort();
+
