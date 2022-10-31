@@ -2,11 +2,13 @@ function problem7(user, friends, visitors) {
   if (!inputExecption(user, friends, visitors)) return false;
   var answer;
   let userFriend = [];
+  let acquaintanceArr = [];
+
   for (let i = 0; i < friends.length; i++) {
       let findUserFriend = friends[i].indexOf(user);
       if (findUserFriend > 0) userFriend.push(friends[i][1 - findUserFriend]);
   }
-  let acquaintanceArr = [];
+  
   for (let i = 0; i < userFriend.length; i++) {
     for (let j = 0; j < friends.length; j++) {
       if (friends[j][i] != user) {
