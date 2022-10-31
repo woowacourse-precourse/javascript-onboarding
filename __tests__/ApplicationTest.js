@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
 const problem3 = require("../src/problem3");
@@ -18,14 +20,23 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  test("case2 - flipped", () => {
+    expect(problem1([211, 212], [131, 132])).toEqual(2);
+  });
 });
 
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
+
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
+  });
+
+  test("case3", () => {
+    expect(problem2("abbba")).toEqual("");
   });
 });
 
@@ -65,6 +76,14 @@ describe("problem6", () => {
         ["nowm@email.com", "이제엠"],
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+
+  test("does not check duplicates for invalid emails", () => {
+    const forms = [
+      ["test@example.com", "테스트"],
+      ["test@email.com", "테스트"],
+    ];
+    expect(problem6(forms)).toEqual([]);
   });
 });
 
