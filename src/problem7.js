@@ -1,6 +1,10 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = result(user, friends, visitors);
   return answer;
+}
+function result(user, friends, visitors) {
+  const userMap = new Map();
+  friends.forEach((item) => setUserMap(userMap, item));
 }
 
 const ADD_FRIEND_SCORE = 10;
