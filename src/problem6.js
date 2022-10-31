@@ -3,6 +3,13 @@ function problem6(forms) {
 
   function getDictionary(forms) {
     var dictionaryMap = new Map();
+    forms.forEach((crew) => {
+      for (i = 0; i < crew[1].length - 1; i++) {
+        var word = crew[1].slice(i, i + 2);
+        if (!dictionaryMap.has(word)) dictionaryMap.set(word, 0);
+        else dictionaryMap.set(word, dictionaryMap.get(word) + 1);
+      }
+    });
     return dictionaryMap;
   }
 
