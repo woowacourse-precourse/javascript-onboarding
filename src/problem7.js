@@ -1,6 +1,6 @@
-user = "mrko",
-friends = [["donut", "andole"],["donut", "jun"],["donut", "mrko"],["shakevan", "andole"],["shakevan", "jun"],["shakevan", "mrko"],]
-visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
+// user = "mrko",
+// friends = [["donut", "andole"],["donut", "jun"],["donut", "mrko"],["shakevan", "andole"],["shakevan", "jun"],["shakevan", "mrko"],]
+// visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
 
 function problem7(user, friends, visitors) {
   let answer;
@@ -17,15 +17,15 @@ function problem7(user, friends, visitors) {
   console.log(userFriends); // [ 'donut', 'shakevan' ]
 
   // 기능 2
-  score = makeScore(relation, userFriends);
+  score = makeScore(relation, userFriends, user);
   console.log(score); // { andole: 0, jun: 0 }
 
   // 기능 3
-  bothFriendCheck(relation, userFriends, score);
+  bothFriendCheck(relation, userFriends, score, user);
   console.log(score); // { andole: 20, jun: 20 }
 
   // 기능 4
-  checkVisitors(visitors, score);
+  checkVisitors(userFriends, visitors, score);
   console.log(score); // { andole: 20, jun: 20, bedi: 3, donut: 1, shakevan: 1 }
 
   // 기능 5
@@ -55,7 +55,7 @@ function makeRelation(friends) {
 }  
 
 // 기능 2. score 딕셔너리에 id 할당
-function makeScore(relation, userFriends) {
+function makeScore(relation, userFriends, user) {
   let score = {};
   let relationKey = Object.keys(relation); // "key"값만
   
@@ -73,7 +73,7 @@ function makeScore(relation, userFriends) {
 }
 
 // 기능 3. 함께 아는 친구 count
-function bothFriendCheck(relation, userFriends, score) {
+function bothFriendCheck(relation, userFriends, score, user) {
   let relationKey = Object.keys(relation); // "key"값만
 
   for (let friend of relationKey) {
@@ -106,13 +106,18 @@ function bothFriendCheck(relation, userFriends, score) {
 }
 
 // 기능 4. 방문 횟수 확인
-function checkVisitors(visitors, score) {
+function checkVisitors(userFriends, visitors, score) {
   let scoreKey = Object.keys(score); // "key"값만
   console.log(scoreKey);
   console.log(visitors);
 
   for (let v of visitors) {
     console.log("v: ", v);
+
+    if (userFriends.includes(v)) { // 이미 친구인 경우 제외
+      continue;
+    }
+
     if (scoreKey.includes(v)) { // score 배열에 이미 존재하는 경우
       console.log("이미 존재");
       score[v] += 1;
@@ -165,7 +170,7 @@ function maxFive(scoreArray) {
     }
   } else {
     for (score of scoreArray) {
-      if (checkZero(i) == true) { // 기능 7
+      if (checkZero(score) == true) { // 기능 7
         answer.push(score[0]);
       }
     }
@@ -183,7 +188,6 @@ function checkZero(score) {
   }
 }
 
+// problem7(user,friends, visitors);
 
-problem7(user,friends, visitors);
-
-// module.exports = problem7;
+module.exports = problem7;
