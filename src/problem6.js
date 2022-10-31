@@ -8,6 +8,11 @@ function result(forms) {
     return checkEmail(email) && isKorea(nickname);
   });
 
+  const twoElementNickNameMap = new Map();
+  forms.forEach(([_, nickname]) => {
+    setNickNameMap(twoElementNickNameMap, subNickNameTwoElement(nickname));
+  });
+
   return forms;
 }
 
