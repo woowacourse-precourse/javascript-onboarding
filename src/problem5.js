@@ -1,27 +1,16 @@
 function problem5(money) {
-  var currentMoney = money;
   var answer;
-  var mapper = new Map([
-    [50000, 0],
-    [10000, 0],
-    [5000, 0],
-    [1000, 0],
-    [500, 0],
-    [100, 0],
-    [50, 0],
-    [10, 0],
-    [1, 0],
-  ]);
 
-  mapper.forEach((_, key) => {
-    var quotient = parseInt(currentMoney / key);
-    if (quotient > 0) {
-      mapper.set(key, quotient);
-      currentMoney = currentMoney - key * quotient;
-    }
-  });
+  function mapping() {}
 
-  answer = Array.from(mapper.values());
+  function convert(priceMap, money) {
+    var resultArray;
+    return resultArray;
+  }
+
+  var priceMap = mapping();
+  answer = convert(priceMap, money);
+
   return answer;
 }
 
