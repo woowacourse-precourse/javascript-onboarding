@@ -75,6 +75,43 @@ function sliceFiveUser(deletedZeroValue) {
   return username;
 }
 
+function isUserId(user, friends, visitors) {
+  const userId = [];
+  const isUserIdArr = [];
+  const userIdLength = [];
+  let isUserIdLength = false;
+  userId.push(user);
+
+  friends.flatMap((friend) => {
+    for (let f of friend) {
+      userId.push(f);
+    }
+  });
+
+  for (let visitor of visitors) {
+    userId.push(visitor);
+  }
+
+  [...new Set(userId)].map((user) => {
+    const regex = /^[a-z]*$/;
+    isUserIdArr.push(regex.test(user));
+    userIdLength.push(user.length);
+  });
+
+  userIdLength.map((item) => {
+    if (item < 1 || item > 30) {
+      isUserIdLength = true;
+    }
+  });
+
+  if (!isUserIdArr.every((item) => item === true)) {
+    throw "아이디는 알파벳 소문자로 작성해주세요";
+  }
+  if (isUserIdLength) {
+    throw `아이디는 1이상 30이하로 작성해주세요`;
+  }
+}
+
 function problem7(user, friends, visitors) {
   const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
