@@ -1,9 +1,3 @@
-function validate_email_form(email) {
-  return (
-    email.includes("@email.com") && email.length >= 11 && email.length < 20
-  );
-}
-
 function remove_duplicated_email(map) {
   let set = new Set();
   for (let substr of map.keys()) {
@@ -15,14 +9,13 @@ function remove_duplicated_email(map) {
       set.add(email);
     }
   }
-
   return set;
 }
 
 function get_duplication(forms) {
   let map = new Map(); // substr, [email]
   for (let [email, name] of forms) {
-    if (!validate_email_form(email) || name.length === 1) {
+    if (email.includes("@email.com") && name.length === 1) {
       continue;
     }
     for (let i = 0; i < name.length - 1; ++i) {
@@ -34,7 +27,7 @@ function get_duplication(forms) {
       map.set(temp_str, email_array);
     }
   }
-  remove_duplicated_email(map);
+  return remove_duplicated_email(map);
 }
 
 function problem6(forms) {
