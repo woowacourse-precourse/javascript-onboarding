@@ -8,14 +8,23 @@
  * 3. 변환된 문자열을 return 한다.
  */
 
-/**
- * @enum {number}
- */
-const ALPHABET_CODE = {
+const alphabet = {
   MIN_LOWER: "a".charCodeAt(),
   MAX_LOWER: "z".charCodeAt(),
   MIN_UPPER: "A".charCodeAt(),
   MAX_UPPER: "Z".charCodeAt(),
+  isLower(code) {
+    return this.MIN_LOWER <= code && code <= this.MAX_LOWER;
+  },
+  isUpper(code) {
+    return this.MIN_UPPER <= code && code <= this.MAX_UPPER;
+  },
+  toUpper(lowerCode) {
+    return String.fromCharCode(this.MIN_LOWER + this.MAX_LOWER - lowerCode);
+  },
+  toLower(upperCode) {
+    return String.fromCharCode(this.MIN_UPPER + this.MAX_UPPER - upperCode);
+  },
 };
 
 /**
@@ -23,29 +32,13 @@ const ALPHABET_CODE = {
  */
 function changeAlphabet(char) {
   const code = char.charCodeAt();
-  if (ALPHABET_CODE.MIN_LOWER <= code && code <= ALPHABET_CODE.MAX_LOWER) {
-    return changeLowerToUpper(code);
+  if (alphabet.isLower(code)) {
+    return alphabet.toUpper(code);
   }
-  if (ALPHABET_CODE.MIN_UPPER <= code && code <= ALPHABET_CODE.MAX_UPPER) {
-    return changeUpperToLower(code);
+  if (alphabet.isUpper(code)) {
+    return alphabet.toLower(code);
   }
   return char;
-}
-
-/**
- * @param {number} code
- */
-function changeLowerToUpper(code) {
-  const newCode = ALPHABET_CODE.MIN_LOWER + (ALPHABET_CODE.MAX_LOWER - code);
-  return String.fromCharCode(newCode);
-}
-
-/**
- * @param {number} code
- */
-function changeUpperToLower(code) {
-  const newCode = ALPHABET_CODE.MIN_UPPER + (ALPHABET_CODE.MAX_UPPER - code);
-  return String.fromCharCode(newCode);
 }
 
 /**
