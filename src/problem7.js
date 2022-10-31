@@ -49,6 +49,20 @@ function scoreInVisitors(visitors, realFriends, dict) {
   }
 }
 
+function sortDictionary(dict) {
+  // 이름 순 정렬. 같은 점수일 때, 미리 이름 순 먼저 정렬.
+  const sortedDictByKey = {};
+  Object.keys(dict)
+    .sort()
+    .forEach(function (key) {
+      sortedDictByKey[key] = dict[key];
+    });
+  // 점수 순 정렬, 여기서는 배열로 반환된다.
+  let newArray = Object.entries(sortedDictByKey).sort((a, b) => b[1] - a[1]);
+
+  return newArray;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
   let realFriends;
@@ -63,6 +77,20 @@ function problem7(user, friends, visitors) {
 
   // visitors 배열에서 추천 점수 매기기
   scoreInVisitors(visitors, realFriends, dict);
+
+  // { 아이디 : 점수 }로 이루어진 딕셔너리 정렬. (점수순 > 이름순)
+  let sortedArray = sortDictionary(dict);
+  // 최대 5명 추천이므로, 5명만 도출.
+  if (sortedArray.length > 5) {
+    limit = 5;
+  } else {
+    limit = sortedArray.length;
+  }
+  // answer에 결과 담기.
+  for (let i = 0; i < limit; i++) {
+    answer.push(sortedArray[i][0]);
+  }
+
   return answer;
 }
 
