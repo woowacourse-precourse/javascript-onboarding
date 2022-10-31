@@ -34,6 +34,16 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let i = 0; i < visitors.length; i++) {
+    if (!userFriend.includes(visitors[i])) {
+      if (scoreDict[visitors[i]]) {
+        scoreDict[visitors[i]]++;
+      } else {
+        scoreDict[visitors[i]] = 1;
+      }
+    }
+  }
+
   return answer;
 }
 
