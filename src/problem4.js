@@ -17,7 +17,7 @@ function problem4(word) {
         continue;
     }
 }
-  var answer;
+  var answer = wordArray.join('');
   return answer;
 }
 
