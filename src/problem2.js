@@ -11,6 +11,9 @@ function problem2(cryptogram) {
     }
   }
 
+  for (let i = 0; i < stack.length; i++) {
+    answer += stack[i];
+  }
   return answer;
 }
 module.exports = problem2;
