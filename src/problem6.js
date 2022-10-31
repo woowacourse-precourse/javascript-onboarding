@@ -37,6 +37,20 @@ const isIncludeConsecutiveLetter = (consecutiveLetterMap, userNickName) =>
     userNickName.includes(consecutiveLetter)
   );
 
+const gatherEmailFromUsersUsingConsecutiveLetter = (args) => {
+  const { forms, consecutiveLetterMap } = args;
+  const userEmailArray = [];
+  forms.forEach((userData) => {
+    const [userEmail, userNickName] = userData;
+
+    if (isIncludeConsecutiveLetter(consecutiveLetterMap, userNickName)) {
+      userEmailArray.push(userEmail);
+    }
+  });
+
+  return { ...args, userEmailArray };
+};
+
 function problem6(forms) {
   var answer;
   return answer;
