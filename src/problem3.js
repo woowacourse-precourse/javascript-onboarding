@@ -1,6 +1,5 @@
 function problem3(number) {
-  let clapNumList;
-  clapNumList = checkClapNum(number);
+  let clapNumList = checkClapNum(number);
   return sumClapNumList(clapNumList);
 }
 function checkClapNum(number) {

@@ -67,7 +67,7 @@ npm test
 - 미션은 [javascript-onboarding](https://github.com/woowacourse-precourse/javascript-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
-## 과제 별 기능 목록
+## 과제 별 기능 구현 목록
 
 ### problem1
 
@@ -79,6 +79,9 @@ npm test
 2. 배열의 총합을 구하는 함수
 
 ### problem4
+
+1. ascii코드를 통해 소문자와 대문자로 나누어 청개구리 사전에 따라 변환하는 함수 구현
+2. answer array를 하나의 문자열로 합쳐서 return
 
 ### problem5
 
