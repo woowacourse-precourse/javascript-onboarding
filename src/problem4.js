@@ -1,5 +1,5 @@
 function problem4(word) {
-  if (validateWord(word)) {
+  if (isValidateWord(word)) {
     return replaceWord(word);
   }
   return -1;
@@ -19,7 +19,7 @@ const replaceWord = (word) => {
   return result.join('');
 };
 
-const validateWord = (word) => {
+const isValidateWord = (word) => {
   if (typeof word !== 'string') {
     return false;
   }

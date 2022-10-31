@@ -1,5 +1,5 @@
 function problem6(forms) {
-  if (validateForms(forms) && validateName(forms) && validateEmail(forms)) {
+  if (isValidateForms(forms) && isValidateName(forms) && isValidateEmail(forms)) {
     return sortEmail(removeDuplicatedName(forms));
   }
   return -1;
@@ -26,7 +26,7 @@ const removeDuplicatedName = (forms, result = []) => {
   return Array.from(new Set(result));
 };
 
-const validateForms = (forms) => {
+const isValidateForms = (forms) => {
   if (typeof forms !== 'object') {
     return false;
   }
@@ -36,7 +36,7 @@ const validateForms = (forms) => {
   return true;
 };
 
-const validateName = (forms) => {
+const isValidateName = (forms) => {
   for (let i = 0; i < forms.length; i += 1) {
     const name = forms[i][1];
     if (!/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(name)) {
@@ -49,7 +49,7 @@ const validateName = (forms) => {
   return true;
 };
 
-const validateEmail = (forms) => {
+const isValidateEmail = (forms) => {
   for (let i = 0; i < forms.length; i += 1) {
     const email = forms[i][0];
     if (typeof email !== 'string') {

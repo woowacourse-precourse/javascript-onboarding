@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  if (validatePages(pobi) && validatePages(crong)) {
+  if (isValidatePages(pobi) && isValidatePages(crong)) {
     return getWinner(pobi, crong);
   }
   return -1;
@@ -39,7 +39,7 @@ const getWinner = (pobi, crong) => {
   return winner;
 };
 
-const validatePages = (pages) => {
+const isValidatePages = (pages) => {
   if (typeof pages[0] !== 'number' || typeof pages[1] !== 'number') {
     return false;
   }

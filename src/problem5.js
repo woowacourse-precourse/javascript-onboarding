@@ -1,5 +1,5 @@
 function problem5(money) {
-  if (validateCash(money)) {
+  if (isValidateCash(money)) {
     return getCash(money);
   }
   return -1;
@@ -14,7 +14,7 @@ const getCash = (money) => {
   });
 };
 
-const validateCash = (money) => {
+const isValidateCash = (money) => {
   if (typeof money !== 'number') {
     return false;
   }
