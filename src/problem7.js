@@ -1,5 +1,6 @@
 const userObject = new Object();
 const scoreObject = {};
+
 function friendsCheck(user, friends) {
   friends.forEach((friend) => {
     if (!userObject.hasOwnProperty(friend[0])) {
@@ -14,6 +15,10 @@ function friendsCheck(user, friends) {
       userObject[friend[1]].push(friend[0]);
     }
   });
+  addFriendScore(user);
+}
+
+function addFriendScore(user) {
   const userFriendList = userObject[user];
   for (const [key, value] of Object.entries(userObject)) {
     if (key !== user) {
@@ -27,7 +32,7 @@ function friendsCheck(user, friends) {
   }
 }
 
-function visitorsCheck(user, visitors) {
+function addVisitorScore(user, visitors) {
   visitors.map((v) => {
     if (!userObject[user].includes(v)) {
       scoreObject[v] = scoreObject[v] === undefined ? 1 : scoreObject[v] + 1;
@@ -37,7 +42,7 @@ function visitorsCheck(user, visitors) {
 
 function problem7(user, friends, visitors) {
   friendsCheck(user, friends);
-  visitorsCheck(user, visitors);
+  addVisitorScore(user, visitors);
   var answer = [];
   for (const [name, s] of Object.entries(scoreObject)) {
     answer.push([name, s]);
@@ -54,5 +59,4 @@ function problem7(user, friends, visitors) {
   answer.map((data) => result.push(data[0])).slice(0, 5);
   return result;
 }
-
 module.exports = problem7;
