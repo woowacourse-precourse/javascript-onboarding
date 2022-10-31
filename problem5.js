@@ -14,6 +14,7 @@ function chageMoney(money) {
 
     if (resultNum !== 0) {
       answer.push(resultNum);
+      money -= moneyArr[i] * resultNum;
     } else {
       answer.push(0);
     }
