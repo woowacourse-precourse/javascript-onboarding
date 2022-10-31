@@ -1,12 +1,13 @@
 function problem2(cryptogram) {
-  const uniqueList = [];
-  const characterList = cryptogram.split('');
+  const regExp = /([a-z])\1+/g;
 
-  characterList.forEach((character) => {
-    character === uniqueList[uniqueList.length - 1] ? uniqueList.pop() : uniqueList.push(character);
-  });
+  while (true) {
+    const cryptogramLength = cryptogram.length;
+    cryptogram = cryptogram.replace(regExp, '');
+    if (cryptogram.length === cryptogramLength) break;
+  }
 
-  return uniqueList.join('');
+  return cryptogram;
 }
 
 module.exports = problem2;
