@@ -28,6 +28,13 @@ function problem7(user, friends, visitors) {
   }
   getNetworkScore(user, friends, userFriends);
 
+  function getVisitScore(visitors) {
+    visitors.forEach((visitor) => {
+      scores[visitor] = scores[visitor] + 1 || 1;
+    });
+  }
+  getVisitScore(visitors);
+
   return answer;
 }
 
