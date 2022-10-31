@@ -31,4 +31,16 @@ function findUsersKnowTogether(user, userFriends, friends) {
     .filter((element) => element);
 }
 
+function addScoreByTogetherFriends(scoreObj, togetherFriends) {
+  const newScoreObj = { ...scoreObj };
+  togetherFriends.forEach((friend) => {
+    if (newScoreObj[friend]) {
+      newScoreObj[friend] += 10;
+    } else {
+      newScoreObj[friend] = 10;
+    }
+  });
+  return newScoreObj;
+}
+
 module.exports = problem7;
