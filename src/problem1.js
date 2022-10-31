@@ -15,7 +15,13 @@ function calculator(pages) {
 function problem1(pobi, crong) {
   var answer = [];
   answer.push(calculator(pobi), calculator(crong));
-  return answer;
+  if (answer[0] > answer[1]) {
+    return 1;
+  } else if (answer[0] === answer[1]) {
+    return 0;
+  } else {
+    return 2;
+  }
 }
 
 module.exports = problem1;
