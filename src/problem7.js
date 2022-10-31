@@ -1,6 +1,14 @@
 function problem7(user, friends, visitors) {
   var answer;
 
+  const userContainer = new UserContainer();
+  user.addUser(user);
+
+  friends.forEach((friend) => {
+    const [nameA, nameB] = friend;
+    userContainer.addFriend(nameA, nameB);
+  });
+
   return answer;
 }
 
@@ -25,12 +33,25 @@ class User {
     this.score = 0;
     this.friends = [];
   }
+  addFriend(name) {
+    this.friends.push(name);
+  }
+  addScore(score) {
+    this.score += score;
+  }
 }
+
 class UserContainer {
   constructor() {
     this.container = {};
   }
   addUser(name) {
     if (!this.container[name]) this.container[name] = new User(name);
+  }
+  addFriends(nameA, nameB) {
+    this.addUser(nameA);
+    this.addUser(nameB);
+    this.container[nameA].addFriend(nameB);
+    this.container[nameB].addFriend(nameA);
   }
 }
