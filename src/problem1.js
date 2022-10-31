@@ -31,6 +31,9 @@ function page(pobi ,crong) {
   }
   new peopleCalc(pobi,pobisCal);
   new peopleCalc(crong,crongsCal);  
+  const pobisBigger = Math.max(...pobisCal);
+  const crongsBigger = Math.max(...crongsCal);
+
 }
 
 module.exports = problem1;
