@@ -26,6 +26,23 @@ function problem1(pobi, crong) {
       return 0
     }
   }
+
+  function isError(pages) {
+    const [left, right] = pages;
+    // 시작페이지
+    if (left <= MIN || right <= MIN) {
+      return true;
+    }
+    // 마지막 페이지
+    if (left >= MAX || right >= MAX) {
+      return true;
+    }
+    // 페이지 연속 검사
+    if (right - left !== 1) {
+      return true;
+    }
+    return false;
+  }
 }
 
 module.exports = problem1;
