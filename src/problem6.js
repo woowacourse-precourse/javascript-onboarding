@@ -11,7 +11,7 @@ function nicknameValidator(users, duplicateWords) {
     users.forEach(
       user => user[1].includes(duplicateWord) && duplicated.push(user[0])
     );
-    if (duplicated.length >= 2) {
+    if (isDuplicatedNickname(duplicated)) {
       duplicateNicknameUsers.push(...duplicated);
     }
   }
@@ -27,5 +27,9 @@ function nicknameCombination(nickname) {
   }
 
   return nicknameCombi;
+}
+
+function isDuplicatedNickname(duplicated) {
+  return duplicated.length >= 2 ? true : false;
 }
 module.exports = problem6;
