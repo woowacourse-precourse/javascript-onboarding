@@ -36,6 +36,19 @@ function isvalid(pobi, crong) {
   return true
 }
 
+/**
+ * 각 자리 숫자를 모두 더하고 곱해서 가장 큰 수를 반환하는 함수
+ * @param {Array} 책 페이지 값 들어오기 때문에 길이는 2 
+ * @returns 각 자리 숫자의 합과 곱 중 가장 큰 수를 반환
+ */
+function setScore(arr) {
+  let score = 0;
+  for (let i = 0; i < 1; i++) {
+    score = Math.max(sum(arr[i]), sum(arr[i+1]), multiply(arr[i]), multiply(arr[i+1]))
+  }
+  return score
+}
+
 function sum(n) {
   let sumArr = (n+"").split("").map(x => parseInt(x))
   return sumArr.reduce((acc, cur) => acc + cur, 0)
