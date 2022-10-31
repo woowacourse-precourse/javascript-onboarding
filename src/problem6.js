@@ -14,6 +14,11 @@ function FindDuplicates(arry) {
   ];
 }
 
+//중복된 부분문자열을 가지고 있는 이름 찾는 함수
+function isInclued(arr, string) {
+  return arr.some((str) => string.includes(str));
+}
+
 function problem6(forms) {
   var answer;
   return answer;
