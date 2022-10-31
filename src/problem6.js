@@ -3,6 +3,16 @@ function problem6(forms) {
 
   for (let form of forms) {
     const cases = words(form[1]);
+    // 다른 사람들 닉네임이 이 단어 포함하는지 확인
+    for (let word of cases) {
+      for (let index = 0; index < forms.length; index++) {
+        if (forms[index][0] === form[0]) continue;
+        if (forms[index][1].includes(word)) {
+          answer.push(forms[index][0]);
+          answer.push(form[0]);
+        }
+      }
+    }
   }
 
   return answer;
