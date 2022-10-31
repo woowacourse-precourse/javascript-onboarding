@@ -41,20 +41,21 @@ function find_friend_list(user, friends) {
 //2. 친구의 친구 명단 구하기
 function common_friend(user, friends) {
   let friend_list = find_friend_list(user, friends);
-  let common_friend_list = new Set();
+  let common_friend_list = [];
   friends.map((friend) => {
     //친구명단에 있는 친구의 친구이며, 나 또는 나의 친구가 아닌 친구면 추가
     if (friend_list.includes(friend[0]) && !friend_list.includes(friend[1]) && friend[1] != user)
-      common_friend_list.add(friend[1]);
+      common_friend_list.push(friend[1]);
     if (friend_list.includes(friend[1]) && !friend_list.includes(friend[0]) && friend[0] != user)
-      common_friend_list.add(friend[0]);
+      common_friend_list.push(friend[0]);
   });
   return Array.from(common_friend_list);
 }
 
-//3. 친구가 이닌 명단 구하기
+//3. 친구가 아닌 사람의 명단 구하기
 function people_list(user, friends, visitors) {
   let user_list = new Set();
+  //friends와 visitors에 있는 모든 인원을 추가하고, 본인과 본인의 친구 명단은 모두 삭제함.
   friends.map((friend) => {
     user_list.add(friend[0]);
     user_list.add(friend[1]);
@@ -74,7 +75,7 @@ function people_list(user, friends, visitors) {
   }
   return dictObj;
 }
-// 3. 점수계산
+// 3. 점수계산 - 친구의 친구면
 function calculate_score(user, friends, visitors) {
   let user_dict = people_list(user, friends, visitors);
   let common_friend_list = common_friend(user, friends);
@@ -82,7 +83,7 @@ function calculate_score(user, friends, visitors) {
     user_dict[common] += 10;
   });
   visitors.map((visitor) => {
-    if (common_friend_list.includes(visitor)) user_dict[visitor] += 1;
+    user_dict[visitor] += 1;
   });
 
   return user_dict;
