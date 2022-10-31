@@ -56,5 +56,12 @@ function problem6(forms) {
     return emailList;
   };
 
+  const overlapWordList = writeOverlapWord(forms);
+  const overlapEmailList = checkOverlapWord(forms, overlapWordList);
+  // 중복된 이메일 주소 삭제 후 오름차순 정렬
+  const result = [ ...new Set(overlapEmailList)];
+  return result.sort();
+
 }
+
 module.exports = problem6;
