@@ -2,6 +2,29 @@ function problem7(user, friends, visitors) {
   var answer;
   return answer;
 }
+// 점수 체크
+function combineResult(visitorsScore, acqScore) {
+  let combine = {};
+  let visitorsKey = Object.keys(visitorsScore);
+  let acqKey = Object.keys(acqScore);
+
+  for (let i = 0; i < visitorsKey.length; i++) {
+    if (visitorsKey[i] in combine) {
+      combine[visitorsKey[i]] =
+        combine[visitorsKey[i]] + visitorsScore[visitorsKey[i]];
+    } else {
+      combine[visitorsKey[i]] = visitorsScore[visitorsKey[i]];
+    }
+  }
+  for (let i = 0; i < acqKey.length; i++) {
+    if (acqKey[i] in combine) {
+      combine[acqKey[i]] = combine[acqKey[i]] + acqScore[acqKey[i]];
+    } else {
+      combine[acqKey[i]] = acqScore[acqKey[i]];
+    }
+  }
+  return combine;
+}
 // 방문자 수 체크
 function checkVisitor(visitorsList, friends) {
   let score = {};
