@@ -10,6 +10,20 @@ function isUpper(asciiNum) {
   return 0;
 }
 
+function caseUpper(asciiNum) {
+  let gap = Math.abs(77.5 - asciiNum) * 2;
+  if (asciiNum < 77.5)
+    return asciiNum + gap;
+  return asciiNum - gap;
+}
+
+function caseLower(asciiNum) {
+  let gap = Math.abs(109.5 - asciiNum) * 2;
+  if (asciiNum < 109.5)
+    return asciiNum + gap;
+  return asciiNum - gap;
+}
+
 function convertChar(ch) {
   let asciiNum = ch.charCodeAt(0);
   if (!isAlpha(asciiNum))
