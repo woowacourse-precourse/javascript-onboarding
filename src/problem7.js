@@ -14,28 +14,62 @@
  * 6. 추천할 친구가 없는 경우는 주어지지 않는다.
  */
 
-const getScoreMapByVisitors = visitors => {
-  visitors.map()
+const getScoreByVisitors = (visitors, score) => {
+  visitors.map(visitor => {
+    score[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
+  })
 }
+
+
+const getMyFriends = (user, friends) => {
+  let myFriends = []
+  friends.map(friendPair => {
+    if (friendPair.includes(user)) {
+      myFriends.push(friendPair.filter(friend => friend !== user)[0])
+    }
+  })
+
+  return myFriends;
+}
+
+const getScoreByFriends = (friends, myFriends, score) => {
+  friends.map(friendPair => {
+    if (myFriends.includes(friendPair[0])) {
+      if(score[friendPair[1]]) {
+        score[friendPair[1]] += 10
+      } else {
+        score[friendPair[1]] = 10
+      }
+    } else if (myFriends.includes(friendPair[1])) {
+      if(score[friendPair[0]]) {
+        score[friendPair[0]] += 10
+      } else {
+        score[friendPair[0]] = 10
+      }
+    }
+  })
+}
+
+const sortScore = score => Object.fromEntries(Object.entries(score).sort(([,a],[,b]) => a > b? -1: 1))
+
 
 
 function problem7(user, friends, visitors) {
-  let answer = {};
+  let score = {};
+  let myFriends = getMyFriends(user, friends);
 
-  visitors.map(visitor => {
-    answer[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
-  })
+  getScoreByVisitors(visitors ,score);
+  getScoreByFriends(friends, myFriends, score);
+  score = sortScore(score)
+  
+  myFriends.push(user)
 
-  return answer;
+  let filteredKeys = Object.keys(score).filter(userId => {
+    return !(myFriends.includes(userId))
+  });
+
+  return filteredKeys;
 }
-
-console.log(
-  problem7(
-    "mrko", 
-    [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], 
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-)
 
 
 module.exports = problem7;
