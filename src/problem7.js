@@ -71,18 +71,24 @@ const SnsFriendRecomander = {
     this.makeRelations();
     this.calculateScore();
     let scoresArray = Object.entries(this.scores);
-    scoresArray.sort((a, b) => {
-      if (a[1] === b[1]) {
-        return a[0] > b[0];
-      }
-      return a[1] - b[1];
-    });
-    scoresArray = scoresArray.splice(0, 5);
-    return scoresArray.map((score) => {
-      if (score[0] !== 0) {
-        return score[0];
-      }
-    });
+    return scoresArray
+      .sort((a, b) => {
+        if (a[1] === b[1]) {
+          return a[0] > b[0];
+        }
+        return b[1] - a[1];
+      })
+      .map((score) => {
+        if (
+          score[0] !== 0 &&
+          !this.relations[this.user].find((e) => e === score[0])
+        ) {
+          return score[0];
+        }
+      })
+      .filter((other) => other !== undefined)
+      .filter((other) => other !== this.user)
+      .splice(0, 5);
   },
 };
 
