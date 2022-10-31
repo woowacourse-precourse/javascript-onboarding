@@ -34,6 +34,15 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test('해독 순서 확인', () => {
+    expect(problem2('abbaa')).toEqual('a');
+  });
+  test('3개 이상 반복(1)', () => {
+    expect(problem2('zyaaalllelyz')).toEqual('zyelyz');
+  });
+  test('3개 이상 반복(2)', () => {
+    expect(problem2('pobbbciiiicbi')).toEqual('pobi');
+  });
 });
 
 describe("problem3", () => {
