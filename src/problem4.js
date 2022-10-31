@@ -6,7 +6,7 @@ function problem4(word) {
     } else if (word.charCodeAt(i) >= 97 && word.charCodeAt(i) <= 122) {
       answer = answer + String.fromCodePoint(123 - (word.charCodeAt(i) - 96));
     } else {
-      answer = answer + ' ';
+      answer = answer + word[i];
     }
   }
 
