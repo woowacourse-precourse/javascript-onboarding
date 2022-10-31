@@ -2,10 +2,10 @@ function problem7(user, friends, visitors) {
   var answer;
   const friendList = makeFriendList(friends)
   const userFriend = friendList[user]
-  let preRecommendObj= sharedFriend(userFriend,friendList)
-  preRecommendObj = visitFriend(visitors, preRecommendObj)
+  let recommendObj= sharedFriend(user,userFriend,friendList)
+  recommendObj = visitFriend(userFriend, visitors, recommendObj)
 
-  let sortedArr = sortedScore(preRecommendObj)
+  let sortedArr = sortedScore(recommendObj)
   answer = preAnswer(sortedArr)
   return answer;
 }
@@ -15,15 +15,15 @@ function makeFriendList(friends){
     for(let i in item){
       if(!obj[item[i]]){
           obj[item[i]]=[item[1-i]]
-      }else{
-          obj[item[i]].push(item[1-i])
+          continue
       }
+      obj[item[i]].push(item[1-i])
     }
     return obj
   },{})
 }
 
-function sharedFriend(userFriend, friendList){
+function sharedFriend( user,userFriend, friendList){
   let sharedObj = {}
   for(let name of Object.keys(friendList)){
     //user 제외 //이미 친구인 사람 제거.
@@ -43,7 +43,7 @@ function sharedFriend(userFriend, friendList){
 }
 
 function visitFriend(userFriend, visitors, recommendObj){
-  return visitors.reduce(function(obj,item){
+  let result = visitors.reduce(function(obj,item){
     if(isFriend(item,userFriend)){
       return obj
     }
@@ -53,6 +53,7 @@ function visitFriend(userFriend, visitors, recommendObj){
     obj[item]+=1
     return obj
   },recommendObj)
+  return result
 }
 
 function isFriend(name, userFriend){

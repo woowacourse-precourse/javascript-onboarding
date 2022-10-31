@@ -11,8 +11,8 @@ function problem3(number) {
 }
 
 function check369(num){
-  const arr_369=["3","6","9"]
-  if(arr_369.includes(num)){
+  const arr369 = ["3", "6", "9"];
+  if(arr369.includes(num)){
     return true
   }
   return false

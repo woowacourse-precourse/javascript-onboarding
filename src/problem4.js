@@ -9,13 +9,13 @@ function problem4(word) {
 }
 
 function changeChar(char){
-  let code_num = char.charCodeAt(0)
-  if(code_num>=65 && code_num<=90){
-      code_num = 90-(code_num-65)
-  }else if(code_num>=97 && code_num<=122){
-      code_num = 122-(code_num-97)
+  let codeNum = char.charCodeAt(0)
+  if(codeNum>=65 && codeNum<=90){
+      codeNum = 90-(codeNum-65)
+  }else if(codeNum>=97 && codeNum<=122){
+      codeNum = 122-(codeNum-97)
   }
-  return String.fromCharCode(code_num)
+  return String.fromCharCode(codeNum)
 }
 
 module.exports = problem4;
