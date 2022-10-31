@@ -19,6 +19,14 @@ function getSlices(forms, allSlices, index) {
   }
 }
 
+function getAllSlices(forms, allSlices) {
+  //크루들의 목록에 존재하는 모든 가능한 중복 문자열을 출현 빈도 수와 함께 allSlices에 저장한다.
+  for (let i = 0; i < forms.length; i++) {
+    //모든 크루에 대해 반복문을 수행하며,
+    getSlices(forms, allSlices, i); //i + 1번째 크루에 대한 중복 문자열 처리
+  }
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
