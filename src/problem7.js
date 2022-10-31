@@ -56,13 +56,11 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
 
     Object.entries(friendInfo).forEach(([userId, friends]) => {
       friends.forEach((friendId) => {
-        if (userId !== user) {
-          if (userFriends.includes(friendId)) {
-            if (recommendScoreInfo[userId]) {
-              recommendScoreInfo[userId] += 10;
-            } else {
-              recommendScoreInfo[userId] = 10;
-            }
+        if (userId !== user && userFriends.includes(friendId)) {
+          if (recommendScoreInfo[userId]) {
+            recommendScoreInfo[userId] += 10;
+          } else {
+            recommendScoreInfo[userId] = 10;
           }
         }
       });
@@ -71,6 +69,7 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
 
   if (type === 'VISITORS') {
     const { user, visitors } = data;
+
     visitors.forEach((visitorId) => {
       if (visitorId !== user) {
         if (recommendScoreInfo[visitorId]) {
