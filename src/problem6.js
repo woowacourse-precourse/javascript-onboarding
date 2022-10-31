@@ -3,6 +3,9 @@ function problem6(forms) {
   const duplicateNick = howManyNickname(twoLetterName);
   const checkDuplicateName = checkContainDuplicate(duplicateNick);
   const formsInNick = checkInNick(forms, checkDuplicateName);
+  const resultEmail = sortEmail(formsInNick);
+  
+  return resultEmail;
 }
 
 function checkDuplicateChar(forms){
@@ -39,5 +42,9 @@ function checkInNick(forms,checkDuplicateName){
     }
   }
   return duplicateNickEmail;
+}
+
+function sortEmail(forms){
+  return forms.sort();
 }
 module.exports = problem6;
