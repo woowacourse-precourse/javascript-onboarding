@@ -44,7 +44,15 @@ function problem7(user, friends, visitors) {
   // entries()는 객체가 가지고 있는 모든 프로퍼티를 키와 값 쌍으로 배열 형태로 반환
   const scoreArr = Object.entries(scoreObj);
 
-  return scoreArr;
+  scoreArr.sort(([name1, score1], [name2, score2]) => {
+    if (score1 === score2) {
+      return name1.localeCompare(name2);
+    }
+    return score2 - score1;
+  });
+
+  const result = scoreArr.slice(0, 5).map(([name, score]) => name);
+  return result;
 }
 
 function friendCheck(user, friends, alreadyFriend) {
