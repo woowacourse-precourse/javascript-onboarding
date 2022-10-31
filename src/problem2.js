@@ -14,6 +14,8 @@ function problem2(cryptogram) {
       }
     }
   }
+
+  return result.join('');
 }
 
 module.exports = problem2;
