@@ -6,30 +6,16 @@ function problem2(cryptogram) {
   answer = decryption(cryptogram);
   return answer;
 }
-// function decryption(cryptogram) {
-//   let index = 0;
-//   const stack = [];
-//   while (index < cryptogram.length) {
-//     if (!stack) stack.push(cryptogram[index]);
-//     else {
-//       if (stack[stack.length - 1] == cryptogram[index]) {
-//         index = progressIndex(cryptogram, index, cryptogram[index]) - 1;
-//         stack.pop();
-//       } else {
-//         stack.push(cryptogram[index]);
-//       }
-//     }
-//     index++;
-//   }
-//   return getString(stack);
-// }
-// function progressIndex(cryptogram, index, targetChar) {
-//   while (cryptogram[index] == targetChar) index++;
-//   return index;
-// }
-// function getString(Array) {
-//   return Array.join("");
-// }
+function getDuplicateValidator(cryptogram) {
+  const duplicateValidator = new Array(cryptogram.length).fill(false);
+  for (let x = 0; x < cryptogram.length - 1; x++) {
+    if (cryptogram[x] == cryptogram[x + 1]) {
+      duplicateValidator[x] = true;
+      duplicateValidator[x + 1] = true;
+    }
+  }
+  return duplicateValidator;
+}
 
 function checkValidation(cryptogram) {
   return checkLength(cryptogram) && checkLowercase(cryptogram);
