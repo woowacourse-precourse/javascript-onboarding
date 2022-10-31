@@ -11,12 +11,12 @@ const getUsersFriends = (user, relationship) => {
     }
     return acc;
   }, []);
-  return [...new Set(friends)];
+  return friends;
 };
 
 const getExceptFriend = (friendArray, usersFriends) => {
   return friendArray.filter((item) => {
-    if (!usersFriends.includes(item)) return item;
+    return !usersFriends.includes(item);
   });
 };
 
@@ -29,9 +29,7 @@ const getFriendOfFriend = (user, usersFriends, relationship) => {
   return getExceptFriend(result, usersFriends); // 내 친구와 친구가 서로 친구인 경우를 제외하여 건너 건너 친구만 리턴하게끔
 };
 
-// getScore
 const getScoreMap = (friends, score) => {
-  // TODO Q 보통 acc 그대로 쓰나 아님 이름을 바꾸나?
   return friends.reduce((acc, name) => {
     if (acc.has(name)) {
       acc.set(name, acc.get(name) + score);
@@ -42,7 +40,6 @@ const getScoreMap = (friends, score) => {
   }, new Map());
 };
 
-// merge
 const mergeScoreMap = (map1, map2) => {
   let scoreMap = new Map(map1);
   for (const [key, value] of map2) {
@@ -55,7 +52,6 @@ const mergeScoreMap = (map1, map2) => {
   return scoreMap;
 };
 
-// sort
 const getSortedArray = (unsortedArray) => {
   return unsortedArray.sort((a, b) => {
     if (a[1] > b[1]) return -1;
@@ -93,7 +89,6 @@ function problem7(user, friends, visitors) {
 
   // 점수 정렬하기
   const orderedScoreArray = getSortedArray(Array.from(unorderedRecommendMap));
-  console.log(orderedScoreArray);
 
   // 답에 최종 추천할 친구 넣어주기
   answer = getRecommendResult(orderedScoreArray);
