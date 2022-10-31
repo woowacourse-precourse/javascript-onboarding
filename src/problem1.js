@@ -13,11 +13,14 @@ function getSum(pageNum) {
 }
 
 function getScore(player) {
+  const PAGE_LEFT = 0;
+  const PAGE_RIGHT = 1;
+
   return Math.max(
-    getMulti(player[0]),
-    getSum(player[0]),
-    getMulti(player[1]),
-    getSum(player[1])
+    getMulti(player[PAGE_LEFT]),
+    getSum(player[PAGE_LEFT]),
+    getMulti(player[PAGE_RIGHT]),
+    getSum(player[PAGE_RIGHT])
   );
 }
 
