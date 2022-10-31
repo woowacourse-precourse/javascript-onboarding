@@ -11,13 +11,11 @@ function problem4(word) {
     }
     if(upperCase.includes(item)) {
       const UPPER = upperCase.indexOf(item);
-      const reverseWord = [...upperCase].reverse();
-      answer.push(reverseWord[UPPER]);
+      answer.push(upperCase[(upperCase.length - 1) - UPPER]);
     }
     if(lowerCase.includes(item)) {
       const LOWER = lowerCase.indexOf(item);
-      const reverseWord = [...lowerCase].reverse();
-      answer.push(reverseWord[LOWER]);
+      answer.push(lowerCase[(lowerCase.length - 1) - LOWER]);
     }
   }
   return answer.join('');
