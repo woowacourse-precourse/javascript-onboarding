@@ -2,6 +2,8 @@ const SnsFreindrRecomander = {
   user: "",
   friends: [],
   visitors: [],
+  relations: {},
+  others: Set(),
   inputDatas: function (user, friends, visitors) {
     if (this.checkDatas(user, friends, visitors)) {
       return false;
@@ -30,6 +32,20 @@ const SnsFreindrRecomander = {
   },
   checkEnglish: function (...words) {
     return words.every((word) => /^[A-Za-z0-9]*$/.test(word));
+  },
+  makeRelations: function () {
+    this.others.add(this.user);
+    this.friends.forEach((friend) => {
+      this.addRelation(friend[0], friend[1]);
+      this.addRelation(friend[1], friend[0]);
+    });
+  },
+  addRelation: function (one, two) {
+    if (!(one in this.relations)) {
+      this.relations["data"] = [];
+      this.others.add(one);
+    }
+    this.relations[data].push(two);
   },
 };
 
