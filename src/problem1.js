@@ -16,4 +16,13 @@ const checkingExceptions = (pages) => {
   return 1;
 };
 
+const sumPageNum = (pages) => {
+  let result = 0;
+  while (parseInt(pages / 10) !== 0) {
+    result += pages % 10;
+    pages = parseInt(pages / 10);
+  }
+  result += pages;
+  return result;
+};
 module.exports = problem1;
