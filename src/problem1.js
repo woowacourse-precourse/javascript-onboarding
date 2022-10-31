@@ -10,10 +10,13 @@
 function problem1(pobi, crong) {
   var answer;  
   if (!(vaildate(pobi) && vaildate(crong))) answer = -1;
-  
-  var pobi_score = get_score(pobi);
-  var crong_score = get_score(crong);
+  else {
+    var pobi_score = get_score(pobi);
+    var crong_score = get_score(crong);
 
+    
+  }
+  
   return answer;
 }
 
