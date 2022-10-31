@@ -1,6 +1,19 @@
 function problem7(user, friends, visitors) {
   const VISIT_SCORE = 1;
   const FRIEND_WITH_USER_SCORE = 10;
+
+  function createFriendsTable(friends) {
+    const table = {};
+
+    for (let friend of friends) {
+      const [A, B] = friend;
+
+      addFriend(table, A, B);
+      addFriend(table, B, A);
+    }
+
+    return table;
+  }
 }
 
 module.exports = problem7;
