@@ -1,8 +1,8 @@
 function problem5(money) {
-  var answer;
+  var answer = calculator(money);
   return answer;
 }
-function intoArr (money){
+function calculator (money){
   let moneyArr = [];
   const resultArr = [];
   let remains = [];
