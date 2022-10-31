@@ -1,11 +1,20 @@
 function problem7(user, friends, visitors) {
-
-  
   if (!checkInputValid(user, friends, visitors)) {
     return 'error'
   }
-  // return 'success';
 
+  const userFriendList = makeUserFriendList(user, friends)
+  return userFriendList
+}
+
+function makeUserFriendList(user, friends) {
+  const userFriend = []
+  friends.forEach((v) => {
+    if (v.includes(user)) {
+      userFriend.push(v.filter(i => i !== user).join(''));
+    }
+  })
+  return userFriend
 }
 
 function checkInputValid(user, friends, visitors) {
@@ -43,4 +52,5 @@ function duplicateFriendship(friends) {
   if (friends.length === removeDuplicateArray) return true;
   return false;
 }
+
 module.exports = problem7;
