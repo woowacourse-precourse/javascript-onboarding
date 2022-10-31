@@ -1,5 +1,8 @@
 function problem7(user, friends, visitors) {
-  const answer = [];
+
+  // 결괏값을 담아줄 배열 생성
+  const result = [];
+
   // "추천 친구(key): 점수(value)"를 담을 객체
   const data = {};
 
@@ -12,6 +15,7 @@ function problem7(user, friends, visitors) {
     if (index === 1) userFriends.push(arr[0]);
   });
 
+  // 친구에 대한 점수 설정
   friends.forEach((arr) => {
     userFriends.forEach((friend) => {
       const index = arr.indexOf(friend);
@@ -29,6 +33,7 @@ function problem7(user, friends, visitors) {
     });
   });
 
+  // 방문자에 대한 점수 설정
   visitors.forEach((visitor) => {
     if (!userFriends.includes(visitor)) {
       if (data[visitor] === undefined) data[visitor] = 0;
@@ -37,17 +42,20 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  // 객체로 지정된 값들을 배열로 변환
   for (const person in data) {
-    answer.push(person);
+    result.push(person);
   }
 
-  answer.sort((a, b) => {
+  // 해당 결괏값을 이름순으로 정렬
+  result.sort((a, b) => {
     if (data[a] === data[b]) return a.charCodeAt() - b.charCodeAt();
 
     return data[b] - data[a];
   });
 
-  return answer;
+  // 정렬된 결괏값 리턴
+  return result;
 }
 
 module.exports = problem7;
