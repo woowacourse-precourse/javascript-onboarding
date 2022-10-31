@@ -84,6 +84,27 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test('주소에 특수문자', () => {
+    expect(
+      problem6([
+        ['jm@email.com', '제이엠'],
+        ['jm.dev@email.com', '제이슨'],
+        ['mj@email.com', '엠제이'],
+      ])
+    ).toEqual(['jm@email.com', 'jm.dev@email.com', 'mj@email.com']);
+  });
+  test('이메일 중복', () => {
+    expect(
+      problem6([
+        ['jm@email.com', '제이엠'],
+        ['mj@email.com', '제이슨'],
+        ['mj@email.com', '엠제이'],
+        ['jm@email.com', '브이엠'],
+        ['en@email.com', '다이슨'],
+        ['jm@email.com', '이브이'],
+      ])
+    ).toEqual(['en@email.com', 'jm@email.com', 'mj@email.com']);
+  });
 });
 
 describe("problem7", () => {
