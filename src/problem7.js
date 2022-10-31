@@ -15,6 +15,12 @@ function result(user, friends, visitors) {
   visitors.forEach((item) => {
     setScoreMap(scoreMap, item, ADD_VISITED_SCORE);
   });
+
+  let recommendedFriend = [];
+  scoreMap.forEach((value, key) => {
+    if (userMap.get(user)?.includes(key) || value === 0) return;
+    recommendedFriend.push([key, value]);
+  });
 }
 
 const ADD_FRIEND_SCORE = 10;
