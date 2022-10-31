@@ -5,12 +5,13 @@ function problem1(pobi, crong) {
   const [crongLeftPage, crongRightPage] = crong;
 
   if (pobi.length !== 2 || crong.length !== 2) {
-    alert('유효한 페이지 번호를 입력해주세요');
-    return;
+    console.error('유효한 페이지 번호를 입력해주세요');
+    return -1;
   }
 
   if (pobiLeftPage % 2 === 0 || crongLeftPage % 2 === 0) {
-    alert('왼쪽 페이지는 홀수입니다');
+    console.error('왼쪽 페이지는 홀수입니다');
+    return -1;
   }
 
   if (
@@ -21,13 +22,13 @@ function problem1(pobi, crong) {
   }
 
   if (pobiLeftPage === 1 || crongLeftPage === 1) {
-    alert('시작 면을 제외하고 펼쳐주세요');
-    return;
+    console.error('시작 면을 제외하고 펼쳐주세요');
+    return -1;
   }
 
   if (pobiRightPage === 400 || crongRightPage === 400) {
-    alert('마지막 면을 제외하고 펼쳐주세요');
-    return;
+    console.error('마지막 면을 제외하고 펼쳐주세요');
+    return -1;
   }
 
   const pobiNum = splitNumber(pobi);
