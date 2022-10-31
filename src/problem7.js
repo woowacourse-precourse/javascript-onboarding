@@ -67,6 +67,17 @@ function problem7(user, friends, visitors) {
     friends_number.push(visitors_number[i]);
   }
 
+  //점수 높은 순으로 정렬하기
+  friends_number.sort(sortvalueFunction);
+
+  function sortvalueFunction(a, b) {
+    if (a[1] === b[1]) {
+      return 0;
+    } else {
+      return a[1] < b[1] ? 1 : -1;
+    }
+  }
+
   return answer;
 }
 
