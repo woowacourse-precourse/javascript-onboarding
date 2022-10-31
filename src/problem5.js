@@ -16,17 +16,17 @@ function problem5(money) {
   const MONEY = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   const answer = [];
   MONEY.forEach((m) => {
-    answer.push(changeMoney(money, m));
-    money = moduloMoney(money, m);
+    answer.push(getChangeMoney(money, m));
+    money = setChangeMoney(money, m);
   });
   return answer;
 }
 
-function changeMoney(money, changeMoney) {
+function getChangeMoney(money, changeMoney) {
   return Math.floor(money / changeMoney);
 }
 
-function moduloMoney(money, changeMoney) {
+function setChangeMoney(money, changeMoney) {
   return money % changeMoney;
 }
 
