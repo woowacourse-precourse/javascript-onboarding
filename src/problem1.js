@@ -9,6 +9,8 @@ function problem1(pobi, crong) {
   return -1;
 }
 
+
+// 각 페이지의 연산과 관련된 메소드
 function sumDigits(num) {
   let sumResult = 0;
   while (num > 0) {
@@ -29,6 +31,8 @@ function multiplyDigits(num) {
   return multiplyResult;
 }
 
+
+// 연산 결과를 바탕으로 승자를 고르는 메소드
 function selectWinner(pobi, crong) {
   const pobiNumber = Math.max(sumDigits(pobi[0]), sumDigits(pobi[1]), multiplyDigits(pobi[0]), multiplyDigits(pobi[1]));
   const crongNumber = Math.max(sumDigits(crong[0]), sumDigits(crong[1]), multiplyDigits(crong[0]), multiplyDigits(crong[1]));
@@ -36,6 +40,16 @@ function selectWinner(pobi, crong) {
   if (pobiNumber == crongNumber) return 0;
   else if (pobiNumber > crongNumber) return 1;
   else return 2;
+}
+
+
+// 예외 처리
+function validExceptions(arr1, arr2) {
+  const range = validRange(arr1) && validRange(arr2);
+  const page = validPage(arr1) && validPage(arr2);
+  const continuous = validContinuous(arr1) && validContinuous(arr2);
+
+  return range && page && continuous;
 }
 
 function validRange(arr) {
@@ -50,14 +64,6 @@ function validPage(arr) {
 function validContinuous(arr) {
   if (arr[0] + 1 != arr[1]) return false;
   return true;
-}
-
-function validExceptions(arr1, arr2) {
-  const range = validRange(arr1) && validRange(arr2);
-  const page = validPage(arr1) && validPage(arr2);
-  const continuous = validContinuous(arr1) && validContinuous(arr2);
-
-  return range && page && continuous;
 }
 
 module.exports = problem1;
