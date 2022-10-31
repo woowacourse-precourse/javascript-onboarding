@@ -1,3 +1,6 @@
+// 기능 목록
+// 1. 3, 6, 9가 들어가는 횟수 구하기
+
 function problem3(number) {
   
   let count = 0;
