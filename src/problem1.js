@@ -17,4 +17,19 @@ function checkInput(input) {
   return true;
 }
 
+function sumPageNum(page) {
+  const pageNumbers = splitPageNumbers(page);
+  return pageNumbers.reduce((sum, num) => (sum += num), 0);
+}
+
+function multiplyPageNum(page) {
+  const pageNumbers = splitPageNumbers(page);
+  return pageNumbers.reduce((multi, num) => (multi *= num), 1);
+}
+
+function splitPageNumbers(page) {
+  const pageEl = page.toString().split("");
+  return pageEl.map((el) => Number(el));
+}
+
 module.exports = problem1;
