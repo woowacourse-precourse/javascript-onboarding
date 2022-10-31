@@ -32,6 +32,12 @@ function problem6(forms) {
 
     return result;
   }
+
+  function getDuplicateNameList(table) {
+    return Object.values(table)
+      .filter(value => value.length > 1)
+      .reduce((acc, curr) => acc.concat(curr), []);
+  }
 }
 
 module.exports = problem6;
