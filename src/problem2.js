@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
-  let answer;
-  answer = deleteString(cryptogram);
+  const answer = deleteString(cryptogram);
   return arrayToString(answer);
 }
 
