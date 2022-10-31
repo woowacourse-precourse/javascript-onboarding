@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
 
   let score = {};
   let friendList = [];
@@ -31,6 +31,19 @@ function problem7(user, friends, visitors) {
   for (i = 0; i < visitors.length; i++)   //visitors 배열에 따라 score점수 계산
     score[visitors[i]] += 1;
 
+  //정렬
+  let sortedScore = [];
+  for (let value in score) 
+    sortedScore.push([value, score[value]]);
+  
+  sortedScore.sort(function(a, b) {
+    return b[1] - a[1];
+  });
+
+  //출력
+  for (i = 0; i < sortedScore.length; i++) 
+    answer.push(sortedScore[i][0]);
+    
   return answer;
 }
 
