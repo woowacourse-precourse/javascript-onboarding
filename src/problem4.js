@@ -1,5 +1,14 @@
 function problem4(word) {}
 
+const getReverseLetter = (letter) => {
+  if (letter === " ") return letter;
+
+  const orderAlphabet = getOrderAlphabet();
+  const reverseOrderAlphabet = getReverseOrderAlphabet();
+
+  return reverseOrderAlphabet[orderAlphabet.indexOf(letter)];
+};
+
 const getOrderAlphabet = () => {
   const orderAlphabetArr = [];
 
