@@ -74,6 +74,26 @@ const excludeFriendsFunc = (friendsArray, alreadyFriendList, user) => {
   return resultArray.filter(friend => friend !== user);
 };
 
+const excludeVisitorsFunc = (visitorsArray, alreadyFriendList) => {
+  const copiedVisitors = copyArray(visitorsArray);
+  const copiedAlreadyFriendList = copyArray(alreadyFriendList);
+
+  const recursiveTour = (visitorsArray, alreadyFriendList, currentIndex) => {
+    if (currentIndex === getLength(alreadyFriendList)) {
+      return visitorsArray;
+    }
+
+    const nextIndex = currentIndex + 1;
+    const newVisitorsArray = visitorsArray.filter(visitor => {
+      return visitor !== alreadyFriendList[currentIndex];
+    });
+
+    return recursiveTour(newVisitorsArray, alreadyFriendList, nextIndex);
+  };
+
+  return recursiveTour(copiedVisitors, copiedAlreadyFriendList, 0);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
