@@ -18,7 +18,9 @@ function findFriendsOfFriend(user, friendsOfUser, friends) {
     friendsOfUser.forEach((myFriend) => {
       if (friend.includes(myFriend) && !friend.includes(user)) {
         let yourFriend = friend.filter((element) => element !== myFriend);
-        friendsOfFriend.push(yourFriend[0]);
+        if (!friendsOfUser.includes(yourFriend[0])) {
+          friendsOfFriend.push(yourFriend[0]);
+        }
       }
     });
   });
@@ -74,11 +76,10 @@ function sortCandidatesArray(candidatesArray) {
 function getRecommendFriends(candidatesArray) {
   let recommendFriends = [];
 
-  if (candidatesArray.length > 5) {
-    candidatesArray.slice(0, 4);
-  }
-
-  candidatesArray.forEach((candidate) => {
+  candidatesArray.forEach((candidate, index) => {
+    if (index == 5) {
+      return false;
+    }
     recommendFriends.push(candidate[0]);
   });
 
