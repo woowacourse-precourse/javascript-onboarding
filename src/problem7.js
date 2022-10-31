@@ -89,5 +89,10 @@ function checkSoreOfVisitor(friends, visitors) {
       }
     }
   });
+
   return map;
+}
+
+function DuplicatedArrayToDesending(array) {
+  return array.sort((a, b) => b[1] - a[1]);
 }
