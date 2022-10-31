@@ -9,11 +9,11 @@ const groupCharByN = (str = "", n = 0) => {
 
 const removeDuplicates = (arr) => [...new Set(arr)];
 
-const findDuplicates = (arr) =>
+const findDuplicatedItems = (arr) =>
   removeDuplicates(arr.filter((v, i) => arr.indexOf(v) !== i));
 
 function problem6(forms) {
-  const duplicatedWords = findDuplicates(
+  const duplicatedWords = findDuplicatedItems(
     forms.map(([_, nickname]) => groupCharByN(nickname, 2)).flat()
   );
 
