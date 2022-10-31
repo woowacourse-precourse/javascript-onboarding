@@ -9,66 +9,83 @@
  */
 
 function problem7(user, friends, visitors) {
-  /** @type {{[prop: string]: number}} */
-  const scores = {};
+  const usersInfo = makeUsersInfo(friends, visitors);
 
-  const userFriendNames = getFriends(user, friends);
+  const userFriendsList = usersInfo[user].friendsList;
 
-  userFriendNames.forEach((friendName) => {
-    const friendsOfFriend = getFriends(friendName, friends);
+  Object.keys(usersInfo).forEach((user) => {
+    if (userFriendsList.includes(user)) {
+      const friendsOfFriend = usersInfo[user].friendsList;
 
-    friendsOfFriend.forEach((friend) => {
-      if (friend !== user) {
-        scores[friend] = scores[friend] ? scores[friend] + 10 : 10;
-      }
-    });
+      friendsOfFriend.forEach((friend) => {
+        usersInfo[friend].score += 10;
+      });
+    }
   });
 
   visitors.forEach((visitor) => {
-    if (!isAlreadyFriend(visitor, userFriendNames)) {
-      scores[visitor] = scores[visitor] ? (scores[visitor] += 1) : 1;
-    }
+    usersInfo[visitor].score += 1;
   });
 
-  const sortedScores = Object.entries(scores).sort((a, b) => {
-    if (a[1] === b[1]) {
-      if (a[0] > b[0]) return 1;
-      else if (b[0] > a[0]) return -1;
-      else return 0;
+  const filteredUsersInfo = Object.entries(usersInfo).filter((userInfo) => {
+    const [name, { score, friendsList }] = userInfo;
+
+    return score > 0 && name !== user && !isAlreadyFriend(user, friendsList);
+  });
+
+  const sortedUsersInfo = filteredUsersInfo.sort((a, b) => {
+    if (a[1].score === b[1].score) {
+      if (a[0] > b[0]) {
+        return 1;
+      } else if (b[0] > a[0]) {
+        return -1;
+      } else {
+        return 0;
+      }
     } else {
-      return b[1] - a[1];
+      return b[1].score - a[1].score;
     }
   });
 
-  const sortedName = sortedScores.map((score) => score[0]);
+  const sortedName = sortedUsersInfo.map((userInfo) => userInfo[0]);
 
   return sortedName.length > 5 ? sortedName.slice(0, 5) : sortedName;
 }
 
 /**
- * user와 친구 관계가 있는 친구 리스트를 반환하는 함수
- * @param {string} user 친구 리스트를 원하는 user
- * @param {string[][]} friends 친구 관계 리스트
- * @returns {string[]} user와 친구 관계가 있는 친구 리스트
+ * usersInfo 객체를 초기화하여 반환
+ * @param {string[][]} friends
+ * @param {string[]} visitors
+ * @returns {{[user:string]:{score: number, friendsList: string[]}}}
  */
 
-function getFriends(user, friends) {
-  const userFriends = [];
+function makeUsersInfo(friends, visitors) {
+  /** @type {{[user:string]:{score: number, friendsList: string[]}}}  */
+  const usersInfo = {};
 
   friends.forEach((friend) => {
-    const foundIndex = friend.findIndex((f) => f === user);
+    const [user1, user2] = friend;
 
-    if (foundIndex !== -1) {
-      const friendName = foundIndex === 0 ? friend[1] : friend[0];
-      userFriends.push(friendName);
+    usersInfo[user1]
+      ? usersInfo[user1].friendsList.push(user2)
+      : (usersInfo[user1] = { score: 0, friendsList: [user2] });
+
+    usersInfo[user2]
+      ? usersInfo[user2].friendsList.push(user1)
+      : (usersInfo[user2] = { score: 0, friendsList: [user1] });
+  });
+
+  visitors.forEach((visitor) => {
+    if (!usersInfo[visitor]) {
+      usersInfo[visitor] = { score: 0, friendsList: [] };
     }
   });
 
-  return userFriends;
+  return usersInfo;
 }
 
 /**
- * 이미 친구 관계인가를 반환하는 함수
+ * 이미 친구 관계인가를 반환
  * @param {string} user
  * @param {string[]} friendList
  * @returns {boolean}

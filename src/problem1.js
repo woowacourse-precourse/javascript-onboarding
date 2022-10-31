@@ -50,10 +50,10 @@ function getMaxNumber(pages) {
   let maxNumber = 0;
 
   pages.forEach((page) => {
-    const eachDigit = separateNumber(page);
+    const digits = separateNumber(page);
 
-    const sumOfNumbers = eachDigit.reduce((prev, current) => prev + current);
-    const mulOfNumbers = eachDigit.reduce((prev, current) => prev * current);
+    const sumOfNumbers = digits.reduce((prev, current) => prev + current);
+    const mulOfNumbers = digits.reduce((prev, current) => prev * current);
 
     const biggerNumber = getBiggerNumber(sumOfNumbers, mulOfNumbers);
 
@@ -71,16 +71,16 @@ function getMaxNumber(pages) {
 
 function separateNumber(number) {
   const strNumber = String(number);
-  const eachDigit = [...strNumber].map((value) => Number(value));
+  const digits = [...strNumber].map((value) => Number(value));
 
-  return eachDigit;
+  return digits;
 }
 
 /**
  * num1, num2 중 더 큰 수를 반환
  * @param {number} num1
  * @param {number} num2
- * @returns
+ * @returns {number}
  */
 
 function getBiggerNumber(num1, num2) {

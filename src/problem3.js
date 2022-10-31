@@ -10,9 +10,9 @@ function problem3(number) {
   let count = 0;
 
   for (let i = 1; i <= number; i++) {
-    const eachDigit = separateNumber(i);
+    const digits = separateNumber(i);
 
-    eachDigit.forEach((n) => {
+    digits.forEach((n) => {
       if (n === 3 || n === 6 || n === 9) {
         count = count + 1;
       }
@@ -30,9 +30,9 @@ function problem3(number) {
 
 function separateNumber(number) {
   const strNumber = String(number);
-  const eachDigit = [...strNumber].map((value) => Number(value));
+  const digits = [...strNumber].map((value) => Number(value));
 
-  return eachDigit;
+  return digits;
 }
 
 module.exports = problem3;

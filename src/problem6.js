@@ -45,7 +45,7 @@ function findDuplicatedNickname(targetNickname, forms) {
 }
 
 /**
- * 문자열로 만들 수 있는 두 글자 이상의 문자열 배열을 반환
+ * 문자열로 만들 수 있는 두 글자 문자열 배열을 반환
  * @param {string} str
  * @returns {string[]}
  */
@@ -53,17 +53,15 @@ function findDuplicatedNickname(targetNickname, forms) {
 function getWordSet(str) {
   const wordSet = new Set();
 
-  for (let i = 0; i <= str.length; i++) {
-    for (let j = i + 2; j <= str.length; j++) {
-      wordSet.add(str.substring(i, j));
-    }
+  for (let i = 0; i <= str.length - 2; i++) {
+    wordSet.add(str.substring(i, i + 2));
   }
 
   return [...wordSet];
 }
 
 /**
- * wordSet 중 nickname 과 동일한 것이 있는지 체크
+ * wordSet 중 nickname 에 포함된 것이 있는지 체크
  * @param {string[]} wordSet
  * @param {string} nickname
  * @returns {boolean}
