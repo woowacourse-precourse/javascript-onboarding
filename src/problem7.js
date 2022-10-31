@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  var answer;
   var answer = [];
   let relation_obj = {}; // {이름 : [친구들 이름] , ...}의 객체 만들기
   for (let relationship of friends) {
@@ -23,11 +22,7 @@ function problem7(user, friends, visitors) {
     for (friends_friend of relation_obj[user_friend]) {
       if (friends_friend !== user && !user_friends.includes(friends_friend)) {
         //본인이거나 친구인 경우 제외
-        if (score.has(friends_friend)) {
-          score.set(friends_friend, score.get(friends_friend) + 10);
-        } else {
-          score.set(friends_friend, 10);
-        }
+        addToMap(score, friends_friend, 10);
       }
     }
   }
@@ -35,11 +30,7 @@ function problem7(user, friends, visitors) {
   for (visitor of visitors) {
     if (!user_friends.includes(visitor)) {
       //친구 제외
-      if (score.has(visitor)) {
-        score.set(visitor, score.get(visitor) + 1);
-      } else {
-        score.set(visitor, 1);
-      }
+      addToMap(score, visitor, 1);
     }
   }
   let map_by_score = new Map(); // {점수 : [해당 점수의 아이디1, ..], ...} 의 map 객체로 변환
@@ -66,5 +57,12 @@ function problem7(user, friends, visitors) {
   answer = answer.slice(0, 5);
   return answer;
 }
-
+function addToMap(map_obj, key_prop, plus_value) {
+  //map 객체 map_obj에서 해당 key 속성이 있다면 plus_value만큼 더해준다.
+  if (map_obj.has(key_prop)) {
+    map_obj.set(key_prop, map_obj.get(key_prop) + plus_value);
+  } else {
+    map_obj.set(key_prop, plus_value);
+  }
+}
 module.exports = problem7;
