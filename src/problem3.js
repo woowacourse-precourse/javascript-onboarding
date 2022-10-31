@@ -9,6 +9,7 @@ function problem3(number) {
       }
     }
   }
+  return cnt;
 }
 // console.log(problem3(13));
 module.exports = problem3;
