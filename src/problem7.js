@@ -17,6 +17,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for ( let name of visitors ) {
+    if(rank.has(name)) rank.set(name, rank.get(name)+1)
+    else if (!userFriends.includes(name)) rank.set(name, (rank.get(name)||0)+1);  
+  }   
+
   console.log(userFriends)
   console.log(othersFriends)
   console.log(rank)
