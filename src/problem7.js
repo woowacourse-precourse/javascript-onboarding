@@ -11,6 +11,20 @@ function makeRelationship(friends) {
   })
   return relation;
 }
+const getSortScoreBoard = (scoreBoard) =>{
+    
+  let sortedScoreBoard = new Object();
+  sortedScoreBoard = Object.entries(scoreBoard).sort((x, y) => {
+      if (x[1] === y[1]) {
+        if (x[0] > y[0]) return 1;
+        if (x[0] < y[0]) return -1;
+      } 
+      if (x[1] > y[1]) return -1;
+      if (x[1] < y[1]) return 1;
+    })
+  
+  return sortedScoreBoard;
+}
 
 function problem7(user, friends, visitors) {
   const result = [];
@@ -42,6 +56,8 @@ function problem7(user, friends, visitors) {
       }
     }
   )
+
+  const sortedScoreBoard = getSortScoreBoard(scoreBoard);
 
 }
 
