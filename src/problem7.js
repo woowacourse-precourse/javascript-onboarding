@@ -24,6 +24,11 @@ function problem7(user, friends, visitors) {
 
   getScore(friendsOfUserFriends, 10);
   getScore(strangeVisitors, 1);
+
+  return Object.entries(score)
+    .sort((a, b) => b[1] - a[1] || (a[0] > b[0] ? 1 : -1))
+    .map((idAndScore) => idAndScore[0])
+    .slice(0, 5);
 }
 
 module.exports = problem7;
