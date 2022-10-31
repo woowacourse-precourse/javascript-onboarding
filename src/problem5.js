@@ -4,6 +4,7 @@ function transformMoney(n){
 
   for(let i=0;i<money_unit.length;i++){
       result[i]=parseInt((n/money_unit[i]));
+      n%=money_unit[i];
   }
   return result;
 }
