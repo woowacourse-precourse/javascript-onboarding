@@ -22,3 +22,12 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 요구 사항 분석
+
+- [x] 연속하는 중복 문자들을 제거한다.
+- [x] 제거할 문자 없을 때까지 위의 과정을 반복한다.
+
+### 리팩토링
+
+- [x] 중복 문자 삭제 함수 수정 (reduce -> filter)
+- [x] 중복 문자 삭제 함수명 수정 (characters -> letters)
