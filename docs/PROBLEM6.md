@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능 목록
+1. input forms에 대해, email 배열과 nickname 배열에 각각 이메일과 닉네임을 분리하여 저장. :white_check_mark:
+2. nickname 배열을 순회하면서, 닉네임에 대해 2글자씩 나누면서 다른 닉네임에 똑같은 2글자가 있으면 answer에 그 닉네임에 해당하는 이메일을 찾아서 push 하는 findEmail() 함수 구현 :white_check_mark:
+- 매개변수 : temp_str(닉네임의 연속 2글자), idx(닉네임의 index), nickname(닉네임 배열), email(이메일 배열), result(정답 이메일 배열)
+- return값 : result(정답 이메일 배열)
+3. result의 오름차순 정렬 수행 :white_check_mark:
