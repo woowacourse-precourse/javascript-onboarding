@@ -22,6 +22,18 @@ function visitCount(visitors, user, friends){
   }, {});
 };
 
+function visitCountNofriend(visitors){
+  return visitors.reduce((prev, curr) => {
+    if (curr in prev){
+      prev[curr] += 1;
+    }
+    else{
+      prev[curr] = 1;
+    }
+    return prev;
+  }, {});
+}
+
 function friendRelation(friends){
   const relation = {};
   friends.map(friend =>{
@@ -74,22 +86,40 @@ function exception(user, friends, relation){
   return true;
 }
 
+
+
 function problem7(user, friends, visitors) {
-  
   const relation = friendRelation(friends);
   if (exception){
-    const algorithm = visitCount(visitors, user, friends);
-    const friendScore = knowFriend(relation, user, relation, algorithm);
-    const sortByscore = Object.fromEntries(
-      Object.entries(friendScore).sort(([,a],[,b]) => a > b? -1: 1)
-    );
+    if (user in relation == false){
+      const algorithm = visitCountNofriend(visitors);
+      const sortBykey = Object.entries(algorithm).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} );
+      const sortByscore = Object.fromEntries(
+        Object.entries(sortBykey).sort(([,a],[,b]) => a > b? -1: 1)
+      );
 
-    if (Object.keys(sortByscore).length > 5){
-      return Object.keys(sortByscore).slice(0,5);
+      if (Object.keys(sortByscore).length > 5){
+        return Object.keys(sortByscore).slice(0,5);
+      }
+      else{
+        return Object.keys(sortByscore);
+      }
     }
     else{
-      return Object.keys(sortByscore);
-    }
+      const algorithm = visitCount(visitors, user, friends);
+      const friendScore = knowFriend(relation, user, relation, algorithm);
+      const sortBykey = Object.entries(friendScore).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} );
+      const sortByscore = Object.fromEntries(
+        Object.entries(sortBykey).sort(([,a],[,b]) => a > b? -1: 1)
+      );
+
+      if (Object.keys(sortByscore).length > 5){
+        return Object.keys(sortByscore).slice(0,5);
+      }
+      else{
+        return Object.keys(sortByscore);
+      }
+    } 
   }
   
 }
