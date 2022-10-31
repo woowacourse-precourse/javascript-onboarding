@@ -1,5 +1,12 @@
 function problem7(user, friends, visitors) {
   var answer;
+  const scoreObj = {};
+  const userFriends = findFriendsByUser(user, friends);
+  const togetherFriends = findUsersKnowTogether(user, userFriends, friends);
+  const recommendedScoreObj = addScore(scoreObj, togetherFriends, visitors);
+  answer = Object.keys(recommendedScoreObj).filter(
+    (name) => !userFriends.includes(name)
+  );
   return answer;
 }
 
