@@ -4,7 +4,7 @@ function problem6(forms) {
   
   for(var n = 0; n < forms.length; n++) { 
     // 1. 크루 별 닉네임 부분 집합 구하기
-    const [email, nickname] = forms[n]; // 기준 크루 : n
+    const nickname = forms[n][1]; // 기준 크루 : n
     var partion = new Set(); 
       
     for(var i = 0; i < nickname.length; i++) { // n의 부분 닉네임 구하기
