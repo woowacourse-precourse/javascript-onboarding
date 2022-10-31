@@ -4,6 +4,9 @@ const VISITOR_POINT = 1;
 function problem7(user, friends, visitors) {
   const friendsGraph = makeFriendsGraph(friends);
   const twoDistanceFriends = getTwoDistanceFriends(user, friendsGraph);
+  const pointMap = {};
+
+  addFriendPoint(pointMap, friendsGraph, user, twoDistanceFriends);
 }
 
 function makeFriendsGraph(friends) {
@@ -95,6 +98,19 @@ function getCommonFriendCount(friendsA, friendsB) {
   const set = new Set(friendsA);
   const commonFriends = friendsB.filter((friend) => set.has(friend));
   return commonFriends.length;
+}
+
+function addFriendPoint(pointMap, friendsGraph, user, twoDistanceFriends) {
+  const userFriends = friendsGraph[user] || [];
+
+  twoDistanceFriends.forEach((friend) => {
+    const friendFriends = friendsGraph[friend];
+    const commonFriendCount = getCommonFriendCount(userFriends, friendFriends);
+
+    if (commonFriendCount) {
+      pointMap[friend] = FRIEND_POINT * commonFriendCount;
+    }
+  });
 }
 
 module.exports = problem7;
