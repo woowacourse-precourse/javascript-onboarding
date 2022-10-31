@@ -5,25 +5,19 @@ const ERR = -1;
 
 // 각 자리 숫자를 쪼개서 숫자 배열을 반환하는 함수
 const splitNumberToArray = (number) => {
-  return String(num)
+  return String(number)
     .split("")
     .map((char) => Number(char));
 };
 
 // 각 자리 숫자를 모두 더해 반환해주는 함수
-const calcSum = (num) => {
-  const result = (num + "").split("").reduce((acc, cur) => {
-    return (acc += parseInt(cur));
-  }, 0);
-  return result;
+const calcSum = (numberArray) => {
+  return numberArray.reduce((acc, cur) => acc + cur);
 };
 
 // 각 자리 숫자를 모두 곱해 반환해주는 함수
-const calcMul = (num) => {
-  const result = (num + "").split("").reduce((acc, cur) => {
-    return (acc *= parseInt(cur));
-  }, 1);
-  return result;
+const calcMul = (numberArray) => {
+  return numberArray.reduce((acc, cur) => acc * cur);
 };
 
 // 테스트 값의 예외사항 체크
@@ -49,17 +43,17 @@ function problem1(pobi, crong) {
   if (!checkExcep(pobi) || !checkExcep(crong)) return ERR;
 
   scorePobi = Math.max(
-    calcSum(pobi[0]),
-    calcSum(pobi[1]),
-    calcMul(pobi[0]),
-    calcMul(pobi[1])
+    calcSum(splitNumberToArray(pobi[0])),
+    calcSum(splitNumberToArray(pobi[1])),
+    calcMul(splitNumberToArray(pobi[0])),
+    calcMul(splitNumberToArray(pobi[1]))
   );
 
   scoreCrong = Math.max(
-    calcSum(crong[0]),
-    calcSum(crong[1]),
-    calcMul(crong[0]),
-    calcMul(crong[1])
+    calcSum(splitNumberToArray(crong[0])),
+    calcSum(splitNumberToArray(crong[1])),
+    calcMul(splitNumberToArray(crong[0])),
+    calcMul(splitNumberToArray(crong[1]))
   );
 
   answer =
