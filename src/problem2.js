@@ -1,5 +1,9 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = cryptogram;
+  const regex = /(\w)\1+/g;
+  while (regex.test(answer)) {
+    answer = answer.replaceAll(regex, "");
+  }
   return answer;
 }
 
