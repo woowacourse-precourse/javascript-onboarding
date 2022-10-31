@@ -56,6 +56,10 @@ describe("problem2", () => {
     expect(problem2("a".padEnd(1001, "a"))).toEqual("Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다.");
   });
 
+  test("cryptogram은 알파벳 소문자로만 이루어져 있다. 알파벳 소문자 외에 다른 문자가 있다면 에러메세지가 담긴 문자열을 반환한다.", () => {
+    expect(problem2("ABC")).toEqual("Error: cryptogram는 알파벳 소문자 외에 다른 문자가 들어오면 안됩니다.");
+  });
+
   test("purmmnnnnaaaqqwwwwnnnnmmple은 purple을 반환해야 한다.", () => {
     expect(problem2("purmmnnnnaaaqqwwwwnnnnmmple")).toEqual("purple");
   });

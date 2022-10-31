@@ -8,6 +8,10 @@ function problem2(cryptogram) {
   // cryptogram은 길이가 1000 이상인 경우 "Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다."라는 문자열을 반환한다.
   if (cryptogram.length > 1000) return "Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다.";
 
+  //
+  const regex = /^[a-z]*$/;
+  if (!regex.test(cryptogram)) return "Error: cryptogram는 알파벳 소문자 외에 다른 문자가 들어오면 안됩니다.";
+
   // 연속하는 중복 문자들을 삭제한 결과를 반환하는 로직을 만든다.
   // 반환한 결과의 문자가 연속하는 중복 문자가 없도록 반복한다.
   const splittedCryptogram = cryptogram.split("");
