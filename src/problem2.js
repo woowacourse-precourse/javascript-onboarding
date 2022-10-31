@@ -11,10 +11,30 @@ function isValid(cryptogram) {
   }
 }
 
+function getDuplicateIndex(cryptogram) {
+  let prevWord = "";
+  const duplicatedIndexArr = [];
+  cryptogram.forEach((_, index) => {
+    if (prevWord === cryptogram[index]) {
+      duplicatedIndexArr.push(index, index + 1);
+    }
+    prevWord = cryptogram[index];
+  });
+  return duplicatedIndexArr;
+}
+
 function problem2(cryptogram) {
   var answer;
   isValid(cryptogram);
 
+  let tempCryptogram = cryptogram;
+  let cryptogramToArray = [...tempCryptogram];
+  let n = cryptogram.length;
+
+  for (let i = 0; i < n; i++) {
+    const duplicatedIndexArr = getDuplicateIndex(cryptogramToArray);
+    if (duplicatedIndexArr.length === 0) break;
+  }
   return answer;
 }
 
