@@ -1,21 +1,17 @@
 function problem2(cryptogram) {
-  // removeSame : 중복을 제거하는 함수
-
-  var answer;
-  return answer;
-}
-
-removeSame("browoanoommnaon");
-
-function removeSame(str){
-  var temp = i;
-  for(var i = 0; i<str.length-1; i++){
-
-    if(str[i]===str[i+1]){
-      temp ++;
+  var answer=[];
+  for(var i = 0;i<str.length;i++){
+    if(answer.length === 0) {
+      answer.push(str[i]);
+    }else{
+      if(answer[answer.length-1] != str[i]) {
+        answer.push(str[i]);
+      }else{
+        answer.pop();
+      }
     }
   }
-
+  return answer;
 }
 
 module.exports = problem2;
