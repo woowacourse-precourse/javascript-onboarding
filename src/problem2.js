@@ -1,4 +1,13 @@
 function problem2(cryptogram) {
+  // cryptogram의 타입이 문자열이 아닌 경우 "Error: cryptogram의 타입이 문자열이 아닙니다."라는 문자열을 반환한다.
+  if (typeof cryptogram !== "string") return "Error: cryptogram의 타입이 문자열이 아닙니다.";
+
+  // cryptogram은 길이가 1 이하인 경우 "Error: cryptogram의 문자열의 길이가 1이상이어야 합니다."라는 문자열을 반환한다.
+  if (cryptogram.length < 1) return "Error: cryptogram의 문자열의 길이가 1이상이어야 합니다.";
+
+  // cryptogram은 길이가 1000 이상인 경우 "Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다."라는 문자열을 반환한다.
+  if (cryptogram.length > 1000) return "Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다.";
+
   // 연속하는 중복 문자들을 삭제한 결과를 반환하는 로직을 만든다.
   // 반환한 결과의 문자가 연속하는 중복 문자가 없도록 반복한다.
   const splittedCryptogram = cryptogram.split("");

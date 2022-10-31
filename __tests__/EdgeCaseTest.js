@@ -1,4 +1,5 @@
 const problem1 = require("../src/problem1");
+const problem2 = require("../src/problem2");
 const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
@@ -39,6 +40,28 @@ describe("problem1", () => {
     expect(problem1([101, 102], null)).toEqual(-1);
     expect(problem1(null)).toEqual(-1);
     expect(problem1("정상적이지 않은 값")).toEqual(-1);
+  });
+});
+
+describe("problem2", () => {
+  test('cryptogram의 타입이 문자열이 아닌 경우 "Error: cryptogram의 타입이 문자열이 아닙니다."라는 문자열을 반환한다.', () => {
+    expect(problem2([])).toEqual("Error: cryptogram의 타입이 문자열이 아닙니다.");
+  });
+
+  test('cryptogram은 길이가 1 이하인 경우 "Error: cryptogram의 문자열의 길이가 1이상이어야 합니다."라는 문자열을 반환한다.', () => {
+    expect(problem2("")).toEqual("Error: cryptogram의 문자열의 길이가 1이상이어야 합니다.");
+  });
+
+  test('cryptogram은 길이가 1000 이상인 경우 "Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다."라는 문자열을 반환한다.', () => {
+    expect(problem2("a".padEnd(1001, "a"))).toEqual("Error: cryptogram의 문자열의 길이가 1000이하이어야 합니다.");
+  });
+
+  test("purmmnnnnaaaqqwwwwnnnnmmple은 purple을 반환해야 한다.", () => {
+    expect(problem2("purmmnnnnaaaqqwwwwnnnnmmple")).toEqual("purple");
+  });
+
+  test("jeoaaabbnseaabbccdddcccaaonghun은 jeonseonghun을 반환해야 한다.", () => {
+    expect(problem2("jeoaaabbnseaabbccdddcccaaonghun")).toEqual("jeonseonghun");
   });
 });
 
