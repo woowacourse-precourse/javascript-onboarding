@@ -52,6 +52,16 @@ const mergeScoreMap = (map1, map2) => {
   return scoreMap;
 };
 
+// sort
+const getSortedArray = (unsortedArray) => {
+  return unsortedArray.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    if (a[1] < b[1]) return 1;
+    if (a[0] < b[0]) return -1;
+    else return 1;
+  });
+};
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -72,6 +82,10 @@ function problem7(user, friends, visitors) {
 
   // 1, 2번 규칙 점수 합치기
   const unorderedRecommendMap = mergeScoreMap(friendScore, visitScore);
+
+  // 점수 정렬하기
+  const orderedScoreArray = getSortedArray(Array.from(unorderedRecommendMap));
+  console.log(orderedScoreArray);
 
   return answer;
 }
