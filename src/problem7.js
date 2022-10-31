@@ -22,11 +22,21 @@ const extractTwoDegreeFriends = (user, friends) => {
 };
 
 function problem7(user, friends, visitors) {
+  const friendScore = {};
+
   const userFriends = extractUserFriends(user, friends);
 
   const twoDegreeFriends = extractTwoDegreeFriends(user, friends);
 
-  return twoDegreeFriends;
+  for (const friend of twoDegreeFriends) {
+    if (friend in friendScore) {
+      friendScore[friend] += 10;
+    } else {
+      friendScore[friend] = 10;
+    }
+  }
+
+  return friendScore;
 }
 
 module.exports = problem7;
