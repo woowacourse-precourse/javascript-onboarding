@@ -24,6 +24,8 @@ function problem7(user, friends, visitors) {
     saveFriend(element[1], element[0]);
   });
 
+  const userFriendsSet = new Set(mateObj[user][0]);
+
   return answer;
 }
 
