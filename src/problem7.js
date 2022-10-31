@@ -7,6 +7,7 @@ function problem7(user, friends, visitors) {
   const pointMap = {};
 
   addFriendPoint(pointMap, friendsGraph, user, twoDistanceFriends);
+  addVisitorPoint(pointMap, friendsGraph, user, visitors);
 }
 
 function makeFriendsGraph(friends) {
@@ -109,6 +110,18 @@ function addFriendPoint(pointMap, friendsGraph, user, twoDistanceFriends) {
 
     if (commonFriendCount) {
       pointMap[friend] = FRIEND_POINT * commonFriendCount;
+    }
+  });
+}
+
+function addVisitorPoint(pointMap, friendsGraph, user, visitors) {
+  const userFriendSet = new Set(friendsGraph[user]);
+
+  visitors.forEach((visitor) => {
+    const isUserFriend = userFriendSet.has(visitor);
+    if (!isUserFriend) {
+      if (!pointMap[visitor]) pointMap[visitor] = 0;
+      pointMap[visitor] += VISITOR_POINT;
     }
   });
 }
