@@ -11,6 +11,8 @@ function problem7(user, friends, visitors) {
 
   const pointEntries = Object.entries(pointMap);
   pointEntries.sort(comparePoint);
+
+  return pointEntries.slice(0, 5).map(([name]) => name);
 }
 
 function makeFriendsGraph(friends) {
