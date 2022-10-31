@@ -69,14 +69,14 @@ function isExactSelectedPage(numbers) {
 }
 
 function getMaxNumber(numbers) {
-  let max = 0;
+  const max = [];
   numbers.forEach((number) => {
     const numberArr = number.toString().split("");
     const plus = numberArr.reduce((acc, cur) => acc + parseInt(cur), 0);
     const multi = numberArr.reduce((acc, cur) => acc * parseInt(cur), 1);
-    max = Math.max(max, plus, multi);
+    max.push(plus, multi);
   });
-  return max;
+  return Math.max(...max);
 }
 
 module.exports = problem1;
