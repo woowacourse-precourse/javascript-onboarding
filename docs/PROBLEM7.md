@@ -23,3 +23,19 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+### 기능 목록
+1. 매개변수로 주어진 string(user)이 매개변수로 주어진 크기가 2인 배열안에 존재하면 해당 배열의 user가 아닌 나머지 값을 반환하는 findFriends 함수 구현(존재하지 않으면 0 반환)
+2. friends 배열에 있는 이름들을 저장하는 map인 nameMap 구현
+3. 사용자(user)의 친구를 찾아 저장하는 배열인 arrFriends 구현
+4. 사용자(user)와 함께아는 친구를 찾아 해당 친구를 key값으로 가지는 nameMap의 value값을 10씩 증가
+5. visitors 배열에 있는 이름들이 nameMap의 key값으로 없다면 value를 1로한채로 추가, 있다면 해당 key의 value값을 1씩 증가
+6. nameMap에서 user와 arrFriends(이미 친구)의 값들을 key값으로 가지는 요소 삭제
+7. nameMap을 value값을 기준으로 내림차순으로 정렬 후 저장하는 배열인 sortedMap 구현
+8. (solution 메소드) : 점수가 높은 순으로 정렬 된 sortedMap을 answer에 다음 조건에 맞게 추가
+- 조건 1. 같은 점수이면 이름순으로 추가
+- 조건 2. 점수가 0점이면 추가하지 않음
+- 조건 3. 최대 5명까지 추가
+
