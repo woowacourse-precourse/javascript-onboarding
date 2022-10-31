@@ -50,6 +50,10 @@ const SnsFriendRecomander = {
     this.relations[one].push(two);
   },
   calculateScore: function () {
+    this.calculateScoreFrineds();
+    this.calculateScoreVisitors();
+  },
+  calculateScoreFrineds: function () {
     for (const score in this.scores) {
       this.relations[score].forEach((other) => {
         if (!this.isRelationFriendWithUser(other, score)) {
@@ -57,6 +61,8 @@ const SnsFriendRecomander = {
         }
       });
     }
+  },
+  calculateScoreVisitors: function () {
     this.visitors.forEach((visitor) => {
       if (!(visitor in this.scores)) {
         this.addScoreUser(visitor);
