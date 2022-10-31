@@ -5,14 +5,13 @@ function divideMoney(money, moneyDigit) {
 }
 
 function problem5(money) {
-  var answer = [];
+  let answer = [];
 
-  for (i = 0; i < MONEY_LIST.length; i++) {
-    const moneyDigit = MONEY_LIST[i];
+  MONEY_LIST.forEach(moneyDigit => {
     const divideCount = divideMoney(money, moneyDigit);
-    money = money - moneyDigit * divideCount;
+    money -= moneyDigit * divideCount;
     answer.push(divideCount);
-  }
+  });
 
   return answer;
 }
