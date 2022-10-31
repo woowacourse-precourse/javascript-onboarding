@@ -71,6 +71,17 @@ function makeObjToArr(idScoreObj) {
   return idScoreArr;
 }
 
+// idScoreArr를 점수 높은 순으로 정렬시키는 함수 (단, 점수가 같은 경우 이름순으로 정렬)
+function sortable(idScoreArr) {
+  // 점수 높은 순으로 정렬
+  idScoreArr.sort((a, b) => {
+    // 점수가 같은 경우 이름 순으로 정렬
+    if (b[1] === a[1]) {
+      return b[0] > a[0] ? -1 : 1;
+    } else return b[1] - a[1];
+  });
+}
+
 function problem7(user, friends, visitors) {
   // 점수가 높은 순으로 최대 5명 정렬
   let answer = [];
@@ -81,13 +92,7 @@ function problem7(user, friends, visitors) {
 
   let idScoreArr = makeObjToArr(idScoreObj);
 
-  // 점수 높은 순으로 정렬
-  idScoreArr.sort((a, b) => {
-    // 점수가 같은 경우 이름 순으로 정렬
-    if (b[1] === a[1]) {
-      return b[0] > a[0] ? -1 : 1;
-    } else return b[1] - a[1];
-  });
+  sortable(idScoreArr);
 
   // answer 배열에 이름만 담기
   idScoreArr.map((el) => answer.push(el[0]));
