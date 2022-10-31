@@ -5,10 +5,14 @@ function problem6(forms) {
     const [email1, nickName1] = forms[i];
     for(let j = i + 1; j < forms.length; j++) {
       const [email2, nickName2] = forms[j];
+      if (duplicateNick(nickName1, nickName2)) {
+        emailArr.add(email1);
+        emailArr.add(email2);
+      }
     }
   }
 
-  return emailArr;
+  return [...emailArr].sort();
 }
 
 function duplicateNick(nickName1, nickName2) {
