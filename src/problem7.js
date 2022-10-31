@@ -12,11 +12,8 @@ function findUserFriends(user, friends) {
 
   friends
     .filter((el) => el.includes(user))
-    .filter((el) => {
-      for (let i = 0; i < el.length; i++) {
-        if (el[i] !== user) userFriends.push(el[i]);
-      }
-    });
+    .flat()
+    .forEach((el) => (el !== user ? userFriends.push(el) : ""));
 
   return userFriends;
 }
@@ -100,5 +97,18 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
+
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 
 module.exports = problem7;
