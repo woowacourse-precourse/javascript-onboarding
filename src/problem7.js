@@ -42,7 +42,15 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  console.log(score);
+  let map_by_score = new Map(); // {점수 : [해당 점수의 아이디1, ..], ...} 의 map 객체로 변환
+  for (let [k, v] of score) {
+    if (map_by_score.has(v)) {
+      map_by_score.set(v, [...map_by_score.get(v), k]);
+    } else {
+      map_by_score.set(v, [k]);
+    }
+  }
+  console.log(map_by_score);
   return answer;
 }
 
