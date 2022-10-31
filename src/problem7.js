@@ -24,6 +24,18 @@ function getMutualFriendScore(user, friendList) {
   return score;
 }
 
+function getVisitorScore(user, friendList, visitors) {
+  const score = {};
+  visitors.forEach((visitor) => {
+    if (friendList[user].has(visitor)) {
+      return;
+    }
+    score[visitor] = score[visitor] || 0;
+    score[visitor] += 1;
+  });
+  return score;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
