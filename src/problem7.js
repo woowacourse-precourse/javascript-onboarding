@@ -21,7 +21,7 @@ function calScore(ten, one){
       if(score[a]===score[b]){ return a<b?-1:a>b?1:0; }
       return score[b]-score[a];
   });
-  return id_list; 
+  return id_list.slice(0,5);
 }
 
 function problem7(user, friends, visitors) {
