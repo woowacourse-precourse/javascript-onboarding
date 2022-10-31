@@ -20,13 +20,12 @@ function getDuplicateWords(forms, duplicateWords) {
 
   while (index < crew.length - 1) {
     const word = crew.substring(index, index + 2);
-    index += 1;
 
-    if (!isDuplicateWord(forms, word) || duplicateWords.includes(word)) {
-      continue;
+    if (!duplicateWords.includes(word) && isDuplicateWord(forms, word)) {
+      duplicateWords.push(word);
     }
 
-    duplicateWords.push(word);
+    index += 1;
   }
 
   return getDuplicateWords(forms, duplicateWords);
