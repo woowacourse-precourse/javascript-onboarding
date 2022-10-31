@@ -43,6 +43,15 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  const newMate = [];
+  for (mate in mateObj) {
+    if (mateObj[mate][1] > 0) {
+      newMate.push([mate, mateObj[mate][1]]);
+    }
+  }
+
+  newMate.sort((a, b) => b[1] - a[1]);
+
   return answer;
 }
 
