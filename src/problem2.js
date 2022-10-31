@@ -21,7 +21,7 @@ function deleteDuplicateAlpha(array) {
   return newArray;
 }
 
-function problem2(cryptogram) {
+function solving(cryptogram) {
   let modifiedCryptogram = cryptogram;
   let check;
 
@@ -31,7 +31,10 @@ function problem2(cryptogram) {
     if (check == modifiedCryptogram)
       break;
   }
-  let answer = modifiedCryptogram;
+}
+
+function problem2(cryptogram) {
+  let answer = solving(cryptogram);
   return answer;
 }
 
