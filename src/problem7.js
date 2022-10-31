@@ -1,6 +1,6 @@
 // 기능 구현 목록
 // - 서로 친구인 사용자 객체를 만드는 함수 생성
-// - 친구 관게 객체 생성
+// - 친구 관계 객체 생성
 // - user의 친구를 담은 Set 생성
 // - 함께 아는 친구의 수 판별
 // - 타임라인에 방문한 횟수 count
@@ -18,6 +18,11 @@ function problem7(user, friends, visitors) {
       mateObj[one][0].push(two);
     }
   }
+
+  friends.forEach((element) => {
+    saveFriend(element[0], element[1]);
+    saveFriend(element[1], element[0]);
+  });
 
   return answer;
 }
