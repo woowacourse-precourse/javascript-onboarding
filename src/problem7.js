@@ -58,71 +58,102 @@ function problem7(user, friends, visitors) {
     relatedUsers,
     userGraph
   ).findUserFriend();
-  
-  class RecommendFriend {
-    constructor(userFriend,userGraph,relatedUsers){
-      this.userFriend = userFriend
-      this.userGraph = userGraph
-      this.relatedUsers = relatedUsers
-    }
-    recommend(){
-      let values = Object.values(userFriend)
-      let weightValues = {}
-      values.forEach((cur) => {
-        const nxts = userGraph[cur]
-        nxts.forEach((nxt) => {
-          const key = relatedUsers[nxt]
-          if(key in weightValues){
-            weightValues[key] += 10
-          }
-          else{
-            weightValues[key] = 10
-          }
-        })
-      })
-      return weightValues
-    }
-  }
-  const recommendedUser = new RecommendFriend(userFriend,userGraph,relatedUsers).recommend()
-  
-  class Visit{
-    constructor(visitors,recommendedUser){
-      this.visitors = visitors
-      this.recommendedUser = recommendedUser
-    }
-    countVisit(){
-      visitors.forEach((key) =>{
-        if(key in recommendedUser){
-          recommendedUser[key] += 1
-        }
-        else {
-          recommendedUser[key] = 1
-        }
-      })
-      return recommendedUser
-    }
-  }
-  const answers = new Visit(visitors,recommendedUser).countVisit()
 
-  class DeleteFriends{
-    constructor(user,userFriend){
-      this.user = user
-      this.userFriend = userFriend
+  class RecommendFriend {
+    constructor(userFriend, userGraph, relatedUsers) {
+      this.userFriend = userFriend;
+      this.userGraph = userGraph;
+      this.relatedUsers = relatedUsers;
     }
-    deleteAlreadyFriendandMe(){
-      const temp = Object.keys(userFriend)
-      const deleteList = temp.concat([user])
-      return deleteList
+    recommend() {
+      let values = Object.values(userFriend);
+      let weightValues = {};
+      values.forEach((cur) => {
+        const nxts = userGraph[cur];
+        nxts.forEach((nxt) => {
+          const key = relatedUsers[nxt];
+          if (key in weightValues) {
+            weightValues[key] += 10;
+          } else {
+            weightValues[key] = 10;
+          }
+        });
+      });
+      return weightValues;
     }
   }
-  const notRecommendList = new DeleteFriends(user, userFriend).deleteAlreadyFriendandMe()
+  const recommendedUser = new RecommendFriend(
+    userFriend,
+    userGraph,
+    relatedUsers
+  ).recommend();
+
+  class Visit {
+    constructor(visitors, recommendedUser) {
+      this.visitors = visitors;
+      this.recommendedUser = recommendedUser;
+    }
+    countVisit() {
+      visitors.forEach((key) => {
+        if (key in recommendedUser) {
+          recommendedUser[key] += 1;
+        } else {
+          recommendedUser[key] = 1;
+        }
+      });
+      return recommendedUser;
+    }
+  }
+  const answers = new Visit(visitors, recommendedUser).countVisit();
+
+  class DeleteFriends {
+    constructor(user, userFriend) {
+      this.user = user;
+      this.userFriend = userFriend;
+    }
+    deleteAlreadyFriendandMe() {
+      const temp = Object.keys(userFriend);
+      const deleteList = temp.concat([user]);
+      return deleteList;
+    }
+  }
+  const notRecommendList = new DeleteFriends(
+    user,
+    userFriend
+  ).deleteAlreadyFriendandMe();
 
   notRecommendList.forEach((name) => {
-    if(name in answers){
-      answers[name] = 0
+    if (name in answers) {
+      answers[name] = 0;
     }
-  })
+  });
 
+  let newAnswers = [];
+  for (let key in answers) {
+    if (answers.hasOwnProperty(key) && answers[key] !== 0) {
+      newAnswers.push([key, answers[key]]);
+    }
+  }
+
+  newAnswers.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return -1;
+    } else if (a[1] === b[1]) {
+      if (a[0] >= b[0]) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else {
+      return 1;
+    }
+  });
+  let candidates = [];
+  for (let i = 0; i < Math.min(newAnswers.length, 5); i++) {
+    candidates.push(newAnswers[i][0]);
+  }
+
+  return candidates;
 }
 
 module.exports = problem7;
