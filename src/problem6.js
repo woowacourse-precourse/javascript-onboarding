@@ -16,10 +16,7 @@ function isValidEmail(forms) {
 
 function checkKorean(str) {
   const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
-  if (regExp.test(str)) {
-    return true;
-  }
-  return false;
+  return (regExp.test(str)) ? true : false;
 }
 
 function isValidNickName(forms) {
