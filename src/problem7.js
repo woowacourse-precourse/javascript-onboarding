@@ -60,6 +60,17 @@ function getOneScore(visitors, userFriends, IdScoreObj) {
   return IdScoreObj;
 }
 
+// sort시키기 위해 IdScoreObj를 배열로 만드는 함수
+function makeObjToArr(IdScoreObj) {
+  let idScoreArr = [];
+
+  for (let id in IdScoreObj) {
+    idScoreArr.push([id, IdScoreObj[id]]);
+  }
+
+  return idScoreArr;
+}
+
 function problem7(user, friends, visitors) {
   // 점수가 높은 순으로 최대 5명 정렬
   let answer = [];
@@ -68,13 +79,10 @@ function problem7(user, friends, visitors) {
 
   IdScoreObj = getOneScore(visitors, userFriends, IdScoreObj);
 
-  // sort시키기 위해 객체인 IdScoreObj를 배열로 만들기
-  let sortable = [];
-  for (let id in IdScoreObj) {
-    sortable.push([id, IdScoreObj[id]]);
-  }
+  let idScoreArr = makeObjToArr(IdScoreObj);
+
   // 점수 높은 순으로 정렬
-  sortable.sort((a, b) => {
+  idScoreArr.sort((a, b) => {
     // 점수가 같은 경우 이름 순으로 정렬
     if (b[1] === a[1]) {
       return b[0] > a[0] ? -1 : 1;
@@ -82,7 +90,7 @@ function problem7(user, friends, visitors) {
   });
 
   // answer 배열에 이름만 담기
-  sortable.map((el) => answer.push(el[0]));
+  idScoreArr.map((el) => answer.push(el[0]));
   // answer은 최대 5명
   if (answer.length > 5) answer.slice(0, 5);
 
