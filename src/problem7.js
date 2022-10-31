@@ -1,13 +1,26 @@
-const getFriendsShareScore = (user, friends, friendsMap) => {
+const getUsersFriend = (user, friends) => {
+  const users_friends = [];
   friends.map((friend) => {
     if (friend.includes(user)) {
-      for (let f of friend) {
-        friendsMap.set(f, 0);
-      }
+      users_friends.push(friend[0] === user ? friend[1] : friend[0]);
     }
-    else {
-      for (let a of friend) {
-        friendsMap.set(a, 10);
+  });
+  return users_friends;
+};
+
+const getFriendsShareScore = (user, friends, friendsMap) => {
+  const users_friends = getUsersFriend(user, friends);
+  users_friends.map((user_friend) => {
+    for (const friend of friends) {
+      if (friend.includes(user_friend)) {
+        const crossed_friend = friend[0] === user_friend ? friend[1] : friend[0];
+        if (crossed_friend !== user && !users_friends.includes(crossed_friend)) {
+          friendsMap.set(crossed_friend, 10);
+        }
+        else {
+          friendsMap.set(friend[0], 0);
+          friendsMap.set(friend[1], 0);
+        }
       }
     }
   });
@@ -20,7 +33,6 @@ const getTimelineVisitedScore = (visitors, friendsMap) => {
     if (!friendsMap.has(visitor)) {
       friendsMap.set(visitor,1);
     } else if (friendsMap.get(visitor) !== 0) {
-      // friendsMap이 0점이라면 이미 친구이므로 추천 x, 0점이 아니라면 추가 점수
       friendsMap.set(visitor, friendsMap.get(visitor) + 1);
     }
   });
@@ -36,11 +48,12 @@ const problem7 = (user, friends, visitors) => {
 
   friendsMap = [...friendsMap].sort((a, b) => {
     if (a[1] === b[1]) {
-      return a[0] - b[0];
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
     } else {
       return b[1] - a[1];
     }
   });
+  console.log(friendsMap)
 
   friendsMap.forEach((friend) => {
     if (friend[1] !== 0) {
@@ -48,7 +61,27 @@ const problem7 = (user, friends, visitors) => {
     }
   });
 
+  if (result.length > 5) {
+    result.splice(5, );
+  }
+
   return result;
 };
+
+const test = problem7('mrko',
+  [
+    ['mrko', 'jun'],
+    ['bedi', 'jun'],
+    ['bedi', 'donut'],
+    ['donut', 'jun'],
+    ['donut', 'mrko'],
+    ['shakevan', 'andole'],
+    ['jun', 'andole'],
+    ['shakevan', 'jun'],
+    ['shakevan', 'mrko'],
+  ],
+  ['donut', 'shakevan']);
+
+console.log(test);
 
 module.exports = problem7;
