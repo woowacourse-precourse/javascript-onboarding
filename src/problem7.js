@@ -2,6 +2,21 @@ function problem7(user, friends, visitors) {
   var answer;
   return answer;
 }
+// 추천 리스트 점수가 높은 순으로 정렬
+// 추천 점수가 같은 경우 이름순으로 정렬
+function orderFriedsList(combine) {
+  let newObj = Object.fromEntries(
+    Object.entries(combine).sort(([a], [b]) => (a < b ? -1 : 1))
+  );
+  let sorted = Object.entries(newObj).sort((a, b) => b[1] - a[1]);
+  let sortedResult = [];
+
+  for (let element of sorted) {
+    sortedResult.push(element[0]);
+  }
+  return sortedResult;
+}
+
 // 점수 체크
 function combineResult(visitorsScore, acqScore) {
   let combine = {};
