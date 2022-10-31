@@ -1,20 +1,19 @@
 function problem1(pobi, crong) {
   
-  //입력값이 유효하지 않으면 -1 반환  
-  if (isInvalidInput(pobi, crong)) return -1;
+  if (hasBothEndsPage(pobi, crong) || hasWrongPage(pobi, crong)) return -1;
   
-  /** 
-   * 두 최대값이 같으면 0 반환
-   * 두 최대값을 비교하여 1 or 2 반환  
-   */
   const pobiMaxV = getMaxV(pobi);
   const crongMaxV = getMaxV(crong);
+  
   if (pobiMaxV === crongMaxV) return 0;
   else if(pobiMaxV > crongMaxV) return 1;
   else if(pobiMaxV < crongMaxV) return 2; 
 }
 
-// 페이지값을 받아 최대값을 반환 메소드
+/**
+* @param {number[]} pages 숫자 배열타입의 양쪽 페이지
+* @returns 양쪽 페이지 자리수를 각각 덧셈과 곱셈 중 최대값을 반환합니다.
+*/
 function getMaxV(pages){
   const maxValues = pages.map((pageNum) => {
     const sum = String(pageNum).split('').reduce((a,b) => Number(a) + Number(b), 0)
@@ -24,28 +23,21 @@ function getMaxV(pages){
   return Math.max(...maxValues);
 }
 
-// 입력값 검증 메소드 
-function isInvalidInput(pobi, crong) {
-  const exceptionOne = hasBothEndsPage(pobi, crong);
-  const exceptionTwo = hasWrongLength(pobi, crong);
-  const exceptionThree = hasWrongPage(pobi, crong);
-  return exceptionOne || exceptionTwo || exceptionThree;
-}
-
-// 양끝 페이지가 들어있는지 확인 로직
+/**
+ * @param {number[]} pobiPage 숫자 배열타입의 양쪽 페이지
+ * @param {number[]} crongPage 숫자 배열타입의 양쪽 페이지
+ * @returns 페이지가 올바른 범위내에 있는 지 유효성 검사 결과를 반환합니다.
+ */
 function hasBothEndsPage(pobiPage, crongPage) {
   const BOTHENDPAGES = [1, 2, 399, 400];
   return !!BOTHENDPAGES.filter((v) => (pobiPage.concat(crongPage).includes(v))).length;
 }
 
-// 페이지 배열 길이가 2가 넘었는지 확인 로직
-function hasWrongLength(pobiPage, crongPage) {
-  const LENGTHLIMIT = 2;
-  const totalPages = pobiPage.concat(crongPage);
-  return totalPages.length !== (LENGTHLIMIT * 2);
-}
-
-// 홀, 짝수 및 페이지 순서 확인 로직
+/**
+ * @param {number[]} pobiPage 숫자 배열타입의 양쪽 페이지
+ * @param {number[]} crongPage 숫자 배열타입의 양쪽 페이지
+ * @returns 페이지의 순서 및 홀,짝수를 유효성 검사하여 결과를 반환합니다.
+ */
 function hasWrongPage(pobi, crong) {
   const RIGHTPAGE = 1;
   const LEFTPAGE = 0;
