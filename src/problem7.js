@@ -42,3 +42,6 @@ const addVisitScore = (visitors) => (scores) => {
     return copy;
   }, copiedScores);
 };
+
+const getNames = (users) => Object.keys(users);
+
