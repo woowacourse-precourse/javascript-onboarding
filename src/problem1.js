@@ -3,12 +3,15 @@ function problem1(pobi, crong) {
 
   function errorCheck(array) {
     for (let i of array) {
+      if (i === 0 || i == 400) {
+        return 1;
+      }
       if (0 >= i || i > 400) {
         return 1;
       }
     }
 
-    if (array[0] % 2 === 0 || array[1] % 2 !== 0 || array[1] - array[0] !== 1) {
+    if (array[0] % 2 === 0 || array[1] % 2 !== 0 || array[1] <= array[0] || array[1] - array[0] !== 1) {
       return 1;
     }
   }
