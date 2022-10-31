@@ -47,6 +47,7 @@ function problem6(forms) {
     answer.push(element[0]);
   });
 
+  // 자바스크립트에서의 정렬은 문자정렬.
   answer.sort();
 
   return answer;
