@@ -3,6 +3,14 @@ function problem1(pobi, crong) {
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
     return -1;
   }
+  for (let i = 0; i < 2; i++) {
+    if (400 < pobi[i] || pobi[i] < 1) {
+      return -1;
+    }
+    if (400 < crong[i] || crong[i] < 1) {
+      return -1;
+    }
+  }
   pobiMax = solve(pobi[0], pobi[1]);
   crongMax = solve(crong[0], crong[1]);
   if (pobiMax === crongMax) {
