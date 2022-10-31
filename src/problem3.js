@@ -23,6 +23,7 @@ function getSumArrIter(arrIter) {
 function threeSixNine(strIter) {
   const arrIter = strToArr(strIter);
   arrIter.forEach(findThreeSixNineElement);
+
   return getSumArrIter(arrIter);
 }
 
@@ -32,6 +33,7 @@ function playGame(number) {
     const strIter = i.toString();
     clapCount += threeSixNine(strIter);
   }
+
   return clapCount;
 }
 
@@ -39,6 +41,7 @@ function problem3(number) {
   if (!isValid(number)) {
     return 0;
   }
+
   return playGame(number);
 }
 

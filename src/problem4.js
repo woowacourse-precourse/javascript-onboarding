@@ -23,6 +23,7 @@ function arrToStr(arrWord) {
 
 function reverseCase(char, isCase) {
   const strAscii = char.charCodeAt(0);
+
   return String.fromCharCode(65 + (32 * isCase) + (90 + (32 * isCase) - strAscii));
 }
 
@@ -37,6 +38,7 @@ function alphaReverse(char) {
   if (!isAlpha(char)) {
     return char;
   }
+
   return isLowerCase(char) ? reverseCase(char, LOWER) : reverseCase(char, UPPER);
 }
 
@@ -45,10 +47,8 @@ function problem4(word) {
     return word;
   }
   const wordArr = strToArr(word);
+
   return arrToStr(wordArr.map(alphaReverse));
 }
 
 module.exports = problem4;
-
-
-console.log(problem4("I love you"));
