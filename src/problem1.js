@@ -1,11 +1,15 @@
 function problem1(pobi, crong) {
   if (!isValidPageNumbers(pobi, crong)) return -1
 
-  const pobiScore = Math.max(...pobi.map(pageNum => Math.max(sumEachDigit(pageNum), multiplyEachDigit(pageNum))))
-  const crongScore = Math.max(...crong.map(pageNum => Math.max(sumEachDigit(pageNum), multiplyEachDigit(pageNum))))
+  const pobiScore = Math.max(
+    ...pobi.map(pageNum => Math.max(sumEachDigit(pageNum), multiplyEachDigit(pageNum)))
+  )
+  const crongScore = Math.max(
+    ...crong.map(pageNum => Math.max(sumEachDigit(pageNum), multiplyEachDigit(pageNum)))
+  )
 
-  if(pobiScore > crongScore) return 1
-  if(pobiScore < crongScore) return 2
+  if (pobiScore > crongScore) return 1
+  if (pobiScore < crongScore) return 2
   return 0
 }
 const isValidPageNumbers = (pobi, crong) => {
