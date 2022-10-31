@@ -1,6 +1,5 @@
 function problem4(word) {
-  var answer = [];
-  word = [...word];
+  let answer = [];
   for (let i = 0; i < word.length; i++) {
     if (word[i].charCodeAt(0) > 64 && word[i].charCodeAt(0) < 91) {
       answer.push(String.fromCharCode(155 - word[i].charCodeAt(0)));
