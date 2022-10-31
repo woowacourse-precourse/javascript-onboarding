@@ -13,8 +13,8 @@ function problem7(user, friends, visitors) {
 
   const checkNamesValid = (user, friends, visitors) => {
     const nickNames = [user, ...friends.flat(), ...visitors];
-    nickNames.forEach((nickName) => {
-      if (!NICKNAME_REGEX.test(nickName)) {
+    nickNames.forEach((nickname) => {
+      if (!NICKNAME_REGEX.test(nickname)) {
         throw new Error('모든 user의 닉네임은 1이상 30이하의 알파벳 소문자이여야 합니다.');
       }
     });
@@ -36,7 +36,8 @@ function problem7(user, friends, visitors) {
   };
 
   class SNS {
-    constructor(friends, visitors) {
+    constructor(user, friends, visitors) {
+      this.user = user;
       this.friends = friends;
       this.userList = friends.flat().concat(visitors);
       this.visitors = visitors;
@@ -44,6 +45,10 @@ function problem7(user, friends, visitors) {
 
     getUserMap() {
       const userMap = new Map();
+      this.user; //?
+      const userObject = new User(this.user);
+      userMap.set(this.user, userObject);
+
       this.friends.forEach((relation) => {
         this.setUserMapByFriends(relation, userMap);
       });
@@ -100,7 +105,7 @@ function problem7(user, friends, visitors) {
       const userFriends = this.user.friends;
       const userList = [...this.userMap.keys()];
       const userNotFriends = userList.filter(
-        (user) => !userFriends.includes(user) && user !== 'mrko'
+        (user) => !userFriends.includes(user) && user !== this.user.id
       );
       userNotFriends.forEach((candidate) => {
         scoreBoard.set(candidate, 0);
@@ -141,6 +146,9 @@ function problem7(user, friends, visitors) {
     representRecommandation() {
       const board = this.recommandationScoreBoard;
       return [...board.keys()]
+        .filter((user) => {
+          return board.get(user) > 0;
+        })
         .sort()
         .sort((a, b) => board.get(b) - board.get(a))
         .slice(0, 5);
@@ -149,7 +157,7 @@ function problem7(user, friends, visitors) {
 
   checkValid(user, friends, visitors);
 
-  const sns = new SNS(friends, visitors);
+  const sns = new SNS(user, friends, visitors);
   const snsUserMap = sns.getUserMap();
 
   const userRecommandationSystem = new UserRecommandationSystem(user, snsUserMap);
