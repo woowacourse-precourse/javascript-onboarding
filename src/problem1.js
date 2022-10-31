@@ -3,7 +3,6 @@ function check(pages) {
   if (1 <= left && left < 400 && right-left === 1) {
     return true;
   }
-  return false;
 }
 
 function calculate(pages) {

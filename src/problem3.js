@@ -10,5 +10,4 @@ return [...number_arr.toString().matchAll(/[3|6|9]/g)].length;
 
 }
 
-
 module.exports = problem3;
