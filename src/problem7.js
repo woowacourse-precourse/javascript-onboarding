@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  const usersList = getListOfUserAndFriends(friends);
+  const usersList = getListOfUsers(friends, visitors);
   const friendsOfUsersList = findFriendOfUser(user, friends);
   const friendsUserknowWithUserFriendList = findFriendsUserknowWithUserFriend(
     friends,
@@ -15,32 +15,40 @@ function problem7(user, friends, visitors) {
   return scoreOfFriendsUserknowWithUserFriend;
 }
 
-function getListOfUserAndFriends(userFriends) {
+function getListOfUsers(userFriends, userVisitors) {
   let member = new Array().fill(0);
   let scoreTable = [member];
 
   userFriends.forEach((twoFriends) => {
     twoFriends.forEach((friend) => {
-      member = {};
-
-      let declaredMember = false;
-      scoreTable.forEach((scoreList) => {
-        if (Object.values(scoreList).includes(friend)) {
-          declaredMember = true;
-        }
-      });
-
-      if (declaredMember === false) {
-        member.name = friend;
-        member.score = 0;
-        scoreTable.push(member);
-      }
+      addInformationIntoScoreTable(scoreTable, friend);
     });
+  });
+
+  userVisitors.forEach((visitor) => {
+    addInformationIntoScoreTable(scoreTable, visitor);
   });
 
   scoreTable.shift();
 
   return scoreTable;
+}
+
+function addInformationIntoScoreTable(table, user) {
+  let member = {};
+  let declaredMember = false;
+
+  table.forEach((scoreList) => {
+    if (Object.values(scoreList).includes(user)) {
+      declaredMember = true;
+    }
+  });
+
+  if (declaredMember === false) {
+    member.name = user;
+    member.score = 0;
+    table.push(member);
+  }
 }
 
 function findFriendOfUser(currentUser, userFriends) {
