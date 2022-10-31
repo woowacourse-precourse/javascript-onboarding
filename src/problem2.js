@@ -23,4 +23,17 @@ function isDuplicate(cryptogram) {
   }
   return false;
 }
+
+function splitStr(cryptogram) {
+  const splitedStr = [];
+  let removeIndex = 0;
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (cryptogram[i] !== cryptogram[i + 1]) {
+      const sliceStr = cryptogram.substring(removeIndex, i + 1);
+      removeIndex = i + 1;
+      splitedStr.push(sliceStr);
+    }
+  }
+  return splitedStr;
+}
 module.exports = problem2;
