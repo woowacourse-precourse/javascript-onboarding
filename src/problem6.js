@@ -5,18 +5,18 @@ function problem6(forms) {
   const userId = 1;
   const maxLetterLength = 2;
 
-  forms.forEach((formList) => {
+  forms.forEach((personalInfo) => {
       const stack = [];
-      for (let letter of formList[userId]){
+      for (let info of personalInfo[userId]){
           if (stack.length < maxLetterLength)
-              stack.push(letter);
+              stack.push(info);
           if (stack.length === maxLetterLength){
               x = stack.join('')
               if (dictionary.hasOwnProperty(x)){
-                dictionary[x].push(formList[userMail])
+                dictionary[x].push(personalInfo[userMail])
               }
               if (!dictionary.hasOwnProperty(x)){
-                dictionary[x] = [formList[userMail]]
+                dictionary[x] = [personalInfo[userMail]]
               }
               stack.shift();
               
