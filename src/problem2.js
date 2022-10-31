@@ -4,9 +4,9 @@
 
 function problem2(cryptogram) {
   let crypt = cryptogram;
-  console.log(String(crypt))
-  console.log(crypt.replace(/([a-z])\1{1,}/g, ""));
-// .toString().split('')
+  console.log(crypt)
+  console.log(crypt.replace(/([a-z])\1+/g, ""));
+
   return crypt;
 }
 
