@@ -56,15 +56,13 @@ const getDuplicatedNicknameArr = (dictionary) => {
 
 function problem6(forms) {
   if (!isValidCrewNum(forms.length)) return -1;
-  let dictionary = {};
 
-  forms.forEach(([email, name]) => {
-    if (isValidLimit({ email, name })) {
-      const newDictionary = getDuplicatedEmailObj([email, name], dictionary);
-      dictionary = newDictionary;
-    }
-  });
-  console.log(dictionary);
+  const dictionary = forms.reduce((acc, [email, name]) => {
+    if (isValidLimit({ email, name }))
+      return { ...acc, ...getDuplicatedEmailObj([email, name], acc) };
+    return acc;
+  }, {});
+
   // 기능 2, 3: 같은 글자를 연속으로 사용한 닉네임을 작성한 지원자의 이메일 목록 추출 및 오름차순 정렬하고 중복 제거
   return getDuplicatedNicknameArr(dictionary).sort();
 }
