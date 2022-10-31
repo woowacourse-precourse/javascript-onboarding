@@ -1,3 +1,7 @@
+const MIN_NODE_LENGTH = 1;
+const MAX_NODE_LENGTH = 30;
+const MIN_ARRAY_LENGTH = 1;
+const MAX_ARRAY_LENGTH = 10000;
 function problem7(user, friends, visitors) {
   if (!checkValidation(user, friends, visitors))
     throw new Error("입력오류입니다.");
@@ -8,7 +12,7 @@ function getScore(user, friends, visitors) {
   const friendList = getFriendsList(user, friends);
   const score = getAcquaintanceScore(user, friends, friendList);
   applyVisitorScore(score, visitors, friendList);
-  const scoreArray = getArray(score);
+  const scoreArray = getSortedArray(score);
   return getMaxFive(scoreArray);
 }
 function getFriendsList(user, friends) {
@@ -43,7 +47,7 @@ function applyVisitorScore(acquaintance, visitors, friendList) {
     }
   });
 }
-function getArray(score) {
+function getSortedArray(score) {
   const resultArray = [];
   for (let name in score) {
     resultArray.push([name, score[name]]);
@@ -75,10 +79,12 @@ function checkValidation(user, friends, visitors) {
   );
 }
 function checkNodeLength(node) {
-  return node.length >= 1 && node.length <= 30;
+  return node.length >= MIN_NODE_LENGTH && node.length <= MAX_NODE_LENGTH;
 }
 function checkFriend(friends) {
-  return friends.length >= 1 && friends.length <= 10000;
+  return (
+    friends.length >= MIN_ARRAY_LENGTH && friends.length <= MAX_ARRAY_LENGTH
+  );
 }
 function checkFriendsNode(friends) {
   let check = true;
@@ -100,7 +106,10 @@ function checkFriendId(friends) {
   return check;
 }
 function checkVisitors(visitors) {
-  return visitors.length >= 0 && visitors.length <= 10000;
+  return (
+    visitors.length >= MIN_ARRAY_LENGTH - 1 &&
+    visitors.length <= MAX_ARRAY_LENGTH
+  );
 }
 function checkVisitorsId(visitors) {
   let check = true;
