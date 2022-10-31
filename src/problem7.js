@@ -110,9 +110,11 @@ function problem7(user, friends, visitors) {
 
   sortable(idScoreArr);
   // answer 배열에 이름만 담기
-  idScoreArr.map((el) => answer.push(el[0]));
-  // answer은 최대 5명
-  if (answer.length > 5) answer.slice(0, 5);
+  for (let i = 0; i < idScoreArr.length; i++) {
+    answer.push(idScoreArr[i][0]);
+    // answer은 최대 5명
+    if (i > 5) break;
+  }
 
   return answer;
 }
