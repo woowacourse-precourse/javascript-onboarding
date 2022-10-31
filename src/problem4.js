@@ -36,36 +36,40 @@ function recordCapitalAlphabet(word) {
 
 function checkWordIndex(words, forwardAlphabets) {
   const results = [];
-  for (let i = 0; i < words.length; i++) {
-    for (let j = 0; j < forwardAlphabets.length; j++) {
-      if (!(words[i].charCodeAt(0) > 64 && words[i].charCodeAt(0) < 91)) {
-        results.push(words[i]);
-        break;
-      }
-      if (words[i] === forwardAlphabets[j]) {
-        results.push(forwardAlphabets.indexOf(forwardAlphabets[j]));
-        break;
-      }
+  words.forEach((_, i) => {
+    indexing({ words, forwardAlphabets, i, results });
+  });
+  return results;
+}
+
+function indexing({ words, forwardAlphabets, i, results }) {
+  for (let j = 0; j < forwardAlphabets.length; j++) {
+    if (words[i].charCodeAt(0) < 65 || words[i].charCodeAt(0) > 90) {
+      results.push(words[i]);
+      break;
+    }
+    if (words[i] === forwardAlphabets[j]) {
+      results.push(forwardAlphabets.indexOf(forwardAlphabets[j]));
+      break;
     }
   }
-  return results;
 }
 
 function convertGreenFrogWord(indexs, reverseAlphabets) {
   const result = [];
-  for (let i = 0; i < indexs.length; i++) {
-    if (isNaN(indexs[i]) || indexs[i] === " ") result.push(indexs[i]);
-    else result.push(reverseAlphabets[indexs[i]]);
-  }
+  indexs.forEach((value) => {
+    if (isNaN(value) || value === " ") result.push(value);
+    else result.push(reverseAlphabets[value]);
+  });
   return result;
 }
 
 function checkCapitalAlphabet(greenFrogWords, records) {
   const result = [];
-  for (let i = 0; i < greenFrogWords.length; i++) {
-    if (records[i]) result.push(greenFrogWords[i]);
-    else result.push(greenFrogWords[i].toLowerCase());
-  }
+  greenFrogWords.forEach((value, index) => {
+    if (records[index]) result.push(value);
+    else result.push(value.toLowerCase());
+  });
   return result;
 }
 
