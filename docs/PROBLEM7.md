@@ -43,6 +43,6 @@
 6. score object 에서, 점수대로 내림차순 정렬하되, 같은 점수일 경우 이름순으로 정렬하는 sortScore 함수 구현 :white_check_mark:
 - 매개변수 : score(object), sortedScore(array)
 - return값 : sortedScore
-7. 정렬된 sortedScore 배열에서, 최대 5개만 가져오는 getTopFive 함수 구현
+7. 정렬된 sortedScore 배열에서, 최대 5개만 가져오는 getTopFive 함수 구현 :white_check_mark:
 - 매개변수 : sortedScore, answer
 - return값 : answer

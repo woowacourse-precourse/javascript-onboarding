@@ -70,6 +70,20 @@ function sortScore(score,sortedScore){
   return sortedScore;
 }
 
+function getTopFive(sortedScore,answer){
+  let topfive = [];
+  for(let ele of sortedScore){
+    topfive.push(ele[0])
+  }
+  if(topfive.length>5){
+    answer = topfive.slice(0,5)
+  }
+  else{
+    answer = topfive
+  }
+  return answer;
+}
+
 function problem7(user, friends, visitors) {
   let answer;
   let friend_dict={};
@@ -83,6 +97,7 @@ function problem7(user, friends, visitors) {
   score = visitorScore(visitors,score);
   score = deleteFriend(score,user_friend);
   sortedScore = sortScore(score,sortedScore);
+  answer = getTopFive(sortedScore,answer);
   return answer;
 }
 
