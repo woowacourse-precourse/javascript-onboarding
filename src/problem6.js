@@ -1,4 +1,5 @@
 function problem6(forms) {
+  const emails = forms.map((form) => form[0]);
   const nicknames = forms.map((form) => form[1]);
   const twoLetters = [];
 
@@ -16,6 +17,9 @@ function problem6(forms) {
   const duplicateNicknames = nicknames.filter((nickname) =>
     duplicateLetters.map((letter) => nickname.includes(letter)).includes(true),
   );
+
+  const duplicateIndex = duplicateNicknames.map((nickname) => nicknames.indexOf(nickname));
+  return duplicateIndex.map((index) => emails[index]).sort();
 }
 
 module.exports = problem6;
