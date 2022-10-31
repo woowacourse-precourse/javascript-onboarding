@@ -1,3 +1,10 @@
+const pipe =
+  (...funcs) =>
+  (arg) =>
+    funcs.reduce((a, f) => {
+      return f(a);
+    }, arg);
+
 const makeFriendSet = (args) => {
   const { user, friends } = args;
   const friendSet = new Set();
@@ -77,8 +84,17 @@ const selectTopFive = (args) => {
 };
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const solve = pipe(
+    makeFriendSet,
+    makeAcquaintanceSet,
+    differenceOfSet,
+    giveFriendAlgorithmPoint,
+    giveVisitorPoint,
+    convertPointMapToSortedPointArray,
+    selectTopFive
+  )({ user, friends, visitors });
+
+  return solve;
 }
 
 module.exports = problem7;
