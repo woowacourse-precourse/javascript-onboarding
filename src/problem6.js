@@ -33,6 +33,9 @@ function problem6(forms) {
             }
         }
     }
+
+    // 5단계) 중복패턴만을 담은 배열 생성
+    const repetitionArray = patternArray.filter((el) => el[1] >= 2);
 }
 
 module.exports = problem6;
