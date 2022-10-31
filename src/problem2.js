@@ -1,10 +1,4 @@
-const isValidCryptogram = (cryptogram) => {
-  return typeof cryptogram === "string" && cryptogram.length >= 1 && cryptogram.length <= 1000;
-};
-
 function problem2(cryptogram) {
-  if (!isValidCryptogram(cryptogram)) return;
-
   const stack = [];
   let standard = "";
 
