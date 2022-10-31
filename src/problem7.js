@@ -5,6 +5,7 @@ function problem7(user, friends, visitors) {
   calculateVisitorScore(visitors, userFriend, candidateObj);
   const sortedCandidate = sortCandidate(candidateObj);
   const fiveCandidate = getFiveCandidate(sortedCandidate);
+  const withoutZeroScore = isScoreOverZero(fiveCandidate);
 }
 
 function findFriend(user, friends) {
@@ -69,4 +70,7 @@ function getFiveCandidate(sortedCandidate) {
     : sortedCandidate;
 }
 
+function isScoreOverZero(fiveCandidate) {
+  return Object.values(fiveCandidate).filter((value) => value !== 0);
+}
 module.exports = problem7;
