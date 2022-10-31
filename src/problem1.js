@@ -30,56 +30,50 @@ function problem1(pobi, crong) {
     return;
   }
 
-  const pobiLeftPageArray = splitNumber(pobiLeftPage);
-  const pobiRightPageArray = splitNumber(pobiRightPage);
-  const crongLeftPageArray = splitNumber(crongLeftPage);
-  const crongRightPageArray = splitNumber(crongRightPage);
+  const pobiNum = splitNumber(pobi);
+  const crongNum = splitNumber(crong);
 
-  const pobiLeftSum = sumOfPage(pobiLeftPageArray);
-  const pobiRightSum = sumOfPage(pobiRightPageArray);
-  const crongLeftSum = sumOfPage(crongLeftPageArray);
-  const crongRightSum = sumOfPage(crongRightPageArray);
+  const sumOfPobi = sumOfPage(pobiNum);
+  const sumOfCrong = sumOfPage(crongNum);
+  const multiplyOfPobi = multiplyOfPage(pobiNum);
+  const multiplyOfCrong = multiplyOfPage(crongNum);
 
-  const pobiLeftMultiply = multiplyOfPage(pobiLeftPageArray);
-  const pobiRightMultiply = multiplyOfPage(pobiRightPageArray);
-  const crongLeftMultiply = multiplyOfPage(crongLeftPageArray);
-  const crongRightMultiply = multiplyOfPage(crongRightPageArray);
+  const pobiMaxNumber = getBiggerNumber(sumOfPobi, multiplyOfPobi);
+  const crongMaxNumber = getBiggerNumber(sumOfCrong, multiplyOfCrong);
 
-  const pobiLeftMaxNumber = getBiggerNumber(pobiLeftSum, pobiLeftMultiply);
-  const pobiRightMaxNumber = getBiggerNumber(pobiRightSum, pobiRightMultiply);
-  const pobiMaxNumber = getBiggerNumber(pobiLeftMaxNumber, pobiRightMaxNumber);
+  if (pobiMaxNumber === crongMaxNumber) {
+    answer = 0;
+  }
 
-  const crongLeftMaxNumber = getBiggerNumber(crongLeftSum, crongLeftMultiply);
-  const crongRightMaxNumber = getBiggerNumber(
-    crongRightSum,
-    crongRightMultiply
-  );
-  const crongMaxNumber = getBiggerNumber(
-    crongLeftMaxNumber,
-    crongRightMaxNumber
-  );
+  if (pobiMaxNumber > crongMaxNumber) {
+    answer = 1;
+  }
 
-  if (pobiMaxNumber === crongMaxNumber) return 0;
-
-  pobiMaxNumber > crongMaxNumber ? (answer = 1) : (answer = 2);
+  if (pobiMaxNumber < crongMaxNumber) {
+    answer = 2;
+  }
 
   return answer;
 }
 
-function splitNumber(page) {
-  return page.toString().split('');
+function splitNumber(user) {
+  return user.map((num) => num.toString().split(''));
 }
 
 function sumOfPage(arr) {
-  return arr.reduce((prev, curr) => Number(prev) + Number(curr));
+  return arr.map((num) =>
+    num.reduce((prev, curr) => Number(prev) + Number(curr))
+  );
 }
 
 function multiplyOfPage(arr) {
-  return arr.reduce((prev, curr) => Number(prev) * Number(curr));
+  return arr.map((num) =>
+    num.reduce((prev, curr) => Number(prev) * Number(curr))
+  );
 }
 
 function getBiggerNumber(num1, num2) {
-  return num1 >= num2 ? num1 : num2;
+  return Math.max(...num1, ...num2);
 }
 
 module.exports = problem1;
