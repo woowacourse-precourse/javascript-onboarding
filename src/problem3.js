@@ -1,3 +1,5 @@
+const MIN_NUM = 1;
+const MAX_NUM = 10000;
 function problem3(number) {
   if (!checkValidation(number)) throw new Error("입력오류입니다.");
   const memorizeNumbers = memorizeNumber();
@@ -6,8 +8,8 @@ function problem3(number) {
 }
 function memorizeNumber() {
   let index = 0;
-  const memorizeNumbers = new Array(10001).fill(0);
-  for (index = 1; index < 10001; index++) {
+  const memorizeNumbers = new Array(MAX_NUM + 1).fill(0);
+  for (index = MIN_NUM; index <= MAX_NUM; index++) {
     memorizeNumbers[index] = memorizeNumbers[index - 1] + countNumber(index);
   }
   return memorizeNumbers;
@@ -30,7 +32,7 @@ function checkIsNumber(number) {
   return false;
 }
 function checkNumberRange(number) {
-  if (number >= 1 && number <= 10000) return true;
+  if (number >= MIN_NUM && number <= MAX_NUM) return true;
   return false;
 }
 module.exports = problem3;
