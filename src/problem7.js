@@ -14,6 +14,18 @@ function problem7(user, friends, visitors) {
 
     return table;
   }
+
+  function addFriend(table, A, B) {
+    if (table[A]) {
+      table[A].friends.push(B);
+    }
+    else {
+      table[A] = {
+        friends: [B],
+        score: 0,
+      };
+    }
+  }
 }
 
 module.exports = problem7;
