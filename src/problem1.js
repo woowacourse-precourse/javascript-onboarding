@@ -6,12 +6,12 @@ function problem1(pobi, crong) {
 }
 
 function validationArr([leftPage, rightPage]) {
-  return [leftPage, rightPage].every((page) => 1 <= page && page <= 400) && rightPage - leftPage == 1 ? true : false;
+  return [leftPage, rightPage].every((page) => 1 <= page && page <= 400) && rightPage - leftPage === 1 ? true : false;
 }
 
 function pageGameApp(PageListArr) {
   const [pobiMaxScore, crongMaxScore] = PageListArr.map((pageArr) => maxValueCalculator(pageArr));
-  if (pobiMaxScore == crongMaxScore) return 0;
+  if (pobiMaxScore === crongMaxScore) return 0;
   return pobiMaxScore > crongMaxScore ? 1 : 2;
 }
 
