@@ -58,21 +58,4 @@ function problem7(user, friends, visitors) {
   return getRecommendedFriends(scoreObj);
 }
 
-console.log(
-  problem7(
-    "Eliza",
-    [
-      ["Cecil", "Hobart"],
-      ["Austyn", "Mara"],
-      ["Adonis", "Eliza"],
-      ["Lamont", "Retha"],
-      ["Jan", "Christa"],
-      ["Milton", "Retha"],
-      ["Josh", "Eliza"],
-      ["Eliza", "Jesus"],
-      ["Retha", "Eliza"],
-    ],
-    ["Retha", "Rosalia", "Hobart", "Jayne"]
-  )
-);
 module.exports = problem7;
