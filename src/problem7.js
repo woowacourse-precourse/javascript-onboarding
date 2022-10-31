@@ -39,15 +39,14 @@ function problem7(user, friends, visitors) {
 
   visitors.forEach((visitor) => setVisitorFriendsScore(visitor, friendsScore));
 
-  if (!alreadyFriends) return getMaxScoreFriends(user, friendsScore);
+  if (!alreadyFriends)
+    return getMaxScoreFriends(sortFriendsScores(user, friendsScore));
 
   alreadyFriends.forEach((alreadyFriend) =>
     setFriendsScore(friendsList.get(alreadyFriend), friendsScore)
   );
-
   setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore);
-
-  return getMaxScoreFriends(user, friendsScore);
+  return getMaxScoreFriends(sortFriendsScores(user, friendsScore));
 }
 
 function getFriendsList(friends) {
@@ -86,7 +85,7 @@ function setRemoveAlreadyFriendsScore(alreadyFriends, friendsScore) {
   alreadyFriends.map((alreadyFriend) => friendsScore.delete(alreadyFriend));
 }
 
-function getMaxScoreFriends(user, friendsScore) {
+function sortFriendsScores(user, friendsScore) {
   return setMapToArray(friendsScore)
     .filter(([key]) => key !== user)
     .filter(([_, value]) => value !== 0)
@@ -96,9 +95,11 @@ function getMaxScoreFriends(user, friendsScore) {
       if (a.scroe > b.scroe) return -1;
       if (a.name > b.name) return 1;
       if (a.name < b.name) return -1;
-    })
-    .map(({ name }) => name)
-    .slice(0, 5);
+    });
+}
+
+function getMaxScoreFriends(friends) {
+  return friends.map(({ name }) => name).slice(0, 5);
 }
 
 function setMapToArray(hashMap) {
