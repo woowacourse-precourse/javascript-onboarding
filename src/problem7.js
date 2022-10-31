@@ -1,9 +1,21 @@
 function problem7(user, friends, visitors) {
   var answer = [];
-  let regex = new RegExp(`^${user}$`);
-  //regex.test('friends배열 요소')-> true면 로직 제외
+  let list = [];
 
-  return answer;
+  for (let i = 0; i < friends.length; i++) {
+    if (user === friends[i][0]) {
+      list.push(friends[i][1]);
+    } else if (user === friends[i][1]) {
+      list.push(friends[i][0]);
+    }
+  }
+
+  for (let i = 0; i < list.length; i++) {
+    if (list)
+    for (let j = 0; j < friends.length; j++) {}
+  }
+
+  return list;
 
   //우선 user와 친구면 로직에서 제외
   //기능요구: 점수 높은순 + 이름순 정렬 (최대 5명) + 추천 점수가 0인 경우 추천 x
