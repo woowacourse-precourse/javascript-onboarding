@@ -51,6 +51,17 @@ function problem7(user, friends, visitors) {
     visitors_number.push([visitors[i], 1]);
   }
 
+  //visitors 아이디의 중복을 제거하고 점수를 더한다.
+  for (let i = 0; i < visitors_number.length; i++) {
+    for (let j = i + 1; j < visitors_number.length; j++) {
+      if (visitors_number[i][0] == visitors_number[j][0]) {
+        visitors_number[i][1] += 1;
+        visitors_number.splice(j, 1);
+        j--;
+      }
+    }
+  }
+
   return answer;
 }
 
