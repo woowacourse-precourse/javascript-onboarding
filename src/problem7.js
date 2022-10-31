@@ -33,6 +33,14 @@ function problem7(user, friends, visitors) {
         : "";
     });
   });
+
+  visitors.forEach((element) => {
+    !myFriend.includes(element)
+      ? answer.get(element) != undefined
+        ? answer.set(element, answer.get(element) + 1)
+        : answer.set(element, 1)
+      : "";
+  });
 }
 
 module.exports = problem7;
