@@ -53,12 +53,21 @@ const checkConsecutiveNumber = (book) => {
   }
   return exception;
 };
+const checkPageRange = (book) => {
+  let exception = false;
+  const [leftPage, rightPage] = book;
+  if (leftPage < 0 || rightPage > 400) exception = true;
+  return exception;
+};
 const checkException = (pobi, crong) => {
   let exception = false;
   if (checkEvenOrOdd(pobi) || checkEvenOrOdd(crong)) {
     exception = true;
   }
   if (checkConsecutiveNumber(pobi) || checkConsecutiveNumber(crong)) {
+    exception = true;
+  }
+  if (checkPageRange(pobi) || checkPageRange(crong)) {
     exception = true;
   }
   return exception;
