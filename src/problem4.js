@@ -18,5 +18,28 @@ function makeString(word) {
   for(i = 0; i < word.length; i++) {
     alphaItem.push(word.substring(i, i+1));
   }
+  function transWord() {
+    const outWord = [];
+    alphaItem.forEach(alpha => {
+      if(alpha === " ") {
+        outWord.push(" ");
+      }
+    if(alpha === alpha.toUpperCase()) {   //I love you
+        for (i = 0; i < upperAlphabetArr.length; i++){
+          if(alpha === upperAlphabetArr[i]){
+            outWord.push(upperStrangeAlphabetArr[i]);
+          }
+        }
+      } 
+    else if(alpha === alpha.toLowerCase()){
+        for (i = 0; i < alphabetArr.length; i++){
+          if(alpha === alphabetArr[i]){
+            outWord.push(strangeAlphabetArr[i]);
+          }
+        }
+      }
+    });
+  }
 }
+
 module.exports = problem4;
