@@ -79,12 +79,41 @@ function people_list(user, friends, visitors) {
 function calculate_score(user, friends, visitors) {
   let user_dict = people_list(user, friends, visitors);
   let common_friend_list = common_friend(user, friends);
+  let friend_list = find_friend_list(user, friends);
   common_friend_list.map((common) => {
     user_dict[common] += 10;
   });
   visitors.map((visitor) => {
-    user_dict[visitor] += 1;
+    if (!friend_list.includes(visitor)) user_dict[visitor] += 1;
   });
 
   return user_dict;
 }
+
+console.log(
+  problem7(
+    "yaena",
+    [
+      ["yaena", "ming"],
+      ["ming", "siun"],
+      ["yaena", "bbang"],
+      ["bbang", "siun"],
+      ["yaena", "zzi"],
+      ["zzi", "siun"],
+    ],
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  )
+);
+
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
