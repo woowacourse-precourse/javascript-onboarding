@@ -9,7 +9,6 @@ function problem7(user, friends, visitors) {
   visitors.map(item => fkeys.push(item));
 
   const set = new Set(fkeys);
-  set.delete(user);
 
   //이름 : 0점 
   set.forEach(element => {
@@ -17,22 +16,29 @@ function problem7(user, friends, visitors) {
   });
 
 
+  //2. 점수 매기기 
+  //user의 친구 arr
+  let userfs = []; //user의 친구
+  friends.forEach(function(item){
+    if(item.includes(user)){
+      userfs.push(item[0]);
+    }
+  })
   
+  let tempfs;
+  let f10list = [];
+  userfs.forEach(function(userf){
+    tempfs = friends.filter(el => el.includes(userf) && !el.includes(user));
+    tempfs.map(e => e.splice(e.indexOf(userf),1));
+    
+    let f = tempfs.reduce((acc,cur) => acc.concat(cur));
+    f.map(element => flist[element] += 10);
+  })
+  
+  //1점 점수 매기기
+  visitors.map(vele => flist[vele] += 1);
 
   return answer;
 }
-
-problem7(
-  "mrko",
-        [
-          ["donut", "andole"],
-          ["donut", "jun"],
-          ["donut", "mrko"],
-          ["shakevan", "andole"],
-          ["shakevan", "jun"],
-          ["shakevan", "mrko"],
-        ],
-        ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 
 module.exports = problem7;
