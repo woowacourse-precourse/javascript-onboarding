@@ -34,6 +34,19 @@ const scoreFromMutual = (user, friendsArr) => {
   return mutualObj;
 };
 
+// 사용자의 타임라인에 방문한 횟수 기준으로 추천 점수를 구하는 기능
+const scoreFromVisit = (visitors) => {
+  let visitorsObj = {};
+  for (i = 0; i < visitors.length; i++) {
+    if (Object.keys(visitorsObj).includes(visitors[i])) {
+      visitorsObj[visitors[i]] += 1;
+    } else {
+      visitorsObj[visitors[i]] = 1;
+    }
+  }
+  return visitorsObj;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
