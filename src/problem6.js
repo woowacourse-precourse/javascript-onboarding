@@ -32,6 +32,20 @@ const isEmailException = email => {
   return false;
 };
 
+const isNickNameException = nickName => {
+  const nickNameLength = getLength(nickName);
+
+  if (nickNameLength < 1 || 20 <= nickNameLength) {
+    throw new RangeError("The total length is between 1 characters and less than 20 characters.");
+  }
+
+  if (!nickName.match(/[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]/g)) {
+    throw new Error("Nicknames are only available in Korean.");
+  }
+
+  return false;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
