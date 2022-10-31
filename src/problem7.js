@@ -22,6 +22,7 @@ const makeRelations = (user, friends, visitors) => {
   inputPerson(list1);
   inputPerson(list2);
   inputPerson(visitors);
+  checkFrinds();
 };
 
 const inputPerson = (people) => {
@@ -42,6 +43,21 @@ const inputPerson = (people) => {
 
     flag === 1 ? null : recommendationlist.push(person);
   });
+};
+
+const checkFrinds = () => {
+  let deleteIdx = [];
+  recommendationlist.map((recommendPerson, idx) => {
+    frinedList.map((friend) => {
+      friend == recommendPerson.name ? deleteIdx.push(idx) : null;
+    });
+  });
+  deleteIdx
+    .sort()
+    .reverse()
+    .map((e) => {
+      recommendationlist.splice(e, 1);
+    });
 };
 
 module.exports = problem7;
