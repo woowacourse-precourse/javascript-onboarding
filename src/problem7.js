@@ -5,6 +5,7 @@ function problem7(user, friends, visitors) {
 
   calculateByOverlapFriendsNum(user, friends_map, candidates_map);
   calculateByVisitNum(user, visitors, friends_map, candidates_map);
+  const candidates_arr = sortByScoreDesc(candidates_map);
 
   return answer;
 }
@@ -72,6 +73,26 @@ function calculateByVisitNum(user, visitors, friends_map, candidates_map){
     candidates_map.set(visitor, candidates_map.get(visitor)+1);
   }
   //console.log([...candidates_map]);
+}
+
+function sortByScoreDesc(candidates_map){
+  // Map 객체를 배열로 변환
+  let candidates_arr = [...candidates_map];
+  //console.log(candidates_arr);
+
+  // value(추천점수) 기준 내림차순 정렬
+  candidates_arr.sort((a, b) => {
+    if (a[1] === b[1]){ // value(추천점수)가 같을 경우 key(아이디) 기준 오름차순 정렬
+      let x = a[0];
+      let y = b[0];
+      return x < y ? -1 : x > y ? 1 : 0;
+    }
+
+    return b[1] - a[1];
+  })
+
+  //console.log(candidates_arr);
+  return candidates_arr;
 }
 
 module.exports = problem7;
