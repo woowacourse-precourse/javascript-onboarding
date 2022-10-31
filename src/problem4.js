@@ -1,5 +1,17 @@
-function problem4(word) {
-  let answer = "";
+function spaceCheck(space) {
+  if (space === " ") return true;
+  return false;
+}
+
+function ChangeUpperCase(letter) {
+  return letter.toUpperCase();
+}
+
+function ChangeLowerCase(letter) {
+  return letter.toLowerCase();
+}
+
+function changeLetter(letter) {
   const wordsObject = {
     A: "Z",
     B: "Y",
@@ -28,19 +40,25 @@ function problem4(word) {
     Y: "B",
     Z: "A",
   };
-  for (let x of word) {
-    if (x === " ") {
-      answer += " ";
-      continue;
-    }
-    let char = wordsObject[x.toUpperCase()];
-    if (char === undefined) {
-      answer += x;
-    } else if (x === x.toUpperCase()) {
-      answer += char;
-    } else {
-      answer += char.toLowerCase();
-    }
+
+  if (spaceCheck(letter)) {
+    return " ";
+  }
+
+  let changedLetter = wordsObject[ChangeUpperCase(letter)];
+  if (changedLetter === undefined) return letter;
+
+  if (ChangeUpperCase(letter) === letter) {
+    return changedLetter;
+  }
+  return ChangeLowerCase(changedLetter);
+}
+
+function problem4(word) {
+  let answer = "";
+
+  for (let letter of word) {
+    answer += changeLetter(letter);
   }
   return answer;
 }
