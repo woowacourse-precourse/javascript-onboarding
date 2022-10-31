@@ -188,4 +188,17 @@
     }
     ```
 
-    
+</br> 
+
+### ✔️ 기능 7. 최종 결과를 최대 5개 리턴하는 함수.
+<br>
+
+  - ```{ key : name , score : score}```로 정렬되어 저장된 데이터들을 ```key(name)```만 출력하도록 설정.
+    ```javascript
+      function printObjKey(answer) {
+      return answer.map(i => i.key)
+      }
+    ````
+
+  - 여기까지의 과정은 ```scoreObj```에 저장된 모든 key값들을 리턴하는 과정이고, 제한사항에 최대 5개를 리턴하게 되어있어<br>
+  최종적으로 ```slice(0,5)```를 진행하여 최대 5개만 리턴하도록 설정
