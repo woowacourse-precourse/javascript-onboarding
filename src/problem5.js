@@ -1,10 +1,10 @@
 function problem5(money) {
-  const currencies = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  let result = [];
-  for (let currency of currencies) {
-    let numberOfTheBills = Math.floor(money / currency);
-    result.push(numberOfTheBills);
-    money = money % currency;
+  const CURRENCIES = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let result = Array.from({ length: 9 }, () => 0);
+
+  for (let i = 0; i < CURRENCIES.length; i++) {
+    result[i] = Math.floor(money / CURRENCIES[i]);
+    money = money % CURRENCIES[i];
   }
   return result;
 }
