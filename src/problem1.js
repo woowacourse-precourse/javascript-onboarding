@@ -4,4 +4,10 @@ function problem1(pobi, crong) {
   }
 }
 
+const calculateMaxNum = (num) => {
+  const numArr = num.toString().split("");
+  const plusNum = numArr.reduce((acc, cur) => acc + Number(cur), 0);
+  const multiplyNum = numArr.reduce((acc, cur) => acc * Number(cur), 1);
+};
+
 module.exports = problem1;
