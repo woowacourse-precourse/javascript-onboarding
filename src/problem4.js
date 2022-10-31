@@ -9,4 +9,25 @@ function problem4(word) {
   return answer;
 }
 
+function changeAlphabetGreenFrog(inputLetter) {
+  const inputAscii = inputLetter.charCodeAt(0);
+  const UPPER_FIRST = "A".charCodeAt(0);
+  const UPPER_LAST = "Z".charCodeAt(0);
+  const LOWER_FIRST = "a".charCodeAt(0);
+  const LOWER_LAST = "z".charCodeAt(0);
+  let outputAscii = 0;
+  let outputLetter = "";
+
+  if (inputAscii >= UPPER_FIRST && inputAscii <= UPPER_LAST) {
+    outputAscii = UPPER_FIRST + UPPER_LAST - inputAscii;
+  } else if (inputAscii >= LOWER_FIRST && inputAscii <= LOWER_LAST) {
+    outputAscii = LOWER_FIRST + LOWER_LAST - inputAscii;
+  } else {
+    outputAscii = inputAscii;
+  }
+  outputLetter = String.fromCharCode(outputAscii);
+
+  return outputLetter;
+}
+
 module.exports = problem4;
