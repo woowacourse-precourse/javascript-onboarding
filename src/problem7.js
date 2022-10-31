@@ -8,4 +8,18 @@
 */
 
 function problem7(user, friends, visitors) {}
+
+const getUserFriendId = (user, friends) => {
+  const userFriends = [];
+
+  friends.forEach((friend) => {
+    const [friendA, friendB] = friend;
+
+    if (friend.includes(user)) {
+      friendA === user ? userFriends.push(friendB) : userFriends.push(friendA);
+    }
+  });
+
+  return userFriends;
+};
 module.exports = problem7;
