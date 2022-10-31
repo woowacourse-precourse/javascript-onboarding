@@ -53,3 +53,6 @@ const getMatchedForms = (forms) => (cases) => {
     return copy;
   }, []);
 };
+
+const limit = (number) => (arr) => arr.slice(number);
+
