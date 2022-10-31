@@ -13,23 +13,23 @@ function problem4(word) {
   const ASCII_a = 97;
   const ASCII_Z = 90;
   const ASCII_z = 122;
-  const ASCII_Space = ASCII_a-ASCII_A;
-  
-  let UpCheck,LowCheck;
-  for(let i=0;i<word.length;i++){
-    if(!(word[i]===word[i].toUpperCase())){
-      LowCheck = ASCII_a+((ASCII_z)-word[i].charCodeAt(0));
+  const ASCII_Space = ASCII_a - ASCII_A;
+
+  let UpCheck, LowCheck;
+  for (let i = 0; i < word.length; i++) {
+    if (!(word[i] === word[i].toUpperCase())) {
+      LowCheck = ASCII_a + ((ASCII_z) - word[i].charCodeAt(0));
       newWord.push(String.fromCharCode(LowCheck));
       continue;
     }
-    
-    UpCheck = ASCII_A+((ASCII_Z)-word[i].charCodeAt(0));
-    if(!(UpCheck===(ASCII_A+ASCII_Z)-ASCII_Space)){
+
+    UpCheck = ASCII_A + ((ASCII_Z) - word[i].charCodeAt(0));
+    if (!(UpCheck === (ASCII_A + ASCII_Z) - ASCII_Space)) {
       newWord.push(String.fromCharCode(UpCheck));
       continue;
     }
     newWord.push(String.fromCharCode(ASCII_Space));
-    }
+  }
   return newWord.join("");
 }
 
