@@ -27,7 +27,6 @@ function findDupStr(str) {
 //기능 2. 중복 문자열 제거
 function dupStrDelete(str, char) {
   const arr = str.split(char);
-  console.log(arr);
   return arr[0].concat(arr[1]);
 }
 
