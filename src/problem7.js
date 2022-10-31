@@ -1,6 +1,9 @@
 function problem7(user, friends, visitors) {
   var answer = [];
   let list = [];
+  let tens = [];
+  let ones = [];
+  let result = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (user === friends[i][0]) {
@@ -11,11 +14,25 @@ function problem7(user, friends, visitors) {
   }
 
   for (let i = 0; i < list.length; i++) {
-    if (list)
-    for (let j = 0; j < friends.length; j++) {}
+    for (let j = 0; j < friends.length; j++) {
+      if (list[i] === friends[j][0] && friends[j][1] !== user) {
+        tens.push(friends[j][1]);
+      } else if (list[i] === friends[j][1] && friends[j][0] !== user) {
+        tens.push(friends[j][0]);
+      }
+    }
   }
 
-  return list;
+  //10점 계산
+  for (let i = 0; i < tens.length; i++) {
+    if (tens.indexOf(tens[i]) === i) {
+      result.push({ name: tens[i], score: 10 });
+    } else if (tens.indexOf(tens[i]) !== i) {
+      result[tens.indexOf(tens[i])].score+=10
+    }
+  }
+
+  return result;
 
   //우선 user와 친구면 로직에서 제외
   //기능요구: 점수 높은순 + 이름순 정렬 (최대 5명) + 추천 점수가 0인 경우 추천 x
