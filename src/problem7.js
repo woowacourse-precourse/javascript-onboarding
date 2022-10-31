@@ -32,3 +32,13 @@ const recordScore = (friends) => {
     return copy;
   }, {});
 };
+
+const addVisitScore = (visitors) => (scores) => {
+  const copiedScores = { ...scores };
+  return visitors.reduce((reduced, visitor) => {
+    const copy = { ...reduced };
+    if (copy[visitor]) copy[visitor]++;
+    else copy[visitor] = 1;
+    return copy;
+  }, copiedScores);
+};
