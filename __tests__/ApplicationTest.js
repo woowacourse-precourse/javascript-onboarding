@@ -44,7 +44,7 @@ describe("problem4", () => {
   });
 });
 
-describe.only("problem5", () => {
+describe("problem5", () => {
   test("case1", () => {
     expect(problem5(50237)).toEqual([1, 0, 0, 0, 0, 2, 0, 3, 7]);
   });
@@ -68,7 +68,7 @@ describe("problem6", () => {
   });
 });
 
-describe("problem7", () => {
+describe.only("problem7", () => {
   test("case1", () => {
     expect(
       problem7(
