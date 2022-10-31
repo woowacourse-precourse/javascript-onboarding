@@ -2,29 +2,9 @@ function problem1(pobi, crong) {
   let answer;
   
   isvalidinit(pobi, crong) ? null : answer = "조건을 다시 확인 하세요";
-
-  for (let i = 0; i < 1; i++) {
-    let pobiScore, crongScore = 0;
-    pobiScore = Math.max(sum(pobi[i]), sum(pobi[i+1]), multiply(pobi[i]), multiply(pobi[i+1]))
-    crongScore = Math.max(sum(crong[i]), sum(crong[i+1]), multiply(crong[i]), multiply(crong[i+1]))
-    
-    if ((pobi[i] + 1 === pobi[i + 1]) && (crong[i] + 1 === crong[i + 1])) {
-        if (pobiScore > crongScore) {
-        answer = 1
-      } else if (pobiScore < crongScore) {
-        answer = 2
-      } else if (pobiScore == crongScore) {
-        answer = 0
-      } else {
-        answer = -1
-      }
-    } else {
-      answer = -1
-    }    
-  // 페이지 제한 조건 구현하기 1미만, 400초과 
-}
-
-
+  const pobiScore = setScore(pobi);
+  const crongScore = setScore(crong);
+  answer = compare(pobiScore, crongScore)
   return answer;
 }
 
@@ -65,7 +45,7 @@ function compare(scoreA, scoreB) {
   if (scoreA === -1 || scoreB === -1) return -1;
   if (scoreA > scoreB) return 1;
   if (scoreA < scoreB) return 2;
-  if (scoreA === scoreB) return 2;
+  if (scoreA === scoreB) return 0;
 }
 
 
