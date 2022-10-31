@@ -4,26 +4,37 @@ function validate_email_form(email) {
   );
 }
 
+function remove_duplicated_email(map) {
+  let set = new Set();
+  for (let substr of map.keys()) {
+    let temp = new Set(map.get(substr));
+    if (temp.size === 1) {
+      continue;
+    }
+    for (let email of temp) {
+      set.add(email);
+    }
+  }
+
+  return set;
+}
+
 function get_duplication(forms) {
-  let map = new Map(); // substring, email
-  let set = new Set(); // email
+  let map = new Map(); // substr, [email]
   for (let [email, name] of forms) {
-    if (!validate_email_form(email)) {
+    if (!validate_email_form(email) || name.length === 1) {
       continue;
     }
     for (let i = 0; i < name.length - 1; ++i) {
-      const temp = name.substr(i, 2); // substring
-      if (map.has(temp)) {
-        // Somebody uses this substring in the nickname.
-        set.add(email);
-        set.add(map.get(temp));
-        continue;
+      let temp_str = name.substr(i, 2);
+      let email_array = [email];
+      if (map.has(temp_str)) {
+        email_array.push(...map.get(temp_str));
       }
-      // Nobody uses this substing in nickname yet.
-      map.set(temp, email);
+      map.set(temp_str, email_array);
     }
   }
-  return set;
+  remove_duplicated_email(map);
 }
 
 function problem6(forms) {
