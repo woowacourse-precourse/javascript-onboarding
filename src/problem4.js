@@ -1,5 +1,4 @@
 function change(word) {
-  let answer = "";
   word = word.split("");
   word = word.map((item) => {
     let askii = item.charCodeAt(0);
