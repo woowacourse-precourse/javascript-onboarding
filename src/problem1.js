@@ -1,3 +1,17 @@
+function sumArray(arr) {
+  let result = [];
+  let index = 0;
+  for (let i = 0; i < 4; i++) {
+    i <= 1 ? (index = 0) : (index = 1);
+    const sum = (arr[index] + '')
+      .split('')
+      .map((v) => parseInt(v))
+      .reduce((s, n) => (i % 2 ? (s *= n) : (s += n)));
+    result.push(sum);
+  }
+  return result;
+}
+
 function problem1(pobi, crong) {
   let answer = 0;
 
@@ -5,9 +19,8 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  const pobiMax = Math.max(...arrSum(pobi));
-  const crongMax = Math.max(...arrSum(crong));
-
+  const pobiMax = Math.max(...sumArray(pobi));
+  const crongMax = Math.max(...sumArray(crong));
   if (pobiMax > crongMax) {
     answer = 1;
   } else if (pobiMax < crongMax) {
@@ -19,15 +32,3 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
-
-const arrSum = (arr) => {
-  let result = [];
-  for (let i = 0; i < 2; i++) {
-    const sum = (arr[1] + '')
-      .split('')
-      .map((v) => parseInt(v))
-      .reduce((s, n) => (i > 0 ? (s *= n) : (s += n)));
-    result.push(sum);
-  }
-  return result;
-};
