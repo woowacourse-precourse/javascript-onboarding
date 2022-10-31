@@ -12,7 +12,16 @@ function problem6(forms) {
       }
     }
   }
-  
+
+  for (let i = 0; i < find.length; i++) { //중복 문자열로부터 정규식 체크 : idx 추출
+    let regex = new RegExp(find[i].char);
+    if (find[i + 1]) {
+      if (regex.test(find[0].char)) {
+        idx.push(find[i].idx);
+      }
+    }
+  }
+
   return answer;
 }
 //기능 요구사항
