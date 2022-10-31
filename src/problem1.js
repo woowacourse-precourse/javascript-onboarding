@@ -41,7 +41,11 @@ function problem1(pobi, crong) {
     pobi.length == 2 &&
     crong.length == 2 &&
     pobi[0] < pobi[1] &&
-    crong[0] < crong[1]
+    crong[0] < crong[1] &&
+    pobi[0] !== 1 &&
+    crong[0] !== 0 &&
+    pobi[1] !== 400 &&
+    crong[1] !== 400
   ) {
     pobi_result = pageCalculator(pobi);
     crong_result = pageCalculator(crong);
