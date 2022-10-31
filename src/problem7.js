@@ -32,6 +32,10 @@ const problem7 = (user, friends, visitors) => {
     scoreList.set(visitor, score);
   });
 
+  [...friendsOfUser, user].forEach((deleteTarget) =>
+    scoreList.delete(deleteTarget)
+  );
+
   return answer;
 };
 
