@@ -12,8 +12,15 @@ function decrypt(cryptogram) {
 }
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let prevDecrypted = cryptogram;
+  let decrypted = decrypt(cryptogram);
+
+  while (prevDecrypted !== decrypted) {
+    prevDecrypted = decrypted;
+    decrypted = decrypt(decrypted);
+  }
+
+  return decrypted;
 }
 
 module.exports = problem2;
