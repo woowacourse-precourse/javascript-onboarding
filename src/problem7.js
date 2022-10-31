@@ -15,8 +15,9 @@ function problem7(user, friends, visitors) {
     scoreOfFriendsUserknowWithUserFriend,
     visitors
   );
+  const result = arrangeInAscendingOrder(scoreOfUsersVisitedTimeline);
 
-  return scoreOfUsersVisitedTimeline;
+  return result;
 }
 
 function getListOfUsers(userFriends, userVisitors) {
@@ -125,6 +126,21 @@ function countUsersVisitedTimeline(scoreTable, users) {
   });
 
   return scoreTable;
+}
+
+function arrangeInAscendingOrder(table) {
+  const result = table.sort(
+    (firstInformation, secondInformation) =>
+      secondInformation.score - firstInformation.score
+  );
+  const topFiveList = result.splice(0, 5);
+  const nameList = new Array();
+
+  topFiveList.forEach((topItem) => {
+    nameList.push(topItem.name);
+  });
+
+  return nameList;
 }
 
 module.exports = problem7;
