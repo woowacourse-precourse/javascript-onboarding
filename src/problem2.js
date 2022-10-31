@@ -4,8 +4,6 @@
 
 function problem2(cryptogram) {
   let crypt = cryptogram;
-  console.log(crypt)
-  console.log(crypt.replace(/([a-z])\1+/g, ""));
   let temp_length = 0;
 
   while (true) {
@@ -14,11 +12,8 @@ function problem2(cryptogram) {
       break
     }
     temp_length = crypt.length
-    console.log(crypt)
   }
   return crypt;
 }
 
 module.exports = problem2;
-
-problem2("browoanoommnaon");
