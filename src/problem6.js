@@ -92,6 +92,18 @@ const getNicknameCountMap = forms => {
   return nickNameMap;
 };
 
+const getDuplicateNicknames = (nicknames, cutLine = 1) => {
+  const resultArray = [];
+
+  each(nicknames, ([nickname, count]) => {
+    if (cutLine < count) {
+      resultArray.push(nickname);
+    }
+  });
+
+  return resultArray;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
