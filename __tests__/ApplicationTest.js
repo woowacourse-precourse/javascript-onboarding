@@ -88,4 +88,38 @@ describe("problem7", () => {
       )
     ).toEqual(["andole", "jun", "bedi"]);
   });
+  // test("case2", () => {
+  //   expect(
+  //     problem7(
+  //       "mrko",
+  //       [
+  //         ["donut", "andole"],
+  //         ["donut", "jun"],
+  //         ["donut", "mrko"],
+  //         ["shakevan", "andole"],
+  //         ["shakevan", "jun"],
+  //         ["shakevan", "mrko"],
+  //         ["shakevan", "donut"],
+  //       ],
+  //       ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  //     )
+  //   ).toEqual(["andole", "jun", "bedi"]);
+  // });
+  // test("case3", () => {
+  //   expect(
+  //     problem7(
+  //       "mrko",
+  //       [
+  //         ["donut", "andole"],
+  //         ["donut", "jun"],
+  //         ["donut", "mrko"],
+  //         ["shakevan", "andole"],
+  //         ["shakevan", "jun"],
+  //         ["shakevan", "mrko"],
+  //         ["shakevan", "donut"],
+  //       ],
+  //       ["bedi", "bedi", "donut", "bedi", "shakevan", "bro"]
+  //     )
+  //   ).toEqual(["andole", "jun", "bedi", "bro"]);
+  // });
 });
