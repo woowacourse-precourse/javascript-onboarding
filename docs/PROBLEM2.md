@@ -37,4 +37,4 @@
 4. find_scope 함수로 찾은 중복문자의 범위를 이용하여 중복문자 제거하는 remove_repeat 함수 구현 :white_check_mark:
 - 매개변수 : start_idx(중복문자 시작 index),end_idx(중복문자 끝 index),convert_arr(배열)
 - return값 : 없음
-5. convert_arr 배열을 join 함수를 이용하여 string 문자열 값으로 변환.
+5. convert_arr 배열을 join 함수를 이용하여 string 문자열 값으로 변환. :white_check_mark:

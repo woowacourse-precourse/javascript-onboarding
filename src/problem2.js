@@ -53,6 +53,7 @@ function problem2(cryptogram) {
     }
     remove_repeat(start_idx,end_idx,convert_arr)
   }
+  answer = convert_arr.join('');
   return answer;
 
 }
