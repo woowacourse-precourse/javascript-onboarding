@@ -6,8 +6,8 @@ function problem7(user, friends, visitors) {
   // 내(user) 친구 구하기
   let myFriends = [];
   for (let name of friends) {
-    if (name[0] === userName) myFriends.push(a[1]);
-    if (name[1] === userName) myFriends.push(a[0]);
+    if (name[0] === userName) myFriends.push(name[1]);
+    if (name[1] === userName) myFriends.push(name[0]);
   }
 
   // friends 목록에서 user의 친구 제거
@@ -46,7 +46,7 @@ function problem7(user, friends, visitors) {
   }
 
   // 점수별로 정렬
-  let pointArr = Object.entries(userPointList);
+  let pointArr = Object.entries(createPointList);
   pointArr.sort((a, b) => b[1] - a[1]);
   // 점수가 같은 사람끼리 이름순으로 정렬
   pointArr.sort((a, b) => {
