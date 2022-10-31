@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   function isCorrectPage(pages) {
+    if (pages[0] + 1 === pages[1] && pages[0] > 0 && pages[0] < 400 && pages[1] > 0 & pages[1] < 400 && pages[0] % 2 === 1)
     return pages[0] + 1 === pages[1] ? true : false; 
   }
 
