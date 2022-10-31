@@ -16,6 +16,11 @@ function problem1(pobi, crong) {
   let sum_b = 0;
   let multiple_b = 1;
 
+  if (a[0] === 1 || b[1] === 400 || (a[1]-a[0]) !== 1 || (b[1]-b[0]) !== 1) {
+    console.log(-1)
+    return -1
+  }
+
   a = a.toString().split('');
 
   for (let i = 0; i < a.length; i++) {
@@ -54,4 +59,4 @@ function problem1(pobi, crong) {
 
 module.exports = problem1;
 
-problem1([97, 98],[197, 198])
+problem1([99, 102],[211, 212])
