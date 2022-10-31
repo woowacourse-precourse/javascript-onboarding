@@ -18,7 +18,8 @@ function violationChk(word) {
     // 문자가 알파벳일 경우
     if (
       (word[i].charCodeAt() >= 65 && word[i].charCodeAt() <= 90) ||
-      (word[i].charCodeAt() >= 97 && word[i].charCodeAt() <= 122)
+      (word[i].charCodeAt() >= 97 && word[i].charCodeAt() <= 122) ||
+      word[i] === " "
     ) {
       isAlphabet = true;
       //문자가 알파벳이 아닐 경우
@@ -36,6 +37,26 @@ function frogging(word) {
 
   for (var i = 0; i < word.length; i++) {
     result += converter(word[i]);
+  }
+
+  return result;
+}
+
+function converter(char) {
+  var dictionary = "zyxwvutsrqponmlkjihgfedcba";
+  var result = "";
+
+  // char가 띄어쓰기인 경우
+  if (char === " ") {
+    result = char;
+  }
+  // char가 소문자인 경우
+  else if (char === char.toLowerCase()) {
+    result = dictionary[char.charCodeAt() - 97];
+  }
+  // char가 대문자인 경우
+  else {
+    result = dictionary[char.charCodeAt() - 65].toUpperCase();
   }
 
   return result;
