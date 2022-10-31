@@ -1,11 +1,13 @@
 function problem7(user, friends, visitors) {
   let friendHash = setFriends(friends, new Map());
   let scores = getFriendsScores(user, friendHash, new Map());
+
   for (const friends of visitors) {
     scores.get(friends) === undefined
       ? scores.set(friends, 1)
       : scores.set(friends, scores.get(friends) + 1);
   }
+
   return Array.from(scores)
     .sort(([leftUser, leftScore], [rightUser, rightScore]) => {
       if (rightScore !== leftScore) return rightScore - leftScore;
@@ -35,6 +37,7 @@ function setFriends(friend, hash) {
     return hash;
   }
 }
+
 function getFriendsScores(user, friendHash, scoreHash) {
   for (const key of friendHash.keys()) {
     scoreHash.set(key, 0);
