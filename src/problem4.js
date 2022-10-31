@@ -1,6 +1,6 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  const convertWords = word.split("").map((alphabet) => convertWord(alphabet));
+  return;
 }
 
 module.exports = problem4;
