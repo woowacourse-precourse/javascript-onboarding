@@ -26,6 +26,12 @@ function setScore(user, friends, visitors) {
       }
     }
   }
+  for(i = 0; i < friends.length; i++){  //이미 user의 친구
+    if(friendsArr[i][1] === user){
+      zero.push(friendsArr[i][0]);
+    }
+  }
+
 }
 
 module.exports = problem7;
