@@ -131,6 +131,47 @@ const calculateRank = scoreInfoArray => {
   return copyArray(scoreInfoMap);
 };
 
+const sortTo = targetArray => {
+  const copiedTargetArray = copyArray(targetArray);
+
+  const compareByScore = (firstScore, secondScroe) => {
+    if (firstScore > secondScroe) {
+      return -1;
+    }
+
+    if (firstScore < secondScroe) {
+      return 1;
+    }
+
+    return 0;
+  };
+
+  const compareByUserName = (firstId, secodeId) => {
+    if (firstId < secodeId) {
+      return -1;
+    }
+
+    if (firstId > secodeId) {
+      return 1;
+    }
+
+    return 0;
+  };
+
+  const sortedArray = copiedTargetArray.sort(([firstId, firstScore], [secodeId, secondScroe]) => {
+    const sortIndex = compareByScore(firstScore, secondScroe);
+
+    // 추천 점수가 같은 경우는 이름순으로 정렬한다.
+    if (sortIndex === 0) {
+      return compareByUserName(firstId, secodeId);
+    }
+
+    return sortIndex;
+  });
+
+  return sortedArray;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
