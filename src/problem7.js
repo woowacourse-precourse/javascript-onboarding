@@ -86,6 +86,19 @@ function exception(user, friends, relation){
   return true;
 }
 
+function sortBy(objects){
+  const sortBykey = Object.entries(objects).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} );
+  const sortByscore = Object.fromEntries(
+    Object.entries(sortBykey).sort(([,a],[,b]) => a > b? -1: 1)
+  );
+
+  if (Object.keys(sortByscore).length > 5){
+    return Object.keys(sortByscore).slice(0,5);
+  }
+  else{
+    return Object.keys(sortByscore);
+  }
+}
 
 
 function problem7(user, friends, visitors) {
@@ -93,35 +106,14 @@ function problem7(user, friends, visitors) {
   if (exception){
     if (user in relation == false){
       const algorithm = visitCountNofriend(visitors);
-      const sortBykey = Object.entries(algorithm).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} );
-      const sortByscore = Object.fromEntries(
-        Object.entries(sortBykey).sort(([,a],[,b]) => a > b? -1: 1)
-      );
-
-      if (Object.keys(sortByscore).length > 5){
-        return Object.keys(sortByscore).slice(0,5);
-      }
-      else{
-        return Object.keys(sortByscore);
-      }
+      return sortBy(algorithm);
     }
     else{
       const algorithm = visitCount(visitors, user, friends);
       const friendScore = knowFriend(relation, user, relation, algorithm);
-      const sortBykey = Object.entries(friendScore).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} );
-      const sortByscore = Object.fromEntries(
-        Object.entries(sortBykey).sort(([,a],[,b]) => a > b? -1: 1)
-      );
-
-      if (Object.keys(sortByscore).length > 5){
-        return Object.keys(sortByscore).slice(0,5);
-      }
-      else{
-        return Object.keys(sortByscore);
-      }
+      return sortBy(friendScore);
     } 
   }
-  
 }
 
 module.exports = problem7;
