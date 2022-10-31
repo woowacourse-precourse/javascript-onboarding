@@ -33,6 +33,9 @@ function problem4(word) {
                     let tmpCount = 155 - tmpNum;
                     tmpArray[i] = String.fromCharCode(tmpCount);
                 }
+                else {
+                    tmpArray[i] = tmpNum;
+                }
             }
         }
         answer = tmpArray.join('');
