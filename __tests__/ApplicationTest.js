@@ -42,6 +42,19 @@ describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
+  //JS
+
+  test("case2", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba"
+    );
+  });
+
+  test("case3", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz !@#!#  ")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba !@#!#  "
+    );
+  });
 });
 
 describe("problem5", () => {

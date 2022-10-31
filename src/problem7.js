@@ -1,9 +1,10 @@
 function problem7(user, friends, visitors) {
   let answer = [];
-  const currFriends = friends.filter(el => el.includes(user)).flat().filter(name => name !== user);
-  answer = Array.from(new Set([...friends, ...visitors].flat())).filter(name => !currFriends.includes(name) && name !== user);
   const friendPoint = {};
   let friendEntry = [];
+  
+  const currFriends = friends.filter(el => el.includes(user)).flat().filter(name => name !== user);
+  answer = Array.from(new Set([...friends, ...visitors].flat())).filter(name => !currFriends.includes(name) && name !== user);
 
   currFriends.forEach(friend => friendEntry = [...friendEntry, ...friends.filter(entry => !entry.includes(user) && entry.includes(friend))]);
   
@@ -11,7 +12,7 @@ function problem7(user, friends, visitors) {
     friendPoint[name] = friendEntry.filter(friend => friend.includes(name)).length * 10;
     friendPoint[name] = (friendPoint[name] || 0) + visitors.filter(visitor => visitor === name).length;
   });
-  
+
   answer = answer.filter(name => friendPoint[name] !== 0);
   
   return answer.sort((x, y) => {
