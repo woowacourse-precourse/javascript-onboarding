@@ -42,6 +42,12 @@ const eachDigitAllMultiply = (bookPage) =>
     .split("")
     .reduce((prev, curr) => prev * Number(curr), 1);
 
+const judgeLargeSmallRelationship = (a, b) => {
+  if (a > b) return 1;
+  if (b > a) return 2;
+  return 0;
+};
+
 function problem1(pobi, crong) {
   if (isExceptionSituationOccurred(pobi) || isExceptionSituationOccurred(crong))
     return -1;
@@ -49,6 +55,7 @@ function problem1(pobi, crong) {
   const maxPobi = selectMaxValue(pobi);
   const maxCrong = selectMaxValue(crong);
 
+  return judgeLargeSmallRelationship(maxPobi, maxCrong);
 }
 
 module.exports = problem1;
