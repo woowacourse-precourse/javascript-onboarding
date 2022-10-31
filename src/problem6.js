@@ -59,6 +59,8 @@ function problem6(forms) {
   let allSlices = new Map(); //크루들의 닉네임 내에 존재하는 연속적인 문자열 목록(문자열, 출현 빈도 수)
   getAllSlices(forms, allSlices);
   getEmails(allSlices, forms, result);
+  answer = Array.from(result);
+  answer.sort();
   return answer;
 }
 
