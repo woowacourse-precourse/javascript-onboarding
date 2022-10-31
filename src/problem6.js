@@ -9,6 +9,16 @@ function addCount(nameSlice, allSlices) {
   allSlices.set(nameSlice, count + 1); //1만큼 증가시킨다.
 }
 
+function getSlices(forms, allSlices, index) {
+  let crewName = forms[index][1]; //크루의 목록에서 index + 1번째 크루의 닉네임을 가져온다.
+  for (let i = 0; i < crewName.length - 1; i++) {
+    //크루의 닉네임에서 가능한만큼 반복문을 수행하며
+    let nameSlice = crewName.substr(i, 2); //2글자 크기의 연속되는 중복 문자열을 추출한다.
+    firstSlice(nameSlice, allSlices); //처음 등장한 중복 문자열을 처리한다.
+    addCount(nameSlice, allSlices); //해당 중복 문자열에 대해 출현 빈도 수 +1을 한다.
+  }
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
