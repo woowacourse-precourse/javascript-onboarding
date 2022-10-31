@@ -32,6 +32,18 @@ function problem7(user, friends, visitors) {
   // 점수 기준 내림차순
   result = [...map].sort((r1, r2) => r2[1] - r1[1]);
 
+  // 0점이 아닌 것만 추출
+  for (let i = 0; i < result.length; i++) {
+    if (result[i][1] === 0) {
+      continue;
+    } else {
+      answer.push(result[i][0]);
+    }
+  }
+  // console.log(result);
+  // console.log(map);
+  // console.log(answer);
+
   return answer;
 }
 
