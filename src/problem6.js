@@ -15,6 +15,7 @@ function makeNameList(forms) {
   return nicknameList;
 }
 
+
 function checking(nameList, forms) {
   let resultList = [];
   let nameListLength = nameList.length;
@@ -27,6 +28,7 @@ function checking(nameList, forms) {
       let check = nameList[curNameIndex].substr(curCharIndex, 2);
       for(let comparedNameIndex = curNameIndex+1; comparedNameIndex < nameListLength; comparedNameIndex++) {
         if(nameList[comparedNameIndex].includes(check)) {
+          flag = 1;
           resultList.push(forms[comparedNameIndex][email])
         }
       }
