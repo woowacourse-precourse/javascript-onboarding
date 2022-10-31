@@ -10,6 +10,7 @@ function problem4(word) {
   var lower = "abcdefghijklmnopqrstuvwxyz";
 
   for(var c of word) {
+    var i;
     for(var i = 0; i < 26; i++) {
       if(c == upper[i]) {
         answer += upper[25-i];
@@ -20,6 +21,7 @@ function problem4(word) {
         break;
       }
     }
+    if(i >= 26) answer += c; // 알파벳 이외 문자일때
   }
 
   return answer;
