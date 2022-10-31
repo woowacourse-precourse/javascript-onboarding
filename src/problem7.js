@@ -4,6 +4,16 @@
 // 이미 친구인 유저를 목록에서 삭제하는 함수 구현
 // 결과 객체를 정렬하고, 5개까지만 나오도록 잘라주는 함수 구현
 
+function setIntersection(set1, set2) {
+  const result = new Set();
+
+  for (const value of set1) {
+    if (set2.has(value)) result.add(value);
+  }
+
+  return result;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
