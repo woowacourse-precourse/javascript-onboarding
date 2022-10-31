@@ -15,6 +15,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (let visitorId of visitors) {
+    if (!friendList.get(user).includes(visitorId))
+      visitPoint(recommend, visitorId);
+  }
+
   return answer;
 }
 
@@ -30,4 +35,9 @@ function friendPoint(recommend, snsId) {
   } else recommend.set(snsId, 10);
 }
 
+function visitPoint(recommend, visitorId) {
+  if (recommend.get(visitorId) !== undefined) {
+    recommend.set(visitorId, recommend.get(visitorId) + 1);
+  } else recommend.set(visitorId, 1);
+}
 module.exports = problem7;
