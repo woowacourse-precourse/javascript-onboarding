@@ -29,17 +29,21 @@ function problem6(forms) {
     }
   }
 
-  answer.sort();
+  answer.sort().filter((el,idx)=>{
+    return answer.indexOf(el)===idx
+  })
   return answer;
 }
 //기능 요구사항
 //같은 글자가 연속적으로 포함되면, 이메일 목록 리턴
+
+
 //제한사항
 
 //1~10,000명 이하
 //이메일 형식에 부합, 전체길이는 11자 이상 20자 미만
 // @email.com 도메인으로만 제한
 //닉네임은 한글만 가능, 전체길이는 1자 이상 20자 미만
-// 이메일 오름차순, 중복 제거?? 중복제거 뭔솔
+
 // -- case 필요한가?
 module.exports = problem6;
