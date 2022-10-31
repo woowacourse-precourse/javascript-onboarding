@@ -15,6 +15,8 @@ function problem2(cryptogram) {
       codeStack.push(cryptogram[i]);
     }
   }
+
+  const answer = codeStack.join("");
   return answer;
 }
 
