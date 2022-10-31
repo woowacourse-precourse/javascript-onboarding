@@ -19,22 +19,24 @@ function separateDigit(pages) {
 function comparePages(pages2D) {
   const maxSum = sumOfPages(pages2D);
   const maxMultiple = multipleOfPages(pages2D);
-  if (maxSum > maxMultiple) return maxSum;
-  else return maxMultiple;
+  return moreLargeValue(maxSum, maxMultiple);
 }
 
 function sumOfPages(pages2D) {
   const LeftPage = pages2D[0].reduce((pre, cur) => pre + cur, 0);
   const RightPage = pages2D[1].reduce((pre, cur) => pre + cur, 0);
-  if (LeftPage > RightPage) return LeftPage;
-  else return RightPage;
+  return moreLargeValue(LeftPage, RightPage);
 }
 
 function multipleOfPages(pages2D) {
   const LeftPage = pages2D[0].reduce((pre, cur) => pre * cur, 1);
   const RightPage = pages2D[1].reduce((pre, cur) => pre * cur, 1);
-  if (LeftPage > RightPage) return LeftPage;
-  else return RightPage;
+  return moreLargeValue(LeftPage, RightPage);
+}
+
+function moreLargeValue(left, right) {
+  if (left > right) return left;
+  return right;
 }
 
 function compareResult({ pobiResult, crongResult, pobi, crong }) {
