@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
   const noFriend = findNoFriend(user, friends, userFriend);
   const candidateObj = {};
-  calculateNoFriendScore(friends, noFriend, candidateObj);
+  calculateNoFriendScore(userFriend, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
   const sortedCandidate = sortCandidate(candidateObj);
   const fiveCandidate = getFiveCandidate(sortedCandidate);
@@ -32,11 +32,11 @@ function findNoFriend(user, friends, userFriend) {
   return allName.filter((name) => name !== user && !userFriend.includes(name));
 }
 
-function calculateNoFriendScore(friends, noFriend, candidateObj) {
+function calculateNoFriendScore(userFriend, noFriend, candidateObj) {
   for (let i = 0; i < noFriend.length; i++) {
     let inclusionCounter = 0;
-    for (let j = 0; j < friends.length; j++) {
-      if (friends[j].includes(noFriend[i])) {
+    for (let j = 0; j < userFriend.length; j++) {
+      if (userFriend[j].includes(noFriend[i])) {
         inclusionCounter++;
       }
     }
