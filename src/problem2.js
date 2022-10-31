@@ -36,4 +36,9 @@ function splitStr(cryptogram) {
   }
   return splitedStr;
 }
+
+function filterStr(cryptogram) {
+  const splitedStr = splitStr(cryptogram);
+  return splitedStr.filter((str) => str.length < 2).join("");
+}
 module.exports = problem2;
