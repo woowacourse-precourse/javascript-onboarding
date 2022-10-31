@@ -1,6 +1,7 @@
+const SPLIT_CREW_NAME = [];
+const DUPLICATE_CREW_NAME = [];
+
 function problem6(forms) {
-  const splitCrewName = [];
-  const duplicateName = [];
   const result = new Set();
   
   forms.forEach(crew => {
