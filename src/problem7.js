@@ -39,7 +39,30 @@ function problem7(user, friends, visitors) {
   // score 초기화
   for(var i = 0; i < answer.length; i++) score[i] = 0;
 
-  return score;
+  // 사용자와 함께 아는 친구의 수 카운트
+  for(f of friends) {
+    for(uf of user_friends) {
+      if(uf == f[0] && user != f[1]) {
+        for(var i = 0; i < answer.length; i++) {
+          if(f[1] == answer[i]) score[i] += 10;
+        }
+      }
+      if(uf == f[1] && user != f[0]) {
+        for(var i = 0; i < answer.length; i++) {
+          if(f[0] == answer[i]) score[i] += 10;
+        }
+      } 
+    }
+  }
+
+  // 사용자의 타임 라인에 방문한 횟수 카운트
+  for(v of visitors) {
+    for(var i = 0; i < answer.length; i++) {
+      if(v == answer[i]) score[i]++;
+    }
+  }
+
+  return answer;
 }
 
 module.exports = problem7;
