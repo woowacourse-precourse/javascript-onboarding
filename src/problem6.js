@@ -18,6 +18,16 @@ function isRepeatedNickname(nickname, target) {
 
 function problem6(forms) {
   var answer;
+  const repeatedCrews = [];
+
+  for (const [, nickname] of forms) {
+    repeatedCrews.push(
+      ...forms.filter(
+        (f) => nickname !== f[1] && isRepeatedNickname(nickname, f[1])
+      )
+    );
+  }
+
   return answer;
 }
 
