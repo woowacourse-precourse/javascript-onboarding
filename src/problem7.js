@@ -11,7 +11,7 @@ function findFriends(user, friend){
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let nameMap = new Map();
 
   for(let i = 0;i < friends.length;i++){
@@ -59,8 +59,42 @@ function problem7(user, friends, visitors) {
   }
   nameMap.delete(user);
 
-  
-  let sortedMap = [...nameMap].sort((a, b) => a[1] - b[1]).reverse()
+
+  let sortedMap = [...nameMap].sort((a, b) => a[1] - b[1]).reverse();
+
+
+  let tmpArr = [];
+  let tmpScore = 0;
+  tmpScore = sortedMap[0][1];
+  for(let i = 0;i < sortedMap.length;i++){
+    if(sortedMap[i][1] > 0){
+      if(sortedMap[i][1] !== tmpScore){
+        tmpArr.sort();
+        for(let j = 0;j < tmpArr.length;j++){
+          if(answer.length < 5){
+            answer.push(tmpArr[j]);
+          }
+          else{
+            break;
+          }
+        }
+        tmpArr = [];
+        tmpArr.push(sortedMap[i][0]);
+      }
+      else{
+        tmpArr.push(sortedMap[i][0]);
+      }
+    }
+  }
+  for(let j = 0;j < tmpArr.length;j++){
+    if(answer.length < 5){
+      answer.push(tmpArr[j]);
+    }
+    else{
+      break;
+    }
+  }
+
   return answer;
 }
 
