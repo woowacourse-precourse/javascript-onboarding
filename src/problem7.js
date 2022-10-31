@@ -4,11 +4,6 @@ function problem7(user, friends, visitors) {
   let userScoreList = {};
   let myFriends = [];
 
-  visitors.forEach((visitor) => {
-    if (userScoreList[visitor] === undefined) userScoreList[visitor] = 0;
-    userScoreList[visitor] += 1;
-  });
-
   friends.forEach((friend) => {
     const [a, b] = friend;
     userScoreList[a] = 0;
@@ -20,6 +15,11 @@ function problem7(user, friends, visitors) {
     if (friend.includes(user)) {
       myFriends.push(...friend.filter((x) => x !== user));
     }
+  });
+
+  visitors.forEach((visitor) => {
+    if (userScoreList[visitor] === undefined) userScoreList[visitor] = 0;
+    userScoreList[visitor] += 1;
   });
 
   myFriends.forEach((myFriend) => {
@@ -44,7 +44,8 @@ function problem7(user, friends, visitors) {
     });
   answer = answer
     .flatMap((x) => x)
-    .filter((x, idx) => idx % 2 === 0 && !myFriends.includes(x)).slice(0,5);
+    .filter((x, idx) => idx % 2 === 0 && !myFriends.includes(x))
+    .slice(0, 5);
 
   return answer;
 }
