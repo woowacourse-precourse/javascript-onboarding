@@ -206,4 +206,60 @@ describe('problem7', () => {
       )
     ).toEqual(['andole', 'jun', 'bedi'])
   })
+
+  test('case2', () => {
+    expect(
+      problem7('mrko', [['donut', 'andole']], ['donut', 'bedi', 'shakevan'])
+    ).toEqual(['bedi', 'donut', 'shakevan'])
+  })
+
+  test('case3', () => {
+    expect(
+      problem7(
+        'a',
+        [
+          ['a', 'b'],
+          ['b', 'c'],
+          ['c', 'd'],
+          ['d', 'e'],
+          ['e', 'f'],
+          ['f', 'g'],
+        ],
+        ['h', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h']
+      )
+    ).toEqual(['c', 'd', 'e', 'f', 'g'])
+  })
+
+  test('case4', () => {
+    expect(
+      problem7(
+        '',
+        [
+          ['donut', 'andole'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+      )
+    ).toEqual(INVALID_INPUT)
+  })
+
+  test('case5', () => {
+    expect(
+      problem7('mrko', [], ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'])
+    ).toEqual(INVALID_INPUT)
+  })
+
+  test('case6', () => {
+    expect(
+      problem7(
+        'mrko',
+        [['donut', 123]],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+      )
+    ).toEqual(INVALID_INPUT)
+  })
 })
