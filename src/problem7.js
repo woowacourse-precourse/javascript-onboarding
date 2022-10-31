@@ -34,6 +34,17 @@ function checkScore(friendsOfFriends, visitors, scoreMap) {
   visitors.forEach((friend) => scoreMap.set(friend, scoreMap.get(friend) + 1));
 }
 
+function getRecommended(scoreMap) {
+  return [...scoreMap]
+    .sort((a, b) => {
+      if (a[1] === b[1]) return 1;
+      return b[1] - a[1];
+    })
+    .slice(0, 5)
+    .filter((score) => score[1] !== 0)
+    .map((user) => user[0]);
+}
+
 function problem7(user, friends, visitors) {
   const userFriends = getUserFriends(user, friends);
   const friendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
@@ -42,6 +53,11 @@ function problem7(user, friends, visitors) {
   initScores(friends, visitors, scoreMap);
 
   checkScore(friendsOfFriends, visitors, scoreMap);
+
+  // 원래 친구였던 유저 제거
+  userFriends.forEach((friend) => scoreMap.delete(friend));
+
+  const answer = getRecommended(scoreMap);
 
   return answer;
 }
