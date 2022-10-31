@@ -1,4 +1,4 @@
-const SnsFriendrRecomander = {
+const SnsFriendRecomander = {
   user: "",
   friends: [],
   visitors: [],
@@ -61,7 +61,7 @@ const SnsFriendrRecomander = {
       this.scores[visitor] += 1;
     });
   },
-  friendrRecomander: function () {
+  friendRecomander: function () {
     this.makeRelations();
     this.calculateScore();
     let scoresArray = Object.entries(this.scores);
@@ -78,8 +78,9 @@ const SnsFriendrRecomander = {
 };
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const snsFriendRecomander = Object.assign({}, SnsFriendRecomander);
+  snsFriendRecomander.inputDatas(user, friends, visitors);
+  return snsFriendRecomander.friendRecomander();
 }
 
 module.exports = problem7;
