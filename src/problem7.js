@@ -41,17 +41,4 @@ function sortAlgorithm(a, b) {
   if ( a[0] < b[0] ) return -1;
 }
 
-const user = "mrko";
-const friends =  [
-  ["donut", "andole"], 
-  ["donut", "jun"], 
-  ["donut", "mrko"], 
-  ["shakevan", "andole"], 
-  ["shakevan", "jun"], 
-  ["shakevan", "mrko"]
-  ];
-const visitors =  ["bedi", "bedi", "donut", "bedi", "shakevan"];
-
-console.log(problem7(user, friends, visitors));
-
-// module.exports = problem7;
+module.exports = problem7;
