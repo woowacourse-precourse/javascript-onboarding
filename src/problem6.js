@@ -24,6 +24,8 @@ function problem6(forms) {
 
   const duplicatedNameUserEmail = duplicatedNameArray.map(user => user[0]).filter(Boolean);
 
+  const answer = [...new Set(duplicatedNameUserEmail.sort())]; // 중복 제거, 오름차순 정렬
+
   return answer;
 }
 
