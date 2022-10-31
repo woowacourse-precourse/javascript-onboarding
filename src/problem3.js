@@ -4,6 +4,7 @@
 // - 손뼉 회수 count
 
 function problem3(number) {
+  let answer = 0;
   const targetArr = ["3", "6", "9"];
 
   function createStringArr(number) {
@@ -20,6 +21,12 @@ function problem3(number) {
       }
     });
     return targetCnt;
+  }
+
+  for (let i = 1; i <= number; i++) {
+    const currentArr = createStringArr(i);
+    const currentCnt = countTargetNum(currentArr);
+    answer += currentCnt;
   }
 
   return answer;
