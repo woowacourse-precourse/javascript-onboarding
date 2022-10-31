@@ -6,15 +6,7 @@ function problem6(forms) {
 }
 
 const sortEmail = (forms) => {
-  return forms.sort((a, b) => {
-    if (a[0] === b[0]) {
-      return 0;
-    } else if (a[0] > b[0]) {
-      return 1;
-    } else if (a[0] < b[0]) {
-      return -1;
-    }
-  });
+  return forms.sort();
 };
 
 const removeDuplicatedName = (forms, result = []) => {
