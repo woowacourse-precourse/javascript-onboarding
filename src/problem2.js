@@ -29,7 +29,7 @@ function removeDuplication(cryptogram){
   return decodingString.join('');
 }
 function problem2(cryptogram) {
-  var answer;
+  let answer;
   let afterString = cryptogram;
 
   do{
