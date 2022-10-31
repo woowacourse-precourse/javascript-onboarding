@@ -1,3 +1,8 @@
+const pipe =
+  (...funcs) =>
+  (arg) =>
+    funcs.reduce((a, f) => f(a), arg);
+
 const createConsecutiveLetterMap = (args) => {
   const { forms } = args;
   const consecutiveLetterMap = new Map();
@@ -57,8 +62,14 @@ const sortEmailFromUsersUsingConsecutiveLetter = (args) => {
 };
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const solve = pipe(
+    createConsecutiveLetterMap,
+    deleteNonOverlappingKeyInMap,
+    gatherEmailFromUsersUsingConsecutiveLetter,
+    sortEmailFromUsersUsingConsecutiveLetter
+  )({ forms });
+
+  return solve;
 }
 
 module.exports = problem6;
