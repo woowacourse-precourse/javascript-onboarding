@@ -16,8 +16,8 @@ function problem3(number) {
   while (number) {
     if (number % 10 === 3 || number % 10 === 6 || number % 10 === 9) {
       clap++;
-      number = parseInt(number / 10);
     }
+    number = parseInt(number / 10);
   }
 
   return clap;
