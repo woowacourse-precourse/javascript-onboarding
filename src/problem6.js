@@ -42,4 +42,15 @@ function getEverySeqLetters(nicknames) {
   return seqLettersCount;
 }
 
+function findDuplicatedLetters(seqLettersCount) {
+  let seqLettersDuplicated = [];
+  for (let seqLetters of Object.keys(seqLettersCount)) {
+    if (seqLettersCount[seqLetters] >= 2) {
+      seqLettersDuplicated.push(seqLetters);
+    }
+  }
+
+  return seqLettersDuplicated;
+}
+
 module.exports = problem6;
