@@ -18,8 +18,8 @@ function problem7(user, friends, visitors) {
     return network.get(uid) || []
   }
 
-  const sugguestion = (other) => {
-    return friendList(other).filter(x => !friendList(user).includes(x) &&  x !== user)
+  const sugguestion = (visitor) => {
+    return friendList(visitor).filter(x => friendList(user).includes(x) &&  x !== user)
   }
 
   const _sort = (dataMap) => {
@@ -38,12 +38,16 @@ function problem7(user, friends, visitors) {
   })
 
   visitors.map((item) => {
-    if(!friendList(user).includes(item)){
+    if(friendList(user).includes(item)){
+      friendList(item).map((person)=>{
+        if(person !== user) createDashboard(person, 10)
+      })
+    } else {
       createDashboard(item)
+      sugguestion(item).map((target)=>{
+        createDashboard(item,10)
+      })
     }
-    sugguestion(item).map((person)=>{
-      createDashboard(person, 10)
-    })
   })
 
   let answer = [..._sort(dashboard).keys()].splice(0,5)
