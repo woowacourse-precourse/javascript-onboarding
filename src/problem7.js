@@ -79,7 +79,7 @@ function getFiveCandidate(sortedName) {
 }
 
 function isScoreOverZero(fiveCandidate) {
-  return Object.values(fiveCandidate).filter((value) => value !== 0);
+  return fiveCandidate.filter((candidate) => candidate[1] !== 0);
 }
 
 function getAnswer(withoutZeroScore) {
