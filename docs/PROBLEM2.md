@@ -22,3 +22,12 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능 목록
+
+1. cryptogram을 풀기
+
+   `solve_cryptogram()` 함수에서 cryptogram을 풀어나간다.
+
+   중복 문자는 `solve_crytogram_helper` 함수에서 제거된다.
+
+   더이상 문자가 줄어들지 않을 때까지 계속 실행한다.
