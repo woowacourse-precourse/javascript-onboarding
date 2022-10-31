@@ -37,4 +37,21 @@ function removeDupLetters(letters) {
   return newLetters;
 }
 
+function decodeCryptogram(cryptogram) {
+  let prevLetters = cryptogram;
+  let newLetters = "";
+
+  while (1) {
+    newLetters = removeDupLetters(prevLetters);
+    if (newLetters === prevLetters) {
+      break;
+    } else {
+      prevLetters = newLetters;
+    }
+  }
+  const decodedLetters = newLetters;
+
+  return decodedLetters;
+}
+
 module.exports = problem2;
