@@ -3,7 +3,7 @@ function findUserFriends(user, friends) {
   return friends.filter(el => el.includes(user)).flat().filter(el => el !== user);
 }
 
-function relationFriends(user, friends) {
+function relatedFriends(user, friends) {
   const relations = [];
   for (const relation of friends) {
       if(!relation.includes(user)) {
@@ -26,9 +26,9 @@ function checkVisitorScore(visitors) {
 }
 
 
-function friendsScore(user, friends, visitor) {
+function relatedFriendScore(user, friends, visitor) {
   const friendsOfUser = findUserFriends(user, friends);
-  const relation = relationFriends(user, friends);
+  const relation = relatedFriends(user, friends);
   const visitorScore = checkVisitorScore(visitor);
   const score = new Map(visitorScore);
 
@@ -53,7 +53,7 @@ function friendsScore(user, friends, visitor) {
 
 function problem7(user, friends, visitors) {
   const answer = [];
-  const result = friendsScore(user, friends, visitors)
+  const result = relatedFriendScore(user, friends, visitors)
   .sort((a,b) => {
     if(a[1] === b[1]) {
       return b[0] - a[0];
