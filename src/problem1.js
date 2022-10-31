@@ -14,7 +14,9 @@ function problem1(pobi, crong) {
     var pobi_score = get_score(pobi);
     var crong_score = get_score(crong);
 
-    
+    if(pobi_score > crong_score) answer = 1;
+    else if(pobi_score < crong_score) answer = 2;
+    else answer = 0;
   }
   
   return answer;
