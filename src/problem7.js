@@ -18,4 +18,19 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+function seperateFriends(friends, user) {
+  let userFriends = [];
+  let friendsOfFriend = [];
+
+  for (let friend of friends) {
+    userFriends.push(friend[0]);
+    if (friend[1] !== user) {
+      friendsOfFriend.push(friend[1]);
+    }
+  }
+  userFriends = [...new Set(userFriends)];
+
+  return [userFriends, friendsOfFriend];
+}
+
 module.exports = problem7;
