@@ -55,7 +55,7 @@ function problem7(user, friends, visitors) {
   });
   setRecommand(recommandInfo, visitors, notForRecommand, 1);
 
-  const result = Object.entries(recommandInfo.getScore())
+  const result = Object.entries(recommandInfo.getScoreOfUsers())
     .sort(sortByScore)
     .reduce((recommands, [name]) => [...recommands, name], [])
     .slice(0, 5);
