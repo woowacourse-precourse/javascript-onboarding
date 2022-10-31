@@ -54,8 +54,6 @@ function solution(pobi, crong){
     crong_sum = (crong_sum > tmp_sum)? crong_sum: tmp_sum;
     crong_pro = (crong_pro > tmp_pro)? crong_pro: tmp_pro;
     let crong_result = (crong_sum > crong_pro)?crong_sum:crong_pro;
-    console.log("[*] POBI: " + pobi_result);
-    console.log("[*] CRONG: " + crong_result);
     if(pobi_result > crong_result){
       return 1;
     }
