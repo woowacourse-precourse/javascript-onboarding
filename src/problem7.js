@@ -43,6 +43,20 @@ function visitorScore(visitors,score){
   return score;
 }
 
+function deleteFriend(score,user_friend){
+  Object.keys(score).forEach(function(ele,idx){
+    if(score[ele]==0){
+      delete score[ele]
+    }
+    if(user_friend!==undefined){
+      if(user_friend.includes(ele)){
+        delete score[ele]
+      }
+    }
+  });
+  return score;
+}
+
 function problem7(user, friends, visitors) {
   let answer;
   let friend_dict={};
@@ -53,6 +67,7 @@ function problem7(user, friends, visitors) {
   if (user_friend!==undefined) 
     score = friendScore(friend_dict,score,user_friend);
   score = visitorScore(visitors,score);
+  score = deleteFriend(score,user_friend);
   return answer;
 }
 
