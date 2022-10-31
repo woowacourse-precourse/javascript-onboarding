@@ -36,8 +36,16 @@ function sortEmails(set) {
 }
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const charCases = {};
+  const emails = new Set();
+  makeCharCases(charCases, forms);
+  for (let i = 0; i < forms.length; i++) {
+    if (checkDuplicate(charCases, forms[i][1])) {
+      emails.add(forms[i][0]);
+    }
+  }
+
+  return sortEmails(emails);
 }
 
 module.exports = problem6;
