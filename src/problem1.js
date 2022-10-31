@@ -1,16 +1,3 @@
-function checkException(arr) {
-  const diff = arr[1] - arr[0] === 1 ? true : false;
-  var range = true;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] >= 0 && arr[i] <= 400) {
-      range = range && true;
-    } else {
-      range = range && false;
-    }
-  }
-  return diff && range;
-}
-
 function eachPageScore(page) {
   let plus = 0;
   let multiply = 1;
@@ -22,6 +9,19 @@ function eachPageScore(page) {
   }
   score = Math.max(plus, multiply);
   return score;
+}
+
+function checkException(arr) {
+  const diff = arr[1] - arr[0] === 1 ? true : false;
+  var range = true;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= 0 && arr[i] <= 400) {
+      range = range && true;
+    } else {
+      range = range && false;
+    }
+  }
+  return diff && range;
 }
 
 function problem1(pobi, crong) {
@@ -43,7 +43,13 @@ function problem1(pobi, crong) {
   const cRight = eachPageScore(crong[1]);
   const cScore = Math.max(cLeft, cRight);
 
+  if (pScore > cScore) {
+    answer = 1;
+  } else if (cScore > pScore) {
+    answer = 2;
+  } else {
+    answer = 0;
+  }
   return answer;
 }
-
 module.exports = problem1;
