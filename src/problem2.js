@@ -18,4 +18,8 @@ const decrypt = (cryptogram) => {
   return cryptogram;
 };
 
+function problem2(cryptogram) {
+  return decrypt(cryptogram);
+}
 
+module.exports = problem2;
