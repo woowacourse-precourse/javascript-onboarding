@@ -36,6 +36,14 @@ function getMul(num) {
   return mul;
 }
 
+function getNumberToArr(number) {
+  const stringNum = String(number);
+  const convertToNumberTypeFn = (num) => Number(num);
+  const numberArr = Array.from(stringNum, convertToNumberTypeFn);
+
+  return numberArr;
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (!isValid(pobi) || !isValid(crong)) return -1;
