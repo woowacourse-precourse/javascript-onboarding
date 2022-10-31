@@ -47,8 +47,8 @@ function makeMatchResult(pobi, crong) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (checkException(pobi) || checkException(crong)) return -1;
+  return makeMatchResult(pobi, crong);
 }
 
 module.exports = problem1;
