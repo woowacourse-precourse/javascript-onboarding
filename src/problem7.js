@@ -50,21 +50,21 @@ function problem7(user, friends, visitors) {
       map_by_score.set(v, [k]);
     }
   }
-  console.log(map_by_score);
+  let array_by_score = [...map_by_score]; // 정렬 위한 배열 변환
+  array_by_score.sort((a, b) => b[0] - a[0]); //점수 기반 정렬
+  //5명 추천해주기
+  for (let arr of array_by_score) {
+    if (answer.length >= 5) break; //루프 탈출 조건
+    if (arr[1].length > 1) {
+      //점수 같다면, 이름순으로 추천
+      arr[1] = arr[1].sort();
+      answer.push(...arr[1]);
+    } else {
+      answer.push(...arr[1]);
+    }
+  }
+  answer = answer.slice(0, 5);
   return answer;
 }
 
 module.exports = problem7;
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
