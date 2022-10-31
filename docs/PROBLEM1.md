@@ -62,6 +62,6 @@
 ---
 
 ## ❓ 아쉬운 점 & 궁금한 점
-- 각각의 점수를 계산하는 부분에서 pobi와 crong 각각의 왼쪽 합/왼쪽 곱/왼쪽 합과 곱 중 큰 수/오른쪽 합/오른쪽 곱/오른쪽 합과 곱 중 큰 수/ 왼쪽 합과 곱 중 큰 수와 오른쪽 합과 곱 중 큰 수 중 큰 수 변수를 구했었는데 이렇게 변수를 많이 써서 푸는게 맞는 것인지 궁금하다. 변수를 선언하지 않고 Math.max() 안에 넣어서 무조건 큰 수를 구하기만 하면 되는 것인지!
+- 각각의 점수를 계산하는 과정에서 pobiLeftSum, pobiLeftMultiply, pobiLeftBig, pobiRightSum, pobiRightMultiply, pobiRightBig, pobiResult, crongLeftSum, crongLeftMultiply, crongLeftBig, crongRightSum, crongRightMultiply, crongRightBig, crongResult와 같이 많은 변수를 만들어 사용했다. 이렇게 많은 변수를 선언하여 점수를 계산하는 기능을 구현하는 것이 더 좋은지, 아니면 변수를 최소화하여 구현하는 것이 더 좋은지 궁금하다.
 - 주석을 어느정도 써야 하는지 궁금하다. 일단 최소화하여 5줄 쓴 상태이다.
-- 슬랙에서 어떤 분이 이 문제를 푸는 코드가 35줄 나왔다고 하셨는데, 나는 80줄이다.. 그래서 그 분과 나의 코드는 무엇이 다른지 알고 싶다.
+- 슬랙에서 어떤 분이 이 문제를 푸는 코드가 35줄 나왔다고 하셨는데, 나는 75줄이나 나왔다. 그래서 그 분과 나의 코드는 무엇이 다른지 알고 싶다.
