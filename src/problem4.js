@@ -1,6 +1,26 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let transformedWord = "";
+  for (var char of word) {
+    // console.log(char);
+    if (
+      char.charCodeAt(0) >= "a".charCodeAt(0) &&
+      char.charCodeAt(0) <= "z".charCodeAt(0)
+    ) {
+      transformedWord += String.fromCharCode(
+        "z".charCodeAt(0) - char.charCodeAt(0) + "a".charCodeAt(0)
+      );
+    } else if (
+      char.charCodeAt(0) >= "A".charCodeAt(0) &&
+      char.charCodeAt(0) <= "Z".charCodeAt(0)
+    ) {
+      transformedWord += String.fromCharCode(
+        "Z".charCodeAt(0) - char.charCodeAt(0) + "A".charCodeAt(0)
+      );
+    } else {
+      transformedWord += char;
+    }
+  }
+  return transformedWord;
 }
 
 module.exports = problem4;
