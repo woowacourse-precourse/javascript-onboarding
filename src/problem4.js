@@ -1,5 +1,10 @@
 const UPPERCASE_REVERSE_NUMBER = 155;
 const LOWERCASE_REVERSE_NUMBER = 219;
+const UPPERCASE_ASCII_LOW = 65;
+const UPPERCASE_ASCII_HIGH = 90;
+const LOWERCASE_ASCII_LOW = 97;
+const LOWERCASE_ASCII_HIGH = 122;
+
 function problem4(word) {
   var answer;
   if (!checkValidation(word)) throw new Error("입력값 오류입니다.");
@@ -20,9 +25,9 @@ function getStringFromString(ascii) {
 function reverseChar(char) {
   const asciiNum = getAsciiFromString(char);
   let resultAscii = asciiNum;
-  if (asciiNum >= 65 && asciiNum <= 90)
+  if (asciiNum >= UPPERCASE_ASCII_LOW && asciiNum <= UPPERCASE_ASCII_HIGH)
     resultAscii = UPPERCASE_REVERSE_NUMBER - asciiNum;
-  if (asciiNum >= 97 && asciiNum <= 122)
+  if (asciiNum >= LOWERCASE_ASCII_LOW && asciiNum <= LOWERCASE_ASCII_HIGH)
     resultAscii = LOWERCASE_REVERSE_NUMBER - asciiNum;
   return getStringFromString(resultAscii);
 }
