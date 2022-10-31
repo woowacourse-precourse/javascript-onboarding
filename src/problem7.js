@@ -9,6 +9,7 @@ function problem7(user, friends, visitors) {
   let answer;
 
   let recommend_points = new Map();
+  let fridens_relation = new Map();
 
   for (const [a, b] of friends) {
     if (!recommend_points.has(a)) recommend_points.set(a, 0);
@@ -18,7 +19,15 @@ function problem7(user, friends, visitors) {
     if (!recommend_points.has(a)) recommend_points.set(a, 0);
   }
 
-  console.log(recommend_points);
+  for (const [a, b] of friends) {
+    if (!fridens_relation.has(a)) fridens_relation.set(a, [b]);
+    else fridens_relation.set(a, [...fridens_relation.get(a), b]);
+
+    if (!fridens_relation.has(b)) fridens_relation.set(b, [a]);
+    else fridens_relation.set(b, [...fridens_relation.get(b), a]);
+  }
+
+  console.log(fridens_relation);
 
   return answer;
 }
