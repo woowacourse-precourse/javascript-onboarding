@@ -29,9 +29,7 @@ function problem6(forms) {
 
   const checkEmailFormat = (email) => {
     if (!EMAIL_REGEX.test(email)) {
-      throw new Error(
-        '이메일은 @email.com 도메인을 사용해야하며, 11자 이상 20자 미만입니다.'
-      );
+      throw new Error('이메일은 @email.com 도메인을 사용해야하며, 11자 이상 20자 미만입니다.');
     }
   };
 
@@ -45,43 +43,49 @@ function problem6(forms) {
   };
 
   const checkNickName = (nickname) => {
-    if (NICKNAME_REGEX.test(nickname)) {
-      throw new Error(
-        '닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만입니다.'
-      );
+    if (!NICKNAME_REGEX.test(nickname)) {
+      throw new Error('닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만입니다.');
     }
   };
 
-  const removeEmailDuplication = (emailList) => {
-    return [...new Set(emailList)];
+  const findContinuousWord = (twoSizeWords, [email, nickname]) => {
+    twoSizeWords.push(
+      ...[...nickname]
+        .reduce((acc, _, idx) => {
+          acc.push(nickname.slice(idx, idx + 2));
+          return acc;
+        }, [])
+        .flat()
+    );
+    return twoSizeWords;
   };
 
-  const sortListAscending = (array) => array.sort();
+  const checkValidWord = (words) => {
+    return words.length === 2;
+  };
+
+  const findEmailsOfDuplicatedNickname = (emailList, twoSizeWord) => {
+    const EmailsIncludedWord = forms.reduce((currentList, [email, nickname]) => {
+      if (nickname.includes(twoSizeWord)) {
+        currentList.push(email);
+      }
+      return currentList;
+    }, []);
+
+    if (EmailsIncludedWord.length >= 2) {
+      emailList.push(...EmailsIncludedWord);
+      emailList = [...new Set(emailList)];
+    }
+    return emailList;
+  };
 
   checkFormsValid(forms);
 
-  const result = [];
-  forms.forEach((form, formIndex) => {
-    const [_, name] = form;
-
-    for (let i = 0; i < form.length; i++) {
-      const word = name.substring(i, i + 2);
-      for (let j = formIndex + 1; j < forms.length; j++) {
-        const compareName = forms[j][1];
-        if (compareName.includes(word)) {
-          result.push(form[0]);
-          result.push(forms[j][0]);
-        }
-      }
-    }
-  });
-  return sortListAscending(removeEmailDuplication(result));
+  return forms
+    .reduce(findContinuousWord, [])
+    .filter(checkValidWord)
+    .reduce(findEmailsOfDuplicatedNickname, [])
+    .sort();
 }
-problem6([
-  ['jm@email.com', '제이엠'],
-  ['jason@email.com', '제이슨'],
-  ['woniee@email.com', '워니'],
-  ['mj@email.com', '엠제이'],
-  ['nowm@email.com', '이제엠'],
-]);
+
 module.exports = problem6;
