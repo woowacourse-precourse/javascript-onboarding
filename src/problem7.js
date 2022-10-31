@@ -49,6 +49,10 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  function isAlreadyFriend(table, user, target) {
+    return table[user].friends.indexOf(target) > -1;
+  }
 }
 
 module.exports = problem7;
