@@ -6,9 +6,10 @@
   */
 
 function problem6(forms) {
-  const regex = /[\w]{2,9}(@email\.com)$/g;
+  var answer = "";
+  const regex = new RegExp(/^(\w{2,9})(@email\.com)$/);
   const email_Array = forms.filter((e) => {
-    return e[0].search(regex) != null;
+    return regex.test(e[0]);
   });
 
   console.log(email_Array);
