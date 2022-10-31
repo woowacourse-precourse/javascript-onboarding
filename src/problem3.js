@@ -11,6 +11,8 @@ function problem3(number) {
     });
     counter += 1;
   }
+
+  return answer;
 }
 
 module.exports = problem3;
