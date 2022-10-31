@@ -68,7 +68,6 @@ function problem7(user, friends, visitors) {
 
   answer = [...sortedScore.keys()].slice(0, 5);
 
-
   if (!checkCrewForm(user, friends, visitors)) { throw Error("제한사항에 알맞게 입력하세요.") }
   else return answer;
 }
