@@ -18,8 +18,8 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
-// user를 가지고 있지 않고, userFriends 요소를 가지고 있고, userFriends 요소가 아닌 값을 배열에 담는 함수
-function notHasUserHasUserFriendsNotUserFriends(user, friends, userFriends) {
+// user의 친구의 친구를 구하는 함수
+function findUserFriendsOfFriends(user, friends, userFriends) {
   let filteredArr = [];
 
   friends
@@ -39,11 +39,7 @@ function notHasUserHasUserFriendsNotUserFriends(user, friends, userFriends) {
 // user의 친구의 친구에게 10점씩 부여하는 함수
 function giveTenScoreToUserFriendsOfFriends(user, friends, userFriends) {
   let idScoreObj = {};
-  let filteredArr = notHasUserHasUserFriendsNotUserFriends(
-    user,
-    friends,
-    userFriends
-  );
+  let filteredArr = findUserFriendsOfFriends(user, friends, userFriends);
 
   for (let i = 0; i < filteredArr.length; i++) {
     let name = filteredArr[i];
