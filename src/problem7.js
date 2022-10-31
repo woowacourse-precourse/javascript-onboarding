@@ -1,3 +1,6 @@
+let recommendationlist = [];
+let frinedList = [];
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -5,45 +8,33 @@ function problem7(user, friends, visitors) {
   exceptFriendsInVisotor(visitors);
   calculateVisitor(visitors);
   calculateFriend(friends, user);
-  return answer;
+  return (answer = recommend());
 }
 
-const calculateVisitor = (visitors) => {
-  visitors.map((e) => {
-    checkScore(e, 1);
-  });
-};
-
-const checkScore = (personName, score) => {
-  Object.keys(recommendationlist).find((key) =>
-    recommendationlist[key].name === personName
-      ? (recommendationlist[key].score += score)
-      : null
-  );
-};
-
-const calculateFriend = (friends, user) => {
-  friends.map((e) => {
-    frinedList.map((alreadyFriend) => {
-      if (alreadyFriend == e[0]) {
-        checkScore(e[1], 10);
-      } else if (alreadyFriend == e[1]) {
-        checkScore(e[0], 10);
-      }
+const recommend = () => {
+  let re = [];
+  recommendationlist
+    .sort((a, b) => compare(a, b))
+    .map((e) => {
+      re.push(e.name);
     });
-  });
+  return re;
 };
 
-const exceptFriendsInVisotor = (visitors) => {
-  let deleteIdx = [];
-  visitors.map((visitor, vIdx) => {
-    frinedList.map((friend) => {
-      friend == visitor ? deleteIdx.push(vIdx) : null;
-    });
-  });
-  deleteIdx.reverse().map((e) => {
-    visitors.splice(e, 1);
-  });
+const compare = (a, b) => {
+  if (a.score < b.score) {
+    return 1;
+  } else if (a.score > b.score) {
+    return -1;
+  } else {
+    if (a.name > b.name) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
+  return 0;
 };
 
 const makeRelations = (user, friends, visitors) => {
@@ -98,6 +89,44 @@ const checkFrinds = () => {
     .map((e) => {
       recommendationlist.splice(e, 1);
     });
+};
+
+const exceptFriendsInVisotor = (visitors) => {
+  let deleteIdx = [];
+  visitors.map((visitor, vIdx) => {
+    frinedList.map((friend) => {
+      friend == visitor ? deleteIdx.push(vIdx) : null;
+    });
+  });
+  deleteIdx.reverse().map((e) => {
+    visitors.splice(e, 1);
+  });
+};
+
+const calculateVisitor = (visitors) => {
+  visitors.map((e) => {
+    checkScore(e, 1);
+  });
+};
+
+const checkScore = (personName, score) => {
+  Object.keys(recommendationlist).find((key) =>
+    recommendationlist[key].name === personName
+      ? (recommendationlist[key].score += score)
+      : null
+  );
+};
+
+const calculateFriend = (friends, user) => {
+  friends.map((e) => {
+    frinedList.map((alreadyFriend) => {
+      if (alreadyFriend == e[0]) {
+        checkScore(e[1], 10);
+      } else if (alreadyFriend == e[1]) {
+        checkScore(e[0], 10);
+      }
+    });
+  });
 };
 
 module.exports = problem7;
