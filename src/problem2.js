@@ -1,36 +1,35 @@
 function problem2(cryptogram) {
-  var answer;
-  let nowCryptogram = cryptogram; //현재 암호문
-  let nowLength = cryptogram.length; //현재 암호문의 길이
+  let nowCryptogram = cryptogram;
+  let decryption = '';
 
   while(true){
-    let decryption = ''; //해독 결과
-    for (var i=0; i<nowLength-1; i++){
-      if(nowCryptogram[i] == nowCryptogram[i+1]){
-        continue;
-      }
-      else if(nowCryptogram[i] == nowCryptogram[i-1]){ //중복 문자열의 마지막 문자 처리를 위해
-        continue;
-      }
-      decryption += nowCryptogram[i];
-    }
+    decryption = getDecryption(nowCryptogram);
 
-    //마지막 index 문자 확인
-    if(nowCryptogram[nowLength-1] != nowCryptogram[nowLength-2]){
-      decryption += nowCryptogram[nowLength-1];
-    }
-
-    //문자열이 바뀐 게 없다면 종료
-    if(nowLength == decryption.length){
-      answer = decryption;
-      break;
-    }
+    if(nowCryptogram.length == decryption.length) break;
     
     nowCryptogram = decryption;
-    nowLength = nowCryptogram.length;
+  }
+  
+  return decryption;
+}
+
+function getDecryption(cryptogram) {
+  let decryption = '';
+
+  for (var i=0; i<cryptogram.length-1; i++){
+    if(cryptogram[i] == cryptogram[i+1]) continue;
+    if(cryptogram[i] == cryptogram[i-1]) continue;
+    decryption += cryptogram[i];
   }
 
-  return answer;
+  let lastIndex = cryptogram.length-1;
+  if(cryptogram[lastIndex] != cryptogram[lastIndex-1]){
+    decryption += cryptogram[lastIndex];
+  }
+
+  return decryption;
 }
+
+problem2("zyelleyz");
 
 module.exports = problem2;
