@@ -1,6 +1,7 @@
 function problem6(forms) {
   let nameList = makeNameList(forms);
   let resultList = checking(nameList, forms);
+  var answer;
   answer = [...new Set(resultList)].sort();
 
   return answer;
