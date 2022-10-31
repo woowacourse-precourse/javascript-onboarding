@@ -35,10 +35,10 @@ const getRecommendedFriends = (scoreMap) => {
 };
 
 function problem7(user, friends, visitors) {
-  const scoreMap = new Map();
-
   const directFriends = getFriends(user, friends);
   const relatedFriends = getRelatedFriends(directFriends, user, friends);
+
+  const scoreMap = new Map();
 
   relatedFriends.forEach((relatedFriend) => {
     scoreMap.set(relatedFriend, (scoreMap.get(relatedFriend) || 0) + 10);
