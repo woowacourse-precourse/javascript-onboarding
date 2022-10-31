@@ -33,9 +33,13 @@ function problem7(user, friends, visitors) {
     })
   }
 
-  const answer = scoreSort(keySort(scoreObj))
+  const answer = printObjKey(scoreSort(keySort(scoreObj)))
 
-  return answer
+  return answer.slice(0, 5);
+}
+
+function printObjKey(answer) {
+  return answer.map(i => i.key)
 }
 
 function scoreSort(answer) {
