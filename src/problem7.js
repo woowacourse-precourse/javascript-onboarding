@@ -11,4 +11,15 @@ const setUserMap = (userMap, [userA, userB]) => {
   userMap.set(userB, [...(userMap.get(userB) || []), userA]);
 };
 
+const getEachScore = (userAFriend, userBFriend) => {
+  if (!userAFriend) return 0;
+
+  let count = 0;
+  userAFriend.forEach((user) => {
+    if (userBFriend.includes(user)) count++;
+  });
+
+  return count * ADD_FRIEND_SCORE;
+};
+
 module.exports = problem7;
