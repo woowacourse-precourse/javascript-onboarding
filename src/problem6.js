@@ -1,20 +1,21 @@
-// 크루들의 닉네임을 두 글자로 분리하는 기능
-function splitNickname(forms) {
-  const splittedName = forms
-    .map((crew) => crew[1])
-    .reduce((acc, nickname) => {
-      for (let i = 0; i < nickname.length - 1; i++) {
-        acc.push(nickname.slice(i, i + 2));
-      }
-      return acc;
-    }, []);
-  return splittedName;
+// 두 글자로 분리한 닉네임과 매핑되는 크루들의 이메일을 찾는 기능
+function getNicknameMap(forms) {
+  const map = new Map();
+  forms.forEach((crew) => {
+    for (let i = 0; i < crew[1].length - 1; i++) {
+      const splittedName = crew[1].slice(i, i + 2);
+      map.has(splittedName)
+        ? map.get(splittedName).push(crew[0])
+        : map.set(splittedName, [crew[0]]);
+    }
+  });
+  return map;
 }
 
 // solution
 function solution(forms) {
-  const splittedName = splitNickname(forms);
-  console.log(splittedName);
+  const nicknameMap = getNicknameMap(forms);
+  console.log(nicknameMap);
 }
 
 function problem6(forms) {
