@@ -60,6 +60,15 @@ function sortMap(map) {
   return sortedMap;
 }
 
+function deleteZeroValue(sortedMap) {
+  const sortedMapToArr = [...sortedMap];
+  for (let i = 0; i < sortedMapToArr.length; i++) {
+    const peek = sortedMapToArr[sortedMapToArr.length - 1];
+    peek[1] === 0 ? sortedMapToArr.pop() : "";
+  }
+  return sortedMapToArr;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const scoreMap = new Map();
@@ -69,6 +78,7 @@ function problem7(user, friends, visitors) {
   addVisitorToMap(scoreMap, visitors);
   addFriendsToMap(friendsArr, scoreMap);
   const sortedMap = sortMap(scoreMap);
+  const deletedZeroValue = deleteZeroValue(sortedMap);
   return answer;
 }
 
