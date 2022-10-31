@@ -15,6 +15,21 @@ function problem7(user, friends, visitors) {
 
   function createScore(relationMap, visitors, user) {
     var scoreMap = new Map();
+    relationMap.forEach((friends, name) => {
+      name !== user &&
+        friends.forEach((friend) => {
+          if (
+            friend !== user &&
+            !relationMap.get(user).includes(friend) &&
+            !scoreMap.has(friend)
+          )
+            scoreMap.set(friend, 0);
+        });
+    });
+    visitors.forEach((visitor) => {
+      if (!relationMap.get(user).includes(visitor) && !scoreMap.has(visitor))
+        scoreMap.set(visitor, 0);
+    });
     return scoreMap;
   }
 
