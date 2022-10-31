@@ -2,12 +2,13 @@ function problem1(pobi, crong) {
   var answer;
 
   function except(user) {
+    let exceptResult = 0;
     user.forEach((page) => {
-      if (page === 1 || page === 2 || page === 399 || page === 400) return -1;
+      if (page <= 2 || page >= 399) exceptResult = -1;
     });
     if (user[0] % 2 === 0 || user[1] % 2 !== 0) return -1;
     if (user[1] !== user[0] + 1) return -1;
-    return 0;
+    return exceptResult;
   }
   let exception = except(pobi) || except(crong);
   if (exception === -1) return -1;
