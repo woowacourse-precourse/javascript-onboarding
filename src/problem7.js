@@ -9,20 +9,24 @@ function duduChecker(user, friends, dude) {
   });
 }
 
+function canFriendScore(friend, user, target, another) {
+  return target === friend && another !== user;
+}
+
 function friendScore(dude, friends, score, user) {
   dude.forEach((friend) => {
     friends.forEach((arr) => {
       const [A, B] = arr;
-      if (A === friend) {
-        if (!score[B] && B !== user) {
+      if (canFriendScore(friend, user, A, B)) {
+        if (!score[B]) {
           score[B] = 10;
-        } else if (B !== user) {
+        } else {
           score[B] += 10;
         }
-      } else if (B === friend) {
-        if (!score[A] && A !== user) {
+      } else if (canFriendScore(friend, user, B, A)) {
+        if (!score[A]) {
           score[A] = 10;
-        } else if (A !== user) {
+        } else {
           score[A] += 10;
         }
       }
@@ -87,3 +91,18 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+console.log(
+  problem7(
+    "mrko",
+    [
+      ["donut", "andole"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"],
+    ],
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  )
+);

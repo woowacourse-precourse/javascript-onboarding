@@ -64,5 +64,3 @@ function problem5(money) {
 }
 
 module.exports = problem5;
-
-console.log(problem5(50237));
