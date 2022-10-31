@@ -12,9 +12,8 @@ function problem3(number) {
       }
     }
   }
-
-  console.log(clap);
-
+  
+  answer = clap.length;
 
   return answer;
 }
