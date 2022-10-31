@@ -34,7 +34,7 @@
 ---
 
 ## 💎 새로 알게 된 점
-- 변수 이름을 지으려다가 갑자기 생각나서 <a href='https://velog.io/@cada/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%84%A4%EC%9D%B4%EB%B0%8D-%EC%BB%A8%EB%B2%A4%EC%85%98-%ED%8E%B8'>자바스크립트 스타일 가이드 - 네이밍 컨벤션 편</a>를 보고왔다. 여기에 따르면 이름에 복수형을 표기하지 않는다고 한다. 그래서 `moneyTypes`라고 쓰려다가 `moneyTypeList`로 수정하였다.
+- 변수 이름으로 moneyTypes를 쓰려고 했다가 이전에 s가 아니라 List 등으로 복수형을 나타내는 것이 맞다는 글을 본 것을 떠올렸다. 그래서 <a href='https://velog.io/@cada/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%84%A4%EC%9D%B4%EB%B0%8D-%EC%BB%A8%EB%B2%A4%EC%85%98-%ED%8E%B8'>자바스크립트 스타일 가이드 - 네이밍 컨벤션 편</a>를 다시 읽게 되었다. 여기에 따르면 이름에 복수형을 표기하지 않는다고 한다. 그래서 `moneyTypes`라고 쓰려다가 `moneyTypeList`로 수정하였다.
   ```javascript
   //bad
   let delivery_notes = ["one", "two"];
@@ -42,7 +42,7 @@
   // good
   let delivery_note_list = ["one", "two"];
   ```
-- for (let coin in moneyTypeList)에서 console.log(coin)를 하면 당연히 50000부터 1까지 나올 줄 알았다. 그런데...!!! coin은 인덱스였던 것이다. 실제로 출력해보면 0부터 8까지가 나온다. 이 문법을 지금껏 모르고 있었구나! 내가 의도했던 건 for of였던 것 같다. 모두 정리해서 아래 예제에 기록해뒀다. 
+- for (let coin in moneyTypeList)에서 console.log(coin)를 하면 당연히 50000부터 1까지 나올 줄 알았다. 그런데, coin은 인덱스였다. 실제로 출력해보면 0부터 8까지가 나온다. 파이썬과 문법이 같을 줄 알아서 잘못 알고있었던 것 같다. 내가 의도했던 건 for of었다는 것도 추가로 알게되었다. 
   ```javascript
   const array = [50000, 5000, 500, 50, 5];
 
@@ -66,7 +66,7 @@
 ---
 
 ## ❓ 아쉬운 점 & 궁금한 점
-- 아래의 for문이 마음에 들지 않는다. 보면 parseInt(coin)을 이 짧은 코드에서 5번이나 쓰고 있다. 근데 for문에서 coin을 선언할 때 아예 parseInt(coin)으로 하고, 이를 coin으로 정해서 가져오면 될 것 같은데..?
+- 아래의 for문에서 개선의 여지가 보인다. 바로 parseInt(coin) 부분인데, 아래와 같이 짧은 코드에서 parseInt(coin)를 5번이나 쓰고 있다. 그래서 parseInt(coin)를 따로 변수에 저장하여 중복을 줄여보았다.
 
   ```javascript
   for (let coin in moneyTypeList) {
@@ -76,7 +76,7 @@
     money %= moneyTypeList[parseInt(coin)]
   }
   ```
-  오 이렇게 하면 코드 양을 조금 더 줄일 수 있다..! 근데 이렇게 하는게 좋은 건지 모르겠다. 줄이지 않고 parseInt()라는 것을 명시하기 위해 그대로 써주는 게 좋을까? 나중에 커뮤니티에 질문을 해봐야겠다.
+  이렇게 하면 코드 양을 조금 더 줄일 수 있다! 근데 이렇게 하는게 더 좋은 방법인지 모르겠다. 따로 변수를 만들지 않고 parseInt()라는 것을 명시하기 위해 그대로 써주는 게 좋을까? 나중에 커뮤니티에 질문을 해봐야겠다고 생각했다. 
 
   ```javascript
   for (let coin in moneyTypeList) {
