@@ -30,15 +30,11 @@ function comparePages(pobiPages, crongPages) {
   const [pobiLeft, pobiRight] = pobiPages;
   const [crongLeft, crongRight] = crongPages;
 
-  const pobiNumber =
-    biggerNumber(pobiLeft) > biggerNumber(pobiRight)
-      ? biggerNumber(pobiLeft)
-      : biggerNumber(pobiRight);
-
-  const crongNumber =
-    biggerNumber(crongLeft) > biggerNumber(crongRight)
-      ? biggerNumber(crongLeft)
-      : biggerNumber(crongRight);
+  const pobiNumber = Math.max(biggerNumber(pobiLeft), biggerNumber(pobiRight));
+  const crongNumber = Math.max(
+    biggerNumber(crongLeft),
+    biggerNumber(crongRight)
+  );
 
   return [pobiNumber, crongNumber];
 }
@@ -48,7 +44,7 @@ function biggerNumber(page) {
   const sum = sumSplitPageNumber(splitPageNumber);
   const multiple = multipleSplitPageNumber(splitPageNumber);
 
-  return sum > multiple ? sum : multiple;
+  return Math.max(sum, multiple);
 }
 
 function sumSplitPageNumber(splitPageNumber) {
