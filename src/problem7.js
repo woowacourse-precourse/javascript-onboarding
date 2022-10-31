@@ -31,8 +31,29 @@ function calculateScore(togetherKnow, visits) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  let relationshipFriends = makeEdge(friends);
+  let userFriends = relationshipFriends[user];
+  delete relationshipFriends[user];
+
+  let countOfTogetherKnow = Object.entries(relationshipFriends).reduce(
+    (acc, curr) => {
+      let [user, userRelation] = curr;
+      return { ...acc, [user]: compare(userFriends, userRelation) };
+    },
+    {}
+  );
 }
 
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 module.exports = problem7;
