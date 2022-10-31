@@ -93,4 +93,12 @@ function findFeaturedFriend(score) {
   return featuredFriend;
 }
 
+function sortFunction(a, b) {
+  if (a[0] === b[0]) {
+    return a[1] < b[1] ? -1 : 1;
+  } else {
+    return a[0] > b[0] ? -1 : 1;
+  }
+}
+
 module.exports = problem7;
