@@ -12,7 +12,7 @@ function problem4(word) {
   return result;
 }
 
-function convertLetter(letter) {
+const convertLetter = letter => {
   if (!checkLetterIsAlphabet(letter)) return letter;
 
   const isLetterUpper = checkLetterIsUpperCase(letter);
@@ -24,16 +24,13 @@ function convertLetter(letter) {
 
   const idx = LOWERCASE.split('').indexOf(letter);
   return LOWERCASE[25 - idx];
-}
+};
 
-function checkLetterIsAlphabet(letter) {
+const checkLetterIsAlphabet = letter => {
   const ALPHABET_REGEX = /[a-zA-z]/;
   return letter.match(ALPHABET_REGEX);
-}
+};
 
-function checkLetterIsUpperCase(letter) {
-  if (letter === letter.toUpperCase()) return true;
-  return false;
-}
+const checkLetterIsUpperCase = letter => letter === letter.toUpperCase();
 
 module.exports = problem4;

@@ -10,13 +10,13 @@ function problem3(number) {
   return clapCnt;
 }
 
-function getCurrentCnt(number) {
+const getCurrentCnt = number => {
   const numberList = number.toString().split('');
 
-  return numberList.reduce((sum, curr) => {
-    if (['3', '6', '9'].includes(curr)) sum += 1;
-    return sum;
+  return numberList.reduce((cnt, curr) => {
+    if (['3', '6', '9'].includes(curr)) cnt += 1;
+    return cnt;
   }, 0);
-}
+};
 
 module.exports = problem3;

@@ -1,8 +1,8 @@
 function problem1(pobi, crong) {
-  const isPobiVaid = checkInputIsValid(pobi);
+  const isPobiValid = checkInputIsValid(pobi);
   const isCrongValid = checkInputIsValid(crong);
 
-  if (!(isPobiVaid && isCrongValid)) {
+  if (!(isPobiValid && isCrongValid)) {
     return -1;
   }
 
@@ -14,7 +14,7 @@ function problem1(pobi, crong) {
   if (pobiScroe < crongScroe) return 2;
 }
 
-function checkInputIsValid(input) {
+const checkInputIsValid = input => {
   if (input.length !== 2) return false;
 
   const [left, right] = input;
@@ -26,30 +26,24 @@ function checkInputIsValid(input) {
   if (right <= startPage || right >= lastPage) return false;
 
   return true;
-}
+};
 
-function getScore([left, right]) {
-  return Math.max(
-    sumPageNum(left),
-    multiplyPageNum(left),
-    sumPageNum(right),
-    multiplyPageNum(right),
-  );
-}
+const getScore = ([left, right]) =>
+  Math.max(sumPageNum(left), multiplyPageNum(left), sumPageNum(right), multiplyPageNum(right));
 
-function sumPageNum(page) {
+const sumPageNum = page => {
   const pageNumbers = splitPageNumbers(page);
   return pageNumbers.reduce((sum, num) => (sum += num), 0);
-}
+};
 
-function multiplyPageNum(page) {
+const multiplyPageNum = page => {
   const pageNumbers = splitPageNumbers(page);
   return pageNumbers.reduce((multi, num) => (multi *= num), 1);
-}
+};
 
-function splitPageNumbers(page) {
+const splitPageNumbers = page => {
   const pageEl = page.toString().split('');
   return pageEl.map(el => Number(el));
-}
+};
 
 module.exports = problem1;
