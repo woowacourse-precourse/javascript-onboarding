@@ -1,10 +1,12 @@
 function problem1(pobi, crong) {
-  if (pobi[0], crong[0] < 1 || pobi[0], crong[0] > 400) {
+  if (pobi[0] < 1 || crong[0] < 1 || pobi[0] > 400 || crong[0] > 400) {
     return -1;
   } else if (pobi.length != 2 || crong.length != 2) {
     return -1;
-  } else if (pobi[0] % 2, crong[0] % 2 != 1 || pobi[1] % 2, crong[1] % 2 != 0 || pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
     //pobi와 crong에는 [왼쪽 페이지 번호(홀수), 오른쪽 페이지 번호(짝수)]가 순서대로 들어있다.
+  } else if (pobi[0] % 2 != 1 || crong[0] % 2 != 1 || pobi[1] % 2 != 0 || crong[1] % 2 != 0) {
+    return -1;
+  } else if ((pobi[0] + 1) != pobi[1] || (crong[0] + 1) != crong[1]) {
     return -1;
   }
 
