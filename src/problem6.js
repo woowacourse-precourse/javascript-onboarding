@@ -1,5 +1,5 @@
-const emailFormat = new RegExp("[a-z0-9]+@email.com"); // TODO: 변수명 regex가 낫나?
-const koreanFormat = /^[ㄱ-ㅎ|가-힣]+$/; // TODO: 정규 표현식 리터럴 vs RegExp 객체의 생성자 호출
+const emailFormat = /[a-z0-9]+@email.com/;
+const koreanFormat = /^[ㄱ-ㅎ|가-힣]+$/;
 // TODO: +$
 
 const isAvailableEmail = (email) => {
