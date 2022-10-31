@@ -26,6 +26,7 @@ function problem6(forms) {
 
   function sorting(filteredArray) {
     var resultArray;
+    resultArray = filteredArray.sort();
     return resultArray;
   }
 
