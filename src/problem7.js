@@ -1,5 +1,4 @@
-function problem7(user, friends, visitors) {
-  let answer = [];
+function getFriendSets(user, friends) {
   let friendMap = {};
   let friendScore = {};
   let userFriend = [];
@@ -19,6 +18,13 @@ function problem7(user, friends, visitors) {
     friendScore[a] = 0;
     friendScore[b] = 0;
   }
+
+  return { friendMap, userFriend, friendScore };
+}
+
+function problem7(user, friends, visitors) {
+  let answer = [];
+  let { friendMap, userFriend, friendScore } = getFriendSets(user, friends);
 
   for (let u in friendMap) {
     for (let f of friendMap[u]) {
