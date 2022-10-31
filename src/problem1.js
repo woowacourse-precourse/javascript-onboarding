@@ -43,32 +43,43 @@ function isValidPages(...pages) {
   return pages.every((page) => isValidPage(page));
 }
 
+const GAME_RESULT = {
+  pobi: 1,
+  crong: 2,
+  draw: 0,
+  exception: -1,
+};
+
+function getGameResult({ pobiMaxNum, crongMaxNum }) {
+  const { pobi, crong, draw, exception } = GAME_RESULT;
+  const score = pobiMaxNum - crongMaxNum;
+
+  if (score > 0) {
+    return pobi;
+  }
+
+  if (score < 0) {
+    return crong;
+  }
+
+  if (score === 0) {
+    return draw;
+  }
+
+  return exception;
+}
+
 function problem1(pobi, crong) {
-  const POBI_WIN = 1;
-  const CRONG_WIN = 2;
-  const DRAW = 0;
-  const EXCEPTION = -1;
+  const { exception } = GAME_RESULT;
 
   if (!isValidPages(pobi, crong)) {
-    return EXCEPTION;
+    return exception;
   }
 
   const pobiMaxNum = calcMaxNumber(pobi);
   const crongMaxNum = calcMaxNumber(crong);
 
-  if (pobiMaxNum > crongMaxNum) {
-    return POBI_WIN;
-  }
-
-  if (pobiMaxNum < crongMaxNum) {
-    return CRONG_WIN;
-  }
-
-  if (pobiMaxNum === crongMaxNum) {
-    return DRAW;
-  }
-
-  return EXCEPTION;
+  return getGameResult({ pobiMaxNum, crongMaxNum });
 }
 
 module.exports = problem1;
