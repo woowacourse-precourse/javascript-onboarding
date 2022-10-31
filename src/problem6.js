@@ -1,8 +1,7 @@
 function problem6(forms) {
   let nameList = makeNameList(forms);
   let resultList = checking(nameList, forms);
-  answer = [...new Set(resultList)].sort();
-
+  
   return answer;
 }
 
@@ -23,11 +22,15 @@ function checking(nameList, forms) {
   for(let curNameIndex = 0; curNameIndex < nameListLength-1; curNameIndex++) {
     let nameLength = nameList[curNameIndex].length;
     for(let curCharIndex = 0; curCharIndex < nameLength-1; curCharIndex++) {
+      let flag = 0;
       let check = nameList[curNameIndex].substr(curCharIndex, 2);
       for(let comparedNameIndex = curNameIndex+1; comparedNameIndex < nameListLength; comparedNameIndex++) {
         if(nameList[comparedNameIndex].includes(check)) {
           resultList.push(forms[comparedNameIndex][email])
         }
+      }
+      if(flag === 1) {
+        resultList.push(forms[curNameIndex][email]);
       }
     } 
   }
