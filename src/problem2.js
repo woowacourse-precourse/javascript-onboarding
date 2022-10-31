@@ -1,4 +1,13 @@
-// 문자열을 해독하는 함수
+function problem2(cryptogram) {
+  let decryptedStr = cryptogram;
+
+  while (!checkDupStr(decryptedStr)) { 
+    decryptedStr = decryptStr(decryptedStr);
+  }
+
+  return decryptedStr;
+}
+
 function decryptStr(cryptogram) {
   let decryptedStr = "";
   for (let i = 0; i < cryptogram.length; i++) {
@@ -13,8 +22,7 @@ function decryptStr(cryptogram) {
   return decryptedStr;
 }
 
-// 중복 문자가 있는지 체크하는 함수
-function checkDecryptedStr(decryptedStr) {
+function checkDupStr(decryptedStr) {
   let set = new Set(decryptedStr);
   let temp = "";
   for (let char of set) {
@@ -25,20 +33,5 @@ function checkDecryptedStr(decryptedStr) {
   else return false;
 }
 
-function problem2(cryptogram) {
-  var answer;
-
-  // 해독된 문자열 초기화
-  let decryptedStr = cryptogram;
-
-  // 규칙. 연속으로 붙어 있는 동일한 문자가
-  // 없을 때 까지 붙어 있는 문자들 제거하기 (while 루프 사용)
-  while (!checkDecryptedStr(decryptedStr)) { 
-    decryptedStr = decryptStr(decryptedStr);
-  }
-
-  answer = decryptedStr;
-  return answer;
-}
-
 module.exports = problem2;
+

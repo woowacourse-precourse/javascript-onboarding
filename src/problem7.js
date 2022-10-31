@@ -1,14 +1,11 @@
 function problem7(user, friends, visitors) {
-  var answer;
-
   // 친구 목록
   let relationships = setUserFriends(user, friends);
 
   // 추천 목록
   let recommendList = getRecommendedUserList(visitors, relationships);
 
-  answer = recommendList;
-  return answer;
+  return recommendList;
 }
 
 module.exports = problem7;
