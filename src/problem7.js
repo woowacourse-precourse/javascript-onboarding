@@ -62,8 +62,10 @@ function problem7(user, friends, visitors) {
   // 함께 아는 친구 점수
   const friendsKey = Object.keys(friendsShip);
 
+  console.log(friendsShip);
+
   for(let i = 0; i < friendsKey.length; i++) {
-    if(friendsKey[i] !== user && friendsShip[friendsKey[i]].friends !== undefined) {
+    if(friendsKey[i] !== user && friendsShip[friendsKey[i]].friends !== undefined && friendsShip[user] !== undefined) {
       friendsShip[user].friends.forEach(userF => {
         if(friendsShip[friendsKey[i]].friends.includes(userF)) {
           friendsShip[friendsKey[i]].score += 10;
@@ -78,20 +80,32 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  answer = answer.filter(u => u.score > 0);
+
   answer.sort(function(a, b){
     // 점수 순 정렬
-    return b.score - a.score;
-  });
-
-  answer = answer.filter(u => u.score > 0).sort(function(a, b){
-    // 점수가 0 초과 이면서 이름 순 정렬 filter
-    return a.name - b.name;
+    if( b.score > a.score){
+      return 1;
+    }
+    else if(b.score < a.score){
+      return -1;
+    }
+    else{
+        return (a.name > b.name) - (a.name < b.name);
+    }
   });
 
   answer.forEach(a => {
-    if(!friendsShip[user].friends.includes(a.name)){
+    if(friendsShip[user]!== undefined &&!friendsShip[user].friends.includes(a.name)){
       // user랑 이미 친구인 user 제외
-      result.push(a.name);
+      if(result.length < 5){
+        result.push(a.name);
+      }
+    }
+    else{
+      if(result.length < 5){
+        result.push(a.name);
+      }
     }
   });
 
