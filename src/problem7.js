@@ -34,7 +34,16 @@ function register(userList, list) {
 }
 
 function getUserPoint(userList, me, users, visitors) {
+	const userPointList = pointForm(userList);
 	const friends = friendNow(me, users);
+}
+
+function pointForm(userList) {
+	let pointList = {};
+
+	userList.forEach((user) => (pointList[user] = 0));
+
+	return pointList;
 }
 
 function friendNow(me, users) {
