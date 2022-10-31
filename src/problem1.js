@@ -42,9 +42,9 @@ function getBiggestNum(array) {
 function compareTwoNum(first, second) {
   if (first > second)
     return 1;
-  else if (first < second)
+  if (first < second)
     return 2;
-  else
+  if (first == second)
     return 0;
 }
 
