@@ -33,4 +33,19 @@ function seperateFriends(friends, user) {
   return [userFriends, friendsOfFriend];
 }
 
+function scoreCommonFriend(friendsOfFriend) {
+  const FRIEND_SCORE = 10;
+  let scores = {};
+
+  for (let friend of friendsOfFriend) {
+    if (scores[friend]) {
+      scores[friend] += FRIEND_SCORE;
+    } else {
+      scores[friend] = FRIEND_SCORE;
+    }
+  }
+
+  return scores;
+}
+
 module.exports = problem7;
