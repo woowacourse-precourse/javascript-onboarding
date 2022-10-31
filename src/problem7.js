@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   let friendScoreObj = {};
   const userFriendsArr = getUserFriends(user, friends);
+
   score10(friends, userFriendsArr, friendScoreObj);
   score1(visitors, userFriendsArr, friendScoreObj);
 
@@ -25,17 +26,19 @@ function score10(friends, userFriends, obj) {
     let isUserFriend1 = userFriends.includes(el[0]);
     let isUserFriend2 = userFriends.includes(el[1]);
 
-    if (isUserFriend1 === false && isUserFriend2 === true)
-      obj[el[0]] ? (obj[el[0]] += 10) : (obj[el[0]] = 10);
-    else if (isUserFriend1 === true && isUserFriend2 === false)
-      obj[el[1]] ? (obj[el[1]] += 10) : (obj[el[1]] = 10);
+    if (isUserFriend1 === false && isUserFriend2 === true) addScoreToObj(obj, el[0], 10);
+    else if (isUserFriend1 === true && isUserFriend2 === false) addScoreToObj(obj, el[1], 10);
   });
 }
 
 function score1(visitors, userFriends, obj) {
   visitors.forEach((el) => {
-    if (!userFriends.includes(el)) obj[el] ? (obj[el] += 1) : (obj[el] = 1);
+    if (!userFriends.includes(el)) addScoreToObj(obj, el, 1);
   });
+}
+
+function addScoreToObj(obj, friend, score) {
+  obj[friend] ? (obj[friend] += score) : (obj[friend] = score);
 }
 
 function result(obj) {

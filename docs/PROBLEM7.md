@@ -11,3 +11,5 @@
 4. object를 2차원 배열로 바꾼 후 점수가 가장 높은 순으로 sort 해서 친구 이름이 담긴 배열을 return하는 result 함수를 선언한다.
    - 최대 5명을 return하도록 한다.
 5. problem7에서 기능을 구현한다.
+
+리팩토링1) Object에 점수를 추가하는 로직이 겹치기 때문에 addScoreToObj 함수를 선언하여 중복을 제거함
