@@ -9,24 +9,24 @@ function problem7(user, friends, visitors) {
     handleFriend(friendsObjectArray, element[0], element[1]);
     handleFriend(friendsObjectArray, element[1], element[0]);
   });
-  console.log(friendsObjectArray)
+  // console.log(friendsObjectArray)
 
 
   // 친구들의 친구 목록 (점수 계산용이므로 중복 허용)
   const relatedFriendsArray = checkFriendOfFriends(friendsObjectArray, user)
   // 추천 친구 포인트 계산 하기
   figurePoints(suggestedFriends, 10, relatedFriendsArray);
-  console.log(relatedFriendsArray)
+  // console.log(relatedFriendsArray)
 
   // 방문한 사람들의 목록 (본인, 친구 제외된 목록)
   const relatedVisitorsArray = checkVisitors(friendsObjectArray, user, visitors);
   // 추천 친구 포인트 계산 하기
   figurePoints(suggestedFriends, 1, relatedVisitorsArray);
-  console.log(suggestedFriends)
+  // console.log(suggestedFriends)
 
   // 포인트 순으로 정렬 한 다음, 아이디 순으로 정렬
   suggestedFriends.sort((a, b) => b.points - a.points || a.id.localeCompare(b.id))
-  console.log(suggestedFriends)
+  // console.log(suggestedFriends)
 
   // 최대 5명만 리턴
   const answer = suggestedFriends.slice(0, 5).map((el) => el.id);
