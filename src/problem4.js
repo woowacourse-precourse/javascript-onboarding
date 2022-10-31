@@ -1,16 +1,23 @@
+// 기능2
+function asciiToStr(asciiNum) {
+  let frogWord = "";
+  for (let i = 0; i < asciiNum.length; i++) {
+    frogWord += String.fromCharCode(asciiNum[i]);
+  }
+  return frogWord;
+}
 // 기능1-1
 function chknTrans(asciiCode) {
   let num;
-  switch (asciiCode) {
-    case asciiCode >= 97 && asciiCode <= 122: //소문자
-      num = 122 - asciiCode + 97;
-      break;
-    case asciiCode >= 65 && asciiCode <= 90: //대문자
-      num = 90 - asciiCode + 65;
-      break;
-    default: // 띄어쓰기
-      num = 32;
-      break;
+  if (asciiCode >= 97 && asciiCode <= 122) {
+    //소문자
+    num = 122 - asciiCode + 97;
+  } else if (asciiCode >= 65 && asciiCode <= 90) {
+    //대문자
+    num = 90 - asciiCode + 65;
+  } else {
+    //띄어쓰기
+    num = 32;
   }
   return num;
 }
@@ -27,6 +34,9 @@ function greenFrogDic(word) {
 
 function problem4(word) {
   var answer;
+  const asciiArr = greenFrogDic(word);
+  answer = asciiToStr(asciiArr);
+
   return answer;
 }
 
