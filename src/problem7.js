@@ -27,6 +27,20 @@ function problem7(user, friends, visitors) {
 
     return acc;
   }, {});
+
+  const score = {};
+  for (const value of Object.values(recommandList)) {
+    value.forEach((id) => {
+      if (!score[id]) score[id] = 0;
+      score[id] += 10;
+    });
+  }
+
+  visitors.forEach((visitor) => {
+    if (!score[visitor]) score[visitor] = 0;
+
+    score[visitor] += 1;
+  });
 }
 
 module.exports = problem7;
