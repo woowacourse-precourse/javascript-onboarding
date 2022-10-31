@@ -100,7 +100,7 @@ function has_common_friend(person, user_map) {
 
 function is_valid_person(person_obj_list, answer, user) {
   person_obj_list.forEach((person) => {
-    if (person.score != 0 && answer.length <= 5 && person.name !== user) {
+    if (person.score !== 0 && answer.length <= 4 && person.name !== user) {
       answer.push(person);
     }
   });
