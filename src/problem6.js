@@ -50,8 +50,39 @@ const setIsDuplicated = forms => {
   }
 }
 
+const isOutOfRange = crew => !(crew.length >= 1 && crew.length <= 10000)
+const isMailLengthError = mail => !(mail.length >= 11 && mail.length < 20)
+const isCorrectDomain = mail => mail.slice(-10) === "@email.com"
+const isNameLengthError = name => !(name.length >= 1 && name.length < 20)
+const regExp = /^[가-힣]*$/;
+const checkKor = str => regExp.test(str) ? true : false
+
+const validations = forms => {
+  if (isOutOfRange(forms)) {
+    throw "input length error"
+  }
+
+  forms.map(form => {
+    if(!isCorrectDomain(form[0])) {
+      throw "Domain error"
+    }
+    if(isMailLengthError(form[0])) {
+      throw "Email length error"
+    }
+    if (!checkKor(form[1])) {
+      throw "nickname must be kor"
+    }
+    if (isNameLengthError(form[1])) {
+      throw "nickname length error"
+    }
+  })
+}
+
 function problem6(forms) {
   let answer = [];
+
+  validations(forms);
+
   forms = changeToJSON(forms);  
   forms.map(user => {
     user.nameCombinations = getCombinations(user.nickname);
