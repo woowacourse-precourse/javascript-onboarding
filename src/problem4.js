@@ -20,4 +20,9 @@ function problem4(word) {
   return answerArr.join("");
 }
 
+function handleUpperCase(char) {
+  const upperArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  return changeChar(upperArr, char);
+}
+
 module.exports = problem4;
