@@ -9,6 +9,11 @@ function problem2(cryptogram) {
   }
 }
 
+/**
+ * 중복 문자 제거 메소드
+ * @param {string} cryptogram 중복 제거 대상 암호문
+ * @returns {string} 중복 제거된 암호문
+ */
 function deleteOverlap(cryptogram) {
   const stack = [cryptogram[0]];
   let index = 1;
@@ -21,6 +26,11 @@ function deleteOverlap(cryptogram) {
       while (stack[stack.length - 1] == cryptogram[index]) {
         stack.pop();
       }
+
+      // 연속된 중복문자가 3개 이상인 경우에 대한 과정 추가
+      while (cryptogram[index] == cryptogram[index + 1]) {
+        index++;
+      }
     }
 
     index++;
@@ -29,6 +39,8 @@ function deleteOverlap(cryptogram) {
   return stack.join("");
 }
 
+
+// 예외 처리
 function validExceptions(cryptogram) {
   return (validRange(cryptogram) && validLetters(cryptogram));
 }
