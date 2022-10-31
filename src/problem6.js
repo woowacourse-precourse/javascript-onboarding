@@ -57,7 +57,7 @@ function problem6(forms) {
   let answer = [];
 
   // 중복되는 문자열 포함하고 있는 크루의 이메일 구하기
-  namesArr.filter((el, i) => {
+  namesArr.forEach((el, i) => {
     if (el.includes(duplicate)) answer.push(forms[i][0]);
   });
 
