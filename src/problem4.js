@@ -1,6 +1,17 @@
 function problem4(word) {
-  var answer;
+  var answer = result(word);
   return answer;
+}
+
+function result(word) {
+  let sum = "";
+
+  for (let i = 0; i < word.length; i++) {
+    const element = word[i];
+    sum += convertWord(element);
+  }
+
+  return sum;
 }
 
 const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
