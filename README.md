@@ -81,7 +81,7 @@ npm test
 ### problem4
 
 1. ascii코드를 통해 소문자와 대문자로 나누어 청개구리 사전에 따라 변환하는 함수 구현
-2. answer array를 하나의 문자열로 합쳐서 return
+2. answer array를 하나의 문자열로 합쳐서 return으로 끝냄
 
 ### problem5
 
