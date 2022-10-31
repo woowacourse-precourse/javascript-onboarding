@@ -1,4 +1,5 @@
 function problem7(user, friends, visitors) {
+  if (!inputExecption(user, friends, visitors)) return false;
   var answer;
   let userFriend = [];
   for (let i = 0; i < friends.length; i++) {
@@ -26,8 +27,6 @@ function problem7(user, friends, visitors) {
   let totalScoreArr = UserwithScore.concat(giveScore(visitant, 1));
   let finalScoreObj = sumScore(totalScoreArr);
   
-  console.log(finalScoreObj);
-
   //정렬
   let scoreSort = finalScoreObj.sort((a, b) => {
     if (a.name > b.name && a.score == b.score) return 1;
@@ -42,6 +41,7 @@ function problem7(user, friends, visitors) {
 
 
   answer = recommend;
+  console.log(answer)
   return answer;
 
 }
@@ -78,19 +78,39 @@ function sumScore(arr) {
   return arr;
 }
 
+function inputExecption(user, arr1, arr2) {
+  let nickCheck = /^[a-z]*$/;
+  let inputCheck = true;
+  if (user.length < 1 || user.length > 30) inputCheck = false;
+  if (!nickCheck.test(user)) inputCheck = false;
+  else if (arr1.length < 1 || arr1.length > 10000) inputCheck = false;
+  else if (arr2.length < 1 || arr2.length > 10000) inputCheck = false;
+  else if (!user.toLowerCase === user) inputCheck = false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] >= 3) inputCheck = false;
+    if (arr1[i].length < 1 || arr1[i].length > 30 ) inputCheck = false;
+    for (let j = 0; j < 2; j++) {
+      if (!nickCheck.test(arr1[i][j])) inputCheck = false;
+    }
+  }
+  for (let i = 0; i < arr2.length; i++) {
+    if (!nickCheck.test(arr2[i])) inputCheck = false;
+  }
+
+  return inputCheck;
+}
+
 module.exports = problem7;
 
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+)
