@@ -1,6 +1,6 @@
 function frogResult(alphabet) {
-  let alphabetString = "abcdefjhijklmnopqrstuvwxyz";
-  let index = alphabetString.indexOf(alphabet.toLowerCase());
+  const alphabetString = "abcdefjhijklmnopqrstuvwxyz";
+  const index = alphabetString.indexOf(alphabet.toLowerCase());
 
   //알파벳이 아닌 경우
   if (index === -1) {
@@ -20,7 +20,7 @@ function frogResult(alphabet) {
 }
 
 function problem4(word) {
-  var answer = "";
+  let answer = "";
 
   for (alphabet of word) {
     answer = answer + frogResult(alphabet);
