@@ -1,6 +1,9 @@
 function problem3(number) {
-  var answer;
+  let answer;
   return answer;
 }
-
+function splitNum(num) {
+  let splitNumArr = num.toString().split("");
+  return splitNumArr;
+}
 module.exports = problem3;
