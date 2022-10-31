@@ -47,3 +47,11 @@ function deleteDuplicatesVisitorArray(friends, visitors) {
 
   return visitorsArray;
 }
+
+function makeCombinedArr(friends, visitors) {
+  const notUserFriends = findNotUserfriends(friends);
+  const visitorsArray = deleteDuplicatesVisitorArray(friends, visitors);
+  let combindedArr = [...notUserFriends, ...visitorsArray];
+
+  return combindedArr;
+}
