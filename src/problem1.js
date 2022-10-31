@@ -50,7 +50,7 @@ function problem1(pobi, crong) {
   let [pobiScore, crongScore] = [0, 0];
   let result = 0;
 
-  pobi.map((pageNum) => {
+  pobi.forEach((pageNum) => {
     let pageNumList = String(pageNum).split("").map(Number);
     pobiScore = Math.max(
       pobiScore,
@@ -59,7 +59,7 @@ function problem1(pobi, crong) {
     );
   });
 
-  crong.map((pageNum) => {
+  crong.forEach((pageNum) => {
     let pageNumList = String(pageNum).split("").map(Number);
     crongScore = Math.max(
       crongScore,
