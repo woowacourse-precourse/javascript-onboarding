@@ -26,7 +26,7 @@ function checkNickname(forms) {
   }
 
   firstNickname = sliceNickname(forms[0][1], firstNickname);
-  if (checkFirst) overlapedNickname.add(forms[0][0]); // 첫번째 닉네임에 중복되는 부분이 있다면 정답 집합에 추가
+  if (checkFirst(forms, firstNickname)) overlapedNickname.add(forms[0][0]); // 첫번째 닉네임에 중복되는 부분이 있다면 정답 집합에 추가
 
   return overlapedNickname;
 }
