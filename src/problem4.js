@@ -23,6 +23,10 @@ function problem4(word) {
   let answer = "";
 
   isValid(word);
+
+  for (const alphabet of word) {
+    answer += reverseAlpha(alphabet);
+  }
   return answer;
 }
 
