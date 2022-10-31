@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer = page(pobi,crong);//page의 리턴은 if
+  var answer = page(pobi,crong);
   return answer;
 }
 function sum(n){    //배열의 값을 각각 더하는 함수
