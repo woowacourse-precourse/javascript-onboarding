@@ -106,4 +106,8 @@ function validFriends(friends) {
   return 1 <= friends.length && friends.length <= 10000 && typeof (friends) == "object";
 }
 
+function validVisitors(visitors) {
+  return 0 <= visitors.length && visitors.length <= 10000 && typeof (visitors) == "object";
+}
+
 module.exports = problem7;
