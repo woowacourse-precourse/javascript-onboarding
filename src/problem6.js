@@ -2,7 +2,10 @@ function problem6(forms) {
   var answer;
   return answer;
 }
-
+// set()을 배열로 변경
+function setToArray(duplicationList) {
+  return Array.from(duplicationList);
+}
 // 중복 닉네임 찾아서 set()으로 생성
 function checkDuplicationNickName(test_slice, forms, tmp) {
   let obj = {};
