@@ -65,4 +65,18 @@ function scoreVisitor(visitors, userFriends) {
   return scores;
 }
 
+function addScore(friendScore, visitScore) {
+  let totalScore = friendScore;
+
+  for (let visitor of Object.keys(visitScore)) {
+    if (totalScore[visitor]) {
+      totalScore[visitor] += visitScore[visitor];
+    } else {
+      totalScore[visitor] = visitScore[visitor];
+    }
+  }
+
+  return totalScore;
+}
+
 module.exports = problem7;
