@@ -16,6 +16,9 @@ const getMyFriendsFriends = (myFriends, friendMap) => {
 
 const getAcquaintance = (me, [myFriends, friendMap]) => {
   const myFriendsFriends = getMyFriendsFriends(myFriends, friendMap);
+  return myFriendsFriends.map((friends) =>
+    friends.filter((friend) => friend !== me)
+  );
 };
 
 const caculateScore = (acquaintance, visitors) => {
