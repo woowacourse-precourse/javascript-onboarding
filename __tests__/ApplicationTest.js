@@ -68,7 +68,7 @@ describe("problem6", () => {
   });
 });
 
-describe.only("problem7", () => {
+describe("problem7", () => {
   test("case1", () => {
     expect(
       problem7(

@@ -8,8 +8,10 @@ function getNewMembers(followFriends, list) {
   return result;
 }
 function recommendScore(list, score) {
-  let result = {};
-  list.map((member) => (result[member] = (result[member] || 0) + score));
+  const result = list.reduce((accu, curr) => {
+    accu[curr] = (accu[curr] || 0) + score;
+    return accu;
+  }, {});
   return result;
 }
 function recommentFriends(friendScore, visitorScore) {
