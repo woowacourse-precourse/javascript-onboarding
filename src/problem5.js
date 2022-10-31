@@ -8,6 +8,14 @@ function problem5(money) {
   const moneyArr = [50000, 10000, 5000, 1000, 500, 100, 50, 10];
   var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+  function divideMoney(total, operator, index) {
+    const moneyCnt = parseInt(total / operator);
+    answer[index] += moneyCnt;
+    const remainMoney = total % operator;
+    money = remainMoney;
+    return;
+  }
+
   return answer;
 }
 
