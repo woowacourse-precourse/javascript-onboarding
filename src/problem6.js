@@ -46,6 +46,16 @@ const isNickNameException = nickName => {
   return false;
 };
 
+const isCrewException = crew => {
+  const crewLength = getLength(crew);
+
+  if (crewLength < 1 || 10000 < crewLength) {
+    throw new RangeError("Crew must be 1 or more and 10,000 or less.");
+  }
+
+  return false;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
