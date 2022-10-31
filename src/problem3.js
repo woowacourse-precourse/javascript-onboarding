@@ -31,7 +31,7 @@ function problem3(number) {
   let clap = 0;
 
   for (let i = 1; i <= number; i++) {
-    clap += check369(number);
+    clap += check369(i);
   }
 
   return clap;
