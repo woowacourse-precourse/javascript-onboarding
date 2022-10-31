@@ -35,7 +35,7 @@ function isInvalidInputs(forms) {
  * 그렇게 생긴 새로운 단어를 포함한 단어들의 index를 반환한다.
  * @param {string[]} words
  * @param {number=} wordLength
- * @returns {object}
+ * @returns {Object.<string, number[]>}
  */
 function getCountInWords(words, wordLength = 2) {
   const countInWords = {}
