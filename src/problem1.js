@@ -16,4 +16,20 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function isValidPage(pageNumbers) {
+  const [pageNumLeft, pageNumRight] = pageNumbers;
+  let isValid;
+
+  if (pageNumLeft + 1 !== pageNumRight) {
+    isValid = false;
+  } else if (pageNumLeft <= 1 || pageNumRight >= 400) {
+    isValid = false;
+  } else if (pageNumLeft % 2 === 0) {
+    isValid = false;
+  }
+  isValid = true;
+
+  return isValid;
+}
+
 module.exports = problem1;
