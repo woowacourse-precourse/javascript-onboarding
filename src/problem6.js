@@ -1,3 +1,12 @@
+//부분 문자열을 반환하는 함수
+function subsets(string) {
+  let arr = [];
+  for (let i = 0; i < string.length - 1; i++) {
+    arr.push(string.substring(i, i + 2));
+  }
+  return arr;
+}
+
 function problem6(forms) {
   var answer;
   return answer;
