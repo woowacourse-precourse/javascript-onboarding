@@ -1,7 +1,8 @@
 function makeWordSet(nickName) {
   const wordSet = new Set();
-  for(let i = 0; i < nickName.length - 1; i++)
+  for(let i = 0; i < nickName.length - 1; i++) {
     wordSet.add(nickName.substr(i, 2));
+  }
 
   return wordSet;
 }
@@ -30,6 +31,7 @@ function problem6(forms) {
   });
 
   const answer = setToSortedArray(emailSet);
+
   return answer;
 }
 

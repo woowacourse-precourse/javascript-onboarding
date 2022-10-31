@@ -36,7 +36,7 @@ class ScoreData {
 
     return this.scoreDictionary;
   }
-};
+}
 
 function getUserFriends(user, friends) {
   const userFriends = [];
@@ -47,7 +47,7 @@ function getUserFriends(user, friends) {
   });
 
   return userFriends;
-};
+}
 
 function compare([friendA, scoreA], [friendB, scoreB]) {
   const scoreDifference = scoreA - scoreB;
@@ -72,6 +72,6 @@ function problem7(user, friends, visitors) {
   const answer = recommandFriendLsit;
 
   return answer;
-};
+}
 
 module.exports = problem7;
