@@ -16,7 +16,8 @@ function problem4(word) {
 function charTransform(char) {
   const UPPERCASE = 155;
   const LOWERCASE = 219;
-  if ( char === " ") return " ";
+  const isAlphabet = /[a-zA-Z]/g;
+  if(!isAlphabet.test(char)) return char
   else if( char.toUpperCase() === char ) return String.fromCharCode(UPPERCASE - char.charCodeAt());
   else if( char.toLowerCase() === char ) return String.fromCharCode(LOWERCASE - char.charCodeAt());
 }
