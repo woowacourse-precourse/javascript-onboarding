@@ -5,18 +5,25 @@
 
 
 function problem4(word) {
-  let array = word.toString().split('')
+  let array = word.toString()
+  let new_arr = []
+
   console.log(array)
   for (let i = 0; i < array.length; i++) {
-    if (array[i].charCodeAt(4) >= 65 && array[i].charCodeAt(4) <= 90) {
-      array[i] = String.fromCharCode(155 - array[i].charCodeAt(4))
-    } else if (array[i].charCodeAt(4) >= 97 && array[i].charCodeAt(4) <= 122) {
-      array[i] = String.fromCharCode(219 - array[i].charCodeAt(4))
+    console.log(array.charCodeAt(i))
+    if (array.charCodeAt(i) >= 65 && array.charCodeAt(i) <= 90) {
+      array[i] = String.fromCharCode(155 - array.charCodeAt(i))
+      new_arr += (String.fromCharCode(155 - array.charCodeAt(i)))
+    } else if (array.charCodeAt(i) >= 97 && array.charCodeAt(i) <= 122) {
+      array[i] = String.fromCharCode(219 - array.charCodeAt(i))
+      new_arr += (String.fromCharCode(219 - array.charCodeAt(i)))
+    } else {
+      array[i] = array[i]
+      new_arr += (String.fromCharCode(array.charCodeAt(i)))
     }
   }
-  console.log(array)
+
+  return new_arr
 }
 
 module.exports = problem4;
-
-problem4("I love you")
