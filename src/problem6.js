@@ -1,5 +1,7 @@
 function problem6(forms) {
   let nameList = makeNameList(forms);
+  let resultList = checking(nameList, forms);
+  answer = [...new Set(resultList)].sort();
 
   return answer;
 }
@@ -11,6 +13,16 @@ function makeNameList(forms) {
   }
 
   return nicknameList;
+}
+
+function checking(nameList, forms) {
+  let resultList = [];
+  let nameListLength = nameList.length;
+
+  for(let curNameIndex = 0; curNameIndex < nameListLength-1; curNameIndex++) {
+    
+  }
+  return resultList;
 }
 
 module.exports = problem6;
@@ -25,4 +37,4 @@ module.exports = problem6;
 // 5. 기준이 되는 닉네임과 비교될 닉네임에 대한 for 문 생성
 // 6. 문자가 중복되는 경우 결과 리스트에 해당 닉네임의 이메일 추가
 // 7. 중복 여부에 따라 기준이 되는 닉네임도 결과 리스트에 추가
-// 8. 결과 리스트에서 중복 제거 후 오름차순 정렬
+// 8. 결과 리스트에서 중복 제거 후 오름차순으로 정렬
