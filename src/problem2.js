@@ -29,6 +29,12 @@ function deleteDuplicateWord(duplicatedIndexArr, cryptogramToArray) {
   });
 }
 
+function deleteUndefinedWord(cryptogramToArray) {
+  let tempCryptogram = [];
+  tempCryptogram = cryptogramToArray.filter((word) => word !== undefined);
+  return [...tempCryptogram];
+}
+
 function problem2(cryptogram) {
   var answer;
   isValid(cryptogram);
@@ -42,6 +48,7 @@ function problem2(cryptogram) {
     if (duplicatedIndexArr.length === 0) break;
 
     deleteDuplicateWord(duplicatedIndexArr, cryptogramToArray);
+    cryptogramToArray = deleteUndefinedWord(cryptogramToArray);
   }
   return answer;
 }
