@@ -1,8 +1,8 @@
-function problem4(cryptogram) {
-    let splitted = cryptogram.split("");
+function problem4(word) {
+    let splittedWord = word.split("");
     let charCode;
 
-    function cvtCharacter(target) {
+    function convertCharacter(target) {
         let charCode = target.charCodeAt(0);
         if (charCode >= 65 && charCode <= 90) {
             return String.fromCharCode(155 - charCode);
@@ -13,7 +13,7 @@ function problem4(cryptogram) {
         return target;
     }
 
-    const answer = splitted.map((ele) => cvtCharacter(ele));
+    const answer = splittedWord.map((ele) => convertCharacter(ele));
 
     return answer.join("");
 }

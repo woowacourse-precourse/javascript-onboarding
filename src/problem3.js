@@ -1,6 +1,7 @@
 function problem3(number) {
     let answer = 0;
     let digits = [];
+
     for (let i = 1; i <= number; i++) {
         digits = i
             .toString()
@@ -13,6 +14,7 @@ function problem3(number) {
             }
         });
     }
+
     return answer;
 }
 
