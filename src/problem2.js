@@ -13,6 +13,9 @@ function problem2(cryptogram) {
     }
     else return ele;
   }).filter((ele) => ele);
+  
+  if(tmpIndex) return problem2(cryptogramArray.join(""));
+  else return cryptogramArray.join("");
 }
 
 module.exports = problem2;
