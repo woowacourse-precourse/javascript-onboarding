@@ -7,20 +7,22 @@ function problem1(pobi, crong) {
 
   if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) return -1;
 
-  const sum = (str) =>
-    str
-      .split("")
-      .map((v) => +v)
-      .reduce((acc, cur) => acc + cur, 0);
-  const multiply = (str) =>
-    str
-      .split("")
-      .map((v) => +v)
-      .reduce((acc, cur) => acc * cur, 1);
-
   const getMax = (left, right) => {
-    const leftMax = Math.max(sum(String(left)), multiply(String(left)));
-    const rightMax = Math.max(sum(String(right)), multiply(String(right)));
+    const sum = (str) =>
+      String(str)
+        .split("")
+        .map((v) => +v)
+        .reduce((acc, cur) => acc + cur, 0);
+
+    const multiply = (str) =>
+      String(str)
+        .split("")
+        .map((v) => +v)
+        .reduce((acc, cur) => acc * cur, 1);
+
+    const leftMax = Math.max(sum(left), multiply(left));
+    const rightMax = Math.max(sum(right), multiply(right));
+
     return Math.max(leftMax, rightMax);
   };
 
