@@ -1,49 +1,44 @@
-// 기능 따로 빼서 함수 만들어야할듯 (코드 가독성 낮음 문제)
-// 1. (List) friends -> (Obj) id_obj
-//    { id : [friend1, friend2, ...] ,.. }
-// 2. (Obj) scores
-//    { id : score ,.. }
-//    * key : id_obj[user][i] 인 value 참고해서 
-//     친구의 친구인 id만 score의 key로 생성, 점수+10
-// 3. visitors 로 score[id]+1
-// 4. key List 생성 -> sort
-function problem7(user, friends, visitors) {
-  let answer;
-  let id_obj = {};
-  let scores = {};
-  for (let i=0; i<friends.length; i++){
-      for (let j=0; j<2; j++){
-        id_obj.hasOwnProperty(friends[i][j])
-        ?id_obj[friends[i][j]].push(friends[i][1-j])
-        :id_obj[friends[i][j]]=[friends[i][1-j]]
+function makeRelation(friends){ //make graph(obj) of relationship
+  const graph = {};
+  friends.forEach((friend)=>{
+      for (let i=0; i<2; i++){
+          graph.hasOwnProperty(friend[i])
+          ? graph[friend[i]].push(friend[1-i])
+          : graph[friend[i]]=[friend[1-i]]
       }
-  }
-  for (let name, i=0; i<id_obj[user].length; i++){
-      name = id_obj[user][i];
-      for (j=0; j<id_obj[name].length; j++){
-          id_obj[name][j]!==user&&
-          (scores.hasOwnProperty(id_obj[name][j])
-          ?scores[ id_obj[name][j] ]+=10
-          :scores[ id_obj[name][j] ]=10);
-      }
-  }
-  for (i=0; i<visitors.length; i++){
-    if (scores.hasOwnProperty(visitors[i])){
-        scores[ visitors[i] ]+=1;
-    }
-    else if(!id_obj.hasOwnProperty(visitors[i])){
-        scores[ visitors[i] ]=1;
-    }
-  }
-  answer = Object.keys(scores)
-  .sort((a,b)=>{
-      if(scores[a]===scores[b]) {
-        return a<b?-1:a>b?1:0;
-      }
-      return scores[b]-scores[a];
+  }) //{ id: [friend1, friend2,..],..}
+  return graph;
+}
+
+function calScore(ten, one){
+  const score = {};
+  const id_list = [...new Set(ten), ...new Set(one)]
+  id_list.forEach((id)=>{
+      score[id] = ( ten.reduce((score, id_ten)=>score+(id===id_ten), 0)*10
+                    + one.reduce((score, id_one)=>score+(id===id_one), 0) )
+  })
+  id_list.sort((a,b)=>{
+      if(score[a]===score[b]){ return a<b?-1:a>b?1:0; }
+      return score[b]-score[a];
   });
-  
-  return answer;
+  return id_list; 
+}
+
+function problem7(user, friends, visitors) {
+  const graph = makeRelation(friends); 
+  const ten_points = [];
+  graph[user].forEach((friend)=>{
+      graph[friend].forEach((fof)=>{ //fof mean friend of friend
+          (fof!==user) && ten_points.push(fof);
+      })
+  })
+  const one_point = visitors.filter((id)=> (!graph[user].includes(id)));
+  return calScore(ten_points, one_point);
 }
 
 module.exports = problem7;
+
+//1. relation 나타내는 객체 graph 생성 - makeRelation(friends)
+//2. 10점 받는 id 리스트 ten_points, 1점 받는 id 리스트 one_point 생성 - main
+//3. 2에서 만든 리스트로 점수 계산 및 id 정렬 - calScore(ten, one)
+//   점수 계산 원리 : ten or one 포인트 받는 id 리스트에서 해당 id 개수를 참조하여 계산
