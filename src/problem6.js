@@ -6,8 +6,16 @@
 */
 
 function problem6(forms) {
-  let result;
-  return result;
+  emailList = [];
+  nicknames = forms.map((form) => form[1]);
+  forms.forEach((form, idx) => {
+    let [email, nickname] = form;
+    if (isNicknameDuplicate(nickname, nicknames, idx)) {
+      emailList.push(email);
+    }
+  });
+  emailList.sort();
+  return emailList;
 }
 
 module.exports = problem6;
