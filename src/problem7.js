@@ -18,9 +18,20 @@ function getFriendsOfFriends(user, friends, userFriends) {
   return [...new Set(friendsOfFriends)];
 }
 
+function initScores(friends, visitors, scoreMap) {
+  const allUsers = friends.reduce((acc, cur) => {
+    return [...new Set([...acc, ...cur, ...visitors])];
+  });
+
+  allUsers.forEach((user) => scoreMap.set(user, 0));
+}
+
 function problem7(user, friends, visitors) {
   const userFriends = getUserFriends(user, friends);
   const friendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
+  const scoreMap = new Map();
+
+  initScores(friends, visitors, scoreMap);
 
   return answer;
 }
