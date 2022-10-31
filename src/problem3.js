@@ -14,7 +14,7 @@ function countClapTotal(maxNumber) {
 function countNowNumClap(number) {
   const nums = [...number.toString()];
   return nums.filter((num) => parseInt(num) !== 0 && parseInt(num) % 3 === 0)
-      .length;
+    .length;
 }
 
 module.exports = problem3;

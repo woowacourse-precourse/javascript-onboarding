@@ -9,7 +9,7 @@ function problem6(forms) {
   return answer;
 }
 
-function listDeduplication(result){
+function listDeduplication(result) {
   const set = new Set(result);
   return [...set];
 }
@@ -18,7 +18,7 @@ function makeDuplicateList(forms) {
   const userList = makeNicknameList(forms);
   let result = [];
   for (let nickname in userList) {
-    if (userList[nickname].length > 1 ) {
+    if (userList[nickname].length > 1) {
       result.push(...userList[nickname]);
     }
   }

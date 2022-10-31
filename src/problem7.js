@@ -28,6 +28,7 @@ function createResultMap(user, friends, visitors) {
   let relationPointMap = friendsPointCounter(user, friends);
   return visitorsPointCounter(relationPointMap, visitors);
 }
+
 function visitorsPointCounter(pointMap, visitors) {
   const prevPointMap = pointMap;
   visitors.forEach((visitor) => {
