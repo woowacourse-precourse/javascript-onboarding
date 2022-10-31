@@ -22,4 +22,22 @@ const getAllSerialCases = (nickname) => {
   return allSerialCases;
 };
 
+const getEmailsOfSimilarNickname = (targetUserNickname, forms, serialCases) => {
+  const emailsOfSimilarNickName = [];
+
+  serialCases.forEach((serialCase) => {
+    const regex = new RegExp(`${serialCase}`, "g");
+
+    forms.forEach((form) => {
+      const [userEmail, userNickname] = form;
+
+      if (!(targetUserNickname === userNickname)) {
+        if (regex.test(userNickname)) emailsOfSimilarNickName.push(userEmail);
+      }
+    });
+  });
+
+  return emailsOfSimilarNickName;
+};
+
 module.exports = problem6;
