@@ -1,6 +1,6 @@
-function problem1(pobi, crong) {
-  var answer;
-  return answer;
-}
+const getSum = (number) => {
+  return String(number)
+    .split("")
+    .reduce((sum, str) => (sum += +str), 0);
+};
 
-module.exports = problem1;
