@@ -10,19 +10,19 @@ function cryptogramSolver(cryptogram) {
 
 function removeDuplicateChar(cryptogramArr){
   const nextCryptogramArr = [];
-  let nowCharFromCryptogram = cryptogramArr[0];
+  let beforeCharFromCryptogram = cryptogramArr[0];
   let isBeforeDuplicate = false;
   let isDeleteStep = false;
   for (let i = 1; i <= cryptogramArr.length; i++) {
-    if(!isBeforeDuplicate && nowCharFromCryptogram != cryptogramArr[i]) {
-      nextCryptogramArr.push(nowCharFromCryptogram);
-    } else if(isBeforeDuplicate && nowCharFromCryptogram != cryptogramArr[i]){
+    if(!isBeforeDuplicate && beforeCharFromCryptogram != cryptogramArr[i]) {
+      nextCryptogramArr.push(beforeCharFromCryptogram);
+    } else if(isBeforeDuplicate && beforeCharFromCryptogram != cryptogramArr[i]){
       isBeforeDuplicate = false;
     } else {
       isBeforeDuplicate = true;
       isDeleteStep = true;
     }
-    nowCharFromCryptogram=cryptogramArr[i];
+    beforeCharFromCryptogram=cryptogramArr[i];
   }
   if (isDeleteStep) return removeDuplicateChar(nextCryptogramArr); 
   return nextCryptogramArr.join("");
