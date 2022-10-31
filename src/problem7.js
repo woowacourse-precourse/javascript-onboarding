@@ -10,6 +10,17 @@ const makeFriendSet = (args) => {
   return { ...args, friendSet };
 };
 
+const makeAcquaintanceSet = (args) => {
+  const { friends, friendSet } = args;
+  let acquaintanceSet = new Set();
+  friends.forEach((friendRelationship) => {
+    const [A, B] = friendRelationship;
+    if (friendSet.has(A)) return acquaintanceSet.add(B);
+    if (friendSet.has(B)) return acquaintanceSet.add(A);
+  });
+  return { ...args, acquaintanceSet };
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
