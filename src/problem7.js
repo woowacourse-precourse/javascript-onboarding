@@ -66,7 +66,25 @@ function getFriendsList(usersFriends, friends, visitors) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  const usersFriends = getFriends(user, friends);
+  const friendsList = getFriendsList(
+    usersFriends,
+    friends.filter((f) => !f.includes(user)),
+    visitors
+  );
+  const score = {};
+  let answer = [];
+
+  // 점수: 사용자와 함께 아는 친구의 수 = 10점
+  for (const friend in friendsList) {
+    score[friend] = friendsList[friend] ? friendsList[friend].length * 10 : 0;
+  }
+
+  // 점수: 사용자의 타임 라인에 방문한 횟수 = 1점
+  for (const v of visitors) {
+    score[v]++;
+  }
+
   return answer;
 }
 
