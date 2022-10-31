@@ -47,7 +47,7 @@ function problem7(user, friends, visitors) {
 
   const answer = Array.from(mapToArray,([name,_])=> name );
   
-  return answer;
+  return answer.slice(0,5);
 }
 
 module.exports = problem7;
