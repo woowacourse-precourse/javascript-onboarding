@@ -21,6 +21,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 3. +(사용자에게 방문한 횟수 * 1)
+  for(var i = 0; i < visitors.length; i++) {
+    score[visitors[i]] === undefined ? score[visitors[i]] = 1 : score[visitors[i]]++;
+  }
+
   return answer;
 }
 
