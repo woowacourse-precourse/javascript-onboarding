@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   var answer;
   let user_dict = calculate_score(user, friends, visitors);
 
-  // console.log(user_dict);
+  console.log(user_dict);
   let user_list = [];
   let key = Object.keys(user_dict);
   key.map((k) => {
