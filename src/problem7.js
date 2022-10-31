@@ -35,6 +35,14 @@ function calcVisitorScore(visitors, userFriends, recommendationScore) {
   return recommendationScore;
 }
 
+function calcRecommendationScore(user, friends, visitors) {
+  const userFriends = getFriends(user, friends);
+  const friendScore = calcFriendScore(friends, userFriends);
+  const recommendationScore = calcVisitorScore(visitors, userFriends, friendScore);
+
+  return recommendationScore;
+}
+
 function problem7(user, friends, visitors) {
   let recommendationResult; 
 
