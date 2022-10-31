@@ -35,4 +35,12 @@ const multiPageNum = (pages) => {
   result *= pages;
   return result;
 };
+
+const getCrewMaxNum = (num1, num2) => {
+  if (num1 > num2) {
+    return num1;
+  } else {
+    return num2;
+  }
+};
 module.exports = problem1;
