@@ -1,10 +1,20 @@
-const isToClap = (digit) => digit === '3' || digit === '6' || digit === '9';
+const isToClap = (digit) => digit === 3 || digit === 6 || digit === 9;
 
-function getClapNumber(number) {
-  const digits = number.toString().split('');
-  const clapNumbers = digits.filter((digit) => isToClap(digit));
+function getClapCount(number) {
+  let digits = number;
+  let count = 0;
 
-  return clapNumbers.length;
+  while (digits > 0) {
+    const digit = digits % 10;
+
+    if (isToClap(digit)) {
+      count += 1;
+    }
+
+    digits = parseInt(digits / 10);
+  }
+
+  return count;
 }
 
 function problem3(number) {
@@ -12,7 +22,7 @@ function problem3(number) {
   let currentNumber = 1;
 
   while (currentNumber < number + 1) {
-    answer += getClapNumber(currentNumber);
+    answer += getClapCount(currentNumber);
     currentNumber += 1;
   }
 
