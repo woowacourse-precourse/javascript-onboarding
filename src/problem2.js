@@ -31,6 +31,7 @@ function solving(cryptogram) {
     if (check == modifiedCryptogram)
       break;
   }
+  return modifiedCryptogram;
 }
 
 function problem2(cryptogram) {
