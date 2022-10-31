@@ -25,7 +25,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 구현할 기능 목록
-1. 친구 관계를 담은 friends 배열을 통해 friend_dict 오브젝트 정의, score 오브젝트 정의하는 makeObject 함수 구현
+1. 친구 관계를 담은 friends 배열을 통해 friend_dict 오브젝트 정의, score 오브젝트 정의하는 makeObject 함수 구현 :white_check_mark:
 - 매개변수 : friends(친구관계 배열),friend_dict(object), score(object)
 - return값 : friend_dict, score
 - friend_dict = {이름 : [친구1,친구2,...]} 형식의 object
