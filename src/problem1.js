@@ -42,7 +42,7 @@ function pageNumCalc(who) {
 }
 
 function exceptionCheck(who) {
-  if (who.length > 2) {
+  if (who.length > 2 || who.length < 2) {
     return false;
   }
 
