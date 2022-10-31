@@ -43,7 +43,7 @@ function getAllUsers(friends, visitors, getFriends) {
 }
 
 /* setFriendsList(friends:string[], friendsList:map):void 
-    친구 관계를 파악하여 friendsList map에 저장*/
+        친구 관계를 파악하여 friendsList map에 저장*/
 function setFriendsList(friends, friendsList) {
   friends.forEach((el) => {
     const first = friendsList.get(el[0]);
@@ -54,9 +54,9 @@ function setFriendsList(friends, friendsList) {
 }
 
 /* getScores(scores:map, user:string, friendsList:map, visitors:string[]):void
-    인수로 주어진 대상 user와 다른 유저들의 친구를 대조하여 함께아는 친구를 구하고,
-    다음 규칙에 따라 scores map에 점수를 부여한다.
-    (함께아는 친구 수 * 10점) + (방문자 수 * 1)*/
+        인수로 주어진 대상 user와 다른 유저들의 친구를 대조하여 함께아는 친구를 구하고,
+        다음 규칙에 따라 scores map에 점수를 부여한다.
+        (함께아는 친구 수 * 10점) + (방문자 수 * 1)*/
 function getScores(scores, user, friendsList, visitors) {
   let userFriends = friendsList.get(user); // 대상 user의 친구
 
@@ -78,7 +78,7 @@ function getScores(scores, user, friendsList, visitors) {
 }
 
 /* getResult(scores:map):string[] 
-  점수에 따른 추천 친구 배열 리턴*/
+      점수에 따른 추천 친구 배열 리턴*/
 function getResult(scores) {
   const result = [];
 
@@ -97,10 +97,36 @@ function getResult(scores) {
 }
 
 /* sameScoreSort(result:Array, scores:map):Array
-  점수가 같을 때 이름순으로 정렬한 결과 배열을 리턴*/
+점수가 같을 때 이름순으로 정렬한 결과 배열을 리턴*/
 function sameScoreSort(result, scores) {
-  // 작성해야함.
-  return result;
+  let startIdx = 0; // 점수가 같은 그룹의 첫 번째 원소의 인덱스를 나타내기 위한 변수
+  let nextIdx = 1; // 다음 원소의 점수를 비교하기 위한 변수
+  let final = []; // 최종적으로 반환할 배열
+  let tmp = [result[startIdx]]; // 점수 그룹이 변경될 때 (다음 점수그룹으로 이동할 떄), 최종 배열에 합쳐질 배열
+
+  while (true) {
+    // startIdx가 배열의 끝에 도달하면 while문을 탈출.
+    if (startIdx === result.length) break;
+
+    // 만약, 점수가 같은 유저가 있다면 tmp에 해당 인원을 추가하고 nextIdx를 1 증가시켜서 다음 유저의 점수를 비교
+    if (scores.get(result[startIdx]) === scores.get(result[nextIdx])) {
+      tmp.push(result[nextIdx]);
+      nextIdx += 1;
+    } else {
+      // 다음 유저와 점수가 다르다면, tmp를 이름순(string sort)으로 정렬하여, 최종 배열(final)에 합친다.
+      tmp.sort();
+      final = final.concat(tmp);
+      tmp = [];
+
+      // 다음 점수 그룹과 비교를 위해 startIdx를 nextIdx로 지정하고, nextIdx는 startIdx + 1로 지정
+      startIdx = nextIdx;
+      nextIdx = startIdx + 1;
+      // 만약, 다음 점수 그룹의 startIdx가 마지막 원소라면, 바로 최종 배열(final)에 push
+      if (startIdx === result.length) final.push(result[startIdx - 1]);
+    }
+  }
+
+  return final;
 }
 
 // main
@@ -112,8 +138,7 @@ function problem7(user, friends, visitors) {
   getScores(scores, user, friendsList, visitors);
 
   const answer = getResult(scores);
-  console.log(answer);
-
+  console.log(scores);
   return answer;
 }
 
