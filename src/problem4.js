@@ -12,6 +12,10 @@ function problem4(word) {
     z: 122,
   }
 
+  function getAsciiCode(word, index) {
+    return word.charCodeAt(index);
+  }
+
   return answer;
 }
 
