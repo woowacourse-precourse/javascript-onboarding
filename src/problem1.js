@@ -1,4 +1,8 @@
 function problem1(pobi, crong) {
+  const POBI_WIN_VALUE = 1;
+  const CRONG_WIN_VALUE = 2;
+  const DRAW_SCORE = 0;
+
   var answer = -1;
 
   var pobiScore, crongScore;
@@ -15,7 +19,12 @@ function problem1(pobi, crong) {
     pobiScore = getScore(pobi);
     crongScore = getScore(crong);
 
-    answer = pobiScore >= crongScore ? (pobiScore == crongScore ? 0 : 1) : 2;
+    answer =
+      pobiScore >= crongScore
+        ? pobiScore == crongScore
+          ? DRAW_SCORE
+          : POBI_WIN_VALUE
+        : CRONG_WIN_VALUE;
   }
 
   return answer;
