@@ -3,6 +3,13 @@ const CRONGWIN = 2;
 const DRAW = 0;
 const ERR = -1;
 
+// 각 자리 숫자를 쪼개서 숫자 배열을 반환하는 함수
+const splitNumberToArray = (number) => {
+  return String(num)
+    .split("")
+    .map((char) => Number(char));
+};
+
 // 각 자리 숫자를 모두 더해 반환해주는 함수
 const calcSum = (num) => {
   const result = (num + "").split("").reduce((acc, cur) => {
