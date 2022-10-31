@@ -7,8 +7,41 @@ function problem7(user, friends, visitors) {
     mutualFriendArr.push(...createfriendArr(friends, friend, friendArr));
     visitors = visitors.filter((visit) => visit !== friend);
   }
+//친구 추천 규칙에 따라 점수를 부여
+const recommendArr = [
+  ...new Set([
+    ...mutualFriendArr.filter((visit) => visit !== user),
+    ...visitors,
+  ]),
+];
 
-  
+const scoreArr = createScoreArr(recommendArr, mutualFriendArr, visitors);
+return recommendArr
+  .sort()
+  .sort((a, b) => scoreArr[b] - scoreArr[a])
+  .slice(0, 5);
+}
+
+const createScoreArr = (recommendArr, mutualFriendArr, visitors) => {
+const result = {};
+recommendArr.forEach((name) => {
+  const friendCount = mutualFriendArr.reduce((count, visit) => {
+    if (visit === name) {
+      return count + 1;
+    } else return count;
+  }, 0);
+
+  const visitCount = visitors.reduce((count, visit) => {
+    if (visit === name) {
+      return count + 1;
+    } else return count;
+  }, 0);
+
+  const score = friendCount * 10 + visitCount;
+  result[name] = score;
+});
+return result;
 };
+ 
 
 module.exports = problem7;
