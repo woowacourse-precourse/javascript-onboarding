@@ -23,8 +23,8 @@ function problem7(user, friends, visitors) {
   }   
 
   /* Map 객체인 rank를 배열로 바꿔주고, sort를 통해 내가 원하는 순서대로 정렬해준다음에 
-     .flat.filter() 메소드를 통해서 점수를 제거한 뒤 반환합니다. */
-  return [...rank].sort(sortAlgorithm).flat().filter((v) => isNaN(v));
+     5명만 .flat.filter() 메소드를 통해서 점수를 제거한 뒤 반환합니다. */
+  return [...rank].sort(sortAlgorithm).splice(0,5).flat().filter((v) => isNaN(v));
 }
 
 /**
