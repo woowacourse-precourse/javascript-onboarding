@@ -5,8 +5,11 @@ function problem3(number) {
   let counter = 0;
   while (counter <= number) {
     String(counter).split("").forEach(x => {
-
-    })
+      if (RULE.indexOf(x) > -1) {
+        answer += 1;
+      }
+    });
+    counter += 1;
   }
 }
 
