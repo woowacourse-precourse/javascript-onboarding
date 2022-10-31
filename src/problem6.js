@@ -1,8 +1,8 @@
 function createNameDictionary(forms) {
   const nameDictionary = {};
-
   for (i = 0; i < forms.length; i++) {
-    nameDictionary[forms[i][1]] = 0;
+    const nickname = forms[i][1];
+    nameDictionary[nickname] = 0;
   }
 
   return nameDictionary;
@@ -11,10 +11,8 @@ function createNameDictionary(forms) {
 // 두 이름에 중복되는 값이 있는지 확인하는 함수
 function compareTwoNames(name1, name2) {
   for (l = 0; l < name1.length - 1; l++) {
-    const twoWord = name1[l] + name1[l + 1];
-    if (name2.includes(twoWord)) {
-      return true;
-    }
+    const twoWord = name1.substring(l, l + 2);
+    if (name2.includes(twoWord)) return true;
   }
   return false;
 }
