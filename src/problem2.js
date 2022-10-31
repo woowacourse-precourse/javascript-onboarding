@@ -11,7 +11,20 @@ function count(str, i) {
 }
 
 function problem2(cryptogram) {
- 
+  while(true){
+    var check = true;
+    let string;
+    for(i = 0; i < cryptogram.length; i++){
+      let del = count(cryptogram, i);
+      if(del !== cryptogram[i]){
+        cryptogram = cryptogram.replace(del, '');
+        check = false;
+      }
+    }
+
+    if(check == true)
+      break;
+  }
   return cryptogram;
 }
 
