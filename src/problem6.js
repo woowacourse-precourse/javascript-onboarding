@@ -60,6 +60,12 @@ const onlyNicknames = (returnForms) => {
   return returnArr;
 }
 
+const removeSame = (array) => {
+  const arrToSet = new Set(array);
+  const setToArr = Array.from(arrToSet);
+  return setToArr;
+}
+
 function problem6(forms) {
   const filteredForms = forms.filter(isValid);
   let dictObject = {}
@@ -67,7 +73,8 @@ function problem6(forms) {
 
   const returnForms = forms.filter((element) => isSameExist(element, dictObject))
   const returnEmails = onlyNicknames(returnForms);
-  return returnEmails.sort();
+  const answer = removeSame(returnEmails.sort());
+  return answer;
 }
 
 module.exports = problem6;
