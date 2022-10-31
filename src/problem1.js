@@ -46,7 +46,6 @@ function isvalidinit(pobi, crong) {
  * @param {Array} 책 페이지 값 들어오기 때문에 길이는 2 
  * @returns 각 자리 숫자의 합과 곱 중 가장 큰 수를 반환
  */
-
 function setScore(arr) {
   let score = 0;
   
@@ -57,6 +56,17 @@ function setScore(arr) {
   return score
 }
 
+/**
+ * 두 배열을 받아 비교하여 값을 반환
+ * @param {Array, Array} 비교값
+ * @returns 값을 비교하여 반환
+ */
+function compare(scoreA, scoreB) {
+  if (scoreA === -1 || scoreB === -1) return -1;
+  if (scoreA > scoreB) return 1;
+  if (scoreA < scoreB) return 2;
+  if (scoreA === scoreB) return 2;
+}
 
 
 function sum(n) {
