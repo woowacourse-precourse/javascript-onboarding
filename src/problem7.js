@@ -7,7 +7,13 @@
 
 */
 
-function problem7(user, friends, visitors) {}
+function problem7(user, friends, visitors) {
+  const userFriends = getUserFriendId(user, friends);
+  const scorePerFriendOfFriend = giveScoreToFriendOfFriend(user, friends, userFriends);
+  const totalScoreOfUsers = giveScoreToVisitor(visitors, userFriends, scorePerFriendOfFriend);
+
+  return sortRecommendedUserByScore(totalScoreOfUsers).slice(0, 5);
+}
 
 const getUserFriendId = (user, friends) => {
   const userFriends = [];
