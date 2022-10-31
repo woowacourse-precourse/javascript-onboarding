@@ -11,6 +11,7 @@ function problem7(user, friends, visitors) {
   let recommend_points = new Map();
   let fridens_relation = new Map();
 
+  // 1 친구목록, 방문자 중복 없이 map 형태로 저장 (점수를 위한 map)
   for (const [a, b] of friends) {
     if (!recommend_points.has(a)) recommend_points.set(a, 0);
     if (!recommend_points.has(b)) recommend_points.set(b, 0);
@@ -19,6 +20,7 @@ function problem7(user, friends, visitors) {
     if (!recommend_points.has(a)) recommend_points.set(a, 0);
   }
 
+  // 2. 친구 관계를 map 형태로 저장한다.
   for (const [a, b] of friends) {
     if (!fridens_relation.has(a)) fridens_relation.set(a, [b]);
     else fridens_relation.set(a, [...fridens_relation.get(a), b]);
@@ -27,7 +29,14 @@ function problem7(user, friends, visitors) {
     else fridens_relation.set(b, [...fridens_relation.get(b), a]);
   }
 
-  console.log(fridens_relation);
+  // user 와 친구인 친구들에게 10점씩 부여한다.
+  for (const i of fridens_relation.get(user)) {
+    for (const j of fridens_relation.get(i)) {
+      recommend_points.set(j, recommend_points.get(j) + 10);
+    }
+  }
+
+  console.log(recommend_points);
 
   return answer;
 }
