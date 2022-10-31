@@ -1,3 +1,4 @@
+<!-- prettier-ignore-start -->
 ## 🚀 기능 요구 사항
 
 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
@@ -19,3 +20,5 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+<!-- prettier-ignore-end -->
