@@ -63,6 +63,17 @@ function answerId(answer) {
   }
   return answer;
 }
+function objectReturnFunc(friends, set, obj, visitors) {
+  obj = friendAddTen(friends, set, obj);
+  obj = friendVisitCheck(visitors, set, obj);
+  return obj;
+}
+function answerReturnFunc(answer, obj) {
+  answer = keyValueObject(answer, obj);
+  answer = answerScoreSort(answer);
+  answer = answerId(answer);
+  return answer;
+}
 function problem7(user, friends, visitors) {
   var answer = [];
   var obj = {};
@@ -70,11 +81,8 @@ function problem7(user, friends, visitors) {
   var firstData = friendOfFriend(user, friends, set);
   set = firstData.set;
   friends = firstData.friends;
-  obj = friendAddTen(friends, set, obj);
-  obj = friendVisitCheck(visitors, set, obj);
-  answer = keyValueObject(answer, obj);
-  answer = answerScoreSort(answer);
-  answer = answerId(answer);
+  obj = objectReturnFunc(friends, set, obj, visitors);
+  answer = answerReturnFunc(answer, obj);
   return answer;
 }
 
