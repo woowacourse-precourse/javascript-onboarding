@@ -8,6 +8,12 @@
 // 3. answer를 정렬
 
 // 2.3 중복이름 추출
+/**
+ * check overlap nickname
+ * @param {string[]} name - value from name only two characters
+ * @param {string[]} users - all name of users 
+ * @returns {string[]} overlapName - names to container overlap
+ */
 const checkOverlap = (name, users) => {
   const overlapName = [];
 
@@ -22,6 +28,13 @@ const checkOverlap = (name, users) => {
   return overlapName.length === 1 ? [] : overlapName;
 }
 
+/**
+ * add to name Array
+ * @param {string[]} names - names usgin overlap nickname
+ * @param {string[]} res - Array to contain emails
+ * @param {object} userMap - object to comtain name:email
+ * @returns {void}
+ */
 const addEmail = (names, res, userMap) => {
   if (!names.length) return;
 
@@ -30,6 +43,12 @@ const addEmail = (names, res, userMap) => {
   }
 }
 
+/**
+ * delete name from Object
+ * @param {string[]} names - names using overlap nickname
+ * @param {object} userMap - object to comtain name:email
+ * @returns {void}
+ */
 const deleteName = (names, userMap) => {
   if (!names.length) return;
   
@@ -38,6 +57,11 @@ const deleteName = (names, userMap) => {
   }
 }
 
+/**
+ * Main function 
+ * @param {string[][]} forms - [email, name] 
+ * @returns {string[]} answer - Array has email using overlap nickname
+ */
 function problem6(forms) {
   const userMap = {}; // name:email 형식의 이름 저장
   const overlapNames = []; // 중복되는 문자들의 이름을 저장
