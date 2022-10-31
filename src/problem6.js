@@ -1,5 +1,17 @@
 function problem6(forms) {
-  var answer;
+  const renamingTargetListMaker = new RenamingTargetListMaker(forms);
+  const { setDuplicationNickNameCount, setTargetEmailList } =
+    renamingTargetListMaker;
+
+  renamingTargetListMaker.actionAboutAllForm(setDuplicationNickNameCount, [
+    "nickName",
+  ]);
+  renamingTargetListMaker.actionAboutAllForm(setTargetEmailList, [
+    "email",
+    "nickName",
+  ]);
+
+  const answer = renamingTargetListMaker.sortEmailAscending();
   return answer;
 }
 
