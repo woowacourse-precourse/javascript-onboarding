@@ -4,7 +4,24 @@
 //    [예외처리] 소문자/대문자를 구분해야한다.
 
 function problem4(word) {
-  var answer
+  var answer = "";
+  
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lower = "abcdefghijklmnopqrstuvwxyz";
+
+  for(var c of word) {
+    for(var i = 0; i < 26; i++) {
+      if(c == upper[i]) {
+        answer += upper[25-i];
+        break;
+      }
+      if(c == lower[i]) {
+        answer += lower[25-i];
+        break;
+      }
+    }
+  }
+
   return answer;
 }
 
