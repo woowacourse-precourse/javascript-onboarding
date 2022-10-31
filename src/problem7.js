@@ -172,6 +172,19 @@ const sortTo = targetArray => {
   return sortedArray;
 };
 
+const limitLength = (targetArray, maximum) => {
+  const copiedTargetArray = copyArray(targetArray);
+  const targetLength = getLength(copiedTargetArray) + 1; // 실제 요소와 개수를 맞춘다.
+
+  if (targetLength < maximum) {
+    return copiedTargetArray;
+  }
+
+  const resultArray = copiedTargetArray.splice(0, maximum);
+
+  return resultArray;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
