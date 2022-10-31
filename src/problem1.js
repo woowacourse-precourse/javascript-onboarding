@@ -17,6 +17,15 @@ const calcMul = (numberArray) => {
   return numberArray.reduce((acc, cur) => acc * cur);
 };
 
+const getScore = ([left, right]) => {
+  return Math.max(
+    calcSum(splitNumberToArray(left)),
+    calcSum(splitNumberToArray(right)),
+    calcMul(splitNumberToArray(left)),
+    calcMul(splitNumberToArray(right))
+  );
+};
+
 const checkException = (array) => {
   const [left, right] = array;
 
@@ -35,19 +44,9 @@ function problem1(pobi, crong) {
 
   if (!checkException(pobi) || !checkException(crong)) return ERROR;
 
-  const scorePobi = Math.max(
-    calcSum(splitNumberToArray(pobi[0])),
-    calcSum(splitNumberToArray(pobi[1])),
-    calcMul(splitNumberToArray(pobi[0])),
-    calcMul(splitNumberToArray(pobi[1]))
-  );
+  const scorePobi = getScore(pobi);
 
-  const scoreCrong = Math.max(
-    calcSum(splitNumberToArray(crong[0])),
-    calcSum(splitNumberToArray(crong[1])),
-    calcMul(splitNumberToArray(crong[0])),
-    calcMul(splitNumberToArray(crong[1]))
-  );
+  const scoreCrong = getScore(crong);
 
   answer =
     scorePobi >= scoreCrong
