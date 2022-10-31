@@ -19,6 +19,20 @@ function checkException(pages) {
   return true;
 }
 
+function maxNumber(pages) {
+  const [left, right] = pages;
+
+  const leftNumbers = String(left).split("").map(Number);
+  const rightNumbers = String(right).split("").map(Number);
+
+  const leftSum = leftNumbers.reduce((prev, cur) => prev + cur, 0);
+  const leftMultiply = leftNumbers.reduce((prev, cur) => prev * cur, 1);
+  const rightSum = rightNumbers.reduce((prev, cur) => prev + cur, 0);
+  const rightMultiply = rightNumbers.reduce((prev, cur) => prev * cur, 1);
+
+  return Math.max(leftSum, leftMultiply, rightSum, rightMultiply);
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
