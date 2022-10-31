@@ -8,9 +8,17 @@
 // 2. 포비와 크롱의 점수를 비교해서 return 한다.
 
 function problem1(pobi, crong) {
+  var answer;  
+  if (!(vaildate(pobi) && vaildate(crong))) answer = -1;
 
-  var answer;
   return answer;
+}
+
+function vaildate(pages) {
+  if(pages[0] < 0 || pages[1] < 0) return false;
+  if(pages[0] % 2 == 0) return false;
+  if(pages[1] - pages[0] != 1) return false;
+  return true;
 }
 
 module.exports = problem1;
