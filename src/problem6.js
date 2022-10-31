@@ -13,6 +13,17 @@ function problem6(forms) {
     for (let i = 0; i < patternArray.length; i++) {
         patternArray[i] = [patternArray[i], 0];
     }
+
+    const includedPatternArray = [];
+    // 3단계) count를 하기 위해 모든 닉네임에 대해 포함된 패턴을 확인
+    for (let i = 0; i < forms.length; i++) {
+        for (let k = 0; k < patternArray.length; k++) {
+            let pattern = patternArray[k][0];
+            if (forms[i][1].includes(pattern)) {
+                includedPatternArray.push([forms[i][0], pattern]);
+            }
+        }
+    }
 }
 
 module.exports = problem6;
