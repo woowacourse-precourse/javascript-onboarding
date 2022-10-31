@@ -54,6 +54,9 @@ function problem7(user, friends, visitors) {
   // 친구의 친구 규칙(1번 규칙) 점수화
   const friendScore = getScoreMap(friendsOfFriend, FRIEND_SCORE);
 
+  // 방문 규칙(2번 규칙) 점수화
+  const visitScore = getScoreMap(visitorsExceptFriend, VISIT_SCORE);
+
   return answer;
 }
 
