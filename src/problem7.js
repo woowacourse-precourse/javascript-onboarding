@@ -43,6 +43,15 @@ function calcRecommendationScore(user, friends, visitors) {
   return recommendationScore;
 }
 
+function getRecommendations(user, friends, visitors) {
+  const recommendationScore = calcRecommendationScore(user, friends, visitors);
+  const recommendationArray = Array.from(Object.keys(recommendationScore)).sort(
+    (a, b) => recommendationScore[b] - recommendationScore[a] || a.localeCompare(b)
+  ).slice(0, 5);
+
+  return recommendationArray;
+}
+
 function problem7(user, friends, visitors) {
   let recommendationResult; 
 
