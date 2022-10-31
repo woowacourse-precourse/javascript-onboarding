@@ -1,25 +1,39 @@
 function problem7(user, friends, visitors) {
 	//추천 친구 목록을 반환할 함수 -> solution
-	//전체 사용자 아이디 목록을 구할 함수 -> getUserList
-	//유저 리스트에 없는 사용자를 등록해주는 함수 -> register
-	//사용자의 점수를 구할 함수 -> getUserPoint
-	//사용자의 현재 친구 목록을 구하는 함수 -> friendNow
-	//사용자와 함께 아는 친구 수를 구할 함수 -> friendWith
-	//타임라인 방문 횟수를 구할 함수 -> countVisit
+	/* 친구가 아닌 유저의 목록을 구할 함수 -> getNotFriends 
+		1. 전체 사용자 아이디 목록을 구할 함수 -> getUserList
+		2. 유저 리스트에 없는 사용자를 등록해주는 함수 -> register
+		3. 사용자의 현재 친구 목록을 구하는 함수 -> friendNow
+		4. 함께 아는 친구(현재 친구가 아닌)를 구할 함수 -> friendWith
+		5. 사용자 점수 목록을 만들어 반환할 함수 -> pointForm
+	*/
 
-	return solution(user, friends, visitors);
+	/*사용자의 점수를 구할 함수 -> getUserPoint
+		1. 함께 아는 친구의 수를 구할 함수 -> countFriend
+		2. 타임라인 방문 횟수를 구할 함수 -> countVisit
+	 */
+
+	return solution({ me: user, users: friends, visitors });
 }
 
-function solution(user, friends, visitors) {
-	const userList = getUserList(user, friends, visitors);
+function solution(inputData) {
+	const userPoints = getNotFriends(inputData);
 
-	return getUserPoint(userList, user, friends, visitors);
+	getUserPoint(inputData, userPoints);
 }
 
-function getUserList(user, friends, visitors) {
-	let userList = [user];
+function getNotFriends(inputData) {
+	const userList = getUserList(inputData);
+	const friends = friendNow(inputData);
+	const notFriends = friendWith(userList, friends, inputData);
+	return pointForm(notFriends);
+}
 
-	userList = register(userList, friends.flat());
+function getUserList(inputData) {
+	const { me, users, visitors } = inputData;
+	let userList = [me];
+
+	userList = register(userList, users.flat());
 	userList = register(userList, visitors);
 
 	return userList;
@@ -33,20 +47,7 @@ function register(userList, list) {
 	return userList;
 }
 
-function getUserPoint(userList, me, users, visitors) {
-	const userPointList = pointForm(userList);
-	const friends = friendNow(me, users);
-}
-
-function pointForm(userList) {
-	let pointList = {};
-
-	userList.forEach((user) => (pointList[user] = 0));
-
-	return pointList;
-}
-
-function friendNow(me, users) {
+function friendNow({ me, users }) {
 	let friends = [];
 
 	users.forEach((user) => {
@@ -58,7 +59,21 @@ function friendNow(me, users) {
 	return friends;
 }
 
-function friendWith() {}
+function friendWith(userList, friends, { me }) {
+	return userList.filter((user) => !friends.includes(user) && user !== me);
+}
+
+function pointForm(userList) {
+	let pointList = {};
+
+	userList.forEach((user) => (pointList[user] = 0));
+
+	return pointList;
+}
+
+function getUserPoint() {}
+
+function countFriend() {}
 
 function countVisit() {}
 
