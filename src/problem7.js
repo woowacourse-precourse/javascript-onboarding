@@ -9,6 +9,7 @@ const friends = [
 ];
 const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
 
+// user의 친구배열을 반환하는 함수
 function findUserFriends(friends) {
   let userFriendsArr = [];
 
@@ -24,6 +25,7 @@ function findUserFriends(friends) {
   return userFriendsArr;
 }
 
+// user와 친구가 아닌 친구의 친구 배열을 반환하는 함수
 function findNotUserfriends(friends) {
   const userFriendsArr = findUserFriends(friends);
   let notUserFriendsArr = [];
@@ -43,6 +45,7 @@ function findNotUserfriends(friends) {
   return notUserFriendsArr;
 }
 
+// 방문자 배열에서 중복값과 user의 친구를 제거한 배열을 반환하는 함수
 function deleteDuplicatesVisitorArray(friends, visitors) {
   let visitorsArr = [];
   const userFriendsArr = findUserFriends(friends);
@@ -59,6 +62,8 @@ function deleteDuplicatesVisitorArray(friends, visitors) {
   return visitorsArr;
 }
 
+// 중복제거된 방문자 배열과 친구의 친구배열을 합쳐 배열에
+// 담아 친구 추천 후보를 반환하는 함수
 function makeCombinedArr(friends, visitors) {
   const notUserFriendsArr = findNotUserfriends(friends);
   const visitorsArr = deleteDuplicatesVisitorArray(friends, visitors);
@@ -67,6 +72,7 @@ function makeCombinedArr(friends, visitors) {
   return combindedArr;
 }
 
+// 친구 추천 후보 배열을 받아 친구의 친구 배열을 기준으로 점수를 측정하는 함수
 function checkScoreFriendsOfFriends(friends, visitors) {
   const combinedArr = makeCombinedArr(friends, visitors);
   let map = new Map();
@@ -84,7 +90,7 @@ function checkScoreFriendsOfFriends(friends, visitors) {
 
   return map;
 }
-
+// 친구 추천 후보 배열을 받아 방문자 배열을 기준으로 점수를 측정하는 함수
 function checkSoreOfVisitor(friends, visitors) {
   const combinedArr = makeCombinedArr(friends, visitors);
   let map = checkScoreFriendsOfFriends(friends, visitors);
@@ -104,10 +110,13 @@ function checkSoreOfVisitor(friends, visitors) {
   return map;
 }
 
+// 입력받은 이중 배열을 오름차순으로 정리하는 함수
 function DuplicatedArrayToDesending(array) {
   return array.sort((a, b) => b[1] - a[1]);
 }
 
+// 측정한 점수가 담긴 이중배열을 받아 오름 차순으로 정돈 후
+// 조건에 따라 값을 반환하는 함수
 function problem7(user, friends, visitors) {
   const friendsAndScoreArr = checkSoreOfVisitor(friends, visitors);
   let answerArr = DuplicatedArrayToDesending([...friendsAndScoreArr]);

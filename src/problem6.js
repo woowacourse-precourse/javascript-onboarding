@@ -1,3 +1,4 @@
+// 이중 배열에서 이름 배열을 만들어주는 함수
 function crewNameArray(duplicateArray) {
   let crewNameArr = [];
 
@@ -7,6 +8,7 @@ function crewNameArray(duplicateArray) {
   return crewNameArr;
 }
 
+// 이름 배열에서 두 글자만 잘라 새로운 배열에 리턴해주는 함수
 function cutTwoLetterArray(array) {
   const crewNameArr = crewNameArray(array);
   let twoLetterNameArr = [];
@@ -21,6 +23,7 @@ function cutTwoLetterArray(array) {
   return twoLetterNameArr;
 }
 
+// 두 글자 배열을 입력받아 중복된 값을 배열에 담아 리턴해주는 함수
 function checkDuplicateArray(array) {
   let duplicateArray = [];
   let toCheckArray = [];
@@ -35,6 +38,8 @@ function checkDuplicateArray(array) {
   });
   return duplicateArray;
 }
+
+// 이중 배열에 입력받은 중복 배열이 있을 때 해당 crewname의 email을 반환하는함수
 function problem6(forms) {
   const twoLetterNameArr = cutTwoLetterArray(forms);
   const duplicateArray = checkDuplicateArray(twoLetterNameArr);
