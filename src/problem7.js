@@ -16,18 +16,20 @@ const getMyFriendsFriends = (myFriends, friendMap) => {
 
 const getAcquaintance = (me, [myFriends, friendMap]) => {
   const myFriendsFriends = getMyFriendsFriends(myFriends, friendMap);
-  return myFriendsFriends.map((friends) =>
-    friends.filter((friend) => friend !== me)
+  return myFriendsFriends.reduce(
+    (acc, friends) => [...acc, ...friends.filter((friend) => friend !== me)],
+    []
   );
 };
 
-const caculateScore = (acquaintance, visitors) => {
-  
-};
+const caculateScore = (acquaintance, visitors) => {};
 
 function problem7(user, friends, visitors) {
   const myFriends = getFriends(user, friends);
   const acquaintance = getAcquaintance(user, [myFriends, friends]);
+  // const scoreObj = acquaintance.reduce((acc, acquaintanceFriends) => {
+  //   return {...acc, []}
+  // }, {});
   console.log(acquaintance);
   return 0;
 }
