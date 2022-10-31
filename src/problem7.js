@@ -61,6 +61,14 @@ const sortName = (score) => {
   return score;
 };
 
+//점수순 정렬 함수
+const sortScore = (score) => {
+  score = Object.fromEntries(
+    Object.entries(score).sort(([,a],[,b]) => a > b? -1: 1 )
+    );
+  return score;
+};
+
 }
 
 module.exports = problem7;
