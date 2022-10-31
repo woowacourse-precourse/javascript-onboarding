@@ -14,4 +14,24 @@ function getUserFriends(user, friends) {
   return friendArr;
 }
 
+function score10(friends, userFriends, obj) {
+  if (userFriends.length === 1) return;
+
+  friends.forEach((el) => {
+    let isUserFriend1 = userFriends.includes(el[0]);
+    let isUserFriend2 = userFriends.includes(el[1]);
+
+    if (isUserFriend1 === false && isUserFriend2 === true)
+      obj[el[0]] ? (obj[el[0]] += 10) : (obj[el[0]] = 10);
+    else if (isUserFriend1 === true && isUserFriend2 === false)
+      obj[el[1]] ? (obj[el[1]] += 10) : (obj[el[1]] = 10);
+  });
+}
+
+function score1(visitors, userFriends, obj) {
+  visitors.forEach((el) => {
+    if (!userFriends.includes(el)) obj[el] ? (obj[el] += 1) : (obj[el] = 1);
+  });
+}
+
 module.exports = problem7;
