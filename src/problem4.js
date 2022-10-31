@@ -1,7 +1,5 @@
 function problem4(word) {
   var answer="";
-  // var word = convertUL(word); -> 나중에 나오는거임
-  console.log(word);
   for (let i=0;i<word.length;i++){
     let ascii = word.charCodeAt(i);
     let cov_ascii;
@@ -27,10 +25,7 @@ function problem4(word) {
     else{
       answer+=" ";
     }
-    console.log(cov_ascii);
   }
-  
-  console.log(answer);
   return answer;
 }
 
