@@ -35,6 +35,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  //user친구의 친구아이디에서 중복 아이디는 점수를 더한다.
+  for (let i = 0; i < friends_number.length; i++) {
+    for (let j = i + 1; j < friends_number.length; j++) {
+      if (friends_number[i][0] == friends_number[j][0]) {
+        friends_number[i][1] += friends_number[j][1];
+        friends_number.splice(j, 1);
+        j--;
+      }
+    }
+  }
+
   return answer;
 }
 
