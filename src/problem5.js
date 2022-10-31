@@ -6,7 +6,7 @@ function problem5(money) {
   for (i = 0; i < chage.length; i++) {
     tmp = parseInt(money / chage[i]);
     answer.push(tmp);
-    if (tmp != 0) {
+    if (tmp !== 0) {
       money = money - tmp * chage[i];
     }
   }
