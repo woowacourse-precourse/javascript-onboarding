@@ -38,6 +38,21 @@ function problem7(user, friends, visitors) {
   //1점 점수 매기기
   visitors.map(vele => flist[vele] += 1);
 
+  //3. 출력
+  // 0점, 이미 친구인 사람들 지우기 
+  let temp = Object.entries(flist).filter(element => element[1] > 0 && !userfs.includes(element[0]));
+  
+  // 길이가 5이상이면 순위 5까지만 cutting
+  if(temp.length > 5){
+    for(let i = 0; i < 5; i++){
+      answer.push(temp[i][0]);
+    }
+  }
+  else{
+    answer = temp.map(element => element[0]);
+  }
+
+
   return answer;
 }
 
