@@ -51,6 +51,11 @@ const gatherEmailFromUsersUsingConsecutiveLetter = (args) => {
   return { ...args, userEmailArray };
 };
 
+const sortEmailFromUsersUsingConsecutiveLetter = (args) => {
+  const { userEmailArray } = args;
+  return userEmailArray.sort();
+};
+
 function problem6(forms) {
   var answer;
   return answer;
