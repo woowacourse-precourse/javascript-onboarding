@@ -32,7 +32,18 @@ function problem7(user, friends, visitors) {
       return acc;
     }, {});
 
-  console.log("commonFriendScore: ", commonFriendScore);
+  const visitorsScore = visitors.reduce((acc, visitor) => {
+    if (usersFriendList.includes(visitor)) {
+      return acc;
+    }
+
+    if (acc[visitor]) {
+      acc[visitor] += 1;
+    } else {
+      acc[visitor] = 1;
+    }
+    return acc;
+  }, {});
 }
 
 module.exports = problem7;
