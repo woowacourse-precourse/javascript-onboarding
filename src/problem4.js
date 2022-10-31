@@ -1,30 +1,39 @@
 function problem4(word) {
-    const answer = reverseWord(word);
-    return answer;
+    return reverseWord(word);
 }
 
 function reverseWord(word) {
+    const wordSplit = word.split("");
+    return wordSplit.reduce(alphabetReverse, "");
+}
+
+function alphabetReverse(newWord, char) {
+    newWord += upperCaseReverse(char) || lowerCaseReverse(char) || char;
+    return newWord;
+}
+
+function upperCaseReverse(char) {
     const ALPHABET_LENGTH = 26;
-    let newWord = '';
     const upperCase = ['A', 'B', 'C', 'D', 'E', 'F',
         'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
         'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
     ];
+    if (upperCase.includes(char)) {
+        return upperCase[ALPHABET_LENGTH - upperCase.indexOf(char) - 1];
+    }
+    return 0;
+}
+
+function lowerCaseReverse(char) {
+    const ALPHABET_LENGTH = 26;
     const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f',
         'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
         'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     ];
-    for (let i = 0; i < word.length; i++) {
-        if (upperCase.includes(word[i])) {
-            const wordIndex = upperCase.indexOf(word[i]);
-            newWord += upperCase[ALPHABET_LENGTH - wordIndex - 1];
-        } else if (lowerCase.includes(word[i])) {
-            const wordIndex = lowerCase.indexOf(word[i]);
-            newWord += lowerCase[ALPHABET_LENGTH - wordIndex - 1];
-        } else {
-            newWord += word[i];
-        }
+    if (lowerCase.includes(char)) {
+        return lowerCase[ALPHABET_LENGTH - lowerCase.indexOf(char) - 1];
     }
-    return newWord;
+    return 0;
 }
+
 module.exports = problem4;
