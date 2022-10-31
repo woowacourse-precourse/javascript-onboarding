@@ -1,3 +1,14 @@
+const user = "mrko";
+const friends = [
+  ["donut", "andole"],
+  ["donut", "jun"],
+  ["donut", "mrko"],
+  ["shakevan", "andole"],
+  ["shakevan", "jun"],
+  ["shakevan", "mrko"],
+];
+const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+
 function findUserFriends(friends) {
   let userFriends = [];
 
@@ -109,3 +120,6 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
+problem7(user, friends, visitors);
+
+module.exports = problem7;
