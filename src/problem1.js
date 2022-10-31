@@ -25,4 +25,14 @@ const sumPageNum = (pages) => {
   result += pages;
   return result;
 };
+
+const multiPageNum = (pages) => {
+  let result = 1;
+  while (parseInt(pages / 10) !== 0) {
+    result *= pages % 10;
+    pages = parseInt(pages / 10);
+  }
+  result *= pages;
+  return result;
+};
 module.exports = problem1;
