@@ -5,7 +5,7 @@ function problem6(forms) {
   // 2글자씩 저장 Arr
   const twoLetter = []
   // 중복된 닉네임에 따른 이메일 저장
-  const resultEmail = []
+  const resultEmail = new Set()
 
   for (let i = 0; i < forms.length; i++) {
     nickName.push(forms[i][1])
@@ -34,7 +34,8 @@ function problem6(forms) {
     }
   }
 
-  answer = resultEmail
+  // 배열로 변환
+  const answer = [...resultEmail]
   
   // 오름차순으로 정렬
   answer.sort();
