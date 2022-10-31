@@ -1,9 +1,16 @@
+const ASCII = {
+  UPPER_A: 65,
+  UPPER_Z: 90,
+  LOWER_A: 97,
+  LOWER_Z: 122,
+}
+
 const getReverseAlphabet = (char) => {
   const charASCII = char.charCodeAt();
-  if (charASCII >= 97 && charASCII <= 122)
-      return String.fromCharCode(97 + 122 - charASCII);
-  if (charASCII >= 65 && charASCII <= 90)
-      return String.fromCharCode(65 + 90 - charASCII);
+  if (charASCII >= ASCII.LOWER_A && charASCII <= ASCII.LOWER_Z)
+      return String.fromCharCode(ASCII.LOWER_A + ASCII.LOWER_Z - charASCII);
+  if (charASCII >= ASCII.UPPER_A && charASCII <= ASCII.UPPER_Z)
+      return String.fromCharCode(ASCII.UPPER_A + ASCII.UPPER_Z - charASCII);
   return char;
 }
 
