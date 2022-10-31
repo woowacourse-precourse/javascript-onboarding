@@ -21,3 +21,5 @@ const getMultiply = (number) => {
     .split("")
     .reduce((total, str) => (total *= +str), 1);
 };
+
+const getMax = (...args) => Math.max(...args);
