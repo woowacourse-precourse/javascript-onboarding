@@ -35,7 +35,6 @@ function divideTwoWord(forms) {
     twoWordIndex = deleteOverlap(twoWordIndex);
     return twoWordIndex;
   })
-  // console.log(twoWordArr);
   return twoWordArr;
 }
 
@@ -56,10 +55,6 @@ function compareNickname(twoWordArr, forms) {
 	}
 
   return checkArr;
-  // console.log(checkArr);
-  // const overlapEmails = emailArr.filter((_, i) => checkArr[i]);
-  // console.log(overlapEmails);
-  // return overlapEmails;
 }
 
 // check배열로 결과값 도출
@@ -68,6 +63,7 @@ function checkResult(emailArr, checkArr) {
   return overlapEmails;
 }
 
+// 이메일 정렬
 function sortResult(result) {
   const sortResult = result.sort((a, b) => a.localeCompare(b));
   return sortResult;
@@ -77,11 +73,9 @@ function problem6(forms) {
   const emailArr = divideEmail(forms);
   const checkArr = compareNickname(divideTwoWord(forms), forms);
   const result = checkResult(emailArr, checkArr);
-  console.log(sortResult(result));
+  
   return sortResult(result);
 }
-
-problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]);
 
 module.exports = problem6;
 
