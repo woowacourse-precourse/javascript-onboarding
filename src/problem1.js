@@ -7,10 +7,19 @@ function solution(pobi, crong) {
   if (!checkValid(pobi) || !checkValid(crong)) {
     return -1;
   }
+  pobiNum = biggerNum(pobi);
+  crongNum = biggerNum(crong);
+  if (pobiNum == crongNum) {
+    return 0;
+  } else if (pobiNum > crongNum) {
+    return 1;
+  } else if (pobiNum < crongNum) {
+    return 1;
+  } else {
+    return -1;
+  }
+
   
-
-
-  return null;
 }
 
 function checkValid(array) {
@@ -22,10 +31,11 @@ function biggerNum(array) {
   num2 = tens(array[0]);
   num3 = hundreds(array[0]);
   num4 = ones(array[1]);
-  num5 = tens(array[2]);
-  num6 = hundreds(array[3]);
-  addition = compareNum(num1+num2+num3, num4+num5+num6);
-  multiplication = compareNum(num1*num2*num3, num4*num5*num6);
+  num5 = tens(array[1]);
+  num6 = hundreds(array[1]);
+  firstNum = compareNum(num1+num2+num3, num1*num2*num3);
+  secondNum = compareNum(num4+num5+num6, num4*num5*num6);
+  result = compareNum(firstNum, secondNum);
 }
 
 function ones(num) {
