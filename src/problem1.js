@@ -2,6 +2,13 @@ function problem1(pobi, crong) {
   if (!passExceptions(pobi, crong)) return -1;
   const pobiBiggestScore = getScore(pobi);
   const crongBiggestScore = getScore(crong);
+  if (pobiBiggestScore > crongBiggestScore) {
+    return 1;
+  } else if (pobiBiggestScore < crongBiggestScore) {
+    return 2;
+  } else {
+    return 0;
+  }
 }
 
 function getScore(pageArr) {
