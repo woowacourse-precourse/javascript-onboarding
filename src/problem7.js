@@ -3,7 +3,7 @@ const VISIT_SCORE = 1;
 const LIMIT = 5;
 
 const getUsersFriends = (user, relationship) => {
-  let friends = relationship.reduce((acc, [personA, personB]) => {
+  const friends = relationship.reduce((acc, [personA, personB]) => {
     if (personA === user) {
       return acc.concat(personB);
     } else if (personB === user) {
@@ -41,7 +41,7 @@ const getScoreMap = (friends, score) => {
 };
 
 const mergeScoreMap = (map1, map2) => {
-  let scoreMap = new Map(map1);
+  const scoreMap = new Map(map1);
   for (const [key, value] of map2) {
     if (scoreMap.has(key)) {
       scoreMap.set(key, scoreMap.get(key) + value);
