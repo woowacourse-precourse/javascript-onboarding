@@ -6,11 +6,18 @@ function problem7(user, friends, visitors) {
   if (user.length < 1 || user.length > 30) return -1;
   if (friends.length < 1 || friends.length > 10000) return -1;
   if (visitors > 10000) return -1;
-  let lowerUser = user.toLowerCase();
+  for(let lower of user){
+    if(lower === lower.toUpperCase()) return -1;
+  }
+  let lowerVisitors = visitors.flat();
+  for(let lower of lowerVisitors){
+    if(lower === lower.toUpperCase()) return -1;
+  }
 
   //친구 들어있는 배열 찾기
   const findFriend = (user, friends) => {
     const friendList = friends.filter(list => list.includes(user));
+    console.log(friendList);
     return friendList;
   }
   //친구만 찾기
@@ -18,9 +25,14 @@ function problem7(user, friends, visitors) {
     let flat = friendList.flat();
     for (let i = 0; i < flat.length; i++) {
       if (flat[i] === user) {
-        flat.splice(i, 1);
-        i--;
+        if(flat[i].length > 1 || flat[i].length < 30) {
+          flat.splice(i, 1);
+          i--;
+        }
       }
+    }
+    for(let lower of flat){
+      if(lower === lower.toUpperCase()) return -1;
     }
     return flat;
   }
@@ -37,7 +49,6 @@ function problem7(user, friends, visitors) {
         }
       }
     }
-    console.log(checkF);
     return checkF;
   }
 // 점수를 가진 추천친구 상위 5명 정렬
@@ -57,9 +68,9 @@ function problem7(user, friends, visitors) {
     return fiveFriend;
   }
 
-  let arr = findFriend(lowerUser, friends);
+  let arr = findFriend(user, friends);
   let friend = onlyFriend(user, arr);
-  let findF = findFriendFriend(friend, friends, lowerUser);
+  let findF = findFriendFriend(friend, friends, user);
 
   //친구들 10점
   let result = findF.flat();
@@ -71,11 +82,9 @@ function problem7(user, friends, visitors) {
       recommendFriend.set(m, 10);
     }
   });
-  console.log(recommendFriend);
 
   //추천친구 1점
-  let visit = visitors.flat();
-  visit.map((m) => {
+  lowerVisitors.map((m) => {
     if (recommendFriend.has(m)) {
       recommendFriend.set(m, recommendFriend.get(m) + 1);
     } else {
@@ -90,16 +99,5 @@ function problem7(user, friends, visitors) {
   let answer = friendPlus();
   return answer;
 }
-console.log(problem7("mrko",
-  [
-    ["mrko", "jun"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["jun", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]))
 
 module.exports = problem7;

@@ -2,10 +2,12 @@ function problem2(cryptogram) {
 
   //제한사항
   if(cryptogram.length < 1 || cryptogram.length > 1000) return -1;
-  let cryptogramToLower = cryptogram.toLowerCase();
+  for(let lower of cryptogram){
+    if(lower === lower.toUpperCase()) return -1;
+  }
 
   //중복 문자 제거하기
-  let arr = cryptogramToLower.split("");
+  let arr = cryptogram.split("");
   let answer = [];
 
   for(let str of arr){
