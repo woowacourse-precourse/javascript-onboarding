@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+- [ ] 두 닉네임을 입력받아 같은 글자가 연속적으로 포함하는지 확인하는 함수 구현
+- [ ] 중복이 존재하는 닉네임들을 Set 구조체에 저장
+- [ ] 배열로 변환 후 정렬
