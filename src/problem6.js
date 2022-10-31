@@ -7,14 +7,12 @@ function problem6(forms) {
    * 5. 닉네임으로 이메일을 찾아서 이메일 정렬
    */
   const twoLettersArray = forms
-    .map((info) =>
-      info[1]
+    .map(([_, nickname]) => {
+      return nickname
         .split("")
-        .map((string, i, array) => {
-          return string + array[i + 1];
-        })
-        .filter((unit) => !unit.includes("undefined"))
-    )
+        .map((string, i, array) => string + array[i + 1])
+        .slice(0, -1);
+    })
     .flat();
 
   const removeDuplication = [...new Set(twoLettersArray)];
@@ -29,11 +27,19 @@ function problem6(forms) {
   const duplication = [...new Set(twoLettersArray)];
 
   const answer = forms
-    .filter((info) => duplication.some((v) => info[1].includes(v)))
-    .map((info) => info[0])
+    .filter(([_, nickname]) => duplication.some((v) => nickname.includes(v)))
+    .map(([email]) => email)
     .sort();
 
   return answer;
 }
-
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 module.exports = problem6;
