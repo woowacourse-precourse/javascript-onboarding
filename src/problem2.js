@@ -1,21 +1,31 @@
 function problem2(cryptogram) {
-  return;
+  return solveCrypto(cryptogram);
+}
+
+function solveCrypto(cryptogram) {
+  while (true) {
+    const cryptogramArr = cryptogram.split("");
+    let newCrypto = deduplication(cryptogramArr).join("");
+    if (cryptogram != newCrypto){
+    cryptogram = newCrypto;
+    }else break;
+  }
+  return cryptogram;
 }
 
 function deduplication(cryptogram) {
-  let cryptArr = cryptogram.split("");
-  for (let i = cryptArr.length - 1; i >= 0; i--) {
-    if (cryptArr[i] === cryptArr[i + 1]) {
-      cryptArr[i] = "";
-      cryptArr[i + 1] = "";
+  for (let i = cryptogram.length - 1; i >= 0; i--) {
+    if (cryptogram[i] === cryptogram[i + 1]) {
+      cryptogram[i] = "";
+      cryptogram[i + 1] = "";
     } else {
-      cryptArr[i];
+      cryptogram[i];
     }
   }
-  return cryptArr.join("");
+  return cryptogram;
 }
 
-// console.log(problem2("browoanoommnaon"));
-console.log(deduplication("browoanoommnaon"));
+console.log(problem2("browoanoommnaon"));
+
 
 module.exports = problem2;
