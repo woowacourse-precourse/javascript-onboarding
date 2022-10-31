@@ -5,6 +5,7 @@ function problem7(user, friends, visitors) {
 
   arrangeFriends();
   const alreadyFriendArr = findUserFriend(friends, user);
+  delAlreadyFriend(alreadyFriendArr);
 
   return answer;
 
@@ -34,6 +35,10 @@ function findUserFriend(friends, user) {
     else if (relation[1] === user) foundUserFriend.push(relation[0]);
   });
   return foundUserFriend;
+}
+
+function delAlreadyFriend(alreadyFriendArr) {
+  alreadyFriendArr.forEach((friend) => delete hash[friend]);
 }
 
 module.exports = problem7;
