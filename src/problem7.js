@@ -98,7 +98,6 @@ function problem7(user, friends, visitors) {
       if (a.score > b.score) {
         return -1;
       }
-      // 점수 같을 경우
       if (a.name > b.name) {
         return 1;
       }
@@ -129,22 +128,7 @@ function problem7(user, friends, visitors) {
   };
 
   solution();
-  console.log(recommendations2);
-
   return find_5_recommendations();
 }
-
-problem7(
-  "mrko",
-  [
-    ["mrko", "jun"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 
 module.exports = problem7;
