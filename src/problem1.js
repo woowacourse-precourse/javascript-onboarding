@@ -27,8 +27,10 @@ const LAST_PAGE = 400;
  * @param {[number, number]} [pobi]
  * @param {[number, number]} [mocrongey]
  * @return {-1 | 0 | 1 | 2} 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return
+ * 제한사항
  * @throws pobi와 crong의 길이는 2이다.
  * @throws pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+ * 기능목록
  * @todo 1. 유효한 페이지인지 검증해주는 함수
  * @todo 1. 연속되는 페이지인지 검증해주는 함수
  * @todo 1. 최댓값을 반환해주는 함수

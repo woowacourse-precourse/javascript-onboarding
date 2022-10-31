@@ -13,7 +13,9 @@ const ASCII_LOWER_Z = 122;
  * 각 몇 개로 변환되는지 금액이 큰 순서대로 배열에 담아 return 하도록 solution 메서드를 완성하라.
  * @param {number} [word]
  * @return {number[]} 각 몇 개로 변환되는지 금액이 큰 순서대로 배열에 담아 return
+ * 제한사항
  * @throws money는 1 이상 1,000,000 이하인 자연수이다.
+ * 기능목록
  * @todo 1. 반대되는 대문자 알파벳을 리턴하는 함수
  * @todo 2. 반대되는 소문자 알파벳을 리턴하는 함수
  * @todo 3. 대문자인지 판별하는 함수

@@ -10,7 +10,9 @@ const TARGET_NUMBER = [3, 6, 9];
  * 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록 solution 메서드를 완성하라.
  * @param {number} [number]
  * @return {number} 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return
+ * 제한사항
  * @throws number는 1 이상 10,000 이하인 자연수이다.
+ * 기능목록
  * @todo 1. 숫자에 3, 6, 9가 포함되었는지 판별하는 함수
  * @todo 2. 숫자에 3, 6, 9가 몇개 포함 되었는지 리턴하는 함수
  * @todo 3. 3, 6, 9가 포함 된 갯수를 reduce로 누적

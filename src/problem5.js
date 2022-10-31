@@ -7,6 +7,9 @@
  * 각 몇 개로 변환되는지 금액이 큰 순서대로 배열에 담아 return 하도록 solution 메서드를 완성하라.
  * @param {number} [money]
  * @return {(number[])} 금액이 큰 순서대로 배열에 담아 return
+ * 제한사항
+ * @throws money는 1 이상 1,000,000 이하인 자연수이다.
+ * 기능목록
  * @todo 1. 돈을 변환해주는 함수
  * @todo 2. 변환 후 나머지 돈을 주는 함수
  * @todo 3. 순회하면서 알맞은 금액을 변환해주고 답을 리턴
