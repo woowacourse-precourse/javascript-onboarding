@@ -33,10 +33,7 @@ function Sort(input) {
   input.sort((a, b) => a[0].charCodeAt() - b[0].charCodeAt());
   for (let i = 0; i < input.length - 1; i++) {
     if (input[i][0] === input[i + 1][0]) {
-      const length =
-        input[i].length > input[i + 1].length
-          ? input[i + 1].length
-          : input[i].length;
+      const length = input[i].length > input[i + 1].length ? input[i + 1].length : input[i].length;
       for (let j = 1; j < length; j++) {
         if (input[i][j] > input[i + 1][j]) {
           [input[i], input[i + 1]] = [input[i + 1], input[i]];
@@ -47,12 +44,6 @@ function Sort(input) {
   }
   return input;
 }
-
-// 문제의 조건 중 오름차순으로 정렬한다는 조건을 빼먹어서 정리하였고
-// 기존에 this를 사용하여 adjacent를 사용한 문제를 수정하였습니다.
-// 인접리스트를 한 이유는 문제를 해결하기 위해서는 유저와 연결된
-// 친구들이 누구인지 알아내야하고 해결을 위해서는 인접리스트가 적합
-// 하다는 생각에 적용하여 해결했습니다.
 
 function problem7(user, friends, visitors) {
   const adjacent = new AdjacentList();
