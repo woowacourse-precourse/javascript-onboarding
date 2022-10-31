@@ -58,6 +58,9 @@ function problem7(user, friends, visitors) {
     nameMap.delete(arrFriends[i]);
   }
   nameMap.delete(user);
+
+  
+  let sortedMap = [...nameMap].sort((a, b) => a[1] - b[1]).reverse()
   return answer;
 }
 
