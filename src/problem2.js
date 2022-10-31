@@ -6,7 +6,7 @@ function problem2(cryptogram) { //단어하나를 받는다
 
   answer.push(cryptogram_add[0])
   for (i = 1 ; i < cryptogram_add.length ; i ++) { 
-    if (cryptogram_add[i] != answer.at(-1)) {
+    if (cryptogram_add[i] != answer[answer.length-1]) {
       answer.push(cryptogram_add[i])
     } else {
       answer.pop()
