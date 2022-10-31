@@ -1,11 +1,16 @@
 function problem2(cryptogram) {
   let resultArray = [];
-  for(ch of cryptogram){
-    if(!(resultArray)){ resultArray.push(ch); }
-    
+  for(const newCh of cryptogram){
+    if(!(resultArray.length)){ resultArray.push(newCh); }
+    else {
+      preCh = resultArray.pop();
+      if(preCh != newCh) {
+        resultArray.push(preCh);
+        resultArray.push(newCh);
+      }
+    }
   }
-
-  // return deleteString(cryptogram);
+  return resultArray.join("");
 }
 
 console.log(problem2("browoanoommnaon"));
