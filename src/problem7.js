@@ -24,7 +24,7 @@ function findUserFriendsOfFriends(user, friends, userFriends) {
 
   friends
     .filter((el) => !el.includes(user))
-    .filter((el) => {
+    .forEach((el) => {
       for (let i = 0; i < userFriends.length; i++) {
         for (let j = 0; j < el.length; j++) {
           if (el.includes(userFriends[i]) && el[j] !== userFriends[i])
