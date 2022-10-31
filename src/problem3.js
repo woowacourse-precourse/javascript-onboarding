@@ -1,5 +1,5 @@
 function problem3(number) {
-  let answer = 0;
+ let answer = 0;
   let num;
   for (let i = 0; i < number; i++) { 
     num = '' + (i + 1) 
@@ -9,7 +9,6 @@ function problem3(number) {
       }
     }
   }
-  console.log(answer)
   return answer;
 }
 
