@@ -6,4 +6,12 @@
 
 function problem5(money) {}
 
+const getNumberOfEachMoneyUnits = (money, moneyUnits) => {
+  return moneyUnits.map((moneyUnit) => {
+    const maxCountOfUnit = Math.floor(money / moneyUnit);
+    money -= maxCountOfUnit * moneyUnit;
+    return maxCountOfUnit;
+  });
+};
+
 module.exports = problem5;
