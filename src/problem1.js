@@ -28,6 +28,16 @@ const isExceptionSituationOccurred = (bookPage) => {
     isLastPage(bookPage)
   );
 };
+const eachDigitAllAdd = (bookPage) =>
+  String(bookPage)
+    .split("")
+    .reduce((prev, curr) => prev + Number(curr), 0);
+
+const eachDigitAllMultiply = (bookPage) =>
+  String(bookPage)
+    .split("")
+    .reduce((prev, curr) => prev * Number(curr), 1);
+
 function problem1(pobi, crong) {
   if (isExceptionSituationOccurred(pobi) || isExceptionSituationOccurred(crong))
     return -1;
