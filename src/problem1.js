@@ -7,10 +7,10 @@ function problem1(pobi, crong) {
   pobiScore = Math.max(MaxScore(pobi[0]), MaxScore(pobi[1]));
   crongScore = Math.max(MaxScore(crong[0]), MaxScore(crong[1]));
 
-  if (pobiScore > crongScore)  return 1;
+  if (pobiScore > crongScore) return 1;
   else if (pobiScore < crongScore) return 2;
-  else if (pobiScore == crongScore)  return 0;
-  else return -1; 
+  else if (pobiScore == crongScore) return 0;
+  else return -1;
 }
 
 
