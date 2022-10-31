@@ -3,7 +3,10 @@ function problem7(user, friends, visitors) {
   const unknownVisitors = visitors.filter(
     (name) => userFriendList.indexOf(name) < 0
   );
+  const newRecommendScore = [];
+  const result = [];
   let newFriendList = [];
+  let newFriendScore = {};
 
   for (let i = 0; i < userFriendList.length; i++) {
     const friendFriendList = setFriendList(friends.flat(), userFriendList[i]);
@@ -12,9 +15,59 @@ function problem7(user, friends, visitors) {
 
   newFriendList = newFriendList.filter((name) => name !== user);
 
-  const friendScore = setScore(newFriendList, 10).concat(
+  const recommendScore = setScore(newFriendList, 10).concat(
     setScore(unknownVisitors, 1)
   );
+
+  recommendScore.forEach((obj) => {
+    newFriendScore = {
+      ...newFriendScore,
+      [obj.name]: [...(newFriendScore[obj.name] || []), obj.score],
+    };
+  });
+
+  for (const [key] of Object.entries(newFriendScore)) {
+    const hi = newFriendScore[key].reduce((a, b) => a + b);
+
+    newRecommendScore.push({ name: key, score: hi });
+  }
+
+  const scoreList = setHighScore(newRecommendScore);
+
+  for (let i = 0; i < scoreList.length && i < 5; i++) {
+    result.push(scoreList[i].name);
+  }
+
+  return result;
+}
+
+/**
+ * array의 score, name 순으로 내림차순 정렬해 주는 함수
+ * @param {*} obj 정렬할 명단
+ * @returns Object, {name: name, score: score}
+ */
+function setHighScore(obj) {
+  const result = obj.sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    if (a.score < b.score) {
+      return 1;
+    }
+    if (a.score > b.score) {
+      return -1;
+    }
+    if (a.score == b.score) {
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    }
+  });
+  return result;
 }
 
 /**
