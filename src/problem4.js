@@ -1,3 +1,7 @@
+/**
+ * replaceUpperCaseByTreeFrogDict
+ * @type {(str: string) => string}
+ */
 function replaceUpperCaseByTreeFrogDict(str) {
   let res = str;
   const rgx = /[A-Z]/g;
