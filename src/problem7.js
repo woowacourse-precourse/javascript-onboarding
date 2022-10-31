@@ -3,28 +3,14 @@ function problem7(user, friends, visitors) {
   const visitorObject = getVisitorUser(visitors);
 
   getGrade(user, userFriend, visitorObject);
-  // console.log(userFriend);
 }
 
 function getGrade(user, userFriend, visitorObject) {
-  //console.log(visitorObject[0][0]);
-  let temp = [];
+  console.log(userFriend);
   for (let i = 0; i < visitorObject.length; i++) {
-    if (visitorObject[0][i] === "bedi") {
-      // console.log(visitorObject[0][i]);
-      // console.log(visitorObject[1][i]);
-
+    if (visitorObject[0][i] === user) {
       delete visitorObject[0][i];
       delete visitorObject[1][i];
-
-      // console.log(visitorObject[0][i]);
-
-      // temp = visitorObject.filter((item) => item !== visitorObject[0][i]);
-      // console.log(visitorObject.filter((item) => item !== visitorObject[0][i]));
-      // for (let j = 0; j < visitorObject.length; j++) {
-      //   console.log(visitorObject[j][i]);
-      //   // console.log(visitorObject.splice(visitorObject[j][i], 1));
-      // }
     }
   }
 
@@ -44,14 +30,12 @@ function getVisitorUser(visitors) {
     uniqueGrade[i] = countVisitor;
   }
 
-  // console.log(unique);
-  // console.log(uniqueGrade);
   return [unique, uniqueGrade]; // 출력 : [[명단], [카운트]]
 }
 
 function getFriendUser(user, friends) {
   const friend = [];
-
+  const friendGrade = [];
   for (let i = 0; i < friends.length; i++) {
     const includeUser = friends[i].includes(user);
     if (includeUser) {
@@ -59,8 +43,11 @@ function getFriendUser(user, friends) {
       friend.push(String(temp).replace(user, ""));
     }
   }
+  for (let i = 0; i < friend.length; i++) {
+    friendGrade[i] = 1 * 10;
+  }
 
-  return friend;
+  return [friend, friendGrade];
 }
 
 function testCode() {
