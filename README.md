@@ -32,18 +32,26 @@
 
 ## :mag: [문제 2] 구현할 기능 목록
 
-> B안 선택: A안은 예외상황 발생: "zyelleyyez" > 기대값: "zyz" / 출력값 : "zez"
-단계별로 삭제가 되지 않아 문제발생 (1단계에서 'll' 과 'yy'가 먼저 삭제된 후 2단계에서 'eee'가 한번에 지워져야함.)
+> C안 선택 ~~B안 선택~~: A안은 예외상황 발생: "zyelleyyez" > 기대값: "zyz" / 출력값 : "zez" 단계별로 삭제가 되지 않아 문제발생 (1단계에서 'll' 과 'yy'가 먼저 삭제된 후 2단계에서 'eee'가 한번에 지워져야함.)
+B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들어가야함.
 
 * [ ] A안 : Stack 배열을 만들어서 한글자씩 중복문자 체크하며, `push()` / `pop()` 으로 채워넣는 방안.
   + 단계별로 삭제가 아닌 앞에서부터 하나씩 소거해가면서 처리.
-* [x] B안 : 문자 하나씩 앞에서부터 연속된 글자를 파악 후 단계별로 삭제하는 방안.
+* [ ] B안 : 문자 하나씩 앞에서부터 연속된 글자를 파악 후 단계별로 삭제하는 방안.
+* [x] C안 : Queue를 이용하여 재귀하여, 단계적으로 삭제가능 하는 방안. 
 
 * 전체 프로세서 관리 `cryptogramSolver` 함수 생성
-  + 문자열을 배열로 담아둘 `cryptogramArr` 변수 생성
-  + 연속된 중복문자를 제거할 함수 `removeDuplicatesChar`가 `false`를 반환될 때까지 반복 호출
+  + ~~[B안]문자열을 배열로 담아둘 `cryptogramArr` 변수 생성~~
+  + ~~[B안]연속된 중복문자를 제거할 함수 `removeDuplicateChar`가 `false`를 반환될 때까지 반복 호출~~
+  + 연속된 중복문자를 제거할 함수 `removeDuplicateChar`가 반환하는 값을 return 함.,
+  + return 값: 함수 `removeDuplicateChar` 반환값
 
-* 연속된 중복문자를 제거할 함수 `removeDuplicatesChar` 생성
+* 연속된 중복문자를 제거할 함수 `removeDuplicateChar` 생성
+  + **(+추가)** 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
+  + **(+추가)** 현재 글자가 queue의 글자와 다를 때까지 배열 `queueArr`에 쌓아둠. 
+    - `isQueueDuplicate` : `queueArr`에 쌓이는 중이면 `true`, `queue`가 비워지면 `false`
+    - `isDeleteStep` : 한 번이 라도 `queueArr`에 2개이상 쌓이면 `true`. (재귀가 시작될 때, `false`가 default 값)
+  + **(+추가)** 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
 ## :mag: [문제 3] 구현할 기능 목록
@@ -108,11 +116,11 @@
   + 이메일 길이가 11자이상 20자 미만이 아니면 제거
 
 * 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
-  + **(+추가) 함수 `getNameByTwoLetterSet`에 `CrewDataArr`를 넣어 전체닉네임 `CrewDataArr[i][1]` 을 내부함수 `String.prototype.substr()`를 사용하여, 2글자씩 잘라서 `Set객체`인 `TwoLetterNameSet` 에 넣어서 저장한다.**
+  + **(+추가)** 함수 `getNameByTwoLetterSet`에 `CrewDataArr`를 넣어 전체닉네임 `CrewDataArr[i][1]` 을 내부함수 `String.prototype.substr()`를 사용하여, 2글자씩 잘라서 `Set객체`인 `TwoLetterNameSet` 에 넣어서 저장한다.
   + 입력된 배열 `CrewDataArr` 길이만큼 중복닉네임을 걸러내는 작업 반복.
   + ~~함수 getDuplicateDataArr에 CrewDataArr와 CrewNickName를 입력 후 함수 반환값을 return 한다.~~
   + ~~CrewNickName(닉네임)으로 함수 getNameByTwoLetterArr을 호출하여, 출력값을 배열 TwoLetterNameArr(닉네임검사리스트)에 저장~~
-  + `CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우, **(+추가) 임시 배열 `delCrewDataIndexArr`에 index 저장 한다.**  
+  + `CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우, **(+추가)** 임시 배열 `delCrewDataIndexArr`에 index 저장 한다.  
   + 탐색이 완료하면, 배열 `delCrewDataIndexArr`의 데이터 여부를 확인하고, 데이터가 있을 경우, 탐색대상인 크루정보와 함께  `delCrewDataIndexArr`에 저장된 인덱스를 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.
   + return 값 : 배열 `duplicateDataArr`
 
