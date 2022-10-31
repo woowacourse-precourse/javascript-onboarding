@@ -13,7 +13,7 @@ function problem6(forms) {
       }
     }
   }
-  console.log(emailArr);
+  console.log(deleteOverlap(emailArr));
 }
 
 function checkOverlap(name1, name2) {
@@ -24,6 +24,12 @@ function checkOverlap(name1, name2) {
     }
   }
   return false;
+}
+
+function deleteOverlap(arr) {
+  let set = new Set(arr);
+  let uniqueArr = [...set];
+  return uniqueArr;
 }
 
 module.exports = problem6;
