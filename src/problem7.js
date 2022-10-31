@@ -12,13 +12,20 @@ const SnsFreindrRecomander = {
     return true;
   },
   checkDatas: function (user, friends, visitors) {
-    return this.checkUserLength(user) && this.checkFriendsLength(friends);
+    return (
+      this.checkUserLength(user) &&
+      this.checkFriendsLength(friends) &&
+      this.checkVisitersLength(visitors)
+    );
   },
   checkUserLength: function (user) {
     return user >= 1 && user <= 30;
   },
   checkFriendsLength: function (friends) {
     return friends.length >= 1 && friends.length <= 10000;
+  },
+  checkVisitersLength: function (visitors) {
+    return visitors.length >= 0 && visitors.length <= 10000;
   },
 };
 
