@@ -1,6 +1,6 @@
 function problem4(word) {
   var answer;
-  let map = {
+  let frogDict = {
     A: Z,
     B: Y,
     C: X,
