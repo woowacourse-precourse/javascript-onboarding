@@ -20,6 +20,9 @@ function problem7(user, friends, visitors) {
   score = makeScore(relation, userFriends);
   console.log(score); // { donut: 0, andole: 0, jun: 0, shakevan: 0 }
 
+  // 기능 3
+  bothFriendCheck(relation, userFriends, score);
+  console.log(score); // { donut: 0, andole: 20, jun: 20, shakevan: 0 }
 
   return answer;
 }
@@ -57,6 +60,37 @@ function makeScore(relation, userFriends) {
 
   return score;
 }
+
+// 기능 3. 함께 아는 친구 count
+function bothFriendCheck(relation, userFriends, score) {
+  let relationKey = Object.keys(relation); // "key"값만
+
+  for (let friend of relationKey) {
+    let count = 0;
+    // console.log(friend);
+
+    if (friend === user) { // 본인 제외
+      continue;
+    }
+
+    let tmp = relation[friend]; // 한 사람의 친구 목록
+    // console.log(tmp);
+
+    for (let f of tmp) {
+      console.log("f: ", f);
+      console.log("userFriends: ", userFriends);
+
+      if (userFriends.includes(f)) { // 함께 아는 친구인 경우
+        count += 10;
+      }
+    }
+
+    score[friend] += count;
+  }
+
+  return;
+}
+
 
 problem7(user,friends, visitors);
 
