@@ -1,27 +1,24 @@
-function deleteDuplicatedWord(wordsArray) {
-  let count = 1;
-  let targetIndex = [];
+function deleteDuplicatedWord(words) {
+  let wordsArray = words.split("");
+  let newWordsArray = wordsArray;
 
   wordsArray.map((word, index) => {
     if (word == wordsArray[index + 1]) {
-      while (word == wordsArray[index + count]) {
-        count++;
+      let repeat = 1;
+      newWordsArray[index] = "";
+      while (word == wordsArray[index + repeat]) {
+        newWordsArray[index + repeat] = "";
+        repeat++;
       }
-      targetIndex.push(word.repeat(count));
     }
   });
 
-  let newWord = wordsArray.join("");
-
-  targetIndex.map((target) => {
-    newWord = newWord.replace(target, "");
-  });
-
-  return newWord.split("");
+  return newWordsArray.join("");
 }
 
-function isUniqueWords(wordsArray) {
+function isUniqueWords(words) {
   let isUnique = true;
+  let wordsArray = words.split("");
 
   wordsArray.map((word, index) => {
     if (word == wordsArray[index + 1]) {
@@ -32,14 +29,13 @@ function isUniqueWords(wordsArray) {
 }
 
 function problem2(cryptogram) {
-  let cryptogramArray = cryptogram.split("");
-  let newCryptogramArray = deleteDuplicatedWord(cryptogramArray);
+  let newCryptogram = deleteDuplicatedWord(cryptogram);
 
-  while (!isUniqueWords(newCryptogramArray)) {
-    newCryptogramArray = deleteDuplicatedWord(newCryptogramArray);
+  while (!isUniqueWords(newCryptogram)) {
+    newCryptogram = deleteDuplicatedWord(newCryptogram);
   }
 
-  return newCryptogramArray.join("");
+  return newCryptogram;
 }
 
 module.exports = problem2;
