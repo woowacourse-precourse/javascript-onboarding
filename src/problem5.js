@@ -18,6 +18,4 @@ function problem5(money) {
   return answer;
 }
 
-console.log(problem5(15000));
-
 module.exports = problem5;
