@@ -12,16 +12,16 @@ class UsersError extends MyError {
   constructor(user) {
     super();
 
-    this.user = user;
+    this._user = user;
     this.occurError();
   }
 
   checkLimit() {
-    return 1 <= this.user.length && this.user.length <= 30;
+    return 1 <= this._user.length && this._user.length <= 30;
   }
 
   checkLower() {
-    return this.user.match(/[a-z]/g).length === this.user.length;
+    return this._user.match(/[a-z]/g).length === this._user.length;
   }
 
   occurError() {
@@ -35,22 +35,22 @@ class FriendsError extends MyError {
   constructor(friends) {
     super();
 
-    this.friends = friends;
+    this._friends = friends;
     this.occurError();
   }
 
   checkLimit() {
-    return 1 <= this.friends.length && this.friends.length <= 10000;
+    return 1 <= this._friends.length && this._friends.length <= 10000;
   }
 
   checkIDLimit() {
-    return this.friends
+    return this._friends
       .flatMap((friend) => friend)
       .every((friend) => 1 <= friend.length && friend.length <= 30);
   }
 
   checkIDListLimit() {
-    return this.friends.every((friend) => friend.length === 2);
+    return this._friends.every((friend) => friend.length === 2);
   }
 
   check() {
@@ -68,12 +68,12 @@ class VisitorsError extends MyError {
   constructor(visitors) {
     super();
 
-    this.visitors = visitors;
+    this._visitors = visitors;
     this.occurError();
   }
 
   checkLimit() {
-    return 0 <= this.visitors.length && this.visitors.length <= 10000;
+    return 0 <= this._visitors.length && this._visitors.length <= 10000;
   }
 
   occurError() {
@@ -85,19 +85,19 @@ class VisitorsError extends MyError {
 
 class Model {
   constructor(friends, visitors) {
-    this.friends = friends;
-    this.visitors = visitors;
+    this._friends = friends;
+    this._visitors = visitors;
 
-    this.scoreBoard = this.makeScoreBoard();
-    this.friendGraph = this.makeFriendGraph();
+    this._scoreBoard = this.makeScoreBoard();
+    this._friendGraph = this.makeFriendGraph();
   }
 
   getFriendRelation() {
-    return this.friendGraph;
+    return this._friendGraph;
   }
 
   getScoreBoard() {
-    return this.scoreBoard;
+    return this._scoreBoard;
   }
 
   saveFriendGraph(keyFriend, valueFriend, map) {
@@ -109,7 +109,7 @@ class Model {
   makeFriendGraph() {
     const resultMap = new Map();
 
-    this.friends.forEach(([ID_A, ID_B]) => {
+    this._friends.forEach(([ID_A, ID_B]) => {
       this.saveFriendGraph(ID_A, ID_B, resultMap);
       this.saveFriendGraph(ID_B, ID_A, resultMap);
     });
@@ -120,7 +120,7 @@ class Model {
   makeScoreBoard() {
     return [
       ...new Set(
-        [...this.friends, ...this.visitors].flatMap((relation) => relation)
+        [...this._friends, ...this._visitors].flatMap((relation) => relation)
       ),
     ].reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
   }
@@ -128,42 +128,44 @@ class Model {
 
 class Controller {
   constructor(props) {
-    this.user = props.user;
-    this.visitors = props.visitors;
-    this.model = props.model;
+    this._user = props.user;
+    this._visitors = props.visitors;
+    this._model = props.model;
   }
 
   isRecommand(person) {
-    const { model, user } = this;
+    const { _model, _user } = this;
 
-    return !new Set([user, ...model.getFriendRelation().get(user)]).has(person);
+    return !new Set([_user, ..._model.getFriendRelation().get(_user)]).has(
+      person
+    );
   }
 
   scroeFriendToFriend() {
-    const { model } = this;
+    const { _model, _user } = this;
 
-    [...model.getFriendRelation().get(this.user)]
-      .flatMap((friend) => [...model.getFriendRelation().get(friend)])
+    [..._model.getFriendRelation().get(_user)]
+      .flatMap((friend) => [..._model.getFriendRelation().get(friend)])
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (model.scoreBoard[person] += 10));
+      .forEach((person) => (_model.getScoreBoard()[person] += 10));
   }
 
   scroeVisitor() {
-    const { model } = this;
+    const { _model } = this;
 
-    this.visitors
+    this._visitors
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (model.scoreBoard[person] += 1));
+      .forEach((person) => (_model.getScoreBoard()[person] += 1));
   }
 
   recommend() {
-    const { model } = this;
+    const { _model } = this;
 
     this.scroeFriendToFriend();
     this.scroeVisitor();
 
-    return Object.keys(model.scoreBoard)
-      .map((person) => [person, model.scoreBoard[person]])
+    return Object.keys(_model.getScoreBoard())
+      .map((person) => [person, _model.getScoreBoard()[person]])
       .filter(([_, score]) => score > 0)
       .sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1))
       .map(([person, _]) => person)
