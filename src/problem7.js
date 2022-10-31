@@ -1,59 +1,52 @@
 function problem7(user, friends, visitors) {
   const network = new Map()
-  const personalData = new Map()
+  const dashboard = new Map()
 
-  const createData = (uid, friendsId) => {
-    let arr = []
-    if(network.has(uid)){
-      arr = network.get(uid)
-      if(friendsId !== user){
-        arr.push(friendsId)
-      }
-    } else {
-      arr = new Array(friendsId)
-      personalData.set(uid, 0)
-    }
-    network.set(uid, arr)
+  const createNetwork = (user1, user2) => {
+    let arr = network.get(user1) || []
+    arr.push(user2)
+    return network.set(user1, arr)
   }
 
-  friends.map((item) => {
-    const [uid, friendId] = item
-    createData(uid, friendId)
-    createData(friendId,uid) 
-})
+  const createDashboard = (uid,num) => {
+    let score = dashboard.get(uid) || 0
+    score += num || 1
+    return dashboard.set(uid, score)
+  }
 
-  visitors.map((person) => {
-    if(personalData.has(person)){
-      personalData.set(person, personalData.get(person) +1)
-      if(network.has(person)){
-        if(network.get(user).includes(person)){
-          let hisFriends = network.get(person)
-          hisFriends.filter((who)=>{
-            personalData.set(who, personalData.get(who) + 10)
-          })
-        }
-      }
-    } else {
-      personalData.set(person, 1)
-    }
-  })
+  const friendList = (uid) => {
+    return network.get(uid) || []
+  }
 
-  personalData.forEach((value,key)=>{
-    if(key === user || network.get(user).includes(key)){
-      personalData.delete(key)
-    }
-  })
+  const sugguestion = (other) => {
+    return friendList(other).filter(x => !friendList(user).includes(x) &&  x !== user)
+  }
 
-  let answer = new Map(
-    [...personalData.entries()].sort((a,b) => {
-      if (a[1] === b[1]){
+  const _sort = (dataMap) => {
+    return new Map([...dataMap.entries()].sort((a,b) => {
+      if(a[1] === b[1]){
         return a[0].localeCompare(b[0])
       }
       return b[1] - a[1]
-    })
-  )
-  console.log(answer)
-  return [...answer.keys()]
-}
+    }))
+  }
 
+  friends.map((item)=> {
+    const [uid, friendId] = item
+    createNetwork(uid, friendId)
+    createNetwork(friendId, uid)
+  })
+
+  visitors.map((item) => {
+    if(!friendList(user).includes(item)){
+      createDashboard(item)
+    }
+    sugguestion(item).map((person)=>{
+      createDashboard(person, 10)
+    })
+  })
+
+  let answer = [..._sort(dashboard).keys()].splice(0,5)
+  return answer
+}
 module.exports = problem7;
