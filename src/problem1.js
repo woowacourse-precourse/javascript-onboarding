@@ -43,6 +43,10 @@ function problem1(pobi, crong) {
     }
     return false;
   }
+
+  if (isError(pobi) || isError(crong)) {
+    return -1;
+  }
 }
 
 module.exports = problem1;
