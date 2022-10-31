@@ -18,6 +18,17 @@ const addName = (crewName, nameMap) => {
   }
 }
 
+const isRedundantName = (crewName, nameMap) => {
+  for (let i = 0; i < crewName.length - 1; i++) {
+    const twoLetterOfCrewName = crewName[i] + crewName[i + 1];
+
+    if (nameMap.get(twoLetterOfCrewName) > 1)
+      return true;
+  }
+
+  return false;
+}
+
 const problem6 = forms => {
   let nameMap = new Map();
   let emailSet = new Set();
