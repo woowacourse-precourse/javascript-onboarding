@@ -24,6 +24,8 @@ const problem6 = (forms) => {
     }
   }
 
+  duplicateIndex = [...new Set(duplicateIndex)];
+
   return answer;
 };
 
