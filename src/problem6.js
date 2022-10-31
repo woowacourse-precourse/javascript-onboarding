@@ -2,7 +2,7 @@ function problem6(forms) {
   var answer;
   forms_add = []
 
-  console.log("폼 입력 확인",forms)
+  //console.log("폼 입력 확인",forms)
 
   
   for ( i = 0 ; i < forms.length ; i++) {  
@@ -11,12 +11,12 @@ function problem6(forms) {
       //console.log("select", forms[i][1][j])
       names.push(forms[i][1].slice(j,j+2))
     }
-    console.log("result", names)
+    //console.log("result", names)
     forms[i][1] = names
     //배열의 두번째 이름 두글자씩배열로 쪼개기
     
   } 
-  console.log("배열 쪼갠것 확인",forms)
+  //console.log("배열 쪼갠것 확인",forms)
   answer = []
   for ( i = 0 ; i < forms.length ; i ++) { 
     //유저 순회
@@ -38,11 +38,11 @@ function problem6(forms) {
       }
     }
   }
-  console.log("배열 확인",answer)
+  //console.log("배열 확인",answer)
 
   answer = [...(new Set(answer))] // 중복 제거
   answer = answer.sort() // 정렬
-  console.log("정답 확인",answer)
+  //console.log("정답 확인",answer)
 
   return answer
 
