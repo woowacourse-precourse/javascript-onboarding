@@ -2,10 +2,7 @@
   "name": "javascript-onboarding-precourse",
   "version": "1.0.0",
   "description": "우아한테크코스 프리코스 온보딩 미션",
-  "dependencies": {
-    "0g": "^0.0.9",
-    "n": "^9.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "jest": "^29.0.3"
   },
