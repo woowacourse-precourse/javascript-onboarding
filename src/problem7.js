@@ -1,6 +1,10 @@
 function problem7(user, friends, visitors) {
   var answer;
 
+  if (!validUser(user)) throw new Error("잘못된 user입니다.");
+  if (!validFriends(friends)) throw new Error("잘못된 friends입니다.");
+  if (!validVisitors(visitors)) throw new Error("잘못된 visitors입니다.");
+
   const friendsTotalScore = calScore(user, friends, visitors);
   const userFriendSet = getConnection(friends)[user];
   answer = sortFriends(userFriendSet, friendsTotalScore);
@@ -23,6 +27,9 @@ function getConnection(friends) {
   for (let i = 0; i < friends.length; i++) {
     const friendA = friends[i][0];
     const friendB = friends[i][1];
+
+    if (!validID(friendA)) throw new Error("잘못된 ID가 포함되어 있습니다.");
+    if (!validID(friendB)) throw new Error("잘못된 ID가 포함되어 있습니다.");
 
     if (!Object.keys(friendsConnection).includes(friendA)) friendsConnection[friendA] = new Set();
     if (!Object.keys(friendsConnection).includes(friendB)) friendsConnection[friendB] = new Set();
