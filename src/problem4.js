@@ -1,3 +1,15 @@
+function isAlpha(asciiNum) {
+  if (asciiNum < 65 || (asciiNum > 90 && asciiNum < 97) || asciiNum > 122)
+    return 0;
+  return 1;
+}
+
+function isUpper(asciiNum) {
+  if (asciiNum >= 65 && asciiNum <= 90)
+    return 1;
+  return 0;
+}
+
 function convertChar(ch) {
   let asciiNum = ch.charCodeAt(0);
   if (!isAlpha(asciiNum))
