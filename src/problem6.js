@@ -14,13 +14,28 @@ const checkDuplicate = (nickNameList, emailList, duplicateIdxList) => {
       [...priorNick.slice(i)].reduce((priorCheck, currentCheck) => {
         checkVal = priorCheck + currentCheck;
         nickNameList.slice(nickIdx).map((e, idx) => {
-          e.includes(checkVal);
+          e.includes(checkVal)
+            ? inputdulicateValue(
+                emailList[nickNameList.indexOf(e)],
+                emailList[nickNameList.indexOf(priorNick)],
+                duplicateIdxList
+              )
+            : null;
         });
         return priorCheck + currentCheck;
       });
     }
     return currentNick;
   });
+};
+
+const inputdulicateValue = (pre, now, duplicateIdxList) => {
+  if (!duplicateIdxList.includes(pre)) {
+    duplicateIdxList.push(pre);
+  }
+  if (!duplicateIdxList.includes(now)) {
+    duplicateIdxList.push(now);
+  }
 };
 
 const inputList = (forms, emailList, nickNameList) => {
