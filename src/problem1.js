@@ -1,18 +1,4 @@
 function problem1(pobi, crong) {
-  // 왼쪽 페이지가 오른쪽 페이지보다 크거나 같을 경우(예외처리)
-  if (pobi[0] >= pobi[1] || crong[0] >= crong[1]) {
-    return -1
-  };
-
-  // 왼쪽 페이지 홀, 짝 판별(예외처리)
-  if (pobi[0] % 2 === 0 || crong[0] % 2 === 0) {
-    return -1
-  };
-
-  // 오른쪽 페이지 홀, 짝 판별(예외처리)
-  if (pobi[1] % 2 === 1 || crong[1] % 2 === 1) {
-    return -1
-  };
 
   // 왼쪽 페이지와 오른쪽 페이지의 차이가 1이 아닐 경우(예외처리)
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
@@ -58,11 +44,11 @@ function problem1(pobi, crong) {
     return 0
   }
   // 포비가 크롱보다 클 경우 1점
-  if (pobiMax > crongMax) {
+  else if (pobiMax > crongMax) {
     return 1
   }
   // 포비가 크롱보다 작을 경우 2점
-  if (pobiMax < crongMax) {
+  else if (pobiMax < crongMax) {
     return 2
   }
 }
