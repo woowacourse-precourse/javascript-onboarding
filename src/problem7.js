@@ -101,6 +101,21 @@ const extractAlreadyFriend = (user, frieds, alreadyFriendList, behaviorFunc) => 
   return behaviorFunc(copiedFrieds, copiedAlreadyFriendList, user);
 };
 
+const calculateFriendScore = (userListArry, score = 0) => {
+  const userListMap = new Map();
+  const copiedUserListArry = copyArray(userListArry);
+
+  each(copiedUserListArry, userList => {
+    if (!userListMap.has(userList)) {
+      userListMap.set(userList, 0);
+    }
+
+    userListMap.set(userList, userListMap.get(userList) + score);
+  });
+
+  return copyArray(userListMap);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
