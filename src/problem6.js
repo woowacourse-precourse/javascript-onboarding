@@ -1,26 +1,20 @@
 function problem6(forms) {
-  var answer;
-  let testArr = [];
+  var answer = [];
+  let find = []; //중복문자열
+  let idx = [];
 
   for (let i = 0; i < forms.length; i++) {
     if (forms[i][1]) {
       for (let j = 0; j < forms[i].length; j++) {
-        let find = forms[i][1][j] + forms[i][1][j + 1];
         if (forms[i][1][j + 1]) {
-          testArr.push(find);
+          find.push({ idx: i, char: forms[i][1][j] + forms[i][1][j + 1] });
         }
       }
-      
     }
   }
-  return testArr; //['x제이','이엠','v제이','이슨','워니','엠제','v제이','이제','제엠'] -> 우선 중복삭제하기
- // forms[0][1] 안에서 다른 애랑 true check되면 해당 check 이메일 입력 // 그다음 sorting
-  let find = "문자"; //testArr[0]
-  let regex = new RegExp(find, "g");
-  answer = regex.test("문자열"); //testArr[0] / 동일 i 제외 / true면 
+  
   return answer;
 }
-
 //기능 요구사항
 //같은 글자가 연속적으로 포함되면, 이메일 목록 리턴
 //제한사항
