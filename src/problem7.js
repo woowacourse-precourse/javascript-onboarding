@@ -96,3 +96,16 @@ function checkSoreOfVisitor(friends, visitors) {
 function DuplicatedArrayToDesending(array) {
   return array.sort((a, b) => b[1] - a[1]);
 }
+
+function problem7(user, friends, visitors) {
+  const friendsAndScoreArr = checkSoreOfVisitor(friends, visitors);
+  let answerArr = DuplicatedArrayToDesending([...friendsAndScoreArr]);
+
+  const answer = answerArr.map((recommendedfriend, index) => {
+    if (recommendedfriend !== 0 && index < 5) {
+      return recommendedfriend[0];
+    }
+  });
+
+  return answer;
+}
