@@ -25,7 +25,7 @@ function getVisitorScore(visitor, userFriends, scores) {
     } else if (scores.has(visitor)) {
       // scores에 해당 방문자 데이터가 존재한다면
       let score = scores.get(visitor); // 그 방문자의 추천 점수를
-      scores.set(visitor, score + 1); // 1만큼 증가시키도 저장한다.
+      scores.set(visitor, score + 1); // 1만큼 증가시키고 저장한다.
     }
   }
 }
