@@ -19,6 +19,15 @@ function problem7(user, friends, visitors) {
       } else recommendPoint[friend[1]] = 10;
     }
   })
+
+  //타임 라인에 방문한 방문자에게 점수를 부여하는 기능
+  visitors.forEach(visitor => {
+    if (!userFriends.includes(visitor)) {
+      if (visitor in recommendPoint) {
+        recommendPoint[visitor] += 1;
+      } else recommendPoint[visitor] = 1;
+    }
+  })
 }
 
 problem7(
