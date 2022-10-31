@@ -1,13 +1,15 @@
 function problem4(word) {
-  let answer;
+  let answer = "";
+  const UPPER = {
+    sum: 155,
+    A: 65,
+    Z: 90,
+  }
 
-  const CAPITAL_SUM = 155;
-  const SMALL_SUM = 219;
-
-  for (let i = 0; i < word.length; i++) {
-    const ascii = word.charCodeAt(i);
-
-
+  const LOWER = {
+    sum: 219,
+    a: 96,
+    z: 122,
   }
 
   return answer;
