@@ -25,7 +25,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ## 🎯 TODO 리스트
-- user 친구들 정리 
+- user 친구들 정리 (* 유저 포함)
 - user 친구들의 친구들 점수 정리 
 - visitor 점수 정리 
 - 추천 점수 정렬
