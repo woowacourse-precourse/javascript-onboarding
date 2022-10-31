@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   const userFriend = findFriend(user, friends);
   const noFriend = findNoFriend(user, friends, userFriend);
   calculateNoFriendScore(friends, noFriend, candidateObj);
+  calculateVisitorScore(visitors, userFriend, candidateObj);
 }
 
 function findFriend(user, friends) {
@@ -34,6 +35,22 @@ function calculateNoFriendScore(friends, noFriend, candidateObj) {
       }
     }
     candidateObj[noFriend[i]] = inclusionCounter * 10;
+  }
+}
+
+function calculateVisitorScore(visitors, userFriend, candidateObj) {
+  const numberOfVisit = {};
+  const removeFriend = visitors.filter(
+    (visitor) => !userFriend.includes(visitor)
+  );
+  removeFriend.map((member) => {
+    if (numberOfVisit[member]) numberOfVisit[member] += 1;
+    else numberOfVisit[member] = 1;
+  });
+  for (let newCandidate in numberOfVisit) {
+    if (candidateObj[newCandidate])
+      candidateObj[newCandidate] += numberOfVisit[newCandidate];
+    else candidateObj[newCandidate] = numberOfVisit[newCandidate];
   }
 }
 
