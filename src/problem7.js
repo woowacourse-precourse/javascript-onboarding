@@ -18,25 +18,39 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
+// user를 가지고 있지 않고, userFriends 요소를 가지고 있고, userFriends 요소가 아닌 값을 배열에 담는 함수
+function notHasUserHasUserFriendsNotUserFriends(user, friends, userFriends) {
+  let filteredArr = [];
+
+  friends
+    .filter((el) => !el.includes(user))
+    .filter((el) => {
+      for (let i = 0; i < userFriends.length; i++) {
+        for (let j = 0; j < el.length; j++) {
+          if (el.includes(userFriends[i]) && el[j] !== userFriends[i])
+            filteredArr.push(el[j]);
+        }
+      }
+    });
+
+  return filteredArr;
+}
+
 // user의 친구의 친구를 구하는 함수
 function findUserFriendsOfFriends(user, friends, userFriends) {
   let idScoreObj = {};
+  let filteredArr = notHasUserHasUserFriendsNotUserFriends(
+    user,
+    friends,
+    userFriends
+  );
 
-  for (let i = 0; i < userFriends.length; i++) {
-    for (let j = 0; j < friends.length; j++) {
-      // userFriends 요소를 가지고 있지만, userFriends 요소도 아니고, user도 아닐 때
-      if (
-        friends[j].includes(userFriends[i]) &&
-        userFriends[i] === friends[j][0] &&
-        !friends[j].includes(user)
-      ) {
-        // idScoreObj객체에 키가 있을 때
-        if (idScoreObj.hasOwnProperty(friends[j][1]))
-          idScoreObj[friends[j][1]] += 10;
-        // idScoreObj객체에 키가 없을 때
-        else idScoreObj[friends[j][1]] = 10;
-      }
-    }
+  for (let i = 0; i < filteredArr.length; i++) {
+    let name = filteredArr[i];
+    // idScoreObj객체에 키가 있을 때
+    if (idScoreObj.hasOwnProperty(name)) idScoreObj[name] += 10;
+    // idScoreObj객체에 키가 없을 때
+    else idScoreObj[name] = 10;
   }
 
   return idScoreObj;
