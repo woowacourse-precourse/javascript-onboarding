@@ -3,16 +3,17 @@ function problem1(pobi, crong) {
 
   var pobiScore, crongScore;
 
-  if (
-    parseInt(pobi[0]) == parseInt(pobi[1]) - 1 &&
-    parseInt(crong[0]) == parseInt(crong[1]) - 1
-  ) {
-    pobiScore = Math.max(getPobiLeftMaxScore(pobi), getPobiRightMaxScore(pobi));
+  var pobiLeftScore = pobi[0];
+  var pobiRightScore = pobi[1];
+  var crongLeftScore = crong[0];
+  var crongRightScore = crong[1];
 
-    crongScore = Math.max(
-      getCrongLeftMaxScore(crong),
-      getCrongRightMaxScore(crong)
-    );
+  if (
+    parseInt(pobiLeftScore) == parseInt(pobiRightScore) - 1 &&
+    parseInt(crongLeftScore) == parseInt(crongRightScore) - 1
+  ) {
+    pobiScore = getScore(pobi);
+    crongScore = getScore(crong);
 
     answer = pobiScore >= crongScore ? (pobiScore == crongScore ? 0 : 1) : 2;
   }
@@ -20,20 +21,16 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-function getPobiLeftMaxScore(pobi) {
-  return Math.max(add(pobi[0]), multiple(pobi[0]));
+function getScore(user) {
+  return Math.max(getLeftMaxScore(user), getRightMaxScore(user));
 }
 
-function getPobiRightMaxScore(pobi) {
-  return Math.max(add(pobi[1]), multiple(pobi[1]));
+function getLeftMaxScore(user) {
+  return Math.max(add(user[0]), multiple(user[0]));
 }
 
-function getCrongLeftMaxScore(crong) {
-  return Math.max(add(crong[0]), multiple(crong[0]));
-}
-
-function getCrongRightMaxScore(pobi) {
-  return Math.max(add(crong[1]), multiple(crong[1]));
+function getRightMaxScore(user) {
+  return Math.max(add(user[1]), multiple(user[1]));
 }
 
 function add(number) {
