@@ -67,7 +67,11 @@ const SnsFriendrRecomander = {
     let scoresArray = Object.entries(this.scores);
     scoresArray.sort((a, b) => a[1] - b[1]);
     scoresArray = scoresArray.splice(0, 5);
-    return scoresArray.map((score) => score[0]);
+    return scoresArray.map((score) => {
+      if (score[0] !== 0) {
+        return score[0];
+      }
+    });
   },
 };
 
