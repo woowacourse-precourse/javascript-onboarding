@@ -25,6 +25,32 @@ const getAsciiCodeFromChar = (char) => {
   return char.charCodeAt(0);
 };
 
+/**
+ * 반대로 전환된 청개구리 사전을 반환한다.
+ * @return {Map<string, string>}
+ */
+const getReversedAlphabetMap = () => {
+  const reversedAlphabetMap = new Map();
+
+  const smallAAscii = getAsciiCodeFromChar("a");
+  const smallZAscii = getAsciiCodeFromChar("z");
+  const bigAAscii = getAsciiCodeFromChar("A");
+  const bigZAscii = getAsciiCodeFromChar("Z");
+
+  for (let i = 0; i <= 25; i++) {
+    reversedAlphabetMap.set(
+      getCharFromAsciiCode(smallAAscii + i),
+      getCharFromAsciiCode(smallZAscii - i)
+    );
+    reversedAlphabetMap.set(
+      getCharFromAsciiCode(bigAAscii + i),
+      getCharFromAsciiCode(bigZAscii - i)
+    );
+  }
+
+  return reversedAlphabetMap;
+};
+
 function problem4(word) {
   var answer;
   return answer;
