@@ -15,15 +15,28 @@ const check = (arr) => {
     const leftNumber = arr[0];
     const rightNumber = arr[1];
 
-    if (leftNumber === 1 || rightNumber === 400) {
+    if (leftNumber > rightNumber) {
         return false;
     }
 
-    if (rightNumber - 1 === leftNumber) {
-        return true;
+    if (leftNumber < 1 || rightNumber > 400) {
+        return false;
     }
 
-    return false;
+    if (
+        leftNumber === 1 ||
+        rightNumber === 400 ||
+        leftNumber === 399 ||
+        rightNumber === 2
+    ) {
+        return false;
+    }
+
+    if (!(rightNumber - 1 === leftNumber)) {
+        return false;
+    }
+
+    return true;
 };
 
 function problem1(pobi, crong) {
