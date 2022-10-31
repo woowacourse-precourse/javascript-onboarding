@@ -27,6 +27,13 @@ function find_scope(start_idx,end_idx,convert_arr){
     }
 }
 
+function remove_repeat(start_idx,end_idx,convert_arr){
+  if (start_idx != -1 && end_idx != -1) {
+      // 삭제할게 잇을 경우
+      convert_arr.splice(start_idx, end_idx - start_idx+1);
+    }
+}
+
 function problem2(cryptogram) {
   let answer;
   let convert_arr = convert_str_to_arr(cryptogram);
@@ -44,6 +51,7 @@ function problem2(cryptogram) {
         }
       }
     }
+    remove_repeat(start_idx,end_idx,convert_arr)
   }
   return answer;
 

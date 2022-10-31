@@ -34,7 +34,7 @@
 - 매개변수 : start_idx(중복문자 시작 index 정수값),end_idx(중복문자 시작 다음 index),convert_arr(배열)
 - return값 :  start_idx - 시작 index 정수값 , end_idx - 끝 index 정수값, findRepeat(boolean)
 - findRepeat : true이면 해당 중복 문자와 같은 문자 모두 찾은 경우, 아니면 false
-4. find_scope 함수로 찾은 중복문자의 범위를 이용하여 중복문자 제거하는 remove_repeat 함수 구현
+4. find_scope 함수로 찾은 중복문자의 범위를 이용하여 중복문자 제거하는 remove_repeat 함수 구현 :white_check_mark:
 - 매개변수 : start_idx(중복문자 시작 index),end_idx(중복문자 끝 index),convert_arr(배열)
 - return값 : 없음
 5. convert_arr 배열을 join 함수를 이용하여 string 문자열 값으로 변환.
