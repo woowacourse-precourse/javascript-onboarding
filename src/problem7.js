@@ -22,7 +22,12 @@ const getAcquaintance = (me, [myFriends, friendMap]) => {
   );
 };
 
-const caculateScore = (acquaintance, visitors) => {};
+const sortRule = (a, b) => (a[1] === b[1] ? a[0] > b[0] : b[1] - a[1]);
+
+const getRecommendedFriends = (scoreObj) => {
+  const sortedScoreArr = Object.entries(scoreObj).sort(sortRule);
+  return sortedScoreArr.slice(0, 5);
+};
 
 function problem7(user, friends, visitors) {
   const myFriends = getFriends(user, friends);
@@ -35,8 +40,7 @@ function problem7(user, friends, visitors) {
     if (myFriends.includes(visitor)) return acc;
     return { ...acc, [visitor]: (acc[visitor] || 0) + 1 };
   }, scoreObj);
-  console.log(scoreObjWithVisitors);
-  return 0;
+  return getRecommendedFriends(scoreObjWithVisitors);
 }
 
 console.log(
