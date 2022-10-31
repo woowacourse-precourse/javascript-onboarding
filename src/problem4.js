@@ -6,11 +6,12 @@ const ASCII_LOWER_Z = 122;
 /**
  * @name problem4
  * @description
- * 계좌에 들어있는 돈 일부를 은행에서 출금하고자 한다.
- * 돈 담을 지갑이 최대한 가볍도록 큰 금액의 화폐 위주로 받는다.
- * 돈의 액수 money가 매개변수로 주어질 때,
- * 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전
- * 각 몇 개로 변환되는지 금액이 큰 순서대로 배열에 담아 return 하도록 solution 메서드를 완성하라.
+ * 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다.
+ * 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
+ * 엄마 말씀 word가 매개변수로 주어질 때,
+ * 아래 청개구리 사전을 참고해 반대로 변환하여 return 하도록 solution 메서드를 완성하라.
+ * A B C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	U	V	W	X	Y	Z
+ * Z Y X	W	V	U	T	S	R	Q	P	O	N	M	L	K	J	I	H	G	F	E	D	C	B	A
  * @param {number} [word]
  * @return {number[]} 각 몇 개로 변환되는지 금액이 큰 순서대로 배열에 담아 return
  * 제한사항
