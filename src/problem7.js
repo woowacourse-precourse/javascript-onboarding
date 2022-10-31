@@ -1,4 +1,9 @@
 function problem7(user, friends, visitors) {
+  return solution(user, friends, visitors);
+}
+module.exports = problem7;
+
+function solution(user, friends, visitors) {
   const userContainer = new UserContainer();
   userContainer.addUser(user);
 
@@ -13,9 +18,6 @@ function problem7(user, friends, visitors) {
   const recommendation = userContainer.recommendUser(user);
   return recommendation;
 }
-
-module.exports = problem7;
-
 /**
  *
  * 1. 사용자에 대해서 알려주는 어떤 객체가 필요로 하다. => User
@@ -93,7 +95,7 @@ class UserContainer {
       if (a.score !== b.score) return b.score - a.score;
       else return;
     });
-
+    // 만약 자기 자신이나 이미 친구인 사이라면 추천 목록에서 제거
     const recommendation = users
       .filter((user) => {
         if (user.name === pivotUserName) return false;
@@ -101,7 +103,7 @@ class UserContainer {
         return true;
       })
       .map((user) => user.name);
-
+    // 길이가 5 초과일 경우 제거
     if (recommendation.length > 5) recommendation.length = 5;
     return recommendation;
   }
