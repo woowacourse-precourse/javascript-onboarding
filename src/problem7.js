@@ -27,13 +27,15 @@ function problem7(user, friends, visitors) {
         for (let k = 0; k < 2; k++) {
           if (
             current_friends[i] == friends[j][k] &&
-            user != friends[j][1 - k]
+            friends[j][1 - k] != user &&
+            !current_friends.includes(friends[j][1 - k])
           ) {
             push_recommendations(friends[j][1 - k], 10);
           }
         }
       }
     }
+    console.log(recommendations);
   };
 
   const find_visitors = () => {
@@ -109,7 +111,22 @@ function problem7(user, friends, visitors) {
   };
 
   solution();
+  console.log(recommendations2);
+
   return find_5_recommendations();
 }
+
+problem7(
+  "mrko",
+  [
+    ["mrko", "jun"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 
 module.exports = problem7;
