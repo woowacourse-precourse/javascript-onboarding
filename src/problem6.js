@@ -5,6 +5,17 @@
 
 function problem6(forms) {
   var answer;
+
+  for(var f of forms) {
+    for(var i = 0; i < f[1].length-1; i++) {
+      var word = f[1].charAt(i) + f[1].charAt(i+1); // 두글자씩 뽑아서 word
+      // 다른 크루들과 비교
+      for(var p of forms) {
+        if(!(p === f) && p[1].search(word) != -1) 
+          answer.push(p[0]); // word를 포함할 경우, 이메일을 추가
+      }
+    }
+  }
   return answer;
 }
 
