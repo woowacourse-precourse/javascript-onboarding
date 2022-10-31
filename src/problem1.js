@@ -39,6 +39,24 @@ function maxNum(lsum,rsum,lmul,rmul){
 
 function problem1(pobi, crong) {
   var answer;
+
+  if(!pageCheck(pobi[0],pobi[1]) || !pageCheck(crong[0],crong[1])){
+    return -1;
+  }
+
+  var pobiMax = maxNum(sum(pobi[0]),sum(pobi[1]),mul(pobi[0]),mul(pobi[1]));
+  var crongMax = maxNum(sum(crong[0]),sum(crong[1]),mul(crong[0]),mul(crong[1]));
+  
+  if(pobiMax > crongMax){
+    answer = 1;
+  }
+  else if(pobiMax < crongMax){
+    answer = 2;
+  }
+  else{
+    answer = 0;
+  }
+
   return answer;
 }
 
