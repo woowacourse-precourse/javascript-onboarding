@@ -3,7 +3,7 @@
 
 function problem6(forms) {
   var answer = [];
-
+  let nickAnswer = [];
   let obj = {};
   //- array 를 닉네임, 이메일이 key, value 인 object로 변경 
   forms.forEach(element => {
@@ -21,28 +21,21 @@ function problem6(forms) {
       let sliceItem = searchName.slice(k, k+2);
       names.map(function(name){
         if (name != searchName && name.includes(sliceItem)){
-          answer.push(name);
+          nickAnswer.push(name);
         }
       })
     }
-    
+
   }
 
-  // const set = new Set(answer)
-  // console.log(set);
+  //중복된 닉네임을 기준으로 이메일 return 
+  const set = new Set(nickAnswer)
 
-  // set.forEach(function(item){
-  //   let result = forms.filter(element => element[1] === item);
-  // });
-  return answer;
+  set.forEach(function(key){
+    answer.push(obj[key]);
+  })
+
+  return answer.sort();
 }
-
-problem6([
-        ["jm@email.com", "제이엠"],
-        ["jason@email.com", "제이슨"],
-        ["woniee@email.com", "워니"],
-        ["mj@email.com", "엠제이"],
-        ["nowm@email.com", "이제엠"],
-      ]);
 
 module.exports = problem6;
