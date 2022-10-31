@@ -1,13 +1,15 @@
-class RecommandInfo {
+class ScoreTable {
   #scoreOfUsers;
 
   constructor() {
     this.#scoreOfUsers = {};
   }
+
   getScoreOfUsers() {
     return this.#scoreOfUsers;
   }
-  setScoreOfUsers(recommandFriend, additionalScore) {
+
+  addScoreOfUsers(recommandFriend, additionalScore) {
     this.#scoreOfUsers[recommandFriend] =
       (this.#scoreOfUsers[recommandFriend] || 0) + additionalScore;
   }
@@ -22,16 +24,21 @@ function getRelation(friends) {
   return relation;
 }
 
-function setRecommand(recommandInfo, friendList, notForRecommand, additionalScore) {
-  friendList.forEach((friend) => {
+function updateRecommand(
+  scoreTable,
+  canBeRecommandList,
+  notForRecommand,
+  additionalScore
+) {
+  canBeRecommandList.forEach((friend) => {
     if (notForRecommand.includes(friend)) {
       return;
     }
-    recommandInfo.setScoreOfUsers(friend, additionalScore);
+    scoreTable.addScoreOfUsers(friend, additionalScore);
   });
 }
 
-function sortByScore(user1, user2) {
+function compareByScore(user1, user2) {
   const [user1Name, user1Score] = user1;
   const [user2Name, user2Score] = user2;
 
@@ -45,18 +52,18 @@ function sortByScore(user1, user2) {
 }
 
 function problem7(user, friends, visitors) {
-  const recommandInfo = new RecommandInfo();
   const relation = getRelation(friends);
-  const alreadyFriend = relation[user] || [];
-  const notForRecommand = [...alreadyFriend, user];
+  const alreadyFriends = relation[user] || [];
+  const notForRecommand = [...alreadyFriends, user];
 
-  alreadyFriend.forEach((friend) => {
-    setRecommand(recommandInfo, relation[friend], notForRecommand, 10);
+  const scoreTable = new ScoreTable();
+  alreadyFriends.forEach((friend) => {
+    updateRecommand(scoreTable, relation[friend], notForRecommand, 10);
   });
-  setRecommand(recommandInfo, visitors, notForRecommand, 1);
+  updateRecommand(scoreTable, visitors, notForRecommand, 1);
 
-  const result = Object.entries(recommandInfo.getScoreOfUsers())
-    .sort(sortByScore)
+  const result = Object.entries(scoreTable.getScoreOfUsers())
+    .sort(compareByScore)
     .reduce((recommands, [name]) => [...recommands, name], [])
     .slice(0, 5);
 
