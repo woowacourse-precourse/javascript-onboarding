@@ -18,6 +18,14 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  // 방문자 점수 map에 set
+  for (v of visitors) {
+    if (!map.has(v)) {
+      map.set(v, 1);
+    } else {
+      if (map.get(v) !== 0) map.set(v, map.get(v) + 1);
+    }
+  }
 }
 
 function getUserFriends(user, friends) {
