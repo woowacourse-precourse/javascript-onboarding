@@ -44,7 +44,16 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  return friendScore;
+  const recommendedFriends = Object.entries(friendScore)
+    .filter(([friend, _]) => !userFriends.includes(friend))
+    .sort(([friendA, scoreA], [friendB, scoreB]) => {
+      if (friendA < friendB) return -1;
+      return 1;
+    })
+    .sort(([friendA, scoreA], [friendB, scoreB]) => scoreB - scoreA)
+    .map(([friend, _]) => friend);
+
+  return recommendedFriends;
 }
 
 module.exports = problem7;
