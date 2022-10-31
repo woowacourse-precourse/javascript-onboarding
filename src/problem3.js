@@ -7,5 +7,6 @@ function countNumber(number) {
   for(i = 1; i <= number; i ++){
     arr.push(i);
   }
+  const totalNumber = arr.toString().split(''); 
 }
 module.exports = problem3;
