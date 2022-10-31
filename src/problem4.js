@@ -1,15 +1,19 @@
 function problem4(word) {
-  const UPPERCASE = 155;
-  const LOWERCASE = 219;
   let answer = "";
 
-  for(let x of word) {
-    if ( x === " ") answer += " "
-    else if( x.toUpperCase() === x ) answer+= String.fromCharCode(UPPERCASE - x.charCodeAt());
-    else if( x.toLowerCase() === x ) answer+= String.fromCharCode(LOWERCASE - x.charCodeAt());
+  for(let char of word) {
+    answer += charTransform(char);
   }
-
+  
   return answer;
+}
+
+function charTransform(char) {
+  const UPPERCASE = 155;
+  const LOWERCASE = 219;
+  if ( char === " ") return " ";
+  else if( char.toUpperCase() === char ) return String.fromCharCode(UPPERCASE - char.charCodeAt());
+  else if( char.toLowerCase() === char ) return String.fromCharCode(LOWERCASE - char.charCodeAt());
 }
 
 module.exports = problem4;
