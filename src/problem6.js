@@ -15,6 +15,14 @@ function problem6(forms) {
           cnt++;
         }
       }
+      if (cnt === 2) {
+        if (!answer.includes(forms[i][0])) {
+          answer.push(forms[i][0]);
+        }
+        if (!answer.includes(forms[j][0])) {
+          answer.push(forms[j][0]);
+        }
+      }
     }
   }
   return answer;
