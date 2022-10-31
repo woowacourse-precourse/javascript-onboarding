@@ -16,6 +16,19 @@ function makeCharCases(charCases, forms) {
   }
 }
 
+function checkDuplicate(charCases, target) {
+  for (let i = 0; i < target.length - 1; i++) {
+    const twoLengthChar = target[i] + target[i + 1];
+    if (
+      charCases[twoLengthChar] !== undefined &&
+      charCases[twoLengthChar] > 1
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function problem6(forms) {
   var answer;
   return answer;
