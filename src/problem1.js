@@ -1,7 +1,7 @@
 function problem1(pobi, crong) {
   var answer;
-  const pobiResult = comparePages(separateDigit(pobi));
-  const crongResult = comparePages(separateDigit(crong));
+  const pobiResult = maximumPages(separateDigit(pobi));
+  const crongResult = maximumPages(separateDigit(crong));
   answer = compareResult({ pobiResult, crongResult, pobi, crong });
   return answer;
 }
@@ -16,22 +16,22 @@ function separateDigit(pages) {
   return [leftPage, rightPage];
 }
 
-function comparePages(pages2D) {
+function maximumPages(pages2D) {
   const maxSum = sumOfPages(pages2D);
   const maxMultiple = multipleOfPages(pages2D);
   return moreLargeValue(maxSum, maxMultiple);
 }
 
 function sumOfPages(pages2D) {
-  const LeftPage = pages2D[0].reduce((pre, cur) => pre + cur, 0);
-  const RightPage = pages2D[1].reduce((pre, cur) => pre + cur, 0);
-  return moreLargeValue(LeftPage, RightPage);
+  const leftPage = pages2D[0].reduce((pre, cur) => pre + cur, 0);
+  const rightPage = pages2D[1].reduce((pre, cur) => pre + cur, 0);
+  return moreLargeValue(leftPage, rightPage);
 }
 
 function multipleOfPages(pages2D) {
-  const LeftPage = pages2D[0].reduce((pre, cur) => pre * cur, 1);
-  const RightPage = pages2D[1].reduce((pre, cur) => pre * cur, 1);
-  return moreLargeValue(LeftPage, RightPage);
+  const leftPage = pages2D[0].reduce((pre, cur) => pre * cur, 1);
+  const rightPage = pages2D[1].reduce((pre, cur) => pre * cur, 1);
+  return moreLargeValue(leftPage, rightPage);
 }
 
 function moreLargeValue(left, right) {
