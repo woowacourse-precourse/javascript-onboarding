@@ -39,8 +39,6 @@ function decode(cryptogram) {
   return stack.join('');
 }
 
-problem2("zyellleyz");
-
 function isEmpty(stack) {
   return stack.length === 0;
 }
