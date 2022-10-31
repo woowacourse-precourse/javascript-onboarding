@@ -1,29 +1,29 @@
 function problem2(cryptogram) {
   const INIT = -1;
-  let countDuplication = INIT;
+  let duplicateCount = INIT;
   let answer = cryptogram;
 
-  function delDuplication(string) {
-    countDuplication = 0;
-    let result = string;
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-    for (let letter of alphabet) {
-      const regex = new RegExp(`${letter}{2,}`, "g");
-      if (result.match(regex) !== null) {
-        result = result.replace(regex, "");
-        countDuplication += 1;
-      }
-    }
-
-    return result;
-  }
-
-  while (countDuplication !== 0) {
+  while (duplicateCount !== 0) {
     answer = delDuplication(answer);
   }
 
   return answer;
+
+  function delDuplication(string) {
+    duplicateCount = 0;
+    let deduplicatedString = string;
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    for (let letter of alphabet) {
+      const regex = new RegExp(`${letter}{2,}`, "g");
+      if (deduplicatedString.match(regex) !== null) {
+        deduplicatedString = deduplicatedString.replace(regex, "");
+        duplicateCount += 1;
+      }
+    }
+
+    return deduplicatedString;
+  }
 }
 
 module.exports = problem2;
