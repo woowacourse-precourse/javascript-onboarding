@@ -29,6 +29,17 @@ function problem7(user, friends, visitors) {
       }
     });
   });
+
+  // visitors score 얻기
+  visitors.forEach((element) => {
+    if (!alreadyFriend.includes(element)) {
+      if (!scoreObj[element]) {
+        scoreObj[element] = 1;
+      } else {
+        scoreObj[element] += 1;
+      }
+    }
+  });
 }
 
 function friendCheck(user, friends, alreadyFriend) {
