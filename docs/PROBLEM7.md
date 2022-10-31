@@ -52,3 +52,4 @@
 - [x] 함께 아는 친구 점수 객체에 방문 횟수 점수 더하기 (getVisitorScores, getCrewScores -> addVisitorScores)
 - [x] 함수, 변수명 수정 (exceptCrew -> filterValidCrew, exception -> valid)
 - [x] user와 user friends 선 필터링 (validVisitors, validRelations)
+- [x] 크루 총합 점수 함수 분리 (getCrewScores)
