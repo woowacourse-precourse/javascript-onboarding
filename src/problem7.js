@@ -6,7 +6,7 @@ function problem7(user, friends, visitors) {
   calculateByOverlapFriendsNum(user, friends_map, candidates_map);
   calculateByVisitNum(user, visitors, friends_map, candidates_map);
   const candidates_arr = sortByScoreDesc(candidates_map);
-
+  answer = filterCandidates(candidates_arr);
   return answer;
 }
 
@@ -93,6 +93,23 @@ function sortByScoreDesc(candidates_map){
 
   //console.log(candidates_arr);
   return candidates_arr;
+}
+
+function filterCandidates(candidates_arr){
+  let result = [];
+
+  for (const candidate of candidates_arr){
+    if (candidate[1]==0){ // 추천점수가 0인 경우 제외
+      continue;
+    }
+    result.push(candidate[0]); // 추천친구 아이디 추가
+
+    if (result.length >=5){ // 최종 결과는 최대 5명
+      break;
+    }
+  }
+
+  return result;
 }
 
 module.exports = problem7;
