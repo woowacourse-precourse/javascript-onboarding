@@ -1,7 +1,15 @@
 function problem1(pobi, crong) {
   var [pLeft, pRight] = pobi;
   var [cLeft, cRight] = crong;
-  if (pRight - pLeft !== 1 || cRight - cLeft !== 1) return -1;
+  if (
+    pRight - pLeft !== 1 ||
+    cRight - cLeft !== 1 ||
+    pLeft === 1 ||
+    cRight === 400 ||
+    pobi.length !== 2 ||
+    crong.length !== 2
+  )
+    return -1;
 
   function SliceNumMakeArr(num) {
     var numArr = [];
