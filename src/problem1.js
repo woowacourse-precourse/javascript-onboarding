@@ -34,7 +34,10 @@ function problem1(pobi, crong) {
     }
   }
 
-  console.log(a, b, sum_a, sum_b, multiple_a, multiple_a)
+  let max_a = Math.max(sum_a, multiple_a)
+  let max_b = Math.max(sum_b, multiple_b)
+
+  console.log(a, b, sum_a, sum_b, multiple_a, multiple_a, max_a, max_b)
 }
 
 module.exports = problem1;
