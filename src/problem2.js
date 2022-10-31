@@ -9,6 +9,7 @@ function problem2(cryptogram) {
       console.log(ans);
     }
   }
+  answer = ans.join("");
 
   return answer;
 }
