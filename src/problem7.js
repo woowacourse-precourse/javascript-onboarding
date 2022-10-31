@@ -9,6 +9,8 @@ function problem7(user, friends, visitors) {
     userContainer.addFriend(nameA, nameB);
   });
 
+  userContainer.calcVisitors(visitors);
+
   return answer;
 }
 
@@ -53,5 +55,10 @@ class UserContainer {
     this.addUser(nameB);
     this.container[nameA].addFriend(nameB);
     this.container[nameB].addFriend(nameA);
+  }
+  calcVisitors(visitors) {
+    visitors.forEach((visitor) => {
+      this.container[visitor].addScore(1);
+    });
   }
 }
