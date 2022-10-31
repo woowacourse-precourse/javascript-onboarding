@@ -44,6 +44,9 @@ function problem7(user, friends, visitors) {
   }
 
   function visitScore(scoreMap, visitors) {
+    visitors.forEach((visitor) => {
+      scoreMap.has(visitor) && scoreMap.set(visitor, scoreMap.get(visitor) + 1);
+    });
     return scoreMap;
   }
 
