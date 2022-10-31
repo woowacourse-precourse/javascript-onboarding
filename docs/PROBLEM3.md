@@ -14,3 +14,11 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+### 구현할 기능 목록
+1. 숫자를 배열로 변경하는 number_to_str 함수 구현
+- 매개변수 : number(정수)
+- return값 : 정수를 각 자릿수로 나눈 array
+2. 각 숫자에 대해 3,6,9가 포함되어 있으면 answer에 +1 씩 계산하는 cal_clap 함수 구현
+- 매개변수 : answer(박수 수), check_num(3,6,9 배열), number_arr(정수를 각 자릿수로 나눈 array)
+- return 값 : answer(박수 수)
