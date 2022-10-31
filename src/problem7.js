@@ -10,7 +10,10 @@ function problem7(user, friends, visitors) {
 
   createScoreObj(scoreListKeyArray, scoreObject);
   findFiendOfFriend(userFriendShipArray, friends, user);
+  userFriendShipArray = userFriendShipArray.flat().filter((item) => item !== user);
   addVisitorScore(visitors, scoreObject);
+
+  console.log(userFriendShipArray);
   return answer;
 }
 
@@ -25,10 +28,6 @@ const findFiendOfFriend = (userFriendArray, friends, user) => {
   for (let friend of friends) {
     if (friend.includes(user)) userFriendArray.push(friend);
   }
-
-  userFriendArray = userFriendArray.flat().filter((item) => item !== user);
-  console.log(userFriendArray, "함수");
-  return userFriendArray;
 };
 
 const addVisitorScore = (visitors, scoreObj) => {
