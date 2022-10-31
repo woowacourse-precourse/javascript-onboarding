@@ -6,8 +6,7 @@ function problem5(money) {
     answer.push(Math.floor(money / coins[i]));
     money = money % coins[i];
   }
-  console.log(answer);
   return answer;
 }
-problem5(15000);
+
 module.exports = problem5;
