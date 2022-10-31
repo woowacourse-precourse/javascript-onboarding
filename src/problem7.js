@@ -39,7 +39,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  // 사용자의 타임 라인에 방문한 사용자와 함께 아는 친구에게 추천 점수 부여 기능
+  for (let x of visitors) {
+    if (!userFriends.includes(x))
+      if (recommend.has(x)) {
+        recommend.set(x, recommend.get(x) + 1);
+      } else {
+        recommend.set(x, 1);
+      }
+  }
 
   return answer;
 }
