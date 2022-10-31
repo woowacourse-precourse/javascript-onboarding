@@ -14,9 +14,16 @@ function isNotWord(word) {
   return false;
 }
 
+function caseSensitive(word) {
+  const LOWERCASE_ASCII_NUM = 219;
+  const CLASSIFYING_ASCII_NUM = 96;
+  if (word.charCodeAt() > CLASSIFYING_ASCII_NUM)
+    return String.fromCharCode(LOWERCASE_ASCII_NUM - word.charCodeAt());
+}
+
 function convertWord(word) {
   if (isNotWord(word)) return word;
-  return;
+  return caseSensitive(word);
 }
 
 function problem4(word) {
