@@ -17,8 +17,8 @@ function solution(user, friends, visitors) {
 function getUserList(user, friends, visitors) {
 	let userList = [user];
 
-	register(userList, friends.flat());
-	register(visitors);
+	userList = register(userList, friends.flat());
+	userList = register(userList, visitors);
 
 	return userList;
 }
@@ -27,6 +27,8 @@ function register(userList, list) {
 	list.forEach((id) => {
 		if (!userList.includes(id)) userList.push(id);
 	});
+
+	return userList;
 }
 
 function getUserPoint() {}
