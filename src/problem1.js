@@ -9,8 +9,8 @@ function problem1(pobi, crong) {
   if (pobiScore < crongScore) return 2;
 }
 
-function isNotValidPages(pages) {
-  if ((pages[0] <= 1) || (pages[1] >= 400) || (pages[0] + 1 !== pages[1])) {
+function isNotValidPages([leftPage, rightPage]) {
+  if ((leftPage < 1) || (rightPage > 400) || (leftPage + 1 !== rightPage)) {
     return true;
   }
 
