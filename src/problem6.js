@@ -37,7 +37,7 @@ const isNotExisting = (array, item) => array.indexOf(item) === -1;
 const findDups = (cases) => {
   return cases.reduce((reduced, cs) => {
     const copy = reduced.slice();
-    if (isPlural(cases, cs) && isNotExisting(reduced, cs)) copy.push(cs);
+    if (isPlural(cases, cs) && isNotExisting(copy, cs)) copy.push(cs);
     return copy;
   }, []);
 };
