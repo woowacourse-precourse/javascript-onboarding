@@ -15,6 +15,18 @@ function problem6(forms) {
     }
   }
 
+  const set = new Set(answer);
+
+  answer = [...set];
+  answer.sort((a, b) => {
+    const a_nick = a.slice(0, -10);
+    const b_nick = b.slice(0, -10);
+
+    if (a_nick > b_nick) return 1;
+    if (a_nick < b_nick) return -1;
+    if (a_nick === b_nick) return 0;
+  });
+
   return answer;
 }
 
