@@ -1,8 +1,6 @@
 function problem3(number) {
   let answer;
 
-  let arr = numberArr(number);
-
   return answer;
 }
 
@@ -15,7 +13,10 @@ function numberArr(number) {
   return newArray.concat(array).split(",");
 }
 
-console.log(problem3(13));
+function findNumber(arr, findNum) {
+  return arr.filter((element) => findNum === element).length;
+}
 
+console.log(problem3(33));
 
 module.exports = problem3;
