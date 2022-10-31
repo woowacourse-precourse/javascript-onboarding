@@ -43,6 +43,12 @@ function addVisitorToMap(map, visitors) {
   }
 }
 
+function addFriendsToMap(friendsArr, map) {
+  for (let friend of friendsArr) {
+    map.set(friend, 0);
+  }
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const scoreMap = new Map();
@@ -50,6 +56,7 @@ function problem7(user, friends, visitors) {
   const recommendFrindsArr = getRecommendFriendsArr(friends, friendsArr, user);
   addRecommendFriendsToMap(recommendFrindsArr, scoreMap);
   addVisitorToMap(scoreMap, visitors);
+  addFriendsToMap(friendsArr, scoreMap);
   return answer;
 }
 
