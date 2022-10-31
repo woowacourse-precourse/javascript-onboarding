@@ -1,4 +1,5 @@
 function problem7(user, friends, visitors) {
+  let answer;
   const friendsOfUserList = getFriends(user, friends);
   const friendsOfFriendsList = getFriendsOfFriends(
     friendsOfUserList,
@@ -11,8 +12,10 @@ function problem7(user, friends, visitors) {
     overlapfriendsWithScore,
     visitorWithScore
   );
-
   const sortedList = sortByScore(mergedRecommendList);
+  answer = getMostRecommendablePeople(sortedList);
+
+  return answer;
 }
 
 function getFriends(user, buddies) {
@@ -95,6 +98,10 @@ function sortByScore(list) {
     }
     return b.score - a.score;
   });
+}
+
+function getMostRecommendablePeople(list) {
+  return list.slice(0, 5).map((el) => el.name);
 }
 
 module.exports = problem7;
