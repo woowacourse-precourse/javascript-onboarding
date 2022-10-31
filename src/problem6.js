@@ -78,8 +78,35 @@ function getEmail(userArr) {
   return [...new Set(emailArr)];
 }
 
+function isNickNameValid(forms) {
+  const nickNameArr = getUserName(forms);
+  const nickNameLength = [];
+  const isNickNameArr = [];
+  let isNickName = false;
+
+  const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+  for (let nickName of nickNameArr) {
+    isNickNameArr.push(regex.test(nickName));
+    nickNameLength.push(nickName.length);
+  }
+
+  if (!isNickNameArr.every((item) => item === true)) {
+    throw "닉네임은 한글만 입력해주세요";
+  }
+
+  nickNameLength.map((item) => {
+    if (item < 1 || item >= 20) {
+      isNickName = true;
+    }
+  });
+
+  if (isNickName) {
+    throw " 닉네임은 11자 이상 20자 미만으로 작성해주세요";
+  }
+}
+
 function problem6(forms) {
-  isEmailValid(forms);
+  isEmailValid(forms) && isNickNameValid(forms);
 
   const userNameArr = getUserName(forms);
   const cutUserNameArr = cutUserName(userNameArr);
