@@ -2,9 +2,10 @@
 // - 알파벳 배열 생성
 // - 거꾸로 된 알파벳 배열 생성
 // - 알파벳&거꾸로 된 알파벳 객체 생성
-// - 청개구리 사전에 따른 문자열
+// - 청개구리 사전에 따른 문자열 생성
 
 function problem4(word) {
+  let answer = "";
   let originAlphabet = [];
   let reversedAlphabet = [];
   const alphabetObj = {};
@@ -20,6 +21,16 @@ function problem4(word) {
 
   for (let i = 0; i < ALPHABET_LENGTH; i++) {
     alphabetObj[originAlphabet[i]] = reversedAlphabet[i];
+  }
+
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === " ") {
+      answer += " ";
+    } else if (word[i] !== word[i].toLowerCase()) {
+      answer += alphabetObj[word[i].toLowerCase()].toUpperCase();
+    } else {
+      answer += alphabetObj[word[i]];
+    }
   }
 
   return answer;
