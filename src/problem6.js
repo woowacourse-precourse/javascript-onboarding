@@ -10,7 +10,7 @@ function makeContinueNick(forms) {
   let nickForms = [];
   for (let i = 0; i < forms.length; i++) {
     let tmp = "";
-    nickForms.push([forms[i][0], []]);
+    nickForms.push(forms[i][0]);
     for (let j = 0; j < forms[i][1].length - 1; j++) {
       tmp = forms[i][1][j] + forms[i][1][j + 1];
       nickForms[i][1].push(tmp);
@@ -18,43 +18,11 @@ function makeContinueNick(forms) {
   }
   return nickForms;
 }
-// 기능2
-// function checkContinueNick(continueArr) {
-//   let continueNickArr = [];
-//   for (let i = 0; i < continueArr.length; i++) {
-//     for (let j = 0; i < continueArr[i][1].length; j++) {
-//       if (continueArr[i][1].includes(continueArr[i][1][j])) {
-//         continueNickArr.push(i);
-//       }
-//     }
-//   }
-//   return continueNickArr;
-// }
-function checkContinueNick(continueArr) {
-  let continueNickArr = [];
-  for (let i = 0; i < continueArr.length - 1; i++) {
-    for (let j = i + 1; j < continueArr.length; j++) {
-      for (let k = 0; k < continueArr[i][1].length; k++) {
-        if (continueArr[i][1].includes(continueArr[j][1][k])) {
-          continueNickArr.push(i, j);
-        }
-      }
-    }
-  }
-  return continueNickArr;
-}
+
 function problem6(forms) {
-  let answer = [];
+  var answer;
   let continueArr = makeForms(forms);
-  continueArr = makeContinueNick(continueArr);
-
-  let nickArr = [...new Set(checkContinueNick(continueArr))];
-
-  for (let i = 0; i < nickArr.length; i++) {
-    answer.push(forms[nickArr[i]][0]);
-  }
-  answer.sort();
-
+  makeContinueNick(continueArr);
   return answer;
 }
 
