@@ -1,4 +1,9 @@
-function problem4(word) {}
+function problem4(word) {
+  return word
+    .split("")
+    .map((letter) => letter.replace(letter, getReverseLetter(letter)))
+    .join("");
+}
 
 const getReverseLetter = (letter) => {
   if (letter === " ") return letter;
