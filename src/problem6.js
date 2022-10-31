@@ -26,5 +26,23 @@ const checkMap = (index,string,maps) => {
 const removeSame = (same) => {
   return [...new Set(same)]
 }
+//메인  함수
+function problem6(forms){
+  let maps = new Map();
+  let same = [];
+
+  //현재 인덱스와 다음인덱스를 합친 string을 확인 함수에 전달
+  for(let i = 0; i < forms.length; i++){
+    for(let j = 0; j < forms[i][1].length - 1; j++){
+        const string = forms[i][1][j]+forms[i][1][j + 1];
+        checkMap(i, string, maps);
+    }
+  }
+
+  mapValueMoreThanOne(maps, same, forms);
+  same = removeSame(same)
+  return same.sort();
+}
+
 
 module.exports = problem6;
