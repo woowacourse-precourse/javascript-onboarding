@@ -1,12 +1,16 @@
 function findDup(str){
   const strArray = [...str];
   const resultArray = [];
+  let check = '1'; //연속 3개 나오는 경우
   strArray.map(now => {
     if (now === resultArray.at(-1)){
-      resultArray.pop();
+      check = resultArray.pop();
     }
     else{
-      resultArray.push(now);
+      if (now != check){
+        resultArray.push(now);
+        check = '1';
+      }
     }
   })
   return resultArray.join('');
