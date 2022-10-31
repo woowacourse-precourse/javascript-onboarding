@@ -41,4 +41,20 @@ function getSumScore(book) {
 	return Math.max(l_score, r_score);
 }
 
+// 3. 페이지 값에 따른 곱하기 점수 계산
+function getMulScore(book) {
+	var left, right, l_score = 1, r_score = 1;
+	left = book[0]; right = book[1];
+	while(left > 0) {
+		l_score *= left % 10;
+		left = parseInt(left / 10);
+	}
+	while(right > 0) {
+		r_score *= right % 10;
+		right = parseInt(right / 10);
+	}
+    console.log(l_score, r_score);
+	return Math.max(l_score, r_score);
+}
+
 module.exports = problem1;
