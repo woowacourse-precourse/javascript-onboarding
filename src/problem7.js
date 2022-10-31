@@ -10,64 +10,64 @@ const friends = [
 const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
 
 function findUserFriends(friends) {
-  let userFriends = [];
+  let userFriendsArr = [];
 
-  friends.forEach((friend) => {
-    if (friend[0] === user) {
-      userFriends.push(friend[1]);
+  friends.forEach((friendsArr) => {
+    if (friendsArr[0] === user) {
+      userFriendsArr.push(friendsArr[1]);
     }
-    if (friend[1] === user) {
-      userFriends.push(friend[0]);
+    if (friendsArr[1] === user) {
+      userFriendsArr.push(friendsArr[0]);
     }
   });
 
-  return userFriends;
+  return userFriendsArr;
 }
 
 function findNotUserfriends(friends) {
-  const userFriends = findUserFriends(friends);
-  let notUserFriends = [];
+  const userFriendsArr = findUserFriends(friends);
+  let notUserFriendsArr = [];
 
   friends.forEach((friendsArr) =>
     friendsArr.forEach((friend) => {
       if (
-        userFriends.includes(friend) === false &&
+        userFriendsArr.includes(friend) === false &&
         friend !== user &&
-        notUserFriends.includes(friend) === false
+        notUserFriendsArr.includes(friend) === false
       ) {
-        notUserFriends.push(friend);
+        notUserFriendsArr.push(friend);
       }
     })
   );
 
-  return notUserFriends;
+  return notUserFriendsArr;
 }
 
 function deleteDuplicatesVisitorArray(friends, visitors) {
-  let visitorsArray = [];
-  const userFriends = findUserFriends(friends);
+  let visitorsArr = [];
+  const userFriendsArr = findUserFriends(friends);
 
   visitors.forEach((visitor) => {
     if (
-      visitorsArray.includes(visitor) === false &&
-      userFriends.includes(visitor) === false
+      visitorsArr.includes(visitor) === false &&
+      userFriendsArr.includes(visitor) === false
     ) {
-      visitorsArray.push(visitor);
+      visitorsArr.push(visitor);
     }
   });
 
-  return visitorsArray;
+  return visitorsArr;
 }
 
 function makeCombinedArr(friends, visitors) {
-  const notUserFriends = findNotUserfriends(friends);
-  const visitorsArray = deleteDuplicatesVisitorArray(friends, visitors);
-  let combindedArr = [...notUserFriends, ...visitorsArray];
+  const notUserFriendsArr = findNotUserfriends(friends);
+  const visitorsArr = deleteDuplicatesVisitorArray(friends, visitors);
+  let combindedArr = [...notUserFriendsArr, ...visitorsArr];
 
   return combindedArr;
 }
 
-function checkSoreOfFriendsOfFriends(friends, visitors) {
+function checkScoreFriendsOfFriends(friends, visitors) {
   const combinedArr = makeCombinedArr(friends, visitors);
   let map = new Map();
 
@@ -87,7 +87,7 @@ function checkSoreOfFriendsOfFriends(friends, visitors) {
 
 function checkSoreOfVisitor(friends, visitors) {
   const combinedArr = makeCombinedArr(friends, visitors);
-  let map = checkSoreOfFriendsOfFriends(friends, visitors);
+  let map = checkScoreFriendsOfFriends(friends, visitors);
 
   combinedArr.forEach((friend) => {
     let i = 0;
