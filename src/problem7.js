@@ -49,6 +49,17 @@ function addFriendsToMap(friendsArr, map) {
   }
 }
 
+function sortMap(map) {
+  const sortedMap = [...map].sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0].localeCompare(b[0]);
+    } else {
+      return b[1] - a[1];
+    }
+  });
+  return sortedMap;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const scoreMap = new Map();
@@ -57,6 +68,7 @@ function problem7(user, friends, visitors) {
   addRecommendFriendsToMap(recommendFrindsArr, scoreMap);
   addVisitorToMap(scoreMap, visitors);
   addFriendsToMap(friendsArr, scoreMap);
+  const sortedMap = sortMap(scoreMap);
   return answer;
 }
 
