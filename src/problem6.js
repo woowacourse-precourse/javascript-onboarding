@@ -1,6 +1,21 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let result = [];
+  let rightForms = [];
+  for (let i = 0; i < forms.length; i++) {
+    if (isRightDomain(forms[i][0]) != 1 && isKoreanName(forms[i][1])) {
+      rightForms.push(forms[i]);
+    }
+  }
+  for (let i = 0; i < forms.length - 1; i++) {
+    for (let j = i; j < forms.length; j++) {
+      if (isSimilarName(forms[i][1], forms[j][1]) == 1) {
+        if (!result.includes(forms[i][0])) result.push(forms[i][0]);
+        if (!result.includes(forms[j][0])) result.push(forms[j][0]);
+      }
+    }
+  }
+  console.log(result);
+  return result;
 }
 
 function isRightDomain(email) {
