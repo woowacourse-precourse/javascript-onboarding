@@ -19,10 +19,10 @@ function findMax(pageNumber) {
 
   // 초깃값 설정을 0으로 한다면 *를 진행할 때 0으로 계산이 된다.
   return Math.max(
-    leftArr.reduce((acc, cur) => (acc += cur)),
-    leftArr.reduce((acc, cur) => (acc *= cur)),
-    rightArr.reduce((acc, cur) => (acc += cur)),
-    rightArr.reduce((acc, cur) => (acc *= cur))
+    leftArr.reduce((acc, cur) => (acc + cur)),
+    leftArr.reduce((acc, cur) => (acc * cur)),
+    rightArr.reduce((acc, cur) => (acc + cur)),
+    rightArr.reduce((acc, cur) => (acc * cur))
   );
 }
 
