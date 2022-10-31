@@ -2,10 +2,12 @@ function problem7(user, friends, visitors) {
   var answer;
   let user_dict = calculate_score(user, friends, visitors);
 
-  console.log(user_dict);
+  // console.log(user_dict);
   let user_list = [];
   let key = Object.keys(user_dict);
-  key.map((k) => user_list.push([k, user_dict[k]]));
+  key.map((k) => {
+    if (user_dict[k] !== 0) user_list.push([k, user_dict[k]]);
+  });
 
   user_list.sort((a, b) => {
     let a_name = a[0];
@@ -18,7 +20,7 @@ function problem7(user, friends, visitors) {
     else if (a_name > b_name) return 1;
     else if (a_name < b_name) return -1;
   });
-  console.log(user_list);
+  // console.log(user_list);
   answer = user_list.map((user) => {
     return user[0];
   });
@@ -100,20 +102,23 @@ console.log(
       ["bbang", "siun"],
       ["yaena", "zzi"],
       ["zzi", "siun"],
+      ["lala", "baba"],
     ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+    ["ming", "ming", "siun", "bbang", "zzi"]
   )
 );
 
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
+// console.log(
+//   problem7(
+//     "mrko",
+//     [
+//       ["donut", "andole"],
+//       ["donut", "jun"],
+//       ["donut", "mrko"],
+//       ["shakevan", "andole"],
+//       ["shakevan", "jun"],
+//       ["shakevan", "mrko"],
+//     ],
+//     ["bedi", "bedi", "donut", "bedi", "shakevan"]
+//   )
+// );
