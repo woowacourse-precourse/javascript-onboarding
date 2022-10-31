@@ -16,6 +16,4 @@ function problem3(number) {
   return count
 }
 
-problem3(13)
-
 module.exports = problem3;

@@ -12,6 +12,6 @@ function problem5(money) {
   }
   return result
 }
-problem5(15000);
+
 
 module.exports = problem5;

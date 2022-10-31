@@ -33,6 +33,4 @@ function problem1(pobi, crong) {
   else return -1;
 }
 
-problem1([99, 102], [211, 212]);
-
 module.exports = problem1;

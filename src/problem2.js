@@ -28,6 +28,5 @@ function problem2(cryptogram) {
   // 재귀
   return problem2(strCrypto);
 }
-problem2("browoanoommnaon")
 
 module.exports = problem2;
