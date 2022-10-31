@@ -1,16 +1,17 @@
 function problem3(number) {
-  var answer;
-  let numberString = String(number);
-  let count = 0;
-  for (var i=1; i<=number; i++){
-    for(var j=0; j<String(i).length; j++){
-      if(String(i)[j] == '3' || String(i)[j] == '6' || String(i)[j] == '9'){
-        count++;
+  let clapCount = 0;
+  
+  for (var integer=1; integer<=number; integer++){
+    const integerToStr = String(integer);
+    for(var index=0; index<integerToStr.length; index++){
+      let eachDigit = Number(integerToStr[index]);
+      if(eachDigit == 3 || eachDigit == 6 || eachDigit == 9){
+        clapCount++;
       }
     }
   }
-  answer = count;
-  return answer;
+  
+  return clapCount;
 }
 
 module.exports = problem3;
