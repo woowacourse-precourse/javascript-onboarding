@@ -31,7 +31,7 @@ function checkNickNameLength(forms) {
 }
 
 function checkNickNameOnlyKorean(forms) {
-  const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+  const regex = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+$/;
 
   for (let i = 0; i < forms.length; i++) {
     if (!regex.test(forms[i][1])) {
