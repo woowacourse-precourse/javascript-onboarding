@@ -17,7 +17,26 @@ function problem1(pobi, crong) {
     else return false;
   }
 
-  function score(player) {}
+  function score(player) {
+    var playerMax = Number.MIN_SAFE_INTEGER;
+    player.forEach((page) => {
+      var number = page;
+      var result = 0;
+      while (number > 0) {
+        result += number % 10;
+        number = parseInt(number / 10);
+      }
+      if (result > playerMax) playerMax = result;
+      number = page;
+      result = 1;
+      while (number > 0) {
+        result *= number % 10;
+        number = parseInt(number / 10);
+      }
+      if (result > playerMax) playerMax = result;
+    });
+    return playerMax;
+  }
 
   function result(player1, player2) {}
 
