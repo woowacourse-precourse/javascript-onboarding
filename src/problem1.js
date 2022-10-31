@@ -10,11 +10,33 @@ function checkException(player){
     return true;
   return false;
 }
+// 페이지 번호의 각 자리 숫자를 모두 더한 값을 구하는 함수
+function returnSum(pageNum){
+  let tmp = 0;
+  while(pageNum){
+    tmp += pageNum % 10;
+    // parseInt, Math.floor 보다 ~~ 연산의 속도가 더 빠름
+    pageNum = ~~(pageNum / 10);
+  } 
+  return tmp;
+}
+// 페이지 번호의 각 자리 숫자를 모두 곱한 값을 구하는 함수
+function returnMult(pageNum){
+  let tmp = 1;
+  while(pageNum){
+    tmp *= pageNum % 10;
+    pageNum = ~~(pageNum / 10);
+  } 
+  return tmp;
+}
 function problem1(pobi, crong) {
   var answer;
   // 예외처리
   if(checkException(pobi) || checkException(crong))
     return -1;
+  let pobiScore = returnMaxScore(pobi);
+  let crongScore = returnMaxScore(crong)
+  
   return answer;
 }
 
