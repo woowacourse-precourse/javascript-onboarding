@@ -35,6 +35,9 @@ function problem7(user, friends, visitors) {
   // 내 친구들의 친구들
   const friendsOfFriend = getFriendOfFriend(user, usersFriends, friends);
 
+  // 내 타임라인 방문자 중 이미 친구인 유저 제외
+  const visitorsExceptFriend = getExceptFriend(visitors, usersFriends);
+
   return answer;
 }
 
