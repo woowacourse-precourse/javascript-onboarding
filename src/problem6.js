@@ -13,6 +13,17 @@ function problem6(forms) {
       }
     }
   })
+
+  return [...set].sort((a, b) => {
+    const a_lower = a.toLowerCase();
+    const b_lower = b.toLowerCase();
+    if (a_lower < b_lower) {
+      return -1;
+    }
+    if (a_lower > b_lower) {
+      return 1;
+    }
+  });
 }
 
 module.exports = problem6;
