@@ -38,6 +38,7 @@ function makeString(word) {
         const lower = new upperLower(alphabetArr,strangeAlphabetArr)
       }
     });
+    return outWord.toString().replace(/,/g,"");
   }
 }
 
