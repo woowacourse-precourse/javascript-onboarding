@@ -10,6 +10,7 @@ function findEmail(temp_str,idx,nickname,email,result){
         }
       }
   }
+  result = result.sort()
   return result;
 }
 

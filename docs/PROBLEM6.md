@@ -27,4 +27,4 @@
 2. nickname 배열을 순회하면서, 닉네임에 대해 2글자씩 나누면서 다른 닉네임에 똑같은 2글자가 있으면 answer에 그 닉네임에 해당하는 이메일을 찾아서 push 하는 findEmail() 함수 구현 :white_check_mark:
 - 매개변수 : temp_str(닉네임의 연속 2글자), idx(닉네임의 index), nickname(닉네임 배열), email(이메일 배열), result(정답 이메일 배열)
 - return값 : result(정답 이메일 배열)
-3. result의 오름차순 정렬 수행
+3. result의 오름차순 정렬 수행 :white_check_mark:
