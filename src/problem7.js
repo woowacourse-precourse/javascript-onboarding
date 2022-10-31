@@ -56,7 +56,20 @@ function problem7(user, friends, visitors) {
     }
   });
   const result = [];
-  answer.map((data) => result.push(data[0])).slice(0, 5);
-  return result;
+  answer.map((data) => result.push(data[0]))
+  return result.slice(0,5);
 }
+
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 module.exports = problem7;
