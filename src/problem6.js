@@ -13,7 +13,8 @@ function problem6(forms) {
     }
   }
 
-  for (let i = 0; i < find.length; i++) { //중복 문자열로부터 정규식 체크 : idx 추출
+  for (let i = 0; i < find.length; i++) {
+    //중복 문자열로부터 정규식 체크 : idx 추출
     let regex = new RegExp(find[i].char);
     if (find[i + 1]) {
       if (regex.test(find[0].char)) {
@@ -22,12 +23,19 @@ function problem6(forms) {
     }
   }
 
+  if (idx.length >= 2) { //중복 문자열이 있으면 해당 idx의 email을 넣고 sorting
+    for (let i = 0; i < idx.length; i++) {
+      answer.push(forms[idx[i]][0]);
+    }
+  }
+
+  answer.sort();
   return answer;
 }
 //기능 요구사항
 //같은 글자가 연속적으로 포함되면, 이메일 목록 리턴
 //제한사항
-//2글자 이상 연속문자
+
 //1~10,000명 이하
 //이메일 형식에 부합, 전체길이는 11자 이상 20자 미만
 // @email.com 도메인으로만 제한
