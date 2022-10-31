@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
   var answer;
 
   arrangeFriends();
+  const alreadyFriendArr = findUserFriend(friends, user);
 
   return answer;
 
@@ -24,6 +25,15 @@ function problem7(user, friends, visitors) {
       }
     });
   }
+}
+
+function findUserFriend(friends, user) {
+  let foundUserFriend = [];
+  friends.forEach((relation) => {
+    if (relation[0] === user) foundUserFriend.push(relation[1]);
+    else if (relation[1] === user) foundUserFriend.push(relation[0]);
+  });
+  return foundUserFriend;
 }
 
 module.exports = problem7;
