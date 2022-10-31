@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  
+
   var answer;
 
   function plusOrMultiply(name) {
@@ -15,6 +15,22 @@ function problem1(pobi, crong) {
     } else {
       return false;
   }
+}
+
+let pScore = plusOrMultiply(pobi);
+let cScore = plusOrMultiply(crong);
+
+if ((pScore == false) || (cScore == false)){
+  answer = -1;
+} else if (pScore > cScore) {
+  answer = 1;
+} else if (pScore < cScore) {
+  answer = 2;
+} else if (pScore == cScore) {
+  answer = 0;
+} else {
+  answer = -1;
+}  
   return answer;
 }
 
