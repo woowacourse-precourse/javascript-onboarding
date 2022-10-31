@@ -23,12 +23,35 @@ function getRecommendedFriend(user, friends, visitors) {
   return [recommendedArr, friendsOfUser];
 }
 
+function scoreRecommendedFriends(recommendedArr,friendsOfUser,user,friends,visitors){
+  // user 친구의 친구 리스트 추출
+  let friendsOfFriend =[];
+  friendsOfUser.forEach(function(friendOfUser){
+    friends.forEach(function(friend){
+      friend[0].includes(friendOfUser) || friend[1].includes(friendOfUser) ? friendsOfFriend.push(friend) : "";
+    })
+  });
+  friendsOfFriend = friendsOfFriend.filter((element)=>!element.includes(user))
+  
+  recommendedArr.forEach(function(x,idx){
+    // 함께 아는 친구수 점수 부여
+    friendsOfFriend.forEach(function(friend){
+      friend.includes(x[0]) ? recommendedArr[idx][1] += 10 : "";
+    })
+    // 타임라인 방문횟수 점수 부여
+    visitors.forEach(function(visitor){
+      visitor.includes(x[0]) ? recommendedArr[idx][1] += 1: "";
+    })
+  })
+  return recommendedArr;
+}
 
 function problem7(user, friends, visitors) {
   
   let answer = [];
   let [recommendedArr,friendsOfUser] = getRecommendedFriend(user, friends, visitors)
-  
+  recommendedArr = scoreRecommendedFriends(recommendedArr,friendsOfUser,user,friends,visitors);
+
   return answer;
 }
 
