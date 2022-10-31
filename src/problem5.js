@@ -5,7 +5,7 @@ function problem5(money) {
   const currentMoney = [];
   currentMoney.push(money);
 
-  for(item of currency){
+  for(const item of currency){
     const result = (currentMoney[0] -(currentMoney[0] % item))/item;
     answer.push(result);
     currentMoney.push(currentMoney[0] - item * result)
