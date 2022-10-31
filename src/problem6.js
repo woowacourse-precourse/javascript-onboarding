@@ -16,7 +16,7 @@ function duplicateNickname(user, idx, origin) {
     if (comparisonCrewNickname === nickname && compareIdx === idx) return false;
     return (
       subNickname(nickname, 2)
-        .filter(hasSubstring(comparisonTarget))
+        .filter(hasSubstring(comparisonCrewNickname))
         .length !== 0
     );
   });
