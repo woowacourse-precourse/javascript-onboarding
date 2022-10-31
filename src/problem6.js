@@ -7,6 +7,12 @@ function problem6(forms) {
             nicknameSet.add(nickname[j] + nickname[j + 1]);
         }
     }
+
+    // 2단계) 패턴이 몇 번 나타나는지 count 하기위해 [pattern, 0] 배열을 생성
+    const patternArray = [...nicknameSet];
+    for (let i = 0; i < patternArray.length; i++) {
+        patternArray[i] = [patternArray[i], 0];
+    }
 }
 
 module.exports = problem6;
