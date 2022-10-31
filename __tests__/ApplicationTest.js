@@ -16,6 +16,15 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+  test("연속하지 않은 페이지", () => {
+    expect(problem1([99, 103], [211, 212])).toEqual(-1);
+  });
+  test("범위를 벗어난 페이지", () => {
+    expect(problem1([401, 402], [211, 212])).toEqual(-1);
+  });
+  test("음수 페이지", () => {
+    expect(problem1([99, 100], [-1, 0])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
