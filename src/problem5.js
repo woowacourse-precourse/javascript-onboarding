@@ -5,6 +5,7 @@ function divideNum(num, mon) {
   return [quo, left];
 }
 
+// 몫을 배열에 추가하고 나머지를 다시 divideNum 함수에 넣는 함수
 function problem5(money) {
   let answer = [];
   const arr = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
