@@ -18,7 +18,8 @@ function getClapCount(str) {
   let clapCount = 0;
 
   for(let i=0; i<str.length; i++) {
-    if(str[i] % 10 === 3 || str[i] % 10 === 6 || str[i] % 10 === 9) {
+    let n = Number(str[i]);
+    if(n % 10 === 3 || n % 10 === 6 || n % 10 === 9) {
       clapCount++;
     }
   }
