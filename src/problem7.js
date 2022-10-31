@@ -5,7 +5,7 @@
 // 4. 점수가 있는 친구들을 점수 순서대로 정렬한다.
 
 function problem7(user, friends, visitors) {
-  let result = {};
+  let score = {};
 
   let obj = {};
   for(let [a, b] of friends) {
@@ -21,8 +21,8 @@ function problem7(user, friends, visitors) {
     if(obj[key].includes(user)) {
       alreadyFriend.push(key);
       obj[key].map(v => {
-        if(result[v] && v !== user) result[v] += 10;
-        else if(!result[v] && v !== user) result[v] = 10;
+        if(score[v] && v !== user) score[v] += 10;
+        else if(!score[v] && v !== user) score[v] = 10;
       });
     }
   }
@@ -30,24 +30,22 @@ function problem7(user, friends, visitors) {
   for(let visitor of visitors) {
     if(alreadyFriend.includes(visitor)) continue;
 
-    if(result[visitor]) result[visitor]++;
-    else result[visitor] = 1;
+    if(score[visitor]) score[visitor]++;
+    else score[visitor] = 1;
   }
 
-  console.log(result);
+  let sortable = [];
+  for(let key in score) {
+    sortable.push([key, score[key]]);
+  }
+
+  sortable.sort((a, b) => {
+    if(a[1] === b[1]) return a[0] - b[1];
+    else return b[1] - a[1];
+  });
+
+  let result = sortable.map(v => v[0]);
+  return result;
 }
 
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-)
-
-// module.exports = problem7;
+module.exports = problem7;
