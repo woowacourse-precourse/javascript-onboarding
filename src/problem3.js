@@ -1,10 +1,11 @@
 function problem3(number) {
   const clapStack = [];
-  for(i = 0; i <= number; i++) {
+  for(let i = 0; i <= number; i++) {
     if(countClapTimes(i) !== 0) {
       clapStack.push(countClapTimes(i))
     }
   }
+  
   const answer = sumArrayNumber(clapStack);
   return answer;
 }
