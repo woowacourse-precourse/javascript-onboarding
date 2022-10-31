@@ -50,6 +50,8 @@ function problem2(cryptogram) {
     deleteDuplicateWord(duplicatedIndexArr, cryptogramToArray);
     cryptogramToArray = deleteUndefinedWord(cryptogramToArray);
   }
+
+  const answer = cryptogramToArray.join("");
   return answer;
 }
 
