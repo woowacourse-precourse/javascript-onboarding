@@ -1,6 +1,6 @@
 function isError(pages) {
   let [left, right] = pages;
-  if (left <= 1 || right >= 400) return 1;
+  if (left < 1 || right > 400) return 1;
   if (left % 2 == 0) return 1;
   if (left + 1 !== right) return 1;
   return 0;
