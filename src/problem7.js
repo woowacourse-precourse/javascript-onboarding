@@ -13,11 +13,8 @@ function problem7(user, friends, visitors) {
 
   for (let i = 0; i < friends.length; i++) {
     const [id_a, id_b] = friends[i];
-    if (!users.has(id_a)) {
-      users.set(id_a, 0);
-    } else if (!users.has(id_b)) {
-      users.set(id_b, 0);
-    }
+    if (!users.has(id_a)) users.set(id_a, 0);
+    if (!users.has(id_b)) users.set(id_b, 0);
 
     if (id_a === user) {
       user_friends.push(id_b);
