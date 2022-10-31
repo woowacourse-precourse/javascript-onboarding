@@ -2,7 +2,9 @@ function problem2(cryptogram) {
   let answer = cryptogram;
   const regex = /(.+)\1/;
 
-  answer = answer.replace(regex, '');
+  while (regex.test(answer)) {
+    answer = answer.replace(regex, '');
+  }
 
   return answer;
 }
