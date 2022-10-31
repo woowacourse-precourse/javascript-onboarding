@@ -8,13 +8,17 @@ function problem7(user, friends, visitors) {
       else set.add(friends[i][0]);
     }
   }
+
   let direct = Array.from(set);
+  console.log(direct);
   for (let friend of friends) {
     const [A, B] = friend;
-    if (direct.includes(A) && B !== user) map.set(B, map.get(B) + 10 || 10);
-    else if (direct.includes(B) && A !== user)
+    if (direct.includes(A) && B !== user && !direct.includes(B))
+      map.set(B, map.get(B) + 10 || 10);
+    else if (direct.includes(B) && A !== user && !direct.includes(A))
       map.set(A, map.get(A) + 10 || 10);
   }
+  console.log(map);
 
   visitors.forEach((v) => {
     if (!direct.includes(v) && v !== user) map.set(v, map.get(v) + 1 || 1);
@@ -31,5 +35,4 @@ function problem7(user, friends, visitors) {
   }
   return answer;
 }
-
 module.exports = problem7;
