@@ -1,19 +1,19 @@
 function change(word) {
-  let result = "";
-  for (let i = 0; i < word.length; i++) {
-    let tmp = word.charCodeAt(i);
-    let number = 0;
-    if (tmp >= 65 && tmp <= 90) {
-      number = tmp - 65;
-      tmp = 90 - number;
-      result += String.fromCharCode(tmp);
-    } else if (tmp >= 97 && tmp <= 122) {
-      number = tmp - 97;
-      tmp = 122 - number;
-      result += String.fromCharCode(tmp);
-    } else result += word[i];
-  }
-  return result;
+  let answer = "";
+  word = word.split("");
+  word = word.map((item) => {
+    let askii = item.charCodeAt(0);
+    if (askii >= 65 && askii <= 90) {
+      askii = 90 + 65 - askii;
+      return String.fromCharCode(askii);
+    }
+    if (askii >= 97 && askii <= 122) {
+      askii = 122 + 97 - askii;
+      return String.fromCharCode(askii);
+    }
+    return item;
+  });
+  return word.join("");
 }
 function problem4(word) {
   let answer = change(word);
