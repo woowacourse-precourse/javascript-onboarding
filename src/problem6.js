@@ -19,8 +19,8 @@ function problem6(forms) {
       }
     }
   }
-  
-  return;
+
+  return [...new Set(answer)].sort();
 }
 
 module.exports = problem6;
