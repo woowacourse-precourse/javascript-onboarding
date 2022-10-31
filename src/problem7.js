@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   function getFriendsScore(friends) {
     let score = 0;
     friends.forEach(f => {
-      if (data[user].friends.includes(f))
+      if (data[user]?.friends.includes(f))
         score += 10;
     });
     return score;
@@ -36,13 +36,15 @@ function problem7(user, friends, visitors) {
       : data[v].score++;
   });
   for (let u in data) {
-    if (u === user || data[user].friends.includes(u))
+    if (u === user || data[user]?.friends.includes(u))
       continue;
     data[u].score += getFriendsScore(data[u].friends);
-    answer.push([u, data[u].score]);
+    if (data[u].score > 0) {
+      answer.push([u, data[u].score]);
+    }
   }
   answer.sort(compareScore);
-  answer = answer.map(x => x[0]);
+  answer = answer.map(x => x[0]).slice(0, 5);
   return answer;
 }
 
