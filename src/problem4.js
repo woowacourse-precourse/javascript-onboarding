@@ -1,3 +1,7 @@
+/**
+ * replaceLowerCaseByTreeFrogDict
+ * @type {(str: string) => string}
+ */
 function replaceLowerCaseByTreeFrogDict(str) {
   let res = str;
   const rgx = /[a-z]/g;
