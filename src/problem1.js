@@ -5,11 +5,11 @@ const LAST_PAGE = 400;
 
 // 입력값 예외처리
 const checkValid = (pageArr) => {
-  let flag = true;
-  if(pageArr[1] - pageArr[0] !== 1) flag = false;
-  if(pageArr.length !== PAGE_LENGTH) flag = false;
-  if(pageArr[0] < FIRST_PAGE || pageArr[1] > LAST_PAGE) flag = false;
-  return flag;
+  let isValid = true;
+  if(pageArr[1] - pageArr[0] !== 1) isValid = false;
+  if(pageArr.length !== PAGE_LENGTH) isValid = false;
+  if(pageArr[0] < FIRST_PAGE || pageArr[1] > LAST_PAGE) isValid = false;
+  return isValid;
 }
 
 // 각 자리 숫자 더하기
