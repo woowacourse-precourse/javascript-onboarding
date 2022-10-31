@@ -21,22 +21,21 @@ function makeString(word) {
   function transWord() {
     const outWord = [];
     alphaItem.forEach(alpha => {
+      function upperLower(state1,state2){
+        for (i = 0; i < state1.length; i++){
+          if(alpha === state1[i]){
+            outWord.push(state2[i]);
+          }
+        }
+      }
       if(alpha === " ") {
         outWord.push(" ");
       }
-    if(alpha === alpha.toUpperCase()) {   //I love you
-        for (i = 0; i < upperAlphabetArr.length; i++){
-          if(alpha === upperAlphabetArr[i]){
-            outWord.push(upperStrangeAlphabetArr[i]);
-          }
-        }
+      if(alpha === alpha.toUpperCase()) {   //I love you
+        const upper = new upperLower(upperAlphabetArr,upperStrangeAlphabetArr);
       } 
-    else if(alpha === alpha.toLowerCase()){
-        for (i = 0; i < alphabetArr.length; i++){
-          if(alpha === alphabetArr[i]){
-            outWord.push(strangeAlphabetArr[i]);
-          }
-        }
+      else if(alpha === alpha.toLowerCase()){
+        const lower = new upperLower(alphabetArr,strangeAlphabetArr)
       }
     });
   }
