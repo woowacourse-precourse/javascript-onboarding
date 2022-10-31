@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer;
+  let answer;
   return answer;
 }
 
@@ -25,4 +25,12 @@ module.exports = problem6;
  *  1) 이메일만 포함
  *  2) 문자열을 오름차순으로 정렬
  *  3) 중복되는 이메일 제거
+ */
+
+/**
+ * 전체 크루 중 닉네임의 길이가 1인 경우를 제외
+ *
+ * abc, bcde
+ * ab라는 단어가 없으면 abc라는 단어는 없지만, bc라는 단어가 있을 수 있음
+ * 2글자만 중복되어도 result에 추가
  */
