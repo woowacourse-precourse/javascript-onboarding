@@ -20,6 +20,10 @@ function problem5(money) {
     divideMoney(money, moneyArr[i], i);
   }
 
+  if (money !== 0) {
+    answer[answer.length - 1] = money;
+  }
+
   return answer;
 }
 
