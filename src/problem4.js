@@ -5,4 +5,7 @@ function problem4(word) {
 function changeLowerCase(alphabet) {
   return String.fromCharCode(219 - alphabet.charCodeAt(0));
 }
+function changeUpperCase(alphabet) {
+  return String.fromCharCode(155 - alphabet.charCodeAt(0));
+}
 module.exports = problem4;
