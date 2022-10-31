@@ -1,7 +1,7 @@
 /*
   구현할 기능 목록
-  [ ] friends 배열에서 주어지는 사람들의 친구 리스트를 Map 객체(key: 이름, value: friends 배열)로 생성하는 기능 | 함수명 : initFriendsList
-  [ ] frineds 배열어서 주이지는 사람들의 score 리스트를 Map 객체(key: 이름, value: score)로 생성하는 기능
+  [O] friends 배열에서 주어지는 사람들의 친구 리스트를 Map 객체(key: 이름, value: friends 배열)로 생성하는 기능 | 함수명 : initFriendsList
+  [O] frineds 배열어서 주이지는 사람들의 score 리스트를 Map 객체(key: 이름, value: score)로 생성하는 기능 | 함수명 : initScoreList
   [ ] 해당 사람이 user의 friend인지 확인하는 기능
   [ ] user와 함께 아는 친구인 경우가 있는 사람인 경우, 아는 친구 한명 당 score를 10씩 증가시키는 기능
   [ ] user의 타임라인에 방문한 사람인 경우, 방문 횟수 당 score를 1씩 증가시키는 기능
@@ -15,11 +15,14 @@
 function problem7(user, friends, visitors) {
   let answer = 0;
   const friendsList = new Map();
+  const scoreList = new Map();
 
   friends.forEach((friend) => {
     let [person1, person2] = friend;
     initFriendsList(friendsList, person1, person2);
     initFriendsList(friendsList, person2, person1);
+    initScoreList(scoreList, person1, user);
+    initScoreList(scoreList, person2, user);
   });
 }
 
@@ -28,6 +31,12 @@ function initFriendsList(friendsList, person1, person2) {
     friendsList.set(person1, [person2]);
   } else {
     friendsList.set(person1, [...friendsList.get(person1), person2]);
+  }
+}
+
+function initScoreList(scoreList, person, user) {
+  if (user !== person && !scoreList.has(person)) {
+    scoreList.set(person, 0);
   }
 }
 
