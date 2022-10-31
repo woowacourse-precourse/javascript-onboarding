@@ -1,47 +1,48 @@
-function plusSum(num){
-  var sum = 0;
-  while(num){
+function plusSum(num) {
+  let sum = 0;
+  while (num) {
     sum += num % 10;
-    sum /= 10;
+    num = parseInt(num / 10);
   }
   return sum;
 }
 
-function multiSum(num){
-  var sum = 1;
-  while(num){
+function multiSum(num) {
+  let sum = 1;
+  while (num) {
     sum *= num % 10;
-    sum /= 10;
+    num = parseInt(num / 10);
   }
   return sum;
 }
 
-function pageCheck(page){
+function pageCheck(page) {
   const [left, right] = page;
-  if(left % 2 == 1 && 1 <= left && left <= 399 && right % 2 == 0 && 2 <= right && right <= 400)
-    return 1;
-  else
+  if(right - left != 1)
     return 0;
+  else if (left % 2 === 1 && 1 <= left && left <= 399 && right % 2 === 0 && 2 <= right && right <= 400)
+    return 1;
+  
 }
 
-function compare(cmp1, cmp2){
-  if(cmp1 > cmp2)
+function compare(cmp1, cmp2) {
+  if (cmp1 > cmp2)
     return cmp1;
   else return cmp2;
 }
 
 function problem1(pobi, crong) {
-  if(pageCheck(pobi) == 0 || pageCheck(crong) == 0)
+  if (pageCheck(pobi) === 0 || pageCheck(crong) === 0)
     return -1;
-  
+
   const [pobiLeft, pobiRight] = pobi;
-  pobiNum = compare(compare(plusSum(pobiLeft),multiSum(pobiLeft)),compare(plusSum(pobiRight),multiSum(pobiRight)));
+  pobiNum = Math.max(plusSum(pobiLeft), multiSum(pobiLeft), plusSum(pobiRight), multiSum(pobiRight));
 
   const [crongLeft, crongRight] = crong;
-  crongNum = compare(compare(plusSum(crongLeft),multiSum(crongLeft)),compare(plusSum(crongRight),multiSum(crongRight)));
+  crongNum = Math.max(plusSum(crongLeft), multiSum(crongLeft), plusSum(crongRight), multiSum(crongRight));
 
-  if(pobiNum > crongNum) return 1;
-  else if(pobiNum == crongNum) return 0;
+  if (pobiNum > crongNum) return 1;
+  else if (pobiNum == crongNum) return 0;
   else return 2;
 }
 
