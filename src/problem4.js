@@ -31,6 +31,3 @@ function flip_word(word) {
   return ans;
 }
 module.exports = problem4;
-
-//A와 Z의 아스키코드의 합은 155. 모든 flip되는 쌍은 합이 155임.
-console.log("a".charCodeAt(0));

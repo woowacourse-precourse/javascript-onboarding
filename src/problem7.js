@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   var answer;
   let user_dict = calculate_score(user, friends, visitors);
 
-  console.log(user_dict);
+  // console.log(user_dict);
   let user_list = [];
   let key = Object.keys(user_dict);
   key.map((k) => {
@@ -80,7 +80,7 @@ function people_list(user, friends, visitors) {
   }
   return dictObj;
 }
-// 3. 점수계산 - 친구의 친구면
+// 3. 점수계산
 function calculate_score(user, friends, visitors) {
   let user_dict = people_list(user, friends, visitors);
   let common_friend_list = common_friend(user, friends);
