@@ -37,26 +37,23 @@ function problem6(forms) {
 
 function checkValidation(forms) {
   if (forms.length < 1 || forms.length > 10000) return -1;
-  let flag = true;
-  forms.forEach((form) => {
-    const [, nickname] = form;
-    if (
-      nickname.match(/[^ㄱ-ㅎ가-힣]+/gi) ||
-      nickname.length < 1 ||
-      nickname.length > 20
-    ) {
-      flag = false;
-    }
-  });
-  if (!flag) return -1;
 }
 
 function getValidateForms(forms) {
   return forms.filter((form) => {
-    const [email] = form;
+    const [email,nickname] = form;
     const regex = "email.com";
-    return email.match(regex);
+    
+    return email.match(regex) && nickname.match(/[ㄱ-ㅎ가-힣]+/gi);
   });
 }
+
+console.log(problem6([
+        ["kim@email.com", "김ㅡ이"],
+        ["nam@email.com", "ㅡ이야"],
+        ["choi@email.com", "최강"],
+        ["lee@email.com", "강합니다"],
+        ["jun@email.com", "왜ㅇㅡ이야"],
+      ]))
 
 module.exports = problem6;
