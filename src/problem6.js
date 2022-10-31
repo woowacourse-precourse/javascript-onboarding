@@ -1,14 +1,28 @@
+// 기능1-1
 function makeForms(forms) {
   for (let i = 0; i < forms.length; i++) {
     forms[i][1] = Array.from(forms[i][1]);
   }
   return forms;
 }
+// 기능1-2
+function makeContinueNick(forms) {
+  let nickForms = [];
+  for (let i = 0; i < forms.length; i++) {
+    let tmp = "";
+    nickForms.push(forms[i][0]);
+    for (let j = 0; j < forms[i][1].length - 1; j++) {
+      tmp = forms[i][1][j] + forms[i][1][j + 1];
+      nickForms[i][1].push(tmp);
+    }
+  }
+  return nickForms;
+}
 
 function problem6(forms) {
   var answer;
-  makeForms(forms);
-
+  let continueArr = makeForms(forms);
+  makeContinueNick(continueArr);
   return answer;
 }
 
