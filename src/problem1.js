@@ -11,6 +11,32 @@ function problem1(pobi, crong) {
   const CRONG = 2;
   const NOBODY = 0;
 
+  function checkError(pageArr) {
+    if (pageArr[0] >= pageArr[1]) {
+      isError = true;
+    }
+    if (pageArr[0] % 2 === 0 || pageArr[1] % 2 === 1) {
+      isError = true;
+    }
+    if (pageArr[1] - pageArr[0] !== 1) {
+      isError = true;
+    }
+    if (pageArr[0] === 0 && pageArr[1] === 1) {
+      isError = true;
+    }
+    if (pageArr[0] === 399 && pageArr[1] === 400) {
+      isError = true;
+    }
+    if (pageArr[0] <= 0 || pageArr[0] >= 400) {
+      isError = true;
+    }
+    return isError;
+  }
+
+  if (checkError(pobi) === true || checkError(crong) === true) {
+    return -1;
+  }
+
   function getAddResult(pageNum) {
     pageNum = String(pageNum);
     let result = 0;
