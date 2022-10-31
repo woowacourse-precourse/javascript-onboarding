@@ -21,8 +21,13 @@ function problem6(forms) {
 
   var set = new Set(resultEmailList);
   resultEmailList = convertSetToArray(set);
+  sortedByResult = sortedByArray(resultEmailList);
 
-  return resultEmailList.sort();
+  return sortedByResult;
+}
+
+function sortedByArray(arr) {
+  return arr.sort();
 }
 
 function convertSetToArray(set) {
