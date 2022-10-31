@@ -32,6 +32,7 @@ function problem1(pobi, crong) {
     if (arr[1] >= 400) return false;
     return true;
   }
+
   if (!check(pobi) || !check(crong)) return -1;
   else {
     if (pobiMaxScore > crongMaxScore) return 1;
