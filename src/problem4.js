@@ -10,6 +10,11 @@ function problem4(word) {
   return answer;
 }
 
+function makeCapitalAlphabet(word) {
+  const words = word.toUpperCase().split("");
+  return words;
+}
+
 function makeForwardAlphabet() {
   const alphabets = new Array(26)
     .fill()
@@ -27,11 +32,6 @@ function recordCapitalAlphabet(word) {
   const words = word.split("");
   const records = words.map((i) => i === i.toUpperCase());
   return records;
-}
-
-function makeCapitalAlphabet(word) {
-  const words = word.toUpperCase().split("");
-  return words;
 }
 
 function checkWordIndex(words, forwardAlphabets) {
