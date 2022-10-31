@@ -24,11 +24,16 @@ function pageCheck(page){
     return 0;
 }
 
+function compare(cmp1, cmp2){
+  if(cmp1 > cmp2)
+    return cmp1;
+  else return cmp2;
+}
+
 function problem1(pobi, crong) {
-  var answer; 
-
-
-  return answer;
+  if(pageCheck(pobi) == 0 || pageCheck(crong) == 0)
+    return -1;
+  
 }
 
 module.exports = problem1;
