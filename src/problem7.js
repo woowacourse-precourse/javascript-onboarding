@@ -58,7 +58,7 @@ function giveTenScoreToUserFriendsOfFriends(user, friends, userFriends) {
 }
 
 // visitors 배열의 요소에게 1점씩 부여하는 함수
-function getOneScore(visitors, userFriends, idScoreObj) {
+function giveOneScoreToVisitors(visitors, userFriends, idScoreObj) {
   visitors.forEach((el) => {
     // user의 친구가 아니고
     if (!userFriends.includes(el)) {
@@ -104,7 +104,7 @@ function problem7(user, friends, visitors) {
     userFriends
   );
 
-  idScoreObj = getOneScore(visitors, userFriends, idScoreObj);
+  idScoreObj = giveOneScoreToVisitors(visitors, userFriends, idScoreObj);
 
   let idScoreArr = makeObjToArr(idScoreObj);
 
