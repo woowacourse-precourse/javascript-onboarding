@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
   var answer = [];
 
-  const visitorList = {}; // 방문자 객체 리스트
+  const visitorList = {};
   // 방문자 객체로 만들고 점수 부여하기
   visitors.forEach((visitor) => {
     if (visitorList[visitor] === undefined) {
@@ -13,7 +13,7 @@ function problem7(user, friends, visitors) {
 
   const visitorScoreList = [];
 
-  // 방문자 점수 오브젝트를 오브젝트 배열로 만들기 (정렬해야해서)
+  // 방문자 점수 오브젝트를 오브젝트 배열로 만들기
   for (let id in visitorList) {
     visitorScoreList.push({
       name: id,
@@ -31,7 +31,7 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  const recommendFriendList = {}; // 추천 친구 리스트 점수 부여
+  const recommendFriendList = {};
   // 관련 친구 점수 부여하기
   friends.forEach((friend) => {
     const [A, B] = friend;
