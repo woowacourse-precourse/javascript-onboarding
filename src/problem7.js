@@ -31,6 +31,16 @@ function addFriendOfFriendScore(userList) {
     return userScore;
 }
 
+function addVisitorsScore(ScoreObj, visitorList, userFriendList) {
+    visitorList.forEach((user) => {
+        if (user in userFriendList) {
+            return;
+        }
+        ScoreObj[user] = (ScoreObj[user] += 1) || 1;
+    });
+    return ScoreObj;
+}
+
 function problem7(user, friends, visitors) {}
 
 module.exports = problem7;
