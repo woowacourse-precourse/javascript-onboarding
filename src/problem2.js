@@ -8,8 +8,11 @@
 // cryptogram => string, length : 1~1000
 // return => string, length : 0~1000
 function problem2(cryptogram) {
-    var answer;
-    return answer;
+    if(!isValid(cryptogram)) return -1;
+    while(!isAns(cryptogram)){
+        cryptogram = delDups(cryptogram);
+    }
+    return cryptogram;
 }
 
 // 1. 전달받은 cryptogram 길이 검사 기능
