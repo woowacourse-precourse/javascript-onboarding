@@ -5,7 +5,7 @@ function getRecommendedFriendList({ user, friends, visitors }) {
     friendInfo,
     visitors,
   });
-  const userFriends = friendInfo[user];
+  const userFriends = friendInfo[user] ?? [];
 
   return Object.entries(recommendScoreInfo)
     .filter(([id, _]) => !userFriends.includes(id))
@@ -52,7 +52,7 @@ function getRecommendScoreInfo({ user, friendInfo, visitors }) {
 function calcRecommendScore({ data, type }, recommendScoreInfo) {
   if (type === 'FRIENDS') {
     const { user, friendInfo } = data;
-    const userFriends = friendInfo[user];
+    const userFriends = friendInfo[user] ?? [];
 
     Object.entries(friendInfo).forEach(([userId, friends]) => {
       friends.forEach((friendId) => {
@@ -84,7 +84,7 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
 
 function compare([id_A, score_A], [id_B, score_B]) {
   if (score_A === score_B) {
-    return id_A - id_B;
+    return id_A > id_B ? 1 : -1;
   }
 
   return score_B - score_A;
@@ -95,5 +95,3 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
-
-module.exports = problem7;
