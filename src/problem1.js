@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 function problem1(pobi, crong) {
   var answer;
   const pobiLeft = pobi[0];
@@ -13,10 +12,10 @@ function problem1(pobi, crong) {
   );
   const pobiMax = largerNumber(pobiMaxSum, pobiMaxMultiply); // max score for pobi
 
-  const crongMaxSum = largerNumber(digitSum(crong[0]), digitSum(crong[1]));
+  const crongMaxSum = largerNumber(digitSum(crongLeft), digitSum(crongRight));
   const crongMaxMultiply = largerNumber(
-    digitMultiply(crong[0]),
-    digitMultiply(crong[1])
+    digitMultiply(crongLeft),
+    digitMultiply(crongRight)
   );
   const crongMax = largerNumber(crongMaxSum, crongMaxMultiply); // max score for crong
 
@@ -37,10 +36,9 @@ module.exports = problem1;
 // function that returns the sum of digits
 function digitSum(number) {
   let sum = 0;
-  let temp = number;
-  while (temp > 0) {
-    sum += temp % 10;
-    temp = Math.floor(temp / 10);
+  while (number > 0) {
+    sum += number % 10;
+    number = Math.floor(number / 10);
   }
   return sum;
 }
@@ -48,10 +46,9 @@ function digitSum(number) {
 // function that returns multiplied digits
 function digitMultiply(number) {
   let multiply = 1;
-  let temp = number;
   while (number > 0) {
-    multiply *= temp % 10;
-    temp = Math.floor(temp / 10);
+    multiply *= number % 10;
+    number = Math.floor(number / 10);
   }
   return multiply;
 }
