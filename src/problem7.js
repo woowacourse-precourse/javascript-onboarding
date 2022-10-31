@@ -2,11 +2,22 @@ function problem7(user, friends, visitors) {
   var answer;
 
   let score = {};
+  let friendList = [];
+  let linkedFriends = {};
 
   //friends를 통해 닉네임 리스트(score)를 생성함
   for (i = 0; i < friends.length; i++) 
     score = updateScoreList(user, friends[i], score);
   delete (score[user]);
+
+  //user와 친구인 사람들을 저장하는 friendList 생성
+  for (i = 0; i < friends.length; i++) 
+    friendList = findUserFriend(user, friends[i], friendList);
+
+  //friendList와 친구인 사람들, count 저장
+  linkedFriends = score;  //score의 초기 setting 복사하여 사용
+  for (i = 0; i < friends.length; i++) 
+    linkedFriends = ch_linkedFriends(friends[i], friendList, linkedFriends); //친구관계리스트 검사
 
   return answer;
 }
@@ -19,6 +30,27 @@ function updateScoreList(user, friends, score) {
 
   return score;
 }
+
+//friendList를 생성하는 함수
+function findUserFriend(user, friends) {
+  if (user === friends[0])
+    friendList.push(friends[1])
+  if (user === friends[1])
+    friendList.push(friends[0])
+
+  return friendList;
+}
+
+function ch_linkedFriends(friend, userFriends, linkedFriends) {
+  for (j = 0; j < userFriends.length; j++) {
+    if (friend[0] == userFriends[j]) 
+      linkedFriends[friend[1]] += 1; 
+    if (friend[1] == userFriends[j]) 
+      linkedFriends[friend[0]] += 1; 
+  }
+  return linkedFriends;
+}
+
 module.exports = problem7;
 
 /*
