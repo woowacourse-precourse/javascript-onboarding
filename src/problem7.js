@@ -1,3 +1,13 @@
+const take = (limit, iter) => {
+  const res = [];
+
+  for (const v of iter) {
+    res.push(v);
+    if (res.length === limit) return res;
+  }
+  return res;
+};
+
 const extractUserFriends = (user, friends) =>
   friends
     .filter((friend) => friend.includes(user))
@@ -44,14 +54,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  const recommendedFriends = Object.entries(friendScore)
-    .filter(([friend, _]) => !userFriends.includes(friend))
-    .sort(([friendA, scoreA], [friendB, scoreB]) => {
-      if (friendA < friendB) return -1;
-      return 1;
-    })
-    .sort(([friendA, scoreA], [friendB, scoreB]) => scoreB - scoreA)
-    .map(([friend, _]) => friend);
+  const recommendedFriends = take(
+    5,
+    Object.entries(friendScore)
+      .filter(([friend, _]) => !userFriends.includes(friend))
+      .sort(([friendA, scoreA], [friendB, scoreB]) => {
+        if (friendA < friendB) return -1;
+        return 1;
+      })
+      .sort(([friendA, scoreA], [friendB, scoreB]) => scoreB - scoreA)
+      .map(([friend, _]) => friend)
+  );
 
   return recommendedFriends;
 }
