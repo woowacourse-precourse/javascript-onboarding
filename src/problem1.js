@@ -1,5 +1,21 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = checkWinner(pobi, crong);
+  return answer;
+}
+
+// 포비와 크롱이 점수 비교하여 게임의 승자 선정 
+function checkWinner(pobi, crong){
+  let resultPobi = calculationNum(pobi[0], pobi[1]);
+  let resultCrong = calculationNum(crong[0], crong[1]);
+
+  if (resultPobi === -1 || resultCrong === -1) {
+    answer = -1;
+    return answer;
+  }
+  if (resultPobi === resultCrong) answer = 0;
+  else if (resultPobi > resultCrong) answer = 1;
+  else if (resultPobi < resultCrong) answer = 2;
+
   return answer;
 }
 
