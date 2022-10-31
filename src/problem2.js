@@ -14,4 +14,27 @@ function problem2(cryptogram) {
   return answer;
 }
 
+function removeDupLetters(letters) {
+  let newLetters = "";
+  let prevLetter = "";
+  let duplicatedCount = 0;
+
+  for (let letter of letters) {
+    if (letter === prevLetter) {
+      duplicatedCount++;
+    } else if (duplicatedCount === 0) {
+      newLetters += prevLetter;
+      prevLetter = letter;
+    } else {
+      prevLetter = letter;
+      duplicatedCount = 0;
+    }
+  }
+  if (duplicatedCount === 0) {
+    newLetters += prevLetter;
+  }
+
+  return newLetters;
+}
+
 module.exports = problem2;
