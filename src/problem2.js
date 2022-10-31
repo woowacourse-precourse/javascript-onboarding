@@ -1,13 +1,3 @@
-function errorHandling(cryptogram) {
-  if (cryptogram.length === 1) {
-    if (cryptogram[0] < "a" || cryptogram[0] > "z") return false;
-  }
-  if (cryptogram.length < 1 || cryptogram.length > 1000) return false;
-  for (value of cryptogram) {
-    if (value < "a" || value > "z") return false;
-  }
-  return true;
-}
 function deduplication(cryptogram) {
   let array = [];
   for (let i = 0; i < cryptogram.length; i++) {
@@ -20,7 +10,6 @@ function deduplication(cryptogram) {
   return array.join("");
 }
 function problem2(cryptogram) {
-  if (!errorHandling(cryptogram)) return -1;
   var answer = deduplication(cryptogram);
   return answer;
 }
