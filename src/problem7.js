@@ -41,18 +41,34 @@ function friendsScore(user, friends, visitor) {
         }
       }
   }
-    return score;
+  
+  for (const friend of score.keys()) {
+    if(friend === friendsOfUser[0] || friend === friendsOfUser[1]) {
+      score.delete(friend);
+    }
+  }
+
+  return [...score];
 }
-
-
-
-
-
-
 
 function problem7(user, friends, visitors) {
-  
+  const answer = [];
+  const result = friendsScore(user, friends, visitors)
+  .sort((a,b) => {
+    if(a[1] === b[1]) {
+      return b[0] - a[0];
+    } else {
+      return b[1] - a[1];
+    }
+  });
+
+  result.flatMap(([name, score]) => {
+    answer.push(name);
+  });
+
+  return answer.slice(0,5);
 }
+
 
 module.exports = problem7;
 
