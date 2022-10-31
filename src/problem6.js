@@ -1,5 +1,5 @@
 function problem6(forms) {
-  var answer;
+  var answer = devidePeople(forms);
   return answer;
 }
 const crews = [];
