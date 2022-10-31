@@ -3,6 +3,7 @@ function problem7(user, friends, visitors) {
   const noFriend = findNoFriend(user, friends, userFriend);
   calculateNoFriendScore(friends, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
+  const sortedCandidate = sortCandidate(candidateObj);
 }
 
 function findFriend(user, friends) {
@@ -52,6 +53,13 @@ function calculateVisitorScore(visitors, userFriend, candidateObj) {
       candidateObj[newCandidate] += numberOfVisit[newCandidate];
     else candidateObj[newCandidate] = numberOfVisit[newCandidate];
   }
+}
+
+function sortCandidate(candidateObj) {
+  return Object.entries(candidateObj).sort((a, b) => {
+    if (a[1] === b[1]) a[0] - b[0];
+    else b[1] - a[1];
+  });
 }
 
 module.exports = problem7;
