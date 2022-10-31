@@ -25,4 +25,20 @@ function FriendsOfFriends(userFriends, friends, user) {
   return scores;
 }
 
+function getScores(array, score) {
+  const Lists = Array.from(new Set(array));
+  const results = [];
+  for (let i = 0; i < Lists.length; i++) {
+    results.push([Lists[i], 0]);
+  }
+  for (let i = 0; i < Lists.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (Lists[i] === array[j]) {
+        results[i][1] += score;
+      }
+    }
+  }
+  return results;
+}
+
 module.exports = problem7;
