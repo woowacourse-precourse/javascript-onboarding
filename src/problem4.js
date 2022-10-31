@@ -1,5 +1,9 @@
 function problem4(word) {
-  var answer;
+  let answer;
+
+  const CAPITAL_SUM = 155;
+  const SMALL_SUM = 219;
+
   return answer;
 }
 
