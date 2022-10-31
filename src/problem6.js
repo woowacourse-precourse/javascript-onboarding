@@ -1,6 +1,14 @@
 function problem6(forms) {
-  var answer;
+  var answer = result(forms);
   return answer;
+}
+
+function result(forms) {
+  forms = forms.filter(([email, nickname]) => {
+    return checkEmail(email) && isKorea(nickname);
+  });
+
+  return forms;
 }
 
 const POSSIBLE_EMAIL = "email.com";
