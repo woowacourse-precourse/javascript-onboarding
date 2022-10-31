@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능
+- 신청받은 닉네임들을 2글자씩 자르는 slickNickname함수 작성 ex) 제이엠(제이, 이엠)
+- 중복되지 않은 2글자가 들어온다면 Map객체의 새롭게 생성, 중복되는 글자가 된다면 1씩 증가.
+- 중복되는 글자가 있는 유저들의 이메일을 배열에 담는 checkSameNickName 함수 작성.
+- 중복되는 이메일을 제거하기 위해 Set객체로 변경한뒤 Sort함수를 적용하여 오름차순 정렬.
