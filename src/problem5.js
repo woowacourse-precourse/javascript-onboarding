@@ -12,6 +12,9 @@ function intoArr (money){
   function switches(n){
     remains.push((moneyArr[0] - n*(parseInt(moneyArr[0]/n))));
     resultArr.push(Math.floor(moneyArr[0]/n));
+    moneyArr = [];
+    moneyArr.push(remains[0])
+    remains = [];
   }
 }
 
