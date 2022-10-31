@@ -68,4 +68,19 @@ function calcUserMaxNum(numbers) {
   return maxNum;
 }
 
+function playGame(pobi, crong) {
+  const pobiMaxNum = calcUserMaxNum(pobi);
+  const crongMaxNum = calcUserMaxNum(crong);
+
+  if (pobiMaxNum === crongMaxNum) {
+    result = 0;
+  } else if (pobiMaxNum > crongMaxNum) {
+    result = 1;
+  } else {
+    result = 2;
+  }
+
+  return result;
+}
+
 module.exports = problem1;
