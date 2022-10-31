@@ -2,28 +2,35 @@ function problem6(forms) {
   var answer;
 
   const nickName = [];
+  let duplicate = [];
 
   for (i = 0; i < forms.length; i++) 
   nickName.push(forms[i][1]);
 
-  for (i = 0; i < nickName.length; i++) {
-    console.log(nickName[i], nickName[i].length);
+  for (i = 0; i < nickName.length; i++) 
     for (j = 0; j + 1 < nickName[i].length; j++) {
       subStr = nickName[i].slice(j, j + 2)
-      console.log(subStr, nickName[i]);
-      checkDuplicate(subStr, nickName, duplicate);
+      duplicate = checkDuplicate(subStr, nickName, duplicate);
     }
-  }
 
   return answer;
 }
 
 function checkDuplicate(subStr, nickName, duplicate) {
-  for (let k = i; k < nickName.length; k++) {
-    if (nickName[i].includes(subStr)) {
-          
-    }
-  }
+  for (let k = i + 1; k < nickName.length; k++) 
+    if (nickName[k].includes(subStr)) 
+      duplicate = makeDupArr(nickName[i], forms, duplicate);
+
+  return duplicate;
+}
+
+function makeDupArr(nickName, forms, duplicate) {
+  for (let i = 0; i < nickName.length; i++) 
+    if (forms[i][1] === nickName) 
+      if (duplicate.indexOf(forms[i][0]) < 0)    //duplicate에 없다면 추가
+        duplicate.push(forms[i][0]);
+      
+  return duplicate;
 }
 
 module.exports = problem6;
