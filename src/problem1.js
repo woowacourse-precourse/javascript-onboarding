@@ -44,9 +44,28 @@ function getNumberToArr(number) {
   return numberArr;
 }
 
+function getMax(arr) {
+  const leftPage = getNumberToArr(arr[0]);
+  const rightPage = getNumberToArr(arr[1]);
+
+  const leftSum = getSum(leftPage);
+  const rightSum = getSum(rightPage);
+
+  const leftMul = getMul(leftPage);
+  const rightMul = getMul(rightPage);
+
+  const leftMax = Math.max(leftSum, leftMul);
+  const rightMax = Math.max(rightSum, rightMul);
+
+  return Math.max(leftMax, rightMax);
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (!isValid(pobi) || !isValid(crong)) return -1;
+
+  const pobiMax = getMax(pobi);
+  const crongMax = getMax(crong);
   return answer;
 }
 
