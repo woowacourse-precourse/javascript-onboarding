@@ -19,7 +19,7 @@ function returnEmail(forms, map) {
   forms.forEach((item) => {
     let email = item[0];
     let nickname = item[1];
-    for (let i = 0; i < nickname.length; i++) {
+    for (let i = 0; i < nickname.length - 1; i++) {
       let subStr = nickname.substring(i, i + 2);
       if (map.get(subStr) === "duplication") set.add(email);
     }
