@@ -1,6 +1,3 @@
-function problem2(cryptogram) {
-  var answer;
-  return answer;
-}
+const isSame = (a, b) => a === b;
 
-module.exports = problem2;
+
