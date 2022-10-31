@@ -6,6 +6,7 @@ function problem7(user, friends, visitors) {
     user
   );
   const overlapfriendsWithScore = getOverlapFriendObject(friendsOfFriendsList);
+  const visitorWithScore = getVisitorObject(visitors, friendsOfUserList);
 }
 
 function getFriends(user, buddies) {
@@ -45,6 +46,20 @@ function countDuplicatedValue(array) {
     acc.set(curr, (acc.get(curr) || 0) + 1);
     return acc;
   }, new Map());
+}
+
+function getVisitorObject(visitors, alreadyFriends) {
+  const visitorWithScore = [];
+  const strangerVisitor = visitors.filter(
+    (visitor) => !alreadyFriends.includes(visitor)
+  );
+  const visitCountValue = countDuplicatedValue(strangerVisitor);
+
+  for (let [key, value] of visitCountValue) {
+    visitorWithScore.push({ name: key, score: value });
+  }
+
+  return visitorWithScore;
 }
 
 module.exports = problem7;
