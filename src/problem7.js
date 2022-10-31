@@ -1,3 +1,4 @@
+// 유저의 친구들을 key로 가지고, 친구의 친구를 담을 배열을 value로 갖는 객체 생성
 function createUserFriendObject(user, friends) {
   const TOTAL_INDEX = 1;
   const initialFriendObject = {};
@@ -14,6 +15,7 @@ function createUserFriendObject(user, friends) {
   return initialFriendObject;
 }
 
+// 친구의 친구를 찾아서 useFriendObject value인 배열에 추가
 function findFriendFollower(user, userFriendObject, friends) {
   friends = friends.filter(friend => !friend.includes(user));
   friends.forEach(friend => {
@@ -27,6 +29,7 @@ function findFriendFollower(user, userFriendObject, friends) {
   });
 }
 
+// 서로 아는 친구 점수 세기
 function countFollowerScore(userFriendObject, scoreCount) {
   let followerList = [];
   Object.values(userFriendObject).forEach(followers => {
@@ -45,6 +48,7 @@ function countFollowerScore(userFriendObject, scoreCount) {
   });
 }
 
+// 방문 점수 세기
 function countVisitScore(visitors, userFriendObject, scoreCount) {
   const INCREMENT_NUMBER = 1;
   visitors.forEach(visitor => {
@@ -67,6 +71,7 @@ function covertObjectToArray(obj) {
   return newArray;
 }
 
+// 추천 리스트 반환
 function getRecommendationList(scoreCount) {
   const LIMIT_RECOMMENDATION_NUMBER = 5;
   let recommendationList = covertObjectToArray(scoreCount);
