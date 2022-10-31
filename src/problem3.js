@@ -7,6 +7,7 @@ function problem3(number) {
     const temp = filterArrayBy(makeArr(i), 3, 6, 9);
     cnt += temp.length;
   }
+
   return cnt;
 }
 

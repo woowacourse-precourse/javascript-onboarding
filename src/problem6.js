@@ -54,7 +54,8 @@ const getMatchedForms = (forms) => (cases) => {
 };
 
 const sort = (arr) => [...arr].sort();
-const removeDup = (arr) => [...new Map(arr)];
+
+const removeDups = (arr) => [...new Set(arr)];
 
 function problem6(forms) {
   const result = compose(
@@ -65,7 +66,7 @@ function problem6(forms) {
     getMatchedForms(forms),
     getValuesOf("email"),
     sort,
-    removeDup
+    removeDups
   )(forms);
 
   return result;
