@@ -15,4 +15,14 @@ function isKoreanName(name) {
   return 1;
 }
 
+function isSimilarName(name1, name2) {
+  if (name1.length == 1 || name2.length == 1) return -1;
+  else {
+    for (let i = 0; i < name1.length - 1; i++) {
+      if (name2.indexOf(name1.substr(i, 2)) !== -1) return 1;
+    }
+    return -1;
+  }
+}
+
 module.exports = problem6;
