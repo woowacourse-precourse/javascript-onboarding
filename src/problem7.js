@@ -38,12 +38,9 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < scoreSort.length; i++) {
     recommend.push(scoreSort[i].name);
   }
-
-
   answer = recommend;
   console.log(answer)
   return answer;
-
 }
 
 function giveScore(arr, score) {
@@ -61,7 +58,6 @@ function giveScore(arr, score) {
         } 
       }
     }
-    
   }
   return result;
 }
@@ -101,16 +97,3 @@ function inputExecption(user, arr1, arr2) {
 }
 
 module.exports = problem7;
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-)
