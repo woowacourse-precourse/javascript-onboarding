@@ -31,7 +31,8 @@ function makeCandidatesMap(user, friends_map){
   const candidates_map = new Map(); // 추천친구 후보목록을 Map객체로 저장
   const user_friends_set = friends_map.get(user); // user의 친구들 저장
   for (const id of friends_map.keys()){
-    if (id != user && !user_friends_set.has(id)){ // user와 친구가 아니면 후보 목록에 추가
+    if (id != user && (user_friends_set === undefined || !user_friends_set.has(id))){ 
+      // user와 친구가 아니면 후보 목록에 추가
       candidates_map.set(id, 0); // key: 아이디, value: 추천점수
     }
   }
@@ -41,6 +42,10 @@ function makeCandidatesMap(user, friends_map){
 
 function calculateByOverlapFriendsNum(user, friends_map, candidates_map){
   const user_friends_set = friends_map.get(user); // user의 친구들 저장
+
+  if (user_friends_set === undefined) { // user가 친구가 없다면 종료
+    return;
+  }
   //console.log([...candidates_map]);
   for (const candidate of candidates_map.keys()){
     for (const candidate_friend of friends_map.get(candidate)){ // candidate의 친구들 순회
@@ -56,7 +61,8 @@ function calculateByVisitNum(user, visitors, friends_map, candidates_map){
   const user_friends_set = friends_map.get(user); // user의 친구들 저장
   //console.log([...candidates_map]);
   for (const visitor of visitors){
-    if (user_friends_set.has(visitor)){ // visitor가 user의 친구라면 다음으로 넘어감
+    if (user_friends_set !== undefined && user_friends_set.has(visitor)){ 
+      // visitor가 user의 친구라면 다음으로 넘어감
       continue;
     }
     if (!candidates_map.has(visitor)){ // 추천친구 후보목록에 없다면 목록에 추가
