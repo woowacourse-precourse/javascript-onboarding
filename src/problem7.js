@@ -22,4 +22,22 @@ const getUserFriendId = (user, friends) => {
 
   return userFriends;
 };
+
+const giveScoreToFriendOfFriend = (user, friends, userFriends) => {
+  const pointsOfUsers = {};
+
+  friends.forEach((friend) => {
+    if (!friend.includes(user)) {
+      const [friendA, friendB] = friend;
+
+      if (userFriends.includes(friendA)) {
+        !pointsOfUsers[friendB] ? (pointsOfUsers[friendB] = 10) : (pointsOfUsers[friendB] += 10);
+      } else if (userFriends.includes(friendB)) {
+        !pointsOfUsers[friendA] ? (pointsOfUsers[friendA] = 10) : (pointsOfUsers[friendA] += 10);
+      }
+    }
+  });
+
+  return pointsOfUsers;
+};
 module.exports = problem7;
