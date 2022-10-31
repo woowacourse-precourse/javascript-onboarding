@@ -8,9 +8,10 @@ function problem4(word) {
     if (array[i] == " ") answer += " ";
     else if (array[i] == array[i].toUpperCase()) answer += reverse[array[i].charCodeAt() - 65];
     else if (array[i] == array[i].toLowerCase()) answer += reverse[array[i].charCodeAt() - 97].toLowerCase();
+    else answer += array[i];
   };
 
-
+  return answer;
 }
 
 module.exports = problem4;
