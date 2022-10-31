@@ -4,7 +4,7 @@ function problem4(word) {
    * 2. 대문자일 경우 (아스키 코드가 90이하일 경우) 청개구리 사전의 합이 155인 것을 이용해 반대 스펠링 반환
    * 3. 소문자일 경우 합이 219인 것을 이용하여 반대 스펠링 반환(219 - ascii)
    */
-  let answer = word
+  const answer = word
     .split("")
     .map((string) => {
       if (string.charCodeAt() === 32) {

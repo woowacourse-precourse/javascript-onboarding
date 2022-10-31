@@ -6,7 +6,7 @@ function problem5(money) {
    */
   const monetaryUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
   let change = money;
-  let answer = monetaryUnit.map((unit) => {
+  const answer = monetaryUnit.map((unit) => {
     const count = Math.floor(change / unit);
     change = Math.floor(change % unit);
     return count;
