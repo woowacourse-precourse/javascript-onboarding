@@ -1,11 +1,11 @@
 /** 인자로 들어온 알파벳의 순서를 바꿔주는 기능 **/
 function reversAlphabet(input) {
-  var isAlphabet = /[a-zA-Z]/;
-  var isBigAlphabet = /[A-Z]/;
+  let isAlphabet = /[a-zA-Z]/;
+  let isBigAlphabet = /[A-Z]/;
 
   if (isAlphabet.test(input)) {
     charCode = input.charCodeAt(0);
-    var numberOfAlphabet = isBigAlphabet.test(input)
+    let numberOfAlphabet = isBigAlphabet.test(input)
       ? charCode - 65
       : charCode - 97;
 

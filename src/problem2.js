@@ -2,10 +2,10 @@
 function removeOverlap(cryptogram) {
   cryptogram = [...cryptogram];
 
-  for (var i = 0; i < cryptogram.length - 1; i++) {
+  for (let i = 0; i < cryptogram.length - 1; i++) {
     if (cryptogram[i] === cryptogram[i + 1]) {
-      var startIndex = i;
-      var overlapLength = 2;
+      let startIndex = i;
+      let overlapLength = 2;
       i++;
       while (cryptogram[i] === cryptogram[i + 1]) {
         overlapLength++;
@@ -23,7 +23,7 @@ function removeOverlap(cryptogram) {
 
 function problem2(cryptogram) {
   var answer;
-  var newCryptogram = 0;
+  let newCryptogram = 0;
 
   newCryptogram = removeOverlap(cryptogram);
 

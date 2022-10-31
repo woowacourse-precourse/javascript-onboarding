@@ -1,9 +1,9 @@
 /** 중복되는 닉네임 찾는 기능 **/
 function findOverlap(forms) {
-  var names = [];
-  var overlapNames = [];
-  var nowName;
-  var temp;
+  let names = [];
+  let overlapNames = [];
+  let nowName;
+  let temp;
 
   forms.forEach((element) => {
     names = names.concat(element[1]);
@@ -27,7 +27,7 @@ function findOverlap(forms) {
 // 중복되는 닉네임을 갖고 있는 교육생의 이메일을 찾아 정렬하는 기능
 function problem6(forms) {
   var answer = [];
-  var names = findOverlap(forms);
+  let names = findOverlap(forms);
 
   for (let i = 0; i < forms.length; i++) {
     if (names.includes(forms[i][1])) answer.push(forms[i][0]);

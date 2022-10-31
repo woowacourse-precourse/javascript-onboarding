@@ -6,7 +6,7 @@ function find369(number) {
 
 function problem3(number) {
   var answer = 0;
-  var numberToStringArray;
+  let numberToStringArray;
 
   // 1부터 number까지 손뼉을 몇 번 쳐야하는지 횟수를 세는 기능
   for (let i = 1; i <= number; i++) {
