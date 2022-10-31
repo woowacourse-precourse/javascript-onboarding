@@ -6,6 +6,11 @@ const ASCII = {
 };
 Object.freeze(ASCII);
 
+const isCapital = (alphabetToASCII) =>
+  ASCII.ACode <= alphabetToASCII && alphabetToASCII <= ASCII.ZCode;
+const isLowerCase = (alphabetToASCII) =>
+  ASCII.aCode <= alphabetToASCII && alphabetToASCII <= ASCII.zCode;
+
 function problem4(word) {
   var answer;
   return answer;
