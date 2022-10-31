@@ -2,9 +2,10 @@
   "name": "javascript-onboarding-precourse",
   "version": "1.0.0",
   "description": "우아한테크코스 프리코스 온보딩 미션",
-  "dependencies": {},
   "devDependencies": {
-    "jest": "^29.0.3"
+    "chai": "^4.3.6",
+    "jest": "^29.0.3",
+    "mocha": "^10.1.0"
   },
   "scripts": {
     "test": "jest"
@@ -24,5 +25,13 @@
   "engines": {
     "npm": ">=6.0.0",
     "node": ">=14.0.0"
+  },
+  "main": "ApplicationTest.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "@babel/register": "^7.18.9",
+    "yarn": "^1.22.19"
   }
 }
