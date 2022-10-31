@@ -10,7 +10,16 @@ function problem6(forms) {
       pair_obj[pair_char] = tmp ? [...pair_obj[pair_char], i] : [i];
     }
   }
-  console.log(pair_obj);
+  let email_idx_set = new Set();
+  for (let pair of Object.keys(pair_obj)) {
+    if (pair_obj[pair].length > 1) {
+      //key에 있는 배열의 크기가 1 이상이면-> 해당 문자열 겹치는 사람 2명이상 -> 이메일 보내야함
+      pair_obj[pair].forEach((el) => {
+        email_idx_set.add(el);
+      });
+    }
+  }
+  console.log(email_idx_set);
   return answer;
 }
 
