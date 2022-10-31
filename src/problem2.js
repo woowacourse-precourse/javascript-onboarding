@@ -2,29 +2,29 @@ function stringToArray(array) {
   return [...array];
 }
 
-function checkOverlap(cryptogram) {
+function checkDupliate(cryptogram) {
   let cryptogramArray = stringToArray(cryptogram);
-  let notOverlappedArray = [];
+  let notDuplicateArray = [];
   let i = 0;
 
   for (; i < cryptogramArray.length; i++) {
     if (
-      cryptogramArray[i] === notOverlappedArray[notOverlappedArray.length - 1]
+      cryptogramArray[i] === notDuplicateArray[notDuplicateArray.length - 1]
     ) {
-      notOverlappedArray.pop();
+      notDuplicateArray.pop();
     } else if (
-      cryptogramArray[i] !== notOverlappedArray[notOverlappedArray.length - 1]
+      cryptogramArray[i] !== notDuplicateArray[notDuplicateArray.length - 1]
     ) {
-      notOverlappedArray.push(cryptogramArray[i]);
+      notDuplicateArray.push(cryptogramArray[i]);
     }
   }
 
-  return notOverlappedArray;
+  return notDuplicateArray;
 }
 
 function problem2(cryptogram) {
-  const notOverlappedArray = checkOverlap(cryptogram);
-  const answer = notOverlappedArray.join("");
+  const notDuplicateArray = checkDupliate(cryptogram);
+  const answer = notDuplicateArray.join("");
 
   return answer;
 }
