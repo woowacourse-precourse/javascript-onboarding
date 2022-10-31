@@ -15,6 +15,33 @@ function exceptionPage(arr) {
 
 function problem1(pobi, crong) {
   var answer;
+  var answer;
+  const pobiScore = [];
+  const crongScore = [];
+
+  pobi.forEach((num)=>{
+      const numArr = num.toString().split("");
+      const num_Sum = numArr.reduce((pre,cur)=>Number(pre) + Number(cur));
+      const num_mul = numArr.reduce((pre,cur)=>Number(pre)*Number(cur));
+      pobiScore.push(Math.max(num_Sum,num_mul));
+  })
+
+  crong.forEach((num)=>{
+      const numArr = num.toString().split("");
+      const num_Sum = numArr.reduce((pre,cur)=>Number(pre) + Number(cur));
+      const num_mul = numArr.reduce((pre,cur)=>Number(pre)*Number(cur));
+      crongScore.push(Math.max(num_Sum,num_mul));
+  })
+
+  const Maxpobi = Math.max(...pobiScore);
+  const Maxcrong = Math.max(...crongScore);
+
+  if(Maxpobi>Maxcrong)
+      answer = 1;
+  else if(Maxpobi<Maxcrong)
+      answer = 2;
+  else if(Maxpobi == Maxcrong)
+      answer = 0;
   return answer;
 }
 
