@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
   const answer = decode(cryptogram);
-  console.log(answer);
   return answer;
 }
 
