@@ -50,6 +50,9 @@ function problem6(forms) {
     }
   }
 
+  answer.sort();
+  //중복제거
+
   return answer;
 }
 
