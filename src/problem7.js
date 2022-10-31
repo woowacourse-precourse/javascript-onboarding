@@ -15,7 +15,7 @@ function problem7(user, friends, visitors) {
   isFriends = [...isFriends];
 
   for (let i = 0; i < friends.length; i++) {
-    if (isFriends.length > 0) {
+    if (friends[i].filter((x) => !isFriends.includes(x)).length === 1) {
       newFriends.push(...friends[i].filter((x) => !isFriends.includes(x)));
     }
   }
