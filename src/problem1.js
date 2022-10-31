@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  if (!inputExecption(pobi, crong)) return false;
+  if (!inputExecption(pobi, crong)) return -1;
   var answer;
   let pobiNumArr = [];
   let crongNumArr = [];
