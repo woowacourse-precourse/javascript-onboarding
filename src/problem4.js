@@ -10,12 +10,19 @@ function problem4(word) {
     let lowerCaseStart = 97;
     let lowerCaseEnd = 122;
     let lowerCaseTotal = lowerCaseStart + lowerCaseEnd;
+    let space = ' ';
 
     if(charAsc >= upperCaseStart && charAsc <= upperCaseEnd) {
       reverseWord += String.fromCharCode(upperCaseTotal-charAsc);
     }
     else if(charAsc >= lowerCaseStart && charAsc <= lowerCaseEnd) {
       reverseWord += String.fromCharCode(lowerCaseTotal-charAsc);
+    } 
+    else if(word[i] === space) {
+      reverseWord += space;
+    } 
+    else {
+      continue;
     }
   }
   answer = reverseWord;
