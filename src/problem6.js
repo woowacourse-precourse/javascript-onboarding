@@ -1,12 +1,13 @@
 function problem6(forms) {
   var answer;
   let dict = used_pair(forms);
+  //기능 3 -  오름차순으로 정렬하는 기능
   answer = new Set(check(forms, dict).sort());
   answer = Array.from(answer);
   return answer;
 }
 
-//연속된 2개의 문자열 탐색
+//기능 1 - 연속된 2개의 문자열 탐색
 function used_pair(forms) {
   let dict = {};
   forms.map((form) => {
@@ -22,7 +23,7 @@ function used_pair(forms) {
   return dict;
 }
 
-//2개 이상 나온 2글자 연속값 저장하는 배열 만들기
+//기능 1 - 2개 이상 나온 2글자 연속값 저장하는 배열 만들기
 function overlapped_word(dict) {
   for (let key in dict) {
     if (dict[key] < 2) delete dict[key];
@@ -30,7 +31,7 @@ function overlapped_word(dict) {
   return dict;
 }
 
-//해당 닉네임이 겹치는 닉네임인지 확인하고, 이메일 출력하기
+//기능 2 - 같은 글자가 연속적으로 포함된 닉네임을 판단하는 기능
 function check(forms, dict) {
   let ans = [];
   forms.map((form) => {
