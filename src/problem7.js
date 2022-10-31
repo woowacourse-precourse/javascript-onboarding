@@ -46,7 +46,7 @@ function problem7(user, friends, visitors) {
     answer.push(k);
   });
 
-  return answer;
+  return answer.slice(0, 5);
 }
 
 module.exports = problem7;
