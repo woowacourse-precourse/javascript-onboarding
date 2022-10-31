@@ -1,6 +1,11 @@
 function problem7(user, friends, visitors) {
   const usersList = getListOfUserAndFriends(friends);
   const friendsOfUsersList = findFriendOfUser(user, friends);
+  const friendsUserknowWithUserFriendList = findFriendsUserknowWithUserFriend(
+    friends,
+    friendsOfUsersList,
+    user
+  );
 }
 
 function getListOfUserAndFriends(userFriends) {
@@ -55,10 +60,37 @@ function findFriendOfUser(currentUser, userFriends) {
   return friendsList;
 }
 
-module.exports = problem7;
+function findFriendsUserknowWithUserFriend(
+  userFriends,
+  friendList,
+  currentUser
+) {
+  let friendsUserknowWithUserFriend = [];
+  let twoFriendsIndex, userIndex, friendIndex;
+  userFriends.forEach((twoFriends) => {
+    twoFriendsIndex = userFriends.indexOf(twoFriends);
 
-andole = 10 + 10;
-jun = 10 + 10;
-donut = 1;
-shakevan = 1;
-bedi = 1 + 1 + 1;
+    twoFriends.forEach((friend) => {
+      if (friendList.includes(friend)) {
+        userIndex = twoFriends.indexOf(friend);
+
+        friendIndex = 0;
+        if (userIndex === 0) {
+          friendIndex = 1;
+        }
+
+        const friendName = userFriends[twoFriendsIndex][friendIndex];
+        if (friendName !== currentUser) {
+          friendsUserknowWithUserFriend.push(friendName);
+        }
+      }
+    });
+  });
+
+  friendsUserknowWithUserFriend = new Set(friendsUserknowWithUserFriend);
+  friendsUserknowWithUserFriend = [...friendsUserknowWithUserFriend];
+
+  return friendsUserknowWithUserFriend;
+}
+
+module.exports = problem7;
