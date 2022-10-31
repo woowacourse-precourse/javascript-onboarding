@@ -1,6 +1,10 @@
 function problem4(word) {
   var answer;
 
+  if (violationChk(word)) {
+    answer = frogging(word);
+  }
+
   return answer;
 }
 
@@ -25,6 +29,16 @@ function violationChk(word) {
   }
 
   return lengthChk && isAlphabet;
+}
+
+function frogging(word) {
+  var result = "";
+
+  for (var i = 0; i < word.length; i++) {
+    result += converter(word[i]);
+  }
+
+  return result;
 }
 
 module.exports = problem4;
