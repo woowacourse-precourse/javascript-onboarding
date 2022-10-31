@@ -43,18 +43,18 @@ function problem4(word) {
     alphabet.toLowerCase()
   );
   const dictionaryLowerReverse = [...dictionaryLower].reverse();
-  for (let i = 0; i < word.length; i++) {
+  wordArr.map((alphabet, index) => {
     // word의 특정 값이 대문자인 경우
-    if (word[i].charCodeAt(0) >= 65 && word[i].charCodeAt(0) <= 90) {
-      const idx = dictionaryUpper.indexOf(word[i]);
-      wordArr[i] = dictionaryUpperReverse[idx];
+    if (alphabet.charCodeAt(0) >= 65 && alphabet.charCodeAt(0) <= 90) {
+      const idx = dictionaryUpper.indexOf(alphabet);
+      wordArr[index] = dictionaryUpperReverse[idx];
     }
     // word의 특정 값이 소문자인 경우
-    if (word[i].charCodeAt(0) >= 97 && word[i].charCodeAt(0) <= 122) {
-      const idx = dictionaryLower.indexOf(word[i]);
-      wordArr[i] = dictionaryLowerReverse[idx];
+    if (alphabet.charCodeAt(0) >= 97 && alphabet.charCodeAt(0) <= 122) {
+      const idx = dictionaryLower.indexOf(alphabet);
+      wordArr[index] = dictionaryLowerReverse[idx];
     }
-  }
+  });
   return wordArr.join('');
 }
 
