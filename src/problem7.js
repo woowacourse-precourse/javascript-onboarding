@@ -45,6 +45,21 @@ function problem7(user, friends, visitors) {
     return obj;
   };
 
+  const calcScoreOfVisitors = (visitors, friendsOfUser, scoreOfFriends) => {
+    let name;
+
+    for (let i = 0; i < visitors.length; i++) {
+      if (!friendsOfUser.includes(visitors[i])) {
+        name = visitors[i];
+        if (scoreOfFriends[name]) {
+          scoreOfFriends[name] += 1;
+        } else {
+          scoreOfFriends[name] = 1;
+        }
+      }
+    }
+  };
+
   return;
 }
 
