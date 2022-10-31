@@ -1,6 +1,25 @@
 function problem6(forms) {
-  let answer;
-  return answer;
+  let answer = [];
+  let resultSet = new Set();
+
+  for (let i = 0; i < forms.length; i++) {
+    const word = forms[i][1];
+    for (let j = 1; j < word.length; j++) {
+      const testWord = word[j - 1] + word[j];
+      for (let k = i + 1; k < forms.length; k++) {
+        if (forms[k][1].indexOf(testWord) !== -1) {
+          resultSet.add(forms[k][0]);
+          resultSet.add(forms[i][0]);
+        }
+      }
+    }
+  }
+
+  for (let el of resultSet) {
+    answer.push(el);
+  }
+
+  return answer.sort();
 }
 
 module.exports = problem6;
