@@ -33,12 +33,12 @@ function problem7(user, friends, visitors) {
   // 점수 리스트
   const userPointList = Object.assign({}, ...delDupUserList.map((key, i) => ({[key]: 0})));
   // friends 점수 +10
-  for (let friends of allUserList) {
-    userPointList[friends] += 10;
+  for (let friends of friendListOfRemoveMyFriend) {
+    createPointList[friends] += 10;
   }
   // visitors 점수 +1
-  for (let visitor of visitors) {
-    userPointList[visitor] += 1;
+  for (let visitor of visitorListOfRemoveMyFriend) {
+    createPointList[visitor] += 1;
   }
 
   // 점수별로 정렬
