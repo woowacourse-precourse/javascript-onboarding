@@ -16,9 +16,8 @@ function problem1(pobi, crong) {
     null,
     crong.map(pageNumber => getMaxNumber(pageNumber))
   );
-  let answer = comparison(pobiScore, crongScore);
 
-  return answer;
+  return comparison(pobiScore, crongScore);
 }
 
 function comparison(pobiScore, crongScore) {
