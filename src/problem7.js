@@ -42,12 +42,12 @@ function addVisitorScores(visitors, relationScores) {
   return crewScores;
 }
 
-function exceptCrew(crewScores, userFriends) {
-  const crewsWithException = crewScores.filter(
+function filterValidCrew(crewScores, userFriends) {
+  const validCrews = crewScores.filter(
     (crew) => crew[1] !== 0 && !userFriends.includes(crew[0])
   );
 
-  return crewsWithException;
+  return validCrews;
 }
 
 function getSortedCrews(crews) {
@@ -67,8 +67,8 @@ function problem7(user, friends, visitors) {
   const crewScores = addVisitorScores(visitors, relationScores);
 
   const crewScoreArray = Object.entries(crewScores);
-  const crewsWithException = exceptCrew(crewScoreArray, relations[user]);
-  const answer = getSortedCrews(crewsWithException);
+  const validCrews = filterValidCrew(crewScoreArray, relations[user]);
+  const answer = getSortedCrews(validCrews);
 
   if (answer.length > 5) {
     answer.splice(5);
