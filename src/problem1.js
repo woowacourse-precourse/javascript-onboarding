@@ -11,7 +11,7 @@ function problem1(pobi, crong) {
    }
 }
 function checkPage(page) {
-    if(page.some(v=> v <= 1 || v >= 400)) return -1;
+    if(page.some(v=> v < 1 || v > 400)) return -1;
     if(page[0]+1 != page[1]) return -1;
     if(page.length !== 2) return -1;
     return 1;
