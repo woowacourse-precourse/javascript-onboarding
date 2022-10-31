@@ -11,4 +11,15 @@ const getOrderAlphabet = () => {
   return orderAlphabetArr;
 };
 
+const getReverseOrderAlphabet = () => {
+  const reverseOrderAlphabetArr = [];
+
+  for (let i = 90; i >= 65; i--) {
+    reverseOrderAlphabetArr.push(String.fromCharCode(i));
+    reverseOrderAlphabetArr.push(String.fromCharCode(i).toLowerCase());
+  }
+
+  return reverseOrderAlphabetArr;
+};
+
 module.exports = problem4;
