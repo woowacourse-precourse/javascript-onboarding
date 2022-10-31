@@ -36,7 +36,16 @@ function problem6(forms) {
           return -1;
         }
       }
+
+      if (deplicateCheck(nickName, nickName_2)) {
+        result.push(email);
+        result.push(email_2);
+      }
     }
   }
+
+  result = [...new Set(result)];
+  return result.sort();
 }
+
 module.exports = problem6;
