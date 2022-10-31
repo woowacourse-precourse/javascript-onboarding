@@ -51,7 +51,9 @@ function problem4(word) {
     const replace = dictionary[splited[i].toUpperCase()];
     if (!splited[i].match(/[A-Z]/g)) {
       splited[i] = replace.toLowerCase();
-    } else splited[i] = replace;
+      continue;
+    }
+    splited[i] = replace;
   }
 
   return splited.join("");
