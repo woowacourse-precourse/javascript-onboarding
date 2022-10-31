@@ -4,9 +4,8 @@ function problem7(user, friends, visitors) {
   const candidateObj = {};
   calculateNoFriendScore(friends, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
-  const sortedName = sortCandidateByName(candidateObj);
-  const sortedScore = sortCandidateByScore(sortedName);
-  const fiveCandidate = getFiveCandidate(sortedScore);
+  const sortedCandidate = sortCandidate(candidateObj);
+  const fiveCandidate = getFiveCandidate(sortedCandidate);
   const withoutZeroScore = isScoreOverZero(fiveCandidate);
   const answer = getAnswer(withoutZeroScore);
   return answer;
@@ -59,6 +58,11 @@ function calculateVisitorScore(visitors, userFriend, candidateObj) {
       candidateObj[newCandidate] += numberOfVisit[newCandidate];
     else candidateObj[newCandidate] = numberOfVisit[newCandidate];
   }
+}
+
+function sortCandidate(candidateObj) {
+  const sortedName = sortCandidateByName(candidateObj);
+  return sortCandidateByScore(sortedName);
 }
 
 function sortCandidateByName(candidateObj) {
