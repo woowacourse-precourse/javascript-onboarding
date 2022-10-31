@@ -1,3 +1,6 @@
+const ACQUAINTANCE_POINT = 10;
+const TIMELINE_POINT = 1;
+
 const pointMap = new Map();
 const usersFriend = new Set();
 
@@ -49,6 +52,28 @@ const findUsersFriends = (user, friends) => {
   }
 };
 
+const checkAcquaintance = (user, friends) => {
+  const idList = [...pointMap.keys()];
+
+  for (let i = 0; i < idList.length; i++) {
+    const id = idList[i];
+
+    if (isusersFriend(user, friends, id)) continue;
+
+    const acquaintance = getCount(friends, id);
+    const currentPoint = pointMap.get(id);
+    pointMap.set(id, currentPoint + acquaintance * ACQUAINTANCE_POINT);
+  }
+};
+
+const checkTimeline = (visitors) => {
+  for (let i = 0; i < visitors.length; i++) {
+    const id = visitors[i];
+    const currentPoint = pointMap.get(id);
+    pointMap.set(id, currentPoint + TIMELINE_POINT);
+  }
+};
+
 function problem7(user, friends, visitors) {
   const answer = [];
 
@@ -56,43 +81,32 @@ function problem7(user, friends, visitors) {
 
   findUsersFriends(user, friends);
 
-  // 1) 함께 아는 친구
-  const friendsList = [...pointMap.keys()];
-  for (let i = 0; i < friendsList.length; i++) {
-    // 일단 내 친구면 패스
-    if (isusersFriend(user, friends, friendsList[i])) continue;
-    const 함께아는친구수 = getCount(friends, friendsList[i]);
-    const currentPoint = pointMap.get(friendsList[i]);
-    pointMap.set(friendsList[i], currentPoint + 함께아는친구수 * 10); // 나중에 10 매직넘버 처리
-  }
+  checkAcquaintance(user, friends);
 
-  // 2) 타임라인 방문
-  for (let i = 0; i < visitors.length; i++) {
-    const currentPoint = pointMap.get(visitors[i]);
-    pointMap.set(visitors[i], currentPoint + 1);
-  }
+  checkTimeline(visitors);
 
   // user 제거
   pointMap.delete(user);
 
   const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
   for (let i = 0; i < 5; i++) {
-    // 원래 친구가 아니면 출력
-    if (!usersFriend.has(candidates[i][0])) answer.push(candidates[i][0]);
+    // 원래 친구가 아니고 0점이 아니면
+    const [id, point] = candidates[i];
+    if (!usersFriend.has(id) && point !== 0) answer.push(id);
   }
   return answer;
 }
 
-// const user = "mrko";
-// const friends = [
-//   ["donut", "andole"],
-//   ["donut", "jun"],
-//   ["donut", "mrko"],
-//   ["shakevan", "andole"],
-//   ["shakevan", "jun"],
-//   ["shakevan", "mrko"],
-// ];
-// const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-// console.log(problem7(user, friends, visitors));
+const user = "mrko";
+const friends = [
+  ["donut", "andole"],
+  ["donut", "jun"],
+  ["donut", "mrko"],
+  ["shakevan", "andole"],
+  ["shakevan", "jun"],
+  ["shakevan", "mrko"],
+];
+const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
