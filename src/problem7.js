@@ -21,11 +21,11 @@ function problem7(user, friends, visitors) {
     recommendations.push([person, score]);
   };
 
-  const is_current_friends = (current_friend, person) => {
-    return current_friend == person;
+  const is_current_friends = (person) => {
+    return current_friends.includes(person);
   };
 
-  const is_not_user = (user, person) => {
+  const is_not_user = (person) => {
     return user != person;
   };
 
@@ -33,17 +33,19 @@ function problem7(user, friends, visitors) {
     return !current_friends.includes(person);
   };
 
+  const can_be_recommendations = (i, j) => {
+    return (
+      is_current_friends(friends[i][j]) &&
+      is_not_user(friends[i][1 - j]) &&
+      is_not_current_friend(friends[i][1 - j])
+    );
+  };
+
   const find_friends_of_friends = () => {
-    for (let i = 0; i < current_friends.length; i++) {
-      for (let j = 0; j < friends.length; j++) {
-        for (let k = 0; k < 2; k++) {
-          if (
-            is_current_friends(current_friends[i], friends[j][k]) &&
-            is_not_user(user, friends[j][1 - k]) &&
-            is_not_current_friend(friends[j][1 - k])
-          ) {
-            push_recommendations(friends[j][1 - k], 10);
-          }
+    for (let i = 0; i < friends.length; i++) {
+      for (let j = 0; j < 2; j++) {
+        if (can_be_recommendations(i, j)) {
+          push_recommendations(friends[i][1 - j], 10);
         }
       }
     }
