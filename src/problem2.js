@@ -1,6 +1,11 @@
+const {
+  infinityDeleteDuplicateWord,
+  checkInputError,
+} = require("./problem2.util");
+
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  if (checkInputError(cryptogram)) return "error";
+  return infinityDeleteDuplicateWord(cryptogram);
 }
 
 module.exports = problem2;
