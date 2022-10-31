@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer = [];
+  let answer = [];
   const friendObj = {};
   let scores = [];
   const visitorObj = {};
