@@ -10,6 +10,9 @@ function checkNum(stringNum){
 
 function problem3(number) {
   var answer = 0;
+  for(let i = 1;i <= number;i++){
+    answer += checkNum((i).toString());
+  }
   return answer;
 }
 
