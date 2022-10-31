@@ -33,7 +33,6 @@ const recommandByScore = (friendScore, visitorScore) => {
   const scoreArray = Object.entries(totalScore).map(([name, score]) => {
     return { name: name, score: score };
   });
-  console.log(scoreArray);
 
   const sortedScoreArray = scoreArray.sort((x, y) => {
     if (x.score < y.score) {
@@ -84,8 +83,8 @@ const isCurrentFriend = (name, friendOfUser) => {
   1) friends의 두 번째 요소들과 visitor를 concat으로 합치기
   2) 중복을 제거
   3) object 생성.
-  
 */
+
 const searchByFriends = (user, friends, friendOfUser) => {
   if (!friends) return;
 
@@ -103,7 +102,9 @@ const searchByFriends = (user, friends, friendOfUser) => {
 
   const newFriends = newFriendsFilter.map((i) => i[1]);
   const friendScore = newFriends.reduce((acc, cur, i) => {
-    if (!acc[cur]) {
+    if (acc[cur]) {
+      acc[cur] += 10;
+    } else {
       acc[cur] = 10;
     }
 
