@@ -1,5 +1,6 @@
 const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
+const problem3 = require("../src/problem3");
 const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
@@ -66,6 +67,16 @@ describe("problem2", () => {
 
   test("jeoaaabbnseaabbccdddcccaaonghun은 jeonseonghun을 반환해야 한다.", () => {
     expect(problem2("jeoaaabbnseaabbccdddcccaaonghun")).toEqual("jeonseonghun");
+  });
+});
+
+describe("problem3", () => {
+  test('number가 1 이상이 아닌 경우 "Error: number는 1이상이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem3(0)).toEqual("Error: number는 1이상이어야 합니다");
+  });
+
+  test('number가 10000 이하가 아닌 경우 "Error: number는 10000이하이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem3(10001)).toEqual("Error: number는 10000이하이어야 합니다");
   });
 });
 
