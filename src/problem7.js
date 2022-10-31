@@ -34,4 +34,19 @@ function score1(visitors, userFriends, obj) {
   });
 }
 
+function result(obj) {
+  let resultArr = [];
+  const objectToSortedArr = Object.entries(obj).sort((a, b) => {
+    if (b[1] - a[1] === 0) return a[0].localeCompare(b[0]);
+    return b[1] - a[1];
+  });
+  const repeatCount = objectToSortedArr.length < 5 ? objectToSortedArr.length : 5;
+
+  for (let i = 0; i < repeatCount; i++) {
+    resultArr.push(objectToSortedArr[i][0]);
+  }
+
+  return resultArr;
+}
+
 module.exports = problem7;
