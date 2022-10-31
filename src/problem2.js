@@ -1,19 +1,15 @@
 function problem2(cryptogram) {
   var answer;
-  let word = [];
-  let trash = [];
+  let unlockWord = [];
 
   for (let i = 0; i < cryptogram.length; i++) {
-    if (word[word.length - 1] === cryptogram[i]) {
-      word.pop()
-      trash.push(cryptogram[i])
+    if (unlockWord[unlockWord.length - 1] === cryptogram[i]) {
+      unlockWord.pop()
     } else {
-      word.push(cryptogram[i])
-      console.log(word)
+      unlockWord.push(cryptogram[i])
     }
-    
   }
-  answer = word.join('');
+  answer = unlockWord.join('');
   return answer;
 }
 
