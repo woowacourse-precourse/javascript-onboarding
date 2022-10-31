@@ -1,3 +1,17 @@
+function getMax(pages) {
+  if (pages[0] + 1 !== pages[1]) return 0;
+  let result = 0;
+
+  pages.forEach((page) => {
+    let sum = Array.from(page + "").reduce((digit, acc) => +acc + +digit);
+    let mul = Array.from(page + "").reduce((digit, acc) => +acc * +digit);
+
+    result = Math.max(result, sum, mul);
+  });
+
+  return result;
+}
+
 function problem1(pobi, crong) {
   let answer;
 
@@ -10,25 +24,6 @@ function problem1(pobi, crong) {
   else answer = 0;
 
   return answer;
-}
-
-function getMax(pages) {
-  if (pages[0] + 1 !== pages[1]) return 0;
-  let result = 0;
-
-  pages.forEach((page) => {
-    let sum = 0;
-    let mul = 1;
-
-    for (let c of page + "") {
-      sum += +c;
-      mul *= +c;
-    }
-
-    result = Math.max(result, sum, mul);
-  });
-
-  return result;
 }
 
 module.exports = problem1;
