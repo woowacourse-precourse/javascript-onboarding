@@ -1,22 +1,23 @@
 function problem6(forms) {
-  var answer = [];
-  var wordDict = new Map();
-  forms.forEach((crew) => {
-    for (let i = 0; i < crew[1].length - 1; i++) {
-      var word = crew[1].slice(i, i + 2);
-      if (!wordDict.has(word)) wordDict.set(word, 0);
-      else wordDict.set(word, wordDict.get(word) + 1);
-    }
-  });
-  wordDict.forEach((reuse, word) => {
-    if (reuse > 0) {
-      forms.forEach((crew) => {
-        if (crew[1].includes(word)) answer.push(crew[0]);
-      });
-    }
-  });
+  var answer;
 
-  answer.sort();
+  function getDictionary(forms) {
+    var dictionaryMap = new Map();
+    return dictionaryMap;
+  }
+
+  function filtering(dictionaryMap, forms) {
+    var filteredArray;
+    return filteredArray;
+  }
+
+  function sorting(filteredArray) {
+    var resultArray;
+    return resultArray;
+  }
+
+  var dictionary = getDictionary(forms);
+  answer = sorting(filtering(dictionary, forms));
   return answer;
 }
 
