@@ -29,24 +29,12 @@ function problem7(user, friends, visitors) {
   console.log(score); // { andole: 20, jun: 20, bedi: 3, donut: 1, shakevan: 1 }
 
   // 기능 5
-  // score = Object.keys(score).sort((x, y) => {
-  //   if (score[x] > score[y])
-  //       return -1;
-  //   else if (score[x] < score[y])
-  //       return 1;
-  //   else
-  //       return x - y;
-  // }).map(x => {
-  //   return {
-  //       [x]: score[x]
-  //   }
-  // });
   scoreArray = sortScore(score);
-
   console.log("scoreArray: ", scoreArray);
 
-  console.log(score);
-
+  // 기능 6
+  answer = maxFive(scoreArray);
+  console.log("answer: ", answer);
   return answer;
 }
 
@@ -163,6 +151,25 @@ function sortScore(score) {
 
   return scoreArray;
 }
+
+// 기능 6. 최대 5명 return
+function maxFive(scoreArray) {
+  let answer = [];
+  let scoreLength = scoreArray.length;  
+
+  if (scoreLength > 5) {
+    for (let i = 0; 5; i++) {
+      answer.push(score[0]);
+    }
+  } else {
+    for (score of scoreArray) {
+      answer.push(score[0]);
+    }
+  }
+
+  return answer;
+}
+
 
 
 problem7(user,friends, visitors);
