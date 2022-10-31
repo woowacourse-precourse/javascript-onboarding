@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### ✔️ 기능 목록
+
+    💡 스택 구현
+* 연속하는 중복 문자들이 존재하지 않을 때까지 연속하는 중복 문자들을 판별하여 삭제하는 기능 
