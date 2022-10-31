@@ -13,9 +13,9 @@ function problem7(user, friends, visitors) {
             otherFriends.add(friend[1]);
         }
     });
-    visitors.forEach((friend) => {
-        if (userFriends.has(friend) === false) {
-            otherFriends.add(friend);
+    visitors.forEach((visitor) => {
+        if (userFriends.has(visitor) === false) {
+            otherFriends.add(visitor);
         }
     });
 
