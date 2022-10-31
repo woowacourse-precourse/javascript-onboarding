@@ -10,11 +10,17 @@ function getTopFivePeople(people) {
 }
 
 function giveFriendPoints(people, friends) {
+  let currentPoints = 0;
+
   for (let i = 0; i < friends.length; i++) {
-    if (people.get(friends[i][0]) == -1 && people.get(friends[i][1]) >= 0)
-      people.set(friends[i][1], people.get(friends[i][1]) + 10);
-    if (people.get(friends[i][1]) == -1 && people.get(friends[i][0]) >= 0)
-      people.set(friends[i][0], people.get(friends[i][0]) + 10);
+    if (people.get(friends[i][0]) == -1 && people.get(friends[i][1]) >= 0) {
+      currentPoints = people.get(friends[i][1]);
+      people.set(friends[i][1], currentPoints + 10);
+    }
+    if (people.get(friends[i][1]) == -1 && people.get(friends[i][0]) >= 0) {
+      currentPoints = people.get(friends[i][0]);
+      people.set(friends[i][0], currentPoints + 10);
+    }
   }
 }
 
