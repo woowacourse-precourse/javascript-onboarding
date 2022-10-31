@@ -60,12 +60,25 @@ function getMax(arr) {
   return Math.max(leftMax, rightMax);
 }
 
+function getWinner(pobiMax, crongMax) {
+  if (pobiMax > crongMax) {
+    return 1;
+  } else if (pobiMax < crongMax) {
+    return 2;
+  } else if (pobiMax === crongMax) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+
 function problem1(pobi, crong) {
-  var answer;
   if (!isValid(pobi) || !isValid(crong)) return -1;
 
   const pobiMax = getMax(pobi);
   const crongMax = getMax(crong);
+
+  let answer = getWinner(pobiMax, crongMax);
   return answer;
 }
 
