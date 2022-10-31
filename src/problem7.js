@@ -14,8 +14,10 @@ function problem7(user, friends, visitors) {
 
 /**
  * 추천 점수 계산 메소드
- * parameter: 입력으로 주어지는 user, friends, visitors
- * return: 각 사용자의 아이디와 점수로 구성된 딕셔너리
+ * @param {string} user user
+ * @param {Array} friends 친구 관계를 담고있는 2차원 배열
+ * @param {string[]} visitors user 타임라인 방문자 배열
+ * @returns {object} 각 사용자별 점수를 담고있는 딕셔너리
  */
 function calScore(user, friends, visitors) {
   const friendsConnection = getConnection(friends);
@@ -26,7 +28,12 @@ function calScore(user, friends, visitors) {
   
   return friendsTotalScore;
 }
-// 각 사용자의 친구 관계를 딕셔너리로 만드는 메소드
+
+/**
+ * 각 사용자의 친구 관계를 딕셔너리로 만드는 메소드
+ * @param {Array} friends 친구 관계를 담고있는 2차원 배열
+ * @returns {object} key: 사용자 이름, value: 해당 사용자의 친구들로 구성된 집합으로 구성된 딕셔너리
+ */
 function getConnection(friends) {
   const friendsConnection = {};
 
@@ -46,7 +53,13 @@ function getConnection(friends) {
 
   return friendsConnection;
 }
-// 추천 점수 계산에 사용되는 사용자 이름(key), 사용자 점수(value)로 구성된 딕셔너리를 생성하는 메소드
+
+/**
+ * 추천 점수 계산용 딕셔너리를 생성하는 메소드
+ * @param {string} user user
+ * @param {Array} friends 친구 관계를 담고있는 2차원 배열
+ * @returns {object} key: 사용자 이름, value: 0로 구성된 딕셔너리
+ */
 function makeDict(user, friends) {
   const friendsScoreDict = {};
 
@@ -60,7 +73,14 @@ function makeDict(user, friends) {
 
   return friendsScoreDict;
 }
-// 사용자와 함께 아는 친구의 수에 따른 점수 계산 메소드
+
+/**
+ * 사용자와 함께 아는 친구의 수에 따른 점수 계산 메소드
+ * @param {string} user user
+ * @param {object} friendsScoreDict 각 사용자별 점수를 담고있는 딕셔너리
+ * @param {object} friendsConnection 각 사용자별 친구관계로 구성된 딕셔너리
+ * @returns {object} 각 사용자별 점수를 담고있는 딕셔너리
+ */
 function checkFriend(user, friendsScoreDict, friendsConnection) {
   const userFriend = friendsConnection[user];
 
@@ -74,7 +94,13 @@ function checkFriend(user, friendsScoreDict, friendsConnection) {
 
   return friendsScoreDict;
 }
-// 사용자 타임라인 방문 기록에 따른 점수 계산 메소드
+
+/**
+ * 사용자 타임라인 방문 기록에 따른 점수 계산 메소드
+ * @param {object} friendsScoreDict 각 사용자별 점수를 담고있는 딕셔너리
+ * @param {string[]} visitors user 타임라인 방문자 배열
+ * @returns 
+ */
 function checkVisited(friendsScoreDict, visitors) {
   visitors.forEach((item) => {
     if (friendsScoreDict[item] == undefined) friendsScoreDict[item] = 0;
@@ -86,9 +112,10 @@ function checkVisited(friendsScoreDict, visitors) {
 
 
 /**
- * 각 점수에 따라 정렬 후 추천 친구를 return하는 메소드
- * Parameter: user와 친구관계인 사용자 집합, 각 사용자의 아이디와 점수로 구성된 딕셔너리
- * return: 사용자의 점수와 이름으로 정렬된 추천친구 배열
+ * 정렬 후 추천 친구를 return하는 메소드
+ * @param {Set} usersFriendsSet user의 친구로 구성된 집합
+ * @param {object} friendsTotalScore 각 사용자별 총점을 담고있는 딕셔너리
+ * @returns {string[]}사용자의 점수와 이름으로 정렬된 추천친구 배열
  */
 function sortFriends(usersFriendsSet, friendsTotalScore) {
   const sortedFriends = [];
@@ -118,9 +145,8 @@ function sortFriends(usersFriendsSet, friendsTotalScore) {
 }
 
 
-/**
- * 예외 처리
- */
+
+// 예외 처리
 function validUser(user) {
   return 1 <= user.length && user.length <= 30 && typeof (user) == "string";
 }
