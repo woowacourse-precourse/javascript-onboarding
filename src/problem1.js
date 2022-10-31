@@ -10,6 +10,13 @@ function sum(n){    //배열의 값을 각각 더하는 함수
   }
   return answer; 
 }
-
+function multi(n){    //배열의 값을 각각 곱하는 함수
+  let answer = 1
+  n = n.toString()
+  for (let i = 0; i < n.length; i++){
+    answer *= parseInt(n[i])
+  }
+  return answer; 
+}
 
 module.exports = problem1;
