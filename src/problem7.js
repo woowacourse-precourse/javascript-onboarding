@@ -46,15 +46,21 @@ function problem7(user, friends, visitors) {
       this.userGraph = userGraph;
     }
     finduserFrined() {
-      return userGraph[relatedUsers.indexOf(user)];
+      const alreadyFriends = userGraph[relatedUsers.indexOf(user)];
+      let alreadyFriendsDict = {};
+      for (let i = 0; i < alreadyFriends.length; i++) {
+        const key = relatedUsers[alreadyFriends[i]]
+        alreadyFriendsDict[key] = 0;
+      }
+      return alreadyFriendsDict;
     }
   }
-  const userFrined = new FindFrined(
+  const userFined = new FindFrined(
     user,
     relatedUsers,
     userGraph
   ).finduserFrined();
-  
+
 }
 
 module.exports = problem7;
