@@ -60,4 +60,5 @@ function problem1(pobi, crong) {
     return 2;
   }
 }
+
 module.exports = problem1;

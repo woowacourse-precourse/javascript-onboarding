@@ -1,24 +1,24 @@
 function problem2(cryptogram) {
-  let cryptogramArray = cryptogram.split("");
-  let cryptogramArray2 = "";
+  const cryptogramArray = cryptogram.split("");
+  let cryptogramString = "";
   let waste = "";
   cryptogramArray.forEach((code, index, cryptogramArray) => {
     if (
       code !== cryptogramArray[index - 1] &&
       code !== cryptogramArray[index + 1]
     ) {
-      cryptogramArray2 += code;
-    } else {
-      waste += code;
+      cryptogramString += code;
+      return;
     }
+    waste += code;
   });
 
   if (waste === "") {
-    return cryptogramArray2;
+    return cryptogramString;
   } else {
-    return problem2(cryptogramArray2);
+    return problem2(cryptogramString);
   }
 }
 
 module.exports = problem2;
-console.log(problem2("aasqwerwqsdseeesrr"));
+console.log(problem2("saddaas"));
