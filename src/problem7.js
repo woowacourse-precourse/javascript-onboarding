@@ -11,7 +11,7 @@ function problem7(user, friends, visitors) {
       answer.push([visitors[i], 1]);
     else answer[answer.findIndex((x) => x[0] === visitors[i])][1]++;
   let len = answer.length;
-  let orig = answer.findIndex((x) => x[0] === user);
+  let check = answer.findIndex((x) => x[0] === user);
   let map = [];
   for (let i = 0; i < len; i++) map.push(Array(len).fill(0));
   for (let i in friends) {
@@ -20,9 +20,9 @@ function problem7(user, friends, visitors) {
     map[a][b] = 1;
     map[b][a] = 1;
   }
-  answer[orig][1] = -Infinity;
+  answer[check][1] = -Infinity;
   for (let i = 0; i < len; i++) {
-    if (map[orig][i] === 1) {
+    if (map[check][i] === 1) {
       answer[i][1] = -Infinity;
       for (let j = 0; j < len; j++) if (map[i][j] === 1) answer[j][1] += 10;
     }

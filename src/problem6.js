@@ -7,7 +7,7 @@ function problem6(forms) {
   forms.map((form) => {
     const [email, nickname] = form;
     for (let i = 0; i < nickname.length - 1; i++) {
-      let checkname = new RegExp("^[가-힣]*$");
+      const checkname = new RegExp("^[가-힣]*$");
       if (nickname.length < 1 || nickname.length > 20) return;
       if (checkname.test(nickname) == false) return;
       const check = nickname.slice(i, i + 2);
@@ -17,7 +17,7 @@ function problem6(forms) {
   forms.map((form) => {
     const [email, nickname] = form;
     for (let i = 0; i < email.length; i++) {
-      let checkemail = new RegExp("[a-z0-9]+@email.com");
+      const checkemail = new RegExp("[a-z0-9]+@email.com");
       if (email.length < 11 || email.length > 20) return;
       if (checkemail.test(email) === false) return;
     }
