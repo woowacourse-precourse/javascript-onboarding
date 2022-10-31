@@ -1,3 +1,7 @@
+const FRIEND_SCORE = 10;
+const VISIT_SCORE = 1;
+const LIMIT = 5;
+
 const getUsersFriends = (user, relationship) => {
   let friends = relationship.reduce((acc, [personA, personB]) => {
     if (personA === user) {
@@ -62,6 +66,11 @@ const getSortedArray = (unsortedArray) => {
   });
 };
 
+const getRecommendResult = (array) => {
+  const result = array.length > LIMIT ? array.slice(0, LIMIT) : array;
+  return result.map(([key, value]) => key);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -86,6 +95,9 @@ function problem7(user, friends, visitors) {
   // 점수 정렬하기
   const orderedScoreArray = getSortedArray(Array.from(unorderedRecommendMap));
   console.log(orderedScoreArray);
+
+  // 답에 최종 추천할 친구 넣어주기
+  answer = getRecommendResult(orderedScoreArray);
 
   return answer;
 }
