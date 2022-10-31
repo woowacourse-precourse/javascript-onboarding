@@ -4,9 +4,24 @@ function problem6(forms) {
   let nickNameList = [];
   let duplicateIdxList = [];
   inputList(forms, emailList, nickNameList);
-
+  checkDuplicate(nickNameList, emailList, duplicateIdxList);
   return duplicateIdxList.sort();
 }
+
+const checkDuplicate = (nickNameList, emailList, duplicateIdxList) => {
+  nickNameList.reduce((priorNick, currentNick, nickIdx) => {
+    for (i = 0; i < priorNick.length; i++) {
+      [...priorNick.slice(i)].reduce((priorCheck, currentCheck) => {
+        checkVal = priorCheck + currentCheck;
+        nickNameList.slice(nickIdx).map((e, idx) => {
+          e.includes(checkVal);
+        });
+        return priorCheck + currentCheck;
+      });
+    }
+    return currentNick;
+  });
+};
 
 const inputList = (forms, emailList, nickNameList) => {
   forms.map((e, idx) => {
