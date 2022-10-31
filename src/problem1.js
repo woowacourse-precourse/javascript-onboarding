@@ -20,24 +20,24 @@ function problem1(pobi, crong) {
   const POBI = 1;
   const CRONG = 2;
 
-  let pobi_score_arr = [];
-  let crong_score_arr = [];
+  let pobiScoreArr = [];
+  let crongScoreArr = [];
 
   if (pobi[1] != pobi[0] + 1) return ERROR;
   else if (crong[1] != crong[0] + 1) return ERROR;
 
   for (let idx = 0; idx < 2; idx++) {
-    pobi_score_arr.push(Math.max(getSum(pobi[idx]), getMul(pobi[idx])));
+    pobiScoreArr.push(Math.max(getSum(pobi[idx]), getMul(pobi[idx])));
   }
-  const pobi_score = Math.max(...pobi_score_arr);
+  const pobiScore = Math.max(...pobiScoreArr);
 
   for (let idx = 0; idx < 2; idx++) {
-    crong_score_arr.push(Math.max(getSum(crong[idx]), getMul(crong[idx])));
+    crongScoreArr.push(Math.max(getSum(crong[idx]), getMul(crong[idx])));
   }
-  const crong_score = Math.max(...crong_score_arr);
+  const crongScore = Math.max(...crongScoreArr);
 
-  if (pobi_score > crong_score) return POBI;
-  else if (pobi_score < crong_score) return CRONG;
+  if (pobiScore > crongScore) return POBI;
+  else if (pobiScore < crongScore) return CRONG;
   else return TIE;
 }
 
