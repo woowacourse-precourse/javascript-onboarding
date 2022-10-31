@@ -11,6 +11,16 @@ function checkLastDeleted(latestDeleted, currentValue) {
   return false;
 }
 
+function checkStack(stack, currentValue) {
+  if (stack[stack.length - 1] === currentValue) {
+    stack.pop();
+    return true;
+  } else {
+    stack.push(currentValue);
+    return false;
+  }
+}
+
 function problem2(cryptogram) {
   var answer;
   return answer;
