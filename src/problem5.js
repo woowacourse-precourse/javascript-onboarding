@@ -9,9 +9,11 @@ function problem5(money) {
   let temp_money = money;
   let temp_index = 0;
 
-
+  for (let i = 0; i < money_table.length; i++) {
+    array[i] = parseInt(temp_money / money_table[i])
+    temp_money = temp_money % money_table[i]
+  }
+  return array
 }
 
 module.exports = problem5;
-
-problem5(50237)
