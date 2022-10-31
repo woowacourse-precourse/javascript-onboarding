@@ -44,6 +44,10 @@ function getMaxScore(page) {
 function problem1(pobi, crong) {
   if (isCorrectPages(pobi) && isCorrectPages(crong)) {
     let answer;
+    const pobiScore = Math.max(getMaxScore(pobi[0]), getMaxScore(pobi[1]));
+    const crongScore = Math.max(getMaxScore(crong[0]), getMaxScore(crong[1]));
+
+    answer = pobiScore > crongScore ? 1 : crongScore > pobiScore ? 2 : 0;
 
     return answer;
   } else return -1;
