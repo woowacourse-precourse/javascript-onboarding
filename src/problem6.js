@@ -7,6 +7,13 @@ function subsets(string) {
   return arr;
 }
 
+//중복된 부분문자열을 찾는 함수
+function FindDuplicates(arry) {
+  return [
+    ...new Set(arry.filter((item, index, arr) => arr.indexOf(item) !== index)),
+  ];
+}
+
 function problem6(forms) {
   var answer;
   return answer;
