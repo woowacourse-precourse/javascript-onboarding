@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
   let tens = [];
   let ones = [];
   let result = [];
+  let dummy = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (user === friends[i][0]) {
@@ -28,7 +29,33 @@ function problem7(user, friends, visitors) {
     if (tens.indexOf(tens[i]) === i) {
       result.push({ name: tens[i], score: 10 });
     } else if (tens.indexOf(tens[i]) !== i) {
-      result[tens.indexOf(tens[i])].score+=10
+      result[tens.indexOf(tens[i])].score += 10;
+    }
+  }
+
+  //let temp = result.length;
+  for (let i = 0; i < result.length; i++) {
+    dummy.push(result[i].name);
+  }
+
+  //1점 계산 : 친구 제외
+  for (let i = 0; i < visitors.length; i++) {
+    //visitors=[b,b,d,b,s]
+    //list:[d,s]
+    //result=[name,score][3]
+
+    if (!list.includes(visitors[i])) {
+      if (dummy.includes(visitors[i])) {
+        //result에 있는 visitor인 경우 result.score에 +1
+      //  result의 특정 i의 score에 +1
+        // result[visitors.indexOf(visitors[i])].score += 1;
+        result[dummy.indexOf(visitors[i])].score += 1;
+      } else if (visitors.indexOf(visitors[i]) === i) {
+        result.push({ name: visitors[i], score: 1 });
+        dummy.push(visitors[i]);
+      } else if (visitors.indexOf(visitors[i]) !== i) {
+        result[dummy.indexOf(visitors[i])].score += 1;
+      }
     }
   }
 
