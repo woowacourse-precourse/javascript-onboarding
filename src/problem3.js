@@ -7,12 +7,10 @@ function problem3(number) {
     let num = String(i);
 
     if (num.match(reg) !== null) {
-      for (let c = 0; c < num.match(reg).length; c++) {
-        clap.push(num.match(reg)[c]);
-      }
+      clap.push(...num.match(reg))
     }
   }
-  
+
   answer = clap.length;
 
   return answer;
