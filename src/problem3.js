@@ -4,19 +4,19 @@
 // - 손뼉 회수 count
 
 function problem3(number) {
-  let answer = 0;
-  const targetArr = ["3", "6", "9"];
+  var answer = 0;
+  const targetNumbers = ["3", "6", "9"];
 
   function createStringArr(number) {
-    const changedNum = String(number);
-    const resultArr = changedNum.split("");
-    return resultArr;
+    const stringfiedNum = String(number);
+    const splitedArr = stringfiedNum.split("");
+    return splitedArr;
   }
 
-  function countTargetNum(originArr) {
+  function countTargetNum(checkedArr) {
     let targetCnt = 0;
-    originArr.forEach((element) => {
-      if (targetArr.includes(element)) {
+    checkedArr.forEach((element) => {
+      if (targetNumbers.includes(element)) {
         targetCnt += 1;
       }
     });
