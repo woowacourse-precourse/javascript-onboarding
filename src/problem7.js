@@ -26,6 +26,12 @@ function problem7(user, friends, visitors) {
       realNewFriend.push(friend);
     }
   }
+
+  let score = new Map();
+  for (let x of realNewFriend) {
+    if (score.has(x)) score.set(x, score.get(x) + 10);
+    else score.set(x, 10);
+  }
 }
 
 module.exports = problem7;
