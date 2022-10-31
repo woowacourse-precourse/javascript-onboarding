@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = setPeople(user, friends, visitors);
   return answer;
 }
 const userArr = [];
@@ -18,6 +18,7 @@ function setPeople(user, friends, visitors){
       visitorsArr.push(visitors[i])
     }
     setScore(user, friends, visitors);
+    return Object.keys(setScore(user, friends, visitors))
   }
 
 function setScore(user, friends, visitors) {
@@ -43,6 +44,12 @@ function setScore(user, friends, visitors) {
       }
     }
   }
+  
+  const result = {};
+  scored.forEach((element) => { 
+    result[element] = (result[element] || 0)+1; 
+  });
+  return result;
 }
 
 module.exports = problem7;
