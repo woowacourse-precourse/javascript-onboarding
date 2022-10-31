@@ -1,21 +1,24 @@
 function problem6(forms) {
-  let answer = new Set();
   const splittedNickname = {};
 
-  for (let i = 0; i < forms.length; i++) {
-    let [email, nickname] = forms[i];
-    for (let j = 0; j < nickname.length - 1; j++) {
-      let idx = splittedNickname[nickname.slice(j, j + 2)];
-      if (idx) {
-        answer.add(email);
-        answer.add(forms[idx - 1][0]);
+  const isDuplicated = (word) => {
+    return splittedNickname[word] === undefined ? false : true;
+  };
+
+  let bannedEmails = forms.reduce((acc, [email, nickname], idx) => {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      let word = nickname.slice(i, i + 2);
+
+      if (isDuplicated(word)) {
+        acc.add(email).add(forms[splittedNickname[word]][0]);
       } else {
-        splittedNickname[nickname.slice(j, j + 2)] = i + 1;
+        splittedNickname[nickname.slice(i, i + 2)] = idx;
       }
     }
-  }
+    return acc;
+  }, new Set());
 
-  return Array.from(answer).sort((a, b) => a.localeCompare(b));
+  return Array.from(bannedEmails).sort((a, b) => a.localeCompare(b));
 }
 
 module.exports = problem6;
