@@ -1,7 +1,10 @@
 function problem6(forms) {
   var answer;
 
-  if (violationChk) {
+  if (violationChk(forms)) {
+    answer = selector(forms);
+  } else {
+    answer = -1;
   }
 
   return answer;
@@ -51,6 +54,27 @@ function korChk(str) {
   } else {
     return false;
   }
+}
+
+function selector(forms) {
+  var set = new Set();
+  var result = [];
+
+  for (var i = 1; i < forms.length; i++) {
+    var nick1 = forms[i][1];
+    for (let j = i + 1; j < forms.length; j++) {
+      var nick2 = forms[j][1];
+
+      if (comparator(nick1, nick2)) {
+        set.add(forms[i][0]);
+        set.add(forms[j][0]);
+      }
+    }
+  }
+
+  result = Array.from(set);
+
+  return result.sort();
 }
 
 module.exports = problem6;
