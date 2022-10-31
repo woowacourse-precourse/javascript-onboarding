@@ -1,18 +1,25 @@
-function calculator(page) {
-  const plus = String(page)
+function plus(page) {
+  return String(page)
     .split('')
     .reduce((sum, val) => sum + Number(val), 0);
+}
 
-  const mul = String(page)
+function multiply(page) {
+  return String(page)
     .split('')
     .reduce((sum, val) => sum * Number(val), 1);
+}
 
-  return Math.max(plus, mul);
+function maxNumMeasure(page) {
+  const plusResult = plus(page);
+  const multiplyResult = multiply(page);
+
+  return Math.max(plusResult, multiplyResult);
 }
 
 function findMaxNum(left, right) {
-  const leftMax = calculator(left);
-  const rightMax = calculator(right);
+  const leftMax = maxNumMeasure(left);
+  const rightMax = maxNumMeasure(right);
 
   return Math.max(leftMax, rightMax);
 }
