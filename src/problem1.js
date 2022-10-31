@@ -1,9 +1,11 @@
 function problem1(pobi, crong) {
   if (pobi[0] === 1 || crong[1] === 400) return -1;
   if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1;
+  // 각 배열의 수를 더해주고 곱해서 높은 수를 return 해주는 함수
   function calculate(name) {
     let hap = [];
     let muti = [];
+    // 문자로 바꾸고 split으로 나눠서 더함
     name.forEach((e) => {
       hap.push(
         e
