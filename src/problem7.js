@@ -67,6 +67,23 @@ function addVisitorScore(scoreOfUsers, visitors) {
   return newScoreOfUsers;
 }
 
+/**
+ * filter, sort the map and return sliced string array
+ * @param {Map<string, number>} scoreOfUsers current score of users in <string, number> map
+ * @param {Set<string>} friendsOfUser friends of given user in string set
+ * @param {string} user user name in string to find friends
+ * @returns {string[]} filtered, sorted, and sliced array or user names
+ */
+function sortAndSlice(scoreOfUsers, friendsOfUser, user) {
+  return [...scoreOfUsers]
+    .filter((s) => s[1] > 0 && !friendsOfUser.has(s[0]) && s[0] !== user)
+    .sort((a, b) => {
+      return a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1];
+    })
+    .slice(0, 5)
+    .map((s) => s[0]);
+}
+
 function problem7(user, friends, visitors) {
   var answer;
 
@@ -79,6 +96,8 @@ function problem7(user, friends, visitors) {
     friends
   );
   scoreOfUsers = addVisitorScore(scoreOfUsers, visitors);
+
+  answer = sortAndSlice(scoreOfUsers, new Set(friendsOfUser), user);
 
   return answer;
 }
