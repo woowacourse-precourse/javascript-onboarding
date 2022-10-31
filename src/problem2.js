@@ -1,9 +1,9 @@
 function problem2(cryptogram) {
   let answer = '';
 
-  for (let i = 0; i < cryptogram.length; i++) {
-    cryptogram[i] === cryptogram[i + 1] ? i++ : answer += cryptogram[i];
-  }
+  answer = cryptogram.split('').filter((ch, ind, str) => {
+    return str[ind - 1] !== ch && str[ind + 1] !== ch;
+  }).join('');
   if (answer === cryptogram) {
     return answer;
   }
