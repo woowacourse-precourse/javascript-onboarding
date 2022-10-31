@@ -30,8 +30,18 @@ function problem7(user, friends, visitors) {
         }
       })
     }
-
   }
+  visitors.forEach((visitor) => {
+    if (!inputedUsersFriends.includes(visitor)){
+      if (scoreBoard.hasOwnProperty(visitor)){
+        scoreBoard[visitor] += 1;
+        }
+      if (!scoreBoard.hasOwnProperty(visitor)){
+        scoreBoard[visitor] = 1;
+        }
+      }
+    }
+  )
 
 }
 
