@@ -55,3 +55,21 @@ function makeCombinedArr(friends, visitors) {
 
   return combindedArr;
 }
+
+function checkSoreOfFriendsOfFriends(friends, visitors) {
+  const combinedArr = makeCombinedArr(friends, visitors);
+  let map = new Map();
+
+  combinedArr.forEach((friend) => {
+    let i = 0;
+    let count = 10;
+    for (; i < friends.length; i++) {
+      if (friends[i].includes(friend)) {
+        map.set(friend, count);
+        count = count + 10;
+      }
+    }
+  });
+
+  return map;
+}
