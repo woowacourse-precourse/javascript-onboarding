@@ -9,7 +9,7 @@
   [O] score가 0일 때 리스트에서 제거하는 기능 | 함수명 : deleteZeroElement
   [O] 추천 친구를 점수가 가장 높은 순, 점수가 같은 경우 이름 순으로 정렬하는 기능 | compare 함수와 sort 메서드 사용 
   [O] 리스트에서 사람 이름만 추출하여 배열로 반환하는 기능 | 함수명 : getNameList
-  [ ] 리스트를 앞에서부터 최대 5개로 자르는 기능
+  [O] 리스트를 앞에서부터 최대 5개로 자르는 기능 | 함수명 : getListToFive
 */
 
 function problem7(user, friends, visitors) {
@@ -41,6 +41,9 @@ function problem7(user, friends, visitors) {
   deleteZeroScoreList.sort((a, b) => compare(a, b));
 
   let resultNamesList = getNameList(deleteZeroScoreList);
+
+  answer = getListToFive(resultNamesList);
+  return answer;
 }
 
 function initFriendsList(friendsList, person1, person2) {
@@ -95,6 +98,10 @@ function compare(a, b) {
 
 function getNameList(arr) {
   return arr.map((el) => el[0]);
+}
+
+function getListToFive(arr) {
+  return arr.slice(0, 5);
 }
 
 module.exports = problem7;
