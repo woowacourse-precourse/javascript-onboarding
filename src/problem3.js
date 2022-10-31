@@ -7,6 +7,7 @@
 function problem3(number) {
   let count = 0;
 
+  // 1부터 number까지 순회하며 3, 6, 9의 개수만큼 count 증가
   for (let i = 1; i <= number; i++) {
     `${i}`
       .split("")

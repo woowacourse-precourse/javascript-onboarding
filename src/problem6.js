@@ -10,6 +10,7 @@ function problem6(forms) {
   const hashMap = new Map();
   const mailObj = {};
 
+  // 같은 글자가 연속하는 모든 경우 & 어느 이메일에 속하는지 구하기
   forms.forEach((form) => {
     const seq = [
       ...form[1]
@@ -20,9 +21,13 @@ function problem6(forms) {
     seqArr.push(...new Set(seq));
     mailObj[form[0]] = seq;
   });
+
+  // 같은 글자가 연속하는 경우가 서로 다른 이메일에서 몇 개 존재하는지 구하기
   seqArr.forEach((seq) =>
     hashMap.set(seq, hashMap.has(seq) ? hashMap.get(seq) + 1 : 1)
   );
+
+  // 2개 이상 존재하는 경우, 해당 경우가 속한 이메일 반환
   for (const mail in mailObj) {
     for (let i = 0; i < mailObj[mail].length; i++) {
       if (hashMap.get(mailObj[mail][i]) > 1) {

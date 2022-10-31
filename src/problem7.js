@@ -10,11 +10,14 @@ function problem7(user, friends, visitors) {
   const hashMap = new Map();
   const userFriendArr = [];
 
+  // 사용자와 친구인 아이디 배열 구하기
   friends.forEach((friend) => {
     if (friend.includes(user)) {
       userFriendArr.push(friend.filter((name) => name !== user).pop());
     }
   });
+
+  // 사용자와 함께 아는 친구의 수만큼 10점 부여
   userFriendArr.forEach((userFriend) => {
     friends.forEach((friend) => {
       if (friend.includes(userFriend)) {
@@ -28,11 +31,15 @@ function problem7(user, friends, visitors) {
       }
     });
   });
+
+  // 사용자의 타임 라인에 방문한 횟수만큼 1점 부여
   visitors
     .filter((visitor) => !userFriendArr.includes(visitor))
     .forEach((visitor) =>
       hashMap.set(visitor, hashMap.has(visitor) ? hashMap.get(visitor) + 1 : 1)
     );
+
+  // 조건에 맞게 정렬해서 최대 5명 반환
   return [...hashMap.entries()]
     .sort((a, b) => {
       if (a[1] === b[1]) {
