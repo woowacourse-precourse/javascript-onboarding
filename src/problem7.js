@@ -27,11 +27,10 @@ user 정보는 배열 0번째 인덱스에 저장.
 */
 
 function problem7(user, friends, visitors) {
-  function createInfo(eachFriend, i) {
-    let idx = i;
-    eachFriend.map((friend) => {
+  function createInfo(eachFriend, idx) {
+    eachFriend.forEach((friend) => {
       let [name1, name2] = friend;
-      friend.map((name) => {
+      friend.forEach((name) => {
         if (!idIndexInfo[name]) {
           idIndexInfo[name] = idx;
           friendsInfo.push([]);
@@ -45,9 +44,8 @@ function problem7(user, friends, visitors) {
     return idx;
   }
 
-  function cntScore(visitorsInfo, i) {
-    let idx = i;
-    visitorsInfo.map((visitor) => {
+  function cntScore(visitorsInfo, idx) {
+    visitorsInfo.forEach((visitor) => {
       if (!idIndexInfo[visitor]) {
         idIndexInfo[visitor] = idx;
         friendsInfo.push([]);
@@ -60,9 +58,9 @@ function problem7(user, friends, visitors) {
 
   function cntKnowScore(target) {
     let nearFriends = friendsInfo[idIndexInfo[target]];
-    nearFriends.map((nearName) => {
+    nearFriends.forEach((nearName) => {
       let farFriends = friendsInfo[idIndexInfo[nearName]];
-      farFriends.map((farName) => {
+      farFriends.forEach((farName) => {
         friendsScore[idIndexInfo[farName]] += 10;
       });
     });
@@ -82,7 +80,7 @@ function problem7(user, friends, visitors) {
 
   function makeResult(Score, Friends) {
     let [tmpList, alreadyFriendIdx, result] = [[], [], []];
-    Friends.map((friend) => {
+    Friends.forEach((friend) => {
       alreadyFriendIdx.push(idIndexInfo[friend]);
     });
     for (let i = 2; i < Score.length; i++) {
@@ -93,7 +91,7 @@ function problem7(user, friends, visitors) {
     }
     const sortedList = sortList(tmpList);
     const memberList = Object.keys(idIndexInfo);
-    sortedList.map((v) => {
+    sortedList.forEach((v) => {
       result.push(memberList[v[1] - 1]);
     });
 

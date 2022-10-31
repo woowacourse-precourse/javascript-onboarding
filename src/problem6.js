@@ -38,7 +38,7 @@ function problem6(forms) {
   }
 
   function enterDict(accountInfo) {
-    accountInfo.map((account) => {
+    accountInfo.forEach((account) => {
       let nickName = account[1].split("");
       makeResult = makeKeys(nickName);
       makeResult.map((key) => {
@@ -56,7 +56,7 @@ function problem6(forms) {
 
   function refuseEmail(accountInfo) {
     let result = [];
-    accountInfo.map((account) => {
+    accountInfo.forEach((account) => {
       let email = account[0];
       let nickName = account[1].split("");
       let makeResult = makeKeys(nickName);
@@ -76,7 +76,7 @@ function problem6(forms) {
   let [nickNameCnt, refuseList] = [{}, {}];
   enterDict(forms);
   const refuseNames = checkValue(nickNameCnt);
-  refuseNames.map((refuseNickName) => {
+  refuseNames.forEach((refuseNickName) => {
     refuseList[refuseNickName] = true;
   });
   const answer = refuseEmail(forms);
