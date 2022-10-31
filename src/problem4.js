@@ -12,3 +12,6 @@ const stringToCharcodeArr = (word) =>
 
 const gap = (a, b) => a - b;
 
+const stringFormatter = (arr) => arr.join("");
+
+
