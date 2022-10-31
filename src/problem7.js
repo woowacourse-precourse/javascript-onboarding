@@ -1,4 +1,20 @@
 function problem7(user, friends, visitors) {
+  const friendPoint = getFriendPoint(user, friends)
+  const visitPoint = getVisitPoint(user, friends, visitors)
+  const recommendPoint = friendPoint
+
+  for (let person of Object.keys(visitPoint)) {
+      if (recommendPoint[person]) recommendPoint[person] += visitPoint[person]
+      else recommendPoint[person] = visitPoint[person]
+  }
+  const sorted = Object.keys(recommendPoint).sort((a, b) => {
+      if (recommendPoint[a] === recommendPoint[b]) {
+          return a < b ? -1 : a > b ? 1 : 0
+      } else {
+          return recommendPoint[b] - recommendPoint[a]
+      }
+  })
+  return sorted.length > 5 ? sorted.slice(0, 5) : sorted
 }
 
 function getVisitPoint(user, friends, visitors) {
