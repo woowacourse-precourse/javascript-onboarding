@@ -1,33 +1,36 @@
-function solve_cryptogram(str) {
-  let stack = [];
+// Delete all duplicated characters.
+function solve_cryptogram_helper(str) {
+  let is_changed = false;
+  let temp = "";
   for (let i = 0; i < str.length; ++i) {
-    // if the stack is empty, push the charater.
-    if (stack.length === 0) {
-      stack.push(str[i]);
-      continue;
+    let j = i + 1;
+    while (j < str.length && str[i] === str[j]) {
+      j++;
     }
-    // If the character is same with the top of stack, delete the duplicated characters
-    if (stack[stack.length - 1] === str[i]) {
-      for (let j = i + 1; j < str.length; ++j) {
-        if (str[i] !== str[j]) {
-          i = j - 1;
-          break;
-        }
-      }
-      stack.pop();
-      continue;
+    if (j !== i + 1) {
+      is_changed = true;
+      i = j - 1;
+    } else {
+      temp += str[i];
     }
-    stack.push(str[i]);
   }
-  return stack;
+  return [is_changed, temp];
+}
+
+function solve_cryptogram(str) {
+  // Run until there is no change in the str.
+  while (true) {
+    const [is_changed, temp] = solve_cryptogram_helper(str);
+    str = temp;
+    if (!is_changed) {
+      break;
+    }
+  }
+  return str;
 }
 
 function problem2(cryptogram) {
-  const stack = solve_cryptogram(cryptogram);
-  let answer = "";
-  for (let char of stack) {
-    answer += char;
-  }
+  const answer = solve_cryptogram(cryptogram);
   return answer;
 }
 
