@@ -20,7 +20,7 @@ function scoreCalculator(score) {
 function isNotNormal(arr) {
   if (arr.length !== 2) return true;
   if (arr[0] % 2 !== 1 || arr[1] % 2 !== 0) return true;
-  if (arr[0] <= 1 || arr[1] >= 400) return true;
+  if (arr[0] < 1 || arr[1] > 400) return true;
   if (arr[1] - arr[0] !== 1) return true;
   return false;
 }
