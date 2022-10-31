@@ -28,6 +28,15 @@ function scoreFriends(
     }
   }
 }
+function scoreVisitors(recommendScore, visitors, userFriendList) {
+  for (let x of visitors) {
+    if (!recommendScore.has(x) && !userFriendList.includes(x)) {
+      recommendScore.set(x, 1);
+    } else if (recommendScore.has(x) && !userFriendList.includes(x)) {
+      recommendScore.set(x, recommendScore.get(x) + 1);
+    }
+  }
+}
 function problem7(user, friends, visitors) {
   var answer = [];
 
@@ -39,6 +48,7 @@ function problem7(user, friends, visitors) {
   let userFriendList = friendsList.get(user);
   let friendNames = Array.from(friendsList.keys());
   scoreFriends(recommendScore, friendsList, friendNames, user, userFriendList);
+  scoreVisitors(recommendScore, visitors, userFriendList);
   return answer;
 }
 
