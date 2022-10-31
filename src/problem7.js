@@ -1,6 +1,6 @@
 const SnsFreindrRecomander = {
   user: "",
-  freinds: [],
+  friends: [],
   visitors: [],
   inputDatas: function (user, friends, visitors) {
     if (this.checkDatas(user, friends, visitors)) {
@@ -12,10 +12,13 @@ const SnsFreindrRecomander = {
     return true;
   },
   checkDatas: function (user, friends, visitors) {
-    return this.checkUserLength(user);
+    return this.checkUserLength(user) && this.checkFriendsLength(friends);
   },
   checkUserLength: function (user) {
     return user >= 1 && user <= 30;
+  },
+  checkFriendsLength: function (friends) {
+    return friends.length >= 1 && friends.length <= 10000;
   },
 };
 
