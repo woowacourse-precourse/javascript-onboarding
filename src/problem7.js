@@ -68,15 +68,20 @@ const sortFriends = (scoreOfFriends) => {
     }
   });
 
-  arr = arr.map(el => el[0])
+  arr = arr.map((el) => el[0]);
 
   return arr;
 };
 
 function problem7(user, friends, visitors) {
   let answer;
+  let friendsOfUser = findFriendsOfUser(user, friends, visitors);
+  let scoreOfFriends = calcScoreOfFriends(user, friends, friendsOfUser);
 
-  return;
+  calcScoreOfVisitors(visitors, friendsOfUser, scoreOfFriends);
+  answer = sortFriends(scoreOfFriends);
+
+  return answer;
 }
 
 module.exports = problem7;
