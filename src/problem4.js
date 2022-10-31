@@ -1,7 +1,14 @@
+const UPPER_CASE_START_CHARCODE = 'A'.charCodeAt(0);
+const UPPER_CASE_END_CHARCODE = 'Z'.charCodeAt(0);
+const LOWER_CASE_START_CHARCODE = 'a'.charCodeAt(0);
+const LOWER_CASE_END_CHARCODE = 'z'.charCodeAt(0);
+
 const isUpperCase = (letter) =>
-  letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90;
+  letter.charCodeAt(0) >= UPPER_CASE_START_CHARCODE &&
+  letter.charCodeAt(0) <= UPPER_CASE_END_CHARCODE;
 const isLowerCase = (letter) =>
-  letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122;
+  letter.charCodeAt(0) >= LOWER_CASE_START_CHARCODE &&
+  letter.charCodeAt(0) <= LOWER_CASE_END_CHARCODE;
 
 function isAlphabet(letter) {
   if (isUpperCase(letter) || isLowerCase(letter)) {
@@ -17,11 +24,11 @@ function reverseAlphabet(letter) {
   let reverseAscii = 0;
 
   if (isUpperCase(letter)) {
-    reversePoint = 65 + 90;
+    reversePoint = UPPER_CASE_START_CHARCODE + UPPER_CASE_END_CHARCODE;
   }
 
   if (isLowerCase(letter)) {
-    reversePoint = 97 + 122;
+    reversePoint = LOWER_CASE_START_CHARCODE + LOWER_CASE_END_CHARCODE;
   }
 
   reverseAscii = reversePoint - letterAscii;
