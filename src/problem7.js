@@ -1,11 +1,9 @@
 function isValidUser(user) {
-  if (typeof user !== 'string') {
-    return false;
-  }
-  if (user.length < 1 || user.length > 30) {
-    return false;
-  }
-  return true;
+  return (
+    typeof user !== 'string' ||
+    user.length < 1 ||
+    user.length > 30
+  ) ? false : true;
 }
 
 function isValidFriendsElement(friends) {
@@ -15,10 +13,12 @@ function isValidFriendsElement(friends) {
     }
     const idA = friends[i][0];
     const idB = friends[i][1];
-    if (idA.length < 1 || idA.length > 30) {
-      return false;
-    }
-    if (idB.length < 1 || idB.length > 30) {
+    if (
+      idA.length < 1 ||
+      idA.length > 30 ||
+      idB.length < 1 ||
+      idB.length > 30
+    ) {
       return false;
     }
   }
@@ -144,7 +144,3 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
-
-// console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
-
-// console.log(problem7("mrko", [["donut", "jun"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
