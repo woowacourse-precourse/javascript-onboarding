@@ -1,3 +1,16 @@
+function checkString(num,string,arr,ans){
+
+  for(let i = 0; i<arr.length; i++){
+    if(i == num) continue;
+    else{
+      if(arr[i].includes(string)){
+        ans.push(num);
+        ans.push(i);
+      }
+    }
+  }
+}
+
 function problem6(forms) {
   //var answer;
   let check = [];
@@ -15,7 +28,7 @@ function problem6(forms) {
     }
   }
 
-  
+
 }
 
 module.exports = problem6;
