@@ -13,10 +13,12 @@ function isValidFriendsElement(friends) {
     if (friends[i].length !== 2) {
       return false;
     }
-    if (friends[i][0].length < 1 || friends[i][0].length > 30) {
+    const idA = friends[i][0];
+    const idB = friends[i][1];
+    if (idA.length < 1 || idA.length > 30) {
       return false;
     }
-    if (friends[i][1].length < 1 || friends[i][1].length > 30) {
+    if (idB.length < 1 || idB.length > 30) {
       return false;
     }
   }
@@ -59,11 +61,89 @@ function pushFriendList(friendList, friend) {
   }
 }
 
-function getFriendList(friends) {
+function getFriendList(user, friends) {
   const friendList = {};
-
   for (let i = 0; i < friends.length; i++) {
     pushFriendList(friendList, friends[i]);
+  }
+  if (!Object.keys(friendList).includes(user)) friendList[user] = [];
+  return friendList;
+}
+
+function isIncludesObjectKeys(object, key) {
+  return (Object.keys(object).includes(key)) ? true : false;
+}
+
+function getFriendRecommandScore(friendList, user) {
+  const recommandScore = {};
+  const friendOfUser = friendList[user];
+  const friendListKey = Object.keys(friendList);
+  for (let i = 0; i < friendListKey.length; i++) {
+    if (friendOfUser.includes(friendListKey[i]) || friendListKey[i].includes(user)) {
+      continue;
+    }
+    recommandScore[friendListKey[i]] = friendList[friendListKey[i]].filter(
+      x => friendOfUser.includes(x)).length * 10;
+  }
+  return recommandScore;
+}
+
+function getVisitorRecommandScore(recommandScore, friendList, visitors) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (friendList.includes(visitors[i])) {
+      continue;
+    }
+    if (!isIncludesObjectKeys(recommandScore, visitors[i])) {
+      recommandScore[visitors[i]] = 0;
+    }
+    recommandScore[visitors[i]]++;
+  }
+  return recommandScore;
+}
+
+function getRecommandScore(user, friendList, visitors) {
+  const recommandScore = getFriendRecommandScore(friendList, user);
+  return getVisitorRecommandScore(recommandScore, friendList[user], visitors);
+}
+
+function getSameValueArr(value, recommandScore) {
+  const recommandScoreKey = Object.keys(recommandScore);
+  const sameValueArr = new Array();
+  for (let i = 0; i < recommandScoreKey.length; i++) {
+    if (recommandScore[recommandScoreKey[i]] === value) {
+      sameValueArr.push(recommandScoreKey[i]);
+    }
+  }
+  return sameValueArr.sort();
+}
+
+function sortResult(recommandScore) {
+  const recommandScoreValue = new Set(Object.values(recommandScore).sort(
+    function (a, b) { return b - a; }));
+  const resultArr = new Array();
+  recommandScoreValue.delete(0);
+  for (let value of recommandScoreValue.values()) {
+    resultArr.push(...getSameValueArr(value, recommandScore));
+  }
+  return resultArr;
+}
+
+function problem7(user, friends, visitors) {
+  if (!isValidUser(user) || !isValidFriends(friends) || !isValidVisitors(visitors)) {
+    return;
+  }
+  const friendList = getFriendList(user, friends);
+  const recommandScore = getRecommandScore(user, friendList, visitors);
+  return sortResult(recommandScore);
+}
+
+module.exports = problem7;
+
+// console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
+
+console.log(problem7("mrko", [["donut", "jun"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
+
+
     // 2nd
     // if (!isFriendListKey(friendList, friends[i][0])) {
     //   friendList[friends[i][0]] = [];
@@ -78,71 +158,3 @@ function getFriendList(friends) {
     // else friendList[friends[i][0]] = [friends[i][1]];
     // if (Object.keys(friendList).includes(friends[i][1])) friendList[friends[i][1]].push(friends[i][0]);
     // else friendList[friends[i][1]] = [friends[i][0]];
-  }
-  return friendList;
-}
-
-function isIncludesObjectKeys(object, key) {
-  return (Object.keys(object).includes(key)) ? true : false;
-}
-
-function getFriendRecommandScore(friendList, user) {
-  const recommandScore = {};
-  const friendOfUser = friendList[user];
-  const friendListKey = Object.keys(friendList);
-
-  for (let i = 0; i < friendListKey.length; i++) {
-    // if (isFriendListKey())
-    if (friendOfUser.includes(friendListKey[i]) || friendListKey[i].includes(user)) {
-      continue;
-    }
-    recommandScore[friendListKey[i]] = friendList[friendListKey[i]].filter(x => friendOfUser.includes(x)).length * 10;
-  }
-  return recommandScore;
-}
-
-function getVisitorRecommandScore(recommandScore, friendList, visitors) {
-  for (let i = 0; i < visitors.length; i++) {
-    if (isIncludesObjectKeys(friendList, visitors[i])) {
-      continue;
-    }
-    if (!isIncludesObjectKeys(recommandScore, visitors[i])) {
-      recommandScore[visitors[i]] = 0;
-    }
-    recommandScore[visitors[i]]++;
-  }
-  return recommandScore;
-}
-
-function getRecommandScore(user, friendList, visitors) {
-  const recommandScore = getFriendRecommandScore(friendList, user);
-  return getVisitorRecommandScore(recommandScore, friendList, visitors);
-}
-
-function sortResult(recommandScore) {
-  const recommandScoreValue = new Set(Object.values(recommandScore).sort(function (a, b) { return b - a; }));
-  const recommandScoreKey = Object.keys(recommandScore);
-  const result = [];
-  for (let value of recommandScoreValue.values()) {
-    const tmpArr = [];
-    for (let i = 0; i < recommandScoreKey.length; i++) {
-      if (recommandScore[recommandScoreKey[i]] === value) tmpArr.push(recommandScoreKey[i]);
-    }
-    tmpArr.sort();
-    result.push(...tmpArr);
-  }
-  return result;
-}
-
-function problem7(user, friends, visitors) {
-  if (!isValidUser(user) || !isValidFriends(friends) || !isValidVisitors(visitors)) {
-    return;
-  }
-  const friendList = getFriendList(friends);
-  const recommandScore = getRecommandScore(user, friendList, visitors);
-  return sortResult(recommandScore);
-}
-
-module.exports = problem7;
-
-console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
