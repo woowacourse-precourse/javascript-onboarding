@@ -7,6 +7,7 @@ function getSubnicks(nickname) {
 }
 
 function problem6(forms) {
+  const answer = new Set();
   const subnickCount = {};
 
   forms.forEach(([_, nickname]) => {
@@ -15,9 +16,18 @@ function problem6(forms) {
       subnickCount[subnick]++;
     });
   });
-  
-  var answer;
-  return answer;
+
+  forms.forEach(([email, nickname]) => {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const subnick = nickname.substr(i, 2);
+      if (subnickCount[subnick] > 1) {
+        answer.add(email);
+        break;
+      }
+    }
+  });
+
+  return [...answer].sort();
 }
 
 module.exports = problem6;
