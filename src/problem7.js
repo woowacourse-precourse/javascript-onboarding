@@ -1,10 +1,26 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let recommendationObj = {};
+  let recommendationArr = [];
 
   const allRelationships = findAllRelationship(friends);
   findMutualFriends(user, allRelationships, recommendationObj);
   findNewVisitors(visitors, allRelationships, user, recommendationObj);
+
+  for (let person in recommendationObj) {
+    recommendationArr.push([person, recommendationObj[person]]);
+  }
+
+  if (recommendationArr.length <= 5) {
+    for (let el of recommendationArr) {
+      answer.push(el[0]);
+    }
+  } else {
+    recommendationArr.sort(sortFn);
+    for (let i = 0; i <= 4; i++) {
+      answer.push(recommendationArr[i][0]);
+    }
+  }
 
   return answer;
 }
@@ -52,6 +68,16 @@ function findNewVisitors(visitors, allRelationships, user, recommendation) {
       }
       recommendation[visitor] += 1;
     }
+  }
+}
+
+function sortFn(a, b) {
+  if (a[1] === b[1]) {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    if (a === b) return 0;
+  } else {
+    return b[1] - a[1];
   }
 }
 
