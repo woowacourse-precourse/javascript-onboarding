@@ -35,19 +35,6 @@ class Calculator {
     this.crong = crong;
   }
 
-  answerWhoWin(pobiNum, crongNum) {
-    if (pobiNum === crongNum) return 0;
-
-    return pobiNum > crongNum ? 1 : 2;
-  }
-
-  compareTwoBook() {
-    return this.answerWhoWin(
-      this.getBigestNumber(this.pobi),
-      this.getBigestNumber(this.crong)
-    );
-  }
-
   splitNum(page) {
     return String(page)
       .split("")
@@ -65,6 +52,19 @@ class Calculator {
   getBigestNumber(book) {
     return Math.max(
       ...book.flatMap((page) => [this.plusPage(page), this.multiPage(page)])
+    );
+  }
+
+  answerWhoWin(pobiNum, crongNum) {
+    if (pobiNum === crongNum) return 0;
+
+    return pobiNum > crongNum ? 1 : 2;
+  }
+
+  compareTwoBook() {
+    return this.answerWhoWin(
+      this.getBigestNumber(this.pobi),
+      this.getBigestNumber(this.crong)
     );
   }
 }
