@@ -58,23 +58,16 @@ function problem1(pobi, crong) {
     return result;
   }
 
-  function getPobiMaxResult(pobiPage) {
-    const leftResult = getAddResult(pobiPage[0]);
-    const rightResult = getMultiplyResult(pobiPage[1]);
-
-    return Math.max(leftResult, rightResult);
-  }
-
-  function getCrongMaxResult(crongPage) {
-    const leftResult = getAddResult(crongPage[0]);
-    const rightResult = getMultiplyResult(crongPage[1]);
+  function getMaxResult(leftPage, rightPage) {
+    const leftResult = getAddResult(leftPage);
+    const rightResult = getMultiplyResult(rightPage);
 
     return Math.max(leftResult, rightResult);
   }
 
   function getWinner() {
-    const pobiResult = getPobiMaxResult(pobi);
-    const crongResult = getCrongMaxResult(crong);
+    const pobiResult = getMaxResult(pobi[0], pobi[1]);
+    const crongResult = getMaxResult(crong[0], crong[1]);
 
     if (pobiResult > crongResult) {
       answer = POBI;
