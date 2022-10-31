@@ -1,8 +1,6 @@
 let hash = {};
 
 function problem7(user, friends, visitors) {
-  var answer;
-
   arrangeFriends();
   const alreadyFriendArr = findUserFriend(friends, user);
   delAlreadyFriend(alreadyFriendArr);
@@ -19,6 +17,14 @@ function problem7(user, friends, visitors) {
   sortable.sort(function (a, b) {
     return b[1] - a[1];
   });
+
+  let answer = [];
+  const arrLength = sortable.length;
+  if (arrLength > 5) arrLength = 5;
+  for (let idx = 0; idx < arrLength; idx++) {
+    // 추천 점수가 0인 경우 추천하지 않음
+    if (sortable[idx][1] !== 0) answer.push(sortable[idx][0]);
+  }
 
   return answer;
 
