@@ -28,6 +28,10 @@ const isExceptionSituationOccurred = (bookPage) => {
     isLastPage(bookPage)
   );
 };
+
+const selectMaxValue = (arr) =>
+  Math.max(...[...arr.map(eachDigitAllAdd), ...arr.map(eachDigitAllMultiply)]);
+
 const eachDigitAllAdd = (bookPage) =>
   String(bookPage)
     .split("")
@@ -41,6 +45,10 @@ const eachDigitAllMultiply = (bookPage) =>
 function problem1(pobi, crong) {
   if (isExceptionSituationOccurred(pobi) || isExceptionSituationOccurred(crong))
     return -1;
+
+  const maxPobi = selectMaxValue(pobi);
+  const maxCrong = selectMaxValue(crong);
+
 }
 
 module.exports = problem1;
