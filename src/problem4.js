@@ -10,13 +10,7 @@ const isLowerCase = (letter) =>
   letter.charCodeAt(0) >= LOWER_CASE_START_CHARCODE &&
   letter.charCodeAt(0) <= LOWER_CASE_END_CHARCODE;
 
-function isAlphabet(letter) {
-  if (isUpperCase(letter) || isLowerCase(letter)) {
-    return true;
-  }
-
-  return false;
-}
+const isAlphabet = (letter) => isUpperCase(letter) || isLowerCase(letter);
 
 function reverseAlphabet(letter) {
   const letterCharCode = letter.charCodeAt(0);
