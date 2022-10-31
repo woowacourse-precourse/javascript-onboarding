@@ -11,6 +11,8 @@ function problem7(user, friends, visitors) {
     overlapfriendsWithScore,
     visitorWithScore
   );
+
+  const sortedList = sortByScore(mergedRecommendList);
 }
 
 function getFriends(user, buddies) {
@@ -85,4 +87,14 @@ function mergeRecommendList(overlapList, visitorList) {
 
   return mergedList;
 }
+
+function sortByScore(list) {
+  return list.sort((a, b) => {
+    if (a.score === b.score) {
+      return a.name - b.name;
+    }
+    return b.score - a.score;
+  });
+}
+
 module.exports = problem7;
