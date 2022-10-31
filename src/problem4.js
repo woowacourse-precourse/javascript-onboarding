@@ -54,12 +54,11 @@ function map_insert(first, last, map) {
 }
 
 function problem4(word) {
-  /*초기 세팅
   var answer = '';
   let map = new Map();
   map = map_insert('A', 'Z', map);
   word = [...word];
-  */
+
   word.forEach((alpha) => {
     //문자열의 문자마다 객체 만들어주고, 프로토타입을 map으로 설정
     let word_each = new alphabet(alpha, alpha.charCodeAt(0));
