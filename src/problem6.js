@@ -1,10 +1,7 @@
-function isDuplicateWord(forms, word) {
-  return forms.some((form) => form[1].includes(word));
-}
-
-function isCrewWithDuplicateWord(crew, duplicateWords) {
-  return duplicateWords.some((word) => crew.includes(word));
-}
+const isDuplicateWord = (forms, word) =>
+  forms.some((form) => form[1].includes(word));
+const isCrewWithDuplicateWord = (crew, duplicateWords) =>
+  duplicateWords.some((word) => crew.includes(word));
 
 function removeDuplicateEmails(emails) {
   const emailSet = new Set(emails);
