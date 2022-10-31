@@ -5,8 +5,8 @@
  */
 
 function problem4(word) {
-  var answer;
-  return answer;
+  const frogWord = changeWordGreenFrog(word);
+  return frogWord;
 }
 
 function changeAlphabetGreenFrog(inputLetter) {
