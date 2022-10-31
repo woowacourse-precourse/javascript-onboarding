@@ -6,19 +6,29 @@
 
 
 function problem7(user, friends, visitors) {
-  let userArray = [];
   let userFriendArray = [];
+  let friendArray = [];
 
-  for (let i=0; i<friends.length; i++) {
-    userArray.push(friends[i])
+  for (let i = 0; i < friends.length; i++) {
     if (friends[i][0].includes(user)) {
       userFriendArray.push(friends[i][1])
     } else if (friends[i][1].includes(user)) {
       userFriendArray.push(friends[i][0])
     }
-  }
 
-  console.log(userArray, userFriendArray)
+    console.log(userFriendArray)
+
+    for (let i = 0; i < friends.length; i++) {
+      for (let j = 0; j < userFriendArray.length; j++) {
+        if (friends[i][0].includes(userFriendArray[j]) && friends[i][1] !== user) {
+          friendArray.push(friends[i][1])
+        } else if (friends[i][1].includes(userFriendArray[j]) && friends[i][0] !== user) {
+          friendArray.push(friends[i][0])
+        }
+      }
+    }
+  }
+  console.log(friendArray)
 }
 
 module.exports = problem7;
