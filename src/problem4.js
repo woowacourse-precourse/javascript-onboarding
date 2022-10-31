@@ -11,7 +11,21 @@ function changeSmall(small){
 
 
 function problem4(word) {
-  var answer;
+  var answer = "";
+  var capitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var smallLetter = "abcdefghijklmnopqrstuvwxyz";
+  for(let i = 0;i < word.length;i++){
+    if(capitalLetter.includes(word[i])){
+      answer += changeCapital(word[i]);
+    }
+    else if(smallLetter.includes(word[i])){
+      answer += changeSmall(word[i]);
+    }
+    else{
+      answer += word[i];
+    }
+    
+  }
   return answer;
 }
 
