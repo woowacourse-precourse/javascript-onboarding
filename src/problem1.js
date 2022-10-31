@@ -30,7 +30,12 @@ function problem1(pobi, crong) {
 
 module.exports = problem1;
 
-function isvalid(pobi, crong) {
+/**
+ * 초기 입력값의 상태를 체크하여 오류 또는 진행 판단
+ * @param {Array, Array} 책 페이지 값 들어오기 때문에 길이는 2 
+ * @returns boolean 값 반환 
+ */
+function isvalidinit(pobi, crong) {
   if (pobi[0] < 1 && crong[1] > 399) return false
 
   return true
