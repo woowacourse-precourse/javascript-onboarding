@@ -10,14 +10,14 @@ function problem2(cryptogram) {
   return result
 }
 
-function decryption(cryptogram){
+function decryption(data){
   let result = ''
-  for(let i =0; i<cryptogram.length;i++){
-    if(cryptogram[i]===cryptogram[i+1]){
+  for(let i =0; i<data.length;i++){
+    if(data[i]===data[i+1]){
      i=i+1
     }
     else{
-     result += cryptogram[i];
+     result += data[i];
     }
   }
   return result
