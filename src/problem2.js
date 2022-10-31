@@ -23,22 +23,41 @@ function except(cryptogram=""){
   
 }
 
-function action(cryptogram=""){
-  for (let i=0; i<(cryptogram.length-1); i++){
+function action(cryptogram = '') {
+  let count = 0;
+  let length = cryptogram.length;
 
-
+  for (let i = 0; i < length - 1; i++) {
+    if (cryptogram[i] == cryptogram[i + 1]) {
+      cryptogram =
+        cryptogram.slice(0, i) + cryptogram.slice(i + 2, cryptogram.length);
+      console.log(cryptogram);
+      count = 1;
+      i--;
+      length -= 2;
+    }
   }
-    
-  
+
+  return [cryptogram, count];
 }
 
-function problem2(cryptogram="") {
+function problem2(cryptogram = '') {
   var answer;
 
   let e = except(cryptogram)
-  if(e == -1){return -1;}
 
+  if( e == -1){return -1;}
+
+  let count = 1;
+
+  for (; count != 0 || cryptogram.length != 0; ) {
+    [cryptogram, count] = action(cryptogram);
+  }
+
+  console.log(cryptogram);
+  answer = cryptogram;
   return answer;
 }
+
 
 module.exports = problem2;
