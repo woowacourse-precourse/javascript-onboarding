@@ -1,8 +1,9 @@
 function problem7(user, friends, visitors) {
   const userFriends = getUserFreinds(user, friends);
+  const othersFriends = getOthersFriends(user, friends);
 
-  
-  return userFriends;
+  console.log(userFriends);
+  console.log(othersFriends);
 }
 
 function getUserFreinds(user, relationship) {
@@ -10,6 +11,10 @@ function getUserFreinds(user, relationship) {
                      .flat()
                      .filter(name => name !== user);
 }
+
+function getOthersFriends(user, relationship) {
+  return relationship.filter((v) => !(v.includes(user)));
+} 
 
 const user = "mrko";
 const friends =  [
