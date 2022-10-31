@@ -1,16 +1,16 @@
 function problem1(pobi, crong) {
   var answer;
-  pobiLeft = pobi[0];
-  pobiRight = pobi[1];
-  crongLeft = crong[0];
-  crongRight = crong[1];
+  let pobiLeft = pobi[0];
+  let pobiRight = pobi[1];
+  let crongLeft = crong[0];
+  let crongRight = crong[1];
 
-  pobiMaxSum = largerNumber(digitSum(pobiLeft), digitSum(pobiRight));
-  pobiMaxMultiply = largerNumber(digitMultiply(pobiLeft), digitMultiply(pobiRight));
-  pobiMax = largerNumber(pobiMaxSum, pobiMaxMultiply); // max score for pobi
-  crongMaxSum = largerNumber(digitSum(crong[0]), digitSum(crong[1]));
-  crongMaxMultiply = largerNumber(digitMultiply(crong[0]), digitMultiply(crong[1]));
-  crongMax = largerNumber(crongMaxSum, crongMaxMultiply); // max score for crong
+  let pobiMaxSum = largerNumber(digitSum(pobiLeft), digitSum(pobiRight));
+  let pobiMaxMultiply = largerNumber(digitMultiply(pobiLeft), digitMultiply(pobiRight));
+  let pobiMax = largerNumber(pobiMaxSum, pobiMaxMultiply); // max score for pobi
+  let crongMaxSum = largerNumber(digitSum(crong[0]), digitSum(crong[1]));
+  let crongMaxMultiply = largerNumber(digitMultiply(crong[0]), digitMultiply(crong[1]));
+  let crongMax = largerNumber(crongMaxSum, crongMaxMultiply); // max score for crong
 
   if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) {
       answer = -1; // wrong page number: return -1
