@@ -56,10 +56,9 @@ function problem7(user, friends, visitors) {
     return a < b ? -1 : 1;
   });
 
-  // 다섯명만 담기
-  let maxFiveList = [];
-  for (let i = 0; i < 5; i++) {
-    maxFiveList.push(pointArr[i]);
+  let recommendList = [];
+  for (let i = 0; i < pointArr.length; i++) {
+    if (i < 5) recommendList.push(pointArr[i]);
   }
 
   // 추천 이름
