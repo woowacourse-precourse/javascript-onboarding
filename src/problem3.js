@@ -7,6 +7,8 @@ function problem3(number) {
     claps.push(threeSixNine.length);
   }
 
+  answer = claps.reduce((prev, current) => prev + current, 0);
+
   return answer;
 }
 
