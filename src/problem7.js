@@ -40,4 +40,14 @@ const giveScoreToFriendOfFriend = (user, friends, userFriends) => {
 
   return pointsOfUsers;
 };
+
+const giveScoreToVisitor = (visitors, userFriends, pointsOfUsers) => {
+  visitors.forEach((visitor) => {
+    if (!userFriends.includes(visitor)) {
+      !pointsOfUsers[visitor] ? (pointsOfUsers[visitor] = 1) : (pointsOfUsers[visitor] += 1);
+    }
+  });
+
+  return pointsOfUsers;
+};
 module.exports = problem7;
