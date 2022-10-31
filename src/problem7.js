@@ -25,6 +25,11 @@ function problem7(user, friends, visitors) {
   const tmpList = Object.keys(linkedFriends);
   for (i = 0; i < arrLen; i++)  
     score[tmpList[i]] += linkedFriends[tmpList[i]] * 10;
+  
+  score = updateScoreList(user, visitors, score);   //score에 없는 유저 업데이트
+
+  for (i = 0; i < visitors.length; i++)   //visitors 배열에 따라 score점수 계산
+    score[visitors[i]] += 1;
 
   return answer;
 }
