@@ -73,6 +73,14 @@ function problem7(user, friends, visitors) {
     return recommendList.sort((a, b) => b.score - a.score).slice(0, 5);
   }
 
+  const friendTable = createFriendsTable(friends);
+  calcFriendsScore(friendTable, user);
+  calcVisitorsScore(friendTable, visitors);
+
+  const recommendList = getRecommendList(friendTable);
+  sortFriendByScore(recommendList);
+
+  return recommendList.map(friend => friend.name);
 }
 
 module.exports = problem7;
