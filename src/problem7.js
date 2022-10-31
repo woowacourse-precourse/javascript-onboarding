@@ -1,5 +1,7 @@
 function problem7(user, friends, visitors) {
-  const checkUserFreind = userFriend(user,friends)
+  const checkUserFreind = userFriend(user,friends)  
+  const checkVisitList = visitorList(visitors)
+  console.log(checkUserFreind, checkVisitList)
 }
 
 function userFriend(user,friends){
@@ -14,5 +16,12 @@ function userFriend(user,friends){
   }
   return userFriendList;
 }
+
+function visitorList(visitors){
+  const visitor_List = [];
+  visitors.filter((visitor) => {
+    visitor_List[visitor] = (visitor_List[visitor] || 0)+1});
+    return visitor_List;
+  };
 
 module.exports = problem7;
