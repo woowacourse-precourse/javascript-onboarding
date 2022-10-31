@@ -39,10 +39,14 @@ function problem6(forms) {
       .reduce((acc, curr) => acc.concat(curr), []);
   }
 
-  const segmentsTable = createSegmentsTable();
+  const segmentsTable = createSegmentsTable(forms);
   const duplicateList = getDuplicateNameList(segmentsTable);
 
   return duplicateList.sort();
 }
 
 module.exports = problem6;
+
+// 1트 : 한글자씩 보면서 걸리면 추가 ( 안될거같음 )
+// 2트 : 해시
+  // 2-1 : 2개,3개,4개... 연속 글자 마다 해시맵을 다 만듦.
