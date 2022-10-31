@@ -1,6 +1,9 @@
 function problem3(number) {
-  var answer;
-  return answer;
+
+  for(let index=0; index <= number; index++){
+    String(index)
+  }
+  
 }
 
 module.exports = problem3;
