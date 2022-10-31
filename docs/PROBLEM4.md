@@ -29,7 +29,7 @@
 3. 1에서 배열로 바꾼 word_arr를 순회하면서, 대문자로 바꾸고 dictionary에 따라 변환하는 convertByDict 함수 구현 :white_check_mark:
 - 매개변수 : word_arr(word 배열), dictionary(청개구리 사전)
 - return 값 : word_arr() (변환된 word_arr 배열)
-4.대-소문자는 원래 문자대로 유지해야 하기 때문에, 원래 문자가 소문자이면 바뀐 문자도 소문자로 바꿔주는 checkCase() 함수 구현
+4.대-소문자는 원래 문자대로 유지해야 하기 때문에, 원래 문자가 소문자이면 바뀐 문자도 소문자로 바꿔주는 checkCase() 함수 구현 :white_check_mark:
 - 매개변수 : origin_word(원래 문자배열), converted_word(사전으로 바꾼 문자 배열)
 - return 값 : converted_word(대소문자 구별하여 다시 바뀐 문자 배열)
 5. join 함수를 이용하여 문자배열을 문자열로 변환함
