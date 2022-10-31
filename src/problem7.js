@@ -17,9 +17,11 @@ const getBfsOfBfs = (friends) => (users) => {
   return users.reduce((reduced, user) => getUserBfs(user)(friends), []);
 };
 
-const removeUserAndUserBfs = (user, userBfs) => (array) => {
-  return array.filter((v) => v !== user && userBfs.indexOf(v) === -1);
-};
+const removeDupUsers =
+  (...users) =>
+  (array) => {
+    return array.filter((v) => users.indexOf(v) === -1);
+  };
 
 const recordScore = (friends) => {
   return friends.reduce((reduced, friend) => {
@@ -46,11 +48,9 @@ function problem7(user, friends, visitors) {
   const result = compose(
     getUserBfs(user),
     getBfsOfBfs(friends),
-    removeUserAndUserBfs(user, getUserBfs(user)(friends)),
+    removeDupUsers(user, ...getUserBfs(user)(friends)),
     recordScore,
-    addVisitScore(
-      removeUserAndUserBfs(user, getUserBfs(user)(friends))(visitors)
-    ),
+    addVisitScore(removeDupUsers(user, ...getUserBfs(user)(friends))(visitors)),
     getNames
   )(friends);
 
