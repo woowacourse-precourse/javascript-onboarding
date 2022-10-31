@@ -7,6 +7,15 @@ function getSubnicks(nickname) {
 }
 
 function problem6(forms) {
+  const subnickCount = {};
+
+  forms.forEach(([_, nickname]) => {
+    getSubnicks(nickname).forEach((subnick) => {
+      subnickCount[subnick] = subnickCount[subnick] || 0;
+      subnickCount[subnick]++;
+    });
+  });
+  
   var answer;
   return answer;
 }
