@@ -1,11 +1,11 @@
 class ErrorCase {
   constructor(word) {
-    this.word = word;
+    this._word = word;
     this.checkLimit();
   }
 
   checkLimit() {
-    if (!(1 <= this.word.length && this.word.length <= 1000)) {
+    if (!(1 <= this._word.length && this._word.length <= 1000)) {
       throw new Error("input 양식에 에러가 발생했습니다!!");
     }
   }
@@ -31,7 +31,7 @@ class Frog {
   constructor(word) {
     new ErrorCase(word);
 
-    this.word = word;
+    this._word = word;
   }
 
   getFrogDicTranslation() {
@@ -52,7 +52,7 @@ class Frog {
   }
 
   say() {
-    return this.word
+    return this._word
       .split("")
       .map((alpha) => this.translate(alpha))
       .join("");
