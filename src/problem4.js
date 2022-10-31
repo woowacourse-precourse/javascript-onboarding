@@ -4,9 +4,14 @@ function ascii(num){
       num = (78 - num) + 77;
     else
       num = 78 - (num - 77);
-    return num;
   }
-  else return num;
+  else if(97 <= num && num <= 122){
+    if(num <= 109)
+      num = (110 - num) + 109;
+    else
+      num = 110 - (num - 109);
+  }
+  return num;
 }
 
 function problem4(word) {
