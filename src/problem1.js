@@ -1,6 +1,3 @@
-console.log(problem1([97, 98], [197, 198]));
-// console.log(splitNumber(97));
-
 function problem1(pobi, crong) {
   if (validationArr(pobi) && validationArr(crong)) {
     return pageGameApp([pobi, crong]);
