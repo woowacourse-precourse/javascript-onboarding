@@ -23,3 +23,8 @@
 | [97, 98]   | [197, 198] | 0      |
 | [131, 132] | [211, 212] | 1      |
 | [99, 102]  | [211, 212] | -1     |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a number and returns the sum of digits
+2. function that takes in a number and returns multiplied digits
+3. function that takes in two numbers and returns larger number
