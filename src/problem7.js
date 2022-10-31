@@ -91,4 +91,10 @@ class Queue {
   }
 }
 
+function getCommonFriendCount(friendsA, friendsB) {
+  const set = new Set(friendsA);
+  const commonFriends = friendsB.filter((friend) => set.has(friend));
+  return commonFriends.length;
+}
+
 module.exports = problem7;
