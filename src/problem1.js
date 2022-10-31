@@ -75,8 +75,6 @@ function findBiggestNumber(left, right) {
 
 // 메인 함수
 function problem1(pobi, crong) {
-  var answer;
-
   const [pobiLeft, pobiRight] = pobi;
   const [crongLeft, crongRight] = crong;
 
@@ -89,15 +87,10 @@ function problem1(pobi, crong) {
   const pobiBiggestNumber = findBiggestNumber(pobiLeft, pobiRight);
   const crongBiggestNumber = findBiggestNumber(crongLeft, crongRight);
 
-  if (pobiBiggestNumber > crongBiggestNumber) {
-    answer = 1;
-  } else if (pobiBiggestNumber < crongBiggestNumber) {
-    answer = 2;
-  } else {
-    answer = 0;
-  }
+  if (pobiBiggestNumber > crongBiggestNumber) return 1;
+  if (pobiBiggestNumber < crongBiggestNumber) return 2;
 
-  return answer;
+  return 0;
 }
 
 module.exports = problem1;
