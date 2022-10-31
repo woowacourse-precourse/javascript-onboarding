@@ -1,18 +1,15 @@
 function calMaxValue(nowPageNum){
-  const pageStringArray = String(nowPageNum).split("");
-  const addValue = pageStringArray.reduce((previousValue, currentValue) => {
-    previousValue + currentValue/1;
-  }, 0);
-  const mulValue = pageStringArray.reduce(() => {
-    previousValue * currentValue/1;
-  }, 0);
+  const pageStringArray = nowPageNum.toString().split("");
+  const addValue = pageStringArray.reduce((previousValue, currentValue) => 
+    previousValue + currentValue/1, 0);
+  const mulValue = pageStringArray.reduce((previousValue, currentValue) =>
+    previousValue * currentValue/1, 1);
   const maxValue = Math.max(addValue, mulValue);
   
   return maxValue;
 }
 
 function findMaxValue(pobiMaxValueArray, crongMaxValueArray) {
-
   let pobiMaxNum= Math.max(...pobiMaxValueArray);
   let crongMaxNum = Math.max(...crongMaxValueArray); 
   let resultNum = 0;
@@ -57,8 +54,8 @@ function problem1(pobi, crong) {
   }
 
   return result;
+}
 
-
-console.log(problem1([99, 102],	[211, 212]));
+console.log(problem1([131, 132],	[399, 400]));
 
 module.exports = problem1;
