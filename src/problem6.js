@@ -39,11 +39,6 @@ function problem6(forms) {
 
   // 찾은 이메일 오름치순, 중복 제거
   let result = [...new Set(resultEmail.sort())];
-  console.log(resultEmail);
-  console.log(result);
-  console.log(membersName);
-
-  console.log(members);
   return result;
 }
 
