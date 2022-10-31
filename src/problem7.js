@@ -20,4 +20,18 @@ function getConnection(friends) {
   return friendsConnection;
 }
 
+function makeDict(user, friends) {
+  const friendsDict = {};
+
+  for (let i = 0; i < friends.length; i++) {
+    const friendName1 = friends[i][0];
+    const friendName2 = friends[i][1];
+
+    if (!Object.keys(friendsDict).includes(friendName1) && friendName1 != user) friendsDict[friendName1] = 0;
+    if (!Object.keys(friendsDict).includes(friendName2) && friendName2 != user) friendsDict[friendName2] = 0;
+  }
+
+  return friendsDict;
+}
+
 module.exports = problem7;
