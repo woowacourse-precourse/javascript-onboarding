@@ -5,6 +5,9 @@ function problem3(number) {
     arr[i] = i;
   }
   arr = arr.join('');
+  arr = [...arr];
+  answer = arr.filter(n => n == 3 || n == 6 || n == 9).length;
+  
   return answer;
 }
 
