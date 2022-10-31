@@ -49,3 +49,4 @@
 - [x] 불필요한 함수 제거 (findUserFriends -> relations[user])
 - [x] 예외사항 분리 (이미 친구인 경우, 점수가 0인 경우)
 - [x] crewScores 구하는 과정 (reduce, Object.entries -> reduce)
+- [x] 함께 아는 친구 점수 객체에 방문 횟수 점수 더하기 (getVisitorScores, getCrewScores -> addVisitorScores)

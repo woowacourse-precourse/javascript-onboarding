@@ -29,32 +29,15 @@ function getRelationScores(user, relations) {
   return relationScores;
 }
 
-function getVisitorScores(visitors) {
-  const visitorScores = visitors.reduce((acc, cur) => {
-    if (!acc[cur]) {
-      acc[cur] = 0;
+function addVisitorScores(visitors, relationScores) {
+  const crewScores = { ...relationScores };
+  visitors.forEach((visitor) => {
+    if (!crewScores[visitor]) {
+      crewScores[visitor] = 0;
     }
 
-    acc[cur] += 1;
-
-    return acc;
-  }, {});
-
-  return visitorScores;
-}
-
-function getCrewScores(relationScores, visitorScores) {
-  const totalCrews = Object.keys({ ...relationScores, ...visitorScores });
-  const crewScores = totalCrews.reduce((acc, cur) => {
-    const crewScore = [cur, relationScores[cur] || 0];
-
-    if (visitorScores[cur]) {
-      crewScore[1] += visitorScores[cur];
-    }
-
-    acc.push(crewScore);
-    return acc;
-  }, []);
+    crewScores[visitor] += 1;
+  });
 
   return crewScores;
 }
@@ -81,10 +64,10 @@ function problem7(user, friends, visitors) {
   const relations = getRelations(friends);
 
   const relationScores = getRelationScores(user, relations);
-  const visitorScores = getVisitorScores(visitors);
-  const crewScores = getCrewScores(relationScores, visitorScores);
+  const crewScores = addVisitorScores(visitors, relationScores);
 
-  const crewsWithException = exceptCrew(crewScores, relations[user]);
+  const crewScoreArray = Object.entries(crewScores);
+  const crewsWithException = exceptCrew(crewScoreArray, relations[user]);
   const answer = getSortedCrews(crewsWithException);
 
   if (answer.length > 5) {
