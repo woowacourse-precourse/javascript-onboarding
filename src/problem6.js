@@ -11,6 +11,16 @@ function problem6(forms) {
   for (const [fraction, number] of fractionMap) {
     if (number > 1) repeatedFractions.push(fraction);
   }
+  const result = [];
+  forms.forEach((form) => {
+    const [email, nickname] = form;
+    repeatedFractions.forEach((fraction) => {
+      const hasRepeatedFraction = new RegExp(fraction).exec(nickname) !== null;
+      if (hasRepeatedFraction) {
+        result.push(email);
+      }
+    });
+  });
 }
 
 module.exports = problem6;
