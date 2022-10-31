@@ -24,6 +24,23 @@ const problem5 = (money) => {
   let moneyKindIndexToUse = 0; // 화폐 종류 포인터
   let moneyLeft = money; // 처리해야 할 돈
 
+  while (!isMoneyLeftZero(moneyLeft)) {
+    // 해당 화폐가 사용 가능하다면
+    if (
+      isPossibleToUseSelectedMoneyKind(
+        moneyLeft,
+        moneyKinds[moneyKindIndexToUse]
+      )
+    ) {
+      moneyLeft -= moneyKinds[moneyKindIndexToUse];
+      answer[moneyKindIndexToUse]++;
+      continue;
+    }
+
+    // 화폐 종류 번경 (포인터 변경)
+    moneyKindIndexToUse++;
+  }
+
   return answer;
 }
 
