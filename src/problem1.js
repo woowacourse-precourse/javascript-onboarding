@@ -1,9 +1,6 @@
-const PAGE_DIFF = 1;
-const MIN_PAGE = 1;
-const MAX_PAGE = 400;
-
-const isValidPages = (randomPages) => {
-  const [leftPage, rightPage] = randomPages;
+const isValidPages = ([leftPage, rightPage]) => {
+  const PAGE_DIFF = 1;
+  const [MIN_PAGE, MAX_PAGE] = [1, 400];
   if (leftPage < MIN_PAGE || rightPage > MAX_PAGE) return false;
   if (rightPage - leftPage !== PAGE_DIFF) return false;
   return true;
@@ -13,12 +10,10 @@ const calcMaxValue = (page) => {
   const numbersArray = String(page).split("");
   const sum = numbersArray.reduce((acc, cur) => acc + Number(cur), 0);
   const multiple = numbersArray.reduce((acc, cur) => acc * Number(cur));
-
   return Math.max(sum, multiple);
 };
 
-const getScore = (pages) => {
-  const [leftPage, rightPage] = pages;
+const getScore = ([leftPage, rightPage]) => {
   const leftPageValue = calcMaxValue(leftPage);
   const rightPageValue = calcMaxValue(rightPage);
   return Math.max(leftPageValue, rightPageValue);
@@ -32,7 +27,7 @@ function problem1(pobi, crong) {
 
   if (pobiScore > crongScore) return 1;
   if (pobiScore < crongScore) return 2;
-  if (pobiScore === crongScore) return 0;
+  return 0;
 }
 
 module.exports = problem1;
