@@ -1,3 +1,11 @@
+function filterValidCrew(crews, invalidCrews) {
+  return crews.filter((crew) => !invalidCrews.includes(crew));
+}
+
+function filterValidScore(crewScores) {
+  return crewScores.filter((crew) => crew[1] !== 0);
+}
+
 function getRelations(friends) {
   const relations = friends.reduce((acc, cur) => {
     const [crewA, crewB] = cur;
@@ -42,23 +50,16 @@ function addVisitorScores(visitors, relationScores) {
 function getCrewScores(user, relations, visitors) {
   const invalidCrews = [...relations[user], user];
 
-  const validRelationCrews = Object.keys(relations).filter(
-    (crew) => !invalidCrews.includes(crew)
+  const validRelationCrews = filterValidCrew(
+    Object.keys(relations),
+    invalidCrews
   );
-  const validVisitors = visitors.filter((crew) => !invalidCrews.includes(crew));
+  const validVisitors = filterValidCrew(visitors, invalidCrews);
 
   const relationScores = getRelationScores(relations, validRelationCrews, user);
   const crewScores = addVisitorScores(validVisitors, relationScores);
 
   return crewScores;
-}
-
-function filterValidCrew(crewScores, userFriends) {
-  const validCrews = crewScores.filter(
-    (crew) => crew[1] !== 0 && !userFriends.includes(crew[0])
-  );
-
-  return validCrews;
 }
 
 function getSortedCrews(crews) {
@@ -77,7 +78,7 @@ function problem7(user, friends, visitors) {
   const crewScores = getCrewScores(user, relations, visitors);
   const crewScoreArray = Object.entries(crewScores);
 
-  const validCrews = filterValidCrew(crewScoreArray, relations[user]);
+  const validCrews = filterValidScore(crewScoreArray);
   const answer = getSortedCrews(validCrews);
 
   if (answer.length > 5) {
