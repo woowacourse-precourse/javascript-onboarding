@@ -17,15 +17,16 @@ function problem7(user, friends, visitors) {
 
   for (let x of friends) {
     if (x[0] === undefined || x[1] === undefined) continue;
-    if (!excepts.has(x[0])) {
-      firstscore = scoreSet.has(x[0]) ? scoreSet.get(x[0]) + 10 : 10;
-      scoreSet.set(x[0], firstscore);
-      score.add(firstscore);
-    }
-    if (!excepts.has(x[1])) {
+
+    if (excepts.has(x[0])) {
       secondscore = scoreSet.has(x[1]) ? scoreSet.get(x[1]) + 10 : 10;
       scoreSet.set(x[1], secondscore);
       score.add(secondscore);
+    }
+    if (excepts.has(x[1])) {
+      firstscore = scoreSet.has(x[0]) ? scoreSet.get(x[0]) + 10 : 10;
+      scoreSet.set(x[0], firstscore);
+      score.add(firstscore);
     }
   }
 
@@ -39,6 +40,7 @@ function problem7(user, friends, visitors) {
   }
 
   const sortScore = [...score].sort((a, b) => b - a);
+
   let index = 0;
   while (index < sortScore.length) {
     const local = [];
@@ -58,6 +60,7 @@ function problem7(user, friends, visitors) {
     }
     index++;
   }
+
   return answer;
 }
 
