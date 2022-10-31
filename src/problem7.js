@@ -1,7 +1,30 @@
 function problem7(user, friends, visitors) {
   let answer = [];
+  let recommendationObj = {};
+
+  const allRelationships = findAllRelationship(friends);
 
   return answer;
+}
+
+function findAllRelationship(friends) {
+  let allRelationships = {};
+
+  for (let el of friends) {
+    if (!allRelationships[el[0]]) {
+      allRelationships[el[0]] = [];
+    }
+
+    allRelationships[el[0]].push(el[1]);
+
+    if (!allRelationships[el[1]]) {
+      allRelationships[el[1]] = [];
+    }
+
+    allRelationships[el[1]].push(el[0]);
+  }
+
+  return allRelationships;
 }
 
 module.exports = problem7;
