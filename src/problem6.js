@@ -24,7 +24,7 @@ function handleFormSize(forms){
 function handleString(forms, rejectIndex){
   for(let i = 0; i < forms.length; i++){
     const emailForm = "email.com";
-    const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    //const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     let crueEmail = forms[i][0];
     let crueNickname = forms[i][1];
     if((crueEmail.indexOf(emailForm) == -1)){
@@ -36,9 +36,9 @@ function handleString(forms, rejectIndex){
     else if((crueNickname.length == 0) || (crueNickname.length >= 20)){
       rejectIndex.push(i);
     }
-    else if(!(isKorean.test(crueNickname))){
+    /*else if(!(isKorean.test(crueNickname))){
       rejectIndex.push(i);
-    }
+    }*/
   }
 }
 
