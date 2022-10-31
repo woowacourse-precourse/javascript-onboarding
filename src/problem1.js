@@ -35,6 +35,12 @@ function getMaxScore(page) {
   );
 }
 
+/**
+ * 페이지 번호 게임의 결과를 반환합니다.
+ * @param {number[]} pobi pobi가 펼친 페이지 배열입니다.
+ * @param {number[]} crong crong이 펼친 페이지 배열입니다.
+ * @returns {number} pobi가 이겼다면 1, crong이 이겼다면 2, 무승부라면 0, 예외사항은 -1을 반환합니다.
+ */
 function problem1(pobi, crong) {
   var answer;
   return answer;
