@@ -11,6 +11,48 @@
 ### 실행 결과 예시
 
 | number | result |
-| --- | --- |
-| 13 | 4 |
-| 33 | 14 |
+| ------ | ------ |
+| 13     | 4      |
+| 33     | 14     |
+
+# problem3 구현 코드
+
+## 메인 함수
+
+```
+function problem3(number) {
+  var answer;
+  answer = getSum(number);
+  return answer;
+}
+```
+
+## 박수의 총 합을 구해 반환하는 함수
+
+```
+function getSum(num){
+  let sum = 0;
+  for(let i = 1; i <= num; i++){
+    sum += getClap(i);
+  }
+  return sum;
+}
+
+```
+
+## 숫자에 포함된 3,6,9의 갯수를 세어 합을 반환하는 함수
+
+```
+function getClap(i){
+  let num = i, divider = 10000, sumOfClaps = 0;
+  while(num != 0){
+    let digit = parseInt(num / divider);
+    if((digit == 3) || (digit == 6) || (digit == 9)){
+      sumOfClaps++;
+    }
+    num %= divider;
+    divider /= 10;
+  }
+  return sumOfClaps;
+}
+```
