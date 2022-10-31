@@ -32,6 +32,11 @@ const deleteNonOverlappingKeyInMap = (args) => {
   return { ...args, consecutiveLetterMap: copyMap };
 };
 
+const isIncludeConsecutiveLetter = (consecutiveLetterMap, userNickName) =>
+  Array.from(consecutiveLetterMap.keys()).some((consecutiveLetter) =>
+    userNickName.includes(consecutiveLetter)
+  );
+
 function problem6(forms) {
   var answer;
   return answer;
