@@ -22,4 +22,4 @@ const getMultiply = (number) => {
     .reduce((total, str) => (total *= +str), 1);
 };
 
-const getMax = (...args) => Math.max(...args);
+const getMax = (...args) => Math.max(...args, 0);
