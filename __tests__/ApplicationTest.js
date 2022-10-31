@@ -7,11 +7,11 @@ const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
 
 
-describe("problem2", () => {
+describe("problem3", () => {
   test("case1", () => {
-    expect(problem2("browoanoommnaon")).toEqual("brown");
+    expect(problem3(13)).toEqual(4);
   });
   test("case2", () => {
-    expect(problem2("zyelleyz")).toEqual("");
+    expect(problem3(33)).toEqual(14);
   });
 });
