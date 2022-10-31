@@ -33,7 +33,16 @@ function page(pobi ,crong) {
   new peopleCalc(crong,crongsCal);  
   const pobisBigger = Math.max(...pobisCal);
   const crongsBigger = Math.max(...crongsCal);
-
+  
+  if (incorrectCal[1] !== incorrectCal[0]+1){
+    return -1;
+  } else if (pobisBigger === crongsBigger){
+    return 0;
+  } else if (pobisBigger > crongsBigger) {
+    return 1;
+  } else if (pobisBigger < crongsBigger) {
+    return 2;
+  }
 }
 
 module.exports = problem1;
