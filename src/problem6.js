@@ -1,4 +1,23 @@
 function problem6(forms) {
+  // 유효한 유저들
+  const validUsers = getValidUser(forms);
+
+  let overlapNameCheck = {};
+  let answer = new Set();
+
+
+  // 반복문으로 유저를 확인한다.
+  validUsers.forEach(([_, nickname]) => {
+    // 닉네임을 반복문으로 돌아 확인한다.
+    for(let i = 0; i < nickname.length-1; i++) {
+      // 2글자씩 잘라준다.
+      const nicknameSubText = nickname.substring(i, i + 2);
+      // obj에 값을 더해준다. 없다면 1로 초기화 시켜준다.
+      if(overlapNameCheck[nicknameSubText]) overlapNameCheck[nicknameSubText] ++;
+      else overlapNameCheck[nicknameSubText] = 1;
+    }
+  });
+  
 }
 
 // 이메일, 닉네임 유효성 검사
