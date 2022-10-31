@@ -18,6 +18,32 @@ function problem7(user, friends, visitors) {
   });
   justFriends = [...justFriends];
 
+  let friendsPoint = new Array(justFriends.length);
+  for (let i = 0; i < friendsPoint.length; i++) {
+    friendsPoint[i] = [justFriends[i], 0];
+  }
+
+  let userFriend = "";
+  let friendFriends = "";
+
+  friends.map((first) => {
+    if (first.includes(user)) {
+      userFriend = first.filter((el) => el !== user).join();
+
+      friends.map((second) => {
+        if (second.includes(userFriend)) {
+          friendFriends = second.filter((el) => el != userFriend).join();
+
+          for (let i = 0; i < friendsPoint.length; i++) {
+            if (friendsPoint[i][0] === friendFriends) {
+              friendsPoint[i][1] += 10;
+            }
+          }
+        }
+      });
+    }
+  });
+
   return answer;
 }
 user = "mrko";

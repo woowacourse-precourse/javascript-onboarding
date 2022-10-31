@@ -26,7 +26,7 @@
  - [x] user타임라인에 방문한 visitor 리스트 구현
  - [x] 리스트에서 중복 제거
  - [ ] 점수매기기
-   - [ ] user와 친구 : 10점부여
+   - [x] user와 친구 : 10점부여
    - [ ] visitor : 1점부여
 
 | user   | friends                                                                                                                         | visitors                                      | result                    |
