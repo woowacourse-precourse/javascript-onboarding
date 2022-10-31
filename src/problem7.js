@@ -31,10 +31,12 @@ function problem7(user, friends, visitors) {
   const friendsGraph = makeGraph(friends);
   const recommend = new Map();
 
+  const usersFriends = friendsGraph.get(user);
+
   friendsGraph.forEach((val, key) => {
     if (key === user) return;
     if (val.indexOf(user) === -1) {
-      friendsGraph.get(user).map((friend) => {
+      usersFriends.map((friend) => {
         if (val.includes(friend) && !recommend.has(key)) {
           recommend.set(key, 10);
         } else if (val.includes(friend) && recommend.has(key)) {
@@ -45,12 +47,9 @@ function problem7(user, friends, visitors) {
   });
 
   for (let visitor of visitors) {
-    if (!recommend.has(visitor) && !friendsGraph.get(user).includes(visitor)) {
+    if (!recommend.has(visitor) && !usersFriends.includes(visitor)) {
       recommend.set(visitor, 1);
-    } else if (
-      recommend.has(visitor) &&
-      !friendsGraph.get(user).includes(visitor)
-    ) {
+    } else if (recommend.has(visitor) && !usersFriends.includes(visitor)) {
       recommend.set(visitor, recommend.get(visitor) + 1);
     }
   }
