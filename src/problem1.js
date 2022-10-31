@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
   var pobiNum;
   var crongNum;
 
-  if ((pobi.length === 2) && (pobi[1] - pobi[0] === 1)) {
+  if ((pobi.length === 2) && (pobi[1] - pobi[0] === 1) && (pobi[0] % 2 === 1)) {
     for (var i = 0; i < pobi.length; i++) {
       var pobiSum = 0;
       var pobiTimes = 1;
@@ -16,7 +16,7 @@ function problem1(pobi, crong) {
     }
   }
 
-  if ((crong.length === 2) && (crong[1] - crong[0] === 1)) {
+  if ((crong.length === 2) && (crong[1] - crong[0] === 1) && (crong[0] % 2 === 1)) {
     for (var i = 0; i < crong.length; i++) {
       var crongSum = 0;
       var crongTimes = 1;
