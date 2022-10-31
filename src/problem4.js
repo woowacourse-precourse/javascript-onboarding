@@ -12,7 +12,9 @@ function problem4(word) {
   }
 
   for (let char of word) {
-    answer += BLUE_FROG_DICT[char];
+    if (UPPER_CASE.includes(char) || LOWER_CASE.includes(char) || char === " ")
+      answer += BLUE_FROG_DICT[char];
+    else answer += char;
   }
   return answer;
 }
