@@ -23,7 +23,7 @@ function findUserFriends(user, friends) {
 
 // user의 친구의 친구를 구하는 함수
 function findUserFriendsOfFriends(user, friends, userFriends) {
-  let IdScoreObj = {};
+  let idScoreObj = {};
 
   for (let i = 0; i < userFriends.length; i++) {
     for (let j = 0; j < friends.length; j++) {
@@ -33,39 +33,39 @@ function findUserFriendsOfFriends(user, friends, userFriends) {
         userFriends[i] === friends[j][0] &&
         !friends[j].includes(user)
       ) {
-        // IdScoreObj객체에 키가 있을 때
-        if (IdScoreObj.hasOwnProperty(friends[j][1]))
-          IdScoreObj[friends[j][1]] += 10;
-        // IdScoreObj객체에 키가 없을 때
-        else IdScoreObj[friends[j][1]] = 10;
+        // idScoreObj객체에 키가 있을 때
+        if (idScoreObj.hasOwnProperty(friends[j][1]))
+          idScoreObj[friends[j][1]] += 10;
+        // idScoreObj객체에 키가 없을 때
+        else idScoreObj[friends[j][1]] = 10;
       }
     }
   }
 
-  return IdScoreObj;
+  return idScoreObj;
 }
 
 // visitors 배열의 요소에게 1점씩 부여하는 함수
-function getOneScore(visitors, userFriends, IdScoreObj) {
+function getOneScore(visitors, userFriends, idScoreObj) {
   visitors.map((el) => {
     // user의 친구가 아니고
     if (!userFriends.includes(el)) {
-      // IdScoreObj객체에 키가 있을 때
-      if (IdScoreObj.hasOwnProperty(el)) IdScoreObj[el] += 1;
-      // IdScoreObj객체에 키가 없을 때
-      else IdScoreObj[el] = 1;
+      // idScoreObj객체에 키가 있을 때
+      if (idScoreObj.hasOwnProperty(el)) idScoreObj[el] += 1;
+      // idScoreObj객체에 키가 없을 때
+      else idScoreObj[el] = 1;
     }
   });
 
-  return IdScoreObj;
+  return idScoreObj;
 }
 
-// sort시키기 위해 IdScoreObj를 배열로 만드는 함수
-function makeObjToArr(IdScoreObj) {
+// sort시키기 위해 idScoreObj를 배열로 만드는 함수
+function makeObjToArr(idScoreObj) {
   let idScoreArr = [];
 
-  for (let id in IdScoreObj) {
-    idScoreArr.push([id, IdScoreObj[id]]);
+  for (let id in idScoreObj) {
+    idScoreArr.push([id, idScoreObj[id]]);
   }
 
   return idScoreArr;
@@ -75,11 +75,11 @@ function problem7(user, friends, visitors) {
   // 점수가 높은 순으로 최대 5명 정렬
   let answer = [];
   let userFriends = findUserFriends(user, friends);
-  let IdScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
+  let idScoreObj = findUserFriendsOfFriends(user, friends, userFriends);
 
-  IdScoreObj = getOneScore(visitors, userFriends, IdScoreObj);
+  idScoreObj = getOneScore(visitors, userFriends, idScoreObj);
 
-  let idScoreArr = makeObjToArr(IdScoreObj);
+  let idScoreArr = makeObjToArr(idScoreObj);
 
   // 점수 높은 순으로 정렬
   idScoreArr.sort((a, b) => {
