@@ -18,6 +18,8 @@ function problem7(user, friends, visitors) {
   const userFriends = friendMap.get(user) || [];
 
   for (const [person, freindList] of friendMap) {
+    if (person === user) continue;
+
     let isNear = false;
     for (const friend of freindList) {
       if (userFriends.includes(friend)) {
