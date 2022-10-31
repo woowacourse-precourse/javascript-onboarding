@@ -1,10 +1,9 @@
 function problem7(user, friends, visitors) {
-  const [curFriends, notFriends] = separateFriendByType(user, friends);
-  const friendOfUser = curFriends;
+  const [currentFriends, notFriends] = separateFriendByType(user, friends);
   //console.log(`1 :`, friendOfUser);
-  const friendScore = searchByFriends(user, friends, friendOfUser);
+  const friendScore = searchByFriends(notFriends);
   //console.log(`2 :`, friendScore);
-  const visitorScore = searchByVisitor(visitors, friendOfUser);
+  const visitorScore = searchByVisitor(visitors, currentFriends);
   //console.log(`3 : `, visitorScore);
   const answer = recommandByScore(friendScore, visitorScore);
   //console.log(`4 : `, answer);
@@ -14,24 +13,18 @@ function problem7(user, friends, visitors) {
 
 module.exports = problem7;
 
-const searchUserFriends = (user, friends) => {
-  const [curFriends, notFriends] = separateFriendByType(user, friends);
-
-  return;
-};
-
 const separateFriendByType = (user, friends) => {
-  let curFriends = [];
+  let currentFriends = [];
   let notFriends = [];
   for (let i of friends) {
     if (i.includes(user)) {
-      curFriends.push(i);
+      currentFriends.push(i);
     } else {
       notFriends.push(i);
     }
   }
 
-  curFriends = curFriends.map((i) => {
+  currentFriends = currentFriends.map((i) => {
     return isNotUser(user, i);
   });
 
@@ -39,16 +32,16 @@ const separateFriendByType = (user, friends) => {
     return isNotCurrentFriend(user, i);
   });
 
-  return [curFriends, notFriends];
+  return [currentFriends, notFriends];
 };
 
 const isNotUser = (user, array) => {
   return array.filter((i) => i !== user)[0];
 };
 
-const isNotCurrentFriend = (curFriends, array) => {
-  if (curFriends.includes(array[0]) || curFriends.includes(array[1])) {
-    return array.filter((v, i) => !curFriends.includes(v))[0];
+const isNotCurrentFriend = (currentFriends, array) => {
+  if (currentFriends.includes(array[0]) || currentFriends.includes(array[1])) {
+    return array.filter((v, i) => !currentFriends.includes(v))[0];
   }
 };
 
@@ -122,33 +115,10 @@ const searchByVisitor = (visitors, friendOfUser) => {
   return visitScore;
 };
 
-const isCurrentFriend = (name, friendOfUser) => {
-  let resultValue;
-  if (friendOfUser.includes(name)) {
-    resultValue = true;
-  }
-  resultValue = false;
+const searchByFriends = (notFriends) => {
+  if (!notFriends) return;
 
-  return resultValue;
-};
-
-const searchByFriends = (user, friends, friendOfUser) => {
-  if (!friends) return;
-
-  const newFriendsFilter = friends.filter((i) => {
-    let resultValue;
-    const currentFriend = isCurrentFriend(i[1], friendOfUser);
-    if (i[1] !== user && !currentFriend) {
-      resultValue = true;
-    } else {
-      resultValue = false;
-    }
-
-    return resultValue;
-  });
-
-  const newFriends = newFriendsFilter.map((i) => i[1]);
-  const friendScore = newFriends.reduce((acc, cur, i) => {
+  const friendScore = notFriends.reduce((acc, cur, i) => {
     if (acc[cur]) {
       acc[cur] += 10;
     } else {
