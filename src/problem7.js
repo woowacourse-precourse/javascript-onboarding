@@ -46,12 +46,26 @@ function scoreRecommendedFriends(recommendedArr,friendsOfUser,user,friends,visit
   return recommendedArr;
 }
 
+function getResult(recommendedArr){
+  recommendedArr = recommendedArr.filter(x => x[1]!==0);
+  recommendedArr.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0]
+    } else {
+      return b[1] - a[1]
+    }
+  })
+  return recommendedArr;
+}
+
 function problem7(user, friends, visitors) {
-  
   let answer = [];
   let [recommendedArr,friendsOfUser] = getRecommendedFriend(user, friends, visitors)
   recommendedArr = scoreRecommendedFriends(recommendedArr,friendsOfUser,user,friends,visitors);
-
+  recommendedArr = getResult(recommendedArr)
+  recommendedArr.forEach(function(x) {
+    answer.push(x[0])
+  })
   return answer;
 }
 
