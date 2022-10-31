@@ -30,6 +30,13 @@ function problem6(forms) {
       end += 1;
     }
   }
+
+  function splitNickname(nickName) {
+    for (let i = 2; i < nickName.length + 1; i++) {
+      saveString(i, nickName);
+    }
+  }
+
   return answer;
 }
 
