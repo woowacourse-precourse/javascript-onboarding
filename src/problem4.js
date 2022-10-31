@@ -17,6 +17,14 @@ function reversAlphabet(input) {
 
 function problem4(word) {
   var answer;
+  word = word.split("");
+
+  for (let i = 0; i < word.length; i++) {
+    word[i] = reversAlphabet(word[i]);
+  }
+
+  console.log(word);
+  answer = word.join("");
   return answer;
 }
 
