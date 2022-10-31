@@ -53,14 +53,10 @@ function problem7(user, friends, visitors) {
 
   const find_visitors = () => {
     for (let i = 0; i < visitors.length; i++) {
-      is_recommendation = false;
       if (is_current_friend(visitors[i])) {
-        isBreak = true;
-        break;
+        continue;
       }
-      if (!isBreak) {
-        push_recommendations(visitors[i], 1);
-      }
+      push_recommendations(visitors[i], 1);
     }
   };
 
