@@ -2,11 +2,11 @@ function getAcquaintance(friends, user) {
   let acquaintance = {};
 
   friends.forEach(([friend1, friend2]) => {
-    if (friend2 !== user) {
+    if (friend2 !== user && friend1 !== friend2) {
       if (acquaintance[friend1]) acquaintance[friend1].push(friend2);
       else acquaintance[friend1] = [friend2];
     }
-    if (friend1 !== user) {
+    if (friend1 !== user && friend1 !== friend2) {
       if (acquaintance[friend2]) acquaintance[friend2].push(friend1);
       else acquaintance[friend2] = [friend1];
     }
@@ -19,7 +19,7 @@ function getAcquaintanceScore(acquaintance, user) {
   let score = {};
 
   if (acquaintance[user]) acquaintance[user].forEach(friend => {
-    acquaintance[friend].forEach(recommend => {
+    if (acquaintance[friend]) acquaintance[friend].forEach(recommend => {
       if (!acquaintance[user].includes(recommend)){
         if (score[recommend]) score[recommend] += 10;
         else score[recommend] = 10;
