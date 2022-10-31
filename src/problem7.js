@@ -65,6 +65,33 @@ function getFriendsList(usersFriends, friends, visitors) {
   return friendsList;
 }
 
+/**
+ * 점수 기준 내림차순으로 정렬하여 최대 5명까지의 배열을 반환합니다.
+ * @param {object} score 사용자들의 점수를 담은 객체입니다.
+ * @returns {string[]} 정렬된 사용자 아이디 배열입니다.
+ */
+function getSortedList(score) {
+  const sortableList = [];
+
+  for (const friend in score) {
+    // 점수가 0인 경우 추천 X
+    if (score[friend] > 0) {
+      sortableList.push([friend, score[friend]]);
+    }
+  }
+
+  sortableList.sort((a, b) => {
+    if (b[1] === a[1]) {
+      if (a[0] > b[0]) return 1;
+      else if (a[0] < b[0]) return -1;
+      else return 0;
+    } else return b[1] - a[1];
+  });
+
+  // 최대 5명까지만 추천
+  return sortableList.map(([id]) => id).slice(0, 5);
+}
+
 function problem7(user, friends, visitors) {
   const usersFriends = getFriends(user, friends);
   const friendsList = getFriendsList(
@@ -82,8 +109,15 @@ function problem7(user, friends, visitors) {
 
   // 점수: 사용자의 타임 라인에 방문한 횟수 = 1점
   for (const v of visitors) {
-    score[v]++;
+    // 이미 user와 친구인 경우 점수 X
+    if (usersFriends.includes(v)) {
+      score[v] = 0;
+    } else {
+      score[v]++;
+    }
   }
+
+  answer = getSortedList(score);
 
   return answer;
 }
