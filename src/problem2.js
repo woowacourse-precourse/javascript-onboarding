@@ -1,30 +1,19 @@
+const DUPLICATE_CHARACTER_REGEX = /(\w)\1{1,}/g;
+
 function removeDuplicates(str) {
-  for (let i = 0; i < str.length - 1; i++) {
-    if (str[i] === str[i + 1]) {
-      let sliceIdx = i + 2;
-      for (let j = 2; i + j < str.length; j++) {
-        if (str[i] === str[i + j]) {
-          sliceIdx++;
-        } else {
-          break;
-        }
-      }
-
-      str = str.slice(0, i) + str.slice(sliceIdx);
-
-      if (i > 2) {
-        i -= 2;
-      } else {
-        i = -1;
-      }
-    }
+  while (hasDuplicateCharacter(str)) {
+    str = str.replace(DUPLICATE_CHARACTER_REGEX, '');
   }
 
   return str;
 }
 
+function hasDuplicateCharacter(str) {
+  return DUPLICATE_CHARACTER_REGEX.test(str);
+}
+
 function problem2(cryptogram) {
-  let answer = removeDuplicates(cryptogram);
+  const answer = removeDuplicates(cryptogram);
 
   return answer;
 }
