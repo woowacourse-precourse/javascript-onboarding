@@ -16,11 +16,13 @@ function getWordMap() {
     const value = String.fromCharCode(90 + 65 - i);
     wordMap[key] = value;
   }
+
   for (let i = 97; i <= 122; i++) {
     const key = String.fromCharCode(i);
     const value = String.fromCharCode(122 + 97 - i);
     wordMap[key] = value;
   }
+  
   return wordMap;
 }
 

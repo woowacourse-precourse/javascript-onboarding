@@ -8,9 +8,11 @@ function problem6(forms) {
         log[pattern] = 1;
         continue;
       }
+
       log[pattern] += 1;
     }
   }
+
   let result = new Set();
   for (let i = 0; i < forms.length; i++) {
     const [email, nickname] = forms[i];
@@ -22,8 +24,8 @@ function problem6(forms) {
       }
     }
   }
-  const answer = [...result].sort();
 
+  const answer = [...result].sort();
   return answer;
 }
 

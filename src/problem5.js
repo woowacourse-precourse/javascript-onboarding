@@ -6,6 +6,7 @@ function problem5(money) {
     answer.push(parseInt(money / unit));
     money %= unit;
   }
+  
   return answer;
 }
 

@@ -5,8 +5,10 @@ function problem2(cryptogram) {
     if (newEncoded === encoded) {
       break;
     }
+
     encoded = newEncoded;
   }
+
   return encoded;
 }
 
@@ -18,6 +20,7 @@ function encoding(encoded) {
       break;
     }
   }
+  
   return newEncoded;
 }
 
