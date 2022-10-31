@@ -57,10 +57,24 @@ function deleteFriend(score,user_friend){
   return score;
 }
 
+function sortScore(score,sortedScore){
+  sortedScore = Object.entries(score).sort(
+    function(a,b){
+      if(a[1]==b[1]){
+        var x = a[0], y = b[0];
+        return x<y ? -1 : x>y ?1: 0;
+      }
+      return b[1]-a[1];
+    }
+  );
+  return sortedScore;
+}
+
 function problem7(user, friends, visitors) {
   let answer;
   let friend_dict={};
   let score={};
+  let sortedScore= [];
   friend_dict,score = makeObject(friends,friend_dict,score);
   let user_friend = friend_dict[user]
   delete friend_dict[user]
@@ -68,6 +82,7 @@ function problem7(user, friends, visitors) {
     score = friendScore(friend_dict,score,user_friend);
   score = visitorScore(visitors,score);
   score = deleteFriend(score,user_friend);
+  sortedScore = sortScore(score,sortedScore);
   return answer;
 }
 
