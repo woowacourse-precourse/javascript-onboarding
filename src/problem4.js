@@ -1,24 +1,34 @@
-// 엄마 말씀을 반대로 변환하는 기능(딕셔너리 활용)
-function problem4(word) {
-  let alphabet = {},
-      alpha_a = 65,
-      alpha_z = 90, 
-      frog_word = '',
-      alpha_upper, alpha_lower;
+function getAlphabetDict() {
+  let alphabets = {};
 
-  for (let i = 0; i <= 25; i++) {
-    alphabet[String.fromCharCode(alpha_a++)] = String.fromCharCode(alpha_z--);
+  for (let alpha_a = 65, alpha_z = 90; alpha_a <= 90, alpha_z >= 65; alpha_a++, alpha_z--) {
+    alphabets[String.fromCharCode(alpha_a)] = String.fromCharCode(alpha_z);
   }
+
+  return alphabets;
+}
+
+function convertWord(word, alphabets) {
+  let converted_word = '',
+      uppercase, 
+      lowercase;
   
   for (let char of word) {
-    alpha_upper = alphabet[char];
-    alpha_lower = alphabet[char.toUpperCase()];
+    uppercase = alphabets[char];
+    lowercase = alphabets[char.toUpperCase()];
 
-    if (alpha_upper) frog_word += alpha_upper;
-    else if (alpha_lower) frog_word += alpha_lower.toLowerCase();
-    else frog_word += char;
+    if (uppercase) converted_word += uppercase;
+    else if (lowercase) converted_word += lowercase.toLowerCase();
+    else converted_word += char;
   }
-  return frog_word;
+
+  return converted_word;
+}
+
+function problem4(word) {
+  const alphabets = getAlphabetDict();
+
+  return convertWord(word, alphabets);
 }
 
 module.exports = problem4;
