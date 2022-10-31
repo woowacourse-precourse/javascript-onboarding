@@ -2,11 +2,9 @@ class User {
   constructor(name, arr) {
     this.name = name;
     this.input = arr;
-    let l = arr[0];
-    let r = arr[1];
 
-    let lArr = this.toArr(l);
-    let rArr = this.toArr(r);
+    let lArr = convertToArr(arr[0]);
+    let rArr = convertToArr(arr[1]);
 
     let l_sum = lArr.reduce((i, j) => Number(i) + Number(j));
     let l_prod = lArr.reduce((i, j) => Number(i) * Number(j));
@@ -15,7 +13,6 @@ class User {
     let r_sum = rArr.reduce((i, j) => Number(i) + Number(j));
     let r_prod = rArr.reduce((i, j) => Number(i) * Number(j));
     this.point_r = Math.max(r_sum, r_prod);
-    this.correct = this.valid;
   }
   get valid() {
     let input = this.input;
@@ -42,16 +39,17 @@ class User {
   get point() {
     return Math.max(this.point_l, this.point_r);
   }
-  toArr(x) {
-    if (typeof (x) === 'number') {
-      return [...String(x)]
-    }
-    else if (typeof (x) === 'string') {
-      return [...x]
-    }
-    else {
-      return x
-    }
+}
+
+function convertToArr(x) {
+  if (typeof (x) === 'number') {
+    return [...String(x)]
+  }
+  else if (typeof (x) === 'string') {
+    return [...x]
+  }
+  else {
+    return x
   }
 }
 
