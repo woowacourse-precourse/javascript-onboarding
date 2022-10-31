@@ -12,8 +12,12 @@
  */
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!(isValidPage(pobi) && isValidPage(crong))) {
+    return -1;
+  }
+  const gameResult = playGame(pobi, crong);
+
+  return gameResult;
 }
 
 function isValidPage(pageNumbers) {
