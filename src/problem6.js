@@ -10,9 +10,6 @@ function problem6(forms) {
     nickNames.push(forms[i][1]);
   }
 
-  console.log(emails);
-  console.log(nickNames);
-
   // 전달된 이메일 형식이 email.comm && 길이가 11자 이상이거나 20자 미만인지 확인하는 함수
   function emailCheck(emails) {
     let findEmail = 'email.com';
@@ -26,16 +23,14 @@ function problem6(forms) {
     }
   };
 
-  emailCheck(emails);
-
-  // 닉네임이 한글이고 
-  function nameCheck(nickNames) {
+  // 닉네임이 한글 && 길이가 1자 이상 20자 미만인지 확인하는 함수
+  function nickNameCheck(nickNames) {
     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     for (let i = 0; i < nickNames.length; i++) {
       if (korean.test(nickNames[i]) && nickNames[i].length >= 1 && nickNames[i].length < 20) {
-
+        return true;
       } else {
-        console.log('한글이 아닙니다.');
+        return false;
       }
     }
   }
