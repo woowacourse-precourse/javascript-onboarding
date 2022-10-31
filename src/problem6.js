@@ -59,7 +59,7 @@ function problem6(forms) {
 
   // 주어진 변수들로 정답 구하기
   const words = getWords(nicknames);
-  const answer = getBannedUserEmail(emails, nicknames, words);
+  let answer = getBannedUserEmail(emails, nicknames, words);
 
   // 정답 배열의 중복 제거
   const answer_set = new Set(answer);
