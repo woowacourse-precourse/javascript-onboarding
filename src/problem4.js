@@ -5,6 +5,11 @@ function problem4(word) {
     .join("");
 }
 
+const ASCII_CODE = Object.freeze({
+  A_UPPER: 65,
+  Z_UPPER: 90,
+})
+
 const getReverseLetter = (letter) => {
   if (letter === " ") return letter;
 
@@ -17,9 +22,9 @@ const getReverseLetter = (letter) => {
 const getOrderAlphabet = () => {
   const orderAlphabetArr = [];
 
-  for (let i = 65; i <= 90; i++) {
-    orderAlphabetArr.push(String.fromCharCode(i));
-    orderAlphabetArr.push(String.fromCharCode(i).toLowerCase());
+  for (let index = ASCII_CODE.A_UPPER; index <= ASCII_CODE.Z_UPPER; index++) {
+    orderAlphabetArr.push(String.fromCharCode(index));
+    orderAlphabetArr.push(String.fromCharCode(index).toLowerCase());
   }
 
   return orderAlphabetArr;
@@ -28,9 +33,9 @@ const getOrderAlphabet = () => {
 const getReverseOrderAlphabet = () => {
   const reverseOrderAlphabetArr = [];
 
-  for (let i = 90; i >= 65; i--) {
-    reverseOrderAlphabetArr.push(String.fromCharCode(i));
-    reverseOrderAlphabetArr.push(String.fromCharCode(i).toLowerCase());
+  for (let index = ASCII_CODE.Z_UPPER; index >= ASCII_CODE.A_UPPER; index--) {
+    reverseOrderAlphabetArr.push(String.fromCharCode(index));
+    reverseOrderAlphabetArr.push(String.fromCharCode(index).toLowerCase());
   }
 
   return reverseOrderAlphabetArr;
