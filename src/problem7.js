@@ -39,6 +39,16 @@ function problem7(user, friends, visitors) {
       else score.set(visitor, 1);
     }
   }
+
+  const sortedScore = new Map([...score.entries()].sort(function (a, b) {
+    if (a[1] === b[1]) {
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+    }
+    return b[1] - a[1];
+  }));
+
+  answer = [...sortedScore.keys()].slice(0, 5);
+  return answer;
 }
 
 module.exports = problem7;
