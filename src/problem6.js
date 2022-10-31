@@ -1,6 +1,6 @@
 const makeTokenArray = (nickname) => {
   const tokenArray = [];
-  for (let i = 0; i < nickname.length / 2; i++) {
+  for (let i = 0; i < nickname.length - 1; i++) {
     const token = nickname.slice(i, i + 2);
     tokenArray.push(token);
   }
