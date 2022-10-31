@@ -4,19 +4,23 @@ function problem3(number) {
   return answer;
 }
 
-function countClap(requestedNumber) {
-  let clapNumber = 0;
-  while (requestedNumber > 2) {
-    let check369 = requestedNumber;
-    while (check369 > 0) {
-      if (check369 % 10 === 3 || check369 % 10 === 6 || check369 % 10 === 9) {
-        clapNumber++;
+function countClap(number) {
+  let clap = 0;
+  while (number > 2) {
+    let threeSixNine = number;
+    while (threeSixNine > 0) {
+      if (
+        threeSixNine % 10 === 3 ||
+        threeSixNine % 10 === 6 ||
+        threeSixNine % 10 === 9
+      ) {
+        clap++;
       }
-      check369 = parseInt(check369 / 10, 10);
+      threeSixNine = parseInt(threeSixNine / 10, 10);
     }
-    requestedNumber--;
+    number--;
   }
-  return clapNumber;
+  return clap;
 }
 
 module.exports = problem3;
