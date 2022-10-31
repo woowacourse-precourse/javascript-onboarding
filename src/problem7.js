@@ -5,6 +5,8 @@ function problem7(user, friends, visitors) {
     VISITOR: 1,
   };
 
+  let recommendScore = {}
+
   // user의 친구를 가져온다.
   const userFriends = findUserFriends(user, friends);
 
@@ -15,8 +17,13 @@ function problem7(user, friends, visitors) {
     // 만약 유저의 친구의 친구가 유저의 친구가 아니라면 점수를 더해준다.
     neighbourhood.forEach((name_) => {
       if(!userFriends.includes(name_))
-        score[name_] ? score[name_] += SCORE.FRIENDS : score[name_] = SCORE.FRIENDS; 
+        recommendScore[name_] ? recommendScore[name_] += recommendScore.FRIENDS : recommendScore[name_] = SCORE.FRIENDS; 
     });
+  });
+
+  // user의 친구가 아닌 방문자들만 1점씩 더해준다.
+  visitors.filter((visitor) => !userFriends.includes(visitor)).forEach((visitor) => {
+    recommendScore[visitor] ? recommendScore[visitor] += SCORE.VISITOR : recommendScore[visitor] = SCORE.VISITOR; 
   });
 }
 
