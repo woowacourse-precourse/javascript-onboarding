@@ -12,6 +12,11 @@ function problem7(user, friends, visitors) {
   userFriends.forEach((name) => {
     // user의 친구 목록에 있는 친구의 친구를 가져온다.
     const neighbourhood = findUserFriends(name, friends).filter((ele)=> ele != user);
+    // 만약 유저의 친구의 친구가 유저의 친구가 아니라면 점수를 더해준다.
+    neighbourhood.forEach((name_) => {
+      if(!userFriends.includes(name_))
+        score[name_] ? score[name_] += SCORE.FRIENDS : score[name_] = SCORE.FRIENDS; 
+    });
   });
 }
 
