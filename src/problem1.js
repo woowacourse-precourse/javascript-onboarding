@@ -1,7 +1,8 @@
 function problem1(pobi, crong) {
   var answer = solution(pobi, crong);
   return answer;
-};
+}
+
 function hasException(person) {
   let leftNum = person[0];
   let rightNum = person[1];
@@ -10,19 +11,21 @@ function hasException(person) {
   if (Math.max(leftNum, rightNum) >= 400) return true;
   if (leftNum + 1 !== rightNum) return true;
   return false;
-};
+}
+
 function getMaxScore(arr) {
-  oddNum = arr[0].toString().split("").map(Number);
-  evenNum = arr[1].toString().split("").map(Number);
+  let oddNum = arr[0].toString().split("").map(Number);
+  let evenNum = arr[1].toString().split("").map(Number);
   let oddNumPlus = oddNum.reduce((acc, curr) => acc + curr, 0);
   let oddNumMulty = oddNum.reduce((acc, curr) => acc * curr, 1);
   let evenNumPlus = evenNum.reduce((acc, curr) => acc + curr, 0);
   let evenNumMulty = evenNum.reduce((acc, curr) => acc * curr, 1);
   return Math.max(oddNumPlus, oddNumMulty, evenNumPlus, evenNumMulty)
-};
+}
+
 function solution(pobi, crong) {
-  pobiScore = getMaxScore(pobi);
-  crongScore = getMaxScore(crong);
+  let pobiScore = getMaxScore(pobi);
+  let crongScore = getMaxScore(crong);
   if(hasException(pobi) || hasException(crong)) return -1;
   if(pobiScore > crongScore) {
     answer = 1;
@@ -31,5 +34,5 @@ function solution(pobi, crong) {
   } else if(pobiScore === crongScore) {
     answer = 0;
   } return answer;
-};
+}
 module.exports = problem1;
