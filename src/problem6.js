@@ -26,6 +26,8 @@ const problem6 = (forms) => {
 
   duplicateIndex = [...new Set(duplicateIndex)];
 
+  answer = duplicateIndex.map((index) => forms[index][0]).sort();
+
   return answer;
 };
 
