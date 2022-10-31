@@ -1,5 +1,5 @@
 function problem4(word) {
-  let answer;
+  let answer = findLowerArr(word).join("");
 
   return answer;
 }
