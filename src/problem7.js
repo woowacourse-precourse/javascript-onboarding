@@ -12,3 +12,22 @@ function findUserFriends(friends) {
 
   return userFriends;
 }
+
+function findNotUserfriends(friends) {
+  const userFriends = findUserFriends(friends);
+  let notUserFriends = [];
+
+  friends.forEach((friendsArr) =>
+    friendsArr.forEach((friend) => {
+      if (
+        userFriends.includes(friend) === false &&
+        friend !== user &&
+        notUserFriends.includes(friend) === false
+      ) {
+        notUserFriends.push(friend);
+      }
+    })
+  );
+
+  return notUserFriends;
+}
