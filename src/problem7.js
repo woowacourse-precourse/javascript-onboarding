@@ -14,6 +14,19 @@ function setIntersection(set1, set2) {
   return result;
 }
 
+function makeRelations(friends, relations) {
+  friends.forEach((element) => {
+    if (relations[element[0]] === undefined) {
+      relations[element[0]] = new Set();
+    }
+    if (relations[element[1]] === undefined) {
+      relations[element[1]] = new Set();
+    }
+    relations[element[1]].add(element[0]);
+    relations[element[0]].add(element[1]);
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
