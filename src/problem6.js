@@ -18,10 +18,24 @@ function cutUserName(userNameArr) {
 
   return cutUserNameArr;
 }
+
+function findDuplicateUserWord(cutUserNameArr) {
+  const duplicateUserWord = [];
+
+  while (cutUserNameArr.length > 0) {
+    let userName = cutUserNameArr.pop();
+    if (cutUserNameArr.includes(userName)) {
+      duplicateUserWord.push(userName);
+    }
+  }
+
+  return [...new Set(duplicateUserWord)];
+}
 function problem6(forms) {
   var answer;
   const userNameArr = getUserName(forms);
   const cutUserNameArr = cutUserName(userNameArr);
+  const duplicateUserWordArr = findDuplicateUserWord(cutUserNameArr);
   return answer;
 }
 
