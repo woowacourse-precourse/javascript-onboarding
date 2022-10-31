@@ -17,7 +17,7 @@ function problem7(user, friends, visitors) {
     // 만약 유저의 친구의 친구가 유저의 친구가 아니라면 점수를 더해준다.
     neighbourhood.forEach((name_) => {
       if(!userFriends.includes(name_))
-        recommendScore[name_] ? recommendScore[name_] += recommendScore.FRIENDS : recommendScore[name_] = SCORE.FRIENDS; 
+        recommendScore[name_] ? recommendScore[name_] += SCORE.FRIENDS : recommendScore[name_] = SCORE.FRIENDS; 
     });
   });
 
@@ -28,7 +28,6 @@ function problem7(user, friends, visitors) {
 
   let scoreArray = Object.entries(recommendScore);
   
-  // 이름순 정렬 뒤 점수순 정렬 후 5개 반환
   return scoreArray.sort(( [nameA, scoreA], [nameB, scoreB] )=> {
     return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
   })
