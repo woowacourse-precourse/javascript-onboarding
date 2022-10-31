@@ -7,6 +7,8 @@ function problem5(money) {
   return answer;
 }
 
+
+// 금액별 몇 개로 변환되는지 return 하는 메소드
 function changeMoney(money) {
   const changedMoney = [];
   const moneyArray = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
@@ -19,6 +21,8 @@ function changeMoney(money) {
   return changedMoney;
 }
 
+
+// 예외 처리
 function validRange(money) {
   return 1 <= money && money <= 1000000;
 }
