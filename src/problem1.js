@@ -1,24 +1,24 @@
 class PageError {
   constructor(pobi, crong) {
-    this.pobi = pobi;
-    this.crong = crong;
+    this._pobi = pobi;
+    this._crong = crong;
   }
 
   checkLimit() {
-    return [...this.pobi, ...this.crong].every(
+    return [...this._pobi, ...this._crong].every(
       (page) => 1 < page && page < 400
     );
   }
 
   checkNext() {
-    return [this.pobi, this.crong].every(
+    return [this._pobi, this._crong].every(
       ([leftPage, rightPage]) =>
         rightPage - leftPage === 1 && leftPage % 2 === 1
     );
   }
 
   checkLength() {
-    return [this.pobi, this.crong].every((book) => book.length === 2);
+    return [this._pobi, this._crong].every((book) => book.length === 2);
   }
 
   checkAllError() {
@@ -31,8 +31,8 @@ class PageError {
 
 class Calculator {
   constructor(pobi, crong) {
-    this.pobi = pobi;
-    this.crong = crong;
+    this._pobi = pobi;
+    this._crong = crong;
   }
 
   splitNum(page) {
@@ -63,8 +63,8 @@ class Calculator {
 
   compareTwoBook() {
     return this.answerWhoWin(
-      this.getBigestNumber(this.pobi),
-      this.getBigestNumber(this.crong)
+      this.getBigestNumber(this._pobi),
+      this.getBigestNumber(this._crong)
     );
   }
 }
