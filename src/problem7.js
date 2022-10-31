@@ -2,7 +2,8 @@ function problem7(user, friends, visitors) {
   
   const userfriends = [],
         friendoffriends = [],
-        unfriendvisitors = [];
+        unfriendvisitors = [],
+        score = new Map();
 
   friends.filter((a) => a.includes(user)).filter((a) => {
     for (let i = 0; i < a.length; i++) {
@@ -21,6 +22,22 @@ function problem7(user, friends, visitors) {
 
   for (let i = 0; i < visitors.length; i++) {
     if (!userfriends.includes(visitors[i])) unfriendvisitors.push(visitors[i]);
+  };
+
+  for (const i of friendoffriends) {
+    if (score.has(i)) {
+      score.set(i, score.get(i) + 10);
+    } else {
+      score.set(i, 10);
+    }
+  };
+
+  for (const i of unfriendvisitors) {
+    if (score.has(i)) {
+      score.set(i, score.get(i) + 1);
+    } else {
+      score.set(i, 1);
+    }
   };
 
 }
