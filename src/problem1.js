@@ -9,7 +9,10 @@ function problem1(pobi, crong) {
     answer = -1;
   } else if (pobi[1] != pobi[0] + 1 || crong[1] != crong[0] + 1) {
     answer = -1;
-  } else {
+  } else if(pobi[0]==1 || pobi[0]==399 || crong[0]==1 || crong[0]==399) {
+    answer = -1;
+  }
+  else {
     let pobiNums = [0,0];
     let crongNums = [0,0];
     let i = 10;
