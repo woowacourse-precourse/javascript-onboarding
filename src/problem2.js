@@ -10,7 +10,6 @@ function problem2(cryptogram) {
       }
       answer.splice(i - 1, stock);
       i = 0;
-      console.log(answer);
     }
   }
   answer = answer.join("");

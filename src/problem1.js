@@ -9,8 +9,7 @@ function problem1(pobi, crong) {
   )
     return -1;
   if (pobi[0] % 2 === 0) return -1;
-  if (pobi[0] === 1) return -1;
-  if (pobi[1] === 400) return -1;
+  if (pobi[0] < 1 || pobi[1] > 400) return -1;
 
   const pobisumleft = pobi[0]
     .toString()
