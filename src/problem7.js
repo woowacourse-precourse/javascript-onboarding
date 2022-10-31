@@ -35,6 +35,19 @@ function scoreInFriends(user, friends, realFriends) {
   }
   return dict;
 }
+function scoreInVisitors(visitors, realFriends, dict) {
+  let key;
+  for (let i = 0; i < visitors.length; i++) {
+    if (!realFriends.includes(visitors[i])) {
+      key = visitors[i];
+      if (dict[key]) {
+        dict[key] += 1;
+      } else {
+        dict[key] = 1;
+      }
+    }
+  }
+}
 
 function problem7(user, friends, visitors) {
   var answer = [];
@@ -47,6 +60,9 @@ function problem7(user, friends, visitors) {
 
   // friends 배열에서 추천 점수 매기기
   dict = scoreInFriends(user, friends, realFriends);
+
+  // visitors 배열에서 추천 점수 매기기
+  scoreInVisitors(visitors, realFriends, dict);
   return answer;
 }
 
