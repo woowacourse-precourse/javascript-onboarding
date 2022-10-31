@@ -8,7 +8,7 @@ function problem2(cryptogram) {
     return answer;
 }
 function filterText(text) {
-    const nowText = text.filter(v=> v.length==1);
+    const nowText = text.filter(v=> v.length === 1);
     return problem2(nowText.join(''));
 }
 
