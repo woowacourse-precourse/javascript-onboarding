@@ -22,7 +22,32 @@ function problem7(user, friends, visitors) {
     else scoreBoard[el] = visitScore;
   })
 
-  // return scoreBoard
+  const scoreObj = [];
+  const keysArr = Object.keys(scoreBoard);
+  const valueArr = Object.values(scoreBoard);
+
+  for (let i = 0; i < keysArr.length; i++) {
+    scoreObj.push({
+      key: keysArr[i],
+      score: valueArr[i]
+    })
+  }
+
+  const answer = scoreSort(keySort(scoreObj))
+
+  return answer
+}
+
+function scoreSort(answer) {
+  return answer.sort((a, b) => b.score - a.score);
+}
+
+function keySort(scoreObj) {
+  return scoreObj.sort((a, b) => {
+    if (a.key > b.key) return 1
+    if (a.key === b.key) return 0
+    if (a.key < b.key) return -1
+  });
 }
 
 function makeBestRecommendFriend(withoutUserList, userFriendList) {
@@ -85,3 +110,15 @@ function duplicateFriendship(friends) {
 }
 
 module.exports = problem7;
+
+console.log(
+  problem7("mrko",
+    [
+      ["donut", "andole"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"]
+    ],
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]));
