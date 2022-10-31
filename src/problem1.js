@@ -33,11 +33,8 @@ function add(number) {
   while (true) {
     answer += number % 10;
 
-    if (number > 9) {
-      number = parseInt(number / 10);
-    } else {
-      return answer;
-    }
+    if (number <= 9) return answer;
+    number = parseInt(number / 10);
   }
 }
 
@@ -47,11 +44,8 @@ function multiple(number) {
   while (true) {
     answer *= number % 10;
 
-    if (number > 9) {
-      number = parseInt(number / 10);
-    } else {
-      return answer;
-    }
+    if (number <= 9) return answer;
+    number = parseInt(number / 10);
   }
 }
 
