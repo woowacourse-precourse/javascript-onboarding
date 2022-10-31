@@ -54,8 +54,10 @@ function problem7(user, friends, visitors) {
 
   for (let i = 0; i < scoreGraphKey.length; i++) {
     if (socialGraph[user].includes(scoreGraphKey[i])) continue;
+    if (answer.length > 5) break;
     answer.push(scoreGraphKey[i]);
   }
+
   return answer;
 }
 
