@@ -66,7 +66,9 @@ function getFriendList(user, friends) {
   for (let i = 0; i < friends.length; i++) {
     pushFriendList(friendList, friends[i]);
   }
-  if (!Object.keys(friendList).includes(user)) friendList[user] = [];
+  if (!Object.keys(friendList).includes(user)) {
+    friendList[user] = [];
+  }
   return friendList;
 }
 
@@ -88,9 +90,9 @@ function getFriendRecommandScore(friendList, user) {
   return recommandScore;
 }
 
-function getVisitorRecommandScore(recommandScore, friendList, visitors) {
+function getVisitorRecommandScore(recommandScore, userFriendList, visitors) {
   for (let i = 0; i < visitors.length; i++) {
-    if (friendList.includes(visitors[i])) {
+    if (userFriendList.includes(visitors[i])) {
       continue;
     }
     if (!isIncludesObjectKeys(recommandScore, visitors[i])) {
@@ -139,22 +141,6 @@ function problem7(user, friends, visitors) {
 
 module.exports = problem7;
 
-// console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
+// console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
 
-console.log(problem7("mrko", [["donut", "jun"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]))
-
-
-    // 2nd
-    // if (!isFriendListKey(friendList, friends[i][0])) {
-    //   friendList[friends[i][0]] = [];
-    // }
-    // friendList[friends[i][0]].push(friends[i][1]);
-    // if (!isFriendListKey(friendList, friends[i][1])) {
-    //   friendList[friends[i][1]] = [];
-    // }
-    // friendList[friends[i][1]].push(friends[i][0]);
-    //1st
-    // if (Object.keys(friendList).includes(friends[i][0])) friendList[friends[i][0]].push(friends[i][1]);
-    // else friendList[friends[i][0]] = [friends[i][1]];
-    // if (Object.keys(friendList).includes(friends[i][1])) friendList[friends[i][1]].push(friends[i][0]);
-    // else friendList[friends[i][1]] = [friends[i][0]];
+// console.log(problem7("mrko", [["donut", "jun"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
