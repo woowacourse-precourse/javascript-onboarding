@@ -27,6 +27,18 @@ function problem7(user, friends, visitors) {
     return !current_friends.includes(person);
   };
 
+  const push_recommendations2 = (person, score) => {
+    recommendations2.push({ name: person, score: score });
+  };
+
+  const is_same_person = (person1, person2) => {
+    return person1 == person2;
+  };
+
+  const remove_overlapped_score = (index, cnt) => {
+    recommendations.splice(index, cnt);
+  };
+
   const can_be_recommendation = (i, j) => {
     return (
       is_current_friend(friends[i][j]) &&
@@ -64,20 +76,8 @@ function problem7(user, friends, visitors) {
     }
   };
 
-  const push_recommendations2 = (person, score) => {
-    recommendations2.push({ name: person, score: score });
-  };
-
-  const is_same_person = (person1, person2) => {
-    return person1 == person2;
-  };
-
-  const remove_overlapped_score = (index, cnt) => {
-    recommendations.splice(index, cnt);
-  };
-
   const find_sum_of_score_in_recommendations = () => {
-    for (let i = 0; i < recommendations.length - 1; i++) {
+    for (let i = 0; i < recommendations.length; i++) {
       let score_sum = recommendations[i][1];
       for (let j = i + 1; j < recommendations.length; j++) {
         if (is_same_person(recommendations[i][0], recommendations[j][0])) {
@@ -130,5 +130,21 @@ function problem7(user, friends, visitors) {
   solution();
   return find_5_recommendations();
 }
+
+problem7(
+  "hello",
+  [
+    ["andole", "jun"],
+    ["andole", "bedi"],
+    ["jun", "shakevan"],
+    ["jun", "kane"],
+    ["jun", "sam"],
+    ["bedi", "shakevan"],
+    ["bedi", "anne"],
+    ["bedi", "sam"],
+    ["anne", "mrko"],
+  ],
+  ["donut", "anne", "mrko", "mrko", "sam"]
+);
 
 module.exports = problem7;
