@@ -42,10 +42,21 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  // scores를 배열로 만들어 점수 기준 오름차순으로 정렬한다.
   // 점수가 0점의 경우 추천하지 않는다.
+  // scores를 배열로 만들어 점수 기준 오름차순으로 정렬한다.
+  // 추천 점수가 같은 경우 이름순으로 정렬한다.
   let scoresArray = Object.entries(scores);
-  scoresArray = scoresArray.filter(([name, score]) => score !== 0).sort((a, b) => b[1] - a[1]);
+  scoresArray = scoresArray
+    .filter(([name, score]) => score !== 0)
+    .sort((a, b) => b[1] - a[1])
+    .sort(([nameA, scoreA], [nameB, scoreB]) => {
+      if (scoreA === scoreB) {
+        if (nameA > nameB) return 1;
+        if (nameA < nameB) return -1;
+        else return 0;
+      }
+      return 0;
+    });
 
   // 정렬한 scores를 순회하며 반환할 배열에 조건에 맞게 푸쉬한다. (user와 이미 친구이거나, result의 길이가 5에 도달했을 때, user 본인일 때 푸쉬하지 않는다.)
   const result = [];

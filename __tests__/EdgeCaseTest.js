@@ -1,4 +1,5 @@
 const problem1 = require("../src/problem1");
+const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
   test("최소 페이지 1미만의 값이 들어오면 예외사항으로 -1이 반환되어야 한다.", () => {
@@ -38,5 +39,27 @@ describe("problem1", () => {
     expect(problem1([101, 102], null)).toEqual(-1);
     expect(problem1(null)).toEqual(-1);
     expect(problem1("정상적이지 않은 값")).toEqual(-1);
+  });
+});
+
+describe("problem7", () => {
+  test("andole, bedi, jun이 동점일 때 이름순으로 정렬되어야 한다.", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["donut", "bedi"],
+          ["donut", "tjdgns"],
+          ["shakevan", "tjdgns"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi", "jun", "tjdgns"]);
   });
 });
