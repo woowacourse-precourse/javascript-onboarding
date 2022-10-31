@@ -33,11 +33,10 @@ function getRecommendScoreInfo({ user, friendInfo, visitors }) {
     { data: { user, friendInfo }, type: 'FRIENDS' },
     recommendScoreInfo,
   );
-
-  // calcRecommendScore(
-  //   { data: { user, visitors }, type: 'VISITORS' },
-  //   recommendScoreInfo,
-  // );
+  calcRecommendScore(
+    { data: { user, visitors }, type: 'VISITORS' },
+    recommendScoreInfo,
+  );
 
   console.log(recommendScoreInfo);
 
@@ -64,8 +63,18 @@ function calcRecommendScore({ data, type }, recommendScoreInfo) {
     });
   }
 
-  // if (type === 'VISITORS') {
-  // }
+  if (type === 'VISITORS') {
+    const { user, visitors } = data;
+    visitors.forEach((visitorId) => {
+      if (user !== visitorId) {
+        if (recommendScoreInfo[visitorId]) {
+          recommendScoreInfo[visitorId]++;
+        } else {
+          recommendScoreInfo[visitorId] = 1;
+        }
+      }
+    });
+  }
 }
 
 function problem7(user, friends, visitors) {
