@@ -22,3 +22,8 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 구현할 기능 목록
+
+- 문자열을 넣을 stack 생성
+- 문자열을 순회하는 기능
+- 문자열을 순회하면서 stack의 마지막 요소와 비교하는 기능
