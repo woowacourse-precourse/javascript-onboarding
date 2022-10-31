@@ -5,12 +5,12 @@ class UserRelation {
 	constructor () {
 		this._usersRelations = new Map();
 	}
-	_getRelations(user) {
-		return this._usersRelations.get(user) || [];
-	}
 	_addRelation(source, target) {
-		const relation = this._getRelations(source);
+		const relation = this.getRelations(source);
 		relation.length ? relation.push(target) : this._usersRelations.set(source, [target]);
+	}
+	getRelations(user) {
+		return this._usersRelations.get(user) || [];
 	}
 	/**
 	 * @abstract
@@ -30,9 +30,8 @@ class FriendUserRelation extends UserRelation{
 	}
 	calculateScore(user) {
 		const result = new Map();
-		const relUsers = [user, ...this._getRelations(user)];
-		for (const relUser of relUsers) {
-			const notRelUsers = this._getRelations(relUser).filter((notRelUser) => !relUsers.includes(notRelUser));
+		for (const relUser of this.getRelations(user)) {
+			const notRelUsers = this.getRelations(relUser);
 			for (const notRelUser of notRelUsers) {
 				result.set(notRelUser, result.get(notRelUser) + 10 || 10);
 			}
@@ -47,7 +46,7 @@ class VisitorUserRelation extends UserRelation{
 	}
 	calculateScore(user) {
 		const result = new Map();
-		for (const relUser of this._getRelations(user)) {
+		for (const relUser of this.getRelations(user)) {
 			result.set(relUser, result.get(relUser) + 1 || 1);
 		}
 		return result;
