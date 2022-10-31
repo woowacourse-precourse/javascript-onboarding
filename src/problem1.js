@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = page(pobi,crong);//page의 리턴은 if
   return answer;
 }
 function sum(n){    //배열의 값을 각각 더하는 함수
@@ -17,6 +17,20 @@ function multi(n){    //배열의 값을 각각 곱하는 함수
     answer *= parseInt(n[i])
   }
   return answer; 
+}
+function page(pobi ,crong) {
+  const pobisCal = [];
+  const crongsCal = [];
+  const incorrectCal = [];
+  function peopleCalc(k,peopleCal) {
+    for (i = 0; i < k.length; i++){
+      peopleCal.push(sum(k[i]));
+      peopleCal.push(multi(k[i]));
+      incorrectCal.push(k[i]);
+    };
+  }
+  new peopleCalc(pobi,pobisCal);
+  new peopleCalc(crong,crongsCal);  
 }
 
 module.exports = problem1;
