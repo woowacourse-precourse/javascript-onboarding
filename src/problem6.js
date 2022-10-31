@@ -1,3 +1,4 @@
+/** 중복되는 닉네임 찾는 기능 **/
 function findOverlap(forms) {
   var names = [];
   var overlapNames = [];
@@ -20,13 +21,19 @@ function findOverlap(forms) {
   }
 
   overlapNames = [...new Set(overlapNames)];
-  console.log(overlapNames);
+  return overlapNames;
 }
 
+// 중복되는 닉네임을 갖고 있는 교육생의 이메일을 찾아 정렬하는 기능
 function problem6(forms) {
-  var answer;
-  findOverlap(forms);
-  return answer;
+  var answer = [];
+  var names = findOverlap(forms);
+
+  for (let i = 0; i < forms.length; i++) {
+    if (names.includes(forms[i][1])) answer.push(forms[i][0]);
+  }
+
+  return answer.sort();
 }
 
 module.exports = problem6;
