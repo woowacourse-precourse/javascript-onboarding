@@ -10,6 +10,22 @@ const makeMyFriends = (friends, user, myFriends) =>{
   }
 };
 
+//나와 함께 아는 친구 목록 생성
+const makeMyFriendsKnow = (user, myFriends, friends, userFriendTogether) =>{
+
+  for(let user_friend of myFriends){
+    for(let friend of friends){
+      const newFriendIndex = Math.abs(friend.indexOf(user_friend)-1);
+      if ((friend.includes(user_friend)) &&
+          (!friend[newFriendIndex].includes(user))) {
+            userFriendTogether.push(
+              friend[newFriendIndex]
+            );
+      }
+    }
+  }
+};
+
 }
 
 module.exports = problem7;
