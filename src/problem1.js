@@ -1,29 +1,24 @@
-const POBIWIN = 1;
-const CRONGWIN = 2;
+const POBI_WIN = 1;
+const CRONG_WIN = 2;
 const DRAW = 0;
-const ERR = -1;
+const ERROR = -1;
 
-// 각 자리 숫자를 쪼개서 숫자 배열을 반환하는 함수
 const splitNumberToArray = (number) => {
   return String(number)
     .split("")
     .map((char) => Number(char));
 };
 
-// 각 자리 숫자를 모두 더해 반환해주는 함수
 const calcSum = (numberArray) => {
   return numberArray.reduce((acc, cur) => acc + cur);
 };
 
-// 각 자리 숫자를 모두 곱해 반환해주는 함수
 const calcMul = (numberArray) => {
   return numberArray.reduce((acc, cur) => acc * cur);
 };
 
-// 테스트 값의 예외사항 체크
-const checkExcep = (arr) => {
-  let left = arr[0];
-  let right = arr[1];
+const checkException = (array) => {
+  const [left, right] = array;
 
   // 왼쪽 페이지 < 오른쪽 페이지 (두 값의 차이가 1인지)
   if (right - left === 1) {
@@ -37,19 +32,17 @@ const checkExcep = (arr) => {
 
 function problem1(pobi, crong) {
   var answer;
-  let scorePobi, scoreCrong;
 
-  // pobi와 crong의 페이지 값이 올바른지 검사
-  if (!checkExcep(pobi) || !checkExcep(crong)) return ERR;
+  if (!checkException(pobi) || !checkException(crong)) return ERROR;
 
-  scorePobi = Math.max(
+  const scorePobi = Math.max(
     calcSum(splitNumberToArray(pobi[0])),
     calcSum(splitNumberToArray(pobi[1])),
     calcMul(splitNumberToArray(pobi[0])),
     calcMul(splitNumberToArray(pobi[1]))
   );
 
-  scoreCrong = Math.max(
+  const scoreCrong = Math.max(
     calcSum(splitNumberToArray(crong[0])),
     calcSum(splitNumberToArray(crong[1])),
     calcMul(splitNumberToArray(crong[0])),
@@ -60,8 +53,8 @@ function problem1(pobi, crong) {
     scorePobi >= scoreCrong
       ? scorePobi === scoreCrong
         ? DRAW
-        : POBIWIN
-      : CRONGWIN;
+        : POBI_WIN
+      : CRONG_WIN;
   return answer;
 }
 
