@@ -49,6 +49,18 @@ function problem7(user, friends, visitors) {
   }, {});
 
   let score = calculateScore(countOfTogetherKnow, visitorsCount);
+
+  const sortScore = Object.fromEntries(
+    Object.entries(score).sort(([alpha1, num1], [alpha2, num2]) => {
+      if (num1 === num2) {
+        return alpha1.localeCompare(alpha2);
+      } else if (num1 < num2) {
+        return 1;
+      } else {
+        return -1;
+      }
+    })
+  );
 }
 
 module.exports = problem7;
