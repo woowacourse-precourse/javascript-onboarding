@@ -3,7 +3,7 @@ function problem3(number) {
   const condition = /3|6|9/g;
 
   for (let i = 1; i <= number; i++) {
-    answer += (String(i).match(condition) || []).length;
+    answer += String(i).match(condition)?.length || 0;
   }
 
   return answer;
