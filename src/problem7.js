@@ -1,4 +1,15 @@
+// @ts-check
+
+/**
+ *
+ * @param {string} user 친구 추천 대상
+ * @param {string[][]} friends 친구 관계
+ * @param {string[]} visitors 사용자 타임 라인 방문 기록
+ * @returns {string[]}
+ */
+
 function problem7(user, friends, visitors) {
+  /** @type {{[prop: string]: number}} */
   const scores = {};
 
   const userFriendNames = getFriends(user, friends);
@@ -34,6 +45,13 @@ function problem7(user, friends, visitors) {
   return sortedName.length > 5 ? sortedName.slice(0, 5) : sortedName;
 }
 
+/**
+ * user와 친구 관계가 있는 친구 리스트를 반환하는 함수
+ * @param {string} user 친구 리스트를 원하는 user
+ * @param {string[][]} friends 친구 관계 리스트
+ * @returns {string[]} user와 친구 관계가 있는 친구 리스트
+ */
+
 function getFriends(user, friends) {
   const userFriends = [];
 
@@ -48,6 +66,13 @@ function getFriends(user, friends) {
 
   return userFriends;
 }
+
+/**
+ * 이미 친구 관계인가를 반환하는 함수
+ * @param {string} user
+ * @param {string[]} friendList
+ * @returns {boolean}
+ */
 
 function isAlreadyFriend(user, friendList) {
   const index = friendList.findIndex((f) => user === f);

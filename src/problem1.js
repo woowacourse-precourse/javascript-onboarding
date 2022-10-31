@@ -1,5 +1,14 @@
+// @ts-check
+
+/**
+ *
+ * @param {number[]} pobi
+ * @param {number[]} crong
+ * @returns {-1 | 1 | 2 | 0}
+ */
+
 function problem1(pobi, crong) {
-  if (isUnconnectPages(pobi) || isUnconnectPages(crong)) {
+  if (isInvalidPages(pobi) || isInvalidPages(crong)) {
     return -1;
   }
 
@@ -15,18 +24,36 @@ function problem1(pobi, crong) {
   }
 }
 
-function isUnconnectPages(pages) {
-  return pages[0] + 1 !== pages[1];
+/**
+ * 유효하지 않은 input 인지 체크
+ * @param {number[]} pages
+ * @returns {boolean}
+ */
+
+function isInvalidPages(pages) {
+  const [oddPage, evenPage] = pages;
+
+  const isUnconnect = oddPage + 1 !== evenPage;
+  const isInvalidRange = oddPage < 1 || evenPage > 400;
+  const isWrongNumber = oddPage % 2 !== 1 || evenPage % 2 !== 0;
+
+  return isUnconnect || isInvalidRange || isWrongNumber;
 }
+
+/**
+ * 각 page의 digit 을 모두 더한 값과 모두 곱한 값 중 더 큰 값을 반환
+ * @param {number[]} pages
+ * @returns {number}
+ */
 
 function getMaxNumber(pages) {
   let maxNumber = 0;
 
   pages.forEach((page) => {
-    const eachNumbers = separateNumber(page);
+    const eachDigit = separateNumber(page);
 
-    const sumOfNumbers = eachNumbers.reduce((prev, current) => prev + current);
-    const mulOfNumbers = eachNumbers.reduce((prev, current) => prev * current);
+    const sumOfNumbers = eachDigit.reduce((prev, current) => prev + current);
+    const mulOfNumbers = eachDigit.reduce((prev, current) => prev * current);
 
     const biggerNumber = getBiggerNumber(sumOfNumbers, mulOfNumbers);
 
@@ -36,12 +63,25 @@ function getMaxNumber(pages) {
   return maxNumber;
 }
 
+/**
+ * number 를 digit 으로 분리
+ * @param {number} number
+ * @returns {number[]}
+ */
+
 function separateNumber(number) {
   const strNumber = String(number);
-  const eachNumbers = [...strNumber].map((value) => Number(value));
+  const eachDigit = [...strNumber].map((value) => Number(value));
 
-  return eachNumbers;
+  return eachDigit;
 }
+
+/**
+ * num1, num2 중 더 큰 수를 반환
+ * @param {number} num1
+ * @param {number} num2
+ * @returns
+ */
 
 function getBiggerNumber(num1, num2) {
   return num1 > num2 ? num1 : num2;

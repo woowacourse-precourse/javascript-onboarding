@@ -1,3 +1,5 @@
+// @ts-check
+
 const alphabets = [
   "a",
   "b",
@@ -27,27 +29,37 @@ const alphabets = [
   "z",
 ];
 
+/**
+ *
+ * @param {string} word 길이가 1 이상 1,000 이하인 문자열
+ * @returns {string} 청개구리 사전을 참고하여 반대로 변환된 문자열
+ */
+
 function problem4(word) {
   const characters = [...word];
 
   const convertedCharacters = characters.map((character) => {
-    const index = alphabets.findIndex((alphabet) => {
+    const foundIndex = alphabets.findIndex((alphabet) => {
       return alphabet === character.toLowerCase();
     });
 
-    if (index === -1) {
+    if (foundIndex === -1) {
       return character;
     }
 
-    if (isUpperCase(character)) {
-      return alphabets[alphabets.length - 1 - index].toUpperCase();
-    } else {
-      return alphabets[alphabets.length - 1 - index];
-    }
+    return isUpperCase(character)
+      ? alphabets[alphabets.length - 1 - foundIndex].toUpperCase()
+      : alphabets[alphabets.length - 1 - foundIndex];
   });
 
   return convertedCharacters.join("");
 }
+
+/**
+ * alpha 가 대문자인지 체크
+ * @param {string} alpha
+ * @returns {boolean}
+ */
 
 function isUpperCase(alpha) {
   const upperRegex = /[A-Z]/g;
