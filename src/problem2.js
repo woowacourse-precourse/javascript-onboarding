@@ -1,9 +1,8 @@
 function problem2(cryptogram) {
-  if (!isInitialContinuous(cryptogram)) {
+  if (!isContinuous(cryptogram)) {
     return cryptogram;
   }
-
-  while (isDuplicate(cryptogram) && cryptogram.length !== 0) {
+  while (isContinuous(cryptogram) && cryptogram.length !== 0) {
     cryptogram = filterStr(cryptogram);
   }
   const answer = cryptogram;
@@ -18,13 +17,6 @@ function isContinuous(cryptogram) {
     }
   }
   if (continuityCount > 0) return true;
-  return false;
-}
-function isDuplicate(cryptogram) {
-  const setCryptogram = new Set(cryptogram);
-  if (cryptogram.length !== setCryptogram.size) {
-    return true;
-  }
   return false;
 }
 
