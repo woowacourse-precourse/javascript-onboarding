@@ -22,3 +22,30 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+---
+
+## 🔍문제풀이
+
+### 💻기능 구현 순서
+
+1. javascript의 map함수를 사용하여 인덱스의 연속된 값이 중복되있는지 확인한다.
+2. 중복된 값이 있으면 버리고, 없으면 다음 인덱스값으로 넘어간다.
+
+### ❗예외사항
+
+- 없음
+
+### ❓궁금한점
+
+- 첫번째 인덱스와 마지막 인덱스면 어떻게 구현을 해야할까
+
+### ✔️문제 풀이 방식 체크
+
+1. browoanoommnaon
+   <br>browoan&nbsp;&nbsp;&nbsp;&nbsp;naon -> oomm
+2. browoannaon
+   <br>browoa&nbsp;&nbsp;aon -> nn
+3. browoaaon
+   <br>browo&nbsp;&nbsp;on -> aa
+4. browoon
+   <br>brow&nbsp;&nbsp;n -> oo
