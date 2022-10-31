@@ -28,8 +28,28 @@ function problem6(forms) {
     return words_Array;
   };
 
+  const FindWords = (array, words) => {
+    return array.reduce((c, e) => {
+      for (let w of words) {
+        if (e[1].indexOf(w) != -1) {
+          c.push(e[0]);
+        } else {
+          false;
+        }
+      }
+      return c;
+    }, []);
+  };
+
+  let send_email = [];
+
   vaild_Array.forEach((element, index) => {
     let words = SlicingWord(element[1]);
+    let add_elements = FindWords(vaild_Array.slice(index + 1), words);
+    if (add_elements.length != 0) {
+      send_email.push(element[0]);
+      send_email = send_email.concat(add_elements);
+    }
   });
 }
 
