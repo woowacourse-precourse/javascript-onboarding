@@ -10,8 +10,14 @@
  */
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  const nicknames = getNickname(forms);
+  const seqLettersDuplicated = findDuplicatedLetters(
+    getEverySeqLetters(nicknames)
+  );
+  const nicknameIndexes = findIndexOfNicknames(nicknames, seqLettersDuplicated);
+  const emails = findEmails(forms, nicknameIndexes).sort();
+
+  return emails;
 }
 
 function getNickname(forms) {
