@@ -29,6 +29,13 @@ function problem1(pobi, crong) {
   if (pobi.length > 2 || pobi.length < 2) return -1;
   if (crong.length > 2 || crong.length < 2) return -1;
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+  if (
+    pobi.includes(1) ||
+    pobi.includes(400) ||
+    crong.includes(1) ||
+    crong.includes(400)
+  )
+    return -1;
 
   const pobiResult = bigger(pobi);
 
