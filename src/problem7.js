@@ -24,6 +24,25 @@ const getUserFriends = (friendList, user) => {
   return userFriends;
 };
 
+const sortScore = (scoreList) => {
+  const sortNickname = (userA, userB) => {
+    if (userA > userB) {
+      return 1;
+    } else if (userA < userB) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+
+  scoreList.sort((curList, nextList) => {
+    if (curList.score === nextList.score) {
+      return sortNickname(curList.user, nextList.user);
+    }
+    return nextList.score - curList.score;
+  });
+};
+
 function problem7(user, friends, visitors) {
   const { scoreList, calcScore } = getScore();
   const userFriends = getUserFriends(friends, user);
@@ -43,6 +62,7 @@ function problem7(user, friends, visitors) {
     if (!isUserFriends(visitor)) calcScore(visitor, 1);
   });
 
+  sortScore(scoreList);
 }
 
 module.exports = problem7;
