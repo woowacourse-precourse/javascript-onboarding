@@ -40,7 +40,9 @@ function problem7(user = '', friends = [], visitors = []) {
     }
   );
 
-  return sortedFriends.map(([name, score]) => name);
+  return sortedFriends
+    .map(([name, score]) => name)
+    .slice(0, MAX_FRIENDS_TO_SHOW);
 }
 
 module.exports = problem7;
