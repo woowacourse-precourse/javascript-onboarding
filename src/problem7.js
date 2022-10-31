@@ -1,5 +1,5 @@
-function getFriendList(friends) {
-  const friendList = {};
+function getFriendList(user, friends) {
+  const friendList = { [user]: new Set() };
   friends.forEach(([friend1, friend2]) => {
     friendList[friend1] = friendList[friend1] || new Set();
     friendList[friend1].add(friend2);
