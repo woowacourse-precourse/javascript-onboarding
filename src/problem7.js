@@ -20,6 +20,12 @@ function problem7(user, friends, visitors) {
     linkedFriends = ch_linkedFriends(friends[i], friendList, linkedFriends); //친구관계리스트 검사
   delete (linkedFriends[user]);
 
+  //linkedFriends를 기반으로 score 합산
+  const arrLen = Object.keys(linkedFriends).length;
+  const tmpList = Object.keys(linkedFriends);
+  for (i = 0; i < arrLen; i++)  
+    score[tmpList[i]] += linkedFriends[tmpList[i]] * 10;
+
   return answer;
 }
 
