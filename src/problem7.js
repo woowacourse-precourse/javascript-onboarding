@@ -3,8 +3,12 @@ function problem7(user, friends, visitors) {
   const FRIEND_OF_FRIEND_SCORE = 10;
   const STRANGER_SCORE = 1;
   const myFriends = getMyFriend(user, friends);
-  const exceptionAcquaintance = getExceptionAcquaintance(myFriends,friends);
-  const recomendFriendsList = getRecomendFriendList(user, myFriends, exceptionAcquaintance);
+  const exceptionAcquaintance = getExceptionAcquaintance(myFriends, friends);
+  const recomendFriendsList = getRecomendFriendList(
+    user,
+    myFriends,
+    exceptionAcquaintance
+  );
   const strangeVisitorList = getStrangeVisitorList(myFriends, visitors);
   const recomendFriendsScore = scoreConversion(
     recomendFriendsList,
@@ -24,7 +28,7 @@ function problem7(user, friends, visitors) {
     }
     answer.push(recomendFriends[i]);
   }
-  
+
   return answer;
 }
 
@@ -106,18 +110,18 @@ function sorting(recomendFriends) {
   return sort;
 }
 
-function getExceptionAcquaintance(myFriends,friends){
-  const exceptionFriends = friends.filter(friends=>{
+function getExceptionAcquaintance(myFriends, friends) {
+  const exceptionFriends = friends.filter(friends => {
     let count = 0;
-    for (let friend of friends){
-      if (myFriends.indexOf(friend) > -1){
+    for (let friend of friends) {
+      if (myFriends.indexOf(friend) > -1) {
         count += 1;
       }
     }
 
-    return count === 2 ? false : true
-  })
+    return count === 2 ? false : true;
+  });
 
-  return exceptionFriends
+  return exceptionFriends;
 }
 module.exports = problem7;
