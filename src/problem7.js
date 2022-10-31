@@ -83,7 +83,7 @@ class VisitorsError extends MyError {
   }
 }
 
-class Model {
+class SNSModel {
   constructor(friends, visitors) {
     this._friends = friends;
     this._visitors = visitors;
@@ -118,6 +118,8 @@ class Model {
   }
 
   makeScoreBoard() {
+    console.log(this._friends);
+
     return [
       ...new Set(
         [...this._friends, ...this._visitors].flatMap((relation) => relation)
@@ -126,11 +128,12 @@ class Model {
   }
 }
 
-class Controller {
-  constructor(props) {
-    this._user = props.user;
-    this._visitors = props.visitors;
-    this._model = props.model;
+class SNSAlgorithm {
+  constructor(user, friends, visitors) {
+    this._user = user;
+    this._visitors = visitors;
+
+    this._model = new SNSModel(friends, visitors);
   }
 
   isRecommand(person) {
@@ -173,29 +176,14 @@ class Controller {
   }
 }
 
-// View
-class SNSAlgorithm {
-  constructor(user, friends, visitors) {
-    new UsersError(user);
-    new FriendsError(friends);
-    new VisitorsError(visitors);
-
-    this.controller = new Controller({
-      user: user,
-      visitors: visitors,
-      model: new Model(friends, visitors),
-    });
-  }
-
-  showFriendRecommend() {
-    return this.controller.recommend();
-  }
-}
-
 function problem7(user, friends, visitors) {
+  new UsersError(user);
+  new FriendsError(friends);
+  new VisitorsError(visitors);
+
   const sns = new SNSAlgorithm(user, friends, visitors);
 
-  return sns.showFriendRecommend();
+  return sns.recommend();
 }
 
 module.exports = problem7;
