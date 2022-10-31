@@ -22,8 +22,10 @@ function problem7(user, friends, visitors) {
   delete scoreList[user];
 
   const sortedList = Object.entries(scoreList).sort((a, b) => {
-    if (a[1] === b[1]) return -1;
-    else return b[1] - a[1];
+    if (a[1] === b[1]) {
+      if (a > b) return 1;
+      else return -1;
+    } else return b[1] - a[1];
   });
 
   const answer = [...sortedList].map(([name, score]) => {
@@ -32,4 +34,5 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
+
 module.exports = problem7;
