@@ -42,8 +42,8 @@
 [문제 5]
 1. 돈의 액수를 배열로 설정해준다. 
   - [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
-2. 배열의 길이만큼 parseInt(money/i) 반복한다.
-  - 한번 돌고 나면 money = money - i*parseInt(money/i)
+2. 배열의 길이만큼 parseInt(money/moneyUnitArray[i]) 반복한다.
+  - 한번 돌고 나면 money = money - moneyUnitArray[i]*parseInt(money/moneyUnitArray[i])
 3. 나온 각각의 값을 초기값을 0으로 하는 9의 길이의 배열에 넣는다. 
 
 
