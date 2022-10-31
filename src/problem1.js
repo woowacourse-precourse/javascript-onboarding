@@ -20,6 +20,14 @@ function isValid(pageInfo) {
   return true;
 }
 
+function getSum(num) {
+  let sum = 0;
+  for (let i = 0; i < num.length; i++) {
+    sum += num[i];
+  }
+  return sum;
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (!isValid(pobi) || !isValid(crong)) return -1;
