@@ -8,6 +8,12 @@ function problem6(forms) {
     everyNameArray.map(name => name.length > index + 1 && twoLetterArray.push(name.slice(index, index + 2)))
   }
 
+  // 중복 글자 찾기
+  const findDuplicates = (ARRAY) => ARRAY.filter(
+    (item, index) => ARRAY.indexOf(item) !== index
+  );
+  const duplicates = [...new Set(findDuplicates(twoLetterArray))];
+
   return answer;
 }
 
