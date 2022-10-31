@@ -24,12 +24,6 @@ function problem1(pobi, crong) {
     if (rightPage - leftPage !== 1) {
       isError = true;
     }
-    if (leftPage === 0 && rightPage === 1) {
-      isError = true;
-    }
-    if (leftPage === 399 && rightPage === 400) {
-      isError = true;
-    }
     if (leftPage <= 0 || leftPage >= 400) {
       isError = true;
     }
