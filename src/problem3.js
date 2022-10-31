@@ -7,6 +7,8 @@ function countNumber(number) {
   for(i = 1; i <= number; i ++){
     arr.push(i);
   }
-  const totalNumber = arr.toString().split(''); 
+  const totalNumber = arr.toString().split('');   
+  let filtered = totalNumber.filter((element) => element !== ',');
+  return filtered;
 }
 module.exports = problem3;
