@@ -28,6 +28,8 @@ function problem6(forms) {
     if (mail.length > 1) answer.push(...mail);
   })
 
+  // 4. 정답 배열을 중복 제거 후 오름차순으로 정렬한다.
+  answer = [...new Set(answer)].sort();
   return answer;
 }
 
