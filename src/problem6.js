@@ -139,7 +139,17 @@ const getDuplicateDestinationEmailSet = (formArray, duplicatedNickNameArray) => 
 };
 
 function problem6(forms) {
-  var answer;
+  isCrewException(forms);
+
+  const copiedFormArray = copyArray(forms);
+  const nicknameCountMap = getNicknameCountMap(copiedFormArray);
+  const duplicatedNickNameArray = getDuplicateNicknames(nicknameCountMap);
+  const duplicatedDestinationEmailSet = getDuplicateDestinationEmailSet(
+    copiedFormArray,
+    duplicatedNickNameArray
+  );
+  const answer = sortByAscendingOrder(duplicatedDestinationEmailSet);
+
   return answer;
 }
 
