@@ -16,6 +16,10 @@ function problem5(money) {
     return;
   }
 
+  for (let i = 0; i < moneyArr.length; i++) {
+    divideMoney(money, moneyArr[i], i);
+  }
+
   return answer;
 }
 
