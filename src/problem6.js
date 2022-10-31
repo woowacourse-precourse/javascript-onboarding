@@ -56,6 +56,23 @@ const isCrewException = crew => {
   return false;
 };
 
+const categorizeNicknames = (nickname, callbackFunc) => {
+  let _endIndex = 1;
+  const eachNickNameString = copyArray(nickname);
+  const maximumLength = getLength(eachNickNameString) - 1;
+
+  for (let _startIndex = 0; _startIndex < maximumLength; _startIndex++) {
+    const firstLetter = eachNickNameString[_startIndex];
+    const secondLetter = eachNickNameString[_endIndex];
+
+    callbackFunc(`${firstLetter}${secondLetter}`);
+
+    _endIndex += 1;
+  }
+
+  return;
+};
+
 function problem6(forms) {
   var answer;
   return answer;
