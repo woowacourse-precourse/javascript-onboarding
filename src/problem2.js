@@ -1,7 +1,17 @@
 function problem2(cryptogram) {
-  var answer;
+  let curCryptogram = cryptogram;
 
-  return answer;
+  while (curCryptogram.length !== 0) {
+    let duplicationArr = duplicationSection(curCryptogram);
+
+    if (duplicationArr.length === 0) return curCryptogram;
+
+    for (let i = duplicationArr.length - 1; i >= 0; i--) {
+      curCryptogram = sliceDuplication(curCryptogram, duplicationArr[i]);
+    }
+  }
+
+  return curCryptogram;
 }
 
 const sliceDuplication = (curCryptogram, duplicationArr) => {
@@ -17,8 +27,9 @@ const duplicationSection = (curCryptogram) => {
   const duplicationArr = [];
   let duplicationCount = 1;
   let curChar = curCryptogram[0];
+  let curCryptogramLength = curCryptogram.length;
 
-  for (let i = 1; i < curCryptogram.length; i++) {
+  for (let i = 1; i < curCryptogramLength; i++) {
     if (curCryptogram[i] === curChar) {
       duplicationCount += 1;
       continue;
