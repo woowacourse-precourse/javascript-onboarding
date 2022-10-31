@@ -35,12 +35,34 @@ function problem4(word) {
   const bigReverseAlphabet = reverseAlphabet.map((x) => x.toUpperCase());
 
   let greenfrog = "";
-
+  const specialWord = [
+    "`",
+    "~",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "|",
+    "\\",
+    "?",
+  ];
   const array = word.split("");
   for (let i = 0; i < array.length; i++) {
-    if (array[i] !== " " && array[i] === array[i].toUpperCase()) {
+    if (
+      specialWord.includes(array[i]) === false &&
+      array[i] !== " " &&
+      array[i] === array[i].toUpperCase()
+    ) {
       greenfrog += bigReverseAlphabet[bigAlphabet.indexOf(array[i])];
-    } else if (array[i] !== " " && array[i] === array[i].toLowerCase()) {
+    } else if (
+      specialWord.includes(array[i]) === false &&
+      array[i] !== " " &&
+      array[i] === array[i].toLowerCase()
+    ) {
       greenfrog += reverseAlphabet[alphabet.indexOf(array[i])];
     } else if (array[i] === " ") {
       greenfrog += " ";
