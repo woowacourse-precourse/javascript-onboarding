@@ -12,13 +12,16 @@ function problem6(forms) {
     }
   }
 
-  var answer = "";
+  var answer = [];
 
   hashMap.forEach((v) => {
-    if (answer.length < v.length) answer = v;
+    if (v.length > 1) answer.push(...v);
   });
 
-  return answer.sort();
+  set = new Set(answer.sort());
+  answer = [...set];
+
+  return answer;
 }
 
 module.exports = problem6;
