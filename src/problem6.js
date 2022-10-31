@@ -12,6 +12,18 @@ const problem6 = (forms) => {
       namePiece)])
   );
 
+  for (i = 0; i < namePieces.length; i += 1) {
+    for (j = i + 1; j < namePieces.length; j += 1) {
+      if (j !== namePieces.length) {
+        const originalSize = namePieces[i].length + namePieces[j].length;
+        const nameSet = new Set([...namePieces[i], ...namePieces[j]]);
+
+        if (nameSet.size !== originalSize)
+          duplicateIndex = [...duplicateIndex, i, j];
+      }
+    }
+  }
+
   return answer;
 };
 
