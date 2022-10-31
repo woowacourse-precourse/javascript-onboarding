@@ -18,6 +18,6 @@
 ### 구현 기능 목록
 1. 화폐 단위 담을 unit 배열 선언 :white_check_mark:
 - 내림차순 정렬
-2. unit 배열을 순회하며, 각 화폐 단위에 대해 몇개로 반환되는지 계산하는 convertMoney 함수 구현
+2. unit 배열을 순회하며, 각 화폐 단위에 대해 몇개로 반환되는지 계산하는 convertMoney 함수 구현 :white_check_mark:
 - 매개변수 : unit_num(화폐 단위 배열),money(돈의 액수), answer(답 배열)
 - return 값 : money(변환 후 남은 돈), answer(화폐 갯수 담은 배열)
