@@ -11,4 +11,11 @@ const removeDuplicates = (string) => {
   return result;
 };
 
+const decrypt = (cryptogram) => {
+  if (!isSame(cryptogram, removeDuplicates(cryptogram))) {
+    return loop(decrypt, removeDuplicates(cryptogram));
+  }
+  return cryptogram;
+};
+
 
