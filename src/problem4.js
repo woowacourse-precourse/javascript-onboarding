@@ -6,8 +6,16 @@ function problem4(word) {
     originArray = wordString.split("").map((each) => each.charCodeAt());
     return originArray;
   }
+
   function convert(originArray) {
     var newArray;
+    newArray = originArray.map((each) => {
+      if (each >= 65 && each <= 90) {
+        return 155 - each;
+      } else if (each >= 97 && each <= 122) {
+        return 219 - each;
+      } else return each;
+    });
     return newArray;
   }
 
