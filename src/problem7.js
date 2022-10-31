@@ -2,6 +2,17 @@
 // friends = [["donut", "andole"],["donut", "jun"],["donut", "mrko"],["shakevan", "andole"],["shakevan", "jun"],["shakevan", "mrko"],]
 // visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
 
+user = 'andole';
+friends = [['andole', 'jun'],
+  ['donut', 'jun'],
+  ['donut', 'shakevan'],
+  ['shakevan', 'andole'],
+  ['shakevan', 'jun'],
+  ['shakevan', 'bedi'],
+  ['anne', 'jun'],
+];
+visitors = ['donut', 'mrko', 'peter', 'sam'];
+
 function problem7(user, friends, visitors) {
   let answer;
   let relation = {};
@@ -163,15 +174,19 @@ function maxFive(scoreArray) {
   let scoreLength = scoreArray.length;  
 
   if (scoreLength > 5) {
-    for (let i = 0; 5; i++) {
-      if (checkZero(i) == true) { // 기능 7
-        answer.push(score[i][0]);
+    for (let i = 0; i < 5; i++) {
+      if (scoreArray[i][1] === 0) { 
+        break;
+      } else {
+        answer.push(scoreArray[i][0]);
       }
     }
   } else {
     for (score of scoreArray) {
-      if (checkZero(score) == true) { // 기능 7
-        answer.push(score[0]);
+      if (score[1] === 0) {
+        break;
+      } else {
+        answer.push(scoreArray[0]);
       }
     }
   }
@@ -179,15 +194,6 @@ function maxFive(scoreArray) {
   return answer;
 }
 
-// 기능 7. 추천 점수가 0인 경우 확인
-function checkZero(score) {
-  if (score[1] === 0) {
-    return false;
-  } else {
-    return true;
-  }
-}
+problem7(user,friends, visitors);
 
-// problem7(user,friends, visitors);
-
-module.exports = problem7;
+// module.exports = problem7;
