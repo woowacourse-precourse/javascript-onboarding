@@ -9,6 +9,17 @@ function problem7(user, friends, visitors) {
   findKnowTogether(friends, alreadyFriendArr);
   findVisitorNum(visitors);
 
+  // 객체 오름차순 정렬
+  let sortable = [];
+  for (let friend in hash) {
+    sortable.push([friend, hash[friend]]);
+  }
+
+  sortable.sort(); // 점수 같을 경우 이름순으로 정렬
+  sortable.sort(function (a, b) {
+    return b[1] - a[1];
+  });
+
   return answer;
 
   // 유저목록 정리
