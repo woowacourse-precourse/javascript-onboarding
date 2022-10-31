@@ -11,6 +11,14 @@
 
 포비와 크롱이 펼친 페이지가 들어있는 배열 pobi와 crong이 주어질 때, 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
 
+## 기능 목록 
+
+FEAT: Add function for pageNum in each digit
+FEAT: Multiply function for pageNum in each digit
+FEAT: Compare two values
+FEAT: Calculate each person's pageNum
+FEAT: Return the winner & value
+
 ### 제한사항
 
 - pobi와 crong의 길이는 2이다.

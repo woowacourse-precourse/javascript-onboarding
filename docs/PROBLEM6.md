@@ -7,6 +7,18 @@
 
 신청받은 닉네임 중 **같은 글자가 연속적으로 포함** 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
 
+## 기능 목록
+1. 닉네임에 접근 _second index(form배열)
+2. 닉네임의 글자에 접근 (j)
+3. 같은 글자가 연속적으로 포함되는지 각 닉네임(q)에 접근하여 검사 (includes)
+4. 조건에 만족하는 닉네임의 이메일을 배열에 푸시 (answer)
+5. 오름차순 정렬 : sort 사용
+6. 중복 제거 : Set 사용
+
+Feat: Make nickname array
+Feat: Check each letters 
+Feat: Sort and Set
+
 ### 제한사항
 
 - 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주한다.

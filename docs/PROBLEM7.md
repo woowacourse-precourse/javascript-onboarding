@@ -6,6 +6,18 @@
 
 사용자 아이디 user와 친구 관계를 담은 이차원 배열 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
 
+## 기능 목록
+1. 함께 아는 친구 count
+2. 타임라인에 방문한 친구 count
+3. 이미 친구인 사람 제외
+
+Feat: Make alreadyFriend list
+Feat: Make object for friendInfo
+Feat: Add score to dupulicate friends
+Feat: Add score to visitors
+Feat: Sort from the highest score
+Feat: Delete alreadyFriend in array
+
 ### 제한사항
 
 - user는 길이가 1 이상 30 이하인 문자열이다.
