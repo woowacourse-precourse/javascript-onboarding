@@ -4,8 +4,9 @@ function problem7(user, friends, visitors) {
   const candidateObj = {};
   calculateNoFriendScore(friends, noFriend, candidateObj);
   calculateVisitorScore(visitors, userFriend, candidateObj);
-  const sortedCandidate = sortCandidate(candidateObj);
-  const fiveCandidate = getFiveCandidate(sortedCandidate);
+  const sortedName = sortCandidateByName(candidateObj);
+  const sortedScore = sortCandidateByScore(sortedName);
+  const fiveCandidate = getFiveCandidate(sortedScore);
   const withoutZeroScore = isScoreOverZero(fiveCandidate);
   const answer = getAnswer(withoutZeroScore);
   return answer;
@@ -60,17 +61,17 @@ function calculateVisitorScore(visitors, userFriend, candidateObj) {
   }
 }
 
-function sortCandidate(candidateObj) {
-  return Object.entries(candidateObj).sort((a, b) => {
-    if (a[1] === b[1]) a[0] - b[0];
-    else b[1] - a[1];
-  });
+function sortCandidateByName(candidateObj) {
+  const objToArr = Object.entries(candidateObj);
+  return objToArr.sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-function getFiveCandidate(sortedCandidate) {
-  return sortedCandidate.length > 5
-    ? sortedCandidate.splice(0, 5)
-    : sortedCandidate;
+function sortCandidateByScore(sortedName) {
+  return sortedName.sort((a, b) => b[1] - a[1]);
+}
+
+function getFiveCandidate(sortedName) {
+  return sortedName.length > 5 ? sortedName.splice(0, 5) : sortedName;
 }
 
 function isScoreOverZero(fiveCandidate) {
