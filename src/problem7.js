@@ -1,17 +1,8 @@
 function problem7(user, friends, visitors) {
   let answer = [];
-  const userFriends = [];
-  let otherFriends = [];
   const score = {};
-  // user의 친구 구하기
-  friends.forEach((e) => {
-    if (e.includes(user)) userFriends.push(e.find((name) => name !== user));
-  });
-
-  // 친구의 친구 구하기
-  otherFriends = getOtherFriends(userFriends, friends);
-
-  //중복되는 값 제거 후 점수배열에 추가
+  const userFriends = getUserFriend(user, friends);
+  const otherFriends = getOtherFriends(userFriends, friends);
   addScore(user, otherFriends, userFriends, score, 10);
   addScore(user, visitors, userFriends, score, 1);
 
@@ -30,6 +21,15 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
+
+const getUserFriend = (user, friends) => {
+  const userFriends = [];
+  friends.forEach((friend) => {
+    if (friend.includes(user))
+      userFriends.push(friend.find((name) => name !== user));
+  });
+  return userFriends;
+};
 
 const getOtherFriends = (userFriends, friends) => {
   const otherFriends = [];
