@@ -108,6 +108,7 @@ function problem7(user, friends, visitors) {
   //&2. user를 기준으로 점수가 저장될 빈 객체
   const USER_POINT_CALCUL_OBJ = {};
 
+
   //필요함수
   
   //1#. &1의 객체 속에 친구이름이 있는지 확인하는 함수
@@ -178,6 +179,31 @@ function problem7(user, friends, visitors) {
     }    
   }
 
+  //5#. 저장된 객체를 점수순으로 나열해서 배열을 반환하는 함수
+
+  function RETURN_OBJ_TO_LIST_SOTRED_BY_POINT(){
+    
+    const USER_POINT_CALCUL_LIST = [];
+    let outputList;
+
+    for(let friend in USER_POINT_CALCUL_OBJ){
+      USER_POINT_CALCUL_LIST.push({[friend]:USER_POINT_CALCUL_OBJ[friend]})
+    }
+
+    outputList = USER_POINT_CALCUL_LIST.sort((friend1obj, friend2obj) => {
+
+  
+      if(Object.values(friend1obj)[0] !== Object.values(friend2obj)[0]){
+        return (Object.values(friend2obj)[0] - Object.values(friend1obj)[0])
+      } else {
+        return (Object.keys(friend1obj)[0] > Object.keys(friend2obj)[0] ? 1 : -1)
+      }
+
+    })
+
+    return outputList
+  }
+
 
   //해답 코드
 
@@ -199,8 +225,10 @@ function problem7(user, friends, visitors) {
   INPUT_NEAR_FRIENDS_POINT();
   INPUT_VISIT_FRIENDS_POINT();
 
-  
-  return (Object.keys(USER_POINT_CALCUL_OBJ));
+
+
+
+  return (RETURN_OBJ_TO_LIST_SOTRED_BY_POINT().map(friend => Object.keys(friend)[0]).slice(0,5));
   
 
 }
