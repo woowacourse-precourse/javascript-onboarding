@@ -27,6 +27,18 @@ function getAllSlices(forms, allSlices) {
   }
 }
 
+function addEmail(nameSlice, forms, result) {
+  let crewName, crewEmail;
+  for (let form of forms) {
+    //각 크루마다 반복문을 수행하면서
+    crewEmail = form[0]; //크루 이메일
+    crewName = form[1]; //크루 닉네임
+    if (crewName.includes(nameSlice))
+      //크루의 닉네임에 해당 중복 문자열(nameSlice)이 포함돼 있는 경우
+      result.add(crewEmail); //해당 크루의 이메일을 추가
+  }
+}
+
 function problem6(forms) {
   var answer;
   let result = new Set(); //같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록
