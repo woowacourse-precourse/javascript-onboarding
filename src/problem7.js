@@ -123,7 +123,25 @@ function isLengthValid(arr, minimumLen, maximumLen, ErroMessage) {
     throw ErroMessage;
   }
 }
+
+function isValid(user, friends, visitors) {
+  isUserId(user, friends, visitors);
+  isUserIdLengthValid(user);
+  isLengthValid(
+    friends,
+    1,
+    10000,
+    "friends는 1이상, 10,000이하로 작성해주세요"
+  );
+  isLengthValid(
+    visitors,
+    0,
+    10000,
+    "visitors는 0이상 10,000이하로 작성해주세요"
+  );
+}
 function problem7(user, friends, visitors) {
+  isValid(user, friends, visitors);
   const scoreMap = new Map();
   const friendsArr = findFriends(friends, user);
   const recommendFrindsArr = getRecommendFriendsArr(friends, friendsArr, user);
