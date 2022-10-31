@@ -1,6 +1,7 @@
 function getMax(pages) {
-  if (pages[0] + 1 !== pages[1]) return 0;
   let result = 0;
+
+  if (pages[0] + 1 !== pages[1]) return result;
 
   pages.forEach((page) => {
     let sum = Array.from(page + "").reduce((digit, acc) => +acc + +digit);
