@@ -43,6 +43,11 @@ const sortScore = (scoreList) => {
   });
 };
 
+const recommendateFriends = (scoreList) => {
+  const recommendationNum = 5;
+  return scoreList.map((e) => e.user).slice(0, recommendationNum);
+};
+
 function problem7(user, friends, visitors) {
   const { scoreList, calcScore } = getScore();
   const userFriends = getUserFriends(friends, user);
@@ -63,6 +68,7 @@ function problem7(user, friends, visitors) {
   });
 
   sortScore(scoreList);
+  return recommendateFriends(scoreList);
 }
 
 module.exports = problem7;
