@@ -13,7 +13,9 @@ function problem6(forms) {
       }
     }
   }
-  console.log(deleteOverlap(emailArr));
+  let uniqueArr = deleteOverlap(emailArr);
+  let sortedArr = sortByAscending(uniqueArr);
+  return sortedArr;
 }
 
 function checkOverlap(name1, name2) {
@@ -38,10 +40,3 @@ function sortByAscending(arr) {
 }
 
 module.exports = problem6;
-problem6([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-]);
