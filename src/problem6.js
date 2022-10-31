@@ -7,7 +7,7 @@
 
 function problem6(forms) {
   emailList = [];
-  nicknames = forms.map((form) => form[1]);
+  let nicknames = forms.map((form) => form[1]);
   forms.forEach((form, idx) => {
     let [email, nickname] = form;
     if (isNicknameDuplicate(nickname, nicknames, idx)) {
