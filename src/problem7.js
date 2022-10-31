@@ -116,6 +116,21 @@ const calculateFriendScore = (userListArry, score = 0) => {
   return copyArray(userListMap);
 };
 
+const calculateRank = scoreInfoArray => {
+  const scoreInfoMap = new Map();
+  const copiedScoreInfoArray = copyArray(scoreInfoArray);
+
+  each(copiedScoreInfoArray, ([userId, score]) => {
+    if (!scoreInfoMap.has(userId)) {
+      scoreInfoMap.set(userId, 0);
+    }
+
+    scoreInfoMap.set(userId, scoreInfoMap.get(userId) + score);
+  });
+
+  return copyArray(scoreInfoMap);
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
