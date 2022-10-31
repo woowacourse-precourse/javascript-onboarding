@@ -11,8 +11,12 @@ function problem7(user, friends, visitors) {
       usersList,
       friendsUserknowWithUserFriendList
     );
+  const scoreOfUsersVisitedTimeline = countUsersVisitedTimeline(
+    scoreOfFriendsUserknowWithUserFriend,
+    visitors
+  );
 
-  return scoreOfFriendsUserknowWithUserFriend;
+  return scoreOfUsersVisitedTimeline;
 }
 
 function getListOfUsers(userFriends, userVisitors) {
@@ -109,6 +113,15 @@ function countScoreOfFriendsUserknowWithUserFriend(scoreTable, users) {
   users.forEach((user) => {
     const result = scoreTable.find((item) => item.name === user);
     result.score += 10;
+  });
+
+  return scoreTable;
+}
+
+function countUsersVisitedTimeline(scoreTable, users) {
+  users.forEach((user) => {
+    const result = scoreTable.find((item) => item.name === user);
+    result.score += 1;
   });
 
   return scoreTable;
