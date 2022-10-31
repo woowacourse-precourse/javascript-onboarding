@@ -3,13 +3,27 @@ function problem6(forms) {
 
   const nickName = [];
 
-  for (i = 0; i < forms.length; i++) {
-    nickName.push(forms[i][1]);
-    for (j = 0; j + 1 < nickName[i].length; j++) 
-        subStr = nickName[i].slice(j, j + 2);
+  for (i = 0; i < forms.length; i++) 
+  nickName.push(forms[i][1]);
+
+  for (i = 0; i < nickName.length; i++) {
+    console.log(nickName[i], nickName[i].length);
+    for (j = 0; j + 1 < nickName[i].length; j++) {
+      subStr = nickName[i].slice(j, j + 2)
+      console.log(subStr, nickName[i]);
+      checkDuplicate(subStr, nickName, duplicate);
+    }
   }
 
   return answer;
+}
+
+function checkDuplicate(subStr, nickName, duplicate) {
+  for (let k = i; k < nickName.length; k++) {
+    if (nickName[i].includes(subStr)) {
+          
+    }
+  }
 }
 
 module.exports = problem6;
