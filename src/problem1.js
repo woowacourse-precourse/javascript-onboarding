@@ -1,6 +1,8 @@
 function problem1(pobi, crong) {
   let answer;
   
+  isvalid(pobi, crong) ? null : answer = "조건을 다시 확인 하세요";
+
   for (let i = 0; i < 1; i++) {
     let pobiScore, crongScore = 0;
     pobiScore = Math.max(sum(pobi[i]), sum(pobi[i+1]), multiply(pobi[i]), multiply(pobi[i+1]))
@@ -27,6 +29,12 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
+
+function isvalid(pobi, crong) {
+  if (pobi[0] < 1 && crong[1] > 399) return false
+
+  return true
+}
 
 function sum(n) {
   let sumArr = (n+"").split("").map(x => parseInt(x))
