@@ -9,6 +9,21 @@ function getFriendList(user, friends) {
   return friendList;
 }
 
+function getMutualFriendScore(user, friendList) {
+  const score = {};
+  friendList[user].forEach((friend) => {
+    friendList[friend].forEach((mutualFriend) => {
+      if (mutualFriend === user || friendList[user].has(mutualFriend)) {
+        console.log(friend, mutualFriend);
+        return;
+      }
+      score[mutualFriend] = score[mutualFriend] || 0;
+      score[mutualFriend] += 10;
+    });
+  });
+  return score;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
