@@ -39,6 +39,20 @@ const calculateTen = (userFriendTogether, myFriends, score) =>{
   }
 };
 
+//1점 짜리 계산
+const calculateOne = (visitors, myFriends, score) =>{
+  
+  for(let visitor of visitors){
+  //이미 내 친구는 제외시켜야한다
+    if (!myFriends.includes(visitor)) {
+        if (!score[visitor]) {
+        score[visitor] = 0;
+        }
+        score[visitor] += 1;
+    }
+  }
+};
+
 }
 
 module.exports = problem7;
