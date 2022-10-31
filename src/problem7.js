@@ -68,20 +68,4 @@ const problem7 = (user, friends, visitors) => {
   return result;
 };
 
-const test = problem7('mrko',
-  [
-    ['mrko', 'jun'],
-    ['bedi', 'jun'],
-    ['bedi', 'donut'],
-    ['donut', 'jun'],
-    ['donut', 'mrko'],
-    ['shakevan', 'andole'],
-    ['jun', 'andole'],
-    ['shakevan', 'jun'],
-    ['shakevan', 'mrko'],
-  ],
-  ['donut', 'shakevan']);
-
-console.log(test);
-
 module.exports = problem7;
