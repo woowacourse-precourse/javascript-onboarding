@@ -10,6 +10,7 @@ function problem6(forms) {
         for (let j = 0; j < targetNickName.length - 1; j++) {
           if (forms[i][1].search(targetNickName.substr(j, 2)) !== -1) {
             duplicated.push(targetEmail, forms[i][0]);
+            break;
           }
         }
       }
