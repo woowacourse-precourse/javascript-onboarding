@@ -10,7 +10,40 @@ function consecutiveWord(word) {
 }
 
 function problem6(forms) {
-  var answer;
+  let answer = [];
+  let dupliArr = [];
+  let dupliMap = new Map();
+
+  forms.forEach((form) => {
+    const [_, nickName] = form;
+    const conseWord = consecutiveWord(nickName);
+    dupliArr = [...dupliArr, ...conseWord];
+  });
+
+  dupliArr.forEach((w) => {
+    if (dupliMap.has(w)) {
+      dupliMap.set(w, dupliMap.get(w) + 1);
+    } else {
+      dupliMap.set(w, 1);
+    }
+  });
+
+  for (const [key, value] of dupliMap) {
+    if (value <= 1) {
+      dupliMap.delete(key);
+    }
+  }
+
+  forms.forEach((form) => {
+    const [email, nickName] = form;
+
+    [...dupliMap.keys()].forEach((dupliWord) => {
+      if (nickName.includes(dupliWord)) {
+        answer.push(email);
+      }
+    });
+  });
+  answer = Array.from(new Set(answer)).sort();
   return answer;
 }
 
