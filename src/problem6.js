@@ -22,21 +22,13 @@ function getDuplicatedCrew(map) {
 function solution(forms) {
   const nicknameMap = getNicknameMap(forms);
   const emails = [...new Set(getDuplicatedCrew(nicknameMap))];
-  const sortedemails = emails.sort();
-  console.log(sortedemails);
+  const sortedEmails = emails.sort();
+  return sortedEmails;
 }
 
 function problem6(forms) {
-  var answer;
+  const answer = solution(forms);
   return answer;
 }
-
-solution([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-]);
 
 module.exports = problem6;
