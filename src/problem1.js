@@ -1,12 +1,12 @@
 //각 자리 합, 곱 중 최댓값을 반환하는 함수
 const makeMax = (n) => {
-  let [a,b]=[0,1];
-  n = String(n);
-  for(let i=0; i<n.length; i++){
-      a+=parseInt(n[i]);
-      b*=parseInt(n[i]);
-  }
-  return Math.max(a,b);
+  let [add,mul]=[0,1];
+  str_num = String(n);
+  str_num.split('').forEach((num)=>{
+      add+=parseInt(num);
+      mul*=parseInt(num);
+  });
+  return Math.max(add,mul);
 }
 
 function problem1(pobi, crong){
@@ -24,3 +24,7 @@ function problem1(pobi, crong){
 }
 
 module.exports = problem1;
+
+//TODO
+//1. index 사용 안하는 방향으로 코드 수정
+//2. 변수명 의미 있는 변수명으로 수정
