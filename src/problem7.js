@@ -25,10 +25,29 @@ function countRelationFriend(friendMap, recomandFriend, user) {
   });
 }
 
+function countVisitFriend(friendMap, recomandFriend, user, visitors) {
+  visitors.forEach((name)=>{
+    if(!friendMap.get(user).includes(name)){
+      const prevCnt = recomandFriend.get(name);
+      prevCnt? recomandFriend.set(name, prevCnt + 1) : recomandFriend.set(name, 1);
+    }
+  });
+}
 
 function problem7(user, friends, visitors) {
   const friendMap = getFriendMap(friends);
+  const recomandFriend = new Map();
+
+  countRelationFriend(friendMap, recomandFriend, user);
+  countVisitFriend(friendMap, recomandFriend, user, visitors)
+
+  const mapToArray = Array.from(recomandFriend);
+
+  mapToArray.sort((a, b) => b[1] - a[1]);
+
+  const answer = Array.from(mapToArray,([name,_])=> name );
   
+  return answer;
 }
 
 module.exports = problem7;
