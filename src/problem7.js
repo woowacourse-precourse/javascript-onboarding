@@ -42,11 +42,13 @@ function problem7(user, friends, visitors) {
     },
     {}
   );
-}
 
-let visitorsCount = visitors.reduce((acc, curr) => {
-  acc[curr] = (acc[curr] || 0) + 1;
-  return acc;
-}, {});
+  let visitorsCount = visitors.reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
+  }, {});
+
+  let score = calculateScore(countOfTogetherKnow, visitorsCount);
+}
 
 module.exports = problem7;
