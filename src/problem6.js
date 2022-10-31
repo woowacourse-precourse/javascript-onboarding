@@ -13,13 +13,11 @@ function problem6(forms) {
       
     }
   }
-  return testArr; //['제이','이엠','제이','이슨','워니','엠제',..] -> 우선 중복삭제하기
-
-  //
-
-  let find = "문자";
+  return testArr; //['x제이','이엠','v제이','이슨','워니','엠제','v제이','이제','제엠'] -> 우선 중복삭제하기
+ // forms[0][1] 안에서 다른 애랑 true check되면 해당 check 이메일 입력 // 그다음 sorting
+  let find = "문자"; //testArr[0]
   let regex = new RegExp(find, "g");
-  answer = regex.test("문자열");
+  answer = regex.test("문자열"); //testArr[0] / 동일 i 제외 / true면 
   return answer;
 }
 
