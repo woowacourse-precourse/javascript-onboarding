@@ -13,27 +13,24 @@ function problem1(pobi, crong) {
       rightMultValue(crong),
     ]);
 
-    if(maximumPobi>maximumCrong){
+    if (maximumPobi > maximumCrong) {
       return 1;
-    }else if(maximumPobi<maximumCrong){
+    } else if (maximumPobi < maximumCrong) {
       return 2;
-    }else{
+    } else {
       return 0;
     }
-    
   }
   return -1;
 }
 
 function checkValue(arr) {
-  let result =
-    arr[0] % 2 === 1 && arr[1] % 2 === 0 && arr[1] - arr[0] === 1 ? true : false;
-  return result;
+  return arr[0] > 400 || arr[1] > 400 || arr[0] < 1 || arr[1] < 1
+    ? false
+    : arr[0] % 2 === 1 && arr[1] % 2 === 0 && arr[1] - arr[0] === 1
+    ? true
+    : false;
 }
-
-// function validationArr(arr){
-//   return arr[0]>400||arr[1]>400||arr[0]<1||arr[1]<1?false:arr[1]-arr[0] == 1?true:false;
-// }
 
 function leftSumValue(arr) {
   let sum = 0;
@@ -75,6 +72,6 @@ function maximum(arr) {
   return Math.max(...arr);
 }
 
-console.log(problem1([297, 298], [197, 198]));
+console.log(problem1([401, 402], [197, 198]));
 
 module.exports = problem1;
