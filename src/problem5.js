@@ -3,8 +3,7 @@ function returnCount(money, coin) {
 }
 
 function problem5(money) {
-  var answer = [];
-
+  const answer = [];
   const coinArray = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
   for (coin of coinArray) {
