@@ -2,6 +2,10 @@ function problem6(forms) {
   const nickNames = getAllNickName(forms);
   const twoLetters = combinateTwoLetter(nickNames);
   const duplicateLetters = duplicatedTwoLetters(nickNames, twoLetters);
+  const duplicatedNickName = findDuplicatedNickName(
+    nickNames,
+    duplicateLetters
+  );
 }
 
 function getAllNickName(forms) {
@@ -38,5 +42,9 @@ function duplicatedTwoLetters(nickNames, twoLetters) {
     }
   }
   return duplicateLetters;
+}
+
+function findDuplicatedNickName(nickNames, duplicateLetters) {
+  return nickNames.filter((nickname) => nickname.includes(duplicateLetters));
 }
 module.exports = problem6;
