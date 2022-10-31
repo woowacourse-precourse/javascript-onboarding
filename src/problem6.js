@@ -86,4 +86,5 @@ function problem6(forms) {
   }
   return answer;
 }
+
 module.exports = problem6;
