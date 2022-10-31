@@ -36,6 +36,16 @@ function problem6(forms) {
 
     // 5단계) 중복패턴만을 담은 배열 생성
     const repetitionArray = patternArray.filter((el) => el[1] >= 2);
+
+    // 6단계) 중복패턴을 포함하는 아이디만을 담은 배열 생성
+    const resultIdArray = [];
+    for (let i = 0; i < includedPatternArray.length; i++) {
+        for (let j = 0; j < repetitionArray.length; j++) {
+            if (includedPatternArray[i][1].includes(repetitionArray[j][0])) {
+                resultIdArray.push(includedPatternArray[i][0]);
+            }
+        }
+    }
 }
 
 module.exports = problem6;
