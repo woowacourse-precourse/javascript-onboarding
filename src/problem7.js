@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let friendsAll = friends.flat().concat(visitors);
   let friendsList = friendsAll.filter((i, j) => friendsAll.indexOf(i) == j);
   let friendsScore = [];
@@ -7,7 +7,13 @@ function problem7(user, friends, visitors) {
 
   for (let i = 0; i < friendsList.length; i++) {
     friendsScore.push(
-      countScore(friendsList[i], checkOverlap(user, friends), visitors)
+      countScore(
+        friendsList[i],
+        checkOverlap(user, friends),
+        visitors,
+        user,
+        friends
+      )
     );
   }
   for (let i = 0; i < friendsList.length; i++) {
@@ -19,11 +25,11 @@ function problem7(user, friends, visitors) {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
   });
-  answer = [
-    friendsObject[0].name,
-    friendsObject[1].name,
-    friendsObject[2].name,
-  ];
+  for (let i = 0; i < 5; i++) {
+    if (friendsObject[i].score != 0) {
+      answer.push(friendsObject[i].name);
+    }
+  }
   return answer;
 }
 
@@ -36,11 +42,12 @@ function checkOverlap(user, friends) {
     }
   }
   userFriends = userFriends.flat().filter((i) => i != user);
-
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < userFriends.length; j++) {
       if (friends[i].includes(userFriends[j])) {
-        overlappedFriends.push(friends[i]);
+        if (!friends[i].includes(user)) {
+          overlappedFriends.push(friends[i]);
+        }
       }
     }
   }
@@ -50,15 +57,22 @@ function checkOverlap(user, friends) {
   return overlappedFriends;
 }
 
-function countScore(user, overlap, visit) {
+function countScore(users, overlap, visit, user, friends) {
   let score = 0;
+  let userFriends = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].includes(user)) {
+      userFriends.push(friends[i]);
+    }
+  }
+  userFriends = userFriends.flat().filter((i) => i != user);
   for (let i = 0; i < overlap.length; i++) {
-    if (overlap[i] === user) {
+    if (overlap[i] === users) {
       score = score + 10;
     }
   }
   for (let i = 0; i < visit.length; i++) {
-    if (visit[i] === user) {
+    if (visit[i] === users && !userFriends.includes(visit[i])) {
       score = score + 1;
     }
   }
