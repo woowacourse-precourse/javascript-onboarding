@@ -8,12 +8,12 @@ function problem1(pobi, crong) {
         const leftPage = String(pages[0]).split("");
         const rightPage = String(pages[1]).split("");
 
-        const leftAdd = eval(leftPage.join("+"));
+        const leftSum = eval(leftPage.join("+"));
         const leftMul = eval(leftPage.join("*"));
-        const rightAdd = eval(rightPage.join("+"));
+        const rightSum = eval(rightPage.join("+"));
         const rightMul = eval(rightPage.join("*"));
 
-        return Math.max(leftAdd, leftMul, rightAdd, rightMul);
+        return Math.max(leftSum, leftMul, rightSum, rightMul);
     }
 
     const pobiNumber = getBiggestNumber(pobi);
