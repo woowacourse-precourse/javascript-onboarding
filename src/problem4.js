@@ -21,6 +21,7 @@ function problem4(word) {
 
   function toChar(newArray) {
     var newWord;
+    newWord = String.fromCharCode(...newArray);
     return newWord;
   }
 
