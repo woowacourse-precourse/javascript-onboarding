@@ -21,6 +21,13 @@ function result(user, friends, visitors) {
     if (userMap.get(user)?.includes(key) || value === 0) return;
     recommendedFriend.push([key, value]);
   });
+
+  recommendedFriend.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    else if (a[1] < b[1]) return 1;
+    else if (a[0] > b[0]) return 1;
+    else return -1;
+  });
 }
 
 const ADD_FRIEND_SCORE = 10;
