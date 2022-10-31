@@ -14,9 +14,35 @@
  * 6. 추천할 친구가 없는 경우는 주어지지 않는다.
  */
 
+const getScoreMapByVisitors = visitors => {
+  visitors.map()
+}
+
+
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = {};
+
+  visitors.map(visitor => {
+    answer[visitor] = visitors.reduce((cnt, element) => cnt + (visitor === element), 0)
+  })
+
   return answer;
 }
 
+console.log(
+  problem7(
+    "mrko", 
+    [["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], 
+    ["bedi", "bedi", "donut", "bedi", "shakevan"]
+  )
+)
+
+
 module.exports = problem7;
+
+
+
+
+
+
+
