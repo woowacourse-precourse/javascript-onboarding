@@ -33,6 +33,19 @@ function maxNumber(pages) {
   return Math.max(leftSum, leftMultiply, rightSum, rightMultiply);
 }
 
+function makeMatchResult(pobi, crong) {
+  const pobiScore = maxNumber(pobi);
+  const crongScore = maxNumber(crong);
+
+  if (pobiScore > crongScore) {
+    return 1;
+  } else if (pobiScore < crongScore) {
+    return 2;
+  } else {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
