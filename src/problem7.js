@@ -11,7 +11,28 @@ function problem7(user, friends, visitors) {
     .filter((friend) => friend.includes(user))
     .map((item) => (item[0] === user ? item[1] : item[0]));
 
-  console.log("usersFriendList: ", usersFriendList);
+  const commonFriendScore = friends
+    .filter(
+      (friend) =>
+        friend[0] !== user &&
+        friend[1] !== user &&
+        (usersFriendList.includes(friend[0]) ||
+          usersFriendList.includes(friend[1]))
+    )
+    .reduce((acc, cur) => {
+      if (cur[1] === user) {
+        return acc;
+      }
+
+      if (acc[cur[1]]) {
+        acc[cur[1]] += 10;
+      } else {
+        acc[cur[1]] = 10;
+      }
+      return acc;
+    }, {});
+
+  console.log("commonFriendScore: ", commonFriendScore);
 }
 
 module.exports = problem7;
