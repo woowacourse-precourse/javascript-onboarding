@@ -7,6 +7,14 @@ function problem2(cryptogram) {
   let codeStack = [];
 
   codeStack.push(cryptogram[0]);
+
+  for (let i = 1; i < cryptogram.length; i++) {
+    if (cryptogram[i] === codeStack[codeStack.length - 1]) {
+      codeStack.pop();
+    } else {
+      codeStack.push(cryptogram[i]);
+    }
+  }
   return answer;
 }
 
