@@ -7,12 +7,12 @@ function problem4(word) {
   const dict = {};
 
   for (let i = 0; i <= upper.length; i++) {
-    const k = upper[i];
-    const v = reverse_upper[i];
-    const k1 = lower[i];
-    const v1 = reverse_lower[i];
-    dict[k] = v;
+    const k1 = upper[i];
+    const v1 = reverse_upper[i];
+    const k2 = lower[i];
+    const v2 = reverse_lower[i];
     dict[k1] = v1;
+    dict[k2] = v2;
   }
   dict[" "] = " ";
 
