@@ -58,6 +58,10 @@ function problem7(user, friends, visitors) {
   )
 
   const sortedScoreBoard = getSortScoreBoard(scoreBoard);
+  sortedScoreBoard.forEach((personalScore) => {
+    if (result.length < 5) result.push(personalScore[0])
+  })
+  return result
 
 }
 
