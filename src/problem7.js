@@ -26,9 +26,8 @@ const extractTwoDegreeFriends = (user, friends) => {
         .flat()
         .filter((friend) => friend !== userFriend)
     );
-
-    return twoDegreeFriends.flat();
   }
+  return twoDegreeFriends.flat();
 };
 
 function problem7(user, friends, visitors) {
