@@ -2,6 +2,11 @@ function problem2(cryptogram) {
   if (!isInitialContinuous(cryptogram)) {
     return cryptogram;
   }
+
+  while (isDuplicate(cryptogram) && cryptogram.length !== 0) {
+    cryptogram = filterStr(cryptogram);
+  }
+  const answer = cryptogram;
   return answer;
 }
 
