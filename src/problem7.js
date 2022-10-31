@@ -26,12 +26,22 @@ function initScores(friends, visitors, scoreMap) {
   allUsers.forEach((user) => scoreMap.set(user, 0));
 }
 
+function checkScore(friendsOfFriends, visitors, scoreMap) {
+  friendsOfFriends.forEach((friend) =>
+    scoreMap.set(friend, scoreMap.get(friend) + 10)
+  );
+
+  visitors.forEach((friend) => scoreMap.set(friend, scoreMap.get(friend) + 1));
+}
+
 function problem7(user, friends, visitors) {
   const userFriends = getUserFriends(user, friends);
   const friendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
   const scoreMap = new Map();
 
   initScores(friends, visitors, scoreMap);
+
+  checkScore(friendsOfFriends, visitors, scoreMap);
 
   return answer;
 }
