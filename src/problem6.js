@@ -6,6 +6,7 @@ function problem6(forms) {
 class RenamingTargetListMaker {
   nickNameChecker = {};
   targetEmailList = new Set();
+  didDuplicationCheck = false;
 
   constructor(forms) {
     this.forms = forms;
@@ -17,6 +18,7 @@ class RenamingTargetListMaker {
       this.nickNameChecker[partOfNickName] =
         (this.nickNameChecker[partOfNickName] || 0) + 1;
     }
+    this.didDuplicationCheck = true;
   };
 
   setTargetEmailList = (email, nickName) => {
