@@ -20,6 +20,7 @@ function checkNickname(name) {
 
 function problem6(forms) {
   let answer = new Set();
+  let map = new Map();
 
   for (let i = 0; i < forms.length; i++) {
     let name = forms[i][1];
@@ -32,7 +33,17 @@ function problem6(forms) {
     check = checkEmail(crewEmail);
     if (!check) continue;
 
-    // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 추가 기능
+    for (let j = 0; j < name.length - 1; j++) {
+      const key = name.substring(j, j + 2);
+      if (map.has(key)) {
+        const email = map.get(key);
+        if (email !== forms[i][0]) {
+          answer.add(email);
+          answer.add(forms[i][0]);
+        }
+      }
+      map.set(key, forms[i][0]);
+    }
   }
 
   return answer;
