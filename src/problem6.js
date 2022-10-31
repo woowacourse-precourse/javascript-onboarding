@@ -18,6 +18,15 @@ function problem6(forms) {
     }
   });
   
+  // 다시 한 번 반복문으로 유저를 확인한다.
+  validUsers.forEach(([email, nickname]) => {
+   for(let i = 0; i < nickname.length-1; i++) {
+    // 2글자씩 잘라준다.
+     const nicknameSubText = nickname.substring(i, i + 2);
+     // 만약 obj에 값이 1 이상이라면 Set에 email을 넣어준다 (중복제거를 위해)
+     if(overlapNameCheck[nicknameSubText] > 1) answer.add(email);
+   }
+ });
 }
 
 // 이메일, 닉네임 유효성 검사
