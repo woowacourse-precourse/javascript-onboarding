@@ -22,3 +22,16 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능 목록
+
+#### 1. parameter exception handling
+
+- [x] parameter가 1 이상 1000 이하인 문자열인지 검사
+- [x] parameter가 알파벳 소문자로만 구성된 문자열인지 검사
+
+#### 2. stack을 이용한 문자 중복 제거 기능
+
+- [x] stack 구현
+- [x] stack에 문자열의 마지막 문자까지 각 문자를 push한다
+- [x] stack이 top 문자와 push될 문자가 중복되는 경우 stack을 pop
+- [x] 마지막 문자까지 push한 경우 stack에 push된 문자를 순서대로 결합한 문자열을 return
