@@ -9,10 +9,26 @@ function problem7(user, friends, visitors) {
   const recommendUserMap = initObj(NOT_USER_FRIENDS);
 
   for (let i = 0; i < friends.length; i++) {
-    if (recommendUserMap[friends[i][0]] !== undefined && friends[i][1] !== user)
+    if (
+      isFriendWithUser(
+        recommendUserMap,
+        friends[i][0],
+        user,
+        friends[i][1],
+        USER_FRIENDS
+      )
+    )
       recommendUserMap[friends[i][0]] += 10;
 
-    if (recommendUserMap[friends[i][1]] !== undefined && friends[i][0] !== user)
+    if (
+      isFriendWithUser(
+        recommendUserMap,
+        friends[i][1],
+        user,
+        friends[i][0],
+        USER_FRIENDS
+      )
+    )
       recommendUserMap[friends[i][1]] += 10;
   }
 
@@ -26,7 +42,25 @@ function problem7(user, friends, visitors) {
   recommendUserArray.sort((a, b) => sortMorePoint(a, b));
   recommendUserArray.sort((a, b) => sortNamePoint(a, b));
 
+
   return recommendUserArray.map((user) => user[0]).slice(0, 5);
+}
+
+function isFriendWithUser(
+  recommendUserMap,
+  mine,
+  user,
+  opposite,
+  USER_FRIENDS
+) {
+  if (
+    recommendUserMap[mine] !== undefined &&
+    opposite !== user &&
+    USER_FRIENDS.includes(opposite)
+  ) {
+    return true;
+  }
+  return false;
 }
 
 function getNotUserFriendsArray(user, friends, visitors, USER_FRIENDS) {
