@@ -1,29 +1,25 @@
 function problem7(user, friends, visitors) {
   let answer = [];
-  let friend_list = new Map();
-  let score_list = new Map();
+  let friend_list = new Map().set(user, []);
+  let score_list = new Map().set(user, 0);
 
   for (let e of friends) {  // Map 초기화
     if (friend_list.has(e[0])) {
       friend_list.get(e[0]).push(e[1]);
     } else {
       friend_list.set(e[0], [e[1]]);
+      score_list.set(e[0], 0);
     }
+
     if (friend_list.has(e[1])) {
       friend_list.get(e[1]).push(e[0]);
     } else {
       friend_list.set(e[1], [e[0]]);
-    }
-
-    if (!score_list.has(e[0])) {
-      score_list.set(e[0], 0);
-    }
-    if (!score_list.has(e[1])) {
       score_list.set(e[1], 0);
     }
   }
   
-  for (let e of friends) {  // 유저와 함께 아는 친구
+  for (let e of friends) {  // 사용자와 함께 아는 친구 점수
     if (friend_list.get(user).includes(e[1])) {
       score_list.set(e[0], score_list.get(e[0]) + 10);
     }
@@ -40,7 +36,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  for (let e of score_list) { // 유저의 친구 및 0점 제외
+  for (let e of score_list) {  // 사용자의 친구 및 0점 제외
     if (friend_list.get(user).includes(e[0]) || e[0] === user || e[1] === 0) {
       continue;
     }
