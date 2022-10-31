@@ -3,6 +3,13 @@ function problem7(user, friends, visitors) {
 
   function createRelation(friends) {
     var relationMap = new Map();
+    friends.forEach((pair) => {
+      for (i = 0; i <= 1; i++) {
+        if (!relationMap.has(pair[i])) relationMap.set(pair[i], [pair[1 - i]]);
+        else if (!relationMap.get(pair[i]).includes(pair[1 - i]))
+          relationMap.set(pair[i], [...relationMap.get(pair[i]), pair[1 - i]]);
+      }
+    });
     return relationMap;
   }
 
