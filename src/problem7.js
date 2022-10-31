@@ -35,6 +35,13 @@ function problem7(user, friends, visitors) {
   }
   getVisitScore(visitors);
 
+  function removeFollowback() {
+    userFriends.forEach((friend) => {
+      delete scores[friend];
+    });
+  }
+  removeFollowback();
+
   return answer;
 }
 
