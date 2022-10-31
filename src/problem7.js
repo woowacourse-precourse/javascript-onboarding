@@ -1,9 +1,8 @@
-  function problem7(user, friends, visitors) {
+function problem7(user, friends, visitors) {
   var answer;
-
   var userFriends = findFriends(user, friends);
-
   var recmdFrd = new Map();
+
   for(var i = 0;i<userFriends.length; i++){
     var frdOfFrds = findFriends(userFriends[i], friends);
     frdOfFrds.forEach(frdOfFrd =>{
@@ -15,6 +14,7 @@
       }
     })
   }
+
   userFriends.forEach(userFriend =>{
     visitors.splice(visitors.indexOf(userFriend));
   })
@@ -26,8 +26,8 @@
       recmdFrd.set(visitor,temp+1);
     }
   })
+
   answer = Array.from(recmdFrd.keys());
-  console.log(answer);
   return answer;
 }
 

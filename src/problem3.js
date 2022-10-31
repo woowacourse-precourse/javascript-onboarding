@@ -1,6 +1,3 @@
-console.log(problem3(13));
-console.log(problem3(33));
-
 function problem3(number) {
   // checkClap : 3, 6, 9가 들어가면 들어간 개수를 반환하는 함수
   var answer = 0;
