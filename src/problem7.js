@@ -29,9 +29,9 @@ function problem7(user, friends, visitors) {
       notFriends.push(friend);
     }
   });
-  console.log(
-    `all peoples : ${peopleSet}, user friends : ${userFriends}, not friends : ${notFriends}`
-  );
+  // console.log(
+  //   `all peoples : ${peopleSet}, user friends : ${userFriends}, not friends : ${notFriends}`
+  // );
 
   // 2. not friend의 친구 중 나와 친구인 사람 찾아 점수 추가하기
   let scoreMap = new Map();
@@ -49,7 +49,7 @@ function problem7(user, friends, visitors) {
       }
     });
   });
-  console.log(scoreMap);
+  // console.log(scoreMap);
 
   // 3. visitor 탐색해 점수 추가하기
   visitors.forEach((visitor) => {
@@ -59,11 +59,11 @@ function problem7(user, friends, visitors) {
       scoreMap.set(visitor, score + 1);
     }
   });
-  console.log(scoreMap);
+  // console.log(scoreMap);
 
   // 4. 결과 값 정렬해 리턴하기.
   const scoreArr = Array.from(scoreMap);
-  console.log(scoreArr);
+  // console.log(scoreArr);
 
   const keyArr = [];
   const valueArr = [];
@@ -73,8 +73,9 @@ function problem7(user, friends, visitors) {
     valueArr.push(array[1]);
   });
 
-  console.log(keyArr, valueArr);
+  // console.log(keyArr, valueArr);
 
+  // sort value using bubble sort
   for (let i = 0; i < keyArr - 1; i++) {
     let swap = 0;
     for (let j = 0; j < keyArr - i - 1; j++) {
@@ -88,7 +89,7 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  console.log(keyArr);
+  // console.log(keyArr);
   return keyArr;
 }
 
@@ -106,23 +107,3 @@ problem7(
 );
 
 module.exports = problem7;
-
-/* 
-  describe("problem7", () => {
-    test("case1", () => {
-      expect(
-        problem7(
-          "mrko",
-          [
-            ["donut", "andole"],
-            ["donut", "jun"],
-            ["donut", "mrko"],
-            ["shakevan", "andole"],
-            ["shakevan", "jun"],
-            ["shakevan", "mrko"],
-          ],
-          ["bedi", "bedi", "donut", "bedi", "shakevan"]
-        )
-      ).toEqual(["andole", "jun", "bedi"]);
-    });
-*/

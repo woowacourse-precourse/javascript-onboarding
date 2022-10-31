@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  console.log(cryptogram);
+  // console.log(cryptogram);
 
   let answer = cryptogram;
   let repeatCondition = true;
@@ -15,7 +15,7 @@ function problem2(cryptogram) {
     }
   }
 
-  console.log(answer);
+  // console.log(answer);
   return answer;
 }
 
@@ -23,14 +23,3 @@ problem2("browoanoommnaon");
 problem2("zyelleyz");
 
 module.exports = problem2;
-
-/*
-  describe("problem2", () => {
-    test("case1", () => {
-      expect(problem2("browoanoommnaon")).toEqual("brown");
-    });
-    test("case2", () => {
-      expect(problem2("zyelleyz")).toEqual("");
-    });
-  });
-*/

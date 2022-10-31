@@ -1,6 +1,6 @@
 function problem4(word) {
   const wordArray = word.split("");
-  console.log(wordArray);
+  // console.log(wordArray);
 
   let frogMap = new Map();
   const ALPHABET_LENGTH = 26;
@@ -10,7 +10,7 @@ function problem4(word) {
     const value = String.fromCharCode("Z".charCodeAt() - i);
     frogMap.set(key, value);
   }
-  console.log(frogMap);
+  // console.log(frogMap);
 
   let answer = "";
   wordArray.forEach((value) => {
@@ -19,18 +19,10 @@ function problem4(word) {
       answer += frogMap.get(value.toUpperCase()).toLowerCase();
     else answer += frogMap.get(value);
   });
-  console.log(answer);
+  // console.log(answer);
   return answer;
 }
 
 problem4("I love you");
 
 module.exports = problem4;
-
-/* 
-  describe("problem4", () => {
-    test("case1", () => {
-      expect(problem4("I love you")).toEqual("R olev blf");
-    });
-  });
-*/
