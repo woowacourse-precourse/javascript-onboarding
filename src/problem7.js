@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   let answer;
 
   const findFriendsOfUser = (user, friends) => {
-    let friendsOfUser = [];
+    let arr = [];
 
     for (let i = 0; i < friends.length; i++) {
       if (friends[i][0] === user) {
@@ -12,7 +12,37 @@ function problem7(user, friends, visitors) {
       }
     }
 
-    return friendsOfUser;
+    return arr;
+  };
+
+  const calcScoreOfFriends = (user, friends, friendsOfUser) => {
+    let obj = {};
+    let name;
+    let index;
+
+    for (let i = 0; i < friends.length; i++) {
+      for (let j = 0; j < friendsOfUser.length; j++) {
+        if (friends[i].includes(friendsOfUser[j])) {
+          index = friends[i].indexOf(friendsOfUser[j]);
+
+          if (index === 0) {
+            name = friends[i][1];
+          } else {
+            name = friends[i][0];
+          }
+
+          if (name !== user) {
+            if (obj[name]) {
+              obj[name] += 10;
+            } else {
+              obj[name] = 10;
+            }
+          }
+        }
+      }
+    }
+
+    return obj;
   };
 
   return;
