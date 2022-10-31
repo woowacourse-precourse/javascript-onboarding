@@ -1,5 +1,3 @@
-const { assertModuleDeclaration } = require("@babel/types");
-
 function problem7(user, friends, visitors) {
   var answer;
   
