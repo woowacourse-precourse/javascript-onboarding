@@ -1,20 +1,31 @@
-function problem6(forms) {
-  const namePieceObj = {};
-  const formObj = {};
+const sliceNickname = (start, nickname) => nickname.slice(start, start + 2);
+
+const connectNameToEmail = (forms) => {
+  const resultObj = {};
 
   for (const [email, nickname] of forms) {
-    formObj[nickname] = email;
+    resultObj[nickname] = email;
+  }
+  return resultObj;
+};
 
+const getNamePieces = (forms) => {
+  const namePieces = {};
+
+  for (const [_, nickname] of forms) {
     for (let i = 0; i < nickname.length - 1; i++) {
-      const namePiece = nickname.slice(i, i + 2);
+      const namePiece = sliceNickname(i, nickname);
 
-      namePieceObj[namePiece] = (namePieceObj[namePiece] || new Set()).add(
+      namePieces[namePiece] = (namePieces[namePiece] || new Set()).add(
         nickname
       );
     }
   }
+  return namePieces;
+};
 
-  const emailsToNotice = Object.values(namePieceObj)
+const getEmailsToNotice = (nicknamePieces, formObj) =>
+  Object.values(nicknamePieces)
     .reduce(
       (names, nameSet) => (nameSet.size >= 2 ? [...names, ...nameSet] : names),
       []
@@ -22,6 +33,10 @@ function problem6(forms) {
     .map((nickname) => formObj[nickname])
     .sort((a, b) => a.localeCompare(b));
 
+function problem6(forms) {
+  const formObj = connectNameToEmail(forms);
+  const nicknamePieces = getNamePieces(forms);
+  const emailsToNotice = getEmailsToNotice(nicknamePieces, formObj);
   return [...new Set(emailsToNotice)];
 }
 
