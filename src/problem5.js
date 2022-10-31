@@ -1,11 +1,20 @@
 function problem5(money) {
   var answer = [];
   let unit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  let ans;
+
+  //제한사항
+  if (money < 1 || money > 1000000) return;
   
+  for (let i = 0; i < unit.length; i++) {
+    ans = calculationMoney(money, unit[i]);
+    money = ans.money;
+    answer.push(ans.quotient);
+  }
   return answer;
 }
 
-// 돈을 각 단위로 나누어 몫과 나머지 구함 
+// 돈을 각 단위로 나누어 몫과 나머지 구함
 function calculationMoney(money, unit) {
   let quotient = parseInt(money / unit);
   money = money % unit;
