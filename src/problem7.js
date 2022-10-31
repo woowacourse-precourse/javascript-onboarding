@@ -98,7 +98,7 @@ function mergeRecommendList(overlapList, visitorList) {
 function sortByScore(list) {
   return list.sort((a, b) => {
     if (a.score === b.score) {
-      return a.name - b.name;
+      return a.name.localeCompare(b.name);
     }
     return b.score - a.score;
   });
