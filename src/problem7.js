@@ -17,7 +17,6 @@ function setPeople(user, friends, visitors){
     for(i = 0; i < visitors.length; i++){
       visitorsArr.push(visitors[i])
     }
-    setScore(user, friends, visitors);
     return Object.keys(setScore(user, friends, visitors))
   }
 
@@ -44,7 +43,7 @@ function setScore(user, friends, visitors) {
       }
     }
   }
-  
+
   const result = {};
   scored.forEach((element) => { 
     result[element] = (result[element] || 0)+1; 
