@@ -1,14 +1,16 @@
 function problem1(pobi, crong) {
   function check(arr) {
-    if (arr[1] & 1 != 0 || arr[1] - arr[0] != 1) {
+    if (arr[1] & 1 != 0 || arr[1] - arr[0] !== 1) {
       return false;
     }
+    if (arr[0] < 1 || arr[1] > 400)
+      return false;
     return true;
   }
 
   function getNum(num) {
     let add = 0; mult = 1;
-  
+
     while (num > 0) {
       let digit = num % 10;
       add += digit;
@@ -23,7 +25,7 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  const pobiNum = Math.max(...pobi.map(x => getNum(x)));  
+  const pobiNum = Math.max(...pobi.map(x => getNum(x)));
   const crongNum = Math.max(...crong.map(x => getNum(x)));
 
   if (pobiNum > crongNum) {
