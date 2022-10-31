@@ -14,8 +14,12 @@
  */
 
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const [userFriends, friendsOfFriend] = seperateFriends(friends, user);
+  const friendScore = scoreCommonFriend(friendsOfFriend);
+  const visitScore = scoreVisitor(visitors, userFriends);
+  const featuredFriend = findFeaturedFriend(addScore(friendScore, visitScore));
+
+  return featuredFriend;
 }
 
 function seperateFriends(friends, user) {
