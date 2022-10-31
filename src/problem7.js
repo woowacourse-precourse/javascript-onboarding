@@ -1,14 +1,37 @@
 function problem7(user, friends, visitors) {
   const userFriend = getFriendUser(user, friends);
-  const uni = getVisitorUser(user, visitors);
+  const visitorObject = getVisitorUser(visitors);
 
-  getGrade(userFriend);
+  getGrade(user, userFriend, visitorObject);
   // console.log(userFriend);
 }
 
-function getGrade(userFriend) {}
+function getGrade(user, userFriend, visitorObject) {
+  //console.log(visitorObject[0][0]);
+  let temp = [];
+  for (let i = 0; i < visitorObject.length; i++) {
+    if (visitorObject[0][i] === "bedi") {
+      // console.log(visitorObject[0][i]);
+      // console.log(visitorObject[1][i]);
 
-function getVisitorUser(user, visitors) {
+      delete visitorObject[0][i];
+      delete visitorObject[1][i];
+
+      // console.log(visitorObject[0][i]);
+
+      // temp = visitorObject.filter((item) => item !== visitorObject[0][i]);
+      // console.log(visitorObject.filter((item) => item !== visitorObject[0][i]));
+      // for (let j = 0; j < visitorObject.length; j++) {
+      //   console.log(visitorObject[j][i]);
+      //   // console.log(visitorObject.splice(visitorObject[j][i], 1));
+      // }
+    }
+  }
+
+  console.log(visitorObject);
+}
+
+function getVisitorUser(visitors) {
   const unique = visitors.filter((element, index) => {
     return visitors.indexOf(element) === index;
   });
@@ -19,12 +42,11 @@ function getVisitorUser(user, visitors) {
       0
     );
     uniqueGrade[i] = countVisitor;
-    // console.log(countVisitor);
   }
 
   // console.log(unique);
   // console.log(uniqueGrade);
-  return [unique, uniqueGrade];
+  return [unique, uniqueGrade]; // 출력 : [[명단], [카운트]]
 }
 
 function getFriendUser(user, friends) {
