@@ -27,6 +27,24 @@ function makeRelations(friends, relations) {
   });
 }
 
+function makeRecommendScore(user, relations, visitors, result) {
+  Object.keys(relations).forEach((name) => {
+    if (name === user) return;
+    const bothFriends = setIntersection(relations[name], relations[user]);
+    if (bothFriends.size !== 0) {
+      result[name] = bothFriends.size * 10;
+    }
+  });
+
+  visitors.forEach((name) => {
+    if (result[name] === undefined) {
+      result[name] = 1;
+    } else {
+      result[name]++;
+    }
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
