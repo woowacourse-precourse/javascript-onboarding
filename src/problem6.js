@@ -23,6 +23,11 @@ function problem6(forms) {
     })
   })
 
+  // 3. 메일 개수(value)가 2개 이상인 경우 해당 메일들을 정답 배열에 넣는다. 
+  duplicationCountMap.forEach((mail) => {
+    if (mail.length > 1) answer.push(...mail);
+  })
+
   return answer;
 }
 
