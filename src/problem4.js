@@ -7,7 +7,10 @@ function frogDic(c){
     return c;
 }
 function problem4(word) {
-  var answer;
+  var answer = "";
+  for(let i of word){
+    answer += frogDic(i);
+  }
   return answer;
 }
 
