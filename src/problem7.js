@@ -27,6 +27,11 @@ const problem7 = (user, friends, visitors) => {
     })
   );
 
+  visitors.forEach((visitor) => {
+    const score = scoreList.get(visitor) + 1;
+    scoreList.set(visitor, score);
+  });
+
   return answer;
 };
 
