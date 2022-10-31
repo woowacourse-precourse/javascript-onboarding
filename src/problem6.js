@@ -19,6 +19,19 @@ const createConsecutiveLetterMap = (args) => {
   return { ...args, consecutiveLetterMap };
 };
 
+const deleteNonOverlappingKeyInMap = (args) => {
+  const { forms, consecutiveLetterMap } = args;
+  const copyMap = new Map(
+    JSON.parse(JSON.stringify(Array.from(consecutiveLetterMap)))
+  );
+
+  for (let [key, value] of copyMap) {
+    if (value === 1) copyMap.delete(key);
+  }
+
+  return { ...args, consecutiveLetterMap: copyMap };
+};
+
 function problem6(forms) {
   var answer;
   return answer;
