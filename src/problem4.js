@@ -30,7 +30,7 @@ const alphabet = {
 /**
  * @param {string} char
  */
-function changeAlphabet(char) {
+const changeAlphabet = (char) => {
   const code = char.charCodeAt();
   if (alphabet.isLower(code)) {
     return alphabet.toUpper(code);
@@ -39,17 +39,13 @@ function changeAlphabet(char) {
     return alphabet.toLower(code);
   }
   return char;
-}
+};
 
 /**
  * @param {string} word
  */
 function solution(word) {
-  let result = "";
-  for (const char of word) {
-    result += changeAlphabet(char);
-  }
-  return result;
+  return word.split("").map(changeAlphabet).join("");
 }
 
 /**
