@@ -6,7 +6,7 @@ function problem4(word) {
     else if (isLower(ascii)) answer.push(String.fromCharCode(219 - ascii));
     else answer.push(char);
   }
-  return answer;
+  return answer.join("");
 }
 
 function isUpper(ascii) {
