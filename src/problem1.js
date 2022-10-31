@@ -1,11 +1,11 @@
 function problem1(pobi, crong) {
   var answer;
-  const pobi2DArray = comparePages(separateDigit(pobi));
-  const crong2DArray = comparePages(separateDigit(crong));
+  const pobiResult = comparePages(separateDigit(pobi));
+  const crongResult = comparePages(separateDigit(crong));
   if (exceptions(pobi) || exceptions(crong)) answer = -1;
-  else if (pobi2DArray > crong2DArray) answer = 1;
-  else if (pobi2DArray < crong2DArray) answer = 2;
-  else if (pobi2DArray === crong2DArray) answer = 0;
+  else if (pobiResult > crongResult) answer = 1;
+  else if (pobiResult < crongResult) answer = 2;
+  else if (pobiResult === crongResult) answer = 0;
   return answer;
 }
 
@@ -15,34 +15,34 @@ function exceptions(pages) {
 }
 
 function separateDigit(pages) {
-  const firstPage = String(pages[0])
+  const leftPage = String(pages[0])
     .split("")
     .map((i) => Number(i));
-  const secondPage = String(pages[1])
+  const rightPage = String(pages[1])
     .split("")
     .map((i) => Number(i));
-  return [firstPage, secondPage];
+  return [leftPage, rightPage];
 }
 
 function sumOfPages(pages2D) {
-  const sumOfFirstOne = pages2D[0].reduce((pre, cur) => pre + cur, 0);
-  const sumOfSecondOne = pages2D[1].reduce((pre, cur) => pre + cur, 0);
-  if (sumOfFirstOne > sumOfSecondOne) return sumOfFirstOne;
-  else return sumOfSecondOne;
+  const LeftPage = pages2D[0].reduce((pre, cur) => pre + cur, 0);
+  const RightPage = pages2D[1].reduce((pre, cur) => pre + cur, 0);
+  if (LeftPage > RightPage) return LeftPage;
+  else return RightPage;
 }
 
 function multipleOfPages(pages2D) {
-  const multipleOfFirstOne = pages2D[0].reduce((pre, cur) => pre * cur, 1);
-  const multipleOfSecondOne = pages2D[1].reduce((pre, cur) => pre * cur, 1);
-  if (multipleOfFirstOne > multipleOfSecondOne) return multipleOfFirstOne;
-  else return multipleOfSecondOne;
+  const LeftPage = pages2D[0].reduce((pre, cur) => pre * cur, 1);
+  const RightPage = pages2D[1].reduce((pre, cur) => pre * cur, 1);
+  if (LeftPage > RightPage) return LeftPage;
+  else return RightPage;
 }
 
 function comparePages(pages2D) {
-  const maxOfSum = sumOfPages(pages2D);
-  const maxOfMultiple = multipleOfPages(pages2D);
-  if (maxOfSum > maxOfMultiple) return maxOfSum;
-  else return maxOfMultiple;
+  const maxSum = sumOfPages(pages2D);
+  const maxMultiple = multipleOfPages(pages2D);
+  if (maxSum > maxMultiple) return maxSum;
+  else return maxMultiple;
 }
 
 module.exports = problem1;
