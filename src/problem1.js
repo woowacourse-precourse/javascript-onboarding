@@ -1,3 +1,5 @@
+const MAX_BOOK_RANGE = 400;
+const MIN_BOOK_RANGE = 1;
 function problem1(pobi, crong) {
   var answer = checkValidation(pobi, crong) ? getWinner(pobi, crong) : -1;
   return answer;
@@ -48,7 +50,7 @@ function checkContinuous(array) {
 function checkRange(array) {
   let check = false;
   array.forEach((num) => {
-    if (num >= 1 && num <= 400) check = true;
+    if (num >= MIN_BOOK_RANGE && num <= MAX_BOOK_RANGE) check = true;
   });
   return check;
 }
