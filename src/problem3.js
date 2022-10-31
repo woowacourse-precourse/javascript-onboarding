@@ -10,6 +10,9 @@ function countClap(number) {
 
 function problem3(number) {
   var answer;
+  answer = 0;
+  for (let i = 1; i <= number; i++ )
+    answer += countClap(i.toString());
   return answer;
 }
 
