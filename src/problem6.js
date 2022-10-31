@@ -6,23 +6,21 @@
 function problem6(forms) {
   let arr = [];
   let tempCommonName = [];
-  let getEmail = [];
+  let tempEmail = [];
 
   for (let i=0; i < forms.length; i++) {
     arr.push(forms[i])
     for (let j=0; j < arr[i][1].length-1; j++) {
       if (tempCommonName.includes(arr[i][1].substring(j, j+2))) {
-        getEmail.push(arr[i][0])
-        getEmail.push(arr[j][0])
+        tempEmail.push(arr[i][0])
+        tempEmail.push(arr[j][0])
       }
       tempCommonName.push(arr[i][1].substring(j, j+2))
     }
   }
-  console.log(arr[0][1].includes("제이"));
-  console.log(tempCommonName)
-  console.log(getEmail)
+  let setEmail = [...new Set(tempEmail)]
+
+  return  setEmail
 }
 
 module.exports = problem6;
-
-problem6([["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]])
