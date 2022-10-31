@@ -34,3 +34,11 @@ const isPlural = (array, item) =>
   array.indexOf(item) !== array.lastIndexOf(item);
 
 const isNotExisting = (array, item) => array.indexOf(item) === -1;
+
+const arrangeDups = (cases) => {
+  return cases.reduce((reduced, cs) => {
+    const copy = reduced.slice();
+    if (isPlural(cases, cs) && isNotExisting(copy, cs)) copy.push(cs);
+    return copy;
+  }, []);
+};
