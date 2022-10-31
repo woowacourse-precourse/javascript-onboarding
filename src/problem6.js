@@ -54,8 +54,26 @@ const getMatchedForms = (forms) => (cases) => {
   }, []);
 };
 
-const limit = (number) => (arr) => arr.slice(number);
+const limit = (number) => (arr) => arr.slice(0, number);
 
 const sort = (arr) => [...arr].sort();
 
 const removeDups = (arr) => [...new Set(arr)];
+
+function problem6(forms) {
+  const result = compose(
+    handleError,
+    getValuesOf("nickname"),
+    listDupCases,
+    arrangeDups,
+    getMatchedForms(forms),
+    getValuesOf("email"),
+    removeDups,
+    limit(5),
+    sort,
+  )(forms);
+
+  return result;
+}
+
+module.exports = problem6;
