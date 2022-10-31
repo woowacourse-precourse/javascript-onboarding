@@ -118,8 +118,27 @@ function problem7(user, friends, visitors) {
   }
 
   //!5. 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
+
+  function CHECK_USER_NAME_IS_LOWER_ALPHABET (userName) {
+   
+    const lowerAlphabet = /a-z/
+
+    for(let i of userName){
+    
+      if(lowerAlphabet.test(userName) === false){
+        return false;
+      }
+    }
+    return true;
+
+  }
+
+
   //!6. 동일한 친구 관계가 중복해서 주어지지 않음
 
+
+
+  
   for(let friend of friends){
     INPUT_RELATION_FRIENDS(friend)
   }
