@@ -78,6 +78,19 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  //점수가 같다면 이름 순으로 정렬하기
+  for (let i = 0; i < friends_number.length; i++) {
+    for (let j = i + 1; j < friends_number.length; j++) {
+      if (friends_number[i][1] == friends_number[j][1]) {
+        if (friends_number[i][0] > friends_number[j][0]) {
+          var tmp = friends_number[i];
+          friends_number[i] = friends_number[j];
+          friends_number[j] = tmp;
+        }
+      }
+    }
+  }
+
   return answer;
 }
 
