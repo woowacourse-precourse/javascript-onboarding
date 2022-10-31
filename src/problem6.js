@@ -32,3 +32,5 @@ const listDupCases = (nicknames) => {
 
 const isPlural = (array, item) =>
   array.indexOf(item) !== array.lastIndexOf(item);
+
+const isNotExisting = (array, item) => array.indexOf(item) === -1;
