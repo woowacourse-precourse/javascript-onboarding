@@ -68,3 +68,20 @@ npm test
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 ## 과제 별 기능 목록
+
+### problem1
+
+### problem2
+
+### problem3
+
+1. 1~number 까지의 수에 박수를 각각 몇 번 쳐야하는지 배열로 반환하는 함수
+2. 배열의 총합을 구하는 함수
+
+### problem4
+
+### problem5
+
+### problem6
+
+### problem7
