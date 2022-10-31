@@ -26,8 +26,11 @@ function decoder(decodeCryptogram) {
   return decodeCryptogram;
 }
 
-function problem2(cryptogram) {
+function problem2(decodeCryptogram) {
   var answer;
+
+  answer = decoder(decodeCryptogram);
+
   return answer;
 }
 
