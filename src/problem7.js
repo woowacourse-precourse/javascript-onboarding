@@ -4,19 +4,19 @@ function problem7(user, friends, visitor) {
 
   // 현재 나의 친구목록
   let myFriend = [];
-  for (let i of friends) {
-    if (i.includes(user)) {
-      myFriend.push(i);
+  for (let arr of friends) {
+    if (arr.includes(user)) {
+      myFriend.push(arr);
     } else {
-      scoreBoard[i[1]] = 0;
+      scoreBoard[arr[1]] = 0;
     }
     myFriend = myFriend.flat().filter((v) => v !== user);
   }
 
   // 방문한 친구에게 +1 점
-  for (let i of visitor) {
-    if (!myFriend.includes(i)) {
-      scoreBoard[i] ? (scoreBoard[i] += 1) : (scoreBoard[i] = 1);
+  for (let name of visitor) {
+    if (!myFriend.includes(name)) {
+      scoreBoard[name] ? (scoreBoard[name] += 1) : (scoreBoard[name] = 1);
     }
   }
 
@@ -24,24 +24,31 @@ function problem7(user, friends, visitor) {
   const recommendFriends = Object.keys(scoreBoard);
 
   // 내 친구의 친구에게 +10점
-  for (let i of friends) {
+  for (let showRelationship of friends) {
+    const [nameOfMyFriend, friendOfAFriend] = showRelationship;
     for (let j = 0; j < myFriend.length; j++) {
       for (let k = 0; k < recommendFriends.length; k++) {
-        if (i[0] === myFriend[j] && i[1] === recommendFriends[k]) {
+        if (
+          nameOfMyFriend === myFriend[j] &&
+          friendOfAFriend === recommendFriends[k]
+        ) {
           scoreBoard[recommendFriends[k]] += 10;
         }
       }
     }
   }
 
-  // 후보 목록을 추천 규칙에따라 정렬 (점수순 > 이름순)
+  // 추천후보 목록을 추천 규칙에따라 정렬 (점수순 > 이름순)
   recommendFriends.sort().sort((a, b) => {
     return scoreBoard[b] - scoreBoard[a];
   });
 
-  // 후보 목록 중 최대 5명 리턴
-  const result = recommendFriends.filter((v, i) => i < 5);
-  return result;
+  // 추천후보 목록 중 점수가 0인 이름은 제외 후,
+  const result = recommendFriends.filter((v, i) => {
+    if (scoreBoard[v] !== 0) return v;
+  });
+  // 최대 5명만 리턴
+  return result.splice(0, 5);
 }
 
 module.exports = problem7;
