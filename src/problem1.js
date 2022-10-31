@@ -95,7 +95,7 @@ function notInRange(userName) {
 function correctRange(pageNumber) {
   const minPage = 1;
   const maxPage = 400;
-  if (pageNumber >= minPage && pageNumber <= maxPage) return true
+  if (pageNumber > minPage && pageNumber < maxPage) return true
   return false
 }
 
