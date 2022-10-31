@@ -13,7 +13,7 @@ function findUserFriends(user, friends) {
   friends
     .filter((el) => el.includes(user))
     .flat()
-    .forEach((el) => (el !== user ? userFriends.push(el) : ""));
+    .forEach((el) => el !== user && userFriends.push(el));
 
   return userFriends;
 }
