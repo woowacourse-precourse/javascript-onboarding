@@ -1,4 +1,4 @@
-function bankWithdraw(wallet, coinIndex, money, pay) {
+function bankWithdraw({ wallet, coinIndex, money, pay }) {
   const coinCount = parseInt(money / pay);
   wallet[coinIndex] += coinCount;
   money -= coinCount * pay;
@@ -7,31 +7,31 @@ function bankWithdraw(wallet, coinIndex, money, pay) {
 
 const withdrawMap = {
   50000(wallet, money) {
-    return bankWithdraw(wallet, 0, money, 50000);
+    return bankWithdraw({ wallet, coinIndex: 0, money, pay: 50000 });
   },
   10000(wallet, money) {
-    return bankWithdraw(wallet, 1, money, 10000);
+    return bankWithdraw({ wallet, coinIndex: 1, money, pay: 10000 });
   },
   5000(wallet, money) {
-    return bankWithdraw(wallet, 2, money, 5000);
+    return bankWithdraw({ wallet, coinIndex: 2, money, pay: 5000 });
   },
   1000(wallet, money) {
-    return bankWithdraw(wallet, 3, money, 1000);
+    return bankWithdraw({ wallet, coinIndex: 3, money, pay: 1000 });
   },
   500(wallet, money) {
-    return bankWithdraw(wallet, 4, money, 500);
+    return bankWithdraw({ wallet, coinIndex: 4, money, pay: 500 });
   },
   100(wallet, money) {
-    return bankWithdraw(wallet, 5, money, 100);
+    return bankWithdraw({ wallet, coinIndex: 5, money, pay: 100 });
   },
   50(wallet, money) {
-    return bankWithdraw(wallet, 6, money, 50);
+    return bankWithdraw({ wallet, coinIndex: 6, money, pay: 50 });
   },
   10(wallet, money) {
-    return bankWithdraw(wallet, 7, money, 10);
+    return bankWithdraw({ wallet, coinIndex: 7, money, pay: 10 });
   },
   1(wallet, money) {
-    return bankWithdraw(wallet, 8, money, 1);
+    return bankWithdraw({ wallet, coinIndex: 8, money, pay: 1 });
   },
 };
 
