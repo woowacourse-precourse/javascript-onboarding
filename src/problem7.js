@@ -53,7 +53,7 @@ function getRecommendations(user, friends, visitors) {
 }
 
 function problem7(user, friends, visitors) {
-  let recommendationResult; 
+  const recommendationResult = getRecommendations(user, friends, visitors);
 
   return recommendationResult;
 }
