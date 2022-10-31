@@ -26,6 +26,12 @@ function problem3(number) {
   let answer = 0;
 
   isValid(number);
+
+  for (let i = 1; i <= number; i++) {
+    getNumberToArr(i).map((num) => {
+      answer += clap(num);
+    });
+  }
   return answer;
 }
 
