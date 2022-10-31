@@ -5,68 +5,71 @@ const createScoreObj = (scoreKeySet, scoreObj) => {
   return scoreObj;
 };
 
-const findUserFriendShip = (userFriendArray, friends, user) => {
+const findUserFriendShip = (friends, user, userFriendShipArray = []) => {
   for (let friend of friends) {
-    if (friend.includes(user)) userFriendArray.push(friend);
+    if (friend.includes(user)) userFriendShipArray.push(friend);
   }
-  return userFriendArray;
+  return userFriendShipArray.flat().filter((item) => item !== user);
 };
 
-const addVisitorScore = (visitors, scoreObj) => {
-  for (let visitor of visitors) {
-    scoreObj[visitor] = (scoreObj[visitor] || 0) + 1;
+const addVisitorScore = (PureVisiotrs, scoreObj) => {
+  for (let purevisitor of PureVisiotrs) {
+    scoreObj[purevisitor] = (scoreObj[purevisitor] || 0) + 1;
   }
 };
 
-function problem7(user, friends, visitors) {
-  let answer;
-  const scoreObject = {};
-  const scoreListKeyArray = new Set();
-  let userFriendShipArray = [];
-  let expectUserFriendsArray = [];
-  let score10PeopleArray = [];
+const addScoreListKey = (scoreListKeyArray, array) => {
+  array.forEach((item) => scoreListKeyArray.add(item));
+};
 
-  findUserFriendShip(userFriendShipArray, friends, user);
-
-  userFriendShipArray = userFriendShipArray.flat().filter((item) => item !== user); // 프렌드쉽 필터해서 유저없앰
-
-  expectUserFriendsArray = friends.filter((friend) => !friend.includes(user)); // 원래 친구 필터해서 유저 있는거 없앰
-
-  // 방문자에서 유저 친구 빼고 순수 방문자
+const findPureVisitor = (visitors, userFriendShipArray) => {
   for (let visitor of visitors) {
-    for (userFriendShip of userFriendShipArray) {
+    for (let userFriendShip of userFriendShipArray) {
       if (visitor.includes(userFriendShip)) {
         visitors = visitors.filter((v) => v !== userFriendShip);
       }
     }
   }
 
-  //유저 없는 친구목록 에서 유저 친구 빼고 10점짜리목록만듦
+  return visitors;
+};
+
+const make10ScoreArray = (expectUserFriendsArray, findUserFriendShip, score10PeopleArray = []) => {
   for (let expectUserFriend of expectUserFriendsArray) {
-    for (let userFriendShip of userFriendShipArray) {
+    for (let userFriendShip of findUserFriendShip) {
       if (expectUserFriend.includes(userFriendShip)) {
         score10PeopleArray.push(expectUserFriend);
         score10PeopleArray = score10PeopleArray.flat().filter((item) => item !== userFriendShip);
       }
     }
   }
+  return score10PeopleArray;
+};
 
-  //여기서 만듦
-  visitors.forEach((visitor) => scoreListKeyArray.add(visitor));
-  score10PeopleArray.forEach((score10People) => scoreListKeyArray.add(score10People));
+const calculateScore10 = (score10PeopleArray, scoreObj) => {
+  for (let score10People of score10PeopleArray) {
+    if (scoreObj.hasOwnProperty(score10People)) scoreObj[score10People] += 10;
+  }
+};
+
+function problem7(user, friends, visitors) {
+  const scoreObject = {};
+  const scoreListKeyArray = new Set();
+  const expectUserFriendsArray = friends.filter((friend) => !friend.includes(user));
+
+  findUserFriendShip(friends, user);
+
+  make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user));
+
+  addScoreListKey(scoreListKeyArray, findPureVisitor(visitors, findUserFriendShip(friends, user)));
+
+  addScoreListKey(scoreListKeyArray, make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user)));
 
   createScoreObj(scoreListKeyArray, scoreObject);
 
-  // 방문자 점수 산정
-  addVisitorScore(visitors, scoreObject);
+  addVisitorScore(findPureVisitor(visitors, findUserFriendShip(friends, user)), scoreObject);
 
-  //만들어진 스코어 오브젝트에 해당항목이있다면 10점씩 추가
-
-  for (let score10People of score10PeopleArray) {
-    if (scoreObject.hasOwnProperty(score10People)) scoreObject[score10People] += 10;
-  }
-
-  // 스코어 오브젝트 점수순으로 소팅
+  calculateScore10(make10ScoreArray(expectUserFriendsArray, findUserFriendShip(friends, user)), scoreObject);
 
   const sortScoreObj = Object.keys(scoreObject)
     .sort((a, b) => scoreObject[b] - scoreObject[a])
