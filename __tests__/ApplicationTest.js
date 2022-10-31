@@ -16,7 +16,7 @@ describe("problem1", () => {
   });
 
   test("case3", () => {
-    expect(problem1([99, 102], [211, 212])).toEqual(-1);
+    expect(problem1([99, 102], [401, 402])).toEqual(-1);
   });
 
   test("case4", () => {
@@ -25,6 +25,22 @@ describe("problem1", () => {
 
   test("case5", () => {
     expect(problem1([2, 3], [211, 212])).toEqual(-1);
+  });
+  test("case6", () => {
+    expect(problem1([121, 122], [211, 212])).toEqual(0);
+  });
+  test("case7", () => {
+    expect(problem1([121, 122], [211])).toEqual(-1);
+  });
+  test("case8", () => {
+    expect(problem1([122, 121], [211, 212])).toEqual(-1);
+  });
+  test("case9", () => {
+    expect(problem1([1, 2], [211, 212])).toEqual(-1);
+  });
+
+  test("case11", () => {
+    expect(problem1([99, 100], [399, 400])).toEqual(-1);
   });
 });
 
@@ -41,6 +57,17 @@ describe("problem2", () => {
   test("case4", () => {
     expect(problem2("saddaas")).toEqual("sas");
   });
+  test("case5", () => {
+    expect(problem2("zyellleyz")).toEqual("");
+  });
+
+  test("case6", () => {
+    expect(problem2("zyalllelyz")).toEqual("zyaelyz");
+  });
+
+  test("case7", () => {
+    expect(problem2("aabba")).toEqual("a");
+  });
 });
 
 describe("problem3", () => {
@@ -53,11 +80,26 @@ describe("problem3", () => {
   test("case3", () => {
     expect(problem3(10000)).toEqual(12000);
   });
+  test("case4", () => {
+    expect(problem3(333)).toEqual(228);
+  });
+  test("case5", () => {
+    expect(problem3(2)).toEqual(0);
+  });
 });
 
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
+  });
+  test("case2", () => {
+    expect(problem4("Svool, Dliow! 123")).toEqual("Hello, World! 123");
+  });
+  test("case3", () => {
+    expect(problem4("ABCDEFGHIJKLMNOPQRSTUVWXYZ !@#$%^&*  ")).toEqual("ZYXWVUTSRQPONMLKJIHGFEDCBA !@#$%^&*  ");
+  });
+  test("case4", () => {
+    expect(problem4("Hello  Everyone!")).toEqual("Svool  Veviblmv!");
   });
 });
 
@@ -111,6 +153,69 @@ describe("problem6", () => {
       'tkclzl97@email.com',
     ]);
   });
+  test("case3", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠제이워니"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이워니"],
+      ])
+    ).toEqual([
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+      "woniee@email.com",
+    ]);
+  });
+  const makeEmail = (index) => {
+    const alphabet = "abcdefghij";
+
+    return 'aaaaa'
+      + alphabet[~~(index % 10000 / 1000)]
+      + alphabet[~~(index % 1000 / 100)]
+      + alphabet[~~(index % 100 / 10)]
+      + alphabet[~~(index % 10 / 1)]
+      + "@email.com"
+  };
+
+  const makeNickname = (index) => {
+    const first = "가".charCodeAt(0);
+    const bound = "힣".charCodeAt(0) - "가".charCodeAt(0) + 1;
+
+    return String.fromCharCode(...Array(19).fill().map((_, chIndex) => {
+      return first + (index + (1 << chIndex)) % bound;
+    }));
+  };
+  test("case4", () => {
+    expect(
+      problem6(
+        Array(10000).fill().map((_, index) => {
+          return [makeEmail(index), makeNickname(index)];
+        })
+      )
+    ).toEqual([]);
+  });
+
+  test("case5", () => {
+    expect(
+      problem6(
+        Array(10000).fill().map((_, index) => {
+          return [
+            makeEmail(index),
+            (index % 2500 !== 0) ? makeNickname(index) : makeNickname(index).substring(0, 16) + '우테코',
+          ];
+        })
+      )
+    ).toEqual([
+      "aaaaaaaaa@email.com",
+      "aaaaacfaa@email.com",
+      "aaaaafaaa@email.com",
+      "aaaaahfaa@email.com",
+    ]);
+  });
 });
 
 describe("problem7", () => {
@@ -146,4 +251,144 @@ describe("problem7", () => {
       )
     ).toEqual(["jun", "andole", "bedi"]);
   });
+  test("case3", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", 'jun'],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["jun", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]	
+      )
+    ).toEqual([ 'andole', 'bedi' ]);
+  });
+  test("case3", () => {
+    expect(
+      problem7(
+        "hello",
+        [
+          ["andole", "jun"],
+          ["andole", "bedi"],
+          ["jun", "shakevan"],
+          ["jun", "kane"],
+          ["jun", "sam"],
+          ["bedi", "shakevan"],
+          ["bedi", "anne"],
+          ["bedi", "sam"],
+          ["anne", "mrko"]
+        ],
+        ["donut", "anne", "mrko", "mrko", "sam"]	
+      )
+    ).toEqual(["mrko", "anne", "donut", "sam"]);
+  });
+  test('case4', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'],
+      ),
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case5', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['jun', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan'],
+      ),
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case6', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['bedi', 'jun'],
+          ['bedi', 'donut'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['jun', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['donut', 'shakevan'],
+      ),
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case7', () => {
+    expect(
+      problem7(
+        'andole',
+        [
+          ['andole', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'shakevan'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'bedi'],
+          ['anne', 'jun'],
+        ],
+        ['donut', 'mrko', 'peter', 'sam'],
+      ),
+    ).toEqual(['donut', 'anne', 'bedi', 'mrko', 'peter']);
+  });
+  test('case8', () => {
+    expect(
+      problem7(
+        'hello',
+        [
+          ['andole', 'jun'],
+          ['andole', 'bedi'],
+          ['jun', 'shakevan'],
+          ['jun', 'kane'],
+          ['jun', 'sam'],
+          ['bedi', 'shakevan'],
+          ['bedi', 'anne'],
+          ['bedi', 'sam'],
+          ['anne', 'mrko'],
+        ],
+        ['donut', 'anne', 'mrko', 'mrko', 'sam'],
+      ),
+    ).toEqual(['mrko', 'anne', 'donut', 'sam']);
+  });
+  test("case9", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        []
+      )
+    ).toEqual(["andole", "jun"]);
+  }); 
 });
