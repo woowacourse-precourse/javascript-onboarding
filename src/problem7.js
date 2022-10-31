@@ -9,6 +9,7 @@ function problem7(user, friends, visitors) {
 
   console.log(scoreListKeyArray);
   console.log(createScoreObj(scoreListKeyArray, scoreObject));
+  console.log(addVisitorScore(visitors, scoreObject));
   return answer;
 }
 
@@ -17,6 +18,13 @@ const createScoreObj = (scoreKeySet, scoreObj) => {
     scoreObj[item] = 0;
   }
   return scoreObj;
+};
+
+const addVisitorScore = (visitors, scoreObj) => {
+  for (let visitor of visitors) {
+    scoreObj[visitor] = (scoreObj[visitor] || 0) + 1;
+  }
+  console.log(scoreObj);
 };
 
 console.log(
