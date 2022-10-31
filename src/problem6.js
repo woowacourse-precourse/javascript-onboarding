@@ -92,13 +92,9 @@ class UAHTechCourse {
   getResult() {
     return [
       ...new Set(
-        [...this.getTwoWordBook().values()].flatMap((emailList) => {
-          if (emailList.length > 1) {
-            return emailList;
-          }
-
-          return [];
-        })
+        [...this.getTwoWordBook().values()].flatMap((emailList) =>
+          emailList.length > 1 ? emailList : []
+        )
       ),
     ].sort();
   }
