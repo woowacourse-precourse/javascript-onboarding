@@ -44,6 +44,9 @@ function problem7(user, friends, visitors) {
       A !== user
     ) {
       recommendFriendList[A] = 10;
+    } else if (recommendFriendList[A] && recommendFriendList[B]) {
+      recommendFriendList[A] += 10;
+      recommendFriendList[B] += 10;
     } else if (recommendFriendList[A]) {
       recommendFriendList[A] += 10;
     } else if (recommendFriendList[B]) {
