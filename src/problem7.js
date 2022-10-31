@@ -58,7 +58,7 @@ function findUserFriendsOfFriends(user, friends, userFriends) {
 
 // visitors 배열의 요소에게 1점씩 부여하는 함수
 function getOneScore(visitors, userFriends, idScoreObj) {
-  visitors.map((el) => {
+  visitors.forEach((el) => {
     // user의 친구가 아니고
     if (!userFriends.includes(el)) {
       // idScoreObj객체에 키가 있을 때
