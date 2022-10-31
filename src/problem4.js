@@ -6,7 +6,18 @@ const lowercase = aCharCodeAt + zCharCodeAt;
 const uppercase = ACharCodeAt + ZCharCodeAt;
 
 function problem4(word) {
-  return word;
+  let answer = "";
+  for (let char of word) {
+    if (char === " ") {
+      answer += " ";
+      continue;
+    }
+    const asci = char.charCodeAt(0);
+    const code =
+      aCharCodeAt <= asci <= zCharCodeAt ? lowercase - asci : uppercase - asci;
+    answer += String.fromCharCode(code);
+  }
+  return answer;
 }
 
 module.exports = problem4;
