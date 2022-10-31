@@ -20,7 +20,7 @@ describe("problem1", () => {
   });
 });
 
-describe.only("problem2", () => {
+describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
@@ -29,7 +29,7 @@ describe.only("problem2", () => {
   });
 });
 
-describe("problem3", () => {
+describe.only("problem3", () => {
   test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
