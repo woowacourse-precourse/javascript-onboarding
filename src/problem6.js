@@ -36,9 +36,9 @@ const createArr = (data) => {
   return noticeTargetEmails.sort((a,b) => a.localeCompare(b))
 }
  
-// function problem6(forms) {
-//   return createArr(forms)
-// }
+function problem6(forms) {
+  return createArr(forms)
+}
 
 
-// // module.exports = problem6;
+module.exports = problem6;
