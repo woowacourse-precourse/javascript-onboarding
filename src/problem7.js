@@ -57,6 +57,18 @@ function problem7(user, friends, visitors) {
     getVisitorScore(visitor, userFriends, scores); // user의 친구가 아닌 방문자에 대해 추천 점수 부여
   }
 
+  let arrayScores = [...scores]; // scores map 객체를 arrayScore 배열에 복사한다.
+  arrayScores.sort((a, b) => {
+    // 추천 점수를 높은 순으로 정렬하고
+    if (a[1] < b[1]) return 1;
+    else if (a[1] > b[1]) return -1;
+    else if (a[1] === b[1]) {
+      // 추천 점수가 같은 사람의 경우 이름이 빠른 순으로 정렬한다.
+      if (a[0] > b[0]) return 1;
+      else if (a[0] < b[0]) return -1;
+    }
+  });
+
   return answer;
 }
 
