@@ -1,8 +1,24 @@
 function problem7(user, friends, visitors) {
   var answer;
+
+  let score = {};
+
+  //friends를 통해 닉네임 리스트(score)를 생성함
+  for (i = 0; i < friends.length; i++) 
+    score = updateScoreList(user, friends[i], score);
+  delete (score[user]);
+
   return answer;
 }
 
+function updateScoreList(user, friends, score) {
+  if (!Object.keys(score).some(value => value === friends[0]))   //score에 없다면
+    score[friends[0]] = 0;
+  if (!Object.keys(score).some(value => value === friends[1]))   //score에 없다면
+    score[friends[1]] = 0;
+
+  return score;
+}
 module.exports = problem7;
 
 /*
