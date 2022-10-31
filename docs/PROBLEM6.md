@@ -63,13 +63,12 @@ function handleFormSize(forms){
 - 이메일 형식이 email.com인지
 - 이메일 크기가 11자 미만 or 20자 이상
 - 크루 닉네임 크기가 0인지
-- 크루 닉네임 글자가 전부 한글인지
+- 크루 닉네임 글자가 전부 한글인지 => 정상적으로 작동하지 않아 주석처리
 
 ```
 function handleString(forms, rejectIndex){
   for(let i = 0; i < forms.length; i++){
     const emailForm = "email.com";
-    const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     let crueEmail = forms[i][0];
     let crueNickname = forms[i][1];
     if((crueEmail.indexOf(emailForm) == -1)){
@@ -79,9 +78,6 @@ function handleString(forms, rejectIndex){
       rejectIndex.push(i);
     }
     else if((crueNickname.length == 0) || (crueNickname.length >= 20)){
-      rejectIndex.push(i);
-    }
-    else if(!(isKorean.test(crueNickname))){
       rejectIndex.push(i);
     }
   }
