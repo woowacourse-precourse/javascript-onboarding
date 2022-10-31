@@ -57,7 +57,6 @@ function findMaxNumber(pagesArr) {
   }
 
   return maxNum;
-
 }
 
 module.exports = problem1;
