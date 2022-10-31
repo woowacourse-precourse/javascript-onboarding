@@ -21,6 +21,14 @@ const makeAcquaintanceSet = (args) => {
   return { ...args, acquaintanceSet };
 };
 
+// 알 수도 있는사람 Set에 이미 친구인 사람과 user가 포함되어있는 경우를 제거하기 위한 함수
+const differenceOfSet = (args) => {
+  const { acquaintanceSet: setA, friendSet: setB, user } = args;
+  const differenceSet = new Set([...setA].filter((x) => !setB.has(x)));
+  differenceSet.delete(user);
+  return { ...args, acquaintanceSet: differenceSet };
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
