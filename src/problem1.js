@@ -1,6 +1,23 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer = result(pobi, crong);
   return answer;
+}
+
+function result(pobi, crong) {
+  const isPobiValue = checkInput(pobi);
+  const isCrongValue = checkInput(crong);
+
+  if (!(isPobiValue && isCrongValue)) {
+    // 입력받은 값이 NULL값이면 -1을 return한다.
+    return -1;
+  }
+
+  const pobiScore = setScore(pobi);
+  const crongScore = setScore(crong);
+
+  if (pobiScore === crongScore) return 0;
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
 }
 
 function checkInput(input) {
