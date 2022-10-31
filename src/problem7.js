@@ -23,6 +23,8 @@ function problem7(user, friends, visitors) {
     const queue = [];
     const myMap = new Map();
 
+    console.log(compare);
+
     //bfs, 함께 아는 친구 처리
     for (let key of Object.keys(friendsList)) {
         if (key === user) continue;
@@ -60,10 +62,12 @@ function problem7(user, friends, visitors) {
         }
     });
 
+    console.log(answer);
+
     return answer
-        .filter((e) => e[1] !== 0)
+        .filter((e) => e[1] !== 0 && !compare.includes(e[0]))
         .map((e) => e[0])
-        .splice(0, 3);
+        .splice(0, 5);
 }
 
 module.exports = problem7;
