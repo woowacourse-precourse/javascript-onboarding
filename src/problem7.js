@@ -9,6 +9,7 @@
 
 function problem7(user, friends, visitors) {
   const mateObj = {};
+  var answer = [];
 
   function saveFriend(one, two) {
     if (one in mateObj) {
@@ -51,6 +52,12 @@ function problem7(user, friends, visitors) {
   }
 
   newMate.sort((a, b) => b[1] - a[1]);
+
+  for (let i = 0; i < newMate.length; i++) {
+    if (i === 5) break;
+    if (userFriendsSet.has(newMate[i][0])) continue;
+    answer.push(newMate[i][0]);
+  }
 
   return answer;
 }
