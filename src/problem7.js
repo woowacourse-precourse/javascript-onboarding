@@ -91,6 +91,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  //점수가 높은 순으로 최종 5명을 선발한다
+  for (let i = 0; i < 5; i++) {
+    answer[i] = friends_number[i][0];
+  }
+
   return answer;
 }
 
