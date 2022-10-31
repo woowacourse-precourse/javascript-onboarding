@@ -44,6 +44,34 @@ function findDuplicateUser(duplicateUserWordArr, forms) {
   return [...new Set(duplicatedUser)];
 }
 
+function isEmailValid(forms) {
+  const emailArr = getEmail(forms);
+  const isDomainArr = [];
+  const emailLength = [];
+  let isEmailLength = false;
+
+  for (let email of emailArr) {
+    const regex = /([a-zA-Z0-9+-\_.]+@+email.com)+/g;
+    isDomainArr.push(regex.test(email));
+    emailLength.push(email.length);
+  }
+
+  //email 형식 에러처리
+  if (!isDomainArr.every((item) => item === true)) {
+    throw "이메일 형식에 맞춰 email.com 도메인을 사용해주세요";
+  }
+
+  emailLength.map((item) => {
+    if (item < 11 || item >= 20) {
+      isEmailLength = true;
+    }
+  });
+
+  if (isEmailLength) {
+    throw " 11자 이상 20자 미만으로 작성해주세요";
+  }
+}
+
 function getEmail(userArr) {
   emailArr = [];
   userArr.map((user) => emailArr.push(user[0]));
@@ -51,6 +79,8 @@ function getEmail(userArr) {
 }
 
 function problem6(forms) {
+  isEmailValid(forms);
+
   const userNameArr = getUserName(forms);
   const cutUserNameArr = cutUserName(userNameArr);
   const duplicateUserWordArr = findDuplicateUserWord(cutUserNameArr);
