@@ -12,10 +12,16 @@ function getNicknameMap(forms) {
   return map;
 }
 
+// 닉네임이 중복되는 크루들의 이메일을 찾는 기능
+function getDuplicatedCrew(map) {
+  const emails = [...map.values()].filter((email) => email.length > 1).flat();
+  return emails;
+}
+
 // solution
 function solution(forms) {
   const nicknameMap = getNicknameMap(forms);
-  console.log(nicknameMap);
+  console.log(getDuplicatedCrew(nicknameMap));
 }
 
 function problem6(forms) {
