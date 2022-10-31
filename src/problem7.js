@@ -18,11 +18,9 @@ const getSortScoreBoard = (scoreBoard) =>{
   let sortedScoreBoard = new Object();
   sortedScoreBoard = Object.entries(scoreBoard).sort((x, y) => {
       if (x[1] === y[1]) {
-        if (x[0] > y[0]) return 1;
-        if (x[0] < y[0]) return -1;
+        return x[0] > y[0] ? 1 : -1;
       } 
-      if (x[1] > y[1]) return -1;
-      if (x[1] < y[1]) return 1;
+      return x[1] > y[1] ? -1 : 1
     })
   
   return sortedScoreBoard;
