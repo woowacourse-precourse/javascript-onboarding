@@ -40,5 +40,21 @@ function problem6(forms) {
     return [...new Set(filtered)];
   }
 
+  /**
+   * 크루의 닉네임에 중복 단어가 포함되어 있는 경우 체크 후 해당 크루의 이메일을 반환
+   * @param {string[][]} forms 
+   * @param {string[]} compareList 
+   * @returns {string[]} 조건에 맞는 이메일 주소 배열
+   */
+  function checkOverlapWord(forms, compareList){
+    const emailList = [];
+    forms.forEach(([email,nickname])=>{
+      for(let i = 0; i < compareList.length; i++){
+        if (nickname.includes(compareList[i])) emailList.push(email);
+      }
+    });
+    return emailList;
+  };
+
 }
 module.exports = problem6;
