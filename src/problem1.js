@@ -39,6 +39,10 @@ function problem1(pobi, crong) {
 
   const [crongLeft, crongRight] = crong;
   crongNum = compare(compare(plusSum(crongLeft),multiSum(crongLeft)),compare(plusSum(crongRight),multiSum(crongRight)));
+
+  if(pobiNum > crongNum) return 1;
+  else if(pobiNum == crongNum) return 0;
+  else return 2;
 }
 
 module.exports = problem1;
