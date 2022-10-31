@@ -24,3 +24,12 @@ function digitMultiply(number) {
   }
   return multiply;
 }
+
+// function that compares two numbers and returns the larger one
+function largerNumber(number1, number2) {
+  if (number1 > number2) {
+      return number1;
+  } else {
+      return number2;
+  }
+}
