@@ -30,8 +30,7 @@ const scoreFromMutual = (user, friendsArr) => {
       }
     }
   }
-
-  return mutualObj;
+  return [friendsWithUser, mutualObj];
 };
 
 // 사용자의 타임라인에 방문한 횟수 기준으로 추천 점수를 구하는 기능
