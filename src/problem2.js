@@ -1,7 +1,7 @@
 function problem2(cryptogram) {
   let answer;
   answer = deleteString(cryptogram);
-  return answer;
+  return arrayToString(answer);
 }
 
 function deleteString(cryptogram) {
@@ -13,8 +13,17 @@ function deleteString(cryptogram) {
     if (stackS && stackS[stackS.length - 1] === item) stackS.pop();
     else stackS.push(item);
   }
-
   return stackS;
+}
+
+function arrayToString(array) {
+  // array에서 문자열로 바꾸는 함수.
+  let string = "";
+  for (const item of array) {
+    string += item;
+  }
+
+  return string;
 }
 
 module.exports = problem2;
