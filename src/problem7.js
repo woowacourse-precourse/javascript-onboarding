@@ -25,7 +25,10 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < user_friends.length; j++) {
       if (user_friends[j] == friends[i][0] && user != friends[i][1]) {
+        //친구 아이디에 각 10점을 부여한다
+        friends_number.push([friends[i][1], 10]);
       } else if (user_friends[j] == friends[i][1] && user != friends[i][0]) {
+        friends_number.push([friends[i][0], 10]);
       } else {
         continue;
       }
