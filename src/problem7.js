@@ -28,6 +28,7 @@ function problem7(user, friends, visitors) {
         }
       }
     })
+    // 최대 5명 추천
     .slice(0, 5)
     .map((v) => v[0]);
 
