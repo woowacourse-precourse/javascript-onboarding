@@ -1,8 +1,8 @@
-const units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+const MONEY_UNIT = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
 function withDraw(money) {
   let wallet = [];
-  units.forEach((unit) => {
+  MONEY_UNIT.forEach((unit) => {
     wallet.push(parseInt(money/unit));
     money = money%unit;
   });
