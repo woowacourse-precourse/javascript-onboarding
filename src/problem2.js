@@ -1,26 +1,18 @@
-function deleteDuplicateCharacters(cryptogram) {
-  const deletedString = [...cryptogram].reduce((acc, cur, i, arr) => {
-    if (cur === arr[i + 1]) {
-      return acc;
-    }
+function deleteDuplicateLetters(cryptogramLetters) {
+  const filteredCryptogramLetters = cryptogramLetters.filter(
+    (letter, i, arr) => arr[i + 1] !== letter && arr[i - 1] !== letter
+  );
 
-    if (cur === arr[i - 1]) {
-      return acc;
-    }
-
-    acc += cur;
-    return acc;
-  }, '');
-
-  if (deletedString === cryptogram) {
-    return cryptogram;
+  if (filteredCryptogramLetters.length === cryptogramLetters.length) {
+    return cryptogramLetters;
   }
 
-  return deleteDuplicateCharacters(deletedString);
+  return deleteDuplicateLetters(filteredCryptogramLetters);
 }
 
 function problem2(cryptogram) {
-  const answer = deleteDuplicateCharacters(cryptogram);
+  const cryptogramLetters = [...cryptogram];
+  const answer = deleteDuplicateLetters(cryptogramLetters).join('');
 
   return answer;
 }
