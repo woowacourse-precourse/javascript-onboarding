@@ -18,6 +18,15 @@ function result(forms) {
     if (value > 1) getKeyDuplicateNickName.push(key);
   });
 
+  forms = forms
+    .filter(([_, nickName]) =>
+      isDuplicateNickName(getKeyDuplicateNickName, nickName)
+    )
+    .map(([email, _]) => email);
+
+  forms = [...new Set([...forms])];
+  forms.sort((a, b) => (a > b ? 1 : -1));
+
   return forms;
 }
 
