@@ -21,30 +21,30 @@ function cutTwoLetterArray(array) {
   return twoLetterNameArr;
 }
 
-function pushOverlapArray(array) {
-  let overlapArray = [];
+function checkDuplicateArray(array) {
+  let duplicateArray = [];
   let toCheckArray = [];
 
   array.forEach((twoLetterName) => {
     if (toCheckArray.includes(twoLetterName) === true) {
-      overlapArray.push(twoLetterName);
+      duplicateArray.push(twoLetterName);
     }
     if (toCheckArray.includes(twoLetterName) === false) {
       toCheckArray.push(twoLetterName);
     }
   });
-  return overlapArray;
+  return duplicateArray;
 }
 function problem6(forms) {
   const twoLetterNameArr = cutTwoLetterArray(forms);
-  const overlapArray = pushOverlapArray(twoLetterNameArr);
+  const duplicateArray = checkDuplicateArray(twoLetterNameArr);
   let answer = [];
 
   forms.forEach((nameAndEmail) => {
     let i = 0;
 
     for (; i < nameAndEmail.length; i++) {
-      if (overlapArray.includes(nameAndEmail[1].slice(i, i + 2))) {
+      if (duplicateArray.includes(nameAndEmail[1].slice(i, i + 2))) {
         answer.push(nameAndEmail[0]); //전체 배열에서 중복된 이름이 있는 지 확인 후 있다면 그 이메일을 반환하는 함수
       }
     }
