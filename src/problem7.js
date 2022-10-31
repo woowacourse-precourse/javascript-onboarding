@@ -6,6 +6,13 @@ function problem7(user, friends, visitors) {
     friendsOfUsersList,
     user
   );
+  const scoreOfFriendsUserknowWithUserFriend =
+    countScoreOfFriendsUserknowWithUserFriend(
+      usersList,
+      friendsUserknowWithUserFriendList
+    );
+
+  return scoreOfFriendsUserknowWithUserFriend;
 }
 
 function getListOfUserAndFriends(userFriends) {
@@ -87,10 +94,16 @@ function findFriendsUserknowWithUserFriend(
     });
   });
 
-  friendsUserknowWithUserFriend = new Set(friendsUserknowWithUserFriend);
-  friendsUserknowWithUserFriend = [...friendsUserknowWithUserFriend];
-
   return friendsUserknowWithUserFriend;
+}
+
+function countScoreOfFriendsUserknowWithUserFriend(scoreTable, users) {
+  users.forEach((user) => {
+    const result = scoreTable.find((item) => item.name === user);
+    result.score += 10;
+  });
+
+  return scoreTable;
 }
 
 module.exports = problem7;
