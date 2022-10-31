@@ -27,5 +27,18 @@
     }
 };
 
+//메인 함수
+function problem4(word){ 
+    const lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']; //소문자 배열
+    const upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']; //대문자 배열
+    let answer = [];
 
+    //인덱스를 증가시키며 문자 판별
+    for(let i = 0; i < word.length; i++){
+        diposeLetters(word[i], answer, lower, upper);
+    }
+
+    //답을 위해 문자열을 return
+    return (answer.join(""));
+}
 module.exports = problem4;
