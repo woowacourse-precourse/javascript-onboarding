@@ -17,3 +17,9 @@ const getUserBfs = (user) => (friends) => {
 const getBfsOfBfs = (friends) => (users) => {
   return users.reduce((reduced, user) => getUserBfs(user)(friends), []);
 };
+
+const removeDupUsers =
+  (...users) =>
+    (array) => {
+      return array.filter((v) => users.indexOf(v) === -1);
+    };
