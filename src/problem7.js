@@ -22,6 +22,15 @@ function getFriendOfFriend(friendObj, notUserFriendList) {
         .map(([user1, user2]) => (user1 in friendObj ? user2 : user1));
 }
 
+function addFriendOfFriendScore(userList) {
+    const userScore = {};
+    userList.forEach(
+        (user) => (userScore[user] = (userScore[user] += 10) || 10)
+    );
+
+    return userScore;
+}
+
 function problem7(user, friends, visitors) {}
 
 module.exports = problem7;
