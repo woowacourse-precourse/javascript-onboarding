@@ -1,6 +1,6 @@
 function problem7(user, friends, visitors) {
   const UNFC = UserNotfriendsCheck(user, friends);
-  const VC = visitorCheck(user, friends, visitors);
+  const VC = VisitorCheck(user, friends, visitors);
 
   // 친구 추천 점수 합계
   for (let i = 0; i < UNFC.length; i++) {
@@ -35,7 +35,7 @@ function problem7(user, friends, visitors) {
   return result;
 
   // 방문자 배열 중에서 user와 친구가 아닌 사람 추출하기
-  function visitorCheck(user, friends, visitors) {
+  function VisitorCheck(user, friends, visitors) {
     // user와 친구인 사람 추출하기
     let check = UserFriendsCheck(user, friends);
     // user와 친구가 아닌 사람 추출
