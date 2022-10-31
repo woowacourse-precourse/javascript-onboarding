@@ -1,5 +1,7 @@
 function problem7(user, friends, visitors) {
   let friendHash = setFriends(friends, new Map());
+  let scores = getFriendsScores(user, friendHash, new Map());
+}
 function setFriends(friend, hash) {
   for (const [a, b] of friend) {
     hash = set(hash, a, b);
@@ -13,6 +15,20 @@ function setFriends(friend, hash) {
     return hash;
   }
 }
+function getFriendsScores(user, friendHash, scoreHash) {
+  for (const key of friendHash.keys()) {
+    scoreHash.set(key, 0);
+  }
+  if (friendHash.get(user) === undefined) return scoreHash;
+
+  for (const friend of friendHash.get(user)) {
+    for (const someone of friendHash.get(friend)) {
+      scoreHash.get(someone) === undefined
+        ? scoreHash.set(someone, 10)
+        : scoreHash.set(someone, scoreHash.get(someone) + 10);
+    }
+  }
+  return scoreHash;
 }
 
 module.exports = problem7;
