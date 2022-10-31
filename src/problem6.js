@@ -21,6 +21,7 @@ function problem6(forms) {
       }
     });
   });
+  return [...new Set(result.sort())];
 }
 
 module.exports = problem6;
