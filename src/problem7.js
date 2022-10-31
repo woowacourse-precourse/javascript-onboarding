@@ -83,23 +83,26 @@ const deleteUserFromPointMap = (user) => {
   pointMap.delete(user);
 };
 
+const getResult = () => {
+  const result = [];
+  const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
+
+  for (let i = 0; i < 5; i++) {
+    const [id, point] = candidates[i];
+    if (!usersFriend.has(id) && point !== 0) result.push(id);
+  }
+
+  return result;
+};
+
 function problem7(user, friends, visitors) {
-  const answer = [];
-
   makeInitialPointMap(friends, visitors);
-
   findUsersFriends(user, friends);
-
   calculatePoints(user, friends, visitors);
-
   deleteUserFromPointMap(user);
 
-  const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
-  for (let i = 0; i < 5; i++) {
-    // 원래 친구가 아니고 0점이 아니면
-    const [id, point] = candidates[i];
-    if (!usersFriend.has(id) && point !== 0) answer.push(id);
-  }
+  const answer = getResult();
+
   return answer;
 }
 
