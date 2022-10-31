@@ -1,5 +1,8 @@
 function problem4(word) {
 
+  //예외처리
+  if(word.length < 1 || word.length > 1000) return -1;
+
   let arr = [...word];
   
   const f = arr.map(c => {

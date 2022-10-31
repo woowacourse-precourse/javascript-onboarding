@@ -2,101 +2,104 @@ function problem7(user, friends, visitors) {
 
   let recommendFriend = new Map();
 
-  let count = 1;
-  
+  //제한사항
+  if (user.length < 1 || user.length > 30) return -1;
+  if (friends.length < 1 || friends.length > 10000) return -1;
+  if (visitors > 10000) return -1;
+  let lowerUser = user.toLowerCase();
+
+  //친구 들어있는 배열 찾기
   const findFriend = (user, friends) => {
     const friendList = friends.filter(list => list.includes(user));
-    console.log(friendList);
     return friendList;
   }
-  
+  //친구만 찾기
   const onlyFriend = (user, friendList) => {
     let flat = friendList.flat();
-    for(let i = 0; i<flat.length; i++){
-      if(flat[i] === user){
-        flat.splice(i,1);
+    for (let i = 0; i < flat.length; i++) {
+      if (flat[i] === user) {
+        flat.splice(i, 1);
         i--;
       }
     }
-    console.log(flat);
     return flat;
   }
-
+  //친구의친구 배열 찾기
   const findFriendFriend = (friend, friends, user) => {
     let checkFriend = [];
     let checkF = [];
-    for(let j = 0; j<friend.length; j++){
-      for(let k = 0; k<friends.length; k++){
-        if(friends[k].includes(friend[j])){
-          if(!friends[k].includes(user)){
+    for (let j = 0; j < friend.length; j++) {
+      for (let k = 0; k < friends.length; k++) {
+        if (friends[k].includes(friend[j])) {
+          if (!friends[k].includes(user)) {
             checkF.push(friends[k]);
           }
         }
       }
     }
+    console.log(checkF);
     return checkF;
   }
-
-  const plusTen = (findFriendFriend, friend) => {
-    let result = findFriendFriend.flat();
-    result = result.filter(i => !friend.includes(i));
-    let check = new Set(result);
-    let newPlus = [...check];
-    return newPlus;
-  }
-
-  const plusOne = (visitors, friend) => {
-    let visit = visitors.flat();
-    visit = visit.filter(i => !friend.includes(i));
-    let visitCheck = visit;
-    let count = 1;
-    for(let i = 0; i < visitCheck.length; i++){
-      if(visitCheck[i] === visitCheck[i-1]){
-        count++;
+// 점수를 가진 추천친구 상위 5명 정렬
+  const friendPlus = () => {
+    let userName;
+    let fiveFriend = [];
+    userName = Array.from(recommendFriend.keys());
+    if (userName.length > 5) {
+      for (let i = 0; i < 5; i++) {
+        fiveFriend.push(userName[i]);
+      }
+    } else {
+      for (let i = 0; i < userName.length; i++) {
+        fiveFriend.push(userName[i]);
       }
     }
-    console.log(count);
-    let newVisit = visitCheck.filter((e, i) => visitCheck.indexOf(e) === i);
-    console.log(newVisit);
-    return visitCheck;
+    return fiveFriend;
   }
 
-  const friendPlus = (ten, one) => {
-    let i;
-    let userName;
-    for(let i = 0; i < ten.length; i++){
-      recommendFriend.set(ten[i],10);
-    }
-    for(let j = 0; j < one.length; j++){
-      recommendFriend.set(one[j], count);
-    }
-    console.log(recommendFriend);
-    for(let [key, value] of recommendFriend){
-      userName = recommendFriend.keys();
-      // map 상태에서 sort 해서 key값 리턴하면 끝
-    }
-    return userName;
-  }
-  
+  let arr = findFriend(lowerUser, friends);
+  let friend = onlyFriend(user, arr);
+  let findF = findFriendFriend(friend, friends, lowerUser);
 
-  let arr = findFriend(user, friends);
-  let friend = onlyFriend(user,arr);
-  let findF = findFriendFriend(friend, friends, user);
-  let plus = plusTen(findF, friend);
-  let oneP = plusOne(visitors, friend);
-  let answer = friendPlus(plus, oneP);
+  //친구들 10점
+  let result = findF.flat();
+  result = result.filter(i => !friend.includes(i));
+  result.map((m) => {
+    if (recommendFriend.has(m)) {
+      recommendFriend.set(m, recommendFriend.get(m) + 10);
+    } else {
+      recommendFriend.set(m, 10);
+    }
+  });
+  console.log(recommendFriend);
 
+  //추천친구 1점
+  let visit = visitors.flat();
+  visit.map((m) => {
+    if (recommendFriend.has(m)) {
+      recommendFriend.set(m, recommendFriend.get(m) + 1);
+    } else {
+      recommendFriend.set(m, 1);
+    }
+  })
+// 친구 들어있으면 추천친구에서 삭제
+  friend.map((m) => {
+    recommendFriend.delete(m);
+  });
+
+  let answer = friendPlus();
   return answer;
 }
 console.log(problem7("mrko",
-[
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-],
-["bedi", "bedi", "donut", "bedi", "shakevan"]))
+  [
+    ["mrko", "jun"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["jun", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]))
 
 module.exports = problem7;
