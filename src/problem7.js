@@ -26,6 +26,13 @@ function problem7(user, friends, visitors) {
       scoreDict[allPeople[i]] = 0;
     }
   }
+  for (let i = 0; i < notUserFriend.length; i++) {
+    for (let j = 0; j < friendDict[notUserFriend[i]].length; j++) {
+      if (userFriend.includes(friendDict[notUserFriend[i]][j])) {
+        scoreDict[notUserFriend[i]] += 10;
+      }
+    }
+  }
 
   return answer;
 }
