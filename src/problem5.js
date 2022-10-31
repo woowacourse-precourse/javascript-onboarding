@@ -8,7 +8,11 @@ function problem5(money) {
 }
 
 
-// 금액별 몇 개로 변환되는지 return 하는 메소드
+/**
+ * 금액을 변환하는 메소드
+ * @param {number} money 변환 대상 금액
+ * @returns {number[]} 변환 후 각 금액별 갯수를 담고있는 배열
+ */
 function changeMoney(money) {
   const changedMoney = [];
   const moneyArray = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
