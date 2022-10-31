@@ -49,6 +49,10 @@ function problem7(user, friends, visitors) {
     })
     .map((el) => el[0]);
 
+  // 최대 5명만을 리턴합니다
+  if (answer.length >= 5) {
+    return answer.splice(0, 5);
+  }
   return answer;
 }
 
