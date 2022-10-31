@@ -29,7 +29,10 @@ function treeFrog(char) {
 }
 
 function problem4(word) {
-  var answer;
+  var answer = "";
+  for (let i = 0; i < word.length; i++) {
+    answer += treeFrog(word[i]);
+  }
   return answer;
 }
 
