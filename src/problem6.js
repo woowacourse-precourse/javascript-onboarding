@@ -8,6 +8,8 @@
 
 function problem6(forms) {
   var answer;
+  const nickNameArr = forms.map((user) => user[1]);
+
   return answer;
 }
 
