@@ -1,38 +1,38 @@
 // 각 사용자의 친구 관계를 확인할 수 있는 기능
 function getFriendsMap(friends) {
-  const map = new Map();
+  const friendsMap = new Map();
   friends.forEach((friend) => {
-    map.has(friend[0])
-      ? map.get(friend[0]).push(friend[1])
-      : map.set(friend[0], [friend[1]]);
-    map.has(friend[1])
-      ? map.get(friend[1]).push(friend[0])
-      : map.set(friend[1], [friend[0]]);
+    friendsMap.has(friend[0])
+      ? friendsMap.get(friend[0]).push(friend[1])
+      : friendsMap.set(friend[0], [friend[1]]);
+    friendsMap.has(friend[1])
+      ? friendsMap.get(friend[1]).push(friend[0])
+      : friendsMap.set(friend[1], [friend[0]]);
   });
-  return map;
+  return friendsMap;
 }
 
 // 본인과 본인의 친구들을 친구 추천에서 제외하는 기능
 function getExcludedFriends(user, friendsMap) {
-  const map = new Map();
-  map.set(user, true);
-  friendsMap.get(user).forEach((friend) => map.set(friend, true));
-  return map;
+  const excludedMap = new Map();
+  excludedMap.set(user, true);
+  friendsMap.get(user).forEach((friend) => excludedMap.set(friend, true));
+  return excludedMap;
 }
 
 // 사용자와 함께 아는 친구의 수를 확인하여 점수를 주는 기능
 function scoreFriendsMayKnow(user, friendsMap, excludedFriends) {
-  const map = new Map();
+  const scoreMap = new Map();
   friendsMap.get(user).forEach((cur) => {
     friendsMap.get(cur).forEach((target) => {
       if (!excludedFriends.has(target)) {
-        map.has(target)
-          ? map.set(target, map.get(target) + 10)
-          : map.set(target, 10);
+        scoreMap.has(target)
+          ? scoreMap.set(target, scoreMap.get(target) + 10)
+          : scoreMap.set(target, 10);
       }
     });
   });
-  return map;
+  return scoreMap;
 }
 
 // 사용자의 타임 라인에 방문한 횟수를 확인하여 점수를 주는 기능
