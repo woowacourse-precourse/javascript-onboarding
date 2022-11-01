@@ -8,6 +8,10 @@ function problem4(word) {
 }
 
 // ASCII를 사용하여 문자 변환하는 함수
-function changeWord(word) {}
+function changeWord(word) {
+  // 대문자 (65~90)
+  // 소문자 (97~122)
+  // 예외처리 (띄어쓰기)
+}
 
 module.exports = problem4;
