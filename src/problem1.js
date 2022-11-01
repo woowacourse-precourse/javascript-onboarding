@@ -51,7 +51,11 @@ function problem1(pobi, crong) {
   Math.max(...calLeftCrong) > Math.max(...calRightCrong)
     ? Math.max(...calLeftCrong)
     : Math.max(...calRightCrong);
-
+  
+  if (scorePobi > scoreCrong) answer = 1;
+  else if (scorePobi < scoreCrong) answer = 2;
+  else if (scorePobi == scoreCrong) answer = 0;
+    
   return answer;
 }
 
