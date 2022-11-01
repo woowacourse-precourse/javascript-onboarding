@@ -5,7 +5,7 @@
   3. 방문횟수에 따라 추천점수를 적립해주는 addVisitorsPoint 함수 구현
   4. 친구의친구인 경우에 추천점수를 적립해주는 addFriendsPoint 함수 구현
   5. 추천점수에 따른 정렬, 점수 동일시 아이디순으로 정렬 하는 sortRecommendList 함수 구현
-  6. 최종목록은 5명이하로 , 추천점수 0점 여부 검사 후 정답 리턴
+  6. 최종목록은 최대 5명이하로 리턴
 */
 
 function findFriends(user,friends) {
