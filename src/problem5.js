@@ -6,8 +6,24 @@
  */
 
 function problem5(money) {
+  if (!isValidInput(money)) {
+    console.log("Error: Invalid Input");
+    return -1;
+  }
   const moneyChanged = changeMoney(money);
+
   return moneyChanged;
+}
+
+function isValidInput(money) {
+  let isValid;
+  if (!(money >= 1 && money <= 1000000)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function calMoneyChange(moneyUnit, money) {
