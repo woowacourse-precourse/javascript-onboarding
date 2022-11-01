@@ -16,8 +16,8 @@ const isOutOfRange = crew => !(crew.length >= 1 && crew.length <= 10000)
 const isMailLengthError = mail => !(mail.length >= 11 && mail.length < 20)
 const isCorrectDomain = mail => mail.slice(-10) === "@email.com"
 const isNameLengthError = name => !(name.length >= 1 && name.length < 20)
-const regExp = /^[가-힣]*$/;
-const checkKor = str => regExp.test(str) ? true : false
+const rKor = /^[가-힣]*$/;
+const checkKor = str => rKor.test(str)
 const validations = forms => {
   if (isOutOfRange(forms)) {
     throw "input length error"
@@ -38,7 +38,7 @@ const validations = forms => {
   })
 }
 
-const changeToJSON = originForm => {
+const changeToObj = originForm => {
   let newForm = [];
   originForm.map(item => {
     newForm.push({
@@ -78,7 +78,7 @@ const setIsDuplicated = forms => {
 function problem6(forms) {
   let answer = [];
   validations(forms);
-  forms = changeToJSON(forms);  
+  forms = changeToObj(forms);  
   forms.map(user => {
     user.nameCombinations = getCombinations(user.nickname);
   })
