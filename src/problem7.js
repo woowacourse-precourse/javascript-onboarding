@@ -33,6 +33,15 @@ function problem7(user, friends, visitors) {
   // 친구 제거
   userFriends.forEach((elem) => scores.delete(elem));
 
+  // 정렬 (Map을 Array로 바꿔야한다)
+  const scoresArr = [...scores];
+  scoresArr.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0];
+    }
+    return b[1] - a[1];
+  });
+
   return answer;
 }
 
