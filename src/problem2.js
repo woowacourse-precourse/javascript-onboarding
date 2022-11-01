@@ -23,6 +23,7 @@ function sliceOverlap(str) {
     if (str[i] !== str[i + 1]) {
       if (overlapedIndex + 1 !== i)
         tmpStr += str[i];
+
     }
     else {
       overlapedIndex = i;
