@@ -23,6 +23,9 @@ function reverse(word) {
 
 function problem4(word) {
   var answer;
+
+  answer = reverse(word);
+
   return answer;
 }
 
