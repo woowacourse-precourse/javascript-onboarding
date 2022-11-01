@@ -41,9 +41,11 @@ const problem7 = (user, friends, visitors) => {
   [...scoreList.entries()].forEach(([name, score]) =>
     (results = { ...results, [name]: score }));
 
-  answer = Object.keys(results).sort((a, b) =>
-    results[a] === results[b] ? a - b : results[b] - results[a]
-  );
+  answer = Object.keys(results)
+    .sort((a, b) =>
+      results[a] === results[b] ? a - b : results[b] - results[a]
+    )
+    .slice(0, 4);
 
   return answer;
 };
