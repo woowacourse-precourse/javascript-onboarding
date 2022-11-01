@@ -14,7 +14,6 @@ function problem6(forms) {
       }
     }
   }
-  console.log(result);
   return result.sort();
 }
 
