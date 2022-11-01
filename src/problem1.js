@@ -26,6 +26,7 @@ function getMax(arr) {
 	let leftMax = 0,
 		rightMax = 0;
 
+	if (left < 1 || right > 400) throw new Error('책의 페이지를 벗어났습니다.');
 	if (left + 1 !== right) throw new Error('연속된 수가 아닙니다.');
 
 	leftMax = resultAdd(left) >= resultMul(left) ? resultAdd(left) : resultMul(left);
