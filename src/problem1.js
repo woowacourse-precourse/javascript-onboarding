@@ -15,6 +15,8 @@ function problem1(pobi, crong) {
   if (pobiValue < crongValue) answer = 2;
   if (pobiValue === crongValue) answer = 0;
 
+  if (pobiLeft < 1 || pobiRight < 1 || crongLeft < 1 || crongRight < 1) answer = -1
+  if (pobiLeft > 400 || pobiRight > 400 || crongLeft > 400 || crongRight > 400) answer = -1
   return answer;
 }
 
