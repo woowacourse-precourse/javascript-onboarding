@@ -1,6 +1,16 @@
 function problem1(pobi, crong) {
   var answer;
 
+  if (
+    pobi[1] - pobi[0] != 1 ||
+    crong[1] - crong[0] != 1 ||
+    pobi[0] === 1 ||
+    crong[0] === 1 ||
+    pobi[1] === 400 ||
+    crong[1] === 400
+  )
+    return -1;
+
   const pobiScore = [
     sum(pobi[0]),
     sum(pobi[1]),
