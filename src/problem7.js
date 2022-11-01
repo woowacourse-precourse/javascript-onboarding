@@ -36,6 +36,19 @@ function problem7(user, friends, visitors) {
       recommendScore[visitors[i]] = 1;
     }
   }
+
+  for (var name in recommendScore) {
+    answer.push([name, recommendScore[name]]);
+  }
+  answer.sort((a, b) => {
+    if (a[1] === b[1]) {
+      if (a[0] > b[0]) return 1;
+      else if (a[0] < b[0]) return -1;
+      else return 0;
+    } else {
+      return b[1] - a[1];
+    }
+  });
   return answer;
 }
 
