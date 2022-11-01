@@ -18,6 +18,10 @@ function problem1(pobi, crong) {
       )
     )
   );
+
+  if (pobiMax > crongMax) return 1;
+  else if (pobiMax < crongMax) return 2;
+  else return 0;
 }
 
 module.exports = problem1;
