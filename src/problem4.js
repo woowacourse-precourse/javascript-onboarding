@@ -1,9 +1,8 @@
 function frogDictionary(letter) {
-  const mid = letter === letter.toUpperCase() ? "M" : "m";
-  const midCode = mid.charCodeAt(0);
-  const letterCode = letter.charCodeAt(0);
-
-  return 2 * midCode - letterCode + 1;
+  if(letter === letter.toUpperCase()){
+    return "A".charCodeAt(0) + "Z".charCodeAt(0) - letter.charCodeAt(0);
+  }
+  return "a".charCodeAt(0) + "z".charCodeAt(0) - letter.charCodeAt(0);
 }
 
 function problem4(word) {
