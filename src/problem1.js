@@ -1,4 +1,4 @@
-function compare(scoreArr) {
+function getBiggerScore(scoreArr) {
   let big = 0;
   for (i = 0; i < scoreArr.length; i++) {
     String(scoreArr[i])
@@ -18,7 +18,7 @@ function compare(scoreArr) {
   }
   return big;
 }
-const a = 12;
+
 function problem1(pobi, crong) {
   let pobiScore = 0;
   let crongScore = 0;
@@ -29,8 +29,8 @@ function problem1(pobi, crong) {
     crong[1] - crong[0] !== 1
   )
     return -1;
-  crongScore = compare(crong);
-  pobiScore = compare(pobi);
+  crongScore = getBiggerScore(crong);
+  pobiScore = getBiggerScore(pobi);
   if (pobiScore === crongScore) return 0;
   else if (pobiScore > crongScore) return 1;
   else return 2;
