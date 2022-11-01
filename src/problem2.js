@@ -6,7 +6,6 @@ function problem2(cryptogram) {
   // 함수형으로 refactoring하여 재사용이 가능하도록 하고, 코드의 반복을 방지한다.
   answer = convertText(text);
 
-  console.log(answer);
   return answer;
 }
 
