@@ -26,8 +26,8 @@ function problem6(forms) {
   });
 
 
-  // 결과
-  return result;
+  // 결과 정렬
+  return result.sort();
 }
 
 module.exports = problem6;
