@@ -1,14 +1,24 @@
 function problem4(word) {
   var answer = "";
   for (let i = 0; i < word.length; i++) {
-    let txt = word[i].charCodeAt();
-    if (txt >= 65 && txt <= 90)
-      answer += String.fromCharCode(txt - (txt - 65) - (txt - 90));
-    else if (txt >= 97 && txt <= 122)
-      answer += String.fromCharCode(txt - (txt - 97) - (txt - 122));
-    else answer += word[i];
+    answer += changeLetter(word[i].charCodeAt());
   }
   return answer;
+}
+
+function changeLetter(letter) {
+  const largeA = 65;
+  const largeZ = 90;
+  const smallA = 97;
+  const smallZ = 122;
+
+  if (letter >= largeA && letter <= largeZ)
+    return String.fromCharCode(letter - (letter - largeA) - (letter - largeZ));
+
+  if (letter >= smallA && letter <= smallZ)
+    return String.fromCharCode(letter - (letter - smallA) - (letter - smallZ));
+
+  return String.fromCharCode(letter);
 }
 
 module.exports = problem4;
