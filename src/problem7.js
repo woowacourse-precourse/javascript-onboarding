@@ -9,15 +9,15 @@
 */
 
 function findFriends(user,friends) {
-  const userFriedns = [];
+  const userFriends = [];
   friends.map((users)=> {
     if(users[0] === user) {
-      userFriedns.push(users[1]);
+      userFriends.push(users[1]);
     }else if (users[1] === user) {
-      userFriedns.push(users[0]);
+      userFriends.push(users[0]);
     }
   })
-  return userFriedns;
+  return userFriends;
 }
 
 function addVisitorsPoint(recommendPoints,userFriends,visitors) {
@@ -36,7 +36,6 @@ function addFriendsPoint(recommendPoints,userFriends,friends,user) {
         }else if(friends[1] !== userFriend && !userFriends.includes(friends[1])){
           recommendPoints.set(friends[1],recommendPoints.get(friends[1]) ? recommendPoints.get(friends[1])+10 : 10) 
         } 
-        
       }
     })
   })
@@ -57,13 +56,12 @@ function sortRecommendList(recommendPoints) {
 function problem7(user, friends, visitors) {
   const answer = [];
   const recommendPoints = new Map();
-  let userFriends = findFriends(user,friends);
+  const userFriends = findFriends(user,friends);
 
   addVisitorsPoint(recommendPoints,userFriends,visitors);
   addFriendsPoint(recommendPoints,userFriends,friends,user);
 
   const sortedList = sortRecommendList(recommendPoints);
-
   sortedList.map((user, idx)=> {
     if(idx <5) answer.push(user[0]); // 추천친구 최대 5명 리스트
   })

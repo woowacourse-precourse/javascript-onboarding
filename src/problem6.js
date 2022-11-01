@@ -16,39 +16,30 @@ function allTwoWordArr(str) {
 }
 
 function is_wordIncludes(wordArr,targetNickname) {
-  let isInclude = false;
-  wordArr.map((word) => {
-    if(targetNickname.includes(word)) {  
-      isInclude =  true;
+  for(let i =0; i<wordArr.length; i++) {
+    if(targetNickname.includes(wordArr[i])) {
+      return true;
     }
-  })
-  return isInclude;
+  }
+  return false;
 }
 
 function problem6(forms) {
   const answer = [];
-  const emails = [];
-  const nicknames = [];
   const alramToCrewIdx = new Set();
-
-  forms.map((crew) => {
-    emails.push(crew[0]);
-    nicknames.push(crew[1]);
-  })
-
-  for(let i =0; i<nicknames.length-1; i++) {
-    const twoWords = allTwoWordArr(nicknames[i]);
-    for(let j = i+1; j<nicknames.length; j++) {
-      if(is_wordIncludes(twoWords,nicknames[j])) {
+  for(let i =0; i<forms.length-1; i++) {
+    const twoWords = allTwoWordArr(forms[i][1]);
+    for(let j = i+1; j<forms.length; j++) {
+      if(is_wordIncludes(twoWords,forms[j][1])) {
         alramToCrewIdx.add(i);
         alramToCrewIdx.add(j);
       }
     }
   }
-
   for(let value of alramToCrewIdx) {
-    answer.push(emails[value]);
+    answer.push(forms[value][0]);
   }
+  
   return answer.sort();
 }
 
