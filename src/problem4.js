@@ -10,6 +10,17 @@ function problem4(word) {
   const upperReverseSet = [...upperSet].reverse();
   const lowerSet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   const lowerReverseSet = [...lowerSet].reverse();
+
+  const answer = word.split('');
+
+  answer.map((v,i) => {
+    if (upperSet.includes(v)) {
+      answer[i] = upperReverseSet[upperSet.indexOf(v)];
+    }
+    if (lowerSet.includes(v)) {
+      answer[i] = lowerReverseSet[lowerSet.indexOf(v)];
+    }
+  })
 }
 
 module.exports = problem4;
