@@ -65,21 +65,17 @@ function addInformationIntoScoreTable(table, user) {
 
 function findFriendOfUser(currentUser, userFriends) {
   let friendsList = new Array().fill(0);
-  let twoFriendsIndex, userIndex, friendIndex;
 
   userFriends.forEach((twoFriends) => {
-    twoFriendsIndex = userFriends.indexOf(twoFriends);
+    const twoFriendsIndex = userFriends.indexOf(twoFriends);
 
     twoFriends.forEach((friend) => {
       if (friend === currentUser) {
-        userIndex = twoFriends.indexOf(friend);
+        const userIndex = twoFriends.indexOf(friend);
+        const friendIndex = findIndexOfFriend(userIndex);
+        const friendName = userFriends[twoFriendsIndex][friendIndex];
 
-        if (userIndex === 0) {
-          friendIndex = 1;
-        }
-        friendIndex = 0;
-
-        friendsList.push(userFriends[twoFriendsIndex][friendIndex]);
+        friendsList.push(friendName);
       }
     });
   });
@@ -93,20 +89,15 @@ function findFriendsUserknowWithUserFriend(
   currentUser
 ) {
   let friendsUserknowWithUserFriend = [];
-  let twoFriendsIndex, userIndex, friendIndex;
   userFriends.forEach((twoFriends) => {
-    twoFriendsIndex = userFriends.indexOf(twoFriends);
+    const twoFriendsIndex = userFriends.indexOf(twoFriends);
 
     twoFriends.forEach((friend) => {
       if (friendList.includes(friend)) {
-        userIndex = twoFriends.indexOf(friend);
-
-        friendIndex = 0;
-        if (userIndex === 0) {
-          friendIndex = 1;
-        }
-
+        const userIndex = twoFriends.indexOf(friend);
+        const friendIndex = findIndexOfFriend(userIndex);
         const friendName = userFriends[twoFriendsIndex][friendIndex];
+
         if (friendName !== currentUser) {
           friendsUserknowWithUserFriend.push(friendName);
         }
@@ -115,6 +106,14 @@ function findFriendsUserknowWithUserFriend(
   });
 
   return friendsUserknowWithUserFriend;
+}
+
+function findIndexOfFriend(user) {
+  if (user === 0) {
+    return 1;
+  }
+  
+  return 0;
 }
 
 function countScoreOfFriendsUserknowWithUserFriend(scoreTable, users) {
