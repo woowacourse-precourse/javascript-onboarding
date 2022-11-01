@@ -15,6 +15,9 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  const userFriendsArr = friendsOb[user];
+  delete friendsOb[user];
+
   return friendsOb;
 }
 
