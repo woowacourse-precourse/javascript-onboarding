@@ -37,9 +37,11 @@ function removeDuplicates(word) {
   const wordLength = word.length;
   let removedResult = "";
   let duplicateAlphabet = "";
+  let changedHistory = false;
 
   for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
     if (word[wordIndex] === word[wordIndex + 1]) {
+      changedHistory = true;
       duplicateAlphabet = word[wordIndex];
       wordIndex++;
       continue;
@@ -52,6 +54,10 @@ function removeDuplicates(word) {
     }
 
     removedResult += word[wordIndex];
+  }
+
+  if (changedHistory === false) {
+    return removedResult;
   }
 
   return removeDuplicates(removedResult);
