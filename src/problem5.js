@@ -5,6 +5,9 @@ function problem5(money) {
   // money가 1,000,000초과의 경우 "Error: money의 수는 1,000,000이하이어야 합니다"라는 문자열을 반환한다.
   if (money > 1000000) return "Error: money의 수는 1,000,000이하이어야 합니다";
 
+  // money가 자연수가 아닌 경우 "Error: money는 자연수이어야 합니다"라는 문자열을 반환한다.
+  if (!Number.isInteger(money)) return "Error: money는 자연수이어야 합니다";
+
   // 돈의 단위를 배열로 정렬
   const units = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 

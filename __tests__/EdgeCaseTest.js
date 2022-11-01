@@ -108,6 +108,10 @@ describe("problem5", () => {
   test('money가 1,000,000초과의 경우 "Error: money의 수는 1,000,000이하이어야 합니다"라는 문자열을 반환한다.', () => {
     expect(problem5(1000001)).toEqual("Error: money의 수는 1,000,000이하이어야 합니다");
   });
+
+  test('money가 자연수가 아닌 경우 "Error: money는 자연수이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem5(10.123)).toEqual("Error: money는 자연수이어야 합니다");
+  });
 });
 
 describe("problem7", () => {
