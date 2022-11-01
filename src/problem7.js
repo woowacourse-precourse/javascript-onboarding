@@ -8,6 +8,18 @@ function problem7(user, friends, visitors) {
       getFriends.push(friends[i][0]);
     }
   }
+
+  let visitedFriends = [];
+
+  for (i in friends) {
+    for (j in getFriends) {
+      if (friends[i][0] == getFriends[j] || friends[i][1] == getFriends[j]) {
+        visitedFriends.push(friends[i]);
+      }
+    }
+  }
+  let getScore = new Set(visitedFriends);
+  visitedFriends = [...getScore]; //중복제거
 }
 
 module.exports = problem7;
