@@ -18,6 +18,14 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
+  test("case4", () => {
+    expect(problem1([151, 152], [245, 256])).toEqual(-1);
+  });
+
+  test("case4", () => {
+    expect(problem1([277, 278], [333, 334])).toEqual(1);
+  });
 });
 
 describe("problem2", () => {
@@ -84,5 +92,93 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+  test("case2", () => {
+    expect(
+      problem7(
+        "Walter",
+        [
+          [ 'Christa', 'Alyce' ],
+          [ 'Hobart', 'Retha' ],
+          [ 'Elijah', 'Josh' ],
+          [ 'Cecil', 'Lamont' ],
+          [ 'Eliza', 'Lamont' ],
+          [ 'Austyn', 'Retha' ],
+          [ 'Retha', 'Mara' ],
+          [ 'Walter', 'Lamont' ],
+          [ 'Retha', 'Walter' ],
+          [ 'Urban', 'Walter' ]
+        ],
+        [
+          'Cecil',  'Eliza',
+          'Adonis', 'Mara',
+        ]
+      )
+    ).toEqual([ 'Cecil', 'Eliza', 'Mara', 'Adonis' ]);
+  });
+  test("case3", () => {
+    expect(
+      problem7(
+        "Eliza",
+        [
+          [ 'Cecil', 'Hobart' ],
+          [ 'Austyn', 'Mara' ],
+          [ 'Adonis', 'Eliza' ],
+          [ 'Lamont', 'Retha' ],
+          [ 'Jan', 'Christa' ],
+          [ 'Milton', 'Retha' ],
+          [ 'Josh', 'Eliza' ],
+          [ 'Eliza', 'Jesus' ],
+          [ 'Retha', 'Eliza' ]
+        ],
+        [
+          'Retha', 'Rosalia', 'Hobart', 'Jayne' 
+        ]
+      )
+    ).toEqual([ 'Lamont', 'Milton', 'Hobart', 'Jayne', 'Rosalia' ]);
+  });
+  test("case4", () => {
+    expect(
+      problem7(
+        "Adonis",
+        [
+          [ 'Kali', 'Kali' ],
+          [ 'Walter', 'Urban' ],
+          [ 'Adonis', 'Mara' ],
+          [ 'Eliza', 'Lamont' ],
+          [ 'Josh', 'Milton' ],
+          [ 'Jayne', 'Elijah' ],
+          [ 'Jan', 'Urban' ],
+          [ 'Urban', 'Adonis' ],
+          [ 'Adonis', 'Christa' ],
+          [ 'Retha', 'Adonis' ]
+        ],
+        [
+          'Rosalia', 'Elijah', 'Lamont', 'Cecil' 
+        ]
+      )
+    ).toEqual([ 'Cecil', 'Elijah', 'Lamont', 'Rosalia' ]);
+  });
+  test("case5", () => {
+    expect(
+      problem7(
+        "Jan",
+        [
+          [ 'Lamont', 'Christa' ],
+          [ 'Mara', 'Mara' ],
+          [ 'Kali', 'Adonis' ],
+          [ 'Urban', 'Lamont' ],
+          [ 'Jesus', 'Austyn' ],
+          [ 'Rosalia', 'Alyce' ],
+          [ 'Jan', 'Rosalia' ],
+          [ 'Jayne', 'Jan' ],
+          [ 'Jan', 'Adonis' ],
+          [ 'Josh', 'Jan' ]
+        ],
+        [
+          'Adonis', 'Cecil', 'Adonis', 'Eliza', 'Josh', 'Urban' 
+        ]
+      )
+    ).toEqual([ 'Kali', 'Cecil', 'Eliza', 'Urban' ]);
   });
 });
