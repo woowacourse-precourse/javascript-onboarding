@@ -36,6 +36,9 @@ const problem7 = (user, friends, visitors) => {
   [...friendsOfUser, user].forEach((deleteTarget) =>
     scoreList.delete(deleteTarget)
   );
+  scoreList.forEach((score, person) => {
+    if (score === 0) scoreList.delete(person);
+  });
 
   // prettier-ignore
   [...scoreList.entries()].forEach(([name, score]) =>
@@ -46,6 +49,8 @@ const problem7 = (user, friends, visitors) => {
       results[a] === results[b] ? a - b : results[b] - results[a]
     )
     .slice(0, 4);
+
+  console.log(answer);
 
   return answer;
 };
