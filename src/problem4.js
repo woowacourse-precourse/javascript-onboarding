@@ -24,6 +24,16 @@ function lowerConvert(charCode) {
 
 function problem4(word) {
   if (isException(word)) return;
+  let answer = '';
+  let charCode;
+
+  for (let i = 0; i < word.length; ++i) {
+    charCode = word.charCodeAt(i);
+    if (isUpper(charCode)) answer += upperConvert(charCode);
+    else if (isLower(charCode)) answer += lowerConvert(charCode);
+    else answer += word.charAt(i);
+  }
+  return answer;
 }
 
 module.exports = problem4;
