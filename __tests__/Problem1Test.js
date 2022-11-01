@@ -65,5 +65,15 @@ describe('Problem1 Util test', () => {
       const result = problem1Util.isValidPage(5, 7, 1, 100);
       expect(result).toBe(false);
     });
+
+    test('inValid - under start page', () => {
+      const result = problem1Util.isValidPage(2, 3, 5, 100);
+      expect(result).toBe(false);
+    });
+
+    test('inValid - over max page', () => {
+      const result = problem1Util.isValidPage(101, 102, 5, 100);
+      expect(result).toBe(false);
+    });
   });
 });

@@ -46,7 +46,7 @@ const compareValue = (num1, num2) => {
  * @return {boolean} 시작 또는 끝페이지인 경우, 페이지 차이가 1이 아닌경우, 왼쪽-홀수 오른쪽-짝수가 아닌경우 inValid
  */
 const isValidPage = (leftPage, rightPage, startPage, lastPage) => {
-  if (leftPage === startPage || rightPage === lastPage) return false;
+  if (leftPage <= startPage || rightPage >= lastPage) return false;
   if (rightPage - leftPage !== 1) return false;
   if (!(leftPage % 2 === 1 && rightPage % 2 === 0)) return false;
   return true;
