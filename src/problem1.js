@@ -1,5 +1,5 @@
 // 함수 하나에 넣으니까 너무 꼬임 -> 한 함수 안에서 부속적으로 기능 분리? -> problem1에 들어가는 함수와 가장 큰값을 가져오는 함수로 2개로 구성
-
+// 모듈화(역할별로 나누기), 카멜케이스, 전역으로 지정하면 메모이제이션에 안좋음
 function problem1(pobi, crong) {
   let answer;
   let pobinumbers = 0;
