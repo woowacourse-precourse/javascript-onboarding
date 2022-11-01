@@ -1,7 +1,6 @@
 function problem6(forms) {
   var answer;
   var nickname=[];
-  var email=[];
   var double=[];
   var doubleNickname= [];
 
