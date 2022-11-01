@@ -1,3 +1,9 @@
+/*
+  기능1 : 점수 계산 기능
+  기능2 : 예외 처리
+  기능3 : 점수 비교
+*/
+
 function problem1(pobi, crong) {
   var answer;
 
