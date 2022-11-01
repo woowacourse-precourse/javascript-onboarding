@@ -36,12 +36,7 @@ function exchangeTo50000(money) {
 
 function exchangeTo10000(money) {
   const TENTHOUSAND = 10000;
-  let cnt = 0;
-  while (money >= TENTHOUSAND) {
-    cnt += 1;
-    money -= TENTHOUSAND;
-  }
-  return cnt;
+  return Math.floor(money/TENTHOUSAND);
 }
 
 function exchangeTo5000(money) {
