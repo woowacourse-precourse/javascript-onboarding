@@ -10,4 +10,16 @@ function errorHandler(forms) {
   else return false;
 }
 
+function spliceName(forms) {
+  // 이름을 담을 배열
+  let nameArr = [];
+
+  // 2글자씩 이름을 쪼개 새 배열에 저장
+  forms.map(([email, name]) => {
+    for (i=0; i<name.length - 1; i++) {
+      nameArr.push(name[i] + name[i+1]);
+    }
+  });
+}
+
 module.exports = problem6;
