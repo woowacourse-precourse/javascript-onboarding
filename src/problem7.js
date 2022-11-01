@@ -63,7 +63,7 @@ function sortMap(map) {
 function problem7(user, friends, visitors) {
   const friendArray = friendCheck(friends, user);
 
-  const scoreMap = relatedFriendsCheck(user, friends, friendArray);
+  let scoreMap = relatedFriendsCheck(user, friends, friendArray);
   scoreMap = visitorCheck(visitors, scoreMap, friendArray);
 
   return sortMap(scoreMap)
