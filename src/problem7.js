@@ -14,7 +14,7 @@ function problem7(user, friends, visitors) {
   score = makeScore(relation, userFriends, user);
 
   // 기능 3
-  bothFriendCheck(relation, userFriends, score, user);
+  checkBothFriend(relation, userFriends, score, user);
 
   // 기능 4
   checkVisitors(userFriends, visitors, score);
@@ -65,7 +65,7 @@ function makeScore(relation, userFriends, user) {
 }
 
 // 기능 3. 함께 아는 친구 count
-function bothFriendCheck(relation, userFriends, score, user) {
+function checkBothFriend(relation, userFriends, score, user) {
   let relationKey = Object.keys(relation); // "key"값만
 
   for (let friend of relationKey) {
