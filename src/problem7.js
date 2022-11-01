@@ -142,8 +142,11 @@ const problem7 = (user, friends, visitors) => {
   // 정렬된 point List 생성
   const sortedPointList = getSortedPointList(pointListMap);
 
+  // 이미 친구인 사람 삭제
+  const sortedNonFriendsList = sortedPointList.filter((single) => !userFriendList.includes(single[0]));
+
   // 정렬된 array에서 최대 5명 도출
-  sortedPointList.map((point) => {
+  sortedNonFriendsList.map((point) => {
     if (answer.length < 5 && point[1] !== 0) {
       answer.push(point[0]);
     } else {
