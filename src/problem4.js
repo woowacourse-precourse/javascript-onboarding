@@ -2,6 +2,7 @@
 // 1. 객체 dictionary 만들기
 // + 소문자와 대문자 사전 따로 만들기 
 // 2. word 문자 하나씩 dictionary에 넣어서 변환하기
+// + 예외 처리 (영어가 아닐 때)
 
 function problem4(word) {
   const upperDic = {'A':'Z', 'B':'Y', 'C':'X', 'D':'W', 'E':'V', 'F':'U', 'G':'T', 'H':'S', 'I':'R', 'J':'Q', 'K':'P', 'L':'O', 'M':'N', 'N':'M', 'O':'L', 'P':'K', 'Q':'J', 'R':'I', 'S':'H', 'T':'G', 'U':'F', 'V':'E', 'W':'D', 'X':'C', 'Y':'B', 'Z':'A'};
@@ -9,12 +10,12 @@ function problem4(word) {
 
   let result = '';
   for(let i=0; i<word.length; i++) {
-    if(word[i] === ' ') {
-      result += ' ';
-    }else if(Object.keys(upperDic).includes(word[i])) {
+    if(Object.keys(upperDic).includes(word[i])) {
       result += upperDic[word[i]];
     }else if(Object.keys(lowerDic).includes(word[i])) {
       result += lowerDic[word[i]];
+    }else {
+      result += word[i];
     }
   }
 
