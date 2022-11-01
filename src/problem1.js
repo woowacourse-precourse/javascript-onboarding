@@ -1,4 +1,12 @@
 function problem1(pobi, crong) {
+	//결과 값을 구하고 반환할 함수 -> solution
+	//각 점수들 중 가장 큰 수를 구할 함수 -> getMax
+	//덧셈 결과를 반환할 함수 -> resultAdd
+	//곱셈 결과를 반환할 함수 -> resultMul
+	return solution(pobi, crong);
+}
+
+function solution(pobi, crong) {
 	let pobiMax, crongMax;
 
 	try {
