@@ -13,6 +13,25 @@ function problem7(user, friends, visitors) {
   friendName.forEach(function (score) {
     scoreFriend.push([0, score]);
   }); // 점수 이름 담긴 scoreFriend + 점수는 0으로 초기화
+function friendScore( //user와 친구추가 되있는 사람의 친구들에게 10점 추가
+  friendsArray,
+  userFriend,
+  scoreFriendArray,
+  friendNameArray
+) {
+  friendsArray.forEach(function (plusScore) {
+    if (plusScore.includes(userFriend)) {
+      const plusScoreIndex = plusScore.indexOf(userFriend);
+      plusScore.splice(plusScoreIndex, 1);
+      if (plusScore + "" === "") {
+      } else {
+        userFriendFriend = plusScore + ""; //user의 친구와 친구추가 되있는사람
+        const plusScoreIndex2 = friendNameArray.indexOf(userFriendFriend);
+        scoreFriendArray[plusScoreIndex2][0] += 10;
+      }
+    }
+  });
+  return scoreFriendArray;
 function visitorScore(visitorsArray, friendNameArray, scoreFriendArray) {
   //scoreFriend 배열에 친구명단을 조사해 점수를 부여하는 함수
   visitorsArray.forEach(function (visitor) {
