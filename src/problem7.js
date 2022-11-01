@@ -90,12 +90,14 @@ function problem7(user, friend, visitors) {
         let original_score=score.get(x)
         original_score=original_score+10
         visited.set(x,false)
+        console.log(x)
         score.set(x,original_score)
         continue;
       }
       
       for(let i=0;i<Graph[x].length;i++){
           if(visited.get(Graph[x][i])===false){
+            if(depth!==1)
               visited.set(Graph[x][i],true)
               queue.push(Graph[x][i],depth+1)
           }
@@ -145,5 +147,5 @@ function problem7(user, friend, visitors) {
   }
   return answer;
 } 
-module.exports = problem7;
 
+module.exports = problem7;
