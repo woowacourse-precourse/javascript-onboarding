@@ -56,7 +56,7 @@ function findNicknameDuplicate(nicknameSlice, nicknameList) {
       duplicateNickname.push(nickname);
     }
   });
-  return duplicateNickname.length === 1 ? [] : duplicateNickname;
+  return duplicateNickname.length === 1 ? [] : duplicateNickname; // 본인이 무조건 나오므로 1이면 빈 배열 반환
 }
 
 function removeDuplicateEmail(answer) {
