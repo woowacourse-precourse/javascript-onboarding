@@ -1,9 +1,9 @@
 /*
  * <기능 목록>
- * 1. 친구 관계를 담은 이차원 배열 friends에서 사용자와 친구인 userFriends와 친구의 친구인 friendsOfFriend 배열을 반환하는 seperateFriends() 함수.
- *     이 때, userFriends는 중복을 제거하고, friendsOfFriend는 추천 점수를 계산해야 하므로 중복 제거하지 않는다.
- *     또한, user는 friendsOfFriend에서 제외한다.
- * 2. 친구의 친구 리스트 friendsOfFriend을 입력받아 함께 아는 친구 추천 점수를 포함한 Object를 반환하는 scoreCommonFriend() 함수.
+ * 1. 친구 관계를 담은 이차원 배열 friends에서 사용자와 친구인 userFriends와 친구의 친구인 friendOfFriends 배열을 반환하는 seperateFriends() 함수.
+ *     이 때, userFriends는 중복을 제거하고, friendOfFriends는 추천 점수를 계산해야 하므로 중복 제거하지 않는다.
+ *     또한, user는 friendOfFriends에서 제외한다.
+ * 2. 친구의 친구 리스트 friendOfFriends을 입력받아 함께 아는 친구 추천 점수를 포함한 Object를 반환하는 scoreCommonFriend() 함수.
  *     이 때, Object의 key는 '아이디'이고, value는 (중복된 친구 수 * 10) 이다.
  * 3. 방문기록 visitors에서 방문자 추천 점수를 포함한 Object를 반환하는 scoreVisitor() 함수.
  *     이 때, Object의 key는 '아이디'이고, value는 (중복된 친구 수) 이다.
@@ -17,8 +17,8 @@ function problem7(user, friends, visitors) {
   if (!isValidInput(user, friends, visitors)) {
     return "Error: Invalid Input";
   }
-  const [userFriends, friendsOfFriend] = seperateFriends(friends, user);
-  const friendScore = scoreCommonFriend(friendsOfFriend);
+  const [userFriends, friendOfFriends] = seperateFriends(friends, user);
+  const friendScore = scoreCommonFriend(friendOfFriends);
   const visitScore = scoreVisitor(visitors, userFriends);
   const featuredFriend = findFeaturedFriend(addScore(friendScore, visitScore));
 
@@ -55,24 +55,24 @@ function isValidId(id) {
 
 function seperateFriends(friends, user) {
   let userFriends = [];
-  let friendsOfFriend = [];
+  let friendOfFriends = [];
 
   for (let friend of friends) {
     userFriends.push(friend[0]);
     if (friend[1] !== user) {
-      friendsOfFriend.push(friend[1]);
+      friendOfFriends.push(friend[1]);
     }
   }
   userFriends = [...new Set(userFriends)];
 
-  return [userFriends, friendsOfFriend];
+  return [userFriends, friendOfFriends];
 }
 
-function scoreCommonFriend(friendsOfFriend) {
+function scoreCommonFriend(friendOfFriends) {
   const FRIEND_SCORE = 10;
   let scores = {};
 
-  for (let friend of friendsOfFriend) {
+  for (let friend of friendOfFriends) {
     if (isValidId(friend)) {
       if (scores[friend]) {
         scores[friend] += FRIEND_SCORE;
