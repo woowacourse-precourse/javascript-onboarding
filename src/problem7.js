@@ -8,7 +8,7 @@ function problem7(user, friends, visitors) {
   .filter((friend) => friend[1] === user)
   .map((friend) => friend[0]);
 
-  const friendScoreBoard = memberList
+  const scoreBoard = memberList
   .filter((member) => userFriends.indexOf(member) === -1)
   .map((member) => [member, 0]);
 
@@ -22,24 +22,24 @@ function problem7(user, friends, visitors) {
   }
 
   for (const item of relavantUser){
-    for(let i=0; i<friendScoreBoard.length; i++){
-      if(friendScoreBoard[i].indexOf(item) > -1){
-        friendScoreBoard[i][1] = friendScoreBoard[i][1] + 10
+    for(let i=0; i<scoreBoard.length; i++){
+      if(scoreBoard[i].indexOf(item) > -1){
+        scoreBoard[i][1] = scoreBoard[i][1] + 10
       }
     }
   }
 
   const visitorList = visitors.filter((element) => userFriends.indexOf(element) === -1)
   for (const item of visitorList){
-    for (let i = 0; i < friendScoreBoard.length; i++){
-      if(friendScoreBoard[i].indexOf(item) > -1){
-        friendScoreBoard[i][1] = friendScoreBoard[i][1] + 1
+    for (let i = 0; i < scoreBoard.length; i++){
+      if(scoreBoard[i].indexOf(item) > -1){
+        scoreBoard[i][1] = scoreBoard[i][1] + 1
       }
     }
   }
 
   function filterScore (array, number) {return array.filter(innerArray => innerArray[1] !== number);}
-  const filteredScore = filterScore(friendScoreBoard, 0);
+  const filteredScore = filterScore(scoreBoard, 0);
 
   const rank = filteredScore.sort(function(a, b) {
     if (a[1] ===b[1]) {
