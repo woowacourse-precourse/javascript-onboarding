@@ -109,6 +109,15 @@ function problem7(user, friends, visitors) {
   addFriendsScore(score, overlapUsers);
   addVisitorsScore(score, 친구제외visitors);
 
+  const scoreArr = sortScore(score);
+
+  const answerArr = scoreArr.slice(0, 5);
+
+  answer = [];
+  answerArr.forEach((id_score) => {
+    answer.push(id_score[0]);
+  });
+
   return answer;
 }
 
