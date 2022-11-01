@@ -4,7 +4,7 @@ function getTokens(crew) {
   let crewTokens = crew.tokens;
 
   for (let charIndex = 0; charIndex < nicknameLength - 1; ++charIndex) {
-    crewTokens.push(crewNickname.substr(charIndex, 2));
+    crewTokens.add(crewNickname.substring(charIndex, charIndex + 2));
   }
 }
 
@@ -12,24 +12,21 @@ function getCrewsInfo(forms, crews) {
   const crewCount = crews.length;
 
   for (let crewIndex = 0; crewIndex < crewCount; ++crewIndex) {
+    const [crewEmail, crewNickname] = forms[crewIndex];
+
     crews[crewIndex] = {
-      email: forms[crewIndex][0],
-      nickname: forms[crewIndex][1],
-      tokens: []
+      email: crewEmail,
+      nickname: crewNickname,
+      tokens: new Set()
     };
     getTokens(crews[crewIndex]);
   }
 }
 
-function areDuplicates(crews, crewIndex, otherCrew) {
-  const crewTokens = crews[crewIndex].tokens;
-  const tokenCount = crewTokens.length;
-
-  for (let tokenIndex = 0; tokenIndex < tokenCount; ++tokenIndex) {
-    for (const token of crews[otherCrew].tokens) {
-      if (token == crewTokens[tokenIndex]) {
+function areDuplicates(crewTokens, otherTokens) {
+  for (const token of crewTokens) {
+    if (otherTokens.has(token)) {
         return true;
-      }
     }
   }
   return false;
@@ -44,9 +41,12 @@ function problem6(forms) {
   getCrewsInfo(forms, crews);
   for (let crewIndex = 0; crewIndex < crewCount - 1; ++crewIndex) {
     for (let otherCrew = crewIndex + 1; otherCrew < crewCount; ++otherCrew) {
-      if (areDuplicates(crews, crewIndex, otherCrew)) {
-        resultSet.add(crews[crewIndex].email);
-        resultSet.add(crews[otherCrew].email);
+      const crew = crews[crewIndex];
+      const other = crews[otherCrew];
+
+      if (areDuplicates(crew.tokens, other.tokens)) {
+        resultSet.add(crew.email);
+        resultSet.add(other.email);
       }
     }
   }
