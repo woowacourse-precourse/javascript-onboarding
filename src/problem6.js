@@ -20,6 +20,10 @@ function problem6(forms) {
     }
     return dict;
   }, new Map());
+  const answerSet = new Set();
+  for (const val of nicknameMap.values()) {
+    if (val.size > 2) [...val].forEach((id) => answerSet.add(id));
+  }
   var answer;
   return answer;
 }
