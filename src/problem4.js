@@ -1,7 +1,32 @@
 function problem4(word) {
   var answer;
+  frogDic = [ "A" , "B" , "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J" , "K" , "L" , "M" , "N" , "O" , "P" , "Q" , "R" , "S" , "T" , "U" , "V" , "W" , "X" , "Y" , "Z" ]
+  frogDic2 = [ "Z" , "Y" , "X" , "W" , "V" , "U" , "T" , "S" , "R" , "Q" , "P" , "O" , "N" , "M" , "L" , "K" , "J" , "I" , "H" , "G" , "F" , "E" , "D" , "C" , "B" , "A" ]
+  temp = [...word]
+  newWord = []
+  var pattern_eng = /[a-zA-Z]/
+  temp.forEach(str => {
+    if (!pattern_eng.test(str)) {
+      newWord.push(str)
+      return;
+    }
+
+    var upperCaseStr = str.toUpperCase();
+    var lowerCaseStr = str.toLowerCase();
+
+    if (str === upperCaseStr) {
+      myindex = frogDic.indexOf(upperCaseStr)
+      newWord.push(frogDic2[myindex])
+    }else if (str === lowerCaseStr) {
+      myindex = frogDic.indexOf(upperCaseStr)
+      newWord.push(frogDic2[myindex].toLowerCase())
+    }
+
+  })
+  answer = newWord.join("") 
   return answer;
 }
+// console.log(problem4("R olev blf"))
 
 module.exports = problem4;
 
