@@ -14,8 +14,9 @@ function problem2(cryptogram) {
 
     if (answerLastWord !== cryptogram[i] && cryptogram[i] !== lastStr) {
       answer += cryptogram[i];
-    } else answer = answer.slice(0, -1);
-
+    } else if (answerLastWord === cryptogram[i]) {
+      answer = answer.slice(0, -1);
+    }
     lastStr = cryptogram[i];
   }
 
