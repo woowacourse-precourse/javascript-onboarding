@@ -22,4 +22,10 @@ function digitMult(digit) {
   }
   return result;
 }
+
+// 인자로 받은 배열의 최대값을 반환하는 함수
+function getMax(array) {
+  const max = Math.max(digitPlus(array[0]), digitPlus(array[1]), digitMult(array[0]), digitMult(array[1]));
+  return max;
+}
 module.exports = problem1;
