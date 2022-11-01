@@ -119,17 +119,17 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
   + 이메일 길이가 11자이상 20자 미만이 아니면 제거
 
 * 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
-  + **(+추가)** 함수 `getNameByTwoLetterSet`에 `CrewDataArr`를 넣어 전체닉네임 `CrewDataArr[i][1]` 을 내부함수 `String.prototype.substr()`를 사용하여, 2글자씩 잘라서 `Set객체`인 `TwoLetterNameSet` 에 넣어서 저장한다.
+  + **(+추가)** set 객체 `emailOfUsedNickNameSet`에 변수 `crewNickName`이 중복되면 그 크루의 이메일 `crewEmail`을 넣어서 저장해놓음.
+  + **(+추가)** map 객체 `infoOfUsedTwoLetterMap`에 key값은 닉네임 `crewNickName`을 2글자씩 끊어 놓은 변수 `twoLetterName`가 보관되며, value값에는 해당 닉네임을 사용한 이메일 `crewEmail`을 보관함.
   + 입력된 배열 `CrewDataArr` 길이만큼 중복닉네임을 걸러내는 작업 반복.
+  + **(+추가)** return 값 : set 객체 `emailOfUsedNickNameSet`를 배열타입으로 변경 후 sort하여 정렬.
+
   + ~~함수 getDuplicateDataArr에 CrewDataArr와 CrewNickName를 입력 후 함수 반환값을 return 한다.~~
   + ~~CrewNickName(닉네임)으로 함수 getNameByTwoLetterArr을 호출하여, 출력값을 배열 TwoLetterNameArr(닉네임검사리스트)에 저장~~
-  + `CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우, **(+추가)** 임시 배열 `delCrewDataIndexArr`에 index 저장 한다.  
-  + 탐색이 완료하면, 배열 `delCrewDataIndexArr`의 데이터 여부를 확인하고, 데이터가 있을 경우, 탐색대상인 크루정보와 함께  `delCrewDataIndexArr`에 저장된 인덱스를 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.
-  + return 값 : 배열 `duplicateDataArr`
-
-* 닉네임을 2글자씩 잘라서 배열로 return 해주는 `getNameByTwoLetterSet` 함수 구현.
-
-* `CrewNickName`(닉네임)과 `TwoLetterNameSet`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.
+  + ~~`CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우,  임시 배열 `delCrewDataIndexArr`에 index 저장 한다. ~~
+  + ~~탐색이 완료하면, 배열 `delCrewDataIndexArr`의 데이터 여부를 확인하고, 데이터가 있을 경우, 탐색대상인 크루정보와 함께  `delCrewDataIndexArr`에 저장된 인덱스를 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.~~
+* ~~닉네임을 2글자씩 잘라서 배열로 return 해주는 `getNameByTwoLetterSet` 함수 구현.~~
+* ~~`CrewNickName`(닉네임)과 `TwoLetterNameSet`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.~~
 
 ***
 
