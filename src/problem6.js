@@ -25,6 +25,18 @@ function problem6(forms) {
   });
   countList = countList.filter((count) => count >= 2);
 
+  const result = [];
+  for (let i = 0; i < countList.length; i++) {
+    for (let j = 0; j < nickNameList.length; j++) {
+      const nickName = nickNameList[j];
+      const twoLetter = twoLetterList[i];
+      if (nickName.includes(twoLetter)) {
+        const email = forms[j][0];
+        result.push(email);
+      }
+    }
+  }
+
   return nickNameList;
 }
 
