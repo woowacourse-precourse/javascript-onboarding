@@ -54,6 +54,9 @@ function pageGame(pobi, crong) {
  * @returns 에러 발생여부(Boolean)
  */
 function checkError(player) {
+  if (player[0] < 1 || player[0] > 400 || player[1] < 1 || player[1] > 400) {
+    return true;
+  }
   if (player[1] - player[0] != 1) {
     return true;
   }
