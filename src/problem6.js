@@ -1,6 +1,6 @@
 function problem6(forms) {
   let newName=[];
-  let newNewName = [];
+  let newNameCut = [];
   let overlap = [];
   let nameCheck = [];
   let emailArr =[];
@@ -12,11 +12,11 @@ function problem6(forms) {
   for (element of newName){ 
     for (let i = 0; i < 20; i++){
       if (element.slice((i),(i+2)).length > 1){
-        newNewName.push(element.slice((i),(i+2)));                
+        newNameCut.push(element.slice((i),(i+2)));                
       }
     }
   }
-  for (element of newNewName){ 
+  for (element of newNameCut){ 
     let elementStr = element.join('');
     let eleInclude = nameCheck.includes(elementStr);
     if (!eleInclude){
