@@ -1,18 +1,19 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = "";
+  var dummy = cryptogram
   var i = 0
-  while (i < cryptogram.length){
-    if(cryptogram[i] !== cryptogram[i+1]) {
-      i += 1
-      continue
+  while(i<cryptogram.length) {
+    if(i==dummy.length){
+      answer = dummy
+      break;
     }
-    for(let j = i+1;j<cryptogram.length;j++){
-      if(cryptogram[j] == cryptogram[i]){continue}
-      cryptogram = cryptogram.slice(0,i) + cryptogram.slice(j,)
+    if(dummy[i] == dummy[i+1]) {
+      dummy = dummy.slice(0,i) + dummy.slice(i+2,);
       i = 0
+    } else {
+      i++
     }
   }
-  answer = cryptogram
 
   return answer;
 }
