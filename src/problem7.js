@@ -40,6 +40,15 @@ function problem7(user, friends, visitors) {
   function filterScore (array, number) {return array.filter(innerArray => innerArray[1] !== number);}
   const filteredScore = filterScore(friendScoreBoard, 0);
 
+  const rank = filteredScore.sort(function(a, b) {
+    if (a[1] ===b[1]) {
+      const x = a[0];
+      const y = b[0];
+      return x < y ? -1 : x > y ? 1 : 0;
+      }
+    return b[1] - a[1];
+    });
+
 module.exports = problem7;
 
 //problem7 기능목록
