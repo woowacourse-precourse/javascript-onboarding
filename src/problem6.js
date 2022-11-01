@@ -18,6 +18,15 @@ const isTmpWordAlreadyExists = (commonNicknameObject, temporaryWord) => {
   return commonNicknameObject[temporaryWord];
 };
 
+/**
+ * 임시 단어 object 를 key값으로 이루어진 순회 가능한 array 로 변환
+ * @param {object} object - 임시 단어 object
+ * @return {string[]}
+ */
+const getIterableObjectWithKeys = (object) => {
+  return Object.keys(object);
+};
+
 const problem6 = (forms) => {
   const answer = [];
   const commonNickName = {};
