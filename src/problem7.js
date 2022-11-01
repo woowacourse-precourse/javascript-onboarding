@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   var answer = [];
+  let result = [];
   let scoreObj = {};
   let knowUser = [];
 
@@ -40,13 +41,19 @@ function problem7(user, friends, visitors) {
   for (const [n, s] of Object.entries(scoreObj)) {
     for (let i = 0; i < scores.length; i++) {
       if (s === scores.sort()[i]) {
-        answer.push(n);
+        result.push(n);
       }
     }
   }
 
-  answer = answer.filter(x => !knowUser.includes(x) && x !== user)
-  answer = Array.from(new Set(answer));
+  result = result.filter(x => !knowUser.includes(x) && x !== user)
+  result.forEach((e) => {
+    if (!answer.includes(e)) {
+      answer.push(e);
+    }
+  });
+  
+  answer = answer.slice(0, 5);
 
   return answer;
 }

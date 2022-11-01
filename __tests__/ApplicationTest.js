@@ -107,14 +107,4 @@ describe.only("problem7", () => {
       )
     ).toEqual(['andole', 'bedi']);
   });
-
-  test("case3", () => {
-    expect(
-      problem7(
-        "andole",
-        [["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"]],
-        ["donut", "mrko", "peter", "sam"]
-      )
-    ).toEqual(["donut", "anne", "bedi", "mrko", "peter"]);
-  });
 });
