@@ -16,6 +16,4 @@ function includesNumbers(targetNumber, compareNumbers) {
   return count;
 }
 
-console.log(problem3(33));
-
 module.exports = problem3;
