@@ -19,4 +19,19 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function validateInput(input){
+  // 입력값을 검증하는 함수
+  if (input[0] < 1 || input[0] > 400 || input[1] < 1 || input[1] > 400) {
+    return false; // 입력값이 1~400 사이의 값이 아닌 경우
+  } else if (input[0] % 2 === 0 || input[1] % 2 === 1) {
+    return false; // 입력값이 홀수, 짝수가 아닌 경우
+  } else if (input[0] + 1 !== input[1]) {
+    return false; // 입력값이 연속된 값이 아닌 경우
+  } else if (input[0] === 1 || input[1] === 400 ) {
+    return false; // 입력값이 1, 400인 경우
+  } else {
+    return true; // 입력값이 유효한 경우
+  }
+}
+
 module.exports = problem1;
