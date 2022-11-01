@@ -40,10 +40,10 @@ function errorCheck(page) {
   if (
     left % 2 === 0 ||
     right % 2 === 1 ||
-    left < 1 ||
-    right < 1 ||
-    left > 400 ||
-    right > 400 ||
+    left <= 1 ||
+    right <= 1 ||
+    left >= 400 ||
+    right >= 400 ||
     left - right !== -1 ||
     typeof left !== "number" ||
     typeof right !== "number" ||

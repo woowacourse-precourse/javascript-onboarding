@@ -1,4 +1,7 @@
-function problem2(cryptogram) {}
+function problem2(cryptogram) {
+  if (!checkValidCrypto(cryptogram)) return cryptogram;
+  return spliceNestedChars(cryptogram);
+}
 
 function checkValidCrypto(cryptogram) {
   for (let i = 0; i < cryptogram.length; i++) {
@@ -19,12 +22,26 @@ function findStartNestedChar(cryptogram) {
   }
   return -1;
 }
-function findLastNestedChar(cryptogram, startPoint) {
-  let endPoint = 1;
+function findNestedCharsNum(cryptogram, startPoint) {
+  let nestedCharsNum = 0;
   while (true) {
-    if (cryptogram[startPoint] !== cryptogram[startPoint + endPoint]) break;
-    endPoint++;
+    if (cryptogram[startPoint] !== cryptogram[startPoint + nestedCharsNum])
+      break;
+    nestedCharsNum++;
   }
-  return endPoint;
+
+  return nestedCharsNum;
 }
+function spliceNestedChars(cryptogram) {
+  while (true) {
+    const startPoint = findStartNestedChar(cryptogram);
+    if (startPoint === -1) break;
+    const nestedCharsNum = findNestedCharsNum(cryptogram, startPoint);
+    a = cryptogram.split("");
+    a.splice(startPoint, nestedCharsNum);
+    cryptogram = a.join("");
+  }
+  return cryptogram;
+}
+
 module.exports = problem2;
