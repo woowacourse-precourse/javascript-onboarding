@@ -42,6 +42,14 @@ function problem7(user, friends, visitors) {
     return b[1] - a[1];
   });
 
+  // 5개 뽑아서 answer에 넣기
+  // 그리고 0점인 친구들 제거하기
+  for (let i = 0; i < scoresArr.length; ++i) {
+    if (i === 5) break;
+    if (scoresArr[i][1] === 0) break;
+    answer.push(scoresArr[i][0]);
+  }
+
   return answer;
 }
 
