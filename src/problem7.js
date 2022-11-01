@@ -44,6 +44,19 @@ function calVisitPoint(friendsMap, visitors) {
       : (friendsMap[person] = { friends: [], point: 1 });
   });
 }
+// 친구 point
+function calWithPoint(friendsMap, user) {
+  if (friendsMap[user]?.friends != undefined) {
+    const userFriends = friendsMap[user]["friends"];
+    userFriends.forEach((userFriends) => {
+      for (let person in friendsMap) {
+        if (friendsMap[person]["friends"].indexOf(userFriends) !== -1) {
+          friendsMap[person]["point"] += 10;
+        }
+      }
+    });
+  }
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
