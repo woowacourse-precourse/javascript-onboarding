@@ -43,7 +43,14 @@ function problem7(user, friends, visitors) {
       score.set(visitors[i], score.get(visitors[i]) + 1);
     } else if (!score.has(visitors[i])) score.set(visitors[i], 1);
   }
-
+  const scoreList = [...score];
+  scoreList.sort((score1, score2) => {
+    if (score2[1] > score1[1]) return 1;
+    if (score2[1] - score1[1] == 0) {
+      if (score1[0] > score2[0]) return 1;
+      else if (score1[0] < score2[0]) return -1;
+    } else return -1;
+  });
   return answer;
 }
 
