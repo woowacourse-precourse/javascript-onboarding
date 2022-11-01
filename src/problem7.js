@@ -46,13 +46,25 @@ function problem7(user, friends, visitors) {
 	}
 
 	function calKnowingFriends() {
-		let friendTogether = [];
 		friendList.forEach((friend) => {
 			if (friend.friendName != user && friend.isFriend)
-				friendTogether.push(friend.friendName);
+				//user와 친구인 애들
+				//friendTogether.push(friend.friendName);
+				calKnowingCnt(friend.friendName);
 		});
 	}
 
+	function calKnowingCnt(friendName) {
+		friends.map((ref) => {
+			if (ref[0] == friendName) {
+				friendList[friendList.findIndex((e) => e.friendName == ref[1])]
+					.knowingCnt++;
+			} else if (ref[1] == friendName) {
+				friendList[friendList.findIndex((e) => e.friendName == ref[0])]
+					.knowingCnt++;
+			}
+		});
+	}
 	return answer;
 }
 
