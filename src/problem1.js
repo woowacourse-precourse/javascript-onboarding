@@ -1,6 +1,4 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
   if (pobi[0] % 2 === 0) {
     return -1
   }
@@ -8,6 +6,9 @@ function problem1(pobi, crong) {
   if (pobi[0] + 1 !== pobi[1]) {
     return -1
   }
+
+  let pobiScore = Math.max(sumOfEachDigit(pobi[0]), multiplyOfEachDigit(pobi[0]), sumOfEachDigit(pobi[1]), multiplyOfEachDigit(pobi[1]))
+  let crongScore = Math.max(sumOfEachDigit(crong[0]), multiplyOfEachDigit(crong[0]), sumOfEachDigit(crong[1]), multiplyOfEachDigit(crong[1]))
 
 const sumOfEachDigit = (num) => {
   let sum = 0
