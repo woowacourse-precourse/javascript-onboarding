@@ -1,6 +1,9 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const nickNameArr = getNickNameArr(forms);
 }
+
+const getNickNameArr = (forms) => {
+  return forms.map((item) => item[1]);
+};
 
 module.exports = problem6;
