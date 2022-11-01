@@ -2,14 +2,12 @@ function problem5(money) {
   var answer;
   var moneyList = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
   var moneyCount = [0,0,0,0,0,0,0,0,0]
-  var temp = money
-  var count =0
+  var temp = money 
   var idx = 0
 
   moneyList.forEach(coin => {
-    count = parseInt(temp / coin)
-    temp = temp % coin;
-    moneyCount[idx] = count
+    moneyCount[idx] = parseInt(temp / coin)
+    temp = temp % coin; 
     idx ++
 
   })  
@@ -20,7 +18,7 @@ function problem5(money) {
 
   return answer;
 }
-// console.log(problem5(15000))
+console.log(problem5(50237))
 
 module.exports = problem5;
 
