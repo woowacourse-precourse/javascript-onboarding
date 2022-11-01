@@ -75,6 +75,21 @@ const problem7 = (user, friends, visitors) => {
   const userFriendList = friendListMap.get(user);
   const pointListMap = getInitialPointListMap(friendListMap);
 
+  // 함께 아는 친구 도출
+  for (let singleUserInfo of friendListMap) {
+    const [singleUserName, singleUserFriendList] = singleUserInfo;
+    if (singleUserName !== user) {
+      userFriendList.map((singleUserFriend) => {
+        if (singleUserFriendList.includes(singleUserFriend)) {
+          pointListMap.set(
+            singleUserName,
+            pointListMap.get(singleUserName) + MUTUAL_FRIEND_POINT
+          );
+        }
+      });
+    }
+  }
+
   return answer;
 };
 
