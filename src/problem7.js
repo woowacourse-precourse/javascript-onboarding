@@ -32,12 +32,12 @@ function problem7(user, friends, visitors) {
 function makeRelation(friends) {
   let relation = {};
 
-  for (let f of friends) {
+  for (let friend of friends) {
     for (let i = 0; i < 2; i++) {
-      if (!(f[i] in relation)) {
-        relation[f[i]] = []
+      if (!(friend[i] in relation)) {
+        relation[friend[i]] = []
       }
-      relation[f[i]].push(f[(i + 1) % 2]);
+      relation[friend[i]].push(friend[(i + 1) % 2]);
     }
   }
 
@@ -80,11 +80,11 @@ function checkBothFriend(relation, userFriends, score, user) {
       }
     }
 
-    let tmp = relation[friend]; // 한 사람의 친구 목록
+    let onesFriendList = relation[friend]; // 한 사람의 친구 목록
 
-    for (let f of tmp) {
+    for (let friend of onesFriendList) {
       if (userFriends !== undefined) {
-        if (userFriends.includes(f)) { // 함께 아는 친구인 경우
+        if (userFriends.includes(friend)) { // 함께 아는 친구인 경우
           count += 10;
         }
       }
@@ -100,17 +100,17 @@ function checkBothFriend(relation, userFriends, score, user) {
 function checkVisitors(userFriends, visitors, score) {
   let scoreKey = Object.keys(score); // "key"값만
 
-  for (let v of visitors) {
+  for (let visitor of visitors) {
     if (userFriends !== undefined) {
-      if (userFriends.includes(v)) { // 이미 친구인 경우 제외
+      if (userFriends.includes(visitor)) { // 이미 친구인 경우 제외
         continue;
       }
     }
 
-    if (scoreKey.includes(v)) { // score 배열에 이미 존재하는 경우
-      score[v] += 1;
+    if (scoreKey.includes(visitor)) { // score 배열에 이미 존재하는 경우
+      score[visitor] += 1;
     } else { // 존재하지 않는 경우
-      score[v] = 1;
+      score[visitor] = 1;
       scoreKey = Object.keys(score); // "key"값만
     }
   }
@@ -137,7 +137,6 @@ function sortScore(score) {
         return -1;
       }
     }
-    
   });
 
   return scoreArray;
