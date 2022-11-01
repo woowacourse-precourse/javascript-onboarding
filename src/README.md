@@ -125,3 +125,12 @@ String 클래스의 메서드인 charCodeAt()을 사용하여 ascii코드로 변
 
 answer 배열에 push하는 것보다 마지막 각 화폐의 개수를 호출하여 바로 return하는 것이 보기 편하다고 생각되어 해당 방법으로 수정하였음
 
+
+
+## problem6
+
+### 구현할 기능
+
+* 주어진 forms를 순회하면서 사람의 이름을 2글자씩 끊어서 key-value 형태의 object의 key값으로 사용하고 value에는 이메일을 추가
+* set 객체를 만들어서 위에서 만든 object를 순회하면서 value의 길이가 2이상인 것만 추가
+* set 객체를 정렬하여 반환
