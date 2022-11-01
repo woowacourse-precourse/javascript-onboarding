@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+- 문제이해
+1. "제이"엠 과 "제이"슨 과같이 두개 연속으로 붙어있는 글자면 비슷한 닉네임으로 간주
+
+-중복 제거 방법
+1. 들어온 배열 만큼 반복 
+2. 배열을 반복하며 두개씩 비교하고 비슷한게 있으면 answer에 push
+→ similar_name 함수
+1. name 1과 name 2를 비교
+2. name 1을 하나씩 나누어서 비교
+3. 연속된 두 문자가 있으면 중복됨을 판단.
