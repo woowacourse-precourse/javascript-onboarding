@@ -17,21 +17,22 @@ function problem1(pobi, crong) {
   }
 }
 
-let pScore = plusOrMultiply(pobi);
-let cScore = plusOrMultiply(crong);
+  let pScore = plusOrMultiply(pobi);
+  let cScore = plusOrMultiply(crong);
 
-if ((pScore == false) || (cScore == false)){
-  answer = -1;
-} else if (pScore > cScore) {
-  answer = 1;
-} else if (pScore < cScore) {
-  answer = 2;
-} else if (pScore == cScore) {
-  answer = 0;
-} else {
-  answer = -1;
-}  
-  return answer;
+  if ((pScore == false) || (cScore == false)){
+    answer = -1;
+  } else if (pScore > cScore) {
+    answer = 1;
+  } else if (pScore < cScore) {
+    answer = 2;
+  } else if (pScore == cScore) {
+    answer = 0;
+  } else {
+    answer = -1;
+  }  
+    return answer;
+  }
 }
 
 module.exports = problem1;
