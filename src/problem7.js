@@ -6,7 +6,7 @@ function problem7(user, friends, visitors) {
     // user와 friends 배열을 비교해 친구 리스트를 만드는 함수
     var friendsArr = makeFriendsArr(user, friends);
     // 친구리스트와 friends 배열을 비교해 추천 후보의 아이디와 점수를 가지는 리스트 객체를 만드는 함수
-    var candidates = candidateMap(friendsArr, friends);
+    var candidates = candidateMap(user, friendsArr, friends);
     // 추천 후보 리스트에 타임라인 방문 점수 합산
     var score = timeLineChk(candidates, visitors);
 
@@ -102,6 +102,46 @@ function makeFriendsArr(user, friends) {
   }
 
   return Array.from(frendsList);
+}
+
+// friends 배열 중에 추천할 유저의 아이디와 점수를 계산해서 map으로 리턴
+function candidateMap(user, friendsArr, friends) {
+  var candidates = new Map();
+
+  for (var i = 0; i < friendsArr.length; i++) {
+    for (var j = 0; j < friends.length; j++) {
+      // 배열의 첫 번째에 친구가 있는 경우
+      if (friends[j][0] === friendsArr[i]) {
+        // 추천할 아이디가 user와 같은지 확인
+        if (!(friends[j][1] === user)) {
+          // 추천할 아이디가 map에 이미 있는지 확인
+          if (candidates.has(friends[j][1])) {
+            // 있으면 기존 점수에 +10
+            candidates.set(friends[j][1], candidates.get(friends[j][1]) + 10);
+          } else {
+            // 없으면 map에 아이디와 점수 10을 map에 저장
+            candidates.set(friends[j][1], 10);
+          }
+        }
+      }
+      // 배열의 두 번째에 친구가 있는 경우
+      else if (friends[j][1] === friendsArr[i]) {
+        // 추천할 아이디가 user와 같은지 확인
+        if (!(friends[j][0] === user)) {
+          // 추천할 아이디가 map에 이미 있는지 확인
+          if (candidates.has(friends[j][0])) {
+            // 있으면 기존 점수에 +10
+            candidates.set(friends[j][0], candidates.get(friends[j][0]) + 10);
+          } else {
+            // 없으면 map에 아이디와 점수 10을 map에 저장
+            candidates.set(friends[j][0], 10);
+          }
+        }
+      }
+    }
+  }
+
+  return candidates;
 }
 
 module.exports = problem7;
