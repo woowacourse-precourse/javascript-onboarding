@@ -3,7 +3,7 @@
 // [✅] nickName 배열을 순회하며 두 글자 이상의 문자가 연속적으로 포함된 닉네임을 모두 찾는다. / substring
 // - [✅] substring을 통해 (substring(index, index + 2)) keyword 추출
 // - [✅] 추출한 keyword를 바탕으로 includes(keyword[idx])를 통해 제거 대상인 이름 추출 -> duplicateNick.push()
-// [] duplicateNick에 존재하는 이름과 forms의 이름을 비교하여, 일치하면 result로 반환
+// [✅] duplicateNick에 존재하는 이름과 forms의 이름을 비교하여, 일치하면 result로 반환
 // [] result 내 이메일 목록을 오름차순 정렬한다.
 // [] result 내 이메일 목록에서 중복된 이메일을 제거한다.
 
@@ -18,6 +18,7 @@ function problem6(forms) {
   const duplicateNick = [];
   const keywords = [];
   const duplicateKeywords = [];
+  const result = [];
   // 경우의 수에 있는 keyword 모두 추출
   for (let i = 0; i < nickName.length; i++) {
     for (let j = 0; j < nickName[i].length - 1; j++) {
@@ -41,9 +42,14 @@ function problem6(forms) {
       duplicateNick.push(nickName[idx]);
     }
   }
-
-  const result = [];
-
+  // 대상 email 추출
+  for (let i = 0; i < duplicateNick.length; i++) {
+    forms.forEach((data) => {
+      if (data[1] === duplicateNick[i]) {
+        result.push(data[0]);
+      }
+    });
+  }
   return result;
 }
 
