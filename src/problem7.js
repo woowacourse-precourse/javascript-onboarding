@@ -1,4 +1,9 @@
-function createFriendsMap(friends) {
+const MAX_COUNT = 5;
+const VISITING_SCORE = 1;
+const FRIEND_SCORE = 10;
+const MIN_VALID_SCORE = 0;
+
+const createFriendsMap = (friends) => {
   const frinedsMap = new Map();
 
   friends.forEach(([userA, userB]) => {
@@ -14,9 +19,9 @@ function createFriendsMap(friends) {
   });
 
   return frinedsMap;
-}
+};
 
-function isAlreadyFriend({ user, friend, friendsMap }) {
+const isAlreadyFriend = ({ user, friend, friendsMap }) => {
   if (!friendsMap.has(user)) {
     return false;
   }
@@ -26,16 +31,13 @@ function isAlreadyFriend({ user, friend, friendsMap }) {
   }
 
   return false;
-}
+};
 
-function isValidScore(score) {
-  const MIN_SCORE = 0;
+const isValidScore = (score) => {
+  return score >= MIN_VALID_SCORE;
+};
 
-  return score > MIN_SCORE;
-}
-
-function computeFriendScoreBySerperation({ user, friendsMap }) {
-  const FRIEND_SCORE = 10;
+const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
   const friendsHasScore = new Map();
 
   const friendsOfUser = friendsMap.get(user);
@@ -55,10 +57,9 @@ function computeFriendScoreBySerperation({ user, friendsMap }) {
   );
 
   return friendsHasScore;
-}
+};
 
-function computeFriendScoreByVisiting(visitors) {
-  const VISITING_SCORE = 1;
+const computeFriendScoreByVisiting = (visitors) => {
   const friendsHasScore = new Map();
 
   visitors.forEach((visitor) =>
@@ -71,9 +72,9 @@ function computeFriendScoreByVisiting(visitors) {
   );
 
   return friendsHasScore;
-}
+};
 
-function computeTotalFriendScore(...friendScores) {
+const computeTotalFriendScore = (...friendScores) => {
   const friendScore = new Map();
 
   friendScores.forEach((scores) =>
@@ -86,21 +87,23 @@ function computeTotalFriendScore(...friendScores) {
   );
 
   return friendScore;
-}
+};
 
-function getValidFriendRecommendation({ user, friendsMap, scoreMap }) {
+const getValidFriendRecommendation = ({ user, friendsMap, scoreMap }) => {
   return [...scoreMap].filter(
     ([friend, score]) =>
       !isAlreadyFriend({ user, friend, friendsMap }) && isValidScore(score)
   );
-}
+};
 
-function cutListByComparison(compareFunction, array, maxCount = 5) {
-  return array.sort(compareFunction).slice(0, maxCount);
-}
+const sortFriendList = (friendScoreList) => {
+  return friendScoreList.sort(
+    ([nameA, scoreA], [nameB, scoreB]) =>
+      scoreB - scoreA || nameA.localeCompare(nameB)
+  );
+};
 
-function problem7(user, friends, visitors) {
-  const MAX_COUNT = 5;
+const problem7 = (user, friends, visitors) => {
   const friendsMap = createFriendsMap(friends);
 
   const friendsScoreMap = computeTotalFriendScore(
@@ -117,14 +120,11 @@ function problem7(user, friends, visitors) {
     scoreMap: friendsScoreMap,
   });
 
-  const slicedTotalFriendScore = cutListByComparison(
-    ([nameA, scoreA], [nameB, scoreB]) =>
-      scoreB - scoreA || nameA.localeCompare(nameB),
-    filteredFriendScores,
-    MAX_COUNT
-  );
+  const recommendedFriends = sortFriendList(filteredFriendScores)
+    .slice(0, MAX_COUNT)
+    .map(([name]) => name);
 
-  return slicedTotalFriendScore.map(([name]) => name);
-}
+  return recommendedFriends;
+};
 
 module.exports = problem7;
