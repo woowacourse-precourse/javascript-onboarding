@@ -25,4 +25,22 @@ function buildInfoListObj(forms) {
   return infoListObj;
 }
 
+function findSameNickname(infoListObj) {
+  // 같은 글자가 연속적으로 포함되는 닉네임을 찾는 함수
+  const nicknameList = Object.keys(infoListObj); // nickname list
+  for (let nickname of nicknameList) {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const duplicateNicknameList = findNicknameDuplicate(
+        nickname.slice(i, i + 2),
+        nicknameList
+      ); // 같은 글자가 연속적으로 포함되는 닉네임 list
+      if (duplicateNicknameList !== []) {
+        duplicateNicknameList.forEach((nickname) => {
+          answer.push(infoListObj[nickname]);
+        }); // 닉네임을 key로 email을 value로 하는 Object에서 email을 찾아 answer에 push
+      }
+    }
+  }
+}
+
 module.exports = problem6;
