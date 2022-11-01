@@ -38,6 +38,19 @@ const isValidScore = (score) => {
   return score >= MIN_VALID_SCORE;
 };
 
+const computeFriendScore = ({ list, scoreMap, type }) => {
+  const score = {
+    friend: FRIEND_SCORE,
+    visit: VISITING_SCORE,
+  };
+
+  list.forEach((friend) =>
+    scoreMap.has(friend)
+      ? scoreMap.set(friend, scoreMap.get(friend) + score[type])
+      : scoreMap.set(friend, score[type])
+  );
+};
+
 const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
   const friendsHasScore = new Map();
 
@@ -47,14 +60,11 @@ const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
   );
 
   friendsOfFriend.forEach((friends) =>
-    friends.forEach((friend) =>
-      friendsHasScore.has(friend)
-        ? friendsHasScore.set(
-            friend,
-            friendsHasScore.get(friend) + FRIEND_SCORE
-          )
-        : friendsHasScore.set(friend, FRIEND_SCORE)
-    )
+    computeFriendScore({
+      list: friends,
+      scoreMap: friendsHasScore,
+      type: "friend",
+    })
   );
 
   return friendsHasScore;
@@ -62,15 +72,11 @@ const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
 
 const computeFriendScoreByVisiting = (visitors) => {
   const friendsHasScore = new Map();
-
-  visitors.forEach((visitor) =>
-    friendsHasScore.has(visitor)
-      ? friendsHasScore.set(
-          visitor,
-          friendsHasScore.get(visitor) + VISITING_SCORE
-        )
-      : friendsHasScore.set(visitor, VISITING_SCORE)
-  );
+  computeFriendScore({
+    list: visitors,
+    scoreMap: friendsHasScore,
+    type: "visit",
+  });
 
   return friendsHasScore;
 };
