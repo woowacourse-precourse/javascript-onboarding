@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능
+1. 닉네임을 모두 2글자 단위로 자르기
+2. 2글자로 자른 닉네임을 키로, count는 값으로 저장 
+3. count가 2 이상인 문자열 찾기
+4. 3에서 찾은 문자열을 포함하고 있는 크루들의 이메일 찾기
+5. result에서 오름차순으로 정렬 후 중복 제거
