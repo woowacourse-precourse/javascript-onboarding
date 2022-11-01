@@ -1,7 +1,8 @@
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
-- 사용자와 함께 아는 친구의 수 = 10점 
+
+- 사용자와 함께 아는 친구의 수 = 10점
 - 사용자의 타임 라인에 방문한 횟수 = 1점
 
 사용자 아이디 user와 친구 관계를 담은 이차원 배열 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
@@ -23,3 +24,14 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+
+- [] 제한사항 위반 검사 함수 (violationChk)
+- [] user 제한사항 검사 함수 (userChecker)
+- [] friends 제한사항 검사 함수 (friendsChecker)
+- [] visitors 제한사항 검사 함수 (visitorsChecker)
+- [] user 아이디를 입력받아 friends 배열에서 친구를 찾아 리턴하는 함수 (makeFriendArr)
+- [] 친구 아이디를 입력받아 friends 배열에서 추천 후보의 아이디를 key에, 점수 10점을 value에 저장하여 map으로 리턴하는 함수 (candidateMap)
+- [] 추천 후보 리스트를 입력받아 map에 key가 있으면 value에 +1을 하고 key가 없으면 아이디와 value 1을 add하고 리턴하는 함수 (timeLineChk)
+- [] 추천 친구 리스트를 입력받아 value 값을 비교하여 큰 순서대로 5개를 배열에 저장하여 리턴하는 함수 (recommandArr)
