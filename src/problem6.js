@@ -15,10 +15,62 @@ function division(nickName) {
   return twoChar;
 }
 
+// 배열 2차원에서 1차워으로 반환 함수
+function Arr2Dto1D(arr_2d) {
+  let arr_1d = [];
+  arr_2d.forEach((ele) => {
+    arr_1d = [...arr_1d, ...ele];
+  });
+
+  return arr_1d;
+}
+
+// 2차원 배열을 받고 배열안의 첫요소배열을 기준으로하여 다른 원소배열의 중복검사
+function onComparison(keywordArr2D) {
+  const stdKeywordArr = keywordArr2D.shift();
+
+  const keywordArr = Arr2Dto1D(keywordArr2D);
+
+  const duplicateKeyword = stdKeywordArr.filter((std) =>
+    keywordArr.includes(std)
+  );
+
+  return { duplicateKeyword, keywordArr2D };
+}
+
+// 중복 키워드 삭제 함수
+function deleteDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
 function problem6(forms) {
   var answer;
+  // 닉네임만 추출
   const nickNameArr = forms.map((user) => user[1]);
+
+  // 키워드들 추출
   const keywordArr2D = nickNameArr.map((nickName) => division(nickName));
+
+  // 중복 키워드 배열 구현
+  let input_arr = [...keywordArr2D];
+  let duplicatesKeyword = [];
+  while (true) {
+    const comparisonResult = onComparison(input_arr);
+
+    // 중복키워드들 계속 합치면서 1개의 배열로 만들기
+    duplicatesKeyword = [
+      ...duplicatesKeyword,
+      ...comparisonResult.duplicateKeyword,
+    ];
+
+    // 검사한 원소배열을 제외한 배열들을 다음 input으로
+    input_arr = comparisonResult.keywordArr2D;
+
+    if (input_arr.length === 1) {
+      duplicatesKeyword = deleteDuplicates(duplicatesKeyword);
+      break;
+    }
+  }
 
   return answer;
 }
