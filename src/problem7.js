@@ -10,6 +10,9 @@
 function problem7(user, friends, visitors) {
   const friendsObj = {};
   var answer = [];
+  let answerCnt = 0;
+
+  friendsObj[user] = [[], 0];
 
   function saveFriend(one, two) {
     if (one in friendsObj) {
@@ -25,6 +28,7 @@ function problem7(user, friends, visitors) {
     saveFriend(element[1], element[0]);
   });
 
+  console.log(friendsObj[user]);
   const userFriendsSet = new Set(friendsObj[user][0]);
 
   for (const key in friendsObj) {
@@ -53,16 +57,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  newMate.sort((a, b) => b[1] - a[1]);
+  newMate.sort((a, b) => {
+    if (b[1] > a[1]) return 1;
+    else if (a[1] > b[1]) return -1;
+    else if (a[0] > b[0]) return 1;
+    else if (b[0] > a[0]) return -1;
+  });
+  console.log(newMate);
 
   for (let i = 0; i < newMate.length; i++) {
-    if (i === 5) break;
+    if (answerCnt === 5) break;
     if (userFriendsSet.has(newMate[i][0])) continue;
     answer.push(newMate[i][0]);
+    answerCnt += 1;
   }
 
-  console.log(friendsObj);
-
+  console.log(answer);
   return answer;
 }
 
