@@ -66,12 +66,14 @@ function problem4(word) {
     const ASCIICode = word.charCodeAt(i);
     if (ASCIICode === 32) {
       answer += ' ';
-    } else if (ASCIICode < 91) {
+    } else if (ASCIICode > 64 && ASCIICode < 91) {
       const Index = ASCIICode % 65;
       answer += UpprerCaseList[Index];
-    } else {
+    } else if (ASCIICode > 96 && ASCIICode < 123) {
       const Index = ASCIICode % 97;
       answer += LowerCaseList[Index];
+    } else {
+      answer += word[i];
     }
   }
   return answer;
