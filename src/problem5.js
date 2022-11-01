@@ -15,7 +15,7 @@ function problem5(money) {
       answer[i] = Math.floor(money / moneyUnitList[i]);
       // 나머지(money)
       money = money % moneyUnitList[i];
-    } else continue;
+    }
   }
 
   return answer;
