@@ -4,10 +4,11 @@ function problem7(user, friends, visitors) {
   let result = [];
   let i;
   let j;
+  let score;
 
   for (i = 0; i < friends.length; i += 1) {
-    const a = friends[i].includes(user) ? 0 : 10;
-    for (j = 0; j < friends[i].length; j += 1) map.set(friends[i][j], a);
+    score = friends[i].includes(user) ? 0 : 10;
+    for (j = 0; j < friends[i].length; j += 1) map.set(friends[i][j], score);
   }
 
   for (i = 0; i < visitors.length; i += 1) {
