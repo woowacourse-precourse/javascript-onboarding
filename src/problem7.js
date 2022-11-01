@@ -21,6 +21,21 @@ function getUserFriendList(user, friends) {
   return friendList;
 }
 
+function getScoreByFriends(friend, userFriends, score) {
+  let i;
+  if (userFriends.includes(friend[0]) || userFriends.includes(friend[1]))
+    i = userFriends.includes(friend[0]) ? 1 : 0;
+  else 
+    return score;
+
+  if (friend[i] in score == false)
+    score[friend[i]] = 10;
+  else if (friend[i] in score)
+    score[friend[i]] += 10;
+  
+  return score;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendScore = {};
@@ -28,6 +43,9 @@ function problem7(user, friends, visitors) {
 
   friendScore = getScoreByVisitor(visitors);
   userFriends = getUserFriendList(user, friends);
+  for (let i = 0; i < friends.length; i++){
+    friendScore = getScoreByFriends(friends[i], userFriends, friendScore)
+  }
 
   return answer;
 }
