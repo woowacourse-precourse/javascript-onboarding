@@ -56,17 +56,16 @@ function getGreaterNumber(a, b) {
 }
 
 /**
- * @param {number} leftPage
- * @param {number} rightPage
+ * @param {[number, number]} pageList
  */
-function calculateScore(leftPage, rightPage) {
+function calculateScore(pageList) {
   const greaterNumFromLeft = getGreaterNumber(
-    calculateSumOfDigits(leftPage),
-    calculateProductOfDigits(leftPage)
+    calculateSumOfDigits(pageList[0]),
+    calculateProductOfDigits(pageList[0])
   );
   const greaterNumFromRight = getGreaterNumber(
-    calculateSumOfDigits(rightPage),
-    calculateProductOfDigits(rightPage)
+    calculateSumOfDigits(pageList[1]),
+    calculateProductOfDigits(pageList[1])
   );
   return getGreaterNumber(greaterNumFromLeft, greaterNumFromRight);
 }
