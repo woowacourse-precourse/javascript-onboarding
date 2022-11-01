@@ -1,11 +1,11 @@
 class ErrorCase {
   constructor(number) {
-    this.number = number;
+    this._number = number;
     this.checkLimit();
   }
 
   checkLimit() {
-    return 1 <= this.number && this.number <= 10000;
+    return 1 <= this._number && this._number <= 10000;
   }
 }
 
