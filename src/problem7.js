@@ -40,14 +40,14 @@ function problem7(user, friends, visitors) {
   answer = Object.entries(recommendList);
   // 점수를 기준으로 내림차순 정렬이 기본입니다
   // 동점이라면 닉네임순으로 정렬합니다.
-  answer = answer
-    .sort((a, b) => {
-      if (b[1] - a[1] === 0) {
-        return a[0] > b[0] ? 1 : -1;
-      }
-      return b[1] - a[1];
-    })
-    .map((el) => el[0]);
+  answer.sort((a, b) => {
+    if (b[1] - a[1] === 0) {
+      return a[0] > b[0] ? 1 : -1;
+    }
+    return b[1] - a[1];
+  });
+  answer = answer.map(el => el[0]);
+  
 
   // 최대 5명만을 리턴합니다
   if (answer.length >= 5) {
