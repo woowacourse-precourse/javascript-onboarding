@@ -26,6 +26,8 @@ function problem6(forms) {
     }
   }
 
+  // 이메일 오름차순 정렬
+  answer.sort();
 
   return answer;
 }
