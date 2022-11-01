@@ -7,15 +7,13 @@
 
 * 전체 프로세서관리 `pageGameApp` 함수 생성
   + `validationArr` 함수 통과 후 전체 프로세스를 관리할 함수로 구현
-  + 두 값을 받아서 같으면 0, A가 크면 1, B가 크면 2 를 리턴                                                                         
+  + 두 값을 받아서 같으면 0, A가 크면 1, B가 크면 2 를 리턴                                                                     
 
 * 수를 받아서 각 자리를 배열로 return 하는 `splitNumber` 함수 구현
-  > ~~B안 선택~~: 변수의 형태가 변형되지 않도록 하는 것이 합산시 오류발생이 낮아 택함.
   > A안 선택: 코드를 줄여서 코드 가독성을 늘리는 것으로 정함. `.map(Number)`를 통하여 반환할 때 숫자형으로 변경 후 리턴함.
   + [x] A안: `split()` 내부 함수로 구현하는 방법
     - 주의사항: 형이 String으로 바뀌는 문제가 발생할 수 있음.
   + [ ] B안: 10으로 나눈 나머지로 일자리부터 빼서 배열 구현 하는 방법
-    - ~~일자리부터 처리 되긴 하지만 문제없어보임.~~
     - 내부함수 `unshift()`로 자리수 대로 index 위치 맞춰서 구현.
 
 * 배열 더하기 값 반환 `sumArr` 함수 구현
@@ -33,8 +31,7 @@
 
 ## :mag: [문제 2] 구현할 기능 목록
 
-> C안 선택 ~~B안 선택~~: A안은 예외상황 발생: "zyelleyyez" > 기대값: "zyz" / 출력값 : "zez" 단계별로 삭제가 되지 않아 문제발생 (1단계에서 'll' 과 'yy'가 먼저 삭제된 후 2단계에서 'eee'가 한번에 지워져야함.)
-B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들어가야함.
+> C안 선택 : A안은 예외상황 발생: "zyelleyyez" > 기대값: "zyz" / 출력값 : "zez" 단계별로 삭제가 되지 않아 문제발생 (1단계에서 'll' 과 'yy'가 먼저 삭제된 후 2단계에서 'eee'가 한번에 지워져야함.), B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들어가야함.
 
 * [ ] A안 : Stack 배열을 만들어서 한글자씩 중복문자 체크하며, `push()` / `pop()` 으로 채워넣는 방법.
   + 단계별로 삭제가 아닌 앞에서부터 하나씩 소거해가면서 처리.
@@ -42,17 +39,15 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
 * [x] C안 : Queue의 원리를 이용하며, 함수를 재귀하여, 단계적으로 삭제하는 방법. 
 
 * 전체 프로세서 관리 `cryptogramSolver` 함수 생성
-  + ~~[B안]문자열을 배열로 담아둘 `cryptogramArr` 변수 생성~~
-  + ~~[B안]연속된 중복문자를 제거할 함수 `removeDuplicateChar`가 `false`를 반환될 때까지 반복 호출~~
   + 연속된 중복문자를 제거할 함수 `removeDuplicateChar`가 반환하는 값을 return 함.,
   + return 값: 함수 `removeDuplicateChar` 반환값
 
 * 연속된 중복문자를 제거할 함수 `removeDuplicateChar` 생성
-  + **(+추가)** 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
-  + **(+추가)** 이전 글자를 변수 `beforeChar`에 넣어둠. 
+  + 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
+  + 이전 글자를 변수 `beforeChar`에 넣어둠. 
     - `isBeforeDuplicate` : [이전 단계]에 `beforeChar`와 `nowChar`가 같았다면`true`, 달랐다면 `false`
     - `isDeleteStep` : `beforeChar`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
-  + **(+추가)** 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
+  + 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
 ## :mag: [문제 3] 구현할 기능 목록
@@ -100,8 +95,8 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
   + 각 지폐 종류를 저장하고 있는 배열 `billTypeArr`을 선언.
   + `calcWithdraw`에서 return 해주는 잔여금액을 변수 `currAccount`에 저장.
   + `calcWithdraw`에서 return 해주는 지폐 수를 배열 `currBillCount`에 저장.
-  + ~~잔여 금액이 0원이 될 때 까지~~,(예외 입력값이 들어올 경우 무한 루프에 빠질 수 있기 때문에 변경함.) billType의 크기만큼, `calcWithdraw`을 호출함.
-  + ~~잔여 금액이 0원이 되면,~~ billType의 크기만큼, `curMoney`를 return 한다.
+  + billType의 크기만큼, `calcWithdraw`을 호출함.
+  + billType의 크기만큼, `curMoney`를 return 한다.
 
 * 지폐 종류가 담긴 배열을 만들어주는 함수 `createBillTypeArr()` 생성.
 
@@ -119,20 +114,12 @@ B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들
   + 이메일 길이가 11자이상 20자 미만이 아니면 제거
 
 * 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
-  + **(+추가)** set 객체 `emailOfUsedNickNameSet`에 변수 `crewNickName`이 중복되면 그 크루의 이메일 `crewEmail`을 넣어서 저장해놓음.
-  + **(+추가)** map 객체 `infoOfUsedTwoLetterMap`에 key값은 닉네임 `crewNickName`을 2글자씩 끊어 놓은 변수 `twoLetterName`가 보관되며, value값에는 해당 닉네임을 사용한 이메일 `crewEmail`을 보관함.
+  + set 객체 `emailOfUsedNickNameSet`에 변수 `crewNickName`이 중복되면 그 크루의 이메일 `crewEmail`을 넣어서 저장해놓음.
+  + map 객체 `infoOfUsedTwoLetterMap`에 key값은 닉네임 `crewNickName`을 2글자씩 끊어 놓은 변수 `twoLetterName`가 보관되며, value값에는 해당 닉네임을 사용한 이메일 `crewEmail`을 보관함.
   + 입력된 배열 `CrewDataArr` 길이만큼 중복닉네임을 걸러내는 작업 반복.
-  + **(+추가)** return 값 : set 객체 `emailOfUsedNickNameSet`를 배열타입으로 변경 후 sort하여 정렬.
-
-  + ~~함수 getDuplicateDataArr에 CrewDataArr와 CrewNickName를 입력 후 함수 반환값을 return 한다.~~
-  + ~~CrewNickName(닉네임)으로 함수 getNameByTwoLetterArr을 호출하여, 출력값을 배열 TwoLetterNameArr(닉네임검사리스트)에 저장~~
-  + ~~`CrewDataArr`(크루데이터)를 하나씩 돌면서 `checkNickNameFromCrewData(CrewDataArr, twoLetter)` 함수의 boolean 값으로 체크한 후, true일 경우,  임시 배열 `delCrewDataIndexArr`에 index 저장 한다. ~~
-  + ~~탐색이 완료하면, 배열 `delCrewDataIndexArr`의 데이터 여부를 확인하고, 데이터가 있을 경우, 탐색대상인 크루정보와 함께  `delCrewDataIndexArr`에 저장된 인덱스를 배열 `duplicateDataArr`(중복된 데이터 배열)에 저장하고, `CrewDataArr`(크루데이터)`에서 삭제.~~
-* ~~닉네임을 2글자씩 잘라서 배열로 return 해주는 `getNameByTwoLetterSet` 함수 구현.~~
-* ~~`CrewNickName`(닉네임)과 `TwoLetterNameSet`(중복체크할단어)를 받아서 boolean값으로 출력할 `checkNickNameFromCrewData` 함수 구현.~~
+  + return 값 : set 객체 `emailOfUsedNickNameSet`를 배열타입으로 변경 후 sort하여 정렬.
 
 ***
-
 # 미션 - 온보딩
 
 ## 🔍 진행 방식
