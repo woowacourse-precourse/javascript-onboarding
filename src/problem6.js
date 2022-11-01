@@ -24,7 +24,7 @@ function problem6(forms) {
   //닉네임 검사를 통과하지 못한 사람들의 이메일을 저장
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < warningList.length; j++) {
-      if (forms[i][1].indexOf(warningList[j]) !== -1) {
+      if (forms[i][1].includes(warningList[j])) {
         answer.push(forms[i][0]);
         break;
       }
