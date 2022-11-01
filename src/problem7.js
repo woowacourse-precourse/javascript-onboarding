@@ -49,6 +49,10 @@ function problem7(user, friends, visitors) {
       return b[1] - a[1];
     }
   });
+
+  answer = answer.map((v, i) => {
+    if (i < 5) return v[0];
+  });
   return answer;
 }
 
