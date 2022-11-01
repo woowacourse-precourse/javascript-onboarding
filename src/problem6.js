@@ -1,6 +1,6 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let emailArr = forms.map((x) => x[0]);
+  let nameArr = forms.map((x) => x[1]);
 }
 function findPossibleNameArr(nickName) {
   let duplicatePossibleNameArr = [];
@@ -15,5 +15,18 @@ function isIncludeSameName(nickName, duplicatePossibleNameArr) {
   }
   return false;
 }
-
+function findSameNameIndexArr(emailArr, nameArr) {
+  let sameNameIndexArr = [];
+  for (let i = 0; i < emailArr.length; i++) {
+    let possibleNameArr = findPossibleNameArr(nameArr[i]);
+    for (let j = i + 1; j < emailArr.length; j++) {
+      if (isIncludeSameName(nameArr[j], possibleNameArr)) {
+        sameNameIndexArr.push(i);
+        sameNameIndexArr.push(j);
+      }
+    }
+    sameNameIndexArr = Array.from(new Set(sameNameIndexArr));
+  }
+  return sameNameIndexArr;
+}
 module.exports = problem6;
