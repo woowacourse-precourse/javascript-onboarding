@@ -1,10 +1,17 @@
+const forms = [
+  ["jm@email.com", "제이엠"],
+  ["jason@email.com", "제이슨"],
+  ["woniee@email.com", "워니"],
+  ["mj@email.com", "엠제이"],
+  ["nowm@email.com", "이제엠"],
+];
+
 function checkNickname(nickname) {
   const allowedNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
   if (allowedNickname.test(nickname) === false) {
     throw new Error("닉네임은 한글로만 작성해주세요");
   }
 }
-checkNickname(nickname);
 
 function checkEmailVaild(email) {
   const isEmailValid = /[a-z0-9]+@+email.com$/;
@@ -15,7 +22,6 @@ function checkEmailVaild(email) {
     throw new Error("이메일의 형식은 @email.com입니다.");
   }
 }
-checkEmailVaild(email);
 
 // 이중 배열에서 이름 배열을 만들어주는 함수
 function crewNameArray(duplicateArray) {
@@ -58,12 +64,18 @@ function checkDuplicateArray(array) {
   return duplicateArray;
 }
 
-// 이중 배열에 입력받은 중복 배열이 있을 때 해당 crewname의 email을 반환하는함수
+// forms의 타당성 검사 후 forms에서 crewname의 email을 반환하는함수
 function problem6(forms) {
+  // forms의 타당성 검사
+  forms.forEach((item) => {
+    checkEmailVaild(item[0]);
+    checkNickname(item[1]);
+  });
+
   const twoLetterNameArr = cutTwoLetterArray(forms);
   const duplicateArray = checkDuplicateArray(twoLetterNameArr);
-  let answer = [];
 
+  let answer = [];
   forms.forEach((nameAndEmail) => {
     let i = 0;
 
