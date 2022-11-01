@@ -34,6 +34,12 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  // 3. visitors의 이름에 +1하는 기능
+  visitors.forEach((element) => {
+    if (!userFriends.includes(element)) {
+      friendScore[element] ? (friendScore[element] += 1) : (friendScore[element] = 1);
+    }
+  });
 }
 
 module.exports = problem7;
