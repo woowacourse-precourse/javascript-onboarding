@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @param {string} name
+ * @returns {string[]}
+ */
 const separateName = (name) => {
   const arr = [];
 
@@ -8,7 +14,12 @@ const separateName = (name) => {
   return arr;
 };
 
+/**
+ * @param {{[name: string] : string[]}} obj ex) {'제이' : ['email@email.com']}
+ * @returns 무슨ㅅ무슨 리턴
+ */
 const getDuplicate = (obj) => {
+  /** @type {string[]} */
   const res = [];
 
   for (const key in obj) {
@@ -22,7 +33,12 @@ const getDuplicate = (obj) => {
   return [...new Set(res)];
 };
 
+/**
+ * @param {string[][]} forms ex)["jm@email.com", "제이엠"],
+ * @returns {{[name : string] : string[]}}
+ */
 const getSeparateNameObj = (forms) => {
+  /** @type {{[name : string] : string[]}} */
   const obj = {};
 
   for (const person of forms) {
@@ -33,7 +49,6 @@ const getSeparateNameObj = (forms) => {
       name in obj ? (obj[name] = [...obj[name], email]) : (obj[name] = [email]);
     });
   }
-
   return obj;
 };
 
