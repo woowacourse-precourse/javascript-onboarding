@@ -25,7 +25,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 요구사항 작성
-[] 사용자와 친구인 사람을 찾는다.
-[] 사용자와 함께 아는 친구를 찾아 점수를 부여한다.
+[X] 사용자와 친구인 사람을 찾는다.
+[X] 사용자와 함께 아는 친구를 찾아 점수를 부여한다.
 [] 사용자의 타임라인 방문 횟수를 찾아 점수를 부여한다.
 [] 총 점수가 높은 순으로 친구를 추천한다.
