@@ -28,7 +28,9 @@ function friendOfFriends(user,friends){
       }
     }
   }
-  return friendOfFriends.filter((el)=>!userFriendArr.includes(el) && el!==user);
+  return friendOfFriends
+  .filter((el)=>!userFriendArr
+  .includes(el) && el!==user);
 }
 
 function visitorsRemove(user,friends,visitors){

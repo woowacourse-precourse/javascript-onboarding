@@ -13,7 +13,8 @@ function numberArr(number){
   for(let i=1; i<=number; i++){
     arr.push(i.toString());
   }
-  return arr.join('')
+  return arr
+  .join('')
   .split('')
   .map((el)=>Number(el));
 }
