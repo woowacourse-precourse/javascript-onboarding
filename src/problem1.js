@@ -1,15 +1,16 @@
 function problem1(pobi, crong) {
   let answer = 0;
-
+  if (pobi.length > 2 || crong.length > 2) return -1;
   if (
     pobi[1] - pobi[0] !== 1 ||
     crong[1] - crong[0] !== 1 ||
     pobi[0] === 1 ||
-    crong[0] === 1
+    crong[0] === 1 ||
+    pobi[1] === 400 ||
+    crong[1] === 400
   )
     return -1;
-  if (pobi[0] % 2 === 0) return -1;
-  if (pobi[0] < 1 || pobi[1] > 400) return -1;
+  if (pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400) return -1;
 
   const pobisumleft = pobi[0]
     .toString()
@@ -65,5 +66,4 @@ function problem1(pobi, crong) {
   } else answer = -1;
   return answer;
 }
-
 module.exports = problem1;
