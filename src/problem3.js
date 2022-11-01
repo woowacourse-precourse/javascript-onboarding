@@ -25,7 +25,11 @@ function countNumber(number) {
   return count;
 }
 function checkValidation(number) {
-  return checkIsNumber(number) && checkNumberRange(number);
+  return (
+    checkIsNumber(number) &&
+    checkNumberRange(number) &&
+    checkIsNaturalNumber(number)
+  );
 }
 function checkIsNumber(number) {
   if (typeof number == "number") return true;
@@ -34,5 +38,8 @@ function checkIsNumber(number) {
 function checkNumberRange(number) {
   if (number >= MIN_NUM && number <= MAX_NUM) return true;
   return false;
+}
+function checkIsNaturalNumber(number) {
+  return Math.floor(number) == number;
 }
 module.exports = problem3;
