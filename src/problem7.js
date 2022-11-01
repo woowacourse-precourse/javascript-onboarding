@@ -59,7 +59,7 @@ function problem7(user, friends, visitors) {
   friendNames.sort((a, b) => friendsScore[b] - friendsScore[a])
 
   const answer = [];
-  for(let i = 0; (answer.length <= 5 && i < friendNames.length); i++){
+  for(let i = 0; (answer.length < 5 && i < friendNames.length); i++){
     if(friendsScore[friendNames[i]] === 0) break;
     if(!friendGraph[user].includes(friendNames[i])) answer.push(friendNames[i]);
   }
