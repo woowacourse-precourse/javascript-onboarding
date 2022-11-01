@@ -27,6 +27,20 @@ function problem7(user, friends, visitors) {
     map.set(key, 0);
     return map;
   }, new Map());
+  const dfs = (depth, id) => {
+    if (depth === 2) {
+      scoreMap.set(id, scoreMap.get(id) + 10);
+      return;
+    }
+    pairMap.get(id).forEach((friend) => {
+      if (!visited.get(friend)) {
+        visited.set(friend, true);
+        dfs(depth + 1, friend);
+      }
+    });
+  };
+  dfs(0, user);
+
   var answer;
   return answer;
 }
