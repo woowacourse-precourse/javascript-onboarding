@@ -9,6 +9,10 @@ function problem6(forms) {
   const emailForm = "email.com";
   if (!forms.every(([email, _]) => email.includes(emailForm))) return 'Error: 신청할 수 있는 이메일은 "email.com" 도메인으로만 제한됩니다';
 
+  // 이메일의 전체 길이는 11자 이상 20자 미만이지 않은 경우 "Error: 이메일의 전체 길이는 11자 이상 20자 미만만 가능합니다."라는 문자열을 반환한다.
+  if (!forms.every(([email, _]) => email.length >= 11)) return "Error: 이메일의 전체 길이는 11자 이상 20자 미만만 가능합니다.";
+  if (!forms.every(([email, _]) => email.length < 20)) return "Error: 이메일의 전체 길이는 11자 이상 20자 미만만 가능합니다.";
+
   // 모든 크루들의 닉네임의 두글자씩 딴 배열을 만들고 두 글자씩 딴 배열에서 중복된 값을 추려낸다.
   const splittedNickNames = [];
   const duplicateNickNames = [];
