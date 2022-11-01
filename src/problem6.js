@@ -22,8 +22,8 @@ function problem6(forms) {
   }
   const removeDuplicated = result => result.filter((v, i) => result.indexOf(v) === i);
   const isStackFull = stack => stack.length === maxStackLength;
-  const pushEmailToExistedProperty = (letters, email) => dictionary[letters].push(email)
-  const createNewProperty = (letters, email) => dictionary[letters] = [email]
+  const pushEmailToExistedProperty = (letters, email) => dictionary[letters].push(email);
+  const pushEmailToUnexistedProperty = (letters, email) => dictionary[letters] = [email];
   /**
    * 스택에 2글자가 모이면 dict에 넣는 함수
    * @param {array} stack 
@@ -31,8 +31,8 @@ function problem6(forms) {
    * @return {undefined}
    */
   const pushEmailIntoDict = (stack, email) => {
-    LengthTwoLetters = stack.join('')
-    dictionary.hasOwnProperty(LengthTwoLetters) ? pushEmailToExistedProperty(LengthTwoLetters, email) : createNewProperty(LengthTwoLetters, email);
+    LengthTwoLetters = stack.join('');
+    dictionary.hasOwnProperty(LengthTwoLetters) ? pushEmailToExistedProperty(LengthTwoLetters, email) : pushEmailToUnexistedProperty(LengthTwoLetters, email);
     
   }
 
