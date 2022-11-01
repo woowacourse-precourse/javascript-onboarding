@@ -15,6 +15,25 @@ function problem7(user, friends, visitors) {
       element[0] === user ? userFriends.push(element[1]) : userFriends.push(element[0]);
     }
   });
+  // 2. 친구의 친구를 찾아 +10 기능
+  let friendScore = {};
+  friends.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      const plusScore = element.includes(userFriends[i]);
+      const isInUser = element.includes(user);
+      if (plusScore && !isInUser) {
+        element[0] === userFriends[i] ? (friendScore[element[1]] = 10) : (friendScore[element[0]] = 10);
+      }
+    }
+  });
+  // 2-1. user의 친구가 user의 또다른 친구와 또 친구일 수도 있으니 걸러주기
+  for (let i in friendScore) {
+    for (let j = 0; j < userFriends.length; j++) {
+      if (i === userFriends[j]) {
+        delete friendScore[i];
+      }
+    }
+  }
 }
 
 module.exports = problem7;
