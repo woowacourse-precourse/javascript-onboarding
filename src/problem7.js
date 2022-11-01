@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = [];
   let alreadyFriends = findFriends(user, friends);
   let recommendations = [];
 
@@ -29,6 +29,22 @@ function problem7(user, friends, visitors) {
   for (i = 0; i < visitors.length; i++) {
     if (!isFriend(visitors[i], alreadyFriends)) {
       recommendations = updateRecommendations(recommendations, visitors[i], 1);
+    }
+  }
+
+  recommendations.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+    } else return b[1] - a[1];
+  });
+
+  if (recommendations.length > 5) {
+    for (i = 0; i < 5; i++) {
+      answer.push(recommendations[i][0]);
+    }
+  } else {
+    for (i = 0; i < recommendations.length; i++) {
+      answer.push(recommendations[i][0]);
     }
   }
 
