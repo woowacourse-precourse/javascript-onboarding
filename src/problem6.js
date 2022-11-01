@@ -17,6 +17,15 @@ function problem6(forms) {
     if(str[1]>=2){ dup.push(str[0]); }
   }
 
+  // 닉네임이 중복 여부 확인하여 이메일 배열에 넣기
+  for(let form of forms){
+    for(let str of dup){
+      if(form[1].includes(str)){
+        answer.push(form[0]);
+      }
+    }
+  }
+
 
   return answer;
 }
