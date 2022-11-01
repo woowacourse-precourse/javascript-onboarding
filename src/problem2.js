@@ -1,4 +1,5 @@
 function problem2(cryptogram) {
+  var answer;
   let rule = /(\w)\1+/g;
   let repeated = cryptogram.match(rule);
   let deleted = cryptogram;
@@ -16,7 +17,8 @@ function problem2(cryptogram) {
       fnc2();
     }
   }
-  return deleted;
+  answer = deleted;
+  return answer;
 }
 
 module.exports = problem2;

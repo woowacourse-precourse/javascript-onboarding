@@ -7,7 +7,7 @@ function problem7(user, friends, visitors) {
   let sorted = [];
   let cutIdx = [0];
   let splitted = [];
-  let topfive = [];
+  let resolved = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (friends[i][0] || friends[i][1]) {
@@ -78,15 +78,15 @@ function problem7(user, friends, visitors) {
       return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     });
 
-    answer.push(...sorted);
+    resolved.push(...sorted);
   }
 
-  let min = 5 < answer.length ? 5 : answer.length;
+  let min = 5 < resolved.length ? 5 : resolved.length;
   for (i = 0; i < min; i++) {
-    topfive[i] = answer[i].name;
+    answer[i] = resolved[i].name;
   }
 
-  return topfive;
+  return answer;
 }
 
 module.exports = problem7;

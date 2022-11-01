@@ -1,4 +1,5 @@
 function problem4(word) {
+  var answer;
   let str = "";
   let unicoded = [];
   let result = [];
@@ -18,6 +19,8 @@ function problem4(word) {
       } else result.push(word[i]);
     } else result.push(word[i]);
   }
-  return result.join("");
+  
+  answer = result.join("");
+  return answer;
 }
 module.exports = problem4;

@@ -39,6 +39,7 @@ function problem6(forms) {
   answer.sort().filter((el, idx) => {
     return answer.indexOf(el) === idx;
   });
+  
   return answer;
 }
 
