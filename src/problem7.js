@@ -24,6 +24,21 @@ function problem7(user, friends, visitors) {
 	});
 
 	console.log(friendDict);
+
+	friendDict[user].forEach((knownFriend) => {
+		friendDict[knownFriend].forEach((friendFriend) => {
+			// ff 가 유저 스스로거나 이미 유저의 친구면 지나감
+			if (friendFriend == user || friendFriend in friendDict[user]) {
+			} else if (friendFriend in scoreDict) {
+				scoreDict[friendFriend] += 10;
+			} else {
+				scoreDict[friendFriend] = 10;
+			}
+		});
+	});
+
+	console.log(scoreDict);
+
 	return answer;
 }
 
