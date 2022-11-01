@@ -7,17 +7,18 @@ function problem4(word) {
     'Y', 'Z'
   ];
   
-  
   let result = "";
   const eng =/[a-zA-Z]/ ;
   for(let i =0;i<word.length;i++){
+    // 알파벳 이외 문자는 그대로 변환
     if(eng.test(word[i])===false){
       result += word[i]
+    // 대문자 처리
     } else if (word[i] === word[i].toUpperCase()){
       let index = alphabetList.indexOf(word[i]);
       
       result += alphabetList[25-index];
-
+    // 소문자 처리
     } else if(word[i] === word[i].toLowerCase()){
       let index2 = alphabetList.indexOf(word[i].toUpperCase());
       result += alphabetList[25-index2].toLowerCase();
@@ -27,5 +28,6 @@ function problem4(word) {
 
 
 }
+
 
 module.exports = problem4;
