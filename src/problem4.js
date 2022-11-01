@@ -1,5 +1,15 @@
 function problem4(word) {
-  var answer;
+  let answer = "";
+  const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for (let i = 0; i < word.length; i++) {
+    if (isAlphabet(word[i], alphabet)) {
+      answer = reciprocalAlphabet(word[i], answer, alphabet); // if character is an alphabet
+    } else if (word[i] === " ") {
+      answer += " "; // if character is a space
+    } else {
+      answer += word[i]; // if character is not an alphabet nor space
+    }
+  }
   return answer;
 }
 
