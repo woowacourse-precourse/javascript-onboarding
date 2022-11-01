@@ -10,6 +10,9 @@ function problem4(word) {
     if (text === " ") {
       answer += ' ';
     }
+    else if (text.charCodeAt(0) < A || text.charCodeAt(3) > z){
+      answer += ' ';
+    }
     else if (isupper(text)) {
       answer += String.fromCharCode((difference - (text.charCodeAt(0)-A))+A)
     }
