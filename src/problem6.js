@@ -37,6 +37,11 @@ const isCommonNickNameSizeBiggerThanTwo = (commonNickNameObject, nickname) => {
   return commonNickNameObject[nickname].size >= 2;
 };
 
+/**
+ * main 함수
+ * @param {any} forms
+ * @return {string[]}
+ */
 const problem6 = (forms) => {
   const answer = [];
   const commonNickName = {};
