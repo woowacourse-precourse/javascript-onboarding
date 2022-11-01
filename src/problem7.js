@@ -75,14 +75,14 @@ function problem7(user, friends, visitors) {
     splitted = result.slice(cutIdx[i], cutIdx[i + 1]);
 
     sorted = splitted.sort((a, b) => {
-      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+      return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
     });
 
     resolved.push(...sorted);
   }
 
   let min = 5 < resolved.length ? 5 : resolved.length;
-  for (i = 0; i < min; i++) {
+  for (let i = 0; i < min; i++) {
     answer[i] = resolved[i].name;
   }
 
