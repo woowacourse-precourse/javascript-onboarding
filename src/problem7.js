@@ -87,9 +87,11 @@ function problem7(user, friends, visitors) {
 				return b.score - a.score;
 			});
 		friendList.map((friend) => {
-			if (!friend.isFriend && friend.score != 0) answer.push(friend.friendName);
+			if (!friend.isFriend && friend.score != 0 && answer.length < 5)
+				answer.push(friend.friendName);
 		});
 	}
+
 	return answer;
 }
 
