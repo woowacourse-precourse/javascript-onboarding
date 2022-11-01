@@ -61,8 +61,8 @@ function judWinner(pobi, crong) {
   const [pobiLeftPage, pobiRightPage] = pobi;
   const [crongLeftPage, crongRightPage] = crong;
   if (
-    !errorTestPass(pobiLeftPage, pobiRightPage) &&
-    errorTestPass(crongLeftPage, crongRightPage)
+    !(errorTestPass(pobiLeftPage, pobiRightPage) &&
+    errorTestPass(crongLeftPage, crongRightPage))
   )
     return -1;
 
