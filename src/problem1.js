@@ -11,6 +11,10 @@ function problem1(pobi, crong) {
   let pobiValue = getMaxValue(splitNum(pobiLeft), splitNum(pobiRight));
   let crongValue = getMaxValue(splitNum(crongLeft), splitNum(crongRight));
   
+  if (pobiValue > crongValue) answer = 1;
+  if (pobiValue < crongValue) answer = 2;
+  if (pobiValue === crongValue) answer = 0;
+
   return answer;
 }
 
