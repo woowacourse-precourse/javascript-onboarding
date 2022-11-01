@@ -1,43 +1,32 @@
 function problem5(money) {
-  const answer = [];
-
   const bill50000 = exchangeTo50000(money);
-  answer.push(bill50000);
   money %= 50000;
 
   const bill10000 = exchangeTo10000(money);
-  answer.push(bill10000);
   money %= 10000;
 
   const bill5000 = exchangeTo5000(money);
-  answer.push(bill5000);
   money %= 5000;
 
   const bill1000 = exchangeTo1000(money);
-  answer.push(bill1000);
   money %= 1000;
 
   const bill500 = exchangeTo500(money);
-  answer.push(bill500);
   money %= 500;
 
   const bill100 = exchangeTo100(money);
-  answer.push(bill100);
   money %= 100;
 
   const bill50 = exchangeTo50(money);
-  answer.push(bill50);
   money %= 50;
 
   const bill10 = exchangeTo10(money);
-  answer.push(bill10);
   money %= 10;
 
   const bill1 = exchangeTo1(money);
-  answer.push(bill1);
   money %= 1;
   
-  return answer;
+  return [bill50000, bill10000, bill5000, bill1000, bill500, bill100, bill50, bill10, bill1];
 }
 
 function exchangeTo50000(money) {
