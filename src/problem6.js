@@ -35,6 +35,9 @@ function findSimilarNickname(forms) {
 
 function problem6(forms) {
   var answer;
+
+  answer = findSimilarNickname(forms);
+
   return answer;
 }
 
