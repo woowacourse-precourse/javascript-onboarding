@@ -1,7 +1,5 @@
 const MAX_PAGE = 400;
 
-const getSplitedArray = (argument) => ('' + argument).split('');
-
 const getSum = (numbers) =>
   numbers.reduce((result, currentNumber) => +result + +currentNumber, 0);
 
@@ -10,10 +8,10 @@ const getMultiple = (numbers) =>
 
 const getMaxScore = (left, right) =>
   Math.max(
-    getSum(getSplitedArray(left)),
-    getMultiple(getSplitedArray(left)),
-    getSum(getSplitedArray(right)),
-    getMultiple(getSplitedArray(right))
+    getSum([...('' + left)]),
+    getMultiple([...('' + left)]),
+    getSum([...('' + right)]),
+    getMultiple([...('' + right)])
   );
 
 const isValid = (left, right) => {
