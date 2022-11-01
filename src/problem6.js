@@ -26,9 +26,9 @@ function overlapNicknames(forms){
   let map = new Map();
   let list=continuousNicknames(forms);
   let overlapList=[];
-  for(let i=0; i<list.length; i++){
-    map.set(list[i], (map.get(list[i]) || 0)+1);
-  }
+  list.forEach((el)=>{
+    map.set(el, (map.get(el) || 0)+1);
+  })
   for(let [key,value] of map){
     if(value>1)  overlapList.push(key);
   }
