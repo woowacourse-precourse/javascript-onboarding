@@ -6,26 +6,29 @@ function solveCrypto(cryptogram) {
   while (true) {
     const cryptogramArr = cryptogram.split("");
     let newCrypto = deduplication(cryptogramArr).join("");
-    if (cryptogram != newCrypto){
-    cryptogram = newCrypto;
-    }else break;
+    if (cryptogram != newCrypto) {
+      cryptogram = newCrypto;
+    } else break;
   }
   return cryptogram;
 }
 
-function deduplication(cryptogram) {
-  for (let i = cryptogram.length - 1; i >= 0; i--) {
-    if (cryptogram[i] === cryptogram[i + 1]) {
-      cryptogram[i] = "";
-      cryptogram[i + 1] = "";
+function deduplication(cryptogramArr) {
+  let progress;
+  for (let i = cryptogramArr.length - 1; i >= 0; i--) {
+    if (cryptogramArr[i] === cryptogramArr[i + 1]) {
+      progress = cryptogramArr[i];
+      cryptogramArr[i] = "";
+      cryptogramArr[i + 1] = "";
+    } else if (progress === cryptogramArr[i]) {
+      cryptogramArr[i] = "";
     } else {
-      cryptogram[i];
+      progress = "";
     }
   }
-  return cryptogram;
+  return cryptogramArr;
 }
 
-console.log(problem2("zyellleyz"));
-
+console.log(problem2("browoanoommnaon"));
 
 module.exports = problem2;
