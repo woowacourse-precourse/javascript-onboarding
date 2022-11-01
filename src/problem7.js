@@ -14,7 +14,7 @@ function problem7(user, friends, visitors) {
 
   const  relavantUser = [];
   for(const member of userFriends){
-    for(i=0; i<friends.length; i++){   
+    for(let i=0; i<friends.length; i++){   
       if (friends[i].indexOf(member) > -1){
         relavantUser.push(String(friends[i].filter((element) => element !== member && element !== user)))
       }
@@ -22,7 +22,7 @@ function problem7(user, friends, visitors) {
   }
 
   for (const item of relavantUser){
-    for(i=0; i<friendScoreBoard.length; i++){
+    for(let i=0; i<friendScoreBoard.length; i++){
       if(friendScoreBoard[i].indexOf(item) > -1){
         friendScoreBoard[i][1] = friendScoreBoard[i][1] + 10
       }
@@ -31,7 +31,7 @@ function problem7(user, friends, visitors) {
 
   const visitorList = visitors.filter((element) => userFriends.indexOf(element) === -1)
   for (const item of visitorList){
-    for (i = 0; i < friendScoreBoard.length; i++){
+    for (let i = 0; i < friendScoreBoard.length; i++){
       if(friendScoreBoard[i].indexOf(item) > -1){
         friendScoreBoard[i][1] = friendScoreBoard[i][1] + 1
       }
