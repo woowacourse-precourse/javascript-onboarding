@@ -10,7 +10,7 @@ const calcScores = (user, friends, visitors) => {
   const relation = makeRelation(friends);
   calcAcquaintanceScore(scores, user, relation);
   calcVisitScore(scores, user, visitors, relation);
-  return scores;
+  return Object.entries(scores);
 }
 
 // 친구 관계를 저장하기 위한 그래프 생성
