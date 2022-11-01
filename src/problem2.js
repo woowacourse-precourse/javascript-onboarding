@@ -7,6 +7,11 @@
 */ 
 function problem2(cryptogram) {
   var answer;
+  answer = cryptogram;
+  while (isDuplicate(answer)) {
+    answer = decodeCryptogram(answer);
+  }
+
   return answer;
 }
 
