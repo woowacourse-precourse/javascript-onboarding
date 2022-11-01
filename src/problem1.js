@@ -24,7 +24,17 @@ function problem1(pobi, crong) {
   if (pobi.length === 2 && crong.length === 2) {
     if (!pobi.includes([1, 2]) && !crong.includes([1, 2]) && !pobi.includes([399, 400]) && !crong.includes([399, 400])) {
       if (pobi[1] === pobi[0] + 1 && crong[1] === crong[0] + 1) {
-        
+        if (pobiLargest > crongLargest) {
+          answer = 1;
+        } else if (pobiLargest < crongLargest) {
+          answer = 2;
+        } else {
+          answer = 0;
+        }
+        return answer;
+      } else {
+        answer = -1;
+        return answer;
       }
     }
   }
