@@ -34,6 +34,20 @@ const getFriendsScore = (user, friendList, friendsScoreList) => {
   return friendsScoreList;
 };
 
+const getVisitorsScore = (visitors, userFriends, visitorsScoreList) => {
+  visitors.forEach((visitor) => {
+    visitorsScoreList[visitor]
+      ? (visitorsScoreList[visitor] += 1)
+      : (visitorsScoreList[visitor] = 1);
+  });
+
+  userFriends.forEach((friend) => {
+    delete visitorsScoreList[friend];
+  });
+
+  return visitorsScoreList;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
