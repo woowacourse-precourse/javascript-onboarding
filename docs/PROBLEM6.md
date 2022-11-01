@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+
+1. 닉네임의 substring 반환
+2. 각 닉네임의 substring 출현 횟수 반환
+3. 중복된 닉네임을 작성한 지원자의 이메일 기록
