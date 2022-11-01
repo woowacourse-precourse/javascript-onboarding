@@ -1,8 +1,14 @@
 function problem7(user, friends, visitors) {
   let recommendation = [];
 
-  const { currentFriends, friendsYouDoNotKnow, visitorsYoDoNotKnow } =
-    setThreeGroups(user, friends, visitors);
+  const { friendsYouDoNotKnow, visitorsYoDoNotKnow } = setThreeGroups(
+    user,
+    friends,
+    visitors
+  );
+
+  const obj1 = getNamesWithScores(friendsYouDoNotKnow.flat(), 10);
+  const obj2 = getNamesWithScores(visitorsYoDoNotKnow, 1);
 
   const result = new Set();
   for (let i = 0; i < friendsYouDoNotKnow.length; i++) {
@@ -44,7 +50,21 @@ function setThreeGroups(user, friends, visitors) {
     (e) => !currentFriends.includes(e)
   );
 
-  return { currentFriends, friendsYouDoNotKnow, visitorsYoDoNotKnow };
+  return { friendsYouDoNotKnow, visitorsYoDoNotKnow };
+}
+
+function getNamesWithScores(names, score) {
+  const obj = {};
+
+  names.forEach((name) => {
+    if (obj[name]) {
+      obj[name] += 1 * score;
+    } else {
+      obj[name] = 1 * score;
+    }
+  });
+
+  return obj;
 }
 
 module.exports = problem7;
