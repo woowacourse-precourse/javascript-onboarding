@@ -157,7 +157,7 @@ function maxFive(scoreArray) {
       }
     }
   } else { // 길이가 5 미만인 경우 -> 전부 return
-    for (score of scoreArray) {
+    for (let score of scoreArray) {
       if (score[1] === 0) {
         break;
       } else {
