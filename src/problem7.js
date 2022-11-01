@@ -24,4 +24,13 @@ function calcVisitorScoreMap(visitorListArr) {
   }, new Map());
 }
 
+function calcScoreMap(user, relationshipMap, scoreListMap) {
+  for (let userFriend of relationshipMap.get(user)) {
+    relationshipMap.get(userFriend).forEach((friend) => {
+      if (!relationshipMap.get(user).includes(friend) && friend !== user) scoreListMap.set(friend, scoreListMap.get(friend) + 10 || 10);
+    });
+  }
+  return scoreListMap;
+}
+
 module.exports = problem7;
