@@ -1,6 +1,8 @@
 function problem2(cryptogram) {
   var answer;
 
+  let splitWord = cryptogram.split("");
+
   for (let i = 0; i < splitWord.length; i++) {
     if (splitWord[i] === splitWord[i + 1]) {
       splitWord.splice(i, 2);
