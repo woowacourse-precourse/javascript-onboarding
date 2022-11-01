@@ -90,7 +90,6 @@ function problem7(user, friend, visitors) {
         let original_score=score.get(x)
         original_score=original_score+10
         visited.set(x,false)
-        console.log(x)
         score.set(x,original_score)
         continue;
       }
