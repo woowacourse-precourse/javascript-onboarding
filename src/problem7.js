@@ -9,33 +9,34 @@ class ScoreTable {
     return this.#scoreOfUsers;
   }
 
-  addScoreOfUsers(recommandFriend, additionalScore) {
-    this.#scoreOfUsers[recommandFriend] =
-      (this.#scoreOfUsers[recommandFriend] || 0) + additionalScore;
+  addScoreOfUser(recommandFriend, additionalScore) {
+    const prevScore = this.#scoreOfUsers[recommandFriend] || 0;
+    this.#scoreOfUsers[recommandFriend] = prevScore + additionalScore;
   }
 }
 
-function getRelation(friends) {
-  const relation = {};
-  friends.forEach(([user1, user2]) => {
-    relation[user1] = [...(relation[user1] || []), user2];
-    relation[user2] = [...(relation[user2] || []), user1];
-  });
-  return relation;
+function addFriend(friend, friendList = []) {
+  return [...friendList, friend];
 }
 
-function updateScoreTable(
+function getRelation(friends) {
+  return friends.reduce((relation, [user1, user2]) => {
+    relation[user1] = addFriend(user2, relation[user1]);
+    relation[user2] = addFriend(user1, relation[user2]);
+
+    return relation;
+  }, {});
+}
+
+function updateScoreTable({
   scoreTable,
   canBeRecommandList,
   notForRecommand,
-  additionalScore
-) {
-  canBeRecommandList.forEach((friend) => {
-    if (notForRecommand.includes(friend)) {
-      return;
-    }
-    scoreTable.addScoreOfUsers(friend, additionalScore);
-  });
+  additionalScore,
+}) {
+  return canBeRecommandList
+    .filter((canBeRecommand) => !notForRecommand.includes(canBeRecommand))
+    .forEach((recommand) => scoreTable.addScoreOfUser(recommand, additionalScore));
 }
 
 function compareByScore(user1, user2) {
@@ -58,14 +59,28 @@ function problem7(user, friends, visitors) {
 
   const scoreTable = new ScoreTable();
   alreadyFriends.forEach((friend) => {
-    updateScoreTable(scoreTable, relation[friend], notForRecommand, 10);
+    const friendsOfFriend = relation[friend];
+
+    updateScoreTable({
+      scoreTable,
+      canBeRecommandList: friendsOfFriend,
+      notForRecommand,
+      additionalScore: 10,
+    });
   });
-  updateScoreTable(scoreTable, visitors, notForRecommand, 1);
+
+  updateScoreTable({
+    scoreTable,
+    canBeRecommandList: visitors,
+    notForRecommand,
+    additionalScore: 1,
+  });
 
   const result = Object.entries(scoreTable.getScoreOfUsers())
     .sort(compareByScore)
-    .reduce((recommands, [name]) => [...recommands, name], [])
-    .slice(0, 5);
+    .reduce((recommands, [name]) => [...recommands, name], []);
+
+  result.length = 5;
 
   return result;
 }
