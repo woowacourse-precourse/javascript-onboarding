@@ -8,15 +8,30 @@ function makeRelationship(friends) {
   const friendA = 0;
   const friendB = 1;
   const relation = new Object();
+  /**
+   * 친구 관계 객체 만들기위한 key 설정 및 value 빈 배열 생성
+   * @param {array} friends 
+   */
+  const initFriendRelation = (friends) => {
+    friends.forEach((friendSet) => {
+      relation[friendSet[friendA]] = [];
+      relation[friendSet[friendB]] = [];
+    })
+  }
+  /**
+   * 초기화 된 객체에 친구관계를 넣어주는 함수
+   * @param {array} friends 
+   */
+  const makeFriendRelation = (friends) => {
+    friends.forEach((friendSet) => {
+      relation[friendSet[friendA]].push(friendSet[friendB]);
+      relation[friendSet[friendB]].push(friendSet[friendA]);
+    })
+  }
 
-  friends.forEach((friendSet) => {
-    relation[friendSet[friendA]] = [];
-    relation[friendSet[friendB]] = [];
-  })
-  friends.forEach((friendSet) => {
-    relation[friendSet[friendA]].push(friendSet[friendB]);
-    relation[friendSet[friendB]].push(friendSet[friendA]);
-  })
+  initFriendRelation(friends);
+  makeFriendRelation(friends);
+  
   return relation;
 }
 /**
@@ -40,17 +55,18 @@ function problem7(user, friends, visitors) {
   const result = [];
   const relationScore = 10;
   const visitScore = 1
-  const friendsRelaion = makeRelationship(friends);
+  const friendsRelation = makeRelationship(friends);
   const scoreBoard = new Object();
-  const inputedUsersFriends = friendsRelaion[user];
+  const inputedUsersFriends = friendsRelation[user];
+  const isUsersFriend = (user, friend) => friendsRelation[user].includes(friend);
 
-  for (let key in friendsRelaion){
-    if (key === user) continue;
-    if (inputedUsersFriends && !friendsRelaion[key].includes(user)){
+  for (let keyUser in friendsRelation){
+    if (keyUser === user) continue;
+    if (inputedUsersFriends && !isUsersFriend(keyUser, user)){ // 친구가 없는경우 또는 직접적 친구관계 제외
       
       inputedUsersFriends.forEach((friend) => {
-        if (friendsRelaion[key].includes(friend)){
-          scoreBoard.hasOwnProperty(key) ? scoreBoard[key] += relationScore : scoreBoard[key] = relationScore;
+        if (isUsersFriend(keyUser, friend)){
+          scoreBoard.hasOwnProperty(keyUser) ? scoreBoard[keyUser] += relationScore : scoreBoard[keyUser] = relationScore;
         }
       })
     }
