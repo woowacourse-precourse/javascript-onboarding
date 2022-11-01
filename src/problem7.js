@@ -28,6 +28,8 @@ function problem7(user, friends, visitors) {
     else return a[0] < b[0] ? -1 : 1;
   });
   return answer.map(x => x[0]).slice(0, 5);
+
+  //end
 }
 
 module.exports = problem7;
