@@ -12,7 +12,11 @@ function problem6(forms) {
     let reg = new RegExp(`[${nicknames[i]}]{2}`);
     for (let j = i; j < nicknames.length; j++) {
       if (reg.test(`${nicknames[j]}`) && nicknames[i] !== nicknames[j]) {
-        console.log(`${nicknames[i]}`, `${nicknames[j]}`);
+        // 정규 표현식으로 찾아낸 중복된 문자가 비교대상이 되었던 닉네임에 포함 되어있는지 확인 
+        // -> 중복된 문자가 순서까지 일치하는지 확인하는 과정
+        if(nicknames[i].includes(reg.exec(`${nicknames[j]}`)[0])){
+          console.log(nicknames[i], nicknames[j]);
+        }
       }
     }
 
