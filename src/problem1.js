@@ -7,7 +7,7 @@ function problem1(pobi, crong) {
   maxPobiNumber = getMaxFromTwoNumber(getMaxFromAddSum(pobi),getMaxFromMultiplySum(pobi));
   maxCrongNumber = getMaxFromTwoNumber(getMaxFromAddSum(crong),getMaxFromMultiplySum(crong));
 
-  if (maxPobiNumber === maxCrongNumber) return 0; 
+  if (isResultDraw(maxPobiNumber, maxCrongNumber)) return 0; 
   return maxPobiNumber > maxCrongNumber ? 1 : 2; 
 }
 
@@ -46,6 +46,8 @@ const getMaxFromMultiplySum = arr =>{
   return getNumberFromAdd > getNumberFromMultiply ? getNumberFromAdd : getNumberFromMultiply; 
 }
 
+  const isResultDraw = (maxPobiNumber, maxCrongNumber) => maxPobiNumber === maxCrongNumber
+
 /**
  * 받은 배열이 유효한지 확인하는 함수.
  * @param {array} arr 
@@ -57,12 +59,27 @@ const isValidArray = (arr) => {
   const firstPage = 1;
   const finalPage = 400;
 
+  /**
+   * left페이지와 right페이지의 범위 유효성을 검사하는  함수
+   * @returns {boolean}
+   */
   const isValidRange = () => {
       if (leftPage < finalPage - 1 && leftPage > firstPage) return true;
       if (rightPage < finalPage && rightPage > firstPage + 1) return true;
   }
+
+  /**
+   * 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수 임을 확인하는 함수
+   * @returns {boolean}
+   */
   const isEvenAndOdd = () =>  leftPage % 2 !== 0 && rightPage % 2 === 0;
+
+  /**
+   * 왼쪽페이지와 오른쪽 페이지가 같은 페이지 내에 있는지 확인하는 함수
+   * @returns {boolean}
+   */
   const isSamePage = () =>  leftPage + 1 === rightPage; 
+
   if (isValidRange() && isEvenAndOdd() && isSamePage()) return true
   return false
 }
