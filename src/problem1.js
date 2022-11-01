@@ -16,7 +16,19 @@ function findLargest(arr) {
     return compare[0];
   }
 
-
+function problem1(pobi, crong) {
+  let answer;
+  let pobiLargest = findLargest(pobi);
+  let crongLargest = findLargest(crong);
+      
+  if (pobi.length === 2 && crong.length === 2) {
+    if (!pobi.includes([1, 2]) && !crong.includes([1, 2]) && !pobi.includes([399, 400]) && !crong.includes([399, 400])) {
+      if (pobi[1] === pobi[0] + 1 && crong[1] === crong[0] + 1) {
+        
+      }
+    }
+  }
+}
 
 
 module.exports = problem1;
