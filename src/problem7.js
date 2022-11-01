@@ -12,6 +12,8 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  const visitTimeline = visitors.filter((who) => !friend.includes(who));
+
   return answer;
 }
 
