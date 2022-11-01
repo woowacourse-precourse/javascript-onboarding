@@ -68,9 +68,11 @@ function problem7(user, friends, visitors) {
   function writeFriendsList(user, userFriends){
     const recommendFriends = new Map;
     const tempFriendsList = []
-    friends.forEach(([friend, recommend]) => {
-      if(userFriends.includes(friend) && recommend !== user){
-        tempFriendsList.push(recommend);
+    friends.forEach(([id1, id2]) => {
+      if(userFriends.includes(id1) && id2 !== user){
+        tempFriendsList.push(id2);
+      } else if (userFriends.includes(id2) && id1 !== user){
+        tempFriendsList.push(id1)
       }
     });
     tempFriendsList.forEach(id => {
@@ -90,13 +92,15 @@ function problem7(user, friends, visitors) {
    * @returns {string[]}
    */
   function findFriends(user,friends){
-    const tempFriendsList = [];
-    friends.forEach(([friend,checkUser]) => {
-      if(checkUser === user) {
-        tempFriendsList.push(friend);
+    const tempFriendsList = new Set();
+    friends.forEach(([id1,id2]) => {
+      if(id1 === user) {
+        tempFriendsList.add(id2);
+      } else if(id2 === user){
+        tempFriendsList.add(id1)
       }
     });
-    return tempFriendsList;
+    return [...tempFriendsList];
   }
 
   const userFriends = findFriends(user, friends);
