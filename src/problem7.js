@@ -46,7 +46,6 @@ function getVisitorScore(visitorsExceptUserFriends, friendScore) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
   const userFriend = getUserFriend(friends, user);
   let friendsExceptUser = friends.filter((v) => !v.includes(user));
   let visitorsExceptUserFriends = visitors.filter(
@@ -56,7 +55,21 @@ function problem7(user, friends, visitors) {
 
   friendScore = getKnowWithFriendScore(friendsExceptUser, userFriend);
   friendScore = getVisitorScore(visitorsExceptUserFriends, friendScore);
-  return answer;
+
+  let sorted = Object.entries(friendScore).sort((a, b) => {
+    if (b[1] === a[1]) {
+      return a[0] - b[0];
+    } else {
+      return b[1] - a[1];
+    }
+  });
+
+  const top5 = [];
+  for (i = 0; i < 5; i++) {
+    if (sorted.length === i) break;
+    top5.push(sorted[i][0]);
+  }
+  return top5;
 }
 
 module.exports = problem7;
