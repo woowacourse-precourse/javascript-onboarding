@@ -53,6 +53,7 @@ function problem7(user, friends, visitors) {
   .map(member => rank[member][0])
   const answer = rankDismantled.slice(0, 5);
   return answer;
+  }
 
 module.exports = problem7;
 
@@ -74,4 +75,4 @@ module.exports = problem7;
 //  [x]filterScore(friendScoreBoard, 0)으로 0점인 사용자만 삭제한다.
 //[x]sort 메서드를 이용해 점수가 높은 순으로 정렬시키고 같은 점수인 경우에는 이름순 정렬한다.
 //[x]rank에서 점수를 제거하고 닉네임만을 추출하여 rankDismantled에 저장한다.
-//[]rankDismantled의 가장 앞 5개 배열을 잘라 answer로 반환한다.
+//[x]rankDismantled의 가장 앞 5개 배열을 잘라 answer로 반환한다.
