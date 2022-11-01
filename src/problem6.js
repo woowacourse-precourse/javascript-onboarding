@@ -1,6 +1,8 @@
 function problem6(forms) {
   const EMAIL_REGEX = /^\w{1,9}@email.com$/;
   const NICKNAME_REGEX = /^[가-힣]{1,19}$/;
+  const MIN_FORMS_LENGTH = 1;
+  const MAX_FORMS_LENGTH = 1;
 
   const checkFormsValid = (forms) => {
     checkFormLength(forms);
@@ -9,7 +11,7 @@ function problem6(forms) {
   };
 
   const checkFormLength = (forms) => {
-    if (forms.length < 1 || forms.length > 1000) {
+    if (forms.length < MIN_FORMS_LENGTH || forms.length > MAX_FORMS_LENGTH) {
       throw new Error('크루원이 1명 이상 10,000명 이하가 아닙니다.');
     }
   };
@@ -60,7 +62,7 @@ function problem6(forms) {
     return twoSizeWords;
   };
 
-  const checkValidWord = (words) => {
+  const checkLengthisTwo = (words) => {
     return words.length === 2;
   };
 
@@ -83,7 +85,7 @@ function problem6(forms) {
 
   return forms
     .reduce(findContinuousWord, [])
-    .filter(checkValidWord)
+    .filter(checkLengthisTwo)
     .reduce(findEmailsOfDuplicatedNickname, [])
     .sort();
 }
