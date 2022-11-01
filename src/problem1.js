@@ -25,11 +25,16 @@ function problem1(pobi, crong) {
  let pobiScore = makeScore(pobiLeftMax,pobiRightMax);
  let crongScore = makeScore(crongLeftMax,crongRightMax);
  
- let answer = -1;
+ if (!((pobi[0]%2 !== 0) && (pobi[1]%2 ===0) && (crong[0]%2 !== 0) && (crong[1]%2 ===0))) return -1;
+ if (pobi[1]-pobi[0]!== 1 || crong[1]-crong[0]!== 1) return -1;
+ if (pobi[0]===1 || pobi[0]===399 || crong[0]=== 1 || crong[0]===399) return -1;
+ if (pobi[0] < 1 || pobi[0] > 399 || crong[0] < 1 || crong[1] > 399) return -1;
 
-  if(pobiScore > crongScore) answer =1;
-  else if(pobiScore < crongScore) answer =2;
-  else if(pobiScore === crongScore) answer =0;
+ let answer = -1;
+ 
+ if(pobiScore > crongScore) answer =1;
+ else if(pobiScore < crongScore) answer =2;
+ else if(pobiScore === crongScore) answer =0;
 
   return answer;
 }
