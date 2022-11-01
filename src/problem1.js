@@ -72,8 +72,10 @@ function calculateScore(pageList) {
 
 function problem1(pobi, crong) {
   if (!(isPageListValid(pobi) && isPageListValid(crong))) return -1;
-  var answer;
-  return answer;
+  const pobiScore = calculateScore(pobi);
+  const crongScore = calculateScore(crong);
+  if (pobiScore === crongScore) return 0;
+  return pobiScore > crongScore ? 1 : 2;
 }
 
 module.exports = problem1;
