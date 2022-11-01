@@ -68,6 +68,22 @@ function alreayFriend(friendsMap, user) {
   // 본인
   delete friendsMap[user];
 }
+// 친구 랭킹
+function friendsRank(friendsMap) {
+  // 배열화
+  const friendsArr = [];
+  for (let person in friendsMap) {
+    friendsArr.push([person, friendsMap[person]["point"]]);
+  }
+  // 알파벳 정렬
+  friendsArr.sort();
+
+  // point 정렬
+  friendsArr.sort(function (a, b) {
+    return b[1] - a[1];
+  });
+  return friendsArr;
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
