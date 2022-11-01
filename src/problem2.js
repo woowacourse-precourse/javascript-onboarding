@@ -40,7 +40,7 @@ function changeOverlapValue(value) {
   while (index < value.length) {
     if (value[index] === value[index + 1]) {
       value = value.replace(
-        value.substring(index, index + getOverlapValueLength(value, index)),
+        value.substr(index, getOverlapValueLength(value, index)),
         ""
       );
       continue;
