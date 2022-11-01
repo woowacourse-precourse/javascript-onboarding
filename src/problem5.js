@@ -8,8 +8,19 @@ function getMoney(money) {
   }
   return res;
 }
+function isRightMoney(money) {
+  if (!(money > 0 && money < 1000000)) {
+    return 0;
+  } else if (!(typeof money == "number")) {
+    return 0;
+  }
+  return 1;
+}
 
 function problem5(money) {
+  if (isRightMoney(money) == 0) {
+    return false;
+  }
   return getMoney(money);
 }
 
