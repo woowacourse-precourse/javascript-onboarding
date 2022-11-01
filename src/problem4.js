@@ -4,3 +4,5 @@ function problem4(word) {
 }
 
 module.exports = problem4;
+
+// 알파벳 26개 
