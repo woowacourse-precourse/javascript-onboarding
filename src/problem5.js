@@ -1,5 +1,8 @@
 function problem5(money) {
+  if (errorHandler(money))  return "Error"
   var answer;
+
+  answer = ATM(money);
   return answer;
 }
 
@@ -71,11 +74,10 @@ function ATM(money) {
       wallet.splice(7, 1, temp);
       money %= 10;
     }
-    // 5원 권으로 출금 가능한 경우
-    else if (money >= 5 && money < 10) {
-      temp = Math.floor(money/5);
-      wallet.splice(8, 1, temp);
-      money %= 5;
+    // 1원 권으로 출금 가능한 경우
+    else {
+      wallet.splice(8, 1, money);
+      money = 0;
     }
   }
 
