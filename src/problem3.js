@@ -3,18 +3,18 @@ function problem3(number) {
   return answer;
 }
 
-function getTotalClap(number){
+function getTotalClap(number) {
   let totalClap = 0;
-  for(let x = 1;x <= number;x++){
-    totalClap += countClap(x)
+  for (let x = 1; x <= number; x++) {
+    totalClap += countClap(x);
   }
   return totalClap;
 }
 
-function countClap(number){
+function countClap(number) {
   const countRegEx = /3|6|9/g;
   const numberArr = String(number).match(countRegEx);
-  if(numberArr){
+  if (numberArr) {
     return numberArr.length;
   }
   return 0;
