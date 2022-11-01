@@ -41,72 +41,36 @@ function exchangeTo10000(money) {
 
 function exchangeTo5000(money) {
   const FIVETHOUSAND = 5000;
-  let cnt = 0;
-  while (money >= FIVETHOUSAND) {
-    cnt += 1;
-    money -= FIVETHOUSAND;
-  }
-  return cnt;
+  return Math.floor(money/FIVETHOUSAND);
 }
 
 function exchangeTo1000(money) {
-  const TENTHOUSAND = 1000;
-  let cnt = 0;
-  while (money >= TENTHOUSAND) {
-    cnt += 1;
-    money -= TENTHOUSAND;
-  }
-  return cnt;
+  const THOUSAND = 1000;
+  return Math.floor(money/THOUSAND);
 }
 
 function exchangeTo500(money) {
   const FIVEHUNDRED = 500;
-  let cnt = 0;
-  while (money >= FIVEHUNDRED) {
-    cnt += 1;
-    money -= FIVEHUNDRED;
-  }
-  return cnt;
+  return Math.floor(money/FIVEHUNDRED);
 }
 
 function exchangeTo100(money) {
   const HUNDRED = 100;
-  let cnt = 0;
-  while (money >= HUNDRED) {
-    cnt += 1;
-    money -= HUNDRED;
-  }
-  return cnt;
+  return Math.floor(money/HUNDRED);
 }
 
 function exchangeTo50(money) {
   const FIFTY = 50;
-  let cnt = 0;
-  while (money >= FIFTY) {
-    cnt += 1;
-    money -= FIFTY;
-  }
-  return cnt;
+  return Math.floor(money/FIFTY);
 }
 
 function exchangeTo10(money) {
   const TEN = 10;
-  let cnt = 0;
-  while (money >= TEN) {
-    cnt += 1;
-    money -= TEN;
-  }
-  return cnt;
+  return Math.floor(money/TEN);
 }
 
 function exchangeTo1(money) {
-  const ONE = 1;
-  let cnt = 0;
-  while (money >= ONE) {
-    cnt += 1;
-    money -= ONE;
-  }
-  return cnt;
+  return money
 }
 
 module.exports = problem5;
