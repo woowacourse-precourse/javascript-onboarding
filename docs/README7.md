@@ -5,7 +5,7 @@
 - [X] willBeFriends에 담긴 이름이 key인 사람에게 value 10점 증가
 - [X] 방문자의 경우 이름이 map에 key로 존재할 경우 바로 value 1점 증가
 - [X] 방문자의 경우 이름이 map에 key로 존재하지 않을 경우 key를 추가 후 value 1점 증가
-- [ ] map에서 본인과 이미 친구인 사람을 제거
+- [X] map에서 본인과 이미 친구인 사람을 제거
 - [ ] value의 이름 순으로 1차 정렬
 - [ ] 1차 정렬된 map을 value의 크기 순으로 정렬
 - [ ] Key 값을 배열에 담아 반환
