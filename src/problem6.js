@@ -16,16 +16,16 @@ function problem6(forms) {
     }
   }
   // 3. 순회
-  let overlapCrew = forms.filter((crew) => {
+  let overlapCrew = forms.filter((crew, idx) => {
     // 3-1. 이중반복문
-    twoLetters.forEach((twoLetter) => {
-      for (let i = 0; i < twoLetter.length; i++) {
+    for (let i = 0; i < twoLetters.length; i++) {
+      for (let j = 0; j < twoLetters.length; j++) {
         // 3-2. includes
-        if (crew[1].includes(twoLetter[i])) {
+        if (crew[1].includes(twoLetters[i][j])) {
           return true;
         }
       }
-    });
+    }
   });
   // 4. 추출 및 정렬
   let overlapMail = overlapCrew.map((el) => el[0]);
