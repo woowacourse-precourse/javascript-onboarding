@@ -63,7 +63,7 @@ function getSortedArray(score) {
 function getMaxFive(array) {
   const result = [];
   array.forEach((one) => {
-    if (one[1] > 0 && result.length <= 5) result.push(one[0]);
+    if (one[1] > 0 && result.length < 5) result.push(one[0]);
   });
   return result;
 }
