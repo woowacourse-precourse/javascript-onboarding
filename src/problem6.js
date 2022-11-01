@@ -19,6 +19,8 @@ function problem6(forms) {
     if (doubleNick.some((v) => name.includes(v))) {
       answer.push(email);
     }
+    // 이메일 오름차순
+    answer.sort();
   });
 
   return answer;
