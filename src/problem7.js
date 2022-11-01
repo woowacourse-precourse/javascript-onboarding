@@ -62,6 +62,15 @@ function problem7(user, friends, visitors) {
     }
   })
 
+  // 최대 5명 리턴하기
+  let result = []
+  for (let i = 0; i < 5; i++) {
+    if (!(sortedScore[i][1] === 0)) {
+      result.push(sortedScore[i][0])
+    }
+  }
+
+  return result;
 }
 
 module.exports = problem7;
