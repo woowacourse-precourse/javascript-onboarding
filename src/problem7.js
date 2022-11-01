@@ -70,7 +70,7 @@ function problem7(user, friends, visitors) {
    이후에 정렬조건을 충족하고 0점인 친구들을 거르기 위해서 배열로 변화
    */
   answer = Object.entries(answer);
-  console.log(answer);
+  // console.log(answer);
   console.log(
     "======================================================================"
   );

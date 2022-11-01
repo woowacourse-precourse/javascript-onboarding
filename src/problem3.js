@@ -11,16 +11,19 @@ function problem3(number) {
         String(i)[j] === "6" ||
         String(i)[j] === "9"
       ) {
-        temp.push(i);
+        // temp.push(i);
+        // console.log("전 :", answer);
+        answer += 1;
+        // console.log("후 :", answer);
       }
     }
   }
 
   //중복 ex) 33, 36
   // console.log(temp);
-  answer = temp.length;
-  // console.log(answer);
-  return answer;
+  // answer = temp.length;
+  console.log(answer);
+  // return answer;
 }
 module.exports = problem3;
 
