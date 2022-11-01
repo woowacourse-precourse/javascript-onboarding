@@ -23,7 +23,20 @@ function problem6(forms) {
       }
     }
   }
-  console.log(nameTwo);
+
+  var cntWord = new Map();
+  
+  for (var item of nameTwo){
+    for(let i =0; i<item.length; i++){
+      if(!cntWord.has(item[i])){
+        cntWord.set(item[i],1);
+      }else{
+        cntWord.set(item[i], cntWord.get(item[i])+1);
+      }
+    }
+  }
+  
+  console.log(cntWord);
 }
 
 module.exports = problem6;
