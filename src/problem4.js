@@ -37,7 +37,6 @@ const FROG = {
 // 예외상황
 function exception (word) {
   if(word < INPUT.minLength || word > INPUT.maxLength) return true;
-  if(!(word.test(/^[a-z|A-Z]+$/))) return true;
   return false;
 }
 
