@@ -77,8 +77,8 @@ function problem4(word) {
     return new_word.join("");
   };
 
-  let answer;
-  return answer;
+  // 코드 작성
+  return replaceAlphabet(word);
 }
 
 module.exports = problem4;
