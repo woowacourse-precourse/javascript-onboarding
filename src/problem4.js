@@ -55,8 +55,6 @@ function problem4(word) {
     z: "a",
   };
 
-  console.log(word);
-
   for (let i = 0; i < word.length; i++) {
     if (dict[word[i]]) {
       answer += dict[word[i]];
