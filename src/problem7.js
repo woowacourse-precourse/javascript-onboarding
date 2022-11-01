@@ -66,6 +66,10 @@ function problem7(user, friends, visitors) {
   var sortMapVal = mapVal.sort(function compare(a, b) {
     return b-a;
   });
+
+  if (sortMapVal.length > 5){
+    sortMapVal = sortMapVal.slice(0,5);
+  }
 }
 
 module.exports = problem7;
