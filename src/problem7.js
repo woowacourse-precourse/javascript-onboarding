@@ -110,11 +110,19 @@ function getRecommendList(userList, myFriendsList, visitors) {
   return recommendList;
 }
 
+function removeAlreadyExist(user, recommendList, myFriendsList) {
+  for (let index = 0; index < myFriendsList.length; index++) {
+    recommendList.delete(myFriendsList[index]);
+  }
+  recommendList.delete(user);
+}
+
 function getResult(user, friends, visitors) {
   const userList = getUserList(friends);
   const myFriendsList = userList.get(user);
   let recommendList = getRecommendList(userList, myFriendsList, visitors);
 
+  removeAlreadyExist(user, recommendList, myFriendsList);
   return recommendList;
 }
 
