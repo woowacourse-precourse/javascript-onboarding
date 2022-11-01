@@ -22,6 +22,28 @@ function setScoreList(friendList) {
   return scoreList;
 }
 
+function addFriendScore(user, friendList, scoreObj) {
+  for (let i = 0; i < friendList[user].length; i++) {
+    const friend = friendList[user];
+    for (farfriend of friendList[friend[i]]) {
+      scoreObj[farfriend] += 10;
+    }
+  }
+  for (let key in friendList) {
+    if (scoreObj[key] === 0)
+      delete scoreObj[key];
+  }
+}
+
+function addVisitorScore(visitors, scoreObj) {
+  visitors.forEach(function(element) {
+    if (scoreObj.hasOwnProperty(element))
+      scoreObj[element]++;
+    else
+      scoreObj[element] = 1;
+  });
+}
+
 function recommandFriend(user, friends, visitors) {
   const friendList = makeFriendList(friends);
   const scoreList = setScoreList(friendList);
