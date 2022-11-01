@@ -5,11 +5,13 @@ function problem3(number) {
     const nums = i.toString().split("").map(Number);
 
     nums.forEach((num) => {
-      if (num === "3" || num === "6" || num === "9") {
+      if (num === 3 || num === 6 || num === 9) {
         answer++;
       }
     });
   }
+
+  return answer;
 }
 
 module.exports = problem3;
