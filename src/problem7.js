@@ -30,8 +30,7 @@ function problem7(user, friends, visitors) {
   for (key of Object.keys(sortedScores)) {
     if (!myfriends.includes(key)) answer.push(key);
   }
-
-  return answer.slice(0, 6);
+  return answer.slice(0, 5);
 }
 
 function findFriend(relation, user) {
@@ -58,19 +57,17 @@ function sortByScoreName(object) {
 module.exports = problem7;
 console.log(
   problem7(
-    "mrko",
+    "andole",
     [
-      ["mrko", "jun"],
-      ["bedi", "jun"],
-      ["bedi", "donut"],
+      ["andole", "jun"],
       ["donut", "jun"],
-      ["donut", "mrko"],
+      ["donut", "shakevan"],
       ["shakevan", "andole"],
-      ["jun", "andole"],
       ["shakevan", "jun"],
-      ["shakevan", "mrko"],
+      ["shakevan", "bedi"],
+      ["anne", "jun"],
     ],
-    ["donut", "shakevan"]
+    ["donut", "mrko", "peter", "sam"]
   )
 );
 
