@@ -53,6 +53,8 @@ const problem7 = (user, friends, visitors) => {
   const MUTUAL_FRIEND_POINT = 10;
   // 타임라인 방문 점수
   const VISITOR_POINT = 1;
+  const friendListMap = getFriendListMap(friends);
+  const userFriendList = friendListMap.get(user);
 
   return answer;
 };
