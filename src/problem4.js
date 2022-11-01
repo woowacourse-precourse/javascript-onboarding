@@ -1,3 +1,4 @@
+// String.fromCharCode(num) : 아스키코드번호를 받아 문자열을 구성해주는 함수
 function problem4(word) {
   var answer = "";
   var upperDict = {};
