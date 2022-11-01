@@ -1,4 +1,6 @@
 function problem5(money) {
+  if (!Number.isInteger(money) || money < 1 || money > 1000000) return;
+
   const answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   const divideArr = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
