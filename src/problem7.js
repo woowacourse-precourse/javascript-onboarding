@@ -67,15 +67,15 @@ function problem7(user, friends, visitors) {
   for (let t = 0; t < mergedArr.length; t++) {
     answer.push(mergedArr[t][0]);
   }
-  ///친구의 친구가 방문자일때는??? 경우 생각하기.
+
   const namesToDelete = new Set(noUserName);
 
   const finalAnswer = answer.filter((name) => {
     return !namesToDelete.has(name);
   });
 
-  if (finalAnswer.length > 5) {
-    finalAnswer.length = 5;
+  if (finalAnswer.length > 9) {
+    finalAnswer.length = 9;
   }
 
   return finalAnswer;
