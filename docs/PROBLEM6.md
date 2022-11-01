@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 목록 사항
+1. 문자열이 연속으로 2글자 이상 겹치는게 있는지 확인한다.
+2. forms에서 같은 글자가 연속적으로 포함되는 사람의 이메일을 반환한다.
+3. forms에서 같은 글자가 연속적으로 포함되는 사람의 이메일을 오름차순으로 정렬하여 반환한다.
