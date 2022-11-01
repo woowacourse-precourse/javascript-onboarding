@@ -21,8 +21,7 @@ function convertToFrogWord(word) {
 }
 
 function problem4(word) {
-  var answer;
-  return answer;
+  return convertToFrogWord(word);
 }
 
 module.exports = problem4;
