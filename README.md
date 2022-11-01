@@ -33,23 +33,23 @@
 
 ## 📋 [문제 2] 구현할 기능 목록
 
-* 📮 알고리즘 선택
+* 📮 전체 알고리즘 선택
   + [ ] A안 : Stack 배열을 만들어서 한글자씩 중복문자 체크하며, `push()` / `pop()` 으로 채워넣는 방법.
     - 단계별로 삭제가 아닌 앞에서부터 하나씩 소거해가면서 처리.
   + [ ] B안 : 문자 하나씩 앞에서부터 연속된 글자를 파악 후 단계별로 삭제하는 방법.
   + [x] C안 : Queue의 원리를 이용하며, 함수를 재귀하여, 단계적으로 삭제하는 방법. 
   > ❓선정 이유 : A안은 예외상황 있음 : `"zyelleyyez" > 기대값: "zyz" / 출력값 : "zez"` 단계별로 삭제가 되지 않아 문제발생 (1단계에서 `ll` 과 `yy` 가 먼저 삭제된 후 2단계에서 `eee`가 한번에 지워져야 됨), B안은 `join("")`을 반복할 때 마다 써야하고 for문이 2중으로 들어가야함.
 
-* 전체 프로세서 관리 `cryptogramSolver` 함수 생성
-  + 연속된 중복문자를 제거할 함수 `removeDuplicateChar`가 반환하는 값을 return 함.,
-  + return 값: 함수 `removeDuplicateChar` 반환값
+* `cryptogramSolver` 함수 : 전체 프로세서를 관리함.
+  + `removeDuplicateChar` 함수에 input 받은 문자열을 `split`으로 문자별로 나눠서 보냄.
+  + return 값: 함수 `removeDuplicateChar` 반환값.
 
-* 연속된 중복문자를 제거할 함수 `removeDuplicateChar` 생성
+* `removeDuplicateChar` 함수 : 연속된 중복문자를 제거해주는 함수.
   + 중복 글자가 없을 때까지 단계에 걸쳐서 재귀로 반복
   + 이전 글자를 변수 `beforeChar`에 넣어둠. 
-    - `isBeforeDuplicate` : [이전 단계]에 `beforeChar`와 `nowChar`가 같았다면`true`, 달랐다면 `false`
-    - `isDeleteStep` : `beforeChar`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
-  + 배열 `nextCryptogramCollection`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
+    - `isBeforeDuplicate` 변수 : [이전 단계]에 `beforeChar`와 `nowChar`가 같았다면`true`, 달랐다면 `false`
+    - `isDeleteStep` 변수 : `beforeChar`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때마다 default 값은 `false`)
+  + `nextCryptogramCollection` 배열 : 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
 ## 📋 [문제 3] 구현할 기능 목록
