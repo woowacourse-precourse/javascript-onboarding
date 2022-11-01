@@ -10,6 +10,7 @@ function problem1(pobi, crong) {
     return finalScore
   }; 
 
+  
   function pageNumSlicer(pNum){
     let plusResult = 0;
     let multipleResult = 1;
