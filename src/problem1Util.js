@@ -52,4 +52,16 @@ const isValidPage = (leftPage, rightPage, startPage, lastPage) => {
   return true;
 };
 
-module.exports = { getDigitFromNum, calcPageValues, compareValue, isValidPage };
+const GameError = (type) => {
+  if (type === 1) {
+    return new Error('page error');
+  }
+};
+
+module.exports = {
+  getDigitFromNum,
+  calcPageValues,
+  compareValue,
+  isValidPage,
+  GameError,
+};
