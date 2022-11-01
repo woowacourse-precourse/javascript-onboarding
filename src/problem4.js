@@ -32,4 +32,11 @@ function isAlpa(ch) {
 	return false;
 }
 
+// 3. 문자열 특정 인덱스 문자 변경 기능
+// return => string
+function transAt(str, trg, ch) {
+	return str.slice(0, trg) + ch + str.slice(trg+1, str.lenth);
+
+}
+
 module.exports = problem4;
