@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   var answer;
-  const allFriendList = makeFriendList(friends)
-  const userFriend = allFriendList[user]
-  let recommendObj= sharedFriend(user,userFriend, allFriendList)
+  const allFriendObj = makeFriendList(friends)
+  const userFriend = allFriendObj[user]
+  let recommendObj= sharedFriend(user,userFriend, allFriendObj)
   recommendObj = visitFriend(userFriend, visitors, recommendObj)
 
   let sortedArr = sortedScore(recommendObj)
@@ -11,7 +11,7 @@ function problem7(user, friends, visitors) {
 }
 
 function makeFriendList(friends){
-  const allFriendList = friends.reduce(function(obj,item){
+  const allFriendObj = friends.reduce(function(obj,item){
     for(let idx in item){
       if(!obj[item[idx]]){
           obj[item[idx]]=[item[1-idx]]
@@ -21,19 +21,18 @@ function makeFriendList(friends){
     }
     return obj
   },{})
-  return allFriendList
+  return allFriendObj
 }
 
 
-function sharedFriend( user, userFriend, allFriendList){
+function sharedFriend( user, userFriend, allFriendObj){
   let sharedObj = {}
-  for(let name of Object.keys(allFriendList)){
-    //user 제외 //이미 친구인 사람 제거.
+  for(let name of Object.keys(allFriendObj)){
     if(isFriend(name, userFriend) || name==user){
       continue
     }
     let sharedFriend =userFriend.filter(
-      friend=>allFriendList[name].includes(friend)
+      friend=>allFriendObj[name].includes(friend)
     )
     if(sharedFriend.length!==0){
       sharedObj[name]=sharedFriend.length*10

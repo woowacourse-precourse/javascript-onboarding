@@ -1,38 +1,39 @@
 function problem6(forms) {
   var answer=[];
+  let obj = makeOverlappingObj(forms)
+  let overlappingWord = makeOverlappingObjToArr(obj)
     for(let crew of forms){
-      if(checkEmail(crew[0]) || checkName(crew[1], forms)){
+      if(!isAvailableEmail(crew[0]) || !isAvailableName(crew[1], overlappingWord)){
         answer.push(crew[0])
       }
     }
     return preAnswer(answer);
 }
 
-function checkEmail(email){
+function isAvailableEmail(email){
   if(email.length<11 || email.length>=20){
-    return true
+    return false
   }
   let emailDomain = email.split("@")
   if(!emailDomain.includes("email.com")){
-    return true
+    return false
   }
-  return false
+  return true
 }
 
 function makeOverlappingArr(crewName){
-  let overlappingPart = []
+  let overlappingArr = []
   for (let i=0;i<crewName.length-1;i++){
-    overlappingPart.push(crewName.substr(i,2))
+    overlappingArr.push(crewName.substr(i,2))
   }
-  return overlappingPart 
+  return Array.from(new Set(overlappingArr))
 }
 
 function makeOverlappingObj(forms){
   let overlappingObj={};
   for(let crew of forms){
-    let wordArr = makeOverlappingArr(crew[1]);
     
-    for(let word of wordArr){
+    for(let word of makeOverlappingArr(crew[1])){
       if(!overlappingObj[word]){
         overlappingObj[word]=0
       }
@@ -42,14 +43,21 @@ function makeOverlappingObj(forms){
   return overlappingObj
 }
 
-function checkName(crew, forms){
-  let overlappingObj = makeOverlappingObj(forms)
-  for (let name of makeOverlappingArr(crew)){
-    if(overlappingObj[name]>1){
-      return true
+function makeOverlappingObjToArr(obj){
+  return Object.entries(obj).reduce((arr,word)=>{
+    word[1]>1?arr.push(word[0]):null
+    return arr},[])
+}
+
+
+function isAvailableName(crew, overlappingWord){
+  for (let word of overlappingWord){
+    if(crew.includes(word)){
+      return false
     }
   }
-  return false
+  return true
+
 }
 
 function preAnswer(emailArr){
