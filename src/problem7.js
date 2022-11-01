@@ -20,7 +20,6 @@ function validFriendArr(friendArr) {
 }
 
 function isFriend(friends) {
-  // console.log(typeof friends);
   if (
     !(
       (friends.length >= 1 && friends.length <= 10000) ||
@@ -33,10 +32,8 @@ function isFriend(friends) {
     if (friends[i].length != 2) {
       return 0;
     }
-    // console.log(friends.length);
     for (let i = 0; i < friends.length; i++) {
       if (validFriendArr(friends[i]) == 1);
-      // console.log(friends.length);
       return 1;
     }
     return 0;
@@ -65,7 +62,6 @@ function pushFriendList(friendList, friend) {
     if (!objectKey(friendList, friend[i])) {
       friendList[friend[i]] = [];
     }
-    // console.log(friendList);
     friendList[friend[i]].push(friend[(i + 1) % 2]);
   }
 }
