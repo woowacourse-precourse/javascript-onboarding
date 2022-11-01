@@ -1,5 +1,25 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
+
+  const nameList = getNameList(user, friends, visitors); // name list: [ 'donut', 'andole', 'jun', 'shakevan', 'bedi' ]
+  const userFriend = getFriendNameOfUser(user, friends); // friend name of user(mrko): [ 'donut', 'shakevan' ]
+  const score = []; // each person's score
+  let mutualCount; // number of mutual friends
+  let visitCount; // number of visit number
+
+  for (let i = 0; i < nameList.length; i++) {
+    const varName = `${nameList[i]}Friend`; // donutFriend, andoleFriend, junFriend, shakevanFriend, bediFriend
+    eval(`${varName} = getFriendNameOfUser(nameList[i], friends);`); // get donut's friend, andole's friend, ...
+    mutualCount = countMutualItem(userFriend, eval(varName)); // count mutual item in userFriend and varName
+    visitCount = countOccurences(visitors, nameList[i]); // count number of occurences in visitors
+    score.push(mutualCount * 10 + visitCount);
+  }
+  const indexFive = getIndOfTopFive(score);
+  for (let i = 0; i < indexFive.length; i++) {
+    if (countOccurences(userFriend, nameList[indexFive[i]]) === 0) {
+      answer.push(nameList[indexFive[i]]);
+    }
+  }
   return answer;
 }
 

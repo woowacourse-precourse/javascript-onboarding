@@ -29,4 +29,4 @@
 2. function that takes in user and friends and returns the user's friend names.
 3. function that takes in two arrays and returns the number of mutual items in two arrays.
 4. function that takes in a value and an array and returns the number of occurences.
-5. function taht takes in an array and returns indices of top five values.
+5. function that takes in an array and returns indices of top five values.
