@@ -18,5 +18,22 @@ function problem6(forms) {
 
   let getSameNicknames = new Set(getNickname);
   let filteredNickname = [...getSameNicknames]; //중복제거
+
+  let emails = [];
+
+  for (i in forms) {
+    for (j in filteredNickname) {
+      if (forms[i][1].indexOf(filteredNickname[j]) != -1) {
+        emails.push(forms[i][0]);
+      }
+    }
+  }
+
+  let getEmails = new Set(emails);
+  let filteredEmails = [...getEmails]; //중복제거
+
+  let result = filteredEmails.sort(); //오름차순정렬
+
+  return result;
 }
 module.exports = problem6;
