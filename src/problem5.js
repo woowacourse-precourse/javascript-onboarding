@@ -1,7 +1,6 @@
 class ErrorCase {
   constructor(money) {
     this._money = money;
-    this.checkLimit();
   }
 
   checkLimit() {
