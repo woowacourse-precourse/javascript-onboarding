@@ -3,17 +3,21 @@ function problem2(cryptogram) {
 
   const cryptogramArr = cryptogram.split("");
   const stack = [cryptogramArr[0]];
-  let flag = false;
+  let compareTarget = cryptogramArr[0];
 
-  for (let i = 1; i < cryptogram.length; i++) {
-    if (stack[stack.length - 1] === cryptogramArr[i]) {
-      flag = true;
+  for (let i = 1; i < cryptogramArr.length; i++) {
+    stack.push(cryptogramArr[i]);
+    if (compareTarget !== cryptogramArr[i]) {
+      compareTarget = cryptogramArr[i];
     } else {
-      if (flag === true) {
-        stack.pop();
-        flag = false;
+      if (
+        i === cryptogramArr.length - 1 ||
+        (i !== cryptogramArr.length - 1 &&
+          compareTarget !== cryptogramArr[i + 1])
+      ) {
+        while (compareTarget === stack[stack.length - 1]) stack.pop();
+        compareTarget = stack[stack.length - 1];
       }
-      stack.push(cryptogramArr[i]);
     }
   }
 
