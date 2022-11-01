@@ -6,23 +6,31 @@ const lowercase = aCharCodeAt + zCharCodeAt;
 const uppercase = ACharCodeAt + ZCharCodeAt;
 
 function problem4(word) {
-  let answer = "";
+  const answerArr = [];
   for (let char of word) {
     const charCode = greenFrogCharcode(char);
-    answer += String.fromCharCode(charCode);
+    answerArr.push(String.fromCharCode(charCode));
   }
-  return answer;
+  return answerArr.join("");
 }
 
 function greenFrogCharcode(char) {
   const charCode = char.charCodeAt(0);
-  if (aCharCodeAt <= charCode && charCode <= zCharCodeAt) {
+  if (isLowerCase(charCode)) {
     return lowercase - charCode;
   }
-  if (ACharCodeAt <= charCode && charCode <= ZCharCodeAt) {
+  if (isUpperCase(charCode)) {
     return uppercase - charCode;
   }
   return charCode;
+}
+
+function isLowerCase(number) {
+  return aCharCodeAt <= number && number <= zCharCodeAt;
+}
+
+function isUpperCase(number) {
+  return ACharCodeAt <= number && number <= ZCharCodeAt;
 }
 
 module.exports = problem4;
