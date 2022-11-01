@@ -54,6 +54,8 @@ function problem7(user, friends, visitors) {
   }
   // 점수순 정렬
   sortScore(scoreArr);
+  // 추천 친구 이름 result에 append
+  scoreArr.map((item) => answer.push(item.name));
 
   return answer;
 }
