@@ -85,6 +85,38 @@ function visitorScore(visitors){
   return visitCnt;
 }
 
+//2가지 규칙을 반영하여 최종 추천 결과 반환
+function recommendFriend(friendCnt, visitorCnt){ //최종 추천 결과
+  const scoreCnt = friendCnt.concat(visitorCnt); //2개의 규칙에 따른 결과(객체 배열들) 병합
+
+  // score int 값의 크기순으로 내림차순 정렬
+  for (var i=0; i<scoreCnt.length; i++){
+    var cnt = 0;
+    for(var j=0; j<scoreCnt.length; j++){
+      if(scoreCnt[j].score > scoreCnt[i].score)  {
+        cnt ++; 
+      } else if(scoreCnt[j].score == scoreCnt[i].score){ //추천 점수가 같은 경우
+        if(scoreCnt[j].name < scoreCnt[i].name) { //이름 비교, 이름까지 빠른 경우
+          cnt ++;
+        }
+      }
+    }
+    scoreCnt[i].rank = cnt; //점수 및 이름에 따른 순위를 key로 하여 객체에 추가
+  }
+  
+  //rank에 따라 정렬
+  const scoreResultArr = scoreCnt.splice(0.5).sort(function (a, b) {
+      return a.rank - b.rank; //내림차순 정렬
+  });
+  console.log("상위 5명의 추천 친구 결과는..",scoreResultArr);
+
+  //키 name의 value만 추출하여 결과 반환
+  
+  const recommendResult = scoreResultArr.map(row=>row.name); //이름만 추출된 배열 생성, 최종 결과
+  
+  return recommendResult;
+
+}
 
 function problem7(user, friends, visitors) {
   var answer;
@@ -100,7 +132,7 @@ function problem7(user, friends, visitors) {
   //console.log(currentFriend);
   friendCnt = friendFriendScore(friends, currentFriend, user); //현재 친구의 친구 점수 배열 저장
   console.log(friendCnt);
-  //answer = recommendFriend(friendCnt, visitorCnt); //2가지 규칙에 따라 얻은 결과 병합
+  answer = recommendFriend(friendCnt, visitorCnt); //2가지 규칙에 따라 얻은 결과 병합
 
   return answer;
 }
