@@ -35,13 +35,28 @@ function findDuplicateNick(array) {
   ];
 }
 function problem6(forms) {
-  var answer;
+  var answer = [];
   let crewMember = [];
   let crewNicknameList = [];
 
   crowToObj(forms, crewMember, crewNicknameList);
   crewNicknameList = findDuplicateNick(crewNicknameList);
-  return answer;
+  // 크루원들 중 중복 닉네임 순회
+  crewNicknameList.forEach((nickname) => {
+    // 해당 중복 닉네임을 가진 멤버 answer 추가
+    crewMember.forEach((member) => {
+      // 확인여부 체크
+      if (!member["check"]) {
+        const memberNick = member["twoWordName"];
+        if (memberNick.indexOf(nickname) !== -1) {
+          answer.push(member["email"]);
+          member["check"] = true;
+        }
+      }
+    });
+  });
+
+  return answer.sort();
 }
 
 module.exports = problem6;
