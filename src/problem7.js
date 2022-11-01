@@ -7,7 +7,9 @@ function problem7(user, friends, visitors) {
   const friendScores = getScore(friendOfFriends, FRIEND_SCORE);
   const vistorScores = getScore(visitors, VISTOR_SCORE);
   const friendAndVistors = combineFriendVistor(friendScores, vistorScores);
-  const recommendations = recommendationList(friendAndVistors);
+  const sortedName = sortingName(friendAndVistors);
+  const sortedScore = sortingScore(sortedName);
+  const recommendations = recommendationList(sortedScore);
   answer = checkUserFriendsInList(userFriends, recommendations);
   return answer;
 }
@@ -36,55 +38,39 @@ function friendOfFriend(userFriends, friends, user) {
 
 function getScore(lists, score) {
   const onlyLists = Array.from(new Set(lists));
-  const results = [];
+  const results = {};
   for (let i = 0; i < onlyLists.length; i++) {
-    results.push([onlyLists[i], 0]);
+    results[onlyLists[i]] = 0;
   }
   for (let i = 0; i < onlyLists.length; i++) {
     for (let j = 0; j < lists.length; j++) {
       if (onlyLists[i] === lists[j]) {
-        results[i][1] += score;
+        results[onlyLists[i]] += score;
       }
     }
   }
   return results;
 }
 
-function combineFriendVistor(friends, visitors) {
-  const results = [];
-  results.push(...friends, ...visitors);
-  return sortingScores(results);
+function combineFriendVistor(friend, visitor) {
+  const result = { ...friend, ...visitor };
+  return result;
 }
 
-function sortingScores(lists) {
-  for (let i = 1; i < lists.length; i++) {
-    for (let j = i; j > 0; j--) {
-      if (lists[j][1] === lists[j - 1][1]) {
-        const sorted = sortingNames([lists[j - 1][0], lists[j][0]]);
-        lists[j - 1][0] = sorted[0];
-        lists[j][0] = sorted[1];
-      }
-      if (lists[j][1] > lists[j - 1][1]) {
-        let temp = lists[j];
-        lists[j] = lists[j - 1];
-        lists[j - 1] = temp;
-      } else {
-        break;
-      }
-    }
-  }
-  return lists;
+function sortingName(list) {
+  const result = Object.entries(list).sort((a, b) => {
+    return a[0].charCodeAt(0) - b[0].charCodeAt(0);
+  });
+  return Object.fromEntries(result);
 }
 
-function sortingNames(lists) {
-  return lists.sort();
+function sortingScore(list) {
+  const result = Object.entries(list).sort(([, a], [, b]) => b - a);
+  return Object.fromEntries(result);
 }
 
-function recommendationList(lists) {
-  const results = [];
-  for (let i = 0; i < lists.length; i++) {
-    results.push(lists[i][0]);
-  }
+function recommendationList(list) {
+  const results = Object.keys(list);
   return results;
 }
 
