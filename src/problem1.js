@@ -1,5 +1,6 @@
 function problem1(pobi, crong) {
   const answer = startGame(pobi, crong);
+
   return answer;
 }
 
@@ -25,6 +26,7 @@ function calculateDigits(pages) {
 
   pages.forEach((page) => {
     let [sumDigit, multiplyDigit] = [0, 1];
+
     do {
       sumDigit += page % 10;
       multiplyDigit *= page % 10;
@@ -39,6 +41,7 @@ function calculateDigits(pages) {
 
 function pickBigNumber(user) {
   const calculatedPages = calculateDigits(user);
+
   return Math.max(...calculatedPages);
 }
 
@@ -48,6 +51,7 @@ function startGame(pobi, crong) {
   }
 
   const [pobiScore, crongScore] = [pickBigNumber(pobi), pickBigNumber(crong)];
+
   if (pobiScore > crongScore) {
     return 1;
   } else if (pobiScore < crongScore) {
