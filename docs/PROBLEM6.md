@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 이메일 형식 유효성 검사
+2. 닉네임 형식 유효성 검사
+3. 모든 닉네임의 연속된 2글자 부분집합을 key로 갖는 dictionary 생성(value는 count값)
+4. 각 닉네임의 2글자 부분집합을 key로 dictionary value 검사
+5. 해당 key의 value가 2 이상일 경우 해당 이메일을 answer 배열에 push
+6. answer 배열의 중복을 제거하고 정렬해 반환
