@@ -42,6 +42,26 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 점수 정렬
+  let sortedScore = []
+  for (let crew in score) {
+    sortedScore.push([crew, score[crew]])
+  }
+  sortedScore.sort(function (a, b) {
+    if (b[1] > a[1]) {
+      return 1
+    }
+    if (a[1] > b[1]) {
+      return -1
+    }
+    if (a[0] < b[0]) {
+      return -1
+    }
+    if (b[0] < a[0]) {
+      return 1
+    }
+  })
+
 }
 
 module.exports = problem7;
