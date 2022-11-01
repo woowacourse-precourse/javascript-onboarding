@@ -14,10 +14,16 @@ const getFriendsMap = (friends) => {
   return friendsMap;
 };
 
-const scoreCommonFriends = (user, friend, friendsMap, scoreObj) => {
+const scoreCommonFriends = (
+  user,
+  friend,
+  friendsMap,
+  userFriendsArray,
+  scoreObj
+) => {
   if (friend === user) return;
+
   const friendsArray = friendsMap.get(friend);
-  const userFriendsArray = friendsMap.get(user);
   let score = 0;
 
   for (const friend of userFriendsArray) {
@@ -103,7 +109,7 @@ function problem7(user, friends, visitors) {
   //예외사항3
   if (!checkFriendLength(friends)) return 'ERROR';
   //예외사항4
-  if (visitors.length > 1000) return 'ERROR';
+  if (visitors.length > 10000) return 'ERROR';
   //예외사항5
   if (!checkUserID(user)) return 'ERROR';
   //예외사항6
@@ -113,11 +119,11 @@ function problem7(user, friends, visitors) {
 
   const friendsMap = getFriendsMap(friends);
 
-  const userFriendsArray = friendsMap.get(user);
+  const userFriendsArray = friendsMap.get(user) || [];
   const friendList = Array.from(friendsMap.keys());
 
   for (const friend of friendList) {
-    scoreCommonFriends(user, friend, friendsMap, scoreObj);
+    scoreCommonFriends(user, friend, friendsMap, userFriendsArray, scoreObj);
   }
 
   scoreVisitor(visitors, scoreObj);
