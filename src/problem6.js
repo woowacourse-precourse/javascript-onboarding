@@ -62,7 +62,6 @@ const duplCheck = (word, formArr, formIdx, formLen, checkArr) => {
   return checkArr;
 }
 
-problem6(forms);
 
 
 module.exports = problem6;
