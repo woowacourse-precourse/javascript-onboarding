@@ -81,10 +81,41 @@ function getUserList(friends) {
   return userList;
 }
 
+function setRecommendUser(recommendList, recommendUsers, point) {
+  let recommendUser;
+  let userPoint;
+
+  for (let index = 0; index < recommendUsers.length; index++) {
+    recommendUser = recommendList.has(recommendUsers[index]);
+    if (recommendUser) {
+      userPoint = recommendList.get(recommendUsers[index]) + point;
+      recommendList.set(recommendUsers[index], userPoint);
+    } else {
+      recommendList.set(recommendUsers[index], point);
+    }
+  }
+}
+
+function getRecommendList(userList, myFriendsList, visitors) {
+  let recommendList = new Map();
+  let otherUserFriendsList;
+  const FRIEND_POINT = 10;
+  const VISIT_POINT = 1;
+
+  for (let index = 0; index < myFriendsList.length; index++) {
+    otherUserFriendsList = userList.get(myFriendsList[index]);
+    setRecommendUser(recommendList, otherUserFriendsList, FRIEND_POINT);
+  }
+  setRecommendUser(recommendList, visitors, VISIT_POINT);
+  return recommendList;
+}
+
 function getResult(user, friends, visitors) {
   const userList = getUserList(friends);
+  const myFriendsList = userList.get(user);
+  let recommendList = getRecommendList(userList, myFriendsList, visitors);
 
-  return userList;
+  return recommendList;
 }
 
 function problem7(user, friends, visitors) {
