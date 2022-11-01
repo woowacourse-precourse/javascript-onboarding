@@ -12,15 +12,17 @@ function countYourFriend(user, friends, notRecommendationFriends){
     friendGraph[B].push(A);
   });
 
-  friendGraph[user].forEach(alreadyFriend => {
-    notRecommendationFriends[alreadyFriend] = 1;
+  if (user in friendGraph){
+    friendGraph[user].forEach(alreadyFriend => {
+      notRecommendationFriends[alreadyFriend] = 1;
 
-    friendGraph[alreadyFriend].forEach(newFriend => {
-      if(newFriend != user){
-        recommendationScore[newFriend] += 10;
-      }
+      friendGraph[alreadyFriend].forEach(newFriend => {
+        if(newFriend != user){
+          recommendationScore[newFriend] += 10;
+        }
+      });
     });
-  });
+  }
 
   return [notRecommendationFriends, recommendationScore];
 }
@@ -54,7 +56,7 @@ function problem7(user, friends, visitors) {
     return b[0] - a[0];
   });
 
-  for(i = 0; i < 5; i++){
+  for(i = 0; i < Math.min(5, recommendationScoreArray.length); i++){
     const score = recommendationScoreArray[i][0];
     const name = recommendationScoreArray[i][1];
     if(score == 0) { break; }
@@ -63,6 +65,6 @@ function problem7(user, friends, visitors) {
   return resultName;
 }
 
-console.log(problem7("mrko", 	[["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
+console.log(problem7("mrko", 	[], ["bedi", "bedi", "bedi"]));
 
 module.exports = problem7;

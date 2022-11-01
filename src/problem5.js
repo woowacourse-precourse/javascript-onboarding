@@ -8,5 +8,5 @@ function problem5(money) {
   return moneyCount;
 }
 
-console.log(problem5(15000));
+console.log(problem5(402));
 module.exports = problem5;

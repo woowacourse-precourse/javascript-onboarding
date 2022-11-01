@@ -56,6 +56,6 @@ function problem1(pobi, crong) {
   return result;
 }
 
-console.log(problem1([131, 132],	[399, 400]));
+console.log(problem1([132, 133], [399, 400]));
 
 module.exports = problem1;

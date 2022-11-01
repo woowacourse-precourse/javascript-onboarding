@@ -13,6 +13,6 @@ function problem2(cryptogram) {
   return resultArray.join("");
 }
 
-console.log(problem2("browoanoommnaon"));
+console.log(problem2("bb"));
 
 module.exports = problem2;
