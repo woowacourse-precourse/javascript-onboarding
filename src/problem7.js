@@ -46,14 +46,27 @@ function relatedFriendsCheck(user, friends, friendArray) {
   return scoreMap;
 }
 
+function sortMap(map) {
+  return [...map]
+    .sort((a, b) => {
+      if (b[1] > a[1]) return 1;
+      if (b[1] < a[1]) return -1;
+      if (b[1] === a[1]) {
+        if (b[0] < a[0]) return 1;
+        if (b[0] > a[0]) return -1;
+        return 0;
+      }
+    })
+    .map((element) => element[0]);
+}
+
 function problem7(user, friends, visitors) {
   const friendArray = friendCheck(friends, user);
 
   const scoreMap = relatedFriendsCheck(user, friends, friendArray);
   scoreMap = visitorCheck(visitors, scoreMap, friendArray);
 
-  var answer;
-  return answer;
+  return sortMap(scoreMap);
 }
 
 module.exports = problem7;
