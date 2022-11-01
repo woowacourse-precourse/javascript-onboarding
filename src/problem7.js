@@ -1,10 +1,20 @@
 function getOriginFriends(user, friends, originFriends) {
   for (let i = 0; i < friends.length; i++) {
-    if (friends[i].includes(user)) {
-      console.log(friends[i]);
-      // addFriendDecidedByotherSideIndex(friends[i], user, originFriends);
+    if (!friends[i].includes(user)) {
+      continue;
     }
+    addFriendDecidedByotherSideIndex(friends[i], user, originFriends);
   }
+}
+
+function addFriendDecidedByotherSideIndex(friend, otherSide, addToThisArray) {
+  console.log(
+    friend.indexOf(
+      otherSide === 0
+        ? addToThisArray.push(friend[1])
+        : addToThisArray.push(friend[0])
+    )
+  );
 }
 
 function problem7(user, friends, visitors) {
