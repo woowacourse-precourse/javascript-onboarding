@@ -6,9 +6,7 @@ function problem4(word) {
     // 영문자인 값들만 변환
     if (e >= 65 && e <= 90)
       // unicode 값을 청개구리 사전 값으로 변환 영문자로 재치환
-      return String.fromCharCode(
-        Math.abs(el.toUpperCase().charCodeAt(0) - 90) + 65
-      );
+      return String.fromCharCode(Math.abs(e - 90) + 65);
     // 영문자가 아닌 값은 그대로 리턴
     return el;
   });
