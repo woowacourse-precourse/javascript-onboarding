@@ -22,6 +22,10 @@
 */
 
 function problem1(pobi, crong) {
+  return playGame(pobi, crong);
+}
+
+const playGame = (pobi, crong) => {
   if (!checkAvailable(pobi) || !checkAvailable(crong)) return -1;
 
   const biggestNumberOfPobi = makeBiggestNumber(pobi);
@@ -30,7 +34,7 @@ function problem1(pobi, crong) {
   if (biggestNumberOfPobi > biggestNumberOfCrong) return 1;
   else if (biggestNumberOfPobi < biggestNumberOfCrong) return 2;
   else return 0;
-}
+};
 
 const checkAvailable = (pages) => {
   const [leftPage, rightPage] = pages;
