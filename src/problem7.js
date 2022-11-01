@@ -39,7 +39,12 @@ function problem7(user, friends, visitors) {
       }
     });
   };
+  visited.set(user, true);
   dfs(0, user);
+
+  visitors.forEach((visitor) =>
+    scoreMap.set(visitor, (scoreMap.get(visitor) ?? 0) + 1)
+  );
 
   var answer;
   return answer;
