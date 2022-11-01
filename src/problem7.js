@@ -33,6 +33,12 @@ function getVisitList(user, friends, visitors){
    return visitList;
 }
 
+function sortCrewList(crewScore){
+  const sortCrewList = Object.fromEntries(Object.entries(crewScore).sort(([, a], [, b]) => b - a));
+  const crewList = Object.keys(sortCrewList);
+  return crewList;
+}
+
 function getCrewName(user, friends, visitors){
   const crewScore = getInterFriendScore(user, friends);
   const visitList = getVisitList(user, friends, visitors);
@@ -46,10 +52,9 @@ function getCrewName(user, friends, visitors){
       crewScore[visitList[i]] +=1;
     }
   }
-  const sortable = Object.fromEntries(Object.entries(crewScore).sort(([, a], [, b]) => b - a));
-  const crewName = Object.keys(sortable);
-  crewName.splice(5);
-  return crewName;
+  const crewList = sortCrewList(crewScore);
+  crewList.splice(5);
+  return crewList;
 }
 
 function problem7(user, friends, visitors) {
