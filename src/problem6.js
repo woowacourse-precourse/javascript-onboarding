@@ -27,9 +27,9 @@ function problem6(forms) {
   for(let i=0;i<forms.length;i++){
     var nick=forms[i][1].toString()
     if(nick.includes(x)){
-      doubleNickname.push([forms[i][0],forms[i][1]])
+      doubleNickname.push(forms[i][0])
     }
-    }//연속된 글자가 포함된 닉네임,이메일 반환
+    }//연속된 글자가 포함된 닉네임의 이메일 반환
 
     doubleNickname.sort();//오름차순 정렬
 
@@ -37,6 +37,7 @@ function problem6(forms) {
 
   return answer;
 }
+
 
 
 module.exports = problem6;
