@@ -23,6 +23,15 @@ function problem6(forms) {
   for (let i = 0; i < wordSet.length; ++i) {
     if (wordSet[i][1] > 1) target.push(wordSet[i][0]);
   }
+
+  for (let i = 0; i < forms.length; ++i) {
+    for (let j = 0; j < target.length; ++j) {
+      if (forms[i][1].includes(target[j])) answer.push(forms[i][0]);
+    }
+  }
+
+  answer.sort();
+
   return answer;
 }
 
