@@ -1,5 +1,10 @@
 function problem7(user, friends, visitors) {
   let friendsArr = makeAllFriendsArr(friends);
+  let map = new Map();
+  for (let i = 0; i < friendsArr.length; i++) {
+    map.set(friendsArr[i], 0);
+  }
+  let alreadyFriendsArr = findAlreadyFriends(user, friends);
 }
 function makeAllFriendsArr(friends) {
   let friendsArr = friends.reduce((acc, cur) => [...acc, ...cur]);
