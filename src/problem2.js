@@ -17,8 +17,25 @@ function problem2(cryptogram) {
         count = 0;
         overall_count++;
       }
+      if (j == arr_crypto.length - 1) {
+        temp.push(arr_crypto[j + 1]);
+        if (arr_crypto[j] == arr_crypto[j + 1]) {
+          temp.pop();
+        }
+        count = 0;
+        break;
+      }
+    }
+    arr_crypto = [];
+    for (var z = 0; z < temp.length; z++) {
+      arr_crypto.push(temp[z]);
+    }
+    temp = [];
+    if (overall_count == 0) {
+      break;
     }
   }
+  answer = arr_crypto.join('');
   return answer;
 }
 
