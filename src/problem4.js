@@ -1,26 +1,27 @@
 function problem4(word) {
-  var answer;
+  let answer = '';
 
-  let AtoZCapital = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  let AtoZSmall = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  
-  let newWord = '';
+  const AtoZUpperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const AtoZLowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-  for (var i=0; i<word.length; i++){
-    let indexInCapital = AtoZCapital.indexOf(word[i]);
-    let indexInSmall = AtoZSmall.indexOf(word[i]);
-    if(indexInCapital != -1){ //알파벳 대문자 변환
-      newWord += AtoZCapital[Math.abs(25 -indexInCapital)];
+  for (const oneChar of word){
+    const indexInUpperCase = AtoZUpperCase.indexOf(oneChar);
+    const indexInLowerCase = AtoZLowerCase.indexOf(oneChar);
+
+    let convertIndex;
+    if(indexInUpperCase != -1){
+      convertIndex = Math.abs(25-indexInUpperCase);
+      answer += AtoZUpperCase[convertIndex];
     }
-    else if(indexInSmall != -1){ //알파벳 소문자 변환
-      newWord += AtoZSmall[Math.abs(25 -indexInSmall)];
+    else if(indexInLowerCase != -1){
+      convertIndex = Math.abs(25-indexInLowerCase);
+      answer += AtoZLowerCase[convertIndex];
     }
-    else{ //변환X
-      newWord += word[i];
+    else{
+      answer += oneChar;
     }
   }
 
-  answer = newWord;
   return answer;
 }
 
