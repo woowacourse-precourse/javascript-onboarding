@@ -1,6 +1,6 @@
-function problem2(word) {
-  var answer;
-  return answer;
+function problem2(cryptogram) {
+  let splitCryptogram = cryptogram.split("");
+  return;
 }
 
 module.exports = problem2;
