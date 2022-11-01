@@ -16,6 +16,7 @@ function problem4(word) {
       else resultArr.push(alpha[25 - index]);
     }
   }
+  answer = resultArr.join("");
   return answer;
 }
 
