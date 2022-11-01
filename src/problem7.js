@@ -57,10 +57,10 @@ function seperateFriends(friends, user) {
   let userFriends = [];
   let friendOfFriends = [];
 
-  for (let friend of friends) {
-    userFriends.push(friend[0]);
-    if (friend[1] !== user) {
-      friendOfFriends.push(friend[1]);
+  for (let [userFriend, friendOfFriend] of friends) {
+    userFriends.push(userFriend);
+    if (friendOfFriend !== user) {
+      friendOfFriends.push(friendOfFriend);
     }
   }
   userFriends = [...new Set(userFriends)];
