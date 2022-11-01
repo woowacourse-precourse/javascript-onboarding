@@ -2,14 +2,16 @@ function problem1(pobi, crong) {
   if (isNotPage(pobi) || isNotPage(crong)) {
     return -1;
   }
+  let pobiValue = maxValue(pobi);
+  let crongValue = maxValue(crong);
 
-  if (maxValue(pobi) > maxValue(crong)) {
+  if (pobiValue > crongValue) {
     return 1;
   }
-  if (maxValue(pobi) < maxValue(crong)) {
+  if (pobiValue < crongValue) {
     return 2;
   }
-  if (maxValue(pobi) == maxValue(crong)) {
+  if (pobiValue == crongValue) {
     return 0;
   }
 
