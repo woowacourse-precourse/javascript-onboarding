@@ -231,4 +231,60 @@ describe("problem7", () => {
       )
     ).toEqual("Error: friends는 길이가 1이상 10,000 이하인 배열이어야 합니다");
   });
+
+  test('아이디는 길이가 1 이상 30 이하인 문자열이다. 아닌 경우 "Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["donut", "bedi"],
+          ["donut", "tjdgns"],
+          ["shakevan", "tjdgns"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual("Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다");
+
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["1234567890".repeat(4), "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["donut", "bedi"],
+          ["donut", "tjdgns"],
+          ["shakevan", "tjdgns"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual("Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다");
+
+    expect(
+      problem7(
+        "mrko",
+        [
+          [123, "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["donut", "bedi"],
+          ["donut", "tjdgns"],
+          ["shakevan", "tjdgns"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual("Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다");
+  });
 });
