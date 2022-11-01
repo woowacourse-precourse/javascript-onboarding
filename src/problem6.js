@@ -33,6 +33,21 @@ function wordCountObj(forms) {
   return obj;
 }
 
+function getEmailOfDups(forms, wordCntList) {
+  const answerSet = new Set();
+  forms.forEach(function(form) {
+    const email = form[0];
+    const nickname = form[1];
+    for (let word in wordCntList) {
+      if (nickname.indexOf(word) !== -1) {
+        answerSet.add(email);
+        break;
+      }
+    }
+  });
+  return answerSet;
+}
+
 function checkDup(forms) {
   const wordCntList = wordCountObj(forms);
   for (let word in wordCntList) {
