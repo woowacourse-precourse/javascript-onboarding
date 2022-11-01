@@ -11,11 +11,13 @@ function problem5(money) {
 const exchangeMoneyToLeastPaperAndCoin = (money) => {
   const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
-  return moneyUnits.map((moneyUnit) => {
+  const LeastNumberOfEachMoneyUnits = moneyUnits.map((moneyUnit) => {
     const maxCountOfUnit = Math.floor(money / moneyUnit);
     money -= maxCountOfUnit * moneyUnit;
     return maxCountOfUnit;
   });
+
+  return LeastNumberOfEachMoneyUnits;
 };
 
 module.exports = problem5;
