@@ -10,6 +10,14 @@ function setNicknameMap(map, nickname) {
   return map;
 }
 
+function filterOverlap(map) {
+  let arr = [];
+  map.forEach((value, key) => {
+    if (value > 1) arr.push(key);
+  });
+  return arr;
+}
+
 function problem6(forms) {
   var answer;
   return answer;
