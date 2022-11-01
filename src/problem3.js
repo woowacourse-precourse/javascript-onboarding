@@ -11,7 +11,7 @@ function numIntoDigits(number) {
   let digits = [];
   while (number > 0) {
     digit = number % 10;
-    digits.push(number);
+    digits.push(digit);
     number /= 10;
     number = Math.floor(number);
   }
