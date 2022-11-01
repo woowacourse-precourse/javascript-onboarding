@@ -36,6 +36,9 @@ function problem6(forms) {
     }
   */
 
+  let setEmail = new Set(obj.keys());
+  answer = Object.values(setEmail).sort();
+  
   return answer;
 }
 
