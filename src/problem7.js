@@ -12,7 +12,13 @@ function problem7(user, friends, visitors) {
   }
 
   mutualArr.sort((a, b) => {
-    return b[3] - a[3];
+    if(a[3] === b[3]) {
+      if(a[0] > b[0]) return 1;
+      if(a[0] < b[0]) return -1;
+      if(a[0] === b[0]) return 0;
+    } else {
+      return b[3] - a[3];
+    }
   });
 
   const answer = [];
