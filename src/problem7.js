@@ -57,10 +57,11 @@ const getSortScoreBoard = (scoreBoard) =>{
 function problem7(user, friends, visitors) {
   const result = [];
   const relationScore = 10;
-  const visitScore = 1
+  const visitScore = 1;
   const friendsRelation = makeRelationship(friends);
   const scoreBoard = new Object();
   const inputedUsersFriends = friendsRelation[user];
+  const isVisitedFriend = (visitor) => inputedUsersFriends.includes(visitor);
   const isUsersFriend = (user, friend) => friendsRelation[user].includes(friend);
 
   for (let keyUser in friendsRelation){
@@ -75,7 +76,7 @@ function problem7(user, friends, visitors) {
     }
   }
   visitors.forEach((visitor) => {
-    if (!inputedUsersFriends || !inputedUsersFriends.includes(visitor)){
+    if (!inputedUsersFriends || !isVisitedFriend(visitor)){
       scoreBoard.hasOwnProperty(visitor) ? scoreBoard[visitor] += visitScore : scoreBoard[visitor] = visitScore;
       }
     }
@@ -83,12 +84,12 @@ function problem7(user, friends, visitors) {
 
   const sortedScoreBoard = getSortScoreBoard(scoreBoard);
   const name = 0;
+  const answerLimit = 5;
     
   sortedScoreBoard.forEach((personalScore) => {
-    if (result.length < 5) result.push(personalScore[name])
+    if (result.length < answerLimit) result.push(personalScore[name]);
   })
-  
-  return result
+  return result;
 
 }
 module.exports = problem7;
