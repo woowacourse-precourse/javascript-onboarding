@@ -36,7 +36,7 @@ function problem7(user, friends, visitors) {
   scores = scores.filter((score) => !(score.id in friendObj[user]));
   scores.sort((a, b) => {
     if (a.score !== b.score) return b.score - a.score;
-    else return a > b ? -1 : 1;
+    else return a < b ? -1 : 1;
   });
   scores = scores.filter((item) => item.score > 0);
 
