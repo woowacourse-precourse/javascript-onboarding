@@ -4,10 +4,10 @@ function problem7(user, friends, visitors) {
   const VISTOR_SCORE = 1;
   const userFriends = getUserFriend(user, friends);
   const friendOfFriends = friendOfFriend({ userFriends, friends, user });
-  const friendScores = getScore(friendOfFriends, FRIEND_SCORE);
-  const vistorScores = getScore(visitors, VISTOR_SCORE);
-  const friendAndVistors = combineFriendVistor(friendScores, vistorScores);
-  const sortedName = sortingName(friendAndVistors);
+  const friendScore = getScore(friendOfFriends, FRIEND_SCORE);
+  const vistorScore = getScore(visitors, VISTOR_SCORE);
+  const friendAndVistor = combineFriendVistor(friendScore, vistorScore);
+  const sortedName = sortingName(friendAndVistor);
   const sortedScore = sortingScore(sortedName);
   const recommendations = recommendationList(sortedScore);
   answer = checkUserFriendsInList(userFriends, recommendations);
@@ -42,23 +42,23 @@ function finding({ userFriends, friends, user, results, i }) {
 
 function getScore(lists, score) {
   const onlyLists = Array.from(new Set(lists));
-  const results = {};
-  makeOnlyList(onlyLists, results);
+  const result = {};
+  makeOnlyList(onlyLists, result);
   onlyLists.forEach((_, i) => {
-    scoring({ onlyLists, lists, results, score, i });
+    scoring({ onlyLists, lists, result, score, i });
   });
-  return results;
+  return result;
 }
 
-function makeOnlyList(onlyLists, results) {
+function makeOnlyList(onlyLists, result) {
   onlyLists.forEach((_, i) => {
-    results[onlyLists[i]] = 0;
+    result[onlyLists[i]] = 0;
   });
 }
 
-function scoring({ onlyLists, lists, results, score, i }) {
+function scoring({ onlyLists, lists, result, score, i }) {
   lists.forEach((_, j) => {
-    if (onlyLists[i] === lists[j]) results[onlyLists[i]] += score;
+    if (onlyLists[i] === lists[j]) result[onlyLists[i]] += score;
   });
 }
 
@@ -75,7 +75,7 @@ function sortingName(list) {
 }
 
 function sortingScore(list) {
-  const result = Object.entries(list).sort(([, a], [, b]) => b - a);
+  const result = Object.entries(list).sort((a, b) => b[1] - a[1]);
   return Object.fromEntries(result);
 }
 
