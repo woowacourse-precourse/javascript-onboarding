@@ -14,6 +14,18 @@ function problem7(user, friends, visitors) {
       friendsDictionary[friend[1]] = [friend[0]]
     }
   }
+  
+  let scoresDictionary = {};
+  for (const otherUser of Object.keys(friendsDictionary)) {
+    let score = 0;
+    for (const otherUserFriend of friendsDictionary[otherUser]) {
+      if (friendsDictionary[user].includes(otherUserFriend)) {
+        score += 10
+      }
+    }
+    scoresDictionary[otherUser] = score;
+  }
+
   return answer;
 }
 
