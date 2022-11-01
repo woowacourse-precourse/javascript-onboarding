@@ -14,12 +14,30 @@
  */
 
 function problem7(user, friends, visitors) {
+  if (!isValidInput(user, friends, visitors)) {
+    return "Error: Invalid Input";
+  }
   const [userFriends, friendsOfFriend] = seperateFriends(friends, user);
   const friendScore = scoreCommonFriend(friendsOfFriend);
   const visitScore = scoreVisitor(visitors, userFriends);
   const featuredFriend = findFeaturedFriend(addScore(friendScore, visitScore));
 
   return featuredFriend;
+}
+
+function isValidInput(user, friends, visitors) {
+  let isValid;
+  if (!(user.length >= 1 && user.length <= 30)) {
+    isValid = false;
+  } else if (!(friends.length >= 1 && friends.length <= 10000)) {
+    isValid = false;
+  } else if (!(visitors.length >= 0 && visitors.length < 10000)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function seperateFriends(friends, user) {
