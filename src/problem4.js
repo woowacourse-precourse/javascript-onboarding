@@ -2,12 +2,17 @@ function problem4(word) {
   let answer = '';
   const wordArr = word.split('');
   wordArr.forEach(el => {
+    const regExp = /[^a-zA-Z\s]/g;
     if(el === ' ') {
       answer += el;
-    } else {
+    } else if(regExp.test(el) === true) {
+      answer += el;
+    } 
+    else {
       answer += replaceAlphabet(el);
     }
   });
+  
   return answer;
 }
 module.exports = problem4;
