@@ -10,6 +10,15 @@ function problem7(user, friends, visitors) {
   const friendScoreBoard = memberList
   .filter((member) => userFriends.indexOf(member) === -1)
   .map((member) => [member, 0]);
+
+  const  relavantUser = [];
+  for(const member of userFriends){
+    for(i=0; i<friends.length; i++){   
+      if (friends[i].indexOf(member) > -1){
+        relavantUser.push(String(friends[i].filter((element) => element !== member && element !== user)))
+      }
+    }
+  }
 }
 
 module.exports = problem7;
@@ -22,7 +31,7 @@ module.exports = problem7;
 //[x]친구 추천 점수판을 구현한다.
 //  [x]이미 친구인 사용자를 제외한 사용자들을 [닉네임, 점수] 순의 배열로 정리한다.
 //[]사용자별 친구 추천 점수를 계산한다. 
-//  []user와 공통의 친구를 가진 케이스들을 relavantUser에 저장한다
+//  [x]user와 공통의 친구를 가진 케이스들을 relavantUser에 저장한다
 //  []relavantUser에 저장된 건수별로 해당 사용자에게 10점을 추가한다.
 //  []visitors 배열에서 유저와 이미 친구인 사용자를 삭제한다.
 //  []visitorList에서 출현하는 횟수만큼 해당 사용자에게 1점을 추가한다.
