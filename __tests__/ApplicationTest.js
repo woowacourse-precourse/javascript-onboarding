@@ -117,6 +117,26 @@ describe("problem5", () => {
   });
 });
 
+const makeEmail = (index) => {
+  const alphabet = "abcdefghij";
+
+  return 'aaaaa'
+    + alphabet[~~(index % 10000 / 1000)]
+    + alphabet[~~(index % 1000 / 100)]
+    + alphabet[~~(index % 100 / 10)]
+    + alphabet[~~(index % 10 / 1)]
+    + "@email.com"
+};
+
+const makeNickname = (index) => {
+  const first = "가".charCodeAt(0);
+  const bound = "힣".charCodeAt(0) - "가".charCodeAt(0) + 1;
+
+  return String.fromCharCode(...Array(19).fill().map((_, chIndex) => {
+    return first + (index + (1 << chIndex)) % bound;
+  }));
+};
+
 describe("problem6", () => {
   test("case1", () => {
     expect(
@@ -139,19 +159,19 @@ describe("problem6", () => {
         ["Mj@email.com", "엠제이"],
         ["nowm@email.com", "이제엠"],
       ])
-    ).toEqual(["jason@email.com", "jm@email.com", "Mj@email.com"]);
+    ).toEqual(["Mj@email.com", "jason@email.com", "jm@email.com"]);
   });
 
   test("case3", () => {
     expect(
       problem6([
-        ["j123456789789789@email.com", "제이엠"],
+        ["j12345678@email.com", "제이엠"],
         ["jason@email.com", "제이슨"],
         ["woniee@email.com", "워니"],
-        ["mj@email.com", "엠제이"],
+        ["Mj@email.com", "엠제이"],
         ["nowm@email.com", "이제엠"],
       ])
-    ).toEqual(["jason@email.com", "j123456789789789@email.com", "Mj@email.com"]);
+    ).toEqual(["Mj@email.com", "j12345678@email.com", "jason@email.com"]);
   });
 
   test("case4", () => {
@@ -166,27 +186,7 @@ describe("problem6", () => {
     ).toEqual([]);
   });
 
-  const makeEmail = (index) => {
-    const alphabet = "abcdefghij";
-
-    return 'aaaaa'
-      + alphabet[~~(index % 10000 / 1000)]
-      + alphabet[~~(index % 1000 / 100)]
-      + alphabet[~~(index % 100 / 10)]
-      + alphabet[~~(index % 10 / 1)]
-      + "@email.com"
-  };
-
-  const makeNickname = (index) => {
-    const first = "가".charCodeAt(0);
-    const bound = "힣".charCodeAt(0) - "가".charCodeAt(0) + 1;
-
-    return String.fromCharCode(...Array(19).fill().map((_, chIndex) => {
-      return first + (index + (1 << chIndex)) % bound;
-    }));
-  };
-
-  test("case2", () => {
+  test("case5", () => {
     expect(
       problem6([
         ["jm@email.com", "제이엠"],
@@ -220,7 +220,7 @@ describe("problem6", () => {
     ]);
   });
 
-  test("case4", () => {
+  test("case6", () => {
     expect(
       problem6(
         Array(10000).fill().map((_, index) => {
@@ -229,24 +229,24 @@ describe("problem6", () => {
       )
     ).toEqual([]);
   });
-});
 
-test("case5", () => {
-  expect(
-    problem6(
-      Array(10000).fill().map((_, index) => {
-        return [
-          makeEmail(index),
-          (index % 2500 !== 0) ? makeNickname(index) : makeNickname(index).substring(0, 16) + '우테코',
-        ];
-      })
-    )
-  ).toEqual([
-    "aaaaaaaaaa@email.com",
-    "aaaaaacfaa@email.com",
-    "aaaaaafaaa@email.com",
-    "aaaaaahfaa@email.com",
-  ]);
+  test("case7", () => {
+    expect(
+      problem6(
+        Array(10000).fill().map((_, index) => {
+          return [
+            makeEmail(index),
+            (index % 2500 !== 0) ? makeNickname(index) : makeNickname(index).substring(0, 16) + '우테코',
+          ];
+        })
+      )
+    ).toEqual([
+      "aaaaaaaaa@email.com",
+      "aaaaacfaa@email.com",
+      "aaaaafaaa@email.com",
+      "aaaaahfaa@email.com",
+    ]);
+  });
 });
 
 describe("problem7", () => {
