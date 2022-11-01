@@ -1,5 +1,15 @@
 function problem4(word) {
-  var answer;
+  let answer = "";
+  let reverse = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
+  for (let i=0; i<word.lenth; i++) {
+    let char = word[i];
+    if ("a" <= char.toLowerCase() && char.toLowerCase() <= "z") {
+      
+    } else {
+      answer += char;
+    }
+  }
   return answer;
 }
 
