@@ -15,14 +15,14 @@ const getReverseConvertedString = (word) => {
   const lowerCases = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const upperCases = lowerCases.map((alphabet) => alphabet.toUpperCase());
 
-  return Array.from(word)
-    .map((chr) => {
-      if (!isAlphabet(chr)) {
-        return chr;
-      }
-      return lowerCases.includes(chr) ? reverseAlphabet(chr, lowerCases, 122) : reverseAlphabet(chr, upperCases, 90);
-    })
-    .join("");
+  const reverseConvertedAlphabets = Array.from(word).map((chr) => {
+    if (!isAlphabet(chr)) {
+      return chr;
+    }
+    return lowerCases.includes(chr) ? reverseAlphabet(chr, lowerCases, 122) : reverseAlphabet(chr, upperCases, 90);
+  });
+
+  return reverseConvertedAlphabets.join("");
 };
 
 const isAlphabet = (chr) => {
