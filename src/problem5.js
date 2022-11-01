@@ -16,6 +16,18 @@ function moneyExchange(money, unit, answer) {
 
 function problem5(money) {
   if (isException(money)) return;
+  let answer = [];
+
+  money = moneyExchange(money, 50000, answer);
+  money = moneyExchange(money, 10000, answer);
+  money = moneyExchange(money, 5000, answer);
+  money = moneyExchange(money, 1000, answer);
+  money = moneyExchange(money, 500, answer);
+  money = moneyExchange(money, 100, answer);
+  money = moneyExchange(money, 50, answer);
+  money = moneyExchange(money, 10, answer);
+  moneyExchange(money, 1, answer);
+  return answer;
 }
 
 module.exports = problem5;
