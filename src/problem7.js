@@ -95,16 +95,13 @@ function problem7(user, friends, visitors) {
     }
   });
 
+
   answer.forEach(a => {
-    if(friendsShip[user]!== undefined &&!friendsShip[user].friends.includes(a.name)){
-      // user랑 이미 친구인 user 제외
-      if(result.length < 5){
-        result.push(a.name);
-      }
-    }
-    else{
-      if(result.length < 5){
-        result.push(a.name);
+    if(friendsShip[user]!== undefined){
+      if(!friendsShip[user].friends.includes(a.name)){
+        if(result.length < 5){
+          result.push(a.name);
+        }
       }
     }
   });
