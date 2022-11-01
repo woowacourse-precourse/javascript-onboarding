@@ -1,6 +1,18 @@
 function problem4(word) {
-  var answer;
-  return answer;
+  let result = '';
+  for (const char of word) {
+    if (isUpperAlphabet(char)) {
+      result += encryptUpperAlphabet(char)
+    } else if (isLowerAlphabet(char)) {
+      result += encryptLowerAlphabet(char)
+    } else {
+      result += char
+    }
+  }
+
+  return result;
+}
+
 const isUpperAlphabet = (char) => {
   const regExp = /[A-Z]/g; // 영어
   return regExp.test(char);
