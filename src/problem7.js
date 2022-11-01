@@ -22,8 +22,22 @@ function problem7(user, friends, visitors) {
   };
 
   const friendsDict = getFirends(friends);
-  console.log(friendsDict);
 
+  // 자신 제외 사람들 점수 dict 생성
+  const scoreDict = {};
+  Object.keys(friendsDict).forEach((value) => {
+    if (value !== user) {
+      scoreDict[value] = 0;
+      // 유저의 친구 목록과 비교하면서 함께하는 친구 찾기
+      friendsDict[value].forEach((friend) => {
+        if (friendsDict[user].includes(friend)) {
+          scoreDict[value] += 10;
+        }
+      });
+    }
+  });
+
+  console.log(scoreDict);
   return answer;
 }
 problem7(
