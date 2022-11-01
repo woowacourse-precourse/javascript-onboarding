@@ -55,4 +55,13 @@ function exchangeTo500(money) {
   return cnt;
 }
 
+function exchangeTo100(money) {
+  const HUNDRED = 100;
+  while (money >= HUNDRED) {
+    cnt += 1;
+    money -= HUNDRED;
+  }
+  return cnt;
+}
+
 module.exports = problem5;
