@@ -56,7 +56,9 @@ function problem4(word) {
     " ": " ",
   };
 
-  const reversedWords = word.split("").map((word) => word_object[word]);
+  const reversedWords = word
+    .split("")
+    .map((word) => (word_object[word] ? word_object[word] : word));
   answer = reversedWords.join("");
   return answer;
 }
