@@ -36,6 +36,29 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  let cnt = 0;
+  let friend_suggest_lst = [];
+  for (let key of Object.keys(friend_suggest)) {
+    friend_suggest_lst.push([key,friend_suggest[key]])
+  }
+  friend_suggest_lst.sort((a, b) => {
+    if (a[1] < b[1]) {
+      return 1;
+    }
+    else if (a[1] > b[1]) {
+      return -1;
+    }
+    else{
+      if (a[0] > b[0]) {
+        return 1;
+      }
+      else if (a[0] < b[0]) {
+        return -1;
+      }
+    }
+    return 0;
+  });
+
   return answer;
 }
 
