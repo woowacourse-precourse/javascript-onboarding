@@ -5,7 +5,7 @@ function problem6(forms) {
     const [emailI, nicknameI] = forms[i];
 
     for (var j = 0; j < nicknameI.length - 1; ++j) {
-      const testCase = nicknameI.slice(j, j + 1);
+      const testCase = nicknameI.slice(j, j + 2);
 
       for (var k = i + 1; k < forms.length; ++k) {
         const [emailK, nicknameK] = forms[k];
