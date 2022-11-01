@@ -1,5 +1,5 @@
 function problem6(forms) {
-  const duplicateEmail = getduplicateEmail(forms);
+  const duplicateEmail = getDuplicateEmail(forms);
 
   return duplicateEmail;
 }
@@ -14,7 +14,7 @@ function getConsecutiveLetters(nickname) {
   return consecutiveLetters;
 }
 
-function getduplicateEmail(forms) {
+function getDuplicateEmail(forms) {
   const allConsecutiveLetters = {};
   const duplicateEmail = new Set();
 
