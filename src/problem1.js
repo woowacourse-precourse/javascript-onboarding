@@ -3,6 +3,21 @@ function problem1(pobi, crong) {
   return answer;
   pobiMax = makePage(pobi);
   crongMax = makePage(crong);
+function solving(pomax, crmax, pobiArray, crongArray) {
+  //결과값 or 예외처리
+  if (pobiArray[0] + 1 !== pobiArray[1]) return -1;
+  if (crongArray[0] + 1 !== crongArray[1]) return -1;
+  if (
+    pobiArray[0] === 1 ||
+    pobiArray[1] === 400 ||
+    crongArray[0] === 1 ||
+    crongArray[1] === 400
+  )
+    return -1;
+  if (pomax > crmax) return 1;
+  if (pomax < crmax) return 2;
+  if (pomax === crmax) return 0;
+}
 function multi(multiArray) {
   const result = multiArray.reduce(function (multi, cur) {
     return multi * cur;
