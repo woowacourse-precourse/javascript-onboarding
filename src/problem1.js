@@ -57,7 +57,31 @@ function find_winner(pobi_score, crong_score) {
 
 function problem1(pobi, crong) {
   var answer;
-  
+  if (exception(pobi) || exception(crong))
+    answer = -1;
+  else {
+    var pobi_left = digit(pobi[LEFT_PAGE]);
+    var pobi_right = digit(pobi[RIGHT_PAGE]);
+    var crong_left = digit(crong[LEFT_PAGE]);
+    var crong_right = digit(crong[RIGHT_PAGE]);
+
+    var pobi_left_score_plus = plus(pobi_left);
+    var pobi_left_score_multiple = multiple(pobi_left);
+    var pobi_right_score_plus = plus(pobi_right);
+    var pobi_right_score_multiple = multiple(pobi_right);
+
+    var pobi_score = Math.max(pobi_left_score_plus, pobi_left_score_multiple, pobi_right_score_plus, pobi_right_score_multiple);
+
+    var crong_left_score_plus = plus(crong_left);
+    var crong_left_score_multiple = multiple(crong_left);
+    var crong_right_score_plus = plus(crong_right);
+    var crong_right_score_multiple = multiple(crong_right);
+
+    var crong_score = Math.max(crong_left_score_plus, crong_left_score_multiple, crong_right_score_plus, crong_right_score_multiple);
+
+    answer = find_winner(pobi_score, crong_score);
+
+  }
 
   return answer;
 }
