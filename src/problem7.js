@@ -49,6 +49,12 @@ function problem7(user, friends, visitors) {
     else recommendedCandidate[visitor].score++;
   })
 
+  let positiveScoreCandidate = [];
+  for (const key in recommendedCandidate) {
+    if (userInfo.friends.includes(key)) continue;
+    if (recommendedCandidate[key].score > 0) positiveScoreCandidate.push(key);
+  }
+
   return answer;
 }
 
