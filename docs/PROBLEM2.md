@@ -24,4 +24,7 @@
 
 ---
 ### 기능 목록
-1. cryptogramd을 순회하면서 char가 이전 문자와 같지않고 stack의 마지막 문자와 같지 않을때만 stack 배열에 넣어줌 이 조건을 만족하지 않지만 char가 stack의 마지막 문자와 같을때는 pop
+
+case 1. stack 배열에 넣는 경우
+
+case 2. stack 배열에서 빼는 경우

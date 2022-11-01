@@ -4,6 +4,7 @@ function problem2(cryptogram) {
 
   for (const char of cryptogram) {
     const lastChar = stack[stack.length - 1];
+    
     if (char !== lastChar && char !== prev) {
       stack.push(char);
       prev = char
