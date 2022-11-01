@@ -1,6 +1,5 @@
 /**
  * @param {number} digits
- * @returns number
  */
 function getSumOfDigits(digits) {
   let sum = 0;
@@ -12,7 +11,6 @@ function getSumOfDigits(digits) {
 
 /**
  * @param {number} digits
- * @returns number
  */
 function getProductOfDigits(digits) {
   let product = 1;
@@ -20,6 +18,15 @@ function getProductOfDigits(digits) {
     product *= Number(digit);
   }
   return product;
+}
+
+/**
+ * @param {number} a
+ * @param {number} b
+ */
+function getGreaterNumber(a, b) {
+  if (a === b) return;
+  return a > b ? a : b;
 }
 
 function problem1(pobi, crong) {
