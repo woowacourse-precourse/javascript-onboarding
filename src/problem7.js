@@ -8,6 +8,8 @@
 // - [o] count가 큰 순서대로 정렬한다.
 //   - [o] 단, 점수가 같은 경우 이름순으로 정렬한다.
 //   - [o] 정렬된 배열을 5개로 잘라 이름만 return 하도록 한다.
+// 추가작업
+// - [o] user의 친구끼리 친구인 경우 candidate에 push 하지 않는다.
 
 function problem7(user, friends, visitors) {
   let answer;
@@ -22,37 +24,31 @@ function problem7(user, friends, visitors) {
 
   let candidate = {};
   let count = 10;
+
+  function pushCandidate(usersFriendsFriend, usersFriend) {
+    let isUsersFriend = false;
+    for (let i = 0; i < usersFriend.length; i++) {
+      if (usersFriendsFriend == usersFriend[i]) { // user의 친구의 친구가 user의 친구인 경우..
+        isUsersFriend = true;
+      }
+    }
+    if (!isUsersFriend) {
+      if (!candidate[usersFriendsFriend]) {
+        candidate[usersFriendsFriend] = count;
+      } else {
+        candidate[usersFriendsFriend] += count;
+      }
+    }
+  }
   
   for (let i = 0; i < usersFriend.length; i++) {
     for (let j = 0; j < friends.length; j++) {
       if (usersFriend[i] == friends[j][0] && friends[j][1] !== user) {
-        let isUsersFriend = false;
-        for (let k = 0; k < usersFriend.length; k++) {
-          if (friends[j][1] == usersFriend[k]) {
-            isUsersFriend = true;
-          }
-        }
-        if (!isUsersFriend) {
-          if (!candidate[friends[j][1]]) {
-            candidate[friends[j][1]] = count;
-          } else {
-            candidate[friends[j][1]] += count;
-          }
-        }
+        let usersFriendsFriend = friends[j][1];
+        pushCandidate(usersFriendsFriend, usersFriend);
       } else if (usersFriend[i] == friends[j][1] && friends[j][0] !== user) {
-        let isUsersFriend = false;
-        for (let k = 0; k < usersFriend.length; k++) {
-          if (friends[j][0] == usersFriend[k]) {
-            isUsersFriend = true;
-          }
-        }
-        if (!isUsersFriend) {
-          if (!candidate[friends[j][0]]) {
-            candidate[friends[j][0]] = count;
-          } else {
-            candidate[friends[j][0]] += count;
-          }
-        }
+        let usersFriendsFriend = friends[j][0];
+        pushCandidate(usersFriendsFriend, usersFriend);
       }
     }
   }
