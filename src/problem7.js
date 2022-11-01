@@ -48,6 +48,17 @@ function problem7(user, friends, visitors) {
       if (recommendUsers[visitor] !== undefined) recommendUsers[visitor] += 1;
       else recommendUsers[visitor] = 1
   }
+
+  // 추천할 친구 목록에서 이름만 추출하여 배열 생성
+  const recommendUsersName = Object.keys(recommendUsers);
+
+  // 정렬 로직 (점수 내림차순 및 점수 동일 시 사전순)
+  const sortByScores = (a,b) => {
+    const scoreA = recommendUsers[a];
+    const scoreB = recommendUsers[b];
+    if (scoreA === scoreB) return a - b;
+    else scoreB - scoreA;
+  }
 }
 
 module.exports = problem7;
