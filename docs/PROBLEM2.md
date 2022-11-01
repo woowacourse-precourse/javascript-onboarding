@@ -22,3 +22,11 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+<hr>
+
+### 기능 목록
+
+1. 변수 선언: 암호 해독문을 최종적으로 저장할 문자열 answer, 암호문(cryptogram)을 문자 하나씩 쪼갠 문자 배열 cryptoArray, 암호문을 해독하여 연속되는 반복 문자를 제거한 결과 배열 decrypt.
+2. delRepitition(): 암호 문자 배열 cryptoArray를 인자로 받아, 해당 배열 내에서 연속되는 반복 문자를 검사하고 연속성이 존재하는 문자들은 repeatedLetter 배열에 저장하여 이후 문자에 대해 검사에 활용 후 제거하고 연속성이 확인되지 않은 문자들은 decrypted 배열에 저장하여 반환하는 함수이다.
+3. delReptition()을 수행한 문자 배열과 이전에 수행한 문자 배열의 값이 동일할 때까지 반복한다.
+4. 최종적으로 추출한 결과 배열(decrypt)을 문자열로 변환하여 answer에 저장하고 반환한다.
