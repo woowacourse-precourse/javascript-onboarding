@@ -124,16 +124,4 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-const user = "mrko";
-const friends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-console.log(problem7(user, friends, visitors));
-
 module.exports = problem7;
