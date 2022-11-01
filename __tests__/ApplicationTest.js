@@ -52,6 +52,18 @@ describe("problem5", () => {
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+
+  test("case3", () => {
+    expect(problem5(49999)).toEqual([0, 4, 1, 4, 1, 4, 1, 4, 9]);
+  });
+
+  test("case4", () => {
+    expect(problem5(1)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 1]);
+  });
+
+  test("case5", () => {
+    expect(problem5(1000000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
 });
 
 describe("problem6", () => {
@@ -68,7 +80,7 @@ describe("problem6", () => {
   });
 });
 
-describe("problem7", () => {
+describe.only("problem7", () => {
   test("case1", () => {
     expect(
       problem7(
@@ -84,5 +96,15 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [["mrko", 'jun'], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["jun", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(['andole', 'bedi']);
   });
 });
