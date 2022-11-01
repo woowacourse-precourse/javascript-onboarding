@@ -1,6 +1,6 @@
 function problem3(number) {
   if (!Number.isInteger(number) || number < 1 || number > 1000) {
-    return 0;
+    return false;
   }
 
   const numString = Array(number)
