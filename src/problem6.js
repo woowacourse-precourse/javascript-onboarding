@@ -18,6 +18,19 @@ const checkNick=(n1, n2)=>{
 //2. for문을 통해 하나씩 checkNick(n1, n2)
 //  ** 이전에 비교한 닉네임은 비교하지 않음 **
 //수정 필요 : indexOf() 변경, depth 줄이기..
+
+function makeChecklist(forms){
+    forms.sort((x,y)=>x[1].length-y[1].length);
+    const checklist = {};
+    forms.forEach((form,index)=>{
+        checklist[form[1]] = [];
+        for (let i=forms.length-1; i>index; i--){
+            checklist[form[1]].push(forms[i][1])
+        }
+    })
+    return checklist;
+}
+
 function problem6(forms) {
   let result = [];
   let idx = count = 0;
@@ -41,3 +54,13 @@ function problem6(forms) {
   return result;
 }
 module.exports = problem6;
+
+console.log(
+    problem6([
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+);
