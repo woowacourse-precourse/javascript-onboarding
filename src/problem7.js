@@ -26,7 +26,20 @@ function problem7(user, friends, visitors) {
   }
 
   result = Array.from(userName.entries())
-  result.sort((a, b) => (b[1] - a[1]));
+  result.sort(function (a, b) {
+    if (a[1] < b[1]) {
+      return 1;
+    } 
+    if (a[1] > b[1]) {
+      return -1;
+    }
+    if (a[0] > b[0]) {
+      return 1;
+    } 
+    if (a[0] < b[0]) {
+      return -1;
+    }
+  })
   answer = [];
   for (person of result) {
     answer.push(person[0]);
