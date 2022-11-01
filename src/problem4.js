@@ -8,7 +8,10 @@ function problem4(word) {
 
       const ascii = ch.toUpperCase().charCodeAt() - 65;
       const reverse = String.fromCharCode(90 - ascii);
+
+      return isUpper ? reverse : reverse.toLowerCase();
     })
+    .join("");
 }
 
 module.exports = problem4;
