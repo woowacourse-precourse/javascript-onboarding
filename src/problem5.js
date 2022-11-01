@@ -67,6 +67,7 @@ function exchangeTo10000(money) {
 
 function exchangeTo5000(money) {
   const FIVETHOUSAND = 5000;
+  let cnt = 0;
   while (money >= FIVETHOUSAND) {
     cnt += 1;
     money -= FIVETHOUSAND;
@@ -76,6 +77,7 @@ function exchangeTo5000(money) {
 
 function exchangeTo1000(money) {
   const TENTHOUSAND = 1000;
+  let cnt = 0;
   while (money >= TENTHOUSAND) {
     cnt += 1;
     money -= TENTHOUSAND;
@@ -85,6 +87,7 @@ function exchangeTo1000(money) {
 
 function exchangeTo500(money) {
   const FIVEHUNDRED = 500;
+  let cnt = 0;
   while (money >= FIVEHUNDRED) {
     cnt += 1;
     money -= FIVEHUNDRED;
@@ -94,6 +97,7 @@ function exchangeTo500(money) {
 
 function exchangeTo100(money) {
   const HUNDRED = 100;
+  let cnt = 0;
   while (money >= HUNDRED) {
     cnt += 1;
     money -= HUNDRED;
@@ -103,6 +107,7 @@ function exchangeTo100(money) {
 
 function exchangeTo50(money) {
   const FIFTY = 50;
+  let cnt = 0;
   while (money >= FIFTY) {
     cnt += 1;
     money -= FIFTY;
@@ -112,6 +117,7 @@ function exchangeTo50(money) {
 
 function exchangeTo10(money) {
   const TEN = 10;
+  let cnt = 0;
   while (money >= TEN) {
     cnt += 1;
     money -= TEN;
@@ -121,6 +127,7 @@ function exchangeTo10(money) {
 
 function exchangeTo1(money) {
   const ONE = 1;
+  let cnt = 0;
   while (money >= ONE) {
     cnt += 1;
     money -= ONE;
