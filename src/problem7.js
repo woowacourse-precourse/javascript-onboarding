@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const friendsOb = {};
+  const scoreOb = {};
 
   friends.map((friendRelationship) => {
     const [A, B] = friendRelationship;
@@ -22,7 +23,18 @@ function problem7(user, friends, visitors) {
     delete friendsOb[user];
   });
 
-  return friendsOb;
+  const finishFreindsArr = Object.entries(friendsOb);
+  finishFreindsArr.map((friend) => {
+    const [key, arr] = friend;
+    const intersectionLength = arr.filter((x) =>
+      userFriendsArr.includes(x)
+    ).length;
+    if (intersectionLength > 0) {
+      scoreOb[key] = intersectionLength * 10;
+    }
+  });
+
+  return scoreOb;
 }
 
 module.exports = problem7;
