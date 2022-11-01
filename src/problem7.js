@@ -27,9 +27,15 @@ function getAcquaintanceScore(user, friends, friendList) {
   const acquaintance = {};
   for (let x = 0; x < friends.length; x++) {
     if (!friends[x].includes(user)) {
-      if (friendList.includes(friends[x][0]))
+      if (
+        friendList.includes(friends[x][0]) &&
+        !friendList.includes(friends[x][1])
+      )
         applyScore(acquaintance, friends[x][1]);
-      if (friendList.includes(friends[x][1]))
+      if (
+        friendList.includes(friends[x][1]) &&
+        !friendList.includes(friends[x][0])
+      )
         applyScore(acquaintance, friends[x][0]);
     }
   }
