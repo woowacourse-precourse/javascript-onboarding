@@ -1,4 +1,4 @@
-function scoreCalculator(score) {
+function scoreCalculation(score) {
   score = score.toString();
 
   let ans;
@@ -34,10 +34,10 @@ function problem1(pobi, crong) {
 
   let pobiScore, crongScore;
 
-  pLeftScore = scoreCalculator(pobi[0]);
-  pRightScore = scoreCalculator(pobi[1]);
-  cLeftScore = scoreCalculator(crong[0]);
-  cRightScore = scoreCalculator(crong[1]);
+  pLeftScore = scoreCalculation(pobi[0]);
+  pRightScore = scoreCalculation(pobi[1]);
+  cLeftScore = scoreCalculation(crong[0]);
+  cRightScore = scoreCalculation(crong[1]);
 
   pobiScore = Math.max(pLeftScore, pRightScore);
   crongScore = Math.max(cLeftScore, cRightScore);
