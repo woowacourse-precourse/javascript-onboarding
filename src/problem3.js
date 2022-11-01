@@ -7,8 +7,12 @@
 // number => int, 1~10'000
 // return => 손뼉 총 횟수
 function problem3(number) {
-	var answer;
-	return answer;
+	var curr = 1, ans=0;
+	while(curr <= number) {
+		ans += getClap(curr); curr++;
+	}
+
+	return ans;
 }
 
 // 1. 특정 숫자 손뼉 몇 번 산출 기능
