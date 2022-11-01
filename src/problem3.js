@@ -1,16 +1,15 @@
 function problem3(number) {
   var answer;
-
-  const numArr = number.toString().split("");
-  const tens = parseInt(numArr[0]);
-  const units = parseInt(numArr[1]);
-
-  const quotient = parseInt(number / 3);
-  if (tens % 3 === 0) {
-    answer = quotient + units + 1 - parseInt(units / 3);
-  } else {
-    answer = quotient;
+  let count = 0;
+  for (let i = 1; i <= number; i++) {
+    const stringArr = i.toString().split("");
+    stringArr.forEach((string) => {
+      if (string === "3" || string === "6" || string === "9") {
+        count = count + 1;
+      }
+    });
   }
+  answer = count;
   return answer;
 }
 
