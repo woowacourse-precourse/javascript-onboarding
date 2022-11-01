@@ -10,6 +10,11 @@ function problem6(forms) {
   }
   for (let j = 0; j < nickName[i].length - 1; j++) {
     nickNameTwoWords = nickName[i].substring(j, j + 2);
+
+    if (duplicationCount[nickNameTwoWords]) {
+      duplicationCount[nickNameTwoWords] += 1;
+      continue;
+    } else duplicationCount[nickNameTwoWords] = 1;
   }
 }
 
