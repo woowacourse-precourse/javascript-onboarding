@@ -90,6 +90,20 @@ const problem7 = (user, friends, visitors) => {
     }
   }
 
+  // 방문자 점수 도출
+  visitors.forEach((singleVisitor) => {
+    if (!userFriendList.includes(singleVisitor)) {
+      if (pointListMap.has(singleVisitor)) {
+        pointListMap.set(
+          singleVisitor,
+          pointListMap.get(singleVisitor) + VISITOR_POINT
+        );
+      } else {
+        pointListMap.set(singleVisitor, VISITOR_POINT);
+      }
+    }
+  });
+
   return answer;
 };
 
