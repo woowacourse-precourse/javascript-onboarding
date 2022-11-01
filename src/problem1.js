@@ -1,22 +1,21 @@
 function problem1(pobi, crong) {
   var answer;
+  const [leftPobiBookNumber, rightPobiBookNumber] = pobi;
+  const [leftCrongBookNumber, rightCrongBookNumber] = crong;
 
-  // 책의 길이가 2가 넘는 경우
   if (pobi.length !== 2 || crong.length !== 2) return -1;
 
-  // 왼쪽 페이지, 오른쪽 페이지가 순서대로 들어있다. ( 둘의 차가 1이다. )
   const subtractBookPage = (array) =>
     array.reduce((previousValue, currentValue) => currentValue - previousValue);
   if (subtractBookPage(pobi) !== 1 || subtractBookPage(crong) !== 1) return -1;
 
-  // 책의 좌측페이지는 홀수, 우측페이지는 짝수여야 한다.
   const isOddOrEven = (number) => (number % 2 === 0 ? "even" : "odd");
 
   if (
-    isOddOrEven(pobi[0]) !== "odd" ||
-    isOddOrEven(crong[0]) !== "odd" ||
-    isOddOrEven(pobi[1]) !== "even" ||
-    isOddOrEven(pobi[1]) !== "even"
+    isOddOrEven(leftPobiBookNumber) !== "odd" ||
+    isOddOrEven(leftCrongBookNumber) !== "odd" ||
+    isOddOrEven(rightPobiBookNumber) !== "even" ||
+    isOddOrEven(rightCrongBookNumber) !== "even"
   )
     return -1;
 
@@ -32,13 +31,15 @@ function problem1(pobi, crong) {
   };
 
   const pobiValue =
-    compareSumAndMultiply(pobi[0]) > compareSumAndMultiply(pobi[1])
-      ? compareSumAndMultiply(pobi[0])
-      : compareSumAndMultiply(pobi[1]);
+    compareSumAndMultiply(leftPobiBookNumber) >
+    compareSumAndMultiply(rightPobiBookNumber)
+      ? compareSumAndMultiply(leftPobiBookNumber)
+      : compareSumAndMultiply(rightPobiBookNumber);
   const crongValue =
-    compareSumAndMultiply(crong[0]) > compareSumAndMultiply(crong[1])
-      ? compareSumAndMultiply(crong[0])
-      : compareSumAndMultiply(crong[1]);
+    compareSumAndMultiply(leftCrongBookNumber) >
+    compareSumAndMultiply(rightCrongBookNumber)
+      ? compareSumAndMultiply(leftCrongBookNumber)
+      : compareSumAndMultiply(rightCrongBookNumber);
 
   answer = pobiValue - crongValue;
   if (answer > 0) return 1;
