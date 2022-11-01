@@ -114,8 +114,23 @@ describe('problem3', () => {
   test('case1', () => {
     expect(problem3(13)).toEqual(4);
   });
+
   test('case2', () => {
     expect(problem3(33)).toEqual(14);
+  });
+
+  test('333 테스트', () => {
+    expect(problem3(333)).toEqual(228);
+  });
+
+  test('2 테스트', () => {
+    expect(problem3(2)).toEqual(0);
+  });
+
+  test('받은 number는 1 이상 10,000 이하인 자연수이다.', () => {
+    expect(problem3(5.6)).toEqual('ERROR');
+    expect(problem3(0)).toEqual('ERROR');
+    expect(problem3(10040)).toEqual('ERROR');
   });
 });
 
