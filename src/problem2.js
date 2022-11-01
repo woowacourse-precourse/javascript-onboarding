@@ -35,6 +35,11 @@ function problem2(cryptogram) {
   let cryptoArray = cryptogram.split(""); //암호문을 문자 배열로 쪼갠다.
   let decrypt = []; //암호문 해독 문자열(반복 문자를 제거한 결과 배열)
 
+  while (decrypt.join("") !== delRepitition(decrypt).join("")) {
+    // 현재 가지고 있는 해독문과 이를 다시 연속 반복 문자를 제거 연산을 거친 해독문이 같을 때까지
+    decrypt = delRepitition(decrypt); //해당 문자 배열에 대해 연속 반복 문자 제거를 수행한다.
+  }
+
   return answer;
 }
 
