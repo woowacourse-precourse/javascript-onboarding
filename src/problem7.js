@@ -16,6 +16,24 @@ function makeFriendList(friends) {
   return friendList;
 }
 
+const getFriendsScore = (user, friendList, friendsScoreList) => {
+  let userFriends = friendList[user];
+
+  userFriends.forEach((friend) => {
+    let mutualFriend = friendList[friend];
+
+    mutualFriend.forEach((friend) => {
+      friendsScoreList[friend]
+        ? (friendsScoreList[friend] += 10)
+        : (friendsScoreList[friend] = 10);
+    });
+  });
+
+  delete friendsScoreList[user];
+
+  return friendsScoreList;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
