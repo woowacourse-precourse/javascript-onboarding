@@ -24,12 +24,12 @@ const removeDupUsers =
       return array.filter((v) => users.indexOf(v) === -1);
     };
 
-const findExisting = (array, obj) => array.find(({name}) => name === obj);
+const findNameExisting = (array, obj) => array.find(({name}) => name === obj);
 
 const recordScore = (friends) => {
   return friends.reduce((reduced, friend) => {
     const copy = [ ...reduced ];
-    const existing = findExisting(copy, friend)
+    const existing = findNameExisting(copy, friend)
     if (existing) existing.score += 10;
     else copy.push({name: friend, score: 10})
     return copy;
@@ -40,7 +40,7 @@ const addVisitScore = (visitors) => (scores) => {
   const copiedScores = [ ...scores ];
   return visitors.reduce((reduced, visitor) => {
     const copy = [ ...reduced ];
-    const existing = findExisting(reduced, visitor);
+    const existing = findNameExisting(reduced, visitor);
     if (existing) existing.score+=1;
     else copy.push({name: visitor, score: 1})
     return copy;
