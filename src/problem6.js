@@ -1,27 +1,38 @@
 function problem6(forms) {
-  let wordArray = checkDuplicateWord(forms);
-  return Object.keys(removeDuplicateArray(wordArray)).sort();
-}
-function checkDuplicateWord(forms) {
-  const result = [];
-  forms.forEach((element, startPoint) => {
-    for (let i = startPoint + 1; i < forms.length; i++) {
-      for (let j = 0; j < element[1].length - 1; j++) {
-        if (forms[i][1].search(element[1].substr(j, 2)) !== -1) {
-          result.push(element, forms[i]);
-        }
-      }
-    }
-  });
-  return result;
+  return checkOverlap(forms);
 }
 
-function removeDuplicateArray(wordArray) {
-  let wordObject = wordArray.reduce((obj, curr) => {
-    obj[curr[0]] = "a";
-    return obj;
-  }, {});
-  return wordObject;
+function substrNickName(nickName) {
+  const nicknameArray = [];
+  for (let i = 0; i < nickName.length - 1; i++) {
+    nicknameArray.push(nickName.substring(i, i + 2));
+  }
+
+  return nicknameArray;
+}
+
+function checkOverlapNickname(form, overlapArray, overlapSet) {
+  const nicknameArray = substrNickName(form[1]);
+  for (let i = 0; i < nicknameArray.length; i++) {
+    if (overlapSet.has(nicknameArray[i])) {
+      overlapArray.push(form[0]);
+    }
+    overlapSet.add(nicknameArray[i]);
+  }
+}
+
+function checkOverlap(forms) {
+  const overlapSet = new Set();
+  const overlapArray = [];
+  for (let i = 0; i < forms.length; i++) {
+    checkOverlapNickname(forms[i], overlapArray, overlapSet);
+  }
+  overlapSet.clear();
+  for (let i = forms.length - 1; i >= 0; i--) {
+    checkOverlapNickname(forms[i], overlapArray, overlapSet);
+  }
+  const returnSet = new Set(overlapArray);
+  return [...returnSet].sort();
 }
 
 module.exports = problem6;
