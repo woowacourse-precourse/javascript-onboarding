@@ -1,5 +1,8 @@
 function problem1(pobi, crong) {
   let answer = 0;
+  if (pobi % 2 === 0) {
+    return -1
+  }
   if (pobi[0] + 1 === pobi[1]) {
     if (crong[0] + 1 === crong[1]) {
       let answer_pobi = 0;
