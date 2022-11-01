@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 기능 목록
+
+- 연속하는 문자 제거하는 기능
