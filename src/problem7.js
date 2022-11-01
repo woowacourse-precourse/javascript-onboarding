@@ -16,3 +16,26 @@ function getUserRelationMap(friendsList, user){
   return userSet;
 }
 
+function getFriendMap(userSet, friendsList, userName){
+  let friendMap = new Map();
+  userSet.forEach(userFriend => {
+    friendsList.filter(friend => 
+      friend.indexOf(userFriend) !== -1 && friend.indexOf(userName) === -1
+    ).forEach(friend => {
+      if(friend[0]===userFriend){
+        if(friendMap.has(friend[1])){
+          friendMap.set(friend[1], friendMap.get(friend[1])+10);
+        }else{
+          friendMap.set(friend[1],10)
+        }
+      }else{
+        if(friendMap.has(friend[0])){
+          friendMap.set(friend[0], friendMap.get(friend[0])+10);
+        }else{
+          friendMap.set(friend[0],10)
+        }
+      }
+    })
+  })
+  return friendMap;
+}
