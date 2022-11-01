@@ -14,5 +14,6 @@ function Encoding(ascii) {
   if (ascii >= 97 && ascii <= 122) {
     return String.fromCharCode(122-(ascii-97));
   }
+  return String.fromCharCode(ascii);
 }
 module.exports = problem4;
