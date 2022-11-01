@@ -10,14 +10,10 @@ function problem1(pobi, crong) {
   const crongScore = [];
   crong.forEach(page => crongScore.push(pageScore(page)));
 
-  // 포비와 크롱의 점수를 비교하여 결과 값 return
-  if (Math.max(...pobiScore) > Math.max(...crongScore)) {
-    return 1;
-  } else if (Math.max(...pobiScore) < Math.max(...crongScore)) {
-    return 2;
-  } else if (Math.max(...pobiScore) === Math.max(...crongScore)) {
-    return 0;
-  }        
+  const pobiResultScore = Math.max(...pobiScore);
+  const crongResultScore = Math.max(...crongScore);
+
+  return gameWinner(pobiResultScore, crongResultScore);        
 }
 
 // 페이지의 예외처리
@@ -33,6 +29,19 @@ function pageScore(page) {
   const mul = pageSplit.reduce((fir, idx) => fir * idx/1, 1);
 
   return Math.max(add, mul);
+}
+
+function gameWinner(pobiResultScore, crongResultScore) {
+  let winner = 0;
+  if (pobiResultScore > crongResultScore) {
+    winner = 1;
+  } else if (pobiResultScore < crongResultScore) {
+    winner = 2;
+  } else if (pobiResultScore === crongResultScore) {
+    winner = 0;
+  }  
+
+  return winner;
 }
 
 module.exports = problem1;
