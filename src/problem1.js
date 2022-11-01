@@ -5,10 +5,25 @@ function problem1(pobi, crong) {
 
   //실패 조건 검사
   if(
-    (pobi[0] > 400 || pobi[1] > 400 || crong[0] > 400 || crong[1] > 400)//책은 총 400쪽 넘으면 True
-    || (1 == pobi[0]|| pobi[1]== 400 || 1 == crong[0] || crong[1] == 400)//시작/마지막면 이면 True
-    || (pobi[0]%2 != 1 || crong[0]%2 != 1)//왼쪽이 홀수 아니면 True 
-    || (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1])//오른쪽은 왼쪽 + 1 아니면 True
+    (pobi[0] > 400 
+      || pobi[1] > 400 
+      || crong[0] > 400 
+      || crong[1] > 400)
+    //책은 총 400쪽 넘으면 True
+
+    || (1 == pobi[0]
+      || pobi[1]== 400 
+      || 1 == crong[0] 
+      || crong[1] == 400)
+    //시작/마지막면 이면 True
+
+    || (pobi[0]%2 != 1 
+      || crong[0]%2 != 1)
+    //왼쪽이 홀수 아니면 True 
+
+    || (pobi[0] + 1 != pobi[1] 
+      || crong[0] + 1 != crong[1])
+    //오른쪽은 왼쪽 + 1 아니면 True
   ){
     return -1;
   }
@@ -84,9 +99,12 @@ function problem1(pobi, crong) {
   //console.log("크롱 곱하기_1",crong_multiply[0])
   //console.log("크롱 곱하기_2",crong_multiply[1])
 
-  let pobi_max = Math.max(Math.max(...pobi_plus), Math.max(...pobi_multiply));
-  let crong_max = Math.max(Math.max(...crong_plus), Math.max(...crong_multiply));
+  let pobi_max 
+  = Math.max(Math.max(...pobi_plus), Math.max(...pobi_multiply));
+  let crong_max 
+  = Math.max(Math.max(...crong_plus), Math.max(...crong_multiply));
 
+  //포비,크롱 최종값 도출
   //console.log(pobi_max, crong_max)
 
   let res
@@ -97,7 +115,7 @@ function problem1(pobi, crong) {
   } else if ( pobi_max == crong_max) {
     res = 0;
   }
-
+ //포비, 크롱 비교 
   answer = res;
   
   return answer;
