@@ -7,7 +7,7 @@ function problem6(forms) {
   let answer = [];
 
   for (let form of forms) {
-    const cases = words(form[NICKNAME]);
+    const cases = groupOfPsbWord(form[NICKNAME]);
 
     for (let word of cases) {
       checkNameContainsCase(form, word);
@@ -41,7 +41,7 @@ function problem6(forms) {
 }
 
 // 가능한 연속된 문자열 추출 함수
-function words(name) {
+function groupOfPsbWord(name) {
   const wordOfCases = [];
 
   for (let index = 0; index < name.length - 1; index++) {
