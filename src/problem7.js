@@ -24,12 +24,21 @@ function friendsRecommend(user, friends, userFriends) {
   }
   return friendsRecommendArr;
 }
+// 기능 2
+function getScore(friendArr, crew, score) {
+  const crewScoreArr = {};
+  crew.forEach((ele) => {
+    if (!friendArr.includes(ele)) result[ele] = (result[ele] || 0) + score;
+  });
 
+  return crewScoreArr;
+}
 function problem7(user, friends, visitors) {
   var answer;
   let friendsArr = findFriends(user, friends);
   let friendsRecommendArr = friendsRecommend(user, friends, friendsArr);
-
+  getScore(friendsArr, friendsRecommendArr, 10);
+  getScore(friendsArr, visitors, 1);
   return answer;
 }
 
