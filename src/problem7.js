@@ -41,12 +41,10 @@ function problem7(user, friends, visitors) {
   for (var key in tmp_answer) {
     ans[key]=tmp_answer[key];
   }
-  console.log(ans);
 
   for(var key in ans){
     answer.push(key);
   }
-  console.log(answer);
 
   return answer;
 }
