@@ -1,7 +1,17 @@
 function problem7(user, friends, visitors) {
   var answer;
 
+  // 위반사항 검사
   if (violationChk) {
+    // user와 friends 배열을 비교해 친구 리스트를 만드는 함수
+    var friendsArr = makeFriendsArr(user, friends);
+    // 친구리스트와 friends 배열을 비교해 추천 후보의 아이디와 점수를 가지는 리스트 객체를 만드는 함수
+    var candidates = candidateMap(friendsArr, friends);
+    // 추천 후보 리스트에 타임라인 방문 점수 합산
+    var score = timeLineChk(candidates, visitors);
+
+    // 합산 결과 상위 5명의 배열 리스트를 리턴
+    answer = recommandArr(score);
   } else {
     answer = -1;
   }
@@ -74,6 +84,24 @@ function visitorsChecker(visitors) {
   } else {
     return false;
   }
+}
+
+// user와 비교하여 친구 목록을 배열로 만드는 함수
+function makeFriendsArr(user, friends) {
+  var frendsList = new Set();
+
+  for (var i = 0; i < friends.length; i++) {
+    // 배열의 첫 번째에 user가 있는 경우
+    if (friends[i][0] === user) {
+      frendsList.add(friends[i][1]);
+    }
+    // 배열의 두 번째에 user가 있는 경우
+    else if (friends[i][1] === user) {
+      frendsList.add(friends[i][0]);
+    }
+  }
+
+  return Array.from(frendsList);
 }
 
 module.exports = problem7;
