@@ -1,3 +1,10 @@
+const Result = Object.freeze({
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+  DRAW: 0,
+  EXCEPTION: -1
+})
+
 function isValidPages(pages) {
   const [leftPage, rightPage] = pages;
 
@@ -27,7 +34,7 @@ function getScore(pages) {
 
 function problem1(pobi, crong) {
   if (!isValidPages(pobi) || !isValidPages(crong)) {
-    return -1;
+    return Result.EXCEPTION;
   }
 
   var answer;
@@ -35,11 +42,11 @@ function problem1(pobi, crong) {
   const crongScore = getScore(crong);
 
   if (pobiScore > crongScore) {
-    answer = 1;
+    answer = Result.POBI_WIN;
   } else if (pobiScore < crongScore) {
-    answer = 2;
+    answer = Result.CRONG_WIN;
   } else {
-    answer = 0;
+    answer = Result.DRAW;
   }
   return answer;
 }
