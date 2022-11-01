@@ -1,8 +1,11 @@
 function problem2(cryptogram) {
-	return decrypt(cryptogram);
+	//문자열에 중복이 있는지 체크하는 함수 -> checkDuplicate
+	//중복된 문자를 제거하여 반환하는 함수 -> deDuplicate
+	//위 사항들을 반복하여 체크하고 결과를 반환하는 함수 -> solution
+	return solution(cryptogram);
 }
 
-function decrypt(crypto) {
+function solution(crypto) {
 	let tempStr = crypto;
 
 	while (checkDuplicate(tempStr)) {
