@@ -58,6 +58,11 @@ function calculateUnknowFriendsScore(
   return UnknowFriendsScore;
 }
 
+function getSomePeopleWithFriendIKnow(UnknowFriendsScore, user, friendOfUser) {
+  [user, ...friendOfUser].forEach((name) => UnknowFriendsScore.delete(name));
+  return UnknowFriendsScore;
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
@@ -74,6 +79,11 @@ function problem7(user, friends) {
     UnknowFriendsScoreSet,
     friendKnowTogeterWithCount,
     visitorsCount
+  );
+  const somePeopleWithFriendIKnow = getSomePeopleWithFriendIKnow(
+    UnknowFriendsScore,
+    user,
+    friendOfUser
   );
   return;
 }
