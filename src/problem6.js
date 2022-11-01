@@ -54,4 +54,10 @@ function findNicknameDuplicate(nickname, nicknameList) {
   return duplicateNickname.length === 1 ? [] : duplicateNickname;
 }
 
+function removeDuplicateEmail(answer) {
+  const emailSet = new Set(answer)
+  const emailList = [...emailSet];
+  return emailList;
+}
+
 module.exports = problem6;
