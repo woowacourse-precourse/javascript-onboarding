@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   var answer;
-  const friendList = makeFriendList(friends)
-  const userFriend = friendList[user]
-  let recommendObj= sharedFriend(user,userFriend,friendList)
+  const allFriendList = makeFriendList(friends)
+  const userFriend = allFriendList[user]
+  let recommendObj= sharedFriend(user,userFriend, allFriendList)
   recommendObj = visitFriend(userFriend, visitors, recommendObj)
 
   let sortedArr = sortedScore(recommendObj)
@@ -11,32 +11,32 @@ function problem7(user, friends, visitors) {
 }
 
 function makeFriendList(friends){
-  return friends.reduce(function(obj,item){
-    for(let i in item){
-      if(!obj[item[i]]){
-          obj[item[i]]=[item[1-i]]
+  const allFriendList = friends.reduce(function(obj,item){
+    for(let idx in item){
+      if(!obj[item[idx]]){
+          obj[item[idx]]=[item[1-idx]]
           continue
       }
-      obj[item[i]].push(item[1-i])
+      obj[item[idx]].push(item[1-idx])
     }
     return obj
   },{})
+  return allFriendList
 }
 
-function sharedFriend( user,userFriend, friendList){
+
+function sharedFriend( user, userFriend, allFriendList){
   let sharedObj = {}
-  for(let name of Object.keys(friendList)){
+  for(let name of Object.keys(allFriendList)){
     //user 제외 //이미 친구인 사람 제거.
-    if(isFriend(name, userFriend)){
+    if(isFriend(name, userFriend) || name==user){
       continue
     }
-    if(name!==user){
-      let sharedFriend =userFriend.filter(
-        friend=>friendList[name].includes(friend)
-      )
-      if(sharedFriend.length!==0){
-        sharedObj[name]=sharedFriend.length*10
-      }
+    let sharedFriend =userFriend.filter(
+      friend=>allFriendList[name].includes(friend)
+    )
+    if(sharedFriend.length!==0){
+      sharedObj[name]=sharedFriend.length*10
     }
   }
   return sharedObj
@@ -65,17 +65,18 @@ function isFriend(name, userFriend){
 
 function sortedScore(preRecommendObj){
   const sortable = Object.entries(preRecommendObj)
-  const sortedArr = sortable.sort(function([name,score],[nextName,nextScore]){
-    if(score<nextScore){
-      return 1
-    }if(score>nextScore){
-      return -1
-    }if(score==nextScore){
-      let result=0 ;
-      name>nextName?result=1:
-                    name<nextName?result=-1:result=0
-      return result
-    }
+  const sortedArr = sortable.sort(
+    function([name,score],[nextName,nextScore]){
+      if(score<nextScore){
+        return 1
+      }if(score>nextScore){
+        return -1
+      }if(score==nextScore){
+        let result=0 ;
+        name>nextName?result=1:
+                      name<nextName?result=-1:result=0
+        return result
+      }
   })
   return sortedArr
 }
