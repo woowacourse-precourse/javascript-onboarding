@@ -96,8 +96,58 @@ function getFriendScore(friendList, user) {
   return score;
 }
 
+function isIncludesKeys(object, key) {
+  if (Object.keys(object).includes(key) == true) {
+    return 1;
+  }
+  return 0;
+}
+
+function getVisitorScore(recommandScore, userFriendList, visitors) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (userFriendList.includes(visitors[i])) {
+      continue;
+    }
+    if (!isIncludesKeys(recommandScore, visitors[i])) {
+      recommandScore[visitors[i]] = 0;
+    }
+    recommandScore[visitors[i]]++;
+  }
+  return recommandScore;
+}
+
 function getScore(user, friendList, visitors) {
   const score = getFriendScore(friendList, user);
+  const allScore = getVisitorScore(score, friendList[user], visitors);
+  return allScore;
+}
+
+function getSameValueArr(value, score) {
+  const scoreKey = Object.keys(score);
+  const sameValueArr = [];
+  for (let i = 0; i < scoreKey.length; i++) {
+    if (score[scoreKey[i]] == value) {
+      sameValueArr.push(scoreKey[i]);
+    }
+  }
+  return sameValueArr.sort();
+}
+
+function sortScore(score) {
+  const scoreValue = new Set(
+    Object.values(score).sort(function (left, right) {
+      return right - left;
+    })
+  );
+  const resultArr = [];
+  scoreValue.delete(0);
+  for (let value of scoreValue.values()) {
+    resultArr.push(...getSameValueArr(value, score));
+  }
+  if (resultArr > 5) {
+    return resultArr.splice(0, 5);
+  }
+  return resultArr;
 }
 
 function problem7(user, friends, visitors) {
@@ -106,19 +156,22 @@ function problem7(user, friends, visitors) {
   }
   const friendList = makeFriendList(user, friends);
   const score = getScore(user, friendList, visitors);
+  return sortScore(score);
 }
 
 module.exports = problem7;
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["andole", "yein"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
+// console.log(
+//   problem7(
+//     "mrko",
+//     [
+//       ["donut", "andole"],
+//       ["donut", "jun"],
+//       ["donut", "mrko"],
+//       ["andole", "yein"],
+//       ["shakevan", "andole"],
+//       ["shakevan", "jun"],
+//       ["shakevan", "mrko"],
+//     ],
+//     ["bedi", "bedi", "donut", "bedi", "shakevan"]
+//   )
+// );
