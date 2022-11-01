@@ -88,7 +88,6 @@ function problem7(user, friends, visitors) {
       let depth=cur.depth
       let x=cur.x
       if(depth===2){//친구의친구
-        console.log("2",x)
         let original_score=score.get(x)
         score.set(x, original_score+10)
         continue;
