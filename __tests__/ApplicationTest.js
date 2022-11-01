@@ -305,4 +305,140 @@ describe('problem7', () => {
       )
     ).toEqual(['andole', 'jun', 'bedi']);
   });
+  test('case2', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+      )
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case3', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['jun', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+      )
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case4', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['mrko', 'jun'],
+          ['bedi', 'jun'],
+          ['bedi', 'donut'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['jun', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        ['donut', 'shakevan']
+      )
+    ).toEqual(['andole', 'bedi']);
+  });
+  test('case5', () => {
+    expect(
+      problem7(
+        'andole',
+        [
+          ['andole', 'jun'],
+          ['donut', 'jun'],
+          ['donut', 'shakevan'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'bedi'],
+          ['anne', 'jun'],
+        ],
+        ['donut', 'mrko', 'peter', 'sam']
+      )
+    ).toEqual(['donut', 'anne', 'bedi', 'mrko', 'peter']);
+  });
+  test('user가 친구를 갖지 않을 때', () => {
+    expect(
+      problem7(
+        'hello',
+        [
+          ['andole', 'jun'],
+          ['andole', 'bdei'],
+          ['jun', 'shakevan'],
+          ['jun', 'kane'],
+          ['jun', 'sam'],
+          ['bdei', 'shakevan'],
+          ['bedi', 'anne'],
+          ['bedi', 'sam'],
+          ['anne', 'mrko'],
+        ],
+        ['donut', 'anne', 'mrko', 'mrko', 'sam']
+      )
+    ).toEqual(['mrko', 'anne', 'donut', 'sam']);
+  });
+  test('visitors의 길이 예외조항 확인', () => {
+    expect(
+      problem7(
+        'mrko',
+        [
+          ['donut', 'andole'],
+          ['donut', 'jun'],
+          ['donut', 'mrko'],
+          ['shakevan', 'andole'],
+          ['shakevan', 'jun'],
+          ['shakevan', 'mrko'],
+        ],
+        []
+      )
+    ).toEqual(['andole', 'jun']);
+  });
+
+  const makeName = (index) => {
+    return Array(30)
+      .fill()
+      .map((_, chIndex) => 'az'[index & (1 << chIndex) ? 1 : 0])
+      .join('');
+  };
+  const user = 'mrko';
+
+  test('case8', () => {
+    expect(
+      problem7(
+        user,
+        [
+          ...Array(5000)
+            .fill()
+            .map((_, index) => [user, makeName(index)]), // 0~4999까지 친구
+          ...Array(5000)
+            .fill()
+            .map((_, index) => [makeName(index), makeName(5000 + index)]), // 5000~9999까지 친구의 친구
+        ],
+        [
+          // 5066, 5067, 5068, 5069, 5070 순서대로 많이 방문
+          ...Array(4000).fill(5066),
+          ...Array(3000).fill(5067),
+          ...Array(2000).fill(5068),
+          ...Array(800).fill(5069),
+          ...Array(200).fill(5070),
+        ].map(makeName)
+      )
+    ).toEqual([5066, 5067, 5068, 5069, 5070].map(makeName));
+  });
 });
