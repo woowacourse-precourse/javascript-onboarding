@@ -44,9 +44,9 @@ function getValidForms(forms) {
   for (let form of forms) {
     isValid = isValidForm(form);
     if (isValid) {
-      validForms.push([email, nickname]);
+      validForms.push(form);
     } else {
-      invalidForms.push([email, nickname]);
+      invalidForms.push(form);
     }
   }
   if (invalidForms.length !== 0) {
