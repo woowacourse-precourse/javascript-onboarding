@@ -4,21 +4,21 @@ const FRIEND_SCORE = 10;
 const MIN_VALID_SCORE = 0;
 
 const createFriendsMap = (friends) => {
-  const frinedsMap = new Map();
+  const friendsMap = new Map();
 
   friends.forEach(([userA, userB]) => {
-    frinedsMap.set(
+    friendsMap.set(
       userA,
-      frinedsMap.has(userA) ? [...frinedsMap.get(userA), userB] : [userB]
+      friendsMap.has(userA) ? [...friendsMap.get(userA), userB] : [userB]
     );
 
-    frinedsMap.set(
+    friendsMap.set(
       userB,
-      frinedsMap.has(userB) ? [...frinedsMap.get(userB), userA] : [userA]
+      friendsMap.has(userB) ? [...friendsMap.get(userB), userA] : [userA]
     );
   });
 
-  return frinedsMap;
+  return friendsMap;
 };
 
 const isAlreadyFriend = ({ user, friend, friendsMap }) => {
