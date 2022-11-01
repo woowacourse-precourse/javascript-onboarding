@@ -22,3 +22,10 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 구현 목록
+
+1. 문자열을 한자리로 분리하여 seperate_string배열에 담는다.
+2. 첫번째 index값을 answer(빈 배열)에 push 한다.
+3. answer배열에 push 된 index 값과 seperate_string배열의 첫번째 index 값을 비교한다.
+4. 같다면 pop, 다르다면 answer배열에 push한다.
+5. seperate_string배열의 길이 만큼 반복한다.
