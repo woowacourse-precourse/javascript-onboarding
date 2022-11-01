@@ -1,4 +1,9 @@
 function problem4(word) {
+  // word는 길이가 1 이상 1,000 이하가 아닌 경우
+  if (word.length < 1 || word.length > 1000) {
+    return 'word는 길이가 1 이상 1,000 이하인 문자열이다.';
+  }
+
   let answer = '';
   const UpprerCaseList = [
     'Z',
