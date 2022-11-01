@@ -41,16 +41,21 @@ const getAllSerialCases = (nickname) => {
   const nicknameLength = nickname.length;
 
   for (let cutUnit = 2; cutUnit <= nicknameLength; cutUnit++) {
-    for (let index = 0; index <= nicknameLength - cutUnit; index++) {
-      const serialString = nickname.slice(index, index + cutUnit);
-
-      if (serialString.length === cutUnit) {
-        allSerialCases.push(serialString);
-      }
-    }
+    allSerialCases.push(...getSerialCasesByCutUnit(nickname, nicknameLength, cutUnit));
   }
 
   return allSerialCases;
+};
+
+const getSerialCasesByCutUnit = (nickname, nicknameLength, cutUnit) => {
+  const serialCasesByCutUnit = [];
+
+  for (let index = 0; index <= nicknameLength - cutUnit; index++) {
+    const serialString = nickname.slice(index, index + cutUnit);
+
+    if (serialString.length === cutUnit) serialCasesByCutUnit.push(serialString);
+  }
+  return serialCasesByCutUnit;
 };
 
 const getEmailsOfSimilarNickname = (targetUserInfo, forms, serialCases) => {
