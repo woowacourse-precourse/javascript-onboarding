@@ -19,6 +19,8 @@ function problem6(forms) {
       answer = answer.concat(crewsThatMatchesSubstring);
     }
   });
+  const nicknamesSet = new Set(answer.map((crew) => crew[EMAIL]));
+  answer = Array.from(nicknamesSet).sort();
   return answer;
 }
 
