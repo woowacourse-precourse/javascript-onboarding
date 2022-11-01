@@ -1,4 +1,16 @@
 function problem6(forms) {
+  //예외상황 처리
+  for (let i = 0; i < forms.length; i++) {
+    const emailRegex = new RegExp(/^[a-zA-Z0-9]{1,9}@email.com$/g);
+    const koreanRegex = new RegExp(/^[가-힣]{1,19}$/g);
+    if (!emailRegex.test(forms[i][0])) {
+      return "이메일은 이메일 형식에 맞춰서 email.com 만 사용해야 하며, 11자 이상 20자 미만입니다.";
+    }
+    if (!koreanRegex.test(forms[i][1])) {
+      return "닉네임은 한글만 사용 가능하며, 길이는 1자 이상 20자 미만입니다.";
+    }
+  }
+
   const result = [];
   const indexSet = new Set();
   const nicknameArr = forms.map((data) => data[1]);
