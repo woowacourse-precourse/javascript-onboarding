@@ -23,7 +23,8 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < friends.length; i++) {
     if (friends[i][0] == user) {
       except.push(friends[i][1]);
-    } else if (friends[i][1] == user) {
+    } 
+    if (friends[i][1] == user) {
       except.push(friends[i][0]);
     }
   }
@@ -51,7 +52,8 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < friends.length; i++) {
     if (except.includes(friends[i][0]) && notUser.includes(friends[i][1])) {
       friendsCount[friends[i][1]] = friendsCount[friends[i][1]] + 1;
-    } else if (
+    } 
+    if (
       except.includes(friends[i][1]) &&
       notUser.includes(friends[i][0])
     ) {
