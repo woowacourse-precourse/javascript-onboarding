@@ -1,31 +1,21 @@
-function createString(n){
-  let s = '';
-  for(let i=1;i<=n;i++){
-      s+=i;
-  }
-  return s;
+function createString(number){
+  let string = '';
+  for(let i=1;i<=number;i++){
+      string+=i;
+  }return string;
 }
-function findNumber(n){
-  let result=0;
-  for(let i=0;i<n.length;i++){
-      if(n.charAt([i])==='3'){
-          ++result;
-      }
-      if(n.charAt([i])==='6'){
-          ++result;
-      }
-      if(n.charAt([i])==='9'){
-          ++result;
-      }
-  }
-  return result;
+function findNumber(target_number){
+  let clap=0;
+  for(let i=0;i<target_number.length;i++){
+      if(target_number.charAt([i])==='3')clap++;
+      if(target_number.charAt([i])==='6')clap++;
+      if(target_number.charAt([i])==='9')clap++;
+  }return clap;
 }
-
-
 function problem3(number) {
   let answer;
-  answer=findNumber(createString(number));
-
+  let target_number=createString(number)
+  answer=findNumber(target_number);
   return answer;
 }
 
