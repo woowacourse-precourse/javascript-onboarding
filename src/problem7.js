@@ -4,6 +4,12 @@ function problem7(user, friends, visitors) {
   let tens = [];
   let result = [];
   let tensName = [];
+  let sorted = [];
+  let cutIdx = [0];
+  let splitted = [];
+  let deduplicated = [];
+  let dummy = [];
+  let topfive = [];
 
   for (let i = 0; i < friends.length; i++) {
     if (friends[i][0] || friends[i][1]) {
@@ -60,15 +66,35 @@ function problem7(user, friends, visitors) {
   }
 
   //정렬
-  result
-    .sort((a, b) => {
-      return b.score - a.score;
-    })
-    .slice(0, 5); //result
-  //점수 같으면 이름순 정렬
+  result.sort((a, b) => {
+    return b.score - a.score;
+  });
 
-  return answer;
+  for (let i = 0; i < result.length; i++) {
+    if (result[i + 1] && result[i].score !== result[i + 1].score) {
+      cutIdx.push(i + 1);
+    }
+  }
+  cutIdx.push(result.length);
 
+  for (let i = 0; i < cutIdx.length - 1; i++) {
+    //if (i === 0) {
+    splitted = result.slice(cutIdx[i], cutIdx[i + 1]);
+
+    sorted = splitted.sort((a, b) => {
+      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    });
+
+    answer.push(...sorted);
+  }
+
+  // return answer; //[2,3]
+  let min = 5 < answer.length ? 5 : answer.length;
+  for (i = 0; i < min; i++) {
+    topfive[i] = answer[i].name;
+  }
+
+  return topfive;
 }
 
 module.exports = problem7;
