@@ -5,8 +5,14 @@ function eliminateDuplication(str) {
 }
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let eliminated = eliminateDuplication(cryptogram);
+
+  while (eliminated !== cryptogram) {
+    cryptogram = eliminated;
+    eliminated = eliminateDuplication(cryptogram);
+  }
+
+  return eliminated;
 }
 
 module.exports = problem2;
