@@ -9,6 +9,12 @@ function problem6(forms) {
 		foundDuplicate(sliceNameArray, index);
 	});
 
+	duplicatedIndex
+		.reduce((acc, curr) => (acc.includes(curr) ? acc : [...acc, curr]), [])
+		.forEach((answerIndex) => {
+			answer.push(emailArray[answerIndex]);
+		});
+
 	function saveNameLength2(names) {
 		let tempArray = [];
 		[...names].map((char, index) => {
