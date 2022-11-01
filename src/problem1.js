@@ -1,14 +1,14 @@
 function problem1(pobi, crong) {
 
-  if(!checkPage(pobi) && checkPage(crong)){return -1}
+  if(!checkPage(pobi) || !checkPage(crong)){return -1}
 
-  if (resultValue(pobi)>resultValue(crong)){
+  if (maxValue(pobi)>maxValue(crong)){
     return 1
   }
-  if (resultValue(pobi)<resultValue(crong)){
+  if (maxValue(pobi)<maxValue(crong)){
     return 2
   }
-  if(resultValue(pobi)==resultValue(crong)){
+  if(maxValue(pobi)==maxValue(crong)){
     return 0
   }
 
@@ -23,29 +23,25 @@ function checkPage(pages){
   return true
 }
 
-function plusValue(page){
-  let sum = 0;
-  for(let i = 2;i>0;i--){
-    let digit = Math.pow(10, i)
-    sum+=parseInt(page/digit)
-    page = page%digit
-  }
-  return sum+page
-}
-
-function multiValue(page){
-  let sum = 1;
+function plusNum(page){
   let numbers = String(page).split("")
-  if(numbers.includes('0')){return 0}
-  sum = numbers.reduce((sum,num)=>sum*=Number(num),1)
+  const sum = numbers.reduce((sum,num)=>sum+Number(num),0)
   return sum
 }
 
-function resultValue(member){
-  for (let idx in member){
-    member[idx] = Math.max(plusValue(member[idx]),multiValue(member[idx]))
+function multiNum(page){
+  let numbers = String(page).split("")
+  if(numbers.includes('0')){return 0}
+  const sum = numbers.reduce((sum,num)=>sum*Number(num),1)
+  return sum
+}
+
+function maxValue(member){
+  const resultArr = []
+  for (let page of member){
+    resultArr.push(Math.max(plusNum(page),multiNum(page)))
   }
-  return Math.max(...member)
+  return Math.max(...resultArr)
 }
 
 module.exports = problem1;
