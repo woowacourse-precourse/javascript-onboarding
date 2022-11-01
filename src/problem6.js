@@ -22,9 +22,11 @@ function problem6(forms) {
   
   const duplicateNicknameList = getDuplicateNickname(sliceNicknameList);
   
-  return forms
+  return removeDuplicateElement(
+    forms
     .filter(([,nickname]) => isDuplicate(duplicateNicknameList, nickname))
-    .map(([email,]) => email);
+    .map(([email,]) => email)
+  ).sort();
 }
 
 module.exports = problem6;
