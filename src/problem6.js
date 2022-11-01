@@ -16,6 +16,12 @@ function problem6(forms) {
     }
   }
 
+  let diffWord = wordArr.filter(
+    (name, index) => wordArr.indexOf(name) !== index
+  );
+
+  const arrSet = [...new Set(diffWord)];
+
   return answer;
 }
 
