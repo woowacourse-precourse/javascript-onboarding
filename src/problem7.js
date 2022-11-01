@@ -3,19 +3,19 @@ const VISITING_SCORE = 1;
 const FRIEND_SCORE = 10;
 const MIN_VALID_SCORE = 0;
 
+const addFriendToFriendMap = ({ user, friend, friendsMap }) => {
+  friendsMap.set(
+    user,
+    friendsMap.has(user) ? [...friendsMap.get(user), friend] : [friend]
+  );
+};
+
 const createFriendsMap = (friends) => {
   const friendsMap = new Map();
 
   friends.forEach(([userA, userB]) => {
-    friendsMap.set(
-      userA,
-      friendsMap.has(userA) ? [...friendsMap.get(userA), userB] : [userB]
-    );
-
-    friendsMap.set(
-      userB,
-      friendsMap.has(userB) ? [...friendsMap.get(userB), userA] : [userA]
-    );
+    addFriendToFriendMap({ user: userA, friend: userB, friendsMap });
+    addFriendToFriendMap({ user: userB, friend: userA, friendsMap });
   });
 
   return friendsMap;
