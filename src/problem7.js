@@ -123,7 +123,30 @@ function getResult(user, friends, visitors) {
   let recommendList = getRecommendList(userList, myFriendsList, visitors);
 
   removeAlreadyExist(user, recommendList, myFriendsList);
-  return recommendList;
+  return makeSortedList(recommendList);
+}
+
+function makeSortedList(recommendList) {
+  const ret = [];
+  const sortedRecommendUser = [...recommendList].sort(recommendListSort);
+  sortedRecommendUser.slice(0, 5).forEach((item) => {
+    ret.push(item[0]);
+  });
+
+  return ret;
+}
+
+function recommendListSort(firstValue, secondValue) {
+  if (firstValue[1] > secondValue[1]) {
+    return -1;
+  }
+  if (firstValue[1] < secondValue[1]) {
+    return 1;
+  }
+  if (firstValue[0] < secondValue[0]) {
+    return -1;
+  }
+  return 1;
 }
 
 function problem7(user, friends, visitors) {
