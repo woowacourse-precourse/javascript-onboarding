@@ -5,12 +5,19 @@ function problem6(forms) {
     map1.set(item[1], item[0]);
   });
   const nickName = [];
+  const person2 = [];
   forms.forEach(function (item) {
     nickName.push(item[1]);
   });
   nickName.forEach(function (oneName) {
     for (i = 0; i <= oneName.length - 1; i++) {
       newWord = oneName[i] + oneName[i + 1];
+      nickName.forEach(function (person) {
+        if (person === oneName) {
+        } else if (person.includes(newWord)) {
+          person2.push(map1.get(person));
+        }
+      });
   return answer;
 }
 
