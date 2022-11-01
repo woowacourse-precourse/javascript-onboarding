@@ -7,6 +7,7 @@ const reverseWord = (word) => {
   let answer;
   let wordArray = Array.from(word)
   let reverseArray = []
+
   wordArray.map((element) => {
     let charCode = element.charCodeAt(0)
     if (charCode >= 97 && charCode <= 122) {
@@ -17,6 +18,7 @@ const reverseWord = (word) => {
     }
     reverseArray.push(String.fromCharCode(charCode));
   })
+  
   answer = reverseArray.join("")
   return answer;
 }

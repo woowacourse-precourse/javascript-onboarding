@@ -21,4 +21,5 @@ function problem5(money) {
   if (!isMoney(money)) { throw Error("1이상 1,000,000이하 자연수를 입력해주세요.") }
   else return result;
 }
+
 module.exports = problem5;
