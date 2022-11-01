@@ -39,7 +39,7 @@ function problem1(pobi, crong) {
   } else{
     answer = 0;
   }
-  console.log(answer);
+  return answer;
 }
 
 module.exports = problem1;
