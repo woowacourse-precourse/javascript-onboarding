@@ -1,6 +1,4 @@
 function problem6(forms) {
-  var answer;
-
   const emailArr = [];
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms[i][1].length - 1; j++) {
@@ -12,6 +10,8 @@ function problem6(forms) {
       }
     }
   }
+
+  const answer = [...new Set(emailArr)].sort((a, b) => (a > b ? 1 : -1));
 
   return answer;
 }
