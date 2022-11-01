@@ -12,6 +12,15 @@ function problem4(word) {
     for (let i = 97; i <= 122; i++) {
         map.set(String.fromCharCode(i), String.fromCharCode(reverse--));
     }
+
+    word.split('').forEach((element) => {
+        if (map.has(element)) {
+            answer += map.get(element);
+        } else {
+            answer += element;
+        }
+    });
+    return answer;
 }
 
 module.exports = problem4;
