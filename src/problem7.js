@@ -4,8 +4,6 @@ function problem7(user, friends, visitors) {
   let newUserFriends = [];
   let userFriendMap = new Map()
 
-  //유저친구들구하기
-
   for (let friend of friends) {
     if (friend.includes(user)) {
       if (friend[0] === user) {
@@ -19,38 +17,38 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  for(let friend of userFriends) {
-    userFriendMap.delete(friend)
-  }
-
-  for(let friend of friends) {
+  for (let friend of friends) {
     userFriends.forEach((userFriend) => {
-      if(friend.includes(userFriend)) {
+      if (friend.includes(userFriend)) {
         const FOfF = friend.find((name) => name != user && name != userFriend)
-        if(FOfF) {
+        if (FOfF) {
           newUserFriends.push(FOfF)
         }
       }
     })
   }
 
+  for (let friend of userFriends) {
+    userFriendMap.delete(friend)
+  }
+
+  for (let friend of newUserFriends) {
+    if (userFriendMap.has(friend)) {
+      userFriendMap.set(friend, userFriendMap.get(friend) + 10)
+    }
+  }
+
+  for (let visitor of visitors) {
+    if (!userFriends.includes(visitor)) {
+      if (userFriendMap.has(visitor)) {
+        userFriendMap.set(visitor, userFriendMap.get(visitor) + 1)
+      } else {
+        userFriendMap.set(visitor, 0)
+      }
+    }
+  }
 
   return answer;
 }
-
-
-
-let user = "mrko";
-let friends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"]
-]
-let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"]
-
-problem7(user, friends, visitors)
 
 module.exports = problem7;
