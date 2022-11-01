@@ -18,4 +18,21 @@ function isAlphabet(word) {
   return regExp.test(word);
 }
 
+function convertWord(word) {
+  // 입력값을 변환하는 함수
+  let convertedWord = "";
+  for (let i = 0; i < word.length; i++) {
+    if (isAlphabet(word[i])) {
+      ascii = word[i].charCodeAt(0);
+      ascii >= 65 && ascii <= 90
+        ? (convertedWord += String.fromCharCode(155 - ascii)) // 대문자일 경우
+        : (convertedWord += String.fromCharCode(219 - ascii)); // 소문자일 경우
+    } else {
+      convertedWord += word[i]; // 알파벳이 아닌 경우
+    }
+  }
+  return convertedWord;
+}
+
+
 module.exports = problem4;
