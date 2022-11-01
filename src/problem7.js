@@ -41,6 +41,23 @@ function setUnknowFriendsScore(friends, visitors) {
   return unknowFriend;
 }
 
+function calculateUnknowFriendsScore(
+  UnknowFriendsScore,
+  friendknowWithTogetherScore,
+  visitorsCount
+) {
+  for (let friend in friendknowWithTogetherScore) {
+    UnknowFriendsScore.set(friend, friendknowWithTogetherScore[friend] * 10);
+  }
+  for (let visitor in visitorsCount) {
+    UnknowFriendsScore.set(
+      visitor,
+      UnknowFriendsScore.get(visitor) + visitorsCount[visitor]
+    );
+  }
+  return UnknowFriendsScore;
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
@@ -53,6 +70,11 @@ function problem7(user, friends) {
     friendKnowWithTogether
   );
   const UnknowFriendsScoreSet = setUnknowFriendsScore(friends, visitors);
+  const UnknowFriendsScore = calculateUnknowFriendsScore(
+    UnknowFriendsScoreSet,
+    friendKnowTogeterWithCount,
+    visitorsCount
+  );
   return;
 }
 
