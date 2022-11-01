@@ -1,5 +1,9 @@
 function problem3(number) {
-  var answer;
+  var answer = 0;
+  let string;
+  for (let i = 1; i <= number; i++) {
+    string = i.toString();
+  }
   return answer;
 }
 
