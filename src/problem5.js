@@ -1,13 +1,13 @@
 function problem5(money) {
   const checkedError = checkError(money);
 
-  if (checkedError !== "Not Error") {
-    return checkedError;
+  if (checkedError === "Not Error") {
+    const result = countByBillUnit(money);
+
+    return result;
   }
 
-  const result = countByBillUnit(money);
-
-  return result;
+  return checkedError;
 }
 
 function checkError(currentMoney) {
@@ -27,6 +27,7 @@ function checkError(currentMoney) {
 
 function countByBillUnit(currentMoney) {
   const BILL_UNIT_LIST = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  const MINIMUM_BILL_NUMBER = 1;
   const listLength = BILL_UNIT_LIST.length;
   let billCountList = new Array(listLength).fill(0);
 
@@ -39,7 +40,7 @@ function countByBillUnit(currentMoney) {
       currentMoney / BILL_UNIT_LIST[currentUnitIndex]
     );
 
-    if (theNumbeOfBill >= 1) {
+    if (theNumbeOfBill >= MINIMUM_BILL_NUMBER) {
       billCountList[currentUnitIndex] += theNumbeOfBill;
 
       currentMoney -= theNumbeOfBill * BILL_UNIT_LIST[currentUnitIndex];
