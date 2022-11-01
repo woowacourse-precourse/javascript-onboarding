@@ -1,7 +1,13 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let score = {};
 
-  return answer;
+  const friendsRelation = getFriendsRelation(friends);
+  score = mutualFriendScore(user, friendsRelation, score);
+  score = visitScore(score, visitors);
+
+  const sortedScore = sortScore(score);
+
+  return filterTopFive(user, sortedScore, friendsRelation);
 }
 
 const getFriendsRelation = (friends) => {
