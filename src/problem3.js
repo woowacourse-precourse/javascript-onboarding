@@ -18,6 +18,5 @@ function getClapCount(number){
   return count
 }
 
-console.log(problem3(33))
-//module.exports = problem3;
+module.exports = problem3;
 
