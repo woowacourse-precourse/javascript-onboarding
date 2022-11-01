@@ -29,9 +29,10 @@ function findSameFriends(user, friends, userFriends){
   return map;
 }
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = new Array();
   let userFriends = findUserFriends(user, friends);
   let recommendPoints = findSameFriends(user, friends, userFriends);
+  
   for(visitor of visitors){
     // 방문자가 user의 친구인 경우 
     if(userFriends.has(visitor)){
@@ -44,6 +45,7 @@ function problem7(user, friends, visitors) {
     else
       recommendPoints.set(visitor, recommendPoints.get(visitor)+1)
   }
+  // 추천 점수를 내림차순으로 정렬, 추천 점수가 같은 경우는 이름순으로 정렬한다.
   let sortPoints = new Map([...recommendPoints].sort(function(a, b){
     if(a[1] == b[1]){
       if(a[0] > b[0])
@@ -54,6 +56,12 @@ function problem7(user, friends, visitors) {
     }
     return b[1] - a[1];
     }));
+  // 최대 5명의 추천 친구를 return
+  for (const key of sortPoints.keys()){
+    answer.push(key);
+    if(answer.length == 5)
+      break;
+  }
   return answer;
 }
 
