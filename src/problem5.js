@@ -1,7 +1,20 @@
 const problem5 = (money) => {
   let answer;
+  answer = divideMoney(money);
   return answer;
 };
+MONEY_TYPE = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
+const divideMoney = (money) => {
+  let wallet = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let nowMoney = money;
+  MONEY_TYPE.map((bill, index) => {
+    wallet[index] = parseInt(nowMoney / bill);
+    nowMoney = nowMoney % bill;
+  });
+  return wallet;
+};
+
 /*
 계좌에 들어있는 돈 일부를 은행에서 출금하고자 한다. 돈 담을 지갑이 최대한 가볍도록 
 큰 금액의 화폐 위주로 받는다.
