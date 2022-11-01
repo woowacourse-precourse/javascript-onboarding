@@ -33,6 +33,11 @@ function problem1(pobi, crong) {
     const mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
     crongMax = sum > mul ? sum : mul;
   }
+
+  // 3. Compare & Return answer
+  if (pobiMax > crongMax) return 1;
+  else if (pobiMax < crongMax) return 2;
+  else if (pobiMax === crongMax) return 0;
 }
 
 module.exports = problem1;
