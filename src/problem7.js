@@ -59,6 +59,13 @@ function problem7(user, friends, visitors) {
   for (var friend of userFriends){ 
     socreMap.delete(friend);
   }
+  
+  var mapVal_ = socreMap.values();
+  var mapVal = [...mapVal_];
+  
+  var sortMapVal = mapVal.sort(function compare(a, b) {
+    return b-a;
+  });
 }
 
 module.exports = problem7;
