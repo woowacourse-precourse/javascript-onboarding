@@ -46,6 +46,22 @@ const problem6 = (forms) => {
   const answer = [];
   const commonNickName = {};
 
+  // 닉네임 누적
+  forms.forEach((singleUser) => {
+    const [email, nickName] = singleUser; // destructuring
+
+    for (let i = 0; i < nickName.length - 1; i++) {
+      const temporaryWord = getTemporaryWord(nickName, i); // 길이 2의 임시 단어
+      // commonNickName object에 이미 임시 단어가 존재할 시
+      if (isTmpWordAlreadyExists(commonNickName, temporaryWord)) {
+        commonNickName[temporaryWord].add(email);
+        continue;
+      }
+
+      commonNickName[temporaryWord] = new Set([email]);
+    }
+  });
+
   return answer;
 };
 
