@@ -1,19 +1,15 @@
 function problem6(forms) {
   let answer = [];
-  let targets = [];
   forms.forEach((crew) => {
     const name = crew[1];
     for (let i = 0; i < name.length - 1; i++) {
       const target = name[i] + name[i + 1];
-      if (!targets.includes(target)) {
-        targets.push(target);
-        forms.forEach((crew) => {
-          if (crew[1] === name || answer.includes(crew[0])) return;
-          if (crew[1].includes(target)) {
-            answer.push(crew[0]);
-          }
-        });
-      }
+      forms.forEach((crew) => {
+        if (crew[1] === name || answer.includes(crew[0])) return;
+        if (crew[1].includes(target)) {
+          answer.push(crew[0]);
+        }
+      });
     }
   });
   answer.sort();
