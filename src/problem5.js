@@ -1,73 +1,27 @@
 function problem5(money) {
-  let answer = [];
-  // console.log(money / 50000);
-  // console.log(money % 50000);
+  const idx = {
+    0: 50000,
+    1: 10000,
+    2: 5000,
+    3: 1000,
+    4: 500,
+    5: 100,
+    6: 50,
+    7: 10,
+    8: 1,
+  };
+  let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  // let money = 50237;
 
-  // console.log(money);
-  let rest = money % 50000; // 237
-  if (rest !== 0) {
-    answer.push(parseInt(money / 50000));
-    rest = rest % 50000;
-    // console.log("5만rest:", rest);
-    if (rest !== 0) {
-      answer.push(parseInt(rest / 10000));
-      rest = rest % 10000;
-      // console.log("1만rest:", rest);
-      if (rest !== 0) {
-        answer.push(parseInt(rest / 5000));
-        rest = rest % 5000;
-        // console.log("5천rest:", rest);
-        if (rest !== 0) {
-          answer.push(parseInt(rest / 1000));
-          rest = rest % 1000;
-          // console.log("1천rest", rest);
-          if (rest !== 0) {
-            answer.push(parseInt(rest / 500));
-            rest = rest % 500;
-            // console.log("오백rest", rest);
-            if (rest !== 0) {
-              answer.push(parseInt(rest / 100));
-              rest = rest % 100;
-              // console.log("백rest", rest);
-              if (rest !== 0) {
-                answer.push(parseInt(rest / 50));
-                rest = rest % 50;
-                // console.log("50rest", rest);
-                if (rest !== 0) {
-                  answer.push(parseInt(rest / 10));
-                  rest = rest % 10;
-                  // console.log("10rest", rest);
-                  if (rest !== 0) {
-                    answer.push(parseInt(rest / 1));
-                    rest = rest % 1;
-                    // console.log("1rest", rest);
-                  } else if (rest === 0) {
-                    answer = answer.concat([0]);
-                  }
-                } else if (rest === 0) {
-                  answer = answer.concat([0, 0]);
-                }
-              } else if (rest === 0) {
-                answer = answer.concat([0, 0, 0]);
-              }
-            } else if (rest === 0) {
-              answer = answer.concat([0, 0, 0, 0]);
-            }
-          } else if (rest === 0) {
-            answer = answer.concat([0, 0, 0, 0, 0]);
-          }
-        } else if (rest === 0) {
-          answer = answer.concat([0, 0, 0, 0, 0, 0]);
-        }
-      } else if (rest === 0) {
-        answer = answer.concat([0, 0, 0, 0, 0, 0, 0]);
-      }
-    } else if (rest === 0) {
-      answer = answer.concat([0, 0, 0, 0, 0, 0, 0, 0]);
+  //미리 answer인덱스에 대응하는 금액을 객체로 만들고 기존 money값이 대응하는 값보다 크거나 같다면 반환해준다.
+  for (let i = 0; i < answer.length; ++i) {
+    if (money >= idx[i]) {
+      answer[i] = parseInt(money / idx[i]);
+      money = money % idx[i];
     }
-  } else if (money === 50000 || rest === 0) {
-    answer = answer.concat([1, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
+
+  console.log("answer", answer);
 
   return answer;
 }
