@@ -1,4 +1,7 @@
 function problem1(pobi, crong) {
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 400;
+
   const isValid = (pages) => {
     return (
       isInValidRange(pages) &&
@@ -8,14 +11,9 @@ function problem1(pobi, crong) {
     );
   };
 
-  const MIN_PAGE = 1;
-  const MAX_PAGE = 400;
   const isInValidRange = ([leftPage, rightPage]) => {
     return (
-      leftPage >= MIN_PAGE &&
-      leftPage <= MAX_PAGE &&
-      rightPage > MIN_PAGE &&
-      rightPage <= MAX_PAGE
+      leftPage >= MIN_PAGE && leftPage <= MAX_PAGE && rightPage > MIN_PAGE && rightPage <= MAX_PAGE
     );
   };
 
