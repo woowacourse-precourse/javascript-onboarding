@@ -3,7 +3,7 @@
  *
  * - [x] 전체 유저 목록 생성하기
  * - [x] 사용자와 함께 아는 친구 있는 유저들을 그 수만큼 친구 추천 점수 높이기
- * - [ ] 사용자의 타임 라인에 방문한 유저들의 점수를 높이기
+ * - [x] 사용자의 타임 라인에 방문한 유저들의 점수를 높이기
  * - [ ] 사용자와 사용자의 친구를 제외하고, 점수가 0이 아닌 유저들로 친구 추천 목록 구성하기
  * - [ ] 친구 추천 목록을 점수 순, 이름 순으로 정렬하기
  */
@@ -104,6 +104,24 @@ function scoreUsersFriendShip(users, user, score) {
         users[name].score += score;
       }
     });
+  });
+}
+
+/**
+ * 사용자의 타임라인에 방문한 유저들의 점수를 높이는 함수
+ *
+ * @param {User[]} users 전체 유저가 담긴 배열
+ * @param {string[]} visitors 사용자의 타임 라인에 방문한 유저들의 이름
+ * @param {number} score 사용자의 타임 라인에 방문한 사람에게 줄 점수
+ * @returns
+ */
+function scoreVisitedUsers(users, visitors, score) {
+  if (visitors.length < 1) {
+    return;
+  }
+
+  visitors.forEach((visitor) => {
+    users[visitor].score += score;
   });
 }
 
