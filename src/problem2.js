@@ -1,6 +1,18 @@
+/**
+ * Problem 2
+ * 1. 중복 문자에 해당하는 정규표현식 작성
+ * 2. 중복 문자가 존재할 경우 제거하고 제거한 암호문 다시 재귀
+ * 3. 중복 문자가 존재하지 않을 경우 해당 문자열 반환
+ * @param {string} cryptogram 1 이상 1000 이하
+ * @returns {string}
+ */
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const duplicatePairRegExp = /(\w)\1{1}/g;
+  const getDuplicateRemoved = (str) =>
+    duplicatePairRegExp.test(str)
+      ? getDuplicateRemoved(str.replace(duplicatePairRegExp, ""))
+      : str;
+  return getDuplicateRemoved(cryptogram);
 }
 
 module.exports = problem2;
