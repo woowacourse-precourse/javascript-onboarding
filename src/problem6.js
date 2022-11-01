@@ -17,7 +17,7 @@ function problem6(forms) {
   }
 
   let getSameNicknames = new Set(getNickname);
-  let filteredNickname = [...getSameNicknames]; //중복제거
+  let filteredNickname = [...getSameNicknames];
 
   let emails = [];
 
@@ -30,9 +30,9 @@ function problem6(forms) {
   }
 
   let getEmails = new Set(emails);
-  let filteredEmails = [...getEmails]; //중복제거
+  let filteredEmails = [...getEmails];
 
-  let result = filteredEmails.sort(); //오름차순정렬
+  let result = filteredEmails.sort();
 
   return result;
 }
