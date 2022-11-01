@@ -38,9 +38,10 @@ const removeDuplicateEmail = (emailsOfSimilarNickName, allEmailsOfSimilarNicknam
 
 const getAllSerialCases = (nickname) => {
   const allSerialCases = [];
+  const nicknameLength = nickname.length;
 
-  for (let cutUnit = 2; cutUnit <= nickname.length; cutUnit++) {
-    for (let index = 0; index <= nickname.length - cutUnit; index++) {
+  for (let cutUnit = 2; cutUnit <= nicknameLength; cutUnit++) {
+    for (let index = 0; index <= nicknameLength - cutUnit; index++) {
       const serialString = nickname.slice(index, index + cutUnit);
 
       if (serialString.length === cutUnit) {
