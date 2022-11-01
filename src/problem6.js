@@ -1,21 +1,35 @@
-const isDuplicated = (nick1, nick2) => {
-  let result = false;
-  for (let i = 0; i < nick1.length - 1; i++) {
-    for (let j = 0; j < nick2.length - 1; j++) {
-      if (nick1[i] === nick2[j] && nick1[i + 1] === nick2[j + 1]) return true;
+const hasDuplicated = (target, compared) => {
+  for (let targetIndex = 0; targetIndex < target.length - 1; targetIndex++) {
+    for (
+      let comparedIndex = 0;
+      comparedIndex < compared.length - 1;
+      comparedIndex++
+    ) {
+      if (
+        target[targetIndex] === compared[comparedIndex] &&
+        target[targetIndex + 1] === compared[comparedIndex + 1]
+      )
+        return true;
     }
   }
-  return result;
+
+  return false;
 };
 
 const problem6 = (forms) => {
   const duplicated = new Set();
 
-  for (let i = 0; i < forms.length; i++) {
-    for (let j = i + 1; j < forms.length; j++) {
-      if (isDuplicated(forms[i][1], forms[j][1])) {
-        duplicated.add(forms[i][0]);
-        duplicated.add(forms[j][0]);
+  for (let targetIndex = 0; targetIndex < forms.length - 1; targetIndex++) {
+    for (
+      let comparedIndex = targetIndex + 1;
+      comparedIndex < forms.length;
+      comparedIndex++
+    ) {
+      const [targetEmail, targetNickname] = forms[targetIndex];
+      const [comparedEmail, comparedNickname] = forms[comparedIndex];
+
+      if (hasDuplicated(targetNickname, comparedNickname)) {
+        duplicated.add(targetEmail).add(comparedEmail);
         break;
       }
     }
