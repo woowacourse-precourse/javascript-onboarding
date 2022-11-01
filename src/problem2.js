@@ -16,16 +16,22 @@ const deleteDup = (str) => {
     return { deletedstr, isKeep };
 };
 
+const checkIsValid = (cryptogram) => {
+    if (cryptogram.lengh < 1 || 1000 < cryptogram.lengh) return false;
+    for (let i = 0; i < cryptogram.lengh; i++) {
+        if (cryptogram[i].toUppserCase() == cryptogram[i]) return false;
+    }
+    return true;
+};
 function problem2(cryptogram) {
+    if (checkIsValid(cryptogram)) return -1;
     let newstr = cryptogram;
     let keep = true;
     while (keep) {
         newstr = deleteDup(newstr).deletedstr;
         keep = deleteDup(newstr).isKeep;
     }
-    console.log(newstr);
+    return newstr;
 }
 
-problem2("browoanoommnaon");
-problem2("zyelleyz");
 module.exports = problem2;
