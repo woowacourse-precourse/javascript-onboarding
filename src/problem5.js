@@ -15,7 +15,7 @@ function moneyExchange(money, unit, answer) {
 }
 
 function problem5(money) {
-  if (isException(money)) return;
+  if (isException(money)) return 'isException';
   let answer = [];
 
   money = moneyExchange(money, 50000, answer);

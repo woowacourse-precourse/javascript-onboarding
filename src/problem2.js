@@ -15,7 +15,7 @@ function isException(str) {
 }
 
 function problem2(cryptogram) {
-  if (isException(cryptogram)) return;
+  if (isException(cryptogram)) return 'isException';
   const stack = [];
   let stackIdx = -1;
 

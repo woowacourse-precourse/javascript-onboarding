@@ -20,7 +20,7 @@ function clapCount(number) {
 }
 
 function problem3(number) {
-  if (isException(number)) return -1;
+  if (isException(number)) return 'isException';
   let cumulativeSum = 0;
 
   for (let i = 1; i < number + 1; ++i) {

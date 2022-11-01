@@ -23,7 +23,7 @@ function lowerConvert(charCode) {
 }
 
 function problem4(word) {
-  if (isException(word)) return;
+  if (isException(word)) return 'isException';
   let answer = '';
   let charCode;
 

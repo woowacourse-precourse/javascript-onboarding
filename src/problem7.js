@@ -93,7 +93,7 @@ function calIdNScore(map, idNScore) {
 }
 
 function problem7(user, friends, visitors) {
-  if (isException(user, friends)) return;
+  if (isException(user, friends)) return 'isException';
   const map = new Map();
   const idNScore = [];
   const answer = [];

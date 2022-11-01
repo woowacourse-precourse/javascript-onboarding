@@ -45,7 +45,7 @@ function checkDuplicate(form, map, duplicated) {
 }
 
 function problem6(forms) {
-  if (isException(forms)) return;
+  if (isException(forms)) return 'isException';
   const map = new Map();
   const duplicated = [];
 
