@@ -10,6 +10,21 @@ function problem3(number) {
   return checkedError;
 }
 
+function checkError(lastNumber) {
+  const MINIMUN_NUMBER = 1;
+  const MAXIMUM_NUMBER = 10000;
+
+  if (Number.isInteger(lastNumber) === false) {
+    return "자연수만 입력할 수 있습니다.";
+  }
+
+  if (lastNumber < MINIMUN_NUMBER || lastNumber > MAXIMUM_NUMBER) {
+    return "1 이상 10,000 이하만 입력할 수 있습니다.";
+  }
+
+  return "Not Error";
+}
+
 function countClapAll(lastNumber) {
   const FIRST_NUMBER = 1;
   let countAll = 0;
@@ -46,21 +61,6 @@ function countClapNumber(number) {
   }
 
   return countClap;
-}
-
-function checkError(lastNumber) {
-  const MINIMUN_NUMBER = 1;
-  const MAXIMUM_NUMBER = 10000;
-
-  if (Number.isInteger(lastNumber) === false) {
-    return "자연수만 입력할 수 있습니다.";
-  }
-
-  if (lastNumber < MINIMUN_NUMBER || lastNumber > MAXIMUM_NUMBER) {
-    return "1 이상 10,000 이하만 입력할 수 있습니다.";
-  }
-
-  return "Not Error";
 }
 
 module.exports = problem3;
