@@ -16,7 +16,7 @@ function problem6(forms) {
     }
   }
   // 3. 순회
-  let overlapMail = forms.filter((crew) => {
+  let overlapCrew = forms.filter((crew) => {
     // 3-1. 이중반복문
     twoLetters.forEach((twoLetter) => {
       for (let i = 0; i < twoLetter.length; i++) {
@@ -27,6 +27,9 @@ function problem6(forms) {
       }
     });
   });
+  // 4. 추출 및 정렬
+  let overlapMail = overlapCrew.map((el) => el[1]);
+  return overlapMail.sort();
 }
 
 module.exports = problem6;
