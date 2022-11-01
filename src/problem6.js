@@ -18,15 +18,16 @@ const getAllEmailsOfSimilarNickName = (forms) => {
 
     if (!allEmailsOfSimilarNickname.includes(targetUserEmail)) {
       const emailsOfSimilarNickName = getEmailsOfSimilarNickname(targetUserInfo, forms, getAllSerialCases(targetUserNickname));
-
-      if (emailsOfSimilarNickName.length > 0) {
-        allEmailsOfSimilarNickname.push(targetUserEmail);
-        allEmailsOfSimilarNickname.push(...emailsOfSimilarNickName);
-      }
+      const deduplicatedEmailsOfSimilarNickname = emailsOfSimilarNickName.map((email) => {
+        if (!allEmailsOfSimilarNickname.includes(email)) {
+          return email;
+        }
+      });
+      allEmailsOfSimilarNickname.push(...deduplicatedEmailsOfSimilarNickname);
     }
   });
 
-  return allEmailsOfSimilarNickname;
+  return allEmailsOfSimilarNickname.sort();
 };
 
 const getAllSerialCases = (nickname) => {
