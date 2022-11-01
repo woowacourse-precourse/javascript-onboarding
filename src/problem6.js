@@ -8,7 +8,27 @@ function problem6(forms) {
   let nickname = [];
   let email = [];
 
- 
+  arr.forEach((ele, i) => {
+    nickname[i] = ele[1];
+  });
+
+  nickname.forEach((ele) => {
+    for (let i = 0; i < ele.length - 1; i++) {
+      // 닉네임을 두글자씩 쪼갬
+      const sliceValue = ele.substring(i, i + 2);
+
+      nickname.forEach((ele2) => {
+        if (ele != ele2) {
+          //비교할 닉네임이 쪼갤 닉네임을 포함 할 경우
+          if (ele2.includes(sliceValue)) {
+            // 정답 배열에 push
+            overlap.push(ele);
+            overlap.push(ele2);
+          }
+        }
+      });
+    }
+  });
 }
 
 module.exports = problem6;
