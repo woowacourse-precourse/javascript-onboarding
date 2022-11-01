@@ -5,5 +5,6 @@ function problem5(money) {
     answer.push(Math.floor(money / banknotes[i]));
     money %= banknotes[i];
   }
+  return answer;
 }
 module.exports = problem5;
