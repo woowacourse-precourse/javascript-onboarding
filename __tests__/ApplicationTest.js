@@ -38,7 +38,7 @@ describe("problem3", () => {
   });
 });
 
-describe.only("problem4", () => {
+describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
@@ -54,7 +54,7 @@ describe("problem5", () => {
   });
 });
 
-describe("problem6", () => {
+describe.only("problem6", () => {
   test("case1", () => {
     expect(
       problem6([
