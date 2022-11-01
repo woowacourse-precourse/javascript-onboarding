@@ -31,6 +31,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 타임라인 방문 - 1점
+  for (let visitor of visitors) {
+    if (!freindsList[user].includes(visitor)) {
+      if (score[visitor]) {
+        score[visitor] += 1;
+      } else {
+        score[visitor] = 1;
+      }
+    }
+  }
+
 }
 
 module.exports = problem7;
