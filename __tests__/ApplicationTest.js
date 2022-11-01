@@ -49,8 +49,23 @@ describe('problem3', () => {
   test('case1', () => {
     expect(problem3(13)).toEqual(4);
   });
+
   test('case2', () => {
     expect(problem3(33)).toEqual(14);
+  });
+
+  test('case3', () => {
+    expect(problem3(333)).toEqual(228);
+  });
+
+  test('case4', () => {
+    expect(problem3(2)).toEqual(0);
+  });
+
+  test('case5', () => {
+    expect(problem3(5.6)).toEqual(false);
+    expect(problem3(0)).toEqual(false);
+    expect(problem3(10040)).toEqual(false);
   });
 });
 
