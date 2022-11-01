@@ -1,4 +1,7 @@
 # 미션 - 온보딩
+## 📑 문제별 기능 구현 과정
+
+* [/docs/README.md](/docs/README.md)
 
 ## 🔍 진행 방식
 
