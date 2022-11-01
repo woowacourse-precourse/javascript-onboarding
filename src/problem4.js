@@ -3,14 +3,14 @@ function problem4(word) {
 }
 
 function treeFrogApp(word){
-  const eachCharArr = createStringArr(word);
-  for(let i = 0; i < eachCharArr.length; i++){
-    eachCharArr[i] = convertTreeFrogChar(convertUTF16(eachCharArr[i]));
+  const eachCharCollection = createStringSplit(word);
+  for(let i = 0; i < eachCharCollection.length; i++){
+    eachCharCollection[i] = convertTreeFrogChar(convertUTF16(eachCharCollection[i]));
   }
-  return convertString(eachCharArr);
+  return convertString(eachCharCollection);
 }
 
-function createStringArr(word){
+function createStringSplit(word){
   return word.split("");
 }
 
