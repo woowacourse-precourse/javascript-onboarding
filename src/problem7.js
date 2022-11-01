@@ -2,15 +2,21 @@ function problem7(user, friends, visitors) {
   const  mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
   const memberSet = new Set(friendsArray.concat(visitors));
   const memberList = [...memberSet];
+
+  const userFriends = friends
+  .filter((friend) => friend[1] === user)
+  .map((friend) => friend[0]);
+
+
 }
 
 module.exports = problem7;
 
 //problem7 기능목록
-//[]모든 사용자의 닉네임을 저장한 배열을 만든다.
-//  []이차원배열 friends를 일차원으로 변환시킨다.
-//  []일차원배열에서 user를 삭제한 후 vistor와 결합, 중복을 삭제한다.
-//[]userFirends 배열에 user와 이미 친구인 사용자를 저장한다.
+//[x]모든 사용자의 닉네임을 저장한 배열을 만든다.
+//  [x]이차원배열 friends를 일차원으로 변환시킨다.
+//  [x]일차원배열에서 user를 삭제한 후 vistor와 결합, 중복을 삭제한다.
+//[x]userFirends 배열에 user와 이미 친구인 사용자를 저장한다.
 //[]친구 추천 점수판을 구현한다.
 //  []이미 친구인 사용자를 제외한 사용자들을 [닉네임, 점수] 순의 배열로 정리한다.
 //[]사용자별 친구 추천 점수를 계산한다. 
