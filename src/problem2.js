@@ -6,6 +6,8 @@ function problem2(cryptogram) {
   3. flag 추가하여 중복된 문자가 없을 때까지 반복
   4. dirty 배열을 합쳐서 clean 문자열로 변환 후 정답으로 반환
   */
+  
+  let dirty = cryptogram.split('');
 }
 
 module.exports = problem2;
