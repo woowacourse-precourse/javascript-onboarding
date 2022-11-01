@@ -11,9 +11,24 @@ function problem7(user, friends, visitors) {
 		this.score = visitCnt + knowingCnt * 10;
 	}
 	let answer;
+	let FriendList = [];
+	addFriends();
 
-	let friendsArray = [];
+	function addFriends() {
+		friends.map((ref) => {
+			addFriend(ref[0]);
+			addFriend(ref[1]);
+		});
+		visitors.map((ref) => addFriend(ref));
+	}
 
+	function addFriend(arr) {
+		let count = 0;
+		FriendList.forEach((friend) => {
+			if (friend.friendName == arr) count++;
+		});
+		count == 0 ? FriendList.push(new Friend(arr)) : null;
+	}
 	return answer;
 }
 
