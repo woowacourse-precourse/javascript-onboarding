@@ -5,10 +5,10 @@
 */
 
 function problem5(money) {
-  return getNumberOfEachMoneyUnits(money);
+  return exchangeMoneyToLeastPaperAndCoin(money);
 }
 
-const getNumberOfEachMoneyUnits = (money) => {
+const exchangeMoneyToLeastPaperAndCoin = (money) => {
   const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
   return moneyUnits.map((moneyUnit) => {
