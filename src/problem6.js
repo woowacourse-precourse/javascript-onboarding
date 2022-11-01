@@ -21,7 +21,9 @@ function problem6(forms) {
     for (let i = 0; i < twoLetters.length; i++) {
       for (let j = 0; j < twoLetters.length; j++) {
         // 3-2. includes
-        if (crew[1].includes(twoLetters[i][j])) {
+        if (idx === i) {
+          continue;
+        } else if (crew[1].includes(twoLetters[i][j])) {
           return true;
         }
       }
