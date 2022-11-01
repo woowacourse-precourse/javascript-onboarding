@@ -71,6 +71,27 @@ function addVisitorsScore(score, 친구제외visitors) {
   });
 }
 
+// score객체를 2차원 배열로 정렬후 반환
+function sortScore(score) {
+  const scoreArr = Object.entries(score);
+
+  if (scoreArr.length === 0) {
+    answer = [];
+    return answer;
+  } else if (scoreArr.length === 1) {
+    answer = scoreArr[0][0];
+    return answer;
+  }
+
+  scoreArr.sort((prev, cur) => {
+    if (prev[1] < cur[1]) return 1;
+    if (prev[1] > cur[1]) return -1;
+    if (prev[0] > cur[0]) return 1;
+    if (prev[0] < cur[0]) return -1;
+  });
+  return scoreArr;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const user의_친구목록 = getFriendsArr(user, friends);
