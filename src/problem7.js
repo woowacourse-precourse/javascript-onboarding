@@ -4,6 +4,15 @@ function problem7(user, friends, visitors) {
   isUser = except(user, friends);
   scoreList = score_10(isUser, friends, user);
   friendRank = give10Score(scoreList);
+
+  for(i = 0; i < visitors.length; i++) {
+    for(j = 0; j < isUser.length; j++) {
+      if(visitors[i] == isUser[j]){
+        visitors.splice(i, 1);
+      }
+    }
+  }
+  
   visitorRank = visitorScore(visitors, friendRank);
   return answer;
 }
