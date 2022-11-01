@@ -1,4 +1,10 @@
 function problem4(word) {
+  // word의 길이가 1 이상이 아닌 경우 "Error: word의 길이는 1이상이어야 합니다"라는 문자열을 반환한다.
+  if (word.length < 1) return "Error: word의 길이는 1이상이어야 합니다";
+
+  // word의 길이가 1000 이하가 아닌 경우 "Error: word의 길이는 1000이하이어야 합니다"라는 문자열을 반환한다.
+  if (word.length > 1000) return "Error: word의 길이는 1000이하이어야 합니다";
+
   // 대문자, 소문자 알파벳 배열을 만든다.
   const upperCaseArr = [
     "A",

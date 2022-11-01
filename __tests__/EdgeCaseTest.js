@@ -1,6 +1,7 @@
 const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
 const problem3 = require("../src/problem3");
+const problem4 = require("../src/problem4");
 const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
@@ -81,6 +82,16 @@ describe("problem3", () => {
 
   test('number가 자연수가 아닌 경우 "Error: number는 자연수이어야 합니다"라는 문자열을 반환한다.', () => {
     expect(problem3(10.123)).toEqual("Error: number는 자연수이어야 합니다");
+  });
+});
+
+describe("problem4", () => {
+  test('word의 길이가 1 이상이 아닌 경우 "Error: word의 길이는 1이상이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem4("")).toEqual("Error: word의 길이는 1이상이어야 합니다");
+  });
+
+  test('word의 길이가 1000 이하가 아닌 경우 "Error: word의 길이는 1000이하이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem4("a".padEnd(1001, "a"))).toEqual("Error: word의 길이는 1000이하이어야 합니다");
   });
 });
 
