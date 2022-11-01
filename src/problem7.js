@@ -9,23 +9,23 @@ const findFriends = (friends, friendsMap, person) => {
   friendsMap.set(person, tempFriends);
 }
 
+const calcVisitorScore = (user, visitors, scoreMap, friendsMap) => {
+  visitors.forEach(visitor => {
+    if (scoreMap.has(visitor)) scoreMap.set(visitor, scoreMap.get(visitor) + 1);
+    else if (!friendsMap.get(user).includes(visitor)) scoreMap.set(visitor, 1);
+  })
+}
+
 function problem7(user, friends, visitors) {
   const friendsMap = new Map();
   const scoreMap = new Map();
   
-  // friends에서 내 친구 찾아 friendsMap에 넣기, 내 친구의 친구 관계 friendsmap에 넣기
   findFriends(friends, friendsMap, user);
   friendsMap.get(user).forEach((person) => {
     findFriends(friends, friendsMap, person);
   })
 
-  // 점수계산 기능(방문횟수(내 친구 제외) * 1 + 내친구의친구(나, 내 친구) * 10)
-  visitors.forEach(visitor => {
-    if (scoreMap.has(visitor)) {
-        scoreMap.set(visitor, scoreMap.get(visitor) + 1);
-    }
-    else if (!friendsMap.get(user).includes(visitor)) scoreMap.set(visitor, 1);
-  })
+  calcVisitorScore(user, visitors, scoreMap, friendsMap);
   
   friendsMap.get(user).forEach((person) => {
     friendsMap.get(person).forEach((friendOfPerson) => {
