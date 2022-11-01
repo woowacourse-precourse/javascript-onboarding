@@ -27,6 +27,9 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
+  test("case3", () => {
+    expect(problem2("a")).toEqual("a");
+  });
 });
 
 describe("problem3", () => {
@@ -35,6 +38,9 @@ describe("problem3", () => {
   });
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
+  });
+  test("case3", () => {
+    expect(problem3(3)).toEqual(1);
   });
 });
 
@@ -52,6 +58,10 @@ describe("problem5", () => {
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+
+  test("case3", () => {
+    expect(problem5(1)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 1]);
+  });
 });
 
 describe("problem6", () => {
@@ -59,6 +69,17 @@ describe("problem6", () => {
     expect(
       problem6([
         ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+  test("case2", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이슨"],
         ["jason@email.com", "제이슨"],
         ["woniee@email.com", "워니"],
         ["mj@email.com", "엠제이"],
@@ -84,5 +105,16 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+        ],
+        []
+      )
+    ).toEqual([]);
   });
 });
