@@ -7,7 +7,7 @@ function problem4(word) {
     'Y', 'Z'
   ];
 
-  const findABC = (element) => {
+  const changeReverse = (element) => {
     for(let i=0; i<dictionary.length; i++){
       if(element === dictionary[i]) return dictionary[25-i];
     }
@@ -15,9 +15,9 @@ function problem4(word) {
 
   const treeFrog = word.split('').map(el => {
     if(el === " ") el = " "; 
-    else if(el === el.toUpperCase()) el = findABC(el);
+    else if(el === el.toUpperCase()) el = changeReverse(el);
     else {
-      el = findABC(el.toUpperCase());
+      el = changeReverse(el.toUpperCase());
       el = el.toLowerCase();
     } 
     return el;
