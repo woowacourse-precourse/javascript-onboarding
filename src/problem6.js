@@ -7,6 +7,10 @@ function problem6(forms) {
 
   for (let i = 0; i < forms.length; i++) {
     nickName.push(forms[i][1]);
+  }
+  for (let j = 0; j < nickName[i].length - 1; j++) {
+    nickNameTwoWords = nickName[i].substring(j, j + 2);
+  }
 }
 
 module.exports = problem6;
