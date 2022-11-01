@@ -5,6 +5,7 @@ function problem7(user, friends, visitors) {
     map.set(friendsArr[i], 0);
   }
   let alreadyFriendsArr = findAlreadyFriends(user, friends);
+  let willBeFriendsArr = findWillBeFriends(friends, alreadyFriendsArr);
 }
 function makeAllFriendsArr(friends) {
   let friendsArr = friends.reduce((acc, cur) => [...acc, ...cur]);
@@ -17,5 +18,15 @@ function findAlreadyFriends(user, friends) {
     if (user === friends[i][1]) alreadyFriendsArr.push(friends[i][0]);
   }
   return alreadyFriendsArr;
+}
+function findWillBeFriends(friends, alreadyFriendsArr) {
+  let willBeFriendsArr = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (alreadyFriendsArr.includes(friends[i][0]))
+      willBeFriendsArr.push(friends[i][1]);
+    if (alreadyFriendsArr.includes(friends[i][1]))
+      willBeFriendsArr.push(friends[i][0]);
+  }
+  return willBeFriendsArr;
 }
 module.exports = problem7;
