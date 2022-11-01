@@ -3,7 +3,7 @@ function problem3(number) {
   const targetNumbers = ["3", "6", "9"];
 
   const chenckNum = (strNum) => {
-    for (let i = 0; index < strNum.length; i++) {
+    for (let i = 0; i < strNum.length; i++) {
       if (targetNumbers.includes(strNum[i])) answer++;
     }
   };
