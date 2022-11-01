@@ -12,11 +12,27 @@ function splitNameIntoTwoOrMoreLengths(name) {
   return arrayOfSplitNames;
 }
 
+function getEmailOfPersonWithDuplicateName(
+  arrayOfSplitNames,
+  arr,
+  originalEmail
+) {
+  let emailOfPersonWithDuplicateName = [];
+  arrayOfSplitNames.forEach((splitName) => {});
+  return (
+    emailOfPersonWithDuplicateName.length && emailOfPersonWithDuplicateName
+  );
+}
+
 function problem6(forms) {
   let answer = [];
   let emailOfPersonWithDuplicateName;
   forms.forEach(([email, name], _, arr) => {
-    splitNameIntoTwoOrMoreLengths(name);
+    getEmailOfPersonWithDuplicateName(
+      splitNameIntoTwoOrMoreLengths(name),
+      arr,
+      email
+    );
   });
   return;
 }
