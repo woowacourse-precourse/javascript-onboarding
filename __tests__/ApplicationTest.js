@@ -45,7 +45,7 @@ describe("problem4", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
 });
-*/
+
 
 describe("problem5", () => {
   test("case1", () => {
@@ -56,7 +56,8 @@ describe("problem5", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
 });
-/*
+*/
+
 describe("problem6", () => {
   test("case1", () => {
     expect(
@@ -70,7 +71,7 @@ describe("problem6", () => {
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
 });
-
+/*
 describe("problem7", () => {
   test("case1", () => {
     expect(
