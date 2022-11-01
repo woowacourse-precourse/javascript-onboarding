@@ -1,5 +1,23 @@
 function problem6(forms) {
-  var answer;
+  var answer = [];
+  var noName = []
+  var result = []
+  var array = [["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]
+  // var emailExp = new RegExp('^[a-zA-Z0-9+-.]+@+[email.com]+$')
+  // var nameExp = new RegExp('^[ㄱ-ㅎ|가-힣]+$')
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      let temp = array[j][1]
+      for (let k = 0; k < temp.length + 1; k++) {
+        if (array[i][1].includes(temp[k] + temp[k + 1]) || array[i][1].includes(temp[k + 1] + [temp[k + 2]])) {
+          noName.push(array[i])
+        }
+      }
+    }
+    result = [...new Set(noName)]
+  }
+  answer = result.sort()
   return answer;
 }
 
