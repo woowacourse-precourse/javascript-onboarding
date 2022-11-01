@@ -8,6 +8,10 @@
 */
 
 function problem4(word) {
+  return getReverseConvertedString(word);
+}
+
+const getReverseConvertedString = (word) => {
   const lowerCases = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const upperCases = lowerCases.map((alphabet) => alphabet.toUpperCase());
 
@@ -22,7 +26,7 @@ function problem4(word) {
       }
     })
     .join("");
-}
+};
 
 const isAlphabet = (chr) => {
   const regExp = /[a-z|A-Z]/;
