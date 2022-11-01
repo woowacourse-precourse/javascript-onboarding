@@ -55,21 +55,23 @@ const getVisitorScore = (visitors, scores) => {
 const dictToArray = (scores) => {
   const newArr = new Array;
   for(let key in scores) {
-    newArr.push([scores[key], key])
+    newArr.push([scores[key], key]);
   }
   return newArr;
 }
 
-const arrayFilter = (name, user, friendsDictObj) => {
-  if(name === user) return false;
-  if(friendsDictObj[user].includes(name)) return false;
+const arrayFilter = (element, user, friendsDictObj) => {
+  if(element[1] === user) return false;
+  if(Object.keys(friendsDictObj).includes(user)
+  &&friendsDictObj[user].includes(element[1])) return false;
+  if(element[0] === 0) return false;
   return true;
 }
 
 const makeScoreArray = (user, friendsDictObj, scores) => {
   const newArr = dictToArray(scores);
   const filteredArr = newArr.filter((element) => {
-    return arrayFilter(element[1], user, friendsDictObj);
+    return arrayFilter(element, user, friendsDictObj);
   })
   return filteredArr;
 }
@@ -110,3 +112,16 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+console.log(problem7('hello',
+[
+  ['andole', 'jun'],
+  ['andole', 'bedi'],
+  ['jun', 'shakevan'],
+  ['jun', 'kane'],
+  ['jun', 'sam'],
+  ['bedi', 'shakevan'],
+  ['bedi', 'anne'],
+  ['bedi', 'sam'],
+  ['anne', 'mrko'],
+],
+['donut', 'anne', 'mrko', 'mrko', 'sam'],))
