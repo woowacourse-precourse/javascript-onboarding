@@ -14,6 +14,17 @@ function problem6(forms) {
     }
   });
 
+  let countList = Array.from({ length: twoLetterList.length - 1 }, () => 0);
+  nickNameList.map((nickName) => {
+    for (let i = 0; i < twoLetterList.length; i++) {
+      const twoLetter = twoLetterList[i];
+      if (nickName.includes(twoLetter)) {
+        countList[i]++;
+      }
+    }
+  });
+  countList = countList.filter((count) => count >= 2);
+
   return nickNameList;
 }
 
