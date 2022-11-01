@@ -64,7 +64,7 @@ function problem1(pobi, crong) {
   }
 }
 
-function addproblem1(num1, num2) {
+const addproblem1 = (num1, num2) => {
   var sum1 = 0, sum2 = 0;
   while (num1 > 0) {
     sum1 += num1 % 10;
@@ -83,7 +83,7 @@ function addproblem1(num1, num2) {
   }
 }
 
-function mulproblem1(num1, num2) {
+const mulproblem1 = (num1, num2) => {
   var mul1 = 1, mul2 = 1;
   while (num1 != 0) {
     mul1 *= num1 % 10;
