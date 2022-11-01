@@ -30,6 +30,8 @@ function problem7(user, friends, visitors) {
       return score2 - score1;
     }
   );
+
+  return sortedScore.map((score) => score[0]).slice(0, 5);
 }
 
 module.exports = problem7;
