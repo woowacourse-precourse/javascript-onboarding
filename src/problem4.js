@@ -29,6 +29,16 @@ function problem4(word) {
   for (k = 0; k < wordArr.length; k++) {
     wordArr[k] = convertToTreefrog(wordArr[k]);
   }
+  // 변환된 단어를 하나의 문장으로 합쳐 반환하는 기능
+  for (l = 0; l < wordArr.length; l++) {
+    for (m = 0; m < wordArr[l].length; m++) {
+      answer += wordArr[l][m];
+    }
+    if (l != wordArr.length - 1) {
+      answer += " ";
+    }
+  }
+  answer = answer.substring(9);
   return answer;
 }
 
