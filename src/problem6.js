@@ -41,16 +41,8 @@ function getValidForms(forms) {
   let validForms = [];
   let invalidForms = [];
   let isValid = true;
-  for (let [email, nickname] of forms) {
-    if (!(email.length >= 11 && email.length < 20)) {
-      isValid = false;
-    } else if (email.slice(-10) !== "@email.com") {
-      isValid = false;
-    } else if (!(nickname.length >= 1 && nickname.length < 20)) {
-      isValid = false;
-    } else {
-      isValid = true;
-    }
+  for (let form of forms) {
+    isValid = isValidForm(form);
     if (isValid) {
       validForms.push([email, nickname]);
     } else {
@@ -62,6 +54,21 @@ function getValidForms(forms) {
   }
 
   return validForms;
+}
+
+function isValidForm([email, nickname]) {
+  let isValid;
+  if (!(email.length >= 11 && email.length < 20)) {
+    isValid = false;
+  } else if (email.slice(-10) !== "@email.com") {
+    isValid = false;
+  } else if (!(nickname.length >= 1 && nickname.length < 20)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function printInvalidForms(invalidForms) {
