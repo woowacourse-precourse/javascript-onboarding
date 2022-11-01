@@ -1,13 +1,8 @@
 function makeFriendList(user, friends) {
   const friendList = [];
   for (relation of friends) {
-    if (relation.includes(user)) {
-      if (relation[0] === user) {
-        friendList.push(relation[1]);
-      } else {
-        friendList.push(relation[0]);
-      }
-    }
+    if (!relation.includes(user)) continue;
+    friendList.push(relation[0] === user ? relation[1] : relation[0]);
   }
   return friendList;
 }
