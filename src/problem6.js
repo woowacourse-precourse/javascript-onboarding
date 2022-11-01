@@ -5,7 +5,11 @@ function problem6(forms) {
     const nickname = forms[i][1];
     checkingDuplicated(duplicated, nickname, email);
   }
-  console.log(duplicated);
+  
+  const emailsToContact = new Set();
+  for (sliced in duplicated) {
+    movingSetElements(emailsToContact, duplicated[sliced]);
+  }
   var answer;
   return answer;
 }
@@ -29,6 +33,16 @@ function setDefault(target, key, value) {
   target[key] = new Set();
   target[key].add(value);
   return target;
+}
+
+function movingSetElements(toSet, fromSet) {
+  if (fromSet.size <= 1) {
+    return toSet;
+  }
+  for (email of fromSet.values()) {
+    toSet.add(email);
+  }
+  return toSet;
 }
 
 module.exports = problem6;
