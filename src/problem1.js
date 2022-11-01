@@ -26,19 +26,16 @@ function problem1(pobi, crong) {
     if (pobiL % 2 === 0 || crongL % 2 === 0 || pobiR % 2 === 1 || crongR % 2 === 1) return true;
   }
 
-  const pobiMax = () => {
-    return Math.max(PlusPage(pobiL), PlusPage(pobiR), MultiplyPage(pobiL), MultiplyPage(pobiR));
-  };
+  const pobiMax = Math.max(PlusPage(pobiL), PlusPage(pobiR), MultiplyPage(pobiL), MultiplyPage(pobiR));
 
-  const crongMax = () => { 
-    return Math.max(PlusPage(crongL), PlusPage(crongR), MultiplyPage(crongL), MultiplyPage(crongR));
-  };
+  const crongMax = Math.max(PlusPage(crongL), PlusPage(crongR), MultiplyPage(crongL), MultiplyPage(crongR));
 
-  if (pobiMax() > crongMax()) {
+
+  if (pobiMax > crongMax) {
     answer = 1;
-  } else if (pobiMax() < crongMax()) {
+  } else if (pobiMax < crongMax) {
     answer = 2;
-  } else if (pobiMax() === crongMax()){
+  } else if (pobiMax === crongMax){
     answer = 0;
   } 
 
