@@ -1,5 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = cryptogram;
+  while (checkRepetition(answer)) {
+    answer = removeRepetition(answer);
+  }
   return answer;
 }
 module.exports = problem2;
