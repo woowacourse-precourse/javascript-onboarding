@@ -17,13 +17,15 @@ function problem6(forms) {
     }
     result = [...new Set(noName)]
   }
+  for(let i = 0 ; i < result.length ; i++){
+    result[i].pop()
+  }
   answer = result.sort()
+  
   answer = answer.reduce(function (acc, cur) {
     return acc.concat(cur);
   });
   return answer;
 }
-let str = problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ])
-console.log(str)
 
 module.exports = problem6;
