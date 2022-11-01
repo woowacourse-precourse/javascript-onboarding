@@ -16,6 +16,15 @@
 
 function problem1(pobi, crong) {
   var answer;
+  if (validateInput(pobi) && validateInput(crong)) {
+    const pobiScore = getScore(pobi);
+    const crongScore = getScore(crong);
+    answer = getWinner(pobiScore, crongScore);
+    return answer;
+  }
+  else {
+    return -1; // 예외사항 일 경우
+  }
   return answer;
 }
 
