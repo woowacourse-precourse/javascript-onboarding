@@ -2,46 +2,29 @@
 
 /**
  *
- * @param {string[][]} forms
+ * @param {[string, string][]} forms [email][nickname]
  * @returns {string[]}
  */
 
 function problem6(forms) {
-  const targetEmails = new Set();
+  /** @type {{[word :string]: Set<string>}} */
+  const emailsWithWord = {};
 
   forms.forEach((form) => {
     const [email, nickname] = form;
 
-    const filteredForms = forms.filter((f) => email !== f[0]);
-    const emails = findDuplicatedNickname(nickname, filteredForms);
+    const wordSet = getWordSet(nickname);
 
-    emails.forEach((e) => targetEmails.add(e));
+    wordSet.forEach((w) => {
+      emailsWithWord[w]
+        ? emailsWithWord[w].add(email)
+        : (emailsWithWord[w] = new Set([email]));
+    });
   });
 
-  return [...targetEmails].sort();
-}
+  const duplicatedEmails = findDuplicatedEmails(emailsWithWord);
 
-/**
- * wordSet 중 하나의 문자열과 중복이 있는 이메일 배열을 반환
- * @param {string} targetNickname
- * @param {string[][]} forms
- * @returns {string[]}
- */
-
-function findDuplicatedNickname(targetNickname, forms) {
-  const wordSet = getWordSet(targetNickname);
-
-  const emails = [];
-
-  forms.forEach((form) => {
-    const [email, nickname] = form;
-
-    if (isDuplicate(wordSet, nickname)) {
-      emails.push(email);
-    }
-  });
-
-  return emails;
+  return duplicatedEmails;
 }
 
 /**
@@ -61,16 +44,23 @@ function getWordSet(str) {
 }
 
 /**
- * wordSet 중 nickname 에 포함된 것이 있는지 체크
- * @param {string[]} wordSet
- * @param {string} nickname
- * @returns {boolean}
+ *
+ * @param {{[word :string]: Set<string>}} emailsWithWord
+ * @returns {string[]}
  */
+function findDuplicatedEmails(emailsWithWord) {
+  /** @type {string[]} */
+  const duplicatedEmails = [];
 
-function isDuplicate(wordSet, nickname) {
-  const index = wordSet.findIndex((word) => nickname.includes(word));
+  Object.entries(emailsWithWord).forEach((value) => {
+    const [_, emails] = value;
 
-  return index !== -1;
+    if (emails.size > 1) {
+      duplicatedEmails.push(...emails);
+    }
+  });
+
+  return [...new Set(duplicatedEmails)].sort();
 }
 
 module.exports = problem6;
