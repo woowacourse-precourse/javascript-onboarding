@@ -39,31 +39,38 @@ function problem1(pobi, crong) {
   };
 
   // pobi
-  let pobiLeftPlusValue = plusValue(pobi[0]);
-  let pobiRightPlusValue = plusValue(pobi[1]);
+  if (pobi[0] >= [pobi][1] || pobi[1] - pobi[0] > 2) {
+    return answer = -1;
+  } else {
+    let pobiLeftPlusValue = plusValue(pobi[0]);
+    let pobiRightPlusValue = plusValue(pobi[1]);
 
-  let pobiLeftMultiplyValue = multiplyValue(pobi[0]);
-  let pobiRightMultiplyValue = multiplyValue(pobi[1]);
+    let pobiLeftMultiplyValue = multiplyValue(pobi[0]);
+    let pobiRightMultiplyValue = multiplyValue(pobi[1]);
 
-  let pobiResultPlusVaule = pobiLeftPlusValue > pobiRightPlusValue ? pobiLeftPlusValue : pobiRightPlusValue;
-  let pobiResultMultiplyValue = pobiLeftMultiplyValue > pobiRightMultiplyValue ? pobiLeftMultiplyValue : pobiRightMultiplyValue;
+    let pobiResultPlusVaule = pobiLeftPlusValue > pobiRightPlusValue ? pobiLeftPlusValue : pobiRightPlusValue;
+    let pobiResultMultiplyValue = pobiLeftMultiplyValue > pobiRightMultiplyValue ? pobiLeftMultiplyValue : pobiRightMultiplyValue;
 
-  let pobiResultValue = pobiResultPlusVaule > pobiResultMultiplyValue ? pobiResultPlusVaule : pobiResultMultiplyValue;
+    let pobiResultValue = pobiResultPlusVaule > pobiResultMultiplyValue ? pobiResultPlusVaule : pobiResultMultiplyValue;
 
-  // crong
-  let crongLeftPlusValue = plusValue(crong[0]);
-  let crongRightPlusValue = plusValue(crong[1]);
+    // crong
+    let crongLeftPlusValue = plusValue(crong[0]);
+    let crongRightPlusValue = plusValue(crong[1]);
 
-  let crongLeftMultiplyValue = multiplyValue(crong[0]);
-  let crongRightMultiplyValue = multiplyValue(crong[1]);
+    let crongLeftMultiplyValue = multiplyValue(crong[0]);
+    let crongRightMultiplyValue = multiplyValue(crong[1]);
 
-  let crongResultPlusValue = crongLeftPlusValue > crongRightPlusValue ? crongLeftPlusValue : crongRightPlusValue;
-  let crongResultMultiplyValue = crongLeftMultiplyValue > crongRightMultiplyValue ? crongLeftMultiplyValue : crongRightMultiplyValue
+    let crongResultPlusValue = crongLeftPlusValue > crongRightPlusValue ? crongLeftPlusValue : crongRightPlusValue;
+    let crongResultMultiplyValue = crongLeftMultiplyValue > crongRightMultiplyValue ? crongLeftMultiplyValue : crongRightMultiplyValue
 
-  let crongResultValue = crongResultPlusValue > crongResultMultiplyValue ? crongResultPlusValue : crongResultMultiplyValue
+    let crongResultValue = crongResultPlusValue > crongResultMultiplyValue ? crongResultPlusValue : crongResultMultiplyValue
 
 
-  resultValue(pobiResultValue, crongResultValue);
+    resultValue(pobiResultValue, crongResultValue);
+  }
+
+
+
 
   return answer;
 }
