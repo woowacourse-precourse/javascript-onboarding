@@ -1,3 +1,13 @@
+// 점수 내림차순 정렬
+function sortScore(object) {
+  const newObject = object.sort((a, b) => {
+    if (a.score > b.score) return -1;
+    else if (a.score < b.score) return 1;
+    else return 0;
+  });
+  return newObject;
+}
+
 function problem7(user, friends, visitors) {
   // 추천친구 결과 result
   var answer = [];
@@ -42,6 +52,8 @@ function problem7(user, friends, visitors) {
       nameArr.push(visitors[i]);
     }
   }
+  // 점수순 정렬
+  sortScore(scoreArr);
 
   return answer;
 }
