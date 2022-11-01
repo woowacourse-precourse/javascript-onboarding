@@ -17,7 +17,7 @@ function count369(str) {
 
   for (let i = 0; i < str.length; i++) {
 
-    if (str[i] == CHECK_3 | str[i] == CHECK_6 | str[i] == CHECK_9) {
+    if (str[i] == CHECK_3 || str[i] == CHECK_6 || str[i] == CHECK_9) {
       count += 1;
     }
 
