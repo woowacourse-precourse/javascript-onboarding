@@ -1,6 +1,10 @@
 function problem1(pobi, crong) {
   var answer;
   return answer;
+  if (pobi[0] % 2 === 0) {
+    return -1
+  }
+
 const sumOfEachDigit = (num) => {
   let sum = 0
   while (num > 0) {
