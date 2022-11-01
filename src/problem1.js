@@ -19,8 +19,8 @@ function problem1(pobi, crong) {
   if (exception(pobi) || exception(crong)) {
     result = -1;
   } else {
-    const pobiScore = Math.max(...pobi.map((num, index) => calculate(num)));
-    const crongScore = Math.max(...crong.map((num, index) => calculate(num)));
+    const pobiScore = Math.max(...pobi.map((num, index) => calculate(num))); // pobi 점수
+    const crongScore = Math.max(...crong.map((num, index) => calculate(num))); // crong 점수
 
     // pobi와 crong의 점수 비교하여 최종 승부 점수 구하기
     if (pobiScore > crongScore) {
