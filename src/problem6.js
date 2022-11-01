@@ -19,26 +19,4 @@ function duplicateCheckApp(forms) {
   return [...emailOfUsedNickName].sort();
 }
 
-// function checkValidation(forms) {
-//   const validationFilter = [];
-//   const emailCollection = [];
-//   forms.map(([crewEmail, crewNickName]) => {
-//     if (checkNickName(crewNickName) && checkEmail(crewEmail, emailCollection)) {
-//       validationFilter.push([crewEmail, crewNickName]);
-//       emailCollection.push(crewEmail);
-//     }
-//   });
-//   return validationFilter;
-// }
-
-// function checkNickName(nickName) {
-//   return nickName.length >= 2 && nickName.length < 20 && !/[^가-힣]/.test(nickName);
-// }
-
-// function checkEmail(email, emailCollection) {
-//   return email.length >= 11 && email.length < 20 && email.includes("@email") && !emailCollection.includes(email);
-// }
-
-
-
 module.exports = problem6;
