@@ -1,19 +1,5 @@
 // 함께 아는 친구를 기준으로 추천 점수를 구하는 기능
-const scoreFromMutual = (user, allFriendsArr) => {
-  let friendsOfUser = allFriendsArr.filter((friends) => {
-    return friends[0] == user || friends[1] == user;
-  });
-  if (friendsOfUser.length != 0) {
-    friendsOfUser = friendsOfUser.reduce((prev, curr) => prev.concat(curr));
-    friendsOfUser = friendsOfUser.filter((friends) => {
-      return friends != user;
-    });
-  }
-
-  let notFriendsOfUser = allFriendsArr.filter((friends) => {
-    return friends[0] != user && friends[1] != user;
-  });
-
+const getScoreFromMutualFriends = (friendsOfUser, notFriendsOfUser) => {
   let mutualFriendsObj = {};
   if (friendsOfUser.length != 0) {
     for (i = 0; i < friendsOfUser.length; i++) {
@@ -36,11 +22,33 @@ const scoreFromMutual = (user, allFriendsArr) => {
   } else {
     mutualFriendsObj = {};
   }
-  return [friendsOfUser, mutualFriendsObj];
+  return mutualFriendsObj;
+};
+
+// 사용자와 친구인 크루를 구하는 기능
+const getFriendsOfUser = (user, allFriendsArr) => {
+  let friendsOfUser = allFriendsArr.filter((friends) => {
+    return friends[0] == user || friends[1] == user;
+  });
+  if (friendsOfUser.length != 0) {
+    friendsOfUser = friendsOfUser.reduce((prev, curr) => prev.concat(curr));
+    friendsOfUser = friendsOfUser.filter((friends) => {
+      return friends != user;
+    });
+  }
+  return friendsOfUser;
+};
+
+// 사용자의 친구가 아닌 크루를 구하는 기능
+const getNotFriendsOfUser = (user, allFriendsArr) => {
+  let notFriendsOfUser = allFriendsArr.filter((friends) => {
+    return friends[0] != user && friends[1] != user;
+  });
+  return notFriendsOfUser;
 };
 
 // 사용자의 타임라인에 방문한 횟수 기준으로 추천 점수를 구하는 기능
-const scoreFromVisit = (visitors) => {
+const getScoreFromVisit = (visitors) => {
   let visitorsObj = {};
   for (i = 0; i < visitors.length; i++) {
     if (Object.keys(visitorsObj).includes(visitors[i])) {
@@ -56,9 +64,13 @@ function problem7(user, friends, visitors) {
   var answer;
 
   let candidateFriends = {};
-  let userFriends;
-  let scoreFromMutualObj = scoreFromMutual(user, friends)[1];
-  let scoreFromVisitObj = scoreFromVisit(visitors);
+  const friendsOfUser = getFriendsOfUser(user, friends);
+  const notFriendsOfUser = getNotFriendsOfUser(user, friends);
+  let scoreFromMutualObj = getScoreFromMutualFriends(
+    friendsOfUser,
+    notFriendsOfUser
+  );
+  let scoreFromVisitObj = getScoreFromVisit(visitors);
 
   if (Object.keys(scoreFromVisitObj).length == 0) {
     if (Object.keys(scoreFromMutualObj).length == 0) {
@@ -90,13 +102,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  userFriends = scoreFromMutual(user, friends)[0];
-
   let keyOfCandidateFriends = Object.keys(candidateFriends);
 
   for (i = 0; i < keyOfCandidateFriends.length; i++) {
-    for (j = 0; j < userFriends.length; j++)
-      if (keyOfCandidateFriends[i] == userFriends[j]) {
+    for (j = 0; j < friendsOfUser.length; j++)
+      if (keyOfCandidateFriends[i] == friendsOfUser[j]) {
         delete candidateFriends[keyOfCandidateFriends[i]];
       }
   }
