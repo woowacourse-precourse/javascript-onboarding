@@ -79,9 +79,7 @@ function getRecommendScore(withKnowScore, visitTimelineScore) {
   }
 
   const recommendScore = sortRecommendScore(withKnowScore).slice(0, 5);
-  return recommendScore.map((items) => {
-    return items[0];
-  });
+  return recommendScore.map((items) => items[0]);
 }
 
 function sortRecommendScore(recommendScore) {
