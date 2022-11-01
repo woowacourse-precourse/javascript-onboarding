@@ -21,6 +21,16 @@ function problem1(pobi, crong) {
   // 왼쪽 페이지가 홀수가 아닐 때
   else if (pobi[0] % 2 !== 1 || crong[0] % 2 !== 1) return -1;
 
+  const pobiScore = Math.max(
+    Math.max(addNumber(pobi[0]), mulNumber(pobi[0])),
+    Math.max(addNumber(pobi[1]), mulNumber(pobi[1]))
+  );
+
+  const crongScore = Math.max(
+    Math.max(addNumber(crong[0]), mulNumber(crong[0])),
+    Math.max(addNumber(crong[1]), mulNumber(crong[1]))
+  );
+
   return answer;
 }
 
