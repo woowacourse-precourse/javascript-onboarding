@@ -9,7 +9,7 @@ function problem3(number) {
     .join('');
 
   const regExp = /3|6|9/g;
-  const answer = numString.match(regExp).length;
+  const answer = numString.match(regExp) ? numString.match(regExp).length : 0;
 
   return answer;
 }
