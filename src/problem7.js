@@ -21,8 +21,20 @@ function setVisitersArr(visitors) {
   return visitorsArr;
 }
 
+// 친구목록 점수별 정렬
+function sortArr(score) {
+  score.sort((a,b) =>{
+    if(b[1] > a[1]) return 1
+    if(b[1] < a[1]) return -1
+    if(a[0] < b[0]) return -1
+    if(a[0] > b[0]) return 1
+  })
+
+  return score;
+}
+
 function problem7(user, friends, visitors) {
- 
+  
 }
 
 module.exports = problem7;
