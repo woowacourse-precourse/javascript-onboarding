@@ -1,6 +1,25 @@
+/* 
+  기능 목록
+  1. 크루원 닉네임을 2개씩 잘라 중복 가능한 경우의 문자 개수 추출
+  2. 크루원 목록을 돌며 중복 확인 후 중복되는 크루원 이메일 배열에 삽입
+*/
+
+function sliceString(crew, redundantCountMap) {
+  for (let j = 0; j <= crew.length - 2; j++) {
+    const sliceElement = crew.substr(j, 2);
+    const sliceElementCount = redundantCountMap.get(sliceElement) || undefined;
+    redundantCountMap.set(
+      sliceElement,
+      sliceElementCount ? sliceElementCount + 1 : 1
+    );
+  }
+}
+
 function problem6(forms) {
-  var answer;
-  return answer;
+  const sliceNamesMap = new Map();
+  for (const crew of forms) {
+    sliceString(crew[1], sliceNamesMap);
+  }
 }
 
 module.exports = problem6;
