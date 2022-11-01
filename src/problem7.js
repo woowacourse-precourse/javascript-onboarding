@@ -40,17 +40,47 @@ function countPoint(uniqueFriend, mutualFriends) {
   return person;
 }
 
+function countVisitPoint(uniqueVisit, visitors) {
+  let count = 0;
+  const visitFrequencyCount = visitors.filter(
+    (visitor) => visitor === uniqueVisit
+  ).length;
+
+  count += visitFrequencyCount;
+
+  const person = {
+    name: uniqueVisit,
+    point: count,
+  };
+
+  return person;
+}
+
 function problem7(user, friends, visitors) {
   let answer = [];
 
   const mutualFriends = getMutualFriends(user, friends);
-  // console.log("mutualFriends", mutualFriends);
 
   const uniqueMutualFriends = [...new Set(mutualFriends)];
   uniqueMutualFriends.map((uniqueFriend) => {
     const person = countPoint(uniqueFriend, mutualFriends);
-    // console.log(person);
     answer.push(person);
+
+    const uniqueVisitors = [...new Set(visitors)];
+
+    uniqueVisitors.map((uniqueVisit) => {
+      const person = countVisitPoint(uniqueVisit, visitors);
+
+      // answer 중 이미 중복된 대상이 있는지
+      for (let i = 0; i < answer.length; i++) {
+        const oldSchool = answer[i];
+        if (uniqueVisitors.includes(oldSchool.name)) {
+          oldSchool.point += person.point;
+        } else {
+          answer.push(person);
+        }
+      }
+    });
   });
 
   return answer;
