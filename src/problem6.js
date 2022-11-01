@@ -16,6 +16,8 @@ function makeDict(forms) {
     }
   });
 
+  for (const key in dict) if (dict[key] === 1) delete dict[key];
+
   return dict;
 }
 
