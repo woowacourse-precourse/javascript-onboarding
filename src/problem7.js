@@ -4,7 +4,9 @@ class UndirectedGraph {
   }
 
   addVertex(vertex) {
-    this.vertices[vertex] = this.vertices[vertex] || [];
+    if (!this.vertices[vertex]) {
+      this.vertices[vertex] = [];
+    }
   }
 
   addEdge(vertex1, vertex2) {
@@ -21,11 +23,36 @@ function getFriendships(friends, friendships) {
   }
 }
 
+function addScore(person, score, scores) {
+  if (!scores[person]) {
+    scores[person] = 0;
+  }
+  scores[person] += score;
+}
+
+function getScores(user, friendships, visitors, scores) {
+  for (const friend of friendships.vertices[user]) {
+    for (const friendOfFriend of friendships.vertices[friend]) {
+      addScore(friendOfFriend, 10, scores);
+    }
+  }
+  for (const visitor of visitors) {
+    addScore(visitor, 1, scores);
+  }
+
+  scores[user] = 0;
+  for (const friend of friendships.vertices[user]) {
+    scores[friend] = 0;
+  }
+}
+
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let friendships = new UndirectedGraph();
+  let scores = {};
 
   getFriendships(friends, friendships);
+  getScores(user, friendships, visitors, scores);
   return answer;
 }
 
