@@ -15,33 +15,31 @@ module.exports = problem7;
 // 밑의 코드를 통해서 딕셔너리를 키벨류오브젝트가 있는 리스트 or 이중리스트로 정리 
 // 혹은 키만 추출해서 딕셔너리에 접근해도될듯
 
-// var a = {a:3 , b:2, c:2, d:1}
-// var ll = []
-// for (let number in a) {
-//     ll.push({"key": number, "value": a[number], });
+// var a = {a:3 , b:2, c:2, d:1, e:93}  
 
-// }
-// console.log(ll)
-// aa = ll
+// var dr = [['a',3],['c',2],['b',2],['d',1],['e',93]]
 
-// aa.sort(function(v1,v2){
-//     if (v1.value > v2.value){
-//         return 1;
-//     }
-//     if (v1.value < v2.value){
+ 
+// dr.sort(function(v1,v2){
+//     if (v1[1] > v2[1]){
 //         return -1;
 //     }
+//     if (v1[1] < v2[1]){
+//         return 1;
+//     }
 //     if (v1.value == v2.value){
-//         if (v1.name > v2.name){
+//         if (v1[0] > v2[0]){
 //             return 1;
 //         }
-//         if (v1.name < v2.name){
+//         if (v1[0] < v2[0]){
 //             return -1;
 //         }
 //     }
     
 //     return 0;
 // });
+  
  
-// console.log(aa)
- 
+// console.log(dr)
+
+// return 1(양수) 면 바꾼다 , 0이나 음수면 안바꾼다  
