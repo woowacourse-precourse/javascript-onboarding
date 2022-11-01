@@ -1,8 +1,22 @@
 function problem2(cryptogram) {
-  if (typeof cryptogram !== 'string') {
-    console.log("문자열만 입력해 주세요.\n");
+  let cryptoArray = cryptogram.split("");
+  let duplicatedFlag = true;
+  let duplicatedCount = 0;
+
+  while (duplicatedFlag === true) {
+    for (let i = 0; i < cryptoArray.length; i++) {
+      if (cryptoArray[i] === cryptoArray[i + 1]) {
+        cryptoArray.splice(i, 2);
+        duplicatedCount++;
+      }
+    }
+    if (duplicatedCount === 0) {
+      duplicatedFlag = false;
+    } else {
+      duplicatedCount = 0;
+    }
   }
-  var answer;
+  let answer = cryptoArray.join("");
   return answer;
 }
 
