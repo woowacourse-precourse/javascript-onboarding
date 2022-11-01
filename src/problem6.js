@@ -11,6 +11,12 @@ function problem6(forms) {
     }
   }
 
+  // 끊어진 글자가 두번 이상 나왔는지 확인(value가 2 이상인 key 확인)
+  let dup = [];
+  for(let str of map){
+    if(str[1]>=2){ dup.push(str[0]); }
+  }
+
 
   return answer;
 }
