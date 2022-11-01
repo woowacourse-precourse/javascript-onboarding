@@ -29,6 +29,13 @@ function problem7(user, friends, visitors) {
   }
 
   const visitorList = visitors.filter((element) => userFriends.indexOf(element) === -1)
+  for (const item of visitorList){
+    for (i = 0; i < friendScoreBoard.length; i++){
+      if(friendScoreBoard[i].indexOf(item) > -1){
+        friendScoreBoard[i][1] = friendScoreBoard[i][1] + 1
+      }
+    }
+  }
 
 module.exports = problem7;
 
@@ -43,7 +50,7 @@ module.exports = problem7;
 //  [x]user와 공통의 친구를 가진 케이스들을 relavantUser에 저장한다
 //  [x]relavantUser에 저장된 건수별로 해당 사용자에게 10점을 추가한다.
 //  [x]visitors 배열에서 유저와 이미 친구인 사용자를 삭제한다.
-//  []visitorList에서 출현하는 횟수만큼 해당 사용자에게 1점을 추가한다.
+//  [x]visitorList에서 출현하는 횟수만큼 해당 사용자에게 1점을 추가한다.
 //[]점수판에서 0점인 사용자를 삭제한다
 //  []배열의 내부 배열에 대하여 n점인지 아닌지 판별하여 0점이 아닌 사용자만 filter하는
 //    filterScore 기능을 구현한다
