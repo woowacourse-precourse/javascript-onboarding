@@ -5,10 +5,20 @@ function splitString(str) {
 }
 
 // 기능 2 : 중복 문자열 제거
-function deduplicate(arr) {}
+function deduplicate(strArr) {
+  let cnt = 0;
+  while (strArr.length !== 0 && cnt !== strArr.length) {
+    if (strArr[cnt] === strArr[cnt + 1]) {
+      strArr.splice(cnt, 2);
+      cnt = 0;
+    } else cnt++;
+  }
+  return strArr.join("");
+}
 function problem2(cryptogram) {
   var answer;
-  answer = splitString(cryptogram);
+  const strArr = splitString(cryptogram);
+  answer = deduplicate(strArr);
 
   return answer;
 }
