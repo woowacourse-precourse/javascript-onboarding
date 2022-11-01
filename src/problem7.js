@@ -41,6 +41,14 @@ function problem7(user, friends, visitors) {
     friends_friend_arr = dementionTwoToOne(friends_friend_arr); //친구의 친구 배열 1차원배열로 바꾸기
     return friends_friend_arr;
   }
+  function calcFriendScore(user, friends) {
+    const friends_friend_arr = getFriendsFriend(user, friends); //친구의 친구 배열
+    const friend_score = elementCount(friends_friend_arr); // count하여 프로퍼티로 나타내기
+    for (key in friend_score) {
+      friend_score[key] *= 10;
+    } // value값에 *10하여 점수 매기기
+    return friend_score;
+  }
 
   return answer;
 }
