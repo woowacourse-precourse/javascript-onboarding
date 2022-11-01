@@ -17,8 +17,10 @@ function problem4(word) {
     return dict;
   }, new Map());
   const wordArray = word.split("");
-  var answer;
-  return answer;
+  return wordArray.reduce(
+    (result, str) => result + (dictionary.get(str) ?? str),
+    ""
+  );
 }
 
 module.exports = problem4;
