@@ -7,12 +7,17 @@ const sliceNickname = (nickname) => {
   return sliceNickname;
 }
 
+const getDuplicateNickname = (arr) => {
+  return [...new Set(arr.filter((item, index) => arr.indexOf(item) !== index))]
+}
+
 function problem6(forms) {
-  const duplicateCrewEmail = [];
-  const sliceNicknameList = forms.reduce((acc, [, nickname]) => { 
+  const sliceNicknameList = forms.reduce((acc, [_ , nickname]) => { 
     return [...acc, ...sliceNickname(nickname)];
   }, []);
   
+  const duplicateNicknameList = getDuplicateNickname(sliceNicknameList);
+
   for (let nick of duplicateNickname){
     let count = 0;
     for(let i = 0; i < forms.length; i += 1){
