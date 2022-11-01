@@ -17,6 +17,9 @@ function problem7(user, friends, visitors) {
       if (user_friend_relation.includes(person)) scoreBoard[person] += 10;
   }
 
+  for (const visitor of visitors) {
+    if (not_user_friends.includes(visitor)) scoreBoard[visitor] += 1;
+  }
   return answer;
 }
 
