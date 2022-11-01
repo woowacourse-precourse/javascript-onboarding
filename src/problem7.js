@@ -1,7 +1,8 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let user_following = [];
   let sns = new Set();
+  let result = [];
   sns.add(user);
 
   // user_following : user의 친구목록 
@@ -32,14 +33,14 @@ function problem7(user, friends, visitors) {
 
   // 점수 1: 사용자와 함께 아는 친구의 수
   for (let i = 0; i < friends.length; i++) {
-      if(friends[i][0] === user || friends[i][1] === user){
-        continue;
+      if (friends[i][0] === user || friends[i][1] === user) {
+          continue;
       }
 
-      if(sns_user.includes(friends[i][0])){
-        score[friends[i][1]] += 10;
-      }else if(sns_user.includes(friends[i][1])){
-        score[friends[i][0]] += 10;
+      if (sns_user.includes(friends[i][0])) {
+          score[friends[i][1]] += 10;
+      } else if (sns_user.includes(friends[i][1])) {
+          score[friends[i][0]] += 10;
       }
   }
 
@@ -50,11 +51,27 @@ function problem7(user, friends, visitors) {
       }
   }
 
+  for (let i = 0; i < sns_user.length; i++) {
+      if (score[sns_user[i]] > 0) {
+          result.push({ userID: sns_user[i], userScore: score[sns_user[i]] })
+      }
+  }
   // 정렬
-  return score;
+  result.sort((a, b) => {
+      if (a.userScore < b.userScore) return 1;
+      if (a.userScore > b.userScore) return -1;
+
+      if (a.userID > b.userID) return 1;
+      if (a.userID < b.userID) return -1;
+  })
+
+  for(let i = 0; i<result.length; i++){
+      if(i=== 5){
+          break;
+      }
+      answer.push(result[i].userID)
+  }
+  return answer;
 }
-
-
-
 
 module.exports = problem7;
