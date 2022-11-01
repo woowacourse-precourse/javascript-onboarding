@@ -19,11 +19,8 @@ const getReverseConvertedString = (word) => {
     .map((chr) => {
       if (!isAlphabet(chr)) {
         return chr;
-      } else if (lowerCases.includes(chr)) {
-        return reverseAlphabet(chr, lowerCases, 122);
-      } else {
-        return reverseAlphabet(chr, upperCases, 90);
       }
+      return lowerCases.includes(chr) ? reverseAlphabet(chr, lowerCases, 122) : reverseAlphabet(chr, upperCases, 90);
     })
     .join("");
 };
