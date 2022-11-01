@@ -13,7 +13,13 @@
 // visitor	=> 사용자가 방문한 사용자 이름 배열
 // return	=> 점수 내림차순, 동점 : 사전순
 function problem7(user, friends, visitors) {
-
+    var score = new Map();
+    addUserNames();
+    setFrdScore();
+    setVstScore();
+    delUser();
+    let ret = Array.from(score.keys())
+    ret.sort(compareScore);
 	
 	// 1. 특정 사용자 user 친구 여부 검사 기능
 	function isFrd(tgt) {
@@ -64,6 +70,17 @@ function problem7(user, friends, visitors) {
         for (let s1 of score) {
             if(s1[0] == user) score.delete(s1[0]);
             if(isFrd(s1[0],user)) score.delete(s1[0]);
+        }
+    }
+
+	// 6. 정렬 기능
+	function compareScore(left, right) {
+        if(score.get(left) > score.get(right)) return -1;
+        if(score.get(left) < score.get(right)) return 1;
+        if(score.get(left) == score.get(right)) {
+            if(left > right) return 1;
+            if(left < right) return -1;
+            if(left == right) return 0;
         }
     }
 
