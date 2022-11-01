@@ -67,11 +67,10 @@ function problem7(user, friends, visitors) {
   console.log(candidate);
 
   candidate = Object.entries(candidate).sort((a, b) => {
-    if (b[1] == a[1]) {
-      return b[0] - a[0];
-    } else {
-      return b[1] - a[1];
-    }
+    if (a[1] > b[1]) return -1;
+    if (a[1] < b[1]) return 1;
+    if (a[0] > b[0]) return 1;
+    if (a[0] < b[0]) return -1;
   });
   console.log(candidate);
   
@@ -81,12 +80,12 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-// const user = "mrko";
-// const friends = [ ["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ];
-// const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-user = "andole";
-friends = [ ["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"] ];
-visitors = ["donut", "mrko", "peter", "sam"];
+const user = "mrko";
+const friends = [ ["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ];
+const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+// user = "andole";
+// friends = [ ["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"] ];
+// visitors = ["donut", "mrko", "aeter", "sam", "sam"];
 console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
