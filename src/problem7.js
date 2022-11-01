@@ -63,6 +63,12 @@ function getSomePeopleWithFriendIKnow(UnknowFriendsScore, user, friendOfUser) {
   return UnknowFriendsScore;
 }
 
+function sortSomePeopleWithFriendIKnow(somePeopleWithFriendIKnow) {
+  return Array.from(somePeopleWithFriendIKnow)
+    .sort()
+    .sort(([, a], [, b]) => b - a);
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
@@ -85,6 +91,7 @@ function problem7(user, friends) {
     user,
     friendOfUser
   );
+  const sortResult = sortSomePeopleWithFriendIKnow(somePeopleWithFriendIKnow);
   return;
 }
 
