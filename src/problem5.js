@@ -4,7 +4,8 @@ function problem5(money) {
 
   for (let i = 0; i < unit.length; i++) {
     let moneyTemp = money % unit[i];
-    console.log(moneyTemp);
+    money = moneyTemp;
+    console.log(moneyTemp === money);
   }
   return answer;
 }
