@@ -22,20 +22,6 @@ function problem1(pobi, crong) {
     }
     return player_max;
   }
-
-  let crong_max = get_max(crong);
-  let pobi_max = get_max(pobi);
-  if (crong_max < pobi_max) {
-    answer = 1;
-  } else if (crong_max > pobi_max) {
-    answer = 2;
-  } else if (crong_max == pobi_max) {
-    answer = 0;
-  }
-  if (parseInt(pobi[0]) + 1 != parseInt(pobi[1]) || parseInt(crong[0]) + 1 != parseInt(crong[1])) {
-    answer = -1;
-  }
-
   return answer;
 }
 
