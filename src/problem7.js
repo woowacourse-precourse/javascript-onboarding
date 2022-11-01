@@ -64,6 +64,23 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  let DescendScore = [];
+
+  for (key in score) {
+    DescendScore.push([100000 - score[key], key]);
+  }
+
+  // 점수만 내림차순정렬
+  DescendScore.sort();
+
+  let result = [];
+
+  for (i in DescendScore) {
+    result.push(DescendScore[i][1]);
+  }
+
+  return result;
 }
 
 module.exports = problem7;
