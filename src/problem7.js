@@ -86,6 +86,15 @@ const pointSortFunc = (firstPerson, secondPerson) => {
 };
 
 /**
+ * Point Map 을 정렬하여 반환한다.
+ * @param {Map<string, number>} pointListMap - 포인트 Map
+ * @return {string|number[][]}
+ */
+const getSortedPointList = (pointListMap) => {
+  return [...pointListMap].sort(pointSortFunc);
+};
+
+/**
  * main 함수
  * @param {string} user
  * @param {string[][]} friends
