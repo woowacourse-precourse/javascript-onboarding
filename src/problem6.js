@@ -1,5 +1,6 @@
 function problem6(forms) {
-  var answer;
+  // 중복 방지 Set() 설정
+  var answer = new Set();
   // 임시 배열 생성
   const tList = [];
 
@@ -13,10 +14,11 @@ function problem6(forms) {
   
   Reprod(forms,DuplicateList,answer);
   
-
-
-
-  return answer;
+  //오름차순 정렬 출력
+  answer = Array.from(answer);
+  return answer.sort(function(a,b) { 
+    return a>b ? 1 : a<b ? -1 : 0;
+  })
 }
 
 //문자열에 포함된 중복 조합 배열 생성 함수 구현
@@ -34,7 +36,7 @@ function Check(nickname) {
 function Reprod(forms,arr,result) {
   arr.forEach((x) => {
     let finaldex = [];
-    for(let i = 0; forms.length; i++){
+    for(let i = 0; i < forms.length; i++){
       if(forms[i][1] !== x && forms[i][1].indexOf(x) > -1){
         finaldex.push(i);
       }
