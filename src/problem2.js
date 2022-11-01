@@ -1,6 +1,10 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
-}
+  let answer=[];
+  for (let word of cryptogram) {
+    if (answer[answer.length-1] != word) answer.push(word);
+    else answer.pop();
+  };
+  return answer.join('');
+};
 
 module.exports = problem2;
