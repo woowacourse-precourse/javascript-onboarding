@@ -1,4 +1,5 @@
 function problem1(pobi, crong) {
+  let answer = 0;
   const pobiSum = sum(pobi);
   const pobiMul = multiply(pobi);
   const crongSum = sum(crong);
@@ -10,11 +11,25 @@ function problem1(pobi, crong) {
   pobiMax = pobiSum > pobiMul ? pobiSum : pobiMul;
   crongMax = crongSum > crongMul ? crongSum : crongMul;
 
-  if ((pobi[1] - pobi[0]) > 2 || (crong[1] - crong[0]) > 2) return -1;
+  if ((pobi[1] - pobi[0]) > 2 || (crong[1] - crong[0]) > 2) {
+    answer = -1;
+    return answer;
+  }
 
-  if (pobiMax > crongMax) return 1;
-  if (pobiMax < crongMax) return 2;
-  if (pobiMax === crongMax) return 0;
+  if (pobiMax > crongMax) {
+    answer = 1;
+    return answer;
+  }
+
+  if (pobiMax < crongMax) {
+    answer = 2;
+    return answer;
+  }
+
+  if (pobiMax === crongMax) {
+    answer = 0;
+    return answer;
+  }
 }
 
 function sum(arr) {
