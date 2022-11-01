@@ -196,15 +196,15 @@ describe('problem6', () => {
                     })
             )
         ).toEqual([
-            'aaaaaaaaaa@email.com',
-            'aaaaaacfaa@email.com',
-            'aaaaaafaaa@email.com',
-            'aaaaaahfaa@email.com',
+            'aaaaaaaaa@email.com',
+            'aaaaacfaa@email.com',
+            'aaaaafaaa@email.com',
+            'aaaaahfaa@email.com',
         ]);
     });
 });
 
-describe.only('problem7', () => {
+describe('problem7', () => {
     test('case1', () => {
         expect(
             problem7(
