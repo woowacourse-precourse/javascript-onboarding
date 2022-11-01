@@ -1,19 +1,12 @@
 /* 
-1. 숫자을 배열로 변환
-2. 숫자 크기 만큼 반복문을 돌면서 3, 6, 9 여부 확인 => count++
+1. 1~number 숫자를 각각 문자열로 변환 후 배열에 넣어 split
+2. numberArr에서  3, 6, 9 포함한 문자만 걸러낸다.
 */
 function problem3(number) {
-  let count = 0;
-  for (let i = 1; i <= number; i++) {
-    const numArr = [...String(i)];
-    for (let j = 0; j <= numArr.length; j++) {
-      if ((numArr[j] != 0) & (numArr[j] % 3 === 0)) {
-        count++;
-        console.log(i);
-      }
-    }
-  }
-  return count;
+  const numberArr = String([...Array(number + 1).keys()]).split("");
+  const findArr = numberArr.filter((elem) => ["3", "6", "9"].includes(elem));
+
+  return findArr.length;
 }
 
 module.exports = problem3;
