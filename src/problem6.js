@@ -2,7 +2,7 @@ function problem6(forms) {
   const EMAIL_REGEX = /^\w{1,9}@email.com$/;
   const NICKNAME_REGEX = /^[가-힣]{1,19}$/;
   const MIN_FORMS_LENGTH = 1;
-  const MAX_FORMS_LENGTH = 1;
+  const MAX_FORMS_LENGTH = 10000;
 
   const checkFormsValid = (forms) => {
     checkFormLength(forms);
