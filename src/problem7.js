@@ -41,17 +41,9 @@ function getFriendMap(userSet, friendsList, userName){
       friend.indexOf(userFriend) !== -1 && friend.indexOf(userName) === -1
     ).forEach(friend => {
       if(friend[0]===userFriend){
-        if(friendMap.has(friend[1])){
-          friendMap.set(friend[1], friendMap.get(friend[1]) + 10);
-        }else{
-          friendMap.set(friend[1], 10)
-        }
+        friendMap = socringUser(friendMap, friend[1], 10)
       }else{
-        if(friendMap.has(friend[0])){
-          friendMap.set(friend[0], friendMap.get(friend[0]) + 10);
-        }else{
-          friendMap.set(friend[0], 10)
-        }
+        friendMap = socringUser(friendMap, friend[0], 10)
       }
     })
   })
@@ -62,11 +54,7 @@ function getVisitorMap(visitors, userSet){
   let visitorMap = new Map();
   visitors.forEach((visitor, score) => {
     if(!userSet.has(visitor)){
-      if(visitorMap.has(visitor)){
-        visitorMap.set(visitor, visitorMap.get(visitor)+1);
-      }else{
-        visitorMap.set(visitor, 1)
-      }
+      visitorMap = socringUser(visitorMap, visitor, 1)
     }
   })
   return visitorMap;
@@ -75,11 +63,7 @@ function getVisitorMap(visitors, userSet){
 function getRecommendUserMap(friendMap, visitorMap){
   let recommendMap = friendMap;
   visitorMap.forEach((score,visitor) => {
-    if(friendMap.has(visitor)){
-      recommendMap.set(visitor, visitorMap.get(visitor)+score);
-    }else{
-      recommendMap.set(visitor, score);
-    }
+    recommendMap = socringUser(recommendMap, visitor, score, visitorMap)
   })
   return recommendMap;
 }
@@ -101,4 +85,13 @@ function getSortedUserList(recommendMap){
   }).map(user => user.user);
   
   return sortedList;
+}
+
+function socringUser(map, user, score, map2 = map){
+  if(map.has(user)){
+    map.set(user, map2.get(user) + score);
+  }else{
+    map.set(user, score);
+  }
+  return map
 }
