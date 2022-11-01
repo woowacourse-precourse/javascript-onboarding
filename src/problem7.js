@@ -58,11 +58,11 @@ const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
   const friendsHasScore = new Map();
 
   const friendsOfUser = friendsMap.get(user);
-  const friendsOfFriend = friendsOfUser.map((friend) =>
+  const friendsOfFriend = friendsOfUser?.map((friend) =>
     friendsMap.get(friend).filter((name) => name !== user)
   );
 
-  friendsOfFriend.forEach((friends) =>
+  friendsOfFriend?.forEach((friends) =>
     computeFriendScore({
       list: friends,
       scoreMap: friendsHasScore,
