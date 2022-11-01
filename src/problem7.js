@@ -24,6 +24,18 @@ function findFriends(person, friends) {
   });
   return myFriends;
 }
+//친구 지도 만들기
+function friendsToObj(friends, peopleList) {
+  const friendsMap = {};
+  peopleList.forEach((person) => {
+    friendsMap[person] = {
+      friends: findFriends(person, friends),
+      point: 0,
+    };
+  });
+
+  return friendsMap;
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
