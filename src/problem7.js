@@ -127,19 +127,3 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
-
-problem7(
-  "hello",
-  [
-    ["andole", "jun"],
-    ["andole", "bedi"],
-    ["jun", "shakevan"],
-    ["jun", "kane"],
-    ["jun", "sam"],
-    ["bedi", "shakevan"],
-    ["bedi", "anne"],
-    ["bedi", "sam"],
-    ["anne", "mrko"],
-  ],
-  ["donut", "anne", "mrko", "mrko", "sam"]
-);
