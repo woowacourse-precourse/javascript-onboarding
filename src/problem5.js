@@ -5,16 +5,16 @@
 
 function problem5(money) {
   const arr = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  const copyArr = [...arr];
+  const moneyUnitList = [...arr];
   // 필요한 개수
   let answer = arr.fill(0);
 
-  for (let i = 0; i < copyArr.length; i++) {
-    if (money >= copyArr[i]) {
+  for (let i = 0; i < moneyUnitList.length; i++) {
+    if (money >= moneyUnitList[i]) {
       // 몫(개수)
-      answer[i] = Math.floor(money / copyArr[i]);
+      answer[i] = Math.floor(money / moneyUnitList[i]);
       // 나머지(money)
-      money = money % copyArr[i];
+      money = money % moneyUnitList[i];
     } else continue;
   }
 
