@@ -1,3 +1,7 @@
+const removeDuplicateElement = (arr) => {
+  return [...new Set(arr)]
+}
+
 const sliceNickname = (nickname) => {
   const sliceNickname = [];
   for(let i = 0; i < nickname.length - 1; i += 1){
@@ -8,7 +12,7 @@ const sliceNickname = (nickname) => {
 }
 
 const getDuplicateNickname = (arr) => {
-  return [...new Set(arr.filter((item, index) => arr.indexOf(item) !== index))]
+  return removeDuplicateElement(arr.filter((item, index) => arr.indexOf(item) !== index));
 }
 
 function problem6(forms) {
