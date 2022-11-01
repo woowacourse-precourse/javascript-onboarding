@@ -7,6 +7,13 @@ function problem6(forms) {
       wordMap.set(word, emailList ? [...emailList, email] : [email]);
     }
   });
+
+  const emailSet = new Set();
+  for (let [, emailList] of wordMap) {
+    if (emailList.length >= 2) {
+      emailList.forEach((email) => emailSet.add(email));
+    }
+  }
 }
 
 module.exports = problem6;
