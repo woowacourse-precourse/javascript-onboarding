@@ -5,9 +5,13 @@ const problem4 = (word) => {
 };
 const BIG_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const SMALL_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-const reverseAlphabet = { " ": " " };
+const SPECIAL_LETTER = " ?!.@#$%^&*1234567890";
+const reverseAlphabet = {};
 const ALPHA_LEN = 26;
 
+for (let location = 0; location < SPECIAL_LETTER.length; location++) {
+  reverseAlphabet[SPECIAL_LETTER[location]] = SPECIAL_LETTER[location];
+}
 for (let location = 0; location < ALPHA_LEN; location++) {
   reverseAlphabet[BIG_ALPHABET[location]] =
     BIG_ALPHABET[ALPHA_LEN - 1 - location];
