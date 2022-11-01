@@ -33,7 +33,7 @@ function problem2(cryptogram) {
 
 
   answer = tempAry.join("");
-  console.log(answer);
+  
   return answer;
 }
 
