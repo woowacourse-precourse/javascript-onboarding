@@ -31,6 +31,20 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 4. 사용자와 함께 아는 친구의 수마다 10점을 추가한다.
+  userFriend.forEach((item) => {
+    for (let i = 0; i < friends.length; i++) {
+      if (friends[i].indexOf(item) !== -1) {
+        if (friends[i].indexOf(item) === 0 && friends[i][1] !== user && !userFriend.has(friends[i][1])) {
+          score.set(friends[i][1], score.get(friends[i][1]) + 10);
+        }
+        if (friends[i].indexOf(item) === 1 && friends[i][0] !== user && !userFriend.has(friends[i][0])) {
+          score.set(friends[i][0], score.get(friends[i][0]) + 10);
+        }
+      }
+    }
+  })
+
   return answer;
 }
 
