@@ -1,17 +1,21 @@
 function problem1(pobi, crong) {
   if (checkValue(pobi) && checkValue(crong)) {
-    let maximumPobi = maximum([
-      leftSumValue(pobi),
-      rightSumValue(pobi),
-      leftMultValue(pobi),
-      rightMultValue(pobi),
-    ]);
-    let maximumCrong = maximum([
-      leftSumValue(crong),
-      rightSumValue(crong),
-      leftMultValue(crong),
-      rightMultValue(crong),
-    ]);
+    let maximumPobi = Math.max(
+      ...[
+        sumValue(pobi, 0),
+        sumValue(pobi, 1),
+        multValue(pobi, 0),
+        multValue(pobi, 1),
+      ]
+    );
+    let maximumCrong = Math.max(
+      ...[
+        sumValue(crong, 0),
+        sumValue(crong, 1),
+        multValue(crong, 0),
+        multValue(crong, 1),
+      ]
+    );
 
     if (maximumPobi > maximumCrong) {
       return 1;
@@ -32,44 +36,22 @@ function checkValue(arr) {
     : false;
 }
 
-function leftSumValue(arr) {
+function sumValue(arr, idx) {
   let sum = 0;
-  arr[0] = arr[0].toString();
-  for (let i = 0; i < arr[0].length; i++) {
-    sum += parseInt(arr[0][i]);
+  arr[idx] = arr[idx].toString();
+  for (let i = 0; i < arr[idx].length; i++) {
+    sum += parseInt(arr[idx][i]);
   }
   return sum;
 }
 
-function rightSumValue(arr) {
-  let sum = 0;
-  arr[1] = arr[1].toString();
-  for (let i = 0; i < arr[1].length; i++) {
-    sum += parseInt(arr[1][i]);
-  }
-  return sum;
-}
-
-function leftMultValue(arr) {
+function multValue(arr, idx) {
   let mult = 1;
   do {
-    mult *= arr[0] % 10;
-    arr[0] = Math.floor(arr[0] / 10);
-  } while (arr[0] > 0);
+    mult *= arr[idx] % 10;
+    arr[idx] = Math.floor(arr[idx] / 10);
+  } while (arr[idx] > 0);
   return mult;
-}
-
-function rightMultValue(arr) {
-  let mult = 1;
-  do {
-    mult *= arr[1] % 10;
-    arr[1] = Math.floor(arr[1] / 10);
-  } while (arr[1] > 0);
-  return mult;
-}
-
-function maximum(arr) {
-  return Math.max(...arr);
 }
 
 module.exports = problem1;
