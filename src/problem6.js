@@ -1,34 +1,22 @@
 function problem6(forms) {
   const answer = []
   const name = new Map()
-  // name set에 이름 2글짜씩 끊어서 저장
 
-  forms.forEach((form) => {
-    Array.from(form[1]).forEach((_, index) => {
-      if (index < form.length - 1) {
-        if (name.get(form[1].slice(index, index + 2))) {
-          name.set(
-            form[1].slice(index, index + 2),
-            name.get(form[1].slice(index, index + 2)) + 1
-          )
-        } else {
-          name.set(form[1].slice(index, index + 2), 1)
-        }
+  for (const [email, nickname] of forms) {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const subNickname = nickname.slice(i, i + 2)
+      if (name.has(subNickname)) {
+        answer.push(email)
+        answer.push(name.get(subNickname))
       }
-    })
-  })
-
-  const moreThanTwoPeople = Array.from(name).map((people) => {
-    if (people[1] >= 2) return people[0]
-  })
-
-  forms.forEach((form) => {
-    if (moreThanTwoPeople.some((name) => form[1].includes(name))) {
-      answer.push(form[0])
     }
-  })
 
-  return answer.sort()
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const subNickname = nickname.slice(i, i + 2)
+      name.set(subNickname, email)
+    }
+  }
+  return [...new Set(answer)].sort()
 }
 
 module.exports = problem6
