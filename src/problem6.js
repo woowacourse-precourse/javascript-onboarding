@@ -39,11 +39,11 @@ const removeDuplicateEmail = (emailsOfSimilarNickName, allEmailsOfSimilarNicknam
 const getAllSerialCases = (nickname) => {
   const allSerialCases = [];
 
-  for (let i = 2; i <= nickname.length; i++) {
-    for (let j = 0; j <= nickname.length - j; j++) {
-      const serialString = nickname.slice(j, j + i);
-      if (serialString.length !== i) continue;
-      allSerialCases.push(nickname.slice(j, j + i));
+  for (let cutUnit = 2; cutUnit <= nickname.length; cutUnit++) {
+    for (let index = 0; index <= nickname.length - cutUnit; index++) {
+      const serialString = nickname.slice(index, index + cutUnit);
+      if (serialString.length !== cutUnit) continue;
+      allSerialCases.push(nickname.slice(index, index + cutUnit));
     }
   }
 
