@@ -34,14 +34,16 @@ function problem7(user, friends, visitors) {
     }
   }
   scores = scores.filter((score) => !(score.id in friendObj[user]));
-  scores.sort();
-  scores.sort((a, b) => b.score - a.score);
+  scores.sort((a, b) => {
+    if (a.score !== b.score) return b.score - a.score;
+    else return a > b ? -1 : 1;
+  });
   scores = scores.filter((item) => item.score > 0);
 
   for (let i = 0; i < Math.min(scores.length, 5); i++) {
     answer.push(scores[i].id);
   }
-  
+
   return answer;
 }
 module.exports = problem7;
