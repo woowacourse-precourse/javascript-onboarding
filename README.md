@@ -50,7 +50,7 @@
   + 이전 글자를 변수 `beforeChar`에 넣어둠. 
     - `isBeforeDuplicate` : [이전 단계]에 `beforeChar`와 `nowChar`가 같았다면`true`, 달랐다면 `false`
     - `isDeleteStep` : `beforeChar`을 통해서 한 번이라도 삭제를 했다면 `true`. (재귀가 시작될 때, default 값은 `false`)
-  + 배열 `nextCryptogramArr`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
+  + 배열 `nextCryptogramCollection`는 다음 재귀호출에 입력될 중복값이 아닌 값을 쌓아두는 배열
 
 ***
 ## 📋 [문제 3] 구현할 기능 목록
