@@ -1,6 +1,5 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  const clapNumber = ["3", "6", "9"];
 }
 
 module.exports = problem3;
