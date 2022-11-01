@@ -14,6 +14,20 @@ function checkType(forms) {
   }
 }
 
+function checkEmailType(email) {
+  const REG_EXP = /^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@email.com$/;
+  if (email.length >= 11 && email.length < 20 && REG_EXP.test(email))
+    return true;
+  return false;
+}
+
+function checkNicknameType(nickname) {
+  const REG_EXP = /^[가-힣]+$/;
+  if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname))
+    return true;
+  return false;
+}
+
 function findDuplicatedNicknames(nicknames) {
   const twoWords = [];
   const duplicatedWords = [];
@@ -42,20 +56,6 @@ function deleteDuplicatedNicknames(nicknames, duplicatedWords) {
 function sortingEmails(emails) {
   const sortedEmails = emails.sort();
   return sortedEmails;
-}
-
-function checkEmailType(email) {
-  const REG_EXP = /^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@email.com$/;
-  if (email.length >= 11 && email.length < 20 && REG_EXP.test(email))
-    return true;
-  return false;
-}
-
-function checkNicknameType(nickname) {
-  const REG_EXP = /^[가-힣]+$/;
-  if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname))
-    return true;
-  return false;
 }
 
 module.exports = problem6;
