@@ -9,9 +9,12 @@ function problem7(user, friends, visitors) {
 	*/
 
 	/*사용자의 점수를 구할 함수 -> getUserPoint
-		1. 함께 아는 친구의 수를 구할 함수 -> countFriends
+		1. 함께 아는 친구의 수를 구할 함수 -> countFriends, count
 		2. 타임라인 방문 횟수를 구할 함수 -> countVisitors
 	 */
+
+	//사용자 점수목록을 정렬할 함수 -> getSort
+	//점수목록 폼을 객체에서 객체배열로 변경해줄 함수 -> formChange
 
 	return solution({ me: user, users: friends, visitors });
 }
@@ -19,6 +22,7 @@ function problem7(user, friends, visitors) {
 function solution(inputData) {
 	const userPointsForm = getNotFriends(inputData);
 	const userPoints = getUserPoint(inputData, userPointsForm);
+	return getSort(userPoints);
 }
 
 function getNotFriends(inputData) {
@@ -101,6 +105,24 @@ function countVisitors({ visitors }, userPoints, notFriends) {
 	});
 
 	return userPoints;
+}
+
+function getSort(userPoints) {
+	let userLists = formChange(userPoints);
+
+	return userLists
+		.sort((member1, member2) => (member1.points < member2.points ? 1 : member1.name > member2.name ? 1 : -1))
+		.map((member) => member.name);
+}
+
+function formChange(userPoints) {
+	let userLists = [];
+
+	for (let name in userPoints) {
+		if (userPoints.hasOwnProperty(name)) userLists.push({ name, points: userPoints[name] });
+	}
+
+	return userLists;
 }
 
 module.exports = problem7;
