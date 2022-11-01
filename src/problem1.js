@@ -35,6 +35,10 @@ function bigPageMultiplication(bookPage) {
 }
 
 function openBook(bookPage) {
+  // console.log(typeof bookPage);
+  if (bookPage.length !== 2) {
+    return -1;
+  }
   if (bookPage[1] - bookPage[0] != 1) {
     return -1;
   }
@@ -72,3 +76,5 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
+console.log(problem1([97, 98, 99], [197, 198]));
+// problem1([97, 98, 99], [197, 198]);
