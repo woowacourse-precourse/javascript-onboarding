@@ -26,7 +26,7 @@ function problem6(forms) {
     answer.push(obj[result[k]]);
   }
 
-  // 중복 제고 & 정렬
+  // 중복 제거 & 정렬
   answer = [...new Set(answer)];
   answer.sort();
 
