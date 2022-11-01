@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  let splitWord = cryptogram.split("");
+  const splitWord = cryptogram.split("");
 
   let result = true;
 
