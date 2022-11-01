@@ -23,6 +23,24 @@ const getUserFriend = (user, friends) => {
   return userFriends;
 };
 
+const giveScoreKnowUser = (user, friends, scores) => {
+  const friendsGraph = makeFriendsGraph(friends);
+  const userFriends = getUserFriend(user, friends);
+
+  for (const key of friendsGraph.keys()) {
+    let score = 0;
+    const keyFriends = friendsGraph.get(key);
+
+    for (const friend of userFriends) {
+      if (keyFriends.has(friend)) score += 10;
+    }
+
+    scores.set(key, score);
+  }
+
+  return scores;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
