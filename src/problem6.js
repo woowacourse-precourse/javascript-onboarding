@@ -36,6 +36,33 @@ function isValidInput(forms) {
   return isValid;
 }
 
+function getValidForms(forms) {
+  let validForms = [];
+  let invalidForms = [];
+  let isValid = true;
+  for (let [email, nickname] of forms) {
+    if (!(email.length >= 11 && email.length < 20)) {
+      isValid = false;
+    } else if (email.slice(-10) !== "@email.com") {
+      isValid = false;
+    } else if (!(nickname.length >= 1 && nickname.length < 20)) {
+      isValid = false;
+    } else {
+      isValid = true;
+    }
+    if (isValid) {
+      validForms.push([email, nickname]);
+    } else {
+      invalidForms.push([email, nickname]);
+    }
+  }
+  if (invalidForms.length !== 0) {
+    printInvalidForms(invalidForms);
+  }
+
+  return validForms;
+}
+
 function printInvalidForms(invalidForms) {
   console.log("---- Check invalid forms ----");
   invalidForms.forEach((form) => console.log(form));
