@@ -1,4 +1,3 @@
-//각 자리 합, 곱 중 최댓값을 반환하는 함수
 function makeMax(n){
   let [add,mul]=[0,1];
   str_num = String(n);
@@ -9,8 +8,12 @@ function makeMax(n){
   return Math.max(add,mul);
 }
 
+function isVaildPage(pages){
+  return pages[1]-pages[0]===1;
+}
+
 function problem1(pobi, crong){
-  if (pobi[1]-pobi[0]!==1||crong[1]-crong[0]!==1){
+  if (!(isVaildPage(pobi)&&isVaildPage(crong))){
       return -1;
   }
   const pobi_ans = Math.max.apply(null,
@@ -23,7 +26,3 @@ function problem1(pobi, crong){
 }
 
 module.exports = problem1;
-
-//TODO
-//1. index 사용 안하는 방향으로 코드 수정
-//2. 변수명 의미 있는 변수명으로 수정
