@@ -1,5 +1,5 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
   return answer;
 }
 
