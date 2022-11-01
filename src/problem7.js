@@ -144,7 +144,7 @@ function sortScore(score) {
   for (let value of scoreValue.values()) {
     resultArr.push(...getSameValueArr(value, score));
   }
-  if (resultArr > 5) {
+  if (resultArr.length > 5) {
     return resultArr.splice(0, 5);
   }
   return resultArr;
@@ -160,18 +160,3 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
-// console.log(
-//   problem7(
-//     "mrko",
-//     [
-//       ["donut", "andole"],
-//       ["donut", "jun"],
-//       ["donut", "mrko"],
-//       ["andole", "yein"],
-//       ["shakevan", "andole"],
-//       ["shakevan", "jun"],
-//       ["shakevan", "mrko"],
-//     ],
-//     ["bedi", "bedi", "donut", "bedi", "shakevan"]
-//   )
-// );
