@@ -41,10 +41,14 @@ function problem6(forms) {
 
   }
 
+  console.log(sameNickCrew);
+
   // 닉네임에 대응되는 이메일 뽑기
-
+  for (i = 0; i < sameNickCrew.length; i++) {
+    answer.push(crew[sameNickCrew[i]]);
+  }
   // 오름차순
-
+  return answer.sort();
 }
 
 module.exports = problem6;
