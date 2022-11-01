@@ -31,7 +31,7 @@ function problem6(forms) {
 
   const set = new Set(emailList);
   answer = [...set];
-
+  answer.sort();
   return answer;
 }
 
