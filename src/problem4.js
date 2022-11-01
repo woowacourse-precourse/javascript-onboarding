@@ -8,9 +8,11 @@ function problem4(word) {
       if(alpha.includes(cur)){
         let newIdx = 25 - alpha.indexOf(cur)
         acc += alpha[newIdx]
-      } else {
+      } else if(alpha.toLowerCase().includes(cur)){
         let newIdx = 25 - alpha.toLowerCase().indexOf(cur)
         acc += alpha[newIdx].toLowerCase()
+      } else {
+        acc += cur
       }
     } else {
       acc += cur

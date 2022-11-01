@@ -1,5 +1,7 @@
 function problem1(pobi, crong) {
 
+  var answer;
+
   if (isValid(pobi) && isValid(crong)){      
     const pobis = myScore(pobi)
     const crongs = myScore(crong)
@@ -14,7 +16,6 @@ function problem1(pobi, crong) {
   } else {
     answer = -1
   }
-  var answer;
   return answer
 
 }

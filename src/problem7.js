@@ -37,6 +37,14 @@ function problem7(user, friends, visitors) {
     createNetwork(friendId, uid)
   })
 
+  network.forEach((value, key) => {
+    if(key !== user){
+      sugguestion(key).map((person) => {
+        createDashboard(key, 10)
+      })
+    }
+  })
+
   visitors.map((item) => {
     if(friendList(user).includes(item)){
       friendList(item).map((person)=>{
