@@ -1,7 +1,8 @@
 function isValidPages(pages) {
   const [leftPage, rightPage] = pages;
 
-  if (1 <= leftPage && leftPage <= 399 && leftPage + 1 == rightPage) {
+  if (1 <= leftPage && leftPage <= 399 && (leftPage & 1) && 
+      leftPage + 1 == rightPage) {
     return (true);
   }
   return (false);
