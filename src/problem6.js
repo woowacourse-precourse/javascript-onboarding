@@ -2,6 +2,14 @@ function problem6(forms) {
   let answer = [];
   let uniqueArr = [];
   let consecutiveArr = [];
+
+  for (let i in forms)
+    seperateConsecutive(forms[i][1], uniqueArr, consecutiveArr);
+  for (let i in forms)
+    if (isValid(forms[i][1], consecutiveArr)) answer.push(forms[i][0]);
+
+  answer.sort();
+  return answer;
 }
 
 function seperateConsecutive(nickname, uniqueArr, consecutiveArr) {
