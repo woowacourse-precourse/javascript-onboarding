@@ -2,9 +2,6 @@ function problem7(user, friends, visitors) {
   if(user < 1 || user > 30) return false;
   if(friends < 1 || friends > 10000) return false;
   if(visitors < 0 || visitors > 10000) return false;
-  for(let x of user) {
-    if(x === x.toUpperCase()) return false;
-  }
   let answer = [];
   for (let i in friends) {
     if (answer.findIndex((x) => x[0] === friends[i][0]) === -1)
