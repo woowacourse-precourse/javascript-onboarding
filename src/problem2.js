@@ -1,5 +1,14 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = "";
+  let cryptoStack = [];
+  const cryptoArr = cryptogram.split("");
+
+  cryptoArr.forEach((cryptoText) => {
+    if (cryptoStack[cryptoStack.length - 1] === cryptoText) cryptoStack.pop();
+    else cryptoStack.push(cryptoText);
+  });
+
+  answer = cryptoStack.join("");
   return answer;
 }
 
