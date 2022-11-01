@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+//user friend Network Graph
 class UserNetwork{
   constructor(Name,friends,visitors){
     this.Name=Name;
@@ -14,11 +15,13 @@ class UserNetwork{
     this.connectFriends();
   }
 
+  //add user to network
   addFriends(user) {
     if (!this.friendsNetwork[user]) 
       this.friendsNetwork[user] = [];
   }
 
+  // add all user to network
   addNetwork(friends){
     friends.forEach(([user1, user2]) => {
       this.addFriends(user1);
@@ -28,10 +31,12 @@ class UserNetwork{
     });
   }
 
+  // get friends of user
   getFriends(userName){
     return this.friendsNetwork[userName];
   }
   
+  // get visitor of user's not friends
   getVisitor(friendsNear){
     const userFriends = this.getFriends(this.Name);
     this.visitor.forEach(user=>{
@@ -44,6 +49,7 @@ class UserNetwork{
     })
   }
   
+  // get friends of user's friends
   getFriendNear(){
     let friendsNear = {};
     this.getFriends(this.Name).forEach((i) => {
@@ -54,6 +60,7 @@ class UserNetwork{
     return friendsNear;
   }
 
+  // recommend friends
   connectFriends(){
     let friendsNear = this.getFriendNear() ;
     this.getVisitor(friendsNear);

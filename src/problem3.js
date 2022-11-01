@@ -3,6 +3,7 @@ function problem3(number) {
   return answer;
 }
 
+// Match the number with the game
 function gameMatcher(number){
   let result = 0;
   const condition = /3|6|9/g;

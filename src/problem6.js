@@ -3,6 +3,7 @@ function problem6(forms) {
   return answer;
 }
 
+// duplicateChecker nicknames
 function duplicateChecker(forms) {
   let result = []
   let store = new Set();
