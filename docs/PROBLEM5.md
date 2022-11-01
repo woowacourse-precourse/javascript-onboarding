@@ -26,4 +26,4 @@
     - 2-1_1. money / cashInBank의 값이 1과 같거나 더 크면 정수값을
       safe.moneyExchanged에 넣어주고 교환하고 남은 돈은 safe.change에 넣어준다.
     - 2-1_2. money / cashInBank의 값이 1보다 작으면 safe.moneyExchanged에 0을 넣어준다.
-- 3. bank.forEach가 순환하면서 변경된 safe와 money를 계속 업데이트해준다.
+- 3. bank.forEach로 순환하면서 변경된 safe와 money를 계속 업데이트한다.
