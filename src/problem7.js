@@ -32,6 +32,20 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  score = Object.entries(score)
+    .slice(0, 5)
+    .sort(function (a, b) {
+      if (a[1] < b[1]) {
+        return 1;
+      } else if (a[1] > b[1]) {
+        return -1;
+      } else if (a[0] > b[0]) {
+        return 1;
+      } else if (a[0] < b[0]) {
+        return -1;
+      }
+    });
+
   return answer;
 }
 
