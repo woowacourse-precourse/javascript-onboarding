@@ -30,22 +30,24 @@ function problem1(pobi, crong) {
 			.toString()
 			.split("")
 			.map((str) => Number(str));
-		let leftArrPlus = 0;
-		let rightArrPlus = 0;
-		let leftArrMultiple = 1;
-		let rightArrMultiple = 1;
-		leftDigitArray.forEach((element) => {
-			leftArrPlus += element;
-			leftArrMultiple *= element;
-		});
-		rightDigitArray.forEach((element) => {
-			rightArrPlus += element;
-			rightArrMultiple *= element;
-		});
 		return compareInt(
-			compareInt(leftArrPlus, leftArrMultiple),
-			compareInt(rightArrPlus, rightArrMultiple)
+			compareInt(calPlusArr(leftDigitArray), calMultipleArr(leftDigitArray)),
+			compareInt(calPlusArr(rightDigitArray), calMultipleArr(rightDigitArray))
 		);
+	}
+	function calMultipleArr(arr) {
+		let multipleValue = 1;
+		arr.forEach((el) => {
+			multipleValue *= el;
+		});
+		return multipleValue;
+	}
+	function calPlusArr(arr) {
+		let plusValue = 0;
+		arr.forEach((el) => {
+			plusValue += el;
+		});
+		return plusValue;
 	}
 
 	function compareInt(a, b) {
