@@ -47,7 +47,16 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  
+    const RecommandationRanking = [...userFriendMap.entries()].sort(([friend1, score1], [friend2, score2]) => {
+      if (score1 === score2) {
+       return friend1.localeCompare(friend2)
+      } else {
+       return score2 - score1
+      }
+    })
 
+  answer = RecommandationRanking.map(([name]) => name).slice(0, 5)
   return answer;
 }
 
