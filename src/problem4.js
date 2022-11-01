@@ -10,7 +10,36 @@ EX)A->Z, B->Y, C->X ..... Z->A
 
 function problem4(word) {
   let answer;
+  answer = solution(word);
   return answer;
+}
+
+function solution(word) {
+  const result = change(word);
+  return result;
+}
+
+/*a-z, A-Z 까지의 문자를 짝에 맞게 아스키 코드를 통해서 변환한다.*/
+function change(word) {
+
+  let reverse="";
+  const Blank = 32;
+  const UPPERSUM = 155;
+  const LOWERSUM = 219;
+  
+  for(let i = 0; i<word.length;i++){
+
+      if(word[i].charCodeAt(0) === Blank){
+          reverse += word[i];
+      } else if(word[i] === word[i].toUpperCase()) {
+          reverse += String.fromCharCode(UPPERSUM - word[i].charCodeAt(0));
+      } else if(word[i] === word[i].toLowerCase()){
+          reverse += String.fromCharCode(LOWERSUM - word[i].charCodeAt(0));
+  }
+}
+
+  return reverse;
+
 }
 
 module.exports = problem4;
