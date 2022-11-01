@@ -11,7 +11,21 @@ function getUserFriend(user, friends) {
 
 function problem7(user, friends, visitors) {
   var answer = [];
-
+  let recommendScore = {};
+  let userFriends = getUserFriend(user, friends);
+  let scoreKey = Object.keys(recommendScore);
+  for (let i = 0; i < userFriends.length; i++) {
+    let acquaintance = getUserFriend(userFriends[i], friends);
+    for (let j = 0; j < acquaintance.length; j++) {
+      if (acquaintance[j] === user) continue;
+      if (userFriends.includes(acquaintance[j])) continue;
+      if (scoreKey.includes(acquaintance[j])) {
+        recommendScore[acquaintance[j]] += 10;
+      } else {
+        recommendScore[acquaintance[j]] = 10;
+      }
+    }
+  }
   return answer;
 }
 
