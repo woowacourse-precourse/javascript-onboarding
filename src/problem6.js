@@ -2,60 +2,41 @@ function problem6(forms) {
   return duplicateCheckApp(validationArr(forms));
 }
 
-function validationArr(forms) {
+function validationArr(CrewDataArr) {
   const validationFilterArr = [];
-  const emailDataArr = [];
-  forms.map((data) => {
+  const emailListArr = [];
+  CrewDataArr.map(([crewEmail,crewNickname]) => {
     if (
-      data[0].length >= 11 &&
-      data[0].length < 20 &&
-      data[1].length >= 2 &&
-      data[1].length < 20 &&
-      data[0].includes("@email") &&
-      !/[^가-힣]/.test(data[1]) &&
-      !emailDataArr.includes(data[0])
+      crewEmail.length >= 11 &&
+      crewEmail.length < 20 &&
+      crewEmail.includes("@email") &&      
+      !emailListArr.includes(crewEmail) &&
+      crewNickname.length >= 2 &&
+      crewNickname.length < 20 &&
+      !/[^가-힣]/.test(crewNickname)
     ) {
-      validationFilterArr.push(data);
-      emailDataArr.push(data[0]);
+      validationFilterArr.push([crewEmail,crewNickname]);
+      emailListArr.push(crewEmail);
     }
   });
   return validationFilterArr;
 }
 
-function duplicateCheckApp(CrewDataArr) {
-  const duplicateDataArr = [];
-  for (let i = CrewDataArr.length-1; i >= 0; i--) {
-    const delCrewDataIndexArr = [];
-    let TwoLetterNameArr = getNameByTwoLetterArr(CrewDataArr[i][1]);
-    for (let j = CrewDataArr.length-1; j >= 0 ; j--) {
-      if (i != j && checkNickNameFromCrewData(CrewDataArr[j][1], TwoLetterNameArr)) {
-        delCrewDataIndexArr.push(j);
+function duplicateCheckApp(CrewDataArr){
+  const infoOfUsedTwoLetterMap = new Map();
+  const emailOfUsedNickNameSet = new Set();
+  CrewDataArr.forEach(([crewEmail,crewNickName]) => {
+    for (let i = 0; i <crewNickName.length -1; i++){
+      let twoLetterName = crewNickName.substr(i, 2);
+      if (infoOfUsedTwoLetterMap.has(twoLetterName)){
+        emailOfUsedNickNameSet.add(crewEmail);
+        emailOfUsedNickNameSet.add(infoOfUsedTwoLetterMap.get(twoLetterName));
+      } else {
+        infoOfUsedTwoLetterMap.set(twoLetterName,crewEmail)
       }
     }
-    if(delCrewDataIndexArr.length>0){
-      delCrewDataIndexArr.push(i).sort((a,b)=>b-a).map((idx)=>{
-        duplicateDataArr.push(CrewDataArr[idx][0]);
-        CrewDataArr.splice(idx, 1);
-        i--;
-      })
-    }
-  }
-  return duplicateDataArr.sort();
-}
-
-function getNameByTwoLetterArr(CrewNickName) {
-  const TwoLetterNameArr = [];
-  for (let i = 0; i < CrewNickName.length - 1; i++) {
-    TwoLetterNameArr.push(CrewNickName.substr(i, 2));
-  }
-  return TwoLetterNameArr;
-}
-
-function checkNickNameFromCrewData(CrewNickName, TwoLetterNameArr) {
-  for (let k = 0; k < TwoLetterNameArr.length; k++) {
-    if (CrewNickName.includes(TwoLetterNameArr[k])) return true;
-  }
-  return false;
+  });
+  return [...emailOfUsedNickNameSet].sort();
 }
 
 module.exports = problem6;
