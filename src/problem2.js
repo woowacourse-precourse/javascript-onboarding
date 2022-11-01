@@ -1,6 +1,25 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+    let wordArray = cryptogram.split("");
+
+    // 1단계~2단계) 연속되는 문자열을 발견하면 해당 문자열과 다음 문자열을 제외하는 함수
+    const findRepetition = (word) => {
+        for (i = 0; i < word.length; i++) {
+            if (word[i] == word[i + 1]) {
+                wordArray.splice(i, 2);
+                break;
+            }
+        }
+    };
+
+    // 3단계) 정규식으로 2개가 연속된 문자열 찾기 return boolean
+    const reg = /(.)\1+/;
+    // 연속된 문자열이 존재한다면 해당 문자열을 제외하는 함수 실행
+    while (reg.test(wordArray.join(""))) {
+        findRepetition(wordArray);
+    }
+
+    // 4. 배열을 문자열로 합친 결과 반환
+    return wordArray.join("");
 }
 
 module.exports = problem2;
