@@ -7,8 +7,8 @@
 // 추천 점수가 0인 경우, 5명 안에 있더라도 추천하지 X
 // -
 // [✅] user "mrko"와 친구인 아이디를 friends에서 찾기 -> donut과 shakevan 찾기
-// [] donut과 shakevan의 친구를 찾아 friendsList에 저장
-// [] friendsList를 reduce를 사용해 friendsScore 변수에 10점씩 누적
+// [✅] donut과 shakevan의 친구를 찾아 friendYouMightKnow에 저장
+// [] friendYouMightKnow를 reduce를 사용해 friendsScore 변수에 10점씩 누적
 // [] visitors를 reduce를 사용해 visitorsScore 변수에 1점씩 누적
 // [] 점수가 높은 순대로 정렬 후, result에 5명 push
 // [] user와 기존에 친구인 친구 result에서 제거
@@ -16,13 +16,28 @@
 
 function problem7(user, friends, visitors) {
   const result = [];
+  const friendYouMightKnow = [];
+  const friendsScore = [];
   const friendsList = friends.filter((list) => {
     if (list.includes(user)) {
       return list;
     }
   });
-  const bestFriends = friendsList.map((list) => list.slice(user, 1).toString());
-  console.log(bestFriends);
+  const bestFriends = friendsList.map((list) => {
+    const userIndex = list.indexOf(user);
+    list.splice(userIndex, 1);
+    return list.toString();
+  });
+  for (let i = 0; i < bestFriends.length; i++) {
+    for (let j = 0; j < friends.length; j++) {
+      if (friends[j].includes(bestFriends[i]) && friends[j].length === 2) {
+        const userIndex = friends[j].indexOf(bestFriends[i]);
+        friends[j].splice(userIndex, 1);
+        friendYouMightKnow.push(friends[j].toString());
+      }
+    }
+  }
+  console.log(friendYouMightKnow);
   return result;
 }
 
