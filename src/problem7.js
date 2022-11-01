@@ -36,6 +36,14 @@ function problem7(user, friends, visitors) {
           }
         });
       }
+          // 방문한 횟수 합산 및 점수부여
+    visitors.forEach((element) => {
+      if (element in fdobj) {
+        fdobj[element][1] += 1;
+      } else {
+        fdobj[element] = [[], 1];
+      }
+    });
 }
 
 module.exports = problem7;
