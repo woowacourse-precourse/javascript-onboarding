@@ -1,6 +1,6 @@
 function problem6(forms) {
   var answer = [];
-
+  const studentEmails = forms.map((v) => v[0]);
   const studentNames = forms.map((v) => v[1]);
 
   studentNames.forEach((word, studentIndex) => {
@@ -10,6 +10,7 @@ function problem6(forms) {
 
       studentNames.forEach((v, i) => {
         if (i === studentIndex) return;
+        if (answer.includes(studentEmails[i])) return;
 
         const reg = new RegExp(duplicatedName, "gi");
 
@@ -17,6 +18,8 @@ function problem6(forms) {
       });
     });
   });
+
+  return answer.sort();
 }
 
 module.exports = problem6;
