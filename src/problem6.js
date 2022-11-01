@@ -43,7 +43,7 @@ const isCommonNickNameSizeBiggerThanTwo = (commonNickNameObject, nickname) => {
  * @return {string[]}
  */
 const problem6 = (forms) => {
-  const answer = [];
+  let answer = [];
   const commonNickName = {};
 
   // 닉네임 누적
