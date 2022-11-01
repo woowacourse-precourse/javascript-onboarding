@@ -8,6 +8,7 @@
  */
 function problem7(user, friends, visitors) {
   var answer;
+  const friendsList = []
   return answer;
 }
 
@@ -29,7 +30,6 @@ function makeRelation(friends) {
 function getRelationScore(user, relation, score) { //2번 구현
   for (let i = 0; i < relation[user].length; i++) {
     const friendOfUser = relation[user][i];
-    const friendsList = []
     friendsList.push(friend);
     for (let j = 0; j < relation[friendOfUser].length; j++) { // 친구의 친구를 찾는다.
       const friendOfFriend = relation[friendOfUser][j];
