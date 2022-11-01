@@ -1,6 +1,6 @@
 function problem6(forms) {
   var answer;
-
+  let resultArr = [];
   let twoWord = [];
   let wordArr = [];
 
@@ -21,6 +21,14 @@ function problem6(forms) {
   );
 
   const arrSet = [...new Set(diffWord)];
+
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 0; j < arrSet.length; j++) {
+      if (forms[i][1].includes(arrSet[j])) {
+        resultArr.push(forms[i][0]);
+      }
+    }
+  }
 
   return answer;
 }
