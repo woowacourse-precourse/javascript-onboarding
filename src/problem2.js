@@ -2,7 +2,7 @@ function problem2(cryptogram) {
   var answer = cryptogram;
 
   while (true) {
-    let [breakCondition, tempCryptogram] = overlapDelete(answer);
+    const [breakCondition, tempCryptogram] = overlapDelete(answer);
     answer = tempCryptogram;
     if (breakCondition) break;
   }
