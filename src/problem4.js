@@ -6,6 +6,20 @@ function isAlphabet(character) {
   return regex.test(character);
 }
 
+function convertToFrogWord(word) {
+  return word
+    .split("")
+    .map((character) => {
+      if (!isAlphabet(character)) return character;
+
+      const charCode = character.charCodeAt();
+      const convertedCode = charCode > 90 ? 219 - charCode : 155 - charCode;
+
+      return String.fromCharCode(convertedCode);
+    })
+    .join("");
+}
+
 function problem4(word) {
   var answer;
   return answer;
