@@ -61,13 +61,12 @@ function problem7(user, friends, visitors) {
   }
 
   const scoreMapEntries = [...scoreMap.entries()];
-  console.log(scoreMapEntries);
 
   const answer = [...scoreMap.entries()]
     .filter(([key, value]) => {
       return !myFriendsList.includes(key) && value > 0;
     })
-    .sort((a, b) => b[1] - a[1])
+    .sort((a, b) => b[1] - a[1] - b[0].localeCompare(a[0]))
     .map(([key]) => key)
     .slice(0, 5);
 
