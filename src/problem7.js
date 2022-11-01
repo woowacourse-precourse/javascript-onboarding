@@ -1,3 +1,9 @@
+function getAllUser(relations, visitors) {
+  const users = new Set([...Object.keys(relations), ...visitors]);
+
+  return [...users];
+}
+
 function hasKey(obj, target) {
   return target in obj;
 }
@@ -22,6 +28,8 @@ function getRelations(friends) {
 function problem7(user, friends, visitors) {
   var answer;
   const relations = getRelations(friends);
+  const userFriends = relations[user];
+  const allUser = getAllUser(relations, visitors);
 
   return answer;
 }
