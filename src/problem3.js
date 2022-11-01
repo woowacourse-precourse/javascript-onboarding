@@ -10,8 +10,9 @@ function count369(num) {
 }
 
 function problem3(number) {
-  var answer;
-  return answer;
+  return Array(number)
+    .fill()
+    .reduce((acc, _, i) => (acc += count369(i + 1)), 0);
 }
 
 module.exports = problem3;
