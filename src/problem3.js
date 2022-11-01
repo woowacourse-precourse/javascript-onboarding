@@ -12,11 +12,11 @@ function problem3(number) {
 }
 
 const getTotalNumberOfClaps = (number) => {
-  let totalCountOf369 = 0;
+  let totalNumberOfClaps = 0;
   for (let targetNumber = 1; targetNumber <= number; targetNumber++) {
-    totalCountOf369 += count369InNumber(targetNumber);
+    totalNumberOfClaps += count369InNumber(targetNumber);
   }
-  return totalCountOf369;
+  return totalNumberOfClaps;
 };
 
 const count369InNumber = (number) => {
