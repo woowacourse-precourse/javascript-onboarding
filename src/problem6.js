@@ -31,7 +31,11 @@ function problem6(forms) {
     return Array.from(overlap_email).sort();
   };
 
-  let answer;
+  // 코드 작성
+  const nickname_list = getNickname(forms);
+  const email_list = getEmail(forms);
+
+  let answer = getOverlapEmail(nickname_list, email_list);
   return answer;
 }
 
