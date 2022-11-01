@@ -39,6 +39,19 @@ function problem7(user, friends, visitors) {
             score.set(vst, 0);
         });
     }
+
+	// 3. 친구 점수 추출 기능
+	function setFrdScore() {
+        for(let s1 of score) {
+            if(s1[0] == user) continue;
+            for(let s2 of score) {
+                if(isFrd(s1[0], s2[0]) && isFrd(s2[0], user)){
+                    score.set(s1[0], score.get(s1[0])+10);
+                }
+            }
+        }
+    }
+
 	return answer;
 }
 
