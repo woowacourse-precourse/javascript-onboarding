@@ -16,6 +16,7 @@ function problem4(word) {
     dict.set(String.fromCharCode(a + i), String.fromCharCode(z - i));
     return dict;
   }, new Map());
+  const wordArray = word.split("");
   var answer;
   return answer;
 }
