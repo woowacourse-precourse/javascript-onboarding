@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
-  let answer = [];
-  let score = {};
+  let scores = {};
   let myfriends = [];
   friends.forEach((friend) => {
     const myfriend = findFriend(friend, user);
@@ -9,26 +8,35 @@ function problem7(user, friends, visitors) {
     friends.forEach((friend) => {
       const friendOfFriend = findFriend(friend, myfriend);
       if (friendOfFriend && friendOfFriend !== user) {
-        if (score[friendOfFriend]) {
-          score[friendOfFriend] += 10;
+        if (scores[friendOfFriend]) {
+          scores[friendOfFriend] += 10;
         } else {
-          score[friendOfFriend] = 10;
+          scores[friendOfFriend] = 10;
         }
       }
     });
   });
   visitors.forEach((visitor) => {
     if (!myfriends.includes(visitor)) {
-      if (score[visitor]) {
-        score[visitor] += 1;
+      if (scores[visitor]) {
+        scores[visitor] += 1;
       } else {
-        score[visitor] = 1;
+        scores[visitor] = 1;
       }
     }
   });
-  console.log(score);
+  Object.fromEntries(
+    Object.entries(scores).sort(([name1, score1], [name2, score2]) => {
+      if (score1 < score2) return -1;
+      else if (score1 > score2) return 1;
+      else {
+        if (name1 < name2) return -1;
+        else return 1;
+      }
+    })
+  );
 
-  return answer;
+  return Object.keys(scores).slice(0, 6);
 }
 
 function findFriend(relation, user) {
