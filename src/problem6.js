@@ -15,11 +15,26 @@ function sliceString(crew, redundantCountMap) {
   }
 }
 
+function checkRedundant(crew, redundantCountMap, resultArray) {
+  for (let j = 0; j <= crew[1].length - 2; j++) {
+    const sliceElement = crew[1].substr(j, 2);
+    if (redundantCountMap.get(sliceElement) >= 2) {
+      resultArray.add(crew[0]);
+      return;
+    }
+  }
+}
+
 function problem6(forms) {
+  const resultArray = new Set();
   const sliceNamesMap = new Map();
   for (const crew of forms) {
     sliceString(crew[1], sliceNamesMap);
   }
+  for (const crew of forms) {
+    checkRedundant(crew, sliceNamesMap, resultArray);
+  }
+  return [...resultArray].sort();
 }
 
 module.exports = problem6;
