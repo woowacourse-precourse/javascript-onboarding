@@ -1,5 +1,8 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = "";
+  for(let i = 0; i<cryptogram.length; i++){
+    if(cryptogram.indexOf(cryptogram[i]) == i) answer += cryptogram[i];
+  }
   return answer;
 }
 
