@@ -18,7 +18,7 @@ function divideNumTo10(number, cnt) {
   return cnt;
 }
 
-function numCheck(remainNum, cnt) {
+function numCheck(remainNum) {
   if (remainNum == 3 || remainNum == 6 || remainNum == 9) return 1;
   return 0;
 }
