@@ -36,35 +36,17 @@ function makeEmailList(forms){
 }
 
 function problem6(forms) {
-  let result = [];
-  let idx = count = 0;
-  forms.sort((x,y)=>x[1].length-y[1].length);
-  while(idx<forms.length-1){
-      count = 0;
-      for(let i=idx+1;i<forms.length;i++){
-          if (checkNick(forms[idx][1],forms[i][1])){
-              count += 1;
-              if (result.indexOf(forms[i][0])<0){
-                  result.push(forms[i][0]);
-              }
-          }
-      }
-      if (result.indexOf(forms[idx][0])<0 && count){
-          result.push(forms[idx][0]);
-      }
-      idx+=1;
-  }
-  result.sort();
-  return result;
+    const checklist = makeChecklist(forms);
+    const invalid = new Set();
+    Object.keys(checklist).forEach((name)=>{
+        checklist[name].forEach((check)=>{
+            checkNick(name,check) || invalid.add(name) && invalid.add(check);
+        })
+    })
+    const emailList = makeEmailList(forms);
+    const result = [...invalid].map((name)=>{
+        return emailList[name];
+    }).sort();
+    return result;
 }
 module.exports = problem6;
-
-console.log(
-    problem6([
-        ["jm@email.com", "제이엠"],
-        ["jason@email.com", "제이슨"],
-        ["woniee@email.com", "워니"],
-        ["mj@email.com", "엠제이"],
-        ["nowm@email.com", "이제엠"],
-      ])
-);
