@@ -63,9 +63,10 @@ const problem4 = (word) => {
   for (let singleChar of word) {
     if (isAlphabet(singleChar)) {
       answer += reversedAlphabetMap.get(singleChar);
-    } else {
-      answer += singleChar;
+      continue;
     }
+
+    answer += singleChar;
   }
 
   return answer;
