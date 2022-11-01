@@ -1,10 +1,10 @@
 function problem1(pobi, crong) {
-  var answer = true;
   // 다를 떄 반환
-  if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
+  if (pobi[0] - pobi[1] != -1 || crong[0] - crong[1] != -1) return -1;
   pobi = max_num(pobi);
   crong = max_num(crong);
   if (pobi > crong) return 1;
+  else if (pobi < crong) return 2;
   else return 0;
 }
 
