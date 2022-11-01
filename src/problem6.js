@@ -20,8 +20,8 @@ function solution(forms) {
     //console.log("name: ", name)
     for (var j=0; j<name.length-1; j++) {
       let key = name.substring(j, j+2);
-      //console.log("key: ", key)
-      if(hashMap.has(key)) {
+      console.log("key: ", key)
+      if(key in hashMap) {
         console.log("DFSDGDGS")
         var email = hashMap.get(key);
         console.log("email: ", email)
