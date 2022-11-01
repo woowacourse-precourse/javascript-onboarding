@@ -21,4 +21,13 @@ function makeDict(forms) {
   return dict;
 }
 
+function findOverlapPeople(forms, dict) {
+  const emailList = new Set(); // 중복 제거를 위한 Set 사용.
+  for (const form of forms) {
+    const [email, name] = form;
+    for (const key in dict) if (name.includes(key)) emailList.add(email);
+  }
+  return [...emailList].sort(); // 알파벳 순으로 정렬.
+}
+
 module.exports = problem6;
