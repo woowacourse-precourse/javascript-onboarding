@@ -1,5 +1,17 @@
 // @ts-check
 
+const PAGE = Object.freeze({
+  MIN: 1,
+  MAX: 400,
+});
+
+const RESULT = Object.freeze({
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+  DRAW: 0,
+  EXCEPTION: -1,
+});
+
 /**
  * @param {number} left
  * @param {number} right
@@ -7,7 +19,12 @@
  */
 const isValidPage = (left, right) => {
   // 페이지가 유효한 값인지 반환
-  return left >= 1 && right <= 400 && left % 2 === 1 && left + 1 === right;
+  return (
+    left >= PAGE.MIN &&
+    right <= PAGE.MAX &&
+    left % 2 === 1 &&
+    left + 1 === right
+  );
 };
 
 /**
@@ -33,17 +50,17 @@ function problem1(pobi, crong) {
 
   // 유효하지 않은 경우 예외 처리
   if (!isValidPage(pobiLeft, pobiRight) || !isValidPage(crongLeft, crongRight))
-    return -1;
+    return RESULT.EXCEPTION;
 
   // 포비의 최댓값과 크롱의 최댓값
   const pobiMax = Math.max(findMax(pobiLeft), findMax(pobiRight));
   const crongMax = Math.max(findMax(crongLeft), findMax(crongRight));
 
   // 게임 결과에 따라 값 반환
-  if (pobiMax > crongMax) return 1;
-  else if (pobiMax < crongMax) return 2;
-  else if (pobiMax === crongMax) return 0;
-  else return -1;
+  if (pobiMax > crongMax) return RESULT.POBI_WIN;
+  else if (pobiMax < crongMax) return RESULT.CRONG_WIN;
+  else if (pobiMax === crongMax) return RESULT.DRAW;
+  else return RESULT.EXCEPTION;
 }
 
 console.log(problem1([97, 98], [197, 198])); // 0

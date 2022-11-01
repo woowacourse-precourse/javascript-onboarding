@@ -1,5 +1,10 @@
 // @ts-check
 
+const POINT = Object.freeze({
+  KNOW: 10,
+  VISIT: 1,
+});
+
 /**
  * @param {string} user
  * @param {string[][]} friends
@@ -25,7 +30,9 @@ function problem7(user, friends, visitors) {
         if (acquaintance !== user) {
           hashMap.set(
             acquaintance,
-            hashMap.has(acquaintance) ? hashMap.get(acquaintance) + 10 : 10
+            hashMap.has(acquaintance)
+              ? hashMap.get(acquaintance) + POINT.KNOW
+              : POINT.KNOW
           );
         }
       }
@@ -36,7 +43,10 @@ function problem7(user, friends, visitors) {
   visitors
     .filter((visitor) => !userFriendArr.includes(visitor))
     .forEach((visitor) =>
-      hashMap.set(visitor, hashMap.has(visitor) ? hashMap.get(visitor) + 1 : 1)
+      hashMap.set(
+        visitor,
+        hashMap.has(visitor) ? hashMap.get(visitor) + POINT.VISIT : POINT.VISIT
+      )
     );
 
   // 조건에 맞게 정렬해서 최대 5명 반환

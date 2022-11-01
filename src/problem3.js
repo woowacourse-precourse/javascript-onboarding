@@ -1,5 +1,11 @@
 // @ts-check
 
+const CLAP = Object.freeze({
+  THREE: "3",
+  SIX: "6",
+  NINE: "9",
+});
+
 /**
  * @param {number} number
  * @returns {number}
@@ -11,7 +17,11 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     `${i}`
       .split("")
-      .forEach((num) => (num === "3" || num === "6" || num === "9") && count++);
+      .forEach(
+        (num) =>
+          (num === CLAP.THREE || num === CLAP.SIX || num === CLAP.NINE) &&
+          count++
+      );
   }
   return count;
 }
