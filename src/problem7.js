@@ -1,3 +1,24 @@
+function flatMap(arr) {
+  return arr.flatMap((elem) => elem[0]);
+}
+
+function sort(arr) {
+  const result = [...arr];
+
+  result.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0];
+    }
+    return b[1] - a[1];
+  });
+
+  return result;
+}
+
+function filter(arr) {
+  return arr.filter(([_, val]) => val !== 0);
+}
+
 function applyKnownScore(scores, userFriends, relations, user) {
   userFriends.forEach((uFr) => {
     const friendKnownList = relations[uFr];
@@ -69,6 +90,9 @@ function problem7(user, friends, visitors) {
   const recommandScores = getRecommandScores(allUser);
   applyVisitScore(recommandScores, userFriends, visitors);
   applyKnownScore(recommandScores, userFriends, relations, user);
+  answer = filter(Object.entries(recommandScores));
+  answer = sort(answer).slice(0, 5);
+  answer = flatMap(answer);
 
   return answer;
 }
