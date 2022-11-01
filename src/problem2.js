@@ -17,7 +17,14 @@ function decrypt(str) {
   return ret;
 }
 function problem2(cryptogram) {
-  var answer;
+
+  var answer = cryptogram;
+  while (1) {
+    const decrypted = decrypt(answer);
+    if (decrypted === answer) break;
+    answer = decrypted;
+  }
+  
   return answer;
 }
 
