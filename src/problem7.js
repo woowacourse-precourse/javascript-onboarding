@@ -3,8 +3,9 @@ function problem7(user, friends, visitors) {
 
   isUser = except(user, friends);
 
-  plus_10 = score_10(isUser, friends, user);
+  scoreList = score_10(isUser, friends, user);
 
+  
 
   return answer;
 }
