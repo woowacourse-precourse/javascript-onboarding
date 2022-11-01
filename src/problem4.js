@@ -1,6 +1,71 @@
 function problem4(word) {
-  var answer;
+  let fWord = [];
+
+  word
+    .split("")
+    .map((word) => word)
+    .forEach((word) => {
+      if (word !== " ") fWord.push(fDic[word]);
+      else fWord.push(" ");
+    });
+
+  answer = fWord.join("");
   return answer;
 }
+
+const fDic = {
+  A: "Z",
+  a: "z",
+  B: "Y",
+  b: "y",
+  C: "X",
+  c: "x",
+  D: "W",
+  d: "w",
+  E: "V",
+  e: "v",
+  F: "U",
+  f: "u",
+  G: "T",
+  g: "t",
+  H: "S",
+  h: "s",
+  I: "R",
+  i: "r",
+  J: "Q",
+  j: "q",
+  K: "P",
+  k: "p",
+  L: "O",
+  l: "o",
+  M: "N",
+  m: "n",
+  N: "M",
+  n: "m",
+  O: "L",
+  o: "l",
+  P: "K",
+  p: "k",
+  Q: "J",
+  q: "j",
+  R: "I",
+  r: "i",
+  S: "H",
+  s: "h",
+  T: "G",
+  t: "g",
+  U: "F",
+  u: "f",
+  V: "E",
+  v: "e",
+  W: "D",
+  w: "d",
+  X: "C",
+  x: "c",
+  Y: "B",
+  y: "b",
+  Z: "A",
+  z: "a",
+};
 
 module.exports = problem4;
