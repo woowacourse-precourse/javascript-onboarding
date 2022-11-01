@@ -13,12 +13,23 @@ function problem4(word) {
 function solution(word) {
   var result = "";
   for (var i=0; i<word.length; i++) {
-    if (!isLetter(word.charAt(i))) {
-      return result += " ";
-    }
-    var numChar = int (word.charAt(i));
-    
+    var numChar = word.charAt(i).charCodeAt(0);
+    console.log("numChar: ", numChar)
+    if (numChar <= 32) {
+      console.log("if Space: ", word.charAt(i))
+      result = result + " ";
+      console.log("if Result: ", word.charAt(i))
+    } else if (word.charAt(i) === word.charAt(i).toUpperCase()) {
+      console.log("if Upper: ", word.charAt(i));
+      result = result + String.fromCharCode((90 - (numChar-65)));
+      console.log("Upper Result: ", String.fromCharCode((90 - (numChar-65))))
+    } else if (word.charAt(i) === word.charAt(i).toLowerCase()) {
+      console.log("if Lower: ", word.charAt(i))
+      result = result + String.fromCharCode((122 - (numChar-97)));
+      console.log("Lower Result: ", String.fromCharCode((90 - (numChar-65))))
+    } 
   }
+  return result;
 }
 
 module.exports = problem4;
