@@ -1,7 +1,16 @@
 function problem3(number) {
+  const regex = /^[0-9]/g;
+
   var answer = 0;
   let n = number;
-  if (n > 10000) return (answer = "10000 이하의 숫자를 기입해주세요.");
+
+  //제한사항 처리
+  if (n > 10000) {
+    return (answer = "10000 이하의 숫자를 기입해주세요.");
+  } else if (!regex.test(n)) {
+    return (answer = "자연수를 입력하십시오.");
+  }
+
   for (let i = 1; i <= n; i++) {
     let count = i;
     while (count != 0) {

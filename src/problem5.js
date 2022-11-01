@@ -1,6 +1,14 @@
 function problem5(money) {
+  const regex = /^[0-9]/g;
   var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   let m = money;
+
+  //제한사항 처리
+  if (m > 100000) {
+    return (answer = "올바른 값을 입력하십시오.");
+  } else if (!regex.test(m)) {
+    return (answer = "자연수를 입력하십시오.");
+  }
 
   for (let i = 0; m > 0; i++) {
     if (m / 50000 >= 1) {

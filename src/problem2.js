@@ -18,6 +18,7 @@ function problem2(cryptogram) {
     return (answer = "소문자로 입력해주세요.");
   }
 
+  //cur값과 스택의 마지막 값을 비교해 중복되면 삭제하고 아니면 push한다
   for (cur of n) {
     if (cur === stack[stack.length - 1]) {
       stack.pop();

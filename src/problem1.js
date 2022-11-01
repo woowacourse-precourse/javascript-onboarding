@@ -1,8 +1,4 @@
 function problem1(pobi, crong) {
-  const pobiArr = [add(pobi[0]), add(pobi[1]), mul(pobi[0]), mul(pobi[1])];
-  const pobiMax = Math.max.apply(null, pobiArr);
-  const crongArr = [add(crong[0]), add(crong[1]), mul(crong[0]), mul(crong[1])];
-  const crongMax = Math.max.apply(null, crongArr);
   var answer;
 
   //페이지의 각 숫자를 더해주는 함수
@@ -42,6 +38,11 @@ function problem1(pobi, crong) {
       );
     }
   }
+
+  const pobiArr = [add(pobi[0]), add(pobi[1]), mul(pobi[0]), mul(pobi[1])];
+  const pobiMax = Math.max.apply(null, pobiArr);
+  const crongArr = [add(crong[0]), add(crong[1]), mul(crong[0]), mul(crong[1])];
+  const crongMax = Math.max.apply(null, crongArr);
 
   //예외사항 및 결과 출력
   if (pobiArr.includes(-1) || crongArr.includes(-1)) {
