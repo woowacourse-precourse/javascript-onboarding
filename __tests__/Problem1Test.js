@@ -8,13 +8,30 @@ describe('Problem1 Util test', () => {
 
   describe('calcPageValues', () => {
     test('not include 0', () => {
-      const digitList = problem1Util.calcPageValues([1, 2, 3]);
-      expect(digitList).toStrictEqual([6, 6]);
+      const calcResult = problem1Util.calcPageValues([1, 2, 3]);
+      expect(calcResult).toStrictEqual([6, 6]);
     });
 
     test('include 0', () => {
-      const digitList = problem1Util.calcPageValues([1, 0, 3]);
-      expect(digitList).toStrictEqual([4, 0]);
+      const calcResult = problem1Util.calcPageValues([1, 0, 3]);
+      expect(calcResult).toStrictEqual([4, 0]);
+    });
+  });
+
+  describe('compareValue', () => {
+    test('draw', () => {
+      const result = problem1Util.compareValue(2, 2);
+      expect(result).toBe(0);
+    });
+
+    test('win', () => {
+      const result = problem1Util.compareValue(3, 2);
+      expect(result).toBe(1);
+    });
+
+    test('lose', () => {
+      const result = problem1Util.compareValue(2, 3);
+      expect(result).toBe(-1);
     });
   });
 });
