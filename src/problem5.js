@@ -1,5 +1,12 @@
 function problem5(money) {
-  var answer;
+  var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let wons = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
+
+  for (let i = 0; i < wons.length; i++) {
+    answer[i] = parseInt(money / wons[i]);
+    money = money % wons[i];
+  }
+
   return answer;
 }
 
