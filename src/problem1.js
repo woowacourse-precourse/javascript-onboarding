@@ -24,38 +24,18 @@ function problem1(pobi, crong) {
     return -1;
   }
 
-  const maxNum = (pageArr) => {
-    const resultArr = [];
-
-    for (let i = 0; i < pageArr.length; i++) {
-      const sum = pageArr[i]
-        .toString()
-        .split('')
-        .reduce((prev, curr) => prev + parseInt(curr), 0);
-      const multiply = pageArr[i]
-        .toString()
-        .split('')
-        .reduce((prev, curr) => prev * parseInt(curr), 1);
-
-      resultArr.push(sum);
-      resultArr.push(multiply);
-    }
-
-    return Math.max(...resultArr);
-  };
-
   // pobi와 crong이 무승부인 경우
-  if (maxNum(pobi) === maxNum(crong)) {
+  if (maxNumber(pobi) === maxNumber(crong)) {
     return 0;
   }
 
   // pobi가 이긴 경우
-  if (maxNum(pobi) > maxNum(crong)) {
+  if (maxNumber(pobi) > maxNumber(crong)) {
     return 1;
   }
 
   // crong이 이긴 경우
-  if (maxNum(pobi) < maxNum(crong)) {
+  if (maxNumber(pobi) < maxNumber(crong)) {
     return 2;
   }
 
@@ -64,3 +44,24 @@ function problem1(pobi, crong) {
 }
 
 module.exports = problem1;
+
+// 계산된 값의 최대값을 구하는 함수
+const maxNumber = (pageArr) => {
+  const resultArr = [];
+
+  for (let i = 0; i < pageArr.length; i++) {
+    const sum = pageArr[i]
+      .toString()
+      .split('')
+      .reduce((prev, curr) => prev + parseInt(curr), 0);
+    const multiply = pageArr[i]
+      .toString()
+      .split('')
+      .reduce((prev, curr) => prev * parseInt(curr), 1);
+
+    resultArr.push(sum);
+    resultArr.push(multiply);
+  }
+
+  return Math.max(...resultArr);
+};
