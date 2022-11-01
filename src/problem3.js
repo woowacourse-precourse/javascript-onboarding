@@ -10,8 +10,7 @@
 function problem3(number) {
   const numberString = [...Array(number + 1)].map((_, i) => i).join("");
   const numberStringRemoved369 = numberString.replace(/[369]/g, "");
-  var answer;
-  return answer;
+  return numberString.length - numberStringRemoved369.length;
 }
 
 module.exports = problem3;
