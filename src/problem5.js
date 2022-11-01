@@ -1,20 +1,17 @@
 function problem5(money) {
-  var answer = Array.from({length:9},()=>0);
-  let x= 5,
-    digit = 50000,
-    idx = 0;
+  let answer = [];
+  let div= 5;
+  let digit = 50000;
 
-  while (idx < 8){
-    answer[idx]=parseInt(money/digit)
-    money = money%digit
-    digit = digit/x
-    x==2?x=5:x==5?x=2:null
-    idx++
+  for (let i = 0; i<8; i++){
+    answer.push(parseInt(money/digit))
+    money = money%digit //나머지
+    digit = digit/div  // 몫
+    div==2?div=5:div==5?div=2:null
+
   }
-  answer[8]=money
-
+  answer.push(money)
   return answer;
-
 }
 
 module.exports = problem5;
