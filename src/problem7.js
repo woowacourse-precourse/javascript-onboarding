@@ -37,9 +37,7 @@ function problem7(user, friends, visitors) {
     
     if (numA - numB > 0) return -1;
     else if (numA - numB < 0) return 1;
-    else if (numA - numB === 0) {
-      return userA - userB > 0 ? -1 : 1;
-    }
+    else return userA < userB ? -1 : userA === userB ? 0 : 1;
   }
 
   const userId = Object.keys(userCount);
