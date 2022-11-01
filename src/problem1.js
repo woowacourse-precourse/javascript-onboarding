@@ -23,16 +23,20 @@ function solution(pobi, crong) {
 function getMax(arr) {
 	const left = arr[0];
 	const right = arr[1];
-	let leftMax = 0,
-		rightMax = 0;
+	let leftMax = 0;
+	let rightMax = 0;
 
-	if (left < 1 || right > 400) throw new Error('책의 페이지를 벗어났습니다.');
-	if (left + 1 !== right) throw new Error('연속된 수가 아닙니다.');
+	errorCheck(left, right);
 
 	leftMax = resultAdd(left) >= resultMul(left) ? resultAdd(left) : resultMul(left);
 	rightMax = resultAdd(right) >= resultMul(right) ? resultAdd(right) : resultMul(right);
 
 	return leftMax >= rightMax ? leftMax : rightMax;
+}
+
+function errorCheck(left, right) {
+	if (left < 1 || right > 400) throw new Error('책의 페이지를 벗어났습니다.');
+	if (left + 1 !== right) throw new Error('연속된 수가 아닙니다.');
 }
 
 function resultAdd(num) {
