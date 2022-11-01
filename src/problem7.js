@@ -15,6 +15,7 @@ function problem7(user, friends, visitors) {
 
 	addFriends();
 	calKnowingFriends();
+	calVisitFriends();
 
 	function addFriends() {
 		friends.map((ref) => {
@@ -63,6 +64,12 @@ function problem7(user, friends, visitors) {
 				friendList[friendList.findIndex((e) => e.friendName == ref[0])]
 					.knowingCnt++;
 			}
+		});
+	}
+
+	function calVisitFriends() {
+		visitors.map((ref) => {
+			friendList[friendList.findIndex((e) => e.friendName == ref)].visitCnt++;
 		});
 	}
 	return answer;
