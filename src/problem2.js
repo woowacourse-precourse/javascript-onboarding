@@ -6,11 +6,15 @@
 */
 
 function problem2(cryptogram) {
+  return removeDuplicateAlphabet(cryptogram);
+}
+
+const removeDuplicateAlphabet = (cryptogram) => {
   const regax = /([a-z])\1+/g;
   const removedCryptogram = cryptogram.replace(regax, "");
   if (cryptogram === removedCryptogram) return cryptogram;
 
-  return problem2(removedCryptogram);
-}
+  return removeDuplicateAlphabet(removedCryptogram);
+};
 
 module.exports = problem2;
