@@ -38,8 +38,34 @@ function plus(num) {
   }
 }
 
+function mul(num) {
+  let nb;
+  for (let num = 0; num > 0; num/10) {
+    nb *= num % 10;
+  }
+}
+
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+  if (is_vaild_input) {
+    pobi_max = sep(pobi);
+    crong_max = sep(crong);
+    if (pobi_max > crong_max) {
+      answer = 1;
+    }
+    else if (crong_max > pobi_max) {
+      answer = 2;
+    }
+    else if (pobi_max == crong_max) {
+      answer = 0;
+    }
+    else {
+      answer = -1;
+    }
+  }
+  else {
+    answer = -1;
+  }
   return answer;
 }
 
