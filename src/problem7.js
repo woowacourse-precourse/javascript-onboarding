@@ -1,7 +1,4 @@
 function problem7(user, friends, visitors) {
-	// 1. friends 돌면서 friendDict 채우기
-	// 2. friendDict에서 user친구들의 친구 중 유저가 모르는 사람으로 scoreDict 만들고 점수 주기
-	// 3. 타임라인 방문 횟수도 점수 주기
 	// 4. 가장 높은 순 5명 추천, 점수 같으면 이름순, 0점인 경우 추천하지 않음
 	let answer;
 	let friendDict = new Object();
@@ -15,6 +12,7 @@ function problem7(user, friends, visitors) {
 		}
 	};
 
+	// 1. friends 돌면서 friendDict 채우기
 	friends.forEach((friend) => {
 		const a = friend[0];
 		const b = friend[1];
@@ -25,6 +23,7 @@ function problem7(user, friends, visitors) {
 
 	console.log(friendDict);
 
+	// 2. friendDict에서 user친구들의 친구 중 유저가 모르는 사람으로 scoreDict 만들고 점수 주기
 	friendDict[user].forEach((knownFriend) => {
 		friendDict[knownFriend].forEach((friendFriend) => {
 			// ff 가 유저 스스로거나 이미 유저의 친구면 지나감
@@ -35,6 +34,20 @@ function problem7(user, friends, visitors) {
 				scoreDict[friendFriend] = 10;
 			}
 		});
+	});
+
+	console.log(scoreDict);
+
+	// 3. 타임라인 방문 횟수도 점수 주기
+	visitors.forEach((visitor) => {
+		console.log(visitor, friendDict[user], friendDict[user].includes(visitor));
+		if (friendDict[user].includes(visitor) || visitor == user) {
+			// 자기거나 user의 친구인 경우 지나감
+		} else if (visitor in scoreDict) {
+			scoreDict[visitor] += 1;
+		} else {
+			scoreDict[visitor] = 1;
+		}
 	});
 
 	console.log(scoreDict);
