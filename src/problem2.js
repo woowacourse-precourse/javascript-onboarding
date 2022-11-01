@@ -15,12 +15,19 @@
 function problem2(cryptogram) {
   while(true) {
     let isEnd = false;
+    let start = -1;
     for(let i = 1; i <= cryptogram.length; i++) {
-      if (cryptogram[i-1] === cryptogram[i]) {
-        let left = cryptogram.substring(0, i-1);
-        let right = cryptogram.substring(i+1);
-        cryptogram = left + right;
+      if (i !== cryptogram.length && cryptogram[i-1] === cryptogram[i]) {
+        if (start == -1) {
+          start = i-1;
+        }
         isEnd = true;
+      } else if (start != -1) {
+        let left = cryptogram.substring(0, start);
+        let right = cryptogram.substring(i);
+        cryptogram = left + right;
+        i = start;
+        start = -1;
       }
     }
     if (isEnd == false) {
@@ -29,5 +36,5 @@ function problem2(cryptogram) {
   }
 }
 
-// console.log(problem2("browoanoommnaon"));
+console.log(problem2("cbbbcccd"));
 module.exports = problem2;
