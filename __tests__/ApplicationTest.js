@@ -18,26 +18,48 @@ describe('problem1', () => {
   test('case3', () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+
   test('case4', () => {
-    expect(problem1([1, 2], [211, 212])).toEqual(-1);
+    expect(problem1([99, 103], [211, 212])).toEqual(-1);
   });
 
   test('case5', () => {
-    expect(problem1([99, 100], [399, 400])).toEqual(-1);
+    expect(problem1([399, 400], [211, 212])).toEqual(1);
   });
 
   test('case6', () => {
-    expect(problem1([121, 122], [211, 212])).toEqual(0);
+    expect(problem1([401, 402], [211, 212])).toEqual(-1);
   });
 
   test('case7', () => {
+    expect(problem1([99, 100], [-1, 0])).toEqual(-1);
+  });
+
+  test('페이지는 1부터 400페이지여야 한다.', () => {
+    expect(problem1([99, 100], [-1, 0])).toEqual(-1);
+    expect(problem1([401, 402], [211, 212])).toEqual(-1);
+  });
+  test('왼쪽 페이지가 홀수이어야 한다.', () => {
+    expect(problem1([98, 99], [193, 194])).toEqual(-1);
+    expect(problem1([99, 100], [196, 197])).toEqual(-1);
+  });
+  test('오른쪽 페이지가 짝수이어야 한다.', () => {
+    expect(problem1([99, 103], [211, 212])).toEqual(-1);
+    expect(problem1([99, 100], [194, 195])).toEqual(-1);
+    expect(problem1([100, 101], [193, 194])).toEqual(-1);
+  });
+  test('페이지는 연속되어야 한다.', () => {
+    expect(problem1([100, 101], [393, 400])).toEqual(-1);
+  });
+  test('왼쪽 페이지 번호는 오른쪽 페이지 번호보다 크지 않아야 한다.', () => {
+    expect(problem1([50, 30], [393, 394])).toEqual(-1);
+  });
+  test('시작, 마지막 페이지는 나오지 않아야 한다.', () => {
+    expect(problem1([1, 2], [40, 41])).toEqual(-1);
+    expect(problem1([50, 30], [393, 400])).toEqual(-1);
+  });
+  test('페이지 형식은 [왼쪽 페이지 번호, 오른쪽 페이지 번호] 이다.', () => {
     expect(problem1([121, 122, 123], [211, 212])).toEqual(-1);
-  });
-  test('case8', () => {
-    expect(problem1([121, 122], [212])).toEqual(-1);
-  });
-  test('case9', () => {
-    expect(problem1([122, 121], [211, 212])).toEqual(-1);
   });
 });
 
