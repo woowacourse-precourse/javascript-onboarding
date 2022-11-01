@@ -4,6 +4,7 @@
 */
 function problem3(number) {
   const numberArr = String([...Array(number + 1).keys()]).split("");
+  const findArr = numberArr.filter((elem) => ["3", "6", "9"].includes(elem));
 
   return findArr.length;
 }
