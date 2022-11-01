@@ -34,6 +34,13 @@ function problem4(word) {
         if (asciiAlphabet === 32) {
             continue;
         }
+        // 알파벳만을 변환
+        if (asciiAlphabet < 65 || asciiAlphabet > 122) {
+            continue;
+        }
+        if (asciiAlphabet > 90 && asciiAlphabet < 97) {
+            continue;
+        }
 
         let alphabetIndex = getAlphabetIndex(asciiAlphabet);
         asciiAlphabetArray[i] = changeAlphabet(asciiAlphabet, alphabetIndex);
