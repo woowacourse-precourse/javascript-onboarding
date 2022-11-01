@@ -49,7 +49,16 @@ function problem7(user, friends, visitors) {
     });
   };
 
+  // 코드 작성
   let answer;
+  let user_friends = [];
+  let recommend_score = {};
+
+  user_friends = getFriends(user, friends);
+  recommend_score = getRelationScore(friends, user_friends, recommend_score);
+  recommend_score = getVisitScore(visitors, user_friends, recommend_score);
+
+  answer = recommendFriend(recommend_score);
   return answer;
 }
 
