@@ -26,7 +26,16 @@ function shareFriend(user,friends){
   }
   return share_friends;
 }
-
+function findVisit(user, friends, visitors){
+  let result=[];
+  const user_friends= alreadyFriend(user,friends);
+  for(let i=0;i<visitors.length;i++){
+          if(!user_friends.includes(visitors[i])){
+              result.push(visitors[i]);
+          }
+  }
+  return result;
+}
 function problem7(user, friends, visitors) {
   let answer;
   return answer;
