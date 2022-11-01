@@ -12,6 +12,8 @@ function problem3(number) {
     let target = array.filter(v => v === '3' || v === '6' || v === '9');
     sum += target.length;
   }
+
+  return sum;
 }
 
 module.exports = problem3;
