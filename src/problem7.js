@@ -1,4 +1,5 @@
-function makeRelation(friends){ //make graph(obj) of relationship
+//{ 아이디 : 친구 배열 } 객체 graph 반환
+function makeRelation(friends){
   const graph = {};
   friends.forEach((friend)=>{
     for (let i=0; i<2; i++){
@@ -6,10 +7,12 @@ function makeRelation(friends){ //make graph(obj) of relationship
       ? graph[friend[i]].push(friend[1-i])
       : graph[friend[i]]=[friend[1-i]];
     }
-  }) //{ id: [friend1, friend2,..],..}
+  })
   return graph;
 }
 
+//인수 : 점수 계산해야 하는 id 배열, 10점 받는 id 배열, 1점 받는 id 배열
+//{ 아이디 : 점수 } 객체 score 반환
 function calScore(id_list, ten, one){
   const score = {};
   id_list.forEach((id)=>{
@@ -19,6 +22,8 @@ function calScore(id_list, ten, one){
   return score;
 }
 
+//인수: 점수 산출에 해당되는 id 배열, 각 아이디의 점수를 나타내는 객체 score
+//점수 높은 순으로 최대 5개의 id 쓰여있는 배열 반환
 function makeRanking(id_list, score){
   id_list.sort((a,b)=>{
     if(score[a]===score[b]){ return a<b?-1:a>b?1:0; }
@@ -44,9 +49,9 @@ function problem7(user, friends, visitors) {
 
 module.exports = problem7;
 
-//1. relation 나타내는 객체 graph 생성 - makeRelation(friends)
-//2. 10점 받는 id 리스트 ten_points, 1점 받는 id 리스트 one_point 생성 - main
-//3. 중복 없는, 점수 계산해야 하는 id 리스트 id_list 생성 - main
-//4. 2에서 만든 리스트로 점수 계산 - calScore(id_list, ten, one) -> Object score
+//1. relation 나타내는 객체 graph 생성
+//2. 10점 받는 id 리스트 ten_points, 1점 받는 id 리스트 one_point 생성
+//3. 중복 없는, 점수 계산해야 하는 id 리스트 id_list 생성
+//4. 2에서 만든 리스트로 점수 계산
 //   점수 계산 원리 : ten or one 포인트 받는 id 리스트에서 해당 id 개수를 참조하여 계산
-//5. id_list,score 로 순위 매기기 - makeRanking
+//5. id_list,score 로 순위 매기기

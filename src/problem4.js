@@ -1,3 +1,4 @@
+//대소문자 판별 함수 - 대문자일때 true, 소문자일때 false 반환
 function isBig(letter){
 	return letter===letter.toUpperCase();
 }

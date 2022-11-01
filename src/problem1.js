@@ -1,3 +1,4 @@
+//숫자 인수 받아 각자리합, 곱 중 최댓값 반환
 function makeMax(n){
   let [add,mul]=[0,1];
   str_num = String(n);
@@ -8,6 +9,7 @@ function makeMax(n){
   return Math.max(add,mul);
 }
 
+//페이지가 순서되로 되어있으며, 1쪽 차이 나는지 확인하여 boolean 반환
 function isVaildPage(pages){
   return pages[1]-pages[0]===1;
 }
