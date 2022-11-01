@@ -1,9 +1,9 @@
-function problem7(user, friends, visitors) {
+function problem7(user, friend, visitors) {
   var answer=[];
   const Graph={}
   var score = new Map();
   var visited = new Map();
-
+  let friends=friend.filter(element=>element[0]!==element[1])
   const MakeGraph=()=>{
     for(let i=0;i<friends.length;i++){
       if(Graph[friends[i][0]]!==undefined){//tree에 키가 존재한다면
@@ -41,7 +41,6 @@ function problem7(user, friends, visitors) {
     }
   }
   const Bfs=(Graph,root)=>{
-    console.log(Graph,root)
     class Node{
       constructor(x,depth) {
           this.x = x;
@@ -89,12 +88,12 @@ function problem7(user, friends, visitors) {
       let x=cur.x
       if(depth===2){//친구의친구
         let original_score=score.get(x)
-        score.set(x, original_score+10)
+        original_score=original_score+10
+        visited.set(x,false)
+        score.set(x,original_score)
         continue;
       }
-      if(depth===1){//친구
-        score.set(x,0)
-      }
+      
       for(let i=0;i<Graph[x].length;i++){
           if(visited.get(Graph[x][i])===false){
               visited.set(Graph[x][i],true)
@@ -105,23 +104,38 @@ function problem7(user, friends, visitors) {
   }
   const VisitScore=(visitors)=>{
     for(let i=0;i<visitors.length;i++){
-        //console.log(visitors[i])
         let original_score=score.get(visitors[i])
         score.set(visitors[i], original_score+1)
-    }
+      }
   }
 
   MakeGraph();
   MakeScoreVisit(user,Graph,visitors);
-  VisitScore(visitors);
-  for (const [key, value] of visited) {
+  for (const [key] of visited) {
    const set = new Set(Graph[key]);
    if(set.size!==0){
     Graph[key]= Array.from(set);
    }
   }
   Bfs(Graph,user)
-  const temp_answer= new Map([...score.entries()].sort((a, b) => b[1] - a[1]));
+  VisitScore(visitors);
+  Graph[user].map(element=>score.set(element,0))
+  const temp_answer= new Map([...score.entries()].sort((a, b) =>{
+    if(a[1]>b[1]){
+      return -1
+    }else if(a[1]<b[1]){
+      return 1
+    }else if(a[1]===b[1]){
+      if(a[0]>b[0]){
+        return 1
+      }else if(a[0]<b[0]){
+        return -1
+      }else if(a[0]===b[0]){
+        return 0;
+      }
+    }
+  }));
+
   let cnt=0;
   for (const [key, value] of temp_answer) {
     if(value!==0&&cnt<5){
@@ -130,5 +144,6 @@ function problem7(user, friends, visitors) {
     }
   }
   return answer;
-}
+} 
 module.exports = problem7;
+
