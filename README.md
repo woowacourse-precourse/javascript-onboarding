@@ -63,7 +63,7 @@
 ***
 ## 📋 [문제 4] 구현할 기능 목록
 
-* 📮 알고리즘 선택
+* 📮 전체 알고리즘 선택
   + [X] A안: UTF-16 코드를 활용할 수 있는 내장함수 `String.prototype.charCodeAt(index)`과 `String.fromCharCode(number)`을 사용해서 한 번 에 변경할 수 있는 방법
   예) 'E'의 경우 '`(E).charCodeAt(0)` => 69'가 되며, A인 65와의 차이가 4이기 떄문에, Z인 90에 4를 뺀 86의 값을 `String.fromCharCode(86)` 코드로 읽어오게되면, 'V'가 출력됨.
 
@@ -72,24 +72,28 @@
 
   > ❓선정 이유 : A안이 B안보다 간단한 알고리즘 순서도로 그려지고, 클린 코디로 짜기 좋은 방법일 것 같아 채택.
 
-* 전체 프로세서 관리할 `treeFrogApp` 함수 생성.
-  + 변수 `eachCharCollection`를 함수 `createStringSplit`에서 받아온다.
+* `treeFrogApp` 함수 : 전체 프로세서를 관리함.
+  + `eachCharCollection` 변수 : 함수 `createStringSplit`에서 받아온다.
   + 해당 배열 길이만큼 반복해서 한글자씩 변경해준다.
 
-* 입력된 문자열을 배열로 만들어줄 함수 `createStringSplit` 생성.
+* `createStringSplit` 함수 : 입력된 문자열을 배열로 만들어 줌.
   + 입력된 문자열을 `.split("")`로 한글자씩 나눠서 배열을 만든 후, return 한다.
 
-* 입력된 문자를 UTF16코드로 변경해 줄 함수 `getFromCharToUTF16Code(char)` 를 구현.
+* `convertTreeFrogChar` 함수 : 입력된 UTF16코드를 알파벳인지 확인한 후, 반대로 변경해서 문자로 변경하여 return 함.
 
-* 입력된 UTF16코드를 문자로 변경해 줄 함수 `getFromUTF16CodeToChar(utf16Code)` 를 구현. 
+* `convertUTF16(char)` 함수 : 입력된 문자를 UTF16코드로 변경해 줌.
 
-* 입력된 UTF-16 코드가 알파벳인지 판단하는 함수 `checkAlphabet(utf16Code)`
+* `convertReverseCode(utf16Code)` 함수 : 입력된 숫자에 반대되는 문자로 출력해 줌.
+
+* `convertChar(utf16Code)` 함수 : 입력된 UTF16코드를 문자로 변경해 줌.
+
+* `checkAlphabet(utf16Code)` 함수 : 입력된 UTF-16 코드가 알파벳인지 판단해 줌. 
   + 대문자 A : 65 / 대문자 Z : 90 / 소문자 a : 97/ 소문자 z : 122
   + 알파벳이 아니면, `false`를 return 하게 구현.
 
-* 입력된 숫자에 반대되는 문자로 출력해 줄 함수 `getTreeFrogChar(utf16Code)` 를 구현.
+* `convertString` 함수 : 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 해 줌.
 
-* 반대로 저장된 배열을 `.join("")`을 통해 한 문자열로 다시 만든 후, return 하는 `getFromCharArrToString` 를 구현.
+* `checkLowerCase` 함수 : 받아온 `utf16Code`가 소문자인지 boolean 형으로 return 해 줌.
 
 ***
 
