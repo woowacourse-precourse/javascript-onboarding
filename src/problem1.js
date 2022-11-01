@@ -48,6 +48,12 @@ function calculate(leftPageNumber, rightPageNumber) {
   return max;
 }
 
+/*각 자리 숫자의 합과 곱 중에서 가장 큰수를 구한다. */
+function findMax(leftSum, rightSum,leftMul,rightMul) {
+  const max = Math.max(leftSum, rightSum,leftMul,rightMul);
+  return max;
+}
+
 
 
 
