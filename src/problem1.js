@@ -4,7 +4,8 @@ function problem1(pobi, crong) {
   if (exception(pobi, crong)) {
     answer = -1;
     return answer;
-  } else {
+  }
+  {
     // 포비와 크롱의 왼쪽, 오른쪽 페이지
     const leftPagePobi = pobi[0].toString().trim().split("").map(Number);
     const rightPagePobi = pobi[1].toString().trim().split("").map(Number);
@@ -35,8 +36,8 @@ function problem1(pobi, crong) {
 
     // 결과 값 비교 후 정답 return
     if (scorePobi > scoreCrong) answer = 1;
-    else if (scorePobi < scoreCrong) answer = 2;
-    else if (scorePobi == scoreCrong) answer = 0;
+    if (scorePobi < scoreCrong) answer = 2;
+    if (scorePobi == scoreCrong) answer = 0;
   }
 
   return answer;
@@ -51,9 +52,10 @@ function exception(person1, person2) {
     person2[0] % 2 != 1 ||
     person2[1] % 2 != 0 ||
     person2[0] + 1 != person2[1]
-  )
+  ) {
     return true;
-  else return false;
+  }
+  return false;
 }
 
 function calculatePageNumber(pageNumber, calculatedNumber) {
