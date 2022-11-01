@@ -24,6 +24,32 @@ function requirements(arr) {
 }
 
 function problem6(forms) {
+  let formsDuplicate = [...forms];
+  let answer = [];
+  let duplicates;
+  let i = 0;
+  let j = 0;
+  if (requirements(forms) === true) {
+      while (i < forms.length) {
+
+          while (j < (forms[i][1].length - 1)) {
+            let compare = forms[i][1].slice(j, j + 2);
+      
+            duplicates = formsDuplicate.filter(element => element[1].includes(compare));
+            
+            formsDuplicate = formsDuplicate.filter(element => !element[1].includes(compare));
+      
+            answer.push(duplicates);
+      
+            j++;
+          }
+      
+          i++;
+      
+        }
+      
+        
+  }
 }
 
 
