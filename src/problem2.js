@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let cry = cryptogram.split("");
 }
 
+let arr = "browoanoommnaon";
+console.log(problem2(arr));
 module.exports = problem2;
