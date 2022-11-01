@@ -10,17 +10,11 @@ function problem1(pobi, crong) {
 }
 
 function errorCheck(pages) {
-  if (pages[0] - pages[1] !== 1) return true;
+  if (pages[1] - pages[0] !== 1) return true;
   if (pages[1] > 400) return true;
   if (pages[0] < 1) return true;
 }
-function getMaxNum(person) {
-  if (!(person[1] - person[0] === 1)) return true;
-
-  const pages = [person[0], person[1], crong[0], crong[1]];
-  pages.forEach((page) => {
-    if (page < 1) return -1;
-  });
+function getMaxNum(pages) {
   let max = Number.MIN_SAFE_INTEGER;
 
   pages.forEach((page) => {
