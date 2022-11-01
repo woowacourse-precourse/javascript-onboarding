@@ -55,6 +55,12 @@ function problem7(user, friends, visitors) {
             orderedScoresObject[visitors[i]] += 1;
         }
     }
+
+    // 6단계) 점수가 가장 높은 순으로 정렬
+    const orderedArray = Object.entries(orderedScoresObject).sort((a, b) => b[1] - a[1]);
+
+    // 7단계) 형식에 맞게 배열로 변환하여 결과를 반환
+    const result = orderedArray.map((el) => el[0]);
 }
 
 module.exports = problem7;
