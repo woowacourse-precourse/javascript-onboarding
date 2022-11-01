@@ -70,7 +70,7 @@ function lowerCase(word) {
 }
 
 function problem4(word) {
-  if(exception) return false;
+  if(exception(word)) return false;
 
   return checkAlphabet(word);
 }
