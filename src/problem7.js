@@ -55,6 +55,17 @@ function filtering(userFriendNameArray, scoreFriendArray, userName) {
     });
   }
   return scoreFriendArray;
+function maxResult(maxScoreFriend) {
+  //결과값의 길이가 5를 넘을 때 pop으로 작은 숫자들을 내보냄
+  const result = [];
+  if (maxScoreFriend.length > 5) {
+    for (i = 1; i <= maxScoreFriend.length - 5; i++) maxScoreFriend.pop();
+  }
+  maxScoreFriend.forEach(function (answer) {
+    result.push(answer[1]);
+  });
+  return result;
+}
 function sorting(filterScoreFriend) {
   //scoreFriend에 필터링을 마치고 큰점수 > 작은점수 & 같은점수라면 이름순으로 정렬
   filterScoreFriend.sort(function (a, b) {
