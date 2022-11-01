@@ -64,3 +64,21 @@ function getRecommendUserMap(friendMap, visitorMap){
   return recommendMap;
 }
 
+function getSortedUserList(recommendMap){
+  let sortedList = [];
+  if(recommendMap.size === 0){
+    return [];
+  }
+  for(const [user, score] of recommendMap){
+    sortedList.push({user: user, score: score});
+  }
+  sortedList = sortedList.sort((a,b) => {
+    if (a.score > b.score) return -1;
+    if (a.score < b.score) return 1;
+
+    if (a.user > b.user) return 1;
+    if (a.user < b.user) return -1;
+  }).map(user => user.user);
+
+  return sortedList;
+}
