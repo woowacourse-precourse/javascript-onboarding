@@ -16,7 +16,10 @@ function problem7(user, friends, visitors) {
     adjacencyArr[friendsObj[element[0]]].push(friendsObj[element[1]]);
     adjacencyArr[friendsObj[element[1]]].push(friendsObj[element[0]]);
   });
-
+  if (!friendsObj.hasOwnProperty(user)) {
+    friendsObj[user] = Object.keys(friendsObj).length;
+    friendsArr.push(user);
+  }
   const visitedVertex = [];
   adjacencyArr[friendsObj[user]].forEach((vertex) => {
     adjacencyArr[vertex].forEach((neighbor) => {
@@ -46,6 +49,7 @@ function problem7(user, friends, visitors) {
       scoreArr.push([0]);
       friendsArr.push(visitor);
     }
+
     if (
       friendsObj[visitor] !== friendsObj[user] &&
       !adjacencyArr[friendsObj[user]].includes(friendsObj[visitor])
@@ -81,7 +85,6 @@ function problem7(user, friends, visitors) {
     }
     return 0;
   });
-  // console.log(resultSorted);
   const result = [];
   resultSorted.slice(0, 5).forEach((nameScore) => {
     result.push(nameScore[0]);
