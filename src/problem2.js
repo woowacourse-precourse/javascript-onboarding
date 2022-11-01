@@ -1,15 +1,15 @@
 class ErrorCase {
   constructor(cryptogram) {
-    this.cryptogram = cryptogram;
+    this._cryptogram = cryptogram;
     this.checkAllError();
   }
 
   checkLowerCase() {
-    return this.cryptogram.match(/[a-z]/g).length === this.cryptogram.length;
+    return this._cryptogram.match(/[a-z]/g).length === this._cryptogram.length;
   }
 
   checkLength() {
-    return 1 <= this.cryptogram.length && this.cryptogram.length <= 1000;
+    return 1 <= this._cryptogram.length && this._cryptogram.length <= 1000;
   }
 
   checkAllError() {
