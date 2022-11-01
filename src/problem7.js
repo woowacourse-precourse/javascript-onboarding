@@ -79,7 +79,7 @@ function problem7(user, friends, visitors) {
   return answer;
 
 }
-problem7("mrko",[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],["bedi", "bedi", "donut", "bedi", "shakevan"])
+// problem7("mrko",[ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ],["bedi", "bedi", "donut", "bedi", "shakevan"])
 module.exports = problem7;
 
 // 처음 돌면서 모든사람, 내친구set 만들기 (user 인가? 맞으면 다음인덱스 혹은 이전 인덱스를 친구set에 추가)
