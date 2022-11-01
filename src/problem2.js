@@ -1,6 +1,6 @@
 function problem2(cryptogram) {
-  const findDuplicateWord = (word) =>
-    [...word]
+  const removeDuplicateWord = (word) => {
+    return [...word]
       .map((alphabet, index) => {
         if (alphabet === word[index - 1]) return;
 
@@ -9,10 +9,11 @@ function problem2(cryptogram) {
         return "";
       })
       .join("");
+  };
 
-  if (findDuplicateWord(cryptogram) === cryptogram) return cryptogram;
+  if (removeDuplicateWord(cryptogram) === cryptogram) return cryptogram;
 
-  return problem2(findDuplicateWord(cryptogram));
+  return problem2(removeDuplicateWord(cryptogram));
 }
 
 module.exports = problem2;

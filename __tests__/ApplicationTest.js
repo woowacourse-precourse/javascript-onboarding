@@ -78,13 +78,7 @@ describe("problem6", () => {
         ["eagle@email.com", "레이구리"],
         ["tutila@email.com", "다구리"],
       ])
-    ).toEqual([
-      "eagle@email.com",
-      "parrot@email.com",
-      "raven@email.com",
-      "tutila@email.com",
-      "woodpecker@email.com",
-    ]);
+    ).toEqual(["eagle@email.com", "parrot@email.com", "raven@email.com", "tutila@email.com", "woodpecker@email.com"]);
   });
 });
 
