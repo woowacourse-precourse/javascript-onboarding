@@ -9,9 +9,13 @@ function makeMax(n){
   return Math.max(add,mul);
 }
 
-//페이지가 순서되로 되어있으며, 1쪽 차이 나는지 확인하여 boolean 반환
+//페이지 유효성 확인하여 boolean 반환
 function isVaildPage(pages){
-  return pages[1]-pages[0]===1;
+  return (pages[1]-pages[0]===1 && 
+          pages[0]%2===1 && 
+          pages[1]%2===0 &&
+          pages[0]<400 &&
+          pages[1]<=400 );
 }
 
 function problem1(pobi, crong){
