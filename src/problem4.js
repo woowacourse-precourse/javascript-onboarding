@@ -7,6 +7,7 @@ function problem4(word) {
       else if (!/[A-Za-z]/.test(ch)) return ch;
 
       const ascii = ch.toUpperCase().charCodeAt() - 65;
+      const reverse = String.fromCharCode(90 - ascii);
     })
 }
 
