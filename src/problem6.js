@@ -6,7 +6,17 @@ function problem6(forms) {
     obj[n] = e;
   }
 
-  console.log(obj);
+  let nicknames = Object.keys(obj);
+
+  for (let i = 0; i < nicknames.length; i++) {
+    let reg = new RegExp(`[${nicknames[i]}]{2}`);
+    for (let j = i; j < nicknames.length; j++) {
+      if (reg.test(`${nicknames[j]}`) && nicknames[i] !== nicknames[j]) {
+        console.log(`${nicknames[i]}`, `${nicknames[j]}`);
+      }
+    }
+
+  }
 
   return answer;
 }
