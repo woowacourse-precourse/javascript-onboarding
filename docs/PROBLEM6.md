@@ -27,10 +27,10 @@
 
 ### 💻기능 구현 순서
 
-1. 배열을 하나 만들어서 name만을 갖는 배열을 만든다.
-2. nameArray를 forEach로 돌면서 (index, index+1)의 값으로 중복체크한다.
-3. 2번을 닉네임의 끝까지 index로 체크한다.
-4. 만약 중복된 값이 있으면 forms[index]값으로 answer배열에 push한다.
+1. name, email을 갖는 array를 만든다.
+2. 각 name들마다의 연속된 집합을 갖는 배열들을 만든다.
+3. 2번에서 만든 배열로 nameArray를 돌면서 중복을 체크한다.
+4. 중복이 체크된 index를 가지고 email을 sort하여 출력한다.
 
 ### ❗예외사항
 
