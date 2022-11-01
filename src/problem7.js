@@ -1,15 +1,19 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let score = {};
-  let myfriend = [];
   friends.forEach((friend) => {
-    if (friend[0] === user) {
-      myfriend.push(friend[1]);
-    } else if (friend[1] === user) {
-      myfriend.push(friend[0]);
-    }
+    const myfriend = findFriend(friend, user);
+    if (!myfriend) return;
   });
   return answer;
+}
+
+function findFriend(relation, user) {
+  if (relation[0] === user) {
+    return friend[1];
+  } else if (relation[1] === user) {
+    return friend[0];
+  }
 }
 
 module.exports = problem7;
