@@ -50,10 +50,8 @@ function problem7(user, friends, visitors) {
       const scoreA = recommendScore[nameA];
       const scoreB = recommendScore[nameB];
 
-      if (scoreA < scoreB) return 1;
-      if (scoreA > scoreB) return -1;
-      if (nameA > nameB) return 1;
-      return nameA < nameB ? -1 : 0;
+      if (scoreA === scoreB) return nameA.localeCompare(nameB);
+      return scoreB - scoreA;
     })
     .slice(0, MAX_NUMBER);
 }
