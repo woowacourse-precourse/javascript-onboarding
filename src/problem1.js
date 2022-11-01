@@ -38,6 +38,14 @@ function problem1(pobi, crong) {
     const product = noArr.reduce((product, no) => product * no, 1);
     return Math.max(sum, product);
   };
+  const pobiScore = pobi.reduce(
+    (max, pageNo) => Math.max(max, getMaxScore(pageNo)),
+    0
+  );
+  const crongScore = crong.reduce(
+    (max, pageNo) => Math.max(max, getMaxScore(pageNo)),
+    0
+  );
   var answer;
   return answer;
 }
