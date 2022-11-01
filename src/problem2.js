@@ -1,6 +1,4 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
   const cryptogramArray = cryptogram.split("");
   let cryptogramString = "";
   let waste = "";
@@ -14,6 +12,7 @@ function problem2(cryptogram) {
     }
     waste += code;
   });
+
   if (waste === "") {
     return cryptogramString;
   } else {
@@ -22,3 +21,4 @@ function problem2(cryptogram) {
 }
 
 module.exports = problem2;
+console.log(problem2("saddaas"));
