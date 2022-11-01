@@ -38,6 +38,11 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  for (let i = 0; i < visitors.length; i++) {
+    if (score.has(visitors[i]) && score.get(visitors[i]) != -1) {
+      score.set(visitors[i], score.get(visitors[i]) + 1);
+    } else if (!score.has(visitors[i])) score.set(visitors[i], 1);
+  }
 
   return answer;
 }
