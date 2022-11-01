@@ -17,6 +17,12 @@ function problem6(forms) {
     }
   }
 
+  forms.map((item) => {
+    for (let i = 0; i < twoLetters.length; i++) {
+      if (item[1].indexOf(twoLetters[i]) !== -1) resultArr.push(item[0]);
+    }
+  });
+
   // 중복되는 문자 확인
   twoLetters = findDuplicate(twoLetters);
 
