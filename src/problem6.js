@@ -1,25 +1,5 @@
 function problem6(forms) {
-  return duplicateCheckApp(checkValidation(forms));
-}
-
-function checkValidation(forms) {
-  const validationFilter = [];
-  const emailCollection = [];
-  forms.map(([crewEmail, crewNickName]) => {
-    if (checkNickName(crewNickName) && checkEmail(crewEmail, emailCollection)) {
-      validationFilter.push([crewEmail, crewNickName]);
-      emailCollection.push(crewEmail);
-    }
-  });
-  return validationFilter;
-}
-
-function checkNickName(nickName) {
-  return nickName.length >= 2 && nickName.length < 20 && !/[^가-힣]/.test(nickName);
-}
-
-function checkEmail(email, emailCollection) {
-  return email.length >= 11 && email.length < 20 && email.includes("@email") && !emailCollection.includes(email);
+  return duplicateCheckApp(forms);
 }
 
 function duplicateCheckApp(forms) {
@@ -27,7 +7,7 @@ function duplicateCheckApp(forms) {
   const emailOfUsedNickName = new Set();
   forms.forEach(([crewEmail, crewNickName]) => {
     for (let i = 0; i < crewNickName.length - 1; i++) {
-      let twoLetterName = crewNickName.substr(i, 2);
+      let twoLetterName = crewNickName.substr(i, i + 2);
       if (infoOfUsedTwoLetter.has(twoLetterName)) {
         emailOfUsedNickName.add(crewEmail);
         emailOfUsedNickName.add(infoOfUsedTwoLetter.get(twoLetterName));
@@ -38,5 +18,27 @@ function duplicateCheckApp(forms) {
   });
   return [...emailOfUsedNickName].sort();
 }
+
+// function checkValidation(forms) {
+//   const validationFilter = [];
+//   const emailCollection = [];
+//   forms.map(([crewEmail, crewNickName]) => {
+//     if (checkNickName(crewNickName) && checkEmail(crewEmail, emailCollection)) {
+//       validationFilter.push([crewEmail, crewNickName]);
+//       emailCollection.push(crewEmail);
+//     }
+//   });
+//   return validationFilter;
+// }
+
+// function checkNickName(nickName) {
+//   return nickName.length >= 2 && nickName.length < 20 && !/[^가-힣]/.test(nickName);
+// }
+
+// function checkEmail(email, emailCollection) {
+//   return email.length >= 11 && email.length < 20 && email.includes("@email") && !emailCollection.includes(email);
+// }
+
+
 
 module.exports = problem6;
