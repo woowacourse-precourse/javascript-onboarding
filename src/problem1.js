@@ -51,9 +51,14 @@ function problem1(pobi, crong) {
     let pobiResultPlusVaule = pobiLeftPlusValue > pobiRightPlusValue ? pobiLeftPlusValue : pobiRightPlusValue;
     let pobiResultMultiplyValue = pobiLeftMultiplyValue > pobiRightMultiplyValue ? pobiLeftMultiplyValue : pobiRightMultiplyValue;
 
-    let pobiResultValue = pobiResultPlusVaule > pobiResultMultiplyValue ? pobiResultPlusVaule : pobiResultMultiplyValue;
+    var pobiResultValue = pobiResultPlusVaule > pobiResultMultiplyValue ? pobiResultPlusVaule : pobiResultMultiplyValue;
 
-    // crong
+  }
+
+  // crong
+  if (crong[0] >= [crong][1] || crong[1] - crong[0] > 2) {
+    return answer = -1;
+  } else {
     let crongLeftPlusValue = plusValue(crong[0]);
     let crongRightPlusValue = plusValue(crong[1]);
 
@@ -63,13 +68,10 @@ function problem1(pobi, crong) {
     let crongResultPlusValue = crongLeftPlusValue > crongRightPlusValue ? crongLeftPlusValue : crongRightPlusValue;
     let crongResultMultiplyValue = crongLeftMultiplyValue > crongRightMultiplyValue ? crongLeftMultiplyValue : crongRightMultiplyValue
 
-    let crongResultValue = crongResultPlusValue > crongResultMultiplyValue ? crongResultPlusValue : crongResultMultiplyValue
-
-
-    resultValue(pobiResultValue, crongResultValue);
+    var crongResultValue = crongResultPlusValue > crongResultMultiplyValue ? crongResultPlusValue : crongResultMultiplyValue
   }
 
-
+  resultValue(pobiResultValue, crongResultValue);
 
 
   return answer;
