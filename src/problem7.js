@@ -31,7 +31,12 @@ function problem7(user, friends, visitors) {
     }
     return a[1] < b[1] ? 1 : -1;
   });
-  res.forEach((v) => answer.push(v[0]));
+  for (let i = 0; i < 5; i++) {
+    if (res[i]) {
+      answer.push(res[i][0]);
+    }
+  }
+
   return answer;
 }
 
