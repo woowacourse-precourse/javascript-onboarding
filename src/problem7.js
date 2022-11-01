@@ -85,7 +85,21 @@ function friendsRank(friendsMap) {
   return friendsArr;
 }
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
+  const peopleList = findPeople(friends);
+  const friendsMap = friendsToObj(friends, peopleList);
+  calVisitPoint(friendsMap, visitors);
+  calWithPoint(friendsMap, user);
+  alreayFriend(friendsMap, user);
+  const ranking = friendsRank(friendsMap);
+
+  for (let i = 0; i < 5 && i < ranking.length; i++) {
+    const name = ranking[i][0];
+    const point = ranking[i][1];
+    if (point !== 0) {
+      answer.push(name);
+    }
+  }
   return answer;
 }
 
