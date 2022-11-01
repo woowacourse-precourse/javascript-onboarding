@@ -26,6 +26,9 @@ function problem7(user, friends, visitors) {
     if (sortable[idx][1] !== 0) answer.push(sortable[idx][0]);
   }
 
+  const set = new Set(answer);
+  answer = [...set];
+
   return answer;
 
   function arrangeFriends() {
