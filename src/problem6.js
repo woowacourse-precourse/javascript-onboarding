@@ -4,6 +4,8 @@ function problem6(forms) {
 	let emailArray = forms.map((form) => form[0]);
 	let nameArray = forms.map((form) => form[1]);
 
+	if (!checkValidEmail(emailArray)) return -1;
+
 	nameArray.forEach((names, index) => {
 		let sliceNameArray = saveNameLength2(names);
 		foundDuplicate(sliceNameArray, index);
@@ -14,6 +16,16 @@ function problem6(forms) {
 		.forEach((answerIndex) => {
 			answer.push(emailArray[answerIndex]);
 		});
+
+	function checkValidEmail(emails) {
+		let count = 0;
+		emails.forEach((email) => {
+			let checkEmail = email.slice(email.indexOf("@"), email.length);
+			if (checkEmail == "@email.com") return;
+			else count++;
+		});
+		return count == 0 ? 1 : 0;
+	}
 
 	function saveNameLength2(names) {
 		let tempArray = [];
