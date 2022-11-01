@@ -53,6 +53,20 @@ function problem7(user, friends, visitors) {
     scores.push([scoresDictionary[user], user])
   }
 
+  scores.sort((a, b) => {
+    if (a[0] > b[0]) {
+      return -1
+    } else if (a[0] < b[0]) {
+      return 1
+    } else {
+      if (a[1] > b[1]) {
+        return 1
+      } else if (a[1] < b[1]) {
+        return -1
+      }
+    }
+  })
+
   return answer;
 }
 
