@@ -1,10 +1,14 @@
 // 배열에서 모든 인덱스를 순회하며 각 자리 숫자를 더하거나 곱한 것중 큰 수를 리턴하는 함수
 function numberOfDigitArray(arr) {
   let max = -1;
+  let multiply;
+  let sum;
+  let digit;
+
   for (let i = 0; i < arr.length; i += 1) {
-    let multiply = 1;
-    let sum = 0;
-    let digit = arr[i];
+    multiply = 1;
+    sum = 0;
+    digit = arr[i];
 
     while (digit > 0) {
       sum += digit % 10;
