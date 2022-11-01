@@ -54,9 +54,6 @@ function problem3(number) {
   return sum
 }
 
-
-
-
 function less10(number){
   if (number<3) return 0;
   if (number<6) return 1;
@@ -65,6 +62,4 @@ function less10(number){
 
 }
 
-
-console.log(problem3(33));
 module.exports = problem3;
