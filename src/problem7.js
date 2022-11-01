@@ -39,3 +39,16 @@ function getFriendMap(userSet, friendsList, userName){
   })
   return friendMap;
 }
+
+function getVisitorMap(visitors){
+  let visitorMap = new Map();
+  visitors.forEach(visitor => {
+    if(visitorMap.has(visitor)){
+      visitorMap.set(visitor, visitorMap.get(visitor)+1);
+    }else{
+      visitorMap.set(visitor, 1)
+    }
+  })
+  return visitorMap;
+}
+
