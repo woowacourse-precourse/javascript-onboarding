@@ -11,6 +11,9 @@ function greedyWithdraw(money) {
 
 function problem5(money) {
   var answer;
+
+  answer = greedyWithdraw(money);
+
   return answer;
 }
 
