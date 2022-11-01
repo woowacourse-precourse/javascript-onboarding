@@ -7,6 +7,15 @@
  * @returns {string}
  */
 function problem4(word) {
+  const A = 65;
+  const Z = 90;
+  const a = 97;
+  const z = 122;
+  const dictionary = [...Array(26)].reduce((dict, _, i) => {
+    dict.set(String.fromCharCode(A + i), String.fromCharCode(Z - i));
+    dict.set(String.fromCharCode(a + i), String.fromCharCode(z - i));
+    return dict;
+  }, new Map());
   var answer;
   return answer;
 }
