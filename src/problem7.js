@@ -27,18 +27,20 @@ function problem7(user, friends, visitors) {
     else score[name] += 1;
   })
   
-  const answer = [];
+  const recommenders = [];
   
   for(const name in score) {
-    answer.push({name, score: score[name]})
+    recommenders.push({name, score: score[name]})
   };
-  
-  return answer.sort((a, b) => {
+
+  const answer = recommenders.sort((a, b) => {
     if(a.score > b.score) return -1;
     if(a.score < b.score) return 1;
     if(a.name > b.name) return 1;
     if(a.name < b.name) return -1;
   }).map(a => a.name);
+
+  return answer.length <= 5 ? answer : answer.slice(0, 5)
 }
 
 module.exports = problem7;
