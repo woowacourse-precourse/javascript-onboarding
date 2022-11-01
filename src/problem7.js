@@ -6,8 +6,6 @@ function problem7(user, friends, visitors) {
   addFriends(user, friends, userFriends, point);
   addTenPoint(user, friends, userFriends, point);
   addOnePoint(userFriends, point, visitors);
-
-  // console.log(sortByValue(point), userFriends, point);
   return sortByValue(point);
 }
 function checkUserFriends(user, friends, userFriends) {
@@ -71,20 +69,5 @@ function sortByValue(point) {
   if (result.length > 5) result = result.splice(0, 5);
   return result;
 } // point 객체 value를 기반으로 정렬 , 같다면 사전순 정렬 하여 상위 5개의 값 result 에 추가하는 함수
-problem7(
-  "hello",
-  [
-    ["andole", "jun"],
-    ["andole", "bedi"],
-    ["jun", "shakevan"],
-    ["jun", "kane"],
-    ["jun", "sam"],
-    ["bedi", "shakevan"],
-    ["bedi", "anne"],
-    ["bedi", "sam"],
-    ["anne", "mrko"],
-  ],
-  ["donut", "anne", "mrko", "mrko", "sam"]
-);
 
 module.exports = problem7;
