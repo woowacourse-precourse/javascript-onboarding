@@ -72,6 +72,7 @@ function checkOverlap(str1, str2) {
 
       indexOverlap.push(indexOverlap[indexOverlap.length - 1] + 1)
       result.push(array2[indexOverlap[indexOverlap.length - 1]])
+      console.log('indexOverlap ', indexOverlap)
       return result;
     }
     return null;
@@ -112,10 +113,10 @@ function problem6(forms) {
 
 
 problem6([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
+  ["jm@email.com", "제이이엠"],
+  ["jason@email.com", "제이이슨"],
   ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
+  ["mj@email.com", "엠제이이"],
   ["nowm@email.com", "이제엠"],
 ]);
 
