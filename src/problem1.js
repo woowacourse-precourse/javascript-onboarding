@@ -25,6 +25,7 @@ function compare(val1, val2) {
 }
 
 function problem1(pobi, crong) {
+  if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
   const pobiRes = Math.max(...pobi.map((e) => maxCalc(e)));
   const crongRes = Math.max(...crong.map((e) => maxCalc(e)));
   return compare(pobiRes, crongRes);
