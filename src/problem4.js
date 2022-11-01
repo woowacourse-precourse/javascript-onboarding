@@ -1,45 +1,14 @@
 function problem4(word) {
-  const upperCaseDic = {
-    A: "Z",
-    B: "Y",
-    C: "X",
-    D: "W",
-    E: "V",
-    F: "U",
-    G: "T",
-    H: "S",
-    I: "R",
-    J: "Q",
-    k: "P",
-    L: "O",
-    M: "N",
-    N: "M",
-    O: "L",
-    P: "K",
-    Q: "J",
-    R: "I",
-    S: "H",
-    T: "G",
-    U: "F",
-    V: "E",
-    W: "D",
-    X: "C",
-    Y: "B",
-    Z: "A",
-    a: "z",
-  };
+  const frogDic = {};
+  for (let A = 65, Z = 90, a = 97, z = 122; A <= 90; A++, a++, Z--, z--) {
+    frogDic[String.fromCharCode(A)] = String.fromCharCode(Z);
+    frogDic[String.fromCharCode(a)] = String.fromCharCode(z);
+  }
   let answer = "";
   for (let i = 0; i < word.length; i++) {
-    if (word[i] === " ") {
-      answer += word[i];
-    } else {
-      if (word[i].toUpperCase() === word[i]) {
-        answer += upperCaseDic[word[i]];
-      } else {
-        answer += upperCaseDic[word[i].toUpperCase()].toLowerCase();
-      }
-    }
+    answer += frogDic[word[i]] || word[i];
   }
+
   return answer;
 }
 
