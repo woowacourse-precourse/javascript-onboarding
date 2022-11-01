@@ -2,7 +2,7 @@ function problem3(number) {
   let answer = 0;
   for (n=1; n<=number; n++) {
     const digits = numIntoDigits(n);
-    answer += countMultiple3(digits);
+    answer += countIs369(digits);
   }
   return answer;
 }
@@ -18,13 +18,19 @@ function numIntoDigits(number) {
   return digits;
 }
 
-function countMultiple3(digits) {
-  let numMultiple3 = 0;
+function countIs369(digits) {
+  let num369 = 0;
   digits.forEach(function (digit) {
-    if (digit % 3 == 0) {
-      numMultiple3 += 1
+    if (digit == 3) {
+      num369 += 1
+    }
+    if (digit == 6) {
+      num369 += 1
+    }
+    if (digit == 9) {
+      num369 += 1
     }
   });
-  return numMultiple3;
+  return num369;
 }
 module.exports = problem3;
