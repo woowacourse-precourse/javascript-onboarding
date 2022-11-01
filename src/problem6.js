@@ -78,9 +78,9 @@ const problem6 = (forms) => {
   const duplicateNicknameUserEmails =
     getDuplicateNicknameUserInfo(nicknameWordMap);
 
-  const sortedUserEmailList = duplicateNicknameUserEmails.sort();
+  const sortedSelectedUserEmails = duplicateNicknameUserEmails.sort();
 
-  return sortedUserEmailList;
+  return sortedSelectedUserEmails;
 };
 
 module.exports = problem6;
