@@ -1,4 +1,5 @@
 function problem5(money) {
+    if (money < 1 || 1000000 < money) return -1;
     let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     while (money) {
         if (50000 <= money) {
