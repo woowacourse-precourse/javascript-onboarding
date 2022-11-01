@@ -40,12 +40,27 @@ function getDirectFriends(user, friends) {
   return directFriends;
 }
 
+function formatScoreSheet(user, scoreSheet) {
+  const newSheet = { ...scoreSheet };
+
+  delete newSheet[user];
+
+  return Object.entries(newSheet)
+    .sort()
+    .sort((userA, userB) => userB[1] - userA[1])
+    .map(([user]) => user)
+    .slice(0, 5);
+}
+
 function problem7(user, friends, visitors) {
   let scoreSheet = {};
   const directFriends = getDirectFriends(user, friends);
 
   scoreSheet = updateSheetByFriends(directFriends, friends, scoreSheet);
-  return;
+  scoreSheet = updateSheetByVisitors(directFriends, visitors, scoreSheet);
+  scoreSheet = formatScoreSheet(user, scoreSheet);
+
+  return scoreSheet;
 }
 
 module.exports = problem7;
