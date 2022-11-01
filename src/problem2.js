@@ -1,4 +1,7 @@
 function problem2(cryptogram) {
+  if (cryptogram.length < 1 || cryptogram.length > 1000) {
+    return "암호문은 1자 이상 1,000자 이하의 문자열이여야 합니다.";
+  }
   var answer;
 
   let continue_flag = true;
