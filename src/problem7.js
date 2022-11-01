@@ -14,11 +14,25 @@
 
 */
 
-
-
 function problem7(user, friends, visitors) {
     let answer;
     return answer;
+}
+
+/*user와 친구관계인 사람을 구한다.*/
+function findFriends(user, friends) {
+    let friendsWithUser = [];
+    friends.forEach(element => {
+        if (element[0] === user) {
+            friendsWithUser.push(element[1]);
+        }
+
+        if (element[1] === user) {
+            friendsWithUser.push(element[0]);
+        }
+    })
+
+    return friendsWithUser;
 }
 
 module.exports = problem7;
