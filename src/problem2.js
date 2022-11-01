@@ -1,32 +1,17 @@
 function problem2(cryptogram) {
-  let origin = cryptogram
-  let answer = cryptogram
-
-  while (true) {
-    origin = cryptogramCheck(origin)
-
-    if (answer === origin) break
-    else {
-      answer = origin
-    }
-  }
-
-  return answer
-}
-
-module.exports = problem2
-
-function cryptogramCheck(value) {
   let arr = []
-  let prev
-  for (let a of value) {
-    if (prev === a) {
+
+  cryptogram.split("").reduce((prev, curr) => {
+    if (prev === curr) {
       arr.pop()
+      return arr.at(-1)
     } else {
-      arr.push(a)
-      prev = a
+      arr.push(curr)
+      return curr
     }
-  }
+  }, "")
 
   return arr.join("")
 }
+
+module.exports = problem2
