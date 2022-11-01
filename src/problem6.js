@@ -17,12 +17,10 @@ function problem6(forms) {
 }
 function isDuplicated(name1, name2) {
   name1 = name1.split('');
-  name2 = name2.split('');
   for(let i = 0; i < name1.length - 1; i++) {
     for(let j = 0; j < name2.length - 1; j++) {
       const partOfName1 = name1[i] + name1[i + 1];
-      const partOfName2 = name2[j] + name2[j + 1];
-      if(partOfName1 === partOfName2) return true;
+      if(name2.includes(partOfName1)) return true;
     }
   }
   return false;
