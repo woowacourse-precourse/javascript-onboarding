@@ -9,8 +9,15 @@ const decryption = (crypto) => {
 };
 
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  let crypto = cryptogram;
+
+  while (true) {
+    if (crypto.length === 1) return crypto;
+
+    crypto = decryption(crypto);
+
+    if (decryption(crypto) === false) return crypto;
+  }
 }
 
 module.exports = problem2;
