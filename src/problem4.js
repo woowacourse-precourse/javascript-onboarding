@@ -15,13 +15,14 @@ function problem4(word) {
   for (let i = 0; i < word.length; i++) {
     let str = word[i];
 
-    // 대문자일 때
-    if (str === str.toUpperCase()) {
-      answer += reverseWord[str.charCodeAt() - 65];
-    }
-    // 소문자일 때
-    else if (str === str.toLowerCase()) {
-      answer += reverseWord[str.charCodeAt() - 97].toLowerCase();
+    // str이 알파벳이고,
+    if (isAlphabet(str)) {
+      // 대문자일 때
+      if (str === str.toUpperCase()) {
+        answer += reverseWord[str.charCodeAt() - 65];
+      }
+      // 소문자일 때
+      else answer += reverseWord[str.charCodeAt() - 97].toLowerCase();
     }
     // 알파벳이 아닌 경우 변환하지 않기
     else answer += str;
