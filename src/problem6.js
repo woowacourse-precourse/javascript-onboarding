@@ -29,6 +29,9 @@ function problem6(forms) {
     flag = false;
   }
 
+  const set = new Set(emailList);
+  answer = [...set];
+
   return answer;
 }
 
