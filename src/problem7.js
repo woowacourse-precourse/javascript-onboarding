@@ -30,6 +30,11 @@ function problem7(user, friends, visitors) {
     return b[1] - a[1] || a[0].localeCompare(b[0]);
   });
 
+  let finalAnswer = [];
+  for (let element of answer) {
+    finalAnswer.push(element[0]);
+  }
+  return finalAnswer;
 
 }
 
