@@ -1,5 +1,5 @@
 function problem4(word) {
-  var answer;
+  const answer = [];
 
   let asciiArr = [];
   let resultArr = [];
@@ -22,7 +22,7 @@ function problem4(word) {
     answer.push(String.fromCharCode(resultArr[i]));
   }
 
-  return answer;
+  return answer.join("");
 }
 
 module.exports = problem4;
