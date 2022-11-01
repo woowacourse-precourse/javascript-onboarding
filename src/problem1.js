@@ -25,10 +25,8 @@ function problem1(pobi, crong) {
     let now = findMax(num);
     return Math.max(max, now);
   }, 0);
-  console.log(mPobi, mCrong);
 
   if (mPobi === mCrong) return 0;
   return mPobi > mCrong ? 1 : 2;
 }
-console.log(problem1([99, 102], [211, 212]));
 module.exports = problem1;
