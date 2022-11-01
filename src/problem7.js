@@ -1,7 +1,18 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
-}
+  const totalScore = getScore(friends,visitors);
+  
+  // 점수를 기준으로 정렬
+  let sorted = Object.entries(totalScore).sort((a,b) => b[1]-a[1]);
+
+  // 가장 점수가 많은 5명의 친구 이름을 출력
+  let topFive = [];
+
+  for(let ele of sorted){
+  topFive.push(ele[0])
+  } return topFive.slice(0,5);
+  
+  
+} 
 
 //user의 친구 목록
 function getUserFriends(userName,friendsList){
@@ -18,7 +29,7 @@ function getUserFriends(userName,friendsList){
   return userFriends
 }
 
-function getScore(friends){
+function getScore(friends,visitors){
   // user친구의 친구 목록
   const myFriends = getUserFriends(user,friends);
   let  friendOfFriendsSet= [];
@@ -37,14 +48,23 @@ function getScore(friends){
   friendOfFriends.forEach((x)=>{
     score[x] = (score[x] || 0)+10;
   });
+  
+  // 이미 친구는 제외한 방문자 명단
+  const realVisitors = visitors.filter(x => !myFriends.includes(x));
+  
+  //방문자는 1점씩 부여
+  realVisitors.forEach((x)=>{
+    score[x] = (score[x] || 0) +1;
+  })
 
-  console.log(JSON.stringify(score))
+  return score;
   
 }
 
 const user = "mrko";
 const friends = [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]  ;
 const visitors =  ["bedi", "bedi", "donut", "bedi", "shakevan"];
-getScore(friends)
+
+console.log(problem7(user,friends,visitors));
 module.exports = problem7;
 
