@@ -1,5 +1,7 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer;
+
+  let score;
   return answer;
 }
 

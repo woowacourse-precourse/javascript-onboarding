@@ -38,18 +38,11 @@ function problem6(forms) {
   // 닉네임이 같은 글자가 연속적으로 포함되는지 확인하는 함수 구현중..
   function overlapNickNameCheck(emails, nickNames) {
     if (emailCheck(emails) && nickNameCheck(nickNames)) {
-      let a = 0;
-      let b = 0;
-      let c = 0;
       for (let i = 0; i <= nickNames.length; i++) {
-        if (nickNames[a][b] && nickNames[a][b + 1] == nickNames[a + 1][b] && nickNames[a + 1][b + 1]) {
-          console.log('중복된 닉네임이 있습니다.');
-        } else {
-          console.log('중복된 닉네임이 없습니다.');
+        if (nickNames[i].startsWith('제이') || nickNames[i].endsWith('제이')) {
+          answer.push(emails[i]);
         }
       }
-    } else {
-      console.log('이메일 형식이 맞지 않거나 닉네임 형식이 맞지 않습니다.');
     }
   }
 
