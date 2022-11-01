@@ -59,7 +59,13 @@ function problem7(user, friends, visitors) {
     });
   }
 
-  answerScoreList.sort((a, b) => b.score - a.score);
+  answerScoreList.sort((a, b) => {
+    if (b.score - a.score === 0) {
+      return a.name > b.name ? 1 : -1;
+    } else {
+      return b.score - a.score;
+    }
+  });
 
   for (let i = 0; i < answerScoreList.length; i++) {
     if (answer.length >= 5) break;
