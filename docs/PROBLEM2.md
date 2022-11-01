@@ -22,3 +22,6 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a string and checks for repeating character
+2. function that takes in a string and removes repetition
