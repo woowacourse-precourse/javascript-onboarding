@@ -1,4 +1,17 @@
 function problem6(forms) {
+  const duplicateEamil = getduplicateEamil(forms);
+  return duplicateEamil;
+}
+
+function getConsecutiveLetters(nickname) {
+  const consecutiveLetters = [];
+  for (let i = 0; i < nickname.length - 1; i++) {
+    consecutiveLetters.push(nickname.substr(i, 2));
+  }
+  return consecutiveLetters;
+}
+
+function getduplicateEamil(forms) {
   const allConsecutiveLetters = {};
   const duplicateEamil = new Set();
 
@@ -17,14 +30,6 @@ function problem6(forms) {
   });
 
   return Array.from(duplicateEamil).sort();
-}
-
-function getConsecutiveLetters(nickname) {
-  const consecutiveLetters = [];
-  for (let i = 0; i < nickname.length - 1; i++) {
-    consecutiveLetters.push(nickname.substr(i, 2));
-  }
-  return consecutiveLetters;
 }
 
 module.exports = problem6;
