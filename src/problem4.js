@@ -6,22 +6,6 @@ const a = 97,
   m = 109;
 const ALPHABET_GAP = 25;
 
-function transCapital(asciiNum) {
-  if (asciiNum <= M) {
-    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - A) * 2));
-  } else {
-    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (Z - asciiNum) * 2));
-  }
-}
-
-function transSmall(asciiNum) {
-  if (asciiNum <= m) {
-    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - a) * 2));
-  } else {
-    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (z - asciiNum) * 2));
-  }
-}
-
 function problem4(word) {
   let answer = "";
 
@@ -38,6 +22,22 @@ function problem4(word) {
   }
 
   return answer;
+}
+
+function transCapital(asciiNum) {
+  if (asciiNum <= M) {
+    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - A) * 2));
+  } else {
+    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (Z - asciiNum) * 2));
+  }
+}
+
+function transSmall(asciiNum) {
+  if (asciiNum <= m) {
+    return String.fromCharCode(asciiNum + (ALPHABET_GAP - (asciiNum - a) * 2));
+  } else {
+    return String.fromCharCode(asciiNum - (ALPHABET_GAP - (z - asciiNum) * 2));
+  }
 }
 
 module.exports = problem4;
