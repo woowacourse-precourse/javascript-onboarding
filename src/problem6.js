@@ -7,7 +7,7 @@ function checkValidation(forms) {
   const emailCollection = [];
   forms.map(([crewEmail, crewNickName]) => {
     if (checkNickName(crewNickName) && checkEmail(crewEmail, emailCollection)) {
-      validationFilter.push([crewEmail, crewNickname]);
+      validationFilter.push([crewEmail, crewNickName]);
       emailCollection.push(crewEmail);
     }
   });
