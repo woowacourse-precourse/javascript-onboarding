@@ -17,7 +17,4 @@ function problem4(word) {
   return answer;
 }
 
-var str = problem4("I love you");
-console.log(str);
-
 module.exports = problem4;
