@@ -1,19 +1,3 @@
-function getSum(num) {
-  let result = 0;
-  for (let letter of num.toString()) {
-    result += parseInt(letter);
-  }
-  return result;
-}
-
-function getMul(num) {
-  let result = 1;
-  for (let letter of num.toString()) {
-    result *= parseInt(letter);
-  }
-  return result;
-}
-
 function problem1(pobi, crong) {
   const ERROR = -1;
   const TIE = 0;
@@ -39,6 +23,22 @@ function problem1(pobi, crong) {
   if (pobiScore > crongScore) return POBI;
   else if (pobiScore < crongScore) return CRONG;
   else return TIE;
+}
+
+function getSum(num) {
+  let result = 0;
+  for (let letter of num.toString()) {
+    result += parseInt(letter);
+  }
+  return result;
+}
+
+function getMul(num) {
+  let result = 1;
+  for (let letter of num.toString()) {
+    result *= parseInt(letter);
+  }
+  return result;
 }
 
 module.exports = problem1;
