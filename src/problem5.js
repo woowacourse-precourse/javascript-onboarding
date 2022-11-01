@@ -73,4 +73,12 @@ function exchangeTo50(money) {
   return cnt;
 }
 
+function exchangeTo10(money) {
+  const TEN = 10;
+  while (money >= TEN) {
+    cnt += 1;
+    money -= TEN;
+  }
+  return cnt;
+}
 module.exports = problem5;
