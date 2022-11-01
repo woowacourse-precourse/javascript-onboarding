@@ -1,3 +1,5 @@
+console.log(problem2("zyalllelyz"));
+
 function problem2(cryptogram) {
   return cryptogramSolver(cryptogram);
 }
@@ -11,8 +13,9 @@ function removeDuplicateChar(createNumberCollection) {
   let beforeChar = createNumberCollection[0];
   let isBeforeDuplicate = false;
   let isDeleteStep = 0;
-
-  for (let nowChar of createNumberCollection) {
+  
+  for (let i = 1; i <= createNumberCollection.length; i++) {
+    let nowChar = createNumberCollection[i];
     if (beforeChar === nowChar) {
       isBeforeDuplicate = true;
       isDeleteStep++;
