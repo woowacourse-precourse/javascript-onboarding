@@ -19,6 +19,53 @@ function problem7(user, friends, visitors) {
     return answer;
 }
 
+/*방문자와 함께아는 친구를 통해서 점수를 계산한다.*/
+function calculateScore(newVisitors, recommendedFriends, friendsWithUser, friends, user) {
+    const recommendMap = new Map();
+
+    newVisitors.forEach(element => {
+        if (recommendMap.get(element) === undefined) {
+            recommendMap.set(element, 3);
+        } else {
+            recommendMap.set(element, recommendMap.get(element) + 3);
+        }
+    })
+
+
+    /*함께아는 친구를 구한다.*/
+    while (friendsWithUser && friendsWithUser.length !== 0) {
+        let friend = friendsWithUser.pop();
+
+        friends.forEach(element => {
+            if (element[0] !== user && element[1] !== user) {
+                if (element[0] === friend) {
+                    recommendedFriends.push(element[1]);
+                }
+
+                if (element[1] === friend) {
+                    recommendedFriends.push(element[0]);
+                }
+            }
+
+        })
+    }
+
+
+    const friendSet = new Set(recommendedFriends);
+    recommendedFriends = [...friendSet];
+
+
+    recommendedFriends.forEach(element => {
+        if (recommendMap.get(element) === undefined) {
+            recommendMap.set(element, 10);
+        } else {
+            recommendMap.set(element, recommendMap.get(element) + 10);
+        }
+    })
+
+    return recommendMap;
+}
+
 /*친구가 아닌 방문자를 구한다.*/
 function findNewVisitors(visitors, friendsWithUser) {
     let newVisitors = visitors.filter(x => !friendsWithUser.includes(x));
