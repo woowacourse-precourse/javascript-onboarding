@@ -15,7 +15,10 @@ function transformAlpha(english) {
   return retAlpha;
 }
 function problem4(word) {
-  var answer;
+  let answer = "";
+  for (let english of word) {
+    answer += transformAlpha(english);
+  }
   return answer;
 }
 
