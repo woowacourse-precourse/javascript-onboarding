@@ -29,20 +29,39 @@ function check_str(str) {
 function double_delete(str) {
   var pre_char = "";
   var new_str = "";
-
+  var check = false;
+  
   for (let i = 0; i < str.length; i++) {
     if (!double_check(pre_char, str[i])) {
-      new_str += str[i];
+      if (!check)
+        new_str += pre_char;
       pre_char = str[i];
+      check = false;
     }
+    else
+      check = true;
   }
-
+  
+  if (!double_check(str[str.length-1], new_str[new_str.length-1]))
+    new_str += str[str.length-1];
+  else
+    new_str = new_str.slice(0, -1)
+  
   return new_str;
 }
 
 
+
 function problem2(cryptogram) {
   var answer;
+  answer = cryptogram;
+
+  while (true) {
+    if (!check_str(answer))
+      break;
+    
+    answer = double_delete(answer);
+  }
 
   return answer;
 }
