@@ -13,13 +13,18 @@ function problem2(cryptogram) {
 
 function deleteOverlap(string) {
   let result = "";
+  let before = "";
 
   for (let i = 0; i < string.length; i++) {
-    if (i < string.length - 1 && string[i] == string[i + 1]) {
+    if (i < string.length - 1 && before === "" && string[i] === string[i + 1]) {
       i++;
       isChanged = true;
+      before = string[i];
+    } else if (before === string[i]) {
+      isChange = true;
     } else {
       result += string[i];
+      before = "";
     }
   }
 
