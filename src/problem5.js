@@ -1,6 +1,24 @@
-function problem5(money) {
-  var answer;
-  return answer;
+function 화폐_단위_배열_생성하기() {
+  return [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+}
+
+function 몫_나머지_구하기(수, 나눌_수) {
+  return [Math.trunc(수 / 나눌_수), 수 % 나눌_수];
+}
+
+function 최소_화폐_구성_구하기(금액, 화폐_단위_배열) {
+  return 화폐_단위_배열.map((화폐_단위) => {
+    const [최대_개수, 나머지_금액] = 몫_나머지_구하기(금액, 화폐_단위);
+    금액 = 나머지_금액;
+
+    return 최대_개수;
+  });
+}
+
+function problem5(금액) {
+  const 화폐_단위_배열 = 화폐_단위_배열_생성하기();
+
+  return 최소_화폐_구성_구하기(금액, 화폐_단위_배열);
 }
 
 module.exports = problem5;
