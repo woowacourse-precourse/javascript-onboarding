@@ -59,7 +59,6 @@ function problem1(pobi, crong) {
       : false;
   };
   const comparePobiCrong = (pobi, crong) => {
-    // console.log(`${compareLeftRight(crong)} crong`);
     if (checkExcept(pobi, crong)) {
       return -1;
     } else if (compareLeftRight(pobi) > compareLeftRight(crong)) {

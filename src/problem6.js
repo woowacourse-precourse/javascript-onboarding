@@ -18,7 +18,7 @@ function problem6(forms) {
       compareWord = nickNameArr
         .slice(nickNameArrIdx, nickNameArrIdx + 2)
         .join("");
-      console.log(compareWord);
+
       for (let idx = formIdx + 1; idx < forms.length; idx++) {
         const targetNickName = forms[idx][1];
         if (targetNickName.includes(compareWord)) {

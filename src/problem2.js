@@ -22,8 +22,7 @@ function problem2(cryptogram) {
       }
     });
     targetArr.pop();
-    console.log(`target ${targetArr}`);
-    console.log(`result ${result}`);
+
     if (JSON.stringify(targetArr) === JSON.stringify(result)) {
       continue_flag = false;
     } else {
@@ -31,7 +30,6 @@ function problem2(cryptogram) {
     }
   }
 
-  console.log(targetArr);
   answer = targetArr.join("");
   return answer;
 }
