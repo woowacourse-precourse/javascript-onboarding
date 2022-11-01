@@ -35,10 +35,27 @@ function makeScoreList(user, friendsObject, visitors) {
   return scoreList;
 }
 
+/** socreList에서 점수가 높은 순, 점수가 같으면 이름 순으로 최대 5명의 이름이 담긴 배열을 생성하는 기능 **/
+function findRecommendedUser(scoreList) {
+  let recommendedUser = [];
+  scoreList = Object.entries(scoreList)
+    .sort()
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+
+  for (let item of scoreList) {
+    recommendedUser.push(item[0]);
+  }
+
+  return recommendedUser;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
   let friendsObject = makeFriendsList(friends);
   let scoreList = makeScoreList(user, friendsObject, visitors);
+
+  answer = findRecommendedUser(scoreList);
   return answer;
 }
 
