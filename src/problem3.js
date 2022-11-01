@@ -12,13 +12,12 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     num = i;
     while (num !== 0) {
-      if (num % 10 === 3 || num % 10 === 6 || num % 10 === 9) {
-        answer++;
+      if (!(num % 10 === 3 || num % 10 === 6 || num % 10 === 9)) {
         num = Math.floor(num / 10);
+        continue;
       }
-      else {
-        num = Math.floor(num / 10);
-      }
+      answer++;
+      num = Math.floor(num / 10);
     }
   }
   return answer;
