@@ -12,6 +12,26 @@ function problem6(forms) {
   for (i = 0; i < forms.length; i++) {
     crew[forms[i][1]] = forms[i][0];
   }
+
+  // 같은 글자가 연속적으로 포함된 닉네임
+  const target = [];
+  // 2명 이상의 크루가 사용한 연속 패턴
+  const targetPattern = [];
+  // 모든 연속 패턴
+  const pattern = [];
+
+  // 크루의 닉네임을 순회하며 패턴 기록 및 알려진 패턴을 포함하고 있을 시 target에 추가
+  for (i = 0; i < forms.length; i++) {
+    const name = forms[i][1];
+    for (j = 0; j < name.length - 1; j++){
+      const slice = name.substr(j, 2);
+      if (pattern.includes(slice)) {
+        target.push(name);
+        targetPattern.push(slice);
+      }
+      else pattern.push(slice);
+    }
+  }
 }
 
 module.exports = problem6;
