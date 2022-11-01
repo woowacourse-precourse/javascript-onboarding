@@ -1,7 +1,9 @@
-// [✅] forms의 배열에서 email과 nickName을 분리한 배열을 각각 만든다.
+// [✅] forms의 배열에서 nickName을 분리한 배열을 만든다.
 // [✅] 걸러진 이메일을 담을 result 배열을 만든다.
-// [] nickName 배열을 순회하며 두 글자 이상의 문자가 연속적으로 포함된 닉네임의 index를 모두 찾는다.
-// [] email 배열과 nickName 배열의 순서는 같으므로 찾은 닉네임 index로 email[index]에 해당하는 이메일을 result 배열에 넣는다.
+// [] nickName 배열을 순회하며 두 글자 이상의 문자가 연속적으로 포함된 닉네임을 모두 찾는다. / substring
+// - [✅] substring을 통해 (substring(index, index + 2)) keyword 추출
+// - [] 추출한 keyword를 바탕으로 includes(keyword[idx])를 통해 제거 대상인 이름 추출 -> duplicateNick.push()
+// [] duplicateNick에 존재하는 이름과 forms의 이름을 비교하여, 일치하면 result로 반환
 // [] result 내 이메일 목록을 오름차순 정렬한다.
 // [] result 내 이메일 목록에서 중복된 이메일을 제거한다.
 
@@ -12,13 +14,19 @@
 // 신청한 닉네임의 길이가 1글자 이상 20글자 미만이 아닌 경우 (nick >= 1 && nick < 20)
 
 function problem6(forms) {
-  const email = [];
   const nickName = [];
+  const duplicateNick = [];
+  const keyword = [];
   const result = [];
   forms.forEach((data) => {
     email.push(data[0]);
     nickName.push(data[1]);
   });
+  for (let i = 0; i < nickName.length; i++) {
+    for (let j = 0; j < nickName[i].length - 1; j++) {
+      keyword.push(nickName[i].substring(j, j + 2));
+    }
+  }
   return result;
 }
 
