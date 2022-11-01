@@ -38,8 +38,13 @@ function problem7(user, friends, visitors) {
 
   //방문한 수만큼 +1
   for (const visitor of visitors) {
-    if (visitor !== user && !isIncludes(visitor, friendSet))
-      peopleDict[visitor] += 1;
+    if (visitor !== user && !isIncludes(visitor, friendSet)) {
+      if (peopleDict[visitor]) {
+        peopleDict[visitor] += 1;
+      } else {
+        peopleDict[visitor] = 1;
+      }
+    }
   }
 
   var sortPeople = Object.keys(peopleDict).map(
@@ -47,13 +52,18 @@ function problem7(user, friends, visitors) {
   );
 
   sortPeople.sort((a, b) => {
-    return a[1] - b[1];
-  })
+    if (a[1] - b[1] > 0) return -1;
+    if (a[1] - b[1] < 0) return 1;
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+
+  });
 
   for (const srt of sortPeople) {
     answer.push(srt[0]);
   }
-  return answer;
+
+  return answer.slice(0, 5);
 }
 
 function isIncludes(person, set) {
