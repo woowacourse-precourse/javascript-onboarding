@@ -1,5 +1,5 @@
 function frogDictionary(letter) {
-  if(letter === letter.toUpperCase()){
+  if (letter === letter.toUpperCase()) {
     return "A".charCodeAt(0) + "Z".charCodeAt(0) - letter.charCodeAt(0);
   }
   return "a".charCodeAt(0) + "z".charCodeAt(0) - letter.charCodeAt(0);
