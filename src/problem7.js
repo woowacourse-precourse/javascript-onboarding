@@ -3,6 +3,7 @@ function problem7(user, friends, visitors) {
   let alreadyFriends = findAlreadyFriend(user, friends);
   visitors = visitors.filter((visitor) => !alreadyFriends.includes(visitor));
   let acquaintances = findAcquaintance(alreadyFriends, friends, user);
+  let nameScoreList = giveScore(acquaintances, visitors);
 
   return answer;
 }
@@ -31,6 +32,29 @@ function findAcquaintance(alreadyFriends, friends, user) {
   acquaintances = acquaintances.filter((name) => (name != user && !alreadyFriends.includes(name)));
 
   return acquaintances;
+}
+
+function giveScore(acquaintances, visitors) {
+  let scoredFriends = [... new Set(acquaintances.concat(visitors))];
+  let scoreList = [];
+  for(let i = 0; i < scoredFriends.length; i++) {
+    scoreList[i] = 0;
+  }
+  for(let i = 0; i < scoredFriends.length; i++) {
+    for(let j = 0; j < acquaintances.length; j++) {
+      if(scoredFriends[i] === acquaintances[j]) {
+        scoreList[i] += 10;
+      }
+    }
+    for(let k = 0; k < visitors.length; k++) {
+      if(scoredFriends[i] === visitors[k]) {
+        scoreList[i] += 1;
+      }
+    }
+  }
+  let nameScoreList = makeNameScoreList(scoredFriends, scoreList);
+
+  return nameScoreList;
 }
 
 module.exports = problem7;
