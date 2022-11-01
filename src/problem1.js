@@ -31,8 +31,10 @@ function problem1(pobi, crong) {
     sum = 0;
     while (num > 0) {
       sum += num % 10;
-      num /= 10;
+      num = parseInt(num / 10);
     }
+
+    return sum;
   });
 
   const [pobiLeftMul, pobiRightMul, crongLeftMul, crongRightMul] = [
@@ -44,8 +46,10 @@ function problem1(pobi, crong) {
     mul = 1;
     while (num > 0) {
       mul *= num % 10;
-      num /= 10;
+      num = parseInt(num / 10);
     }
+
+    return mul;
   });
 
   const pobiMax = Math.max(
