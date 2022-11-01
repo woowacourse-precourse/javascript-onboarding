@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현사항
+- [ ]  문자열에 포함된 길이 2이상의 모든 조합 배열 생성 함수 구현.  
+- [ ]  위 함수에서 반환된 배열과 기존 problem의 입력값을 매개변수로 하는 함수 구현(중복 단어 체크 함수).  
+- [ ]  중복을 방지하기 위해 answer를 Set()설정.  
+- [ ]  오름차순 정렬 출력 구현.  
