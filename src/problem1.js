@@ -24,17 +24,18 @@ function problem1(pobi, crong) {
   pobimax = Math.max(...pobiresult);
   crongmax = Math.max(...crongresult);
 
-  result = solving(pobimax, crongmax, pobi, crong);
+  result = solving(pobimax, crongmax, pobi, crong); // 결과값 도출 및 예외처리
   return result;
 }
 function solving(pomax, crmax, pobiArray, crongArray) {
+  //결과값 or 예외처리
   if (pobiArray[0] + 1 !== pobiArray[1]) return -1;
   if (crongArray[0] + 1 !== crongArray[1]) return -1;
   if (
     pobiArray[0] === 1 ||
     pobiArray[1] === 400 ||
-    crong[0] === 1 ||
-    crong[1] === 400
+    crongArray[0] === 1 ||
+    crongArray[1] === 400
   )
     return -1;
   if (pomax > crmax) return 1;
@@ -43,6 +44,7 @@ function solving(pomax, crmax, pobiArray, crongArray) {
 }
 
 function multi(multiArray) {
+  //포비, 크롱의 각페이지별 곱 결과추출
   const result = multiArray.reduce(function add(multi, cur) {
     return multi * cur;
   }, 1);
@@ -50,6 +52,7 @@ function multi(multiArray) {
 }
 
 function sum(sumArray) {
+  // 포비,크롱의 각 페이지별 합 결과추출
   const result = sumArray.reduce(function add(sum, cur) {
     return sum + cur;
   }, 0);
@@ -57,6 +60,7 @@ function sum(sumArray) {
 }
 
 function makePage(pageNumber, pageArray) {
+  //포비,크롱의 페이지를 각 숫자별로 배열로 만듬
   const page = [100, 10, 1];
   let i = 0;
   if ((pageNumber + "").length === 1) {
