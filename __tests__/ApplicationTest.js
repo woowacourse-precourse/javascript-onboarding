@@ -8,28 +8,7 @@ const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
   test("case1", () => {
-    expect(problem1([97, 98, 99], [197, 198])).toEqual(-1);
-  });
-  test("case1", () => {
-    expect(problem1([97, 98], [197])).toEqual(-1);
-  });
-  test("case1", () => {
-    expect(problem1([-123, -122], [197, 198])).toEqual(-1);
-  });
-  test("case1", () => {
-    expect(problem1([], [])).toEqual(-1);
-  });
-  test("case1", () => {
-    expect(problem1([1, 3], [197, 198])).toEqual(-1);
-  });
-  test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
-  });
-  test("case1", () => {
-    expect(problem1([401, 402], [197, 198])).toEqual(-1);
-  });
-  test("case1", () => {
-    expect(problem1([4, 5], [197, 198])).toEqual(-1);
   });
 
   test("case2", () => {
@@ -39,33 +18,46 @@ describe("problem1", () => {
   test("case3", () => {
     expect(problem1([99, 102], [211, 212])).toEqual(-1);
   });
+  test("case4", () => {
+    expect(problem1([1, 2], [211, 212])).toEqual(-1);
+  });
+
+  test("case5", () => {
+    expect(problem1([99, 100], [399, 400])).toEqual(-1);
+  });
+
+  test("case6", () => {
+    expect(problem1([121, 122], [211, 212])).toEqual(0);
+  });
+
+  test("case7", () => {
+    expect(problem1([121, 122, 123], [211, 212])).toEqual(-1);
+  });
+  test("case8", () => {
+    expect(problem1([121, 122], [212])).toEqual(-1);
+  });
+  test("case9", () => {
+    expect(problem1([122, 121], [211, 212])).toEqual(-1);
+  });
 });
 
 describe("problem2", () => {
   test("case1", () => {
     expect(problem2("browoanoommnaon")).toEqual("brown");
   });
-  test("case1", () => {
-    expect(
-      problem2(
-        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-      )
-    ).toEqual("");
+  test("case2", () => {
+    expect(problem2("zyelleyz")).toEqual("");
   });
-  test("case1", () => {
-    expect(problem2("ZyelleyZ")).toEqual("");
+  test("case3", () => {
+    expect(problem2("zyellleyz")).toEqual("");
   });
-  test("case1", () => {
-    expect(problem2("abccbaD")).toEqual("D");
+
+  test("case4", () => {
+    expect(problem2("zyalllelyz")).toEqual("zyaelyz");
   });
-  test("case1", () => {
-    expect(problem2("")).toEqual("");
-  });
-  test("case1", () => {
-    expect(problem2("brooonown")).toEqual("brnown");
-  });
-  test("case1", () => {
-    expect(problem2("bbrooonown")).toEqual("rnown");
+
+  test("case4", () => {
+    expect(problem2("aabba")).toEqual("a");
   });
 });
 
@@ -76,38 +68,14 @@ describe("problem3", () => {
   test("case2", () => {
     expect(problem3(33)).toEqual(14);
   });
-  test("case2", () => {
-    expect(problem3(-3)).toEqual(0);
-  });
-  test("case2", () => {
-    expect(problem3(10000)).toEqual(12000);
-  });
-  test("case2", () => {
-    expect(problem3(0)).toEqual(0);
-  });
 });
 
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
   });
-  test("case1", () => {
-    expect(problem4("")).toEqual("");
-  });
-  test("case1", () => {
-    expect(
-      problem4(
-        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-      )
-    ).toEqual(
-      "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-    );
-  });
-  test("case1", () => {
-    expect(problem4("I love you77")).toEqual("R olev blf77");
-  });
-  test("case1", () => {
-    expect(problem4("aAbBcC")).toEqual("zZyYxX");
+  test("case2", () => {
+    expect(problem4("Hello  Everyone!")).toEqual("Svool  Veviblmv!");
   });
 });
 
@@ -151,5 +119,38 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+  test("case2", () => {
+    expect(
+      problem7(
+        "andole",
+        [
+          ["andole", "jun"],
+          ["donut", "jun"],
+          ["donut", "shakevan"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "bedi"],
+          ["anne", "jun"],
+        ],
+        ["donut", "mrko", "peter", "sam"]
+      )
+    );
+  });
+  test("case8", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        []
+      )
+    ).toEqual(["andole", "jun"]);
   });
 });
