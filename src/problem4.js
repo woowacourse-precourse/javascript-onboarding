@@ -1,31 +1,34 @@
 function problem4(word) {
-  const arrayedAlphabetLists = arrayAlphabet();
-  const result = reverseWord(word, arrayedAlphabetLists);
+  const FIRST_ALPHABET = "A".charCodeAt(0);
+  const LAST_ALPHABET = "Z".charCodeAt(0);
+  const FIRST_ALPHABET_LOWER = "a".charCodeAt(0);
+  const LAST_ALPHABET_LOWER = "z".charCodeAt(0);
+  const alphabets = { first: FIRST_ALPHABET, last: LAST_ALPHABET, firstLower: FIRST_ALPHABET_LOWER, lastLower: LAST_ALPHABET_LOWER}
+  const arrayedAlphabetLists = arrayAlphabet(alphabets);
+  const result = reverseWord(word, arrayedAlphabetLists, alphabets);
 
   return result;
 }
 
-function arrayAlphabet() {
+function arrayAlphabet(alphabets) {
   const TOTAL_ALPHABET = 26;
   let alphabetList = new Array(TOTAL_ALPHABET);
   let reversedAlphabetList = new Array(TOTAL_ALPHABET);
 
   for (let alphabetIndex = 0; alphabetIndex < TOTAL_ALPHABET; alphabetIndex++) {
-    const START_ALPHABET_A = 65;
-    const LAST_ALPHABET_Z = 90;
 
     alphabetList[alphabetIndex] = String.fromCharCode(
-      START_ALPHABET_A + alphabetIndex
+      alphabets.first + alphabetIndex
     );
     reversedAlphabetList[alphabetIndex] = String.fromCharCode(
-      LAST_ALPHABET_Z - alphabetIndex
+      alphabets.last - alphabetIndex
     );
   }
 
   return [alphabetList, reversedAlphabetList];
 }
 
-function reverseWord(correctWord, lists) {
+function reverseWord(correctWord, lists, alphabets) {
   const wordLength = correctWord.length;
   const alphabetList = lists[0];
   const reversedAlphabetList = lists[1];
@@ -36,8 +39,8 @@ function reverseWord(correctWord, lists) {
   }
 
   for (let wordIndex = 0; wordIndex < wordLength; wordIndex++) {
-    const isAlphabet = checkAlphabetOrNot(correctWord[wordIndex]);
-    const currentWord = changeFromLowercaseToUppercase(correctWord[wordIndex]);
+    const isAlphabet = checkAlphabetOrNot(correctWord[wordIndex], alphabets);
+    const currentWord = changeFromLowercaseToUppercase(correctWord[wordIndex], alphabets);
 
     if (isAlphabet === "Not Alphabet") {
       changedWord[wordIndex] = correctWord[wordIndex];
@@ -52,24 +55,20 @@ function reverseWord(correctWord, lists) {
     }
 
     changedWord[wordIndex] = changeFromUppercaseToLowercase(
-      changedWord[wordIndex]
+      changedWord[wordIndex], alphabets
     );
   }
 
   return changedWord.join("");
 }
 
-function checkAlphabetOrNot(word) {
-  const START_ALPHABET_UPPER = 65;
-  const LAST_ALPHABET_UPPER = 90;
-  const START_ALPHABET_LOWER = 97;
-  const LAST_ALPHABET_LOWER = 122;
+function checkAlphabetOrNot(word, alphabets) {
   let wordNumber = word.charCodeAt(0);
 
   if (
-    wordNumber < START_ALPHABET_UPPER ||
-    (wordNumber > LAST_ALPHABET_UPPER && wordNumber < START_ALPHABET_LOWER) ||
-    wordNumber > LAST_ALPHABET_LOWER
+    wordNumber < alphabets.first||
+    (wordNumber > alphabets.last && wordNumber < alphabets.first) ||
+    wordNumber > alphabets.lastLower
   ) {
     return "Not Alphabet";
   }
@@ -77,17 +76,14 @@ function checkAlphabetOrNot(word) {
   return word;
 }
 
-function changeFromLowercaseToUppercase(alphabet) {
-  const START_ALPHABET_UPPER = 65;
-  const START_ALPHABET_LOWER = 97;
-  const LAST_ALPHABET_LOWER = 122;
-  const LOWER_MINUS_UPPER = START_ALPHABET_LOWER - START_ALPHABET_UPPER;
+function changeFromLowercaseToUppercase(alphabet, alphabets) {
+  const LOWER_MINUS_UPPER = alphabets.firstLower - alphabets.first;
   let alphabetNumber = alphabet.charCodeAt(0);
   let changedAlphabet;
 
   if (
-    alphabetNumber < START_ALPHABET_LOWER ||
-    alphabetNumber > LAST_ALPHABET_LOWER
+    alphabetNumber < alphabets.firstLower ||
+    alphabetNumber > alphabets.lastLower
   ) {
     return alphabet;
   }
@@ -97,10 +93,8 @@ function changeFromLowercaseToUppercase(alphabet) {
   return changedAlphabet;
 }
 
-function changeFromUppercaseToLowercase(alphabet) {
-  const START_ALPHABET_UPPER = 65;
-  const START_ALPHABET_LOWER = 97;
-  const LOWER_MINUS_UPPER = START_ALPHABET_LOWER - START_ALPHABET_UPPER;
+function changeFromUppercaseToLowercase(alphabet, alphabets) {
+  const LOWER_MINUS_UPPER = alphabets.firstLower - alphabets.first;
   let alphabetNumber = alphabet.charCodeAt(0);
   let changedAlphabet;
 
