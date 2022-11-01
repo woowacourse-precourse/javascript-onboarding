@@ -1,25 +1,28 @@
-function sol(n){
-  let result=[];
+function deleteDuplicate(point){
+  point=point-1;
+  return point;
+}
+function addString(point){
+  point=point+1;
+  return point;
+}
+function findDuplicate(cryptogram){
+  let decrypt_arr=[];
   let point=0;
-  result[0]=n[0];
-
-  for(let i=1;i<n.length;i++){
-    if(n[i]==result[point]){
-      point=point-1;
+  for(let i=0;i<cryptogram.length;i++){
+    if(cryptogram[i]==decrypt_arr[point]){
+      point=deleteDuplicate(point);
     }
     else{
-      point=point+1;
-      result[point]=n[i];
+      point=addString(point);
+      decrypt_arr[point]=cryptogram[i];
     }
   }
-  return result.slice(0,point+1);
+  return decrypt_arr.slice(0,point+1);
 }
 function problem2(cryptogram) {
   let answer;
-  answer=sol(cryptogram);
-
-  return answer.join('');
+  answer=findDuplicate(cryptogram).join('');
+  return answer;
 }
-
-
 module.exports = problem2;
