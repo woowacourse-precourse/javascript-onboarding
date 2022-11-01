@@ -53,13 +53,13 @@ function resultSortSlice(result) {
   const names = Object.keys(result);
   names.sort(function (a, b) {
     if (result[b] === result[a]) {
-      if (a < b) {
+      const tempArr = [b, a];
+      tempArr.sort();
+      if (tempArr[0] === b) {
+        return 1;
+      } else {
         return -1;
       }
-      if (a > b) {
-        return 1;
-      }
-      return 0;
     }
     return result[b] - result[a];
   });
