@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-  var answer;
+  var answer
   var pobiNum = 0
   var crongNum = 0 
   
@@ -15,14 +15,14 @@ function problem1(pobi, crong) {
     var mult = 1
 
     while (temp > 0) {
-      sum += temp % 10;
-      mult *= temp % 10;
-      temp = parseInt(temp / 10);
-    };
-    pobiNum = Math.max(pobiNum, sum, mult);
+      sum += temp % 10
+      mult *= temp % 10
+      temp = parseInt(temp / 10)
+    }
+    pobiNum = Math.max(pobiNum, sum, mult)
 
   }
-  );
+  )
 
   crong.forEach(function (number) {
     var temp = number
@@ -30,14 +30,14 @@ function problem1(pobi, crong) {
     var mult = 1
 
     while (temp > 0) {
-      sum += temp % 10;
-      mult *= temp % 10;
-      temp = parseInt(temp / 10);
-    };
+      sum += temp % 10
+      mult *= temp % 10
+      temp = parseInt(temp / 10)
+    }
     crongNum = Math.max(crongNum, sum, mult)
 
   }
-  );
+  )
 
   // console.log(pobiNum, crongNum)
   if (pobiNum > crongNum) {
@@ -48,11 +48,10 @@ function problem1(pobi, crong) {
     answer = 0
   } 
 
-  return answer;
-}  
+  return answer
+}   
 
-
-module.exports = problem1;
+module.exports = problem1
 
 // 숫자가 주어짐 //
 // 임의의수와 임의의수+1 의 각각 각 자릿수의 합 또는 곱중 가장큰수를 구한다
