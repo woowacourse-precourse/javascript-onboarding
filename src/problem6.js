@@ -19,7 +19,7 @@ function duplicationEmailList(forms) {
     }
   });
 
-  return ;
+  return [...emailExistCheckWord].sort();
 }
 
 console.log(
