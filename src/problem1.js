@@ -7,13 +7,12 @@ const isExcept = (pageL, pageR) => {
 };
 
 const calScore = (digits) => {
+  const operators = ['+', '*'];
   const operations = {
     '+': (digitArr) => digitArr.reduce((acc, digit) => acc + digit, 0),
     '*': (digitArr) => digitArr.reduce((acc, digit) => acc * digit, 1),
   };
-  const scores = Object.keys(operations).map((operator) =>
-    operations[operator](digits)
-  );
+  const scores = operators.map((operator) => operations[operator](digits));
   return Math.max(...scores);
 };
 
