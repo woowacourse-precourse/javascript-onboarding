@@ -81,4 +81,14 @@ function exchangeTo10(money) {
   }
   return cnt;
 }
+
+function exchangeTo1(money) {
+  const ONE = 1;
+  while (money >= ONE) {
+    cnt += 1;
+    money -= ONE;
+  }
+  return cnt;
+}
+
 module.exports = problem5;
