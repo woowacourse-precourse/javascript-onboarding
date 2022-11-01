@@ -60,6 +60,28 @@ function checkMap(map, friends, user) {
   }
 }
 
+function calFriendsScore(map, friends) {
+  let score = 0;
+
+  for (let i = 0; i < friends.length; i++) {
+    if (map.has(friends[i]) && map.get(friends[i]).isFriend === true)
+      score += 10;
+  }
+  return score;
+}
+
+function calVisitorsScore(map, visitors) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (map.has(visitors[i])) map.get(visitors[i]).score += 1;
+    else
+      map.set(visitors[i], {
+        isFriend: false,
+        friends: [],
+        score: 1,
+      });
+  }
+}
+
 function problem7(user, friends, visitors) {
   if (isException(user, friends, visitors)) return;
   const map = new Map();
@@ -67,6 +89,10 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < friends.length; ++i) {
     checkMap(map, friends[i], user);
   }
+  map.forEach((value) => {
+    value.score = calFriendsScore(map, value.friends);
+  });
+  calVisitorsScore(map, visitors);
 }
 
 module.exports = problem7;
