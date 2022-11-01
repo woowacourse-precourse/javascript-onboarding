@@ -1,4 +1,7 @@
 function problem2(cryptogram) {
+  if (cryptogram === ""){
+    return ""
+  }
   let lst = [...cryptogram];
   while (true) {
     let cnt = 0;
