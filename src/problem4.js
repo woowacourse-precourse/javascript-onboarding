@@ -1,11 +1,11 @@
-problem4("a");
+// test sample 추가
+console.log(problem4("I love you"));
 
 function problem4(word) {
   var answer;
   // 문자열을 문자로 split
   for (let i = 0; i < word.length; i++) {}
   // 변환된 문자열을 붙이기
-  changeWord("A");
 
   return answer;
 }
