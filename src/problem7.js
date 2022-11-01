@@ -61,7 +61,8 @@ function getRecommandUserList(friends, visitors, user, userFriendList) {
   for (let i = 0; i < visitors.length; i++) {
     if (
       !recommandUserList.includes(visitors[i]) &&
-      !userFriendList.includes(visitors[i])
+      !userFriendList.includes(visitors[i]) &&
+      visitors[i] !== user
     )
       recommandUserList.push(visitors[i]);
   }
