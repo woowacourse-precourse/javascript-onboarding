@@ -2,24 +2,24 @@ function is_vaild_input(pobi, crong){
   let i = 0;
   while (i < 2) {
     if (pobi[i] == 0 || pobi[i] == 400 || crong[i] == 0 || crong[i] == 400) {
-      return (0);
+      return (false);
     }
     i++;
   }
   if (pobi[0] % 2 != 1 || crong[0] % 2 != 1) {
-    return (0);
+    return (false);
   }
   if (pobi[1] % 2 != 0 || crong[1] % 2 != 0) {
-    return (0);
+    return (false);
   }
   if ((pobi[0] + 1) != pobi[1]) {
-    return (0);
+    return (false);
   }
   if ((crong[0] + 1 != crong[1])) {
-    return (0);
+    return (false);
   }
   else {
-    return (1);
+    return (true);
   }
 }
 
@@ -32,22 +32,26 @@ function sep(array) {
 }
 
 function plus(num) {
-  let nb;
-  for (let num; num > 0; num/10) {
+  let nb = 0;
+  for (; num > 0; num = Math.floor(num / 10)) {
     nb += num % 10;
   }
+  
+  return nb;
 }
 
 function mul(num) {
-  let nb;
-  for (let num; num > 0; num/10) {
+  let nb = 1;
+  for (; num > 0; num = Math.floor(num/10)) {
     nb *= num % 10;
   }
+  
+  return nb;
 }
 
 function problem1(pobi, crong) {
   let answer;
-  if (is_vaild_input) {
+  if (is_vaild_input(pobi, crong)) {
     pobi_max = sep(pobi);
     crong_max = sep(crong);
     if (pobi_max > crong_max) {
@@ -68,5 +72,7 @@ function problem1(pobi, crong) {
   }
   return answer;
 }
+
+// problem1([97, 98], [197, 198]);
 
 module.exports = problem1;
