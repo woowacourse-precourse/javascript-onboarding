@@ -1,3 +1,22 @@
+function scoringFormula(page) {
+  const digitsArray = page.toString().split('').map((digit) => parseInt(digit));
+
+  const sumOfDigits = digitsArray.reduce((prev, curr) => prev + curr);
+  const productOfDigits = digitsArray.reduce((prev, curr) => prev * curr);
+
+  return sumOfDigits > productOfDigits ? sumOfDigits : productOfDigits;
+}
+
+function countScore(pages) {
+  const LEFT_PAGE = 0;
+  const RIGHT_PAGE = 1;
+
+  const leftScore = scoringFormula(pages[LEFT_PAGE]);
+  const rightScore = scoringFormula(pages[RIGHT_PAGE]);
+
+  return leftScore > rightScore ?  leftScore : rightScore;
+}
+
 function isIntegerParsable(n) {
   return !Number.isNaN(parseInt(n)) && Number.isSafeInteger(Number(n));
 };
@@ -38,6 +57,9 @@ function problem1(pobi, crong) {
   if (!isProperInput(pobi) || !isProperInput(crong)) {
     return CODE_EXCEPTION;
   }
+
+  const pobiScore = countScore(pobi);
+  const crongScore = countScore(crong);
 
   return answer;
 }
