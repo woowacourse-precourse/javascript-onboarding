@@ -1,13 +1,14 @@
 function problem7(user, friends, visitors) {
   let userFriends = [];
   let point = {};
-  let result = [];
+
   checkUserFriends(user, friends, userFriends); // user의 친구 확인
   addFriends(user, friends, userFriends, point);
   addTenPoint(user, friends, userFriends, point);
   addOnePoint(userFriends, point, visitors);
+
+  // console.log(sortByValue(point), userFriends, point);
   return sortByValue(point);
-  // console.log(userFriends, point);
 }
 function checkUserFriends(user, friends, userFriends) {
   for (let i = 0; i < friends.length; i++) {
@@ -58,22 +59,32 @@ function sortByValue(point) {
   for (let name in point) {
     sortable.push([name, point[name]]);
   }
-  sortable.sort((a, b) => b[1] - a[1]);
+  sortable.sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    if (a[1] < b[1]) return 1;
+    if (a[0] > b[0]) return 1;
+    return -1;
+  });
   for (let i = 0; i < sortable.length; i++) {
-    result.push(sortable[i][0]);
+    if (sortable[i][1] !== 0) result.push(sortable[i][0]);
   }
+  if (result.length > 5) result = result.splice(0, 5);
   return result;
 } // point 객체 value를 기반으로 정렬 , 같다면 사전순 정렬 하여 상위 5개의 값 result 에 추가하는 함수
-// problem7(
-//   "mrko",
-//   [
-//     ["donut", "andole"],
-//     ["donut", "jun"],
-//     ["donut", "mrko"],
-//     ["shakevan", "andole"],
-//     ["shakevan", "jun"],
-//     ["shakevan", "mrko"],
-//   ],
-//   ["bedi", "bedi", "donut", "bedi", "shakevan"]
-// );
+problem7(
+  "hello",
+  [
+    ["andole", "jun"],
+    ["andole", "bedi"],
+    ["jun", "shakevan"],
+    ["jun", "kane"],
+    ["jun", "sam"],
+    ["bedi", "shakevan"],
+    ["bedi", "anne"],
+    ["bedi", "sam"],
+    ["anne", "mrko"],
+  ],
+  ["donut", "anne", "mrko", "mrko", "sam"]
+);
+
 module.exports = problem7;
