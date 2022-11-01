@@ -9,14 +9,8 @@ function problem6(forms) {
 
 function checkType(forms) {
   for (let i = 0; i < forms.length; i++) {
-    if (!checkEmailType(forms[i][0])) {
-      console.log("이메일 형식이 잘못되었습니다.");
-      return true;
-    }
-    if (!checkNicknameType(forms[i][1])) {
-      console.log("닉네임 형식이 잘못되었습니다.");
-      return true;
-    }
+    if (!checkEmailType(forms[i][0])) return true;
+    if (!checkNicknameType(forms[i][1])) return true;
   }
 }
 
@@ -52,17 +46,15 @@ function sortingEmails(emails) {
 
 function checkEmailType(email) {
   const REG_EXP = /^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@email.com$/;
-  if (email.length >= 11 && email.length < 20 && REG_EXP.test(email)) {
+  if (email.length >= 11 && email.length < 20 && REG_EXP.test(email))
     return true;
-  }
   return false;
 }
 
 function checkNicknameType(nickname) {
   const REG_EXP = /^[가-힣]+$/;
-  if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname)) {
+  if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname))
     return true;
-  }
   return false;
 }
 
