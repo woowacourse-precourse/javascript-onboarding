@@ -1,10 +1,16 @@
 // test sample 추가
-console.log(problem1([97, 98], [197, 198]));
+console.log(problem1([99, 102], [211, 212]));
 
 function problem1(pobi, crong) {
   // maxNumber 비교 후 점수 return
-  answer = maxNumber(pobi[0], pobi[1]);
-  return answer;
+
+  let pobiScore = maxNumber(sumPage(pobi), multiPage(pobi));
+  let crongScore = maxNumber(sumPage(crong), multiPage(crong));
+
+  // case별 점수 return
+  if (pobiScore > crongScore) return 1;
+  if (pobiScore < crongScore) return 2;
+  if (pobiScore === crongScore) return 0;
 }
 
 // 페이지 번호 각 자리 숫자 더하는 함수
