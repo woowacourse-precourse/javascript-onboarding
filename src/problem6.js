@@ -9,7 +9,6 @@ const sliceName = (compareName, index) => {
   return [...slicedNameSet];
 };
 
-
 const isRepeatName = (name, validForms, index) => {
   for (let i = 0; i < validForms.length; i++) {
     if (i === index) continue;
@@ -25,7 +24,6 @@ const isRepeatName = (name, validForms, index) => {
   return false;
 };
 
-
 const isValidEmailFormat = (email) => {
   const emailRegExp = /[A-Za-z]{1,10}@email\.com$/;
 
@@ -38,7 +36,31 @@ const isValidNameFormat = (name) => {
   return nameRegExp.test(name);
 };
 
+const getValidForms = (forms, slicedNameSet) => {
+  const validForms = [];
 
+  forms.forEach(([email, name]) => {
+    if (isValidEmailFormat(email) && isValidNameFormat(name)) {
+      sliceName(name, slicedNameSet);
+      return validForms.push([email, name]);
+    }
+  });
+
+  return validForms;
+};
+
+const getInvalidCrewEmail = (forms) => {
+  const validForms = getValidForms(forms);
+
+  let inValidUsers = [];
+
+  validForms.forEach(([email, name], index) => {
+    if (isRepeatName(name, validForms, index)) {
+      inValidUsers.push(email);
+    }
+  });
+
+};
 
 function problem6(forms) {
   var answer;
