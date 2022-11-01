@@ -19,7 +19,7 @@ function problem7(user, friends, visitors) {
     }
   }
   let getScore = new Set(visitedFriends);
-  visitedFriends = [...getScore]; //중복제거
+  visitedFriends = [...getScore];
 
   let score = {};
 
@@ -56,7 +56,6 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  //본인과 기존친구스코어를삭제
   for (i in getFriends) {
     for (key in score) {
       if (key == getFriends[i] || key == user) {
@@ -71,7 +70,6 @@ function problem7(user, friends, visitors) {
     DescendScore.push([100000 - score[key], key]);
   }
 
-  // 점수만 내림차순정렬
   DescendScore.sort();
 
   let result = [];
