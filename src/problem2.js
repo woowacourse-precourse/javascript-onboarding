@@ -1,18 +1,22 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
-}
-
-module.exports = problem2;
-
-function problem2(cryptogram) {
-  var answer = "";
-  let s = cryptogram;
-  for (let i = 0; i < s.length; i++) {
-    console.log(s[i], i, s.indexOf([i]));
-    if (s.indexOf(s[i]) === s.indexOf(s[i + 1])) answer = s -= s[i] + s[i + 1];
+  const array = cryptogram.split("");
+  let rep = [];
+  for (let i = 0; i < array.length; i++) {
+    if (rep.length === 0) {
+      rep.push(array[0]);
+    }
+    if (array[i] == rep[rep.length - 1]) {
+      while (array[i] === array[i + 1]) {
+        i++;
+      }
+      rep.pop();
+      continue;
+    }
+    rep.push(array[i]);
   }
+  var answer = rep.toString().replace(/,/g, "");
   return answer;
 }
 
 console.log(problem2("browoanoommnaon"));
+module.exports = problem2;
