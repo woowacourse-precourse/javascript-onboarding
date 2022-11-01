@@ -35,8 +35,38 @@ function isException(user, friends, visitors) {
   return false;
 }
 
+function checkMap(map, friends, user) {
+  const isFriend = friends[0] === user || friends[1] === user;
+
+  if (map.has(friends[0])) {
+    if (!map.get(friends[0]).isFriend && isFriend)
+      map.get(friends[0]).isFriend = true;
+    map.get(friends[0]).friends.push(friends[1]);
+  } else {
+    map.set(friends[0], {
+      isFriend: isFriend,
+      friends: [friends[1]],
+    });
+  }
+  if (map.has(friends[1])) {
+    if (!map.get(friends[1]).isFriend && isFriend)
+      map.get(friends[1]).isFriend = true;
+    map.get(friends[1]).friends.push(friends[0]);
+  } else {
+    map.set(friends[1], {
+      isFriend: isFriend,
+      friends: [friends[0]],
+    });
+  }
+}
+
 function problem7(user, friends, visitors) {
   if (isException(user, friends, visitors)) return;
+  const map = new Map();
+
+  for (let i = 0; i < friends.length; ++i) {
+    checkMap(map, friends[i], user);
+  }
 }
 
 module.exports = problem7;
