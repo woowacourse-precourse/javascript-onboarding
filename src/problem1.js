@@ -32,8 +32,8 @@ const LAST_PAGE = 400;
  * @throws pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
  * 기능목록
  * @todo 1. 유효한 페이지인지 검증해주는 함수
- * @todo 1. 연속되는 페이지인지 검증해주는 함수
- * @todo 1. 최댓값을 반환해주는 함수
+ * @todo 2. 연속되는 페이지인지 검증해주는 함수
+ * @todo 3. 최댓값을 반환해주는 함수
  */
 
 function problem1(pobi, crong) {
