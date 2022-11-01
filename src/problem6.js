@@ -45,6 +45,12 @@ function getEmailOfPersonWithDuplicateName(
   );
 }
 
+function deleteDuplicateValueAndSort(answer) {
+  return answer
+    .filter((email, index) => answer.indexOf(email) === index)
+    .sort();
+}
+
 function problem6(forms) {
   let answer = [];
   let emailOfPersonWithDuplicateName;
@@ -55,7 +61,7 @@ function problem6(forms) {
       email
     )) && answer.push(...emailOfPersonWithDuplicateName);
   });
-  return;
+  return deleteDuplicateValueAndSort(answer);
 }
 
 module.exports = problem6;
