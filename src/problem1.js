@@ -51,3 +51,5 @@ function errorCheck(page) {
     return false;
   return true;
 } // 왼쪽 페이지가 짝수인지 확인 필요
+
+// 입력값 타입에 따른 에러처리

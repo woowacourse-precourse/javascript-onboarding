@@ -1,15 +1,16 @@
-function problem2(cryptogram) {
-  let arr = [cryptogram[0]];
-  let i = 0;
-  while (i++ < cryptogram.length) {
-    if (arr[arr.length - 1] === cryptogram[i]) {
-      arr.pop();
-    } else {
-      arr.push(cryptogram[i]);
-    }
-  }
-  arr.pop();
-  return arr.join("");
-}
+function problem2(cryptogram) {}
 
+function checkValidCrypto(cryptogram) {
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (
+      typeof cryptogram !== "string" ||
+      cryptogram.charCodeAt(i) < 97 ||
+      cryptogram.charCodeAt(i) > 122 ||
+      cryptogram.length < 1 ||
+      cryptogram.length > 1000
+    )
+      return false;
+  }
+  return true;
+}
 module.exports = problem2;
