@@ -12,7 +12,7 @@ function problem7(user, friends, visitors) {
   }
   for (let i = 0; i < visitors.length; i++) {
     if (!map.has(visitors[i])) map.set(visitors[i], 0);
-    let score = map.get(visitor현s[i]) + 1;
+    let score = map.get(visitors[i]) + 1;
     map.set(visitors[i], score);
   }
   let beforeSortFriendsMap = removeSelfAndAlreadyFriends(
@@ -20,6 +20,7 @@ function problem7(user, friends, visitors) {
       alreadyFriendsArr,
       map
   );
+  return [...sortFriends(beforeSortFriendsMap).keys()];
 }
 function makeAllFriendsArr(friends) {
   let friendsArr = friends.reduce((acc, cur) => [...acc, ...cur]);
@@ -49,5 +50,12 @@ function removeSelfAndAlreadyFriends(user, alreadyFriendsArr, map) {
   }
   map.delete(user);
   return map;
+}
+function sortFriends(map) {
+  let sortByName = new Map([...map.entries()].sort());
+  let sortByScore = new Map(
+      [...sortByName.entries()].sort((a, b) => b[1] - a[1])
+  );
+  return sortByScore;
 }
 module.exports = problem7;
