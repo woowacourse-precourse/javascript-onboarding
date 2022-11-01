@@ -33,11 +33,11 @@ function problem7(user, friends, visitors) {
     }
     else return -1;
   })
-  
-  ans.map((el) => {
-    answer.push(el[1]);
-  });
 
+  ans.forEach((el, idx) => {
+    if (idx >= 5) return false;
+    answer.push(el[1]);
+  })
   return answer;
 }
 
