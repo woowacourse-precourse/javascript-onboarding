@@ -32,7 +32,18 @@ function problem7(user, friends, visitors) {
   var answer;
   let userFriends = findUserFriends(user, friends);
   let recommendPoints = findSameFriends(user, friends, userFriends);
-  
+  for(visitor of visitors){
+    // 방문자가 user의 친구인 경우 
+    if(userFriends.has(visitor)){
+      continue;
+    }
+    // 방문자가 recommendPoints에 존재하지 않은 경우
+    if(!recommendPoints.has(visitor))
+      recommendPoints.set(visitor, 1);
+    // 방문자가 recommendPoints에 이미 존재 경우
+    else
+      recommendPoints.set(visitor, recommendPoints.get(visitor)+1)
+  }
   return answer;
 }
 
