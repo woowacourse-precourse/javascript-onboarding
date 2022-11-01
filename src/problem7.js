@@ -24,6 +24,20 @@ function problem7(user, friends, visitors) {
     return recommend_score;
   };
 
+  // user의 방문자에게 추천 점수 부여
+  const getVisitScore = (visitors, user_friends, recommend_score) => {
+    visitors.forEach((item) => {
+      if (!user_friends.includes(item)) {
+        if (item in recommend_score) {
+          recommend_score[item] += 1;
+        } else {
+          recommend_score[item] = 1;
+        }
+      }
+    });
+    return recommend_score;
+  };
+
   let answer;
   return answer;
 }
