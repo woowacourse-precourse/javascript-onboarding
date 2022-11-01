@@ -26,7 +26,16 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-
+  for (let visitor of visitors) {
+    if (!friend_dic[user].includes(visitor)) {
+      if (visitor in friend_suggest) {
+        friend_suggest[visitor] += 1
+      }
+      else {
+        friend_suggest[visitor] = 1
+      }
+    }
+  }
   return answer;
 }
 
