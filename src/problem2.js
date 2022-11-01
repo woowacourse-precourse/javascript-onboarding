@@ -4,7 +4,6 @@ function problem2(cryptogram) {
     const result = cryptogram.replace(regExp, '');
     cryptogram = result;
     if(regExp.test(cryptogram) === false) {
-      console.log(cryptogram)
       return cryptogram;
     }
   }
