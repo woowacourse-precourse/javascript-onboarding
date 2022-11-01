@@ -55,21 +55,6 @@ function sortByScoreName(object) {
 }
 
 module.exports = problem7;
-console.log(
-  problem7(
-    "andole",
-    [
-      ["andole", "jun"],
-      ["donut", "jun"],
-      ["donut", "shakevan"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "bedi"],
-      ["anne", "jun"],
-    ],
-    ["donut", "mrko", "peter", "sam"]
-  )
-);
 
 /*
 1. friends에서 내 닉네임 포함된 배열 찾아서 내 친구 찾기
