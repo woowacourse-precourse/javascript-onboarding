@@ -28,4 +28,12 @@ function getMax(array) {
   const max = Math.max(digitPlus(array[0]), digitPlus(array[1]), digitMult(array[0]), digitMult(array[1]));
   return max;
 }
+
+// 왼쪽, 오른쪽 페이지가 정상인지 확인하는 함수
+function isWeird(array) {
+  if(array[0] === array[1] - 1) {
+    return false;
+  }
+  return true;
+}
 module.exports = problem1;
