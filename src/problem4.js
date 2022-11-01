@@ -4,8 +4,8 @@
 // 3. 알파벳 외의 문자는 변환하지 않기
 
 // 알파벳인지 체크하는 함수
-function isAlphabet(str) {
-  return "a" <= str.toLowerCase() && str.toLowerCase() <= "z";
+function isAlphabet(char) {
+  return "a" <= char.toLowerCase() && char.toLowerCase() <= "z";
 }
 
 function problem4(word) {
@@ -13,19 +13,19 @@ function problem4(word) {
   let reverseWord = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
 
   for (let i = 0; i < word.length; i++) {
-    let str = word[i];
+    let char = word[i];
 
-    // str이 알파벳이고,
-    if (isAlphabet(str)) {
+    // char이 알파벳이고,
+    if (isAlphabet(char)) {
       // 대문자일 때
-      if (str === str.toUpperCase()) {
-        answer += reverseWord[str.charCodeAt() - 65];
+      if (char === char.toUpperCase()) {
+        answer += reverseWord[char.charCodeAt() - 65];
       }
       // 소문자일 때
-      else answer += reverseWord[str.charCodeAt() - 97].toLowerCase();
+      else answer += reverseWord[char.charCodeAt() - 97].toLowerCase();
     }
     // 알파벳이 아닌 경우 변환하지 않기
-    else answer += str;
+    else answer += char;
   }
 
   return answer;
