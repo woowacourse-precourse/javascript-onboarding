@@ -5,14 +5,19 @@ const problem2 = (cryptogram) => {
 };
 
 const popSameWord = (cryptogram) => {
-  let decryption = [];
-  cryptogram.split("").map((word) => {
-    // console.log(word);
-    if (decryption[decryption.length - 1] === word) {
-      decryption.pop();
-    } else decryption.push(word);
+  if (cryptogram === "") return cryptogram;
+  let testCase = true;
+  let result = cryptogram.match(/([a-z])\1{1,}|(.)/g);
+  result = result.filter((v) => {
+    if (v.length != 1) {
+      testCase = false;
+      return 0;
+    } else {
+      return 1;
+    }
   });
-  return decryption.join("");
+  result = result.join("");
+  return testCase ? result : popSameWord(result);
 };
 
 /*
