@@ -7,7 +7,6 @@ function problem7(user, friends, visitors) {
   let visitCount = {};
   // 총 점수
   let totalCount = {};
-
   // 모든 사람을 담은 배열에서 user를 삭제해줌
   const friendsArr = friends.reduce(function (acc, cur) {
     return acc.concat(cur);
@@ -37,7 +36,6 @@ function problem7(user, friends, visitors) {
       i++;
     }
   });
-
   // 배열 초기화
   notUser.forEach((ele) => {
     friendsCount[ele] = 0;
@@ -68,23 +66,6 @@ function problem7(user, friends, visitors) {
       parseInt(friendsCount[ele]) * 10 + parseInt(visitCount[ele]) * 1;
   });
 
-  // 점수 순으로 sort
-  let sorted = Object.entries(totalCount).sort((a, b) => {
-    b[1] - a[1];
-  });
-
-  // 점수가 같을 경우 알파벳순으로 sort
-  for (let i = 0; i < sorted.length - 1; i++) {
-    if (sorted[i][1] == sorted[i + 1][1]) {
-      if (sorted[i][0] > sorted[i + 1][0]) {
-        let tmp = sorted[i + 1];
-        sorted[i + 1] = sorted[i];
-        sorted[i] = tmp;
-      }
-    }
-  }
-
-  sorted.forEach((i) => answer.push(i[0]));
   return answer;
 }
 
