@@ -79,19 +79,19 @@ function problem7(user, friends, visitors) {
 	}
 
 	function recommendFriend() {
-		friendList
-			.sort(function (a, b) {
-				return a.friendName - b.friendName;
-			})
-			.sort(function (a, b) {
-				return b.score - a.score;
-			});
+		friendList.sort(function (a, b) {
+			if (b.score > a.score) return 1;
+			if (b.score < a.score) return -1;
+			if (b.friendName > a.friendName) return -1;
+			if (b.friendName < a.friendName) return 1;
+		});
 		friendList.map((friend) => {
-			if (!friend.isFriend && friend.score != 0 && answer.length < 5)
+			if (!friend.isFriend && friend.score != 0 && answer.length < 5) {
 				answer.push(friend.friendName);
+				console.log(friend.friendName, friend.score);
+			}
 		});
 	}
-
 	return answer;
 }
 
