@@ -15,6 +15,8 @@ function problem1(pobi, crong) {
     return -1;
   }else if(pobi.includes(0) || crong.includes(0)){
     return -1;
+  }else if(pobi[0] >400 || pobi[1]>400 || crong[0]>400 || crong[1]>400){
+    return -1;
   }else if(pobi[0]%2 != 1 || crong[0]%2 != 1 || pobi[1]%2 != 0 || crong[1]%2 != 0){
     return -1;
   }else if(pobi[1]-pobi[0] != 1|| crong[1]-crong[0] != 1){
