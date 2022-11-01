@@ -17,22 +17,10 @@ function problem6(forms) {
   }, []);
   
   const duplicateNicknameList = getDuplicateNickname(sliceNicknameList);
-
-  for (let nick of duplicateNickname){
-    let count = 0;
-    for(let i = 0; i < forms.length; i += 1){
-      if (forms[i][1].includes(nick)){
-        duplicateCrewEmail.push(forms[i][0]);
-        count += 1;
-      }    
-    }
-    if (count < 2){
-      duplicateCrewEmail.pop();
-    }
-  }
-  const duplicateCrewEmailFinal = new Set(duplicateCrewEmail);
-  const sortedCrewEmail = [...duplicateCrewEmailFinal].sort();
-  return sortedCrewEmail;
+  
+  return forms
+    .filter(([,nickname]) => isDuplicate(duplicateNicknameList, nickname))
+    .map(([email,]) => email);
 }
 
 module.exports = problem6;
