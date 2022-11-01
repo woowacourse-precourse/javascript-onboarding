@@ -1,33 +1,28 @@
 function problem7(user, friends, visitors) {
-  let withFriends = new Map();
+  let fdList = new Map();
   let scores = new Map();
-  //연산
-  //user-[friends]로 key-value hashmap 형성
+
   for (let [p1, p2] of friends) {
-    withFriends.set(p1, []);
-    withFriends.set(p2, []);
+    fdList.get(p1) ? fdList.get(p1).push(p2) : fdList.set(p1, [p2]);
+    fdList.get(p2) ? fdList.get(p2).push(p1) : fdList.set(p2, [p1]);
     scores.set(p1, 0);
     scores.set(p2, 0);
   }
 
-  for (let [p1, p2] of friends) {
-    withFriends.get(p1).push(p2);
-    withFriends.get(p2).push(p1);
-  }
-
   //기능목록 1-1 구현
-  const users = withFriends.get(user);
-  for (let [key] of withFriends) {
+  const users = fdList.get(user);
+  for (let [key] of fdList) {
     if (key === user) continue;
-    withFriends.get(key).forEach(v => {
+    fdList.get(key).forEach(v => {
       if (users.includes(v)) {
         scores.set(key, scores.get(key) + 10);
       }
     });
   }
+
   //기능목록 1-2 구현
   for (let name of visitors) {
-    if (withFriends.get(user).includes(name)) continue;
+    if (fdList.get(user).includes(name)) continue;
     if (scores.has(name)) {
       scores.set(name, scores.get(name) + 1);
     } else {
