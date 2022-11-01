@@ -13,4 +13,14 @@ function numIntoDigits(number) {
   }
   return digits;
 }
+
+function countMultiple3(digits) {
+  let numMultiple3 = 0;
+  digits.forEach(function (digit) {
+    if (digit % 3 == 0) {
+      numMultiple3 += 1
+    }
+  });
+  return numMultiple3;
+}
 module.exports = problem3;
