@@ -18,7 +18,7 @@ function compare(scoreArr) {
   }
   return big;
 }
-
+const a = 12;
 function problem1(pobi, crong) {
   let pobiScore = 0;
   let crongScore = 0;

@@ -11,7 +11,6 @@ function convertFrog(ascii) {
   } else if (ascii >= 97 && ascii <= 122) {
     convertedAscii = 122 - (ascii - 97);
   }
-  console.log(convertedAscii);
   return convertedAscii;
 }
 
