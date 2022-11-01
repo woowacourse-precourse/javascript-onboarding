@@ -10,6 +10,24 @@ function problem3(number) {
   return answer;
 }
 
-
+function solution(num) {
+  var count = 0;
+  //var digit = 1;
+  for (var i=1; i<=num; i++) {
+    if (i%10==3 || i%10==6 || i%10==9) {
+      count ++;
+    }
+    if (Math.floor(i/10)%10==3 || Math.floor(i/10)%10==6 || Math.floor(i/10)%10==9) {
+      count ++;
+    }
+    if (Math.floor(i/100)%10==3 || Math.floor(i/100)%10==6 || Math.floor(i/100)%10==9) {
+      count ++;
+    }
+    if (Math.floor(i/1000)%10==3 || Math.floor(i/1000)%10==6 || Math.floor(i/1000)%10==9) {
+      count ++;
+    }
+  }
+  return count;
+}
 
 module.exports = problem3;
