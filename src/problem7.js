@@ -54,19 +54,19 @@ function isVisitiors(visitors) {
 }
 
 function objectKey(friendList, friend) {
-  if (Object.keys(friendList).includes(friend) == "true") {
+  if (Object.keys(friendList).includes(friend) == true) {
     return 1;
   }
   return 0;
 }
+
 function pushFriendList(friendList, friend) {
   for (let i = 0; i < 2; i++) {
     if (!objectKey(friendList, friend[i])) {
       friendList[friend[i]] = [];
     }
-    friendList[friend[i]].push(friend[i]);
-    console.log(friendList[friend[i]].push(friend[i]));
-    // friendList[friend[i]].push(friend[(i + 2) % 2]);
+    console.log(friendList);
+    friendList[friend[i]].push(friend[(i + 1) % 2]);
   }
 }
 
@@ -75,14 +75,18 @@ function makeFriendList(user, friends) {
   for (let i = 0; i < friends.length; i++) {
     pushFriendList(friendList, friends[i]);
   }
+  if (!Object.keys(friendList).includes(user)) {
+    friendList[user] = [];
+  }
+  return friendList;
 }
 
 function problem7(user, friends, visitors) {
-  console.log(isVisitiors(visitors));
-  if (isUser(user) || isFriend(friends) || isVisitiors(visitors) != 1) {
+  if (!isUser(user) || !isFriend(friends) || !isVisitiors(visitors)) {
     return;
   }
   const friendList = makeFriendList(user, friends);
+  const score = getScore(user, friendList, visitors);
 }
 
 module.exports = problem7;
@@ -96,9 +100,5 @@ problem7(
     ["shakevan", "jun"],
     ["shakevan", "mrko"],
   ],
-  "bedi",
-  "bedi",
-  "donut",
-  "bedi",
-  "shakevan"
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
 );
