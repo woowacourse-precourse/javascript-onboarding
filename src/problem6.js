@@ -30,10 +30,12 @@ function problem6(forms) {
     if(nick.includes(x)){
       doubleNickname.push([forms[i][0],forms[i][1]])
     }
-    }
-    doubleNickname.sort();
+    }//연속된 글자가 포함된 닉네임,이메일 반환
+
+    doubleNickname.sort();//오름차순 정렬
+
     answer=doubleNickname;
-    
+
   return answer;
 }
 
