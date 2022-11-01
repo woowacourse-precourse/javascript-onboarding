@@ -19,3 +19,20 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+
+# 기능 목록
+1. 대문자 A의 아스키코드와 대문자 Z의 아스키코드의 합을 변수 capitalSum에 저장
+2. 소문자 a의 아스키코드와 소문자 z의 아스키코드의 합을 변수 smallSum에 저장
+3. 매개변수로 대문자를 받으면 청개구리 사전을 참고해 반대 대문자로 변환하여 반환하는 changeCapital 함수 구현
+4. 매개변수로 소문자를 받으면 청개구리 사전을 참고해 반대 소문자로 변환하여 반환하는 changeSmall 함수 구현
+5. (solution 메소드)
+-  주어진 문자열을 첫문자부터 확인하면서 
+:  대문자이면 -> changeCapital을 통해 변환한 값 answer에 추가
+:  소문자이면 -> changeSmall을 통해 변환한 값 answer에 추가
+:  알파벳이 아니면 -> 해당 문자 그대로 answer에 추가
+
+# 추가 사항
+- answer 변수에 타입이 선언되어 있지 않으므로 undefined 상태이다. 따라서 null을 할당하여 문자를 추가할 때 문제가 없도록 함
+- 대문자인지 판단은 대문자들을 모두 저장한 변수 capitalLetter를 만들어 includes함수를 통해 존재하는지 확인
+- 소문자인지 판단은 소문자들을 모두 저장한 변수 smallLetter를 만들어 includes함수를 통해 존재하는지 확인 

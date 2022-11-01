@@ -22,3 +22,13 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+
+### 기능 목록
+1. 매개변수로 주어진 문자열에서 연속된 중복 문자들을 삭제하는 deleteDuplicate 함수 구현
+2. (solution 메소드)
+-  매개변수로 주어진 문자열 cryptogram를 answer에 저장
+-  현재 answer에 저장된 문자열과 deleteDuplicate 함수에 answer를 넣은 문자열이 
+: 같으면 -> while문 탈출
+: 다르면 -> answer에 deleteDuplicate 함수에 answer를 넣은 문자열 저장
+
+
