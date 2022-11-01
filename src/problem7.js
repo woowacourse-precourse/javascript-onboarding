@@ -61,3 +61,19 @@ function countOccurences(arr, value) {
   }
   return count;
 }
+
+// get indices of top five values in an array
+function getIndOfTopFive(arr) {
+  const index = [];
+  let max;
+  let i = 0;
+  while (i < arr.length) {
+    max = Math.max(...arr);
+    if (max !== 0 && index.length < 5) {
+      index.push(arr.indexOf(max)); // index of max value
+      arr[arr.indexOf(max)] = 0; // set max value to 0
+    }
+    i++;
+  }
+  return index;
+}
