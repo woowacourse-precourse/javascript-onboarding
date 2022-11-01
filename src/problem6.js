@@ -84,9 +84,35 @@ function getOverlapArr(forms, checkArr) {
 }
 
 function checkOverlap(forms) {
-  const checkArr = getCheckArr(forms);
-  const overlapArr = getOverlapArr(forms, checkArr);
+  // const checkArr = getCheckArr(forms);
+  // const overlapArr = getOverlapArr(forms, checkArr);
 
+  // return overlapArr.sort();
+  const overlapSet = new Set();
+  const overlapArr = [];
+  for (let i = 0; i < forms.length; i++) {
+    const substrNickNameArr = substrNickName(forms[i][1]);
+    let isPush = false;
+    for (let j = 0; j < substrNickNameArr.length; j++) {
+      if (overlapSet.has(substrNickNameArr[j]) && !isPush) {
+        overlapArr.push(forms[i][0]);
+        isPush = true;
+      }
+      overlapSet.add(substrNickNameArr[j]);
+    }
+  }
+  const overlapSet = new Set();
+  for (let i = forms.length - 1; i > -1; i--) {
+    const substrNickNameArr = substrNickName(forms[i][1]);
+    let isPush = false;
+    for (let j = 0; j < substrNickNameArr.length; j++) {
+      if (overlapSet.has(substrNickNameArr[j]) && !isPush) {
+        overlapArr.push(forms[i][0]);
+        isPush = true;
+      }
+      overlapSet.add(substrNickNameArr[j]);
+    }
+  }
   return overlapArr.sort();
 }
 
@@ -99,3 +125,11 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
+
+console.log(problem6([
+  ["jm@email.com", "제이엠"],
+  ["jason@email.com", "제이슨"],
+  ["woniee@email.com", "워니"],
+  ["mj@email.com", "엠제이"],
+  ["nowm@email.com", "이제엠"],
+]));
