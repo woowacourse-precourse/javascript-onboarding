@@ -6,7 +6,7 @@ function problem5(money) {
    * @param {number} money 
    * @returns {boolean}
    */
-  const isLeftMoneyZero = money => money === 0
+  const isLeftMoneyZero = money => money === 0;
 
   kindOfMoney.forEach((cur, idx) => {
     if (!isLeftMoneyZero()){
@@ -17,5 +17,4 @@ function problem5(money) {
 
   return answer;
 }
-
 module.exports = problem5;
