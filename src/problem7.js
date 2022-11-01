@@ -21,6 +21,23 @@ function problem7(user, friends, visitors) {
 
   // 추천할 친구 목록
   const recommendUsers = {};
+
+  // user의 친구의 친구 (함께 아는 친구) +10
+  const usersFriendsName = Object.keys(usersFriends);
+
+  for (i = 0; i < usersFriendsName.length; i++) {
+    const userFriend = usersFriendsName[i];
+    for (j = 0; j < friends.length; j++){
+      if (friends[j].includes(userFriend) && !friends[j].includes(user)) {
+        const friend = friends[j].filter(v => v !== userFriend);
+        // 확인 위해 친구 목록에 매핑
+        usersFriends[userFriend].push(...friend);
+        // 추천할 친구 목록에 추가 후 점수 +10
+        if (recommendUsers[friend] !== undefined) recommendUsers[friend] += 10;
+        else recommendUsers[friend] = 0;
+      }
+    }
+  }
 }
 
 module.exports = problem7;
