@@ -1,6 +1,6 @@
 function problem6(forms) {
-  const duplicateEamil = getduplicateEamil(forms);
-  return duplicateEamil;
+  const duplicateEmail = getduplicateEmail(forms);
+  return duplicateEmail;
 }
 
 function getConsecutiveLetters(nickname) {
@@ -11,9 +11,9 @@ function getConsecutiveLetters(nickname) {
   return consecutiveLetters;
 }
 
-function getduplicateEamil(forms) {
+function getduplicateEmail(forms) {
   const allConsecutiveLetters = {};
-  const duplicateEamil = new Set();
+  const duplicateEmail = new Set();
 
   forms.forEach((user) => {
     const [email, nickname] = user;
@@ -21,15 +21,15 @@ function getduplicateEamil(forms) {
 
     userConsecutiveLetters.forEach((letter) => {
       if (letter in allConsecutiveLetters) {
-        duplicateEamil.add(allConsecutiveLetters[letter]);
-        duplicateEamil.add(email);
+        duplicateEmail.add(allConsecutiveLetters[letter]);
+        duplicateEmail.add(email);
       } else if (!(letter in allConsecutiveLetters)) {
         allConsecutiveLetters[letter] = email;
       }
     });
   });
 
-  return Array.from(duplicateEamil).sort();
+  return Array.from(duplicateEmail).sort();
 }
 
 module.exports = problem6;
