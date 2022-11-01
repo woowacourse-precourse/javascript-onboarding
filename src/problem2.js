@@ -20,5 +20,20 @@ function isDuplicate(input) {
   return false;
 }
 
+function decodeCryptogram(cryptogram) {
+  // 암호문을 해독하는 함수
+  var curr = "";
+  var decodedWord = "";
+  for (let i = 0; i < cryptogram.length; i++) {
+    curr = cryptogram[i];
+    if ( curr === cryptogram[i-1] || curr === cryptogram[i+1] ) {
+      continue
+    } else {
+      decodedWord += curr; // 중복되지 않는 문자는 decodedWord에 추가하여 반환
+    }
+  }
+  return decodedWord;
+}
+
 
 module.exports = problem2;
