@@ -11,6 +11,7 @@ function is_error(pobi, crong)
   return false;
 }
 
+
 function calc(charcter){
   let ans = 0;
   for (let i = 0; i < 2 ; i++) {
@@ -37,5 +38,7 @@ function problem1(pobi, crong) {
 	return 2;
   return 0;
 }
+
+console.log(problem1([99,102],[211,212]));
 
 module.exports = problem1;

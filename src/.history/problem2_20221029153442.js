@@ -15,5 +15,3 @@ function problem2(cryptogram) {
   }
   return cryptogram;
 }
-
-module.exports = problem2;
