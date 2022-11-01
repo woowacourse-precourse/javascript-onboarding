@@ -26,16 +26,32 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < usersFriend.length; i++) {
     for (let j = 0; j < friends.length; j++) {
       if (usersFriend[i] == friends[j][0] && friends[j][1] !== user) {
-        if (!candidate[friends[j][1]]) {
-          candidate[friends[j][1]] = count;
-        } else {
-          candidate[friends[j][1]] += count;
+        let isUsersFriend = false;
+        for (let k = 0; k < usersFriend.length; k++) {
+          if (friends[j][1] == usersFriend[k]) {
+            isUsersFriend = true;
+          }
+        }
+        if (!isUsersFriend) {
+          if (!candidate[friends[j][1]]) {
+            candidate[friends[j][1]] = count;
+          } else {
+            candidate[friends[j][1]] += count;
+          }
         }
       } else if (usersFriend[i] == friends[j][1] && friends[j][0] !== user) {
-        if (!candidate[friends[j][0]]) {
-          candidate[friends[j][0]] = count;
-        } else {
-          candidate[friends[j][0]] += count;
+        let isUsersFriend = false;
+        for (let k = 0; k < usersFriend.length; k++) {
+          if (friends[j][0] == usersFriend[k]) {
+            isUsersFriend = true;
+          }
+        }
+        if (!isUsersFriend) {
+          if (!candidate[friends[j][0]]) {
+            candidate[friends[j][0]] = count;
+          } else {
+            candidate[friends[j][0]] += count;
+          }
         }
       }
     }
@@ -52,14 +68,16 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  console.log(candidate);
 
   candidate = Object.entries(candidate).sort((a, b) => {
     if (b[1] == a[1]) {
-      return -1;
+      return b[0] - a[0];
     } else {
-      return 1;
+      return b[1] - a[1];
     }
   });
+  console.log(candidate);
   
   answer = candidate.slice(0, 5);
   answer = answer.map((item) => item[0]);
@@ -67,9 +85,12 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-const user = "mrko";
-const friends = [ ["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"], ["asdf", "mrko"], ["asdf", "yujin"] ];
-const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-problem7(user, friends, visitors);
+// const user = "mrko";
+// const friends = [ ["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ];
+// const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+user = "andole";
+friends = [ ["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"] ];
+visitors = ["donut", "mrko", "peter", "sam"];
+console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
