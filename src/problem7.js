@@ -1,5 +1,8 @@
 function problem7(user, friends, visitors) {
+  if (errorHandler(user, friends, visitors))  return "Error";
   var answer;
+
+  answer = scoreFriend(user, friends, visitors);
   return answer;
 }
 
@@ -22,34 +25,26 @@ function findFriend(user, friends) {
   return friendList;
 }
 
-function findFriendsFriend(user, friends) {
-  // user의 친구 리스트
-  const friendsList = findFriend(user, friends);
-  // 친구의 친구를 저장할 배열
-  const friendsFriend = [];
-
-  // friendsList 원소(친구)의 친구를 찾는다.
-  for(i=0; i<friendsList.length; i++) {
-    friendsFriend = findFriend(friendsList[i], friends).filter((e) => e != user);
-  }
-
-  return friendsFriend;
-}
 
 function scoreFriend(user, friends, visitors) {
   // user의 친구 리스트
   const friendsList = findFriend(user, friends);
-  // 친구의 친구
-  const friendsFriend = findFriendsFriend(user, friends);
   // 점수판
   let scoreBoard = {};
 
   // user의 친구 중 친구의 친구가 없을 경우 10점 추가
-  for(i=0; i<friendsFriend.length; i++) {
-    if (!friendsList.includes(friendsFriend[i])) {
-      scoreBoard[friendsFriend[i]] += 10
-    }
-  }
+  friendsList.forEach((name) => {
+    const friendsFriend = findFriend(name, friends).filter(
+      (e) => e != user
+    );
+    friendsFriend.forEach((name) => {
+      if (!friendsList.includes(name)) {
+        scoreBoard[name]
+          ? (scoreBoard[name] += 10)
+          : (scoreBoard[name] = 10);
+      }
+    });
+  });
 
   // visitors중 친구 리스트에 없으면 1점 추가
   for(i=0; i<visitors.length; i++) {
@@ -57,6 +52,17 @@ function scoreFriend(user, friends, visitors) {
       scoreBoard[visitors[i]] += 1
     }
   }
+
+  let result = Object.entries(scoreBoard);
+
+  // 점수순으로 정렬하되 점수가 같으면 이름순으로 정렬한다.
+  return result.sort(([nameA, scoreA], [nameB, scoreB]) => {
+    if (nameA < nameB)  return -1;
+    else if (nameA > nameB) return 1;
+    else  return 0;
+  }).sort(([nameA, scoreA], [nameB, scoreB]) => scoreB - scoreA)
+  .map(([name, _]) => name)
+  .splice(0, 5);
 }
 
 module.exports = problem7;
