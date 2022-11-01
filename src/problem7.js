@@ -3,12 +3,14 @@ function problem7(user, friends, visitors) {
   let userSet = getUserRelationMap(friends, user);
 
   let friendMap = getFriendMap(userSet, friends, user);
-  let visitorMap = getVisitorMap(visitors);
+  let visitorMap = getVisitorMap(visitors, userSet);
 
   recommendMap = getRecommendUserMap(friendMap, visitorMap);
 
   for(const [user, score] of recommendMap){
-    answer.push({user: user, score: score});
+    if(score > 0){
+      answer.push({user: user, score: score});
+    }
   }
   answer = getSortedUserList(recommendMap);
   if(answer.length > 4){
@@ -40,15 +42,15 @@ function getFriendMap(userSet, friendsList, userName){
     ).forEach(friend => {
       if(friend[0]===userFriend){
         if(friendMap.has(friend[1])){
-          friendMap.set(friend[1], friendMap.get(friend[1])+10);
+          friendMap.set(friend[1], friendMap.get(friend[1]) + 10);
         }else{
-          friendMap.set(friend[1],10)
+          friendMap.set(friend[1], 10)
         }
       }else{
         if(friendMap.has(friend[0])){
-          friendMap.set(friend[0], friendMap.get(friend[0])+10);
+          friendMap.set(friend[0], friendMap.get(friend[0]) + 10);
         }else{
-          friendMap.set(friend[0],10)
+          friendMap.set(friend[0], 10)
         }
       }
     })
@@ -56,13 +58,15 @@ function getFriendMap(userSet, friendsList, userName){
   return friendMap;
 }
 
-function getVisitorMap(visitors){
+function getVisitorMap(visitors, userSet){
   let visitorMap = new Map();
-  visitors.forEach(visitor => {
-    if(visitorMap.has(visitor)){
-      visitorMap.set(visitor, visitorMap.get(visitor)+1);
-    }else{
-      visitorMap.set(visitor, 1)
+  visitors.forEach((visitor, score) => {
+    if(!userSet.has(visitor)){
+      if(visitorMap.has(visitor)){
+        visitorMap.set(visitor, visitorMap.get(visitor)+1);
+      }else{
+        visitorMap.set(visitor, 1)
+      }
     }
   })
   return visitorMap;
@@ -95,6 +99,6 @@ function getSortedUserList(recommendMap){
     if (a.user > b.user) return 1;
     if (a.user < b.user) return -1;
   }).map(user => user.user);
-
+  
   return sortedList;
 }
