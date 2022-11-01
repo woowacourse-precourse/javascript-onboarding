@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   let friendsList = getUserFriends(user, friends);
-  console.log(friendsList);
+  let withFriendsList = getWithFriends(user, friends, friendsList);
+  console.log(withFriendsList);
 }
 
 function getUserFriends(user, friends) {
@@ -11,8 +12,28 @@ function getUserFriends(user, friends) {
       friendsList.push(friends[i][1]);
     }
   }
-  let exceptUser = friendsList.filter((element) => element !== user);
-  return exceptUser;
+  friendsList = friendsList.filter((element) => element !== user);
+  return friendsList;
+}
+
+function getWithFriends(user, friends, userFriends) {
+  let withFriends = [];
+  for (let j = 0; j < friends.length; j++) {
+    for (let k = 0; k < userFriends.length; k++) {
+      if (friends[j].includes(userFriends[k])) {
+        withFriends.push(
+          friends[j].filter((element) => element !== userFriends[k])
+        );
+      }
+    }
+  }
+  withFriends = withFriends
+    .toString()
+    .split(",")
+    .filter((element) => element !== user);
+  let set = new Set(withFriends);
+  withFriends = [...set];
+  return withFriends;
 }
 
 module.exports = problem7;
