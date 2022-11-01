@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+## 기능 목록 
+문자열을 반대로 변환하는 기능
