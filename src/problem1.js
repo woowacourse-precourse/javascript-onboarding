@@ -1,6 +1,16 @@
 // @ts-check
 
 /**
+ * @param {number} left
+ * @param {number} right
+ * @returns {boolean}
+ */
+const isValidPage = (left, right) => {
+  // 페이지가 유효한 값인지 반환
+  return left >= 1 && right <= 400 && left % 2 === 1 && left + 1 === right;
+};
+
+/**
  * @param {number} page
  * @returns {number}
  */
@@ -18,20 +28,16 @@ const findMax = (page) => {
  * @returns {number}
  */
 function problem1(pobi, crong) {
+  const [pobiLeft, pobiRight] = pobi;
+  const [crongLeft, crongRight] = crong;
+
   // 유효하지 않은 경우 예외 처리
-  if (
-    pobi[0] === 1 ||
-    crong[1] === 400 ||
-    pobi[0] % 2 !== 1 ||
-    crong[0] % 2 !== 1 ||
-    pobi[0] + 1 !== pobi[1] ||
-    crong[0] + 1 !== crong[1]
-  )
+  if (!isValidPage(pobiLeft, pobiRight) || !isValidPage(crongLeft, crongRight))
     return -1;
 
   // 포비의 최댓값과 크롱의 최댓값
-  const pobiMax = Math.max(findMax(pobi[0]), findMax(pobi[1]));
-  const crongMax = Math.max(findMax(crong[0]), findMax(crong[1]));
+  const pobiMax = Math.max(findMax(pobiLeft), findMax(pobiRight));
+  const crongMax = Math.max(findMax(crongLeft), findMax(crongRight));
 
   // 게임 결과에 따라 값 반환
   if (pobiMax > crongMax) return 1;
