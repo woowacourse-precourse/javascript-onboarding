@@ -1,64 +1,86 @@
 function problem1(pobi, crong) {
-  let num;
+  let pobiRight = [];
+  let pobiLeft = [];
+  let crongRight = [];
+  let crongLeft = [];
 
-  function pagesum(num) {
-    let a, b, c;
-    if (num > 100) {
-      a = num / 100;
-      b = (num % 100) / 10;
-      c = num % 10;
-      return a + b + c;
-    } else {
-      b = (num % 100) / 10;
-      c = num % 10;
-      return b + c;
-    }
-  }
+  pobiLeft = makePage(pobi[0], pobiLeft);
+  pobiRight = makePage(pobi[1], pobiRight);
+  crongLeft = makePage(crong[0], crongLeft);
+  crongRight = makePage(crong[1], crongRight);
 
-  function pagemult(num) {
-    let a, b, c;
-    if (num > 100) {
-      a = parseInt(num / 100);
-      b = parseInt((num % 100) / 10);
-      c = num % 10;
-      return a * b * c;
-    } else {
-      b = parseInt((num % 100) / 10);
-      c = num % 10;
-      return b * c;
-    }
-  }
+  let pobiresult = [];
+  let crongresult = [];
 
-  for (let i = 0; i < 2; i++) {
-    if (pobi[i] == 1 || crong[i] == 1 || pobi[i] == 400 || crong[i] == 400) {
-      return -1;
-    }
-  }
+  pobiresult.push(sum(pobiLeft));
+  pobiresult.push(sum(pobiRight));
+  crongresult.push(sum(crongLeft));
+  crongresult.push(sum(crongRight));
+  pobiresult.push(multi(pobiLeft));
+  pobiresult.push(multi(pobiRight));
+  crongresult.push(multi(crongLeft));
+  crongresult.push(multi(crongRight));
 
-  if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+  pobimax = Math.max(...pobiresult);
+  crongmax = Math.max(...crongresult);
+
+  result = solving(pobimax, crongmax, pobi, crong);
+  return result;
+}
+function solving(pomax, crmax, pobiArray, crongArray) {
+  if (pobiArray[0] + 1 !== pobiArray[1]) return -1;
+  if (crongArray[0] + 1 !== crongArray[1]) return -1;
+  if (
+    pobiArray[0] === 1 ||
+    pobiArray[1] === 400 ||
+    crong[0] === 1 ||
+    crong[1] === 400
+  )
     return -1;
-  }
-
-  let pobimax = Math.max(
-    pagemult(pobi[0]),
-    pagemult(pobi[1]),
-    pagesum(pobi[0]),
-    pagesum(pobi[1])
-  );
-  let crongmax = Math.max(
-    pagemult(crong[0]),
-    pagemult(crong[1]),
-    pagesum(crong[0]),
-    pagesum(crong[1])
-  );
-
-  if (pobimax == crongmax) {
-    return 0;
-  } else if (pobimax > crongmax) {
-    return 1;
-  } else if (pobimax < crongmax) {
-    return 2;
-  }
+  if (pomax > crmax) return 1;
+  if (pomax < crmax) return 2;
+  if (pomax === crmax) return 0;
 }
 
+function multi(multiArray) {
+  const result = multiArray.reduce(function add(multi, cur) {
+    return multi * cur;
+  }, 1);
+  return result;
+}
+
+function sum(sumArray) {
+  const result = sumArray.reduce(function add(sum, cur) {
+    return sum + cur;
+  }, 0);
+  return result;
+}
+
+function makePage(pageNumber, pageArray) {
+  const page = [100, 10, 1];
+  let i = 0;
+  if ((pageNumber + "").length === 1) {
+    while (pageNumber > 0) {
+      pageArray.push(parseInt(pageNumber / page[i + 2]));
+      pageNumber = pageNumber % page[i + 2];
+      i += 1;
+    }
+  } else if ((pageNumber + "").length === 2) {
+    while (pageNumber > 0) {
+      pageArray.push(parseInt(pageNumber / page[i + 1]));
+      pageNumber = pageNumber % page[i + 1];
+      i += 1;
+    }
+  } else {
+    while (pageNumber > 0) {
+      pageArray.push(parseInt(pageNumber / page[i]));
+      pageNumber = pageNumber % page[i];
+      i += 1;
+    }
+  }
+  return pageArray;
+}
+a = [99, 98];
+b = [197, 198];
+problem1(a, b);
 module.exports = problem1;
