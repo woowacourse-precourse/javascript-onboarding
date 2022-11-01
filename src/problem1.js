@@ -1,5 +1,5 @@
 function problem1(pobi, crong) {
-	//결과 값을 구하고 반환할 함수 -> solution
+	//누가 이겼는지 결과 값을 구하고 반환할 함수 -> solution
 	//각 점수들 중 가장 큰 수를 구할 함수 -> getMax
 	//덧셈 결과를 반환할 함수 -> resultAdd
 	//곱셈 결과를 반환할 함수 -> resultMul
