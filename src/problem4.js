@@ -13,8 +13,10 @@ const makeReverseList = (endNumber) => {
   );
 };
 
+const isAlpahbet = (char) => /[a-z|A-Z]/.test(char);
+
 const problem4 = (word) => {
-  let answer = '';
+  let answer = "";
 
   const { UPPER_END, LOWER_END, UPPER_START, LOWER_START } = numericVars;
 
@@ -23,12 +25,11 @@ const problem4 = (word) => {
 
   [...word].forEach(
     (char) =>
-      (answer +=
-        char === ' '
-          ? ' '
-          : char === char.toUpperCase()
-          ? upperReverseList[char.charCodeAt(0) - UPPER_START]
-          : lowerReverseList[char.charCodeAt() - LOWER_START])
+      (answer += !isAlpahbet(char)
+        ? char
+        : char === char.toUpperCase()
+        ? upperReverseList[char.charCodeAt(0) - UPPER_START]
+        : lowerReverseList[char.charCodeAt(0) - LOWER_START])
   );
 
   return answer;
