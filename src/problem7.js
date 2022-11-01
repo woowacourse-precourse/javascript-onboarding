@@ -1,3 +1,18 @@
+function getScore(friendOfFriends, score, visitors) {
+  scoreFrinedOfFriends(friendOfFriends, score);
+  scoreVisitors(visitors, score);
+}
+
+function scoreFrinedOfFriends(friendOfFriends, score) {
+  for (let i = 0; i < friendOfFriends.length; i++) {
+    if (score[friendOfFriends[i]] === undefined) {
+      score[friendOfFriends[i]] = 10;
+      continue;
+    }
+    score[friendOfFriends[i]] += 10;
+  }
+}
+
 function getFriendOfFriends(user, friends, originFriends, friendOfFriends) {
   for (let i = 0; i < friends.length; i++) {
     if (friends[i].includes(user)) {
@@ -13,7 +28,6 @@ function checkFriendsLinkedWithUnknown(
   friendOfFriends,
   i
 ) {
-  console.log(friendOfFriends);
   for (let j = 0; j < originFriends.length; j++) {
     if (!friends[i].includes(originFriends[j])) {
       continue;
@@ -48,8 +62,11 @@ function addFriendDecidedByotherSideIndex(friend, otherSide, addToThisArray) {
 function problem7(user, friends, visitors) {
   let originFriends = [];
   let friendOfFriends = [];
+  let score = {};
+
   getOriginFriends(user, friends, originFriends);
   getFriendOfFriends(user, friends, originFriends, friendOfFriends);
+  getScore(friendOfFriends, score, visitors);
 }
 
 function testCode() {
