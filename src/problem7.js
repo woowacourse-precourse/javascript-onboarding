@@ -36,6 +36,25 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (const uFriend of userFriends){
+    for (const friend of friends){
+      if(friend.includes(uFriend)){
+        if(friend[0] == uFriend){
+          if(!socreMap.has(friend[1])){
+            socreMap.set(friend[1],10);
+          }else{
+            socreMap.set(friend[1], socreMap.get(friend[1])+10);
+          }
+        }else{ //뒤에[1] uFriend
+          if(!socreMap.has(friend[0])){
+            socreMap.set(friend[0],10);
+          }else{
+            socreMap.set(friend[0], socreMap.get(friend[0])+10);
+          }
+        }
+      }
+    }
+  }
 }
 
 module.exports = problem7;
