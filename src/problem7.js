@@ -11,10 +11,10 @@ function problem7(user, friends, visitors) {
   // 10점 줄 친구 저장
   saveScore = getTenPointsFriends(userFriends, friends, user, saveScore);
 
-  // 이름 => 값 순서로 정렬
-  const result = ValueNameSort(saveScore);
+  // 마지막으로 결과값을 이름 => 값 순서로 정렬
+  const answer = ValueNameSort(saveScore);
 
-  return result;
+  return answer;
 }
 
 function getUserFriends(friends, userFriends) {
