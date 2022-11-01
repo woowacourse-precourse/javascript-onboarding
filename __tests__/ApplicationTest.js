@@ -280,11 +280,22 @@ describe('problem6', () => {
           })
       )
     ).toEqual([
-      'aaaaaaaaaa@email.com',
-      'aaaaaacfaa@email.com',
-      'aaaaaafaaa@email.com',
-      'aaaaaahfaa@email.com',
+      'aaaaaaaaa@email.com',
+      'aaaaacfaa@email.com',
+      'aaaaafaaa@email.com',
+      'aaaaahfaa@email.com',
     ]);
+  });
+  test('case6', () => {
+    expect(
+      problem6([
+        ['kim@email.com', '김ㅡ이'],
+        ['name@email.com', 'ㅡ이야'],
+        ['choi@email.com', '최강'],
+        ['lee@email.com', '강합니다'],
+        ['jun@email.com', '왜ㅇㅡ이야'],
+      ])
+    ).toEqual(['jun@email.com', 'kim@email.com', 'name@email.com']);
   });
 });
 
