@@ -2,18 +2,14 @@
 //n1의 특정 구간과 n2 특정 구간이 겹치면 n2 에서 그 구간 지우기
 //n2가 그대로면 중복x - false
 //바뀌었다면 중복o - true
-const checkNick=(n1, n2)=>{
-  let regex, check_str, test_n2;
-  for(let i=0;i<n1.length-1;i++){
-      check_str = `${n1[i]}${n1[i+1]}`;
-      regex = new RegExp(check_str,'g');
-      test_n2 = n2.replace(regex,'');
-      if(test_n2!==n2){
-          return true;
-      }
+const checkNick=(name, check)=>{
+    let regex;
+    for(let i=0;i<name.length-1;i++){
+        regex = new RegExp(`${name[i]}${name[i+1]}`,'g');
+        if(regex.test(check)) { return false }
+    }
+    return true;
   }
-  return false;
-}
 //1. 닉네임길이 오름차순 정렬
 //2. for문을 통해 하나씩 checkNick(n1, n2)
 //  ** 이전에 비교한 닉네임은 비교하지 않음 **
