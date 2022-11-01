@@ -48,12 +48,46 @@ function findOvrlapUsers(user, user의_친구목록, friends) {
   return 해당유저의친구삭제overlapUser;
 }
 
+// 중복 키워드 삭제 함수
+function deleteDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
+// visitors중 친구인 사람 삭제
+function delteFriends(user의_친구목록, visitors) {
+  return visitors.filter((visitor) => !user의_친구목록.includes(visitor));
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const user의_친구목록 = getFriendsArr(user, friends);
   const overlapUsers = findOvrlapUsers(user, user의_친구목록, friends);
 
+  const 중복없는overlapUsers = deleteDuplicates(overlapUsers);
+  const 친구제외visitors = delteFriends(user의_친구목록, visitors);
+  const 추천친구목록 = deleteDuplicates([
+    ...중복없는overlapUsers,
+    ...친구제외visitors,
+  ]);
+  const score = {};
+  추천친구목록.forEach((id) => (score[id] = 0));
+
   return answer;
 }
 
 module.exports = problem7;
+
+problem7(
+  "mrko",
+
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
