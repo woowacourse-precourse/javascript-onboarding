@@ -1,12 +1,9 @@
 function problem1(pobi, crong) {
-
   if (exceptionPage(pobi, crong)) return -1;
 
-  // 포비 점수 배열
   const pobiScore = [];
   pobi.forEach(page => pobiScore.push(pageScore(page)));
 
-  // 크롱 점수 배열
   const crongScore = [];
   crong.forEach(page => crongScore.push(pageScore(page)));
 
@@ -16,13 +13,11 @@ function problem1(pobi, crong) {
   return gameWinner(pobiResultScore, crongResultScore);        
 }
 
-// 페이지의 예외처리
 function exceptionPage(pobi, crong) {
   if (pobi[1] === 1 || crong[1] === 1 || pobi[0] === 400 || crong[0] === 400) return true; // 시작면으로 끝나거나 끝면으로 시작 할 경우
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return true; // 페이지가 순서대로 없을 경우
 }
 
-// 페이지 점수 계산
 function pageScore(page) {
   const pageSplit = page.toString().split('');
   const add = pageSplit.reduce((fir, idx) => fir + idx/1, 0);
