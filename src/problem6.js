@@ -7,15 +7,15 @@ function problem6(forms) {
     }
   }
   for (let i = 0; i < forms.length - 1; i++) {
-    for (let j = i; j < forms.length; j++) {
-      if (isSimilarName(forms[i][1], forms[j][1]) == 1) {
+    for (let j = i + 1; j < forms.length; j++) {
+      if (isSimilarName(forms[i][1], forms[j][1]) === 1) {
         if (!result.includes(forms[i][0])) result.push(forms[i][0]);
         if (!result.includes(forms[j][0])) result.push(forms[j][0]);
       }
     }
   }
   console.log(result);
-  return result;
+  return result.sort();
 }
 
 function isRightDomain(email) {
@@ -31,7 +31,7 @@ function isKoreanName(name) {
 }
 
 function isSimilarName(name1, name2) {
-  if (name1.length == 1 || name2.length == 1) return -1;
+  if (name1.length === 1 || name2.length === 1) return -1;
   else {
     for (let i = 0; i < name1.length - 1; i++) {
       if (name2.indexOf(name1.substr(i, 2)) !== -1) return 1;
