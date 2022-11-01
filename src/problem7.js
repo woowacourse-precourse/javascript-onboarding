@@ -40,6 +40,15 @@ function problem7(user, friends, visitors) {
     })
   })
 
+  visitors.map((visitor) => {
+    if (!recommendedCandidate[visitor]) {
+      recommendedCandidate[visitor] = {
+        score: 1,
+      }
+    }
+    else recommendedCandidate[visitor].score++;
+  })
+
   return answer;
 }
 
