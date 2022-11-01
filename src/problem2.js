@@ -33,15 +33,6 @@ function checkErrors(word) {
   return "Not Error";
 }
 
-function checkDuplicates(word) {
-  for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
-    if (word[wordIndex] === word[wordIndex + 1]) {
-      return removeDuplicates(word);
-    }
-  }
-  return word;
-}
-
 function removeDuplicates(word) {
   const wordLength = word.length;
   let removedResult = "";
