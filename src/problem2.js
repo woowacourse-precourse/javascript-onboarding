@@ -24,9 +24,10 @@ const getRedundantDeletedString = (str) => {
   for (let i = 1; i < str.length; i++) {
     if (str[i] !== processedOutput[processedOutput.length - 1]) {
       processedOutput += str[i];
-    } else {
-      processedOutput = processedOutput.slice(0, -1);
+      continue;
     }
+
+    processedOutput = processedOutput.slice(0, -1);
   }
   return processedOutput;
 };
