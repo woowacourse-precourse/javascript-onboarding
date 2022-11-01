@@ -26,7 +26,7 @@ function problem6(forms) {
       crr = forms[i][1][j] //현재 단어
       for ( k = 0 ; k < forms.length ; k++){
         //다른 유저 순회
-        console.log(crr, forms[k][1])
+        //console.log(crr, forms[k][1])
         if(
           forms[k][1].includes(crr) // 다른 유저 이름 배열에 현재 이름 있는지 확인
           && k != i // 같은 유저일 경우 검사하지 않음

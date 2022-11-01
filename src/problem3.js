@@ -1,11 +1,11 @@
 function problem3(number) {
   var answer = 0 ;
   let number_add = [];
-  let last_add = [] 
+  let last_add = [] ;
   //console.log(number)
 
   for (i = 1 ; i <= number ; i++) {
-    let n = i
+    let n = i;
     do {
       number_add.push(n % 10);  
       n = Math.floor(n / 10);  
@@ -25,7 +25,7 @@ function problem3(number) {
     }
   }
   
-  console.log("마지막 배열",answer)//3,6,9 갯수 세기
+  //console.log("마지막 배열",answer)//3,6,9 갯수 세기
   return answer
 }
 
