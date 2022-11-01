@@ -10,6 +10,15 @@ const sumOfEachDigit = (num) => {
   }
   return sum
 }
+
+const multiplyOfEachDigit = (num) => {
+  let mul = 1
+  while (num > 0) {
+    let digit = num % 10
+    num = (num - digit) / 10
+    mul *= digit
+  }
+  return mul
 }
 
 module.exports = problem1;
