@@ -2,6 +2,8 @@ function problem2(cryptogram) {
   var answer;
   let rslt;
 
+  if (!checkValid(cryptogram)) return -1;   //예외처리
+
   rslt = checkStr(cryptogram)
   while (rslt != "" && rslt != -1) {
     cryptogram = rslt;
@@ -12,6 +14,13 @@ function problem2(cryptogram) {
   else if (rslt == -1) answer = cryptogram; //연속되는 문자가 더이상 없는 경우
 
   return answer
+}
+
+function checkValid(str) {
+  if (str.length <= 1 || str.length >= 1000) return false;  //문자열 길이는 1이하 1000이상일 수 없음
+
+  const isLowerCase = str => str === str.toLowerCase();   //문자열은 소문자로 이루어져 있어야함.
+  if (!isLowerCase) return false;
 }
 
 //연속되는 문자가 있는지 체크하는 함수
