@@ -1,7 +1,6 @@
 function problem5(money) {
   var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   let m = money;
-  let count = 0;
 
   for (let i = 0; m > 0; i++) {
     if (m / 50000 >= 1) {
