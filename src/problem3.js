@@ -1,5 +1,5 @@
 function problem3(number) {
-  if (incorrectInput(number)) {
+  if (checkInputValid(number)) {
     return 0
   }
   const regEx = /[369]/g;
@@ -13,7 +13,7 @@ function problem3(number) {
   return array.length;
 }
 
-function incorrectInput(number) {
+function checkInputValid(number) {
   if(number < 1 || number > 1000) return true;
   if(!Number.isInteger(number)) return true;
   if(number < 3) return true
