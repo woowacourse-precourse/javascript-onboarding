@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 요구사항 작성
+[] 닉네임의 두 글자 이상의 문자가 연속적으로 있는지 확인한다.
+[] 중복된 닉네임을 가진 지원자의 이메일을 찾는다.
+[] 이메일을 오름차순으로 정렬한다.
