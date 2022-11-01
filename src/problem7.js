@@ -1,10 +1,12 @@
 function problem7(user, friends, visitors) {
-  return recommendFriendApp([user, friends, visitors]);
+  return recommendFriendApp(user, friends, visitors);
 }
 
 function recommendFriendApp(user, friends, visitors) {
   const friendRelationship = createRelationship(friends);
-  const scoreBoard = calcFriendScore(user, friendRelationship, calcVisitorScore(visitors));
+  const visitorScoreBoard = calcVisitorScore(user, friendRelationship, visitors);
+  const scoreBoard = calcFriendScore(user, friendRelationship, visitorScoreBoard);
+  console.log(scoreBoard);
   return sortByScore(scoreBoard).slice(0, 5);
 }
 
@@ -16,15 +18,15 @@ function createRelationship(friends) {
   }, new Map());
 }
 
-function calcVisitorScore(visitors) {
+function calcVisitorScore(user, friendRelationship, visitors) {
   return visitors.reduce((dict, visitor) => {
-    dict.set(visitor, dict.get(visitor) + 1 || 1);
+    if (!(friendRelationship.get(user)||[]).includes(visitor) && visitor !== user) dict.set(visitor, dict.get(visitor) + 1 || 1);
     return dict;
   }, new Map());
 }
 
 function calcFriendScore(user, friendRelationship, scoreBoard) {
-  for (let userFriend of friendRelationship.get(user)) {
+  for (let userFriend of (friendRelationship.get(user)||[])) {
     friendRelationship.get(userFriend).forEach((friend) => {
       if (!friendRelationship.get(user).includes(friend) && friend !== user) scoreBoard.set(friend, scoreBoard.get(friend) + 10 || 10);
     });
