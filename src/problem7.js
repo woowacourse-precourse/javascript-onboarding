@@ -33,4 +33,8 @@ function calcScoreMap(user, relationshipMap, scoreListMap) {
   return scoreListMap;
 }
 
+function sortByScoreToNameArr(scoreListMap) {
+  return Array.from(scoreListMap).sort((a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1])).map(friendInfo=>friendInfo[0]);
+}
+
 module.exports = problem7;
