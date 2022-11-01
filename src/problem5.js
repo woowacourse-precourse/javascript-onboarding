@@ -5,11 +5,12 @@
 */
 
 function problem5(money) {
-  const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  return getNumberOfEachMoneyUnits(money, moneyUnits);
+  return getNumberOfEachMoneyUnits(money);
 }
 
-const getNumberOfEachMoneyUnits = (money, moneyUnits) => {
+const getNumberOfEachMoneyUnits = (money) => {
+  const moneyUnits = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+
   return moneyUnits.map((moneyUnit) => {
     const maxCountOfUnit = Math.floor(money / moneyUnit);
     money -= maxCountOfUnit * moneyUnit;
