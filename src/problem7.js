@@ -20,11 +20,27 @@ function getExcludedFriends(user, friendsMap) {
   return map;
 }
 
+// 사용자와 함께 아는 친구의 수를 확인하여 점수를 주는 기능
+function scoreFriendsMayKnow(user, friendsMap, excludedFriends) {
+  const map = new Map();
+  friendsMap.get(user).forEach((cur) => {
+    friendsMap.get(cur).forEach((target) => {
+      if (!excludedFriends.has(target)) {
+        map.has(target)
+          ? map.set(target, map.get(target) + 10)
+          : map.set(target, 10);
+      }
+    });
+  });
+  return map;
+}
+
 // solution
 function solution(user, friends, visitors) {
   const friendsMap = getFriendsMap(friends);
   const excludedFriends = getExcludedFriends(user, friendsMap);
-  console.log(excludedFriends);
+  const scoreMap = scoreFriendsMayKnow(user, friendsMap, excludedFriends);
+  console.log(scoreMap);
 }
 
 function problem7(user, friends, visitors) {
