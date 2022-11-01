@@ -51,6 +51,10 @@ function problem6(forms) {
   });
 
 
+  console.log(subStringArray);
+  console.log(forms);
+
+
   subStringArray.forEach( (s) => {
     let cnt = 0;
     const tmpArr = [];
@@ -59,14 +63,16 @@ function problem6(forms) {
           tmpArr.push(f[0]);
           cnt++;
         }
-    })
+    });
 
     if(cnt >= 2){
-      answer.add(tmpArr);
+      tmpArr.forEach( target => {
+        answer.add(target);
+      })
     }
   })
 
-  return Array.from(answer.values())[0].sort();
+  return Array.from(answer.values()).sort();
 }
 
 module.exports = problem6;
