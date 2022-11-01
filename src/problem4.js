@@ -30,7 +30,14 @@ function problem4(word) {
     Z: "A",
     " ": " ",
   };
- 
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] == arr[i].toUpperCase()
+      ? (covertedArr += dic[arr[i]])
+      : (covertedArr += dic[arr[i].toUpperCase()].toLowerCase());
+  }
+
+  console.log(covertedArr);
+  answer = covertedArr;
   return answer;
 }
 module.exports = problem4;
