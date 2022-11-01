@@ -304,4 +304,21 @@ describe("problem7", () => {
       )
     ).toEqual("Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다");
   });
+
+  test('사용자 아이디는 알파벳 소문자로만 이루어져 있다. 아닌 경우 "Error: user의 아이디는 알파벳 소문자로만 이루어져 있어야 한다"라는 문자열을 반환한다.', () => {
+    expect(
+      problem7(
+        "MRKO",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual("Error: user의 아이디는 알파벳 소문자로만 이루어져 있어야 한다");
+  });
 });

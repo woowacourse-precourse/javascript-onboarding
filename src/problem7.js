@@ -23,6 +23,10 @@ function problem7(user, friends, visitors) {
   if (visitors.length < 0 || visitors.length > 10000 || !Array.isArray(visitors))
     return "Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다";
 
+  // 사용자 아이디는 알파벳 소문자로만 이루어져 있다. 아닌 경우 "Error: user의 아이디는 알파벳 소문자로만 이루어져 있어야 한다"라는 문자열을 반환한다.
+  const regex = /^[a-z]*$/;
+  if (!regex.test(user)) return "Error: user의 아이디는 알파벳 소문자로만 이루어져 있어야 한다";
+
   // friends를 순회하여 user의 친구를 배열에 담는다.
   const userFriends = [];
 
