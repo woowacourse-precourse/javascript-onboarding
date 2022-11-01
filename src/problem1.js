@@ -5,6 +5,16 @@ function problem1(pobi, crong) {
   2. 가장 큰 수 찾기
   3. 포비와 크롱의 가장 큰 수 비교하여 최종 정답 반환
   */
+
+  // 1. Validation Check
+  if (pobi[0] === 1 || pobi[0] === 399) return -1;
+  if (crong[0] === 1 || crong[0] === 399) return -1;
+
+  for (let i = 0; i < pobi.length - 1; i++)
+    if (pobi[i] + 1 !== pobi[i + 1]) return -1;
+  
+  for (let i = 0; i < crong.length - 1; i++)
+    if (crong[i] + 1 !== crong[i + 1]) return -1;
 }
 
 module.exports = problem1;
