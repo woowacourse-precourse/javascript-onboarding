@@ -13,6 +13,4 @@ function problem3(number) {
   return answer
 }
 
-problem3(13)
-
 module.exports = problem3
