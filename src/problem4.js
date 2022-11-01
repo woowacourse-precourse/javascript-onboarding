@@ -3,9 +3,9 @@ function problem4(word) {
   let uppercaseReverseOrdered = ["Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"];
   let lowercaseOrdered = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   let lowercaseReverseOrdered = ["z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"];
-  var referenceIndex = 0;
+  let referenceIndex = 0;
 
-  var wordArray = Array.from(word);
+  let wordArray = Array.from(word);
   for (let index = 0; index < word.length; index++) {
     if (uppercaseOrdered.includes(wordArray[index])) {
         referenceIndex = uppercaseOrdered.indexOf(wordArray[index]);
@@ -17,7 +17,7 @@ function problem4(word) {
         continue;
     }
 }
-  var answer = wordArray.join('');
+  let answer = wordArray.join('');
   return answer;
 }
 
