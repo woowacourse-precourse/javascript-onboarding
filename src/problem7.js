@@ -43,7 +43,22 @@
  * @returns {string[]} 친구 추천 규칙에 따라 점수가 높은 5인의 추천인
  */
 function problem7(user, friends, visitors) {
-  var answer;
+  const FRIEND_SCORE = 10;
+  const VISIT_SCORE = 1;
+  const MAX_RECOMMENDATION = 5;
+
+  const users = getUsers(friends, visitors);
+
+  scoreUsersFriendShip(users, user, FRIEND_SCORE);
+  scoreVisitedUsers(users, visitors, VISIT_SCORE);
+
+  const recommendedFriends = getRecommendedFriends(users, user);
+  recommendedFriends.sort(compareUser);
+
+  const answer = recommendedFriends
+    .map(({ name }) => name)
+    .slice(0, MAX_RECOMMENDATION);
+
   return answer;
 }
 
@@ -153,6 +168,21 @@ function getRecommendedFriends(users, user) {
   });
 
   return recommended;
+}
+
+/**
+ * 점수가 높은 순으로 정렬하고, 만약 점수가 같다면 이름 순으로 정렬하는 비교 함수
+ *
+ * @param {SimpleUser} a 이름과 점수를 가진 유저 객체
+ * @param {SimpleUser} b 이름과 점수를 가진 유저 객체
+ * @returns 앞에 배치할 경우 -1, 뒤에 배치할 경우 1, 둘다 아니면 0
+ */
+function compareUser(a, b) {
+  if (a.score === b.score) {
+    return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+  }
+
+  return a.score > b.score ? -1 : 1;
 }
 
 module.exports = problem7;
