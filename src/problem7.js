@@ -27,4 +27,16 @@ const getFriendsRelation = (friends) => {
   return friendsRelation;
 };
 
+const visitScore = (score, visitors) => {
+  visitors.forEach((visitor) => {
+    if (!score[visitor]) {
+      score[visitor] = 1;
+    } else {
+      score[visitor] += 1;
+    }
+  });
+
+  return score;
+};
+
 module.exports = problem7;
