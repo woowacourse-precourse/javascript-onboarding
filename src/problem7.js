@@ -27,6 +27,14 @@ function problem7(user, friends, visitors) {
       else scoreMap.set(man, 1);
     }
   })
+
+  const finalRecommendedFr = [...scoreMap].sort((prev, next) => {
+    if(prev[1]===next[1]) return next[0] - prev[0];
+    return next[1] - prev[1];
+  }
+  ).map(item => item[0]);
+
+  return finalRecommendedFr.slice(0, 5);
 }
 
 module.exports = problem7;
