@@ -59,6 +59,14 @@ function problem7(user, friends, visitors) {
         }
     }
 
+	// 5. 조건 안맞는 사용자 제거 기능
+	function delUser() {
+        for (let s1 of score) {
+            if(s1[0] == user) score.delete(s1[0]);
+            if(isFrd(s1[0],user)) score.delete(s1[0]);
+        }
+    }
+
 	return answer;
 }
 
