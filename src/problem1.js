@@ -10,6 +10,13 @@ function cal(page) {
   return Math.max(plus, mul);
 }
 
+function findMM(left, right) {
+  const leftM = cal(left);
+  const rightM = cal(right);
+
+  return Math.max(leftMax, rightMax);
+}
+
 function isValidPg(page) {
   if (page[0] === 1 || page[1] === 400) return false;
   else return true;
@@ -25,6 +32,9 @@ function problem1(pobi, crong) {
 
   if (!isValidPg(pobi) || !isValidPg(crong)) return -1;
   if (!isContinuityPg(pobi) || !isContinuityPg(crong)) return -1;
+
+  pobiMN = findMM(pobi[0], pobi[1]);
+  crongMN = findMM(crong[0], crong[1]);
 
   return answer;
 }
