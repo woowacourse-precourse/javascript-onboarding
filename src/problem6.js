@@ -5,6 +5,10 @@ function problem6(forms) {
   // forms의 길이가 10,000명이하가 아닌 경우 "Error: forms의 길이가 10000이하이어야 합니다"라는 문자열을 반환한다.
   if (forms.length > 10000) return "Error: forms의 길이가 10000이하이어야 합니다";
 
+  // 이메일은 'email.com' 도메인으로만 제한하며 'email.com' 도메인이 아닌 경우 'Error: 신청할 수 있는 이메일은 "email.com" 도메인으로만 제한됩니다'라는 문자열을 반환한다.
+  const emailForm = "email.com";
+  if (!forms.every(([email, _]) => email.includes(emailForm))) return 'Error: 신청할 수 있는 이메일은 "email.com" 도메인으로만 제한됩니다';
+
   // 모든 크루들의 닉네임의 두글자씩 딴 배열을 만들고 두 글자씩 딴 배열에서 중복된 값을 추려낸다.
   const splittedNickNames = [];
   const duplicateNickNames = [];

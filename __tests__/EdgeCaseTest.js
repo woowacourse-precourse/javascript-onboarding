@@ -123,6 +123,12 @@ describe("problem6", () => {
   test('forms의 길이가 10,000명이하가 아닌 경우 "Error: forms의 길이가 10000이하이어야 합니다"라는 문자열을 반환한다.', () => {
     expect(problem6(Array.from({ length: 10001 }))).toEqual("Error: forms의 길이가 10000이하이어야 합니다");
   });
+
+  test('이메일은 "email.com" 도메인으로만 제한하며 "email.com" 도메인이 아닌 경우 "Error: 신청할 수 있는 이메일은 "email.com" 도메인으로만 제한된다."라는 문자열을 반환한다.', () => {
+    expect(problem6(["jm@mail.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"])).toEqual(
+      'Error: 신청할 수 있는 이메일은 "email.com" 도메인으로만 제한됩니다'
+    );
+  });
 });
 
 describe("problem7", () => {
