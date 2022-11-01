@@ -106,9 +106,9 @@ const problem7 = (user, friends, visitors) => {
   const MUTUAL_FRIEND_POINT = 10;
   // 타임라인 방문 점수
   const VISITOR_POINT = 1;
-  const friendListMap = getFriendListMap(friends);
-  const userFriendList = friendListMap.get(user);
-  const pointListMap = getInitialPointListMap(friendListMap);
+  const friendListMap = getFriendListMap(friends) || [];
+  const userFriendList = friendListMap.get(user) || [];
+  const pointListMap = getInitialPointListMap(friendListMap) || [];
 
   // 함께 아는 친구 도출
   for (let singleUserInfo of friendListMap) {
