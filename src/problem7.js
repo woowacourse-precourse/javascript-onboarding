@@ -1,4 +1,5 @@
 function problem7(user, friends, visitors) {
+
   const totalScore = getScore(friends,visitors);
   
   // 점수를 기준으로 정렬
@@ -13,6 +14,7 @@ function problem7(user, friends, visitors) {
   
   
 } 
+  
 
 //user의 친구 목록
 function getUserFriends(userName,friendsList){
@@ -29,23 +31,28 @@ function getUserFriends(userName,friendsList){
   return userFriends
 }
 
+// 점수 목록을 얻기 위함
 function getScore(friends,visitors){
   // user친구의 친구 목록
   const myFriends = getUserFriends(user,friends);
   let  friendOfFriendsSet= [];
   for(let friend of myFriends){ 
     friendOfFriendsSet.push(getUserFriends(friend,friends));
-    
-  }
+  } 
+
   // 친구의 친구목록에서 user이름 제외
   let friendOfFriends = [];
   for(let ele of friendOfFriendsSet.flat()){
     if(!ele.includes(user)) friendOfFriends.push(ele)
   }
+
+  // 이미 친구인 사람은 친구의 친구 목록에서 제외함.
+  const realFriends = friendOfFriends.filter(x=>!myFriends.includes(x))
+
   
   // 함께 아는 친구에게 10점씩 부여
   let score = {};
-  friendOfFriends.forEach((x)=>{
+  realFriends.forEach((x)=>{
     score[x] = (score[x] || 0)+10;
   });
   
@@ -61,10 +68,21 @@ function getScore(friends,visitors){
   
 }
 
-const user = "mrko";
-const friends = [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ]  ;
-const visitors =  ["bedi", "bedi", "donut", "bedi", "shakevan"];
+// const user = "Walter";
+// const friends = [
+//   ["Christa", "Alyce"],
+//   ["Hobart", "Retha"],
+//   ["Elijah", "Josh"],
+//   ["Cecil", "Lamont"],
+//   ["Eliza", "Lamont"],
+//   ["Austyn", "Retha"],
+//   ["Retha", "Mara"],
+//   ["Walter", "Lamont"],
+//   ["Retha", "Walter"],
+//   ["Urban", "Walter"],
+// ];
+// const visitors = ["Cecil", "Eliza", "Adonis", "Mara"];
 
-console.log(problem7(user,friends,visitors));
+// console.log(problem7(user,friends,visitors));
 module.exports = problem7;
 
