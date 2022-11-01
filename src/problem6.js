@@ -1,3 +1,22 @@
+function checkNickname(nickname) {
+  const allowedNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+  if (allowedNickname.test(nickname) === false) {
+    throw new Error("닉네임은 한글로만 작성해주세요");
+  }
+}
+checkNickname(nickname);
+
+function checkEmailVaild(email) {
+  const isEmailValid = /[a-z0-9]+@+email.com$/;
+  if (email.length < 11 || email.length > 19) {
+    throw new Error("이메일이 길이는 11자 이상 20자 미만이어야 합니다");
+  }
+  if (isEmailValid.test(email) === false) {
+    throw new Error("이메일의 형식은 @email.com입니다.");
+  }
+}
+checkEmailVaild(email);
+
 // 이중 배열에서 이름 배열을 만들어주는 함수
 function crewNameArray(duplicateArray) {
   let crewNameArr = [];
