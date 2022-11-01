@@ -10,6 +10,11 @@
  */
 
 function problem6(forms) {
+  if (!isValidInput(forms)) {
+    console.log("Error: Invalid Input");
+    return -1;
+  }
+
   const nicknames = getNickname(forms);
   const seqLettersDuplicated = findDuplicatedLetters(
     getEverySeqLetters(nicknames)
@@ -18,6 +23,17 @@ function problem6(forms) {
   const emails = findEmails(forms, nicknameIndexes).sort();
 
   return emails;
+}
+
+function isValidInput(forms) {
+  let isValid;
+  if (!(forms.length >= 1 && forms.length <= 10000)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function getNickname(forms) {
