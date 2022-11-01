@@ -16,6 +16,10 @@ function problem1(pobi, crong) {
     return -1;
   }
 
+  if (pobi[0] < 1 || pobi[0] > 400 || crong[0] < 1 || crong[0] > 400) {
+    return -1;
+  }
+
   const maxNum = (pageArr) => {
     const resultArr = [];
 
