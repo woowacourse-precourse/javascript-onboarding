@@ -38,6 +38,16 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  // 방문자 +1
+  for (i = 0; i < visitors.length; i++){
+    const visitor = visitors[i];
+    // 이미 친구인 사람 제외
+    if (!usersFriendsName.includes(visitor))
+      // 점수 +1
+      if (recommendUsers[visitor] !== undefined) recommendUsers[visitor] += 1;
+      else recommendUsers[visitor] = 1
+  }
 }
 
 module.exports = problem7;
