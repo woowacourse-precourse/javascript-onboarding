@@ -34,7 +34,20 @@ function sortArr(score) {
 }
 
 function problem7(user, friends, visitors) {
-  
+  const friendsArr = setFriendsArr(friends);
+  const visitorsArr = setVisitersArr(visitors);
+  let result = new Array();
+
+  // 사용자의 친구 제외한 배열
+  if(friendsArr.has(user)) {
+    friendsArr.get(user).forEach(value => {
+      friendsArr.delete(value)
+      visitorsArr.delete(value)
+    });
+  }
+  friendsArr.delete(user)
+ 
+  return pullPoint(score, result);
 }
 
 module.exports = problem7;
