@@ -58,6 +58,13 @@ function calculateUnknowFriendsScore(
   return UnknowFriendsScore;
 }
 
+function limitFivePeople(result) {
+  return result
+    .flat()
+    .filter((type) => typeof type === "string")
+    .slice(0, 5);
+}
+
 function getSomePeopleWithFriendIKnow(UnknowFriendsScore, user, friendOfUser) {
   [user, ...friendOfUser].forEach((name) => UnknowFriendsScore.delete(name));
   return UnknowFriendsScore;
@@ -92,7 +99,7 @@ function problem7(user, friends) {
     friendOfUser
   );
   const sortResult = sortSomePeopleWithFriendIKnow(somePeopleWithFriendIKnow);
-  return;
+  return limitFivePeople(sortResult);
 }
 
 module.exports = problem7;
