@@ -49,7 +49,9 @@ function countScore(share_user,visit_user){
   let recommend_user=[];
   let sort = new Map([...user_score].sort((a, b) => b[1] - a[1]));
   for(let[key,value] of sort){
+    if(value!=0){
       recommend_user.push(key);
+    }
   }return recommend_user;
 }
 function problem7(user, friends, visitors) {
