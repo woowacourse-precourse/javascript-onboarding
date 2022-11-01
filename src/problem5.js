@@ -6,8 +6,22 @@ for loop으로 돈 iterate
 */
 
 function problem5(money) {
-  var answer;
+  var answer = solution(money);
   return answer;
+}
+
+function solution(money) {
+  let result = [0, 0, 0, 0, 0 ,0 , 0, 0, 0];
+  let moneyType = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  
+  for (var i=0; i<=moneyType.length-1; i++) {
+    if (i == 0) {
+      result[i] = Math.floor(money / moneyType[i]);
+    } else {
+      result[i] = Math.floor(Math.floor((money % moneyType[i-1])) / moneyType[i]);
+    }
+  }
+  return result;
 }
 
 module.exports = problem5;
