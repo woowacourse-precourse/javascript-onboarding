@@ -42,6 +42,24 @@ const getFriendListMap = (friends) => {
 };
 
 /**
+ * Point Map 생성 및 초기화
+ * @param {Map<string, string[]>} friendListMap - 친구 관계 Map
+ * @return {Map<string, number>}
+ */
+const getInitialPointListMap = (friendListMap) => {
+  const pointListMap = new Map();
+  // key 값 추출한 array
+  const friendListMapKeyArr = friendListMap.keys();
+
+  // key 를 사용하여 순회하며 초기화
+  for (let singleUserKey of friendListMapKeyArr) {
+    pointListMap.set(singleUserKey, 0);
+  }
+
+  return pointListMap;
+};
+
+/**
  * main 함수
  * @param {string} user
  * @param {string[][]} friends
