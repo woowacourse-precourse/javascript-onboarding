@@ -1,5 +1,8 @@
 function problem7(user, friends, visitors) {
-  var answer = {};
+  var answer = [];
+  let recommFriendObj = {};
+
+
 
   function findFriends (u, f){
     const alreadyFriends = [];
@@ -44,7 +47,7 @@ function problem7(user, friends, visitors) {
           score += point;
         }
       }
-      answer[k] = score;
+      recommFriendObj[k] = score;
       score = 0;
     });
   }
@@ -55,8 +58,16 @@ function problem7(user, friends, visitors) {
   }
 
   function delUserAndAlreadyFriends(){
-    delete answer[user];
-    alreadyFriends.forEach(f => delete answer[f]);
+    delete recommFriendObj[user];
+    alreadyFriends.forEach(f => delete recommFriendObj[f]);
+  }
+
+  function scoreSorting () {
+    let objTols = Object.entries(recommFriendObj);
+    let sorted = objTols.sort((a, b) => b[1] - a[1]);
+    for (n in sorted){
+      answer.push(sorted[n][0]);
+    }
   }
 
   const alreadyFriends = findFriends(user,friends);
@@ -65,6 +76,7 @@ function problem7(user, friends, visitors) {
   scoreChecker(friendssFriends,10);
   visitedChecker(visitors);
   delUserAndAlreadyFriends()
+  scoreSorting ()
 
   return answer;
 }
