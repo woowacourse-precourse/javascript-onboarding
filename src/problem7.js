@@ -19,6 +19,10 @@ function problem7(user, friends, visitors) {
       friendScoreMap = plusPoint(friendScoreMap, friend[0], 10);
     }
   }
+  for (let visitor of visitors) {
+    if (myFriends.includes(visitor)) { continue; }
+      friendScoreMap = plusPoint(friendScoreMap, visitor, 1);
+}
 
 
 }
