@@ -2,7 +2,6 @@ const problem6 = (forms) => {
   let answer;
   const usersInfo = listToDictionary(forms);
   const nicknameParts = parseNames(usersInfo);
-  // overlapNameFind(usersInfo, nicknameParts);
   answer = overlapNameFind(usersInfo, nicknameParts).sort();
   return answer;
 };
@@ -14,7 +13,7 @@ const listToDictionary = (forms) => {
   });
   return users;
 };
-
+//살려줘
 const parseNames = (usersInfo) => {
   let parseName = {};
   Object.values(usersInfo).map((nickname) => {
