@@ -1,3 +1,4 @@
+//problem 1
 /* 기능 1. 책을 임의로 펼친다.
    기능 6. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. */
 let pobiBook = Math.floor(Math.random() * 399) + 1;
