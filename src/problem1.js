@@ -64,6 +64,5 @@ function getWinner(scorePobi, scoreCrong) {
   return winner;
 }
 
-problem1();
 
 module.exports = problem1;
