@@ -52,7 +52,7 @@ function problem7(user, friends, visitors) {
     return scoreOb[b] - scoreOb[a];
   });
 
-  return answer;
+  return answer.splice(0, 5);
 }
 
 module.exports = problem7;
