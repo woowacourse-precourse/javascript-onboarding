@@ -37,10 +37,12 @@ function getFriendsOfFriends(buddies, friends, user) {
     buddyOfBuddy.push(getFriends(person, friends));
   });
 
-  const removeUserList = eliminateUser(buddyOfBuddy, user);
-  const stranger = removeUserList.filter((person) => !buddies.includes(person));
+  const withoutUserList = eliminateUser(buddyOfBuddy, user);
+  const withoutAlreadyFriendsList = withoutUserList.filter(
+    (person) => !buddies.includes(person)
+  );
 
-  return stranger;
+  return withoutAlreadyFriendsList;
 }
 
 function getOverlapFriendObject(list) {
