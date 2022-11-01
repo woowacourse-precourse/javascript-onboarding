@@ -37,11 +37,11 @@ const BookPage = {
   },
   getMulDigits: function (number) {
     let splitedNumber = String(number).split("");
-    return splitedNumber.reduce((a, b) => +a * +b);
+    return splitedNumber.reduce((a, b) => +a * +b, 0);
   },
   getAddDigits: function (number) {
     let splitedNumber = String(number).split("");
-    return splitedNumber.reduce((a, b) => +a + +b);
+    return splitedNumber.reduce((a, b) => +a + +b, 1);
   },
   getBiggestNumber: function () {
     let getLeftBiggestNumber = Math.max(
