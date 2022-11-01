@@ -57,6 +57,17 @@ function calWithPoint(friendsMap, user) {
     });
   }
 }
+// 이미 User와 친구인 사람 삭제 및 본인 삭제
+function alreayFriend(friendsMap, user) {
+  if (friendsMap[user]?.friends != undefined) {
+    const userFriends = friendsMap[user].friends;
+    userFriends.forEach((userFriends) => {
+      delete friendsMap[userFriends];
+    });
+  }
+  // 본인
+  delete friendsMap[user];
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
