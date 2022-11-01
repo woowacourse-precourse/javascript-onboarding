@@ -11,11 +11,16 @@ for (i = 0; i < 26; i++) {
 // 단어를 청개구리 사전을 기준으로 변환해주는 기능
 const convertToTreefrog = (word) => {
   let convertedWord = [];
+  const alphabet = /[a-zA-Z]/;
   for (i = 0; i < word.length; i++) {
-    for (j = 0; j < Object.keys(treefrogDic).length; j++) {
-      if (word[i] == Object.keys(treefrogDic)[j]) {
-        convertedWord.push(Object.values(treefrogDic)[j]);
+    if (alphabet.test(word[i])) {
+      for (j = 0; j < Object.keys(treefrogDic).length; j++) {
+        if (word[i] == Object.keys(treefrogDic)[j]) {
+          convertedWord.push(Object.values(treefrogDic)[j]);
+        }
       }
+    } else {
+      convertedWord.push(word[i]);
     }
   }
   return convertedWord;
