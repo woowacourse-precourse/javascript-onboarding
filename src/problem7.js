@@ -51,7 +51,7 @@ function problem7(user, friends, visitors) {
     });
 
   const rankDismantled = rank
-  .map(member => rank[member][0])
+  .map(member => rank[0])
   const answer = rankDismantled.slice(0, 5);
   return answer;
   }
