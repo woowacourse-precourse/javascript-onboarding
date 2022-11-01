@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  const result = cryptogram.split("").reduce((acc, curr) => {
+  const answer = cryptogram.split("").reduce((acc, curr) => {
     if (acc[acc.length - 1] === curr) {
       acc.pop();
     } else {
@@ -8,7 +8,7 @@ function problem2(cryptogram) {
     return acc;
   }, []);
 
-  return result.join("");
+  return answer.join("");
 }
 
 module.exports = problem2;
