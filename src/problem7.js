@@ -2,7 +2,7 @@
  * 기능 정의
  *
  * - [x] 전체 유저 목록 생성하기
- * - [ ] 사용자와 함께 아는 친구 있는 유저들을 그 수만큼 친구 추천 점수 높이기
+ * - [x] 사용자와 함께 아는 친구 있는 유저들을 그 수만큼 친구 추천 점수 높이기
  * - [ ] 사용자의 타임 라인에 방문한 유저들의 점수를 높이기
  * - [ ] 사용자와 사용자의 친구를 제외하고, 점수가 0이 아닌 유저들로 친구 추천 목록 구성하기
  * - [ ] 친구 추천 목록을 점수 순, 이름 순으로 정렬하기
@@ -75,6 +75,36 @@ function createUser(users, userA, userB) {
     friends: [...(users[userA]?.friends || []), userB],
     score: 0,
   };
+}
+
+/**
+ * 사용자가 함께 아는 친구가 있는 유저들을 그 수 만큼 친구 추천 점수를 높이는 함수
+ *
+ * @param {User[]} users 전체 유저가 담긴 배열
+ * @param {User} user 사용자
+ * @param {number} score 사용자와 함께 안다면 증가시킬 점수
+ * @returns
+ */
+function scoreUsersFriendShip(users, user, score) {
+  if (!users[user]) {
+    return;
+  }
+
+  const userFriends = users[user].friends;
+
+  Object.entries(users).forEach(([key, value]) => {
+    if (userFriends.includes(key) || key === user) {
+      return;
+    }
+
+    const { name, friends } = value;
+
+    friends.forEach((friend) => {
+      if (userFriends.includes(friend)) {
+        users[name].score += score;
+      }
+    });
+  });
 }
 
 module.exports = problem7;
