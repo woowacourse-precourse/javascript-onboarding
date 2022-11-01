@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 구현할 기능 목록
+
+- 닉네임을 두글자씩 뽑아서 개수를 세는 기능
+- 세어 놓은 개수와 비교하여 1이상일 경우(=겹칠 경우)를 찾는 기능
