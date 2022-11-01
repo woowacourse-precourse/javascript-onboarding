@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   var answer = [];
   var friMap = new Map()
+  var value = new Map()
 
   for(let i = 0; i<friends.length;i++) {
     if(friMap.has(friends[i][0])) {
@@ -15,7 +16,23 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  const myFri = friMap.get(user)
+  for(let i = 0; i<friMap; i++) {
+    let friendsFri = friMap.get(myFri[i]);
+    for(let j = 0; j<friendsFri.length; j++){
+      if(friendsFri[j] == user) {continue}
+      if(ScreenOrientation.has(friendsFri[j])) {
+        let value1 = value.get(friendsFri[j])+10
+        value.delete(friendsFri[j])
+        value.set(friendsFri[j], value1)
+      } else {
+        value.set(friendsFri[j], 10)
+      }
+    }
+  }
   
+
+
 
  
 
