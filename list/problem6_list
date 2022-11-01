@@ -1,0 +1,10 @@
+*requirements 함수
+(제한사항을 확인하는 함수)
+제한사항: 크루 수가 1 이상, 10,000 이하인지 확인
+제한사항: 이메일 길이가 11자 이상 20자 미만인지, 도메인이 email.com인지 확인
+제한사항: 닉네임이 한글인지, 길이가 1자 이상 20자 미만인지 확인해서 모두 맞다면 true 반환
+*problem6 함수
+- forms를 복사한 formsDuplicate 변수 할당
+- requirements를 통과하면 닉네임을 두 글자씩 slice해서 compare 변수에 할당하고, formsDuplicate에서 compare이 포함된 원소를 찾아 모두 duplicates에 넣는다
+- formsDuplicate에서 compare이 포함된 원소를 모두 제거하고 answer에 duplicates를 push
+- loop 끝나면 answer는 이메일 주소만 남긴 후 알파벳순으로 정리해서 반환

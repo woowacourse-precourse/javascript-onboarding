@@ -1,0 +1,35 @@
+<--problem7 외 함수-->
+*checkInLength 함수
+(배열의 모든 아이디의 길이가 1 이상 30 이하인 배열인지 확인하는 함수)
+*findDuplicates 함수
+(배열에 중복되는 원소가 없는지 확인하는 함수)
+*findFriends 함수
+(친구관계 배열에서 어느 사람의 친구인 사람들의 아이디만 반환하는 함수)
+
+*problem7 함수
+- friendsScore 오브젝트를 정의하고, userFriends를 초기화
+<--제한사항들을 if 조건문으로 확인하는 구간-->
+제한사항: user 길이가 1 이상 30 이하인 소문자 문자열
+제한사항: user가 소문자로 이루어진 배열
+제한사항: friends 길이가 1 이상 10,000 이하인 배열
+제한사항: friends 각 원소가 길이가 2인 배열
+제한사항: checkIdLength 함수로 friends 배열의 아이디 길이가 제한사항에 맞는지
+제한사항: findDuplicates 함수로 friends 배열에 중복 원소가 있는지
+<--제한사항들을 if 조건문으로 확인하는 구간 끝-->
+
+<--friends 친구관계 점수 집계-->
+- 13까지 모두 맞다면, userFriends를 findFriends 함수로 user의 친구들만 찾은 배열로 정의
+- userFriendsFriends라는 배열을 정의해서 friends 배열에서 userFriends가 포함된 원소를 찾아서 push, 그리고 userFriendsFriend 배열에서 user를 제외
+- 친구 점수를 집계하는 while loop로 friendsScore 오브젝트를 구성. friendsScore 오브젝트에 userFriendsFriends의 아이디를 key로, 10을 value로 넣는다. friendsScore 오브젝트에 같은 아이디가 있는 경우 해당 key의 value에 10을 더한다
+<--friends 친구관계 점수 집계 끝-->
+
+<--visitors 방문객 점수 집계-->
+제한사항: visitors 길이가 0 이상 10,000 이하인 배열인지 확인
+- visitors의 원소가 friendsScore에 있고 userFriends에 없는 경우, 해당 원소 값에 1을 더하고, 해당 원소가 friendsScore에 없는 경우 visitors 원소와 같은 key에 value 1인 원소를 friendsScore 오브젝트에 더하는 while loop
+<--visitors 방문객 점수 집계 끝-->
+
+<--결과를 정리해서 반환-->
+- for in loop로 friendsScore의 원소를 answerList 배열로 만든다
+- answerList를 점수 높은순으로 sort
+- map 메서드로 answerList의 원소 중 점수가 같은 경우 알파벳순으로 sort하고 아이디만 순서대로 추린다
+- for loop로 answer 배열에 최대 5개까지 answerList의 원소를 push해서 answer를 반환

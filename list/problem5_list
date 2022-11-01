@@ -1,0 +1,6 @@
+*problem5 함수
+- 단위별 denominations 배열을 만든다. [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1]
+제한사항: money가 1 이상 1,000,000 이하인 자연수인지 확인
+- denominations loop. denominations의 매 단위로 money를 나눈 몫(quotient)을 answer에 push
+- money는 매번 단위를 나눈 만큼 뺀 값으로 업데이트
+- loop 끝나면 answer 반환
