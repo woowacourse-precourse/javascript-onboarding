@@ -1,9 +1,9 @@
-function isOverlap(cryptogram) {
+function isNotOverlap(cryptogram) {
   for (let i = 0; i < cryptogram.length - 1; i++) {
-    if (cryptogram[i] == cryptogram[i + 1]) return false;
+    if (cryptogram[i] == cryptogram[i + 1]) return true;
   }
 
-  return true;
+  return false;
 }
 
 function deduplication(cryptogram) {
@@ -19,9 +19,7 @@ function deduplication(cryptogram) {
           cnt++;
         } else break;
       }
-
       i += cnt;
-
       continue;
     }
     str += cryptogram[i];
@@ -35,7 +33,7 @@ function problem2(cryptogram) {
 
   let str = cryptogram;
 
-  while (!isOverlap(str)) {
+  while (isNotOverlap(str)) {
     str = deduplication(str);
   }
 
