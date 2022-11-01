@@ -5,8 +5,24 @@
  */
 
 function problem3(number) {
+  if (!isValidInput(number)) {
+    console.log("Error: Invalid Input");
+    return -1;
+  }
   const totalClap = countTotalClap(number);
+
   return totalClap;
+}
+
+function isValidInput(number) {
+  let isValid;
+  if (!(number >= 1 && number <= 10000)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function countClap(number) {
