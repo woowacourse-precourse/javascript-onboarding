@@ -40,3 +40,17 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+
+//친구 추출 로직을 분리 해보자
+
+
+/**
+ * 기준값을 받아 배열을 순회하여 기준값과 함께 있는 친구를 찾고 기준값을 제거하여 친구 리스트를 반환
+ * @param {String, Array} 기준값과 비교할 배열 입력
+ * @returns 친구 리스트 반환
+ */
+function findFriends(user, friends) {
+  return  friends.map(friendTable => friendTable.filter(friend => !user.includes(friend))).filter(arr => arr.length < 2).flat();
+}
+
