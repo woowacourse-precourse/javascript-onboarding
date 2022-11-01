@@ -6,6 +6,8 @@ function problem1(pobi, crong) {
   //실패 조건 검사
   if(
     (pobi[0] > 400 || pobi[1] > 400 || crong[0] > 400 || crong[1] > 400)//책은 총 400쪽 넘으면 True
+    || (pobi[0] < 1 || pobi[1] < 1 || crong[0] < 1 || crong[1] < 1)
+    // || (1 == pobi[0]|| pobi[1]== 400 || 1 == crong[0] || crong[1] == 400)//시작/마지막면 이면 True
     || (pobi[0]%2 != 1 || crong[0]%2 != 1)//왼쪽이 홀수 아니면 True 
     || (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1])//오른쪽은 왼쪽 + 1 아니면 True
   ){
