@@ -1,6 +1,7 @@
 function problem3(number) {
-  var answer=0;
-  var temp = [0,0,0,0];
+
+var answer=0;
+var temp = [0,0,0,0];
 
   for(let i=1; i<=number; i++) {
     temp[0] = i % 10;
@@ -13,9 +14,8 @@ function problem3(number) {
             answer +=1;
         }
     }
-}
-  return answer;
-  
+  }
+return answer;
 }
 
 module.exports = problem3;
