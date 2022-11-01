@@ -20,13 +20,7 @@
 
 | forms | result |
 | --- | --- |
-| [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
-
----------------------------------------
-첫 forms[0][1]부터 slice(0,2) ~ slice(?,length) 마다 모든 form을 돌면서 includes로 확인
-
-포함되어있으면 새로운 배열에 이메일 넣기 
-원본 배열속 중복닉네임 소유 배열은 제거 -->
+| [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] | -->
 
 # 프리코스 1주차 과제 미션
 
@@ -35,3 +29,4 @@
 ## 기능 목록
 
 - [ ] 닉네임 중복을 확인하는 함수
+- [ ] 중복인 닉네임에 해당하는 이메일 오름차순으로 정렬하는 함수
