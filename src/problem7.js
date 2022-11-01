@@ -4,6 +4,9 @@ function problem7(user, friends, visitors) {
   friends.forEach((friend) => {
     const myfriend = findFriend(friend, user);
     if (!myfriend) return;
+    friends.forEach((friend) => {
+      const friendOfFriend = findFriend(friend, myfriend);
+    });
   });
   return answer;
 }
