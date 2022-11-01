@@ -24,8 +24,7 @@ function problem6(forms) {
   for (const val of nicknameMap.values()) {
     if (val.size > 2) [...val].forEach((id) => answerSet.add(id));
   }
-  var answer;
-  return answer;
+  return [...answerSet].sort().map((id) => id + DOMAIN);
 }
 
 module.exports = problem6;
