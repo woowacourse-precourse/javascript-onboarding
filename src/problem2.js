@@ -1,11 +1,12 @@
 function problem2(cryptogram) {
   let answer;
 
-  const overlapCheck = (arr) => {
+  const overlapCheck = (string) => {
     let new_cryptogram = "";
     let before_char = "";
     let should_delete = false;
     let overlap = false;
+    let cryptogram_arr = string.split("");
 
     // 연속하는 문자 제거하는 기능
     cryptogram_arr.forEach((char) => {
@@ -30,6 +31,18 @@ function problem2(cryptogram) {
     });
     return { new_cryptogram, overlap };
   };
+
+  // 코드 작성
+  while (1) {
+    const { new_cryptogram, overlap } = overlapCheck(cryptogram);
+
+    if (!overlap) {
+      answer = new_cryptogram;
+      break;
+    }
+
+    cryptogram = new_cryptogram;
+  }
 
   return answer;
 }
