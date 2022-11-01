@@ -52,6 +52,13 @@ function problem7(user, friends, visitors) {
         }
     }
 
+	// 4. 방문 점수 추출 기능
+	function setVstScore() {
+        for(let v of visitors) {
+            score.set(v, score.get(v) + 1);
+        }
+    }
+
 	return answer;
 }
 
