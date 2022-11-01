@@ -1,3 +1,27 @@
+function sortScore(score) {
+  let scoreArray = Object.entries(score);
+  sortByScoreAndThenName(scoreArray);
+  return scoreArray;
+}
+
+function sortByScoreAndThenName(scoreArray) {
+  scoreArray.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return -1;
+    }
+    if (a[1] < b[1]) {
+      return 1;
+    }
+
+    if (a[0] < b[0]) {
+      return -1;
+    }
+    if (a[0] > b[0]) {
+      return 1;
+    }
+  });
+}
+
 function getScore(friendOfFriends, score, visitors) {
   scoreFrinedOfFriends(friendOfFriends, score);
   scoreVisitors(visitors, score);
@@ -76,6 +100,7 @@ function problem7(user, friends, visitors) {
   getOriginFriends(user, friends, originFriends);
   getFriendOfFriends(user, friends, originFriends, friendOfFriends);
   getScore(friendOfFriends, score, visitors);
+  const sortedScore = sortScore(score);
 }
 
 function testCode() {
