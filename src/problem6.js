@@ -23,7 +23,7 @@ const isCrewForm = (forms) => {
   return true;
 }
 
-function problem6(forms) {
+const duplicatedNicknameEmail = (forms) => {
   let result = [];
   let duplicatedCount = [];
 
@@ -47,10 +47,12 @@ function problem6(forms) {
       }
     }
   });
+  return result;
+}
 
-  let duplicatedNicknameEmail = result.sort();
-
-  const uniqueEmail = new Set(duplicatedNicknameEmail);
+function problem6(forms) {
+  let sortedDuplicatedEmail = duplicatedNicknameEmail(forms).sort();
+  const uniqueEmail = new Set(sortedDuplicatedEmail);
 
   if (!isCrewNumber(forms)) { throw Error("1이상 10000이하의 크루 인원를 입력해주세요.") }
   if (!isCrewForm(forms)) { throw Error("이메일과 닉네임을 형식에 맞게 입력해주세요.") }
