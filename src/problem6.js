@@ -13,6 +13,8 @@ function problem6(forms) {
         forms[i][1].includes(elem[1].substring(0, 2)) |
         forms[i][1].includes(elem[1].substring(1, 3))
       ) {
+        answer.push(elem[0]);
+        answer.push(forms[i][0]);
       }
     }
   });
