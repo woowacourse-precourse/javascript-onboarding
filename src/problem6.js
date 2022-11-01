@@ -23,7 +23,7 @@ function problem6(forms) {
   forms.forEach((v, idx) => {
     let [email, nickname] = forms[idx];
     if (isWrong(email, nickname)) return;
-    for (let i = 0; i < v[1].length - 1; i++) {
+    for (let i = 0; i < v[1].length - 1; i += 1) {
       const twoChar = v[1].substring(i, i + 2);
       if (twoCharList.has(twoChar)) {
         twoCharList.set(twoChar, twoCharList.get(twoChar) + 1);
