@@ -5,10 +5,10 @@ function problem4(word) {
 
   for(let i=0; i<word.length; ++i){
     let num=0;
-    if(alphaCap.indexOf(word[i]) > 0){
+    if(alphaCap.indexOf(word[i]) >= 0){
       num = 90 - (word[i].codePointAt() - 65);
       answer += String.fromCodePoint(num);
-    } else if(alphaLow.indexOf(word[i]) > 0){
+    } else if(alphaLow.indexOf(word[i]) >= 0){
       num = 122 - (word[i].codePointAt() - 97);
       answer += String.fromCodePoint(num);
     } else{
