@@ -27,15 +27,6 @@ describe("problem2", () => {
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
   });
-  test("case3", () => {
-    expect(problem2("baaaot")).toEqual("bot");
-  });
-  test("case4", () => {
-    expect(problem2("saddaas")).toEqual("sas");
-  });
-  test("case5", () => {
-    expect(problem2("zyelleeyyeyz")).toEqual("");
-  });
 });
 
 describe("problem3", () => {
@@ -60,12 +51,6 @@ describe("problem5", () => {
 
   test("case2", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
-  });
-  test("case3", () => {
-    expect(problem5(104321)).toEqual([2, 0, 0, 4, 0, 3, 0, 2, 1]);
-  });
-  test("case4", () => {
-    expect(problem5(545555)).toEqual([10, 4, 1, 0, 1, 0, 1, 0, 5]);
   });
 });
 
