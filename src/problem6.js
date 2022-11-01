@@ -4,6 +4,10 @@ function problem6(forms) {
   forms.forEach(function (item) {
     map1.set(item[1], item[0]);
   });
+  const nickName = [];
+  forms.forEach(function (item) {
+    nickName.push(item[1]);
+  });
   return answer;
 }
 
