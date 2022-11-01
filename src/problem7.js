@@ -96,7 +96,13 @@ const deleteUserFromPointMap = (user) => {
 
 const getResult = () => {
   const result = [];
-  const candidates = [...pointMap].sort((a, b) => b[1] - a[1]);
+  const candidates = [...pointMap].sort((a, b) => {
+    if (b[1] === a[1]) {
+      if (a[0] <= b[0]) return -1;
+      else return 1;
+    } else return b[1] - a[1];
+  });
+  console.log(candidates);
 
   for (let i = 0; i < 5; i++) {
     const [id, point] = candidates[i];
@@ -117,5 +123,17 @@ function problem7(user, friends, visitors) {
 
   return answer;
 }
+
+const user = "mrko";
+const friends = [
+  ["donut", "andole"],
+  ["donut", "jun"],
+  ["donut", "mrko"],
+  ["shakevan", "andole"],
+  ["shakevan", "jun"],
+  ["shakevan", "mrko"],
+];
+const visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
+console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
