@@ -7,10 +7,16 @@ function problem4(word) {
   var fLoAlp = revAlp.toLowerCase().split("");
 
   for (var int = 0; int < word.length; int++) {
-    console.log(word.length);
     var uniNum = word[int].charCodeAt();
+    if (uniNum > 65 && uniNum < 91) {
+      Aanswer.push(fUpAlp[index(word[int])]);
+    } else if (uniNum > 96 && uniNum < 123) {
+      Aanswer.push(fLoAlp[index(word[int])]);
+    } else {
+      Aanswer.push(" ");
+    }
   }
-
+  answer = Aanswer.join("");
   return answer;
 }
 function index(char) {
