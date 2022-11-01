@@ -42,20 +42,20 @@ function error(person){
 }
 
 function play(pobi,crong){
-  const pobiWin = 1; 
-  const crongWin = 2;         
-  const tie = 0;
+  const POBIWIN = 1; 
+  const CRONGWIN = 2;         
+  const TIE = 0;
 
   if(!error(pobi) || !error(crong)){
       return -1;
   }
   if(bigNumbers(pobi)===bigNumbers(crong)){
-      return tie;
+      return TIE;
   }
   if(bigNumbers(pobi)>bigNumbers(crong)){
-      return pobiWin;
+      return POBIWIN;
   }
   if(bigNumbers(pobi)<bigNumbers(crong)){
-      return crongWin;
+      return CRONGWIN;
   }
 }
