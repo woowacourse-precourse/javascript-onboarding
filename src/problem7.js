@@ -9,7 +9,7 @@ function isLowerCaseOnly(word) {
   return true;
 }
 
-function isException(user, friends, visitors) {
+function isException(user, friends) {
   if (
     !(typeof user === 'string') ||
     user.length > 30 ||
@@ -93,7 +93,7 @@ function calIdNScore(map, idNScore) {
 }
 
 function problem7(user, friends, visitors) {
-  if (isException(user, friends, visitors)) return;
+  if (isException(user, friends)) return;
   const map = new Map();
   const idNScore = [];
   const answer = [];
