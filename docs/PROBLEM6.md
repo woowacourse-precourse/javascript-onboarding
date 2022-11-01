@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+### 기능 목록
+1. forms의 nickname을 받아서 두글자 단위로 나눠준 뒤 set을 이용해 중복을 제거한다.
+2. 현재 닉네임과 비교대상 닉네임을 비교해서 중복되는 글자가 배열에 있다면 현재 닉네임과 비교대상의 닉네임을 set에 넣는다.
+3. 이메일을 오름차순으로 정렬한다.
