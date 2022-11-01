@@ -15,7 +15,12 @@ function sumPage(pages) {
 }
 
 // 페이지 번호 각 자리 숫자 곱하는 함수
-function multiPage(pages) {}
+function multiPage(pages) {
+  let multiPages = 0;
+  multiPages = pages[0] * pages[1];
+
+  return multiPages;
+}
 
 // 각 과정 중 가장 큰 수 return 함수
 function maxNumber(leftPage, rightPage) {}
