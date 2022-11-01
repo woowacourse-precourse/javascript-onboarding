@@ -1,12 +1,17 @@
+const sliceNickname = (nickname) => {
+  const sliceNickname = [];
+  for(let i = 0; i < nickname.length - 1; i += 1){
+    let slice = nickname.substr(i, SPLIT_LENGTH);
+    sliceNickname.push(slice);
+  }
+  return sliceNickname;
+}
+
 function problem6(forms) {
   const duplicateCrewEmail = [];
-  const duplicateNickname = new Set();
-
-  for (let i = 0; i < forms.length; i += 1){
-    for(let j = 0; j < forms[i][1].length - 1; j += 1){
-      duplicateNickname.add(forms[i][1].substr(j, 2));
-    }
-  }
+  const sliceNicknameList = forms.reduce((acc, [, nickname]) => { 
+    return [...acc, ...sliceNickname(nickname)];
+  }, []);
   
   for (let nick of duplicateNickname){
     let count = 0;
