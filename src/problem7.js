@@ -11,6 +11,37 @@ function findUserFriends(user, friends) {
   return userFriends;
 }
 
+function knowTogetherScore(friends, userFriends) {
+  const reserveFriends = [];
+
+  for (let i = 0; i < friends.length; i++) {
+    if (
+      userFriends.includes(friends[i][0]) &&
+      !userFriends.includes(friends[i][1])
+    ) {
+      reserveFriends.find((friend) => friend.name === friends[i][1])
+        ? reserveFriends.map((friend) => {
+            if (friend.name === friends[i][1]) {
+              friend.score += 10;
+            }
+          })
+        : reserveFriends.push({ name: friends[i][1], score: 10 });
+    } else if (
+      userFriends.includes(friends[i][1]) &&
+      !userFriends.includes(friends[i][0])
+    ) {
+      reserveFriends.find((friend) => friend.name === friends[i][0])
+        ? reserveFriends.map((friend) => {
+            if (friend.name === friends[i][0]) {
+              friend.score += 10;
+            }
+          })
+        : reserveFriends.push({ name: friends[i][0], score: 10 });
+    }
+  }
+  return reserveFriends;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
