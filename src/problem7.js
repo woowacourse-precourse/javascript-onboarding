@@ -15,6 +15,46 @@ function problem7(user, friends, visitors) {
     return false;
   }
 
+  /**
+   * - user와 친구인 Id의 친구목록 생성
+   * - 친구목록에서 추천 점수 계산 후 반환
+   * @param {string} user 
+   * @param {string[]} userFriends 
+   * @returns {map}
+   */
+  function writeFriendsList(user, userFriends){
+    const recommendFriends = new Map;
+    const tempFriendsList = []
+    friends.forEach(([friend, recommend]) => {
+      if(userFriends.includes(friend) && recommend !== user){
+        tempFriendsList.push(recommend);
+      }
+    });
+    tempFriendsList.forEach(id => {
+      if (recommendFriends.get(id)) {
+        recommendFriends.set(id, recommendFriends.get(id) + 10);
+      } else {
+        recommendFriends.set(id, 10);
+      }
+    });
+    return recommendFriends;
+  }
+
+  /**
+   * friends 에서 user와 친구인 Id를 찾아 배열에 저장하여 반환
+   * @param {string} user 
+   * @param {string[][]} friends 
+   * @returns {string[]}
+   */
+  function findFriends(user,friends){
+    const tempFriendsList = [];
+    friends.forEach(([friend,checkUser]) => {
+      if(checkUser === user) {
+        tempFriendsList.push(friend);
+      }
+    });
+    return tempFriendsList;
+  }
 
 }
 module.exports = problem7;
