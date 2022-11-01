@@ -1,8 +1,10 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let score = {};
+  let myfriends = [];
   friends.forEach((friend) => {
     const myfriend = findFriend(friend, user);
+    myfriends.push(myfriend);
     if (!myfriend) return;
     friends.forEach((friend) => {
       const friendOfFriend = findFriend(friend, myfriend);
@@ -14,8 +16,18 @@ function problem7(user, friends, visitors) {
         }
       }
     });
-    console.log(score);
   });
+  visitors.forEach((visitor) => {
+    if (!myfriends.includes(visitor)) {
+      if (score[visitor]) {
+        score[visitor] += 1;
+      } else {
+        score[visitor] = 1;
+      }
+    }
+  });
+  console.log(score);
+
   return answer;
 }
 
@@ -46,8 +58,7 @@ problem7(
 2. 1에서 찾은 이름 포함된 배열 다시 friends에서 찾아서 내 친구의 친구 찾기
 3. 찾은 횟수*10만큼 점수 ++
 4. visitors 돌면서 방문할때마다 점수 ++
-5. 최종 점수 > 0인 사람 result에 추가
-6. 점수순 정렬
-7. 점수 같으면 이름순 정렬
-8. 5명까지만 뽑아서 return
+5. 점수순 정렬
+6. 점수 같으면 이름순 정렬
+7. 5명까지만 뽑아서 return
 */
