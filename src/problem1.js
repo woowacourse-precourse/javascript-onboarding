@@ -36,6 +36,8 @@ function findMaxNumber(page_arr){
 }
 function exception(page_arr){
   if(!(page_arr[0]-page_arr[1]==-1))return 1;
+  if(page_arr.length>2)return 1;
+  if(page_arr.includes(0|400))return 1;
 }
 function problem1(pobi, crong) {
     let answer;
