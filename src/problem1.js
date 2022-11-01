@@ -50,12 +50,10 @@ const checkAvailable = (pages) => {
 const makeBiggestNumber = (pages) => {
   const [biggestNumberOfLeft, biggestNumberOfRight] = pages.map((page) => {
     let [resultOfSum, resultOfMultiplication] = [0, 1];
-    const eachDigits = page
-      .toString()
-      .split("")
-      .map((string) => Number(string));
+    const eachDigits = String(page).split("");
 
     eachDigits.forEach((digit) => {
+      digit = Number(digit);
       resultOfSum += digit;
       resultOfMultiplication *= digit;
     });
