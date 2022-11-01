@@ -20,7 +20,7 @@ function problem1(pobi, crong) {
     return -1;
 
   const compareSumAndMultiply = (array) => {
-    const convertArray = String(array).split("").map(Number);
+    const convertArray = [...String(array)].map(Number);
     const sum = convertArray.reduce(
       (previousValue, currentValue) => previousValue + currentValue
     );
