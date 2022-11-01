@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
 
   // 각자 사람들의 친구 구하기
   const getFirends = (friends) => {
@@ -48,7 +48,23 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  console.log(scoreDict);
+  // 상위 5명을 추가한다. (단 나와 친구가 아니어야한다.)
+  let items = Object.keys(scoreDict).map(function (key) {
+    return [key, scoreDict[key]];
+  });
+
+  items.sort(function (first, second) {
+    return second[1] - first[1];
+  });
+
+  for (let i = 0; i < items.length; i++) {
+    if (answer.length > 5) {
+      break;
+    }
+    if (!friendsDict[user].includes(items[i][0])) {
+      answer.push(items[i][0]);
+    }
+  }
   return answer;
 }
 problem7(
