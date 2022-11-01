@@ -44,4 +44,24 @@ function getScore(input){
   return leftScore > rightScore ? leftScore : rightScore;
 }
 
+function getSum(num){
+  // 각 자리수의 합을 구하는 함수
+  var sum = 0;
+  while (num > 0) {
+    sum += num % 10;
+    num = Math.floor(num / 10);
+  }
+  return sum;
+};
+
+function getProduct(num){
+  // 각 자리수의 곱을 구하는 함수
+  var product = 1;
+  while (num > 0) {
+    product *= num % 10;
+    num = Math.floor(num / 10);
+  }
+  return product;
+};
+
 module.exports = problem1;
