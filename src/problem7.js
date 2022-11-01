@@ -1,9 +1,30 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  let answer = [];
+  let score = {};
+  let myfriend = [];
+  friends.forEach((friend) => {
+    if (friend[0] === user) {
+      myfriend.push(friend[1]);
+    } else if (friend[1] === user) {
+      myfriend.push(friend[0]);
+    }
+  });
   return answer;
 }
 
 module.exports = problem7;
+problem7(
+  "mrko",
+  [
+    ["donut", "andole"],
+    ["donut", "jun"],
+    ["donut", "mrko"],
+    ["shakevan", "andole"],
+    ["shakevan", "jun"],
+    ["shakevan", "mrko"],
+  ],
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+);
 
 /*
 1. friends에서 내 닉네임 포함된 배열 찾아서 내 친구 찾기
