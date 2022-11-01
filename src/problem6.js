@@ -3,6 +3,8 @@ function problem6(forms) {
   const nickName = [];
   let duplicate = [];
 
+  if (!isValid(forms)) return -1;   //예외처리
+
   for (i = 0; i < forms.length; i++) 
     nickName.push(forms[i][1]);
 
@@ -16,6 +18,25 @@ function problem6(forms) {
   answer = duplicate;
 
   return answer;
+}
+
+function isValid(forms) {
+  if (forms.length < 1 || forms.length > 10000) return false;
+  if (!emailValid(forms)) return false;
+  
+  return true;
+}
+
+function emailValid(forms) {
+  for (i = 0; i < forms.length; i++) {
+    if (forms[i][0].length < 11 || forms[i][0].length > 20) return false;
+    if (forms[i][0].indexOf('@') == -1) return false;
+
+    divideEmail = forms[i][0].split("@");
+    if (divideEmail[1] != "email.com") return false;
+  }
+
+  return true;
 }
 
 function checkDuplicate(subStr, nickName, forms, duplicate) {
