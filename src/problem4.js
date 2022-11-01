@@ -3,6 +3,11 @@ function isAlphabet(val) {
   else return 0;
 }
 
+function isUpper(val) {
+  if (val === val.toUpperCase()) return 1;
+  else return 0;
+}
+
 function problem4(word) {
   var answer;
 
