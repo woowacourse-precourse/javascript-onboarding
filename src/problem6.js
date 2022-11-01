@@ -49,11 +49,11 @@ function problem6(forms) {
   let answer = [];
   let emailOfPersonWithDuplicateName;
   forms.forEach(([email, name], _, arr) => {
-    getEmailOfPersonWithDuplicateName(
+    (emailOfPersonWithDuplicateName = getEmailOfPersonWithDuplicateName(
       splitNameIntoTwoOrMoreLengths(name),
       arr,
       email
-    );
+    )) && answer.push(...emailOfPersonWithDuplicateName);
   });
   return;
 }
