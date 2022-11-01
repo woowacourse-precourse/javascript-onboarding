@@ -4,7 +4,10 @@ function problem7(user, friends, visitors) {
   const acquaintance_List = acquaintance(checkUserFreind, friends, user);
   const acquaintance_List_Number = acquaintanceListNumber(acquaintance_List);
   const total_Score_List = totalList(checkVisitList, acquaintance_List_Number);
-  console.log(checkUserFreind, checkVisitList, acquaintance_List,acquaintance_List_Number, total_Score_List)
+  const totalList_Arr = totalListArr(total_Score_List);
+  const exceptionsHandling = exception(checkUserFreind, totalList_Arr);
+  console.log(checkUserFreind, checkVisitList, acquaintance_List,acquaintance_List_Number, total_Score_List, totalList_Arr, exceptionsHandling);
+}
 
 function userFriend(user,friends){
   let userFriendList = [];
@@ -73,7 +76,22 @@ function totalList(visitor, acquaintance){
     }
   }
   return totalScoreList;
- }
 }
 
+function totalListArr(totalList){
+  scoreArr = totalList.sort(function(a,b){
+    return b.score - a.score;
+  });
+  return scoreArr;
+}
+
+function exception(userFriend, totalList){
+  const recommendationFriend = [];
+   for(let i = 0; i < totalList.length; i++ ){
+    if(totalList[i].score !== 0 && !userFriend.includes(totalList[i].name)){
+      recommendationFriend.push(totalList[i].name)
+    }
+  }
+    return recommendationFriend;
+}
 module.exports = problem7;
