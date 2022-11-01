@@ -12,9 +12,9 @@
 */
 
 /**
- * Main function - replace string
- * @param {string} word 
- * @returns {stirng} answer
+ * main function - replace string
+ * @param {string} word - string
+ * @returns {string} answer - changed result
  */
 function problem4(word) {
   // 0. 예외처리
@@ -32,7 +32,7 @@ function problem4(word) {
   // a + z : 219
   const lowerSum = lowerA + lowerZ;
 
-  for (let i=0; i<word.length; i++) {
+  for (let i = 0; i < word.length; i++) {
     const currCode = word.charCodeAt(i);
     if (currCode >= upperA && currCode <= upperZ) {
       // 2. 대문자의 경우

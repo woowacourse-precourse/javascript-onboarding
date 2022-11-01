@@ -1,4 +1,5 @@
 /*
+  로직
   1. [x] key: value | 닉네임 : email 형식의 map 만들기
   2. 같은 글자가 연속으로 포함되는 닉네임을 판별하는 로직
     2.1 [x] key를 가져와서 두글자씩 자른다
@@ -33,9 +34,8 @@ const checkOverlap = (name, users) => {
 /**
  * add to name Array
  * @param {string[]} names - names usgin overlap nickname
- * @param {string[]} res - Array to contain emails
+ * @param {string[]} res - array to contain emails
  * @param {object} userMap - object to comtain name:email
- * @returns {void}
  */
 const addEmail = (names, res, userMap) => {
   if (!names.length) return;
@@ -49,7 +49,6 @@ const addEmail = (names, res, userMap) => {
  * delete name from Object
  * @param {string[]} names - names using overlap nickname
  * @param {object} userMap - object to comtain name:email
- * @returns {void}
  */
 const deleteName = (names, userMap) => {
   if (!names.length) return;
@@ -60,9 +59,9 @@ const deleteName = (names, userMap) => {
 }
 
 /**
- * Main function 
+ * main function 
  * @param {string[][]} forms - [email, name] 
- * @returns {string[]} answer - Array has email using overlap nickname
+ * @returns {string[]} answer - array has email using overlap nickname
  */
 function problem6(forms) {
   const userMap = {}; // name:email 형식의 이름 저장
@@ -77,7 +76,7 @@ function problem6(forms) {
   // 2. 중복 문자 판별
   for (let key of Object.keys(userMap)) {
     // 2.1 name을 두글자씩 잘라서 비교
-    for (let i=0; i<key.length-1; i++) {
+    for (let i = 0; i < key.length-1; i++) {
       // 2.2 두글자씩 잘라서 key들과 일치하는 부분이 있는지 검사
       // 2.3 중복 이름 확인 함수 호출 
       const overlapUser = checkOverlap(key.slice(i, i+2), Object.keys(userMap));

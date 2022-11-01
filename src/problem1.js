@@ -50,9 +50,9 @@ const multiple = (nums) => {
 // 1. pobi와 crong이 가질 수 있는 가장 큰 숫자 구하기
 /**
  * calculate max number of pobi and crong
- * @param {*} pobi - pages pobi has
- * @param {*} crong - pages crong has 
- * @returns 
+ * @param {number[]} pobi - pages pobi has
+ * @param {number[]} crong - pages crong has 
+ * @returns {number[]} [pobiMax, crongMax] - max number of pobi & crong
  */
 const calMax = (pobi, crong) => {
   const pobiFirst = makePageArray(pobi[0]);
@@ -78,10 +78,10 @@ const calMax = (pobi, crong) => {
 }
 
 /**
- * Main Function - return who has page of max number
- * @param {*} pobi 
- * @param {*} crong 
- * @returns 
+ * main Function - return who has page of max number
+ * @param {number[]} pobi - pages pobi has
+ * @param {number[]} crong - pages crong has
+ * @returns {number} answer - return number indicates who has max page
  */
 function problem1(pobi, crong) {
   let answer = -1;

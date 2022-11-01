@@ -1,5 +1,5 @@
 /* 
-  메인 로직
+  로직
   1.[x] 1부터 n까지 숫자 순회
   2. 3,6,9 판별
     2.1. [x] number를 10으로 나눈 나머지가 3,6,9 중 하나면 박수 + 1
@@ -25,7 +25,7 @@ const check369 = (number) => {
 }
 
 /**
- * Main function - refeat check369 function while 1~number
+ * main function - refeat check369 function while 1~number
  * @param {number} number 
  * @returns {number} clap - all clap 
  */

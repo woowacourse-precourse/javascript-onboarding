@@ -1,5 +1,6 @@
-/* 예외처리
- 0. [x] 문자열이 비었거나 하나의 문자만 있는 경우
+/* 
+  예외처리
+  0. [x] 문자열이 비었거나 하나의 문자만 있는 경우
 
   로직
   1. [x] stack에 문자를 하나씩 넣는다
@@ -8,9 +9,9 @@
 */
 
 /**
- * Main function - remove same characters
- * @param {string} cryptogram 
- * @returns {string} answer
+ * main function - remove overlap characters
+ * @param {string} cryptogram - string
+ * @returns {string} answer - remove overlap characters from cryptogram
  */
 function problem2(cryptogram) {
   let answer = [];

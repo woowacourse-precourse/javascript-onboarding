@@ -1,4 +1,5 @@
 /* 
+  로직
   1. [x] 필요한 변수
     1.1 친구관계를 연결한 graph map
     1.2 친구점수를 저장한 map
@@ -11,7 +12,7 @@
 /**
  * initialize 'friendInfo' variable
  * @param {string[][]} friends - relation of friends
- * @param {object} friendInfo - Object that needs initializing firend relation
+ * @param {object} friendInfo - object that needs initializing firend relation
  */
 const initFriendInfo = (friends, friendInfo) => {
   for (let info of friends) {
@@ -32,8 +33,8 @@ const initFriendInfo = (friends, friendInfo) => {
 /**
  * initialize 'scoreInfo' variable
  * @param {string} user - user name
- * @param {object} friendInfo - Object of friend relation
- * @param {object} scoreInfo - Object that needs initializing score of each friend
+ * @param {object} friendInfo - object of friend relation
+ * @param {object} scoreInfo - object that needs initializing score of each friend
  */
 const initScoreInfo = (user, friendInfo, scoreInfo) => {
   for (let name of Object.keys(friendInfo)) {
@@ -46,8 +47,8 @@ const initScoreInfo = (user, friendInfo, scoreInfo) => {
 /**
  * add score of user friends 
  * @param {string} user - user name
- * @param {object} friendInfo - Object of friend relation
- * @param {object} scoreInfo - Score Object of each friend
+ * @param {object} friendInfo - object of friend relation
+ * @param {object} scoreInfo - score Object of each friend
  */
 const addFriendScore = (user, friendInfo, scoreInfo) => {
   const myFriend = friendInfo[user];
@@ -63,8 +64,8 @@ const addFriendScore = (user, friendInfo, scoreInfo) => {
 // 2. visitor 점수 추가 함수
 /**
  * add score of each visitor
- * @param {object} scoreInfo - Score object of each friend
- * @param {string[]} visitors - Visitors of user page
+ * @param {object} scoreInfo - score object of each friend
+ * @param {string[]} visitors - visitors of user page
  */
 const addVisitorScore = (scoreInfo, visitors) => {
   for (let name of visitors) {
@@ -80,8 +81,8 @@ const addVisitorScore = (scoreInfo, visitors) => {
 /**
  * select 5 top scores
  * @param {string} user - user name
- * @param {object} friendInfo - Object of friend relation
- * @param {object} scoreInfo - Score object of each friend
+ * @param {object} friendInfo - object of friend relation
+ * @param {object} scoreInfo - score object of each friend
  * @param {string[]} topScore - names of top 5 scores
  */
 const recommendFriend = (user, friendInfo, scoreInfo, topScore) => {
@@ -117,7 +118,7 @@ const swap = (topScore, i, j) => {
 
 // 4. 상위 다섯명 이름 정렬
 /**
- * Align Top 5 Scores
+ * align Top 5 Scores
  * @param {string[]} topScore - unsorted top 5 scores
  * @param {object} scoreInfo - object matching name with score
  */
@@ -148,7 +149,7 @@ const sortFriends = (topScore, scoreInfo) => {
 }
 
 /**
- * Main function 
+ * main function 
  * @param {string} user - name of user
  * @param {string[][]} friends - relation of friends
  * @param {string[]} visitors - visitors of user page
