@@ -1,3 +1,14 @@
+// test sample 추가
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
+
 function problem6(forms) {
   var answer = [];
   var nick = forms.map(([_, id]) => id);
@@ -5,7 +16,7 @@ function problem6(forms) {
 
   // 이메일 오름차순 및 중복 제거
   forms.forEach(([email, name]) => {
-    if (checkDouble.some((v) => names.includes(v))) {
+    if (doubleNick.some((v) => name.includes(v))) {
       answer.push(email);
     }
   });
