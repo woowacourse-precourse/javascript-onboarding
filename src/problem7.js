@@ -134,8 +134,6 @@ class SNSModel {
   }
 
   makeScoreBoard() {
-    console.log(this._friends);
-
     return [
       ...new Set(
         [...this._friends, ...this._visitors].flatMap((relation) => relation)
