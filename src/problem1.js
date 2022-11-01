@@ -6,17 +6,17 @@ function checkBigNum (num) {
     sum += Number(str[i]);
     multiply *= Number(str[i]);
   }
-  return sum,multiply;
+  return [sum,multiply];
 }
 
 function getBiggerNum (arr) {
-  let bigNum = [];
-  bigNum.push(checkBigNum(arr[0]));
-  bigNum.push(checkBigNum(arr[1]));
+  let [leftSum, leftMulti] = checkBigNum(arr[0]);
+  let [rightSum, rightMulti] = checkBigNum(arr[1]);
+  let bigNum = [leftSum,leftMulti, rightSum, rightMulti];
   bigNum.sort((a,b)=>b-a);
-  console.log(bigNum)
   return bigNum[0];
 }
+
 
 function problem1(pobi, crong) {
   let isRestrictions = false;
