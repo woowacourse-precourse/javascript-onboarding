@@ -20,7 +20,7 @@ function multi(num) {
 
 function problem1(pobi, crong) {
   // 예외 (페이지 차이가 1 이상 or 페이지가 범위에 없을때)
-  // 예외 추가 - null, 1 or 400, null
+  // 예외 추가 - null, 1 or 400, null  || 1,2 399,400
   if (pobi[1] - pobi[0] > 1 || crong[1] - crong[0] > 1) return -1;
   const arr = [...pobi, ...crong];
   arr.forEach((x) => {

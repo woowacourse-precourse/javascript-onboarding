@@ -1,10 +1,14 @@
 // 이메일 조건에 적합한지 확인하는 함수
 function checkEmail(str) {
   const len = str.length;
+
   const reg =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   // 이메일 형식이 아니라면 false
   if (!reg.test(str)) return false;
+  // 이메일이 email.com 이 아니라면 false
+  const arr = str.split("@");
+  if (arr[1] !== "email.com") return false;
   // 길이가 11보다 작거나 19보다 크다면 false
   if (len > 19 || len < 11) return false;
 
@@ -54,13 +58,4 @@ function problem6(forms) {
   return answer;
 }
 
-const arr = [
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-  ["test@email.com", "워니제이순"],
-];
-console.log(problem6(arr));
-// module.exports = problem6;
+module.exports = problem6;
