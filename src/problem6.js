@@ -3,7 +3,7 @@ function problem6(forms) {
   let answer = [];
 
   forms.forEach((item) => {
-    const [email, nickname] = item;
+    const [_, nickname] = item;
     for (let i = 0; i < nickname.length - 1; i++) {
       let strCase = nickname.slice(i, i + 2);
       if (strCase in strMap) strMap[strCase]++;
