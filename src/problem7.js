@@ -11,6 +11,14 @@ function problem7(user, friends, visitors) {
     );
   });
 
+  const scoreCollection = new Map();
+  for (let i = 0; i < allFriendsList.get(user).length; i++) {
+    allFriendsList.get(allFriendsList.get(user)[i]).map((friend) => {
+      if (!allFriendsList.get(user).includes(friend) && friend !== user) {
+        scoreCollection.set(friend, scoreCollection.get(friend) + 10 || 10);
+      }
+    });
+  }
 
 console.log(
   problem7(
