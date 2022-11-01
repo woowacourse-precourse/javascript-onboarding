@@ -7,6 +7,11 @@ function problem6(forms) {
   4. 타겟 크루들의 이메일 추출
   5. 이메일 중복 제거 및 오름차순 정렬하여 반환
   */
+  
+  const crew = {};
+  for (i = 0; i < forms.length; i++) {
+    crew[forms[i][1]] = forms[i][0];
+  }
 }
 
 module.exports = problem6;
