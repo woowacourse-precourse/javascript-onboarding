@@ -10,6 +10,16 @@
  * @returns {string[]}
  */
 function problem6(forms) {
+  const DOMAIN = "@email.com";
+  const nicknameMap = forms.reduce((dict, [email, nickname]) => {
+    const nickLen = nickname.length;
+    const id = email.split(DOMAIN)[0];
+    for (let i = 0; i < nickLen - 1; i++) {
+      const key = nickname.slice(i, i + 2);
+      dict.set(key, (dict.get(key) ?? new Set()).add(id));
+    }
+    return dict;
+  }, new Map());
   var answer;
   return answer;
 }
