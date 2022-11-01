@@ -1,6 +1,33 @@
+function isKoreanOnly(word) {
+  for (let i = 0; i < word.length; ++i) {
+    if (
+      word.charCodeAt(i) < '가'.charCodeAt(0) ||
+      word.charCodeAt(i) > '힣'.charCodeAt(0)
+    )
+      return false;
+  }
+  return true;
+}
+
+function isException(forms) {
+  if (!Array.isArray(forms) || forms.length > 10000 || forms.length < 1)
+    return true;
+  for (let i = 0; i < forms.length; ++i)
+    if (
+      forms[i].length !== 2 ||
+      forms[i][0].length > 19 ||
+      forms[i][0].length < 11 ||
+      forms[i][0].split('@')[1] !== 'email.com' ||
+      forms[i][1].length > 19 ||
+      forms[i][1].length < 1 ||
+      !isKoreanOnly(forms[i][1])
+    )
+      return true;
+  return false;
+}
+
 function problem6(forms) {
-  var answer;
-  return answer;
+  if (isException(forms)) return;
 }
 
 module.exports = problem6;
