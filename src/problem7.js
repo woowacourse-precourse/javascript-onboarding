@@ -1,12 +1,12 @@
 function problem7(user, friends, visitors) {
-  // keep track of user's friends
+  // keep track of user's friends with hash set 'usersFriends'
   const usersFriends = new Set();
   for (let friend of friends) {
     if (!friend.includes(user)) continue;
     if (friend[0] == user) {
       usersFriends.add(friend[1]);
     } else if (friend[1] == user) {
-      // 'else if' rather than 'else'.
+      // 'else if' rather than 'else'...
       usersFriends.add(friend[0]); // ...because 'friends' may contain [A, A]?
     }
   }
@@ -18,7 +18,8 @@ function problem7(user, friends, visitors) {
     if (usersFriends.has(friend[0])) {
       scores.set(friend[1], getDefaultValue(scores, friend[1]) + 10);
     }
-    if (usersFriends.has(friend[1])) {
+    if (friends[0] != friends[1] && usersFriends.has(friend[1])) {
+      // ...because a 'friend' may be [A, A]?
       scores.set(friend[0], getDefaultValue(scores, friend[0]) + 10);
     }
   }
@@ -30,7 +31,7 @@ function problem7(user, friends, visitors) {
   }
 
   return Array.from(scores.keys())
-    .sort()
+    .sort() // alphabetical
     .sort((a, b) => scores.get(b) - scores.get(a))
     .slice(0, 5);
 }
