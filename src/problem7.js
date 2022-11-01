@@ -55,6 +55,26 @@ function filtering(userFriendNameArray, scoreFriendArray, userName) {
     });
   }
   return scoreFriendArray;
+function sorting(filterScoreFriend) {
+  //scoreFriend에 필터링을 마치고 큰점수 > 작은점수 & 같은점수라면 이름순으로 정렬
+  filterScoreFriend.sort(function (a, b) {
+    if (a[0] < b[0]) {
+      return 1;
+    }
+    if (a[0] > b[0]) {
+      return -1;
+    }
+    if (a[0] === b[0]) {
+      if (a[1] < b[1]) {
+        return -1;
+      }
+      if (a[1] < b[1]) {
+        return 1;
+      }
+      return 0;
+    }
+  });
+  return filterScoreFriend;
 function visitorScore(visitorsArray, friendNameArray, scoreFriendArray) {
   //scoreFriend 배열에 친구명단을 조사해 점수를 부여하는 함수
   visitorsArray.forEach(function (visitor) {
