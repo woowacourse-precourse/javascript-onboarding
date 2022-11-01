@@ -15,6 +15,19 @@ function problem7(user, friends, visitors) {
     return false;
   }
 
+  function sortRecommend(list){
+    const tempArr = [...list];
+    const recommendFriends = [];
+
+    const nameSort = tempArr.sort();
+    const scoreSort = nameSort.sort((a,b) => b[1] - a[1]);
+    scoreSort.forEach(([friend,_])=>{
+      recommendFriends.push(friend);
+    });
+
+    return recommendFriends.slice(0,5);
+  }
+
   function recommendFriends(friendsList, visitorsList){
     const recommendList = new Map();
     friendsList.forEach((value,key) => {
