@@ -25,6 +25,13 @@ function problem1(pobi, crong) {
  let pobiScore = makeScore(pobiLeftMax,pobiRightMax);
  let crongScore = makeScore(crongLeftMax,crongRightMax);
  
+ let answer = -1;
+
+  if(pobiScore > crongScore) answer =1;
+  else if(pobiScore < crongScore) answer =2;
+  else if(pobiScore === crongScore) answer =0;
+
+  return answer;
 }
 
 module.exports = problem1;
