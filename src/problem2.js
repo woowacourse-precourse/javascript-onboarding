@@ -10,8 +10,8 @@ function problem2(cryptogram) {
 }
 
 const removeDuplicateAlphabet = (cryptogram) => {
-  const regax = /([a-z])\1+/g;
-  const removedCryptogram = cryptogram.replace(regax, "");
+  const regExP = /([a-z])\1+/g;
+  const removedCryptogram = cryptogram.replace(regExP, "");
   if (cryptogram === removedCryptogram) return cryptogram;
 
   return removeDuplicateAlphabet(removedCryptogram);
