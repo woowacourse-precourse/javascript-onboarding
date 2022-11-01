@@ -10,8 +10,8 @@ function problem6(forms) {
   for (sliced in duplicated) {
     movingSetElements(emailsToContact, duplicated[sliced]);
   }
-  var answer;
-  return answer;
+  const answer = Array.from(emailsToContact);
+  return answer.sort();
 }
 
 function checkingDuplicated(duplicated, nickname, email) {
