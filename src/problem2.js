@@ -1,27 +1,35 @@
 function problem2(cryptogram) {
   let answer;
 
-  const cryptogramArr = cryptogram.split("");
-  const stack = [cryptogramArr[0]];
-  let compareTarget = cryptogramArr[0];
+  let cryptogramArr = cryptogram.split("");
+  let result = [];
+  let compareTarget;
+  let flag = false;
 
-  for (let i = 1; i < cryptogramArr.length; i++) {
-    stack.push(cryptogramArr[i]);
-    if (compareTarget !== cryptogramArr[i]) {
-      compareTarget = cryptogramArr[i];
-    } else {
-      if (
-        i === cryptogramArr.length - 1 ||
-        (i !== cryptogramArr.length - 1 &&
-          compareTarget !== cryptogramArr[i + 1])
-      ) {
-        while (compareTarget === stack[stack.length - 1]) stack.pop();
-        compareTarget = stack[stack.length - 1];
+  while (true) {
+    let lastIndex = cryptogramArr.length - 1;
+
+    if (cryptogramArr[lastIndex] === cryptogramArr[lastIndex - 1]) {
+      flag = true;
+      compareTarget = cryptogramArr[lastIndex];
+      while (cryptogramArr[cryptogramArr.length - 1] === compareTarget) {
+        cryptogramArr.pop();
       }
+    } else {
+      result.push(cryptogramArr.pop());
+    }
+
+    if (cryptogramArr.length === 0) {
+      if (result.length === 0) break;
+      if (flag === true) {
+        cryptogramArr = result.reverse();
+        result = [];
+      } else break;
+      flag = false;
     }
   }
 
-  answer = stack.join("");
+  answer = result.reverse().join("");
 
   return answer;
 }
