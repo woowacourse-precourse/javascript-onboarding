@@ -24,7 +24,18 @@ function problem6(forms) {
   rep.forEach((x) => { 
     cntRep[x] = (cntRep[x] || 0)+1; 
   });
-  
+
+    /* 비교 후 중복되지 않으면 키값 삭제 ///미작동///
+  for (i=0; i<cntRep.length-1; i++) {
+      let Nname = name[i].substring(i, i+2);
+      if (cntRep.value() < 2) {
+        if (cntRep.key()==Nname) {
+          delete obj.key();
+        }
+      }
+    }
+  */
+
   return answer;
 }
 
