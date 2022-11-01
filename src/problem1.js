@@ -15,11 +15,14 @@ const maxScore = (page) => {
 };
 
 const possiblePages = (pages) => {
+  if (pages.length !== 2) return false;
   const [left, right] = pages;
 
+  if (left % 2 === 0) return false;
+  if (right % 2 !== 0) return false;
   if (Math.abs(left - right) !== 1) return false;
-  if (left === MIN_PAGE) return false;
-  if (right === MAX_PAGE) return false;
+  if (left <= MIN_PAGE) return false;
+  if (right >= MAX_PAGE) return false;
   return true;
 };
 
