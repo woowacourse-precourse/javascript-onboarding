@@ -20,23 +20,23 @@ const problem7 = require("../src/problem7");
 //   });
 // });
 
-describe("problem2", () => {
-  test("case1", () => {
-    expect(problem2("browoanoommnaon")).toEqual("brown");
-  });
-  test("case2", () => {
-    expect(problem2("zyelleyz")).toEqual("");
-  });
-});
-
-// describe("problem3", () => {
+// describe("problem2", () => {
 //   test("case1", () => {
-//     expect(problem3(13)).toEqual(4);
+//     expect(problem2("browoanoommnaon")).toEqual("brown");
 //   });
 //   test("case2", () => {
-//     expect(problem3(33)).toEqual(14);
+//     expect(problem2("zyelleyz")).toEqual("");
 //   });
 // });
+
+describe("problem3", () => {
+  test("case1", () => {
+    expect(problem3(13)).toEqual(4);
+  });
+  test("case2", () => {
+    expect(problem3(33)).toEqual(14);
+  });
+});
 
 // describe("problem4", () => {
 //   test("case1", () => {
