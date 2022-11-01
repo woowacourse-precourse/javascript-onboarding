@@ -1,16 +1,28 @@
-
 function problem6(forms) {
   if (!inputExecption(forms)) return console.log(`오류~~`);
   var answer;
   let resultArr = [];
+
   for (let i = 1; i < forms.length ; i++) {
     let comparisonArr = [];
     let firstNick = forms[0][1];
     let temp = forms[0];
     let length = forms.length - i;
-
     comparisonArr = makeArrCases(firstNick);
-    resultArr = pushtoResultArr(forms, i, comparisonArr, resultArr);
+    
+    console.log(i)
+    let comparedArr = [];
+    for (let p = 1; p <= forms.length - i; p++) {
+      let remainderNick = forms[p][1];
+      comparedArr = makeArrCases(remainderNick);
+      let intersection = comparedArr.filter(x => comparisonArr.includes(x));
+      
+      if (intersection != '') {
+        resultArr.push(forms[p][0]);
+        resultArr.push(forms[0][0]);
+        console.log("여기다 : "+resultArr);
+      }
+    }
     
     forms[0] = forms[length];
     forms[length] = temp;
@@ -21,19 +33,8 @@ function problem6(forms) {
   return answer;
 }
 
-function pushtoResultArr(forms, i, comparisonArr, arr) {
-  let comparedArr = [];
-  for (let p = 1; p <= forms.length - i; p++) {
-    let remainderNick = forms[p][1];
-    comparedArr = makeArrCases(remainderNick);
-    let intersection = comparedArr.filter(x => comparisonArr.includes(x));
-    
-    if (intersection != '') {
-      arr.push(forms[p][0]);
-      arr.push(forms[0][0]);
-    }
-  }
-  return arr;
+function pushtoResultArr(forms, ) {
+
 }
 
 function makeArrCases(string) {
@@ -51,7 +52,6 @@ function inputExecption(arr) {
   let emailLast = /email.com$/;
   let koreanForm = /[가-힣]/;
   let inputCheck = true;
-
   if (arr.length < 1 || arr.length > 10000) inputCheck = false;
   for (let q = 0; q < arr.length - 1; q++) {
     if (!emailForm.test(arr[q][0])) inputCheck = false;
@@ -65,3 +65,12 @@ function inputExecption(arr) {
 }
 
 module.exports = problem6;
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
