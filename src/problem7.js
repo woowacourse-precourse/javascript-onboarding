@@ -8,14 +8,16 @@ function problem7(user, friends, visitors) {
 		this.calScore = calScore;
 	}
 	function calScore() {
-		this.score = visitCnt + knowingCnt * 10;
+		this.score = this.visitCnt + this.knowingCnt * 10;
 	}
-	let answer;
+	let answer = [];
 	let friendList = [];
 
 	addFriends();
 	calKnowingFriends();
 	calVisitFriends();
+	calFriendsScore();
+	recommendFriend();
 
 	function addFriends() {
 		friends.map((ref) => {
@@ -49,8 +51,7 @@ function problem7(user, friends, visitors) {
 	function calKnowingFriends() {
 		friendList.forEach((friend) => {
 			if (friend.friendName != user && friend.isFriend)
-				//user와 친구인 애들
-				//friendTogether.push(friend.friendName);
+				//user와 친구
 				calKnowingCnt(friend.friendName);
 		});
 	}
@@ -70,6 +71,23 @@ function problem7(user, friends, visitors) {
 	function calVisitFriends() {
 		visitors.map((ref) => {
 			friendList[friendList.findIndex((e) => e.friendName == ref)].visitCnt++;
+		});
+	}
+
+	function calFriendsScore() {
+		friendList.forEach((friends) => friends.calScore());
+	}
+
+	function recommendFriend() {
+		friendList
+			.sort(function (a, b) {
+				return a.friendName - b.friendName;
+			})
+			.sort(function (a, b) {
+				return b.score - a.score;
+			});
+		friendList.map((friend) => {
+			if (!friend.isFriend && friend.score != 0) answer.push(friend.friendName);
 		});
 	}
 	return answer;
