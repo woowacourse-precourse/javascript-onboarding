@@ -1,19 +1,15 @@
 function problem2(cryptogram) {
-  var answer;
+  var answer = new Array();
 
-  for( var i = 0; i<n; i++) {
-    var j;
-
-    for( j = 0; j < i; j++) {
-      break;
-    }
-
-    if( j == 1 ) {
-      cryptogram[answer++] = cryptogram[i];
+  for ( var i = 0; i < cryptogram.length; i++) {
+    if( cryptogram[i] !== answer[answer.length-1]) {
+      answer.push(cryptogram[i]);
+    }else {
+      answer.pop();
     }
   }
-  return cryptogram.join("").slice(cryptogram, answer);
+  return answer.join('');
+  
 }
-
 
 module.exports = problem2;
