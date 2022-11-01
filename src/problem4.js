@@ -1,5 +1,5 @@
 function problem4(word) {
-  
+
   let arr = word.split("");
   
   for(let i=0; i < arr.length; i++) {
@@ -9,7 +9,8 @@ function problem4(word) {
       arr[i] = String.fromCodePoint("a".charCodeAt()+"z".charCodeAt()-arr[i].charCodeAt());
     }
   }
-  
+  const newWord = arr.join("");
+  return newWord;
 }
 
 module.exports = problem4;
