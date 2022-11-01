@@ -33,6 +33,25 @@ function sortArr(score) {
   return score;
 }
 
+// 점수세기
+function getPoint(friendsArr, visitorsArr) {
+  friendsArr.forEach((value, key) => {
+    visitorsArr.has(key) ? visitorsArr.set(key,visitorsArr.get(key) + (value.length*10)) : visitorsArr.set(key, value.length * 10)
+  });
+
+  return visitorsArr;
+}
+
+// 점수뽑기
+function pullPoint(score, result) {
+  score.forEach(val => {
+    val[1] !== 0 ? result.push(val[0]) : false;
+  });
+
+  return result;
+
+}
+
 function problem7(user, friends, visitors) {
   const friendsArr = setFriendsArr(friends);
   const visitorsArr = setVisitersArr(visitors);
@@ -46,6 +65,10 @@ function problem7(user, friends, visitors) {
     });
   }
   friendsArr.delete(user)
+
+  getPoint(friendsArr, visitorsArr);
+
+  let score = sortArr([...visitorsArr]);
  
   return pullPoint(score, result);
 }
