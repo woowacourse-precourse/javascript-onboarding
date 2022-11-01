@@ -194,6 +194,98 @@ describe('problem6', () => {
       ])
     ).toEqual(['jason@email.com', 'jm@email.com', 'mj@email.com']);
   });
+  test('case2', () => {
+    expect(
+      problem6([
+        ['jm@email.com', '제이엠'],
+        ['jason@email.com', '제이슨'],
+        ['woniee@email.com', '워니'],
+        ['mj@email.com', '엠제이'],
+        ['nowm@email.com', '이제엠'],
+        ['jasp@email.com', '박이김'],
+        ['jp@email.com', '김이박'],
+        ['qpw@email.com', '김이순'],
+        ['teemo@email.com', '티모'],
+        ['banana@email.com', '대위티모'],
+        ['secondJm@email.com', '제이엠'],
+        ['apple@email.com', '땷횱봵'],
+        ['stran@email.com', '횱봵으'],
+        ['zebra@email.com', '두글자이상의문자가연속적으로이제맞티모'],
+      ])
+    ).toEqual([
+      'apple@email.com',
+      'banana@email.com',
+      'jason@email.com',
+      'jm@email.com',
+      'jp@email.com',
+      'mj@email.com',
+      'nowm@email.com',
+      'qpw@email.com',
+      'secondJm@email.com',
+      'stran@email.com',
+      'teemo@email.com',
+      'zebra@email.com',
+    ]);
+  });
+
+  const makeEmail = (index) => {
+    const alphabet = 'abcdefghij';
+
+    return (
+      'aaaaa' +
+      alphabet[~~((index % 10000) / 1000)] +
+      alphabet[~~((index % 1000) / 100)] +
+      alphabet[~~((index % 100) / 10)] +
+      alphabet[~~((index % 10) / 1)] +
+      '@email.com'
+    );
+  };
+
+  const makeNickname = (index) => {
+    const first = '가'.charCodeAt(0);
+    const bound = '힣'.charCodeAt(0) - '가'.charCodeAt(0) + 1;
+
+    return String.fromCharCode(
+      ...Array(19)
+        .fill()
+        .map((_, chIndex) => {
+          return first + ((index + (1 << chIndex)) % bound);
+        })
+    );
+  };
+  test('case4', () => {
+    expect(
+      problem6(
+        Array(10000)
+          .fill()
+          .map((_, index) => {
+            return [makeEmail(index), makeNickname(index)];
+          })
+      )
+    ).toEqual([]);
+  });
+
+  test('case5', () => {
+    expect(
+      problem6(
+        Array(10000)
+          .fill()
+          .map((_, index) => {
+            return [
+              makeEmail(index),
+              index % 2500 !== 0
+                ? makeNickname(index)
+                : makeNickname(index).substring(0, 16) + '우테코',
+            ];
+          })
+      )
+    ).toEqual([
+      'aaaaaaaaaa@email.com',
+      'aaaaaacfaa@email.com',
+      'aaaaaafaaa@email.com',
+      'aaaaaahfaa@email.com',
+    ]);
+  });
 });
 
 describe('problem7', () => {
