@@ -5,7 +5,7 @@ function problem5(money) {
   for(let i = 0 ; i<amount.length; i++){
     answer.push(Math.floor(money/amount[i]))
     
-    money -= amount[i] * answer[answer.length-1]
+    money = money % amount[i]
   }
   
   return answer;
