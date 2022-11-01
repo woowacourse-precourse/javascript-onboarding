@@ -1,7 +1,7 @@
 function problem4(word) {
   var answer=answerString(word);
   if(!error(word)){
-    throw new Error('제한사항을 확인하세요.')
+    throw new Error('제한사항을 확인하세요.');
   }
   return answer;
 }

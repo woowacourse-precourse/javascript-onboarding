@@ -16,7 +16,7 @@ function multiply(number){
 
 function bigNumbers(person){
   return Math.max(...person.map((el)=>{
-      return Math.max(add(el),multiply(el))
+      return Math.max(add(el),multiply(el));
   }));
 }
 
@@ -47,7 +47,7 @@ function play(pobi,crong){
   const tie = 0;
 
   if(!error(pobi) || !error(crong)){
-      return -1
+      return -1;
   }
   if(bigNumbers(pobi)===bigNumbers(crong)){
       return tie;

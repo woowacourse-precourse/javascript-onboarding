@@ -1,7 +1,7 @@
 function problem2(cryptogram) {
   var answer=playRemove(cryptogram);
   if(!error(cryptogram)){
-    throw new Error('제한사항을 확인하세요.')
+    throw new Error('제한사항을 확인하세요.');
   }
   return answer;
 }
@@ -22,7 +22,7 @@ function remove(cryptogram){
   let removeString="";
   for(let i=0; i<cryptogramArr.length; i++){
     if(cryptogramArr[i]!==cryptogramArr[i+1] && cryptogramArr[i]!==cryptogramArr[i-1]){
-      removeString+=cryptogramArr[i]
+      removeString+=cryptogramArr[i];
     }
   }   
   return removeString;
@@ -30,7 +30,7 @@ function remove(cryptogram){
 
 function playRemove(cryptogram){
   while(overlap(cryptogram)){
-    cryptogram=remove(cryptogram)
+    cryptogram=remove(cryptogram);
   }
   return cryptogram;
 }

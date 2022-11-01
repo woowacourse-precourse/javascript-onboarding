@@ -1,7 +1,7 @@
 function problem7(user, friends, visitors) {
   var answer=answerList(user,friends,visitors);
   if(!error(user, friends, visitors) || !lengthError(user, friends, visitors)){
-    throw new Error('제한사항을 확인하세요')
+    throw new Error('제한사항을 확인하세요');
   }
   return answer;
 }

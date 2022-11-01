@@ -1,7 +1,7 @@
 function problem5(money) {
   var answer=moneyTransform(money);
   if(!error(money)){
-    throw new Error('제한사항을 확인하세요.')
+    throw new Error('제한사항을 확인하세요.');
   }
   return answer;
 }
