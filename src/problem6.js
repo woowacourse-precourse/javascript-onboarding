@@ -26,6 +26,15 @@ function isException(forms) {
   return false;
 }
 
+function splitName(name) {
+  const wordList = [];
+
+  for (let i = 0; i + 1 < name.length; ++i) {
+    wordList.push(name.substring(i, i + 2));
+  }
+  return [...new Set(wordList)];
+}
+
 function problem6(forms) {
   if (isException(forms)) return;
 }
