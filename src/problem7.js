@@ -22,6 +22,26 @@ const updateFriendListMap = (friendListMap, keyName, valueName) => {
 };
 
 /**
+ * 친구관계 input으로부터 가공된 Map을 반환한다.
+ * @param {string[][]} friends - 친구관계 List input
+ * @return {Map<string, string[]>}
+ */
+const getFriendListMap = (friends) => {
+  let friendListMap = new Map();
+
+  friends.forEach((singleRelationship) => {
+    const [friendA, friendB] = singleRelationship;
+
+    // 첫번째 유저 기준 Map 업데이트
+    friendListMap = updateFriendListMap(friendListMap, friendA, friendB);
+    // 두번째 유저 기준 Map 업데이트
+    friendListMap = updateFriendListMap(friendListMap, friendB, friendA);
+  });
+
+  return friendListMap;
+};
+
+/**
  * main 함수
  * @param {string} user
  * @param {string[][]} friends
