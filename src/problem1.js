@@ -1,4 +1,4 @@
-// 입력된 값의 유효성을 체크하는 함수
+// validCheck(): 입력된 값의 유효성을 체크하는 함수
 function validCheck(left, right){
   if(left % 2 !== 1 || right % 2 !== 0){
     return false;
@@ -12,7 +12,7 @@ function validCheck(left, right){
   return true;
 }
 
-// 책 페이지를 받고 점수를 계산해주는 함수
+// calcScore(): 책 페이지를 받고 점수를 계산해주는 함수
 function calcScore(left, right){
   let leftSum = 0;
   let leftMul = 1;
