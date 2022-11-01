@@ -14,6 +14,11 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  visitors.forEach((visitor) => {
+    if (!friendList || !friendList.includes(visitor)) {
+      score[visitor] = (score[visitor] || 0) + 1;
+    }
+  });
 }
 
 module.exports = problem7;
