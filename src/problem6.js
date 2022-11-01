@@ -15,7 +15,16 @@ function problem6(forms) {
         newNewName.push(element.slice((i),(i+2)));                
       }
     }
-}
+  }
+  for (element of newNewName){ 
+    let elementStr = element.join('');
+    let eleInclude = nameCheck.includes(elementStr);
+    if (!eleInclude){
+      nameCheck.push(elementStr);
+    } else if (eleInclude){
+      overlap.push(elementStr);
+    }    
+  }  
 
 
 }
