@@ -58,7 +58,15 @@ function problem7(user, friends, visitors) {
     }
     return 0;
   });
-
+  for (let people of friend_suggest_lst) {
+    cnt += 1;
+    if (cnt === 6) {
+      return answer;
+    }
+    else {
+      answer.push(people[0]);
+    }
+  }
   return answer;
 }
 
