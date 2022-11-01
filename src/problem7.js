@@ -22,4 +22,16 @@ function findFriend(user, friends) {
   return friendList;
 }
 
+function scoreFriend(user, friends) {
+  // user의 친구 리스트
+  const friendsList = findFriend(user, friends);
+  // 친구의 친구를 저장할 배열
+  const friendsFriend = [];
+
+  // friendsList 원소(친구)의 친구를 찾는다.
+  for(i=0; i<friendsList.length; i++) {
+    friendsFriend = findFriend(friendsList[i], friends).filter((e) => e != user);
+  }
+}
+
 module.exports = problem7;
