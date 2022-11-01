@@ -4,10 +4,15 @@ class Decoder {
     let strArr = [...string];
 
     let decodeLog = [];
-    for (let i = 0; i < strArr.length; i++) {
-      string = string.replace(strArr[i] + strArr[i], '');
-      decodeLog.push(string);
-    }
+    strArr.forEach((x, i, a) => {
+      let n = a.length - i;
+      if (n > 1) {
+        strArr.forEach((y, j, b) => {
+          string = string.replace(y.repeat(n), '');
+          decodeLog.push(string)
+        })
+      }
+    })
     this.log = [...new Set(decodeLog)];
     // console.log(this.log)
     this.result = this.log[this.log.length - 1];
