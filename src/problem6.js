@@ -1,4 +1,4 @@
-const checkDuPlicateNickName = (nickNameArray) => {
+const checkDuPlicateNickNameArray = (nickNameArray) => {
   let prefixArray = [];
   for (let i = 0; i < nickNameArray.length; i++) {
     for (let j = 0; j < nickNameArray.length; j++) {
@@ -26,9 +26,7 @@ function problem6(forms) {
   const formsObj = Object.fromEntries(forms);
   const nickNameArray = Object.values(formsObj);
   const emailArray = Object.keys(formsObj);
-  const duplicateNickNameArray = checkDuPlicateNickName(nickNameArray);
-
-  answer = matchDuplicateNickNameToEmail(emailArray, duplicateNickNameArray, formsObj).sort();
+  answer = matchDuplicateNickNameToEmail(emailArray, checkDuPlicateNickNameArray(nickNameArray), formsObj).sort();
 
   return answer;
 }
