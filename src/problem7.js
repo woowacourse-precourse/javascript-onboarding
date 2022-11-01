@@ -45,17 +45,25 @@ function joinCrew(friendsRecommendArr, visitors) {
   return joinCrewArr;
 }
 // 기능 4
-function sortResult() {}
+function sortResult(a, b) {
+  if (a[1] === b[1]) {
+    return a[0] < b[0] ? -1 : 1;
+  } else {
+    return a[1] > b[1] ? -1 : 1;
+  }
+}
 function problem7(user, friends, visitors) {
   var answer;
+  let sortedAnswer;
   let friendsArr = findFriends(user, friends);
   let friendsRecommendArr = friendsRecommend(user, friends, friendsArr);
   answer = joinCrew(
     getScore(friendsArr, friendsRecommendArr, 10),
     getScore(friendsArr, visitors, 1)
   );
+  sortedAnswer = answer.sort(sortResult);
 
-  return answer;
+  return sortedAnswer;
 }
 
 module.exports = problem7;
