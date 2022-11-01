@@ -8,6 +8,16 @@ const getTemporaryWord = (nickName, index) => {
   return nickName.substring(index, index + 2);
 };
 
+/**
+ * 이미 임시 단어 object 에 주어진 임시 문자열이 존재하는지 확인
+ * @param {object} commonNicknameObject - 임시 단어 object
+ * @param {string} temporaryWord - 임시 단어
+ * @return {boolean}
+ */
+const isTmpWordAlreadyExists = (commonNicknameObject, temporaryWord) => {
+  return commonNicknameObject[temporaryWord];
+};
+
 const problem6 = (forms) => {
   const answer = [];
   const commonNickName = {};
