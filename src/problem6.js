@@ -18,6 +18,11 @@ function problem6(forms) {
     }
   }
 
+  const wordSet = [...wordMap];
+
+  for (let i = 0; i < wordSet.length; ++i) {
+    if (wordSet[i][1] > 1) target.push(wordSet[i][0]);
+  }
   return answer;
 }
 
