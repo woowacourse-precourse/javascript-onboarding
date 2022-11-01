@@ -34,9 +34,6 @@ function problem6(forms) {
     if (checkEmail(email) && checkNickname(name))
       verifyForms.push([email, name]);
   }
-
-  // 제이엠스 제이엠
-  // 훈 훈 연속적은 아님..
   // 연속된 문자가 두글자 이상이면 겹치니 최소 개수 2개만 뽑아내서 검사
   let sameWord = {};
   for (let [email, name] of verifyForms) {
@@ -55,6 +52,7 @@ function problem6(forms) {
       }
     }
   }
+
   // 중복 제거
   // 오름차순 정렬 추가
   answer = [...new Set(answer)].sort();
