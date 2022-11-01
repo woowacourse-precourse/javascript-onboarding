@@ -46,6 +46,8 @@ function exceptCrew(crew = ['', '']) {
   return 0;
 }
 
+//중복 검색용 함수
+//두글자뽑아서 다른 닉네임과 정규표현식으로 비교한다
 function compareNick(nick = ['', ''], compareCrew = ['', '']) {
   for (let i = 0; i < nick[1].length - 1; i++) {
     let reg = new RegExp(nick[1][i] + nick[1][i + 1]);
@@ -56,6 +58,7 @@ function compareNick(nick = ['', ''], compareCrew = ['', '']) {
   return [0, 0];
 }
 
+//실행함수
 function action(forms = [[]]) {
   let overlap = [];
   for (let i = 0; i < forms.length; i++) {
@@ -72,6 +75,7 @@ function action(forms = [[]]) {
         overlap.push(b);
         count++;
         if (count < 2) {
+          //a는 한번만 넣는다
           overlap.push(a);
         }
         console.log(overlap);
