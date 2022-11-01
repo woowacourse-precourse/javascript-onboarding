@@ -8,11 +8,6 @@ function problem7(user, friends, visitors) {
       else recommendPoint[visitor] = visitPoint[visitor]
   }
 
-  const userFriend = checkFriendship(user, friends)
-  userFriend.forEach((friend) => {
-    if (recommendPoint[friend]) delete recommendPoint[friend]
-  })
-
   const sorted = Object.keys(recommendPoint).sort((a, b) => {
       if (recommendPoint[a] === recommendPoint[b]) {
           return a < b ? -1 : a > b ? 1 : 0
@@ -51,8 +46,11 @@ function getFriendPoint(user, friends) {
   let friendPoint = {}
   userFriend.forEach((friend) => {
       checkFriendship(friend, friendsExceptUser).forEach((person) => {
-          friendPoint[person] ? friendPoint[person] += 10 : friendPoint[person] = 10
+        friendPoint[person] ? friendPoint[person] += 10 : friendPoint[person] = 10
       })
+  })
+  userFriend.forEach((userFriend) => {
+    if (friendPoint[userFriend]) delete friendPoint[userFriend]
   })
   return friendPoint
 }
