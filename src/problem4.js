@@ -11,8 +11,6 @@ const middleUpperASCII = parseInt(
 const middleLowerASCII = parseInt(
   (ALPHABET_ASCII_CODE.a + ALPHABET_ASCII_CODE.z) / 2
 );
-console.log(middleUpperASCII);
-console.log(middleLowerASCII);
 
 const smaller = (currentASCII = 0, ASCII_CODE = 0) => {
   return String.fromCharCode(
