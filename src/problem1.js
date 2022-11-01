@@ -1,14 +1,15 @@
 function problem1(pobi, crong) {
-  if (!isValidArray(pobi) || !isValidArray(crong)) return -1
-
   let maxPobiNumber = 0;
   let maxCrongNumber = 0;
+  const isPobiWin = () => maxPobiNumber > maxCrongNumber;
+
+  if (!isValidArray(pobi) || !isValidArray(crong)) return -1
 
   maxPobiNumber = getMaxFromTwoNumber(getMaxFromAddSum(pobi),getMaxFromMultiplySum(pobi));
   maxCrongNumber = getMaxFromTwoNumber(getMaxFromAddSum(crong),getMaxFromMultiplySum(crong));
 
   if (isResultDraw(maxPobiNumber, maxCrongNumber)) return 0; 
-  return maxPobiNumber > maxCrongNumber ? 1 : 2; 
+  return isPobiWin() ? 1 : 2; 
 }
 
 /**
@@ -17,11 +18,14 @@ function problem1(pobi, crong) {
 * @returns {number} 덧셈 결과 리턴
 */
 const getMaxFromAddSum = arr => {
+  const firstNumber = 0;
+  const secondNumber = 1;
+
   const result = arr.map( ele => 
       String(ele).split('').reduce((acc,cur)=>
           acc + parseInt(cur), 0)
 );
-  return  result[0] > result[1] ? result[0] : result[1];
+  return  result[firstNumber] > result[secondNumber] ? result[firstNumber] : result[secondNumber];
 }
 
 /**
@@ -30,10 +34,13 @@ const getMaxFromAddSum = arr => {
 * @returns {number}곱 결과 리턴
 */
 const getMaxFromMultiplySum = arr =>{
+  const firstNumber = 0;
+  const secondNumber = 1;
+
   const result = arr.map( ele => 
       String(ele).split('').reduce((acc,cur)=> acc * parseInt(cur), 1)
 );
-  return  result[0] > result[1] ? result[0] : result[1];
+  return  result[firstNumber] > result[secondNumber] ? result[firstNumber] : result[secondNumber];
 }
 
 /**
@@ -58,14 +65,15 @@ const isValidArray = (arr) => {
   const rightPage = arr[1];
   const firstPage = 1;
   const finalPage = 400;
-
   /**
-   * left페이지와 right페이지의 범위 유효성을 검사하는  함수
+   * left페이지와 right페이지가 1이상 400미만인지 또는 첫장 마지막장이 아닌지 확인하는 함수
    * @returns {boolean}
    */
   const isValidRange = () => {
-      if (leftPage < finalPage - 1 && leftPage > firstPage) return true;
-      if (rightPage < finalPage && rightPage > firstPage + 1) return true;
+    const isLeftPageValidRange = () => leftPage < finalPage - 1 && leftPage > firstPage;
+    const isRightPageValidRange = () => rightPage < finalPage && rightPage > firstPage + 1;
+
+      if (isLeftPageValidRange() && isRightPageValidRange()) return true;
   }
 
   /**
@@ -83,5 +91,4 @@ const isValidArray = (arr) => {
   if (isValidRange() && isEvenAndOdd() && isSamePage()) return true
   return false
 }
-
 module.exports = problem1;
