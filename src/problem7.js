@@ -22,7 +22,7 @@ function findFriend(user, friends) {
   return friendList;
 }
 
-function scoreFriend(user, friends) {
+function findFriendsFriend(user, friends) {
   // user의 친구 리스트
   const friendsList = findFriend(user, friends);
   // 친구의 친구를 저장할 배열
@@ -31,6 +31,24 @@ function scoreFriend(user, friends) {
   // friendsList 원소(친구)의 친구를 찾는다.
   for(i=0; i<friendsList.length; i++) {
     friendsFriend = findFriend(friendsList[i], friends).filter((e) => e != user);
+  }
+
+  return friendsFriend;
+}
+
+function scoreFriend(user, friends, visitors) {
+  // user의 친구 리스트
+  const friendsList = findFriend(user, friends);
+  // 친구의 친구
+  const friendsFriend = findFriendsFriend(user, friends);
+  // 점수판
+  let scoreBoard = {};
+
+  // user의 친구 중 친구의 친구가 없을 경우 10점 추가
+  for(i=0; i<friendsFriend.length; i++) {
+    if (!friendsList.includes(friendsFriend[i])) {
+      scoreBoard[friendsFriend[i]] += 10
+    }
   }
 }
 
