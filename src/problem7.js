@@ -65,7 +65,7 @@ function pushFriendList(friendList, friend) {
     if (!objectKey(friendList, friend[i])) {
       friendList[friend[i]] = [];
     }
-    console.log(friendList);
+    // console.log(friendList);
     friendList[friend[i]].push(friend[(i + 1) % 2]);
   }
 }
@@ -79,6 +79,25 @@ function makeFriendList(user, friends) {
     friendList[user] = [];
   }
   return friendList;
+}
+
+function getFriendScore(friendList, user) {
+  const score = {};
+  const friendUserList = friendList[user];
+  const friendKey = Object.keys(friendList);
+  for (let i = 0; i < friendKey.length; i++) {
+    if (friendUserList.includes(friendKey[i]) || friendKey[i].includes(user)) {
+      continue;
+    }
+    score[friendKey[i]] =
+      friendList[friendKey[i]].filter((x) => friendUserList.includes(x))
+        .length * 10;
+  }
+  return score;
+}
+
+function getScore(user, friendList, visitors) {
+  const score = getFriendScore(friendList, user);
 }
 
 function problem7(user, friends, visitors) {
@@ -96,6 +115,7 @@ problem7(
     ["donut", "andole"],
     ["donut", "jun"],
     ["donut", "mrko"],
+    ["andole", "yein"],
     ["shakevan", "andole"],
     ["shakevan", "jun"],
     ["shakevan", "mrko"],
