@@ -25,8 +25,7 @@ function calculateProductOfDigits(digits) {
  * @param {number} b
  */
 function getGreaterNumber(a, b) {
-  if (a === b) return;
-  return a > b ? a : b;
+  return a >= b ? a : b;
 }
 
 function problem1(pobi, crong) {
