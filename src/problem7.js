@@ -1,9 +1,9 @@
 function problem7(user, friends, visitors) {
   let answer = [];
-  const userFriends = friends.map(i => i.filter(j => !user.includes(j))).filter(j => j.length < 2).flat();
-  const recommendationList = [...new Set(friends.map(i => i.filter(j => !userFriends.includes(j))).filter(j => !user.includes(j)).filter(j => j.length < 2).flat())]
-  //배열과 이름과 점수를 담아보자
-  const scoreFriendsList = recommendationList.map(i => 10)
+  const userFriends = findFriends(user, friends);
+  const recommendFriends = findrecommendFriends(user, friends, userFriends)
+  const scoreFriendsList = recommendFriends.map(i => 10)
+
   //두 배열의 길이는 항상 같아야 함.
   //방문자 확인해서 점수 올려주기
   visitors.forEach(i => {
@@ -62,3 +62,4 @@ function findFriends(user, friends) {
 function findrecommendFriends(user, friends, myFriends) {
   return [...new Set(friends.map(friendTable => friendTable.filter(friend => !myFriends.includes(friend))).filter(friend => !user.includes(friend)).filter(friendList => friendList.length < 2).flat())]
 }
+
