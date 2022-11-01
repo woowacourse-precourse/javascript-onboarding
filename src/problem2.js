@@ -16,20 +16,18 @@ function problem2(cryptogram) {
 function getDecryption(cryptogram) {
   let decryption = '';
 
-  for (var i=0; i<cryptogram.length-1; i++){
+  for (let i=0; i<cryptogram.length-1; i++){
     if(cryptogram[i] == cryptogram[i+1]) continue;
     if(cryptogram[i] == cryptogram[i-1]) continue;
     decryption += cryptogram[i];
   }
 
-  let lastIndex = cryptogram.length-1;
+  const lastIndex = cryptogram.length-1;
   if(cryptogram[lastIndex] != cryptogram[lastIndex-1]){
     decryption += cryptogram[lastIndex];
   }
 
   return decryption;
 }
-
-problem2("zyelleyz");
 
 module.exports = problem2;

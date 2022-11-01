@@ -8,8 +8,8 @@ function problem1(pobi, crong) {
   if(pobiRightPage-pobiLeftPage != 1 || crongRightPage-crongLeftPage != 1) return -1;
   if(pobiLeftPage==1 || pobiLeftPage==399 || crongLeftPage==1 || crongLeftPage == 399) return -1;
 
-  let pobiScore = getScore(pobiLeftPage, pobiRightPage);
-  let crongScore = getScore(crongLeftPage, crongRightPage);
+  const pobiScore = getScore(pobiLeftPage, pobiRightPage);
+  const crongScore = getScore(crongLeftPage, crongRightPage);
 
   if(pobiScore == crongScore) return 0;
   else if(pobiScore > crongScore) return 1;
@@ -21,7 +21,7 @@ function getScore(leftPage, rightPage){
   let mul = 1;
 
   const eachDigitArray = Array.from(String(leftPage)+String(rightPage));
-  for (var eachDigit of eachDigitArray){
+  for (const eachDigit of eachDigitArray){
     sum += Number(eachDigit);
     mul *= Number(eachDigit);
   }
