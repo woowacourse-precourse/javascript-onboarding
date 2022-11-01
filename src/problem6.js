@@ -1,5 +1,7 @@
 const problem6 = (forms) => {
-  var answer;
+  const answer = [];
+  const commonNickName = {};
+
   return answer;
 };
 
