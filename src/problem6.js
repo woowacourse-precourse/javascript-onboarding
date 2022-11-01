@@ -24,6 +24,10 @@ function problem6(forms) {
         result.push(form[0]);
     }
   });
+
+
+  // 결과
+  return result;
 }
 
 module.exports = problem6;
