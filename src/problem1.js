@@ -1,52 +1,74 @@
-function big_page_compare(book_page) {
+function bigPageCompare(bookPage) {
   let res = 0;
-  res = big_page_add(book_page[0]);
-  let res2 = big_page_Multiplication(book_page[0]);
-  if (res < res2) res = res2;
-  res2 = big_page_add(book_page[1]);
-  if (res < res2) res = res2;
-  res2 = big_page_Multiplication(book_page[1]);
-  if (res < res2) res = res2;
+  res = bigPageAdd(bookPage[0]);
+  let res2 = bigPageMultiplication(bookPage[0]);
+  if (res < res2) {
+    res = res2;
+  }
+  res2 = bigPageAdd(bookPage[1]);
+  if (res < res2) {
+    res = res2;
+  }
+  res2 = bigPageMultiplication(bookPage[1]);
+  if (res < res2) {
+    res = res2;
+  }
   return res;
 }
 
-function big_page_add(book_page) {
-  let left_book_page_idx = book_page.toString();
+function bigPageAdd(bookPage) {
+  let leftBookPageIdx = bookPage.toString();
   let res = 0;
-  for (i = 0; i < left_book_page_idx.length; i++)
-    res = res + parseInt(left_book_page_idx[i]);
+  for (i = 0; i < leftBookPageIdx.length; i++) {
+    res = res + parseInt(leftBookPageIdx[i]);
+  }
   return res;
 }
 
-function big_page_Multiplication(book_page) {
-  let left_book_page_idx = book_page.toString();
+function bigPageMultiplication(bookPage) {
+  let leftBookPageIdx = bookPage.toString();
   let res = 1;
-  for (i = 0; i < left_book_page_idx.length; i++)
-    res = res * parseInt(left_book_page_idx[i]);
+  for (i = 0; i < leftBookPageIdx.length; i++) {
+    res = res * parseInt(leftBookPageIdx[i]);
+  }
   return res;
 }
 
-function open_book(book_page) {
-  if (book_page[1] - book_page[0] != 1) return -1;
-  if (1 > book_page[0] || book_page[0] > 400) return -1;
-  else if (1 > book_page[1] || book_page[1] > 400) return -1;
-  if (book_page[0] % 2 == 0) return -1;
-  else if (book_page[1] % 2 == 1) return -1;
+function openBook(bookPage) {
+  if (bookPage[1] - bookPage[0] != 1) {
+    return -1;
+  }
+  if (1 > bookPage[0] || bookPage[0] > 400) {
+    return -1;
+  } else if (1 > bookPage[1] || bookPage[1] > 400) {
+    return -1;
+  }
+  if (bookPage[0] % 2 == 0) {
+    return -1;
+  } else if (bookPage[1] % 2 == 1) {
+    return -1;
+  }
   return 1;
 }
 
 function problem1(pobi, crong) {
-  let pobi_res = open_book(pobi);
-  let crong_res = open_book(crong);
+  let pobiRes = openBook(pobi);
+  let crongRes = openBook(crong);
   let res = 0;
-  if (pobi_res == -1 || crong_res == -1) return -1;
-  pobi_res = 0;
-  crong_res = 0;
-  pobi_res = big_page_compare(pobi);
-  crong_res = big_page_compare(crong);
-  if (pobi_res > crong_res) return 1;
-  else if (pobi_res < crong_res) return 2;
-  else if (pobi_res == crong_res) return 0;
+  if (pobiRes == -1 || crongRes == -1) {
+    return -1;
+  }
+  pobRes = 0;
+  crongRes = 0;
+  pobiRes = bigPageCompare(pobi);
+  crongRes = bigPageCompare(crong);
+  if (pobiRes > crongRes) {
+    return 1;
+  } else if (pobiRes < crongRes) {
+    return 2;
+  } else if (pobiRes == crongRes) {
+    return 0;
+  }
 }
 
 module.exports = problem1;
