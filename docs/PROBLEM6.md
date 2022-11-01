@@ -21,3 +21,6 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a array of nicknames and email addresses and returns email addresses belonging to the ones with similar nicknames
