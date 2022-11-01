@@ -8,7 +8,7 @@ const CONSTANTS = {
   },
 };
 
-function reverseCharacter(char) {
+const reverseCharacter = (char) => {
   const { FIRST_INDEX, ASCII } = CONSTANTS;
 
   const asciiChar = char.charCodeAt(FIRST_INDEX);
@@ -18,9 +18,9 @@ function reverseCharacter(char) {
   }
 
   return String.fromCharCode(ASCII.z - asciiChar + ASCII.a);
-}
+};
 
-function isAlphabet(char) {
+const isAlphabet = (char) => {
   const { FIRST_INDEX, ASCII } = CONSTANTS;
 
   const asciiChar = char.charCodeAt(FIRST_INDEX);
@@ -29,9 +29,9 @@ function isAlphabet(char) {
     (asciiChar >= ASCII.A && asciiChar <= ASCII.Z) ||
     (asciiChar >= ASCII.a && asciiChar <= ASCII.z)
   );
-}
+};
 
-function problem4(word) {
+const problem4 = (word) => {
   let answer = "";
 
   for (const char of word) {
@@ -44,6 +44,6 @@ function problem4(word) {
   }
 
   return answer;
-}
+};
 
 module.exports = problem4;
