@@ -19,6 +19,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for(let friend of userFriends) {
+    userFriendMap.delete(friend)
+  }
+
+  for(let friend of friends) {
+    userFriends.forEach((userFriend) => {
+      if(friend.includes(userFriend)) {
+        const FOfF = friend.find((name) => name != user && name != userFriend)
+        if(FOfF) {
+          newUserFriends.push(FOfF)
+        }
+      }
+    })
+  }
+
+
   return answer;
 }
 
