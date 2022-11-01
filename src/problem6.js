@@ -42,6 +42,12 @@ function problem6(forms) {
       if (targetPattern.includes(slice)) target.push(name);
     }
   }
+  
+  // 이메일 추출
+  const emails = [];
+  for (i = 0; i < target.length; i++) {
+    emails.push(crew[target[i]]);
+  }
 }
 
 module.exports = problem6;
