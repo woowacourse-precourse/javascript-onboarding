@@ -37,9 +37,8 @@ function problem7(user, friends, visitors) {
   othersList = othersList.filter((friend) => friend[1] !== 0);
 
   answer = othersList.map((friend) => friend[0]);
-  answer = answer.slice(0, 5);
 
-  return answer;
+  return answer.slice(0, 5);
 }
 
 module.exports = problem7;
