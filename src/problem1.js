@@ -6,7 +6,9 @@ function problem1(pobi, crong) {
 
   if(pobiLeftPage >= pobiRightPage || crongLeftPage >= crongRightPage) return -1;
   if(pobiRightPage-pobiLeftPage != 1 || crongRightPage-crongLeftPage != 1) return -1;
-  if(pobiLeftPage==1 || pobiLeftPage==399 || crongLeftPage==1 || crongLeftPage == 399) return -1;
+  if(!pobiLeftPage%2 || pobiRightPage%2 || !crongLeftPage%2 || crongRightPage%2) return -1;
+  if(pobiLeftPage<=1 || pobiLeftPage>=399 || pobiRightPage<=2 || pobiRightPage>=400) return -1;
+  if(crongLeftPage<=1 || crongLeftPage>=399 || crongRightPage<=2 || crongRightPage>=400) return -1;
 
   const pobiScore = getScore(pobiLeftPage, pobiRightPage);
   const crongScore = getScore(crongLeftPage, crongRightPage);
