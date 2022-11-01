@@ -1,5 +1,11 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = cryptogram;
+  const REGEX = /([a-z])\1+/g;
+
+  while (REGEX.test(answer)) {
+    answer = String(answer).replace(REGEX, "");
+  }
+
   return answer;
 }
 
