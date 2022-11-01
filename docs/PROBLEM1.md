@@ -23,3 +23,16 @@
 | [97, 98]   | [197, 198] | 0      |
 | [131, 132] | [211, 212] | 1      |
 | [99, 102]  | [211, 212] | -1     |
+
+### 기능 목록
+
+- exception(pages: array): boolean
+  - [예외사항을 확인하는 함수]
+- add(pageNum: number): number
+  - [pageNum의 각 자릿수를 더하고 출력하는 함수]
+- multiply(pageNum: number): number
+  - [pageNum의 각 자릿수를 곱하고 출력하는 함수]
+- compare(num1: number, num2: number, value?: boolean): number
+  - [num1와 num2를 비교하는 함수]
+  - value가 true일 때, num1과 num2 중 더 크거나 같은 값 출력
+  - value가 false일 때, num1이 더 크면 1, num2가 더 크면 2, num1과 num2가 같다면 0 출력

@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 구현한 기능 목록
+
+- decoder(decodeCryptogram: string): string
+  - [암호문을 넣으면 조건에 따라 해독해주는 함수]
