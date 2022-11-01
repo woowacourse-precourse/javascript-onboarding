@@ -1,5 +1,5 @@
 function problem5(money) {
-  var answer;
+  let answer = [];
   return answer;
 }
 
