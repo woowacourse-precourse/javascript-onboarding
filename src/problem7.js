@@ -18,6 +18,9 @@ function problem7(user, friends, visitors) {
       usersFriends[friend] = [];
     }
   }
+
+  // 추천할 친구 목록
+  const recommendUsers = {};
 }
 
 module.exports = problem7;
