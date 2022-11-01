@@ -34,4 +34,36 @@ describe('Problem1 Util test', () => {
       expect(result).toBe(-1);
     });
   });
+
+  describe('isValidPage', () => {
+    test('valid', () => {
+      const result = problem1Util.isValidPage(5, 6, 1, 100);
+      expect(result).toBe(true);
+    });
+
+    test('inValid - left page is state page', () => {
+      const result = problem1Util.isValidPage(1, 2, 1, 100);
+      expect(result).toBe(false);
+    });
+
+    test('inValid - right page is last page', () => {
+      const result = problem1Util.isValidPage(99, 100, 1, 100);
+      expect(result).toBe(false);
+    });
+
+    test('inValid - left page and right page diff is not 1', () => {
+      const result = problem1Util.isValidPage(3, 6, 1, 100);
+      expect(result).toBe(false);
+    });
+
+    test('inValid - left page is even', () => {
+      const result = problem1Util.isValidPage(4, 6, 1, 100);
+      expect(result).toBe(false);
+    });
+
+    test('inValid - right page is odd', () => {
+      const result = problem1Util.isValidPage(5, 7, 1, 100);
+      expect(result).toBe(false);
+    });
+  });
 });
