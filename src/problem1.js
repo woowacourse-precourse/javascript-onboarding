@@ -1,8 +1,12 @@
+// 입력된 값의 유효성 체크
 function validCheck(left, right){
   if(left % 2 !== 1 || right % 2 !== 0){
     return false;
   }
   if(right - left !== 1){
+    return false;
+  }
+  if(left < 1 || right > 400){
     return false;
   }
   return true;
