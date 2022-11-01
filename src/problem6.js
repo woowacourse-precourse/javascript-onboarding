@@ -22,8 +22,15 @@ function problem6(forms) {
       }
     }
   }
-
-  return answer;
+  for (let k of repeat) {
+    answer.add(forms[k][0]);
+  }
+  let answer_lst = [];
+  for (let n of answer) {
+    answer_lst.push(n);
+  }
+  answer_lst.sort()
+  return answer_lst;
 }
 
 module.exports = problem6;
