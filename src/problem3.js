@@ -1,10 +1,7 @@
 function problem3(number) {
-  let answer = 0
-  const regex = /3|6|9/g
-  for (let i = 1; i <= number; i++) {
-    answer += (String(i).match(regex) || []).length
-  }
-  return answer
+  const allNum = Array.from({ length: number }, (_, i) => i + 1).join("")
+  const answer = allNum.match(/[369]/g)
+  return answer ? allNum.match(/[369]/g).length : 0
 }
 
 module.exports = problem3
