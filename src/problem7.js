@@ -1,3 +1,19 @@
+function getFriendsRecommendArray(originFriends, sortedScore, ans) {
+  for (let i = 0; i < sortedScore; i++) {
+    if (ans.length === 5) {
+      break;
+    }
+    if (sortedScore[i][1] === 0) {
+      continue;
+    }
+    if (originFriends.includes[i][0]) {
+      continue;
+    }
+    ans.push(sortedScore[i][0]);
+  }
+  return ans;
+}
+
 function sortScore(score) {
   let scoreArray = Object.entries(score);
   sortByScoreAndThenName(scoreArray);
@@ -96,11 +112,13 @@ function problem7(user, friends, visitors) {
   let originFriends = [];
   let friendOfFriends = [];
   let score = {};
+  let ans = [];
 
   getOriginFriends(user, friends, originFriends);
   getFriendOfFriends(user, friends, originFriends, friendOfFriends);
   getScore(friendOfFriends, score, visitors);
   const sortedScore = sortScore(score);
+  getFriendsRecommendArray(originFriends, sortedScore, ans);
 }
 
 function testCode() {
