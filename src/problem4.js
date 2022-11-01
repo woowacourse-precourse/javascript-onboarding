@@ -32,18 +32,18 @@ const isAlphabet = (char) => {
 };
 
 const problem4 = (word) => {
-  let answer = "";
+  let reversedWord = "";
 
   for (const char of word) {
     if (!isAlphabet(char)) {
-      answer += char;
+      reversedWord += char;
       continue;
     }
 
-    answer += reverseCharacter(char);
+    reversedWord += reverseCharacter(char);
   }
 
-  return answer;
+  return reversedWord;
 };
 
 module.exports = problem4;
