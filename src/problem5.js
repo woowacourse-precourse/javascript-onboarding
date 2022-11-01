@@ -7,9 +7,8 @@ function problem5(money) {
   //연산
   //기능목록 1-1 구현
   coins.forEach((coin, idx) => {
-    answer[idx] = parseInt(money / coin);
+    answer[idx] = Math.floor(money / coin);
     money = money % coin;
-
     //기능목록 1-2 구현
     if (money === 0) return;
   });
