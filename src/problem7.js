@@ -51,6 +51,18 @@ function sortFriendByScore(friends) {
   return friends;
 }
 
+function makeRecommendList(sortedFriend, userFriends, user) {
+  let recommend = [];
+  sortedFriend.forEach( (friend) => {
+    if (friend[0] != user && !userFriends.includes(friend[0]))
+      recommend.push(friend[0]);
+      
+    if (recommend.length == 5)
+      return recommend;
+  });
+  return recommend;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendScore = {};
@@ -65,6 +77,7 @@ function problem7(user, friends, visitors) {
 
   sortedFriend = sortFriendByName(friendScore);
   sortedFriend = sortFriendByScore(sortedFriend);
+  answer = makeRecommendList(sortedFriend, userFriends, user);
 
   return answer;
 }
