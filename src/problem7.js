@@ -12,10 +12,19 @@ function getFriendsMap(friends) {
   return map;
 }
 
+// 본인과 본인의 친구들을 친구 추천에서 제외하는 기능
+function getExcludedFriends(user, friendsMap) {
+  const map = new Map();
+  map.set(user, true);
+  friendsMap.get(user).forEach((friend) => map.set(friend, true));
+  return map;
+}
+
 // solution
 function solution(user, friends, visitors) {
   const friendsMap = getFriendsMap(friends);
-  console.log(friendsMap);
+  const excludedFriends = getExcludedFriends(user, friendsMap);
+  console.log(excludedFriends);
 }
 
 function problem7(user, friends, visitors) {
