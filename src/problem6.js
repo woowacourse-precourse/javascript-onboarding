@@ -62,6 +62,12 @@ const problem6 = (forms) => {
     }
   });
 
+  // 중복 닉네임 도출
+  getIterableArrWithKeys(commonNickName).map((nickName) => {
+    if (isCommonNickNameSizeBiggerThanTwo(commonNickName, nickName))
+      answer.push(...commonNickName[nickName]);
+  });
+
   return answer;
 };
 
