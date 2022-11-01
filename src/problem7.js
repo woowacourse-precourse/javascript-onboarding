@@ -63,6 +63,7 @@ function problem7(user, friends, visitors) {
   let sortedMap = [...nameMap].sort((a, b) => a[1] - b[1]).reverse();
 
 
+
   let tmpArr = [];
   let tmpScore = 0;
   tmpScore = sortedMap[0][1];
@@ -80,12 +81,14 @@ function problem7(user, friends, visitors) {
         }
         tmpArr = [];
         tmpArr.push(sortedMap[i][0]);
+        tmpScore = sortedMap[i][1];
       }
       else{
         tmpArr.push(sortedMap[i][0]);
       }
     }
   }
+  tmpArr.sort();
   for(let j = 0;j < tmpArr.length;j++){
     if(answer.length < 5){
       answer.push(tmpArr[j]);
@@ -94,7 +97,6 @@ function problem7(user, friends, visitors) {
       break;
     }
   }
-
   return answer;
 }
 
