@@ -1,5 +1,6 @@
 function problem4(word) {
   var answer = "";
+  
   for (let i = 0; i < word.length; i++) {
     if (word[i].charCodeAt() == 32) {
       answer += word[i];
