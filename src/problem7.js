@@ -16,6 +16,19 @@ const calcVisitorScore = (user, visitors, scoreMap, friendsMap) => {
   })
 }
 
+const calcAcquaintanceScore = (user, scoreMap, friendsMap) => {
+  const acquaintanceMap = new Map(friendsMap);
+  acquaintanceMap.delete(user);
+  for (let acquaintance of [...acquaintanceMap.values()].flat()){
+    if(scoreMap.has(acquaintance)){
+      scoreMap.set(acquaintance, scoreMap.get(acquaintance) + 10);
+    } else if (
+    !friendsMap.get(user).includes(acquaintance) 
+    && acquaintance !== user
+    ){scoreMap.set(acquaintance, 10);} 
+  }
+}
+
 function problem7(user, friends, visitors) {
   const friendsMap = new Map();
   const scoreMap = new Map();
@@ -26,15 +39,7 @@ function problem7(user, friends, visitors) {
   })
 
   calcVisitorScore(user, visitors, scoreMap, friendsMap);
-  
-  friendsMap.get(user).forEach((person) => {
-    friendsMap.get(person).forEach((friendOfPerson) => {
-      if (scoreMap.has(friendOfPerson)) {
-        scoreMap.set(friendOfPerson, scoreMap.get(friendOfPerson) + 10);
-      }
-      else if (!friendsMap.get(user).includes(friendOfPerson) && friendOfPerson !== user) scoreMap.set(friendOfPerson, 10);
-    })
-  })
+  calcAcquaintanceScore(user, scoreMap, friendsMap);
 
   let sortScore = [...scoreMap];
   sortScore.sort((a, b) => {
