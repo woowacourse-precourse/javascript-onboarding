@@ -13,6 +13,7 @@ function removeDuplication(splitCryptogram) {
 
 function problem2(cryptogram) {
   let splitCryptogram = cryptogram.split("");
+  if (cryptogram === removeDuplication(splitCryptogram)) return cryptogram;
   return problem2(removeDuplication(splitCryptogram));
 }
 
