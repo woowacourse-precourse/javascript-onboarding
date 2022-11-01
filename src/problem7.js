@@ -1,9 +1,25 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  var answer = []
+  let userSet = getUserRelationMap(friends, user);
+
+  let friendMap = getFriendMap(userSet, friends, user);
+  let visitorMap = getVisitorMap(visitors);
+
+  recommendMap = getRecommendUserMap(friendMap, visitorMap);
+
+  for(const [user, score] of recommendMap){
+    answer.push({user: user, score: score});
+  }
+  answer = getSortedUserList(recommendMap);
+  if(answer.length > 4){
+    return answer.slice(0,5)
+  }
+  return answer
 }
 
 module.exports = problem7;
+
+
 function getUserRelationMap(friendsList, user){
   let userSet = new Set();
   friendsList.forEach(friends => {
