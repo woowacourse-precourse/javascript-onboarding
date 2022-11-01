@@ -23,3 +23,10 @@
 | user   | friends                                                                                                                         | visitors                                      | result                    |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in user, friends, visitors and returns the entire name list except the user.
+2. function that takes in user and friends and returns the user's friend names.
+3. function that takes in two arrays and returns the number of mutual items in two arrays.
+4. function that takes in a value and an array and returns the number of occurences.
+5. function that takes in an array and returns indices of top five values.
