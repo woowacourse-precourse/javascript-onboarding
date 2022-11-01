@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
 
   friends.forEach((element) => {
     const [username, friendname] = element
+    if (username === friendname) return
     if (!friendGraph[username]) {
       friendGraph[username] = []
     }
@@ -28,18 +29,20 @@ function problem7(user, friends, visitors) {
 
   let result = []
   for (const [friendname, value] of Object.entries(friendValue)) {
-    result.push([friendname, value])
+    if (
+      value > 0 &&
+      friendname !== user &&
+      !friendGraph[user].includes(friendname)
+    )
+      result.push([friendname, value])
   }
 
-  result.sort((a, b) => b[1] - a[1])
+  // 동일 점수인 경우, 이름순으로 추가
+  result.sort((a, b) => a[0].localeCompare(b[0])).sort((a, b) => b[1] - a[1])
 
-  const answer = result
-    .filter(
-      (i) => i[1] > 0 && i[0] !== user && !friendGraph[user].includes(i[0]),
-    )
-    .map((i) => i[0])
+  const answer = result.map((i) => i[0])
 
-  return answer
+  return answer.slice(0, 5)
 }
 
 module.exports = problem7
