@@ -6,7 +6,6 @@ function getMoney(money) {
     res[i] = Math.floor(money / won[i]);
     money %= won[i];
   }
-  // console.log(res);
   return res;
 }
 

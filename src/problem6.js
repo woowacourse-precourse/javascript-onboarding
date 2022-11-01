@@ -42,7 +42,7 @@ function subStrWord(word) {
   }
   const set = new Set(subArr);
   const subArrSet = [...set];
-  // console.log(subArrSet);
+
   return subArrSet;
 }
 function findOverLapArr(forms) {
@@ -50,23 +50,21 @@ function findOverLapArr(forms) {
   let i = 0;
   for (i = 0; i < forms.length; i++) {
     const subStr = subStrWord(forms[i][1]);
-    // console.log(subStr);
+
     checkArr.push(...subStr);
   }
-  // console.log(checkArr);
   return checkArr;
 }
 
 function isOverlapArrCheck(checkArr, twoWords) {
-  const finalWords = [];
+  const finalCountWords = [];
   for (i = 0; i < checkArr.length; i++) {
     const nickName = checkArr[i];
     if (nickName == twoWords) {
-      finalWords.push(nickName);
+      finalCountWords.push(nickName);
     }
   }
-  console.log(finalWords);
-  if (finalWords.length != 1) {
+  if (finalCountWords.length != 1) {
     return 1;
   }
   return 0;
@@ -83,7 +81,6 @@ function isOverlapForm(form, checkArr) {
 }
 
 function getOverlap(forms, checkArr) {
-  //
   const overlapArr = [];
   for (let i = 0; i < forms.length; i++) {
     if (isOverlapForm(forms[i], checkArr) == 1) {
@@ -102,13 +99,11 @@ function isRight(forms) {
     if (isCorrect(forms[i]) == -1) return -1;
   }
   const setArr = findOverLapArr(forms);
-  // console.log(setArr);
   const overlapArr = getOverlap(forms, setArr);
-  return overlapArr.sort(); //
+  return overlapArr.sort();
 }
 
 function problem6(forms) {
-  // console.log(isRight(forms));
   return isRight(forms);
 }
 
