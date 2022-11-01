@@ -75,6 +75,19 @@ function problem7(user, friends, visitors) {
   sortMapArr.sort();
   let sortScoreMap = new Map(sortMapArr);
 
+  var result = [];
+  var i = 0;
+
+  for (const score of sortMapVal){
+    for (let [key, value] of sortScoreMap) {
+      if(!result.includes(key) && score == value && value != 0 && i< 5){
+        result.push(key);
+        i++;
+      }
+    }
+  }
+  return result;
+
 }
 
 module.exports = problem7;
