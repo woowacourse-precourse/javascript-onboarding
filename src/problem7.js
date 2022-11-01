@@ -1,3 +1,5 @@
+const RESULT_COUNT = 5;
+
 const findFriends = (friends, friendsMap, person) => {
   let tempFriends = [];
   for (let i = 0; i < friends.length; i += 1){
@@ -54,7 +56,7 @@ function problem7(user, friends, visitors) {
   
   return [...scoreMap]
     .sort((a, b) => sortScore(a, b))
-    .slice(0,5)
+    .slice(0, RESULT_COUNT)
     .map(([name,]) => name);
 }
 
