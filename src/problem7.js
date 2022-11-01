@@ -64,6 +64,13 @@ function addFriendsScore(score, overlapUsers) {
   });
 }
 
+// score에 visitors 점수기록 +1
+function addVisitorsScore(score, 친구제외visitors) {
+  친구제외visitors.forEach((user) => {
+    score[user] += 1;
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const user의_친구목록 = getFriendsArr(user, friends);
@@ -79,6 +86,7 @@ function problem7(user, friends, visitors) {
   추천친구목록.forEach((id) => (score[id] = 0));
 
   addFriendsScore(score, overlapUsers);
+  addVisitorsScore(score, 친구제외visitors);
 
   return answer;
 }
