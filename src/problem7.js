@@ -58,7 +58,23 @@ function problem7(user, friends, visitors) {
   const SCORE_VISITOR = 1;
   let friend = findUserFriends(user, friends);
   let score = recommendFriends(user, friends, visitors, friend);
-  console.log(score);
+
+  for (let [key, value] of Object.entries(score)) {
+    recommend.push({ name: key, totalScore: value });
+  }
+
+  // 높은 점수 순으로 정렬
+  recommend.sort(function (a, b) {
+    return a.val != b.val
+      ? b.val - a.val // 점수에 대한 내림차순 정렬
+      : a.key < b.key
+      ? -1 // 점수가 같은 경우 이름에 대한 오름차순 정렬
+      : a.key > b.key
+      ? 1
+      : 0;
+  });
+
+  console.log(recommend);
   return result;
 }
 
