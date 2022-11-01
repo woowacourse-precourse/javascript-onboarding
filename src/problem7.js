@@ -30,6 +30,21 @@ function getKnowWithFriendScore(friendsExceptUser, userFriend) {
   return friendScore;
 }
 
+function getVisitorScore(visitorsExceptUserFriends, friendScore) {
+  for (i = 0; i < visitorsExceptUserFriends.length; i++) {
+    if (visitorsExceptUserFriends[i] in friendScore) {
+      friendScore = {
+        ...friendScore,
+        [visitorsExceptUserFriends[i]]:
+          friendScore[visitorsExceptUserFriends[i]] + 1,
+      };
+    } else {
+      friendScore = { ...friendScore, [visitorsExceptUserFriends[i]]: 1 };
+    }
+  }
+  return friendScore;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const userFriend = getUserFriend(friends, user);
@@ -40,6 +55,7 @@ function problem7(user, friends, visitors) {
   let friendScore = {};
 
   friendScore = getKnowWithFriendScore(friendsExceptUser, userFriend);
+  friendScore = getVisitorScore(visitorsExceptUserFriends, friendScore);
   return answer;
 }
 
