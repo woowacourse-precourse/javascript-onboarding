@@ -1,11 +1,11 @@
 function problem2(cryptogram) {
-  const result = [];
   const chList = cryptogram.split("");
-  chList.forEach((ch) => {
-    if (ch === result[result.length - 1]) result.pop();
-    else result.push(ch);
-  });
-  return result.join("");
+  return chList
+    .reduce((acc, ch) => {
+      if (ch === acc[acc.length - 1]) return acc.slice(0, -1);
+      return [...acc, ch];
+    }, [])
+    .join("");
 }
 
 module.exports = problem2;
