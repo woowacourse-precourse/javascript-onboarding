@@ -1,4 +1,7 @@
 function problem3(number) {
+  if (number < 1 || number > 10000 || number % 1 !== 0) {
+    return "1 이상 10,000 이하의 자연수여야 합니다.";
+  }
   var answer;
   let count = 0;
   for (let i = 1; i <= number; i++) {
