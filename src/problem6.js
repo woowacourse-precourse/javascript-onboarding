@@ -48,6 +48,9 @@ function problem6(forms) {
   for (i = 0; i < target.length; i++) {
     emails.push(crew[target[i]]);
   }
+
+  // 이메일 중복 제거 및 오름차순 정렬하여 반환
+  return Array.from(new Set(emails)).sort();
 }
 
 module.exports = problem6;
