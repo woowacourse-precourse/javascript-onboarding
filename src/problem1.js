@@ -1,21 +1,21 @@
 function is_vaild_input(pobi, crong){
   let i = 0;
-  while (i < 2){
-    if (pobi[i] == 0 || pobi[i] == 400 || crong[i] == 0 || crong[i] == 400){
+  while (i < 2) {
+    if (pobi[i] == 0 || pobi[i] == 400 || crong[i] == 0 || crong[i] == 400) {
       return (0);
     }
     i++;
   }
-  if (pobi[0] % 2 != 1 || crong[0] % 2 != 1){
+  if (pobi[0] % 2 != 1 || crong[0] % 2 != 1) {
     return (0);
   }
-  if (pobi[1] % 2 != 0 || crong[1] % 2 != 0){
+  if (pobi[1] % 2 != 0 || crong[1] % 2 != 0) {
     return (0);
   }
-  if ((pobi[0] + 1) != pobi[1]){
+  if ((pobi[0] + 1) != pobi[1]) {
     return (0);
   }
-  if ((crong[0] + 1 != crong[1])){
+  if ((crong[0] + 1 != crong[1])) {
     return (0);
   }
   else {
@@ -33,14 +33,14 @@ function sep(array) {
 
 function plus(num) {
   let nb;
-  for (let num = 0; num > 0; num/10) {
+  for (let num; num > 0; num/10) {
     nb += num % 10;
   }
 }
 
 function mul(num) {
   let nb;
-  for (let num = 0; num > 0; num/10) {
+  for (let num; num > 0; num/10) {
     nb *= num % 10;
   }
 }
