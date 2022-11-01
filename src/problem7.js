@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   let friendsList = getUserFriends(user, friends);
   let withFriendsList = getWithFriends(user, friends, friendsList);
-  let scoreArr = scoringFriends(withFriendsList);
-  console.log(scoreArr);
+  let scoreArr = scoringFriends(withFriendsList);  // [ [ 'andole', 20 ], [ 'jun', 20 ] ] 출력
+  return scoreArr;
 }
 
 function getUserFriends(user, friends) {
