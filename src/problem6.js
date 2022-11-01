@@ -18,15 +18,7 @@ function problem6(forms) {
 
   const checkEmailValid = (forms) => {
     const emails = forms.map((form) => form[0]);
-    checkEmailLength(emails);
     emails.forEach(checkEmailFormat);
-  };
-
-  const checkEmailLength = (emails) => {
-    const emailSet = new Set(emails);
-    if (emails.length !== emailSet.size) {
-      throw new Error('크루 중에 동일한 메일이 있습니다.');
-    }
   };
 
   const checkEmailFormat = (email) => {
