@@ -1,4 +1,6 @@
 function problem3(number) {
+  if (1 > number || number > 10000)
+    return 'number는 1 이상 10,000 이하인 자연수이다.';
   var answer = 0;
   for (let i = 1; i <= number; i++) {
     let num = `${i}`;

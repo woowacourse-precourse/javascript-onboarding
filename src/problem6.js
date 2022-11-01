@@ -13,6 +13,7 @@ function problem6(forms) {
       forms[i][1].includes(overlapName[j]) && overlapEmail.push(forms[i][0]);
     }
   }
+
   answer = overlapEmail
     .filter((el, idx) => {
       return overlapEmail.indexOf(el) !== idx;

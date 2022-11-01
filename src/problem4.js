@@ -1,4 +1,6 @@
 function problem4(word) {
+  if (0 > word.length || word.length > 1000)
+    return '입력된 문자는 1 이상 1,000 이하의 문자열이여야 합니다.';
   var answer = '';
   let list = [
     'A',

@@ -1,7 +1,10 @@
+// set 함수를 사용하여 시간복잡도
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendList = makeList(friends);
   friendList = calculateMarks(friendList, user, visitors);
+  console.log(friendList);
   friendList = cutOffProcedure(friendList, user);
   answer = sortList(friendList);
   return answer;
@@ -65,5 +68,23 @@ const sortList = (friendList) => {
   }
   return result;
 };
+
+let out = problem7(
+  'Jan',
+  [
+    ['Lamont', 'Christa'],
+    ['Mara', 'Mara'],
+    ['Kali', 'Adonis'],
+    ['Urban', 'Lamont'],
+    ['Jesus', 'Austyn'],
+    ['Rosalia', 'Alyce'],
+    ['Jan', 'Rosalia'],
+    ['Jayne', 'Jan'],
+    ['Jan', 'Adonis'],
+    ['Josh', 'Jan'],
+  ],
+  ['Adonis', 'Cecil', 'Adonis', 'Eliza', 'Josh', 'Urban']
+);
+console.log(out);
 
 module.exports = problem7;
