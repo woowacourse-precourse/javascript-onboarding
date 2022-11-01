@@ -39,6 +39,8 @@ function problem2(cryptogram) {
     decrypt = delRepitition(decrypt); //해당 문자 배열에 대해 연속 반복 문자 제거를 수행한다.
   }
 
+  answer = decrypt.join(""); // 해독문(decrypt)를 문자열로 변환하여 저장한다.
+
   return answer;
 }
 
