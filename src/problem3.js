@@ -1,13 +1,13 @@
 const problem3 = (number) => {
-  let answer = 0;
+  let clapCount = 0;
 
   Array.from({ length: number }).forEach((_, i) => {
-    const matchResult = `${i + 1}`.match(/3|6|9/g);
+    const matchResults = `${i + 1}`.match(/3|6|9/g);
 
-    if (matchResult) answer += matchResult.length;
+    if (matchResults) clapCount += matchResults.length;
   });
 
-  return answer;
+  return clapCount;
 };
 
 module.exports = problem3;
