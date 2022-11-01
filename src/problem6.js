@@ -11,9 +11,9 @@ const isCrewForm = (forms) => {
     let domain = "@email.com"
     let checkKor = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
 
-    if (email.length < 11 || 20 < email.length) return false;
+    if (email.length < 11 || 19 < email.length) return false;
     if (!email.includes(domain)) return false;
-    if (nickname.length < 1 || 20 < nickname.length) return false;
+    if (nickname.length < 1 || 19 < nickname.length) return false;
     if (checkKor.test(nickname)) return false;
 
     realCrewArray.push(element);
