@@ -7,7 +7,9 @@ function problem7(user, friends, visitors) {
   .filter((friend) => friend[1] === user)
   .map((friend) => friend[0]);
 
-
+  const friendScoreBoard = memberList
+  .filter((member) => userFriends.indexOf(member) === -1)
+  .map((member) => [member, 0]);
 }
 
 module.exports = problem7;
@@ -17,8 +19,8 @@ module.exports = problem7;
 //  [x]이차원배열 friends를 일차원으로 변환시킨다.
 //  [x]일차원배열에서 user를 삭제한 후 vistor와 결합, 중복을 삭제한다.
 //[x]userFirends 배열에 user와 이미 친구인 사용자를 저장한다.
-//[]친구 추천 점수판을 구현한다.
-//  []이미 친구인 사용자를 제외한 사용자들을 [닉네임, 점수] 순의 배열로 정리한다.
+//[x]친구 추천 점수판을 구현한다.
+//  [x]이미 친구인 사용자를 제외한 사용자들을 [닉네임, 점수] 순의 배열로 정리한다.
 //[]사용자별 친구 추천 점수를 계산한다. 
 //  []user와 공통의 친구를 가진 케이스들을 relavantUser에 저장한다
 //  []relavantUser에 저장된 건수별로 해당 사용자에게 10점을 추가한다.
