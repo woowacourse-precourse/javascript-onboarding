@@ -5,7 +5,7 @@ const problem4 = require("../src/problem4");
 const problem5 = require("../src/problem5");
 const problem6 = require("../src/problem6");
 const problem7 = require("../src/problem7");
-/*
+
 describe("problem1", () => {
   test("case1", () => {
     expect(problem1([97, 98], [197, 198])).toEqual(0);
@@ -56,7 +56,6 @@ describe("problem5", () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
 });
-*/
 
 describe("problem6", () => {
   test("case1", () => {
@@ -71,7 +70,7 @@ describe("problem6", () => {
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
 });
-/*
+
 describe("problem7", () => {
   test("case1", () => {
     expect(
@@ -90,4 +89,3 @@ describe("problem7", () => {
     ).toEqual(["andole", "jun", "bedi"]);
   });
 });
-*/
