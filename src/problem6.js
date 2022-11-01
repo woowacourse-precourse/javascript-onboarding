@@ -6,9 +6,19 @@
 // 겹치는 다른 내부배열의 원소(["제이","이슨"]) 찾아서 중복키워드들 어레이 반환
 // 4. 중복키워드어레이를 기준으로 해당 키워드를 포함하는 원소들 인덱스 반환
 
+// 닉네임으로 부터 2글자 키워드들 반환 함수
+function division(nickName) {
+  const oneChar = nickName.split("");
+  const twoChar = oneChar.map((char, idx, arr) => char + arr[idx + 1]);
+  twoChar.pop();
+
+  return twoChar;
+}
+
 function problem6(forms) {
   var answer;
   const nickNameArr = forms.map((user) => user[1]);
+  const keywordArr2D = nickNameArr.map((nickName) => division(nickName));
 
   return answer;
 }
