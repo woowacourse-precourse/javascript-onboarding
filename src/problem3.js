@@ -14,8 +14,6 @@ function problem3(number) {
 }
 
 function checkInputValid(number) {
-  if(number < 1 || number > 1000) return true;
-  if(!Number.isInteger(number)) return true;
   if(number < 3) return true
   return false
 }
