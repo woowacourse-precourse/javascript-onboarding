@@ -15,34 +15,36 @@ const getUniqueEmails = (emails) => {
 
   return uniqueEmails;
 };
-// 함수명 변경, 인자 수
-const countWord = ({ wordSet, wordMap, user: { email, nickname } }) => {
-  for (const word of wordSet) {
-    if (wordMap.has(word)) {
-      const { count, users } = wordMap.get(word);
 
-      wordMap.set(word, {
-        count: count + 1,
-        users: [...users, { email, nickname }],
-      });
+const countWord = ({ word, wordMap, user: { email, nickname } }) => {
+  if (wordMap.has(word)) {
+    const { count, users } = wordMap.get(word);
 
-      return wordMap;
-    }
+    wordMap.set(word, {
+      count: count + 1,
+      users: [...users, { email, nickname }],
+    });
 
-    wordMap.set(word, { count: 1, users: [{ email, nickname }] });
+    return;
   }
 
-  return wordMap;
+  wordMap.set(word, { count: 1, users: [{ email, nickname }] });
+};
+
+const setNicknameWordMap = ({ words, wordMap, user }) => {
+  for (const word of words) {
+    countWord({ word, wordMap, user });
+  }
 };
 
 const createNicknameWordMap = (forms) => {
-  let nicknameWordMap = new Map();
+  const nicknameWordMap = new Map();
 
   for (const [email, nickname] of forms) {
     const wordSet = extractWord(nickname);
 
-    nicknameWordMap = countWord({
-      wordSet,
+    setNicknameWordMap({
+      words: wordSet,
       wordMap: nicknameWordMap,
       user: { email, nickname },
     });
@@ -79,15 +81,5 @@ const problem6 = (forms) => {
 
   return sortedUserEmailList;
 };
-
-console.log(
-  problem6([
-    ["jm@email.com", "제이엠"],
-    ["jason@email.com", "제이슨"],
-    ["woniee@email.com", "워니"],
-    ["mj@email.com", "엠제이"],
-    ["nowm@email.com", "이제엠"],
-  ])
-);
 
 module.exports = problem6;
