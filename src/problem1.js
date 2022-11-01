@@ -3,6 +3,9 @@ function problem1(pobi, crong) {
   return answer;
   pobiMax = makePage(pobi);
   crongMax = makePage(crong);
+  result = solving(pobiMax, crongMax, pobi, crong); // 결과값 도출 및 예외처리
+  return result;
+}
 function solving(pomax, crmax, pobiArray, crongArray) {
   //결과값 or 예외처리
   if (pobiArray[0] + 1 !== pobiArray[1]) return -1;
