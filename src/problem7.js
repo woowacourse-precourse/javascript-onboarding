@@ -3,11 +3,11 @@ function problem7(user, friends, visitors) {
   const FRIEND_OF_FRIEND_SCORE = 10;
   const STRANGER_SCORE = 1;
   const myFriends = getMyFriend(user, friends);
-  const exceptionAcquaintance = getExceptionAcquaintance(myFriends, friends);
+  const Acquaintanceexception = getAcquaintanceException(myFriends, friends);
   const recomendFriendsList = getRecomendFriendList(
     user,
     myFriends,
-    exceptionAcquaintance
+    Acquaintanceexception
   );
   const strangeVisitorList = getStrangeVisitorList(myFriends, visitors);
   const recomendFriendsScore = scoreConversion(
@@ -35,7 +35,7 @@ function problem7(user, friends, visitors) {
 function getMyFriend(user, friends) {
   const foundFriends = [];
   friends.forEach(friend => {
-    if (friend.includes(user)) {
+    if (isInclude(friend, user)) {
       const friendName = friend.filter(friend => friend !== user);
       foundFriends.push(...friendName);
     }
@@ -44,11 +44,15 @@ function getMyFriend(user, friends) {
   return foundFriends;
 }
 
+function isInclude(entire, word) {
+  return entire.includes(word);
+}
+
 function getRecomendFriendList(user, myFriends, friends) {
   const recomendFriends = [];
   myFriends.forEach(myFriend => {
     for (let friend of friends) {
-      if (friend.includes(myFriend) && friend.includes(user) === false) {
+      if (isRecommendFriend(user, myFriend, friend)) {
         const recomendFriendName = friend.filter(friend => friend !== myFriend);
         recomendFriends.push(...recomendFriendName);
       }
@@ -56,6 +60,10 @@ function getRecomendFriendList(user, myFriends, friends) {
   });
 
   return recomendFriends;
+}
+
+function isRecommendFriend(user, myFriend, friend) {
+  return friend.includes(myFriend) && friend.includes(user) === false;
 }
 
 function getStrangeVisitorList(myFriends, visitors) {
@@ -110,7 +118,7 @@ function sorting(recomendFriends) {
   return sort;
 }
 
-function getExceptionAcquaintance(myFriends, friends) {
+function getAcquaintanceException(myFriends, friends) {
   const exceptionFriends = friends.filter(friends => {
     let count = 0;
     for (let friend of friends) {
