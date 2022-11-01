@@ -1,4 +1,4 @@
-const threeSixNineReg = /[3|6|9]/g;
+const THREESIXNINE_REG = /[3|6|9]/g;
 
 function problem3(number) {
   let clapsNumber = 0;
@@ -11,7 +11,7 @@ function problem3(number) {
 }
 
 function threeSixNineMatch(number) {
-  return number.toString().match(threeSixNineReg);
+  return number.toString().match(THREESIXNINE_REG);
 }
 
 module.exports = problem3;
