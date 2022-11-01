@@ -8,6 +8,16 @@ function problem7(user, friends, visitors) {
   5. 점수 내림차순 및 점수 동일 시 사전순 정렬 로직 구현
   6. 추천할 타겟들의 이름을 정렬 로직으로 정렬하여 반환
   */
+  
+  // user의 친구 찾기
+  const usersFriends = {};
+
+  for (i = 0; i < friends.length; i++){
+    if (friends[i].includes(user)) {
+      const friend = friends[i].filter(v => v !== user);
+      usersFriends[friend] = [];
+    }
+  }
 }
 
 module.exports = problem7;
