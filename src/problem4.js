@@ -6,16 +6,20 @@ function convertUnicode(word) {
 
 // 알파벳 소문자 유니코드만 찾아 반대로 변환하는 기능
 function reverseLowerCase(word) {
+  const a = "a".charCodeAt();
+  const z = "z".charCodeAt();
   const result = word.map((code) =>
-    97 <= code && code <= 122 ? 219 - code : code
+    a <= code && code <= z ? z - (code - a) : code
   );
   return result;
 }
 
 // 알파벳 대문자 유니코드만 찾아 반대로 변환하는 기능
 function reverseUpperCase(word) {
+  const A = "A".charCodeAt();
+  const Z = "Z".charCodeAt();
   const result = word.map((code) =>
-    65 <= code && code <= 90 ? 155 - code : code
+    A <= code && code <= Z ? Z - (code - A) : code
   );
   return result;
 }
