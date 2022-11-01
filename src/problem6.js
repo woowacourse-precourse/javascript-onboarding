@@ -1,3 +1,9 @@
+// 중복 문자 찾는 function
+function findDuplicate(arr) {
+  const duplicateArr = arr.filter((item, index) => arr.indexOf(item) !== index);
+  return [...new Set(duplicateArr)];
+}
+
 function problem6(forms) {
   var answer;
   // 두 글자씩 twoLetters에 담음
@@ -10,6 +16,9 @@ function problem6(forms) {
       twoLetters.push(forms[i][1].substr(j, j + 2));
     }
   }
+
+  // 중복되는 문자 확인
+  twoLetters = findDuplicate(twoLetters);
 
   return answer;
 }
