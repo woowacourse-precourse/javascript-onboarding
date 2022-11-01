@@ -72,6 +72,15 @@ function problem6(forms) {
     }
   }
 
+  // 중복키워드데이터들 사용해서 중복키워드가 존재하는 인덱스들 추출
+  const duplicatesIdx2D = duplicatesKeyword.map((data) =>
+    keywordArr2D.map((keyword, idx) => {
+      if (keyword.includes(data)) {
+        return idx;
+      }
+    })
+  );
+
   return answer;
 }
 
