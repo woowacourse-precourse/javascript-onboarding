@@ -15,9 +15,10 @@ function problem3(number) {
   let answer = 0;
   let turn;
   let targets = [3, 6, 9]
-  if (isOutOfRange(number)) {
+  if (isOutOfRange(number) || !Number.isInteger(number)) {
     throw 'Input range error'
   }
+  
   for (turn = 1; turn <= number; turn++) {
     String(turn).split("").map((digit) => {
       if(targets.includes(Number(digit))) answer += 1
