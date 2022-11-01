@@ -46,7 +46,7 @@ function makeRecommendScore(user, relations, visitors, result) {
 }
 
 function deleteUserFriend(user, result, relations) {
-  relations[user].forEach((name) => delete result[name]);
+  relations[user]?.forEach((name) => delete result[name]);
 }
 
 function resultSortSlice(result) {
