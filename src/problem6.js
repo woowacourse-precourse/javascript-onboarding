@@ -1,40 +1,35 @@
-function divideString(n) {
-    let result = [];
-    for (let i = 0; i < n.length; i++) {
-        const a = n[i][1];
-        for(let j=0;j<a.length-1;j++){
-            result.push(a.substr(j,2));
+function divideString(nickname) {
+    let div_nickname = [];
+    for (let i = 0; i < nickname.length; i++) {
+        let nickname_set = nickname[i][1];
+        for(let j=0;j<nickname_set.length-1;j++){
+            div_nickname.push(nickname_set.substr(j,2));
         }
-    }
-    return result;
+    }return div_nickname;
 }
-function findDuplicate(n){
-    let result=[];
-    for(let i=0;i<n.length;i++){
-        if(i!==n.indexOf(n[i])){
-            result.push(n[i]);
+function findDuplicate(div_nickname){
+    let duplicate_string=[];
+    for(let i=0;i<div_nickname.length;i++){
+        if(i!==div_nickname.indexOf(div_nickname[i])){
+            duplicate_string.push(div_nickname[i]);
         }
-    }
-    return result;
+    }return duplicate_string;
 }
-function includeDuplicate(n){
-    let answer=[];
-    let result=findDuplicate(divideString(n));
-    for(let i=0;i<n.length;i++){
-        const a = n[i][1];
-        for(let j=0;j<result.length;j++){
-            if(a.includes(result[j])){
-            answer.push(n[i][0]);
+function includeDuplicate(forms){
+    let duplicate_email=[];
+    let duplicate_nickname=findDuplicate(divideString(forms));
+    for(let i=0;i<forms.length;i++){
+        let nickname_set = forms[i][1];
+        for(let j=0;j<duplicate_nickname.length;j++){
+            if(nickname_set.includes(duplicate_nickname[j])){
+                duplicate_email.push(forms[i][0]);
         }
         }
-    }
-    return answer;
+    }return duplicate_email;
 }
-
 function problem6(forms) {
     let answer;
     answer=(includeDuplicate(forms)); 
-
     answer=answer.filter((val,idx)=>{
         return answer.indexOf(val)===idx;
     });
