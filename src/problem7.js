@@ -1,13 +1,8 @@
 function problem7(user, friends, visitors) {
   let recommendation = [];
 
-  const currentFriends = getFriendsYouAlreadyKnow(user, friends);
-  const friendsYouDoNotKnow = friends.map((friend) =>
-    friend.filter((e) => !currentFriends.includes(e)).filter((e) => e !== user)
-  );
-  const visitorsYoDoNotKnow = visitors.filter(
-    (e) => !currentFriends.includes(e)
-  );
+  const { currentFriends, friendsYouDoNotKnow, visitorsYoDoNotKnow } =
+    setThreeGroups(user, friends, visitors);
 
   const result = new Set();
   for (let i = 0; i < friendsYouDoNotKnow.length; i++) {
@@ -38,6 +33,18 @@ function getFriendsYouAlreadyKnow(user, friends) {
   });
 
   return friendsYouAlreadyKnow;
+}
+
+function setThreeGroups(user, friends, visitors) {
+  const currentFriends = getFriendsYouAlreadyKnow(user, friends);
+  const friendsYouDoNotKnow = friends.map((friend) =>
+    friend.filter((e) => !currentFriends.includes(e)).filter((e) => e !== user)
+  );
+  const visitorsYoDoNotKnow = visitors.filter(
+    (e) => !currentFriends.includes(e)
+  );
+
+  return { currentFriends, friendsYouDoNotKnow, visitorsYoDoNotKnow };
 }
 
 module.exports = problem7;
