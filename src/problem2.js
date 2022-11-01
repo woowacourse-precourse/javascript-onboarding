@@ -1,4 +1,4 @@
-function problem2(cryptogram) {
+const decrypt = (cryptogram) => {
   let decryptedString = "";
 
   for (let i = 0; i < cryptogram.length; i++) {
@@ -19,11 +19,17 @@ function problem2(cryptogram) {
     decryptedString += currentChar;
   }
 
+  return decryptedString;
+};
+
+const problem2 = (cryptogram) => {
+  let decryptedString = decrypt(cryptogram);
+
   if (decryptedString !== cryptogram) {
     decryptedString = problem2(decryptedString);
   }
 
   return decryptedString;
-}
+};
 
 module.exports = problem2;
