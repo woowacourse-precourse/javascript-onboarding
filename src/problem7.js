@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   let friendScoreList = new Map();
+  const recommendFriend = [];
 
   for (let friend of friends) {
     if (!friend.includes(user)) {
@@ -27,6 +28,16 @@ function problem7(user, friends, visitors) {
   const sortedFriendScoreList = [...friendScoreList].sort(
     (a, b) => b[1] - a[1]
   );
+
+  for (let key = 0; key < sortedFriendScoreList.length; key++) {
+    if (sortedFriendScoreList[key][1] === POINT.USER_FRIEND) {
+      continue;
+    } else {
+      recommendFriend.push(sortedFriendScoreList[key][0]);
+    }
+  }
+
+  return recommendFriend;
 }
 
 const POINT = Object.freeze({
