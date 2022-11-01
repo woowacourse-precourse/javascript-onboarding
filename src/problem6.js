@@ -27,6 +27,16 @@ const getIterableObjectWithKeys = (object) => {
   return Object.keys(object);
 };
 
+/**
+ * 임시 단어 object 에 주어진 임시 단어 set 의 사이즈가 2보다 큰지 확인
+ * @param {object} commonNickNameObject - 임시 단어 object
+ * @param {string} nickname - 닉네임
+ * @return {boolean}
+ */
+const isCommonNickNameSizeBiggerThanTwo = (commonNickNameObject, nickname) => {
+  return commonNickNameObject[nickname].size >= 2;
+};
+
 const problem6 = (forms) => {
   const answer = [];
   const commonNickName = {};
