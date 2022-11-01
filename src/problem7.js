@@ -45,6 +45,27 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  const sortScore = [];
+  for (const person in score) {
+    sortScore.push({
+      name: person,
+      score: score[person],
+    });
+  }
+
+  sortScore.sort((a, b) => {
+    if (a.score < b.score) return 1;
+    if (a.score > b.score) return -1;
+    if (a.name > b.name) return 1;
+    if (a.name < b.name) return -1;
+  });
+
+  if (sortScore.length > 5) sortScore.slice(0, 5);
+
+  for (const person of sortScore) {
+    answer.push(person["name"]);
+  }
+
   return answer;
 }
 
