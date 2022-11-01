@@ -12,13 +12,13 @@ function problem3(number) {
 function divideNumTo10(number, cnt) {
   while (number > 0) {
     remainNum = number % 10;
-    cnt += numCheck(remainNum);
+    cnt += is_369(remainNum);
     number = parseInt(number / 10);
   }
   return cnt;
 }
 
-function numCheck(remainNum) {
+function is_369(remainNum) {
   if (remainNum == 3 || remainNum == 6 || remainNum == 9) return 1;
   return 0;
 }
