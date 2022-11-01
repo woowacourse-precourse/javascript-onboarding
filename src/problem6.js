@@ -20,6 +20,10 @@ function filterOverlap(map) {
 
 function problem6(forms) {
   var answer;
+  const nickNameMap = new Map();
+  forms.forEach((v, i) => {
+    setNicknameMap(nickNameMap, v[1]);
+  });
   return answer;
 }
 
