@@ -23,7 +23,7 @@ function is_vaild_input(pobi, crong){
   }
 }
 
-function sep(array) {
+function max(array) {
   left_plus = plus(array[0]);
   right_plus = plus(array[1]);
   left_mul = mul(array[0]);
@@ -52,8 +52,8 @@ function mul(num) {
 function problem1(pobi, crong) {
   let answer;
   if (is_vaild_input(pobi, crong)) {
-    pobi_max = sep(pobi);
-    crong_max = sep(crong);
+    pobi_max = max(pobi);
+    crong_max = max(crong);
     if (pobi_max > crong_max) {
       answer = 1;
     }
