@@ -7,6 +7,15 @@ function problem6(forms) {
   for (let i = 0; i < forms.length; i++) {
     tList.push(...Check(forms[i][1].split("")));
   } 
+
+  // tList를 집합으로 감싸 중복 제거
+  const DuplicateList = new Set(tList);
+  
+  Reprod(forms,DuplicateList,answer);
+  
+
+
+
   return answer;
 }
 
@@ -15,12 +24,28 @@ function Check(nickname) {
   const tempList = [];
   for (let i = 0; i<nickname.length-1;i++){
     for (j = i + 1; j < nickname.length; j++) {
-      ttList.push(nickname.slice(i, j + 1).join(""));
+      tempList.push(nickname.slice(i, j + 1).join(""));
     }
   };
   return tempList;
 }
 
+//문자열 중복 검사 후 입력값의 전자 반환
+function Reprod(forms,arr,result) {
+  arr.forEach((x) => {
+    let finaldex = [];
+    for(let i = 0; forms.length; i++){
+      if(forms[i][1] !== x && forms[i][1].indexOf(x) > -1){
+        finaldex.push(i);
+      }
+    }
+    if (finaldex.length > 1){
+      finaldex.map((email) => {
+        result.add(forms[email][0]);
+      });
+    };
+  });
+}
 
 
 
