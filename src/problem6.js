@@ -11,7 +11,8 @@ function getDuplicates(forms) {
     const [email, nickname] = form;
 
     getPartsOfNickname(nickname).forEach((part) => {
-      duplicates[part] = [...(duplicates[part] || []), email];
+      const prevEmailsOfPart = duplicates[part] || [];
+      duplicates[part] = [...prevEmailsOfPart, email];
     });
 
     return duplicates;
