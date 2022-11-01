@@ -1,4 +1,9 @@
 function problem4(word) {
+  const changeAlphabet = (char, char_arr) => {
+    const idx = char_arr.indexOf(char);
+    return char_arr[char_arr.length - (idx + 1)];
+  };
+
   const replaceAlphabet = (word) => {
     const lower_case = [
       "a",
@@ -64,13 +69,11 @@ function problem4(word) {
       if (char === " ") return " ";
       // 소문자일 때
       if (lower_case.includes(char)) {
-        const lower_case_idx = lower_case.indexOf(char);
-        return lower_case[lower_case.length - (lower_case_idx + 1)];
+        return changeAlphabet(char, lower_case);
       }
       // 대문자일 때
       else {
-        const upper_case_idx = upper_case.indexOf(char);
-        return upper_case[upper_case.length - (upper_case_idx + 1)];
+        return changeAlphabet(char, upper_case);
       }
     });
 
