@@ -76,7 +76,7 @@ function sortSomePeopleWithFriendIKnow(somePeopleWithFriendIKnow) {
     .sort(([, a], [, b]) => b - a);
 }
 
-function problem7(user, friends) {
+function problem7(user, friends, visitors) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
   const friendKnowWithTogether = getFriendKnowWithTogether(
