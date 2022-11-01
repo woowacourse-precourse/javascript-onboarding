@@ -18,6 +18,11 @@ function problem5(money) {
     [10, 0],
     [1, 0],
   ]);
+  for (const key of moneyDict.keys()) {
+    const share = Math.floor(money / key);
+    moneyDict.set(key, share);
+    money -= share * key;
+  }
   var answer;
   return answer;
 }
