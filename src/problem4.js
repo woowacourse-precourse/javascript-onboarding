@@ -1,52 +1,28 @@
 function problem4(word) {
   var answer = '';
-  const dictionary = {
-    A: 'Z',
-    B: 'Y',
-    C: 'X',
-    D: 'W',
-    E: 'V',
-    F: 'U',
-    G: 'T',
-    H: 'S',
-    I: 'R',
-    J: 'Q',
-    K: 'P',
-    L: 'O',
-    M: 'N',
-    N: 'M',
-    O: 'L',
-    P: 'K',
-    Q: 'J',
-    R: 'I',
-    S: 'H',
-    T: 'G',
-    U: 'F',
-    V: 'E',
-    W: 'D',
-    X: 'C',
-    Y: 'B',
-    Z: 'A',
-  };
-
   for (let letter of word) {
-    answer += convertLetterByDictionary(letter, dictionary);
+    answer += convertLetter(letter);
   }
 
   return answer;
 }
 
-function convertLetterByDictionary(letter, dictionary) {
+function convertLetter(letter) {
+  const [UPPER, LOWER] = [
+    'A'.charCodeAt(0) + 'Z'.charCodeAt(0),
+    'a'.charCodeAt(0) + 'z'.charCodeAt(0),
+  ];
+
   if (letter === ' ') {
     return ' ';
   }
 
-  if (isLower(letter)) {
-    return dictionary[letter.toUpperCase()].toLowerCase();
+  if (isUpper(letter)) {
+    return String.fromCharCode(UPPER - letter.charCodeAt(0));
   }
 
-  if (isUpper(letter)) {
-    return dictionary[letter];
+  if (isLower(letter)) {
+    return String.fromCharCode(LOWER - letter.charCodeAt(0));
   }
 }
 
