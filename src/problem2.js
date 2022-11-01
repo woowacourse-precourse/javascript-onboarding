@@ -1,16 +1,5 @@
 function problem2(cryptogram) {
   var answer;
-  var beforeStr = cryptogram;
-
-  while (true) {
-    afterStr = deleteChar(beforeStr);
-    if (afterStr === beforeStr) {
-      answer = afterStr;
-      break;
-    }
-
-    beforeStr = afterStr;
-  }
   return answer;
 }
 
