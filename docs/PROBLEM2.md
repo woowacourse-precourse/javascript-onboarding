@@ -22,3 +22,9 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능 목록
+
+1. answer 마지막 글자와 cryptogram의 n번째 글자랑 비교 및 cryptogram의 n번째 글자와 cryptogram의 바로 직전 글자랑 비교 시 다르면 answer에 cryptogram의 n번째 글자 추가
+2. answer 마지막 글자와 cryptogram의 n번째 글자와 비교했을 때 같으면 answer의 마지막 글자 제거하기
+3. 바로 직전 문자 기억
+
