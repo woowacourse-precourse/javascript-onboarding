@@ -58,7 +58,8 @@ function problem4(word) {
     ];
 
     const word_arr = word.split("");
-    return word_arr.map((char) => {
+    let new_word;
+    new_word = word_arr.map((char) => {
       // 공백은 그대로 반환
       if (char === " ") return " ";
       // 소문자일 때
@@ -72,9 +73,11 @@ function problem4(word) {
         return upper_case[upper_case.length - (upper_case_idx + 1)];
       }
     });
+
+    return new_word.join("");
   };
 
-  var answer;
+  let answer;
   return answer;
 }
 
