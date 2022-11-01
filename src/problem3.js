@@ -13,15 +13,19 @@ function problem3(number) {
 
 const getTotalNumberOfClaps = (number) => {
   let totalNumberOfClaps = 0;
-  for (let targetNumber = 1; targetNumber <= number; targetNumber++) {
+  let targetNumber = 1;
+
+  while (targetNumber <= number) {
     totalNumberOfClaps += count369InNumber(targetNumber);
+    targetNumber++;
   }
+
   return totalNumberOfClaps;
 };
 
 const count369InNumber = (number) => {
   let countOf369 = 0;
-  const eachDigits = number.toString().split("");
+  const eachDigits = String(number).split("");
 
   eachDigits.forEach((digit) => {
     if (digit === "3" || digit === "6" || digit === "9") countOf369++;
