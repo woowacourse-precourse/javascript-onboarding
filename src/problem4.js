@@ -12,10 +12,12 @@ function problem4(word) {
   for (const ascii of wordArr){
     if (ascii == 32){
       result += " ";
-    }else if(ascii <= 90){
+    }else if(65 <= ascii && ascii <= 90){
       result += String.fromCharCode([155-ascii]);
-    }else{
+    }else if(97 <= ascii && ascii <= 122){
       result += String.fromCharCode([219-ascii]);
+    }else{
+      result += String.fromCharCode([ascii]);
     }
   }
   return result;
