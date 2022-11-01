@@ -8,10 +8,10 @@ function problem6(forms) {
 }
 
 function checkType(forms) {
-  for (let i = 0; i < forms.length; i++) {
+  forms.forEach((_, i) => {
     if (!checkEmailType(forms[i][0])) return true;
     if (!checkNicknameType(forms[i][1])) return true;
-  }
+  });
 }
 
 function checkEmailType(email) {
@@ -31,26 +31,33 @@ function checkNicknameType(nickname) {
 function findDuplicatedNicknames(nicknames) {
   const twoWords = [];
   const duplicatedWords = [];
-  for (let i = 0; i < nicknames.length; i++) {
-    for (let j = 0; j < nicknames[i][1].length - 1; j++) {
-      if (twoWords.includes(nicknames[i][1].substr(j, 2))) {
-        duplicatedWords.push(nicknames[i][1].substr(j, 2));
-      } else twoWords.push(nicknames[i][1].substr(j, 2));
-    }
-  }
+  nicknames.forEach((_, i) => {
+    finding({ nicknames, twoWords, duplicatedWords, i });
+  });
   return Array.from(new Set(duplicatedWords));
+}
+
+function finding({ nicknames, twoWords, duplicatedWords, i }) {
+  for (let j = 0; j < nicknames[i][1].length - 1; j++) {
+    if (twoWords.includes(nicknames[i][1].substr(j, 2))) {
+      duplicatedWords.push(nicknames[i][1].substr(j, 2));
+    } else twoWords.push(nicknames[i][1].substr(j, 2));
+  }
 }
 
 function deleteDuplicatedNicknames(nicknames, duplicatedWords) {
   const duplicatedEmails = [];
-  for (let i = 0; i < nicknames.length; i++) {
-    for (let j = 0; j < nicknames[i][1].length - 1; j++) {
-      if (duplicatedWords.includes(nicknames[i][1].substr(j, 2))) {
-        duplicatedEmails.push(nicknames[i][0]);
-      }
-    }
-  }
+  nicknames.forEach((_, i) => {
+    deleting({ nicknames, duplicatedWords, duplicatedEmails, i });
+  });
   return Array.from(new Set(duplicatedEmails));
+}
+
+function deleting({ nicknames, duplicatedWords, duplicatedEmails, i }) {
+  for (let j = 0; j < nicknames[i][1].length - 1; j++) {
+    if (duplicatedWords.includes(nicknames[i][1].substr(j, 2)))
+      duplicatedEmails.push(nicknames[i][0]);
+  }
 }
 
 function sortingEmails(emails) {
