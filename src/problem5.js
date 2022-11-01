@@ -1,7 +1,13 @@
+function PosiibleExchange(money, cashInBank, safe) {
+  safe.moneyExchanged.push(Math.floor(money / cashInBank));
+  safe.change = money % cashInBank;
+  return safe;
+}
+
 function exchangeCash(money, cashInBank, safe) {
   const EXCHANGE_CRITERION = 1;
   if (money / cashInBank >= EXCHANGE_CRITERION) {
-    return;
+    return PosiibleExchange(money, cashInBank, safe);
   }
   if (money / cashInBank < EXCHANGE_CRITERION) return;
 }
