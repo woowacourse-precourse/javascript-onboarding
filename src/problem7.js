@@ -34,10 +34,20 @@ const findUserFriendFriends = (user, userFriends, friends) => {
   });
   return findFriendsList;
 };
+
+const removeVisitorsFriends = (user, friends, visitors) => {
+  visitors.map((elem, idx) => {
+    if ([...friends, user].includes(elem)) {
+      visitors.splice(idx, 1);
+    }
+  });
+  return visitors;
+};
 function problem7(user, friends, visitors) {
   const userFriends = findUserFriends(user, friends);
   const findFriendsList = findUserFriendFriends(user, userFriends, friends);
-  return answer;
+  const visitorUser = removeVisitorsFriends(user, userFriends, visitors);
+  return findFriendsList;
 }
 
 module.exports = problem7;
