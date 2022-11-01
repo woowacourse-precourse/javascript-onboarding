@@ -6,7 +6,7 @@ function problem2(cryptogram) {
 
   const stack = [];
   cryptogram.split("").forEach((char)=>{
-    if(stack[stack.length-1]===char) {
+    if(stack.length&&stack[stack.length-1]===char) {
       stack.pop();
     } else {
       stack.push(char);
