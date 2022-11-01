@@ -1,84 +1,84 @@
-let email_list = [];
-let nickname_map = new Map();
-let mapping_map = new Map();
-
-//인덱스-문자열 매핑
-function mapping(str) {
-  let map = new Map();
-  for (let i = 0; i < str.length; i++) {
-    map.set(str[i], i);
-  }
-  return map;
+/*
+Email-닉네임 매핑
+ */
+function MappingEmailNick(forms) {
+  const MappingResult = new Map();
+  forms.forEach((form) => {
+    MappingResult.set(form[0], form[1]);
+  });
+  return MappingResult;
 }
-
-//인덱스가 연속적인지, 올바른지 여부
-function is_valid_index(map, str) {
-  if (str.length < 2) {
-    return false;
-  }
-  for (let i = 1; i < str.length; i++) {
-    if (map.get(str[i]) - map.get(str[i - 1]) !== 1) {
-      return false;
-    }
-  }
-  return true;
-}
-
-//닉네임이 맵에 존재하는지 여부
-function if_nickname_has(map, nickname) {
-  if (map.has(nickname)) {
+/*
+유효한 문자열인지(길이가 2이상)
+*/
+function IsValid(str) {
+  if (str.length >= 2) {
     return true;
   }
   return false;
 }
-
-function find_all_str(str, nickname, nicknamemap, visited, email) {
-  if (str.length === nickname.length + 1) {
-    return false;
-  }
-
-  if (is_valid_index(nicknamemap, str) === true) {
-    if (if_nickname_has(nickname_map, str) === false) {
-      nickname_map.set(str, nickname);
-    } else {
-      email_list.push(mapping_map.get(nickname_map.get(str)));
-      email_list.push(mapping_map.get(nickname));
+/*
+닉네임을 순차적으로 더해나감
+ */
+function GetNewNick(index, str, NicknameMap, AnswerMap, EmailMap) {
+  let newstr = '';
+  const NickNameMap = NicknameMap;
+  const Email = EmailMap.get(str);
+  for (let i = index; i < str.length; i++) {
+    newstr += str[i];
+    /*
+    맵에 이미 있다면
+    */
+    if (NicknameMap.has(newstr)) {
+      AnswerMap.add(Email);
+      AnswerMap.add(NickNameMap.get(newstr));
+      return false;
+    }
+    /*
+    이미 없는 경우 닉네임을 맵에 넣어주고 리턴
+    */
+    if (IsValid(newstr)) {
+      NickNameMap.set(newstr, Email);
     }
   }
+  return NickNameMap;
+}
 
-  for (let i = 0; i < nickname.length; i++) {
-    if (visited[i] === false) {
-      visited[i] = true;
-      let new_str = str + nickname[i];
-      find_all_str(new_str, nickname, nicknamemap, visited, email);
-      visited[i] = false;
+function GetNick(Nickname, NicknameMap, AnswerMap, EmailMap) {
+  let NicknameArray = [...Nickname];
+  NicknameArray.forEach((Nicknamealpha, index) => {
+    const result = GetNewNick(
+      index,
+      Nickname,
+      NicknameMap,
+      AnswerMap,
+      EmailMap
+    );
+    if (result === false) {
+      return false;
     }
-  }
+    NicknameMap = result;
+  });
 }
 
-function array_to_set(arr) {
-  const answer = new Set(arr);
-  const final_answer = Array.from(answer);
-  final_answer.sort();
-  return final_answer;
+function MappingNickEmail(forms) {
+  const MappingResult = new Map();
+  forms.forEach((form) => {
+    MappingResult.set(form[1], form[0]);
+  });
+  return MappingResult;
 }
-
 function problem6(forms) {
-  var answer;
-  let visited = [];
-  for (let i = 0; i < forms.length; i++) {
-    visited.push(false);
-    mapping_map.set(forms[i][1], forms[i][0]);
-  }
-  for (let i = 0; i < forms.length; i++) {
-    visited.fill(false);
-    let nickname = forms[i][1];
-    let map = mapping(nickname);
-    let email = forms[i][0];
-    find_all_str('', nickname, map, visited, email);
-  }
+  var answer = new Set();
+  const EmailNick = MappingEmailNick(forms);
+  const NickEmail = MappingNickEmail(forms);
+  let Nickmap = new Map();
+  forms.forEach((form) => {
+    const IsNotValid = GetNick(form[1], Nickmap, answer, NickEmail);
+  });
+  answer = [...answer];
 
-  return array_to_set(email_list);
+  return answer.sort();
 }
 
 module.exports = problem6;
