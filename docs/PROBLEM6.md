@@ -21,3 +21,38 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현
+- findAtIndex(email)
+	- 이메일에 포함되는 '@'문자의 인덱스번호를 반환합니다.
+
+- isValidEmail(forms)
+	- 이메일이 제한사항에 충족하는 형태의 입력값인지 확인합니다.
+	- 이메일의 길이 제한사항과, 도메인을 'email.com'으로 제한하는 조건을 추가해주었습니다.
+
+- checkKorean(char)
+	- 닉네임으로 들어오는 문자들이 한글인지 판단하는 함수입니다.
+
+- isValidNickName(forms)
+  - 입력받은 배열 forms에서 각 요소별 닉네임의 유효성을 확인합니다.
+  - 닉네임의 길이 제한사항과, 한글로만 이루어져있는지를 확인합니다.
+
+- substrNickName(nickName)
+  - 닉네임이 중복으로 판단되는 조건은 '같은 글자가 연속적으로 포함되는 닉네임' 입니다. 따라서 2자 이상 중복되면 중복 닉네임으로 판단하기 위해 닉네임을 2자씩 부분 배열로 만들어주었습니다.
+  - substring을 사용하여 닉네임 문자열마다 2자씩 쪼개어 반환하는 배열에 넣어주었습니다.
+
+- pushOverlapNickName(form, overlapArr, overlapSet)
+  - substrNickName함수를 통해 닉네임 부분 배열을 만들어준 뒤, 반복문을 통해 중복을 확인합니다. overlapSet에 부분 배열이 존재한다면, 중복으로 판단하고 overlapArr에 닉네임을 넣어줍니다.
+  - 사용한 부분 배열은 overlapSet에 저장합니다.
+
+- checkOverlap(forms)
+  - 중복을 판단하기 위해 set자료구조를 활용하였습니다.
+  - pushOverlapNickName을 forms의 순방향으로 실행시켜줍니다. 
+  - 이때, 0번째 인덱스의 값은 중복 검사를 하지 못하므로 역방향으로 한번 더 실행시켜줍니다.
+  - 총 두번의 검사로 중복이 판단된 값들의 배열인 overlapArr의 요소들을 set을 통해 중복 제거 시켜줍니다.
+  - set 변환된 overlapArr을 다시 배열로 변경하여 오름차순 후 반환합니다.
+
+- problem6(forms)
+  - 인자의 유효성을 검사합니다.
+  - checkOverlap 함수를 실행하고, 반환받은 값을 반환합니다.
+

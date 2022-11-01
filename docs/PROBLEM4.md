@@ -19,3 +19,37 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현
+
+- isValid(word)
+	- 문자열의 유효성을 판단하기 위해 "string" 타입이 아닌 인자들은 false를 반환합니다.
+  - word의 길이가 1 미만이거나 1000 초과인 경우 false를 반환합니다.
+
+- isAlpha(char)
+  - 배열로 변환된 문자열의 각 요소를 알파벳인지 아닌지 판단해줍니다. 알파벳일경우 true를 반환, 아닐경우 false를 반환합니다.
+
+- strToArr(word)
+  - string 타입인 문자열을 배열로 변환하여 반환합니다.
+
+- arrToStr(arrWord)
+  - 배열을 join 함수를 사용하여 string 타입으로 변환합니다.
+
+- reverseCase(char, isCase)
+  - 알파벳으로 확인된 char와 UPPER 혹은 LOWER를 전달하는 isCase를 통해 소문자는 대문자로, 대문자는 소문자로 변환합니다.
+  - 또한, 청개구리 사전을 구현하기 위해 반환값에 수식을 활용하여 각 알파벳에 맞는 반환값을 가지도록 설정하였습니다.
+  - 대문자에서 소문자로 변환하는 경우 LOWER로부터 1이 전달되어 아스키코드 값으로 32만큼 더해지게 되어 소문자 아스키코드를 나타낼 수 있게 함수를 구현했습니다.
+
+- isLowerCase(char)
+  - 이 함수는 알파벳으로 확인된 char가 소문자일 경우 true를 반환하고, 대문자일 경우 false를 반환합니다.
+
+- alphaReverse(char)
+  - reverseCase 함수로 전달하기 위한 isCase 플래그를 가독성을 위해 UPPER와 LOWER를 선언해주었습니다.
+  - isAlpha함수를 통해 char가 알파벳이 아닐 경우 그대로 반환해줍니다. 예를들어 공백문자가 입력값으로 들어올 경우, 그래도 공백이 반환됩니다.
+  - isLowerCase함수로 대소문자를 구별한 후, 각각 대문자는 소문자로, 소문자는 대문자로 변환해주고, 청개구리 사전으로 반대로 변환해주기 위해 reverseCase 함수로 char와 UPPER 혹은 LOWER 변수를 전달해줍니다.
+  - reverseCase함수를 통해 전달받은 반환값을 arrToStr 함수로 반환합니다.
+
+- problem4
+  - 주어지는 인자인 word의 유효성을 판단하는 isValid 함수를 실행하고, 유효하지 않다면 word를 반환합니다.
+  - word가 유효하다면, 각 문자별로 변환하기에 용이하도록 배열로 변환해줍니다.
+  - 배열로 변환한 wordArr를 각 요소별로 alphaReverse 함수를 실행해주고, 변환이 완료된 wordArr를 다시 문자열로 변환하여 반환해줍니다.
