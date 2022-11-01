@@ -2,6 +2,7 @@ const problem1 = require("../src/problem1");
 const problem2 = require("../src/problem2");
 const problem3 = require("../src/problem3");
 const problem4 = require("../src/problem4");
+const problem5 = require("../src/problem5");
 const problem7 = require("../src/problem7");
 
 describe("problem1", () => {
@@ -96,6 +97,16 @@ describe("problem4", () => {
 
   test("한글이 섞여있는 경우 변환하지 않고 그대로 반환해야 한다.", () => {
     expect(problem4("I love you 성훈")).toEqual("R olev blf 성훈");
+  });
+});
+
+describe("problem5", () => {
+  test('money가 1미만의 경우 "Error: money의 수는 1이상이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem5(0)).toEqual("Error: money의 수는 1이상이어야 합니다");
+  });
+
+  test('money가 1,000,000초과의 경우 "Error: money의 수는 1,000,000이하이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(problem5(1000001)).toEqual("Error: money의 수는 1,000,000이하이어야 합니다");
   });
 });
 
