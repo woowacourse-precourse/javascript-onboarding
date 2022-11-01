@@ -41,8 +41,8 @@ const MaxOfSumMultiple = (pages) => {
   if (pages[0] >= pages[1]) return -1;
 
   for (const page of pages) {
-    //예외사항2.
-    if (page === (1 || 400)) return -1;
+    //예외사항2 수정 예외사항6
+    if (page < 1 || 400 < page) return -1;
 
     answerArray = [...answerArray, ...makeAddMultipleArray(page)];
   }
