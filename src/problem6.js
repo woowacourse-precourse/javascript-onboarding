@@ -32,6 +32,16 @@ function problem6(forms) {
       else pattern.push(slice);
     }
   }
+
+  // 첫 타겟 크루 직전까지의 크루를 대상으로 재검사
+  const firstTargetIndex = forms.findIndex(v => v[1] === target[0]);
+  for (i = 0; i < firstTargetIndex; i++){
+    const name = forms[i][1];
+    for (j = 0; j < name.length - 1; j++){
+      const slice = name.substr(j, 2);
+      if (targetPattern.includes(slice)) target.push(name);
+    }
+  }
 }
 
 module.exports = problem6;
