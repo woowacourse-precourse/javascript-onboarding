@@ -1,3 +1,5 @@
+// 2022 Kimjungwon 우아한테크코스 문제풀이 7
+
 function isException(user, friends, visitors) {
   const regex = /[a-z]/g;
   //제한사항. user는 길이가 1 이상 30 이하인 문자열이다.

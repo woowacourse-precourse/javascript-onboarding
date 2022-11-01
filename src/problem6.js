@@ -1,3 +1,5 @@
+// 2022 Kimjungwon 우아한테크코스 문제풀이 6
+
 // forms의 내부가 제한사항에 맞는지 확인한다.
 function formsCheck(forms) {
   const regexEmail = /@email.com/g;
@@ -35,56 +37,34 @@ function isException(forms) {
 
 /**
  * 
+ * 연속된 중복이 있는지 확인하는 함수
+ * 
+ * 두개의 닉네임 str1, str2를 start,end를 통해서 str1의 문자열중 str2에 해당하는 것이 있는지 찾는다.
  * @param {*} str1 
  * @param {*} str2 
  * @returns  str2를 기준으로 중복되는 문자 배열를 리턴한다.
  */
-function checkOverlap(str1, str2) {
-  console.log(str1, ' ', str2)
+function isOverlap(str1, str2) {
 
-  let array1 = [...str1];
-  let array2 = [...str2];
-  let continuity1 = [];
-  let continuity2 = [];
-  let indexOverlap = [];
+  let result = "";
 
-  let result = [];
-
-  array1.forEach((arr, index) => {
-    if (array2.includes(arr)) {
-      continuity1.push(index);
-      //문제점. '엠제이가 이상해' 에서 '이' 처럼 여러번들어가면 이런코드로는 안된다.
-      continuity2.push(array2.indexOf(arr));
-    }
-    console.log('@@@@@@@@@@@@', continuity1, ' / ', continuity2);
-  })
-
-  // 오름차순 연속성 확인. 한구간이라도 오름차순이면
-  if (continuity1.length !== 0) {
-    for (let i = 0; i < continuity1.length; i++) {
-      if (continuity2[i] + 1 == continuity2[i + 1]) {
-        indexOverlap.push(continuity2[i]);
-        result.push(array2[indexOverlap[i]])
+  //두개의 닉네임을 비교해서 같은 문자열이 있다면 result에 아무값을 넣어준다.
+  for (let start = 0; start < str1.length - 1; start++) {
+    for (let end = 2; end < str1.length + 1; end++) {
+      if (str2.indexOf(str1.substr(start, end)) !== -1) {
+        result = 'true';
       }
     }
-
-    if (indexOverlap.length != 0) {
-
-      indexOverlap.push(indexOverlap[indexOverlap.length - 1] + 1)
-      result.push(array2[indexOverlap[indexOverlap.length - 1]])
-      console.log('indexOverlap ', indexOverlap)
-      return result;
-    }
-    return null;
   }
-
+  //값이 없으면 false
+  if (!result) {
+    return false;
+  }
+  //값이 있으면 true
   else {
-    return null;
+    return true;
   }
 }
-
-
-
 
 function problem6(forms) {
   let answer = [];
@@ -93,11 +73,10 @@ function problem6(forms) {
     return -1;
   }
 
-  //checkOverlap함수에서 리턴값이 있다면 중복을 찾은 것으로 answer에 추가한다.
+  //isOverlap()이 true라면 중복을 찾은 것으로 이메일을 answer에 추가한다.
   forms.forEach((form, index) => {
-    console.log('\n');
     for (let i = index; i < forms.length - 1; i++) {
-      if (checkOverlap(form[1], forms[i + 1][1])) {
+      if (isOverlap(form[1], forms[i + 1][1])) {
         answer.push(form[0]);
         answer.push(forms[i + 1][0]);
       }
@@ -106,18 +85,10 @@ function problem6(forms) {
   //result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.
   answer = Array.from(new Set(answer));
   answer.sort();
-  console.log(answer);
+  console.log('answer', answer);
 
   return answer;
 }
 
-
-problem6([
-  ["jm@email.com", "제이이엠"],
-  ["jason@email.com", "제이이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이이"],
-  ["nowm@email.com", "이제엠"],
-]);
 
 module.exports = problem6;
