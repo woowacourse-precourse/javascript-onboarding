@@ -1,6 +1,6 @@
 function problem5(money) {
   const result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  while(money > 1) {
+  while(money > 0) {
     if(money >= 50000) {
       money = convertAmount(money, 50000, 0);
     } else if(10000 <= money && money < 50000) {
