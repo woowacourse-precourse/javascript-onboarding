@@ -1,20 +1,13 @@
-const COUNT_CONDITION = [3, 6, 9];
-
-const getSplitedNumbersArray = (number) =>
+const getSplitedArrayOfNumber = (number) =>
   Array.from({ length: number }, (_, i) => ('' + (i + 1)).split(''));
 
-const getCount = (array) =>
-  array.reduce(
-    (count, currentNumber) => count + COUNT_CONDITION.includes(+currentNumber),
-    0
-  );
+const getClapCount = (array) =>
+  array.filter((number) => number.match(/[369]/)).length;
 
-const problem3 = (number) => {
-  const splitedArray = getSplitedNumbersArray(number);
-  return splitedArray.reduce(
-    (totalCount, currentNumbers) => totalCount + getCount(currentNumbers),
+const problem3 = (number) =>
+  getSplitedArrayOfNumber(number).reduce(
+    (totalCount, currentNumbers) => totalCount + getClapCount(currentNumbers),
     0
   );
-};
 
 module.exports = problem3;
