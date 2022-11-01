@@ -1,8 +1,5 @@
 function problem6(forms) {
   var answer;
-  // for(let i = 0; i<forms.length ;i++){
-
-  // }
   const resultEmail = [];
   forms.forEach((form, formIdx) => {
     const nickName = form[1];
