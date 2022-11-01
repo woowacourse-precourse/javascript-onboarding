@@ -51,4 +51,3 @@ function test(){
   
 }
 
-test();

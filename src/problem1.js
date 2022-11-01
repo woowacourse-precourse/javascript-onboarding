@@ -13,11 +13,13 @@ function checkInputErr(pobi, crong) {
   const validLength = () => pobi.length === 2 && crong.length === 2; //Length 
   const validRange = (array) => array.every(data => 1 <= data && data <= 400); //Range
   const validValue = (array) => (array[0] % 2 === 1) && (array[1] === array[0] + 1); //Input
+  const validPage = (array) => (array[0] !== 1 && array[1] !== 2) && (array[0] !== 399 && array[1] !==400);
 
   if (!validType()) return true;
   else if (!validLength()) return true;
   else if (!validRange(pobi) || !validRange(crong)) return true;
   else if (!validValue(pobi) || !validValue(crong)) return true;
+  else if (!validPage(pobi) || !validPage(crong)) return true;
   else return false;
 
 }// Type, Range, Input ,Length check
@@ -71,6 +73,7 @@ function test() {
   console.log(problem1([99, 102, 102], [211, 212])); //-1 LengthError
   console.log(problem1([99, 100], [213, 212])); //-1 inputError
   console.log(problem1([500, 501], [211, 212])); //-1 RangeError
+  console.log(problem1([1,2], [211, 212])); //-1 pageError
+
 }
 
-test();

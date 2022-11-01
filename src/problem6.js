@@ -79,4 +79,3 @@ function test() {
   console.log(problem6(input)); // [ 'nowm@email.com', 'woniee@email.com' ]
 }
 
-test();

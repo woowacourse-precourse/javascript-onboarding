@@ -62,5 +62,4 @@ function test() {
   console.log(problem4('')) //Length Error
 }
 
-test();
 

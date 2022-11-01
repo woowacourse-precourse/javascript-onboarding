@@ -49,4 +49,3 @@ function test(){
   console.log(problem3(20000)); // RangeError
 }
 
-test();

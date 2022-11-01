@@ -74,4 +74,3 @@ function test() {
   console.log(problem2('saddaas')) // 'sas'
 }
 
-test();
