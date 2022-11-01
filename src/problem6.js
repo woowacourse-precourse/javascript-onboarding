@@ -1,3 +1,5 @@
+const SPLIT_LENGTH = 2;
+
 const removeDuplicateElement = (arr) => {
   return [...new Set(arr)]
 }
