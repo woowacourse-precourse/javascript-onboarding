@@ -20,7 +20,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  //3. 방문 목록에서 user, user 친구가 아닌 경우를 찾는다.
+  //3. 방문 목록에서 user, user 친구가 아닌 경우를 찾고 방문 횟수마다 1점를 더한다.
   for (let i = 0; i < visitors.length; i++) {
     if (visitors[i] !== user && !userFriend.has(visitors[i])) {
       if (score.has(visitors[i])) {
