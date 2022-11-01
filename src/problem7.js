@@ -13,6 +13,7 @@ function problem7(user, friends, visitors) {
     }
     return alreadyFriends
   }
+
   function findFriendssFriends(alreadyFriends){
     let friendssFriends = [];
 
@@ -23,16 +24,24 @@ function problem7(user, friends, visitors) {
 
     return friendssFriends
   }
-  function scoreChecker (friendssFriends){
-    //오브젝트에 키 집어넣기
-    friendssFriends.forEach(f => answer[f] = 0);
-    let score = 0;
 
+  function objectMaker (ls) {
+    let instObj = {};
+    ls.forEach(f => instObj[f] = 0);
+
+    return instObj
+  }
+
+  function scoreChecker (ls,point){
     // 키 하나씩 호출
-    Object.keys(answer).forEach(k => {
-      for(i in friendssFriends){
-        if (k == friendssFriends[i]){
-          score += 10;
+    let score = 0
+
+    //answer의 모든 키를 호출해서 문제가 생김
+    let instObj = objectMaker(ls)
+    Object.keys(instObj).forEach(k => {
+      for(i in ls){
+        if (k == ls[i]){
+          score += point;
         }
       }
       answer[k] = score;
@@ -40,14 +49,22 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  function visitedChecker (){
+    objectMaker(visitors);
+    scoreChecker(visitors,1);
+  }
+
+  function delUserAndAlreadyFriends(){
+    delete answer[user];
+    alreadyFriends.forEach(f => delete answer[f]);
+  }
 
   const alreadyFriends = findFriends(user,friends);
   const friendssFriends = findFriendssFriends(alreadyFriends);
 
-  scoreChecker(friendssFriends);
-  delete answer[user]
-
-  console.log(answer);
+  scoreChecker(friendssFriends,10);
+  visitedChecker(visitors);
+  delUserAndAlreadyFriends()
 
   return answer;
 }
