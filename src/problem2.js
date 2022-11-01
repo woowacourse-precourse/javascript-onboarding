@@ -7,6 +7,7 @@
  * @returns {string}
  */
 function problem2(cryptogram) {
+  const duplicatePairRegExp = /(\w)\1{1}/g;
   var answer;
   return answer;
 }
