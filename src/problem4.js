@@ -6,8 +6,8 @@ function problem4(word) {
       answer += String.fromCharCode(155 - uniCode);
     } else if (97 <= uniCode && uniCode <= 122) {
       answer += String.fromCharCode(219 - uniCode);
-    } else if (w === " ") {
-      answer += " ";
+    } else {
+      answer += w;
     }
   }
   return answer;
