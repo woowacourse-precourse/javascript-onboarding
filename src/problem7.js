@@ -9,6 +9,16 @@ function problem7(user, friends, visitors) {
       friend.indexOf(user) == 0 ? myFriends.push(friend[1]) : myFriends.push(friend[0]);
     }
   }
+  for (let friend of friends) {
+    if (friend.includes(user)) { continue; }
+
+    if (myFriends.includes(friend[0])) {
+      friendScoreMap = plusPoint(friendScoreMap, friend[1], 10);
+    }
+    else if (myFriends.includes(friend[1])) {
+      friendScoreMap = plusPoint(friendScoreMap, friend[0], 10);
+    }
+  }
 
 
 }
