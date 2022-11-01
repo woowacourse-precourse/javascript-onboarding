@@ -19,13 +19,25 @@ function decrypt(cryptogram) {
     let cryptogramArray = [...cryptogram];
 
     for (i = 0; i < cryptogramArray.length - 1; i++) {
-      if (cryptogramArray[i] === cryptogramArray[i + 1]) {
-        cryptogramArray[i] = '';
-        cryptogramArray[i + 1] = '';
-        cryptogram = cryptogramArray.join('');
-        return cryptogram;
+      let flag = 0;
+      let j = i + 1;
+      let alphabet = cryptogramArray[i];
+
+      while (flag === 0) {
+        if (alphabet === cryptogramArray[j]) {
+          j++;
+        } else {
+          flag = 1;
+        }
+      }
+
+      if (j !== i + 1) {
+        for (k = i; k < j; k++) {
+          cryptogramArray[k] = '';
+        }
       }
     }
+
     cryptogram = cryptogramArray.join('');
     return cryptogram;
   }
