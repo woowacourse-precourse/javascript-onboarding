@@ -10,22 +10,18 @@ function problem7(user, friends, visitors) {
 
   const finishFreindsArr = Object.entries(friendsOb);
   finishFreindsArr.map((friend) => {
-    const [key, arr] = friend;
-    const intersectionLength = arr.filter((x) =>
-      userFriendsList.includes(x)
+    const [user, friendsList] = friend;
+    const numberFriendsWeKnowTogether = friendsList.filter((friend) =>
+      userFriendsList.includes(friend)
     ).length;
-    if (intersectionLength > 0) {
-      scoreOb[key] = intersectionLength * 10;
+    if (numberFriendsWeKnowTogether > 0) {
+      scoreOb[user] = numberFriendsWeKnowTogether * 10;
     }
   });
 
-  visitors.map((user) => {
-    if (!userFriendsList.includes(user)) {
-      if (scoreOb[user]) {
-        scoreOb[user]++;
-      } else {
-        scoreOb[user] = 1;
-      }
+  visitors.map((visitor) => {
+    if (!userFriendsList.includes(visitor)) {
+      scoreOb[visitor] ? scoreOb[visitor]++ : (scoreOb[visitor] = 1);
     }
   });
 
