@@ -5,8 +5,11 @@ function problem7(user, friends, visitors) {
   const acquaintance_List_Number = acquaintanceListNumber(acquaintance_List);
   const total_Score_List = totalList(checkVisitList, acquaintance_List_Number);
   const totalList_Arr = totalListArr(total_Score_List);
-  const exceptionsHandling = exception(checkUserFreind, totalList_Arr);
-  console.log(checkUserFreind, checkVisitList, acquaintance_List,acquaintance_List_Number, total_Score_List, totalList_Arr, exceptionsHandling);
+  const equal_Score = equalScore(totalList_Arr);
+  const exceptionsHandling = exception(checkUserFreind, equal_Score);
+
+  console.log(checkUserFreind, checkVisitList, acquaintance_List, acquaintance_List_Number, total_Score_List
+    ,totalList_Arr, equal_Score, exceptionsHandling )
 }
 
 function userFriend(user,friends){
@@ -83,6 +86,22 @@ function totalListArr(totalList){
     return b.score - a.score;
   });
   return scoreArr;
+}
+function equalScore(totalListArr){
+  equal_Score = totalListArr.sort(function(a,b){
+    if (a.score > b.score) {
+      return -1;}
+    else if (b.score > a.score) {
+      return 1;} 
+    else if (a.score === b.score) {
+      if (a.name > b.name) {
+        return 1;} 
+    else if (a.name < b.name) {
+      return -1;}
+    }
+    return 0;
+  });
+  return equal_Score;
 }
 
 function exception(userFriend, totalList){
