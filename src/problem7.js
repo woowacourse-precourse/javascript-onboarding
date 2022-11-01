@@ -1,55 +1,26 @@
 function problem7(user, friends, visitors) {
-  let friend = [];
-  let nearFriend = [];
+  const friend = [];
+  const nearFriend = [];
 
-  for (let i = 0; i < friends.length; i++) {
-    if (friends[i][1] === user) {
-      friend.push(friends[i][0]);
-    } else {
-      nearFriend.push(friends[i][1]);
-    }
-  }
+  friends.forEach((f) =>
+    f[1] === user ? friend.push(f[0]) : nearFriend.push(f[1])
+  );
 
   const visitTimeline = visitors.filter((who) => !friend.includes(who));
 
   let score = {};
 
-  nearFriend.forEach((who) => {
-    if (score[who]) {
-      score[who] = score[who] + 10;
-    } else {
-      score[who] = 10;
-    }
-  });
-
-  visitTimeline.forEach((who) => {
-    if (score[who]) {
-      score[who] = score[who] + 1;
-    } else {
-      score[who] = 1;
-    }
-  });
+  nearFriend.forEach((who) => (score[who] = (score[who] ?? 0) + 10));
+  visitTimeline.forEach((who) => (score[who] = (score[who] ?? 0) + 1));
 
   score = Object.entries(score)
     .slice(0, 5)
     .sort(function (a, b) {
-      if (a[1] < b[1]) {
-        return 1;
-      } else if (a[1] > b[1]) {
-        return -1;
-      } else if (a[0] > b[0]) {
-        return 1;
-      } else if (a[0] < b[0]) {
-        return -1;
-      }
+      if (a[1] !== b[1]) return b[1] - a[1];
+      return a[0] > b[0] ? 1 : a[0] < b[0] ? -1 : 0;
     });
 
-  let answer = [];
-  for (let i = 0; i < score.length; i++) {
-    answer.push(score[i][0]);
-  }
-
-  return answer;
+  return score.map((name) => name[0]);
 }
 
 module.exports = problem7;
