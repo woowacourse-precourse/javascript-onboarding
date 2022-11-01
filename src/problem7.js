@@ -12,9 +12,10 @@ function problem7(user, friends, visitors) {
       }
     }
   }
-  
+
   visitorRank = visitorScore(visitors, friendRank);
-  return answer;
+  answer = sortMap(visitorRank);
+  return Array.from(answer.keys());
 }
 
 function except(user, friends){
@@ -84,5 +85,11 @@ function visitorScore(visitors, rankMap){
 }
 
 //점수와 이름을 오름차순으로 정렬
+function sortMap(rankMap) {
+  const mapSortByKey = new Map([...rankMap.entries()].sort()); //key값 기준 오름차순정렬
+  console.log(rankMap);
+  const mapSortByValue = new Map([...mapSortByKey.entries()].sort((a, b) => b[1] - a[1])); //value값 기준 오름차순정렬
+  return mapSortByValue;
+}
 
 module.exports = problem7;
