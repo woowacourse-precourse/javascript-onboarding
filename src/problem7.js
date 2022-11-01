@@ -49,8 +49,10 @@ function problem7(user, friends, visitors) {
     return b[1] - a[1];
     });
 
-    const rankDismantled = rank
-    .map(member => rank[member][0])
+  const rankDismantled = rank
+  .map(member => rank[member][0])
+  const answer = rankDismantled.slice(0, 5);
+  return answer;
 
 module.exports = problem7;
 
