@@ -3,12 +3,8 @@ function problem5(money) {
   const wallet = [];
 
   cash.forEach(item => {
-    if (money / item >= 1) {
-      wallet.push(Math.floor(money / item));
-      money = money % item;
-    } else if (money / item < 1) {
-      wallet.push(0);
-    }
+    wallet.push(Math.floor(money / item));
+    money = money % item;
   });
 
   return wallet;
