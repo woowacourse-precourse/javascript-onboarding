@@ -1,7 +1,16 @@
-function getTopFivePeople(people) {
-  let sortedPeople = [...people].sort((a, b) => (b[1] - a[1]));
-  let topFive = [];
+function sortingPeople(people) {
+  let sortedPeople = people.sort((a, b) => {
+    if (a[1] == b[1])
+      return (a[0].localeCompare(b[0]))
+    return (b[1] - a[1])});
 
+  return sortedPeople;
+}
+
+function getTopFivePeople(people) {
+  let sortedPeople = sortingPeople([...people]);
+  let topFive = [];
+  
   for (let i = 0; i < 5; i++) {
     if (sortedPeople[i][1] > 0)
       topFive.push(sortedPeople[i][0]);
@@ -41,12 +50,14 @@ function makePeopleList(user, friends) {
   let newbie = 0;
 
   for (let i = 0; i < friends.length; i++) {
-    people.set(friends[i][0], newbie);
-    people.set(friends[i][1], newbie);
+    if (people.has(friends[i][0]) == false)
+      people.set(friends[i][0], newbie);
+    if (people.has(friends[i][1]) == false)
+      people.set(friends[i][1], newbie);
     if (friends[i][0] == user)
-    people.set(friends[i][1], alreadyFriend);
+      people.set(friends[i][1], alreadyFriend);
     if (friends[i][1] == user)
-    people.set(friends[i][0], alreadyFriend);
+      people.set(friends[i][0], alreadyFriend);
   }
   people.set(user, -2);
   return people;
