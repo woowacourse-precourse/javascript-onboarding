@@ -9,6 +9,7 @@ function problem7(user, friends, visitors) {
       friend.indexOf(user) == 0 ? myFriends.push(friend[1]) : myFriends.push(friend[0]);
     }
   }
+  
   for (let friend of friends) {
     if (friend.includes(user)) { continue; }
 
@@ -19,10 +20,15 @@ function problem7(user, friends, visitors) {
       friendScoreMap = plusPoint(friendScoreMap, friend[0], 10);
     }
   }
+  
   for (let visitor of visitors) {
     if (myFriends.includes(visitor)) { continue; }
       friendScoreMap = plusPoint(friendScoreMap, visitor, 1);
-}
+  }
+  
+  let answer = [...friendScoreMap].sort( (a, b) => {
+    return b[1] - a[1] || a[0].localeCompare(b[0]);
+  });
 
 
 }
