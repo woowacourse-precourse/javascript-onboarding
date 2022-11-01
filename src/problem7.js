@@ -16,6 +16,13 @@ const makeFriendsGraph = (friends) => {
   return friendsGraph;
 };
 
+const getUserFriend = (user, friends) => {
+  const friendsGraph = makeFriendsGraph(friends);
+  const userFriends = friendsGraph.get(user);
+
+  return userFriends;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
