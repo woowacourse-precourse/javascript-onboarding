@@ -1,7 +1,8 @@
 function problem7(user, friends, visitors) {
   let friendsList = getUserFriends(user, friends);
   let withFriendsList = getWithFriends(user, friends, friendsList);
-  console.log(withFriendsList);
+  let scoreArr = scoringFriends(withFriendsList);
+  console.log(scoreArr);
 }
 
 function getUserFriends(user, friends) {
@@ -34,6 +35,19 @@ function getWithFriends(user, friends, userFriends) {
   let set = new Set(withFriends);
   withFriends = [...set];
   return withFriends;
+}
+
+function scoringFriends(withFriends) {
+  let scoreList = Array.from(Array(withFriends.length), () =>
+    Array(2).fill(null)
+  );
+  for (let l = 0; l < withFriends.length; l++) {
+    scoreList[l][0] = withFriends[l];
+    for (let m = 0; m < withFriends.length; m++) {
+      scoreList[m][1] += 10;
+    }
+  }
+  return scoreList;
 }
 
 module.exports = problem7;
