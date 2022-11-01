@@ -3,7 +3,7 @@ console.log(problem1([97, 98], [197, 198]));
 
 function problem1(pobi, crong) {
   // maxNumber 비교 후 점수 return
-  answer = multiPage(pobi);
+  answer = maxNumber(pobi[0], pobi[1]);
   return answer;
 }
 
@@ -41,11 +41,12 @@ function multiPage(pages) {
   return multiPages;
 }
 
-// 각 과정 중 가장 큰 수 return 함수
-function maxNumber(leftPage, rightPage) {
-  // leftPage에서 큰 수
-  // rightPage에서 큰 수
-  // 두 개 비교
+// 큰 수 return 함수
+function maxNumber(num1, num2) {
+  // 숫자 두 개 비교
+  let biggerNum = Math.max(num1, num2);
+
+  return biggerNum;
 }
 
 // 예외처리 함수
