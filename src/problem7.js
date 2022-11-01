@@ -4,7 +4,7 @@ function problem7(user, friends, visitors) {
 
 function recommendFriendApp([user, friendListArr, visitorListArr]) {
   const relationshipMap = createRelationshipMap(friendListArr);
-  const visitorScoreMap = calVisitorScoreMap(visitorListArr);
+  const visitorScoreMap = calcVisitorScoreMap(visitorListArr);
   const scoreListMap = calcScoreMap(user, relationshipMap, visitorScoreMap);
   return sortByScoreToNameArr(scoreListMap).slice(0,5);
 }
@@ -17,7 +17,7 @@ function createRelationshipMap(friendListArr) {
   }, new Map());
 }
 
-function calVisitorScoreMap(visitorListArr) {
+function calcVisitorScoreMap(visitorListArr) {
   return visitorListArr.reduce((scoreListMap, visitor) => {
     scoreListMap.set(visitor, scoreListMap.get(visitor) + 1 || 1);
     return scoreListMap;
