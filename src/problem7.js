@@ -20,6 +20,12 @@ function problem7(user, friends, visitors) {
     });
   }
 
+  visitors.map((friend) => {
+    if (!allFriendsList.get(user).includes(friend)) {
+      scoreCollection.set(friend, scoreCollection.get(friend) + 1 || 1);
+    }
+  });
+
 console.log(
   problem7(
     "mrko",
