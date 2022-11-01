@@ -26,6 +26,7 @@ function problem1(pobi, crong) {
   arr.forEach((x) => {
     if (x < 1 || x > 400) return -1;
   });
+
   let maxPobi = Math.max(
     sum(pobi[0]),
     multi(pobi[0]),

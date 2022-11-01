@@ -1,5 +1,4 @@
 function problem2(cryptogram) {
-  let answer = "";
   let stack = [cryptogram[0]];
   // 문자가 3개 이상 중복
   for (let i = 1; i < cryptogram.length; i++) {
@@ -15,4 +14,7 @@ function problem2(cryptogram) {
   return stack.join("");
 }
 
+// bbbrown
+// brown
+// rown
 module.exports = problem2;
