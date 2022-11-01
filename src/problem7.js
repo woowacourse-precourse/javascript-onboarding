@@ -70,4 +70,22 @@ const sortScore = (score) => {
   return sortedScore;
 };
 
+const filterTopFive = (user, sortedScore, friendsRelation) => {
+  let recommendationFriends = [];
+  const NOT_RECOMEND_FRIENDS = [user, ...friendsRelation[user]];
+
+  let recommendationFriendNumber = 0;
+  for (let i = 0; i < sortedScore.length; i++) {
+    const friendName = sortedScore[i][0];
+    if (NOT_RECOMEND_FRIENDS.indexOf(friendName) === -1) {
+      recommendationFriends.push(friendName);
+      recommendationFriendNumber += 1;
+    }
+
+    if (recommendationFriendNumber === 5) return recommendationFriends;
+  }
+
+  return recommendationFriends;
+};
+
 module.exports = problem7;
