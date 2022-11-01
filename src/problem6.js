@@ -75,8 +75,7 @@ function problem6(forms) {
     }
   }
   let duEm = [...new Set(duEmail)].sort();
-  console.log(duEm);
-
+  return(duEm);
 }
 
 module.exports = problem6;
