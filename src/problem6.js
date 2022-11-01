@@ -16,12 +16,6 @@ function problem6(forms) {
     let email = forms[i][0];
 
     addEmail(name, sameNameCount, emailSet, email);
-
-    // for (let j = 0; j < getName[i].length - 1; j++) {
-    //   let nameCheck = getName[i].slice(j, j + 2);
-
-    //   if (sameNameCount[nameCheck] > 1) emailSet.add(forms[i][0]);
-    // }
   }
 
   const answer = Array.from(emailSet).sort();
