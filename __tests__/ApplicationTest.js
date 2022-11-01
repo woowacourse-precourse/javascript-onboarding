@@ -108,6 +108,18 @@ describe('problem5', () => {
   test('case2', () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+
+  test('case3', () => {
+    expect(problem5(49999)).toEqual([0, 4, 1, 4, 1, 4, 1, 4, 9]);
+    expect(problem5(1)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 1]);
+    expect(problem5(1000000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+
+  test('case4', () => {
+    expect(problem5(0)).toEqual(false);
+    expect(problem5(-20)).toEqual(false);
+    expect(problem5(1200000)).toEqual(false);
+  });
 });
 
 describe('problem6', () => {
