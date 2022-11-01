@@ -74,7 +74,15 @@ function problem7(user, friends, visitors) {
       : 0;
   });
 
-  console.log(recommend);
+  // 최대 5명 return
+  for (i = 0; i < recommend.length; i++) {
+    if (i <= MAX_RESULT) {
+      result.push(recommend[i].name);
+    } else {
+      break;
+    }
+  }
+
   return result;
 }
 
