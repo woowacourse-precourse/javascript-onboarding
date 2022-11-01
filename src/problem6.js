@@ -30,19 +30,19 @@ const duplicatedNicknameEmail = (forms) => {
   forms.forEach((form) => {
     let [email, nickname] = form;
     for (let i = 0; i < nickname.length - 1; i++) {
-      let criteriaStr = nickname.substr(i, 2);
-      if (criteriaStr in duplicatedCount) {
-        duplicatedCount[criteriaStr] += 1;
+      let repeatCriteria = nickname.substr(i, 2);
+      if (repeatCriteria in duplicatedCount) {
+        duplicatedCount[repeatCriteria] += 1;
       } else {
-        duplicatedCount[criteriaStr] = 1;
+        duplicatedCount[repeatCriteria] = 1;
       }
     }
   });
 
   forms.forEach((form) => {
     let [email, nickname] = form;
-    for (let i in duplicatedCount) {
-      if (duplicatedCount[i] > 1 && nickname.includes(i)) {
+    for (let repeatStr in duplicatedCount) {
+      if (duplicatedCount[repeatStr] > 1 && nickname.includes(repeatStr)) {
         result.push(email);
       }
     }
