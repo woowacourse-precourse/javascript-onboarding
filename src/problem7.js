@@ -6,14 +6,25 @@ function problem7(user, friends, visitors) {
   for (const [a, b] of friends) {
     scoreObj[a] = 0;
     scoreObj[b] = 0;
-    if(a === user){
+    if (a === user) {
       knowUser.push(b);
-    } else if(b === user){
+    } else if (b === user) {
       knowUser.push(a);
     }
   }
 
-  console.log(knowUser);
+  for (const [a, b] of friends) {
+    for (k of knowUser) {
+      if (a === k && b !== user) {
+        scoreObj[b] += 10;
+      } else if (b === k && a !== user) {
+        scoreObj[a] += 10;
+      }
+    }
+  }
+
+  console.log(scoreObj);
+
 
   return answer;
 }
