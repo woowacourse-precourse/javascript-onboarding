@@ -5,17 +5,17 @@ const compose =
 
 const isNotExisting = (array, item) => array.indexOf(item) === -1;
 
-const getUserBfs = (user) => (friends) => {
-  return friends.reduce((reduced, couple) => {
+const getUserFriends = (user) => (friends) => {
+  return friends.reduce((reduced, [left, right]) => {
     const copy = reduced.slice();
-    const [_, bf] = couple.indexOf(user) === 0 ? couple : [...couple].reverse();
-    if (isNotExisting(copy, bf)) copy.push(bf);
+    const [_, crew] = left === user ? [ left, right] : [right, left];
+    if (isNotExisting(copy,crew)) copy.push(crew);
     return copy;
   }, []);
 };
 
-const getBfsOfBfs = (friends) => (users) => {
-  return users.reduce((reduced, user) => getUserBfs(user)(friends), []);
+const getFriends = (friends) => (users) => {
+  return users.reduce((reduced, user) => getUserFriends(user)(friends), []);
 };
 
 const removeDupUsers =
@@ -26,36 +26,41 @@ const removeDupUsers =
 
 const recordScore = (friends) => {
   return friends.reduce((reduced, friend) => {
-    const copy = { ...reduced };
-    if (copy[friend]) copy[friend] += 10;
-    else copy[friend] = 10;
+    const copy = [ ...reduced ];
+    const existing = copy.find(({name}) => name === friend);
+    if (existing) existing.score+=10;
+    else copy.push({name: friend, score: 10})
     return copy;
-  }, {});
+  }, []);
 };
 
 const addVisitScore = (visitors) => (scores) => {
-  const copiedScores = { ...scores };
+  const copiedScores = [ ...scores ];
   return visitors.reduce((reduced, visitor) => {
-    const copy = { ...reduced };
-    if (copy[visitor]) copy[visitor]++;
-    else copy[visitor] = 1;
+    const copy = [ ...reduced ];
+    const existing = reduced.find(({name}) => name === visitor);
+    if (existing) existing.score+=1;
+    else copy.push({name: visitor, score: 1})
     return copy;
   }, copiedScores);
 };
 
-const getNames = (users) => Object.keys(users);
+const sort = (users) => users.sort((a, b) => a.score > a.score);
+const limit = (number) => (array) => array.slice(0, number );
+const getNames = (users) => users.map(({name}) => name)
 
 function problem7(user, friends, visitors) {
-  const result = compose(
-    getUserBfs(user),
-    getBfsOfBfs(friends),
-    removeDupUsers(user, ...getUserBfs(user)(friends)),
+  return compose(
+    getUserFriends(user),
+    getFriends(friends),
+    removeDupUsers(user, ...getUserFriends(user)(friends)),
     recordScore,
-    addVisitScore(removeDupUsers(user, ...getUserBfs(user)(friends))(visitors)),
+    addVisitScore(removeDupUsers(user, ...getUserFriends(user)(friends))(visitors)),
+    sort,
+    limit(5),
     getNames
   )(friends);
-
-  return result;
 }
+
 
 module.exports = problem7;
