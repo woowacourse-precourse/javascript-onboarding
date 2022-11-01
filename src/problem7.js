@@ -8,8 +8,7 @@ function problem7(user, friends, visitors) {
   const equal_Score = equalScore(totalList_Arr);
   const exceptionsHandling = exception(checkUserFreind, equal_Score);
 
-  console.log(checkUserFreind, checkVisitList, acquaintance_List, acquaintance_List_Number, total_Score_List
-    ,totalList_Arr, equal_Score, exceptionsHandling )
+  return exceptionsHandling;
 }
 
 function userFriend(user,friends){
