@@ -20,11 +20,8 @@ function problem7(user, friends, visitors) {
   userFriend.forEach((friend) => {
     const acquaintance = relationMap.get(friend);
     for (let i = 0; i < acquaintance.length; i++) {
-      if (acquaintance[i] !== user) {
-        if (
-          !scoreMap.has(acquaintance[i]) &&
-          !userFriend.includes(acquaintance[i])
-        ) {
+      if (acquaintance[i] !== user && !userFriend.includes(acquaintance[i])) {
+        if (!scoreMap.has(acquaintance[i])) {
           scoreMap.set(acquaintance[i], 0);
         }
         scoreMap.set(acquaintance[i], scoreMap.get(acquaintance[i]) + 10);
