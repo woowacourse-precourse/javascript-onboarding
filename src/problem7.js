@@ -42,13 +42,14 @@ function addVisitorsScore(ScoreObj, visitorList, userFriendList) {
 }
 
 function getResult(resultObj) {
-    const result = Object.keys(resultObj).sort((a, b) => {
-        if (resultObj[a] > resultObj[b]) return -1;
-        if (resultObj[a] < resultObj[b]) return 1;
-        if (a > b) return 1;
-        if (a < b) return -1;
-    });
-    return result.slice(0, 5);
+    return Object.keys(resultObj)
+        .sort((a, b) => {
+            if (resultObj[a] > resultObj[b]) return -1;
+            if (resultObj[a] < resultObj[b]) return 1;
+            if (a > b) return 1;
+            if (a < b) return -1;
+        })
+        .slice(0, 5);
 }
 
 function problem7(user, friends, visitors) {
