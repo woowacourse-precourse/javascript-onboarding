@@ -5,6 +5,8 @@ function problem7(user, friends, visitors) {
   let friendList = [];
   let linkedFriends = {};
 
+  if (!isValid(user, friends, visitors)) return -1;   //예외처리
+
   //friends를 통해 닉네임 리스트(recomm)를 생성함
   for (i = 0; i < friends.length; i++) 
     recomm = updateRecommList(user, friends[i], recomm);
@@ -29,7 +31,7 @@ function problem7(user, friends, visitors) {
   recomm = updateRecommList(user, visitors, recomm);   //recomm에 없는 유저 업데이트
 
   for (i = 0; i < visitors.length; i++)   //visitors 배열에 따라 recomm점수 계산
-  recomm[visitors[i]] += 1;
+    recomm[visitors[i]] += 1;
 
   for (i = 0; i < friendList.length; i++) //이미 친구인 유저는 추천 리스트에서 삭제
     delete(recomm[friendList[i]]);
@@ -48,6 +50,14 @@ function problem7(user, friends, visitors) {
     answer.push(sortedRecomm[i][0]);
     
   return answer;
+}
+
+function isValid(user, friends, visitors) {
+  if (user.length < 1 || user.length > 30) return false;
+  if (friends.length < 1 || friends.length > 10000) return false;
+  if (visitors.length < 1 || visitors.length > 10000) return false;
+
+  return true;
 }
 
 function updateRecommList(user, friends, recomm) {
