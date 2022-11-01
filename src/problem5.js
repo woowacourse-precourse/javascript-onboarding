@@ -9,8 +9,9 @@ function problem5(money) {
     }
     return withdraw;
   };
-  var answer;
-  return answer;
+
+  // 코드 작성
+  return getMoneyCount(money);
 }
 
 module.exports = problem5;
