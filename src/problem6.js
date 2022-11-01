@@ -27,7 +27,7 @@ const duplicateSet = new Set(duplicates);
 const duplicateArray = [...duplicateSet];
 
 for (const item of nicknameArray){
-  for(let i=0; i<duplicateArray.length; i++){
+  for(let i = 0; i < duplicateArray.length; i++){
     if(item.indexOf(duplicateArray[i]) > -1){
     errorUser.push(item);
     }
