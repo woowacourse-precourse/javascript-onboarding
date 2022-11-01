@@ -13,6 +13,7 @@ function problem5(money) {
     } else resultArr.push(0);
   }
 
+  answer = resultArr;
   return answer;
 }
 
