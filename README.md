@@ -113,18 +113,18 @@
 
 ## 📋 [문제 6] 구현할 기능 목록
 
-* `checkValidation` 함수: input된 값 데이터 유효성 검사
-  + 이메일 길이가 11자이상 20자 미만이 아니면 제거
-  + 이메일 `email.com` 아니면 제거
-  + 이메일 중복값 제거
-  + 닉네임 길이가 2이상 20자 미만이 아니면 제거
-  + 닉네임 한글이 아니면 제거
-
 * 전체 프로세서 관리할 `duplicateCheckApp` 함수 생성.
   + set 객체 `emailOfUsedNickName`에 변수 `crewNickName`이 중복되면 그 크루의 이메일 `crewEmail`을 넣어서 저장해놓음.
   + map 객체 `infoOfUsedTwoLetter`에 key값은 닉네임 `crewNickName`을 2글자씩 끊어 놓은 변수 `twoLetterName`가 보관되며, value값에는 해당 닉네임을 사용한 이메일 `crewEmail`을 보관함.
   + 입력된 배열 `forms` 길이만큼 중복닉네임을 걸러내는 작업 반복.
   + return 값 : set 객체 `emailOfUsedNickName`를 배열타입으로 변경 후 sort하여 정렬.
+
+* **(-제거)** ~~`checkValidation` 함수: input된 값 데이터 유효성 검사~~
+  + 이메일 길이가 11자이상 20자 미만이 아니면 제거
+  + 이메일 `email.com` 아니면 제거
+  + 이메일 중복값 제거
+  + 닉네임 길이가 2이상 20자 미만이 아니면 제거
+  + 닉네임 한글이 아니면 제거
 
 ***
 ## 📋 [문제 7] 구현할 기능 목록
