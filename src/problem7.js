@@ -23,7 +23,7 @@ function problem7(user, friends, visitors) {
     .sort((a, b) => (a[1] === b[1] ? sortCondition(a[0], b[0]) : b[1] - a[1]))
     .map((item) => item[0]);
 
-  return answer;
+  return answer.length > 5 ? answer.slice(0, 5) : answer;
 }
 
 function addFriend(friendList, friend1, friend2) {
