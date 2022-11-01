@@ -10,14 +10,18 @@ function sameCheck(a, b) {
 
 function problem2(cryptogram) {
   var answer;
+  if (cryptogram.length === 1) return cryptogram;
+
   let stack = [];
+  let prevWord = "";
   stack.push(cryptogram[0]);
   for (let i = 1; i < cryptogram.length; i++) {
     //스택 자료구조 push,pop으로
     const char = cryptogram[i];
-    if (sameCheck(stack[stack.length - 1], char)) {
+    if (sameCheck(stack[stack.length - 1], char) || prevWord === char) {
       stack.pop();
     } else {
+      prevWord = char;
       stack.push(char);
     }
   }
