@@ -1,54 +1,61 @@
+'use strict';
 const RESULT_STATUS = {
   EXCEPTION: -1,
   DRAW: 0,
   POBI_WIN: 1,
   CRONG_WIN: 2,
 };
+Object.freeze(RESULT_STATUS);
+
+/** 각 자리수 분리 */
 const splitNumber = (number = 0) => {
   return `${number}`.split('').map(Number);
 };
+/** 숫자들의 합 계산 */
 const addNumbers = (numbers = []) => {
   return numbers.reduce((acc, cur) => acc + cur, 0);
 };
+/** 숫자들의 곱 계산 */
 const multiplyNumbers = (numbers = []) => {
   return numbers.reduce((acc, cur) => acc * cur, 1);
 };
+/** 계산된 값 중 가장 큰 숫자 반환 */
 const compareNumbers = (...number) => {
   return Math.max(...number);
 };
 
-function problem1(pobi, crong) {
-  const [pobiLeft, pobiRight] = pobi;
-  const [crongLeft, crongRight] = crong;
+/** 파라미터 조건 확인 */
+const isValidPage = ([left = 0, right = 1]) => {
+  if (left % 2 !== 1) return true;
+  if (right % 2 !== 0) return true;
 
-  if (pobiLeft + 1 !== pobiRight || crongLeft + 1 !== crongRight) {
+  if (left <= 1 || left >= 400) return true;
+  if (right <= 1 || right >= 400) return true;
+
+  // 연속된 페이지
+  if (left + 1 !== right) return true;
+  return false;
+};
+
+function problem1(pobi, crong) {
+  const maxNumbers = [];
+  const opponents = [pobi, crong];
+  if (isValidPage(pobi) || isValidPage(crong)) {
     return RESULT_STATUS.EXCEPTION;
   }
 
-  //TODO 모두 계산하지 않아도 되는 방안
-  const splitPobiLeft = splitNumber(pobiLeft);
-  const splitPobiRight = splitNumber(pobiRight);
-  const splitCrongLeft = splitNumber(crongLeft);
-  const splitCrongRight = splitNumber(crongRight);
+  for (const [left, right] of opponents) {
+    const splitLeft = splitNumber(left);
+    const splitRight = splitNumber(right);
 
-  const addPobiRight = addNumbers(splitPobiRight);
-  const addCrongRight = addNumbers(splitCrongRight);
+    const addRight = addNumbers(splitRight);
+    const multiplyLeft = multiplyNumbers(splitLeft);
+    const multiplyRight = multiplyNumbers(splitRight);
 
-  const multiplyPobiLeft = multiplyNumbers(splitPobiLeft);
-  const multiplyPobiRight = multiplyNumbers(splitPobiRight);
-  const multiplyCrongLeft = multiplyNumbers(splitCrongLeft);
-  const multiplyCrongRight = multiplyNumbers(splitCrongRight);
+    maxNumbers.push(compareNumbers(addRight, multiplyLeft, multiplyRight));
+  }
 
-  const maxPobi = compareNumbers(
-    addPobiRight,
-    multiplyPobiLeft,
-    multiplyPobiRight
-  );
-  const maxCrong = compareNumbers(
-    addCrongRight,
-    multiplyCrongLeft,
-    multiplyCrongRight
-  );
+  const [maxPobi, maxCrong] = maxNumbers;
 
   if (maxPobi > maxCrong) {
     return RESULT_STATUS.POBI_WIN;
