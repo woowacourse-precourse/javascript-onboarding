@@ -14,6 +14,24 @@ function problem7(user, friends, visitors) {
 
   const visitTimeline = visitors.filter((who) => !friend.includes(who));
 
+  let score = {};
+
+  nearFriend.forEach((who) => {
+    if (score[who]) {
+      score[who] = score[who] + 10;
+    } else {
+      score[who] = 10;
+    }
+  });
+
+  visitTimeline.forEach((who) => {
+    if (score[who]) {
+      score[who] = score[who] + 1;
+    } else {
+      score[who] = 1;
+    }
+  });
+
   return answer;
 }
 
