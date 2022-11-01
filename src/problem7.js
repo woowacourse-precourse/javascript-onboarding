@@ -32,7 +32,7 @@ function problem7(user, friends, visitors) {
         }
       }
     }
-    return mutualObj;
+    return [friendsWithUser, mutualObj];
   };
 
   const scoreFromVisit = (visitors) => {
