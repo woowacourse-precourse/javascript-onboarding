@@ -5,7 +5,7 @@ function problem6(forms) {
   let nameCheck = [];
   let emailArr =[];
 
-  for (element of arr) {
+  for (element of forms) {
     let name = element[1];
     newName.push([...name]);
   }
@@ -28,7 +28,7 @@ function problem6(forms) {
   let newOverlap = [...new Set(overlap)]
   
   const overlapCheck = newOverlap.toString();
-  for (element of arr){
+  for (element of forms){
     let email = element[0];
     let name = element[1];
     if (name.indexOf(overlapCheck) != -1){
