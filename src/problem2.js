@@ -16,9 +16,9 @@ function problem2(cryptogram) {
         chStack.push(ch);
       }
     });
+    if (isOverlap) chStack.pop();
 
     if (chStack.length === cryptogram.length) isChange = 0;
-
     cryptogram = [...chStack];
   }
 }
