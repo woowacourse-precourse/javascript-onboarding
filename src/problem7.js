@@ -57,6 +57,17 @@ function giveScore(acquaintances, visitors) {
   return nameScoreList;
 }
 
+function makeNameScoreList(scoredFriends, scoreList) {
+  const nameScoreList = (name, score) => ({name, score});
+  let arr = [];
+  for(let i = 0; i < scoredFriends.length; i++) {
+    let friend = nameScoreList(scoredFriends[i], scoreList[i]);
+    arr.push(friend);
+  }
+
+  return arr;
+}
+
 module.exports = problem7;
 
 
