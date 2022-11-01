@@ -28,21 +28,21 @@ function friendsRecommend(user, friends, userFriends) {
 function getScore(friendArr, crew, score) {
   const crewScoreArr = {};
   crew.forEach((ele) => {
-    if (!friendArr.includes(ele)) result[ele] = (result[ele] || 0) + score;
+    if (!friendArr.includes(ele))
+      crewScoreArr[ele] = (crewScoreArr[ele] || 0) + score;
   });
-
   return crewScoreArr;
 }
 // 기능 3
 function joinCrew(friendsRecommendArr, visitors) {
-  const joinCrew = {};
-  for (let friend in getScore(friendsArr, friendsRecommendArr, 10)) {
-    joinCrew[friend] = getScore(friendsArr, friendsRecommendArr, 10)[friend];
+  const joinCrewArr = [];
+  for (let key in friendsRecommendArr) {
+    joinCrewArr.push([key, friendsRecommendArr[key]]);
   }
-  for (let visitor in getScore(friendsArr, visitors, 1)) {
-    joinCrew[visitor] = getScore(friendsArr, visitors, 1)[visitor];
+  for (let key in visitors) {
+    joinCrewArr.push([key, visitors[key]]);
   }
-  return joinCrew;
+  return joinCrewArr;
 }
 // 기능 4
 function sortResult() {}
