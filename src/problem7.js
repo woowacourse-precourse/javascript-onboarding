@@ -25,6 +25,19 @@ function findDuplicate(arr) {
 }
 }
 
+function findFriends(arr, person) {
+  let i = 0;
+  let personFriends = [];
+  while (i < arr.length) {
+    if (arr[i].includes(person)) {
+      personFriends.push(arr[i]);
+    }
+    i++;
+  }
+  personFriends = personFriends.flat().filter(element => element !== person);
+  return personFriends;
+}
+
 function problem7(user, friends, visitors) {
   
 }
