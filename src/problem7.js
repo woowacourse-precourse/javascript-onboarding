@@ -2,10 +2,10 @@ function problem7(user, friends, visitors) {
   const friendsOb = allFriendRelationship(friends);
   const scoreOb = {};
 
-  const userFriendsArr = friendsOb[user];
+  const userFriendsList = friendsOb[user];
   delete friendsOb[user];
 
-  userFriendsArr.map((user) => {
+  userFriendsList.map((user) => {
     delete friendsOb[user];
   });
 
@@ -13,7 +13,7 @@ function problem7(user, friends, visitors) {
   finishFreindsArr.map((friend) => {
     const [key, arr] = friend;
     const intersectionLength = arr.filter((x) =>
-      userFriendsArr.includes(x)
+      userFriendsList.includes(x)
     ).length;
     if (intersectionLength > 0) {
       scoreOb[key] = intersectionLength * 10;
@@ -21,7 +21,7 @@ function problem7(user, friends, visitors) {
   });
 
   visitors.map((user) => {
-    if (!userFriendsArr.includes(user)) {
+    if (!userFriendsList.includes(user)) {
       if (scoreOb[user]) {
         scoreOb[user]++;
       } else {
