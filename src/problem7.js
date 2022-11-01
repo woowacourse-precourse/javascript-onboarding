@@ -15,10 +15,28 @@ const findUserFriends = (user, friends) => {
   });
   return userFriends;
 };
-function problem7(user, friends, visitors) {
-  let userFriends = [];
-  var answer;
 
+const findUserFriendFriends = (user, userFriends, friends) => {
+  let findFriendsList = [];
+  friends.map((elem) => {
+    if (userFriends.includes(elem[0])) {
+      findFriendsList.push(elem[1]);
+    }
+    if (userFriends.includes(elem[1])) {
+      findFriendsList.push(elem[0]);
+    }
+  });
+  findFriendsList = [...new Set(findFriendsList)];
+  findFriendsList.map((elem, idx) => {
+    if ([...userFriends, user].includes(elem)) {
+      findFriendsList.splice(idx, 1);
+    }
+  });
+  return findFriendsList;
+};
+function problem7(user, friends, visitors) {
+  const userFriends = findUserFriends(user, friends);
+  const findFriendsList = findUserFriendFriends(user, userFriends, friends);
   return answer;
 }
 
