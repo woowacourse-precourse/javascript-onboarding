@@ -4,3 +4,13 @@ function problem4(word) {
 }
 
 module.exports = problem4;
+
+// check if string is an alphabet
+function isAlphabet(str, alphabet) {
+  for (let i = 0; i < str.length; i++) {
+    if (alphabet.indexOf(str[i]) === -1) {
+      return false;
+    }
+  }
+  return true;
+}
