@@ -9,8 +9,15 @@
 // forms => [['email','name'], ... ]
 // return => 닉네임 중복자 ['email', ...], 오름차순 정렬, 중복 제거
 function problem6(forms) {
-	var answer;
-	return answer;
+	var ans=[];
+	for(var i=0; i<forms.length; i++) {
+		for(var j=i+1; j<forms.length; j++){
+			if(!isSim(forms[i][1], forms[j][1])) continue;
+			ans.push(forms[i][0]); ans.push(forms[j][0]);
+		}
+	}
+
+	return ans;
 }
 
 // 1. 두 문자열 두 글자 이상 문자 연속 동일 여부 검사 기능
