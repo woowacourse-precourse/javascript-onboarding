@@ -1,3 +1,4 @@
+// 유저의 친구 목록 
 function getUserFriend(user, friends) {
   let friendArr = [];
   friends.map(arr => {
@@ -7,6 +8,7 @@ function getUserFriend(user, friends) {
   return friendArr;
 };
 
+// 알 수도 있는 친구 목록
 function getRecommendFriend(user, userFriends, friends) {
   const recommendFriend = friends.filter((arr) =>
     !arr.includes(user) && arr.some((friend) => userFriends.includes(friend)))
@@ -15,6 +17,7 @@ function getRecommendFriend(user, userFriends, friends) {
   return recommendFriend;
 };
 
+// 알 수도 있는 친구 점수 +10
 function getRecommendScore(user, friends, userFriends) {
   const recommendFriend = getRecommendFriend(user, userFriends, friends);
   const recommendScore = recommendFriend.reduce((acc, cur) => {
@@ -24,6 +27,7 @@ function getRecommendScore(user, friends, userFriends) {
   return recommendScore;
 }
 
+// 방문자 친구 점수 +1
 function getVisitorScore(visitors, userFriends) {
   const removeUserFriends = visitors.concat(userFriends)
     .filter(friend =>
@@ -36,6 +40,7 @@ function getVisitorScore(visitors, userFriends) {
   return visitScore;
 }
 
+// 가장 높은 점수 상위 5명 배열
 function getMaxScore(user, friends, visitors) {
   const userFriends = getUserFriend(user, friends);
   const recommend = getRecommendScore(user, friends, userFriends);
