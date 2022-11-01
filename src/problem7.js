@@ -1,24 +1,9 @@
-function restrictions_user(user) {
-  return user;
-}
-
-function restrictions_friends(friends) {
-  return friends;
-}
-
-function restrictions_visitors(visitors) {
-  return visitors;
-}
-
 function problem7(user, friends, visitors) {
   var answer = [];
   var friend_list = [];
   var cross_friend = [];
+  var result = [];
   var score = {};
-
-  console.log(restrictions_user(user));
-  console.log(restrictions_friends(friends));
-  console.log(restrictions_visitors(visitors));
 
   // 이미 친구인 유저와 친구유저의 친구를 분리한다.
   // user 본인은 없앤다.
@@ -54,8 +39,28 @@ function problem7(user, friends, visitors) {
     score[name] = 1;
   }
 
-  answer = Object.keys(score);
+  // 점수 정렬 -> 이름 정렬
+  for (var name in score) {
+    result.push([name, score[name]]);
+  }
 
+  // 점수 정렬
+  result.sort(function (a, b) {
+    return b[1] - a[1];
+  });
+
+  // 이름 정렬
+  result.sort(function (a, b) {
+    return b[0] - a[0];
+  });
+
+  // 상위 5개 추출
+  result = result.length > 5 ? result.slice(0, 5) : result;
+
+  // 이름만 추출하기
+  for (var i = 0; i < result.length; i++) {
+    answer.push(result[i][0]);
+  }
   return answer;
 }
 
