@@ -1,11 +1,15 @@
 function is_vaild_input(pobi, crong){
   let i = 0;
   while (i < 2) {
-    if (pobi[i] == 0 || pobi[i] == 400 || crong[i] == 0 || crong[i] == 400) {
+    if (pobi[i] < 0 || pobi[i] > 400 || crong[i] < 0 || crong[i] > 400) {
       return (false);
     }
     i++;
   }
+  if (pobi.length != 2 || crong.length != 2) {
+    return (false);
+  }
+  
   if (pobi[0] % 2 != 1 || crong[0] % 2 != 1) {
     return (false);
   }
