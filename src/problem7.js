@@ -29,6 +29,14 @@ function problem7(user, friends, visitors) {
     });
   });
 
+  visitors.forEach((visitor) => {
+    if (visitor in pointState) {
+      pointState[visitor] += 1;
+    } else {
+      pointState[visitor] = 1;
+    }
+  });
+
 }
 
 module.exports = problem7;
