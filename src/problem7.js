@@ -24,3 +24,16 @@ function getNameList(user, friends, visitors) {
 
   return friendName;
 }
+
+// return friend's name of user
+function getFriendNameOfUser(user, friends) {
+  const userFriend = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i][0] === user) {
+      userFriend.push(friends[i][1]);
+    } else if (friends[i][1] === user) {
+      userFriend.push(friends[i][0]);
+    }
+  }
+  return userFriend;
+}
