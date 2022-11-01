@@ -3,9 +3,10 @@ function problem2(cryptogram) {
   let rightPoiner = 1;
   const cryptogramList = [...cryptogram];
 
-  const pointerMoveForward = () => {
+  const moveAllPointerForward = () => {
     leftPointer += 1;
     rightPoiner += 1;
+    
   }
   /**
    * 유효한 범위를 한정해 주는 함수.
@@ -20,18 +21,21 @@ function problem2(cryptogram) {
     rightPoiner = 1;
   }
   const isEachPointerSameLetter = () => cryptogramList[leftPointer] === cryptogramList[rightPoiner]
+  const moveRightPointerForward = () => rightPoiner ++;
+  
   let isRemoved = true;
 
   while (isRemoved){
-    initPointer(leftPointer, rightPoiner);
+    initPointer();
     isRemoved = false
   while (isValidRange()){
+    
     if (!isEachPointerSameLetter()){
-      pointerMoveForward();
+      moveAllPointerForward();
       continue;
     }
     while (isEachPointerSameLetter()){
-        rightPoiner ++;
+      moveRightPointerForward();
     }
 
     cryptogramList.splice(leftPointer, rightPoiner - leftPointer);
@@ -41,4 +45,5 @@ function problem2(cryptogram) {
     }
     return cryptogramList.join("");
   }
+
 module.exports = problem2;
