@@ -40,6 +40,19 @@ function isValidInput(user, friends, visitors) {
   return isValid;
 }
 
+function isValidId(id) {
+  let isValid;
+  if (!(id.length >= 1 && id.length <= 30)) {
+    isValid = false;
+  } else if (id !== id.toLowerCase()) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
+}
+
 function seperateFriends(friends, user) {
   let userFriends = [];
   let friendsOfFriend = [];
