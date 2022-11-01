@@ -39,4 +39,22 @@ const visitScore = (score, visitors) => {
   return score;
 };
 
+const mutualFriendScore = (user, friendsRelation, score) => {
+  const userFriends = friendsRelation[user];
+
+  userFriends.forEach((friend) => {
+    const mutualFriends = friendsRelation[friend];
+
+    mutualFriends.forEach((mutualFriend) => {
+      if (!score[mutualFriend]) {
+        score[mutualFriend] = 10;
+      } else {
+        score[mutualFriend] += 10;
+      }
+    });
+  });
+
+  return score;
+};
+
 module.exports = problem7;
