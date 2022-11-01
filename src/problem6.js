@@ -21,3 +21,5 @@ function duplicationEmailList(forms) {
 
   return [...emailExistCheckWord].sort();
 }
+
+module.exports = problem6;
