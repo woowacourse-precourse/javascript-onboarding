@@ -7,24 +7,16 @@ function problem7(user, friends, visitors) {
   //두 배열의 길이는 항상 같아야 함.
   //방문자 확인해서 점수 올려주기
   visitors.forEach(i => {
-    if (recommendationList.indexOf(i) !== -1) {
-      scoreFriendsList[recommendationList.indexOf(i)]++
-    } else if (recommendationList.indexOf(i) === -1 && userFriends.indexOf(i) === -1) {
-      recommendationList.push(i);
+    if (recommendFriends.indexOf(i) !== -1) {
+      scoreFriendsList[recommendFriends.indexOf(i)]++
+    } else if (recommendFriends.indexOf(i) === -1 && userFriends.indexOf(i) === -1) {
+      recommendFriends.push(i);
       scoreFriendsList.push(1);
     }
   })
-
-  //이름과 점수 추출함
-  // console.log(recommendationList)
-  // console.log(scoreFriendsList)
-  
   //이름과 점수 가지고 점수를 비교해서 등수로 정렬하기
   //두 개의 배열로 관리하면 힘들다. 하나로 묶어서 점수 기준으로 정렬하기
-  const countArr = [];
-  for (let i = 0; i < recommendationList.length; i++) {
-    countArr.push([recommendationList[i], scoreFriendsList[i]])
-  }
+  const countArr = makeFriendsScore(recommendFriends, scoreFriendsList);
 
   countArr.sort((a, b) => {
     if (a[1] === b[1]) {
@@ -63,3 +55,33 @@ function findrecommendFriends(user, friends, myFriends) {
   return [...new Set(friends.map(friendTable => friendTable.filter(friend => !myFriends.includes(friend))).filter(friend => !user.includes(friend)).filter(friendList => friendList.length < 2).flat())]
 }
 
+/**
+ * 추천 목록과 점수를 묶어서 배열을 반환
+ * @param {Array, Array} 추천 목록, 점수
+ * @returns 추천 목록과 점수를 묶어서 배열을 반환
+ */
+function makeFriendsScore(recommendFriends, scoreFriendsList) {
+  const friendsScoreTable = [];
+  for (let i = 0; i < recommendFriends.length; i++) {
+    friendsScoreTable.push([recommendFriends[i], scoreFriendsList[i]])
+  }
+  scoreSort(friendsScoreTable)
+  return friendsScoreTable
+}
+
+/**
+ * 배열이 들어오면 점수를 기준으로 내림차순 정렬하고 점수가 같다면 이름순으로 오름차순 정렬
+ * @param {Array} 정렬 대상 배열
+ * @returns 점수를 기준으로 내림차순 정렬하고 점수가 같다면 이름순으로 오름차순 정렬
+ */
+function scoreSort(arr) {
+    arr.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return (a[0] - b[0])
+    } else {
+      (b[1] - a[1])
+    }
+    })
+  
+  return arr
+}
