@@ -1,6 +1,10 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  const stack = [];
+  for (let i = 0; i < cryptogram.length; i++) {
+    if (stack[stack.length - 1] === cryptogram[i]) stack.pop();
+    else stack.push(cryptogram[i]);
+  }
+  return stack.join("");
 }
 
 module.exports = problem2;
