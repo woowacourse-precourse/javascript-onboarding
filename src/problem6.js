@@ -17,6 +17,10 @@ const getDuplicateNickname = (arr) => {
   return removeDuplicateElement(arr.filter((item, index) => arr.indexOf(item) !== index));
 }
 
+const isDuplicate = (nicknameList, nickname) => {
+  return nicknameList.some((nick) => nickname.includes(nick));
+}
+
 function problem6(forms) {
   const sliceNicknameList = forms.reduce((acc, [_ , nickname]) => { 
     return [...acc, ...sliceNickname(nickname)];
