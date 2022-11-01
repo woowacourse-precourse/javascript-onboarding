@@ -12,16 +12,16 @@ function problem7(user, friends, visitors) {
   .filter((member) => userFriends.indexOf(member) === -1)
   .map((member) => [member, 0]);
 
-  const  relavantUser = [];
+  const  hasMutualFriend = [];
   for(const member of userFriends){
     for(let i=0; i<friends.length; i++){   
       if (friends[i].indexOf(member) > -1){
-        relavantUser.push(String(friends[i].filter((element) => element !== member && element !== user)))
+        hasMutualFriend.push(String(friends[i].filter((element) => element !== member && element !== user)))
       }
     }
   }
 
-  for (const item of relavantUser){
+  for (const item of hasMutualFriend){
     for(let i=0; i<scoreBoard.length; i++){
       if(scoreBoard[i].indexOf(item) > -1){
         scoreBoard[i][1] = scoreBoard[i][1] + 10
