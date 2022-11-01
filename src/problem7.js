@@ -63,6 +63,10 @@ function problem7(user, friends, visitors) {
   );
   sortedAnswer = answer.sort(sortResult);
 
+  for (let i = 0; i < sortedAnswer.length; i++) {
+    sortedAnswer[i] = sortedAnswer[i][0];
+  }
+
   return sortedAnswer;
 }
 
