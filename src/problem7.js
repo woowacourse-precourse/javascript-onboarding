@@ -23,12 +23,10 @@ function getFriendOfFriend(friendObj, notUserFriendList) {
 }
 
 function addFriendOfFriendScore(userList) {
-    const userScore = {};
-    userList.forEach(
-        (user) => (userScore[user] = (userScore[user] += 10) || 10)
-    );
-
-    return userScore;
+    return userList.reduce((obj, user) => {
+        obj[user] = (obj[user] += 10) || 10;
+        return obj;
+    }, {});
 }
 
 function addVisitorsScore(ScoreObj, visitorList, userFriendList) {
