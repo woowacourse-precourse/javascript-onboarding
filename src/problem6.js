@@ -23,7 +23,7 @@ const isTmpWordAlreadyExists = (commonNicknameObject, temporaryWord) => {
  * @param {object} object - 임시 단어 object
  * @return {string[]}
  */
-const getIterableObjectWithKeys = (object) => {
+const getIterableArrWithKeys = (object) => {
   return Object.keys(object);
 };
 
