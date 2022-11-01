@@ -1,25 +1,17 @@
 function problem6(forms) {
-    let length = forms.length;
     let answer = [];
-    for (let i = 0; i < length - 1; i++) {
+    let length = forms.length;
+    for (let i = 0; i < length; i++) {
         let name = forms[i][1];
-        let pushed = false;
-        let count = 0;
-        for (let j = i + 1; j < length; j++) {
-            let compName = forms[j][1];
-            for (let k = 0; k < name.length - 1; k++) {
-                let twoChar = name[k] + name[k + 1];
-                if (compName.includes(twoChar)) {
-                    !pushed && answer.push(forms[i][0]);
-                    answer.push(forms[j][0]);
-                    pushed = true;
-                    count == 0 ? (count += 2) : count++;
-                }
+        for (let j = 0; j < name.length - 1; j++) {
+            let twoChar = name[j] + name[j + 1];
+            for (let k = i + 1; k < length; k++) {
+                if (forms[k][1].includes(twoChar))
+                    answer.push(forms[i][0], forms[k][0]);
             }
         }
-        length -= count;
     }
-    answer = answer.sort((a, b) => b[0].length - a[0].length);
+    answer = [...new Set(answer)].sort();
     return answer;
 }
 
