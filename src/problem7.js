@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
 
   const people = {};
   const score = 0;
-  let peple = [];
+  let peple = [user];
   for (p = 0; p < friends.length; p++) {
     for (q = 0; q < friends[p].length; q++) {
       peple.push(friends[p][q]);
@@ -36,41 +36,36 @@ function problem7(user, friends, visitors) {
 
   let overfriends = [];
 
-  if (friend[user] != undefined) {
-    const userfriend = friend[user];
-    for (i = 0; i < userfriend.length; i++) {
-      const friend_2 = friend[userfriend[i]];
-      overfriends = overfriends.concat(friend_2);
-    }
-
-    console.log('2차 친구 목록', overfriends);
-
-    const setfriends = new Set(overfriends);
-
-    overfriends = [...setfriends];
-
-    console.log('중복제거 확인', overfriends);
-    // 유저 2차친구 목록 만들기 (중복제외)
-
-    for (i = 0; i < overfriends.length; i++) {
-      people[overfriends[i]] += 10;
-    }
-    // 추천점수 넣기(+10)
-    for (i = 0; i < visitors.length; i++) {
-      people[visitors[i]] += 1;
-    }
-
-    console.log('점수확인', people);
-    // 방문점수 넣기(+1)
-
-    for (i = 0; i < userfriend.length; i++) {
-      people[userfriend[i]] = 0;
-    }
-  } else {
-    for (i = 0; i < visitors.length; i++) {
-      people[visitors[i]] += 1;
-    }
+  const userfriend = friend[user];
+  for (i = 0; i < userfriend.length; i++) {
+    const friend_2 = friend[userfriend[i]];
+    overfriends = overfriends.concat(friend_2);
   }
+
+  console.log('2차 친구 목록', overfriends);
+
+  const setfriends = new Set(overfriends);
+
+  overfriends = [...setfriends];
+
+  console.log('중복제거 확인', overfriends);
+  // 유저 2차친구 목록 만들기 (중복제외)
+
+  for (i = 0; i < overfriends.length; i++) {
+    people[overfriends[i]] += 10;
+  }
+  // 추천점수 넣기(+10)
+  for (i = 0; i < visitors.length; i++) {
+    people[visitors[i]] += 1;
+  }
+
+  console.log('점수확인', people);
+  // 방문점수 넣기(+1)
+
+  for (i = 0; i < userfriend.length; i++) {
+    people[userfriend[i]] = 0;
+  }
+  
   console.log('점수확인', people);
   // 방문점수 넣기(+1)}
 
