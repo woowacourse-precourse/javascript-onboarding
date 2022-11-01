@@ -12,7 +12,11 @@ function problem6(forms) {
       }
     }
   }
-  return answer;
+  let uniqueAnswer = answer.filter((value, index) => {
+    return answer.indexOf(value) === index;
+  });
+  uniqueAnswer.sort();
+  return uniqueAnswer;
 }
 
 module.exports = problem6;
