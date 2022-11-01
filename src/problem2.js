@@ -1,5 +1,3 @@
-// "browoanoommnaon" -> "brown", "zyelleyz" -> "" /(\w+)\1/g
-// 중복이 되더라도 홀수일때는 남아있다 -> 2개가 만나면 사라진다
 function problem2(cryptogram) {
   let answer;
   let stack = [];

@@ -10,5 +10,5 @@ function problem5(money) {
 
   return answer;
 }
-// val 인자의미 확실히 하기, 0일 경우 예외처리 하기
+
 module.exports = problem5;

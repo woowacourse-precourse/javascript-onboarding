@@ -1,4 +1,3 @@
-// for문에서 반드시 괄호 확인하기 ->너무 꼬여서 for문 두뭉치로 분리
 function problem6(forms) {
   let answer = [];
   let result = new Set();
