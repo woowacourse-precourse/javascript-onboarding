@@ -6,9 +6,8 @@ function problem7(user, friends, visitors) {
     setDefault(connected, friend1, friend2);
     setDefault(connected, friend2, friend1);
   }
-  console.log(connected);
 
-  const point = new Object();
+  const point = new Map();
   for (follower of connected[user].values()) {
     for (person of connected[follower].values()) {
       if (person == user) {
@@ -17,13 +16,12 @@ function problem7(user, friends, visitors) {
       if (connected[user].has(person)) {
         continue;
       }
-      if (point.hasOwnProperty(person)) {
+      if (point.has(person)) {
         continue;
       }
       setDefaultPoint(point, person, 10);
     }
   }
-  console.log(point);
 
   for (visitor of visitors) {
     if (connected[user].has(visitor)) {
@@ -31,10 +29,19 @@ function problem7(user, friends, visitors) {
     }
     setDefaultPoint(point, visitor, 1);
   }
-  console.log(point);
 
-  var answer;
-  return answer;
+  const answer = [...point];
+  answer.sort(function (a, b) {
+    if (b[1] == a[1]) {
+      if (a[0] < b[0]) return -1;
+      if (a[0] > b[0]) return 1;
+      if (a[0] == b[0]) return 0;
+    }
+    return b[1] - a[1];
+  })
+  
+  const sortedAnswer = new Map(answer);
+  return [...sortedAnswer.keys()];
 }
 
 function setDefault(target, key, value) {
@@ -48,10 +55,11 @@ function setDefault(target, key, value) {
 }
 
 function setDefaultPoint(target, key, value) {
-  if (target.hasOwnProperty(key)) {
-    target[key] += 1;
+  if (target.has(key)) {
+    target.set(key, target.get(key) +1);
     return target
   }
-  target[key] = value;
+  target.set(key, value);
 }
+
 module.exports = problem7;
