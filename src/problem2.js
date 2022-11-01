@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {string} cryptogram
+ * @returns
+ */
+
 function problem2(cryptogram) {
   if (cryptogram.length < 1) {
     return cryptogram;
@@ -32,3 +38,10 @@ function problem2(cryptogram) {
 }
 
 module.exports = problem2;
+
+/**
+ * 두 개의 포인터를 이용하여 문자를 정리하는 것이 효율적이라 생각하여
+ * 한 개의 포인터가 중복되는 단어를 찾았을 경우에는 해당 인덱스보다 한
+ * 값 전의 값으로 이동하여 두번째 포인터가 끝까지 이동하여 탐색하게 함수를
+ * 만들었습니다.
+ */

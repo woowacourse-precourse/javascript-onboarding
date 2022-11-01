@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {Array} forms 이메일 주소와 닉네임이 포함된 배열
+ * @returns
+ */
+
 function problem6(forms) {
   const map = new Map();
   for (let i = 0; i < forms.length; i++) {
@@ -31,6 +37,12 @@ function problem6(forms) {
   return SortEmail(answer);
 }
 
+/**
+ *
+ * @param {string} input
+ * @returns 닉네임을 오름차순으로 정렬하는 함수
+ */
+
 function SortEmail(input) {
   input.sort((a, b) => a[0].charCodeAt() - b[0].charCodeAt());
   for (let i = 0; i < input.length - 1; i++) {
@@ -51,6 +63,13 @@ function SortEmail(input) {
   return input;
 }
 
+/**
+ *
+ * @param {Array} input 중복되는 이메일을 포함한 배열
+ * @param {Array} list 해당 이메일을 지닌 사람들의 이름
+ * @returns
+ */
+
 function Search(input, list) {
   const name = [];
   input.forEach((val) => {
@@ -64,3 +83,6 @@ function Search(input, list) {
 }
 
 module.exports = problem6;
+
+// map을 이용하여 사람들의 이름을 key로 email을 value로 구성하여 탐색
+// 하는 것이 효율적일 것이라고 생각하여 진행하였습니다.

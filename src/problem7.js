@@ -29,6 +29,12 @@ class AdjacentList {
   }
 }
 
+/**
+ *
+ * @param {string} input
+ * @returns 주어진 이름을 오름차순으로 정렬하는 함수
+ */
+
 function Sort(input) {
   input.sort((a, b) => a[0].charCodeAt() - b[0].charCodeAt());
   for (let i = 0; i < input.length - 1; i++) {
@@ -44,6 +50,14 @@ function Sort(input) {
   }
   return input;
 }
+
+/**
+ *
+ * @param {string} user
+ * @param {Array} friends
+ * @param {Array} visitors
+ * @returns
+ */
 
 function problem7(user, friends, visitors) {
   const adjacent = new AdjacentList();
@@ -89,3 +103,8 @@ function problem7(user, friends, visitors) {
 }
 
 module.exports = problem7;
+
+// 인접리스트를 이용하여 주어진 user의 친구들과 연결된 사람들을 구분하여
+// 문제를 해결하였습니다. 주어진 문제를 해결하기 위해서는 user의 친구들
+// 이 어떻게 연결되었는지 파악하는 것이 중요하다 생각하여 인접리스트를
+// 사용하였습니다.
