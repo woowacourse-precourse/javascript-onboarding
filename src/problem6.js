@@ -34,6 +34,19 @@ function problem6(forms) {
     })
   });
 
+
+
+  forms.forEach((form) => {
+    const [email, nickname] = form;
+    if (emailSet.has(email) === false) {
+      for (let j = 1; j < nickname.length; j++) {
+        const str = nickname.substr(j - 1, 2);
+        if (nickSet.has(str))
+          emailSet.add(email);
+      }
+    }
+  });
+
   let answer = Array.from(emailSet);
   answer.sort();
   return answer;
