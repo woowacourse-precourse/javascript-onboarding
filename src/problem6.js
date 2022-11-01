@@ -1,30 +1,30 @@
 function problem6(forms) {
   var answer = [];
   let duplicateWord;
-  const crewName = new Map()
-  const formsMap = new Map(forms)
+  const twoWordsMap = new Map()
+  const crewMap = new Map(forms)
 
   for (let e of forms) {
     const oneOfNames = e[1].split('')
 
     for (let i = 0; i < oneOfNames.length - 1; i++) {
       const twoWordOFName = oneOfNames[i] + oneOfNames[i + 1]
-      if (crewName.has(twoWordOFName)) {
-        crewName.set(twoWordOFName, crewName.get(twoWordOFName) + 1)
+      if (twoWordsMap.has(twoWordOFName)) {
+        twoWordsMap.set(twoWordOFName, twoWordsMap.get(twoWordOFName) + 1)
       } else {
-        crewName.set(twoWordOFName, 1)
+        twoWordsMap.set(twoWordOFName, 1)
       }
     }
   }
 
-  for (let key of crewName.keys()) {
-    if (crewName.get(key) > 1) {
+  for (let key of twoWordsMap.keys()) {
+    if (twoWordsMap.get(key) > 1) {
       duplicateWord = key;
     }
   }
 
-  for (let email of formsMap.keys()) {
-    if (formsMap.get(email).includes(duplicateWord)) {
+  for (let email of crewMap.keys()) {
+    if (crewMap.get(email).includes(duplicateWord)) {
       answer.push(email);
     }
   }
