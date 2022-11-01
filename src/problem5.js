@@ -1,5 +1,5 @@
 function problem5(money) {
-  let answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var answer = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   //5만원
   let man5 = Math.floor(money / 50000);
