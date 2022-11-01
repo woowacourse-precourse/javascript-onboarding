@@ -25,6 +25,11 @@ function problem7(user, friends, visitors) {
       scores.set(elem[0], scores.get(elem[0]) + 10 || 10);
   });
 
+  // 방문자 점수부여
+  visitors.forEach((elem) => {
+    scores.set(elem, scores.get(elem) + 1 || 1);
+  });
+
   return answer;
 }
 
