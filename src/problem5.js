@@ -1,4 +1,6 @@
 function problem5(money) {
+	//각 금액의 갯수를 반복해서 구한 후 결과 값을 반환할 함수 -> solution
+	//각 액수의 갯수를 구할 함수 -> getCount
 	return solution(money);
 }
 
