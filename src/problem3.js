@@ -1,3 +1,6 @@
+// test sample 추가
+console.log(problem3(36));
+
 function problem3(number) {
   var answer;
   let countClap;
@@ -12,6 +15,17 @@ function problem3(number) {
 }
 
 // 3, 6, 9 발견 함수
-function checkClap(num) {}
+function checkClap(num) {
+  let count = 0;
+
+  num
+    .toString()
+    .split("")
+    .map((n) => {
+      if (["3", "6", "9"].includes(n)) count++;
+    });
+
+  return count;
+}
 
 module.exports = problem3;
