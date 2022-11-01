@@ -3,6 +3,7 @@ function problem6(forms) {
   const splitNickName = getsplitNickName(nickNameArr);
   const duplicateStr = new Set(getDuplicateStr(splitNickName));
   const duplicateNickName = getDuplicateNickName(duplicateStr, nickNameArr);
+  const nickNameIndex = getNickNameIndex(duplicateNickName, nickNameArr);
 }
 
 const getNickNameArr = (forms) => {
@@ -26,6 +27,14 @@ const getDuplicateNickName = (duplicateStr, nickNameArr) => {
   for (let str of duplicateStr) {
     return nickNameArr.filter((item) => item.includes(str));
   }
+};
+
+const getNickNameIndex = (duplicateNickName, nickNameArr) => {
+  const indexArr = [];
+  for (let i of duplicateNickName) {
+    indexArr.push(nickNameArr.indexOf(i));
+  }
+  return indexArr;
 };
 
 module.exports = problem6;
