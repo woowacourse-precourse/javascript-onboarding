@@ -21,9 +21,7 @@ function problem4(word) {
   }
 
   answer = replaceWord;
-  console.log(answer);
   return answer;
 }
 
-problem4("Hello  Everyone!");
 module.exports = problem4;
