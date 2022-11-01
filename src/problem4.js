@@ -10,7 +10,21 @@ function isUpper(val) {
 
 function problem4(word) {
   var answer;
-
+  let answerArr = [];
+  for (let i = 0; i < word.length; i++) {
+    let charAscii = word.charCodeAt(i);
+    if (isAlphabet(charAscii)) {
+      if (isUpper(word[i])) {
+        charAscii = 155 - charAscii;
+      } else {
+        charAscii = 219 - charAscii;
+      }
+      answerArr.push(String.fromCharCode(charAscii));
+    } else {
+      answerArr.push(word[i]);
+    }
+  }
+  answer = answerArr.join("");
   return answer;
 }
 
