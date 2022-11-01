@@ -1,3 +1,8 @@
+/*
+  기능1: 중복 문자 제거
+  기능2: 중복 문자가 없을 때까지 중복문자 제거 함수 실행
+*/
+
 function problem2(cryptogram) {
   var answer;
   var beforeStr = cryptogram;
