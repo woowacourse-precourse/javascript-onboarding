@@ -61,8 +61,8 @@ const giveScoreToVisitor = (visitors, userFriends, pointsOfUsers) => {
 };
 
 const sortRecommendedUserByScore = (totalScoreOfUsers) => {
-  const recommendedUsers = Object.keys(totalScoreOfUsers).sort();
-  return recommendedUsers.sort((friendA, friendB) => totalScoreOfUsers[friendB] - totalScoreOfUsers[friendA]);
+  const recommendedUsersSortedById = Object.keys(totalScoreOfUsers).sort();
+  return recommendedUsersSortedById.sort((friendA, friendB) => totalScoreOfUsers[friendB] - totalScoreOfUsers[friendA]);
 };
 
 module.exports = problem7;
