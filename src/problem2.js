@@ -8,6 +8,13 @@ function problem2(cryptogram) {
   */
   
   let dirty = cryptogram.split('');
+
+  for (i = 0; i < dirty.length - 1;) {
+    if (dirty[i] === dirty[i + 1]) {
+      dirty = dirty.filter((v, idx) => idx !== i);
+      dirty = dirty.filter((v, idx) => idx !== i);
+    } else i++;
+  }
 }
 
 module.exports = problem2;
