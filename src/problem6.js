@@ -12,8 +12,18 @@
 
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  var nameTwo = [];
+  for(var i = 0; i<forms.length; i++){
+    var info = forms[i];
+    for (var j = 0; j<info[1].length-1; j++){
+      if(j == 0){
+        nameTwo.push([info[1][j]+info[1][j+1]]);
+      }else{
+        nameTwo[i].push(info[1][j]+info[1][j+1]);
+      }
+    }
+  }
+  console.log(nameTwo);
 }
 
 module.exports = problem6;
