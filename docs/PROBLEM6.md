@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능들
+1. 예외사항
+2. 닉네임당 두 글자씩 나누기
+3. 두글자씩 나눈 배열 만들기
+4. 닉네임당 비교하기
+5. 문자열과 비교할 check배열 만들기
+6. check와 비교하여 결과도출
