@@ -31,6 +31,16 @@ function problem1(pobi, crong) {
       .reduce((p, c) => p * c, 1);
   };
 
+  // 최대 점수 구하기
+  const getMax = (num1, num2) => {
+    const left_add = add(num1);
+    const left_multi = multi(num1);
+    const right_add = add(num2);
+    const right_multi = multi(num2);
+
+    return Math.max(left_add, left_multi, right_add, right_multi);
+  };
+
   if (!exception(pobi[0], pobi[1]) || !exception(crong[0], crong[1])) return -1;
 
   return answer;
