@@ -15,6 +15,10 @@ function checkAndUpdateCache(form, cache) {
   return newCache;
 }
 
+function formatResult(result) {
+  return result.sort();
+}
+
 function problem6(forms) {
   let cache = {
     result: [],
@@ -24,7 +28,7 @@ function problem6(forms) {
     cache = checkAndUpdateCache(form, cache);
   });
 
-  return cache.result.sort();
+  return formatResult(cache.result);
 }
 
 module.exports = problem6;
