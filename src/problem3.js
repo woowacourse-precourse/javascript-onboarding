@@ -5,9 +5,7 @@ class ErrorCase {
   }
 
   checkLimit() {
-    if (!(1 <= this.number && this.number <= 10000)) {
-      throw new Error("input 양식에 에러가 발생했습니다!!");
-    }
+    return 1 <= this.number && this.number <= 10000;
   }
 }
 
@@ -16,7 +14,12 @@ const is369 = (num) => {
 };
 
 function problem3(number) {
-  new ErrorCase(number);
+  const error = new ErrorCase(number);
+
+  if (!error.checkLimit()) {
+    console.log("input 양식이 제한사항에 맞게 주어지지 않았습니다.");
+    return;
+  }
 
   return Array.from({ length: number }, (_, i) => i + 1)
     .flatMap((num) => String(num).split(""))
