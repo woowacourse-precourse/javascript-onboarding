@@ -1,4 +1,8 @@
 function problem7(user, friends, visitors) {
+  if (typeof user !== 'string' || !Array.isArray(friends) || !Array.isArray(visitors)) throw new Error('user는 문자열, friends는 배열, visitors는 배열이여야 합니다.');
+  if (!user.length || user.length > 30) throw new RangeError('user는 길이가 1 이상 30 이하인 문자열이여야 합니다.');
+  if (!friends.length || friends.length > 10000) throw new RangeError('friends는 길이가 1 이상 10,000 이하인 배열이여야 합니다.');
+  if (visitors.length < 0 || visitors.length > 10000 ) throw new RangeError('visitors는 길이가 0 이상 10,000 이하인 배열이여야 합니다.');
   
   // 유저의 친구들
   let userFriends = []
@@ -42,7 +46,7 @@ function problem7(user, friends, visitors) {
 
   const userId = Object.keys(userCount);
 
-  return userId.sort((userA,userB) => sortFunc(userA,userB));
+  return userId.sort((userA,userB) => sortFunc(userA,userB)).slice(0,5);
   
 
 }
