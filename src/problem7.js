@@ -1,5 +1,7 @@
 function problem7(user, friends, visitors) {
   const  mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
+  const memberSet = new Set(friendsArray.concat(visitors));
+  const memberList = [...memberSet];
 }
 
 module.exports = problem7;
