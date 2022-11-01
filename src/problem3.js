@@ -7,7 +7,7 @@ function problem3(number) {
 }
 
 function clapCount(num) {
-  let clapNumber = String(num).match(/[369]/g);
+  const clapNumber = String(num).match(/[369]/g);
   if (clapNumber) return clapNumber.length;
   return 0;
 }
