@@ -41,7 +41,17 @@ function problem1(pobi, crong) {
     calRightCrong[0] += ele;
     calRightCrong[1] *= ele;
   });
-  
+
+  // 가장 큰 점수 할당
+  const scorePobi =
+  Math.max(...calLeftPobi) > Math.max(...calRightPobi)
+    ? Math.max(...calLeftPobi)
+    : Math.max(...calRightPobi);
+  const scoreCrong =
+  Math.max(...calLeftCrong) > Math.max(...calRightCrong)
+    ? Math.max(...calLeftCrong)
+    : Math.max(...calRightCrong);
+
   return answer;
 }
 
