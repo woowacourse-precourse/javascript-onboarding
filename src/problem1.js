@@ -54,7 +54,6 @@ function problem1(pobi, crong) {
   c_result2 = c_sum2 >= c_mul2 ? c_sum2 : c_mul2;
   c_result = c_result1 >= c_result2 ? c_result1 : c_result2
   
-
   if(p_result > c_result) answer=1
   else if(p_result == c_result) answer =0
   else if(p_result < c_result) answer=2
