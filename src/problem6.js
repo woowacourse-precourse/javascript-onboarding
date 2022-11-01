@@ -3,14 +3,14 @@ function problem6(forms) {
 
   const nameList = [];
 
-  // 닉네임 두 글자 리스트 생성
+  // 두 글자 단위 리스트 생성
   const makeList = (twoWord) => {
     if (!nameList.find(e => e.name === twoWord)) {
       nameList.push({ name: twoWord, count: 0 });
     }
   }
 
-  // 중복 닉네임 체크
+  // 중복 글자 체크
   const checkList = (twoWord) => {
     for (let i = 0; i < nameList.length; i++) {
       if (nameList[i].name === twoWord) {
