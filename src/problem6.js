@@ -1,26 +1,27 @@
 function problem6(forms) {
-  let answer = new Set();
-  let noneDuplicated = [];
+  let answer = new Set(); //중복없는 set로 결과집합 선언
+  let nameObject = new Object(); //닉네임 2글자를 키로 사용하는 객체선언
   let nickName = [];
-  let nameKey = [];
+  let nameKey = '';
   let result = [];
 
   for (let i = 0; i < forms.length; i++) {
-    nickName.push(forms[i][1]);
+    //입력받은 폼의 데이터 길이만큼 실행
+    nickName.push(forms[i][1]); //각 닉네임에 대한 배열 만들기
     for (let j = 0; j < nickName[i].length - 1; j++) {
-      nameKey = nickName[i].substring(j, j + 2);
-      if (noneDuplicated[nameKey]) {
-        result = noneDuplicated[nameKey];
+      nameKey = nickName[i].substring(j, j + 2); //각 닉네임에 2글자씩 잘라서 키로 만들어주기
+      if (nameObject[nameKey]) {
+        result = nameObject[nameKey];
         if (result !== forms[i][0]) {
           answer.add(result);
           answer.add(forms[i][0]);
         }
       }
-      noneDuplicated[nameKey] = forms[i][0];
+      nameObject[nameKey] = forms[i][0];
     }
   }
 
-  answer = [...answer].sort();
+  answer = [...answer].sort(); //결과값 오름차순 정렬
   return answer;
 }
 
