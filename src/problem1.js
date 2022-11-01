@@ -14,7 +14,7 @@ function findMM(left, right) {
   const leftM = cal(left);
   const rightM = cal(right);
 
-  return Math.max(leftMax, rightMax);
+  return Math.max(leftM, rightM);
 }
 
 function isValidPg(page) {
