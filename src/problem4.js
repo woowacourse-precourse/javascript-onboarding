@@ -1,7 +1,7 @@
 function problem4(word) {
   let answer = ""
 
-  word.split("").forEach((char) => {
+  Array.from(word).forEach((char) => {
     const asciiCode = char.charCodeAt(0)
 
     if (asciiCode >= 97 && asciiCode <= 122) {
