@@ -16,6 +16,15 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function solution(pobi,crong) {
+
+  const pobiScore = calculate(pobi[0],pobi[1]);
+  const crongScore = calculate(crong[0],crong[1]);
+
+  const result = compareScore(pobiScore,crongScore);
+  return result;
+}
+
 /*왼쪽 페이지와 오른쪽 페이지의 각 자리 숫자를 더하고 곱한 수를 구한다.*/
 function calculate(leftPageNumber, rightPageNumber) {
 
@@ -55,7 +64,27 @@ function findMax(leftSum, rightSum,leftMul,rightMul) {
 }
 
 
+/*크롱과 포비의 점수를 비교한다. */
+function compareScore(pobiScore, crongScore) {
 
+  let result;
 
+  const EXCEPTION = -1;
+  const POBIWIN = 1;
+  const CRONGWIN = 2;
+  const DRAW = 0;
+
+  if(pobiScore ==EXCEPTION || crongScore==EXCEPTION) {
+    result = EXCEPTION;
+} else if(pobiScore > crongScore) {
+    result = POBIWIN;
+} else if(pobiScore < crongScore) {
+    result = CRONGWIN;
+} else if(pobiScore == crongScore) {
+    result = DRAW;
+}
+
+return result;
+}
 
 module.exports = problem1;
