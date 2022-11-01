@@ -34,6 +34,16 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  visitors.map((user) => {
+    if (!userFriendsArr.includes(user)) {
+      if (scoreOb[user]) {
+        scoreOb[user]++;
+      } else {
+        scoreOb[user] = 1;
+      }
+    }
+  });
+
   return scoreOb;
 }
 
