@@ -11,6 +11,20 @@ function checkIdLength(arr) {
   return result;
 }
 
+function findDuplicate(arr) {
+  let i = 0;
+  while (i < arr.length) {
+    let possiblyDuplicates = arr.filter((item, index) => item.includes(arr[i][0]) && index !== arr.indexOf(arr[i]));
+    possiblyDuplicates = possiblyDuplicates.filter(item => item.includes(arr[i][1]));
+    i++;
+    if (possiblyDuplicates.length === 0) {
+      return true;
+    } else if (possiblyDuplicates !== 0) {
+      return false;
+  }
+}
+}
+
 function problem7(user, friends, visitors) {
   
 }
