@@ -21,6 +21,9 @@ function problem2(cryptogram) {
       } else i++;
     }
   };
+
+  const clean = dirty.join('');
+  return clean;
 }
 
 module.exports = problem2;
