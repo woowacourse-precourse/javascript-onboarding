@@ -1,6 +1,21 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  const wordMap = new Map();
+  forms.forEach(([email, nickname]) => {
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const word = nickname.slice(i, i + 2);
+      const emailList = wordMap.get(word);
+      wordMap.set(word, emailList ? [...emailList, email] : [email]);
+    }
+  });
+
+  const emailSet = new Set();
+  for (let [, emailList] of wordMap) {
+    if (emailList.length >= 2) {
+      emailList.forEach((email) => emailSet.add(email));
+    }
+  }
+
+  return [...emailSet].sort();
 }
 
 module.exports = problem6;
