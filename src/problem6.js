@@ -13,7 +13,7 @@ function problem6(forms) {
   let box = [];
   for (let i = 0; i < forms.length; i++) {
     if (ObjForms.name[i].length > 1) {
-      box.push(Find_Arr(i,ObjForms));
+      box.push(Find_Arr(i, ObjForms));
     };
   };
   let Set_Forms = new Set(box.reduce((acc, cur) => {
@@ -23,7 +23,7 @@ function problem6(forms) {
   return Arr_Forms.sort();
 }
 
-function Obj_Convert(list) {
+const Obj_Convert = (list) => {
   return list.reduce((acc, row) => {
     const [email, nickname] = row;
     acc['email'] = [...(acc['email'] || []), email];
@@ -32,11 +32,11 @@ function Obj_Convert(list) {
   }, {});
 };
 
-function Find_Arr(num, ObjForms) {
+const Find_Arr = (num, ObjForms) => {
   let newForms = [];
   let checkname = "";
   for (let i = 0; i < ObjForms.name[num].length - 1; i++) {
-    checkname = ObjForms.name[num][i] + ObjForms.name[num][i+1];
+    checkname = ObjForms.name[num][i] + ObjForms.name[num][i + 1];
     let checkbox = ObjForms.name.filter((item) => item.includes(checkname));
     if (checkbox.length > 1) {
       newForms.push(ObjForms.email[num]);
