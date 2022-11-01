@@ -5,7 +5,9 @@ function problem7(user, friends, visitors) {
 
   scoreList = score_10(isUser, friends, user);
 
-  
+  friendRank = give10Score(scoreList);
+
+
 
   return answer;
 }
@@ -50,6 +52,18 @@ function score_10(userfriend, friends, user){
     }
   }
   return rank;
+}
+
+function give10Score(scoreList) {
+  var rankMap = new Map();
+  for(i = 0; i < 4; i++){
+    if(rankMap.has(scoreList[i])){
+      rankMap.set(scoreList[i], rankMap.get(scoreList[i]) + 10);
+    } else {
+      rankMap.set(scoreList[i], 10);
+    }
+  }
+  return rankMap;
 }
 
 //방문자 명단에서 mrko와 mrko 친구 제외하고 1점씩 부여
