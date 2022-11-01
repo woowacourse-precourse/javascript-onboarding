@@ -72,11 +72,7 @@ function friendWith(userList, friends, { me }) {
 }
 
 function pointForm(userList) {
-	let pointList = {};
-
-	userList.forEach((user) => (pointList[user] = 0));
-
-	return pointList;
+	return userList.map((user) => ({ name: user, points: 0 }));
 }
 
 function countFriends({ users }, userPoints, notFriends) {
