@@ -32,6 +32,8 @@ function problem5(money) {
   remain = remain % 10;
 
   const oneIlwon = remain;
+
+  return [fiveManwon, oneManwon, fiveCheonwon, oneCheonwon, fiveBaekwon, oneBaekwon, fiveSibwon, oneSibwon, oneIlwon];
 }
 
 module.exports = problem5;
