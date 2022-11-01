@@ -20,6 +20,19 @@ function problem6(forms) {
   let emailSet = new Set();
 
   [nickSet, emailSet] = find(forms);
+  nickSet.clear();
+  let emailArr = Array.from(emailSet);
+  emailArr.forEach((email) => {
+    forms.forEach((form) => {
+      const [formEmail, formNickname] = form;
+      if (email === formEmail) {
+        for (let j = 1; j < formNickname.length; j++) {
+          const str = formNickname.substr(j - 1, 2);
+          nickSet.add(str);
+        }
+      }
+    })
+  });
 
   let answer = Array.from(emailSet);
   answer.sort();
