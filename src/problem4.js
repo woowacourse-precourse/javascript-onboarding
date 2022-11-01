@@ -1,4 +1,4 @@
-// 전역변수 선언.
+// 전역변수 선언. (유니코드 활용)
 const UPPER_FIRST_CODE = "A".charCodeAt(0);
 const UPPER_LAST_CODE = "Z".charCodeAt(0);
 const LOWER_FIRST_CODE = "a".charCodeAt(0);
@@ -34,6 +34,7 @@ function getReverseChar(Alphabet) {
 
 // 알파벳 코드를 가지고 알파벳을 리턴.
 function getReverseWord(Alphabet) {
+  // 공백 여부 확인해 공백으로 return 하게끔! 
   if (Alphabet === " " || !checkAlphabet(Alphabet)) return Alphabet;
 
   return String.fromCharCode(getReverseChar(Alphabet));
@@ -47,7 +48,5 @@ function problem4(word) {
   return answer;
 }
 
-// 1. 유니코드알아서 더하거나 빼주면 어떨까 생각중 ! 
-// 2. 공백 여부 확인해 공백으로 return 하게끔! 
 
 module.exports = problem4;
