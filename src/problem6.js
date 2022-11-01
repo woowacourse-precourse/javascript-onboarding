@@ -1,4 +1,5 @@
 function restrictions(forms) {
+  // 이메일 확인
   for (var n = 0; n < forms.length; n++) {
     var email = forms[n][0];
     var email_size = email.length;
@@ -14,17 +15,20 @@ function restrictions(forms) {
     }
   }
 
+  // 닉네임 확인
   for (var o = 0; o < forms.length; o++) {
     var nickname = forms[o][1];
     var nickname_size = nickname.length;
     var kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-
+    // 닉네임 길이 체크
     if (1 > nickname_size || nickname_size >= 20) delete forms[o][1];
+    // 닉네임 형식 체크
     for (var p = 0; p < nickname_size; p++) {
       if (kor.test(nickname[p]) == false) delete forms[o][1];
     }
   }
 
+  // delete로 지운 undefined 제거
   forms = forms.filter(
     (form) => !(form[0] == undefined || form[1] == undefined)
   );
@@ -65,6 +69,8 @@ function problem6(forms) {
       answer.push(forms[l][0]);
     }
   }
+
+  // 오름차순 정렬
   answer = answer.sort();
 
   return answer;

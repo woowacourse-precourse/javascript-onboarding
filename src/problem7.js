@@ -1,13 +1,24 @@
-function restrictions(forms) {
-  return forms;
+function restrictions_user(user) {
+  return user;
+}
+
+function restrictions_friends(friends) {
+  return friends;
+}
+
+function restrictions_visitors(visitors) {
+  return visitors;
 }
 
 function problem7(user, friends, visitors) {
   var answer = [];
   var friend_list = [];
   var cross_friend = [];
-  var visitor = [];
   var score = {};
+
+  console.log(restrictions_user(user));
+  console.log(restrictions_friends(friends));
+  console.log(restrictions_visitors(visitors));
 
   // 이미 친구인 유저와 친구유저의 친구를 분리한다.
   // user 본인은 없앤다.
@@ -17,8 +28,11 @@ function problem7(user, friends, visitors) {
     cross_friend.push(friends[i][1]);
   }
 
-  // 중복 제거
+  // 친구인 유저에서 중복 제거
   friend_list = Array.from(new Set(friend_list));
+
+  // visitors에서 친구 제거
+  visitors = visitors.filter((visitor) => !friend_list.includes(visitor));
 
   // 친구의 친구 유저에게 +10점씩 준다.
   for (var j = 0; j < cross_friend.length; j++) {
@@ -30,14 +44,9 @@ function problem7(user, friends, visitors) {
     score[name] = 10;
   }
 
-  // visitors 에서 친구 제거
-  for (var k = 0; k < visitors.length; k++) {
-    if (!friend_list.includes(visitors[k])) visitor.push(visitors[k]);
-  }
-
   // 방문자 유저에게 +1점씩 준다.
-  for (var l = 0; l < visitor.length; l++) {
-    var name = visitor[l];
+  for (var l = 0; l < visitors.length; l++) {
+    var name = visitors[l];
     if (name in score) {
       score[name] = score[name] + 1;
       continue;
