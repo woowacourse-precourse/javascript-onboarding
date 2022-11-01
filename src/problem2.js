@@ -15,11 +15,6 @@ function problem2(cryptogram) {
       arr.push(cryptogram[i]);
     }
   }
-
-  // 배열 원소를 문자열로
-  answer = arr.join("");
-
-  return answer;
 }
 
 module.exports = problem2;
