@@ -36,16 +36,27 @@ function getScoreByFriends(friend, userFriends, score) {
   return score;
 }
 
+function sortFriendByName(friends) {
+  let sortedFriend = [];
+  for (let name in friends) {
+    sortedFriend.push([name,friends[name]]);
+  }
+  return sortedFriend.sort();
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendScore = {};
   let userFriends = []
+  let sortedFriend;
 
   friendScore = getScoreByVisitor(visitors);
   userFriends = getUserFriendList(user, friends);
   for (let i = 0; i < friends.length; i++){
     friendScore = getScoreByFriends(friends[i], userFriends, friendScore)
   }
+
+  sortedFriend = sortFriendByName(friendScore);
 
   return answer;
 }
