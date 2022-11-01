@@ -15,6 +15,18 @@ function problem6(forms) {
       twoLetters[i][j] = forms[i][1].slice(j, j + 2);
     }
   }
+  // 3. 순회
+  let overlapMail = forms.filter((crew) => {
+    // 3-1. 이중반복문
+    twoLetters.forEach((twoLetter) => {
+      for (let i = 0; i < twoLetter.length; i++) {
+        // 3-2. includes
+        if (crew[1].includes(twoLetter[i])) {
+          return true;
+        }
+      }
+    });
+  });
 }
 
 module.exports = problem6;
