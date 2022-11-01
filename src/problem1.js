@@ -15,4 +15,13 @@ function splitNum(num) {
   let strNum = String(num);
   return strNum.split('').map(item => Number(item));
 }
+
+function sumPage(arr) {
+  return arr.reduce((prev, curr) => prev + curr, 0) 
+}
+
+function multiplyPage(arr) {
+  return arr.reduce((prev, curr) => prev * curr, 1)
+}
+
 module.exports = problem1;
