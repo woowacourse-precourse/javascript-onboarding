@@ -13,7 +13,7 @@ const listToDictionary = (forms) => {
   });
   return users;
 };
-//살려줘
+
 const parseNames = (usersInfo) => {
   let parseName = {};
   Object.values(usersInfo).map((nickname) => {
@@ -33,7 +33,6 @@ const overlapNameFind = (usersInfo, nicknameParts) => {
   Object.values(usersInfo).map((nickname, idx) => {
     for (let index = 0; index < nickname.length - 1; index++) {
       nicknamePart = nickname.substring(index, index + 2);
-      console.log(nicknameParts[nicknamePart]);
       if (nicknameParts[nicknamePart] > 1)
         emailList.push(Object.keys(usersInfo)[idx]);
     }
