@@ -2,7 +2,6 @@ function problem4(word) {
   var answer;
   let arr = []; 
   for(let i=0; i<word.length; i++){
-    console.log(word.charCodeAt(i))
     if(word.charCodeAt(i)>=65 && word.charCodeAt(i)<=90){
       arr[i]=String.fromCharCode(155-word.charCodeAt(i))
     }

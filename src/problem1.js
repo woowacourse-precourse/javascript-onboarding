@@ -28,7 +28,7 @@ function getMax(num){
 }
 
 function verifyPage(leftPage,rightPage){
-  if((leftPage % 2) !== 1 || (rightPage % 2) !==0 || (rightPage-leftPage) !== 1) return false;
+  if((leftPage % 2) !== 1 || (rightPage % 2) !==0 || (rightPage-leftPage) !== 1 || (leftPage==0) ||(rightPage==400)) return false;
   else return true;
 }
 
