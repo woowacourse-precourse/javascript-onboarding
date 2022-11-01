@@ -10,16 +10,8 @@ function problem7(user, friends, visitors) {
   // friends 점수 얻기
   getFriendScore(user, friends, scoreObj, alreadyFriend);
 
-  // visitors score 얻기
-  visitors.forEach((element) => {
-    if (!alreadyFriend.includes(element)) {
-      if (!scoreObj[element]) {
-        scoreObj[element] = 1;
-      } else {
-        scoreObj[element] += 1;
-      }
-    }
-  });
+  // visitors 점수 얻기
+  getVisitorScore(visitors, scoreObj, alreadyFriend);
 
   // entries()는 객체가 가지고 있는 모든 프로퍼티를 키와 값 쌍으로 배열 형태로 반환
   const scoreArr = Object.entries(scoreObj);
@@ -48,6 +40,7 @@ function friendCheck(user, friends, alreadyFriend) {
   return alreadyFriend;
 }
 
+// friends 점수 얻기
 function getFriendScore(user, friends, scoreObj, alreadyFriend) {
   alreadyFriend.forEach((element) => {
     friends.forEach((targetElement) => {
@@ -70,6 +63,19 @@ function getFriendScore(user, friends, scoreObj, alreadyFriend) {
         }
       }
     });
+  });
+}
+
+// visitors 점수 얻기
+function getVisitorScore(visitors, scoreObj, alreadyFriend) {
+  visitors.forEach((element) => {
+    if (!alreadyFriend.includes(element)) {
+      if (!scoreObj[element]) {
+        scoreObj[element] = 1;
+      } else {
+        scoreObj[element] += 1;
+      }
+    }
   });
 }
 
