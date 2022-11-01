@@ -12,7 +12,7 @@ function problem1(pobi, crong) {
   // 4-4. 페이지 쪽 수가 한 장 이상 나는 경우
   if (pobi[0] + 1 !== pobi[1] || crong[0] + 1 !== crong[1]) return -1
 
-  // 4-5. 시작 면이나 마지막 면이 나오도록 책을 펼친 경우 (이 예외사항에 대해서 다시 생각해보기)
+  // 4-5. 시작 면이나 마지막 면이 나오도록 책을 펼친 경우
   if (pobi[0] === 1 || pobi[1] === 400 || crong[0] === 1 || crong[1] === 400) return -1
 
   // 1. pobi의 각 자리 숫자를 모두 더하거나, 모두 곱해 그 중 가장 큰 수 고르기
@@ -36,7 +36,7 @@ function problem1(pobi, crong) {
   if (pobiScore < crongScore) return 2
   if (pobiScore === crongScore) return 0
 
-  // 4-5. 혹시나 남은 예외 사항이 있을 경우를 위해 return -1 (다시 생각해보기)
+  // 4-6. 혹시나 남은 예외 사항이 있을 경우
   return -1;
 }
 
