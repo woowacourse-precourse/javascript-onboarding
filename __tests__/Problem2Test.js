@@ -25,19 +25,19 @@ describe('Problem2 Util test', () => {
   describe('getDuplicatedInfoList', () => {
     test('normal duplicate', () => {
       const result = problem2Util.getDuplicatedInfoList('aacdd');
-      console.log(result);
-      expect(result).toStrictEqual([(0, 2), (3, 2)]);
+      expect(result).toStrictEqual([
+        [0, 2],
+        [3, 2],
+      ]);
     });
 
     test('all duplicate', () => {
       const result = problem2Util.getDuplicatedInfoList('aaaaaa');
-      console.log(result);
-      expect(result).toStrictEqual([(0, 6)]);
+      expect(result).toStrictEqual([[0, 6]]);
     });
 
     test('nothing duplicate', () => {
       const result = problem2Util.getDuplicatedInfoList('asewaxv');
-      console.log(result);
       expect(result).toStrictEqual([]);
     });
   });

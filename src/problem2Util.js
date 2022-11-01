@@ -30,11 +30,10 @@ const getDuplicatedInfoList = (checkString) => {
   let i = 1;
   for (i; i < checkString.length; i++) {
     // 다르다면 초기화
-    console.log(before);
     if (before !== checkString[i]) {
       // 길이가 2 이상이라면 result에 push
       if (count >= 2) {
-        result.push((i - count, count));
+        result.push([i - count, count]);
       }
       count = 1;
       before = checkString[i];
@@ -46,7 +45,7 @@ const getDuplicatedInfoList = (checkString) => {
 
   // 마지막 문자까지 같은 경우 비교가 안되기 떄문에 추가적으로 확인
   if (count >= 2) {
-    result.push((i - count, count));
+    result.push([i - count, count]);
   }
   return result;
 };
