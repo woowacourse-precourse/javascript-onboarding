@@ -41,9 +41,7 @@ function openBook(bookPage) {
   if (bookPage[1] - bookPage[0] != 1) {
     return -1;
   }
-  if (1 > bookPage[0] || bookPage[0] > 400) {
-    return -1;
-  } else if (1 > bookPage[1] || bookPage[1] > 400) {
+  if (!(3 <= bookPage[0] && bookPage[0] <= 397)) {
     return -1;
   }
   if (bookPage[0] % 2 == 0) {
@@ -72,6 +70,7 @@ function problem1(pobi, crong) {
   } else if (pobiRes == crongRes) {
     return 0;
   }
+  return -1;
 }
 
 module.exports = problem1;
