@@ -1,4 +1,4 @@
-//기능 목록 작성
+//기능 목록 작성(실행용)
 //1. 알파벳을 한 글자마다 배열로 저장한다.
 //2. 아스키코드 숫자로 변환한 후 청개구리가 말한 아스키코드 값으로 변환한다.
 //3. 청개구리가 말한 아스키코드값을 다시 영어로 변환한다.
@@ -29,7 +29,7 @@ function problem4(word) {
                 }
 
                 //대문자 변환
-                if (tmpNum >= 65 && tmpNum <= 90) {
+                else if (tmpNum >= 65 && tmpNum <= 90) {
                     let tmpCount = 155 - tmpNum;
                     tmpArray[i] = String.fromCharCode(tmpCount);
                 }
