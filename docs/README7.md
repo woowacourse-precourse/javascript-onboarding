@@ -1,0 +1,13 @@
+- [X] 친구 관계가 담긴 배열을 중복을 제거한 1차원 배열로 변환
+- [X] 이름이 담긴 배열을 기반으로 이름을 key, 점수를 value로 하는 map을 생성
+- [X] user와 이미 친구인 사람을 alreadyFriends 배열에 담아 반환
+- [X] alreadyFriends 배열에 담긴 사람들과 친구인 사람들을 willBeFriends에 저장하여 반환
+- [X] willBeFriends에 담긴 이름이 key인 사람에게 value 10점 증가
+- [X] 방문자의 경우 이름이 map에 key로 존재할 경우 바로 value 1점 증가
+- [X] 방문자의 경우 이름이 map에 key로 존재하지 않을 경우 key를 추가 후 value 1점 증가
+- [X] map에서 본인과 이미 친구인 사람을 제거
+- [X] value의 이름 순으로 1차 정렬
+- [X] 1차 정렬된 map을 value의 크기 순으로 정렬
+- [X] Key 값을 배열에 담아 반환
+
+- 
