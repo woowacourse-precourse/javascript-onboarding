@@ -5,13 +5,28 @@ function problem4(word) {
 		a_CODE: "a".charCodeAt(0),
 		z_CODE: "z".charCodeAt(0),
 	};
-	let answer;
+	let answer = [];
 
-	answer = Array.from(word).reduce((prev, curr) => {
-		console.log(prev, curr);
-		return prev + curr;
+	Array.from(word).map((char) => {
+		if (isAlphabet(char)) return answer.push(reverseChar(char));
+		else return answer.push(char);
 	});
-	return answer;
+
+	function isAlphabet(char) {
+		if (
+			(char.charCodeAt(0) >= CODE.a_CODE &&
+				char.charCodeAt(0) <= CODE.z_CODE) ||
+			(char.charCodeAt(0) >= CODE.A_CODE && char.charCodeAt(0) <= CODE.Z_CODE)
+		) {
+			return 1;
+		} else return 0;
+	}
+
+	function reverseChar(char) {
+		return char;
+	}
+
+	return answer.join("");
 }
 
 module.exports = problem4;
