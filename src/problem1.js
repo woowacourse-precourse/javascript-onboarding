@@ -31,7 +31,7 @@ function isValid(player) {
   if(player.length !== 2) return false;
   if(isNaN(player[0]) || isNaN(player[1])) return false;
   if(player[0]+1 !== player[1]) return false;
-  if(player[0] < 1 || player[1] > 400) return false;
+  if(player[0] < 3 || player[1] > 398) return false;
   if(!(player[0]%2 === 1 && player[1]%2 === 0)) return false;
   return true;
 }
