@@ -1,3 +1,30 @@
+const exceptionHandler = {
+  /**
+   * @param {[number, number]} pageList
+   */
+  checkPageAllowance(pageList) {
+    return !(pageList[0] === 1 || pageList[1] === 400);
+  },
+
+  /**
+   * @param {[number, number]} pageList
+   */
+  checkPageContinuity(pageList) {
+    return pageList[1] - pageList[0] === 1;
+  },
+};
+
+/* Functions below */
+
+/**
+ * @param {[number, number]} pageList
+ */
+function isPageListValid(pageList) {
+  if (!exceptionHandler.checkPageAllowance(pageList)) return false;
+  if (!exceptionHandler.checkPageContinuity(pageList)) return false;
+  return true;
+}
+
 /**
  * @param {number} digits
  */
@@ -45,6 +72,7 @@ function calculateScore(leftPage, rightPage) {
 }
 
 function problem1(pobi, crong) {
+  if (!(isPageListValid(pobi) && isPageListValid(crong))) return -1;
   var answer;
   return answer;
 }
