@@ -17,4 +17,11 @@ function createRelationshipMap(friendListArr) {
   }, new Map());
 }
 
+function calVisitorScoreMap(visitorListArr) {
+  return visitorListArr.reduce((scoreListMap, visitor) => {
+    scoreListMap.set(visitor, scoreListMap.get(visitor) + 1 || 1);
+    return scoreListMap;
+  }, new Map());
+}
+
 module.exports = problem7;
