@@ -1,4 +1,5 @@
-function removeDuplication(cryptogram){
+// decoding(): 암호문을 암호 알고리즘에 따라 복호화해주는 함수
+function decoding(cryptogram){
   let decodingString = [];
 
   for(let i=0; i<cryptogram.length; i++){
@@ -28,16 +29,16 @@ function removeDuplication(cryptogram){
   }
   return decodingString.join('');
 }
+
 function problem2(cryptogram) {
-  let answer;
   let afterString = cryptogram;
 
   do{
     beforeString = afterString;
-    afterString = removeDuplication(beforeString)
+    afterString = decoding(beforeString)
   } while (beforeString !== afterString); // 달라지지 않을 때 까지 반복
   
-  answer = afterString; 
+  let answer = afterString; 
   return answer;
 }
 
