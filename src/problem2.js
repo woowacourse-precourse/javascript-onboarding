@@ -38,7 +38,7 @@ function rightCrytogram(cryptogram) {
 
 function problem2(cryptogram) {
   if (rightCrytogram(cryptogram) != 1) {
-    return false;
+    return cryptogram;
   }
   const cryptogram_arr = [...cryptogram];
   const res = findStart(cryptogram_arr);
