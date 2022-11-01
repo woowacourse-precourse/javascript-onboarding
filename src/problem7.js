@@ -5,6 +5,11 @@ function createNewCandidate(hisFriend) {
   }
 }
 
+function compareStringAscending(a, b) {
+  if (a < b) return -1;
+  else return 1;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let userInfo = {
@@ -54,6 +59,14 @@ function problem7(user, friends, visitors) {
     if (userInfo.friends.includes(key)) continue;
     if (recommendedCandidate[key].score > 0) positiveScoreCandidate.push(key);
   }
+
+  answer = positiveScoreCandidate.sort(function (a, b) {
+    const diff = recommendedCandidate[b].score - recommendedCandidate[a].score;
+    if (diff === 0) {
+      return compareStringAscending(a, b);
+    }
+    return diff;
+  });
 
   return answer;
 }
