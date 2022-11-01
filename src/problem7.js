@@ -58,6 +58,7 @@ function problem7(user, friends, visitors) {
   showFriend = showFriend.sort()
   showFriend = showFriend.sort((a, b) => b[1] - a[1]);
 
+  answer = showFriend
   return answer;
 }
 
