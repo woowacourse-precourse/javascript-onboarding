@@ -6,16 +6,24 @@ function problem7(user, friends, visitors) {
     if (!myfriend) return;
     friends.forEach((friend) => {
       const friendOfFriend = findFriend(friend, myfriend);
+      if (friendOfFriend && friendOfFriend !== user) {
+        if (score[friendOfFriend]) {
+          score[friendOfFriend] += 10;
+        } else {
+          score[friendOfFriend] = 10;
+        }
+      }
     });
+    console.log(score);
   });
   return answer;
 }
 
 function findFriend(relation, user) {
   if (relation[0] === user) {
-    return friend[1];
+    return relation[1];
   } else if (relation[1] === user) {
-    return friend[0];
+    return relation[0];
   }
 }
 
