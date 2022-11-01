@@ -42,6 +42,21 @@ function knowTogetherScore(friends, userFriends) {
   return reserveFriends;
 }
 
+function visitScore(visitors, userFriends, reserveFriends) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (!userFriends.includes(visitors[i])) {
+      reserveFriends.find((friend) => friend.name === visitors[i])
+        ? reserveFriends.map((friend) => {
+            if (friend.name === visitors[i]) {
+              friend.score += 1;
+            }
+          })
+        : reserveFriends.push({ name: visitors[i], score: 1 });
+    }
+  }
+  return reserveFriends;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
