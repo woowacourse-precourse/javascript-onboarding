@@ -34,4 +34,14 @@ function validateInput(input){
   }
 }
 
+function getScore(input){
+  // 각 플레이어의 점수를 계산하여 더 큰 값을 반환하는 함수
+  const [leftPage, rightPage] = input;
+  const [leftSum, leftProduct] = [getSum(leftPage), getProduct(leftPage)]
+  const leftScore = Math.max(leftSum, leftProduct);
+  const [rightSum, rightProduct] = [getSum(rightPage), getProduct(rightPage)]
+  const rightScore = Math.max(rightSum, rightProduct);
+  return leftScore > rightScore ? leftScore : rightScore;
+}
+
 module.exports = problem1;
