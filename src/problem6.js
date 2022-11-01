@@ -13,6 +13,7 @@ function problem6(forms) {
     }
   }
   answer = Array.from(answer);
+  answer.sort();
 
   return answer;
 }
