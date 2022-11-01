@@ -1,9 +1,10 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let algorithm = {};
+  algorithm.userName = user;
   algorithm.friendArr = friends;
 
-  algorithm.friendArr = findFriendAndMe(user, friends);
+  algorithm.friendArr = findFriendAndMe(obj);
   algorithm = friendsAl(user, friends);
   algorithm = visitorsAl(algorithm, visitors);
 
@@ -12,13 +13,15 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-function findFriendAndMe(user, friends) {
-  let friendAndMe = [user];
-  for (let i = 0; i < friends.length; i++) {
-    if (friends[index][0] === user){
-      friendAndMe.push(friends[index][1]);
-    }else if(friends[index][1] === user){
-      friendAndMe.push(friends[index][0]);
+function findFriendAndMe(obj) {
+  let friendAndMe = [obj.userName];
+  let friendArr = algorithm.friendArr;
+
+  for (let i = 0; i < friendArr.length; i++) {
+    if (friendArr[index][0] === user){
+      friendAndMe.push(friendArr[index][1]);
+    }else if(friendArr[index][1] === user){
+      friendAndMe.push(friendArr[index][0]);
     }
     return friendAndMe;
   }
