@@ -16,6 +16,14 @@ function problem6(forms) {
       continue;
     } else duplicationCount[nickNameTwoWords] = 1;
   }
+
+  for (let i = 0; i < forms.length; i++) {
+    for (let j = 0; j < nickName[i].length - 1; j++) {
+      nickNameTwoWords = nickName[i].substring(j, j + 2);
+
+      if (duplicationCount[nickNameTwoWords] > 1) result.add(forms[i][0]);
+    }
+  }
 }
 
 module.exports = problem6;
