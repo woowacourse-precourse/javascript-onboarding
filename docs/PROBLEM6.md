@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## ✨ 기능 구현 목록
+1. 모든 닉네임을 중복의 가장 작은 단위로 자른 결과를 중복없이 담는 기능
+2. 쪼갠 글자들(key)과 쪼갠 글자가 포함된 닉네임의 메일(value)로 이루어진 Map 객체를 만드는 기능
+3. 메일 개수(value)가 2개 이상인 경우 해당 메일들을 정답 배열에 넣는 기능
+4. 정답 배열을 중복 제거 후 오름차순으로 정렬하는 기능
