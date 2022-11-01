@@ -44,11 +44,14 @@ const computeFriendScore = ({ list, scoreMap, type }) => {
     visit: VISITING_SCORE,
   };
 
-  list.forEach((friend) =>
-    scoreMap.has(friend)
-      ? scoreMap.set(friend, scoreMap.get(friend) + score[type])
-      : scoreMap.set(friend, score[type])
-  );
+  list.forEach((item1, item2) => {
+    const key = (score[type] && item1) || item2;
+    const currentScore = score[type] || item1;
+
+    scoreMap.has(key)
+      ? scoreMap.set(key, scoreMap.get(key) + currentScore)
+      : scoreMap.set(key, currentScore);
+  });
 };
 
 const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
@@ -82,18 +85,17 @@ const computeFriendScoreByVisiting = (visitors) => {
 };
 
 const computeTotalFriendScore = (...friendScores) => {
-  const friendScore = new Map();
+  const totalScore = new Map();
 
-  friendScores.forEach((scores) =>
-    scores.forEach((score, userName) => {
-      friendScore.set(
-        userName,
-        friendScore.has(userName) ? friendScore.get(userName) + score : score
-      );
+  friendScores.forEach((friendScore) =>
+    computeFriendScore({
+      type: "total",
+      list: friendScore,
+      scoreMap: totalScore,
     })
   );
 
-  return friendScore;
+  return totalScore;
 };
 
 const getValidFriendRecommendation = ({ user, friendsMap, scoreMap }) => {
