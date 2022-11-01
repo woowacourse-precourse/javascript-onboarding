@@ -11,4 +11,8 @@ function problem1(pobi, crong) {
   return answer;
 }
 
+function splitNum(num) {
+  let strNum = String(num);
+  return strNum.split('').map(item => Number(item));
+}
 module.exports = problem1;
