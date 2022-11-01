@@ -1,8 +1,7 @@
 function isValidUser(user) {
   return (
     typeof user !== 'string' ||
-    user.length < 1 ||
-    user.length > 30
+    (user.length < 1 || user.length > 30)
   ) ? false : true;
 }
 
@@ -14,31 +13,28 @@ function isValidFriendsElement(friends) {
     const idA = friends[i][0];
     const idB = friends[i][1];
     if (
-      idA.length < 1 ||
-      idA.length > 30 ||
-      idB.length < 1 ||
-      idB.length > 30
+      (idA.length < 1 || idA.length > 30) ||
+      (idB.length < 1 || idB.length > 30)
     ) {
       return false;
     }
   }
+
   return true;
 }
 
 function isValidFriends(friends) {
   return (
     typeof friends !== 'object' ||
-    friends.length < 1 ||
-    friends.length > 10000 ||
-    !isValidFriendsElement(friends)
+    (friends.length < 1 || friends.length > 10000) ||
+    (!isValidFriendsElement(friends))
   ) ? false : true;
 }
 
 function isValidVisitors(visitors) {
   return (
     typeof visitors !== 'object' ||
-    visitors.length < 0 ||
-    visitors > 10000
+    (visitors.length < 0 || visitors > 10000)
   ) ? false : true;
 }
 
@@ -126,7 +122,7 @@ function sortResult(recommandScore) {
     resultArr.push(...getSameValueArr(value, recommandScore));
   }
 
-  return resultArr;
+  return (resultArr.length > 5) ? resultArr.splice(0, 5) : resultArr;
 }
 
 function problem7(user, friends, visitors) {
