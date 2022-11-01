@@ -22,6 +22,7 @@ function problem6(forms) {
     if(duplMails[i]) duplMails[i] = forms[i][0];
   }
   answer = duplMails.filter(e=>e!=0).sort();
+  answer = [...new Set(answer)];
   return answer;
 }
 
