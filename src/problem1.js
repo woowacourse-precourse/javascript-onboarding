@@ -9,10 +9,7 @@ function problem1(pobi, crong) {
     crongMax = Math.max(calScore(crong[i]), crongMax);
   }
 
-  if (pobiMax > crongMax) answer = 1;
-  else if (pobiMax < crongMax) answer = 2;
-  else if (pobiMax === crongMax) answer = 0;
-
+  answer = winnerCheck(pobiMax, crongMax);
   return answer;
 }
 
@@ -39,4 +36,9 @@ function calScore(page) {
   return sum, mul;
 }
 
+function winnerCheck(pobiMax, crongMax) {
+  if (pobiMax > crongMax) return 1;
+  if (pobiMax < crongMax) return 2;
+  if (pobiMax === crongMax) return 0;
+}
 module.exports = problem1;
