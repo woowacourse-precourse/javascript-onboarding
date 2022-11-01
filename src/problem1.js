@@ -9,12 +9,12 @@ function problem1(pobi, crong) {
   let answer;
 
   // 예외 처리
-  const Exception = (num1, num2) => {
+  const exception = (num1, num2) => {
     return num1 + 1 === num2 ? true : false;
   };
 
   // 더하기
-  const Add = (number) => {
+  const add = (number) => {
     return number
       .toString()
       .split("")
@@ -22,7 +22,16 @@ function problem1(pobi, crong) {
       .reduce((p, c) => p + c, 0);
   };
 
-  if (!Exception(pobi[0], pobi[1]) || !Exception(crong[0], crong[1])) return -1;
+  // 곱하기
+  const multi = (number) => {
+    return number
+      .toString()
+      .split("")
+      .map((num) => parseInt(num))
+      .reduce((p, c) => p * c, 1);
+  };
+
+  if (!exception(pobi[0], pobi[1]) || !exception(crong[0], crong[1])) return -1;
 
   return answer;
 }
