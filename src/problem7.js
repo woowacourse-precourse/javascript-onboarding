@@ -40,4 +40,13 @@ function getRelationScore(user, relation, score) { //2번 구현
   }
 }
 
+function getVisitorScore(user, visitors, score){ //3번 구현
+  for (let i = 0; i < visitors.length; i++) {
+    const visitor = visitors[i];
+    if (visitor !== user) {
+      score[visitor] =  score[visitor] + 1 || 1;
+    }
+  }
+}
+
 module.exports = problem7;
