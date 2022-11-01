@@ -125,6 +125,24 @@
   + return 값 : set 객체 `emailOfUsedNickNameSet`를 배열타입으로 변경 후 sort하여 정렬.
 
 ***
+## 📋 [문제 7] 구현할 기능 목록
+
+* 함수 `recommendFriendApp` : 전체 프로세서를 관리함.
+  + 객체 Map `relationshipMap`에서 친구 관계를 정리하여, 반환값이 점수를 계산하는데 참조됨.
+  + 객체 Map `scoreListMap`에서 전체 점수를 정리해서 관리함.
+  + 함수 `calVisitorScoreMap`에서 방문자 점수를 계산함.
+  + 함수 `calcScoreMap`에서 점수를 계산함.
+  + 함수 `sortByScoreToNameArr`를 활용하여, `score` 기준으로 정렬된 `userId`값이 있는 배열로 반환 받아 5개까지 배열을 잘라서 반환함.
+
+* 함수 `createRelationshipMap` : 친구 리스트 배열 `friendListArr`을 받아 친구 관계를 정리하여 객체 Map으로 return 함. (예: 'mrko' => [ 'donut', 'shakevan' ])
+
+* 함수 `calVisitorScoreMap` : 방문자 리스트 배열 `visitorListArr`를 받아 방문 횟수 별로 +1점씩 점수를 채점하여 userId 별로 Score를 저장하여 객체 Map으로 return 함. (예: 'Austyn' => 10)
+
+* 함수 `calcScoreMap` : `relationshipMap`을 참조하여,  `calVisitorScoreMap`에서 반환한 객체 Map 을 기반하여 user의 친구의 친구는 +10점을 늘려줌.
+
++ 함수 `sortByScoreToNameArr` : `calcScoreMap`에서 반환한 객체 Map을 점수별로 정리하며, 만약 점수가 같은 경우에는 내부 함수 `localeCompare`을 사용하여 문자열로 정렬.
+
+***
 ***
 
 # 미션 - 온보딩
