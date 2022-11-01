@@ -26,7 +26,8 @@ const isAlreadyFriend = ({ user, friend, friendsMap }) => {
     return false;
   }
 
-  if (friendsMap.get(user).includes(friend)) {
+  const friendsOfUser = friendsMap.get(user);
+  if (friendsOfUser.includes(friend)) {
     return true;
   }
 
@@ -41,12 +42,12 @@ const computeFriendScoreBySerperation = ({ user, friendsMap }) => {
   const friendsHasScore = new Map();
 
   const friendsOfUser = friendsMap.get(user);
-  const twoDegreesOfSeperation = friendsOfUser.map((friend) =>
+  const friendsOfFriend = friendsOfUser.map((friend) =>
     friendsMap.get(friend).filter((name) => name !== user)
   );
 
-  twoDegreesOfSeperation.forEach((friendList) =>
-    friendList.forEach((friend) =>
+  friendsOfFriend.forEach((friends) =>
+    friends.forEach((friend) =>
       friendsHasScore.has(friend)
         ? friendsHasScore.set(
             friend,
@@ -114,13 +115,13 @@ const problem7 = (user, friends, visitors) => {
     computeFriendScoreByVisiting(visitors)
   );
 
-  const filteredFriendScores = getValidFriendRecommendation({
+  const validFriends = getValidFriendRecommendation({
     user,
     friendsMap,
     scoreMap: friendsScoreMap,
   });
 
-  const recommendedFriends = sortFriendList(filteredFriendScores)
+  const recommendedFriends = sortFriendList(validFriends)
     .slice(0, MAX_COUNT)
     .map(([name]) => name);
 
