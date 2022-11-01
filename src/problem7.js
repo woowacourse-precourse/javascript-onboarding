@@ -55,6 +55,15 @@ function problem7(user, friends, visitors) {
       score[key] += 1;
     }
   }
+
+  //본인과 기존친구스코어를삭제
+  for (i in getFriends) {
+    for (key in score) {
+      if (key == getFriends[i] || key == user) {
+        delete score[key];
+      }
+    }
+  }
 }
 
 module.exports = problem7;
