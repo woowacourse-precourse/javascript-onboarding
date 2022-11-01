@@ -24,7 +24,8 @@ function problem6(forms) {
     } else if (eleInclude){
       overlap.push(elementStr);
     }    
-  }  
+  }
+  let newOverlap = [...new Set(overlap)]  
 
 
 }
