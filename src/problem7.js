@@ -6,6 +6,16 @@ class MyError {
   occurError() {
     throw new Error("Overiding Error -> Error 발생 시 로직 멈추자");
   }
+
+  checkAllError(errorInstanceList) {
+    for (const errorInstance of errorInstanceList) {
+      if (errorInstance.occurError()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 class UsersError extends MyError {
@@ -13,7 +23,6 @@ class UsersError extends MyError {
     super();
 
     this._user = user;
-    this.occurError();
   }
 
   checkLimit() {
@@ -26,8 +35,11 @@ class UsersError extends MyError {
 
   occurError() {
     if (!(this.checkLimit() && this.checkLower())) {
-      throw new Error("input 양식 중 user값에 오류가 발생하였습니다.");
+      console.log("input 양식 중 user값에 오류가 발생하였습니다.");
+      return true;
     }
+
+    return false;
   }
 }
 
@@ -36,7 +48,6 @@ class FriendsError extends MyError {
     super();
 
     this._friends = friends;
-    this.occurError();
   }
 
   checkLimit() {
@@ -59,8 +70,11 @@ class FriendsError extends MyError {
 
   occurError() {
     if (!this.check()) {
-      throw new Error("input 양식 중 friends값에 오류가 발생하였습니다.");
+      console.log("input 양식 중 friends값에 오류가 발생하였습니다.");
+      return true;
     }
+
+    return false;
   }
 }
 
@@ -69,7 +83,6 @@ class VisitorsError extends MyError {
     super();
 
     this._visitors = visitors;
-    this.occurError();
   }
 
   checkLimit() {
@@ -78,8 +91,11 @@ class VisitorsError extends MyError {
 
   occurError() {
     if (!this.checkLimit()) {
-      throw new Error("input 양식 중 visitor값에 오류가 발생하였습니다.");
+      console.log("input 양식 중 visitor값에 오류가 발생하였습니다.");
+      return true;
     }
+
+    return false;
   }
 }
 
@@ -177,9 +193,14 @@ class SNSAlgorithm {
 }
 
 function problem7(user, friends, visitors) {
-  new UsersError(user);
-  new FriendsError(friends);
-  new VisitorsError(visitors);
+  const myError = new MyError();
+  const breakpoint = myError.checkAllError([
+    new UsersError(user),
+    new FriendsError(friends),
+    new VisitorsError(visitors),
+  ]);
+
+  if (breakpoint) return;
 
   const sns = new SNSAlgorithm(user, friends, visitors);
 
