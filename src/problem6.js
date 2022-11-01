@@ -1,5 +1,4 @@
 function problem6(forms) {
-  var answer;
   let answer = [];
   let isDuplicatedNickName = new Array(forms.length);
 
@@ -26,6 +25,8 @@ function problem6(forms) {
       answer.push(forms[i][0])
     }
   }
+
+  answer.sort();
 
   return answer;
 }
