@@ -7,17 +7,17 @@
 */
 
 function problem6(forms) {
-  return getAllEmailsOfSimilarNickName(forms).sort();
+  return getAllEmailsOfSimilarNickName(forms);
 }
 
 const getAllEmailsOfSimilarNickName = (forms) => {
   const allEmailsOfSimilarNickname = [];
 
-  forms.forEach((targetUser) => {
-    const [targetUserEmail, targetUserNickname] = targetUser;
+  forms.forEach((targetUserInfo) => {
+    const [targetUserEmail, targetUserNickname] = targetUserInfo;
 
     if (!allEmailsOfSimilarNickname.includes(targetUserEmail)) {
-      const emailsOfSimilarNickName = getEmailsOfSimilarNickname(targetUserNickname, forms, getAllSerialCases(targetUserNickname));
+      const emailsOfSimilarNickName = getEmailsOfSimilarNickname(targetUserInfo, forms, getAllSerialCases(targetUserNickname));
 
       if (emailsOfSimilarNickName.length > 0) {
         allEmailsOfSimilarNickname.push(targetUserEmail);
@@ -43,20 +43,23 @@ const getAllSerialCases = (nickname) => {
   return allSerialCases;
 };
 
-const getEmailsOfSimilarNickname = (targetUserNickname, forms, serialCases) => {
+const getEmailsOfSimilarNickname = (targetUserInfo, forms, serialCases) => {
   const emailsOfSimilarNickName = [];
+  const [targetUserEmail, targetUserNickname] = targetUserInfo;
 
   serialCases.forEach((serialCase) => {
-    const regex = new RegExp(`${serialCase}`, "g");
+    const regex = new RegExp(`${serialCase}`);
 
     forms.forEach((form) => {
       const [userEmail, userNickname] = form;
 
-      if (!(targetUserNickname === userNickname)) {
-        if (regex.test(userNickname)) emailsOfSimilarNickName.push(userEmail);
+      if (regex.test(userNickname) && targetUserNickname !== userNickname) {
+        emailsOfSimilarNickName.push(userEmail);
       }
     });
   });
+
+  if (emailsOfSimilarNickName.length > 0) emailsOfSimilarNickName.push(targetUserEmail);
 
   return emailsOfSimilarNickName;
 };
