@@ -13,11 +13,6 @@ function problem6(forms) {
     );
   };
 
-  //출력값 구하기
-  let answer = [];
-  let check = Array.from({ length: forms.length }, () => 0);
-  //기능목록 2-1 구현
-  let result = new Set();
   //기능목록 3-4 구현
   if (forms.length < 1 || forms.length > 10000) {
     throw '크루 수가 허용 범위를 벗어났습니다';
@@ -38,7 +33,25 @@ function problem6(forms) {
     }
   });
 
-  //기능목록 2-2 구현
+  for (let [key, value] of twoCharList) {
+    if (value <= 1) {
+      twoCharList.delete(key);
+    }
+  }
+  //출력값 구하기
+  let result = new Set();
+  forms.forEach((_, idx) => {
+    let [email, nickname] = forms[idx];
+    if (isWrong(email, nickname)) return;
+    //기능목록 1-2 구현
+    for (let [key] of twoCharList) {
+      if (nickname.includes(key)) {
+        result.add(email);
+      }
+    }
+  });
+  //기능목록 2-1 구현
+  let answer = [];
   answer.push(...result);
   answer.sort();
 
