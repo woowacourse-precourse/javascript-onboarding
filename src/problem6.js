@@ -66,8 +66,17 @@ function problem6(forms) {
       }
     }
   }
+  var duEmail = [];
+  for(var char of duName){
+    for (var name of forms){
+      if(name[1].includes(char)){
+        duEmail.push(name[0]);
+      }
+    }
+  }
+  let duEm = [...new Set(duEmail)].sort();
+  console.log(duEm);
 
-  console.log(duName);
 }
 
 module.exports = problem6;
