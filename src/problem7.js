@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
   const FRIEND_SCORE = 10;
   const VISTOR_SCORE = 1;
   const userFriends = getUserFriend(user, friends);
-  const friendOfFriends = friendOfFriend(userFriends, friends, user);
+  const friendOfFriends = friendOfFriend({ userFriends, friends, user });
   const friendScores = getScore(friendOfFriends, FRIEND_SCORE);
   const vistorScores = getScore(visitors, VISTOR_SCORE);
   const friendAndVistors = combineFriendVistor(friendScores, vistorScores);
@@ -16,40 +16,50 @@ function problem7(user, friends, visitors) {
 
 function getUserFriend(user, friends) {
   const results = [];
-  for (let i = 0; i < friends.length; i++) {
+  friends.forEach((_, i) => {
     if (friends[i][0] === user) results.push(friends[i][1]);
     if (friends[i][1] === user) results.push(friends[i][0]);
-  }
+  });
   return results;
 }
 
-function friendOfFriend(userFriends, friends, user) {
+function friendOfFriend({ userFriends, friends, user }) {
   const results = [];
-  for (let i = 0; i < friends.length; i++) {
-    for (let j = 0; j < userFriends.length; j++) {
-      if (friends[i][0] === userFriends[j] && friends[i][1] !== user)
-        results.push(friends[i][1]);
-      if (friends[i][1] === userFriends[j] && friends[i][0] !== user)
-        results.push(friends[i][0]);
-    }
-  }
+  friends.forEach((_, i) => {
+    finding({ userFriends, friends, user, results, i });
+  });
   return results;
+}
+
+function finding({ userFriends, friends, user, results, i }) {
+  userFriends.forEach((_, j) => {
+    if (friends[i][0] === userFriends[j] && friends[i][1] !== user)
+      results.push(friends[i][1]);
+    if (friends[i][1] === userFriends[j] && friends[i][0] !== user)
+      results.push(friends[i][0]);
+  });
 }
 
 function getScore(lists, score) {
   const onlyLists = Array.from(new Set(lists));
   const results = {};
-  for (let i = 0; i < onlyLists.length; i++) {
-    results[onlyLists[i]] = 0;
-  }
-  for (let i = 0; i < onlyLists.length; i++) {
-    for (let j = 0; j < lists.length; j++) {
-      if (onlyLists[i] === lists[j]) {
-        results[onlyLists[i]] += score;
-      }
-    }
-  }
+  makeOnlyList(onlyLists, results);
+  onlyLists.forEach((_, i) => {
+    scoring({ onlyLists, lists, results, score, i });
+  });
   return results;
+}
+
+function makeOnlyList(onlyLists, results) {
+  onlyLists.forEach((_, i) => {
+    results[onlyLists[i]] = 0;
+  });
+}
+
+function scoring({ onlyLists, lists, results, score, i }) {
+  lists.forEach((_, j) => {
+    if (onlyLists[i] === lists[j]) results[onlyLists[i]] += score;
+  });
 }
 
 function combineFriendVistor(friend, visitor) {
@@ -75,9 +85,9 @@ function recommendationList(list) {
 }
 
 function checkUserFriendsInList(userFriends, results) {
-  for (let i = 0; i < userFriends.length; i++) {
+  userFriends.forEach((_, i) => {
     results.splice(results.indexOf(userFriends[i]), 1);
-  }
+  });
   return results;
 }
 
