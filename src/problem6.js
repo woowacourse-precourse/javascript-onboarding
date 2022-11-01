@@ -18,7 +18,7 @@ function problem6(forms) {
       }
     }
   });
-  answer = [...new Set(answer)];
+  answer = [...new Set(answer)].sort();
 
   return answer;
 }
