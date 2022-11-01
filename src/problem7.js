@@ -54,7 +54,12 @@ function getRelationStatus(friends) {
 function problem7(user, friends, visitors) {
   const relation = getRelationStatus(friends);
   const score = calculateScore(relation, visitors, user);
-  const answer = sortScore(score);
+  const sorted_score = sortScore(score);
+
+  sorted_score.filter((score) => score !== 0);
+  if (sorted_score.length > 5) {
+    sorted_score.slice(0, 6);
+  }
 
   return answer;
 }
