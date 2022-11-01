@@ -59,6 +59,8 @@ function startGame(pobi, crong) {
   } else if (pobiScore === crongScore) {
     return 0;
   }
+
+  return -1;
 }
 
 module.exports = problem1;
