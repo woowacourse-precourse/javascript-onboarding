@@ -34,7 +34,9 @@ function problem7(user, friends, visitors) {
         const intersect = friendObj[name].filter((value) =>
           friendObj[user].includes(value)
         );
-        if (intersect) {
+        // sort 할 원소를 줄이기 위해서
+        // 함께 아는 친구가 있거나 사용자의 타임라인에 방문한 사람 (점수가 0이 아닌 사람)만 score에 추가 합니다.
+        if (intersect.length >= 1) {
           score[name] = intersect.length * 10;
         }
       }
@@ -51,8 +53,20 @@ function problem7(user, friends, visitors) {
       }
     }
   });
-  console.log(score);
-  // Todo: value 값을 기준으로 score 정렬 필요 (점수가 같은 경우 이름순 정렬)
+  const sortedObj = Object.entries(score).sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0];
+    } else {
+      return b[1] - a[1];
+    }
+  });
+  for (i = 0; i < sortedObj.length; i++) {
+    if (i === 5) {
+      break;
+    }
+
+    answer.push(sortedObj[i][0]);
+  }
   return answer;
 }
 
