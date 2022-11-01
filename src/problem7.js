@@ -9,8 +9,8 @@ function problem7(user, friends, visitors) {
 	*/
 
 	/*사용자의 점수를 구할 함수 -> getUserPoint
-		1. 함께 아는 친구의 수를 구할 함수 -> countFriend
-		2. 타임라인 방문 횟수를 구할 함수 -> countVisit
+		1. 함께 아는 친구의 수를 구할 함수 -> countFriends
+		2. 타임라인 방문 횟수를 구할 함수 -> countVisitor
 	 */
 
 	return solution({ me: user, users: friends, visitors });
@@ -27,6 +27,13 @@ function getNotFriends(inputData) {
 	const friends = friendNow(inputData);
 	const notFriends = friendWith(userList, friends, inputData);
 	return pointForm(notFriends);
+}
+
+function getUserPoint(inputData, userPoints) {
+	const userList = getUserList(inputData);
+	const friends = friendNow(inputData);
+	const notFriends = friendWith(userList, friends, inputData);
+	userPoints = countFriends(inputData, userPoints, notFriends);
 }
 
 function getUserList(inputData) {
@@ -71,10 +78,22 @@ function pointForm(userList) {
 	return pointList;
 }
 
-function getUserPoint() {}
+function countFriends({ users }, userPoints, notFriends) {
+	users.forEach((user) => {
+		userPoints = count(user, notFriends, userPoints);
+	});
 
-function countFriend() {}
+	return userPoints;
+}
 
-function countVisit() {}
+function count(user, notFriends, userPoints) {
+	user.forEach((member) => {
+		if (notFriends.includes(member)) userPoints[member] += 10;
+	});
+
+	return userPoints;
+}
+
+function countVisitor() {}
 
 module.exports = problem7;
