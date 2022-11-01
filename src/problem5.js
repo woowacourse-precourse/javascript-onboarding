@@ -28,4 +28,12 @@ function exchangeTo10000(money) {
   return cnt
 }
 
+function exchangeTo5000(money) {
+  const FIVETHOUSAND = 5000
+  while (money >= FIVETHOUSAND) {
+    cnt += 1
+    money -= FIVETHOUSAND
+  }
+  return cnt
+}
 module.exports = problem5;
