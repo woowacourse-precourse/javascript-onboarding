@@ -6,10 +6,10 @@
  * @returns {boolean}
  */
 function checkValidation(pages) {
-  if ((Array.isArray(pages) && pages.length === 2)
-      && (Number.isInteger(pages[0]) && Number.isInteger(pages[1]))
-      && (pages[0] % 2 === 1 && pages[0] + 1 === pages[1])
-      && pages[1] <= 400)
+  if ((Array.isArray(pages) && pages.length === 2) //데이터 형식
+      && (Number.isInteger(pages[0]) && Number.isInteger(pages[1])) //정수인지
+      && (pages[0] % 2 === 1 && pages[0] + 1 === pages[1]) //홀수, 짝수순으로 왔는지
+      && (pages[0] > 1 && pages[1] < 400)) //page 범위
     return true;
   return false;
 }
