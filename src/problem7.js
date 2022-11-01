@@ -60,6 +60,19 @@ function problem7(user, friends, visitors) {
   score = getFriendsScore(user, friendList, score);
   score = getVisitorsScore(visitors, userFriends, score);
 
+  score = Object.entries(score).sort(([, a], [, b]) => b - a);
+  score.sort((a, b) => {
+    if (a[1] == b[1]) {
+      return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+    }
+    return b[1] - a[1];
+  });
+  score = score.slice(0, 5);
+
+  score.forEach((friend) => {
+    answer.push(friend[0]);
+  });
+
   return answer;
 }
 
