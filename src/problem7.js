@@ -39,7 +39,25 @@ function findFriends(arr, person) {
 }
 
 function problem7(user, friends, visitors) {
-  
+  let friendsScore = {};
+  let userFriends;
+
+  if (user.length >= 1 && user.length <= 30) {
+    if (user === user.toLowerCase()) {
+      if (friends.length > 0 && friends.length < 10001) {
+        if (friends.every(element => element.length === 2)) {
+          if (checkIdLength(friends) === true) {
+            if (findDuplicate(friends) === true) {
+              
+          }
+          }
+          }
+        }
+    } 
+    
+    }
+
+    
 }
 
 module.exports = problem7;
