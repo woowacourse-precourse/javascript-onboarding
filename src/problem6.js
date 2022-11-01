@@ -43,11 +43,11 @@ function problem6(forms) {
     }
   });
 
-   // 오름차순 sort
-   console.log(email.sort());
+  // 오름차순 sort
+  email.sort();
 
-   answer = email;
-   return answer;
+  answer = email;
+  return answer;
 }
 
 module.exports = problem6;
