@@ -1,6 +1,11 @@
 function problem6(forms) {
-  var answer;
-  return answer;
+  let answer = [];
+  let uniqueArr = [];
+  let consecutiveArr = [];
 }
+
+function seperateConsecutive(nickname, uniqueArr, consecutiveArr) {}
+
+function isValid(nickname, consecutiveArr) {}
 
 module.exports = problem6;
