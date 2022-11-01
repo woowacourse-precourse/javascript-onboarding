@@ -1,31 +1,30 @@
 function problem6(forms) {
   let answer = [];
-  let nicknameList = [];
-  let duplicateNicknameList = [];
+  let nicknameWordSet = new Map();
 
-  const pushList = (string) => {
-    for (let i = 0; i < string.length - 1; i++) {
-      const currentString = string.slice(i, i + 2);
-      if (nicknameList.indexOf(currentString) === -1)
-        nicknameList.push(currentString);
-      else if (duplicateNicknameList.indexOf(currentString) === -1)
-        duplicateNicknameList.push(currentString);
-    }
+  const initSet = (name) => {
+    [...name].forEach((ch, i) => {
+      const checkWord = name.slice(i, i + 2);
+      if (checkWord.length >= 2)
+        if (nicknameWordSet.has(checkWord))
+          nicknameWordSet.set(checkWord, nicknameWordSet.get(checkWord) + 1);
+        else nicknameWordSet.set(checkWord, 1);
+    });
   };
-  const isSame = (string) => {
-    for (let i = 0; i < string.length - 1; i++)
-      if (duplicateNicknameList.indexOf(string.slice(i, i + 2)) != -1)
-        return true;
-    return false;
+  const checkSame = ([email, name]) => {
+    [...name].forEach((ch, i) => {
+      const checkWord = name.slice(i, i + 2);
+      if (nicknameWordSet.get(checkWord) > 1) answer.push(email);
+    });
   };
 
   forms.forEach((form) => {
-    pushList(form[1]);
-  });
-  forms.forEach((form) => {
-    if (isSame(form[1])) answer.push(form[0]);
+    initSet(form[1]);
   });
 
+  forms.forEach((form) => {
+    checkSame(form);
+  });
   return answer.sort();
 }
 
