@@ -26,6 +26,11 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  return [...scoreCollection]
+    .sort((a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1]))
+    .map(([nickname, score]) => nickname).slice(0,5);
+}
+
 console.log(
   problem7(
     "mrko",
