@@ -14,8 +14,8 @@ function problem1(pobi, crong) {
 }
 
 function exceptionPage(pobi, crong) {
-  if (pobi[1] === 1 || crong[1] === 1 || pobi[0] === 400 || crong[0] === 400) return true; // 시작면으로 끝나거나 끝면으로 시작 할 경우
-  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return true; // 페이지가 순서대로 없을 경우
+  if (pobi[1] === 1 || crong[1] === 1 || pobi[0] === 400 || crong[0] === 400) return true;
+  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return true;
 }
 
 function pageScore(page) {
