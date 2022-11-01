@@ -9,6 +9,11 @@ function findPossibleNameArr(nickName) {
   }
   return duplicatePossibleNameArr;
 }
-
+function isIncludeSameName(nickName, duplicatePossibleNameArr) {
+  for (let i = 0; i < duplicatePossibleNameArr.length; i++) {
+    if (nickName.includes(duplicatePossibleNameArr[i])) return true;
+  }
+  return false;
+}
 
 module.exports = problem6;
