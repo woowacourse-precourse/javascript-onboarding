@@ -15,6 +15,50 @@ function searchCurrentFriend(friends, user){
   }
   return currentFriend;
 }
+//사용자와 함께 아는 친구의 수를 기준으로 점수 매기기 
+function friendFriendScore(friends, userFriendSet, user){
+  var userFriends = Array.from(userFriendSet); //기존 친구들에 대한 집합을 배열로 변환
+  var friendCnt = [];
+  //console.log(userFriends);
+  for(var i=0; i<friends.length; i++){
+    var foundFlag = 0; //이미 있는 원소인지 알려주기 위한 지표
+    var friendA = friends[i][0] //사용자  A
+    var friendB = friends[i][1] //사용자 B
+    if(friendA == user || friendB == user) continue; //user는 제외
+
+    if (userFriends.includes(friendA)){ //사용자 A가 user의 기존 친구라면
+      //console.log("yes");
+      //friendFriends.add(friendB) //친구의 친구 집합에 사용자 B 추가
+      friendCnt.forEach(o => {
+        if (o.name == friendB) {
+            o.score += 10;
+            foundFlag = 1
+        }
+      });
+      if (foundFlag == 0) { //아직 친구의 친구로 객체 배열에 추가된 적이 없다면
+        const friendofFriend = {};
+        friendofFriend.name = friendB;
+        friendofFriend.score = 10;
+        friendCnt.push(friendofFriend);
+      }
+    } else if(userFriends.includes(friendB)){ //사용자 A가 user의 기존 친구라면
+      friendCnt.forEach(o => {
+        if (o.name == friendA) {
+            o.score += 10;
+            foundFlag = 1
+        }
+      });
+      if (foundFlag == 0) { //아직 친구의 친구로 객체 배열에 추가된 적이 없다면
+        const friendofFriend = {};
+        friendofFriend.name = friendA;
+        friendofFriend.score = 10;
+        friendCnt.push(friendofFriend);
+      }
+    }
+  }
+  //console.log(friendCnt);
+  return friendCnt;
+}
 
 function problem7(user, friends, visitors) {
   var answer;
@@ -22,7 +66,10 @@ function problem7(user, friends, visitors) {
   var friendCnt = [];
   var currentFriend = searchCurrentFriend(friends,user);
   currentFriendArr = Array.from(currentFriend);
- 
+
+  //console.log(currentFriend);
+  friendCnt = friendFriendScore(friends, currentFriend, user); //현재 친구의 친구 점수 배열 저장
+  
   return answer;
 }
 
