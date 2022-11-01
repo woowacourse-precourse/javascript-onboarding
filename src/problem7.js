@@ -44,6 +44,19 @@ function problem7(user, friends, visitors) {
         fdobj[element] = [[], 1];
       }
     });
+        // 점수가 0을 초과하는 사용자를 담은 배열 생성 및 내림차순 정렬
+        const nMate = [];
+        for (x in fdobj) {
+          if (fdobj[x][1] > 0) {
+            nMate.push([x, fdobj[x][1]]);
+          }
+        }
+        nMate.sort((a, b) => {
+          if (b[1] > a[1]) return 1;
+          else if (a[1] > b[1]) return -1;
+          else if (a[0] > b[0]) return 1;
+          else if (b[0] > a[0]) return -1;
+        });
 }
 
 module.exports = problem7;
