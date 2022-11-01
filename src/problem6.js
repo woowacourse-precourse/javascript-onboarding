@@ -48,7 +48,10 @@ function problem6(forms) {
       
         }
       
-        
+        answer = answer.flat().flat().filter(item => item.includes("@"));
+        answer = answer.filter((item, index) => answer.indexOf(item) === index).sort();
+      
+        return answer;
   }
 }
 
