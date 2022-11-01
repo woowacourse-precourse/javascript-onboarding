@@ -38,7 +38,7 @@ function problem1(pobi, crong) {
   };
   const checkExcept = (pobi, crong) => {
     const isStarEnd = (element) =>
-      element === 1 || element === 400 ? true : false;
+      element <= 1 || element >= 400 ? true : false;
     const isDiffOnePage = (array) => {
       const diff = array[1] - array[0];
       return diff === 1 ? false : true;
@@ -47,7 +47,10 @@ function problem1(pobi, crong) {
       array[0] % 2 === 1 && array[1] % 2 === 0 ? false : true;
     };
 
-    return isStarEnd(pobi[0]) ||
+    return pobi[1] % 2 !== 0 ||
+      crong[1] % 2 !== 0 ||
+      pobi.length + crong.length > 4 ||
+      isStarEnd(pobi[0]) ||
       isStarEnd(pobi[1]) ||
       isStarEnd(crong[0]) ||
       isStarEnd(crong[1]) ||
