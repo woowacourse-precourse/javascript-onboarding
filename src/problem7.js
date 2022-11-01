@@ -65,7 +65,6 @@ function algorithmFunc(obj) {
 
 function isAlready(obj, index, num, score) {
   let name;
-  console.log("score은" + score);
   if (score === 1) {
     name = obj.visitorRel[index];
   } else if (score === 10) {
