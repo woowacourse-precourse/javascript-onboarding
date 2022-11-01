@@ -70,6 +70,11 @@ function problem7(user, friends, visitors) {
   if (sortMapVal.length > 5){
     sortMapVal = sortMapVal.slice(0,5);
   }
+
+  var sortMapArr = [...socreMap];
+  sortMapArr.sort();
+  let sortScoreMap = new Map(sortMapArr);
+
 }
 
 module.exports = problem7;
