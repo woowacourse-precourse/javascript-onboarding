@@ -82,9 +82,21 @@ function calVisitorsScore(map, visitors) {
   }
 }
 
+function calIdNScore(map, idNScore) {
+  map.forEach((value, key) => {
+    if (value.isFriend === false) idNScore.push([key, value.score]);
+  });
+  idNScore.sort((a, b) => {
+    if (a[1] !== b[1]) return b[1] - a[1];
+    return a[0].localeCompare(b[0]);
+  });
+}
+
 function problem7(user, friends, visitors) {
   if (isException(user, friends, visitors)) return;
   const map = new Map();
+  const idNScore = [];
+  const answer = [];
 
   for (let i = 0; i < friends.length; ++i) {
     checkMap(map, friends[i], user);
@@ -93,6 +105,11 @@ function problem7(user, friends, visitors) {
     value.score = calFriendsScore(map, value.friends);
   });
   calVisitorsScore(map, visitors);
+  calIdNScore(map, idNScore);
+  for (let i = 0; i < idNScore.length && i < 5; i++) {
+    if (idNScore[i][1] > 0) answer.push(idNScore[i][0]);
+  }
+  return answer;
 }
 
 module.exports = problem7;
