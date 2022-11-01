@@ -51,13 +51,21 @@ function problem7(user, friends, visitors) {
   });
 
   const scoreGraphKey = Object.keys(socialScore);
-
+  const answerScoreList = [];
   for (let i = 0; i < scoreGraphKey.length; i++) {
-    if (socialGraph[user].includes(scoreGraphKey[i])) continue;
-    if (answer.length > 5) break;
-    answer.push(scoreGraphKey[i]);
+    answerScoreList.push({
+      name: scoreGraphKey[i],
+      score: socialScore[scoreGraphKey[i]],
+    });
   }
 
+  answerScoreList.sort((a, b) => b.score - a.score);
+
+  for (let i = 0; i < answerScoreList.length; i++) {
+    if (answer.length >= 5) break;
+    if (socialGraph[user].includes(answerScoreList[i].name)) continue;
+    answer.push(answerScoreList[i].name);
+  }
   return answer;
 }
 
