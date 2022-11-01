@@ -23,6 +23,9 @@ function bigNumbers(person){
 function error(person){
   const left = person[0];
   const rigth = person[1];
+  if(person.length!==2){
+    return false;
+  }
   if((rigth-left)!==1){
       return false;
   }
