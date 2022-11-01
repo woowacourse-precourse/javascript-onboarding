@@ -1,5 +1,3 @@
-console.log(problem1([131, 132], [31, 32]));
-
 function problem1(pobi, crong) {
   if (checkValidation(pobi) && checkValidation(crong)) {
     return pageGameApp(pobi, crong);
