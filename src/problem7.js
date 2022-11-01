@@ -15,6 +15,23 @@ function problem7(user, friends, visitors) {
     return false;
   }
 
+  function recommendFriends(friendsList, visitorsList){
+    const recommendList = new Map();
+    friendsList.forEach((value,key) => {
+      if (visitorsList.has(key)){
+        recommendList.set(key, value + visitorsList.get(key));
+      } else {
+        recommendList.set(key, value);
+      }
+    });
+    visitorsList.forEach((value,key) => {
+      if (!recommendList.has(key)) {
+        recommendList.set(key, value);
+      }
+    });
+    return recommendList
+  }
+
   function writeVisitorsList(visitors){
     const visitorsList = new Map();
     visitors.forEach(id => {
