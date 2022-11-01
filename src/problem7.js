@@ -45,6 +45,9 @@ function problem7(user, friends, visitors) {
     }
   })
 
+  // 5. 이름 순으로 정렬 후 큰 점수 순으로 정렬한다.
+  score = new Map([...score].sort().sort((a, b) => b[1] - a[1]));
+
   return answer;
 }
 
