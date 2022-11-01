@@ -11,4 +11,19 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+function makeRelation(friends) {
+  // 1번 구현
+  const relation = {};
+  for (let i = 0; i < friends.length; i++) {
+    const [name1, name2] = friends[i];
+    relation[name1]
+      ? relation[name1].push(name2) // 이미 존재하는 경우
+      : (relation[name1] = name2); // 새로운 경우
+    relation[name2]
+      ? relation[name2].push(name1) // 이미 존재하는 경우
+      : (relation[name2] = name1); // 새로운 경우
+  }
+  return relation;
+}
+
 module.exports = problem7;
