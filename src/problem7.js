@@ -74,7 +74,7 @@ function findAnswer(sort_arr) {
 
     if (answer.length >= 5) break;
   }
-
   return answer;
 }
+
 module.exports = problem7;
