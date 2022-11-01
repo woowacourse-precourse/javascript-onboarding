@@ -120,6 +120,7 @@ function problem7(user, friends, visitors) {
     }
 
     analyzeIndrectRelation() {
+      const indirectRelationPoint = 10;
       const scoreBoard = this.recommandationScoreBoard;
       const candidates = [...scoreBoard.keys()].filter((candidate) => {
         return this.userMap.get(candidate).friends.length !== 0;
@@ -129,7 +130,10 @@ function problem7(user, friends, visitors) {
         const candidatesFriendList = this.userMap.get(candidate).friends;
         const userFriendList = this.user.friends;
         const intersection = candidatesFriendList.filter((user) => userFriendList.includes(user));
-        scoreBoard.set(candidate, scoreBoard.get(candidate) + 10 * intersection.length);
+        scoreBoard.set(
+          candidate,
+          scoreBoard.get(candidate) + indirectRelationPoint * intersection.length
+        );
       });
 
       this.recommandationScoreBoard = scoreBoard;
@@ -137,11 +141,12 @@ function problem7(user, friends, visitors) {
     }
 
     analyzeVistors(visitors) {
+      const visitPoint = 1;
       const scoreBoard = this.recommandationScoreBoard;
 
       visitors.forEach((visitor) => {
         if (scoreBoard.get(visitor) !== undefined) {
-          scoreBoard.set(visitor, scoreBoard.get(visitor) + 1);
+          scoreBoard.set(visitor, scoreBoard.get(visitor) + visitPoint);
         }
       });
 
