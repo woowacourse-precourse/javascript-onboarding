@@ -46,6 +46,11 @@ function problem7(user, friends, visitors) {
       }
     });
 
+  let answer = [];
+  for (let i = 0; i < score.length; i++) {
+    answer.push(score[i][0]);
+  }
+
   return answer;
 }
 
