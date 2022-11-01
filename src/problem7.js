@@ -5,7 +5,6 @@ function problem7(user, friends, visitors) {
   let userFriend = friendDict[user]
   let score = []
 
-
   // 방문자 및 친구 목록의 인원 리스트
   let otherUsers = Object.keys(friendDict).filter(x => x != user)
   visitors.forEach(element =>{
@@ -14,6 +13,7 @@ function problem7(user, friends, visitors) {
       friendDict[element] = []
     }
   })
+
   // 친구 추천이므로 이미 친구인 리스트는 제외한다
   otherUsers = otherUsers.filter(x => ! userFriend.includes(x))
 
