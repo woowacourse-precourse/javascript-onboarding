@@ -19,7 +19,7 @@ function problem7(user, friends, visitors) {
 
   for (const [person, freindList] of friendMap) {
     if (person === user) continue;
-
+    if (userFriends.includes(person)) continue;
     let isNear = false;
     for (const friend of freindList) {
       if (userFriends.includes(friend)) {
@@ -47,7 +47,9 @@ function problem7(user, friends, visitors) {
   }));
 
   return recommendUserArr
-    .sort((a, b) => (b.cnt === a.cnt ? b.name - a.name : b.cnt - a.cnt))
+    .sort((a, b) =>
+      b.cnt === a.cnt ? (a.name > b.name ? 1 : -1) : b.cnt - a.cnt
+    )
     .splice(0, 5)
     .map((user) => user.name);
 }
