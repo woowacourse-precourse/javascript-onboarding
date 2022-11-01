@@ -2,10 +2,14 @@ function problem7(user, friends, visitors) {
   let answer = [];
   let algorithm = {};
   algorithm.userName = user;
-  algorithm.friendArr = friends;
+  algorithm.friendArr = [user];
+  algorithm.friendRel = friends;
+  algorithm.visitorRel = visitors;
+  algorithm.recommendName = [];
+  algorithm.recommendScore = [];
 
-  algorithm.friendArr = findFriendAndMe(obj);
-  algorithm = friendAlgorithm(user, friends);
+  algorithm.friendArr = findFriendAndMe(algorithm);
+  algorithm = friendAlgorithm(algorithm);
   algorithm = visitorAlgorithm(algorithm, visitors);
 
   answer = pickFive(algorithm);
@@ -14,45 +18,59 @@ function problem7(user, friends, visitors) {
 }
 
 function findFriendAndMe(obj) {
-  let friendAndMe = [obj.userName];
-  let friendArr = algorithm.friendArr;
+  let friendAndMe = obj.friendArr;
+  const friendRel = algorithm.friendRel;
 
-  for (let i = 0; i < friendArr.length; i++) {
-    if (friendArr[index][0] === user){
-      friendAndMe.push(friendArr[index][1]);
-    }else if(friendArr[index][1] === user){
-      friendAndMe.push(friendArr[index][0]);
+  for (let i = 0; i < friendRel.length; i++) {
+    if (friendRel[index][0] === user) {
+      friendAndMe.push(friendRel[index][1]);
+    } else if (friendRel[index][1] === user) {
+      friendAndMe.push(friendRel[index][0]);
     }
     return friendAndMe;
   }
 }
 
-function friendAlgorithm(user, friends) {
-  let friendAndMe = [user];
-  let algorithmName = [];
-  let algorithmNum = [];
+function friendAlgorithm(obj, friends) {
+  const friendAndMe = obj.friendArr;
 
   for (let index = 0; index < friends.length; index++) {
-    friendAndMe.push(friends[index][0]);
+    // friendAndMe.push(friends[index][0]);
+    let haveFriendO = !(friendAndMe.indexOf(friends[index][0]));
+    let haveFriendT = !(friendAndMe.indexOf(friends[index][1]));
 
-    let overlapIdx = algorithmName.indexOf(friends[index][1]);
-    n
-    if (friendAndMe.indexOf(friends[index][1]) != -1) {
+    if (haveFriendO && haveFriendT) {
       continue;
-    } else if (overlapIdx != -1 && friends[index][1].length === algorithmName[overlapIdx].length) {
-      algorithmNum[overlapIdx] += 10;
+    } else if (haveFriendO && !haveFriendT) {
+      isAlready(obj, index, 1);
+    } else if (!haveFriendO && haveFriendT) {
+      isAlready(obj, index, 0);
+    } else if (!haveFriendO && !haveFriendT) {
       continue;
     }
-    algorithmName.push(friends[index][1]);
-    algorithmNum.push(10);
-  }
 
-  return {
-    length: algorithmName.length,
-    curFriend: friendAndMe,
-    nameArr: algorithmName,
-    scoreArr: algorithmNum,
-  };
+    // let overlapIdx = algorithmName.indexOf(friends[index][1]);
+    // if (friendAndMe.indexOf(friends[index][1]) != -1) {
+    //   continue;
+    // } else if (overlapIdx != -1 && friends[index][1].length === algorithmName[overlapIdx].length) {
+    //   algorithmNum[overlapIdx] += 10;
+    //   continue;
+    // }
+    // algorithmName.push(friends[index][1]);
+    // algorithmNum.push(10);
+  //}
+  return obj;
+}
+
+function isAlready(obj, index, num){
+  let name = obj.friendRel[index][num];
+  let dupIndx = obj.recommendName.indexOf(name);
+  if(dupIndx > -1 && name.length === obj.recommendName[dupIndx]){
+    obj.recommendScore[dupIndx] += 10;
+    return obj;
+  } 
+  obj.recommendName.push(name);
+  obj.recommendScore.push(10);
 }
 
 function visitorAlgorithm(obj, visitors) {
