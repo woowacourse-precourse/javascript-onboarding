@@ -1,11 +1,10 @@
 let nickOverlapList = new Set();
 
-let nickArray = [];
-for (let i = 0; i < forms.length; i++) {
-  nickArray.push(forms[i][1]);
-}
-
 function problem6(forms) {
+  let nickArray = [];
+  for (let i = 0; i < forms.length; i++) {
+    nickArray.push(forms[i][1]);
+  }
   for (crew of forms) {
     let crewEmail = crew[0];
     let crewNickName = crew[1];
