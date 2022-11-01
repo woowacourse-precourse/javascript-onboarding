@@ -1,8 +1,8 @@
 function problem6(forms) {
   var answer;
   if (checkType(forms)) return;
-  const separatedTwoWord = separateTwoWord(forms);
-  const duplicatedEmails = deleteDuplicatedNicknames(forms, separatedTwoWord);
+  const duplicatedWords = findDuplicatedNicknames(forms);
+  const duplicatedEmails = deleteDuplicatedNicknames(forms, duplicatedWords);
   answer = sortingEmails(duplicatedEmails);
   return answer;
 }
@@ -13,29 +13,27 @@ function checkType(forms) {
       console.log("이메일 형식이 잘못되었습니다.");
       return true;
     }
-    if (!nicknameType(forms[i][1])) {
+    if (!checkNicknameType(forms[i][1])) {
       console.log("닉네임 형식이 잘못되었습니다.");
       return true;
     }
   }
 }
 
-function separateTwoWord(array2D) {
-  const nicknames = array2D;
-  const TwoWords = [];
-  const duplicateIndex = [];
+function findDuplicatedNicknames(nicknames) {
+  const twoWords = [];
+  const duplicatedWords = [];
   for (let i = 0; i < nicknames.length; i++) {
     for (let j = 0; j < nicknames[i][1].length - 1; j++) {
-      if (TwoWords.includes(nicknames[i][1].substr(j, 2))) {
-        duplicateIndex.push(nicknames[i][1].substr(j, 2));
-      } else TwoWords.push(nicknames[i][1].substr(j, 2));
+      if (twoWords.includes(nicknames[i][1].substr(j, 2))) {
+        duplicatedWords.push(nicknames[i][1].substr(j, 2));
+      } else twoWords.push(nicknames[i][1].substr(j, 2));
     }
   }
-  return Array.from(new Set(duplicateIndex));
+  return Array.from(new Set(duplicatedWords));
 }
 
-function deleteDuplicatedNicknames(array2D, duplicatedWords) {
-  const nicknames = array2D;
+function deleteDuplicatedNicknames(nicknames, duplicatedWords) {
   const duplicatedEmails = [];
   for (let i = 0; i < nicknames.length; i++) {
     for (let j = 0; j < nicknames[i][1].length - 1; j++) {
@@ -60,7 +58,7 @@ function checkEmailType(email) {
   return false;
 }
 
-function nicknameType(nickname) {
+function checkNicknameType(nickname) {
   const REG_EXP = /^[가-힣]+$/;
   if (nickname.length >= 1 && nickname.length < 20 && REG_EXP.test(nickname)) {
     return true;
