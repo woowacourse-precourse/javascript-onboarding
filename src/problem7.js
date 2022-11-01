@@ -15,6 +15,8 @@ function problem7(user, friends, visitors) {
     if(friendsMap[user].includes(name)) continue;
 
     const mutualFriends = friendsMap[name].filter(a => friendsMap[user].includes(a));
+    if(mutualFriends.length === 0) continue;
+
     score[name] = mutualFriends.length * 10;
   }
 
