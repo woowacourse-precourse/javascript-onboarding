@@ -58,7 +58,16 @@ function problem7(user, friends, visitors) {
     const visitor_score = elementCount(stranger_visitors);
     return visitor_score;
   }
+  function calcTotalScore(user, friends, visitors) {
+    const friend_score = calcFriendScore(user, friends);
+    const visitor_score = calcVisitScore(user, friends, visitors);
+    const total_score = { ...friend_score, ...visitor_score };
+    return total_score;
+  }
 
+  function sortName(user, friends, visitors) {
+    total_score = calcTotalScore(user, friends, visitors);
+  }
   return answer;
 }
 problem7(
@@ -71,7 +80,7 @@ problem7(
     ["shakevan", "jun"],
     ["shakevan", "mrko"],
   ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan", "jun"]
+  ["bedi", "bedi", "donut", "bedi", "shakevan"]
 );
 //친구관계에서 각각의 친구 정리하기
 // mrko : "dount","shakevan"
