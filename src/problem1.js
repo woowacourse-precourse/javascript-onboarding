@@ -28,6 +28,22 @@ function getGreaterNumber(a, b) {
   return a >= b ? a : b;
 }
 
+/**
+ * @param {number} leftPage
+ * @param {number} rightPage
+ */
+function calculateScore(leftPage, rightPage) {
+  const greaterNumFromLeft = getGreaterNumber(
+    calculateSumOfDigits(leftPage),
+    calculateProductOfDigits(leftPage)
+  );
+  const greaterNumFromRight = getGreaterNumber(
+    calculateSumOfDigits(rightPage),
+    calculateProductOfDigits(rightPage)
+  );
+  return getGreaterNumber(greaterNumFromLeft, greaterNumFromRight);
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
