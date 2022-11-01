@@ -2,6 +2,7 @@ function problem7(user, friends, visitors) {
   var answer;
   const user_friends = findFriends(user, friends);
   const all_people = allPeople(user, friends, visitors);
+  const not_user_friends = all_people.filter((x) => !user_friends.includes(x));
   return answer;
 }
 
