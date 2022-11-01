@@ -30,7 +30,7 @@ describe("problem2", () => {
 });
 
 describe("problem3", () => {
-  test("case1", () => {x
+  test("case1", () => {
     expect(problem3(13)).toEqual(4);
   });
   test("case2", () => {
