@@ -1,5 +1,41 @@
+function validateInput(input) {
+  return input[0] >= 1 && input[0] < 400 && input[1] - input[0] === 1;
+}
+
+function calculatePageNumber(page) {
+  let add = 0;
+  let multiply = 1;
+  while (page > 0) {
+    add += page % 10;
+    multiply *= page % 10;
+    page = parseInt(page / 10);
+  }
+  return add > multiply ? add : multiply;
+}
+
+function getScore(pages) {
+  const leftPage = calculatePageNumber(pages[0]);
+  const rightPage = calculatePageNumber(pages[1]);
+  return leftPage > rightPage ? leftPage : rightPage;
+}
+
+function findWinner(pobiScore, crongScore) {
+  if (pobiScore > crongScore) {
+    return 1;
+  } else if (pobiScore < crongScore) {
+    return 2;
+  } else {
+    return 0;
+  }
+}
+
 function problem1(pobi, crong) {
-  var answer;
+  let answer;
+  if (!validateInput(pobi) || !validateInput(crong)) return -1;
+
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+  answer = findWinner(pobiScore, crongScore);
   return answer;
 }
 
