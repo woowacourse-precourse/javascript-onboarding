@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
   let scoreObj = {};
   let knowUser = [];
 
@@ -24,15 +24,29 @@ function problem7(user, friends, visitors) {
   }
 
   for (const v of visitors) {
-    if(!(v in scoreObj)) {
+    if (!(v in scoreObj)) {
       scoreObj[v] = 0;
     }
-    console.log(v, scoreObj[v]);
     scoreObj[v]++;
   }
 
-  console.log(scoreObj);
+  let scores = Object.values(scoreObj);
+  scores.sort(function (a, b) {
+    if (a > b) return -1;
+    else if (a < b) return 1;
+    else return 0;
+  });
 
+  for (const [n, s] of Object.entries(scoreObj)) {
+    for (let i = 0; i < scores.length; i++) {
+      if (s === scores.sort()[i]) {
+        answer.push(n);
+      }
+    }
+  }
+
+  answer = answer.filter(x => !knowUser.includes(x) && x !== user)
+  answer = Array.from(new Set(answer));
 
   return answer;
 }
