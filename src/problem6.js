@@ -53,7 +53,7 @@ function checkName(crew, forms){
 }
 
 function preAnswer(emailArr){
-  const answer =[... new Set(emailArr)]
+  const answer = Array.from(new Set(emailArr))
   return answer.sort()
 }
 
