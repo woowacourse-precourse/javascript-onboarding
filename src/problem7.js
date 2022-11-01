@@ -30,6 +30,9 @@ function problem7(user, friends, visitors) {
     scores.set(elem, scores.get(elem) + 1 || 1);
   });
 
+  // 친구 제거
+  userFriends.forEach((elem) => scores.delete(elem));
+
   return answer;
 }
 
