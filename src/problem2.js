@@ -12,8 +12,7 @@ function problem2(cryptogram) {
     duplicatePairRegExp.test(str)
       ? getDuplicateRemoved(str.replace(duplicatePairRegExp, ""))
       : str;
-  var answer;
-  return answer;
+  return getDuplicateRemoved(cryptogram);
 }
 
 module.exports = problem2;
