@@ -1,5 +1,8 @@
 function problem6(forms) {
   let answer = [];
+  //신청할 수 있는 이메일은 email.com 으로 제한
+  forms = forms.filter((form) => form[0].split('@')[1] === 'email.com');
+
   forms.forEach((form) => {
     form.push(0);
   });
