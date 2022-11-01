@@ -2,15 +2,17 @@ function problem4(word) {
   var answer;
   var changed = "";
 
+  if (word.length < 1 || word.length > 1000) return -1;   //예외처리
+
   for (i = 0; i < word.length; i++) 
-    changed = changed + String.fromCharCode(isAlpha(word[i]));   //변환된 값을 changed에 넣기
+    changed = changed + String.fromCharCode(changeAlpha(word[i]));   //변환된 값을 changed에 넣기
 
   answer = changed;
   return answer;
 }
 
 //변환된 값 ch를 반환
-function isAlpha(word) {
+function changeAlpha(word) {
   ch = word.charCodeAt(0);
 
   if (ch >= 65 && ch <= 90)   //대문자
