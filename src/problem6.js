@@ -18,6 +18,9 @@ function problem6(forms) {
           person2.push(map1.get(person));
         }
       });
+  const set = new Set(person2);
+  const answer = [...set];
+  answer.sort();
   return answer;
 }
 
