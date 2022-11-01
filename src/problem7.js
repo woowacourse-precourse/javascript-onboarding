@@ -60,6 +60,32 @@ const getInitialPointListMap = (friendListMap) => {
 };
 
 /**
+ * 포인트별로 정렬하는 함수 (포인특 같을 경우 이름순으로)
+ * @param {string|number[]} firstPerson
+ * @param {string|number[]} secondPerson
+ * @return {number}
+ */
+const pointSortFunc = (firstPerson, secondPerson) => {
+  const [firstPersonName, firstPersonPoint] = firstPerson;
+  const [secondPersonName, secondPersonPoint] = secondPerson;
+
+  // 비교하는 두 대상의 point가 같을 경우
+  if (firstPersonPoint === secondPersonPoint) {
+    if (firstPersonName > secondPersonPoint) {
+      return 1;
+    }
+    if (firstPersonName < secondPersonName) {
+      return -1;
+    }
+    if (firstPersonName === secondPersonName) {
+      return 0;
+    }
+  }
+
+  return secondPersonPoint - firstPersonPoint;
+};
+
+/**
  * main 함수
  * @param {string} user
  * @param {string[][]} friends
