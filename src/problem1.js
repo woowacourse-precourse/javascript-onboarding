@@ -18,6 +18,8 @@ function problem1(pobi, crong) {
   if (pobiLeft < 1 || pobiRight < 1 || crongLeft < 1 || crongRight < 1) answer = -1
   if (pobiLeft > 400 || pobiRight > 400 || crongLeft > 400 || crongRight > 400) answer = -1
   if ((pobiRight - pobiLeft) !== 1 || (crongRight - crongLeft) !== 1) answer = -1
+  if (pobiLeft % 2 !== 1 || crongLeft % 2 !== 1) answer = -1
+  if (pobiRight % 2 !== 0 || crongRight % 2 !== 0) answer = -1
   return answer;
 }
 
