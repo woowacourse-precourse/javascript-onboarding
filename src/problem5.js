@@ -1,6 +1,6 @@
 function problem5(money) {
   var answer = [];
-  return bigUnitReturn(money, answer);;
+  return bigUnitReturn(money, answer);
 }
 
 module.exports = problem5;
