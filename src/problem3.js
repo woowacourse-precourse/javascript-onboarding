@@ -11,12 +11,12 @@ const countTargetNums = (num) => {
 };
 
 function problem3(number) {
-  let answer = 0;
+  let count = 0;
   for (let i = 1; i <= number; i++) {
-    answer += countTargetNums(i);
+    count += countTargetNums(i);
   }
 
-  return answer;
+  return count;
 }
 
 module.exports = problem3;

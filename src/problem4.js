@@ -17,16 +17,16 @@ const convertChar = (char) => {
 };
 
 function problem4(word) {
-  let answer = "";
+  let convertedWord = "";
   [...word].forEach((char) => {
     if (!isAlphabet(char)) {
-      answer += char;
+      convertedWord += char;
     } else {
-      answer += convertChar(char);
+      convertedWord += convertChar(char);
     }
   });
 
-  return answer;
+  return convertedWord;
 }
 
 module.exports = problem4;

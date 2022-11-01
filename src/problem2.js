@@ -1,4 +1,4 @@
-const removeOverlapChar = (string) => {
+const deleteOverlapChar = (string) => {
   let removeIdx = [];
   [...string].forEach((char, idx) => {
     if (char === string[idx - 1]) removeIdx.push(idx, idx - 1);
@@ -10,7 +10,7 @@ const removeOverlapChar = (string) => {
 function problem2(cryptogram) {
   let isOverlap = true;
   while (isOverlap) {
-    const removedString = removeOverlapChar(cryptogram);
+    const removedString = deleteOverlapChar(cryptogram);
     if (cryptogram === removedString) isOverlap = false;
     else cryptogram = removedString;
   }
