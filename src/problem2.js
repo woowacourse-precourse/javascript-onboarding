@@ -4,6 +4,9 @@ function problem2(cryptogram) {
   while(count < cryptogram.length){
     if(answer[answer.length-1] === cryptogram[count]){
       answer = answer.substring(0,answer.length-1);
+      while(cryptogram[count] === cryptogram[count+1]){
+        count++;
+      }
     }
     else{
       answer += cryptogram[count];
