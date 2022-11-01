@@ -14,6 +14,7 @@ function frog(ascii){
 function problem4(word) {
   let frogWord = '';
 
+  // 문자 하나씩 변환
   for(let i=0;i<word.length;i++){
     // 문자의 아스키코드 구하기
     const ascii = word.charCodeAt(i);

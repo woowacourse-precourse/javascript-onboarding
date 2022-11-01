@@ -2,6 +2,7 @@ function problem6(forms) {
   const map = new Map();
   const set = new Set();
 
+  // 겹칠수 있는 모든 경우의 수 준비
   forms.map(el=>{
     const [email, nick] = el;
 
@@ -17,12 +18,13 @@ function problem6(forms) {
     }
   })
 
+  // 중복 검사
   map.forEach((emails)=>{
     if(emails.length > 1) // 닉네임에 해당되는 이메일이 2개 이상인 경우
       emails.map(el=>set.add(el)); //집합에 이메일 삽입
   })
 
-  return Array.from(set).sort();
+  return Array.from(set).sort(); // 중복 제거 및 오름차순 정렬
 }
 
 module.exports = problem6;
