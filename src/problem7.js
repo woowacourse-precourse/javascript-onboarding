@@ -17,4 +17,13 @@ function violationChk(user, friends, visitors) {
   return userChk && friendsChk && visitorsChk;
 }
 
+function userChecker(user) {
+  // user의 길이가 1 ~ 30 이하 인지 검사
+  if (user.length >= 1 && user.length <= 30) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 module.exports = problem7;
