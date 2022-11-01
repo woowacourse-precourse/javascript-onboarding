@@ -46,8 +46,7 @@ function problem1(pobi, crong) {
     (max, pageNo) => Math.max(max, getMaxScore(pageNo)),
     0
   );
-  var answer;
-  return answer;
+  return pobiScore === crongScore ? 0 : pobiScore > crongScore ? 1 : 2;
 }
 
 module.exports = problem1;
