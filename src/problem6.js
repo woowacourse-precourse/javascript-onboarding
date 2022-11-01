@@ -18,6 +18,10 @@ function problem6(forms) {
       count++;
     }
   }
+  if (count != forms[0][1].length - 1) {
+    answer.push(forms[0][0]);
+  }
+  answer.sort();
   return answer;
 }
 
