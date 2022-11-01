@@ -63,8 +63,6 @@ function problem1(pobi, crong) {
     return CRONGWIN;
   } else if (crongsMax === pobiMax) {
     return SAME;
-  } else {
-    return EXCEPT;
   }
 }
 module.exports = problem1;
