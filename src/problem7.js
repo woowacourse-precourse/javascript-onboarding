@@ -31,7 +31,9 @@ function problem7(user, friends, visitors) {
   }
 
   for (let i = 0; i <= visitors.length; i++) {
-    if (visitors[i] === total_list[5]) score[visitors[i]] += 1;
+    if (visitors[i] === total_list[5]) {
+      score[visitors[i]] += 1;
+    }
   }
 
   for (let top in score) {
