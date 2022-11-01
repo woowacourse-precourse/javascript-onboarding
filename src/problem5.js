@@ -1,7 +1,12 @@
 function problem5(money) {
   const result = [];
 
-  for (let index = 0; index < BILL_ARRAY.length; index++) {}
+  for (let index = 0; index < BILL_ARRAY.length; index++) {
+    result.push(Math.floor(money / BILL_ARRAY[index]));
+    money = money % BILL_ARRAY[index];
+  }
+
+  return result;
 }
 
 const BILL_ARRAY = Object.freeze([
