@@ -25,10 +25,11 @@ function problem6(forms) {
     }
   })
 
-  // 중복 제거
+  // 중복 제거 및 정렬
   answer = new Set(answer)
   answer = [...answer]
-
+  answer.sort()
+  
   return answer;
 }
 
