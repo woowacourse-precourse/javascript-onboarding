@@ -16,8 +16,20 @@ function friendCheck(friendsArray, id) {
     });
 }
 
+function visitorCheck(visitors, scoreMap, friendArray) {
+  for (const visitor of visitors) {
+    if (!friendArray.includes(visitor)) {
+      let score = 1;
+      if (scoreMap.get(visitor)) score = scoreMap.get(visitor) + 1;
+      scoreMap.set(visitor, score);
+    }
+  }
+}
+
 function problem7(user, friends, visitors) {
   const friendArray = friendCheck(friends, user);
+
+  visitorCheck(visitors, scoreMap, friendArray);
 
   var answer;
   return answer;
