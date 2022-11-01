@@ -67,14 +67,27 @@ function problem7(user, friends, visitors) {
   }
 
   resultSorted.sort(function (a, b) {
-    return b[1] - a[1];
+    if (b[1] < a[1]) {
+      return -1;
+    }
+    if (b[1] > a[1]) {
+      return 1;
+    }
+    if (b[0] < a[0]) {
+      return 1;
+    }
+    if (b[0] > a[0]) {
+      return -1;
+    }
+    return 0;
   });
+  // console.log(resultSorted);
   const result = [];
-  resultSorted.slice(0, 4).forEach((nameScore) => {
+  resultSorted.slice(0, 5).forEach((nameScore) => {
     result.push(nameScore[0]);
   });
 
-  answer = result.sort();
+  answer = result;
 
   return answer;
 }
