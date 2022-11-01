@@ -11,4 +11,11 @@ function problem4(word) {
   return answer;
 }
 
+function isAlphabet(word) {
+  // 입력값이 알파벳인지 검증하는 함수
+  // 정규표현식을 통해 검증(ascii값으로 검증할 경우 코드에 없는 값이 들어올 수도 있음)
+  var regExp = /^[a-zA-Z]+$/;
+  return regExp.test(word);
+}
+
 module.exports = problem4;
