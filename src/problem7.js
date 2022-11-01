@@ -150,19 +150,23 @@ class SNSAlgorithm {
     this._model = new SNSModel(friends, visitors);
   }
 
-  isRecommand(person) {
-    const { _model, _user } = this;
+  getFriendsFor(person) {
+    const { _model } = this;
 
-    return !new Set([_user, ..._model.getFriendRelation().get(_user)]).has(
-      person
-    );
+    return _model.getFriendRelation().get(person) || [];
+  }
+
+  isRecommand(person) {
+    const { _user } = this;
+
+    return !new Set([_user, ...this.getFriendsFor(_user)]).has(person);
   }
 
   scroeFriendToFriend() {
     const { _model, _user } = this;
 
-    [..._model.getFriendRelation().get(_user)]
-      .flatMap((friend) => [..._model.getFriendRelation().get(friend)])
+    this.getFriendsFor(_user)
+      .flatMap((friend) => [...this.getFriendsFor(friend)])
       .filter((person) => this.isRecommand(person))
       .forEach((person) => (_model.getScoreBoard()[person] += 10));
   }
