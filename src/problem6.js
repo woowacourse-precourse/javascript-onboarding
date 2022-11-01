@@ -16,8 +16,15 @@ function checkAndUpdateCache(form, cache) {
 }
 
 function problem6(forms) {
-  var answer;
-  return answer;
+  let cache = {
+    result: [],
+  };
+
+  forms.forEach((form) => {
+    cache = checkAndUpdateCache(form, cache);
+  });
+
+  return cache.result.sort();
 }
 
 module.exports = problem6;
