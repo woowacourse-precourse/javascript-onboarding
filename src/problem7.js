@@ -51,6 +51,9 @@ function problem7(user, friends, visitors) {
       else if (score1[0] < score2[0]) return -1;
     } else return -1;
   });
+  for (let i = 0; i < 5; i++) {
+    if (scoreList[i][1] != -1) answer.push(scoreList[i][0]);
+  }
   return answer;
 }
 
