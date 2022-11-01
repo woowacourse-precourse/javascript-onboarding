@@ -1,6 +1,13 @@
 function problem6(forms) {
   let emailArr = forms.map((x) => x[0]);
   let nameArr = forms.map((x) => x[1]);
+  let indexArr = findSameNameIndexArr(emailArr, nameArr);
+  let answer = [];
+  for (let i = 0; i < indexArr.length; i++) {
+    answer.push(emailArr[indexArr[i]]);
+  }
+  answer.sort();
+  return answer;
 }
 function findPossibleNameArr(nickName) {
   let duplicatePossibleNameArr = [];
