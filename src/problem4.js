@@ -3,23 +3,23 @@ function problem4(word) {
   const upperAlpha = lowerAlpha.toUpperCase();
   const reverseLowerAlpha = lowerAlpha.split("").reverse().join("");
   const reverseUpperAlpha = reverseLowerAlpha.toUpperCase();
-  let result = "";
+  let answer = "";
 
   word.split("").map((num) => {
     if (upperAlpha.includes(num)) {
-      result += reverseUpperAlpha[upperAlpha.indexOf(num)];
+      answer += reverseUpperAlpha[upperAlpha.indexOf(num)];
     }
 
     if (lowerAlpha.includes(num)) {
-      result += reverseLowerAlpha[lowerAlpha.indexOf(num)];
+      answer += reverseLowerAlpha[lowerAlpha.indexOf(num)];
     }
 
     if (num === " ") {
-      result += " ";
+      answer += " ";
     }
   })
 
-  return result;
+  return answer;
 }
 
 module.exports = problem4;
