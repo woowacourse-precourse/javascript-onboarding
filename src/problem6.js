@@ -14,11 +14,15 @@ function problem6(forms) {
     }
   }
 
-  for (let item of overlapSet) {
-    answer.push(forms[item][0]);
-  }
-
-  return answer.sort();
+  answer = overlapEmail(forms, overlapSet);
+  return answer;
 }
 
+function overlapEmail(forms, overlapSet) {
+  const arr = [];
+  for (let item of overlapSet) {
+    arr.push(forms[item][0]);
+  }
+  return arr.sort();
+}
 module.exports = problem6;
