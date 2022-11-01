@@ -1,12 +1,18 @@
 const findDuplicatedIndex = (word, startIndex) => {
-  let duplicatedInd = -1;
+  let duplicatedStartInd = -1;
+  let duplicatedEndInd = -1;
   for (let i = startIndex; i < word.length - 1; i++) {
     if (word[i] === word[i + 1]) {
-      duplicatedInd = i;
-      break;
+      if (duplicatedStartInd === -1) {
+        duplicatedStartInd = i;
+        duplicatedEndInd = i + 1;
+      }
+      if (duplicatedStartInd !== -1) {
+        duplicatedEndInd = i + 1;
+      }
     }
   }
-  return duplicatedInd;
+  return [duplicatedStartInd, duplicatedEndInd];
 };
 
 function problem2(cryptogram) {
@@ -14,10 +20,10 @@ function problem2(cryptogram) {
   let nowInd = 0;
   let word = cryptogram.split("");
   while (nowInd < word.length) {
-    const dupliIndex = findDuplicatedIndex(word, nowInd);
-    if (dupliIndex !== -1) {
-      word.splice(dupliIndex, 2);
-      nowInd = dupliIndex - 1;
+    const [start, end] = findDuplicatedIndex(word, nowInd);
+    if (start !== -1) {
+      word.splice(start, end - start + 1);
+      nowInd = start - 1;
       continue;
     }
     break;
