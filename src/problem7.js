@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  const  mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
 }
 
 module.exports = problem7;
