@@ -11,6 +11,10 @@ const isLowerAlphabet = (char) => {
   return regExp.test(char);
 }
 
+const encryptUpperAlphabet = (char) => {
+  return String.fromCharCode('A'.charCodeAt(0) + 'Z'.charCodeAt(0) - char.charCodeAt(0))
+}
+
 }
 
 module.exports = problem4;
