@@ -1,4 +1,5 @@
 function problem7(user, friends, visitors) {
+  let answer = [];
   let scores = {};
   let myfriends = [];
   friends.forEach((friend) => {
@@ -25,18 +26,12 @@ function problem7(user, friends, visitors) {
       }
     }
   });
-  Object.fromEntries(
-    Object.entries(scores).sort(([name1, score1], [name2, score2]) => {
-      if (score1 < score2) return -1;
-      else if (score1 > score2) return 1;
-      else {
-        if (name1 < name2) return -1;
-        else return 1;
-      }
-    })
-  );
+  const sortedScores = sortByScoreName(scores);
+  for (key of Object.keys(sortedScores)) {
+    if (!myfriends.includes(key)) answer.push(key);
+  }
 
-  return Object.keys(scores).slice(0, 6);
+  return answer.slice(0, 6);
 }
 
 function findFriend(relation, user) {
@@ -47,18 +42,36 @@ function findFriend(relation, user) {
   }
 }
 
+function sortByScoreName(object) {
+  return Object.fromEntries(
+    Object.entries(object).sort(([name1, score1], [name2, score2]) => {
+      if (score1 < score2) return 1;
+      else if (score1 > score2) return -1;
+      else {
+        if (name1 < name2) return -1;
+        else return 1;
+      }
+    })
+  );
+}
+
 module.exports = problem7;
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+console.log(
+  problem7(
+    "mrko",
+    [
+      ["mrko", "jun"],
+      ["bedi", "jun"],
+      ["bedi", "donut"],
+      ["donut", "jun"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["jun", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"],
+    ],
+    ["donut", "shakevan"]
+  )
 );
 
 /*
