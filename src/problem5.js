@@ -1,4 +1,7 @@
 function problem5(money) {
+  if (money < 1 || money > 1000000 || money % 1 !== 0) {
+    return "금액은 1 이상 1,000,000 이하의 자연수여야 합니다.";
+  }
   var answer;
   const result = [];
 
