@@ -37,7 +37,7 @@ function problem6(forms) {
     }
   }
 
-  return nickNameList;
+  return result.sort();
 }
 
 module.exports = problem6;
