@@ -1,6 +1,7 @@
-function problem2(cryptogram) {
-  var answer;
+// test sample 추가
+console.log(problem2("bronnaon"));
 
+function problem2(cryptogram) {
   // empty stack 선언
   var stack = [];
   let arr = [...cryptogram]; // 배열로 할당
@@ -19,8 +20,7 @@ function problem2(cryptogram) {
       }
     }
   }
-
-  return answer;
+  return arr;
 }
 
 module.exports = problem2;
