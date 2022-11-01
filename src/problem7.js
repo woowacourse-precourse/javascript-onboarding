@@ -20,6 +20,22 @@ function problem7(user, friends, visitors) {
     SaveF(element[0], element[1]);
     SaveF(element[1], element[0]);
   });
+
+      // 친구를 담는 Set 생성(중복제거)
+      const userFriendsSet = new Set(fdobj[user][0]);
+    
+
+      // 겹치는 친구 수 판별 및 점수부여
+      for (const key in fdobj) {
+        if (key === user) {
+          continue;
+        }
+        fdobj[key][0].forEach((element) => {
+          if (userFriendsSet.has(element)) {
+            fdobj[key][1] += 10;
+          }
+        });
+      }
 }
 
 module.exports = problem7;
