@@ -1,7 +1,7 @@
 function problem6(forms) {
   let answer = [];
   forms.forEach((crew) => {
-    const [email, name] = crew;
+    const name = crew[1];
     for (let i = 0; i < name.length - 1; i++) {
       const target = name[i] + name[i + 1];
       forms.forEach((crew) => {
@@ -12,18 +12,20 @@ function problem6(forms) {
       });
     }
   });
-  console.log(answer);
+  answer.sort();
   return answer;
 }
 
 module.exports = problem6;
-problem6([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-]);
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 /* 
 1. forms의 루프를 돌면서
