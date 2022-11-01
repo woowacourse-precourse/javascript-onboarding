@@ -11,39 +11,45 @@ function problem5(money) {
     if (Math.floor(money / A) > 0) {
       moneybox[0] += 1;
       money -= A;
+      continue;
     }
-    else if (Math.floor(money / B) > 0) {
+    if (Math.floor(money / B) > 0) {
       moneybox[1] += 1;
       money -= B;
+      continue;
     }
-    else if (Math.floor(money / C) > 0) {
+    if (Math.floor(money / C) > 0) {
       moneybox[2] += 1;
       money -= C;
+      continue;
     }
-    else if (Math.floor(money / D) > 0) {
+    if (Math.floor(money / D) > 0) {
       moneybox[3] += 1;
       money -= D;
+      continue;
     }
-    else if (Math.floor(money / E) > 0) {
+    if (Math.floor(money / E) > 0) {
       moneybox[4] += 1;
       money -= E;
+      continue;
     }
-    else if (Math.floor(money / F) > 0) {
+    if (Math.floor(money / F) > 0) {
       moneybox[5] += 1;
       money -= F;
+      continue;
     }
-    else if (Math.floor(money / G) > 0) {
+    if (Math.floor(money / G) > 0) {
       moneybox[6] += 1;
       money -= G;
+      continue;
     }
-    else if (Math.floor(money / H) > 0) {
+    if (Math.floor(money / H) > 0) {
       moneybox[7] += 1;
       money -= H;
+      continue;
     }
-    else {
-      moneybox[8] = money
-      money -= money;
-    }
+    moneybox[8] = money
+    money -= money;
   }
   return moneybox;
 }
