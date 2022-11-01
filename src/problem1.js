@@ -32,8 +32,8 @@ function getValue(a) {
 
 function exceptHandling(a) {
     if (a.length !== 2) return 1;
-    if (a[0] === 1 && a[1] === 2) return 1
-    else if (a[0] === 399 && a[1] === 400) return 1
+    if (a[0] <= 1 && a[1] <= 2) return 1
+    if (a[0] >= 399 && a[1] >= 400) return 1
     if (a[1] - a[0] !== 1) return 1
     if(a[0]%2!=1 || a[1]%2!=0) return 1
 }
