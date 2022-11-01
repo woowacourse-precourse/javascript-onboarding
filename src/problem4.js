@@ -21,6 +21,8 @@ function problem4(word) {
       answer[i] = lowerReverseSet[lowerSet.indexOf(v)];
     }
   })
+
+  return answer.join('');
 }
 
 module.exports = problem4;
