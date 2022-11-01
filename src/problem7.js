@@ -24,6 +24,15 @@ function problem7(user, friends, visitors) {
     }
   }
   console.log(score);
+
+  for (visitor of visitors) {
+    if (connected[user].has(visitor)) {
+      continue;
+    }
+    setDefaultScore(score, visitor, 1);
+  }
+  console.log(score);
+  
   var answer;
   return answer;
 }
