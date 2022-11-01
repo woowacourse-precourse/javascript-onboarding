@@ -25,5 +25,4 @@ function problem2(cryptogram) {
   answer = cryptogram;
   return answer;
 }
-
 module.exports = problem2;
