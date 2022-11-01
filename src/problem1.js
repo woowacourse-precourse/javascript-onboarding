@@ -1,6 +1,4 @@
 function problem1(pobi, crong) {
-  var answer;
-
   if (
     pobi[1] - pobi[0] != 1 ||
     crong[1] - crong[0] != 1 ||
@@ -27,6 +25,8 @@ function problem1(pobi, crong) {
 
   const pobiMax = Math.max(...pobiScore);
   const crongMax = Math.max(...crongScore);
+
+  const answer = pobiMax === crongMax ? 0 : pobiMax > crongMax ? 1 : 2;
 
   return answer;
 }
