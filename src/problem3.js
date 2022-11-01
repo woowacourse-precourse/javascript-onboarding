@@ -29,7 +29,7 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     const count = calculateClapCount(i);
 
-    if (count !== 0) answer += count;
+    answer += count;
   }
 
   return answer;
