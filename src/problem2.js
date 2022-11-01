@@ -13,3 +13,14 @@ function checkRepetition(string) {
   }
   return false;
 }
+
+// return string after removing repetition
+function removeRepetition(string) {
+  let result = "";
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== string[i + 1] && string[i] !== string[i - 1]) {
+      result += string[i];
+    }
+  }
+  return result;
+}
