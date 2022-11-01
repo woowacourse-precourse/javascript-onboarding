@@ -92,28 +92,28 @@ function checkOverlap(forms) {
   const overlapArr = [];
   for (let i = 0; i < forms.length; i++) {
     const substrNickNameArr = substrNickName(forms[i][1]);
-    let isPush = false;
     for (let j = 0; j < substrNickNameArr.length; j++) {
-      if (overlapSet.has(substrNickNameArr[j]) && !isPush) {
+      if (overlapSet.has(substrNickNameArr[j])) {
         overlapArr.push(forms[i][0]);
-        isPush = true;
       }
       overlapSet.add(substrNickNameArr[j]);
     }
   }
-  const overlapSet = new Set();
+  overlapSet.clear();
   for (let i = forms.length - 1; i > -1; i--) {
     const substrNickNameArr = substrNickName(forms[i][1]);
-    let isPush = false;
     for (let j = 0; j < substrNickNameArr.length; j++) {
-      if (overlapSet.has(substrNickNameArr[j]) && !isPush) {
-        overlapArr.push(forms[i][0]);
-        isPush = true;
+      if (overlapSet.has(substrNickNameArr[j])) {
+        if (!overlapArr.includes(overlapArr.push(forms[i][0]))) {
+          overlapArr.push(forms[i][0]);
+        }
       }
       overlapSet.add(substrNickNameArr[j]);
     }
   }
-  return overlapArr.sort();
+  const returnSet = new Set(overlapArr);
+  return [...returnSet].sort();
+  // return overlapArr.sort();
 }
 
 function problem6(forms) {
