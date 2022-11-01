@@ -2,10 +2,8 @@ function problem3(number) {
 
 
   numList= Array.prototype.slice.call(String(number));
-  //console.log(numList.at(-1),numList[0],numList.length);
 
   //첫번째 자릿수, 마지막 자릿수, 숫자의 길이 저장해주기
-  //const lastDigit = Number(numList.at(-1));
   const firstDigit=Number(numList[0]);
   const iterationNumer= Number(numList.length);
   let totalCount=[]
@@ -37,7 +35,6 @@ function problem3(number) {
               temp2= temp2 +(parseInt(firstDigit/3)-1)*(10**i) + (smallNumber + 1)
           totalCount.push(temp2)
       }
-
       else{
           prevCount=totalCount.at(-1)
           temp= prevCount * 9 + 3*(10**(i))
