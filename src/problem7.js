@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-	// 4. 가장 높은 순 5명 추천, 점수 같으면 이름순, 0점인 경우 추천하지 않음
 	let answer;
 	let friendDict = new Object();
 	let scoreDict = new Object();
@@ -51,6 +50,16 @@ function problem7(user, friends, visitors) {
 	});
 
 	console.log(scoreDict);
+
+	// 4. 가장 높은 순 5명 추천, 점수 같으면 이름순, 0점인 경우 추천하지 않음
+	let sorted = Object.entries(scoreDict)
+		.sort(([, a], [, b]) => b - a)
+		.slice(0, 4)
+		.map((item) => {
+			return item[0];
+		});
+	answer = sorted;
+	console.log(answer);
 
 	return answer;
 }
