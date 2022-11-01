@@ -39,7 +39,22 @@ function problem7(user, friends, visitors) {
   const friendRelation = findRelation(user, friends);
   const friendScore = friendToObj(friendRelation);
   const friendAndVisitorScore = visitorToObj(friendScore, visitors);
+  const recommendFriend = Object.keys(friendAndVisitorScore);
 
+  //추천 친구가 함께 아는 친구와 방문 횟수를 감지하여 점수 더하기
+  recommendFriend.forEach((rf) => {
+    friends.forEach((friend) => {
+      if (friend.includes(rf)) {
+        recommendFriend[rf] += 10;
+      }
+    });
+
+    visitors.forEach((visitor) => {
+      if (visitor === rf) {
+        recommendFriend[rf] += 1;
+      }
+    })
+  })
   let answer;
   return answer;
 }
