@@ -1,4 +1,4 @@
-const CHAR_LNEGTH = 26;
+const CHAR_LENGTH = 26;
 const charArr = new Array(26).fill().map((_, i) => String.fromCharCode(i + 97));
 
 const isAlphabet = (char) => {
@@ -11,7 +11,7 @@ const isUpperCase = (char) => {
 
 const convertChar = (char) => {
   const idx = charArr.indexOf(char.toLowerCase());
-  const convertedChar = charArr[CHAR_LNEGTH - idx - 1];
+  const convertedChar = charArr[CHAR_LENGTH - idx - 1];
 
   return isUpperCase(char) ? convertedChar.toUpperCase() : convertedChar;
 };
