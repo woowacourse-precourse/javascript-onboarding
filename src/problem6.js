@@ -23,8 +23,15 @@ function getAllCandidateWords(nickname) {
   return [...candidateWords];
 }
 
+function isDuplicate(word, emailMap) {
+  return word in emailMap;
+}
+
+function isUnregisteredEmail(arr) {
+  return arr.length === 1;
+}
+
 function problem6(forms) {
-  var answer = [];
   const emailMap = {};
   const resultSet = new Set();
 
@@ -33,8 +40,24 @@ function problem6(forms) {
     if (!isProperKorean(nickname)) return;
 
     const candidateWords = getAllCandidateWords(nickname);
+
+    candidateWords.forEach((word) => {
+      if (!isDuplicate(word, emailMap)) {
+        emailMap[word] = [email];
+        return;
+      }
+      resultSet.add(email);
+
+      const duplicatedEmails = emailMap[word];
+
+      if (isUnregisteredEmail(duplicatedEmails)) {
+        resultSet.add(duplicatedEmails[0]);
+        duplicatedEmails.push(email);
+      }
+    });
   });
 
+  const answer = [...resultSet].sort((a, b) => b - a);
   return answer;
 }
 
