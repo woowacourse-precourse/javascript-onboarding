@@ -169,4 +169,43 @@ function timeLineChk(candidates, visitors, friendsArr) {
   return result;
 }
 
+// 추천 친구를 정렬하고 점수가 높은 순으로 아이디 5개를 리턴하는 함수
+function recommandArr(score) {
+  // 최종 결과 배열
+  var result = [];
+  // 점수 별로 분리된 배열들을 각각 정렬할 배열
+  var resultArr = [[]];
+  // 전달 받은 추천 목록을 value가 큰 순으로 정렬하여 배열 형태로 저장
+  var scoreSort = [...score.entries()].sort((a, b) => b[1] - a[1]);
+
+  var currentVal = scoreSort[0][1];
+  var currentIdx = 0;
+
+  for (var i = 0; i < scoreSort.length; i++) {
+    // 현재 확인 중인 점수와 같은 점수인지 확인
+    if (scoreSort[i][1] === currentVal) {
+      // 같으면 배열의 해당 인덱스에 유저 아이디를 추가
+      resultArr[currentIdx] = resultArr[currentIdx].concat(scoreSort[i][0]);
+    } else {
+      // 다르면 인덱스 번호+1
+      currentIdx++;
+      // 다음 점수대의 유저를 담을 배열 추가
+      resultArr.push([]);
+      // 다음 인덱스의 배열에 유저 아이디 추가
+      resultArr[currentIdx] = resultArr[currentIdx].concat(scoreSort[i][0]);
+    }
+  }
+
+  // 점수 별로 나눠진 배열에서 알파벳 순으로 정렬 후 result 배열에 병합
+  for (var j = 0; j < resultArr.length; j++) {
+    resultArr[j] = resultArr[j].sort();
+    result = result.concat(resultArr[j]);
+  }
+
+  // 상위 5개만 배열에 저장
+  result = result.filter((e) => result.indexOf(e) < 5);
+
+  return result;
+}
+
 module.exports = problem7;
