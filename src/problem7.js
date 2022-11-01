@@ -116,7 +116,7 @@ function DuplicatedArrayToDesending(array) {
 }
 
 // 측정한 점수가 담긴 이중배열을 받아 오름 차순으로 정돈 후
-// 조건에 따라 값을 반환하는 함수
+// 조건에 따라 순차적으로 이름 배열을 반환하는 함수
 function problem7(user, friends, visitors) {
   const friendsAndScoreArr = checkSoreOfVisitor(friends, visitors);
   let answerArr = DuplicatedArrayToDesending([...friendsAndScoreArr]);
