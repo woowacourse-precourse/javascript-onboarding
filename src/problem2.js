@@ -1,4 +1,5 @@
 function problem2(cryptogram) {
+  var answer;
   cryptogram = cryptogram.split("");
   for (let i = 0; i < cryptogram.length; i++) {
     if (cryptogram[i] === cryptogram[i + 1]) {
@@ -7,8 +8,8 @@ function problem2(cryptogram) {
       i = -1;
     }
   }
-
-  return cryptogram.join("");
+  answer = cryptogram.join("");
+  return answer;
 }
 
 module.exports = problem2;

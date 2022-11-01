@@ -1,7 +1,7 @@
 function problem3(number) {
-  let answer = 0;
-  let arr = [];
-  let splitnumbers;
+  var answer = 0;
+  var arr = [];
+  var splitnumbers;
   for (i = 1; i <= number; i++) {
     arr.push(String(i));
   }
