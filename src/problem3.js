@@ -1,6 +1,12 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  let count = 0;
+  for (let i = 1; i <= number; i ++) {
+    count += countMultiple3OfEachDigit(i)
+  }
+
+  return count;
+}
+
 const countMultiple3OfEachDigit = (num) => {
   let count = 0
   while (num > 0) {
