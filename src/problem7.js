@@ -12,6 +12,18 @@ function findPeople(friends) {
   people = [...new Set(people)];
   return people;
 }
+// 친구 찾기
+function findFriends(person, friends) {
+  const myFriends = [];
+  friends.forEach((data) => {
+    if (data.indexOf(person) === 1) {
+      myFriends.push(data[0]);
+    } else if (data.indexOf(person) === 0) {
+      myFriends.push(data[1]);
+    }
+  });
+  return myFriends;
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
