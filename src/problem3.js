@@ -11,6 +11,15 @@ function count369(num) {
   return count;
 }
 
+function clap(number) {
+  let clapCount = 0;
+
+  for (let num = 1; num <= number; num++) {
+    clapCount += count369(num);
+  }
+  return clapCount;
+}
+
 function problem3(number) {
   var answer;
   return answer;
