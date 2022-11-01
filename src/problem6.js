@@ -5,6 +5,7 @@ function returnSimilarName(forms){
   forms.forEach(userArray => {
     const userEmail = userArray[0];
     const userName = userArray[1];
+    let nameTmpCheckBox = {};
     let userUnitName = '';
     let preUserName = '';
     let preUserEmail = '';
@@ -23,9 +24,10 @@ function returnSimilarName(forms){
         emailReturnBox[userEmail] = userName;
       }
       else{
-        nameCheckBox[userUnitName] = [userName, userEmail];
+        nameTmpCheckBox[userUnitName] = [userName, userEmail]
       }
     }
+    nameCheckBox = {...nameCheckBox, ...nameTmpCheckBox};
   });
   return emailReturnBox;
 }
@@ -48,7 +50,7 @@ function problem6(forms) {
   return resultEmailArray;
 }
 
-console.log(problem6([["jm@email.com", "제이엠"],
+console.log(problem6([["jm@email.com", "유소정소정소정"],
 ["jason@email.com", "제이슨"], 
 ["woniee@email.com", "워니"], 
 ["mj@email.com", "엠제이"], 
