@@ -14,3 +14,6 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a number(=money) and returns required units in an array 
