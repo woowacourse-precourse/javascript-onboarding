@@ -57,7 +57,6 @@ function problem1(pobi, crong) {
 	// 각자 점수 계산
 	const pobiResult = compare(pobi.map((item) => calculate(item)));
 	const crongResult = compare(crong.map((item) => calculate(item)));
-	console.log(pobiResult, crongResult);
 
 	if (pobiResult > crongResult) {
 		answer = 1;
