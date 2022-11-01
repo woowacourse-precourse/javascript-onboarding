@@ -6,12 +6,13 @@ const lowercase = aCharCodeAt + zCharCodeAt;
 const uppercase = ACharCodeAt + ZCharCodeAt;
 
 function problem4(word) {
-  const answerArr = [];
+  const greenFrogWordList = [];
   for (let char of word) {
     const charCode = greenFrogCharcode(char);
-    answerArr.push(String.fromCharCode(charCode));
+    greenFrogWordList.push(String.fromCharCode(charCode));
   }
-  return answerArr.join("");
+  const greenFrogWord = greenFrogWordList.join("");
+  return greenFrogWord;
 }
 
 function greenFrogCharcode(char) {
