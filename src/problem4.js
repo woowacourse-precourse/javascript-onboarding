@@ -1,10 +1,9 @@
 function problem4(word) {
-  var answer="";
-  let preWord = word.split("")
-  for(let char of preWord){
+  let answer="";
+  const words = word.split("")
+  for(let char of words){
     answer+=changeChar(char)
   }
-
   return answer;
 }
 
