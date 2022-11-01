@@ -68,6 +68,8 @@ const problem6 = (forms) => {
       answer.push(...commonNickName[nickName]);
   });
 
+  // 중복제거 및 정렬
+  answer = [...new Set(answer)].sort();
   return answer;
 };
 
