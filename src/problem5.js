@@ -3,7 +3,14 @@ function problem5(money) {
   
   let answer = [];
 
-  
+  if (money > 0 && money < 1000001 && Number.isInteger(money) === true) {
+    for (let i = 0; i < denominations.length; i++) {
+      let quotient = Math.floor(money / denominations[i]);
+      answer.push(quotient);
+      money = money - (denominations[i] * quotient);
+    }
+    return answer;
+  }
 }
 
 module.exports = problem5;
