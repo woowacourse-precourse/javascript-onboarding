@@ -24,11 +24,25 @@ function problem7(user, friends, visitors) {
 }
 
 function getVisitPoint(user, friends, visitors) {
+  const visitorsExceptFriend = getVisitorsExceptFriend(user, friends, visitors)
   const visitPoint = {}
-  for (let visitor of visitors) {
+  for (let visitor of visitorsExceptFriend) {
     visitPoint[visitor] ? visitPoint[visitor] += 1 : visitPoint[visitor] = 1
   }
   return visitPoint
+}
+
+function getVisitorsExceptFriend(user, friends, visitors) {
+  const visitorsExceptFriend = []
+  const userFriend = checkFriendship(user, friends)
+  const friendList = {}
+  userFriend.forEach((friend) => {
+    friendList[friend] = "friend"
+  })
+  visitors.forEach((visitor) => {
+    if (!friendList[visitor]) visitorsExceptFriend.push(visitor)
+  })
+  return visitorsExceptFriend
 }
 
 function getFriendPoint(user, friends) {
