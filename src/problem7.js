@@ -34,6 +34,13 @@ function CountFriendknowWithTogether(friendknowWithTogether) {
   return result;
 }
 
+function setUnknowFriendsScore(friends, visitors) {
+  const unknowFriend = new Map();
+  friends.flat().forEach((name) => unknowFriend.set(name, 0));
+  visitors.forEach((name) => unknowFriend.set(name, 0));
+  return unknowFriend;
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
@@ -45,6 +52,7 @@ function problem7(user, friends) {
   const friendKnowTogeterWithCount = CountFriendknowWithTogether(
     friendKnowWithTogether
   );
+  const UnknowFriendsScoreSet = setUnknowFriendsScore(friends, visitors);
   return;
 }
 
