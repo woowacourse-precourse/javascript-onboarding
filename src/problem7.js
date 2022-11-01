@@ -12,6 +12,15 @@ function scoreFrinedOfFriends(friendOfFriends, score) {
     score[friendOfFriends[i]] += 10;
   }
 }
+function scoreVisitors(visitors, score) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (score[visitors[i]] === undefined) {
+      score[visitors[i]] = 1;
+      continue;
+    }
+    score[visitors[i]] += 1;
+  }
+}
 
 function getFriendOfFriends(user, friends, originFriends, friendOfFriends) {
   for (let i = 0; i < friends.length; i++) {
