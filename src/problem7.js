@@ -6,6 +6,16 @@ function problem7(user, friends, visitors) {
   const recommandScore = initRecommandScore(allUsers);
   setFriendScore(recommandScore, relations, userFriendList, user);
   setVisitedScore(recommandScore, visitors, userFriendList);
+
+  var answer = Object.entries(recommandScore)
+    .filter(([_, value]) => value !== 0)
+    .sort((a, b) => {
+      if (a[1] === b[1]) return a[0] - b[0];
+      return b[1] - a[1];
+    })
+    .slice(0, 5)
+    .reduce((acc, val) => acc.concat(val[0]), []);
+  return answer;
 }
 
 const getRealtions = (friends) => {
