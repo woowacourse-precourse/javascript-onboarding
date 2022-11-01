@@ -5,6 +5,8 @@ function problem4(word) {
       let isUpper = 0;
       if (/[A-Z]/.test(ch)) isUpper = 1;
       else if (!/[A-Za-z]/.test(ch)) return ch;
+
+      const ascii = ch.toUpperCase().charCodeAt() - 65;
     })
 }
 
