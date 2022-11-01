@@ -3,6 +3,10 @@ const UPPER_LAST_CODE = "Z".charCodeAt(0);
 const LOWER_FIRST_CODE = "a".charCodeAt(0);
 const LOWER_LAST_CODE = "z".charCodeAt(0);
 
+/**
+ * @param {string} char
+ * @returns {boolean}
+ */
 const checkAlpha = (char) => {
   return (
     char.charCodeAt(0) >= UPPER_FIRST_CODE &&
@@ -10,6 +14,10 @@ const checkAlpha = (char) => {
   );
 };
 
+/**
+ * @param {string} char
+ * @returns {boolean}
+ */
 const checkUpperCase = (char) => {
   return (
     char.charCodeAt(0) >= UPPER_FIRST_CODE &&
@@ -17,6 +25,11 @@ const checkUpperCase = (char) => {
   );
 };
 
+/**
+ *
+ * @param {string} char
+ * @returns {number} reverseCode 아스키 코드
+ */
 const getReverseChar = (char) => {
   const isUpper = checkUpperCase(char);
   const charCode = char.charCodeAt(0);
@@ -30,6 +43,11 @@ const getReverseChar = (char) => {
   }
 };
 
+/**
+ * 청개구리 문자 변환
+ * @param {string} char
+ * @returns {string}
+ */
 const convertReserveWord = (char) => {
   if (char === " " || !checkAlpha(char)) return char;
   const reserveChar = String.fromCharCode(getReverseChar(char));
