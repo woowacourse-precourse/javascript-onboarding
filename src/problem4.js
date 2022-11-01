@@ -2,7 +2,7 @@ const CHAR_LENGTH = 26;
 const charArr = new Array(26).fill().map((_, i) => String.fromCharCode(i + 97));
 
 const isAlphabet = (char) => {
-  return char.match(/[a-zA-z]/) ? true : false;
+  return char.match(/[a-zA-Z]/) ? true : false;
 };
 
 const isUpperCase = (char) => {
