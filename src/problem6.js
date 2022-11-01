@@ -1,9 +1,8 @@
 const problem6 = (forms) => {
-  let answer = [];
   let namePieces = [];
   let duplicateIndex = [];
 
-  const nameList = forms.map((form) => form[1].split(""));
+  const nameList = forms.map(([_, name]) => name.split(""));
 
   // prettier-ignore
   nameList.forEach((name) =>
@@ -27,9 +26,7 @@ const problem6 = (forms) => {
 
   duplicateIndex = [...new Set(duplicateIndex)];
 
-  answer = duplicateIndex.map((index) => forms[index][0]).sort();
-
-  return answer;
+  return duplicateIndex.map((index) => forms[index][0]).sort();
 };
 
 module.exports = problem6;
