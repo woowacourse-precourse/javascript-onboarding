@@ -29,8 +29,16 @@
 
 #### 제한사항
 
+- [x] friendObject에 user와 친구인 사람들이 있는 지 확인한다.
+- [x] user의 친구들은 추천하지 않는다.
+- [x] 최대 5명을 return 하도록 한다.
+
 #### 기능 구현
 
 - [x] user와 친구인 배열을 만든다. (userFriends) ex) ['donut', 'shakevan']
 - [x] user와 친구인 사람들이 어떤 관계를 가지는지 확인하는 객체를 만든다. (friendObject) ex) ex) {donut: [], shakevan: []}
 - [x] user와 친구인 사람들의 친구들만 관계를 확인할 수 있는 배열을 만든다. (friendsOfFriends) ex) [['donut', 'andole'], ['shakevan', 'andole']]
+- [x] friendObject에 donut과 친구인 사람들을 모아놓는 배열을 만든다. ex) { donut: [ 'andole', 'jun' ], shakevan: [ 'andole', 'jun' ] }
+- [x] 각 추천자의 score를 확인할 수 있는 counter 배열을 만들고 스코어를 추가한다.
+      ex) `[ { name: 'bedi', score: 3 }, { name: 'andole', score: 20 }, { name: 'jun', score: 20 } ]`
+- [x] 배열 객체에서 스코어에 따라 점수가 가장 높은 순으로 정렬하고 점수가 같다면 이름순으로 정렬한다.

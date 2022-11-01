@@ -24,7 +24,41 @@ function problem7(user, friends, visitors) {
     });
   });
 
-  return;
+  const counter = [];
+
+  const addScore = (array, value, score) => {
+    [...array].map((v) => v.name).includes(value)
+      ? counter.forEach((obj) => {
+          if (obj["name"] === value) {
+            obj.score += score;
+          }
+        })
+      : counter.push({ name: value, score: score });
+  };
+
+  visitors.forEach((visitor) => {
+    if (friendObject[visitor]) {
+      friendObject[visitor].forEach((friendsOfFriend) => {
+        addScore(counter, friendsOfFriend, 10);
+      });
+    }
+
+    if (!userFriends.includes(visitor)) {
+      addScore(counter, visitor, 1);
+    }
+  });
+
+  let sortedByValueAsc = counter.sort((a, b) => {
+    if (a.score < b.score) {
+      return 1;
+    } else if (a.score > b.score) {
+      return -1;
+    } else {
+      return a.name > b.name ? 1 : -1;
+    }
+  });
+
+  return [...sortedByValueAsc].map((v) => v.name).splice(0, 5);
 }
 
 module.exports = problem7;
