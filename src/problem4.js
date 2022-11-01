@@ -10,5 +10,15 @@ function problem4(word) {
   return answer;
 }
 
+function solution(word) {
+  var result = "";
+  for (var i=0; i<word.length; i++) {
+    if (!isLetter(word.charAt(i))) {
+      return result += " ";
+    }
+    var numChar = int (word.charAt(i));
+    
+  }
+}
 
 module.exports = problem4;
