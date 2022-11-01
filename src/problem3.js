@@ -6,7 +6,7 @@ function problem3(number) {
    * @returns {boolean}
    */
   const isThreeSixNine = (digit) =>{
-    return digit === '3' || digit === '6' || digit === '9'
+    return digit === '3' || digit === '6' || digit === '9';
   }
   /**
    * 0부터 받은 인자 까지의 수가 담긴 배열
@@ -25,6 +25,5 @@ function problem3(number) {
   return answer;
   
 }
-
 module.exports = problem3;
 
