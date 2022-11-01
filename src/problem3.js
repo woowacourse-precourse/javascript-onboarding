@@ -5,6 +5,7 @@
 */ 
 function problem3(number) {
   var answer;
+  answer = countClap(number);
   return answer;
 }
 
