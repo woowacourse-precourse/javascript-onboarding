@@ -20,10 +20,23 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  recommend_friends_score = Object.assign(
-    friends_score(unknown_friends),
-    visited_friends(visitors)
-  );
+  const unknown_friends_arr = Object.entries(friends_score(unknown_friends));
+  const visited_friends_arr = Object.entries(visited_friends(visitors));
+
+  for (let m = 0; m < unknown_friends_arr.length; m++) {
+    for (let n = 0; n < visited_friends_arr.length; n++) {
+      if (unknown_friends_arr[m][0] === visited_friends_arr[n][0]) {
+        unknown_friends_arr[m][1] += visited_friends_arr[n][1];
+        visited_friends_arr.splice(n, 1);
+      }
+    }
+  }
+
+  for (let p = 0; p < visited_friends_arr.length; p++) {
+    unknown_friends_arr.push(visited_friends_arr[p]);
+  }
+
+  recommend_friends_score = Object.fromEntries(unknown_friends_arr);
 
   recommend_friends_score = Object.fromEntries(
     Object.entries(recommend_friends_score).sort(([a], [b]) => (a < b ? -1 : 1))
@@ -59,4 +72,5 @@ function friends_score(arr) {
 function visited_friends(arr) {
   return arr.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 }
+
 module.exports = problem7;
