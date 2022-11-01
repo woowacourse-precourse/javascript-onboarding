@@ -1,34 +1,36 @@
+console.log(problem1([131, 132], [31, 32]));
+
 function problem1(pobi, crong) {
-  if (validationArr(pobi) && validationArr(crong)) {
-    return pageGameApp([pobi, crong]);
+  if (checkValidation(pobi) && checkValidation(crong)) {
+    return pageGameApp(pobi, crong);
   }
   return -1;
 }
 
-function validationArr([leftPage, rightPage]) {
+function checkValidation([leftPage, rightPage]) {
   return [leftPage, rightPage].every((page) => 1 <= page && page <= 400) && rightPage - leftPage === 1;
 }
 
-function pageGameApp(PageListArr) {
-  const [pobiMaxScore, crongMaxScore] = PageListArr.map((pageArr) => maxValueCalculator(pageArr));
+function pageGameApp(pobi, crong) {
+  const [pobiMaxScore, crongMaxScore] = [pobi, crong].map((bothPages) => maxValueCalculator(bothPages));
   if (pobiMaxScore === crongMaxScore) return 0;
   return pobiMaxScore > crongMaxScore ? 1 : 2;
 }
 
-function maxValueCalculator(pageArr) {
-  return Math.max(...sumArr(pageArr), ...mulArr(pageArr));
+function maxValueCalculator(pages) {
+  return Math.max(...splitNumberSum(pages), ...splitNumberMul(pages));
 }
 
 function splitNumber(number) {
-  return (number+"").split("").map(Number);
+  return (number + "").split("").map(Number);
 }
 
-function sumArr(pageArr) {
-  return pageArr.map((page)=> splitNumber(page).reduce((totalSum, number) => totalSum += number));
+function splitNumberSum(bothPages) {
+  return bothPages.map((page) => splitNumber(page).reduce((totalSum, splitNumber) => (totalSum += splitNumber)));
 }
 
-function mulArr(pageArr) {
-  return pageArr.map((page)=> splitNumber(page).reduce((totalMul, number) => totalMul *= number,1));
+function splitNumberMul(bothPages) {
+  return bothPages.map((page) => splitNumber(page).reduce((totalMul, splitNumber) => (totalMul *= splitNumber), 1));
 }
 
 module.exports = problem1;
