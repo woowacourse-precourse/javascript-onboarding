@@ -6,7 +6,7 @@ function problem6(forms) {
   let nickname = [];
 
   // 닉네임만 담기
-  for (form of forms) {
+  for (let form of forms) {
     nickname.push(form[1]);
   }
   
@@ -14,10 +14,10 @@ function problem6(forms) {
     let nick = nickname.shift();
 
     // 기능 1
-    let tmpTwoLenNick = makeTwoLenNick(nick);
+    const tmpTwoLenNick = makeTwoLenNick(nick);
 
     // 기능 2
-    tmpNicknameAnswer = checkCaseInNick(tmpTwoLenNick, nickname);
+    const tmpNicknameAnswer = checkCaseInNick(tmpTwoLenNick, nickname);
 
     // 기능 2를 통해 얻은 닉네임들을 nicknameAnswer 배열에 push
     for (let tmpNick of tmpNicknameAnswer) {
@@ -45,7 +45,7 @@ function makeTwoLenNick(nick) {
   const nickLen = nick.length;
 
   for (let i = 0; i < nickLen - 1; i++) {
-    tmp = nick.slice(i, i + 2);
+    let tmp = nick.slice(i, i + 2);
     twoLenNick.push(tmp);
   }
 
@@ -56,8 +56,8 @@ function makeTwoLenNick(nick) {
 function checkCaseInNick(tmpTwoLenNick, nickname) {
   let tmpNicknameAnswer = [];
 
-  for (twoLenNick of tmpTwoLenNick) {
-    for (nick of nickname) {
+  for (let twoLenNick of tmpTwoLenNick) {
+    for (let nick of nickname) {
       if (nick.indexOf(twoLenNick) != -1) {
         tmpNicknameAnswer.push(nick);
       }
@@ -70,8 +70,8 @@ function checkCaseInNick(tmpTwoLenNick, nickname) {
 // 기능 3. 닉네임에 대응하는 이메일 목록 만들기
 function makeEmailList(nicknameAnswer, forms) {
   let answer = [];
-  for (nickname of nicknameAnswer) {
-    for (form of forms) {
+  for (let nickname of nicknameAnswer) {
+    for (let form of forms) {
       if (form[1] == nickname) {
         answer.push(form[0]);
       }
