@@ -60,7 +60,7 @@ describe("problem5", () => {
   test("case4", () => {
     expect(problem5(1)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 1]);
   });
-  
+
   test("case5", () => {
     expect(problem5(1000000)).toEqual([20, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
@@ -96,5 +96,25 @@ describe.only("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [["mrko", 'jun'], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["jun", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(['andole', 'bedi']);
+  });
+
+  test("case3", () => {
+    expect(
+      problem7(
+        "andole",
+        [["andole", 'jun'], ["donut", "jun"], ["donut", "shakevan"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "bedi"], ["anne", "jun"]],
+        ["donut", "mrko", "peter", "sam"]
+      )
+    ).toEqual(["donut", "anne", "bedi", "mrko", "peter"]);
   });
 });
