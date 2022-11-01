@@ -37,6 +37,17 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  // 방문자 추가
+  visitors.forEach((visitor) => {
+    if (!(visitor in scoreDict)) {
+      // 없다면 추가하고 1점 부여
+      scoreDict[visitor] = 1;
+    } else {
+      // 있다면 1점 추가
+      scoreDict[visitor] += 1;
+    }
+  });
+
   console.log(scoreDict);
   return answer;
 }
