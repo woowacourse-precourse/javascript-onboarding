@@ -3,7 +3,6 @@ function problem7(user, friends, visitors) {
   
   // 1. 친구 관계 객체 생성
   let friendsList = {}
-  // user는 사전에 만들어둠
   friendsList[user] = [];
   for (let i=0; i<friends.length; i++){
     friendsList[friends[i][0]] !== undefined ? friendsList[friends[i][0]].push(friends[i][1]) : friendsList[friends[i][0]] = [friends[i][1]];
@@ -42,8 +41,8 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  // 5. 점수를 통해 answer 산출
-  allUsers = allUsers.sort(); // 알파벳순 정렬
+  // 5. 점수를 통해 answer 산출 - 알파벳 순 정렬 후 scores로 정렬
+  allUsers = allUsers.sort();
   allUsers = allUsers.sort(function(a,b){
     return scores[a] > scores[b] ? -1 : scores[a] < scores[b] ? 1 : 0;
   })
