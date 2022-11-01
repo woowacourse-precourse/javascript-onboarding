@@ -5,7 +5,7 @@ function exceptionCheck(array) {
     throw -1;
   if (array[0] + 1 != array[1])
     throw -1;
-  if (array[0] == 1 || array[0] == 399)
+  if (array[0] <= 1 || array[0] >= 399)
     throw -1;
 }
 
