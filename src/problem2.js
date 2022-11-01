@@ -1,6 +1,16 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer = deleteRepeated(cryptogram)
+  while (true) {
+    prev_answer = answer
+    answer = deleteRepeated(answer)
+    if (answer == prev_answer) {
+      break
+    }
+  }
   return answer;
 }
 
+function deleteRepeated(string) {
+  return string.replace(/([a-z])\1+/g, '')
+}
 module.exports = problem2;
