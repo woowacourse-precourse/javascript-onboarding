@@ -19,12 +19,11 @@
 
 기능 단위 구현
 
-- 1. 화폐(동전)으로 교환해주기 위해 bank라는 array를 만들어준다.
-- 2. forEach를 통해 모든 화폐와 동전을 순환해서 교환가능 하면 화폐(동전)개수를 불가능하면 0를
-     moneyExchanged에 넣는다.
+- 1. 화폐(동전)으로 교환해주기 위해 bank라는 array와 safe라는 객체를 만들어준다.
+- 2. bank.forEach를 통해 모든 화폐와 동전을 순환하며 지폐(동전)으로 변환가능한지 확인한다.
   - 2-1. exchangeCash함수를 통해 화폐(동전)으로 교환가능한지 판별이 되면
-    화폐(동전)의 개수 또는 0을 moneyExchanged에 넣어준다.
+    화폐(동전)의 개수 또는 0을 safe.moneyExchanged에 넣어준다.
     - 2-1_1. money / cashInBank의 값이 1과 같거나 더 크면 정수값을
-      moneyExchanged에 넣어주고 교환하고 남은 돈은 다시 출력해서 기존의 money 값을 바꿔준다.
-    - 2-1_2. money / cashInBank의 값이 1보다 작으면 moneyExchanged에 0을 넣어주고
-      money를 그대로 다시 출력한다
+      safe.moneyExchanged에 넣어주고 교환하고 남은 돈은 safe.change에 넣어준다.
+    - 2-1_2. money / cashInBank의 값이 1보다 작으면 safe.moneyExchanged에 0을 넣어준다.
+- 3. bank.forEach가 순환하면서 변경된 safe와 money를 계속 업데이트해준다.
