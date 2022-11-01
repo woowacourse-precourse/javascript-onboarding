@@ -93,3 +93,21 @@
 <strong>- email 옮긴 새 배열에서의 중복 검사</strong>
 
 <strong>- 최종 email 배열 오름차순으로 정렬해 return</strong>
+
+---
+
+## [ 문제 7 ]
+
+![문제 7](https://user-images.githubusercontent.com/74524184/199220455-9003716e-ab09-47a1-b02a-7913333059de.png)
+
+<strong>- 입력 받은 freinds 배열에서 user와 친구인 요소만 모아 userFriends 새 배열 생성</strong>
+
+<strong>- 입력 받은 friends 배열에서 user & user 친구가 아닌 요소끼리 모아 추천친구 만들기</strong>
+
+<strong>- 추천친구에 name, score+10(나올 때마다 +10) 저장</strong>
+
+<strong>- 입력 받은 visitors 배열에서 user, user 친구가 아닌 요소의 name, score+1(나올 떄마다 +1) 저장</strong>
+
+<strong>- score 높은 순서대로, 동점이면 오름차순으로 최종 추천 친구 저장</strong>
+
+<strong>- 최종 추천 친구 최대 5명까지 return</strong>
