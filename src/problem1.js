@@ -1,3 +1,12 @@
+function handleExceptions(pobi, crong) {
+  if (Math.abs(pobi[0] - pobi[1]) !== 1 || Math.abs(crong[0] - crong[1]) !== 1)
+    return true;
+
+  if ([...pobi, ...crong].some((page) => page <= 1 || page >= 400)) return true;
+
+  return false;
+}
+
 function getResultOfAdd(page) {
   return page
     .toString()
@@ -20,6 +29,10 @@ function getMaxBetweenAddAndMul(pages) {
 }
 
 function problem1(pobi, crong) {
+  const exception = handleExceptions(pobi, crong);
+
+  if (exception) return -1;
+
   const pobiScore = getMaxBetweenAddAndMul(pobi);
   const crongScore = getMaxBetweenAddAndMul(crong);
 
