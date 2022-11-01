@@ -12,12 +12,25 @@
  */
 
 function problem1(pobi, crong) {
-  if (!(isValidPage(pobi) && isValidPage(crong))) {
+  if (!isValidInput(pobi, crong)) {
     return -1;
   }
   const gameResult = playGame(pobi, crong);
 
   return gameResult;
+}
+
+function isValidInput(pobi, crong) {
+  let isValid;
+  if (!(pobi.length == 2 && crong.length == 2)) {
+    isValid = false;
+  } else if (!(isValidPage(pobi) && isValidPage(crong))) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function isValidPage(pageNumbers) {
