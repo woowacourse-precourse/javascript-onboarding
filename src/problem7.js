@@ -1,6 +1,5 @@
 function getNetwork(friends, network) {
-  let network = new Map();
-  for (let friend of friends) {
+  for (const friend of friends) {
     if (!network.has(friend[0])) {
       network.set(friend[0], []);
     }
@@ -13,14 +12,21 @@ function getNetwork(friends, network) {
 }
 
 function getNetworkScore(user, network, scoreMap) {
-  let scoreMap = new Map();
-  for (let friend of network.get(user)) {
-    for (let other of network.get(friend)) {
+  for (const friend of network.get(user)) {
+    for (const other of network.get(friend)) {
       if (other === user) continue;
       if (!scoreMap.has(other)) scoreMap.set(other, 0);
       const score = scoreMap.get(other);
       scoreMap.set(other, score + 10);
     }
+  }
+}
+
+function getVisitScore(visitors, scoreMap) {
+  for (const visitor of visitors) {
+    if (!scoreMap.has(visitor)) scoreMap.set(visitor, 0);
+    const score = scoreMap.get(visitor);
+    scoreMap.set(visitor, score + 1);
   }
 }
 
