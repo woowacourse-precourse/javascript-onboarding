@@ -16,7 +16,7 @@ function problem7(user, friends, visitors) {
       if (connected[user].has(person)) {
         continue;
       }
-      setDefaultPoint(point, person, 5);
+      setDefaultPoint(point, person, 10);
     }
   }
 
