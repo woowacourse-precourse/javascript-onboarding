@@ -7,8 +7,21 @@
 // 5. 완성된 score객체를 배열로 변환 및 점수-이름 순으로 정렬
 // 6. 상위 5개의 id와점수 배열 자르기 및 id만 answer에 저장
 
+// 해당 user의 친구목록 반환 함수
+function getFriendsArr(user, friends) {
+  const userFriends2D = friends.filter((idArr) => idArr.includes(user));
+  const 해당유저정보삭제한userFriends2D = userFriends2D.map((idArr) =>
+    idArr.filter((id) => id !== user)
+  );
+  const user의_친구목록 = Arr2Dto1D(해당유저정보삭제한userFriends2D);
+
+  return user의_친구목록;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
+  const user의_친구목록 = getFriendsArr(user, friends);
+
   return answer;
 }
 
