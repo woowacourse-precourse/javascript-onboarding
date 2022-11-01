@@ -17,6 +17,12 @@ function problem2(cryptogram) {
   var answer;
   answer = deleteSameWord(cryptogram);
 
+  while (answer[1]) {
+    answer = deleteSameWord(answer[0]);
+  }
+
+  answer = answer[0];
+
   return answer;
 }
 
