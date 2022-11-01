@@ -4,7 +4,7 @@
  * - [x] 조건에 맞는 이메일과 닉네임을 가진 양식인지 판별하는 기능
  * - [x] 크루들의 닉네임에서 중복되는 단어들을 찾는 기능
  * - [x] 중복되는 단어를 가진 닉네임을 가진 크루들의 이메일을 찾는 기능
- * - [ ] 이메일들의 중복을 없애고 오름차순으로 정렬하는 기능
+ * - [x] 이메일들의 중복을 없애고 오름차순으로 정렬하는 기능
  */
 /**
  * 신청받은 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자들의
@@ -23,8 +23,8 @@ function problem6(forms) {
     validForms,
     duplicateKeywords
   );
+  const answer = [...new Set(applicableEmails)].sort();
 
-  var answer;
   return answer;
 }
 
