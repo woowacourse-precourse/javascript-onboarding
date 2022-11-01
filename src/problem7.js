@@ -1,42 +1,42 @@
 // 함께 아는 친구를 기준으로 추천 점수를 구하는 기능
-const scoreFromMutual = (user, friendsArr) => {
-  let friendsWithUser = friendsArr.filter((friends) => {
+const scoreFromMutual = (user, allFriendsArr) => {
+  let friendsOfUser = allFriendsArr.filter((friends) => {
     return friends[0] == user || friends[1] == user;
   });
-  if (friendsWithUser.length != 0) {
-    friendsWithUser = friendsWithUser.reduce((prev, curr) => prev.concat(curr));
-    friendsWithUser = friendsWithUser.filter((friends) => {
+  if (friendsOfUser.length != 0) {
+    friendsOfUser = friendsOfUser.reduce((prev, curr) => prev.concat(curr));
+    friendsOfUser = friendsOfUser.filter((friends) => {
       return friends != user;
     });
   }
 
-  let friendsNotWithUser = friendsArr.filter((friends) => {
+  let notFriendsOfUser = allFriendsArr.filter((friends) => {
     return friends[0] != user && friends[1] != user;
   });
 
-  let mutualObj = {};
-  if (friendsWithUser.length != 0) {
-    for (i = 0; i < friendsWithUser.length; i++) {
-      for (j = 0; j < friendsNotWithUser.length; j++) {
-        if (friendsWithUser[i] == friendsNotWithUser[j][0]) {
-          if (Object.keys(mutualObj).includes(friendsNotWithUser[j][1])) {
-            mutualObj[friendsNotWithUser[j][1]] += 10;
+  let mutualFriendsObj = {};
+  if (friendsOfUser.length != 0) {
+    for (i = 0; i < friendsOfUser.length; i++) {
+      for (j = 0; j < notFriendsOfUser.length; j++) {
+        if (friendsOfUser[i] == notFriendsOfUser[j][0]) {
+          if (Object.keys(mutualFriendsObj).includes(notFriendsOfUser[j][1])) {
+            mutualFriendsObj[notFriendsOfUser[j][1]] += 10;
           } else {
-            mutualObj[friendsNotWithUser[j][1]] = 10;
+            mutualFriendsObj[notFriendsOfUser[j][1]] = 10;
           }
-        } else if (friendsWithUser[i] == friendsNotWithUser[j][1]) {
-          if (Object.keys(mutualObj).includes(friendsNotWithUser[j][0])) {
-            mutualObj[friendsNotWithUser[j][0]] += 10;
+        } else if (friendsOfUser[i] == notFriendsOfUser[j][1]) {
+          if (Object.keys(mutualFriendsObj).includes(notFriendsOfUser[j][0])) {
+            mutualFriendsObj[notFriendsOfUser[j][0]] += 10;
           } else {
-            mutualObj[friendsNotWithUser[j][0]] = 10;
+            mutualFriendsObj[notFriendsOfUser[j][0]] = 10;
           }
         }
       }
     }
   } else {
-    mutualObj = {};
+    mutualFriendsObj = {};
   }
-  return [friendsWithUser, mutualObj];
+  return [friendsOfUser, mutualFriendsObj];
 };
 
 // 사용자의 타임라인에 방문한 횟수 기준으로 추천 점수를 구하는 기능
