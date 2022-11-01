@@ -12,5 +12,6 @@ function problem3(number) {
     const strNum = num.toString();
     chenckNum(strNum);
   }
+  return answer;
 }
 module.exports = problem3;
