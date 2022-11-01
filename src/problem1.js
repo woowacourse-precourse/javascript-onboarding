@@ -1,32 +1,24 @@
 function problem1(pobi, crong) {
   var answer = -1;
+  //예외 처리
   if (pobi[1] - pobi[0] !== 1 || crong[1]-crong[0] !== 1) return answer
 
-  function checker(...num){
-    function slicer(num){
-      let r = 0;
-      let r2 = 1;
-      for(let i = 0; i < num.length; i++){
-        let slicedNum = Number(num.slice(i,i+1));
-        r += slicedNum;
-        r2 *= slicedNum;
-      };
-      score.push(r,r2);
-    };
-
+  function scoreChecker(ls){
     const score = [];
-    let index = 0;
-  
-    slicer(String(num[index]));
-    index++;
-    slicer(String(num[index]));
-
+    ls.forEach(pNum => score.push(pageNumSlicer(String(pNum))));
     const finalScore = Math.max(...score);
     return finalScore
   }; 
 
-  const pobiScore = checker(pobi[0],pobi[1]);
-  const crongScore = checker(crong[0],crong[1]);
+  function pageNumSlicer(pNum){
+    let plusResult = 0;
+    let multipleResult = 1;
+    [...pNum].forEach(n => {plusResult += n; multipleResult *= n})
+    return plusResult,multipleResult
+  };
+
+  const pobiScore = scoreChecker(pobi);
+  const crongScore = scoreChecker(crong);
 
   if (pobiScore > crongScore) answer = 1;
   else if (pobiScore < crongScore) answer = 2;
