@@ -59,16 +59,3 @@ module.exports = problem7;
 // 2. user와 친구인 사람의 친구를 찾아 추천친구 목록 객체에 저장 {이름: 점수}
 // 3. visitors를 통해 추천친구 목록 객체에 추가
 // 4. 점수를 기준을 정렬
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);

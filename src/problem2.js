@@ -18,7 +18,6 @@ function problem2(cryptogram) {
   else return problem2(splitArr.join("").split(0).join(""));
 }
 
-problem2("browoanoommnaon");
 module.exports = problem2;
 
 // 기능 구현
