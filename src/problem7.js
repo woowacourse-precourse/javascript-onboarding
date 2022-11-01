@@ -61,6 +61,7 @@ function problem7(user, friends, visitors) {
 
     // 7단계) 형식에 맞게 배열로 변환하여 결과를 반환
     const result = orderedArray.map((el) => el[0]);
+    return result;
 }
 
 module.exports = problem7;
