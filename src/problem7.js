@@ -18,12 +18,13 @@ function friendsRecommend(user, friends, userFriends) {
     for (let j = 0; j < 2; j++) {
       if (userFriends.includes(friends[i][j])) {
         let friend = friends[i][1 - j];
-        if (friend !== user) friendsRecommendArr.push([friend]);
+        if (friend !== user) friendsRecommendArr.push(friend);
       }
     }
   }
   return friendsRecommendArr;
 }
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendsArr = findFriends(user, friends);
