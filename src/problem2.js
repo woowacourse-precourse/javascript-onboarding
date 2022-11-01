@@ -1,22 +1,17 @@
 const findDuplicate = (string) => string.match(/([a-z])\1{1,}/g);
 
 const problem2 = (cryptogram) => {
-  let answer;
-  let cipherText = cryptogram;
+  if (!findDuplicate(cryptogram)) return cryptogram;
 
-  if (!findDuplicate(cipherText)) return cipherText;
-
-  while (findDuplicate(cipherText)) {
-    const duplicates = findDuplicate(cipherText);
+  while (findDuplicate(cryptogram)) {
+    const duplicates = findDuplicate(cryptogram);
 
     duplicates.forEach(
-      (duplicate) => (cipherText = cipherText.replace(duplicate, ''))
+      (duplicate) => (cryptogram = cryptogram.replace(duplicate, ""))
     );
-
-    answer = cipherText;
   }
 
-  return answer;
+  return cryptogram;
 };
 
 module.exports = problem2;
