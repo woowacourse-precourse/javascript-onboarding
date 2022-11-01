@@ -38,6 +38,17 @@ function problem7(user, friends, visitors) {
     return recommend_score;
   };
 
+  // 정렬한 뒤 이름만 배열로 반환
+  const recommendFriend = (recommend_score) => {
+    const sort_arr = Object.entries(recommend_score).sort((a, b) => {
+      b[1] - a[1];
+    });
+
+    return sort_arr.map((item) => {
+      return item[0];
+    });
+  };
+
   let answer;
   return answer;
 }
