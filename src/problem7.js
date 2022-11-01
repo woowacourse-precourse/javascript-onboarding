@@ -12,12 +12,12 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  // 방문자 중에서 친구 상태인 사람들을 제거
+  // 방문자 중에서 친구 상태인 사람들을 제거 (친구 상태인 사람은 점수를 매기지 않기에 제거함)
   visitors = visitors.filter((visitor) =>
     usersFriend.has(visitor) ? false : true
   );
 
-  // user가 들어간 친구관계는 삭제
+  // user가 들어간 친구관계는 삭제 (이후에 friends 배열을 사용하기 쉽도록 하기 위해서 user가 들어간 부분은 제거함)
   friends = friends.filter((friend) => (friend.includes(user) ? false : true));
 
   // 점수를 내는 두 함수가 반환하는 객체를 합치기
@@ -36,6 +36,7 @@ function problem7(user, friends, visitors) {
   const scoreArr = Object.entries(totalScore).slice();
   scoreArr.sort((a, b) => (a[1] > b[1] ? -1 : 1));
 
+  // 최대 5명 까지 return
   for (let i = 0; i < 5; i++) {
     if (scoreArr[i]) {
       result.push(scoreArr[i][0]);

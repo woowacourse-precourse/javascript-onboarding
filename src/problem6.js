@@ -3,6 +3,7 @@ function problem6(forms) {
   const indexSet = new Set();
   const nicknameArr = forms.map((data) => data[1]);
 
+  // 모든 닉네임에서 나올 수 있는 연속된 2글자를 모두 모아둔 배열
   const piecesOfStr = cuttingStr(nicknameArr);
 
   // 2글자씩 쪼갠 단어들을 nicknameArr에 있는 nickname들과 비교한 뒤, 한 단어조각이 2번 이상 발견되면 발견된 nickname들의 index를 indexSet에 모아둠

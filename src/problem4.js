@@ -1,5 +1,7 @@
 function problem4(word) {
   let arr = Array.from(word.length);
+
+  // 문자열을 읽으며 읽는 문자가 알파벳인 경우 converter 함수로 변환시키는 반복문
   for (let i = 0; i < word.length; i++) {
     if (
       (word[i].charCodeAt(0) >= 65 && word[i].charCodeAt(0) <= 90) ||
@@ -13,6 +15,7 @@ function problem4(word) {
   return arr.join("");
 }
 
+// 인자로 들어오는 알파벳의 아스키코드값을 분석하여 기준에 따른 알파벳으로 변환하여 반환하는 기능을 하는 함수
 const converter = (alphabet) => {
   if (alphabet.charCodeAt(0) >= 65 && alphabet.charCodeAt(0) <= 90) {
     return String.fromCharCode(
