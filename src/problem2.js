@@ -18,6 +18,6 @@ function problem2(cryptogram) {
   
   answer = spell.join("");
   return answer;
-  }
+}
   
-  module.exports = problem2;
+module.exports = problem2;

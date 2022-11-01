@@ -10,6 +10,6 @@ function problem3(number) {
   answer += clap;
   }
   return answer;
-  }
+}
   
-  module.exports = problem3;
+module.exports = problem3;
