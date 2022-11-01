@@ -37,7 +37,7 @@ function problem1(pobi, crong) {
   var answer;
   for (i = 0; i < 2; i++) {
     // 예외 처리
-    if (pobi[i] == 1 || pobi[i] == 400 || crong[i] == 1 || crong[i] == 400) {
+    if (pobi[i] <= 1 || pobi[i] >= 400 || crong[i] <= 1 || crong[i] >= 400) {
       answer = -1;
       // 예외 처리
     } else if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
