@@ -1,3 +1,7 @@
+/**
+ * @param {[string, string]} friends
+ * @returns {{[name : string] : string[]}} [name] : friendList
+ */
 const getRelationPeople = (friends) => {
   const obj = {};
 
@@ -9,6 +13,10 @@ const getRelationPeople = (friends) => {
   return obj;
 };
 
+/**
+ * @param {string[]} visitors
+ * @returns {{[name : string] : number}} [name] : visitedCnt 사용자의 타임 라인에 방문한 횟수
+ */
 const getVisitorsCnt = (visitors) => {
   const obj = {};
 
@@ -19,6 +27,12 @@ const getVisitorsCnt = (visitors) => {
   return obj;
 };
 
+/**
+ * @param {string} user1 사용자
+ * @param {string} user2
+ * @param {{[name : string] : string[]}} relation [name] : friendList
+ * @returns {number} 사용자와 함께 아는 친구의 수
+ */
 const getKnowSameCnt = (user1, user2, relation) => {
   if (!(user1 in relation) || !(user2 in relation)) return 0;
 
@@ -39,6 +53,14 @@ const compareScoreAndName = (a, b) => {
   return 0;
 };
 
+/**
+ *
+ * @param {string} user
+ * @param {string[]} people
+ * @param {[name: string]: string[]} relations
+ * @param {[name: string]: number} visitedCnt
+ * @returns {{score: number; name: string}[]}
+ */
 const getRecommendScore = (user, people, relations, visitedCnt) => {
   const recommendScore = [];
 
@@ -60,6 +82,13 @@ const getRecommendScore = (user, people, relations, visitedCnt) => {
   return recommendScore;
 };
 
+/**
+ * 사용자와 사용자의 친구들이 아닌 사람들
+ * @param {string} user
+ * @param {[name: string]: string[]} relations
+ * @param {[name: string]: number} visitedCnt
+ * @returns {string[]}
+ */
 const getNotUserFriends = (user, relations, visitedCnt) => {
   const allPeople = [
     ...new Set([...Object.keys(relations), ...Object.keys(visitedCnt)]),
@@ -72,6 +101,12 @@ const getNotUserFriends = (user, relations, visitedCnt) => {
   return notUserFriends;
 };
 
+/**
+ * @param {string} user
+ * @param {string} person
+ * @param {[name: string]: string[]} relations
+ * @returns boolean
+ */
 const checkNotUserFriends = (user, person, relations) => {
   if (user in relations)
     return person !== user && !relations[user].includes(person);
