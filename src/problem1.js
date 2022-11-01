@@ -20,6 +20,12 @@ function handleExceptions(pobi, crong) {
   if (!Array.isArray(pobi) || !Array.isArray(crong)) return false;
   if (pobi.length !== 2 || crong.length !== 2) return false;
   if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return false;
+  for (let i = 0; i < 2; i++) {
+    if (!(pobi[i] > 0 && pobi[i] <= 400 && crong[i] > 0 && crong[i] <= 400)) {
+      return false;
+    }
+  }
+
   return true;
 }
 
