@@ -2,16 +2,16 @@ const LENGTH_RECOMMEND_FRIEND = 5;
 
 function problem7(user, friends, visitors) {
   const relationList = makeFriendsList(friends);
-  const usersFriends = getUsersFriends(user, relationList);
-  const friendOfFriendList = getFriendOfFriend({
-    user,
-    relationList,
-    usersFriends,
-  });
-  const scoreList = scoreFriends(friendOfFriendList);
-  scoreVisitors(scoreList, visitors, usersFriends);
+  // const usersFriends = getUsersFriends(user, relationList);
+  // const friendOfFriendList = getFriendOfFriend({
+  //   user,
+  //   relationList,
+  //   usersFriends,
+  // });
+  // const scoreList = scoreFriends(friendOfFriendList);
+  // scoreVisitors(scoreList, visitors, usersFriends);
 
-  return recommendFriends(scoreList, LENGTH_RECOMMEND_FRIEND);
+  // return recommendFriends(scoreList, LENGTH_RECOMMEND_FRIEND);
 }
 // 추천 친구의 이름만 반환하는 함수
 function recommendFriends(scoreList, length) {
@@ -64,18 +64,14 @@ function scoreFriends(friendOfFriendList) {
 }
 
 function makeFriendsList(friends) {
-  const friendsList = new Map();
+  const friendsList = {};
 
   friends.forEach(([leftName, rightName]) => {
-    if (friendsList.has(leftName))
-      friendsList.set(leftName, friendsList.get(leftName).add(rightName));
-    else friendsList.set(leftName, new Set([rightName]));
-
-    if (friendsList.has(rightName))
-      friendsList.set(rightName, friendsList.get(rightName).add(leftName));
-    else friendsList.set(rightName, new Set([leftName]));
+    if (friendsList[leftName]) friendsList[leftName].push(rightName);
+    else friendsList[leftName] = [rightName];
+    if (friendsList[rightName]) friendsList[rightName].push(leftName);
+    else friendsList[rightName] = [leftName];
   });
-
   return friendsList;
 }
 
@@ -95,18 +91,5 @@ function getFriendOfFriend({ user, relationList, usersFriends }) {
 
   return friendsOfFriends;
 }
-
-// let user = "mrko";
-// let friends = [
-//   ["donut", "andole"],
-//   ["donut", "jun"],
-//   ["donut", "mrko"],
-//   ["shakevan", "andole"],
-//   ["shakevan", "jun"],
-//   ["shakevan", "mrko"],
-// ];
-// let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-
-// console.log(problem7(user, friends, visitors));
 
 module.exports = problem7;
