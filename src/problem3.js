@@ -28,7 +28,7 @@ function problem3(number) {
   let answer = 0;
 
   if (isRightNumber(number) == 0) {
-    return false;
+    return 0;
   }
   for (let i = 1; i <= number; i++) {
     numArr.push(i);
