@@ -2,7 +2,16 @@ function problem6(forms) {
   var answer;
   let isDuplicatedNickName = new Array(forms.length);
   for (let i = 0; i < forms.length; i++) {
+    if (forms[i][1].length === 1) {
+      continue
+    }
+    if (isDuplicatedNickName[i]) {
+      continue
+    }
     for (let j = i + 1; j < forms.length; j++) {
+      if (forms[j][1].length === 1) {
+        continue
+      }
       if (isDuplicationOfPart(forms[i][1], forms[j][1])) {
         isDuplicatedNickName[i] = 1
         isDuplicatedNickName[j] = 1
