@@ -10,8 +10,26 @@
  */
 
 function problem2(cryptogram) {
+  if (!isValidInput(cryptogram)) {
+    console.log("Error: Invalid Input");
+    return -1;
+  }
   const decodedLetters = decodeCryptogram(cryptogram);
+
   return decodedLetters;
+}
+
+function isValidInput(cryptogram) {
+  let isValid;
+  if (!(cryptogram.length >= 1 && cryptogram.length <= 1000)) {
+    isValid = false;
+  } else if (!(cryptogram === cryptogram.toLowerCase())) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function removeDupLetters(letters) {
