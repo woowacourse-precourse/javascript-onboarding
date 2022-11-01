@@ -44,7 +44,15 @@ function problem7(user, friends, visitors) {
     }
   });
 
-  return scoreOb;
+  const answer = Object.keys(scoreOb);
+  answer.sort((a, b) => {
+    if (scoreOb[a] === scoreOb[b]) {
+      return a < b ? -1 : a > b ? 1 : 0;
+    }
+    return scoreOb[b] - scoreOb[a];
+  });
+
+  return answer;
 }
 
 module.exports = problem7;
