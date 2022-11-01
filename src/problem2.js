@@ -14,28 +14,31 @@ function problem2(cryptogram) {
   const isValidRange = () => {
     return leftPointer >= 0 && rightPoiner < cryptogramList.length;
   }
-  let isRemoved = true;
-  while (isRemoved){
+
+  const initPointer = () => {
     leftPointer = 0;
     rightPoiner = 1;
+  }
+  const isEachPointerSameLetter = () => cryptogramList[leftPointer] === cryptogramList[rightPoiner]
+  let isRemoved = true;
+
+  while (isRemoved){
+    initPointer(leftPointer, rightPoiner);
     isRemoved = false
   while (isValidRange()){
-    if (cryptogramList[leftPointer] !== cryptogramList[rightPoiner]){
+    if (!isEachPointerSameLetter()){
       pointerMoveForward();
       continue;
     }
-    while (cryptogramList[leftPointer] === cryptogramList[rightPoiner]){
+    while (isEachPointerSameLetter()){
         rightPoiner ++;
     }
 
     cryptogramList.splice(leftPointer, rightPoiner - leftPointer);
     isRemoved = true;
     rightPoiner = leftPointer + 1;
-   
-    }
-    
   }
-  return cryptogramList.join("");
-}
-
+    }
+    return cryptogramList.join("");
+  }
 module.exports = problem2;
