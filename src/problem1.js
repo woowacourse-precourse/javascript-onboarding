@@ -4,7 +4,10 @@
 3. 승부 결정하기 
 */
 function problem1(pobi, crong) {
-  var answer;
+  let answer = 0;
+  let [pobiLeft, pobiRight] = pobi;
+  let [crongLeft, crongRight] = crong;
+
   return answer;
 }
 
