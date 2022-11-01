@@ -42,7 +42,28 @@ function problem6(forms) {
     }
   }
 
-  console.log(cntWord);
+  var duName = [];
+
+  for(let [key, value] of cntWord){
+    for (var item of nameTwo){
+      if (item.includes(key)){
+        let i = 0;
+        while(item.includes(key)){
+          if(item[i] == key)  {
+            item.splice(i, 1);
+            value--;
+          }else{
+            i++;
+          }
+        }if(value != 0){
+          duName.push(key);
+          break;
+        }
+      }
+    }
+  }
+
+  console.log(duName);
 }
 
 module.exports = problem6;
