@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
   const cryptoArr = cryptogram.split('');
 
+  // 문자열 문자 하나씩 검사
   for(let i=1;i<cryptoArr.length;i++){
     // 전 문자와 일치하는지 검사
     if(cryptoArr[i-1] === cryptoArr[i]){
@@ -19,7 +20,7 @@ function problem2(cryptogram) {
     }
   }
 
-  return cryptoArr.join('');
+  return cryptoArr.join(''); // 문자열로 반환
 }
 
 module.exports = problem2;
