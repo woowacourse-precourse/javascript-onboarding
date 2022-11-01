@@ -48,14 +48,20 @@ function scoreVisitors(scoreMap, visitors, excludedFriends) {
 }
 
 // 점수가 가장 높은 순으로, 점수가 같을 경우 이름순으로 정렬하는 기능
-function sortScore(scoreMap) {
-  const sortedScore = [...scoreMap.entries()].sort((a, b) => {
+function sortScoreMap(scoreMap) {
+  const sortedScoreMap = [...scoreMap.entries()].sort((a, b) => {
     if (a[1] === b[1]) {
       return a[0] > b[0] ? 1 : -1;
     }
     return b[1] - a[1];
   });
-  return sortedScore;
+  return sortedScoreMap;
+}
+
+// 최대 5명으로 친구 추천을 제한하는 기능
+function limitRecommendation(scoreMap) {
+  const recommendation = scoreMap.map((friend) => friend[0]).slice(0, 5);
+  return recommendation;
 }
 
 // solution
@@ -64,9 +70,9 @@ function solution(user, friends, visitors) {
   const excludedFriends = getExcludedFriends(user, friendsMap);
   let scoreMap = scoreFriendsMayKnow(user, friendsMap, excludedFriends);
   scoreMap = scoreVisitors(scoreMap, visitors, excludedFriends);
-  console.log(scoreMap);
-  const sortedScore = sortScore(scoreMap);
-  console.log(sortedScore);
+  const sortedScoreMap = sortScoreMap(scoreMap);
+  const result = limitRecommendation(sortedScoreMap);
+  return result;
 }
 
 function problem7(user, friends, visitors) {
@@ -74,16 +80,18 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
-solution(
-  "mrko",
-  [
-    ["donut", "jun"],
-    ["donut", "andole"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
+console.log(
+  solution(
+    "mrko",
+    [
+      ["donut", "jun"],
+      ["donut", "andole"],
+      ["donut", "mrko"],
+      ["shakevan", "andole"],
+      ["shakevan", "jun"],
+      ["shakevan", "mrko"],
+    ],
+    ["bedi", "bedi", "donut", "bedi", "shakevan", "a", "a", "b", "c"]
+  )
 );
 module.exports = problem7;
