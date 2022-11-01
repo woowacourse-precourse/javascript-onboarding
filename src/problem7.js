@@ -19,6 +19,12 @@ function problem7(user, friends, visitors) {
     return answer;
 }
 
+/*친구가 아닌 방문자를 구한다.*/
+function findNewVisitors(visitors, friendsWithUser) {
+    let newVisitors = visitors.filter(x => !friendsWithUser.includes(x));
+    return newVisitors;
+}
+
 /*user와 친구관계인 사람을 구한다.*/
 function findFriends(user, friends) {
     let friendsWithUser = [];
