@@ -73,6 +73,7 @@ const problem7 = (user, friends, visitors) => {
   const VISITOR_POINT = 1;
   const friendListMap = getFriendListMap(friends);
   const userFriendList = friendListMap.get(user);
+  const pointListMap = getInitialPointListMap(friendListMap);
 
   return answer;
 };
