@@ -15,6 +15,9 @@ function problem1(pobi, crong) {
     multiplication(crong[1]),
   ];
 
+  const pobiMax = Math.max(...pobiScore);
+  const crongMax = Math.max(...crongScore);
+
   return answer;
 }
 
