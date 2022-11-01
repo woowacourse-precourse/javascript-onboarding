@@ -22,13 +22,13 @@ function countIs369(digits) {
   let num369 = 0;
   digits.forEach(function (digit) {
     if (digit == 3) {
-      num369 += 1
+      num369 += 1;
     }
     if (digit == 6) {
-      num369 += 1
+      num369 += 1;
     }
     if (digit == 9) {
-      num369 += 1
+      num369 += 1;
     }
   });
   return num369;
