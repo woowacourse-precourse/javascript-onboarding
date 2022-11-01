@@ -6,6 +6,10 @@ function problem7(user, friends, visitors) {
   }
   let alreadyFriendsArr = findAlreadyFriends(user, friends);
   let willBeFriendsArr = findWillBeFriends(friends, alreadyFriendsArr);
+  for (let i = 0; i < willBeFriendsArr.length; i++) {
+    let score = map.get(willBeFriendsArr[i]) + 10;
+    map.set(willBeFriendsArr[i], score);
+  }
 }
 function makeAllFriendsArr(friends) {
   let friendsArr = friends.reduce((acc, cur) => [...acc, ...cur]);
