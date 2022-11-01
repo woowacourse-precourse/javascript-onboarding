@@ -17,19 +17,24 @@ const isTaskFinished = (cryptogram) => {
  * @return {string}
  */
 const getRedundantDeletedString = (str) => {
-  let processedOutput = str[0];
+  const redundantStack = [];
+  let lastDeletedChar = '';
 
-  if (!str) return "";
+  for (let i = 0; i < str.length; i++) {
+    const pointedChar = str[i];
 
-  for (let i = 1; i < str.length; i++) {
-    if (str[i] !== processedOutput[processedOutput.length - 1]) {
-      processedOutput += str[i];
-      continue;
+    if (redundantStack[redundantStack.length - 1] === pointedChar) {
+      redundantStack.pop();
+      lastDeletedChar = pointedChar;
     }
 
-    processedOutput = processedOutput.slice(0, -1);
+    if (lastDeletedChar !== pointedChar) {
+      redundantStack.push(pointedChar);
+      lastDeletedChar = '';
+    }
   }
-  return processedOutput;
+
+  return redundantStack.join('');
 };
 
 /**
