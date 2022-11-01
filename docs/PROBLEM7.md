@@ -29,7 +29,7 @@
 
 - [x] 제한사항 위반 검사 함수 (violationChk)
 - [x] user 제한사항 검사 함수 (userChecker)
-- [] friends 제한사항 검사 함수 (friendsChecker)
+- [x] friends 제한사항 검사 함수 (friendsChecker)
 - [] visitors 제한사항 검사 함수 (visitorsChecker)
 - [] user 아이디를 입력받아 friends 배열에서 친구를 찾아 리턴하는 함수 (makeFriendArr)
 - [] 친구 아이디를 입력받아 friends 배열에서 추천 후보의 아이디를 key에, 점수 10점을 value에 저장하여 map으로 리턴하는 함수 (candidateMap)
