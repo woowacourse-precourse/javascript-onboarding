@@ -14,8 +14,8 @@ function problem3(number) {
     return clap_count;
   };
 
-  let answer;
-  return answer;
+  // 코드 작성
+  return getClapCount(number);
 }
 
 module.exports = problem3;
