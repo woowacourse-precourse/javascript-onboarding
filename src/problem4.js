@@ -1,5 +1,8 @@
 function problem4(word) {
-  var answer;
+  var answer = '';
+  for(let i=word.length-1; i>=0; i--) {
+    answer=answer+word[i];
+  }
   return answer;
 }
 
