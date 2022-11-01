@@ -4,6 +4,9 @@ function problem6(forms) {
   const duplicateStr = new Set(getDuplicateStr(splitNickName));
   const duplicateNickName = getDuplicateNickName(duplicateStr, nickNameArr);
   const nickNameIndex = getNickNameIndex(duplicateNickName, nickNameArr);
+  const emailArray = getEmailArray(nickNameIndex, forms);
+
+  return emailArray.sort();
 }
 
 const getNickNameArr = (forms) => {
@@ -35,6 +38,14 @@ const getNickNameIndex = (duplicateNickName, nickNameArr) => {
     indexArr.push(nickNameArr.indexOf(i));
   }
   return indexArr;
+};
+
+const getEmailArray = (nickNameIndex, forms) => {
+  const emailArray = [];
+  for (let index of nickNameIndex) {
+    emailArray.push(forms[index][0]);
+  }
+  return emailArray;
 };
 
 module.exports = problem6;
