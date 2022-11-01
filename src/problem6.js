@@ -7,20 +7,20 @@ function makeForms(forms) {
 }
 // 기능1-2
 function makeContinueNick(forms) {
-  let nickForms = [];
+  const nickForms = [];
   for (let i = 0; i < forms.length; i++) {
-    let tmp = "";
+    let continueNick = "";
     nickForms.push([forms[i][0], []]);
     for (let j = 0; j < forms[i][1].length - 1; j++) {
-      tmp = forms[i][1][j] + forms[i][1][j + 1];
-      nickForms[i][1].push(tmp);
+      continueNick = forms[i][1][j] + forms[i][1][j + 1];
+      nickForms[i][1].push(continueNick);
     }
   }
   return nickForms;
 }
 // 기능2
 function checkContinueNick(continueArr) {
-  let continueNickArr = [];
+  const continueNickArr = [];
   const length = continueArr.length;
   for (let i = 0; i < length - 1; i++) {
     for (let j = i + 1; j < length; j++) {
