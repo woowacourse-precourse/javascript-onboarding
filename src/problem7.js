@@ -20,6 +20,41 @@ function problem7(user, friends, visitors) {
   }
   let getScore = new Set(visitedFriends);
   visitedFriends = [...getScore]; //중복제거
+
+  let score = {};
+
+  for (i in visitedFriends) {
+    key = visitedFriends[i][0];
+    if (!score[key]) {
+      score[key] = 10;
+    }
+    if (score[key]) {
+      score[key] += 10;
+    }
+    key = visitedFriends[i][1];
+    if (!score[key]) {
+      score[key] = 10;
+    }
+    if (score[key]) {
+      score[key] += 10;
+    }
+  }
+
+  let FilteredScore = [];
+
+  for (i in visitors) {
+    FilteredScore.push(visitors[i]);
+  }
+
+  for (i in FilteredScore) {
+    key = FilteredScore[i];
+    if (!score[key]) {
+      score[key] = 1;
+    }
+    if (score[key]) {
+      score[key] += 1;
+    }
+  }
 }
 
 module.exports = problem7;
