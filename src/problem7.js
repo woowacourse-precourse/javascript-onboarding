@@ -139,8 +139,11 @@ const problem7 = (user, friends, visitors) => {
     }
   });
 
+  // 정렬된 point List 생성
+  const sortedPointList = getSortedPointList(pointListMap);
+
   // 정렬된 array에서 최대 5명 도출
-  getSortedPointList(pointListMap).map((point) => {
+  sortedPointList.map((point) => {
     if (answer.length < 5 && point[1] !== 0) {
       answer.push(point[0]);
     } else {
