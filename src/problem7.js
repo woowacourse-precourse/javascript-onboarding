@@ -44,6 +44,8 @@ function joinCrew(friendsRecommendArr, visitors) {
   }
   return joinCrew;
 }
+// 기능 4
+function sortResult() {}
 function problem7(user, friends, visitors) {
   var answer;
   let friendsArr = findFriends(user, friends);
@@ -64,4 +66,5 @@ module.exports = problem7;
   1-2. user의 친구의 친구를 찾고 점수를 부여하여 추천 사용자 아이디와  새로운 배열을 만든다.
 2. 배열에서 중복된 사용자를 삭제하고 알맞은 점수를 할당하는 기능 
 3. 중복 사용자 제거 후 점수 할당한 friends와 visitors 합치는 기능
+4. 점수가 높은 순으로 정렬, 추천 점수가 같다면 이름순으로 정렬하는 기능
 */
