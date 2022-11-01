@@ -10,8 +10,19 @@ function setFriendsArr(friends) {
   return friendsArr;
 }
 
+// 사용자에게 방문한 사람들 배열 생성
+function setVisitersArr(visitors) {
+  const visitorsArr = new Map();
+
+  visitors.forEach(value => {
+    visitorsArr.has(value) ? visitorsArr.set(value, visitorsArr.get(value) + 1) : visitorsArr.set(value, 1)
+  })
+
+  return visitorsArr;
+}
+
 function problem7(user, friends, visitors) {
-  
+ 
 }
 
 module.exports = problem7;
