@@ -36,6 +36,14 @@ function friendsToObj(friends, peopleList) {
 
   return friendsMap;
 }
+// 방문 point
+function calVisitPoint(friendsMap, visitors) {
+  visitors.forEach((person) => {
+    friendsMap[person]?.point != undefined
+      ? (friendsMap[person]["point"] += 1)
+      : (friendsMap[person] = { friends: [], point: 1 });
+  });
+}
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
