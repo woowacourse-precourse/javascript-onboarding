@@ -1,5 +1,5 @@
 const isCrewForm = (user, friends, visitors) => {
-  let checkId = /[a-z|,]/g;
+  let checkId = /^[a-z|,]+$/;
   let checkIdFriends = friends.join("");
   let checkIdvisitors = visitors.join("");
 
