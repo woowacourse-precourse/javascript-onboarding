@@ -36,6 +36,12 @@ function problem6(forms) {
     }
   }
   
+  for(let [key, value] of cntWord){
+    if(value == 1){
+      cntWord.delete(key);
+    }
+  }
+
   console.log(cntWord);
 }
 
