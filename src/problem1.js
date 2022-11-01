@@ -17,13 +17,15 @@ const DRAW = 0;
 
 function exception(lst) {
   if (lst[RIGHT_PAGE] - lst[LEFT_PAGE] != 1)
-    return -1;
+    return true;
   
   if (lst[LEFT_PAGE]%2 != 1 || lst[RIGHT_PAGE]%2 != 0)
-    return -1;
+    return true;
   
   if (lst[LEFT_PAGE] <= START_PAGE || lst[RIGHT_PAGE] >= FINISH_PAGE)
-    return -1;
+    return true;
+  
+  return false;
 }
 
 function digit(num) {
@@ -55,6 +57,8 @@ function find_winner(pobi_score, crong_score) {
 
 function problem1(pobi, crong) {
   var answer;
+  
+
   return answer;
 }
 
