@@ -50,9 +50,9 @@ function problem7(user, friends, visitors) {
     return b[1] - a[1];
     });
 
-  const rankDismantled = rank
+  const rankNames = rank
   .map(member => member[0]);
-  const answer = rankDismantled.slice(0, 5);
+  const answer = rankNames.slice(0, 5);
   return answer;
   }
 
@@ -66,8 +66,8 @@ module.exports = problem7;
 //[x]친구 추천 점수판을 구현한다.
 //  [x]이미 친구인 사용자를 제외한 사용자들을 [닉네임, 점수] 순의 배열로 정리한다.
 //[]사용자별 친구 추천 점수를 계산한다. 
-//  [x]user와 공통의 친구를 가진 케이스들을 relavantUser에 저장한다
-//  [x]relavantUser에 저장된 건수별로 해당 사용자에게 10점을 추가한다.
+//  [x]user와 공통의 친구를 가진 케이스들을 hasMutualFriend에 저장한다
+//  [x]hasMutualFriend에 저장된 건수별로 해당 사용자에게 10점을 추가한다.
 //  [x]visitors 배열에서 유저와 이미 친구인 사용자를 삭제한다.
 //  [x]visitorList에서 출현하는 횟수만큼 해당 사용자에게 1점을 추가한다.
 //[]점수판에서 0점인 사용자를 삭제한다
