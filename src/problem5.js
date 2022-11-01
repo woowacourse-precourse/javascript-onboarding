@@ -1,20 +1,22 @@
 const targetMoneyList = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
 const problem5 = (money) => {
-  let answer = [];
+  let results = [];
 
   const pushMoneyCount = (targetMoney) => {
     if (money >= targetMoney) {
       const quotient = Math.floor(money / targetMoney);
 
-      answer = [...answer, quotient];
+      results = [...results, quotient];
       money -= targetMoney * quotient;
-    } else answer = [...answer, 0];
+    } else {
+      results = [...results, 0];
+    }
   };
 
   targetMoneyList.forEach((targetMoney) => pushMoneyCount(targetMoney));
 
-  return answer;
+  return results;
 };
 
 module.exports = problem5;
