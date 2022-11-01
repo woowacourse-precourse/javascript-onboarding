@@ -12,6 +12,16 @@ function problem6(forms) {
     getOverlapList(nickNameList[i], totalList, overlapList);
   }
 
+  for(let i=0; i<forms.length; i++) {
+    if(getAnswer(nickNameList[i], overlapList)) {
+      answer.push(forms[i][0]);
+    }
+  }
+
+  answer.sort();
+
+  return answer;
+
 }
 
 function getOverlapList(str, totalList, overlapList) {
@@ -24,6 +34,17 @@ function getOverlapList(str, totalList, overlapList) {
     
     else if (overlapList.includes(twoChar) === false) {
       overlapList.push(twoChar);
+    }
+  }
+}
+
+/** 연속문자와 중복문자를 비교하여 정답을 얻는 기능 구현 */
+function getAnswer(str, overlapList) {
+  for(let i=0; i<str.length; i++) {
+    let twoChar = str[i-1] + str[i];
+
+    if(overlapList.includes(twoChar) === true) {
+      return true;
     }
   }
 }
