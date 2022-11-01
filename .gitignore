@@ -1,3 +1,4 @@
 node_modules
 myTest.js
 .DS_Store
+.eslintrc.js

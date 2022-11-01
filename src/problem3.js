@@ -4,3 +4,14 @@ function problem3(number) {
 }
 
 module.exports = problem3;
+
+function samYukGu(number, count) {
+  while (number > 0) {
+    const digit = number % 10;
+    if (digit === 3 || digit === 6 || digit === 9) {
+      count++;
+    }
+    number = Math.floor(number / 10);
+  }
+  return count;
+}
