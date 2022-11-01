@@ -33,7 +33,29 @@ function checkNickname(forms){
 }
 
 function checkSequenceName(forms){
+  let word_data = {};
+  for(let k = 0; k < forms.length; k++){
+    let name = forms[k][1];
+    let email = forms[k][0];
+    for(let i = 2; i <= name.length; i++){
+      for(let j = 0; i+j<=name.length; j++){
+        let sequence_word = name.slice(j, j+i);
+        if (sequence_word in word_data){
+          word_data[sequence_word].push(email);
+        } else{
+          word_data[sequence_word] = [email];
+        }
+      }
+    }
+  }
 
+  let result = []
+  for(let key in word_data){
+    if(word_data[key].length > 1){
+        result = result.concat(word_data[key]);
+    }
+  }
+  return getResult(result);
 }
 
 
@@ -50,12 +72,8 @@ function problem6(forms) {
   if(!checkEmailFormat(forms) || !checkNickname(forms)){
     return -1;
   }
-  // checkSequenceName(forms);
+  answer = checkSequenceName(forms);
   return answer;
 }
-
-problem6([ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], 
-["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ])
-// ["jason@email.com", "jm@email.com", "mj@email.com"]
 
 module.exports = problem6;
