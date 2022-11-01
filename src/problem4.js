@@ -14,3 +14,8 @@ function isAlphabet(str, alphabet) {
   }
   return true;
 }
+
+// check if string is an uppercase alphabet
+function isUpperCase(str) {
+  return str === str.toUpperCase();
+}
