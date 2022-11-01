@@ -1,6 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  cryptogram = cryptogram.split("");
 }
 
 module.exports = problem2;
