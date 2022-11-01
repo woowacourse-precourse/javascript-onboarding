@@ -8,15 +8,9 @@ function problem6(forms) {
 
   for (let form of forms) {
     const cases = words(form[NICKNAME]);
-    // 다른 사람들 닉네임이 이 단어 포함하는지 확인
+
     for (let word of cases) {
-      for (let index = 0; index < forms.length; index++) {
-        if (forms[index][EMAIL] === form[EMAIL]) continue;
-        if (forms[index][NICKNAME].includes(word)) {
-          answer.push(forms[index][EMAIL]);
-          answer.push(form[EMAIL]);
-        }
-      }
+      checkNameContainsCase(form, word);
     }
   }
 
@@ -33,6 +27,17 @@ function problem6(forms) {
   });
 
   return answer;
+
+  function checkNameContainsCase(form, word) {
+    for (let index = 0; index < forms.length; index++) {
+      if (forms[index][EMAIL] === form[EMAIL]) continue;
+
+      if (forms[index][NICKNAME].includes(word)) {
+        answer.push(forms[index][EMAIL]);
+        answer.push(form[EMAIL]);
+      }
+    }
+  }
 }
 
 // 가능한 연속된 문자열 추출 함수
