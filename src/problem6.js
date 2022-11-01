@@ -15,7 +15,8 @@ function problem6(forms) {
 			ans.push(forms[i][0]); ans.push(forms[j][0]);
 		}
 	}
-
+	ans = makeUniq(ans);
+	ans.sort();
 	return ans;
 }
 
@@ -31,6 +32,17 @@ function isSim(nick_l, nick_r) {
 		}
 	}
 	return false;
+}
+
+// 1. result 배열 중복 제거 기능
+// return => 중복 제거된 arr
+function makeUniq(arr) {
+	var ret = [];
+	for(var i=0; i<arr.length; i++) {
+		if(ret.includes(arr[i])) continue;
+		ret.push(arr[i]);
+	}
+	return ret;
 }
 
 module.exports = problem6;
