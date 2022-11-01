@@ -27,7 +27,7 @@ function problem7(user, friends, visitors) {
 
 function isValidInput(user, friends, visitors) {
   let isValid;
-  if (!(user.length >= 1 && user.length <= 30)) {
+  if (!isValidId(user)) {
     isValid = false;
   } else if (!(friends.length >= 1 && friends.length <= 10000)) {
     isValid = false;
@@ -73,10 +73,12 @@ function scoreCommonFriend(friendsOfFriend) {
   let scores = {};
 
   for (let friend of friendsOfFriend) {
-    if (scores[friend]) {
-      scores[friend] += FRIEND_SCORE;
-    } else {
-      scores[friend] = FRIEND_SCORE;
+    if (isValidId(friend)) {
+      if (scores[friend]) {
+        scores[friend] += FRIEND_SCORE;
+      } else {
+        scores[friend] = FRIEND_SCORE;
+      }
     }
   }
 
@@ -88,7 +90,7 @@ function scoreVisitor(visitors, userFriends) {
   let scores = {};
 
   for (let visitor of visitors) {
-    if (!userFriends.includes(visitor)) {
+    if (!userFriends.includes(visitor) && isValidId(visitor)) {
       if (scores[visitor]) {
         scores[visitor] += VISIT_SCORE;
       } else {
