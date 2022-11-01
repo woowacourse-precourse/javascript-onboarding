@@ -32,12 +32,24 @@ function violationChk(forms) {
             for (var j = 0; j < nickName.length; j++) {
               if (!korChk(nickName[j])) {
                 result = false;
+                break;
               }
             }
+          } else {
+            result = false;
+            break;
           }
+        } else {
+          result = false;
+          break;
         }
+      } else {
+        result = false;
+        break;
       }
     }
+  } else {
+    result = false;
   }
 
   return result;
