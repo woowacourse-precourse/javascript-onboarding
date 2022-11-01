@@ -23,8 +23,7 @@ function problem5(money) {
     moneyDict.set(key, share);
     money -= share * key;
   }
-  var answer;
-  return answer;
+  return [...moneyDict.values()];
 }
 
 module.exports = problem5;
