@@ -28,7 +28,5 @@ function noCombination(arr){
 
 }
 
-console.log(problem2("zyelleyz"))
-
 
 module.exports = problem2;
