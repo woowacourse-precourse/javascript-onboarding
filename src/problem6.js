@@ -23,6 +23,7 @@ function problem6(forms) {
     }
   }
 
+  // 3. 자료형 변환(Set -> Array) 및 이메일 정렬
   answer = [...result].sort();
 
   return answer;
