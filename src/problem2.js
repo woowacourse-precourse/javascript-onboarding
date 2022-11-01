@@ -13,4 +13,11 @@ function checkValidCrypto(cryptogram) {
   }
   return true;
 }
+function findStartingNestedChar(cryptogram) {
+  for (let i = 0; i < cryptogram.length - 1; i++) {
+    if (cryptogram[i] === cryptogram[i + 1]) return i;
+  }
+  return -1;
+}
+
 module.exports = problem2;
