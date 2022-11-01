@@ -3,6 +3,7 @@ function problem3(number) {
   let number_add = [];
   let last_add = [] ;
   //console.log(number)
+  //필요한 빈 배열 생성
 
   for (i = 1 ; i <= number ; i++) {
     let n = i;
@@ -21,12 +22,14 @@ function problem3(number) {
       || number_add[i] == 6 
       || number_add[i] == 9
       ) {
-      answer += 1
+      answer += 1;
     }
   }
   
-  //console.log("마지막 배열",answer)//3,6,9 갯수 세기
-  return answer
+  //console.log("마지막 배열",answer)
+  //3,6,9 갯수 세기
+
+  return answer;
 }
 
 module.exports = problem3;
