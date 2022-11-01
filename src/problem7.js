@@ -8,9 +8,8 @@ function problem7(user, friends, visitors) {
   algorithm.recommendName = [];
   algorithm.recommendScore = [];
 
-  algorithm.friendArr = findFriendAndMe(algorithm);
-  algorithm = friendAlgorithm(algorithm);
-  algorithm = visitorAlgorithm(algorithm, visitors);
+  algorithm.friendArr.push(findFriendAndMe(algorithm));
+  algorithmFunc(algorithm);
 
   answer = pickFive(algorithm);
 
@@ -19,80 +18,73 @@ function problem7(user, friends, visitors) {
 
 function findFriendAndMe(obj) {
   let friendAndMe = obj.friendArr;
-  const friendRel = algorithm.friendRel;
+  const friendRel = obj.friendRel;
+  const user = obj.userName;
 
-  for (let i = 0; i < friendRel.length; i++) {
+  for (let index = 0; index < friendRel.length; index++) {
     if (friendRel[index][0] === user) {
       friendAndMe.push(friendRel[index][1]);
     } else if (friendRel[index][1] === user) {
       friendAndMe.push(friendRel[index][0]);
     }
-    return friendAndMe;
   }
+  return friendAndMe;
 }
 
-function friendAlgorithm(obj, friends) {
+function algorithmFunc(obj) {
   const friendAndMe = obj.friendArr;
+  const friend = obj.friendRel;
+  const visitor = obj.visitorRel;
 
-  for (let index = 0; index < friends.length; index++) {
+  for (let index = 0; index < friend.length; index++) {
     // friendAndMe.push(friends[index][0]);
-    let haveFriendO = !(friendAndMe.indexOf(friends[index][0]));
-    let haveFriendT = !(friendAndMe.indexOf(friends[index][1]));
+    let haveFriendO = friendAndMe.indexOf(friend[index][0]) > -1;
+    let haveFriendT = friendAndMe.indexOf(friend[index][1]) > -1;
 
     if (haveFriendO && haveFriendT) {
       continue;
     } else if (haveFriendO && !haveFriendT) {
-      isAlready(obj, index, 1);
+      isAlready(obj, index, 1, 10);
     } else if (!haveFriendO && haveFriendT) {
-      isAlready(obj, index, 0);
+      isAlready(obj, index, 0, 10);
     } else if (!haveFriendO && !haveFriendT) {
       continue;
     }
-
-    // let overlapIdx = algorithmName.indexOf(friends[index][1]);
-    // if (friendAndMe.indexOf(friends[index][1]) != -1) {
-    //   continue;
-    // } else if (overlapIdx != -1 && friends[index][1].length === algorithmName[overlapIdx].length) {
-    //   algorithmNum[overlapIdx] += 10;
-    //   continue;
-    // }
-    // algorithmName.push(friends[index][1]);
-    // algorithmNum.push(10);
-  //}
-  return obj;
-}
-
-function isAlready(obj, index, num){
-  let name = obj.friendRel[index][num];
-  let dupIndx = obj.recommendName.indexOf(name);
-  if(dupIndx > -1 && name.length === obj.recommendName[dupIndx]){
-    obj.recommendScore[dupIndx] += 10;
-    return obj;
-  } 
-  obj.recommendName.push(name);
-  obj.recommendScore.push(10);
-}
-
-function visitorAlgorithm(obj, visitors) {
-  for (index = 0; index < visitors.length; index++) {
-    let overlapIdx = obj.nameArr.indexOf(visitors[index]);
-
-    if (obj.curFriend.indexOf(visitors[index]) != -1) {
-      continue;
-    } else if (overlapIdx != -1 && visitors[index].length === obj.nameArr[overlapIdx].length) {
-      obj.scoreArr[overlapIdx] += 1;
-      continue;
-    }
-    obj.nameArr.push(visitors[index]);
-    obj.scoreArr.push(1);
   }
 
-  return obj;
+  for (index = 0; index < visitor.length; index++) {
+    let haveFriend = friendAndMe.indexOf(visitor[index]) > -1;
+
+    if(haveFriend){
+      continue;
+    }
+    isAlready(obj, index, -1, 1);
+  }
+  return true;
+}
+
+function isAlready(obj, index, num, score) {
+  let name;
+  console.log("score은" + score);
+  if (score === 1) {
+    name = obj.visitorRel[index];
+  } else if (score === 10) {
+    name = obj.friendRel[index][num];
+  }
+
+  let dupIndx = obj.recommendName.indexOf(name);
+  if (dupIndx > -1 && name.length === obj.recommendName[dupIndx].length) {
+    obj.recommendScore[dupIndx] += score;
+    return true;
+  }
+  obj.recommendName.push(name);
+  obj.recommendScore.push(score);
+  return true;
 }
 
 function pickFive(obj) {
-  const name = obj.nameArr;
-  const score = obj.scoreArr;
+  const name = obj.recommendName;
+  const score = obj.recommendScore;
   const set = new Set(score);
   let tmpScore = [...set];
   let returnName = [];
