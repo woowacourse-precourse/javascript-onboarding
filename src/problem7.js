@@ -50,6 +50,13 @@ function scoreFriend(user, friends, visitors) {
       scoreBoard[friendsFriend[i]] += 10
     }
   }
+
+  // visitors중 친구 리스트에 없으면 1점 추가
+  for(i=0; i<visitors.length; i++) {
+    if (!friendsList.includes(visitors[i])) {
+      scoreBoard[visitors[i]] += 1
+    }
+  }
 }
 
 module.exports = problem7;
