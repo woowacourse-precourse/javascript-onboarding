@@ -2,7 +2,7 @@ function problem6(forms) {
   var answer = [];
   var noName = []
   var result = []
-  var array = [["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"]]
+  var array = forms
   // var emailExp = new RegExp('^[a-zA-Z0-9+-.]+@+[email.com]+$')
   // var nameExp = new RegExp('^[ㄱ-ㅎ|가-힣]+$')
 
