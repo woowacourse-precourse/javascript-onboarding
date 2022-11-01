@@ -14,6 +14,11 @@
  * @returns {string[]}
  */
 function problem7(user, friends, visitors) {
+  const pairMap = friends.reduce((dict, [u, v]) => {
+    dict.set(u, (dict.get(u) ?? []).concat(v));
+    dict.set(v, (dict.get(v) ?? []).concat(u));
+    return dict;
+  }, new Map());
   var answer;
   return answer;
 }
