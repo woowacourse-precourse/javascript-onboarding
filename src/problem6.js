@@ -16,6 +16,14 @@ function problem6(forms) {
       else nickName.push(form[1].slice(i, i + 2));
     }
   });
+
+  // 중복된 닉네임을 확인하여 메일을 배열에 담기
+  forms.forEach((form) => {
+    for (let i = 0; i < form[1].length - 1; i++) {
+      if (overlapNickName.includes(form[1].slice(i, i + 2)))
+        result.push(form[0]);
+    }
+  });
 }
 
 module.exports = problem6;
