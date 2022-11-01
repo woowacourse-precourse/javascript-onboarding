@@ -25,9 +25,20 @@ const friendToObj = (friendRelation, user) => {
   return friendScore;
 }
 
+//visitors들을 각 key 값으로 추가
+const visitorToObj  = (friendScore, visitors, user) => {
+  for (let visitor of visitors) {
+    if (visitor !== user) {
+      friendScore[visitor] = 0;
+    }
+  }
+  return friendScore;
+}
+
 function problem7(user, friends, visitors) {
   const friendRelation = findRelation(user, friends);
   const friendScore = friendToObj(friendRelation);
+  const friendAndVisitorScore = visitorToObj(friendScore, visitors);
 
   let answer;
   return answer;
