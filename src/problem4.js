@@ -19,3 +19,16 @@ function isAlphabet(str, alphabet) {
 function isUpperCase(str) {
   return str === str.toUpperCase();
 }
+
+// function that returns reciprocal of alphabet string
+function reciprocalAlphabet(char, result, alphabet) {
+  const index = alphabet.indexOf(char);
+  let num;
+  if (isUpperCase(char)) {
+    num = 77;
+  } else {
+    num = 25;
+  }
+  result += alphabet[num - index]; // reciprocal of alphabet letter
+  return result;
+}
