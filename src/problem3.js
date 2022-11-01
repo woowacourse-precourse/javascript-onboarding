@@ -1,6 +1,6 @@
-function problem3(indexber) {
+function problem3(number) {
   var answer = 0;
-  for(let i = 1; i <= indexber; i++) {
+  for(let i = 1; i <= number; i++) {
     let index = i;
     while(index > 0) {
       if(index % 10 === 3 || index % 10 === 6 || index % 10 === 9) {
