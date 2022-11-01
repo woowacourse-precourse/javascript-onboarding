@@ -24,6 +24,8 @@ function problem6(forms) {
       if (duplicationCount[nickNameTwoWords] > 1) result.add(forms[i][0]);
     }
   }
+  answer = [...result].sort();
+  return answer;
 }
 
 module.exports = problem6;
