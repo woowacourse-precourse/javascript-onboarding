@@ -1,7 +1,6 @@
 class ErrorCase {
   constructor(forms) {
     this._forms = forms;
-    this.checkAllError();
   }
 
   checkFormsLimit() {
@@ -46,8 +45,6 @@ class ErrorCase {
 
 class UAHTechCourse {
   constructor(forms) {
-    new ErrorCase(forms);
-
     this._forms = forms;
   }
 
