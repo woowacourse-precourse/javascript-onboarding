@@ -1,3 +1,4 @@
+
 const sliceName = (compareName, index) => {
   const slicedNameSet = new Set();
 
@@ -7,6 +8,7 @@ const sliceName = (compareName, index) => {
 
   return [...slicedNameSet];
 };
+
 
 const isRepeatName = (name, validForms, index) => {
   for (let i = 0; i < validForms.length; i++) {
@@ -23,11 +25,19 @@ const isRepeatName = (name, validForms, index) => {
   return false;
 };
 
+
+const isValidEmailFormat = (email) => {
+  const emailRegExp = /[A-Za-z]{1,10}@email\.com$/;
+
+  return emailRegExp.test(email);
+};
+
 const isValidNameFormat = (name) => {
   const nameRegExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,19}$/;
 
   return nameRegExp.test(name);
 };
+
 
 
 function problem6(forms) {
