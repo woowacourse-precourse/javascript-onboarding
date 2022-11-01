@@ -48,8 +48,7 @@ const getScoreList = (user, friends, visitors) => {
   return [...scoreList];
 };
 
-const getRecommendedUserList = (user, friends, visitors) => {
-  const limit = 5;
+const getSortedScoreList = (user, friends, visitors) => {
   const scoreList = getScoreList(user, friends, visitors);
   const sortedScoreList = scoreList.sort(([name1, score1], [name2, score2]) => {
     if (score1 !== score2) return score2 - score1;
@@ -57,6 +56,12 @@ const getRecommendedUserList = (user, friends, visitors) => {
     if (name1 < name2) return -1;
     return 0;
   });
+  return sortedScoreList;
+};
+
+const getRecommendedUserList = (user, friends, visitors) => {
+  const limit = 5;
+  const sortedScoreList = getSortedScoreList(user, friends, visitors);
   const recommendedUserList = sortedScoreList
     .slice(0, limit)
     .map(([name]) => name);
