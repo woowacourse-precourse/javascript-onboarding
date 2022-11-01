@@ -15,9 +15,21 @@ function splitArr(num) {
   return count;
 }
 
+function isRightNumber(number) {
+  if (!(number > 0 && number < 10001)) {
+    return 0;
+  } else if (!(typeof number == "number")) {
+    return 0;
+  }
+  return 1;
+}
 function problem3(number) {
   const numArr = [];
   let answer = 0;
+
+  if (isRightNumber(number) == 0) {
+    return false;
+  }
   for (let i = 1; i <= number; i++) {
     numArr.push(i);
   }
