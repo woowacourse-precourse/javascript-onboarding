@@ -19,6 +19,10 @@ function problem7(user, friends, visitors) {
   )
     return "Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다";
 
+  // visitors는 길이가 0 이상 10,000 이하인 배열이다. 아닌 경우 "Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다"라는 문자열을 반환한다.
+  if (visitors.length < 0 || visitors.length > 10000 || !Array.isArray(visitors))
+    return "Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다";
+
   // friends를 순회하여 user의 친구를 배열에 담는다.
   const userFriends = [];
 

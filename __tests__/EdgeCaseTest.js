@@ -287,4 +287,21 @@ describe("problem7", () => {
       )
     ).toEqual("Error: friends 아이디의 길이가 1 이상 30 이하인 문자열이어야 합니다");
   });
+
+  test('visitors는 길이가 0 이상 10,000 이하인 배열이다. 아닌 경우 "Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다"라는 문자열을 반환한다.', () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["donut", "andole"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan", ...new Array(10000)]
+      )
+    ).toEqual("Error: visitors 아이디의 길이가 0 이상 10,000 이하인 배열이어야 합니다");
+  });
 });
