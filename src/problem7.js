@@ -2,13 +2,9 @@ function problem7(user, friends, visitors) {
   var answer;
 
   isUser = except(user, friends);
-
   scoreList = score_10(isUser, friends, user);
-
   friendRank = give10Score(scoreList);
-
-
-
+  visitorRank = visitorScore(visitors, friendRank);
   return answer;
 }
 
@@ -56,7 +52,7 @@ function score_10(userfriend, friends, user){
 
 function give10Score(scoreList) {
   var rankMap = new Map();
-  for(i = 0; i < 4; i++){
+  for(i = 0; i < scoreList.length; i++){
     if(rankMap.has(scoreList[i])){
       rankMap.set(scoreList[i], rankMap.get(scoreList[i]) + 10);
     } else {
@@ -67,6 +63,17 @@ function give10Score(scoreList) {
 }
 
 //방문자 명단에서 mrko와 mrko 친구 제외하고 1점씩 부여
+function visitorScore(visitors, rankMap){
+  for(i = 0; i < visitors.length; i++){
+    if(rankMap.has(visitors[i])){
+      rankMap.set(visitors[i], rankMap.get(visitors[i]) + 1);
+    } else {
+      rankMap.set(visitors[i], 1);
+    }
+  }
+  return rankMap;
+}
+
 //점수와 이름을 오름차순으로 정렬
 
 module.exports = problem7;
