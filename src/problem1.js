@@ -31,6 +31,13 @@ function sep(array) {
   return (Math.max(left_plus, right_plus, left_mul, right_mul));
 }
 
+function plus(num) {
+  let nb;
+  for (let num = 0; num > 0; num/10) {
+    nb += num % 10;
+  }
+}
+
 function problem1(pobi, crong) {
   var answer;
   return answer;
