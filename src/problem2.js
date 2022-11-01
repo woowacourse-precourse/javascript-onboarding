@@ -10,4 +10,15 @@ function problem2(cryptogram) {
   return answer;
 }
 
+function isDuplicate(input) {
+  // 연속으로 중복된 문자가 있는지 확인하는 함수
+  for (i = 0; i < input.length - 1; i++) {
+    if (input[i] === input[i + 1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
 module.exports = problem2;
