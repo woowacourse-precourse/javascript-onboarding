@@ -1,7 +1,6 @@
 class ErrorCase {
   constructor(cryptogram) {
     this._cryptogram = cryptogram;
-    this.checkAllError();
   }
 
   checkLowerCase() {
