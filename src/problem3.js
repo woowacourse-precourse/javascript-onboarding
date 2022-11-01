@@ -1,13 +1,13 @@
 function problem3(number) {
-  let clapCount = 0;
+  let answer = 0;
 
   for (let i = 1; i <= number; i++) {
     let strNumber = String(i);
 
-    clapCount = checkNum(strNumber, clapCount);
+    answer = checkNum(strNumber, answer);
   }
 
-  return clapCount;
+  return answer;
 }
 
 function checkNum(strNum, clapCount) {
