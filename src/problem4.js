@@ -1,5 +1,9 @@
 function problem4(word) {
   let answer = '';
+  const length = word.length;
+  for (i=0; i<length; i++) {
+    answer += Encoding(word.charCodeAt(i));
+  }
   return answer;
 }
 
