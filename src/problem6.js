@@ -1,6 +1,6 @@
 function problem6(forms) {
   // 제한사항 체크
-  if (isVaildInput(forms)) return false;
+  if (isValidInput(forms)) return false;
   /**
    * - 크루는 1명 이상 10,000명 이하
    * - 이메일은 이메일 형식에 부합하며 길이는 11자 이상 20자 미만
@@ -9,7 +9,7 @@ function problem6(forms) {
    * @param {string[][]} input 
    * @returns {boolean}
    */
-  function isVaildInput (input) {
+  function isValidInput (input) {
     // 크루 인원 조건 체크
     if (input.length < 1 || input.length > 10000) return true;
 
