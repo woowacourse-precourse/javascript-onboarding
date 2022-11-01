@@ -67,7 +67,7 @@ function whoWinner(pobi, crong) {
   }
 }
 
-const pobi = [131, 132];
-const crong = [211, 212];
-console.log(problem1(pobi, crong));
+// const pobi = [131, 132];
+// const crong = [211, 212];
+// console.log(problem1(pobi, crong));
 module.exports = problem1;

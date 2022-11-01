@@ -21,5 +21,5 @@ function problem4(word) {
   return answer;
 }
 
-console.log(problem4("I love you"));
+// console.log(problem4("I love you"));
 module.exports = problem4;
