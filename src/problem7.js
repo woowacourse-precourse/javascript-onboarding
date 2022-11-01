@@ -17,11 +17,9 @@ function problem7(user, friends, visitors) {
       if(k[0]!==user && k[1]!==user){
         if(k[0]===n){
           recFreinds.push(k[1]);
-          console.log(k[1]);
         }
         else if(k[1]===n){
           recFreinds.push(k[0]);
-          console.log(k[0]);
         }
       }
     })
@@ -42,9 +40,19 @@ function problem7(user, friends, visitors) {
     ans[key]=tmp_answer[key];
   }
 
-  for(var key in ans){
-    answer.push(key);
+  var sortable = [];
+  for (var name in ans) {
+    sortable.push([name, ans[name]]);
   }
+
+  sortable.sort(function(a, b) {
+    return b[1]-a[1];
+  });
+
+
+  sortable.forEach(n=>{
+    answer.push(n[0]);
+  })
 
   return answer;
 }
