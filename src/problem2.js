@@ -1,15 +1,3 @@
-// function check2(cryptogram, i) {
-//   console.log(cryptogram[i]);
-//   // console.log(i);
-//   let res = cryptogram;
-//   if (cryptogram[i] == cryptogram[i + 2]) {
-//     cryptogram.splice(i, 3);
-//   }
-//   if( cryptogram.splice(i, 2);
-//   // console.log(cryptogram);
-//   return cryptogram;
-// }
-
 function findFinish(cryptogram, c, i) {
   while (cryptogram[i] == c) {
     i++;
@@ -48,5 +36,4 @@ function problem2(cryptogram) {
   return resJoin;
 }
 
-// problem2("zyelleyz");
 module.exports = problem2;
