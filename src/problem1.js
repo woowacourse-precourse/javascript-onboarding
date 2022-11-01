@@ -30,6 +30,9 @@ function problem1(pobi, crong) {
     Math.max(addNumber(crong[0]), mulNumber(crong[0])),
     Math.max(addNumber(crong[1]), mulNumber(crong[1]))
   );
+  if (pobiScore > crongScore) answer = 1;
+  else if (pobiScore < crongScore) answer = 2;
+  else answer = 0;
 
   return answer;
 }
