@@ -1,18 +1,16 @@
-const FIRST_INDEX = 0;
-
 function problem2(cryptogram) {
-  let beforeDeduplicationLength = 0;
-  let afterDeduplicationLength = 0;
-  let deduplicatedCryptogram = cryptogram;
-  let referenceCharacter = deduplicatedCryptogram[FIRST_INDEX];
+  let beforeDeduplication = "";
+  let afterDeduplication = cryptogram;
+  let referenceCharacter = "";
   let dededuplicatedArr = [];
 
   do {
-    beforeDeduplicationLength = deduplicatedCryptogram.length;
-    dededuplicatedArr.push(referenceCharacter);
+    beforeDeduplication = afterDeduplication;
+    referenceCharacter = beforeDeduplication[0];
+    dededuplicatedArr = [referenceCharacter];
 
-    for (let i = FIRST_INDEX + 1; i < beforeDeduplicationLength; i++) {
-      const targetCharacter = deduplicatedCryptogram[i];
+    for (let i = 1; i < beforeDeduplication.length; i++) {
+      const targetCharacter = beforeDeduplication[i];
 
       if (referenceCharacter !== targetCharacter) {
         dededuplicatedArr.push(targetCharacter);
@@ -24,13 +22,10 @@ function problem2(cryptogram) {
       }
     }
 
-    deduplicatedCryptogram = dededuplicatedArr.join("");
-    afterDeduplicationLength = deduplicatedCryptogram.length;
-    referenceCharacter = deduplicatedCryptogram[FIRST_INDEX];
-    dededuplicatedArr = [];
-  } while (beforeDeduplicationLength !== afterDeduplicationLength);
+    afterDeduplication = dededuplicatedArr.join("");
+  } while (beforeDeduplication !== afterDeduplication);
 
-  return deduplicatedCryptogram;
+  return afterDeduplication;
 }
 
 module.exports = problem2;
