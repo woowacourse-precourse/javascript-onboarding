@@ -10,24 +10,24 @@ module.exports = problem7;
 
 function userFriends(user,friends){
   let userFriends=[];
-  for(let i=0; i<friends.length; i++){
-    if(friends[i].includes(user)){
-      userFriends.push(friends[i].find((el)=>el!==user));
+  friends.forEach(el=>{
+    if(el.includes(user)){
+      userFriends.push(el.find((x)=>x!==user));
     }
-  }
+  })
   return userFriends;
 }
 
 function friendOfFriends(user,friends){
   let friendOfFriends=[];
   let userFriendArr=userFriends(user,friends);
-  for(let i=0; i<userFriendArr.length; i++){
-    for(let j=0; j<friends.length; j++){
-      if(friends[j].includes(userFriendArr[i])){
-        friendOfFriends.push(friends[j].find(el=>el!==userFriendArr[i]));
+  userFriendArr.map((el)=>{
+    friends.forEach((friend)=>{
+      if(friend.includes(el)){
+        friendOfFriends.push(friend.find(x=>x!==el));
       }
-    }
-  }
+    })
+  })
   return friendOfFriends
   .filter((el)=>!userFriendArr
   .includes(el) && el!==user);
@@ -36,11 +36,11 @@ function friendOfFriends(user,friends){
 function visitorsRemove(user,friends,visitors){
   let removeTarget=userFriends(user,friends);
   let removeResult=[];
-  for(let i=0; i<visitors.length; i++){
-    if(!removeTarget.includes(visitors[i])){
-      removeResult.push(visitors[i]);
+  visitors.forEach((el)=>{
+    if(!removeTarget.includes(el)){
+      removeResult.push(el);
     }
-  }
+  })
   return removeResult;
 }
 
@@ -48,12 +48,12 @@ function giveScore(user,friends,visitors){
   let scoreList=new Map();
   let tenPoint=friendOfFriends(user,friends);
   let onePoint=visitorsRemove(user,friends,visitors);
-  for(let i=0; i<tenPoint.length; i++){
-    scoreList.set(tenPoint[i],(scoreList.get(tenPoint[i]) || 0)+10);
-  }
-  for(let i=0; i<onePoint.length; i++){
-    scoreList.set(onePoint[i],(scoreList.get(onePoint[i]) || 0)+1);
-  }
+  tenPoint.forEach((el)=>{
+    scoreList.set(el,(scoreList.get(el) || 0)+10);
+  })
+  onePoint.forEach((el)=>{
+    scoreList.set(el,(scoreList.get(el) || 0)+1);
+  })
   return [...scoreList];
 }
 
