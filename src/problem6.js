@@ -25,7 +25,17 @@ function problem6(forms) {
       overlap.push(elementStr);
     }    
   }
-  let newOverlap = [...new Set(overlap)]  
+  let newOverlap = [...new Set(overlap)]
+  
+  const overlapCheck = newOverlap.toString();
+  for (element of arr){
+    let email = element[0];
+    let name = element[1];
+    if (name.indexOf(overlapCheck) != -1){
+      emailArr.push(email);
+    }
+  }
+return emailArr.sort();
 
 
 }
