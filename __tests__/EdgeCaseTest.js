@@ -93,6 +93,10 @@ describe("problem4", () => {
   test('word의 길이가 1000 이하가 아닌 경우 "Error: word의 길이는 1000이하이어야 합니다"라는 문자열을 반환한다.', () => {
     expect(problem4("a".padEnd(1001, "a"))).toEqual("Error: word의 길이는 1000이하이어야 합니다");
   });
+
+  test("한글이 섞여있는 경우 변환하지 않고 그대로 반환해야 한다.", () => {
+    expect(problem4("I love you 성훈")).toEqual("R olev blf 성훈");
+  });
 });
 
 describe("problem7", () => {
