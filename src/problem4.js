@@ -10,27 +10,23 @@ let dictionary = [
     ['s','h'],['t','g'],['u','f'],['v','e'],['w','d'],['x','c'],
     ['y','b'],['z','a']
 ]
-function changeString(n){
-  let result='';
-  for(let i=0;i<n.length;i++){
+function changeString(word){
+  let word_arr='';
+  for(let i=0;i<word.length;i++){
     for(let j=0;j<dictionary.length;j++){
-      if(n[i]==dictionary[j][0]){
-        result+=dictionary[j][1];
+      if(word[i]==dictionary[j][0]){
+        word_arr+=dictionary[j][1];
       }
-      if(n[i]===' '){
-        result+=' ';
+      if(word[i]===' '){
+        word_arr+=' ';
         break;
       }
     }
-  }
-  
-  return result;
+  }return word_arr;
 }
-
 function problem4(word) {
   let answer;
   answer=changeString(word);
   return answer;
 }
-
 module.exports = problem4;
