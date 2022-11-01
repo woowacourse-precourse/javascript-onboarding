@@ -47,6 +47,10 @@ function problem6(forms) {
   for(let [key, value] of cntWord){
     for (var item of nameTwo){
       if (item.includes(key)){
+        if(item.includes(key) && item.length< value){
+          duName.push(key);
+          break;
+        }
         let i = 0;
         while(item.includes(key)){
           if(item[i] == key)  {
