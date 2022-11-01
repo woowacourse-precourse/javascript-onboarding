@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  var answer;
+  let answer;
 
   const cryptogramArray = cryptogram.split("");
   let decryption = cryptogramArray.reduce(
@@ -10,7 +10,7 @@ function problem2(cryptogram) {
     []
   ) 
 
-  answer = decryption.reduce((answer,word)=>answer+=word,"")
+  answer = decryption.reduce((answer,word)=>answer+word,"")
   return answer;
 }
 
