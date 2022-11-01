@@ -1,35 +1,83 @@
+// function problem6(forms) {
+//   var answer;
+
+//   const nickName = [];
+//   let duplicate = [];
+
+//   for (i = 0; i < forms.length; i++) 
+//       nickName.push(forms[i][1]);
+
+//   for (i = 0; i < nickName.length; i++) {
+//       // console.log(nickName[i], nickName[i].length);
+//       for (j = 0; j + 1 < nickName[i].length + 1; j++) {
+//           subStr = nickName[i].slice(j, j + 2)
+//           // console.log(subStr, nickName[i]);
+//           duplicate = checkDuplicate(subStr, nickName, forms, duplicate);
+//       }
+//   }
+  
+//   duplicate.sort();
+//   answer = duplicate;
+
+//   return answer;
+// }
+
+// function checkDuplicate(subStr, nickName, forms, duplicate) {
+//   for (let k = i + 1; k < nickName.length; k++) 
+//     if (nickName[k].includes(subStr)) 
+//       duplicate = makeDupArr(nickName[i], forms, duplicate);
+
+//   return duplicate;
+// }
+
+// function makeDupArr(nickName, forms, duplicate) {
+//   for (let i = 0; i < nickName.length; i++) 
+//     if (forms[i][1] === nickName) 
+//       if (duplicate.indexOf(forms[i][0]) < 0)    //duplicate에 없다면 추가
+//         duplicate.push(forms[i][0]);
+      
+//   return duplicate;
+// }
+
 function problem6(forms) {
   var answer;
-
   const nickName = [];
   let duplicate = [];
 
   for (i = 0; i < forms.length; i++) 
-  nickName.push(forms[i][1]);
+    nickName.push(forms[i][1]);
 
   for (i = 0; i < nickName.length; i++) 
-    for (j = 0; j + 1 < nickName[i].length; j++) {
+    for (j = 0; j + 1 < nickName[i].length + 1; j++) {
       subStr = nickName[i].slice(j, j + 2)
-      duplicate = checkDuplicate(subStr, nickName, duplicate);
+      duplicate = checkDuplicate(subStr, nickName, forms, duplicate);
     }
+  
+  duplicate.sort();
+  answer = duplicate;
 
   return answer;
 }
 
-function checkDuplicate(subStr, nickName, duplicate) {
+function checkDuplicate(subStr, nickName, forms, duplicate) {
   for (let k = i + 1; k < nickName.length; k++) 
     if (nickName[k].includes(subStr)) 
       duplicate = makeDupArr(nickName[i], forms, duplicate);
-
+      
   return duplicate;
 }
 
 function makeDupArr(nickName, forms, duplicate) {
-  for (let i = 0; i < nickName.length; i++) 
-    if (forms[i][1] === nickName) 
-      if (duplicate.indexOf(forms[i][0]) < 0)    //duplicate에 없다면 추가
-        duplicate.push(forms[i][0]);
-      
+  // for (let i = 0; i < nickName.length; i++) {
+      console.log(forms[i][1], nickName, forms[i][1] === nickName);
+      if (forms[i][1] === nickName) {
+          if (duplicate.indexOf(forms[i][0]) < 0) {   //duplicate에 없다면 추가
+              console.log("push", forms[i][0], forms[i][1] === nickName, forms[i][1], nickName);
+              duplicate.push(forms[i][0]);
+          }
+          console.log(duplicate, !forms[i][0] in duplicate);
+      }
+  // }
   return duplicate;
 }
 
