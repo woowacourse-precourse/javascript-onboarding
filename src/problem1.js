@@ -1,17 +1,17 @@
 function pageMaxScore(page) {
-    const a = page
+    const pageList = page
         .toString()
         .split("")
-        .map((item) => Number(item));
+        .map((num) => Number(num));
 
-    const sumResult = a.reduce((acc, cur) => acc + cur, 0);
-    const multipleResult = a.reduce((acc, cur) => acc * cur);
+    const sumResult = pageList.reduce((acc, cur) => acc + cur, 0);
+    const multipleResult = pageList.reduce((acc, cur) => acc * cur);
 
     return sumResult > multipleResult ? sumResult : multipleResult;
 }
 
-function myMaxScore(user) {
-    const [leftPage, rightPage] = user;
+function myMaxScore(userPage) {
+    const [leftPage, rightPage] = userPage;
     if (rightPage - leftPage !== 1 || leftPage === 1 || rightPage === 400) {
         return -1;
     }
