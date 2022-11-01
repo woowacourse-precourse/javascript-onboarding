@@ -5,7 +5,7 @@ function problem3(number) {
   for (let i = 1; i < number + 1; i++) {
     temp = [...i.toString()];
     answer += temp.reduce(
-      (prev, cur) => prev + ((cur === "3") | (cur === "6") | (cur === "9")),
+      (prev, cur) => prev + (cur === "3" || cur === "6" || cur === "9"),
       0
     );
   }
