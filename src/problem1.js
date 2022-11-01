@@ -1,7 +1,7 @@
 /**
  * @param {number} digits
  */
-function getSumOfDigits(digits) {
+function calculateSumOfDigits(digits) {
   let sum = 0;
   for (const digit of String(digits)) {
     sum += Number(digit);
@@ -12,7 +12,7 @@ function getSumOfDigits(digits) {
 /**
  * @param {number} digits
  */
-function getProductOfDigits(digits) {
+function calculateProductOfDigits(digits) {
   let product = 1;
   for (const digit of String(digits)) {
     product *= Number(digit);
