@@ -13,15 +13,6 @@ function find369(number) {
 
 function problem3(number) {
   let clapNum = 0;
-
-  function count369InStr(s) {
-    for (let letter of s) {
-      if ((letter === "3") | (letter === "6") | (letter === "9")) {
-        clapNum += 1;
-      }
-    }
-  }
-
   const found369Num = find369(number);
 
   for (let element of found369Num) {
@@ -30,6 +21,14 @@ function problem3(number) {
   }
 
   return clapNum;
+
+  function count369InStr(s) {
+    for (let letter of s) {
+      if ((letter === "3") | (letter === "6") | (letter === "9")) {
+        clapNum += 1;
+      }
+    }
+  }
 }
 
 module.exports = problem3;
