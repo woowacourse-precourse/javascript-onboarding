@@ -27,6 +27,7 @@ function problem7(user, friends, visitors) {
     map.set(key, 0);
     return map;
   }, new Map());
+
   const dfs = (depth, id) => {
     if (depth === 2) {
       scoreMap.set(id, scoreMap.get(id) + 10);
@@ -42,12 +43,23 @@ function problem7(user, friends, visitors) {
   visited.set(user, true);
   dfs(0, user);
 
-  visitors.forEach((visitor) =>
-    scoreMap.set(visitor, (scoreMap.get(visitor) ?? 0) + 1)
+  const frinedSet = new Set(pairMap.get(user));
+
+  visitors.forEach(
+    (visitor) =>
+      frinedSet.has(visitor) ||
+      scoreMap.set(visitor, (scoreMap.get(visitor) ?? 0) + 1)
   );
 
-  var answer;
-  return answer;
+  const stringComparator = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+  const scoreCompator = (a, b) =>
+    a[1] === b[1] ? stringComparator(a[0], b[0]) : b[1] - a[1];
+
+  return [...scoreMap]
+    .sort(scoreCompator)
+    .filter(([, score]) => score > 0)
+    .map(([id]) => id)
+    .slice(0, 5);
 }
 
 module.exports = problem7;
