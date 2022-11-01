@@ -17,7 +17,7 @@ function findMax(x) {
 function problem1(pobi, crong) {
   var answer;
   if(pobi[1] !== pobi[0]+ 1) return -1;
-  if(crong[1] !== pobi[0] + 1) return -1;
+  if(crong[1] !== crong[0] + 1) return -1;
 
   var maxPobi = Math.max(findMax(pobi[0]), findMax(pobi[1]));
   var maxCrong = Math.max(findMax(crong[0]), findMax(crong[1]));
@@ -28,5 +28,7 @@ function problem1(pobi, crong) {
 
   return answer;
 }
+
+console.log(problem1([97, 98], [197, 198]));
 
 module.exports = problem1;
