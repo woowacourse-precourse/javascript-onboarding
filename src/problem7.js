@@ -20,6 +20,21 @@ function problem7(user, friends, visitors) {
     }
     friendsMap.set(friends[i][1], knowFriendsPoint);
   }
+
+  const visitorsMap = new Map();
+  for (let i = 0; i < visitors.length; i++) {
+    if (avoidResult.includes(visitors[i])) continue;
+    if (visitorsMap.has(visitors[i])) {
+      visitorsMap.set(
+        visitors[i],
+        visitorsMap.get(visitors[i]) + visitTimelinePoint
+      );
+      continue;
+    }
+    visitorsMap.set(visitors[i], visitTimelinePoint);
+  }
+
+  return answer;
 }
 
 module.exports = problem7;
