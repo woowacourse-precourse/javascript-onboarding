@@ -10,14 +10,14 @@ function asciiToStr(asciiNum) {
 function chknTrans(asciiCode) {
   let num;
   if (asciiCode >= 97 && asciiCode <= 122) {
-    //소문자
+    //소문자 반대로 전환
     num = 122 - asciiCode + 97;
   } else if (asciiCode >= 65 && asciiCode <= 90) {
-    //대문자
+    //대문자 반대로 전환
     num = 90 - asciiCode + 65;
   } else {
-    //띄어쓰기
-    num = 32;
+    //알파벳 외의 문자
+    num = asciiCode;
   }
   return num;
 }
