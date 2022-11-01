@@ -1,5 +1,5 @@
 
-
+// user의 점수를 구해주는 기능
 function score(userName){
   let scoreList =[];
   let leftsum = 0;
@@ -30,8 +30,10 @@ function score(userName){
   return Math.max(...scoreList)
 }
 
+// user의 유효성 검사
 function isVaild(userName){
-  if(JSON.stringify(userName) === '[1,2]' || JSON.stringify(userName) === '[399,400]' ){
+
+  if((userName[0] <=1 || userName[0] >=400) || (userName[1] <=1 || userName[1] >=400) ){
     return false;
   } else if(userName[1]-userName[0] != 1){
     return false;
@@ -52,8 +54,6 @@ function problem1(pobi, crong) {
   }
 
 }
-
-
 
 
 module.exports = problem1;
