@@ -25,13 +25,13 @@ function changeWord(letter) {
     changeLetter = String.fromCharCode(155 - ascii);
   }
   // 소문자 (97~122)
-  if (ascii >= 97 && ascii <= 122) {
+  else if (ascii >= 97 && ascii <= 122) {
     changeLetter = String.fromCharCode(219 - ascii);
   }
 
-  // 예외처리 (띄어쓰기)
-  if (letter === " ") {
-    changeLetter === " ";
+  // 예외처리 (띄어쓰기 등) - ascii 32
+  else {
+    changeLetter = String.fromCharCode(ascii);
   }
 
   return changeLetter;
