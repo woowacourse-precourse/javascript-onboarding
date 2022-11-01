@@ -10,12 +10,6 @@ const extractWord = (nickname, characterLength = 2) => {
   return wordSet;
 };
 
-const getUniqueEmails = (emails) => {
-  const uniqueEmails = [...new Set(emails)];
-
-  return uniqueEmails;
-};
-
 const countWord = ({ word, wordMap, user: { email, nickname } }) => {
   if (wordMap.has(word)) {
     const { count, users } = wordMap.get(word);
@@ -53,30 +47,37 @@ const createNicknameWordMap = (forms) => {
   return nicknameWordMap;
 };
 
-const getUserData = {
+const getUniqueEmails = (emails) => {
+  const uniqueEmails = [...new Set(emails)];
+
+  return uniqueEmails;
+};
+
+const getUserInfo = {
   email(userInfoList) {
     return getUniqueEmails(userInfoList);
   },
 };
 
-const getDuplicateNicknameUserData = (nicknameWordMap, data = "email") => {
+const getDuplicateNicknameUserInfo = (nicknameWordMap, info = "email") => {
   const UNIQUE_NAME_USER_COUNT = 1;
   const result = [];
 
   for (const [, { count, users }] of nicknameWordMap) {
     if (count > UNIQUE_NAME_USER_COUNT) {
-      users.forEach((user) => result.push(user[data]));
+      users.forEach((user) => result.push(user[info]));
     }
   }
 
-  return getUserData[data](result);
+  return getUserInfo[info](result);
 };
 
 const problem6 = (forms) => {
-  /* {"단어" => {count: 0, users : [{email, 닉네임}, {email,닉네임}]}} */
+  /* {"단어" => {count: 2, users : [{email, 닉네임}, {email,닉네임}]}} */
   const nicknameWordMap = createNicknameWordMap(forms);
   const duplicateNicknameUserEmails =
-    getDuplicateNicknameUserData(nicknameWordMap);
+    getDuplicateNicknameUserInfo(nicknameWordMap);
+
   const sortedUserEmailList = duplicateNicknameUserEmails.sort();
 
   return sortedUserEmailList;
