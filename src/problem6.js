@@ -1,5 +1,5 @@
 // [✅] forms의 배열에서 email과 nickName을 분리한 배열을 각각 만든다.
-// [] 걸러진 이메일을 담을 result 배열을 만든다.
+// [✅] 걸러진 이메일을 담을 result 배열을 만든다.
 // [] nickName 배열을 순회하며 두 글자 이상의 문자가 연속적으로 포함된 닉네임의 index를 모두 찾는다.
 // [] email 배열과 nickName 배열의 순서는 같으므로 찾은 닉네임 index로 email[index]에 해당하는 이메일을 result 배열에 넣는다.
 // [] result 내 이메일 목록을 오름차순 정렬한다.
@@ -14,11 +14,12 @@
 function problem6(forms) {
   const email = [];
   const nickName = [];
+  const result = [];
   forms.forEach((data) => {
     email.push(data[0]);
     nickName.push(data[1]);
   });
-  return email;
+  return result;
 }
 
 console.log(
