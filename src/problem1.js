@@ -3,7 +3,7 @@ console.log(problem1([97, 98], [197, 198]));
 
 function problem1(pobi, crong) {
   // maxNumber 비교 후 점수 return
-  answer = sumPage(pobi);
+  answer = multiPage(pobi);
   return answer;
 }
 
@@ -26,8 +26,17 @@ function sumPage(pages) {
 
 // 페이지 번호 각 자리 숫자 곱하는 함수
 function multiPage(pages) {
-  let multiPages = 0;
-  multiPages = pages[0] * pages[1];
+  let firstMulti = pages[0]
+    .toString()
+    .split("")
+    .reduce((x, y) => +x * +y, 1);
+
+  let secondMulti = pages[1]
+    .toString()
+    .split("")
+    .reduce((x, y) => +x * +y, 1);
+
+  let multiPages = firstMulti * secondMulti;
 
   return multiPages;
 }
