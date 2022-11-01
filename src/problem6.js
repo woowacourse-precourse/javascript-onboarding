@@ -2,11 +2,11 @@ function problem6(forms) {
 	//서로 중복된 단어가 있는지 비교하는 함수 -> compareWords
 	//닉네임 중복 체크를 하는 함수 -> checkDuplicate
 	//중복된 닉네임의 인덱스를 체크하는 함수 -> getIndex
-	//중복 확인된 닉네임의 인덱스 값을 이용해 결과를 리턴하는 함수 -> checkNickname
-	return checkNickname(forms);
+	//중복 확인된 닉네임의 인덱스 값을 이용해 결과를 리턴하는 함수 -> solution
+	return solution(forms);
 }
 
-function checkNickname(forms) {
+function solution(forms) {
 	const nicknameOnly = forms.map((form) => form[1]);
 	const duplicateIndex = getIndex(nicknameOnly);
 
@@ -24,8 +24,6 @@ function getIndex(nicknames) {
 		if (checkDuplicate(nickname, nicknames)) index.push(idx);
 	});
 
-	console.log('인덱스들:', index);
-
 	return index;
 }
 
@@ -35,7 +33,6 @@ function checkDuplicate(selected, nicknames) {
 
 	result = nicknames.filter((nickname) => compareWords(words, nickname));
 
-	console.log('결과:', result);
 	return result.length > 1 ? true : false;
 }
 
