@@ -6,7 +6,7 @@ function getEmailSet(forms) {
   const LEN = forms.length;
   for (let i = 0; i < LEN - 1; i++) {
     for (let j = i + 1; j < LEN; j++) {
-      if (hasOverlap(forms[i][NICKNAME], forms[j][NICKNAME])) {
+      if (lapover(forms[i][NICKNAME], forms[j][NICKNAME])) {
         emailSet.add(forms[i][EMAIL]);
         emailSet.add(forms[j][EMAIL]);
       }
@@ -25,6 +25,8 @@ function lapover(a, b) {
 
 function problem6(forms) {
   var answer;
+  const unsortedEmails = getEmailSet(forms);
+  answer = unsortedEmails.sort();
   return answer;
 }
 
