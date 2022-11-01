@@ -1,15 +1,4 @@
 function problem4(word) {
-  let str = [...word];
-
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== " ") {
-      str[i] = reverseLetter(str[i]);
-    }
-  }
-  return str.join("");
-}
-
-function reverseLetter(letter) {
   const alphabet = [
     "A",
     "B",
@@ -38,13 +27,24 @@ function reverseLetter(letter) {
     "Y",
     "Z",
   ];
+  let wordArray = [...word];
 
-  for (let i = 0; i < 26; i++) {
-    if (letter.toUpperCase() == alphabet[i]) {
-      if (letter.toUpperCase() == letter) {
-        return alphabet.reverse()[i];
+  for (let i = 0; i < wordArray.length; i++) {
+    if (alphabet.includes(wordArray[i].toUpperCase())) {
+      wordArray[i] = reverseLetter(alphabet, wordArray[i]);
+    }
+  }
+
+  return wordArray.join("");
+}
+
+function reverseLetter(strArray, letter) {
+  for (let i = 0; i < strArray.length; i++) {
+    if (letter.toUpperCase() === strArray[i]) {
+      if (letter.toUpperCase() === letter) {
+        return strArray.reverse()[i];
       } else {
-        return alphabet.reverse()[i].toLowerCase();
+        return strArray.reverse()[i].toLowerCase();
       }
     }
   }

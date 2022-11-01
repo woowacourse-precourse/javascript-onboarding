@@ -4,8 +4,9 @@ function problem5(money) {
 
   for (let i = 0; i < coinList.length; i++) {
     wallet.push(Math.trunc(money / coinList[i]));
-    money = money - coinList[i] * wallet[i];
+    money = money % coinList[i];
   }
+
   return wallet;
 }
 

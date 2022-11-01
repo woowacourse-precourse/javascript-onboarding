@@ -5,7 +5,7 @@ function problem6(forms) {
   for (let i = 0; i < forms.length; i++) {
     for (let j = 0; j < forms[i][1].length - 1; j++) {
       const equalNameList = nameList.filter(
-        (item) => item == forms[i][1].substr(j, 2)
+        (item) => item === forms[i][1].substr(j, 2)
       );
 
       if (equalNameList.length > 1) {
@@ -13,7 +13,10 @@ function problem6(forms) {
       }
     }
   }
-  return emailList.sort();
+
+  return emailList
+    .filter((element, index) => emailList.indexOf(element) === index)
+    .sort();
 }
 
 function setName(forms) {
@@ -24,6 +27,7 @@ function setName(forms) {
       array.push(forms[i][1].substr(j, 2));
     }
   }
+
   return array;
 }
 

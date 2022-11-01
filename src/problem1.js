@@ -1,25 +1,25 @@
 function problem1(pobi, crong) {
-  const pobiOddNumber = pobi[0];
-  const pobiEvenNumber = pobi[1];
-  const crongOddNumber = crong[0];
-  const crongEvenNumber = crong[1];
-
-  const pobiScore = maxNumber(pobiOddNumber, pobiEvenNumber);
-  const crongScore = maxNumber(crongOddNumber, crongEvenNumber);
-
   if (checkNumber(pobi) || checkNumber(crong)) {
     return -1;
   }
 
-  if (pobiScore == crongScore) {
+  const pobiMaxScore = maxNumber(pobi[0], pobi[1]);
+  const crongMaxScore = maxNumber(crong[0], crong[1]);
+
+  if (pobiMaxScore === crongMaxScore) {
     return 0;
-  } else if (pobiScore > crongScore) {
+  } else if (pobiMaxScore > crongMaxScore) {
     return 1;
-  } else if (pobiScore < crongScore) {
+  } else if (pobiMaxScore < crongMaxScore) {
     return 2;
   }
 }
 
+/**
+ *
+ * @param {*} numbers
+ * @returns
+ */
 function checkNumber(numbers) {
   if (numbers.length !== 2) {
     return true;

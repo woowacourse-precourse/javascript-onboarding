@@ -57,7 +57,7 @@ function setHighScore(obj) {
     if (a.score > b.score) {
       return -1;
     }
-    if (a.score == b.score) {
+    if (a.score === b.score) {
       if (nameA < nameB) {
         return -1;
       }
@@ -84,9 +84,10 @@ function setScore(array, score) {
   for (let i = 0; i < newArray.length; i++) {
     result.push({
       name: newArray[i],
-      score: score * array.filter((item) => item == newArray[i]).length,
+      score: score * array.filter((item) => item === newArray[i]).length,
     });
   }
+
   return result;
 }
 
@@ -100,14 +101,15 @@ function setFriendList(array, userName) {
   const result = [];
   let index = array.indexOf(userName);
 
-  while (index != -1) {
-    if (index % 2 == 0) {
+  while (index !== -1) {
+    if (index % 2 === 0) {
       result.push(array[index + 1]);
-    } else if (index % 2 == 1) {
+    } else if (index % 2 === 1) {
       result.push(array[index - 1]);
     }
     index = array.indexOf(userName, index + 1);
   }
+
   return result;
 }
 
