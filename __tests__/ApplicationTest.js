@@ -22,7 +22,7 @@ describe("problem1", () => {
 
 describe("problem2", () => {
   test("case1", () => {
-    expect(problem2("browoanoommnaon")).toEqual("brown");
+    expect(problem2("browoanooommnaon")).toEqual("brown");
   });
   test("case2", () => {
     expect(problem2("zyelleyz")).toEqual("");
@@ -40,7 +40,7 @@ describe("problem3", () => {
 
 describe("problem4", () => {
   test("case1", () => {
-    expect(problem4("I love you")).toEqual("R olev blf");
+    expect(problem4("I love you!")).toEqual("R olev blf!");
   });
 });
 
@@ -65,6 +65,23 @@ describe("problem6", () => {
         ["nowm@email.com", "이제엠"],
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+  test("case2", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠제이워니"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이워니"],
+      ])
+    ).toEqual([
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+      "woniee@email.com",
+    ]);
   });
 });
 
