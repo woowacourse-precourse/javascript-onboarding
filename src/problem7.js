@@ -33,18 +33,26 @@ function addScore(id, score, scores) {
 }
 
 function getScores(user, friendships, visitors, scores) {
-  for (const friend of friendships.vertices[user]) {
-    for (const friendOfFriend of friendships.vertices[friend]) {
-      addScore(friendOfFriend, 10, scores);
+  const userFriends = friendships.vertices[user];
+
+  if (userFriends) {
+    for (const friend of userFriends) {
+      for (const friendOfFriend of friendships.vertices[friend]) {
+        addScore(friendOfFriend, 10, scores);
+      }
     }
   }
-  for (const visitor of visitors) {
-    addScore(visitor, 1, scores);
+  if (visitors.length) {
+    for (const visitor of visitors) {
+      addScore(visitor, 1, scores);
+    }
   }
 
   scores[user] = 0;
-  for (const friend of friendships.vertices[user]) {
-    scores[friend] = 0;
+  if (userFriends) {
+    for (const friend of userFriends) {
+      scores[friend] = 0;
+    }
   }
 }
 
