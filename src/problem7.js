@@ -8,7 +8,7 @@ function problem7(user, friends, visitors) {
   }
   console.log(connected);
 
-  const score = new Object();
+  const point = new Object();
   for (follower of connected[user].values()) {
     for (person of connected[follower].values()) {
       if (person == user) {
@@ -17,22 +17,22 @@ function problem7(user, friends, visitors) {
       if (connected[user].has(person)) {
         continue;
       }
-      if (score.hasOwnProperty(person)) {
+      if (point.hasOwnProperty(person)) {
         continue;
       }
-      setDefaultScore(score, person, 10);
+      setDefaultPoint(point, person, 10);
     }
   }
-  console.log(score);
+  console.log(point);
 
   for (visitor of visitors) {
     if (connected[user].has(visitor)) {
       continue;
     }
-    setDefaultScore(score, visitor, 1);
+    setDefaultPoint(point, visitor, 1);
   }
-  console.log(score);
-  
+  console.log(point);
+
   var answer;
   return answer;
 }
@@ -47,7 +47,7 @@ function setDefault(target, key, value) {
   return target;
 }
 
-function setDefaultScore(target, key, value) {
+function setDefaultPoint(target, key, value) {
   if (target.hasOwnProperty(key)) {
     target[key] += 1;
     return target
