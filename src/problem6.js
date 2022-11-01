@@ -28,7 +28,7 @@ function problem6(forms) {
     });
   });
   // 4. 추출 및 정렬
-  let overlapMail = overlapCrew.map((el) => el[1]);
+  let overlapMail = overlapCrew.map((el) => el[0]);
   return overlapMail.sort();
 }
 
