@@ -1,5 +1,6 @@
 function problem4(word) {
   const wordArr = word.split('');
+  // 알파벳 대문자 사전
   const dictionaryUpper = [
     'A',
     'B',
@@ -28,10 +29,13 @@ function problem4(word) {
     'Y',
     'Z',
   ];
+  // 알파벳 대문자 사전 뒤집기
   const dictionaryUpperReverse = [...dictionaryUpper].reverse();
+  // 알파벳 소문자 사전
   const dictionaryLower = dictionaryUpper.map((alphabet) =>
     alphabet.toLowerCase()
   );
+  // 알파벳 소문자 사전 뒤집기
   const dictionaryLowerReverse = [...dictionaryLower].reverse();
   wordArr.map((alphabet, index) => {
     // word의 특정 값이 대문자인 경우
@@ -47,7 +51,5 @@ function problem4(word) {
   });
   return wordArr.join('');
 }
-
-console.log(problem4('I love you'));
 
 module.exports = problem4;

@@ -132,6 +132,4 @@ function problem1(pobi, crong) {
   return result(pobi, crong);
 }
 
-console.log(problem1([131, 132], [211, 212]));
-
 module.exports = problem1;
