@@ -1,7 +1,24 @@
 function problem4(word) {
   var answer;
+
   const arr = word.trim().split("");
+
   let covertedArr = "";
+  const dic = dictionary();
+
+  // uppercase, lowercase 검사
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] == arr[i].toUpperCase()
+      ? (covertedArr += dic[arr[i]])
+      : (covertedArr += dic[arr[i].toUpperCase()].toLowerCase());
+  }
+
+  console.log(covertedArr);
+  answer = covertedArr;
+  return answer;
+}
+
+function dictionary() {
   const dic = {
     A: "Z",
     B: "Y",
@@ -30,14 +47,6 @@ function problem4(word) {
     Z: "A",
     " ": " ",
   };
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] == arr[i].toUpperCase()
-      ? (covertedArr += dic[arr[i]])
-      : (covertedArr += dic[arr[i].toUpperCase()].toLowerCase());
-  }
-
-  console.log(covertedArr);
-  answer = covertedArr;
-  return answer;
+  return dic;
 }
 module.exports = problem4;
