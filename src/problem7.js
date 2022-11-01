@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
-  let [userFriends, newFriends] = getSeparateFrieds(user, friends);
-  userFriends = new Set(userFriends);
-  const withKnowScore = getWithKnowScore(userFriends, newFriends);
-  const visitTimelineScore = getVisitTimelineScore(userFriends, visitors);
+  const [userFriends, newFriends] = getSeparateFrieds(user, friends);
+  const userFriendsSet = new Set(userFriends);
+  const withKnowScore = getWithKnowScore(userFriendsSet, newFriends);
+  const visitTimelineScore = getVisitTimelineScore(userFriendsSet, visitors);
   const recommendScore = getRecommendScore(withKnowScore, visitTimelineScore);
 
   return recommendScore;
@@ -36,14 +36,14 @@ function setWithKnowScore(withKnowScore, friend) {
   return withKnowScore;
 }
 
-function getWithKnowScore(userFriends, newFriends) {
+function getWithKnowScore(userFriendsSet, newFriends) {
   let withKnowScore = {};
 
   newFriends.forEach((friend) => {
     const [friend1, friend2] = friend;
-    if (userFriends.has(friend1)) {
+    if (userFriendsSet.has(friend1)) {
       withKnowScore = setWithKnowScore(withKnowScore, friend2);
-    } else if (userFriends.has(friend2)) {
+    } else if (userFriendsSet.has(friend2)) {
       withKnowScore = setWithKnowScore(withKnowScore, friend1);
     }
   });
@@ -51,11 +51,11 @@ function getWithKnowScore(userFriends, newFriends) {
   return withKnowScore;
 }
 
-function getVisitTimelineScore(userFriends, visitors) {
+function getVisitTimelineScore(userFriendsSet, visitors) {
   const visitTimelineScore = {};
 
   for (let visitor of visitors) {
-    if (userFriends.has(visitor)) {
+    if (userFriendsSet.has(visitor)) {
       continue;
     }
 
