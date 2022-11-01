@@ -54,11 +54,11 @@
 ***
 ## 📋 [문제 3] 구현할 기능 목록
 
-* 전체 프로세서 관리할 `game369App` 함수 생성.
+* `game369App` 함수 : 전체 프로세서를 관리함.
 
-* input의 크기만큼의 Array 생성 후, 각 index의 value는 'index+1'를 넣어서 return 하는 `createNumberCollection` 함수 구현.
+* `createNumberCollection` 함수 : input의 크기만큼의 Array 생성 후, 각 index의 value는 'index+1'를 넣어서 return 함.
 
-* 전체 배열을 `join("")`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 하는 `getCount369` 함수 구현.
+* `getCount369` 함수 : 전체 배열을 `join("")`을 통해 한 글자로 합친 후, '3','6','9' 의 각 갯수를 return 함.
 
 ***
 ## 📋 [문제 4] 구현할 기능 목록
