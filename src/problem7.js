@@ -34,11 +34,14 @@ const giveScoreToFriendOfFriend = (user, friends, userFriends) => {
 
   friends.forEach((friend) => {
     const [friendA, friendB] = friend;
-    const isFriendOfUser = userFriends.includes(friendA) && userFriends.includes(friendB);
-    if (!friend.includes(user) && !isFriendOfUser) {
-      if (userFriends.includes(friendA)) {
+    const isAfriendOfUser = userFriends.includes(friendA);
+    const isBfriendOfUser = userFriends.includes(friendB);
+    const isABfriendOfUser = isAfriendOfUser && isBfriendOfUser;
+
+    if (!friend.includes(user) && !isABfriendOfUser) {
+      if (isAfriendOfUser) {
         !pointsOfUsers[friendB] ? (pointsOfUsers[friendB] = 10) : (pointsOfUsers[friendB] += 10);
-      } else if (userFriends.includes(friendB)) {
+      } else if (isBfriendOfUser) {
         !pointsOfUsers[friendA] ? (pointsOfUsers[friendA] = 10) : (pointsOfUsers[friendA] += 10);
       }
     }
