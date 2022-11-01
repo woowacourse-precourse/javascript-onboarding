@@ -18,16 +18,19 @@ function problem7(user, friends, visitors) {
     setFrdScore();
     setVstScore();
     delUser();
+	console.log(score);
     let ret = Array.from(score.keys())
     ret.sort(compareScore);
 	
+	return ret;
+	
 	// 1. 특정 사용자 user 친구 여부 검사 기능
-	function isFrd(tgt) {
+    function isFrd(tgt_1, tgt_2) {
         var flag = false;
-        if (tgt == user)
+        if (tgt_1 == tgt_2)
             return false;
         friends.forEach(function (f) {
-            if ((f[0] == user && f[1] == tgt) || (f[0] == tgt && f[1] == user)) {
+            if ((f[0] == tgt_1 && f[1] == tgt_2) || (f[0] == tgt_2 && f[1] == tgt_1)) {
                 flag = true;
             }
         });
@@ -35,7 +38,7 @@ function problem7(user, friends, visitors) {
     }
 
 	// 2. 사용자명 추출 기능
-	function addUserNames() {
+    function addUserNames() {
         friends.forEach(function (frd) {
             score.set(frd[0], 0);
             score.set(frd[1], 0);
@@ -47,7 +50,7 @@ function problem7(user, friends, visitors) {
     }
 
 	// 3. 친구 점수 추출 기능
-	function setFrdScore() {
+    function setFrdScore() {
         for(let s1 of score) {
             if(s1[0] == user) continue;
             for(let s2 of score) {
@@ -59,14 +62,14 @@ function problem7(user, friends, visitors) {
     }
 
 	// 4. 방문 점수 추출 기능
-	function setVstScore() {
+    function setVstScore() {
         for(let v of visitors) {
             score.set(v, score.get(v) + 1);
         }
     }
 
 	// 5. 조건 안맞는 사용자 제거 기능
-	function delUser() {
+    function delUser() {
         for (let s1 of score) {
             if(s1[0] == user) score.delete(s1[0]);
             if(isFrd(s1[0],user)) score.delete(s1[0]);
@@ -83,8 +86,6 @@ function problem7(user, friends, visitors) {
             if(left == right) return 0;
         }
     }
-
-	return answer;
 }
 
 module.exports = problem7;
