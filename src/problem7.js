@@ -1,7 +1,9 @@
 function problem7(user, friends, visitors) {
   let answer = [];
   let algorithm = {};
+  algorithm.friendArr = friends;
 
+  algorithm.friendArr = findFriendAndMe(user, friends);
   algorithm = friendsAl(user, friends);
   algorithm = visitorsAl(algorithm, visitors);
 
@@ -10,6 +12,17 @@ function problem7(user, friends, visitors) {
   return answer;
 }
 
+function findFriendAndMe(user, friends) {
+  let friendAndMe = [user];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[index][0] === user){
+      friendAndMe.push(friends[index][1]);
+    }else if(friends[index][1] === user){
+      friendAndMe.push(friends[index][0]);
+    }
+    return friendAndMe;
+  }
+}
 
 function friendsAl(user, friends) {
   let friendAndMe = [user];
@@ -20,6 +33,7 @@ function friendsAl(user, friends) {
     friendAndMe.push(friends[index][0]);
 
     let overlapIdx = algorithmName.indexOf(friends[index][1]);
+    n
     if (friendAndMe.indexOf(friends[index][1]) != -1) {
       continue;
     } else if (overlapIdx != -1 && friends[index][1].length === algorithmName[overlapIdx].length) {
