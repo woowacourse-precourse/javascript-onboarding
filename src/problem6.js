@@ -1,5 +1,13 @@
 function problem6(forms) {
-  var answer;
+  var answer = [];
+  for (let i = 0; i < forms.length; i++) { 
+    for (let j = i + 1; j < forms.length; j++) {
+      answer = getEmailList(forms, answer, i, j); // get email list
+    }
+  }
+
+  answer = [...new Set(answer)]; // remove duplicates
+  answer.sort(); // sort in ascending order
   return answer;
 }
 
