@@ -17,17 +17,19 @@ class UndirectedGraph {
 
 function getFriendships(friends, friendships) {
   for (const friendship of friends) {
-    friendships.addVertex(friendship[0]);
-    friendships.addVertex(friendship[1]);
-    friendships.addEdge(friendship[0], friendship[1]);
+    const [id1, id2] = friendship;
+
+    friendships.addVertex(id1);
+    friendships.addVertex(id2);
+    friendships.addEdge(id1, id2);
   }
 }
 
-function addScore(person, score, scores) {
-  if (!scores[person]) {
-    scores[person] = 0;
+function addScore(id, score, scores) {
+  if (!scores[id]) {
+    scores[id] = 0;
   }
-  scores[person] += score;
+  scores[id] += score;
 }
 
 function getScores(user, friendships, visitors, scores) {
@@ -46,6 +48,23 @@ function getScores(user, friendships, visitors, scores) {
   }
 }
 
+function compare(person1, person2) {
+  const [id1, score1] = person1;
+  const [id2, score2] = person2;
+  const scoreCompare = score2 - score1;
+
+  if (scoreCompare) {
+    return scoreCompare;
+  }
+  if (id1 < id2) {
+    return -1;
+  }
+  if (id1 > id2) {
+    return 1;
+  }
+  return 0;
+}
+
 function problem7(user, friends, visitors) {
   var answer = [];
   let friendships = new UndirectedGraph();
@@ -53,6 +72,15 @@ function problem7(user, friends, visitors) {
 
   getFriendships(friends, friendships);
   getScores(user, friendships, visitors, scores);
+
+  let scoresArray = Object.entries(scores);
+  const sortedScores = Object.fromEntries(scoresArray.sort(compare));
+  
+  for (id in sortedScores) {
+    if (sortedScores[id] == 0 || answer.push(id) == 5) {
+      break;
+    }
+  }
   return answer;
 }
 
