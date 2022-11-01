@@ -1,29 +1,26 @@
 function problem6(forms) {
   let log = {};
-  for (let i = 0; i < forms.length; i++) {
-    const [, nickname] = forms[i];
-    for (let j = 0; j < nickname.length - 1; j++) {
-      const pattern = nickname[j] + nickname[j+1];
+  forms.forEach(([, nickname]) => {
+    for (let i = 1; i < nickname.length; i++) {
+      const pattern = nickname[i-1] + nickname[i];
       if (!log[pattern]) {
         log[pattern] = 1;
-        continue;
+      } else {
+        log[pattern] += 1;
       }
-
-      log[pattern] += 1;
     }
-  }
+  });
 
   let result = new Set();
-  for (let i = 0; i < forms.length; i++) {
-    const [email, nickname] = forms[i];
-    for (let j = 0; j < nickname.length - 1; j++) {
-      const pattern = nickname[j] + nickname[j+1];
+  forms.forEach(([email, nickname]) => {
+    for (let i = 1; i < nickname.length; i++) {
+      const pattern = nickname[i-1] + nickname[i];
       if (log[pattern] >= 2) {
         result.add(email);
         break;
       }
     }
-  }
+  });
 
   const answer = [...result].sort();
   return answer;
