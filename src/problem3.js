@@ -24,4 +24,5 @@ function problem3(number) {
   return dp[number];
 }
 
+
 module.exports = problem3;
