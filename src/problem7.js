@@ -55,7 +55,20 @@ function problem7(user, friends, visitors) {
       }
     })
   })
-  let answer;
+
+  let answer = [];
+  let sortedRecommendFriend = Object.entries(recommendFriend).sort((a,b) => a[1] - b[1]).reverse();
+
+  //가장 점수가 높은 5명 이름 출력
+ for (let i = 0; i < 5; i++) {
+    const name = sortedRecommendFriend[0];
+    const cnt = sortedRecommendFriend[1];
+    if (Number(cnt) === 0) {
+      return answer;
+    }
+    answer.push(name);
+  }
+
   return answer;
 }
 
