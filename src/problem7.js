@@ -81,6 +81,9 @@ function recommendTop5Friends(user, friends, visitors) {
 
 function problem7(user, friends, visitors) {
   var answer;
+
+  answer = recommendTop5Friends(user, friends, visitors);
+
   return answer;
 }
 
