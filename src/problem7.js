@@ -26,6 +26,16 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+
+  scoreKey = Object.keys(recommendScore);
+  for (let i = 0; i < visitors.length; i++) {
+    if (userFriends.includes(visitors[i])) continue;
+    if (scoreKey.includes(visitors[i])) {
+      recommendScore[visitors[i]] += 1;
+    } else {
+      recommendScore[visitors[i]] = 1;
+    }
+  }
   return answer;
 }
 
