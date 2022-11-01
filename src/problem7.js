@@ -41,6 +41,25 @@ const giveScoreKnowUser = (user, friends, scores) => {
   return scores;
 };
 
+const giveScoreVisitors = (visitors, scores) => {
+  for (const visitor of visitors) {
+    if (!scores.has(visitor)) {
+      scores.set(visitor, 0);
+    }
+    scores.set(visitor, scores.get(visitor) + 1);
+  }
+
+  return scores;
+};
+
+const getScores = (user, friends, visitors) => {
+  const scores = new Map();
+  giveScoreKnowUser(user, friends, scores);
+  giveScoreVisitors(visitors, scores);
+
+  return scores;
+};
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
