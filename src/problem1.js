@@ -7,7 +7,7 @@ function cal(page) {
     .split('')
     .reduce((sum, val) => sum * Number(val), 1);
 
-  return Math.max(plus, mul);
+  return Math.max(plus, double);
 }
 
 function findMM(left, right) {
@@ -35,6 +35,10 @@ function problem1(pobi, crong) {
 
   pobiMN = findMM(pobi[0], pobi[1]);
   crongMN = findMM(crong[0], crong[1]);
+
+  if (pobiMN > crongMN) answer = 1;
+  else if (pobiMN < crongMN) answer = 2;
+  else answer = 0;
 
   return answer;
 }
