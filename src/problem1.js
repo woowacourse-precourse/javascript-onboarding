@@ -8,17 +8,9 @@ function problem1(pobi, crong) {
   if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) return -1;
 
   const getMax = (left, right) => {
-    const sum = (str) =>
-      String(str)
-        .split("")
-        .map((v) => +v)
-        .reduce((acc, cur) => acc + cur, 0);
+    const sum = (num) => [...(num + '')].reduce((acc, cur) => acc + (+cur), 0);
 
-    const multiply = (str) =>
-      String(str)
-        .split("")
-        .map((v) => +v)
-        .reduce((acc, cur) => acc * cur, 1);
+    const multiply = (num) => [...(num + '')].reduce((acc, cur) => +acc * (+cur), 1);
 
     const leftMax = Math.max(sum(left), multiply(left));
     const rightMax = Math.max(sum(right), multiply(right));
