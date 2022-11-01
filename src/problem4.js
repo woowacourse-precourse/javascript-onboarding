@@ -7,7 +7,7 @@ function problem4(word) {
   const difference = z - a;
   for (let i = 0; i < word.length; i++) {
     let text = word[i];
-    if (text === " ") {
+    if (text === " "|| text.charCodeAt(0) < A || text.charCodeAt(3) > z) {
       answer += ' ';
     }
     else if (text.charCodeAt(0) < A || text.charCodeAt(3) > z){
