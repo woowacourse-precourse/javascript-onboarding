@@ -21,8 +21,3 @@ function problem3(number) {
 }
 
 module.exports = problem3;
-
-// expected: 4
-console.log(problem3(13));
-// expected: 14
-console.log(problem3(33));
