@@ -14,7 +14,4 @@ function problem2(cryptogram) {
   return stack.join("");
 }
 
-// bbbrown
-// brown
-// rown
 module.exports = problem2;

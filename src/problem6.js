@@ -57,7 +57,7 @@ function problem6(forms) {
   }
   // 중복 제거
   // 오름차순 정렬 추가
-  answer = [...new Set(answer)];
+  answer = [...new Set(answer)].sort();
   return answer;
 }
 

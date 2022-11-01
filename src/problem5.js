@@ -1,6 +1,6 @@
 function problem5(money) {
   const arr = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-  // 냅색 알고리즘...
+
   let result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   for (let i = 0; money !== 0; i++) {

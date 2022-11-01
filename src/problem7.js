@@ -8,7 +8,6 @@ function problem7(user, friends, visitors) {
         point[friend] = 10;
       }
     } else {
-      // 사용자와 사용자의 일촌관계
       for (const friend of relation) {
         point[friend] = -1;
       }
