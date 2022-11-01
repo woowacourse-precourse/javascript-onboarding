@@ -34,7 +34,7 @@ function problem4(word) {
   }
 
   [...word].forEach((ele) => {
-      answer += convertWord(ele)
+      answer += convertWord(ele);
   }
       );
   return answer;
