@@ -23,7 +23,6 @@ function problem6(forms) {
   // 2. 오름차순 정렬 후 중복 제거
   let dupWordsKeys = Object.keys(dupWords)
   for(let i=0;i<dupWordsKeys.length;i++){
-    console.log(dupWords[dupWordsKeys[i]]);
     answer = answer.concat(dupWords[dupWordsKeys[i]]);
   }
   answer = answer.sort();
