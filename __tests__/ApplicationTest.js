@@ -73,6 +73,31 @@ describe('problem4', () => {
   test('case1', () => {
     expect(problem4('I love you')).toEqual('R olev blf');
   });
+
+  test('case2', () => {
+    expect(problem4('Hello  Everyone!')).toEqual('Svool  Veviblmv!');
+    expect(problem4('Hello  Everyone! 123')).toEqual('Svool  Veviblmv! 123');
+  });
+
+  test('case3', () => {
+    expect(problem4('abcdefghijklmnopqrstuvwxyz')).toEqual(
+      'zyxwvutsrqponmlkjihgfedcba'
+    );
+    expect(problem4('abcdefghijklmnopqrstuvwxyz !@#!#  ')).toEqual(
+      'zyxwvutsrqponmlkjihgfedcba !@#!#  '
+    );
+    expect(problem4('ABCDEFGHIJKLMNOPQRSTUVWXYZ !@#$%^&*  ')).toEqual(
+      'ZYXWVUTSRQPONMLKJIHGFEDCBA !@#$%^&*  '
+    );
+  });
+
+  test('case4', () => {
+    expect(
+      problem4(
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui nunc, accumsan vel metus ac, auctor convallis arcu. Phasellus sollicitudin accumsan leo et malesuada. Cras auctor, nulla tincidunt rutrum aliquam, nisl metus interdum felis, id viverra velit orci ac lorem. Etiam felis mi, tempus id tincidunt vel, mollis at nulla. Sed nisi ex, malesuada ut consequat convallis, commodo id velit. Pellentesque et urna eleifend purus dictum dignissim ac id massa. Phasellus ullamcorper lorem odio, sed tempor est vehicula sed. Phasellus sagittis ipsum diam, vel consequat odio varius sit amet. Suspendisse pharetra nulla sit amet eros ultrices ultrices. Nullam quam mauris, posuere sed magna eu, bibendum varius augue. Praesent hendrerit diam ante, ut tempor justo luctus ac. Phasellus cursus elementum neque, sed semper orci venenatis nec. Ut quis rhoncus diam, congue tempus mauris. Maecenas ac metus a nunc consectetur consequat. Duis eget est sit amet nisl elementum tempus a vitae nunc. Pellentesque euismod ligula ac nunc suscipit ultricies.'
+      )
+    ).toEqual('word는 길이가 1 이상 1,000 이하인 문자열이다.');
+  });
 });
 
 describe('problem5', () => {
