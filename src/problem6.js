@@ -1,4 +1,4 @@
-function problem6(forms) {
+function getEqualUserEmailList(forms) {
   let answer = [];
   for (i = 0; i < forms.length; i++) {
     for (j = 0; j < forms[i][1].length - 1; j++) {
@@ -12,11 +12,21 @@ function problem6(forms) {
       }
     }
   }
-  let uniqueAnswer = answer.filter((value, index) => {
-    return answer.indexOf(value) === index;
+  return answer;
+}
+
+function makeUpUserEmailList(equalUserEmailList) {
+  let uniqueAnswer = equalUserEmailList.filter((value, index) => {
+    return equalUserEmailList.indexOf(value) === index;
   });
   uniqueAnswer.sort();
   return uniqueAnswer;
+}
+
+function problem6(forms) {
+  let equalUserEmailList = getEqualUserEmailList(forms);
+
+  return makeUpUserEmailList(equalUserEmailList);
 }
 
 module.exports = problem6;
