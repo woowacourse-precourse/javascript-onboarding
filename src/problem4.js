@@ -9,8 +9,14 @@
 // word => string, length : 1~1'000
 // return => 변환 문자
 function problem4(word) {
-	var answer;
-	return answer;
+	var idx=0;
+	while(idx < word.length) {
+        if(!isAlpa(word[idx])){
+            idx++; continue;
+        }
+		word = transAt(word, idx, getTrans(word[idx])); idx++;
+	}
+	return word;
 }
 
 // 1. 특정 알파벳 규칙 맞게 변환 기능
