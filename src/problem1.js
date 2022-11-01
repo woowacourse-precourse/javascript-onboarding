@@ -3,7 +3,7 @@ function problem1(pobi, crong) {
 
   function errorCheck(array) {
     for (let i of array) {
-      if (i === 0 || i == 400) {
+      if (i === 1 || i == 400 || i === 2 || i === 399) {
         return 1;
       }
       if (0 >= i || i > 400) {
