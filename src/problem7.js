@@ -47,7 +47,8 @@ function joinCrew(friendsRecommendArr, visitors) {
 // 기능 4
 function sortResult(a, b) {
   if (a[1] === b[1]) {
-    return a[0] < b[0] ? -1 : 1;
+    //점수가 같은 경우
+    return a[0] < b[0] ? -1 : 1; // 이름 순 정렬
   } else {
     return a[1] > b[1] ? -1 : 1;
   }
