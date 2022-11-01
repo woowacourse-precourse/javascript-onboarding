@@ -33,7 +33,10 @@ function makeOverlappingObj(forms){
     let wordArr = makeOverlappingArr(crew[1]);
     
     for(let word of wordArr){
-      !overlappingObj[word]?overlappingObj[word]=1: overlappingObj[word]+=1;
+      if(!overlappingObj[word]){
+        overlappingObj[word]=0
+      }
+      overlappingObj[word]+=1;
     }
   }
   return overlappingObj

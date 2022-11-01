@@ -1,14 +1,11 @@
 ## 🚀 기능 목록.
+1. 이름을 두개씩 끊어서 담는 배열 생성(한명씩) `makeOverlappingArr(crewName)`
 
-1. 이메일 형식이 부합하는지 확인 `checkEmail(email)`
-    - 전체 길이가 11이상 20자 미만인지
-    - 도메인이 `email.com`인지
-    - 잘못된 이메일은 `true` 처리.
 2. 겹치는 이름이 있는 걸 모두 확인하기 위해 이름에 두개씩 끊어서 obj생성`makeOverlappingObj(forms)`
-    - 이름을 두개씩 끊어서 담는 배열 생성(한명씩) `makeOverlappingArr(crewName)`
     - 이름의 배열값을 하나씩 넣어서 obj 생성(전체)
     - ex)"제이엠"=> {"제이":1, "이엠":1}
          "제이슨" => {"제이":2, "이엠":1, "이슨":1}
+
 3. 같은 글자가 연속적으로 포함되는 경우를 확인 `checkName(name)`
     - obj의 value가 1보다 크면 true
     - 포함되지 않는 경우에는 false
