@@ -11,6 +11,10 @@ function problem2(cryptogram) {
       if (setArr[setArr.length - 1] === cryptogram[i + 1]) {
         i += 1;
       }
+      // 홀수 이후에도 연속된 문자일 경우 (짝수)
+      if (cryptogram[i] === cryptogram[i + 1]) {
+        i += 1;
+      }
       // 중복되는 값이 있는 경우
       setArr.pop();
     }
