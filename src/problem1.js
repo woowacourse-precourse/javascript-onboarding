@@ -2,7 +2,19 @@ function problem1(pobi, crong) {
   if ( !isValid(pobi) || !isValid(crong) ) {
     return -1;
   }
+  
+  let result;
 
+  if (calculate(pobi) > calculate(crong)) {
+    result = 1;
+  }
+  else if (calculate(pobi) < calculate(crong)) {
+    result = 2;
+  }
+  else {
+    result = 0;
+  }
+  return result;
 }
 function isValid(arr) {
   let left = arr[0];
