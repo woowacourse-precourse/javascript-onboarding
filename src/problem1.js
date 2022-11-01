@@ -20,8 +20,12 @@ function getMaxBetweenAddAndMul(pages) {
 }
 
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  const pobiScore = getMaxBetweenAddAndMul(pobi);
+  const crongScore = getMaxBetweenAddAndMul(crong);
+
+  if (pobiScore > crongScore) return 1;
+  else if (pobiScore < crongScore) return 2;
+  else return 0;
 }
 
 module.exports = problem1;
