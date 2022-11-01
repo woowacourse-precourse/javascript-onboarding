@@ -1,5 +1,10 @@
-순환
-  //   for(e in arr1[i].length){
-  //     if(arr1[i][e] == )
-  //   }
-  // }
+
+//   if (a.value > b.value) {
+//     return 1;
+//   }
+//   if (a.value < b.value) {
+//     return -1;
+//   }
+//   // a must be equal to b
+//   return 0;
+// });
