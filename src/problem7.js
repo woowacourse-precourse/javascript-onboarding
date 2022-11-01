@@ -3,28 +3,35 @@ function problem7(user, friends, visitors) {
   const score = getScore(relation, user, visitors);
   let recommend = [];
   for (const id in score) {
-    if (relation[user].includes(id) || id === user || score[id] === 0) {
-      continue;
+    if (
+      !relation[user].includes(id) 
+      && !(id === user) 
+      && !(score[id] === 0)
+    ) {
+      recommend.push([score[id], id]);
     }
-
-    recommend.push([score[id], id]);
   }
 
-  const answer = recommend.sort().map(([, id]) => id);
-  return answer.slice(0, 5);
+  const sortedRecommend = recommend.sort((a, b) => {
+    if (a[0] < b[0]) return 1;
+    if (a[0] > b[0]) return -1;
+    if (a[0] === b[0]) {
+      if (a[1] > b[1]) return 1;
+      if (a[1] < b[1]) return -1;
+      return 0;
+    }
+  });
+
+  const answer = sortedRecommend.map(([, id]) => id).slice(0, 5);
+  return answer;
 }
 
 function getRelation(friends) {
   let relation = {};
   for (let i = 0; i < friends.length; i++) {
     const [a, b] = friends[i];
-    if (!relation[a]) {
-      relation[a] = [];
-    }
-
-    if (!relation[b]) {
-      relation[b] = [];
-    }
+    if (!relation[a]) relation[a] = [];
+    if (!relation[b]) relation[b] = [];
 
     relation[a].push(b);
     relation[b].push(a);
@@ -46,16 +53,17 @@ function getScore(relation, user, visitors) {
     const userFFs = relation[userFs[i]];
     for (let j = 0; j < userFFs.length; j++) {
       const userFF = userFFs[j];
-      if (userFF === user) {
-        continue;
-      }
-
+      if (userFF === user) continue;
+      
       score[userFF] += 10;
     }
   }
   
   for (let i = 0; i < visitors.length; i++) {
-    score[visitors[i]] += 1;
+    const visitor = visitors[i];
+    if (!score[visitor]) score[visitor] = 0;
+
+    score[visitor] += 1;
   }
 
   return score;
