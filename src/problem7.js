@@ -4,6 +4,7 @@ function problem7(user, friends, visitors) {
   visitors = visitors.filter((visitor) => !alreadyFriends.includes(visitor));
   let acquaintances = findAcquaintance(alreadyFriends, friends, user);
   let nameScoreList = giveScore(acquaintances, visitors);
+  answer = MakeResultList(nameScoreList);
 
   return answer;
 }
@@ -66,6 +67,23 @@ function makeNameScoreList(scoredFriends, scoreList) {
   }
 
   return arr;
+}
+
+function MakeResultList(nameScoreList) {
+  let result = [];
+  nameScoreList.sort((a, b) => {
+    if(a.score === b.score) {
+      return a.name - b.name;
+    } else {
+      return b.score - a.score;
+    }
+  });
+  for(let i = 0; i < nameScoreList.length; i++) {
+    result.push(nameScoreList[i].name);
+  }
+  result = result.slice(0, 5);
+
+  return result;
 }
 
 module.exports = problem7;
