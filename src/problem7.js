@@ -15,15 +15,15 @@ function problem7(user, friends, visitors) {
   for (const friend of notFriends) {
     const [A, B] = friend;
     if (friendList.includes(A)) {
-      !obj[B] ? obj[B] = 10 : obj[B] += 10;
+      obj[B] = (obj[B] || 0) + 10;
     } else if (friendList.includes(B)) {
-      !obj[A] ? obj[A] = 10 : obj[A] += 10;
+      obj[A] = (obj[A] || 0) + 10;
     }
   }
 
   for (const visit of visitors) {
     if (!friendList.includes(visit)) {
-      !obj[visit] ? obj[visit] = 1 : obj[visit] += 1;
+      obj[visit] = (obj[visit] || 0) + 1;
     }
   }
 

@@ -1,6 +1,5 @@
 function problem3(number) {
   const arr = Array.from(new Array(number), (_, i) => String(i + 1));
-
   const answer = arr.map(v => [...v]).flat(Infinity);
 
   const three = answer.filter(v => v === '3').length;
