@@ -4,6 +4,14 @@
 // 존재하면 answer 배열에 추가 check 를 true로 변경 (answer에 추가되면 다시 확인하지 않기 위해)
 // 4. answer sorting
 
+// nickname -> two word list
+function twoWord(nickname) {
+  const twoWordList = [];
+  for (let i = 0; i < nickname.length - 1; i++) {
+    twoWordList.push(nickname[i] + nickname[i + 1]);
+  }
+  return twoWordList;
+}
 // 크루원 객체화
 function crowToObj(forms, crewMember, crewNicknameList) {
   forms.forEach((member) => {
