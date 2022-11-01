@@ -16,6 +16,20 @@ function problem6(forms) {
     return false;
   };
 
+  //예외처리
+  const isWrong = (email, nickname) => {
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+    //기능목록 3-1, 3-2 , 3-3 구현
+    return (
+      !regex.test(nickname) ||
+      nickname.length < 1 ||
+      nickname.length >= 20 ||
+      email.length < 11 ||
+      email.length > 20 ||
+      email.match(/@email.com/) === null
+    );
+  };
+
   //출력값 구하기
   let answer = [];
   let check = Array.from({ length: forms.length }, () => 0);
@@ -26,22 +40,8 @@ function problem6(forms) {
     throw '크루 수가 허용 범위를 벗어났습니다';
   }
   for (let i = 0; i < forms.length; i++) {
-    //예외처리
-    //기능목록 3-2 구현
-    const regex = /^[ㄱ-ㅎ|가-힣]+$/;
-    if (
-      !regex.test(forms[i][1]) ||
-      forms[i][1].length < 1 ||
-      forms[i][1].length >= 20
-    )
-      continue;
-    //기능목록 3-3 구현
-    if (forms[i][0].length < 11 || forms[i][0].length > 20) continue;
-    //기능목록 1-3 구현
-    if (check[i] !== 0) continue;
-    //예외처리
-    //기능목록 3-1 구현
-    if (forms[i][0].match(/@email.com/) === null) continue;
+    if (isWrong(forms[i][0], forms[i][1]) || check[i] !== 0) continue;
+
     for (let j = 0; j < forms.length; j++) {
       if (i === j) continue;
       if (isRepeat(forms[i][1], forms[j][1])) {
