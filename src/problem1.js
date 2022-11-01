@@ -10,27 +10,27 @@ function problem1(pobi, crong) {
   if (pobi[0] === 1 || pobi[0] === 399) return -1;
   if (crong[0] === 1 || crong[0] === 399) return -1;
 
-  for (let i = 0; i < pobi.length - 1; i++)
+  for (var i = 0; i < pobi.length - 1; i++)
     if (pobi[i] + 1 !== pobi[i + 1]) return -1;
   
-  for (let i = 0; i < crong.length - 1; i++)
+  for (var i = 0; i < crong.length - 1; i++)
     if (crong[i] + 1 !== crong[i + 1]) return -1;
   
   // 2. Find Max
-  let pobiMax = 0;
-  let crongMax = 0;
+  var pobiMax = 0;
+  var crongMax = 0;
   
-  for (let i = 0; i < pobi.length; i++){
-    const page = (pobi[i] + '').split('');
-    const sum = page.reduce((acc, cur) => acc += Number(cur), 0);
-    const mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
+  for (var i = 0; i < pobi.length; i++){
+    var page = (pobi[i] + '').split('');
+    var sum = page.reduce((acc, cur) => acc += Number(cur), 0);
+    var mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
     pobiMax = sum > mul ? sum : mul;
   }
 
-  for (let i = 0; i < crong.length; i++){
-    const page = (crong[i] + '').split('');
-    const sum = page.reduce((acc, cur) => acc += Number(cur), 0);
-    const mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
+  for (var i = 0; i < crong.length; i++){
+    var page = (crong[i] + '').split('');
+    var sum = page.reduce((acc, cur) => acc += Number(cur), 0);
+    var mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
     crongMax = sum > mul ? sum : mul;
   }
 

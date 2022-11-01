@@ -5,11 +5,11 @@ function problem3(number) {
   2. 전체 손뼉수 정답으로 반환
   */
   
-  let sum = 0;
+  var sum = 0;
   for (i = 1; i <= number; i++)
   {
-    let array = (i + '').split('');
-    let target = array.filter(v => v === '3' || v === '6' || v === '9');
+    var array = (i + '').split('');
+    var target = array.filter(v => v === '3' || v === '6' || v === '9');
     sum += target.length;
   }
 

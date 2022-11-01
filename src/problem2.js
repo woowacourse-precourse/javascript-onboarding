@@ -7,9 +7,9 @@ function problem2(cryptogram) {
   4. dirty 배열을 합쳐서 clean 문자열로 변환 후 정답으로 반환
   */
   
-  let dirty = cryptogram.split('');
+  var dirty = cryptogram.split('');
 
-  let hasTarget = true;
+  var hasTarget = true;
 
   while (hasTarget) {
     hasTarget = false;
@@ -22,7 +22,7 @@ function problem2(cryptogram) {
     }
   };
 
-  const clean = dirty.join('');
+  var clean = dirty.join('');
   return clean;
 }
 

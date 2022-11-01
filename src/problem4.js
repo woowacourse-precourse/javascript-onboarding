@@ -6,12 +6,12 @@ function problem4(word) {
   3. 최종 정답 반환
   */
   
-  const upperSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  const upperReverseSet = [...upperSet].reverse();
-  const lowerSet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  const lowerReverseSet = [...lowerSet].reverse();
+  var upperSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  var upperReverseSet = [...upperSet].reverse();
+  var lowerSet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var lowerReverseSet = [...lowerSet].reverse();
 
-  const answer = word.split('');
+  var answer = word.split('');
 
   answer.map((v,i) => {
     if (upperSet.includes(v)) {
