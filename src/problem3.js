@@ -8,6 +8,7 @@
  * @return {number}
  */
 function problem3(number) {
+  const numberString = [...Array(number + 1)].map((_, i) => i).join("");
   var answer;
   return answer;
 }
