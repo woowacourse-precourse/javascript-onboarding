@@ -22,3 +22,8 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+#### 기능 목록 사항
+
+1. cryptogram 문자열의 문자들을 각각 배열로 변경
+
+2. 배열의 값이 [i] == [i+1] 일때 동일한 문자 삭제
