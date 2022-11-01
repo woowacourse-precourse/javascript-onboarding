@@ -13,7 +13,6 @@ function problem4(word) {
       : (covertedArr += dic[arr[i].toUpperCase()].toLowerCase());
   }
 
-  console.log(covertedArr);
   answer = covertedArr;
   return answer;
 }
