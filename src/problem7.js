@@ -10,43 +10,43 @@
 function problem7(user, friends, visitors) {
   // 1. user의 친구 찾기 기능
   let userFriends = [];
-  friends.forEach((element) => {
-    if (element.includes(user)) {
-      element[0] === user ? userFriends.push(element[1]) : userFriends.push(element[0]);
+  friends.forEach((twoBuddies) => {
+    if (twoBuddies.includes(user)) {
+      twoBuddies[0] === user ? userFriends.push(twoBuddies[1]) : userFriends.push(twoBuddies[0]);
     }
   });
   // 2. 친구의 친구를 찾아 +10 기능
   let friendScore = {};
-  friends.forEach((element) => {
-    for (let i = 0; i < element.length; i++) {
-      const plusScore = element.includes(userFriends[i]);
-      const isInUser = element.includes(user);
+  friends.forEach((twoBuddies) => {
+    for (let i = 0; i < twoBuddies.length; i++) {
+      const plusScore = twoBuddies.includes(userFriends[i]);
+      const isInUser = twoBuddies.includes(user);
       if (plusScore && !isInUser) {
-        element[0] === userFriends[i] ? (friendScore[element[1]] = 10) : (friendScore[element[0]] = 10);
+        twoBuddies[0] === userFriends[i] ? (friendScore[twoBuddies[1]] = 10) : (friendScore[twoBuddies[0]] = 10);
       }
     }
   });
   // 2-1. user의 친구가 user의 또다른 친구와 또 친구일 수도 있으니 걸러주기
-  for (let i in friendScore) {
+  for (let friendName in friendScore) {
     for (let j = 0; j < userFriends.length; j++) {
-      if (i === userFriends[j]) {
-        delete friendScore[i];
+      if (friendName === userFriends[j]) {
+        delete friendScore[friendName];
       }
     }
   }
   // 3. visitors의 이름에 +1하는 기능
-  visitors.forEach((element) => {
-    if (!userFriends.includes(element)) {
-      friendScore[element] ? (friendScore[element] += 1) : (friendScore[element] = 1);
+  visitors.forEach((visitor) => {
+    if (!userFriends.includes(visitor)) {
+      friendScore[visitor] ? (friendScore[visitor] += 1) : (friendScore[visitor] = 1);
     }
   });
   // 4. 점수 순으로 정렬 및 반환, 5개까지
   let scoreSort = [];
-  for (i in friendScore) {
-    scoreSort.push([i, friendScore[i]]);
+  for (friendName in friendScore) {
+    scoreSort.push([friendName, friendScore[friendName]]);
   }
   scoreSort.sort((a, b) => b[1] - a[1]);
-  const onlyFriendsName = scoreSort.map((element) => element[0]);
+  const onlyFriendsName = scoreSort.map((friend) => friend[0]);
   return onlyFriendsName.slice(0, 5);
 }
 
