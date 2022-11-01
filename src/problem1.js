@@ -1,3 +1,19 @@
+function addNumber(num) {
+  const cnt = num
+    .toString()
+    .split("")
+    .map((x) => parseInt(x));
+  return cnt.reduce((sum, cur) => sum + cur, 0);
+}
+
+function mulNumber(num) {
+  const cnt = num
+    .toString()
+    .split("")
+    .map((x) => parseInt(x));
+  return cnt.reduce((sum, cur) => sum * cur);
+}
+
 function problem1(pobi, crong) {
   var answer;
   // 왼쪽 페이지 + 1 === 오른쪽 페이지가 아닐 때
