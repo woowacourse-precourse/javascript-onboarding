@@ -66,7 +66,9 @@ function problem7(user, friends, visitors) {
   const scoreMap = relatedFriendsCheck(user, friends, friendArray);
   scoreMap = visitorCheck(visitors, scoreMap, friendArray);
 
-  return sortMap(scoreMap);
+  return sortMap(scoreMap)
+    .filter((element) => !friendArray.includes(element))
+    .slice(0, 5);
 }
 
 module.exports = problem7;
