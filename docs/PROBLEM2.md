@@ -24,12 +24,11 @@
 
 
 ### 기능 목록
-(solution 메소드)
-- count 변수를 통해 주어진 문자열의 인덱스 표시
-- answer의 마지막 문자와 현재 count가 가리키는 인덱스의 문자 비교 
-: 같으면 -> answer의 마지막 문자 삭제 및 주어진 문자열에 다음 문자가 다른 문자일 때까지 count++
-: 다르면 -> count가 가리키는 인덱스의 문자를 answer 맨 뒤에 추가 
+1. 매개변수로 주어진 문자열에서 연속된 중복 문자들을 삭제하는 deleteDuplicate 함수 구현
+2. (solution 메소드)
+-  매개변수로 주어진 문자열 cryptogram를 answer에 저장
+-  현재 answer에 저장된 문자열과 deleteDuplicate 함수에 answer를 넣은 문자열이 
+: 같으면 -> while문 탈출
+: 다르면 -> answer에 deleteDuplicate 함수에 answer를 넣은 문자열 저장
 
-### 추가 사항
-- answer 변수에 타입이 선언되어 있지 않으므로 undefined 상태이다. 따라서 null을 할당하여 문자를 추가할 때 문제가 없도록 함
 
