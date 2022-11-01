@@ -67,9 +67,9 @@ function checkDuplicateArray(array) {
 // forms의 타당성 검사 후 forms에서 crewname의 email을 반환하는함수
 function problem6(forms) {
   // forms의 타당성 검사
-  forms.forEach((item) => {
-    checkEmailVaild(item[0]);
-    checkNickname(item[1]);
+  forms.forEach((array) => {
+    checkEmailVaild(array[0]);
+    checkNickname(array[1]);
   });
 
   const twoLetterNameArr = cutTwoLetterArray(forms);
