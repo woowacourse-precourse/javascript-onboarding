@@ -10,6 +10,8 @@ function checkAndUpdateCache(form, cache) {
       : (newCache[piece] = [email]);
   }
 
+  newCache.result = [...new Set(newCache.result)];
+
   return newCache;
 }
 
