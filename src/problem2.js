@@ -29,7 +29,17 @@ function findStart(cryptogram) {
   return cryptogram;
 }
 
+function rightCrytogram(cryptogram) {
+  if (cryptogram.length > 0 && cryptogram.length < 1001) {
+    return 1;
+  }
+  return 0;
+}
+
 function problem2(cryptogram) {
+  if (rightCrytogram(cryptogram) != 1) {
+    return false;
+  }
   const cryptogram_arr = [...cryptogram];
   const res = findStart(cryptogram_arr);
   resJoin = res.join("");
