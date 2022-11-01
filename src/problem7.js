@@ -1,18 +1,20 @@
 function problem7(user, friends, visitors) {
-  let recommendation;
+  let recommendation = [];
 
   const currentFriends = getFriendsYouAlreadyKnow(user, friends);
-  const filtered = friends.map((friend) =>
+  const friendsYouDoNotKnow = friends.map((friend) =>
     friend.filter((e) => !currentFriends.includes(e)).filter((e) => e !== user)
   );
-  const filtered2 = visitors.filter((e) => !currentFriends.includes(e));
+  const visitorsYoDoNotKnow = visitors.filter(
+    (e) => !currentFriends.includes(e)
+  );
 
   const result = new Set();
-  for (let i = 0; i < filtered.length; i++) {
-    result.add(...filtered[i]);
+  for (let i = 0; i < friendsYouDoNotKnow.length; i++) {
+    result.add(...friendsYouDoNotKnow[i]);
   }
-  for (let i = 0; i < filtered2.length; i++) {
-    result.add(filtered2[i]);
+  for (let i = 0; i < visitorsYoDoNotKnow.length; i++) {
+    result.add(visitorsYoDoNotKnow[i]);
   }
 
   recommendation = Array.from(result).filter((e) => Boolean(e));
