@@ -12,6 +12,12 @@ function problem6(forms) {
       }
     }
   }
+  let count = 0;
+  for (let i of map.values()) {
+    if (i == 0) {
+      count++;
+    }
+  }
   return answer;
 }
 
