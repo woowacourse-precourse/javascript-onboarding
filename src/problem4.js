@@ -10,7 +10,8 @@ function problem4(word) {
 
         if (asciiCode >= 65 && asciiCode <= 90)
           wordArray[i] = String.fromCharCode(155 - asciiCode);
-        else wordArray[i] = String.fromCharCode(219 - asciiCode);
+        else if (asciiCode >= 97 && asciiCode <= 122)
+          wordArray[i] = String.fromCharCode(219 - asciiCode);
       }
     }
     answer = wordArray.join('');
