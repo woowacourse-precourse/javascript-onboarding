@@ -1,17 +1,19 @@
 function problem2(cryptogram) {
   var answer;
+
   while (true) {
-    let tf = true;
-    let tmp = "";
+    let breakCondition = true;
+    let tempCryptogram = "";
     for (let i = 0; i < cryptogram.length; i++) {
       if (cryptogram[i] === cryptogram[i + 1]) {
-        tf = false;
+        breakCondition = false;
         i++;
-      } else tmp += cryptogram[i];
+      } else tempCryptogram += cryptogram[i];
     }
-    cryptogram = tmp;
-    if (tf) break;
+    cryptogram = tempCryptogram;
+    if (breakCondition) break;
   }
+
   answer = cryptogram;
   return answer;
 }
