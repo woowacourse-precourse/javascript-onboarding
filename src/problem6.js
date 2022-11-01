@@ -45,75 +45,28 @@ function substrNickName(nickName) {
   return substrNickNameArr;
 }
 
-function getCheckArr(forms) {
-  const checkArr = [];
-  for (let i = 0; i < forms.length; i++) {
-    const substrNickNameArr = substrNickName(forms[i][1]);
-    checkArr.push(...substrNickNameArr);
-  }
-
-  return checkArr;
-}
-
-function isOverlapInCheckArr(checkArr, substrNickName) {
-  return (
-    checkArr.filter(element => substrNickName === element).length !== 1
-  ) ? true : false;
-}
-
-function isOverlapForm(form, checkArr) {
+function pushOverlapNickName(form, overlapArr, overlapSet) {
   const substrNickNameArr = substrNickName(form[1]);
-  for (let j = 0; j < substrNickNameArr.length; j++) {
-    if (isOverlapInCheckArr(checkArr, substrNickNameArr[j])) {
-      return true;
+  for (let i = 0; i < substrNickNameArr.length; i++) {
+    if (overlapSet.has(substrNickNameArr[i])) {
+      overlapArr.push(form[0]);
     }
+    overlapSet.add(substrNickNameArr[i]);
   }
-
-  return false;
-}
-
-function getOverlapArr(forms, checkArr) {
-  const overlapArr = [];
-  for (let i = 0; i < forms.length; i++) {
-    if (isOverlapForm(forms[i], checkArr)) {
-      overlapArr.push(forms[i][0]);
-    }
-  }
-
-  return overlapArr;
 }
 
 function checkOverlap(forms) {
-  // const checkArr = getCheckArr(forms);
-  // const overlapArr = getOverlapArr(forms, checkArr);
-
-  // return overlapArr.sort();
   const overlapSet = new Set();
   const overlapArr = [];
   for (let i = 0; i < forms.length; i++) {
-    const substrNickNameArr = substrNickName(forms[i][1]);
-    for (let j = 0; j < substrNickNameArr.length; j++) {
-      if (overlapSet.has(substrNickNameArr[j])) {
-        overlapArr.push(forms[i][0]);
-      }
-      overlapSet.add(substrNickNameArr[j]);
-    }
+    pushOverlapNickName(forms[i], overlapArr, overlapSet);
   }
   overlapSet.clear();
   for (let i = forms.length - 1; i > -1; i--) {
-    const substrNickNameArr = substrNickName(forms[i][1]);
-    for (let j = 0; j < substrNickNameArr.length; j++) {
-      if (overlapSet.has(substrNickNameArr[j])) {
-        if (!overlapArr.includes(overlapArr.push(forms[i][0]))) {
-          overlapArr.push(forms[i][0]);
-        }
-      }
-      overlapSet.add(substrNickNameArr[j]);
-    }
+    pushOverlapNickName(forms[i], overlapArr, overlapSet);
   }
   const returnSet = new Set(overlapArr);
   return [...returnSet].sort();
-  // return overlapArr.sort();
 }
 
 function problem6(forms) {
@@ -125,11 +78,3 @@ function problem6(forms) {
 }
 
 module.exports = problem6;
-
-console.log(problem6([
-  ["jm@email.com", "제이엠"],
-  ["jason@email.com", "제이슨"],
-  ["woniee@email.com", "워니"],
-  ["mj@email.com", "엠제이"],
-  ["nowm@email.com", "이제엠"],
-]));
