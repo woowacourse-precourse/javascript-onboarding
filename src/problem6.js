@@ -4,7 +4,7 @@ function problem6(forms) {
   let nicknames = [];
   let standardNickname = '';
   const len = forms.length;
-  let answer = [];
+  let answerArr = [];
   for (i=0; i<len; i++) {
     nicknames.push(forms[i][1]);
     }
@@ -22,11 +22,14 @@ function problem6(forms) {
   let num = Object.keys(commonWords).length;
   for(i=0;i<num;i++){
     for (j=0;j<len;j++){
-      if(nicknames[j].includes(Object.keys(commonWords)[0])){
-        answer.push(forms[j][0]);
+      if(nicknames[j].includes(Object.keys(commonWords)[i])){
+        answerArr.push(forms[j][0]);
       }
     }  
   }
+  answerArr = answerArr.sort();
+  const set = new Set(answerArr)
+  let answer= [...set]
   return answer;
 }
 
