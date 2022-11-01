@@ -29,6 +29,19 @@ function problem6(forms) {
       });
     }
   });
+
+  // 중복 제거
+  const set = new Set(overlap);
+  const uniqueArr = [...set];
+
+  // email만 추출
+  forms.forEach((ele) => {
+    for (let i = 0; i < uniqueArr.length; i++) {
+      if (ele[1] == uniqueArr[i]) {
+        email.push(ele[0]);
+      }
+    }
+  });
 }
 
 module.exports = problem6;
