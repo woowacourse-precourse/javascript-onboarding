@@ -1,3 +1,15 @@
+function sortScore(a, b) {
+  const [nameA, scoreA] = a;
+  const [nameB, scoreB] = b;
+  if (scoreA < scoreB) {
+    return 1;
+  } else if (scoreA > scoreB) {
+    return -1;
+  } else if (scoreA === scoreB) {
+    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+  }
+}
+
 function problem7(user, friends, visitors) {
   let answer;
   const relationMap = new Map();
@@ -46,15 +58,7 @@ function problem7(user, friends, visitors) {
   const recommendationList = Array.from(scoreMap)
     .filter(([_, score]) => score > 0)
     .sort((a, b) => {
-      const [nameA, scoreA] = a;
-      const [nameB, scoreB] = b;
-      if (scoreA < scoreB) {
-        return 1;
-      } else if (scoreA > scoreB) {
-        return -1;
-      } else if (scoreA === scoreB) {
-        return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
-      }
+      sortScore(a, b);
     })
     .slice(0, 5);
 
