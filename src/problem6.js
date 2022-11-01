@@ -20,6 +20,29 @@ function nicknameCheck(element) {
   return !regx.test(nickname);
 }
 
+function wordCountObj(forms) {
+  const obj = {};
+  forms.forEach(function(form) {
+    const nickname = form[1];
+    for (let i = 0; i < nickname.length - 1; i++) {
+      const word = nickname.substr(i, 2);
+      if (obj.hasOwnProperty(word)) obj[word]++;
+      else  obj[word] = 1;
+    }
+  });
+  return obj;
+}
+
+function checkDup(forms) {
+  const wordCntList = wordCountObj(forms);
+  for (let word in wordCntList) {
+    if (wordCntList[word] === 1)
+      delete wordCntList[word];
+  }
+  const answerSet = getEmailOfDups(forms, wordCntList)
+  return Array.from(answerSet);
+}
+
 function problem6(forms) {
   if (!checkForm)
     return '';
