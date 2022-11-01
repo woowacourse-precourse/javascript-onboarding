@@ -3,6 +3,20 @@ function problem7(user, friends, visitors) {
   const user_friends = findFriends(user, friends);
   const all_people = allPeople(user, friends, visitors);
   const not_user_friends = all_people.filter((x) => !user_friends.includes(x));
+
+  let scoreBoard = {};
+  for (person of not_user_friends) {
+    scoreBoard[person] = 0;
+  }
+
+  for (const user_friend of user_friends) {
+    // user의 친구의 친구목록을 찾은 뒤 user의 친구가 아닌 사람의 점수를 하나씩 계산한다.
+    const user_friend_relation = findFriends(user_friend, friends);
+
+    for (person of not_user_friends)
+      if (user_friend_relation.includes(person)) scoreBoard[person] += 10;
+  }
+
   return answer;
 }
 
