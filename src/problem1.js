@@ -18,11 +18,16 @@ function maxCalc(str) {
   return Math.max(sum, multi);
 }
 
+function compare(val1, val2) {
+  if (val1 > val2) return 1;
+  if (val1 < val2) return 2;
+  if (val1 === val2) return 0;
+}
+
 function problem1(pobi, crong) {
-  var answer;
   const pobiRes = Math.max(...pobi.map((e) => maxCalc(e)));
   const crongRes = Math.max(...crong.map((e) => maxCalc(e)));
-  return answer;
+  return compare(pobiRes, crongRes);
 }
 
 module.exports = problem1;
