@@ -45,6 +45,8 @@ function errorCheck(page) {
     left > 400 ||
     right > 400 ||
     left - right !== -1 ||
+    typeof left !== "number" ||
+    typeof right !== "number" ||
     page.length > 2 ||
     page.length === 0
   )
