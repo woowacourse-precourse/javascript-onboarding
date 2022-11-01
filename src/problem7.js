@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
-  const  mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
+  const mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
+  const friendsArray = mergeArray(friends).filter((element) => element !== user)
   const memberSet = new Set(friendsArray.concat(visitors));
   const memberList = [...memberSet];
 
