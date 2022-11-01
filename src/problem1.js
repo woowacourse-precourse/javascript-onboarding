@@ -1,50 +1,49 @@
+function checkBigNum(num) {
+  let str = String(num);
+  let sum = 0;
+  let multiply = 1;
+  for (let i = 0; i < str.length; i++) {
+    sum += Number(str[i]);
+    multiply *= Number(str[i]);
+  }
+  return [sum, multiply];
+}
+
+function getBiggerNum(arr) {
+  let [leftSum, leftMulti] = checkBigNum(arr[0]);
+  let [rightSum, rightMulti] = checkBigNum(arr[1]);
+  let bigNum = [leftSum, leftMulti, rightSum, rightMulti];
+  bigNum.sort((a, b) => b - a);
+  return bigNum[0];
+}
+
 function problem1(pobi, crong) {
-  let isRestrict = false;
+  let isRestrictions = false;
 
   if (pobi.length !== 2 || crong.length !== 2) {
-    isRestrict = true;
+    isRestrictions = true;
   } else if (
     pobi.includes(1) ||
     pobi.includes(400) ||
     crong.includes(1) ||
     crong.includes(400)
   ) {
-    isRestrict = true;
+    isRestrictions = true;
   } else if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) {
-    isRestrict = true;
+    isRestrictions = true;
   }
 
-  if (isRestrict) {
+  if (isRestrictions) {
     return -1;
   } else {
-    function checkBigger(num) {
-      let sum = 0;
-      let numStr = String(num);
-      let mul = 1;
-      for (let i = 0; i < numStr.length; i++) {
-        sum += Number(numStr[i]);
-        mul *= Number(numStr[i]);
-      }
-      return sum, mul;
-    }
-
-    function getBiggerNum(arr) {
-      let bigNum = [];
-      bigNum.push(checkBigger(arr[0]));
-      bigNum.push(checkBigger(arr[1]));
-      bigNum.sort((a, b) => b - a);
-      console.log(bigNum);
-      return bigNum[0];
-    }
     let answer;
+    const [pobiNum, crongNum] = [getBiggerNum(pobi), getBiggerNum(crong)];
 
-    const [pobiPage, crongPage] = [getBiggerNum(pobi), getBiggerNum(crong)];
-
-    if (pobiPage == crongPage) {
+    if (pobiNum === crongNum) {
       answer = 0;
-    } else if (pobiPage > crongPage) {
+    } else if (pobiNum > crongNum) {
       answer = 1;
-    } else if (pobiPage < crongPage) {
+    } else if (pobiNum < crongNum) {
       answer = 2;
     } else {
       answer = -1;
@@ -52,4 +51,5 @@ function problem1(pobi, crong) {
     return answer;
   }
 }
+
 module.exports = problem1;
