@@ -14,6 +14,11 @@ function problem2(cryptogram) {
     }
     waste += code;
   });
+  if (waste === "") {
+    return cryptogramString;
+  } else {
+    return problem2(cryptogramString);
+  }
 }
 
 module.exports = problem2;
