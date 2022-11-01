@@ -10,7 +10,7 @@ function problem4(word) {
   const asciiA = "A".charCodeAt(0);
   const asciiZ = asciiA + 25;
 
-  // 각 문자를 ascii code로 변환
+  // ascii code를 활용하여 각 문자를 청개구리 사전대로 변환
   for (let i = 0; i < word.length; i++) {
     let ch = word[i];
     if ("a" <= ch && ch <= "z") {
