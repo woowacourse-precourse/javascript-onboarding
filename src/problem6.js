@@ -1,13 +1,16 @@
 function problem6(forms) {
   const duplicateEmail = getduplicateEmail(forms);
+
   return duplicateEmail;
 }
 
 function getConsecutiveLetters(nickname) {
   const consecutiveLetters = [];
+
   for (let i = 0; i < nickname.length - 1; i++) {
     consecutiveLetters.push(nickname.substr(i, 2));
   }
+
   return consecutiveLetters;
 }
 

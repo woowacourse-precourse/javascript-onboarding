@@ -1,10 +1,12 @@
 function problem4(word) {
   const answer = getReverseWord([...word]);
+
   return answer;
 }
 
 function getReverseWord(word) {
   const reversedWord = [];
+
   word.forEach((char) => {
     const isAlpha = checkAlpha(char);
 
@@ -16,6 +18,7 @@ function getReverseWord(word) {
       reversedWord.push(char);
     }
   });
+
   return reversedWord.join('');
 }
 
@@ -25,6 +28,7 @@ function checkAlpha(char) {
   } else if ('a' <= char && char <= 'z') {
     return 'lowercase';
   }
+
   return 'default';
 }
 

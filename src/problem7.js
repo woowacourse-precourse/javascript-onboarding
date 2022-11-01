@@ -10,8 +10,10 @@ function problem7(user, friends, visitors) {
 
 function getSeparateFrieds(user, friends) {
   const [userFriends, newFriends] = [[], []];
+
   friends.forEach((friend) => {
     const [friend1, friend2] = friend;
+
     if (friend1 === user) {
       userFriends.push(friend2);
     } else if (friend2 === user) {
@@ -20,6 +22,7 @@ function getSeparateFrieds(user, friends) {
       newFriends.push(friend);
     }
   });
+
   return [userFriends, newFriends];
 }
 
@@ -29,11 +32,13 @@ function setWithKnowScore(withKnowScore, friend) {
   } else {
     withKnowScore[friend] = 10;
   }
+
   return withKnowScore;
 }
 
 function getWithKnowScore(userFriends, newFriends) {
   let withKnowScore = {};
+
   newFriends.forEach((friend) => {
     const [friend1, friend2] = friend;
     if (userFriends.has(friend1)) {
@@ -42,11 +47,13 @@ function getWithKnowScore(userFriends, newFriends) {
       withKnowScore = setWithKnowScore(withKnowScore, friend1);
     }
   });
+
   return withKnowScore;
 }
 
 function getVisitTimelineScore(userFriends, visitors) {
   const visitTimelineScore = {};
+
   for (let visitor of visitors) {
     if (userFriends.has(visitor)) {
       continue;
@@ -58,6 +65,7 @@ function getVisitTimelineScore(userFriends, visitors) {
       visitTimelineScore[visitor] = 1;
     }
   }
+
   return visitTimelineScore;
 }
 
@@ -69,6 +77,7 @@ function getRecommendScore(withKnowScore, visitTimelineScore) {
       withKnowScore[visitor] = visitTimelineScore[visitor];
     }
   }
+
   const recommendScore = sortRecommendScore(withKnowScore).slice(0, 5);
   return recommendScore.map((items) => {
     return items[0];
@@ -80,8 +89,10 @@ function sortRecommendScore(recommendScore) {
     if (a[1] === b[1]) {
       return a[0] > b[0] ? 1 : -1;
     }
+
     return b[1] - a[1];
   });
+
   return sortedRecommendScore;
 }
 
