@@ -12,6 +12,11 @@
 
 function problem6(forms) {
   var answer;
+  answer = []
+  const infoListObj = buildInfoListObj(forms); // nickname를 key, email를 value로 하는 Object
+  findSameNickname(infoListObj, answer); // 같은 글자가 연속적으로 포함되는 닉네임을 찾아 answer에 push
+  answer = removeDuplicateEmail(answer); // email 중복 제거
+  answer.sort(); // email 정렬
   return answer;
 }
 
@@ -25,7 +30,7 @@ function buildInfoListObj(forms) {
   return infoListObj;
 }
 
-function findSameNickname(infoListObj) {
+function findSameNickname(infoListObj, answer) {
   // 같은 글자가 연속적으로 포함되는 닉네임을 찾는 함수
   const nicknameList = Object.keys(infoListObj); // nickname list
   for (let nickname of nicknameList) {
@@ -43,7 +48,7 @@ function findSameNickname(infoListObj) {
   }
 }
 
-function findNicknameDuplicate(nickname, nicknameList) {
+function findNicknameDuplicate(nicknameSlice, nicknameList) {
   // 같은 글자가 연속적으로 포함되는 닉네임 list를 찾는 함수
   const duplicateNickname = [];
   nicknameList.forEach((nickname) => {
@@ -55,7 +60,7 @@ function findNicknameDuplicate(nickname, nicknameList) {
 }
 
 function removeDuplicateEmail(answer) {
-  const emailSet = new Set(answer)
+  const emailSet = new Set(answer);
   const emailList = [...emailSet];
   return emailList;
 }
