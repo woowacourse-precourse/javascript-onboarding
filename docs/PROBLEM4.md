@@ -122,5 +122,7 @@ function upperCaseTest(value) {
 
 - ### ```return answer.join('')```으로 배열의 각 아이템들을 이어붙여 문자열로 최종 return ❗️
 
+<br>
     
 
+#### <문제의 조건사항에 제시된 입력값에 대한 예외는 코드 작성이 불필요하다 판단하여 삭제하였습니다.>
