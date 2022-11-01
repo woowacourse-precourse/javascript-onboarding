@@ -57,4 +57,17 @@ const mutualFriendScore = (user, friendsRelation, score) => {
   return score;
 };
 
+const sortScore = (score) => {
+  const sortedScore = Object.entries(score).sort((a, b) => {
+    if (a[1] > b[1]) return -1;
+    if (a[1] === b[1]) {
+      if (a[0] > b[0]) return 1;
+      return -1;
+    }
+    return 1;
+  });
+
+  return sortedScore;
+};
+
 module.exports = problem7;
