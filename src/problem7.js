@@ -38,6 +38,7 @@ function problem7(user, friends, visitors) {
   }
 
   function filterScore (array, number) {return array.filter(innerArray => innerArray[1] !== number);}
+  const filteredScore = filterScore(friendScoreBoard, 0);
 
 module.exports = problem7;
 
@@ -56,7 +57,7 @@ module.exports = problem7;
 //[]점수판에서 0점인 사용자를 삭제한다
 //  [x]배열의 내부 배열에 대하여 n점인지 아닌지 판별하여 0점이 아닌 사용자만 filter하는
 //    filterScore 기능을 구현한다
-//  []filterScore(friendScoreBoard, 0)으로 0점인 사용자만 삭제한다.
+//  [x]filterScore(friendScoreBoard, 0)으로 0점인 사용자만 삭제한다.
 //[]sort 메서드를 이용해 점수가 높은 순으로 정렬시키고 같은 점수인 경우에는 이름순 정렬한다.
 //[]rank에서 점수를 제거하고 닉네임만을 추출하여 rankDismantled에 저장한다.
 //[]rankDismantled의 가장 앞 5개 배열을 잘라 answer로 반환한다.
