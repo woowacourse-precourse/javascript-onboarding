@@ -29,6 +29,17 @@ const calcAcquaintanceScore = (user, scoreMap, friendsMap) => {
   }
 }
 
+const sortScore = (a, b) => {
+  const [nameA, scoreA] = a;
+  const [nameB, scoreB] = b;
+  if(scoreA < scoreB) return 1;
+  if(scoreA > scoreB) return -1;
+  if(scoreA === scoreB){
+    if(nameA > nameB) return 1;
+    if(nameA < nameB) return -1;
+  }
+}
+
 function problem7(user, friends, visitors) {
   const friendsMap = new Map();
   const scoreMap = new Map();
@@ -40,18 +51,11 @@ function problem7(user, friends, visitors) {
 
   calcVisitorScore(user, visitors, scoreMap, friendsMap);
   calcAcquaintanceScore(user, scoreMap, friendsMap);
-
-  let sortScore = [...scoreMap];
-  sortScore.sort((a, b) => {
-    if(a[1] < b[1]) return 1;
-    if(a[1] > b[1]) return -1;
-    if(a[1] === b[1]){
-      if(a[0] > b[0]) return 1;
-      if(a[0] < b[0]) return -1;
-    }
-  })
   
-  return sortScore.slice(0,5).map(score => score[0]);
+  return [...scoreMap]
+    .sort((a, b) => sortScore(a, b))
+    .slice(0,5)
+    .map(([name,]) => name);
 }
 
 module.exports = problem7;
