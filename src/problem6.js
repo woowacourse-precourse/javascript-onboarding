@@ -1,10 +1,8 @@
 function problem6(forms) {
 	let answer;
-	let nameArray = [];
-
-	forms.forEach((form) => {
-		nameArray.push(form);
-	});
+	let emailArray = forms.map((form) => form[0]);
+	let nameArray = forms.map((form) => form[1]);
+	console.log(nameArray);
 
 	return answer;
 }
