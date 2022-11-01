@@ -52,3 +52,15 @@ function getVisitorMap(visitors){
   return visitorMap;
 }
 
+function getRecommendUserMap(friendMap, visitorMap){
+  let recommendMap = friendMap;
+  visitorMap.forEach((score,visitor) => {
+    if(friendMap.has(visitor)){
+      recommendMap.set(visitor, visitorMap.get(visitor)+score);
+    }else{
+      recommendMap.set(visitor, score);
+    }
+  })
+  return recommendMap;
+}
+
