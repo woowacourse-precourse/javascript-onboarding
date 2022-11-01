@@ -7,18 +7,18 @@ const isCryptogram = (cryptogram) => {
 }
 
 const removeDuplicatedAlphabet = (cryptogram) => {
-  let strArr = [...cryptogram];
+  let alphabetArr = [...cryptogram];
   let answer = [];
   for (let i = 0; i < cryptogram.length; i++) {
-    if (strArr[i] == strArr[i + 1]) {
+    if (alphabetArr[i] == alphabetArr[i + 1]) {
       i = i + 1;
     } else {
-      if (strArr[i] == strArr[i - 1]) continue;
+      if (alphabetArr[i] == alphabetArr[i - 1]) continue;
       else {
-        if (strArr[i] == answer[answer.length - 1])
+        if (alphabetArr[i] == answer[answer.length - 1])
           answer = answer.slice(0, -1);
         else {
-          answer.push(strArr[i]);
+          answer.push(alphabetArr[i]);
         }
       }
     }
