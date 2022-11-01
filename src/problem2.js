@@ -1,5 +1,5 @@
 // test sample 추가
-console.log(problem2("bronnaon"));
+// console.log(problem2("browoanoommnaon"));
 
 function problem2(cryptogram) {
   // stack 선언
@@ -9,7 +9,7 @@ function problem2(cryptogram) {
   // 중복 없을 때까지 반복
   for (let i = 1; i < cryptogram.length; i++) {
     // 연속하는 중복 문자 있으면 pop
-    if (arr[i - 1] === cryptogram[i]) {
+    if (arr[arr.length - 1] === cryptogram[i]) {
       arr.pop();
     } else {
       arr.push(cryptogram[i]);
