@@ -1,37 +1,33 @@
 function problem7(user, friends, visitors) {
-  const myFriends = [];
-  const strangersWithScores = {};
+  const userFriends = [];
+  const friendsWithScores = new Map();
 
   const strangerFriends = friends.filter((friend) => {
     if (friend.includes(user)) {
-      myFriends.push(...friend.filter((each) => each !== user));
+      userFriends.push(...friend.filter((each) => each !== user));
       return false;
     } else {
       return true;
     }
   });
 
-  [...strangerFriends.flat(1), ...visitors].forEach((each) => {
-    strangersWithScores[each] = 0;
-  });
-
   strangerFriends.forEach((friend) => {
     const [a, b] = friend;
-    if (myFriends.includes(a) || myFriends.includes(b)) {
-      strangersWithScores[a] += 10;
-      strangersWithScores[b] += 10;
+    if (userFriends.includes(a) || userFriends.includes(b)) {
+      friendsWithScores.set(a, friendsWithScores.get(a) + 10 || 10);
+      friendsWithScores.set(b, friendsWithScores.get(b) + 10 || 10);
     }
   });
 
   visitors.forEach((visitor) => {
-    strangersWithScores[visitor] += 1;
+    friendsWithScores.set(visitor, friendsWithScores.get(visitor) + 1 || 1);
   });
 
-  myFriends.forEach((myFriend) => {
-    delete strangersWithScores[myFriend];
+  userFriends.forEach((myFriend) => {
+    friendsWithScores.delete(myFriend);
   });
 
-  const sortedStrangers = Object.entries(strangersWithScores).sort((a, b) => {
+  const sortedStrangers = [...friendsWithScores].sort((a, b) => {
     if (a[1] === b[1]) {
       return a[0].localeCompare(b[0]);
     }
