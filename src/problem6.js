@@ -13,6 +13,9 @@ function problem6(forms) {
       }
     }
   
+    var dummy = new Set(value.sort())
+    answer = [...dummy]
+    
   return answer;
 
 }
