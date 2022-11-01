@@ -23,6 +23,4 @@ function problem2(cryptogram) {
   return cryptogram;
 }
 
-console.log(problem2("aazzqweqweaaq"));
-
 module.exports = problem2;

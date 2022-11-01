@@ -34,10 +34,10 @@ function getMultipliedScore(pages) {
 
 function checkPageValidation(pages) {
   if (
-    pages[0] < 1 ||
-    pages[1] < 1 ||
-    pages[0] > 400 ||
-    pages[1] > 400 ||
+    pages[0] <= 1 ||
+    pages[1] <= 1 ||
+    pages[0] >= 400 ||
+    pages[1] >= 400 ||
     pages[1] - pages[0] !== 1
   )
     return -1;
