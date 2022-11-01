@@ -57,6 +57,28 @@ function visitScore(visitors, userFriends, reserveFriends) {
   return reserveFriends;
 }
 
+function recommendTop5Friends(user, friends, visitors) {
+  const userFriends = findUserFriends(user, friends);
+  let reserveFriends = knowTogetherScore(friends, userFriends);
+  reserveFriends = visitScore(visitors, userFriends, reserveFriends);
+
+  top5Friends = reserveFriends
+    .sort((friendA, friendB) => {
+      if (friendA.score === friendB.score) {
+        return friendA.name < friendB.name
+          ? -1
+          : friendA.name > friendB.name
+          ? 1
+          : 0;
+      }
+      return friendB.score - friendA.score;
+    })
+    .slice(0, 5)
+    .map((friend) => friend.name);
+
+  return top5Friends;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   return answer;
