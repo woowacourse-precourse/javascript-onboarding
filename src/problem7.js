@@ -16,7 +16,37 @@
 
 function problem7(user, friends, visitors) {
     let answer;
+    answer = solution(user, friends, visitors);
     return answer;
+}
+
+function solution(user, friends, visitors) {
+    let answer = [];
+    let friendsWithUser = [];
+    let recommendedFriends = [];
+    let newVisitors = [];
+
+    friendsWithUser = findFriends(user, friends);
+    newVisitors = findNewVisitors(visitors, friendsWithUser);
+    const recommendMap = calculateScore(newVisitors, recommendedFriends, friendsWithUser, friends, user);
+    answer = OrderRecommendFriends(recommendMap);
+
+    return answer;
+}
+
+/*추천 목록 정렬한다. */
+function OrderRecommendFriends(recommendMap) {
+    
+    const recommendMapToArray = [...recommendMap];
+    const result = [];
+
+    let resultOrderByValue = recommendMapToArray.sort((a, b) => b[1] - a[1]);
+    let resultOrderByKey = resultOrderByValue.sort((a, b) => b[0] - a[0]);
+
+
+    resultOrderByKey.forEach(element => result.push(element[0]));
+
+    return result;
 }
 
 /*방문자와 함께아는 친구를 통해서 점수를 계산한다.*/
