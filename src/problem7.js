@@ -13,6 +13,15 @@ function problem7(user, friends, visitors) {
     });
   });
 
+  const recommendVisitor = visitors.filter((name) => !userFriends.includes(name));
+  recommendVisitor.forEach((name) => {
+    if(score[name]) {
+      score[name] = score[name] + 1;
+    } else {
+      score[name] = 1;
+    }
+  });
+
 }
 
 function getUserFriends(user, friends) {
