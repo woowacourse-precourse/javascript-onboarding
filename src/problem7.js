@@ -1,8 +1,10 @@
+// 반환하는 배열의 최대 길이를 위한 상수
 const MAX_RETURN_LENGTH = 5;
+// 점수 계산 시 각각의 경우에 얻는 점수를 위한 상수
 const ACQUAINTANCE_SCORE = 10;
 const VISIT_SCORE = 1;
 
-// 점수를 계산하는 함수
+// 함께 아는 친구, 방문기록 두개의 점수를 계산하는 함수
 const calcScores = (user, friends, visitors) => {
   const scores = {};
   const relation = makeRelation(friends);
@@ -13,28 +15,17 @@ const calcScores = (user, friends, visitors) => {
 
 // 친구 관계를 저장하기 위한 그래프 생성
 const makeRelation = (friends) => {
+  // 관계 그래프를 위한 객체 선언
   const relation = {};
 
+  // 입력받은 친구 관계를 순회하며 그래프 생성
   friends.map(x => {
-    if(!Object.keys(relation).includes(x[0])) {
-      relation[x[0]] = [];
-    }
-
-    if(!Object.keys(relation).includes(x[1])) {
-      relation[x[1]] = [];
-    }
-
-    if(!relation[x[0]].includes(x[1])) {
-      relation[x[0]].push(x[1]);
-    }
-
-    if(!relation[x[1]].includes(x[0])) {
-      relation[x[1]].push(x[0]);
-    }
+    [from, to] = x;
+    if(!Object.keys(relation).includes(from)) relation[from] = [];
+    if(!Object.keys(relation).includes(to)) relation[to] = [];
+    if(!relation[from].includes(to)) relation[from].push(to);
+    if(!relation[to].includes(from)) relation[to].push(from);
   });
-
-  console.log(relation);
-  
   return relation;
 }
 
@@ -93,8 +84,11 @@ const printResult = (scoreArr) => {
 
 // 메인 함수 
 function problem7(user, friends, visitors) {
-  let scoreArr = [...Object.entries(calcScores(user, friends, visitors))];
+  // 점수를 계산하여 배열로 변환
+  let scoreArr = [...calcScores(user, friends, visitors)];
+  // 정렬
   sortScore(scoreArr);
+  // 출력 형태에 맞추기
   scoreArr = [...printResult(scoreArr)];
   return scoreArr;
 }
