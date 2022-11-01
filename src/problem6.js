@@ -14,6 +14,8 @@ function problem6(forms) {
       emailList.forEach((email) => emailSet.add(email));
     }
   }
+
+  return [...emailSet].sort();
 }
 
 module.exports = problem6;
