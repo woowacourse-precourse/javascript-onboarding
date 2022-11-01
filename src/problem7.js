@@ -4,8 +4,25 @@
  * - [x] 전체 유저 목록 생성하기
  * - [x] 사용자와 함께 아는 친구 있는 유저들을 그 수만큼 친구 추천 점수 높이기
  * - [x] 사용자의 타임 라인에 방문한 유저들의 점수를 높이기
- * - [ ] 사용자와 사용자의 친구를 제외하고, 점수가 0이 아닌 유저들로 친구 추천 목록 구성하기
+ * - [x] 사용자와 사용자의 친구를 제외하고, 점수가 0이 아닌 유저들로 친구 추천 목록 구성하기
  * - [ ] 친구 추천 목록을 점수 순, 이름 순으로 정렬하기
+ */
+
+/**
+ * 유저 정보가 담긴 객체
+ *
+ * @typedef {Object} User
+ * @property {string} name - 유저의 이름
+ * @property {string[]} friends - 유저의 친구들의 이름
+ * @property {score} score - 유저의 점수
+ */
+
+/**
+ * 친구 관계가 없는 간략한 유저 정보가 담긴 객체
+ *
+ * @typedef {Object} SimpleUser
+ * @property {string} name - 유저의 이름
+ * @property {score} score - 유저의 점수
  */
 
 /**
@@ -29,15 +46,6 @@ function problem7(user, friends, visitors) {
   var answer;
   return answer;
 }
-
-/**
- * 유저 정보가 담긴 객체
- *
- * @typedef {Object} User
- * @property {string} name - 유저의 이름
- * @property {string[]} friends - 유저의 친구들의 이름
- * @property {score} score - 유저의 점수
- */
 
 /**
  * 주어진 친구목록과 사용자의 타임 라인에 방문한 유저들을 토대로 전체 유저 목록을 생성하는 함수
@@ -123,6 +131,28 @@ function scoreVisitedUsers(users, visitors, score) {
   visitors.forEach((visitor) => {
     users[visitor].score += score;
   });
+}
+
+/**
+ * 전체 유저 중에서 사용자의 친구를 제외한 유저들을 이름과 점수만 가진 객체로 반환하는 함수
+ *
+ * @param {User[]} users 전체 유저가 담긴 배열
+ * @param {User} user 사용자의 이름
+ * @returns {SimpleUser[]} 이름과 점수만 담긴 유저 객체의 배열
+ */
+function getRecommendedFriends(users, user) {
+  const recommended = [];
+  const userFriends = users[user]?.friends || [];
+
+  Object.values(users).filter(({ name, score }) => {
+    if (userFriends.includes(name) || score === 0) {
+      return;
+    }
+
+    recommended.push({ name, score });
+  });
+
+  return recommended;
 }
 
 module.exports = problem7;
