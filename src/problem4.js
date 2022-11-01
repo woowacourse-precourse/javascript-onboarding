@@ -3,7 +3,7 @@ function problem4(word) {
   // 소문자 97-122 (219)
   let splittedWord = word.split('')
   let answer = '';
-  splittedWord.forEach(function(word,idx) {
+  splittedWord.forEach(function(word) {
     let ascii = word.charCodeAt()
     if (ascii>=65 && ascii<=90){
       answer += String.fromCharCode(155-ascii);
