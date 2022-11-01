@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  //utils
   const MAX_VISITORS_LENGTH = 10000;
   const MIN_FREINDS_LENGTH = 1;
   const MAX_FREINDS_LENGTH = 10000;
@@ -54,7 +53,7 @@ function problem7(user, friends, visitors) {
     }
 
     setUserMapByUser(user, userMap) {
-      const userObject = new User(this.user);
+      const userObject = new User(user);
       userMap.set(this.user, userObject);
     }
 
