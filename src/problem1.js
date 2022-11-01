@@ -64,4 +64,15 @@ function getProduct(num){
   return product;
 };
 
+function getWinner(score1, score2) {
+  // 승자를 결정하는 함수
+  if (score1 > score2) {
+    return 1; //pobi 승
+  } else if (score1 < score2) {
+    return 2; //crong 승
+  } else {
+    return 0; //무승부
+  }
+}
+
 module.exports = problem1;
