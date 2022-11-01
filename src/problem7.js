@@ -40,6 +40,21 @@ function problem7(user, friends, visitors) {
     // 4단계) 점수를 카운트 하기 전 미리 이름 순으로 정렬
     const orderedScoresArray = Object.entries(scores).sort();
     const orderedScoresObject = Object.fromEntries(orderedScoresArray);
+
+    // 5단계) 규칙에 따라 점수 기록
+    for (let i = 0; i < connection.length; i++) {
+        if (myFriends.includes(connection[i][0])) {
+            orderedScoresObject[connection[i][1]] += 10;
+        }
+        if (myFriends.includes(connection[i][1])) {
+            orderedScoresObject[connection[i][0]] += 10;
+        }
+    }
+    for (let i = 0; i < visitors.length; i++) {
+        if (!myFriends.includes(visitors[i])) {
+            orderedScoresObject[visitors[i]] += 1;
+        }
+    }
 }
 
 module.exports = problem7;
