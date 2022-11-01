@@ -10,6 +10,13 @@ function problem4(word) {
   let wordSeparation = word.split('');    
   let newWordArr = [];
   let index = 0;
+  for (const element of wordSeparation) {
+    index = lowerAlphabet.indexOf(element);
+    if (index !== -1 ){
+        newWordArr.push(lowerAlphabetReverse[lowerAlphabet.indexOf(element)]);
+    }
+    
+  }
   
 
 
