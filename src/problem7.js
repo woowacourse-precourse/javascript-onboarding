@@ -7,8 +7,17 @@ function getFriendOfUser(user, friends) {
   return FriendOfUser;
 }
 
+function getVisitorsCount(visitors) {
+  const visitorsCount = visitors.reduce((acc, visitors) => {
+    acc[visitors] = (acc[visitors] || 0) + 1;
+    return acc;
+  }, {});
+  return visitorsCount;
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
+  const visitorsCount = getVisitorsCount(visitors);
   return;
 }
 
