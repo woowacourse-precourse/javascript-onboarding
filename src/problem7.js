@@ -19,7 +19,6 @@ function problem7(user, friends, visitors) {
 
   // 중복 제거
   friend_list = Array.from(new Set(friend_list));
-  // cross_friend = Array.from(new Set(cross_friend));
 
   // 친구의 친구 유저에게 +10점씩 준다.
   for (var j = 0; j < cross_friend.length; j++) {
@@ -33,7 +32,6 @@ function problem7(user, friends, visitors) {
 
   // visitors 에서 친구 제거
   for (var k = 0; k < visitors.length; k++) {
-    // console.log(friend_list.includes(visitors[k]));
     if (!friend_list.includes(visitors[k])) visitor.push(visitors[k]);
   }
 
@@ -47,10 +45,8 @@ function problem7(user, friends, visitors) {
     score[name] = 1;
   }
 
-  // console.log(score);
-
   answer = Object.keys(score);
-  console.log(answer);
+
   return answer;
 }
 
