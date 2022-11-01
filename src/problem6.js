@@ -27,7 +27,19 @@ function problem6(forms) {
     }
   }
 
-  // 첫 타겟 이전 값에 연속 값 있는지 확인 
+  // 현재 sameNickCrew 배열 안에 첫 타겟 크루 index 뽑기
+  let firstSame = forms.findIndex((arr) => arr[1] === sameNickCrew[0]);
+  // 첫 닉네임 이전 값에 연속 값 있는지 확인 
+  for (i = 0; i < firstSame; i++){
+    let nick = forms[i][1];
+    for (j = 0; j < nick.length - 1; j++){
+      let slice = nick.substr(j, 2);
+      if (sameNick.includes(slice)) {
+        sameNickCrew.push(nick);
+      }  
+    }
+
+  }
 
   // 닉네임에 대응되는 이메일 뽑기
 
