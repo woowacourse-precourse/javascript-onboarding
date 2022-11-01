@@ -58,6 +58,13 @@ function delteFriends(user의_친구목록, visitors) {
   return visitors.filter((visitor) => !user의_친구목록.includes(visitor));
 }
 
+// score에 겹치는 친구 점수 기록 +10
+function addFriendsScore(score, overlapUsers) {
+  overlapUsers.forEach((user) => {
+    score[user] += 10;
+  });
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const user의_친구목록 = getFriendsArr(user, friends);
@@ -72,22 +79,9 @@ function problem7(user, friends, visitors) {
   const score = {};
   추천친구목록.forEach((id) => (score[id] = 0));
 
+  addFriendsScore(score, overlapUsers);
+
   return answer;
 }
 
 module.exports = problem7;
-
-problem7(
-  "mrko",
-
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
