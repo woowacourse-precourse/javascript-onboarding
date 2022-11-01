@@ -54,8 +54,6 @@ const getMatchedForms = (forms) => (cases) => {
   }, []);
 };
 
-const limit = (number) => (arr) => arr.slice(0, number);
-
 const sort = (arr) => [...arr].sort();
 
 const removeDups = (arr) => [...new Set(arr)];
@@ -69,7 +67,6 @@ function problem6(forms) {
     getMatchedForms(forms),
     getValuesOf("email"),
     removeDups,
-    limit(5),
     sort,
   )(forms);
 
