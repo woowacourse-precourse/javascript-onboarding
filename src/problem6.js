@@ -11,6 +11,10 @@ function problem6(forms) {
       wordList.push(forms[i][1].substring(j, j+2))
     }
   }
+  let answer = Array.from(new Set(answerList));
+  answer.sort();
+  
+  return answer;
 }
 
 module.exports = problem6;
