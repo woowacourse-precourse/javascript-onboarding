@@ -7,7 +7,7 @@ function problem3(number) {
   for (let i = 1; i <= number; i++) {
     const stringNumber = String(i);
     for (let j = 0; j < stringNumber.length; j++) {
-      if (CLAP_NUMBERS.includes(stringNumber.charAt(j))) clapCount++;
+      if (CLAP_NUMBERS.includes(stringNumber[j])) clapCount++;
     }
   }
 

@@ -6,15 +6,11 @@ function problem1(pobi, crong) {
     ...crong,
   ]);
 
-  // 타입 체크
   pages.forEach((v) => {
     if (typeof v !== 'number') return -1;
-  });
-  // 숫자 1 이상 400 이하 체크
-  pages.forEach((v) => {
     if (v < 1 || v > 400) return -1;
   });
-  // 페이지 차이가 1이 아닌 경우
+
   if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) return -1;
 
   function plusMax(page) {
@@ -37,6 +33,7 @@ function problem1(pobi, crong) {
 
   let pobiMaxScore = decideMaxScore(pobiLeft, pobiRight);
   let crongMaxScore = decideMaxScore(crongLeft, crongRight);
+
   answer =
     pobiMaxScore > crongMaxScore ? 1 : pobiMaxScore < crongMaxScore ? 2 : 0;
   return answer;
