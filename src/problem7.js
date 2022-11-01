@@ -23,6 +23,10 @@ function problem7(user, friends, visitors) {
       );
     }
   }
+
+  const sortedFriendScoreList = [...friendScoreList].sort(
+    (a, b) => b[1] - a[1]
+  );
 }
 
 const POINT = Object.freeze({
