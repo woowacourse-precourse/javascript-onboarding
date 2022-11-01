@@ -44,6 +44,13 @@ function sortFriendByName(friends) {
   return sortedFriend.sort();
 }
 
+function sortFriendByScore(friends) {
+  friends.sort(function(a,b){
+    return b[1]-a[1]
+  });
+  return friends;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   let friendScore = {};
@@ -57,6 +64,7 @@ function problem7(user, friends, visitors) {
   }
 
   sortedFriend = sortFriendByName(friendScore);
+  sortedFriend = sortFriendByScore(sortedFriend);
 
   return answer;
 }
