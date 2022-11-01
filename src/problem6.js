@@ -16,7 +16,7 @@ const separateName = (name) => {
 
 /**
  * @param {{[name: string] : string[]}} obj ex) {'제이' : ['email@email.com']}
- * @returns 무슨ㅅ무슨 리턴
+ * @returns {string[]} 중복되는 이메일 리스트
  */
 const getDuplicate = (obj) => {
   /** @type {string[]} */
