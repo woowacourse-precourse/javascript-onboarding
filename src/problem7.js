@@ -19,6 +19,14 @@ function problem7(user, friends, visitors) {
     dict.set(v, (dict.get(v) ?? []).concat(u));
     return dict;
   }, new Map());
+  const visited = [...pairMap.keys()].reduce((map, key) => {
+    map.set(key, false);
+    return map;
+  }, new Map());
+  const scoreMap = [...pairMap.keys()].reduce((map, key) => {
+    map.set(key, 0);
+    return map;
+  }, new Map());
   var answer;
   return answer;
 }
