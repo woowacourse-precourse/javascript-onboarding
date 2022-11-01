@@ -1,20 +1,26 @@
 function problem4(word) {
   const answer = [];
 
-  let asciiArr = [];
-  let resultArr = [];
+  const asciiArr = [];
+  const resultArr = [];
+
+  const EMPTY = 32;
+  const ASCII_CODE_A = 65;
+  const ASCII_CODE_Z = 90;
+  const ASCII_CODE_UPPER_CASE_RANGE = 155;
+  const ASCII_CODE_LOWER_CASE_RANGE = 219;
 
   for (let i = 0; i < word.length; i++) {
     asciiArr.push(word.charCodeAt(i));
   }
 
   for (let i = 0; i < asciiArr.length; i++) {
-    if (asciiArr[i] === 32) {
-      resultArr.push(32);
-    } else if (asciiArr[i] >= 65 && asciiArr[i] <= 90) {
-      resultArr.push(155 - asciiArr[i]);
+    if (asciiArr[i] === EMPTY) {
+      resultArr.push(EMPTY);
+    } else if (asciiArr[i] >= ASCII_CODE_A && asciiArr[i] <= ASCII_CODE_Z) {
+      resultArr.push(ASCII_CODE_UPPER_CASE_RANGE - asciiArr[i]);
     } else {
-      resultArr.push(219 - asciiArr[i]);
+      resultArr.push(ASCII_CODE_LOWER_CASE_RANGE - asciiArr[i]);
     }
   }
 
