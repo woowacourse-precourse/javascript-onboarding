@@ -10,10 +10,21 @@ const exception = (pobi, crong) => {
   if (crong.reduce((a, b) => Math.abs(a - b)) !== 1) return -1;
 };
 
+const calulateMax = (array, plus, multiplication, pobi) => {
+  plus > multiplication
+    ? array === pobi
+      ? pobiMax.push(plus)
+      : crongMax.push(plus)
+    : array === pobi
+    ? pobiMax.push(multiplication)
+    : crongMax.push(multiplication);
+};
+
 const getMaxNumber = (array, pobi) => {
   array.forEach((page) => {
     let plus = Object.values(String(page)).reduce((a, b) => +a + +b);
     let multiplication = Object.values(String(page)).reduce((a, b) => +a * +b);
+    calulateMax(array, plus, multiplication, pobi);
   });
 };
 
