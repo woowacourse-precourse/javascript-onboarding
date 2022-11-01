@@ -35,59 +35,36 @@ function crewNum(forms) {
   return 1;
 }
 
-function subStrWord(word) {
-  const subArr = [];
-  for (i = 0; i < word.length - 1; i++) {
-    subArr.push(word.substring(i, i + 2));
+function subStrName(nickName) {
+  const subNickNameArr = [];
+  for (let i = 0; i < nickName.length - 1; i++) {
+    subNickNameArr.push(nickName.substring(i, i + 2));
   }
-  const set = new Set(subArr);
-  const subArrSet = [...set];
-
-  return subArrSet;
-}
-function findOverLapArr(forms) {
-  const checkArr = [];
-  let i = 0;
-  for (i = 0; i < forms.length; i++) {
-    const subStr = subStrWord(forms[i][1]);
-
-    checkArr.push(...subStr);
-  }
-  return checkArr;
+  return subNickNameArr;
 }
 
-function isOverlapArrCheck(checkArr, twoWords) {
-  const finalCountWords = [];
-  for (i = 0; i < checkArr.length; i++) {
-    const nickName = checkArr[i];
-    if (nickName == twoWords) {
-      finalCountWords.push(nickName);
-    }
-  }
-  if (finalCountWords.length != 1) {
-    return 1;
-  }
-  return 0;
-}
-
-function isOverlapForm(form, checkArr) {
-  const subNicknameArr = subStrWord(form[1]);
+function addOverlapName(form, overlapArr, setOverlap) {
+  const subNicknameArr = subStrName(form[1]);
   for (let j = 0; j < subNicknameArr.length; j++) {
-    if (isOverlapArrCheck(checkArr, subNicknameArr[j]) == 1) {
-      return 1;
+    if (setOverlap.has(subNicknameArr[j])) {
+      overlapArr.push(form[0]);
     }
+    setOverlap.add(subNicknameArr[j]);
   }
-  return 0;
 }
 
-function getOverlap(forms, checkArr) {
+function getOverlap(forms) {
   const overlapArr = [];
+  const setOverlap = new Set();
   for (let i = 0; i < forms.length; i++) {
-    if (isOverlapForm(forms[i], checkArr) == 1) {
-      overlapArr.push(forms[i][0]);
-    }
+    addOverlapName(forms[i], overlapArr, setOverlap);
   }
-  return overlapArr;
+  setOverlap.clear();
+  for (let i = forms.length - 1; i > -1; i--) {
+    addOverlapName(forms[i], overlapArr, setOverlap);
+  }
+  const res = new Set(overlapArr);
+  return [...res].sort();
 }
 
 function isRight(forms) {
@@ -96,11 +73,11 @@ function isRight(forms) {
     return -1;
   }
   for (i = 0; i < forms.length; i++) {
-    if (isCorrect(forms[i]) == -1) return -1;
+    if (isCorrect(forms[i]) == -1) {
+      return -1;
+    }
   }
-  const setArr = findOverLapArr(forms);
-  const overlapArr = getOverlap(forms, setArr);
-  return overlapArr.sort();
+  return getOverlap(forms);
 }
 
 function problem6(forms) {
