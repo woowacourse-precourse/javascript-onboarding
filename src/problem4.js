@@ -17,8 +17,13 @@ function problem4(word) {
     }
     if (index == -1){
       newWordArr.push(" "); 
+    }    
+  }
+  for (const element of wordSeparation){
+    index = alphabet.indexOf(element);
+    if (index !== -1 ){
+      newWordArr[wordSeparation.indexOf(element)] = alphabetReverse[index];
     }
-    
   }
   
 
