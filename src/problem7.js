@@ -1,10 +1,10 @@
 function problem7(user, friends, visitors) {
   const checkUserFreind = userFriend(user,friends);  
-  const checkVisitList = visitorList(visitors);
+  const checkVisitList = visitorList(visitors, userFriend);
   const acquaintance_List = acquaintance(checkUserFreind, friends, user);
   const acquaintance_List_Number = acquaintanceListNumber(acquaintance_List);
-  console.log(checkUserFreind, checkVisitList,acquaintance_List,acquaintance_List_Number);
-}
+  const total_Score_List = totalList(checkVisitList, acquaintance_List_Number);
+  console.log(checkUserFreind, checkVisitList, acquaintance_List,acquaintance_List_Number, total_Score_List)
 
 function userFriend(user,friends){
   let userFriendList = [];
@@ -20,10 +20,16 @@ function userFriend(user,friends){
 }
 
 function visitorList(visitors){
-  const visitor_List = [];
+  const visitor_List = {};
+  const visitorScoreList = [];
   visitors.filter((visitor) => {
     visitor_List[visitor] = (visitor_List[visitor] || 0)+1});
-    return visitor_List;
+    for (let username in visitor_List){
+      visitorScoreList.push( {
+        name: username,
+        score: visitor_List[username]})
+    }
+    return visitorScoreList;  
   };
 
 function acquaintance(userFriend, friends, user){
@@ -41,10 +47,33 @@ function acquaintance(userFriend, friends, user){
 }
 
 function acquaintanceListNumber(acquaintance_List){
-  const acquaintanceListNumber = [];
-  acquaintance_List.filter((acquaintance) => { acquaintanceListNumber[acquaintance]
-     = (acquaintanceListNumber[acquaintance] || 0)+1});
-     return acquaintanceListNumber;
+  const acquaintanceList = {};
+  const  acquaintance_Score = [];
+  acquaintance_List.filter((acquaintance) => { acquaintanceList[acquaintance]
+     = (acquaintanceList[acquaintance] || 0)+(1*10)});
+  for (let username in acquaintanceList){
+    acquaintance_Score.push({
+      name: username,
+      score : acquaintanceList[username]
+      })
+    }
+  return acquaintance_Score;
+}
+
+function totalList(visitor, acquaintance){
+  const totalScoreList = [];  
+  for(let i = 0 ; i < visitor.length; i++){
+    if(visitor[i].score > 0){
+      totalScoreList.push(visitor[i]);
+    }
+  }
+  for(let i = 0 ; i < acquaintance.length; i++){
+    if(acquaintance[i].score > 0){
+      totalScoreList.push(acquaintance[i]);
+    }
+  }
+  return totalScoreList;
+ }
 }
 
 module.exports = problem7;
