@@ -15,6 +15,24 @@ function problem1(pobi, crong) {
   
   for (let i = 0; i < crong.length - 1; i++)
     if (crong[i] + 1 !== crong[i + 1]) return -1;
+  
+  // 2. Find Max
+  let pobiMax = 0;
+  let crongMax = 0;
+  
+  for (let i = 0; i < pobi.length; i++){
+    const page = (pobi[i] + '').split('');
+    const sum = page.reduce((acc, cur) => acc += Number(cur), 0);
+    const mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
+    pobiMax = sum > mul ? sum : mul;
+  }
+
+  for (let i = 0; i < crong.length; i++){
+    const page = (crong[i] + '').split('');
+    const sum = page.reduce((acc, cur) => acc += Number(cur), 0);
+    const mul = page.reduce((acc, cur) => acc *= Number(cur), 1);
+    crongMax = sum > mul ? sum : mul;
+  }
 }
 
 module.exports = problem1;
