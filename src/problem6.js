@@ -5,6 +5,7 @@ function problem6(forms) {
 	let nameArray = forms.map((form) => form[1]);
 
 	if (!checkValidEmail(emailArray)) return -1;
+	if (!checkValidName(nameArray)) return -1;
 
 	nameArray.forEach((names, index) => {
 		let sliceNameArray = saveNameLength2(names);
@@ -24,7 +25,25 @@ function problem6(forms) {
 			if (checkEmail == "@email.com") return;
 			else count++;
 		});
-		return count == 0 ? 1 : 0;
+		return count == 0 ? true : false;
+	}
+
+	function checkValidName(names) {
+		let count = 0;
+		names.forEach((word) => {
+			if (!checkKor(word)) count++;
+			if (!(word.length >= 1 && word.length < 20)) count++;
+		});
+		return count == 0 ? true : false;
+	}
+
+	function checkKor(str) {
+		const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+		if (regExp.test(str)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	function saveNameLength2(names) {
