@@ -1,7 +1,9 @@
 function problem7(user, friends, visitors) {
   var answer;
   let alreadyFriends = findAlreadyFriend(user, friends);
-  
+  visitors = visitors.filter((visitor) => !alreadyFriends.includes(visitor));
+  let acquaintances = findAcquaintance(alreadyFriends, friends, user);
+
   return answer;
 }
 
@@ -15,6 +17,20 @@ function findAlreadyFriend(user, friends) {
   alreadyFriends = alreadyFriends.filter((friend) => friend != user);
 
   return alreadyFriends;
+}
+
+function findAcquaintance(alreadyFriends, friends, user) {
+  let acquaintances = [];
+  for(let i = 0; i < friends.length; i++) {
+    for(let j = 0; j < friends[i].length; j++) {
+      if(alreadyFriends.includes(friends[i][j])){
+        acquaintances = acquaintances.concat(friends[i]);
+      }
+    }
+  }
+  acquaintances = acquaintances.filter((name) => (name != user && !alreadyFriends.includes(name)));
+
+  return acquaintances;
 }
 
 module.exports = problem7;
