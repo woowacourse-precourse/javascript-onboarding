@@ -1,28 +1,8 @@
 function problem1(pobi, crong) {
   var answer;
-
-  if (
-    pobi[0] % 2 !== 1 ||
-    pobi[1] % 2 !== 0 ||
-    pobi[1] - pobi[0] !== 1 ||
-    pobi[0] < 3 ||
-    pobi[0] > 397 ||
-    pobi[1] < 4 ||
-    pobi[1] > 398
-  )
-    return -1;
-  if (
-    crong[0] % 2 !== 1 ||
-    crong[1] % 2 !== 0 ||
-    crong[1] - crong[0] !== 1 ||
-    crong[0] < 3 ||
-    crong[0] > 397 ||
-    crong[1] < 4 ||
-    crong[1] > 398
-  )
-    return -1;
-
   let [pobiMax, crongMax] = [0, 0];
+
+  if (pageException(pobi) || pageException(crong)) return -1;
 
   for (let i = 0; i < 2; i++) {
     pobiMax = Math.max(calScore(pobi[i]), pobiMax);
@@ -31,9 +11,23 @@ function problem1(pobi, crong) {
 
   if (pobiMax > crongMax) answer = 1;
   else if (pobiMax < crongMax) answer = 2;
-  else answer = 0;
+  else if (pobiMax === crongMax) answer = 0;
 
   return answer;
+}
+
+function pageException(pages) {
+  if (
+    pages[0] % 2 !== 1 ||
+    pages[1] % 2 !== 0 ||
+    pages[1] - pages[0] !== 1 ||
+    pages[0] < 3 ||
+    pages[0] > 397 ||
+    pages[1] < 4 ||
+    pages[1] > 398
+  )
+    return 1;
+  return 0;
 }
 
 function calScore(page) {
