@@ -27,6 +27,22 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  // 타임 라인 visitor 점수 계산
+  for (let i = 0; i < visitors.length; i++) {
+    // 추천친구에 존재하는 친구가 방문했을 경우
+    if (nameArr.indexOf(visitors[i]) !== -1) {
+      scoreArr.map((item) => {
+        // 점수 1점 추가
+        if (item.name === visitors[i]) item.score += 1;
+      });
+    }
+    // 처음 보는 추천 친구인 경우
+    else if (friendsArr.indexOf(visitors[i]) === -1) {
+      scoreArr.push({ score: 1, name: visitors[i] });
+      nameArr.push(visitors[i]);
+    }
+  }
+
   return answer;
 }
 
