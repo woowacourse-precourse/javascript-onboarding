@@ -16,8 +16,10 @@ function problem1(pobi, crong) {
 }
 function maxPage(pages){
   let maxPageNum = 0;
-  if (pages[0] !== pages[1] - 1 || pages[0] - pages[1] === 399) {
-    return -1;
+  if (pages[0] !== pages[1] - 1 || 
+    pages[0] < 1 || pages[0] >= 400 || pages[1] > 400 || pages[1] < 2 
+    ||pages[0]%2 !== 1 || pages[1]%2 !== 0) { 
+    return -1; //예외처리
   }
   for(let page of pages){
     let sum = 0;
