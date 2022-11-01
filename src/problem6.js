@@ -18,6 +18,7 @@ function problem6(forms) {
       }
     }
   });
+  answer = [...new Set(answer)];
 
   return answer;
 }
