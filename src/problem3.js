@@ -1,11 +1,19 @@
 function problem3(number) {
   var answer;
+
   let count = 0;
 
-  for (let i = 1; i <= number; i++) {
-    const currentNum = i.toString().trim().split("").map(Number);
+  count = count369(number, count);
 
-    //3,6,9 포함 개수 count
+  answer = count;
+  return answer;
+}
+
+//3,6,9 개수를 세는 함수
+function count369(number, count) {
+  for (let i = 1; i <= number; i++) {
+    const currentNum = innerHeight.toString().trim().split("").map(Number);
+
     for (let j = 0; j < currentNum.length; j++) {
       if (currentNum[j] == 3) {
         count++;
@@ -17,12 +25,7 @@ function problem3(number) {
         count++;
       }
     }
-    //console.log(currentNum);
   }
-
-  console.log(count);
-  answer = count;
-  return answer;
+  return count;
 }
-
 module.exports = problem3;
