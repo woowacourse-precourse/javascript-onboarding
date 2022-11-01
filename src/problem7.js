@@ -9,29 +9,46 @@ function problem7(user, friends, visitors) {
      alreadyFriends[friend] = [];
    }
  }
- console.log(alreadyFriends);
 
  // alreadyFriends와 친구인 경우 -> 10점
- var alreadyRecommend = [];
- var usersFriendsName = Object.keys(alreadyFriends);
-
- for (i = 0; i < usersFriendsName.length; i++) {
-   var userFriend = usersFriendsName[i]; //userfriend = donut
+ var alreadyRecommend = new Object();
+ var alreadyFriendsName = Object.keys(alreadyFriends);
+ for (i = 0; i < alreadyFriendsName.length; i++) {
+   var userFriend = alreadyFriendsName[i]; 
    for (j = 0; j < friends.length; j++){
-     if (friends[j].includes(userFriend) && !friends[j].includes(user)) {
-       var friend = friends[j].filter((name) => name !== userFriend);
-       alreadyFriends[userFriend].push(...friend);
-       if (alreadyRecommend[friend] !== undefined) {
-        alreadyRecommend[friend] += 10;
+
+      if (friends[j].includes(userFriend) && !friends[j].includes(user)) {
+        let friend = friends[j].filter((name) => name !== userFriend);
+        alreadyFriends[userFriend].push(...friend);
+        if (alreadyRecommend[friend] === undefined) {
+          alreadyRecommend[friend] = 0;
+        }
+        if (alreadyRecommend[friend] !== undefined) {
+          alreadyRecommend[friend] += 10;
         } else {
-        alreadyRecommend[friend] = 0;
-       }
-     }
-   }
- }
+          alreadyRecommend[friend] = 0;
+        }
+      }  
+    }
+  }
 
- // 사용자의 타임 라인에 방문한 횟수
+  // 사용자의 타임 라인에 방문 -> 1점
+  for (i = 0; i < visitors.length; i++) {
+    if(!alreadyFriendsName.includes(visitors[i])) {
+      if (alreadyRecommend[visitors[i]] === undefined) {
+        alreadyRecommend[visitors[i]] = 0;
+      }
 
+      if (alreadyRecommend[visitors[i]] !== undefined) {
+        alreadyRecommend[visitors[i]] += 1;
+      } else{
+        alreadyRecommend[visitors[i]] = 0;
+      }
+    }
+  }
+  // 추천 점수가 0점인 경우 추천하지 않음
+  // 추천 점수가 같은 경우는 이름 순으로 정렬
+  var answer = Object.keys(alreadyRecommend);
   return answer;
 
 }
