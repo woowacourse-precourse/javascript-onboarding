@@ -12,13 +12,34 @@ function splitNameIntoTwoOrMoreLengths(name) {
   return arrayOfSplitNames;
 }
 
+function checkContinuallySameLettersIncluded(
+  splitName,
+  arr,
+  originalEmail,
+  emailOfPersonWithDuplicateName
+) {
+  arr.forEach(([email, name]) => {
+    name.includes(splitName) &&
+      email !== originalEmail &&
+      emailOfPersonWithDuplicateName.push(email);
+  });
+  return emailOfPersonWithDuplicateName;
+}
+
 function getEmailOfPersonWithDuplicateName(
   arrayOfSplitNames,
   arr,
   originalEmail
 ) {
   let emailOfPersonWithDuplicateName = [];
-  arrayOfSplitNames.forEach((splitName) => {});
+  arrayOfSplitNames.forEach((splitName) => {
+    emailOfPersonWithDuplicateName = checkContinuallySameLettersIncluded(
+      splitName,
+      arr,
+      originalEmail,
+      emailOfPersonWithDuplicateName
+    );
+  });
   return (
     emailOfPersonWithDuplicateName.length && emailOfPersonWithDuplicateName
   );
