@@ -32,23 +32,31 @@ function problem7(user, friends, visitors) {
     temp.push([key, value]);
   }
   temp.sort((a, b) => {
-    if (a[0] > b[1]) return 1;
-    if (a[0] < b[1]) return -1;
     if (a[1] > b[1]) return -1;
     if (a[1] < b[1]) return 1;
+    if (a[0] > b[0]) return 1;
+    if (a[0] < b[0]) return -1;
   });
 
   answer = [];
-  for (let i = 0; i < temp.length; i++) {
-    answer.push(temp[i][0]);
+  if (temp.length > 5) {
+    for (let i = 0; i < 5; i++) {
+      answer.push(temp[i][0]);
+    }
+  } else {
+    for (let i = 0; i < temp.length; i++) {
+      answer.push(temp[i][0]);
+    }
   }
   return answer;
 }
 
 function findOverlapFriends(dict, user) {
   let answer = [];
-  for (const value of dict[user]) {
-    answer.push(value);
+  if (dict[user]) {
+    for (const value of dict[user]) {
+      answer.push(value);
+    }
   }
   return answer;
 }
