@@ -1,3 +1,16 @@
+function getRecommandScores(allUser) {
+  const result = {};
+
+  allUser.forEach((usr) => {
+    result[usr] = 0;
+  });
+  return result;
+}
+
+function isFriend(set, target) {
+  return set.has(target);
+}
+
 function getAllUser(relations, visitors) {
   const users = new Set([...Object.keys(relations), ...visitors]);
 
@@ -30,6 +43,12 @@ function problem7(user, friends, visitors) {
   const relations = getRelations(friends);
   const userFriends = relations[user];
   const allUser = getAllUser(relations, visitors);
+  const recommandScores = getRecommandScores(allUser);
+
+  visitors.forEach((visitor) => {
+    if (isFriend(userFriends, visitor)) return;
+    recommandScores[visitor] += 1;
+  });
 
   return answer;
 }
