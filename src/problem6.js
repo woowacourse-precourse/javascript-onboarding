@@ -1,8 +1,46 @@
 const problem6 = (forms) => {
   let answer;
+  const usersInfo = listToDictionary(forms);
+  const nicknameParts = parseNames(usersInfo);
+  // overlapNameFind(usersInfo, nicknameParts);
+  answer = overlapNameFind(usersInfo, nicknameParts).sort();
   return answer;
 };
 
+const listToDictionary = (forms) => {
+  users = {};
+  forms.map((userInfo) => {
+    users[userInfo[0]] = userInfo[1];
+  });
+  return users;
+};
+
+const parseNames = (usersInfo) => {
+  let parseName = {};
+  Object.values(usersInfo).map((nickname) => {
+    for (let index = 0; index < nickname.length - 1; index++) {
+      nicknamePart = nickname.substring(index, index + 2);
+      nicknamePart in parseName
+        ? (parseName[nicknamePart] += 1)
+        : (parseName[nicknamePart] = 1);
+    }
+  });
+  return parseName;
+};
+
+const overlapNameFind = (usersInfo, nicknameParts) => {
+  emailList = [];
+
+  Object.values(usersInfo).map((nickname, idx) => {
+    for (let index = 0; index < nickname.length - 1; index++) {
+      nicknamePart = nickname.substring(index, index + 2);
+      console.log(nicknameParts[nicknamePart]);
+      if (nicknameParts[nicknamePart] > 1)
+        emailList.push(Object.keys(usersInfo)[idx]);
+    }
+  });
+  return emailList;
+};
 /*
 => 리스트를 map으로 {list[0] : list[1]} 의 형식으로 변형해서 하면 좋을 것 같다.
 

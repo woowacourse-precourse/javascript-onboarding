@@ -22,7 +22,7 @@ const problem7 = require("../src/problem7");
 
 // describe("problem2", () => {
 //   test("case1", () => {
-//     expect(problem2("browoanoommnaon")).toEqual("brown");
+//     expect(problem2("browoanooommnaon")).toEqual("brown");
 //   });
 //   test("case2", () => {
 //     expect(problem2("zyelleyz")).toEqual("");
