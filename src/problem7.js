@@ -34,6 +34,18 @@ function problem7(user, friends, visitors) {
     }
     return mutualObj;
   };
+
+  const scoreFromVisit = (visitors) => {
+    let visitorsObj = {};
+    for (i = 0; i < visitors.length; i++) {
+      if (Object.keys(visitorsObj).includes(visitors[i])) {
+        visitorsObj[visitors[i]] += 1;
+      } else {
+        visitorsObj[visitors[i]] = 1;
+      }
+    }
+    return visitorsObj;
+  };
 }
 
 module.exports = problem7;
