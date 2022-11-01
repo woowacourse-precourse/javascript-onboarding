@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a string and checks if it's an alphabet
+2. function that takes in a string and checks if it's an uppercase
+3. function that takes in a string and returns reciprocal of alphabet string
