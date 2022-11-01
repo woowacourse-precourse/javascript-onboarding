@@ -20,6 +20,22 @@ function problem7(user, friends, visitors) {
             connection.splice(i, 1);
         }
     }
+
+    // 3단계) 조건에 유효한 친구관계 또는 방문자의 점수를 기록할 객체 생성
+    const scores = {};
+    for (let i = 0; i < connection.length; i++) {
+        if (myFriends.includes(connection[i][0])) {
+            scores[connection[i][1]] = 0;
+        }
+        if (myFriends.includes(connection[i][1])) {
+            scores[connection[i][0]] = 0;
+        }
+    }
+    for (let i = 0; i < visitors.length; i++) {
+        if (!myFriends.includes(visitors[i])) {
+            scores[visitors[i]] = 0;
+        }
+    }
 }
 
 module.exports = problem7;
