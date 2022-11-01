@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 구현 기능 목록
+
+1. 리스트에서 닉네임 부분 인덱싱, 닉네임의 길이 파악 및 길이에 따라 분할하여 리스트화
+2. 처음 주어진 forms의 구조에 대응하는 인덱싱 값으로 중복 요소를 체크하고, 그 인덱싱 값으로 역으로 forms에서 이메일 주소를 도출
