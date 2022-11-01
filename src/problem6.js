@@ -156,10 +156,10 @@ function getEmailOfDuplicatedCrews(crews, duplicatedCrewsList) {
   let emailList = new Array(theNumberOfCrews);
   let emailIndex = 0;
 
-  for (let i = 0; i < theNumberOfCrews; i++) {
-    const email = crews[i][0];
+  for (let crewIndex = 0; crewIndex < theNumberOfCrews; crewIndex++) {
+    const email = crews[crewIndex][0];
 
-    if (duplicatedCrewsList[i] > 0) {
+    if (duplicatedCrewsList[crewIndex] > 0) {
       emailList[emailIndex] = email;
       emailIndex++;
     }
