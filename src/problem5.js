@@ -2,8 +2,8 @@ function calc(money,price,answer){
   curr = parseInt(money / price);
   money = money % price;
   answer.push(curr);
-
   //console.log ("함수" ,money,answer)
+  //지폐 갯수확인하는 함수 생성
 
   return money;
 } 
