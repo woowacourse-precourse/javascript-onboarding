@@ -17,6 +17,7 @@ function problem2(cryptogram) {
   answer = cr;
   return answer;
 }
+
 function deleteDup(crypto, i) {
     for(let j=i+1; j<crypto.length; ++j){
       if(crypto[i]!=crypto[j]) { notDup=j; break; }
@@ -26,4 +27,5 @@ function deleteDup(crypto, i) {
     crypto = front + back;
   return crypto;
 }
+
 module.exports = problem2;
