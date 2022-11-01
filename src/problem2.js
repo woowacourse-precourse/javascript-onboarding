@@ -1,8 +1,14 @@
 function decoding (s) {
   s.forEach((x,i)=>{
     if (s[i] === s[i + 1]) {
-      s.splice(i, 2);
-      decoding(s);
+      if(s[i+1] === s[i+2]){
+        s.splice(i, 3);
+        decoding(s);
+      }
+      else{
+        s.splice(i, 2);
+        decoding(s);
+      }
     }
   })
 };
