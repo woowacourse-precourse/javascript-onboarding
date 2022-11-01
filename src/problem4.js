@@ -1,7 +1,7 @@
 // 기능 목록
-// 1. 공백 예외 처리
+// 1. 알파벳인지 체크하기
 // 2. 대문자는 대문자로, 소문자는 소문자로
-// 3. 제한사항 처리(알파벳 외의 문자는 변환하지 않기)
+// 3. 알파벳 외의 문자는 변환하지 않기
 
 // 알파벳인지 체크하는 함수
 function isAlphabet(str) {
@@ -23,7 +23,7 @@ function problem4(word) {
     else if (str === str.toLowerCase()) {
       answer += reverseWord[str.charCodeAt() - 97].toLowerCase();
     }
-    // 제한 사항 처리
+    // 알파벳이 아닌 경우 변환하지 않기
     else answer += str;
   }
 
