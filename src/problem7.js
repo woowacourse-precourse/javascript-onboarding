@@ -1,18 +1,3 @@
-// user = "hello",
-// friends =         [
-//           ['andole', 'jun'],
-//           ['andole', 'bedi'],
-//           ['jun', 'shakevan'],
-//           ['jun', 'kane'],
-//           ['jun', 'sam'],
-//           ['bedi', 'shakevan'],
-//           ['bedi', 'anne'],
-//           ['bedi', 'sam'],
-//           ['anne', 'mrko'],
-//         ]
-// visitors = ['donut', 'anne', 'mrko', 'mrko', 'sam']
-
-
 function problem7(user, friends, visitors) {
   let answer;
   let relation = {};
@@ -21,31 +6,25 @@ function problem7(user, friends, visitors) {
 
   // 기능 1
   relation = makeRelation(friends);
-  console.log(relation); // { donut: [ 'andole', 'jun', 'mrko' ], andole: [ 'donut', 'shakevan' ], ... }
  
   // userFriends(user의 친구 목록) 배열 할당
   userFriends = relation[user];
-  console.log(userFriends); // [ 'donut', 'shakevan' ]
 
   // 기능 2
   score = makeScore(relation, userFriends, user);
-  console.log(score); // { andole: 0, jun: 0 }
 
   // 기능 3
   bothFriendCheck(relation, userFriends, score, user);
-  console.log(score); // { andole: 20, jun: 20 }
 
   // 기능 4
   checkVisitors(userFriends, visitors, score);
-  console.log(score); // { andole: 20, jun: 20, bedi: 3, donut: 1, shakevan: 1 }
-
+  
   // 기능 5
   scoreArray = sortScore(score);
-  console.log("scoreArray: ", scoreArray);
 
   // 기능 6
   answer = maxFive(scoreArray);
-  console.log("answer: ", answer);
+
   return answer;
 }
 
@@ -91,7 +70,6 @@ function bothFriendCheck(relation, userFriends, score, user) {
 
   for (let friend of relationKey) {
     let count = 0;
-    // console.log(friend);
 
     if (friend === user) { // 본인 제외
       continue;
@@ -103,12 +81,8 @@ function bothFriendCheck(relation, userFriends, score, user) {
     }
 
     let tmp = relation[friend]; // 한 사람의 친구 목록
-    // console.log(tmp);
 
     for (let f of tmp) {
-      // console.log("f: ", f);
-      // console.log("userFriends: ", userFriends);
-
       if (userFriends !== undefined) {
         if (userFriends.includes(f)) { // 함께 아는 친구인 경우
           count += 10;
@@ -125,12 +99,8 @@ function bothFriendCheck(relation, userFriends, score, user) {
 // 기능 4. 방문 횟수 확인
 function checkVisitors(userFriends, visitors, score) {
   let scoreKey = Object.keys(score); // "key"값만
-  console.log(scoreKey);
-  console.log(visitors);
 
   for (let v of visitors) {
-    console.log("v: ", v);
-
     if (userFriends !== undefined) {
       if (userFriends.includes(v)) { // 이미 친구인 경우 제외
         continue;
@@ -138,14 +108,11 @@ function checkVisitors(userFriends, visitors, score) {
     }
 
     if (scoreKey.includes(v)) { // score 배열에 이미 존재하는 경우
-      console.log("이미 존재");
       score[v] += 1;
     } else { // 존재하지 않는 경우
-      console.log("존재하지 않음");
       score[v] = 1;
       scoreKey = Object.keys(score); // "key"값만
     }
-    console.log(score);
   }
   
   return;
@@ -186,18 +153,14 @@ function maxFive(scoreArray) {
       if (scoreArray[i][1] === 0) { 
         break;
       } else {
-        console.log(scoreArray[i][0]);
         answer.push(scoreArray[i][0]);
       }
     }
   } else {
     for (score of scoreArray) {
-      console.log("score: ", score);
       if (score[1] === 0) {
         break;
       } else {
-        console.log("????");
-        console.log(score[0]);
         answer.push(score[0]);
       }
     }
@@ -205,7 +168,5 @@ function maxFive(scoreArray) {
 
   return answer;
 }
-
-// problem7(user,friends, visitors);
 
 module.exports = problem7;
