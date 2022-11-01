@@ -43,19 +43,15 @@ function getFrogSpelling(spelling) {
 }
 
 function problem4(word) {
-  var answer;
-  const wordArr = [];
+  const wordArr = word.split('');
 
-  for (let i = 0; i < word.length; i++) {
-    if (checkEnglish(word[i])) {
-      wordArr.push(getFrogSpelling(word[i]));
-    } else {
-      wordArr.push(word[i]);
+  wordArr.forEach((spelling, index) => {
+    if (checkEnglish(spelling)) {
+      wordArr[index] = getFrogSpelling(spelling);
     }
-  }
+  });
 
-  answer = wordArr.join('');
-  return answer;
+  return wordArr.join('');
 }
 
 module.exports = problem4;
