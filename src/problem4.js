@@ -1,5 +1,5 @@
 // test sample 추가
-console.log(problem4("I love you"));
+//console.log(problem4("I love you"));
 
 function problem4(word) {
   var answer;
