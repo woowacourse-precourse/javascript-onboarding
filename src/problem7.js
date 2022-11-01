@@ -48,9 +48,11 @@ function problem7(user, friends, visitors) {
       if(visitors[i] == nameList[j]) pointList[j][1]++;   
     }
   }
+  
   // 정렬 후 상위 5명만 반환
   pointList.sort();
   pointList.sort(comPoint);
+  exceptZero(pointList);
   
   let i=0;
   while(answer.length<5){
@@ -70,6 +72,15 @@ function comPoint(a,b) {
     return -1;
   }
   return 0;
+}
+
+function exceptZero(dArray) {
+  for(let i=0; i<dArray.length; ++i){
+    if(dArray[i][1] == 0) {
+      dArray = dArray.splice(i,dArray.length-i);
+      break;
+    }
+  }
 }
 
 module.exports = problem7;
