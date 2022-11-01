@@ -5,8 +5,8 @@ function problem7(user, friends, visitors) {
   algorithm.friendArr = friends;
 
   algorithm.friendArr = findFriendAndMe(obj);
-  algorithm = friendsAl(user, friends);
-  algorithm = visitorsAl(algorithm, visitors);
+  algorithm = friendAlgorithm(user, friends);
+  algorithm = visitorAlgorithm(algorithm, visitors);
 
   answer = pickFive(algorithm);
 
@@ -27,7 +27,7 @@ function findFriendAndMe(obj) {
   }
 }
 
-function friendsAl(user, friends) {
+function friendAlgorithm(user, friends) {
   let friendAndMe = [user];
   let algorithmName = [];
   let algorithmNum = [];
@@ -55,7 +55,7 @@ function friendsAl(user, friends) {
   };
 }
 
-function visitorsAl(obj, visitors) {
+function visitorAlgorithm(obj, visitors) {
   for (index = 0; index < visitors.length; index++) {
     let overlapIdx = obj.nameArr.indexOf(visitors[index]);
 
