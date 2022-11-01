@@ -3,7 +3,7 @@
  *
  * - [x] 조건에 맞는 이메일과 닉네임을 가진 양식인지 판별하는 기능
  * - [x] 크루들의 닉네임에서 중복되는 단어들을 찾는 기능
- * - [ ] 중복되는 단어를 가진 닉네임을 가진 크루들의 이메일을 찾는 기능
+ * - [x] 중복되는 단어를 가진 닉네임을 가진 크루들의 이메일을 찾는 기능
  * - [ ] 이메일들의 중복을 없애고 오름차순으로 정렬하는 기능
  */
 /**
@@ -19,6 +19,10 @@
 function problem6(forms) {
   const validForms = validateForms(forms);
   const duplicateKeywords = findDuplicateWords(validForms);
+  const applicableEmails = findEmailByDuplicateNickname(
+    validForms,
+    duplicateKeywords
+  );
 
   var answer;
   return answer;
@@ -136,6 +140,34 @@ function getCombinations(string, selectNumber) {
   });
 
   return results;
+}
+
+/**
+ * 중복되는 닉네임을 가진 지원자들의 이메일 목록을 반환하는 함수
+ *
+ * @param {string[][]} forms forms [이메일, 닉네임] 형식의 문자열 배열들이 담긴 배열
+ * @param {string[]} keywords 지원자들의 닉네임 중 중복되는 단어들이 담긴 배열
+ * @returns {string[]} 중복되는 닉네임을 가진 지원자들의 이메일 목록
+ */
+function findEmailByDuplicateNickname(forms, keywords) {
+  const applicableForms = forms.filter(([_, nickname]) => {
+    return isDuplicate(keywords, nickname);
+  });
+
+  return applicableForms.map(([email, _]) => email);
+}
+
+/**
+ * 문자열에 키워드가 포함되는지 판별하는 함수
+ *
+ * @param {string[]} keywords 문자열에 포함되는지 확인할 단어들
+ * @param {string} string 키워드를 포함하는지 알고싶은 문자열
+ * @returns {boolean} 키워드를 포함하는지 여부
+ */
+function isDuplicate(keywords, string) {
+  return keywords.some((keyword) => {
+    return string.includes(keyword);
+  });
 }
 
 module.exports = problem6;
