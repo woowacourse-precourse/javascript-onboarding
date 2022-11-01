@@ -23,6 +23,14 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (const v of visitors) {
+    if(!(v in scoreObj)) {
+      scoreObj[v] = 0;
+    }
+    console.log(v, scoreObj[v]);
+    scoreObj[v]++;
+  }
+
   console.log(scoreObj);
 
 
