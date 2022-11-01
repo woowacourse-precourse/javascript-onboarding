@@ -32,7 +32,7 @@ function problem7(user, friends, visitors) {
   const indexOfUser = IDList.indexOf(user);
   let userFriendsList = friendListForEachID[indexOfUser];
   
-  if(indexOfUser!=-1){
+  if(indexOfUser!=-1 && userFriendsList!=null){
     for (const userFriend of userFriendsList){
       const indexOfUserFriend = IDList.indexOf(userFriend);
 
@@ -74,9 +74,10 @@ function problem7(user, friends, visitors) {
     const ID = recommendedIDList[i];
     const score = scoreForEachID[i];
 
-    const isAlreadyFriendWithUser = userFriendsList.includes(ID);
-
-    if(isAlreadyFriendWithUser || score==0) continue;
+    if(userFriendsList!=null){
+      const isAlreadyFriendWithUser = userFriendsList.includes(ID);
+      if(isAlreadyFriendWithUser || score==0) continue;
+    }
   
     resultIDAndScore.push([ID, score]);
   }
