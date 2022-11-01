@@ -1,6 +1,8 @@
 function problem6(forms) {
   var answer;
+  let answer = [];
   let isDuplicatedNickName = new Array(forms.length);
+
   for (let i = 0; i < forms.length; i++) {
     if (forms[i][1].length === 1) {
       continue
@@ -18,6 +20,13 @@ function problem6(forms) {
       }
     }
   }
+
+  for (let i = 0; i < isDuplicatedNickName.length; i++) {
+    if (isDuplicatedNickName[i]) {
+      answer.push(forms[i][0])
+    }
+  }
+
   return answer;
 }
 
