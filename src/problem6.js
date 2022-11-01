@@ -20,12 +20,19 @@ function crowToObj(forms, crewMember, crewNicknameList) {
     });
   });
 }
+// 중복 닉네임 추출
+function findDuplicateNick(array) {
+  return [
+    ...new Set(array.filter((item, index) => array.indexOf(item) !== index)),
+  ];
+}
 function problem6(forms) {
   var answer;
   let crewMember = [];
   let crewNicknameList = [];
 
   crowToObj(forms, crewMember, crewNicknameList);
+  crewNicknameList = findDuplicateNick(crewNicknameList);
   return answer;
 }
 
