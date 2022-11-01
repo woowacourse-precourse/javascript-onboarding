@@ -12,16 +12,6 @@ function problem6(forms) {
       }
     }
   }
-  let count = 0;
-  for (let i of map.values()) {
-    if (i == 0) {
-      count++;
-    }
-  }
-  if (count != forms[0][1].length - 1) {
-    answer.push(forms[0][0]);
-  }
-  answer.sort();
   return answer;
 }
 
