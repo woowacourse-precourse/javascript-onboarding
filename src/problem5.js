@@ -9,31 +9,30 @@ const TEN = 10;
 
 function problem5(money) {
   const bill50000 = exchangeTo50000(money);
-  money %= 50000;
+  money -= FIFTYTHOUSAND * bill50000;
 
   const bill10000 = exchangeTo10000(money);
-  money %= 10000;
+  money -= TENTHOUSAND * bill10000;
 
   const bill5000 = exchangeTo5000(money);
-  money %= 5000;
+  money -= FIVETHOUSAND * bill5000;
 
   const bill1000 = exchangeTo1000(money);
-  money %= 1000;
+  money -= THOUSAND * bill1000;
 
   const bill500 = exchangeTo500(money);
-  money %= 500;
+  money -= FIVEHUNDRED * bill500;
 
   const bill100 = exchangeTo100(money);
-  money %= 100;
+  money -= HUNDRED * bill100;
 
   const bill50 = exchangeTo50(money);
-  money %= 50;
+  money -= FIFTY * bill50;
 
   const bill10 = exchangeTo10(money);
-  money %= 10;
+  money -= TEN * bill10;
 
   const bill1 = exchangeTo1(money);
-  money %= 1;
   
   return [bill50000, bill10000, bill5000, bill1000, bill500, bill100, bill50, bill10, bill1];
 }
