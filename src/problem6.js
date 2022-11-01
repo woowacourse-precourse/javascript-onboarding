@@ -40,17 +40,7 @@ class ErrorCase {
   }
 
   checkAllError() {
-    if (!this.checkKORName()) {
-      throw new Error("input 양식 중 한글 이름 양식에 에러가 발생하였습니다.");
-    }
-
-    if (!this.checkFormsLimit()) {
-      throw new Error("input 양식 중 제한된 input 길이에 벗어났습니다.");
-    }
-
-    if (!this.checkEmail()) {
-      throw new Error("input 양식 중 email 이름 양식에 에러가 발생하였습니다.");
-    }
+    return this.checkKORName() && this.checkFormsLimit() && this.checkEmail();
   }
 }
 
@@ -101,6 +91,13 @@ class UAHTechCourse {
 }
 
 function problem6(forms) {
+  const error = new ErrorCase(forms);
+
+  if (!error.checkAllError()) {
+    console.log("input 양식이 제한사항에 맞게 주어지지 않았습니다.");
+    return;
+  }
+
   const uah = new UAHTechCourse(forms);
 
   return uah.getResult();
