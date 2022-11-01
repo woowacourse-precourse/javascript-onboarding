@@ -59,6 +59,7 @@
   - 추천 점수가 담긴 객체의 값 배열을 점수별 내림차순을 해준 뒤, set 자료구조로 변환합니다.
   - 만약 set 구조에 0이 포함되어있다면 제거합니다. 추천점수가 0점인 경우를 제외하기 위함입니다.
   - 내림차순으로 정렬된 set의 값들을 통해 recommandScore 객체에서 같은 값을 가지는 프로퍼티 키 부터 정렬하여 resultArr에 담아줍니다.
+  - resultArr를 반환할 때, resultArr의 길이가 5보다 크면 splice를 이용해 5개의 요소만 반환해줍니다. 아니라면 resultArr전체를 반환합니다.
 
 - problem7(user, friends, visitors)
   - 인자의 유효성을 확인합니다.

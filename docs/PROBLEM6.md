@@ -41,24 +41,16 @@
   - 닉네임이 중복으로 판단되는 조건은 '같은 글자가 연속적으로 포함되는 닉네임' 입니다. 따라서 2자 이상 중복되면 중복 닉네임으로 판단하기 위해 닉네임을 2자씩 부분 배열로 만들어주었습니다.
   - substring을 사용하여 닉네임 문자열마다 2자씩 쪼개어 반환하는 배열에 넣어주었습니다.
 
-- getCheckArr(forms)
-  - 각 닉네임 별 substrNickName 배열의 요소들을 하나로 합쳐주는 배열 checkArr을 반환합니다.
-
-- isOverlapInCheckArr(checkArr, substrNickName)
-  - checkArr의 요소와 substrNickName이 같은 경우를 filter로 찾고, 그 배열의 길이가 1이 아니라면 중복이 있다는 뜻이므로 true를 반환합니다.
-
-- getOverlapArr(forms, checkArr)
-  - overlapArr 배열을 만들어줍니다.
-  - isOverlapForm 함수를 통해 forms 배열 요소들 중 중복으로 확인되는 요소들을 overlapArr에 넣어줍니다.
-
-- isOverlapForm(form, checkArr)
-  - forms의 각 요소 별 닉네임의 부분 배열을 구해준 뒤, isOverlapInCheckArr를 실행합니다.
-  - true가 반환되었다면 다시 true를 반환합니다.
+- pushOverlapNickName(form, overlapArr, overlapSet)
+  - substrNickName함수를 통해 닉네임 부분 배열을 만들어준 뒤, 반복문을 통해 중복을 확인합니다. overlapSet에 부분 배열이 존재한다면, 중복으로 판단하고 overlapArr에 닉네임을 넣어줍니다.
+  - 사용한 부분 배열은 overlapSet에 저장합니다.
 
 - checkOverlap(forms)
-  - getCheckArr 함수를 통해 checkArr배열을 만들어줍니다.
-  - getOverlapArr 함수를 통해 overlapArr배열을 만들어줍니다.
-  - overlapArr를 반환할 때 sort함수를 이용하여 오름차순으로 정렬해서 반환합니다.
+  - 중복을 판단하기 위해 set자료구조를 활용하였습니다.
+  - pushOverlapNickName을 forms의 순방향으로 실행시켜줍니다. 
+  - 이때, 0번째 인덱스의 값은 중복 검사를 하지 못하므로 역방향으로 한번 더 실행시켜줍니다.
+  - 총 두번의 검사로 중복이 판단된 값들의 배열인 overlapArr의 요소들을 set을 통해 중복 제거 시켜줍니다.
+  - set 변환된 overlapArr을 다시 배열로 변경하여 오름차순 후 반환합니다.
 
 - problem6(forms)
   - 인자의 유효성을 검사합니다.
