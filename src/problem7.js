@@ -1,17 +1,27 @@
 function problem7(user, friends, visitors) {
+  const totalScore = getScore(user,friends,visitors);
 
-  const totalScore = getScore(friends,visitors);
-  
   // 점수를 기준으로 정렬
-  let sorted = Object.entries(totalScore).sort((a,b) => b[1]-a[1]);
+  const sortedTotalScore = Object.entries(totalScore).sort(
+    function(a,b){
+      // 점수별로 내림차순 
+      if(a[1] > b[1]) return -1;
+      if(a[1] < b[1]) return 1;
+      // 점수가 같다면 이름별로 오름차순
+      if(a[0] > b[0]) return 1;
+      if(a[0] < b[0]) return -1;
+    });
+    
 
   // 가장 점수가 많은 5명의 친구 이름을 출력
-  let topFive = [];
+  let recommandFriends = [];
 
-  for(let ele of sorted){
-  topFive.push(ele[0])
-  } return topFive.slice(0,5);
-  
+  for(let ele of sortedTotalScore){
+    if(ele)
+  recommandFriends.push(ele[0]) ;
+  }  
+  let topFive = recommandFriends.slice(0,5);
+  return topFive
   
 } 
   
@@ -32,7 +42,7 @@ function getUserFriends(userName,friendsList){
 }
 
 // 점수 목록을 얻기 위함
-function getScore(friends,visitors){
+function getScore(user,friends,visitors){
   // user친구의 친구 목록
   const myFriends = getUserFriends(user,friends);
   let  friendOfFriendsSet= [];
@@ -68,21 +78,5 @@ function getScore(friends,visitors){
   
 }
 
-// const user = "Walter";
-// const friends = [
-//   ["Christa", "Alyce"],
-//   ["Hobart", "Retha"],
-//   ["Elijah", "Josh"],
-//   ["Cecil", "Lamont"],
-//   ["Eliza", "Lamont"],
-//   ["Austyn", "Retha"],
-//   ["Retha", "Mara"],
-//   ["Walter", "Lamont"],
-//   ["Retha", "Walter"],
-//   ["Urban", "Walter"],
-// ];
-// const visitors = ["Cecil", "Eliza", "Adonis", "Mara"];
-
-// console.log(problem7(user,friends,visitors));
 module.exports = problem7;
 
