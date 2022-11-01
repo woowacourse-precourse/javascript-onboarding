@@ -10,6 +10,14 @@ function checkDuplicate(forms, crews, words) {
   return crews;
 }
 
+function getEmailList(crews) {
+  let emailList = []
+  crews.forEach(crew => {
+    emailList.push(crew[0]);
+  });
+  return emailList.sort();
+}
+
 function problem6(forms) {
   var answer;
 
@@ -25,6 +33,7 @@ function problem6(forms) {
     }
   }
 
+  answer = getEmailList([...crewsWithDuplicated]);
   return answer;
 }
 
