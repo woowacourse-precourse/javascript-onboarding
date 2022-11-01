@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const userFriends = getUserFriends(user, friends);
   let score = {};
+  let answer = [];
 
   userFriends.forEach((name) => {
     const recommendFriends = getUserFriends(name, friends).filter((friendName) => friendName !== user);
@@ -22,6 +23,23 @@ function problem7(user, friends, visitors) {
     }
   });
 
+  const scoreArr = Object.entries(score).sort((a, b) => {
+    if(b[1] > a[1]) {
+      return 1;
+    } else if (b[1] < a[1]) {
+      return -1;
+    } else if (b[0] > a[0]) {
+      return -1;
+    } else if (b[0] < a[0]) {
+      return 1;
+    }
+  });
+
+  for(let i=0; i<scoreArr.length; i++) {
+    answer.push(scoreArr[i][0]);
+  }
+  
+  return answer;
 }
 
 function getUserFriends(user, friends) {
