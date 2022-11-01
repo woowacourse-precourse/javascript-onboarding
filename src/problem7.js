@@ -10,9 +10,11 @@
 // [✅] donut과 shakevan의 친구를 찾아 friendYouMightKnow에 저장
 // [✅] friendYouMightKnow를 reduce를 사용해 friendsScore 변수에 10점씩 누적
 // [✅] visitors를 reduce를 사용해 visitorsScore 변수에 1점씩 누적
-// [] 점수가 높은 순대로 정렬 후, result에 5명 push
-// [] user와 기존에 친구인 친구 result에서 제거
-// [] result 알파벳 오름차순 정렬 후 반환
+// [✅] 점수가 높은 순대로 정렬 후, result에 5명 push
+// - [✅] friendsScore와 visitorsScore 합치기 Object.assign(target, ...sources)
+// - [✅] result의 길이가 5일 때 까지 비교, 순회 하면서 고득점자 아이디 result에 push
+// - [✅] result에 bestFriends에 존재하는 친구가 있다면 삭제, 없다면 그대로 리턴
+// - [✅] 반환 시 아이디를 알파벳 오름차순 정렬 후 반환
 
 function problem7(user, friends, visitors) {
   const result = [];
@@ -44,23 +46,26 @@ function problem7(user, friends, visitors) {
     acc[cur] = (acc[cur] || 0) + 1;
     return acc;
   }, {});
-  console.log(visitorsScore);
+  const finalScore = Object.assign(friendsScore, visitorsScore);
+  let finalScoreSorted = [];
+  for (let idx in finalScore) {
+    finalScoreSorted.push([idx, finalScore[idx]]);
+  }
+  finalScoreSorted.sort((a, b) => b[1] - a[1]);
+  finalScoreSorted.forEach((list) => {
+    if (result.length <= 5) {
+      result.push(list[0]);
+    }
+  });
+  for (let i = 0; i < bestFriends.length; i++) {
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === bestFriends[i]) {
+        const userIndex = result.indexOf(result[j]);
+        result.splice(userIndex, 1);
+      }
+    }
+  }
   return result;
 }
-
-console.log(
-  problem7(
-    'mrko',
-    [
-      ['donut', 'andole'],
-      ['donut', 'jun'],
-      ['donut', 'mrko'],
-      ['shakevan', 'andole'],
-      ['shakevan', 'jun'],
-      ['shakevan', 'mrko'],
-    ],
-    ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
-  )
-);
 
 module.exports = problem7;
