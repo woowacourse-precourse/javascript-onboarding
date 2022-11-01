@@ -15,6 +15,19 @@ function problem7(user, friends, visitors) {
     return false;
   }
 
+  function writeVisitorsList(visitors){
+    const visitorsList = new Map();
+    visitors.forEach(id => {
+      if (userFriends.includes(id)) return;
+      if (visitorsList.get(id)){
+        visitorsList.set(id, visitorsList.get(id) + 1);
+      } else {
+        visitorsList.set(id, 1);
+      }
+    });
+    return visitorsList;
+  }
+
   /**
    * - user와 친구인 Id의 친구목록 생성
    * - 친구목록에서 추천 점수 계산 후 반환
