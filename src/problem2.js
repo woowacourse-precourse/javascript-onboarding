@@ -32,8 +32,7 @@ function delRepitition(cryptoArray) {
 
 function problem2(cryptogram) {
   var answer;
-  let cryptoArray = cryptogram.split(""); //암호문을 문자 배열로 쪼갠다.
-  let decrypt = []; //암호문 해독 문자열(반복 문자를 제거한 결과 배열)
+  let decrypt = cryptogram.split(""); //암호문을 문자 배열로 쪼개고 해독문 문자 배열에 저장한다(이후 반복 문자를 제거한 결과를 반복적으로 저장할 배열)
 
   return answer;
 }
