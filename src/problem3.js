@@ -7,7 +7,6 @@ function problem3(number) {
   let answer = 0;
 
   for (let i = 1; i <= number; i++) {
-    // number를 하나씩 잘라서 배열에 담기
     let arr = String(i).split("");
 
     for (let j = 0; j < arr.length; j++) {
