@@ -1,20 +1,39 @@
-const checkOverLapped = (crewOne, crewTwo) => {
-  const crewOneNickName = crewOne[1];
-  const crewTwoNickName = crewTwo[1];
+function TrieNode() {
+  this.children = {};
+}
 
-  for (let i = 0; i < crewOneNickName.length; i++) {
-    for (let j = 0; j < crewTwoNickName.length; j++) {
-      if (crewOneNickName[i] === crewTwoNickName[j]) {
-        if (
-          crewOneNickName[i + 1] &&
-          crewOneNickName[i + 1] === crewTwoNickName[j + 1]
-        ) {
-          return true;
-        }
-      }
+function Trie() {
+  this.root = new TrieNode();
+  this.overLapped = new Set();
+}
+
+Trie.prototype.insert = function (form) {
+  const [email, nickname] = form;
+  nickname
+    .split('')
+    .filter((_, index) => index !== nickname.length - 1)
+    .forEach((el, index) => {
+      const word = el + nickname[index + 1];
+      this.checkWord(word, email);
+    });
+};
+
+Trie.prototype.checkWord = function (word, email) {
+  const settedEmail = this.root.children[word[0]]?.[word[1]];
+  if (settedEmail) {
+    this.overLapped.add(email);
+    this.overLapped.add(settedEmail);
+  } else {
+    if (!this.root.children[word[0]]) {
+      this.root.children[word[0]] = {};
     }
+    this.root.children[word[0]][word[1]] = email;
   }
-  return false;
+};
+
+Trie.prototype.getSortedOverLapped = function () {
+  const sortedOverLapped = Array.from(this.overLapped.values());
+  return sortedOverLapped.sort();
 };
 
 const checkRightForm = (forms) => {
@@ -44,19 +63,13 @@ function problem6(forms) {
   //예외사항 나머지 종합
   if (!checkRightForm(forms)) return 'ERROR';
 
-  const results = [];
+  const trie = new Trie();
 
-  for (let i = 0; i < forms.length; i++) {
-    for (let j = i + 1; j < forms.length; j++) {
-      if (checkOverLapped(forms[i], forms[j])) {
-        results.push(forms[i][0], forms[j][0]);
-      }
-    }
+  for (const form of forms) {
+    trie.insert(form);
   }
 
-  const settedResultArray = Array.of(...new Set(results));
-
-  return settedResultArray.sort();
+  return trie.getSortedOverLapped();
 }
 
 module.exports = problem6;
