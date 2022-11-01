@@ -69,7 +69,7 @@ for(i=0; i<answer.length; i++){
 }
 }
 
-answer = result.join(' ')
+answer = result.join('')
 
 // console.log(answer)
 
