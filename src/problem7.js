@@ -2,12 +2,12 @@ const findFriends = (friends, friendsMap, person) => {
   let tempFriends = [];
   for (let i = 0; i < friends.length; i += 1){
     if (friends[i].find(name => name === person)){
-      tempFriends.push(friends[i][0] === person ? friends[i][1] : friends[i][0]);
+      let [person1, person2] = friends[i];
+      tempFriends.push(person1 === person ? person2 : person1);
     }
   }
   friendsMap.set(person, tempFriends);
 }
-
 
 function problem7(user, friends, visitors) {
   const friendsMap = new Map();
