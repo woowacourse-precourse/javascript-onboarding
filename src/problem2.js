@@ -1,4 +1,6 @@
 function removeDuplicate(cryptogram) {
+  if (cryptogram === "") return "";
+
   var tmp = cryptogram[0];
   var answer = "";
 
