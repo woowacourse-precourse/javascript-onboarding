@@ -8,8 +8,53 @@
 */
 
 function problem6(forms) {
-    let answer;
-  return answer;
+  let answer;
+  answer = solution(forms);
+return answer;
+}
+
+
+function solution(forms) {
+  let compareResult= [];
+  let nicknames = [];
+  
+  for(let i = 0; i < forms.length; i++) {
+      let nickname1 = forms[i][1];
+      for(let j = 0; j < forms.length; j++) {
+          let nickname2 = forms[j][1];
+
+          compareResult = compareNickname(nickname1,nickname2);
+
+          if(compareResult!==0 && compareResult!==-1) {
+              if(!nicknames.includes(compareResult)){
+                  nicknames.push(compareResult);
+              }
+          }
+      }
+  }
+
+  const result = preProcess(forms,nicknames);
+  return result;
+
+}
+
+/*이메일을 오름차순으로 정렬하고 중복은 제거한다. */
+function preProcess(forms,nicknames) {
+
+const result = [];
+
+while(nicknames.length !== 0) {
+    let nickname = nicknames.pop();
+
+    forms.forEach(element => {
+        if(nickname === element[1]){
+          result.push(element[0]);
+        }
+    });    
+}
+
+result.sort();
+return result;
 }
 
 /*닉네임의 중복 여부를 검사한다.*/
