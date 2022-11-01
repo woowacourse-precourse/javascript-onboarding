@@ -16,7 +16,6 @@ function problem7(user, friends, visitors) {
   }
   return answer;
 }
-module.exports = problem7;
 
 function findDirectFriend(user, friends) {
   let set = new Set();
@@ -41,7 +40,6 @@ function scoreToIndirectFriend(user, directFriend, friends, map) {
     )
       map.set(A, map.get(A) + 10 || 10);
   }
-  return map;
 }
 
 function scoreToVisitors(user, directFriend, visitors, map) {
@@ -49,7 +47,6 @@ function scoreToVisitors(user, directFriend, visitors, map) {
     if (!directFriend.includes(v) && v !== user)
       map.set(v, map.get(v) + 1 || 1);
   });
-  return map;
 }
 
 function sorting(map) {
@@ -60,3 +57,5 @@ function sorting(map) {
     });
   return list;
 }
+
+module.exports = problem7;
