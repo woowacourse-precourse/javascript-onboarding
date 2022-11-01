@@ -1,6 +1,7 @@
 function problem6(forms) {
-  var answer;
-
+  var answer = [];
+  var nick = forms.map(([_, id]) => id);
+  var doubleNick = checkDouble(nick);
   // 이메일 오름차순 및 중복 제거
 
   return answer;
@@ -25,8 +26,5 @@ function checkDouble(nick) {
 
   return nickArr.filter((v) => v !== "");
 }
-
-// 해당 이메일 return 함수
-function whatEmail(nick) {}
 
 module.exports = problem6;
