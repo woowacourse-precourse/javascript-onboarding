@@ -54,7 +54,17 @@ function problem7(user, friends, visitors) {
           }
         }
     } 
-    
+    if (visitors.length >= 0 && visitors.length <= 10000) {
+      let k = 0;
+      while (k < visitors.length) {
+        if (friendsScore.hasOwnProperty(visitors[k]) && !userFriends.includes(visitors[k])) {
+          friendsScore[visitors[k]] = friendsScore[visitors[k]] + 1;
+        } else if (!userFriends.includes(visitors[k])) {
+          friendsScore[visitors[k]] = 1;
+        }
+        k++;
+      }
+    }
     }
 
     
