@@ -17,7 +17,7 @@ function problem2(cryptogram) {
     if(check == false) // 연속된 중복 문자가 없는 경우 while문 종료
       break;   
   }
-  answer = cryptogram
+  answer = cryptogram;
   return answer;
 }
 

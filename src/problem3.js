@@ -5,7 +5,7 @@ function count369(num){
     if(num % 10 == 3 || num % 10 == 6 || num % 10 == 9){
       cnt++;
     }
-    num = ~~(num / 10)
+    num = ~~(num / 10);
   }
   return cnt
 }

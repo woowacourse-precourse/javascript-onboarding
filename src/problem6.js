@@ -23,8 +23,8 @@ function problem6(forms) {
     }
   }
   // 배열로 변환 후 정렬
-  answer = Array.from(set)
-  answer.sort()
+  answer = Array.from(set);
+  answer.sort();
   return answer;
 }
 

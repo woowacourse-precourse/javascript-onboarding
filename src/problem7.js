@@ -3,9 +3,9 @@ function findUserFriends(user, friends){
   const set = new Set();
   for(friend of friends){
     if(friend[0] == user)
-      set.add(friend[1])
+      set.add(friend[1]);
     else if(friend[1] == user)
-      set.add(friend[0])
+      set.add(friend[0]);
   }
   return set;
 }
@@ -17,7 +17,7 @@ function findSameFriends(user, friends, userFriends){
       if(!map.has(friend[0]))
         map.set(friend[0], 10);
       else
-        map.set(friend[0], map.get(friend[0])+10)
+        map.set(friend[0], map.get(friend[0])+10);
     }
     else if(friend[1] != user && userFriends.has(friend[0])){
       if(!map.has(friend[1]))
