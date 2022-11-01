@@ -2,8 +2,20 @@
 console.log(problem1([99, 102], [211, 212]));
 
 function problem1(pobi, crong) {
-  // maxNumber 비교 후 점수 return
+  // 예외처리
 
+  // leftPage + 1 = rightPage
+  if (pobi[0] + 1 !== pobi[1]) return -1;
+  if (crong[0] + 1 !== crong[1]) return -1;
+
+  // leftPage || rightPage > 0
+  // legtPage || rightPage < 401
+  if (pobi[0] <= 0 || pobi[0] >= 401 || pobi[1] <= 0 || pobi[1] >= 401)
+    return -1;
+  if (crong[0] <= 0 || crong[0] >= 401 || crong[1] <= 0 || crong[1] >= 401)
+    return -1;
+
+  // maxNumber 비교 후 점수 return
   let pobiScore = maxNumber(sumPage(pobi), multiPage(pobi));
   let crongScore = maxNumber(sumPage(crong), multiPage(crong));
 
@@ -53,14 +65,6 @@ function maxNumber(num1, num2) {
   let biggerNum = Math.max(num1, num2);
 
   return biggerNum;
-}
-
-// 예외처리 함수
-function checkProblem(pages) {
-  // leftPage 홀수, rightPage 짝수
-  // leftPage + 1 = rightPage
-  // leftPage || rightPage > 0
-  // legtPage || rightPage < 401
 }
 
 module.exports = problem1;
