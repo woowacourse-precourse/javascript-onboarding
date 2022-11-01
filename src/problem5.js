@@ -4,36 +4,37 @@ function problem5(money) {
 }
 
 function exchangeTo50000(money) {
-  const FIVEHUNDREDTHOUSAND = 500000
-  const FIFTYTHOUSAND = 50000
-  let cnt = 0
+  const FIVEHUNDREDTHOUSAND = 500000;
+  const FIFTYTHOUSAND = 50000;
+  let cnt = 0;
   while (money >= FIVEHUNDREDTHOUSAND) {
-    cnt += 10
-    money -= FIVEHUNDREDTHOUSAND
+    cnt += 10;
+    money -= FIVEHUNDREDTHOUSAND;
   }
   while (money >= FIFTYTHOUSAND) {
-    cnt += 1
-    money -= FIFTYTHOUSAND
+    cnt += 1;
+    money -= FIFTYTHOUSAND;
   }
-  return cnt
+  return cnt;
 }
 
 function exchangeTo10000(money) {
-  const TENTHOUSAND = 10000
-  let cnt = 0
+  const TENTHOUSAND = 10000;
+  let cnt = 0;
   while (money >= TENTHOUSAND) {
-    cnt += 1
-    money -= TENTHOUSAND
+    cnt += 1;
+    money -= TENTHOUSAND;
   }
-  return cnt
+  return cnt;
 }
 
 function exchangeTo5000(money) {
-  const FIVETHOUSAND = 5000
+  const FIVETHOUSAND = 5000;
   while (money >= FIVETHOUSAND) {
-    cnt += 1
-    money -= FIVETHOUSAND
+    cnt += 1;
+    money -= FIVETHOUSAND;
   }
-  return cnt
+  return cnt;
 }
+
 module.exports = problem5;
