@@ -26,7 +26,7 @@ function shareFriend(user,friends){
   }
   return share_friends;
 }
-function findVisit(user, friends, visitors){
+function userVisit(user, friends, visitors){
   let result=[];
   const user_friends= alreadyFriend(user,friends);
   for(let i=0;i<visitors.length;i++){
@@ -36,8 +36,38 @@ function findVisit(user, friends, visitors){
   }
   return result;
 }
+function countScore(share,visit){
+  let score=[];
+  for(let i=0;i<share.length;i++){
+      for(let j=0;j<10;j++){
+          score.push(share[i]);
+      }
+  }
+  for(let i=0;i<visit.length;i++){
+          score.push(visit[i]);
+      
+  }
+  const result = score.reduce((accu,curr)=>{
+      accu.set(curr,(accu.get(curr)||0)+1);
+      return accu;
+  },new Map());
+  let arr=[];
+  let sorted = new Map([...result].sort((a, b) => b[1] - a[1]));
+  for(let[key,value] of sorted){
+      arr.push(key);
+  }
+  return arr;
+}
+
+
+
 function problem7(user, friends, visitors) {
   let answer;
+  let visit = userVisit(user, friends, visitors);
+  let share=shareFriend(user, friends, visitors);
+  answer=countScore(share,visit);
   return answer;
 }
+
+
 module.exports = problem7;
