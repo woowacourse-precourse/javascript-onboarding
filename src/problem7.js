@@ -1,8 +1,8 @@
 function problem7(user, friends, visitors) {
   let answer;
-  let relation = {};
-  let userFriends;
-  let score = {};
+  let relation = {}; // 친구 관계 배열
+  let userFriends; // user의 친구 목록
+  let score = {}; // 점수 배열
 
   // 기능 1
   relation = makeRelation(friends);
@@ -20,7 +20,7 @@ function problem7(user, friends, visitors) {
   checkVisitors(userFriends, visitors, score);
   
   // 기능 5
-  scoreArray = sortScore(score);
+  let scoreArray = sortScore(score);
 
   // 기능 6
   answer = maxFive(scoreArray);
@@ -47,7 +47,7 @@ function makeRelation(friends) {
 // 기능 2. score 딕셔너리에 id 할당
 function makeScore(relation, userFriends, user) {
   let score = {};
-  let relationKey = Object.keys(relation); // "key"값만
+  let relationKey = Object.keys(relation); // relation 객체의 "key"값만
   
   for (let id of relationKey) {
     if (id === user) { // 본인 제외
@@ -66,7 +66,7 @@ function makeScore(relation, userFriends, user) {
 
 // 기능 3. 함께 아는 친구 count
 function checkBothFriend(relation, userFriends, score, user) {
-  let relationKey = Object.keys(relation); // "key"값만
+  let relationKey = Object.keys(relation); // relation 객체의 "key"값만
 
   for (let friend of relationKey) {
     let count = 0;
@@ -98,7 +98,7 @@ function checkBothFriend(relation, userFriends, score, user) {
 
 // 기능 4. 방문 횟수 확인
 function checkVisitors(userFriends, visitors, score) {
-  let scoreKey = Object.keys(score); // "key"값만
+  let scoreKey = Object.keys(score); // score 객체의 "key"값만
 
   for (let visitor of visitors) {
     if (userFriends !== undefined) {
@@ -111,7 +111,7 @@ function checkVisitors(userFriends, visitors, score) {
       score[visitor] += 1;
     } else { // 존재하지 않는 경우
       score[visitor] = 1;
-      scoreKey = Object.keys(score); // "key"값만
+      scoreKey = Object.keys(score); // score 객체가 변경되어 재할당해주기
     }
   }
   
@@ -123,13 +123,14 @@ function sortScore(score) {
   let scoreArray = Object.entries(score);
 
   scoreArray.sort(function(a, b) {
-    if (a[1] > b[1]) {
+    // 점수는 내림차순
+    if (a[1] > b[1]) { 
       return -1;
     }
     if (a[1] < b[1]) {
       return 1;
     }
-    if (a[1] == b[1]) {
+    if (a[1] == b[1]) { // 점수가 같다면, 이름은 오름차순
       if (a[0] > b[0]) {
         return 1;
       }
@@ -147,7 +148,7 @@ function maxFive(scoreArray) {
   let answer = [];
   let scoreLength = scoreArray.length;  
 
-  if (scoreLength > 5) {
+  if (scoreLength > 5) { // 길이가 5 이상인 경우 -> 최대 5명 return
     for (let i = 0; i < 5; i++) {
       if (scoreArray[i][1] === 0) { 
         break;
@@ -155,7 +156,7 @@ function maxFive(scoreArray) {
         answer.push(scoreArray[i][0]);
       }
     }
-  } else {
+  } else { // 길이가 5 미만인 경우 -> 전부 return
     for (score of scoreArray) {
       if (score[1] === 0) {
         break;
