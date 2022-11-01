@@ -24,5 +24,12 @@ function getTrans(ch) {
 	// 대문자
 	return String.fromCharCode(90 - (asc - 65));
 }
+// 2. 알파벳 여부 검사 기능
+// return => 알파벳 : true, 알파벳X : false
+function isAlpa(ch) {
+	var asc = ch.charCodeAt(0);
+	if(65 <= asc && asc <= 90 || 97 <= asc && asc <= 122) return true;
+	return false;
+}
 
 module.exports = problem4;
