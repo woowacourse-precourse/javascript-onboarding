@@ -15,10 +15,8 @@ function problem4(word) {
   for (let i = 0; i < word.length; i++) {
     let str = word[i];
 
-    // 공백 예외 처리
-    if (str === " ") answer += " ";
     // 대문자일 때
-    else if (str === str.toUpperCase()) {
+    if (str === str.toUpperCase()) {
       answer += reverseWord[str.charCodeAt() - 65];
     }
     // 소문자일 때
