@@ -2,25 +2,24 @@
 console.log(problem2("bronnaon"));
 
 function problem2(cryptogram) {
-  // empty stack 선언
-  var stack = [];
-  let arr = [...cryptogram]; // 배열로 할당
+  // stack 선언
+  let arr = [cryptogram[0]];
 
   // stack에 하나씩 push
   // 중복 없을 때까지 반복
-  while (1) {
-    stack.push(arr[0]);
-
-    for (let i = 0; i < arr.length; i++) {
-      // 연속하는 중복 문자 있으면 pop
-      if (stack[i - 1] === arr[i]) {
-        stack.pop();
-      } else {
-        stack.push(arr[i]);
-      }
+  for (let i = 1; i < cryptogram.length; i++) {
+    // 연속하는 중복 문자 있으면 pop
+    if (arr[i - 1] === cryptogram[i]) {
+      arr.pop();
+    } else {
+      arr.push(cryptogram[i]);
     }
   }
-  return arr;
+
+  // 배열 원소를 문자열로
+  answer = arr.join("");
+
+  return answer;
 }
 
 module.exports = problem2;
