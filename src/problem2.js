@@ -1,7 +1,13 @@
 function problem2(cryptogram) {
-  const result = checkErrors(cryptogram);
+  const checkedErrors = checkErrors(cryptogram);
 
-  return result;
+  if (checkedErrors === "Not Error") {
+    const result = removeDuplicates(cryptogram);
+
+    return result;
+  }
+
+  return checkedErrors;
 }
 
 function checkErrors(word) {
@@ -24,7 +30,7 @@ function checkErrors(word) {
     }
   }
 
-  return checkDuplicates(word);
+  return "Not Error";
 }
 
 function checkDuplicates(word) {
@@ -57,6 +63,6 @@ function removeDuplicates(word) {
     removedResult += word[wordIndex];
   }
 
-  return checkDuplicates(removedResult);
+  return removeDuplicates(removedResult);
 }
 module.exports = problem2;
