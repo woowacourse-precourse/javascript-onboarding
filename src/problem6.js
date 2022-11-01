@@ -42,8 +42,10 @@ const getAllSerialCases = (nickname) => {
   for (let cutUnit = 2; cutUnit <= nickname.length; cutUnit++) {
     for (let index = 0; index <= nickname.length - cutUnit; index++) {
       const serialString = nickname.slice(index, index + cutUnit);
-      if (serialString.length !== cutUnit) continue;
-      allSerialCases.push(nickname.slice(index, index + cutUnit));
+
+      if (serialString.length === cutUnit) {
+        allSerialCases.push(serialString);
+      }
     }
   }
 
