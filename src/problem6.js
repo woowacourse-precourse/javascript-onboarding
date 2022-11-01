@@ -37,6 +37,8 @@ const getDuplicatedUser = (arr) => {
 };
 
 function problem6(forms) {
+  if (!forms.length || forms.length > 10000) throw new RangeError('크루는 1명 이상 10,000명 이하이여야 합니다.');
+
   const users = {};
   forms.forEach((form) => {
     users[form[1]] = form[0];
