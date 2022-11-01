@@ -97,13 +97,13 @@
 ## 📋 [문제 5] 구현할 기능 목록
 
 * 전체 프로세서 관리할 `withdrawApp` 함수 생성.
-  + 각 지폐 종류를 저장하고 있는 배열 `billTypeArr`을 선언.
+  + 각 지폐 종류를 저장하고 있는 배열 `billTypeCollection`을 선언.
   + `calcWithdraw`에서 return 해주는 잔여금액을 변수 `currAccount`에 저장.
   + `calcWithdraw`에서 return 해주는 지폐 수를 배열 `currBillCount`에 저장.
   + billType의 크기만큼, `calcWithdraw`을 호출함.
   + billType의 크기만큼, `curMoney`를 return 한다.
 
-* 지폐 종류가 담긴 배열을 만들어주는 함수 `createBillTypeArr()` 생성.
+* 지폐 종류가 담긴 배열을 만들어주는 함수 `createBillType()` 생성.
 
 * `money`(현재 금액)과 `billType`(출금할 지폐 크기)를 입력하면, `currAccount`(남은 금액)과 `billCount`(최대 지폐수)를 출력하는 함수 `calcWithdraw`를 구현.
 
