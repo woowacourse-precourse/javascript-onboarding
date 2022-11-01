@@ -8,6 +8,10 @@
  */
 function problem2(cryptogram) {
   const duplicatePairRegExp = /(\w)\1{1}/g;
+  const getDuplicateRemoved = (str) =>
+    duplicatePairRegExp.test(str)
+      ? getDuplicateRemoved(str.replace(duplicatePairRegExp, ""))
+      : str;
   var answer;
   return answer;
 }
