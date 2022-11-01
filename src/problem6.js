@@ -1,5 +1,4 @@
 function problem6(forms) {
-  var answer;
   let resultArr = [];
   let twoWord = [];
   let wordArr = [];
@@ -30,7 +29,7 @@ function problem6(forms) {
     }
   }
 
-  return answer;
+  return resultArr.sort();
 }
 
 module.exports = problem6;
