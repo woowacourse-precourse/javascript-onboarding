@@ -24,7 +24,7 @@ function getRelation(friends) {
   return relation;
 }
 
-function updateRecommand(
+function updateScoreTable(
   scoreTable,
   canBeRecommandList,
   notForRecommand,
@@ -58,9 +58,9 @@ function problem7(user, friends, visitors) {
 
   const scoreTable = new ScoreTable();
   alreadyFriends.forEach((friend) => {
-    updateRecommand(scoreTable, relation[friend], notForRecommand, 10);
+    updateScoreTable(scoreTable, relation[friend], notForRecommand, 10);
   });
-  updateRecommand(scoreTable, visitors, notForRecommand, 1);
+  updateScoreTable(scoreTable, visitors, notForRecommand, 1);
 
   const result = Object.entries(scoreTable.getScoreOfUsers())
     .sort(compareByScore)
