@@ -60,8 +60,6 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  const scoreMapEntries = [...scoreMap.entries()];
-
   const answer = [...scoreMap.entries()]
     .filter(([key, value]) => {
       return !myFriendsList.includes(key) && value > 0;
