@@ -1,3 +1,19 @@
+function sortObj(testobj) {
+  let sortobj = [];
+  for (let number in testobj) {
+    sortobj.push([number, testobj[number]]);
+  }
+  sortobj.sort(function(a, b) {
+    if (b[1] === a[1]) {
+      if (a[0] > b[0]) return 1;
+      if (a[0] < b[0]) return -1;
+      return 0;
+    }
+    return b[1] - a[1];
+  });
+  return sortobj;
+}
+
 function makeFriendList(friends) {
   const friendList = {};
   for (let i = 0; i < friends.length; i++) {
@@ -49,6 +65,15 @@ function recommandFriend(user, friends, visitors) {
   const scoreList = setScoreList(friendList);
   addFriendScore(user, friendList, scoreList);
   addVisitorScore(visitors, scoreList);
+  friendList[user].forEach(function(element) {
+    delete scoreList[element];
+  })
+  delete scoreList[user];
+  let ret = sortObj(scoreList).map(function(element) {
+    return (element[0]);
+  });
+  ret.length = 5;
+  return ret;
 }
 
 function problem7(user, friends, visitors) {
