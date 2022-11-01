@@ -1,5 +1,4 @@
 const problem7 = (user, friends, visitors) => {
-  let answer = [];
   let friendsOfUser = [];
   let scoreList = new Map();
   let results = {};
@@ -44,15 +43,11 @@ const problem7 = (user, friends, visitors) => {
   [...scoreList.entries()].forEach(([name, score]) =>
     (results = { ...results, [name]: score }));
 
-  answer = Object.keys(results)
+  return Object.keys(results)
     .sort((a, b) =>
-      results[a] === results[b] ? a - b : results[b] - results[a]
+      results[a] === results[b] ? a < b : results[b] - results[a]
     )
-    .slice(0, 4);
-
-  console.log(answer);
-
-  return answer;
+    .slice(0, 5);
 };
 
 module.exports = problem7;
