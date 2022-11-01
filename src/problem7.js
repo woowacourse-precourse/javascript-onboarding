@@ -116,6 +116,10 @@ class SNSModel {
     return this._scoreBoard;
   }
 
+  setPointFor(person, point) {
+    this._scoreBoard[person] += point;
+  }
+
   saveFriendGraph(keyFriend, valueFriend, map) {
     const defaultValue = map.get(keyFriend) || [];
 
@@ -168,7 +172,7 @@ class SNSAlgorithm {
     this.getFriendsFor(_user)
       .flatMap((friend) => [...this.getFriendsFor(friend)])
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (_model.getScoreBoard()[person] += 10));
+      .forEach((person) => _model.setPointFor(person, 10));
   }
 
   scroeVisitor() {
@@ -176,7 +180,7 @@ class SNSAlgorithm {
 
     this._visitors
       .filter((person) => this.isRecommand(person))
-      .forEach((person) => (_model.getScoreBoard()[person] += 1));
+      .forEach((person) => _model.setPointFor(person, 1));
   }
 
   recommend() {
