@@ -138,6 +138,26 @@ describe('problem4', () => {
   test('case1', () => {
     expect(problem4('I love you')).toEqual('R olev blf');
   });
+
+  test('case2', () => {
+    expect(problem4('Hello  Everyone!')).toEqual('Svool  Veviblmv!');
+  });
+
+  test('case3', () => {
+    expect(problem4('abcdefghijklmnopqrstuvwxyz')).toEqual(
+      'zyxwvutsrqponmlkjihgfedcba'
+    );
+  });
+
+  test('case4', () => {
+    expect(problem4('abcdefghijklmnopqrstuvwxyz !@#!#  ')).toEqual(
+      'zyxwvutsrqponmlkjihgfedcba !@#!#  '
+    );
+  });
+
+  test('case5', () => {
+    expect(problem4('Svool, Dliow! 123')).toEqual('Hello, World! 123');
+  });
 });
 
 describe('problem5', () => {
