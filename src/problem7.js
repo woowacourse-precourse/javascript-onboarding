@@ -10,7 +10,7 @@ function makeRelation(friends){ //make graph(obj) of relationship
   return graph;
 }
 
-function calScore(ten, one){
+function makeRanking(ten, one){
   const score = {};
   const id_list = [...new Set(ten), ...new Set(one)]
   id_list.forEach((id)=>{
@@ -33,7 +33,7 @@ function problem7(user, friends, visitors) {
       })
   })
   const one_point = visitors.filter((id)=> (!graph[user].includes(id)));
-  return calScore(ten_points, one_point);
+  return makeRanking(ten_points, one_point);
 }
 
 module.exports = problem7;
