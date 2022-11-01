@@ -8,7 +8,16 @@ function problem1(pobi, crong) {
   let [pobiLeft, pobiRight] = pobi;
   let [crongLeft, crongRight] = crong;
 
+  let pobiValue = getMaxValue(splitNum(pobiLeft), splitNum(pobiRight));
+  let crongValue = getMaxValue(splitNum(crongLeft), splitNum(crongRight));
+  
   return answer;
+}
+
+function getMaxValue(leftArr, rightArr) {
+  let sum = sumPage(leftArr)
+  let multi = multiplyPage(rightArr)
+  return Math.max(sum, multi)
 }
 
 function splitNum(num) {
