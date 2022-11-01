@@ -21,6 +21,16 @@ function problem7(user, friends, visitors) {
       freindsList[team2].push(team1);
     }
   }
+
+  // 아는 친구 - 10점
+  for (let userFriend of freindsList[user]) {
+    for (let crewFriend of freindsList[userFriend]) {
+      if (!(crewFriend === user)) {
+        score[crewFriend] += 10;
+      }
+    }
+  }
+
 }
 
 module.exports = problem7;
