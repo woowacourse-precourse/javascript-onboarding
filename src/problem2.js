@@ -7,7 +7,7 @@ function problem2(cryptogram) {
 
   while(hasDuplicatedStr) {
     let duplicatedStrPosition = [];
-    
+
     strArr.forEach((_, i, init) => {
       if (init[i] === init[i+1]) duplicatedStrPosition = [i, ...duplicatedStrPosition];
     })
@@ -17,8 +17,6 @@ function problem2(cryptogram) {
     duplicatedStrPosition.forEach(position => {
       strArr = [...strArr.slice(0, position), ...strArr.slice(position + 2)];
     })
-
-    duplicatedStrPosition = [];
   }
 
   return strArr.join('');
