@@ -12,6 +12,10 @@ function seperateConsecutive(nickname, uniqueArr, consecutiveArr) {
   }
 }
 
-function isValid(nickname, consecutiveArr) {}
+function isValid(nickname, consecutiveArr) {
+  for (let i = 0; i < nickname.length - 1; i++)
+    if (consecutiveArr.indexOf(nickname.slice(i, i + 2)) >= 0) return true;
+  return false;
+}
 
 module.exports = problem6;
