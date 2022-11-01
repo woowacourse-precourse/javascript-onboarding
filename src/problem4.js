@@ -1,7 +1,6 @@
 class ErrorCase {
   constructor(word) {
     this._word = word;
-    this.checkLimit();
   }
 
   checkLimit() {
