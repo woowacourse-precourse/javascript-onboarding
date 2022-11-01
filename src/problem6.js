@@ -15,8 +15,14 @@ function problem6(forms) {
       }
     }
   }
+  for(let value of Object.values(name_dic)) {
+    if (value.length > 1) {
+      for(let number of value) {
+        repeat.add(number)
+      }
+    }
+  }
 
-  
   return answer;
 }
 
