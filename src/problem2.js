@@ -29,6 +29,4 @@ function deduplication(cryptogramArr) {
   return cryptogramArr;
 }
 
-console.log(problem2("browoanoommnaon"));
-
 module.exports = problem2;

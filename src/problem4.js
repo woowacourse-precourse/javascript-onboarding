@@ -39,6 +39,4 @@ function findLowerArr(word) {
   return LowerArr;
 }
 
-console.log(problem4("I love you"));
-
 module.exports = problem4;

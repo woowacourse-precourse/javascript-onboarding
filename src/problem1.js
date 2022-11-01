@@ -72,6 +72,4 @@ function maximum(arr) {
   return Math.max(...arr);
 }
 
-console.log(problem1([98, 99], [193, 194]));
-
 module.exports = problem1;

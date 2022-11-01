@@ -10,6 +10,4 @@ function problem5(money) {
   return newArr;
 }
 
-console.log(problem5(1000000));
-
 module.exports = problem5;

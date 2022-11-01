@@ -12,7 +12,7 @@ function problem7(user, friends, visitors) {
   });
 
   const scoreCollection = new Map();
-  for (let i = 0; i < allFriendsList.get(user).length; i++) {
+  for (let i = 0; i < (allFriendsList.get(user) || []).length; i++) {
     allFriendsList.get(allFriendsList.get(user)[i]).map((friend) => {
       if (!allFriendsList.get(user).includes(friend) && friend !== user) {
         scoreCollection.set(friend, scoreCollection.get(friend) + 10 || 10);
@@ -21,29 +21,15 @@ function problem7(user, friends, visitors) {
   }
 
   visitors.map((friend) => {
-    if (!allFriendsList.get(user).includes(friend)) {
+    if (!(allFriendsList.get(user) || []).includes(friend)) {
       scoreCollection.set(friend, scoreCollection.get(friend) + 1 || 1);
     }
   });
 
   return [...scoreCollection]
     .sort((a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1]))
-    .map(([nickname, score]) => nickname).slice(0,5);
+    .map(([nickname, score]) => nickname)
+    .slice(0, 5);
 }
-
-console.log(
-  problem7(
-    "mrko",
-    [
-      ["donut", "andole"],
-      ["donut", "jun"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan"]
-  )
-);
 
 module.exports = problem7;

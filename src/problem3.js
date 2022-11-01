@@ -16,6 +16,4 @@ function numberArr(number) {
     .split("");
 }
 
-console.log(problem3(333));
-
 module.exports = problem3;
