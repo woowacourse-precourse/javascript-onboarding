@@ -1,6 +1,7 @@
 function problem2(cryptogram) {
-  var answer;
-  return answer;
+  return deleteDuplicateCharacters(cryptogram);
+}
+
 const deleteDuplicateCharacters = (string) => {
   let result = ''
   if (string[0] !== string[1]) {
