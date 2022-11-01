@@ -15,6 +15,8 @@ const encryptUpperAlphabet = (char) => {
   return String.fromCharCode('A'.charCodeAt(0) + 'Z'.charCodeAt(0) - char.charCodeAt(0))
 }
 
+const encryptLowerAlphabet = (char) => {
+  return String.fromCharCode('a'.charCodeAt(0) + 'z'.charCodeAt(0) - char.charCodeAt(0))
 }
 
 module.exports = problem4;
