@@ -50,9 +50,12 @@ function isProperInput(pages) {
 }
 
 function problem1(pobi, crong) {
-  let answer;
-
   const CODE_EXCEPTION = -1;
+  const CODE_POBI_WIN = 1;
+  const CODE_CRONG_WIN = 2;
+  const CODE_SAME_POINT = 0;
+
+  let answer;
 
   if (!isProperInput(pobi) || !isProperInput(crong)) {
     return CODE_EXCEPTION;
@@ -61,6 +64,15 @@ function problem1(pobi, crong) {
   const pobiScore = countScore(pobi);
   const crongScore = countScore(crong);
 
+  if (pobiScore > crongScore) {
+    answer = CODE_POBI_WIN
+    return answer;
+  }
+  if (pobiScore < crongScore) {
+    answer = CODE_CRONG_WIN
+    return answer;
+  }
+  answer = CODE_SAME_POINT;
   return answer;
 }
 
