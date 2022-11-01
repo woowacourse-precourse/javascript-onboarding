@@ -31,6 +31,13 @@ function problem1(pobi, crong) {
     crong[1] - crong[0] !== 1
   )
     return -1;
+
+  const getMaxScore = (pageNo) => {
+    const noArr = `${pageNo}`.split("").map(Number);
+    const sum = noArr.reduce((sum, no) => sum + no);
+    const product = noArr.reduce((product, no) => product * no, 1);
+    return Math.max(sum, product);
+  };
   var answer;
   return answer;
 }
