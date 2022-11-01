@@ -50,6 +50,15 @@ function problem7(user, friends, visitors) {
     return friend_score;
   }
 
+  function calcVisitScore(user, friends, visitors) {
+    const user_friends = getUserFriends(user, friends);
+    let stranger_visitors = visitors.filter(
+      (element) => !user_friends.includes(element)
+    );
+    const visitor_score = elementCount(stranger_visitors);
+    return visitor_score;
+  }
+
   return answer;
 }
 problem7(
