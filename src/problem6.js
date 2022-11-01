@@ -15,7 +15,7 @@ function problem6(forms) {
       }
     }
 
-     // 2. n 제외한 크루 중 중복 있는지 체크
+     // 2. n 제외한 크루 중 중복 있는지 체크 
     for(var k = 0; k < forms.length; k++) {
       partion.forEach((part) => {
         if(k !== n && forms[k][1].includes(part)) result.add(forms[k][0]);
