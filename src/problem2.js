@@ -1,19 +1,28 @@
 function problem2(cryptogram) {
-  while (1) {
-    let removeList = [];
-    cryptogram.split("").forEach((x, idx) => {
-      if (x === cryptogram[idx + 1]) {
-        removeList.push(idx,idx+1);
-      }
-    });
-    removeList = [...new Set(removeList)];
+  cryptogram = cryptogram.split('').filter(x => x.toLowerCase()).join('')
 
-    for(let i=0;i<removeList.length;i++){
-      cryptogram = cryptogram.slice(0, removeList[0]) + cryptogram.slice(removeList[0]+1);
+  let prev = cryptogram;
+  while (1) {
+    let removes = [];
+    for (let i = 0; i < [...cryptogram].length; i++) {
+      if ([...cryptogram][i] === [...cryptogram][i + 1]) {
+        removes.push(i, i + 1);
+      }
     }
-    if (removeList.length === 0) break;
+    [...new Set(removes)].forEach((remove) => {
+      cryptogram =
+        cryptogram.slice(0, remove) + "-" + cryptogram.slice(remove + 1);
+    });
+    cryptogram = cryptogram
+      .split("")
+      .filter((x) => x !== "-")
+      .join("");
+    if (prev === cryptogram) break;
+    prev = cryptogram;
   }
   return cryptogram;
 }
+
+console.log(problem2("aazzqweqweaaq"));
 
 module.exports = problem2;
