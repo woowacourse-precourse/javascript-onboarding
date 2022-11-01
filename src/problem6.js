@@ -42,7 +42,7 @@ function problem6(forms) {
     }
   };
 
-  const findContinuousWord = (twoSizeWords, [email, nickname]) => {
+  const getTwoSizeWord = (twoSizeWords, [_, nickname]) => {
     twoSizeWords.push(
       ...[...nickname]
         .reduce((acc, _, idx) => {
@@ -54,7 +54,7 @@ function problem6(forms) {
     return twoSizeWords;
   };
 
-  const checkLengthisTwo = (words) => {
+  const isTwoSizeWord = (words) => {
     return words.length === 2;
   };
 
@@ -76,8 +76,8 @@ function problem6(forms) {
   checkFormsValid(forms);
 
   return forms
-    .reduce(findContinuousWord, [])
-    .filter(checkLengthisTwo)
+    .reduce(getTwoSizeWord, [])
+    .filter(isTwoSizeWord)
     .reduce(findEmailsOfDuplicatedNickname, [])
     .sort();
 }
