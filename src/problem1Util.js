@@ -14,4 +14,16 @@ const getDigitFromNum = (num) => {
   return digitList.reverse();
 };
 
-module.exports = { getDigitFromNum };
+/**
+ * 자리수 배열을 받고, 각 자리수를 곱하고, 더하는 2가지 결과를 반환
+ * @param {array} 자리수 배열
+ * @return {array} [더한 값, 곱한 값]
+ */
+const calcPageValues = (digitList) => {
+  return [
+    digitList.reduce((cum, cur) => (cum += cur)),
+    digitList.reduce((cum, cur) => (cum *= cur), 1),
+  ];
+};
+
+module.exports = { getDigitFromNum, calcPageValues };
