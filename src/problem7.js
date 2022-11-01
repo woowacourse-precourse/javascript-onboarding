@@ -7,8 +7,6 @@ function problem7(user, friends, visitors) {
   let sorted = [];
   let cutIdx = [0];
   let splitted = [];
-  let deduplicated = [];
-  let dummy = [];
   let topfive = [];
 
   for (let i = 0; i < friends.length; i++) {
@@ -31,8 +29,6 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  //visitors 체크
-
   //10점 계산
   for (let i = 0; i < tens.length; i++) {
     if (tens.indexOf(tens[i]) === i) {
@@ -41,6 +37,7 @@ function problem7(user, friends, visitors) {
       result[tens.indexOf(tens[i])].score += 10;
     }
   }
+
   for (let i = 0; i < result.length; i++) {
     tensName.push(result[i].name);
   }
@@ -48,10 +45,6 @@ function problem7(user, friends, visitors) {
   //1점 계산 : 친구 제외
   if (visitors !== undefined) {
     for (let i = 0; i < visitors.length; i++) {
-      //visitors=[b,b,d,b,s]
-      //list:[d,s]
-      //result=[name,score][3]
-
       if (!list.includes(visitors[i])) {
         if (tensName.includes(visitors[i])) {
           result[tensName.indexOf(visitors[i])].score += 1;
@@ -65,11 +58,12 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  //정렬
+  //점수 정렬
   result.sort((a, b) => {
     return b.score - a.score;
   });
 
+  //이름 정렬
   for (let i = 0; i < result.length; i++) {
     if (result[i + 1] && result[i].score !== result[i + 1].score) {
       cutIdx.push(i + 1);
@@ -78,7 +72,6 @@ function problem7(user, friends, visitors) {
   cutIdx.push(result.length);
 
   for (let i = 0; i < cutIdx.length - 1; i++) {
-    //if (i === 0) {
     splitted = result.slice(cutIdx[i], cutIdx[i + 1]);
 
     sorted = splitted.sort((a, b) => {
@@ -88,7 +81,6 @@ function problem7(user, friends, visitors) {
     answer.push(...sorted);
   }
 
-  // return answer; //[2,3]
   let min = 5 < answer.length ? 5 : answer.length;
   for (i = 0; i < min; i++) {
     topfive[i] = answer[i].name;
