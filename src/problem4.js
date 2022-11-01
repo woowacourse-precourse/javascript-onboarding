@@ -18,6 +18,10 @@ function problem4(word) {
     }
   }
 
+  for (let i = 0; i < resultArr.length; i++) {
+    answer.push(String.fromCharCode(resultArr[i]));
+  }
+
   return answer;
 }
 
