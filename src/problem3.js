@@ -1,6 +1,19 @@
-function problem3(number) {
-  var answer;
-  return answer;
+function clapCal(i) {
+  let clapCnt = 0;
+  for (let x of String(i)) {
+    if (x === '3' || x === '6' || x === '9') clapCnt++;
+  }
+  return clapCnt;
 }
 
+function problem3(number) {
+  let answer = 0;
+
+  for (let i = 1; i <= number; i++) {
+    let cnt = clapCal(i);
+    answer += cnt;
+  }
+
+  return answer;
+}
 module.exports = problem3;
