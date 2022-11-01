@@ -35,6 +35,16 @@ function problem7(user, friends, visitors) {
       map.set(visitors[i], 1);
     }
   }
+  map.delete(user);
+  for (var i = 0; i < user_friend.length; i++) {
+    map.delete(user_friend[i]);
+  }
+  const arraymap = [...map];
+  arraymap.sort();
+  arraymap.sort((a, b) => b[1] - a[1]);
+  for (var i = 0; i < arraymap.length; i++) {
+    answer.push(arraymap[i][0]);
+  }
   return answer;
 }
 
