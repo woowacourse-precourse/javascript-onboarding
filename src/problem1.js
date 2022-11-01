@@ -1,16 +1,16 @@
-function isArrayIncludesZero(nums) {
+const isArrayIncludesZero = (nums) => {
   return nums.includes(0);
-}
+};
 
-function sumDigit(digits) {
+const sumDigit = (digits) => {
   return digits.reduce((a, b) => a + b, 0);
-}
+};
 
-function multiplyDigit(digits) {
+const multiplyDigit = (digits) => {
   return digits.reduce((a, b) => a * b, 1);
-}
+};
 
-function calcMaxNumber(pages) {
+const calcMaxNumber = (pages) => {
   const pageDigits = pages.map((page) => page.toString().split("").map(Number));
 
   const [leftPageMaxNum, rightPageMaxNum] = pageDigits.map((pageDigit) =>
@@ -20,9 +20,9 @@ function calcMaxNumber(pages) {
   );
 
   return Math.max(leftPageMaxNum, rightPageMaxNum);
-}
+};
 
-function isValidPage(pages) {
+const isValidPage = (pages) => {
   const MIN_PAGE = 1;
   const MAX_PAGE = 400;
 
@@ -37,11 +37,11 @@ function isValidPage(pages) {
   }
 
   return pages.every((page) => page > MIN_PAGE && page < MAX_PAGE);
-}
+};
 
-function isValidPages(...pages) {
+const isValidPages = (...pages) => {
   return pages.every((page) => isValidPage(page));
-}
+};
 
 const GAME_RESULT = {
   pobi: 1,
@@ -50,7 +50,7 @@ const GAME_RESULT = {
   exception: -1,
 };
 
-function getGameResult({ pobiMaxNum, crongMaxNum }) {
+const getGameResult = ({ pobiMaxNum, crongMaxNum }) => {
   const { pobi, crong, draw, exception } = GAME_RESULT;
   const score = pobiMaxNum - crongMaxNum;
 
@@ -67,9 +67,9 @@ function getGameResult({ pobiMaxNum, crongMaxNum }) {
   }
 
   return exception;
-}
+};
 
-function problem1(pobi, crong) {
+const problem1 = (pobi, crong) => {
   const { exception } = GAME_RESULT;
 
   if (!isValidPages(pobi, crong)) {
@@ -80,6 +80,6 @@ function problem1(pobi, crong) {
   const crongMaxNum = calcMaxNumber(crong);
 
   return getGameResult({ pobiMaxNum, crongMaxNum });
-}
+};
 
 module.exports = problem1;
