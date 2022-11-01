@@ -74,10 +74,10 @@
   > ❓선정 이유 : A안이 B안보다 간단한 알고리즘 순서도로 그려지고, 클린 코디로 짜기 좋은 방법일 것 같아 채택.
 
 * 전체 프로세서 관리할 `treeFrogApp` 함수 생성.
-  + 변수 `eachCharArr`를 함수 `createStringArr`에서 받아온다.
+  + 변수 `eachCharCollection`를 함수 `createStringSplit`에서 받아온다.
   + 해당 배열 길이만큼 반복해서 한글자씩 변경해준다.
 
-* 입력된 문자열을 배열로 만들어줄 함수 `createStringArr` 생성.
+* 입력된 문자열을 배열로 만들어줄 함수 `createStringSplit` 생성.
   + 입력된 문자열을 `.split("")`로 한글자씩 나눠서 배열을 만든 후, return 한다.
 
 * 입력된 문자를 UTF16코드로 변경해 줄 함수 `getFromCharToUTF16Code(char)` 를 구현.
