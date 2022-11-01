@@ -2,17 +2,15 @@ function problem7(user, friends, visitors) {
   var answer = new Array();
   let namesList = new Array();
   let isFriends = new Array();
-  // 친구찾기
+  
   for(let i=0; i<friends.length; ++i){
     if(friends[i][0] == user) isFriends.push(friends[i][1]);
     else if(friends[i][1] == user) isFriends.push(friends[i][0]);
     for(let j=0; j<2; ++j){
-      // 이름 리스트에 friends 요소 추가
       if(friends[i][j]!=user) namesList.push(friends[i][j]);
     }
   }
   let isFriend = [...new Set(isFriends)]; // 중복제거
-  // 이름 리스트에 visitors 요소 추가
   for(let i=0; i<visitors.length; ++i){
     namesList.push(visitors[i]);
   }
@@ -22,7 +20,7 @@ function problem7(user, friends, visitors) {
       if(nameList[i]==isFriend[j]) nameList.splice(i,1);
     }
   }
-  // 점수리스트 이차원배열 새로 생성. 0:이름, 1:점수
+  
   let pointList = Array.from(new Array(nameList.length), () => new Array(2).fill(0));
   for(let i=0; i<nameList.length; ++i){
     pointList[i][0] = nameList[i];
@@ -49,7 +47,7 @@ function problem7(user, friends, visitors) {
     }
   }
   
-  // 정렬 후 상위 5명만 반환
+  // 정렬 후 상위 5명 반환
   pointList.sort();
   pointList.sort(comPoint);
   exceptZero(pointList);
