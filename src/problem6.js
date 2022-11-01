@@ -9,7 +9,7 @@ const checkNick=(name, check)=>{
         if(regex.test(check)) { return false }
     }
     return true;
-  }
+}
 //1. 닉네임길이 오름차순 정렬
 //2. for문을 통해 하나씩 checkNick(n1, n2)
 //  ** 이전에 비교한 닉네임은 비교하지 않음 **
@@ -25,6 +25,14 @@ function makeChecklist(forms){
         }
     })
     return checklist;
+}
+
+function makeEmailList(forms){
+    const emailList = {};
+    forms.forEach((form)=>{
+        emailList[form[1]]=form[0];
+    })
+    return emailList;
 }
 
 function problem6(forms) {
