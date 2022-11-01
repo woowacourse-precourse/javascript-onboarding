@@ -1,10 +1,10 @@
 function consecutiveWord(word) {
   let arr = [];
   const wordArr = word.split("");
-  for (let i = 0; i < wordArr.length; i++) {
-    for (let j = i + 2; j <= wordArr.length; j++) {
-      arr.push(wordArr.slice(i, j).join(""));
-    }
+  for (let i = 0; i < wordArr.length - 1; i++) {
+    // for (let j = i + 2; j <= wordArr.length; j++) {
+    arr.push(wordArr.slice(i, i + 2).join(""));
+    // }
   }
   return arr;
 }
@@ -20,6 +20,7 @@ function problem6(forms) {
     dupliArr = [...dupliArr, ...conseWord];
   });
 
+  console.log(dupliArr);
   dupliArr.forEach((w) => {
     if (dupliMap.has(w)) {
       dupliMap.set(w, dupliMap.get(w) + 1);
@@ -46,5 +47,15 @@ function problem6(forms) {
   answer = Array.from(new Set(answer)).sort();
   return answer;
 }
+
+console.log(
+  problem6([
+    ["jm@email.com", "제이엠"],
+    ["jason@email.com", "제이슨"],
+    ["woniee@email.com", "워니"],
+    ["mj@email.com", "엠제이"],
+    ["nowm@email.com", "이제엠"],
+  ])
+);
 
 module.exports = problem6;
