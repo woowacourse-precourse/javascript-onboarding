@@ -38,6 +38,23 @@ function friendScore( //user와 친구추가 되있는 사람의 친구들에게
     }
   });
   return scoreFriendArray;
+function filtering(userFriendNameArray, scoreFriendArray, userName) {
+  //점수추가가 완료된 scoreFriend에 제거요소들 삭제
+  const set = new Set(userFriendNameArray);
+  userFriendNameArray = [...set];
+
+  scoreFriendArray = scoreFriendArray.filter(function (data) {
+    return data[0] >= 0; //0점인사람 필터링
+  });
+  scoreFriendArray = scoreFriendArray.filter(function (data) {
+    return data[1] !== userName; //user요소 필터링
+  });
+  for (i = 0; i < userFriendNameArray.length; i++) {
+    scoreFriendArray = scoreFriendArray.filter(function (data) {
+      return data[1] !== userFriendNameArray[i]; //기존의 친구 요소 필터링
+    });
+  }
+  return scoreFriendArray;
 function visitorScore(visitorsArray, friendNameArray, scoreFriendArray) {
   //scoreFriend 배열에 친구명단을 조사해 점수를 부여하는 함수
   visitorsArray.forEach(function (visitor) {
