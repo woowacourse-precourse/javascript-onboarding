@@ -1,3 +1,20 @@
+const EMAIL = 0;
+const NICKNAME = 1;
+
+function getEmailSet(forms) {
+  const emailSet = new Set();
+  const LEN = forms.length;
+  for (let i = 0; i < LEN - 1; i++) {
+    for (let j = i + 1; j < LEN; j++) {
+      if (hasOverlap(forms[i][NICKNAME], forms[j][NICKNAME])) {
+        emailSet.add(forms[i][EMAIL]);
+        emailSet.add(forms[j][EMAIL]);
+      }
+    }
+  }
+  return Array.from(emailSet);
+}
+
 function lapover(a, b) {
   for (let i = 0; i < a.length - 1; i++) {
     const word = a.slice(i, i + 2);
