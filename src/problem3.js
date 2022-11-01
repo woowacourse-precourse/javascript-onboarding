@@ -1,12 +1,13 @@
 function problem3(number) {
-  const result = countClapAll(number);
   const checkedError = checkError(number);
 
-  if (checkedError !== "Not Error") {
-    return checkedError;
+  if (checkedError === "Not Error") {
+    const result = countClapAll(number);
+
+    return result;
   }
 
-  return result;
+  return checkedError;
 }
 
 function countClapAll(lastNumber) {
