@@ -40,7 +40,7 @@ const checkRightForm = (forms) => {
 
 function problem6(forms) {
   //예외사항1
-  if (forms.length < 1 || forms.length > 1000) return 'ERROR';
+  if (forms.length < 1 || forms.length > 10000) return 'ERROR';
   //예외사항 나머지 종합
   if (!checkRightForm(forms)) return 'ERROR';
 
