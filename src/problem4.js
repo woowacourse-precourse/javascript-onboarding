@@ -1,11 +1,10 @@
-const ABC_REGEX = /^[a-z|A-Z]+$/;
-
 // 소문자면 false 대문자면 true를 리턴하는 함수
 function strIsLower(str) {
   return str === str.toLowerCase();
 }
 
 function problem4(word) {
+  const ABC_REGEX = /^[a-z|A-Z]+$/;
   // 청개구리 알파벳 변환 함수
   function abcFrogConversion(str) {
     return String.fromCharCode((strIsLower(str) ? 219 : 155) - str.charCodeAt(0));
