@@ -32,7 +32,6 @@ function problem6(forms) {
 
   const indice = Object.keys(indiceMap)
   const answer = indice.map((index) => forms[index][0]).sort()
-  console.log(answer)
   return answer;
 }
 
