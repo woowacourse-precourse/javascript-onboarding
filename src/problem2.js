@@ -26,5 +26,4 @@ function problem2(cryptogram) {
   }
   return cryptogram.join("");
 }
-console.log(problem2("browoanoommnaon"));
 module.exports = problem2;
