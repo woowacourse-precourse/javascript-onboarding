@@ -1,5 +1,5 @@
 function problem2(cryptogram) {
-  // 변수 result에 전달인자 복사
+  // 변수 result에 매개변수 복사
   let result = cryptogram;
 
   // result의 글자수 만큼 반복하여

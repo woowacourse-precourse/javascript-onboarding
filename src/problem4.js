@@ -1,5 +1,5 @@
 function problem4(word) {
-  // 전달인자로 주어진 word를 Unicode 값으로 치환하여 청개구리 사전에 해당하는 값으로 변환해준다.
+  // 매개변수로 주어진 word를 Unicode 값으로 치환하여 청개구리 사전에 해당하는 값으로 변환해준다.
   const reversedArr = word.split("").map((el) => {
     // 배열로 변환된 각 문자들을 대문자로 변환한 뒤 unicode 값으로 치환해준다.
     const e = el.toUpperCase().charCodeAt(0);
@@ -13,7 +13,7 @@ function problem4(word) {
     return el;
   });
 
-  // 전달인자 word의 길이만큼 반복하여
+  // 매개변수 word의 길이만큼 반복하여
   for (let i = 0; i < word.length; i++) {
     // word의 i번째 문자가 대문자가 아니라면
     if (word[i].toUpperCase() !== word[i]) {
