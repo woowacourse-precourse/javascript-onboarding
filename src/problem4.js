@@ -25,10 +25,11 @@ function problem4(word) {
       newWordArr[wordSeparation.indexOf(element)] = alphabetReverse[index];
     }
   }
-  
-
-
-
+  const newWord = newWordArr.join('');
+  return newWord;
 }
 
 module.exports = problem4;
+
+console.log(problem4("My Name Is B"));
+console.log(problem4("I love you"));
