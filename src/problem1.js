@@ -1,5 +1,5 @@
 // test sample 추가
-console.log(problem1([99, 102], [211, 212]));
+// console.log(problem1([99, 102], [211, 212]));
 
 function problem1(pobi, crong) {
   // 예외처리
