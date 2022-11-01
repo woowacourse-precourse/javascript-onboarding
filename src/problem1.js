@@ -41,7 +41,15 @@ function problem1(pobi, crong) {
     return Math.max(left_add, left_multi, right_add, right_multi);
   };
 
+  // 코드 작성
   if (!exception(pobi[0], pobi[1]) || !exception(crong[0], crong[1])) return -1;
+
+  const pobi_score = getMax(pobi[0], pobi[1]);
+  const crong_score = getMax(crong[0], crong[1]);
+
+  if (pobi_score > crong_score) answer = 1;
+  else if (pobi_score < crong_score) answer = 2;
+  else answer = 0;
 
   return answer;
 }
