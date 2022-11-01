@@ -48,6 +48,11 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  let scores = []
+  for (const user of Object.keys(scoresDictionary)) {
+    scores.push([scoresDictionary[user], user])
+  }
+
   return answer;
 }
 
