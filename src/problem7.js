@@ -90,7 +90,7 @@ function getRecommendationList(scoreCount) {
 
   recommendationList = recommendationList.slice(0, LIMIT_RECOMMENDATION_NUMBER);
 
-  for (i = 0; i < recommendationList.length; i++) {
+  for (let i = 0; i < recommendationList.length; i++) {
     recommendationList[i] = recommendationList[i][0];
   }
 

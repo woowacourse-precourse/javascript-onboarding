@@ -43,7 +43,7 @@ function checkValidPageNumber(left, right) {
 function multiplyNumberDigits(num) {
   let result = 1;
   const stringNum = String(num);
-  for (i = 0; i < stringNum.length; i++) {
+  for (let i = 0; i < stringNum.length; i++) {
     result *= +stringNum[i];
   }
 
@@ -53,7 +53,7 @@ function multiplyNumberDigits(num) {
 function sumNumberDigits(num) {
   let result = 0;
   const stringNum = String(num);
-  for (i = 0; i < stringNum.length; i++) {
+  for (let i = 0; i < stringNum.length; i++) {
     result += +stringNum[i];
   }
 

@@ -1,6 +1,6 @@
 function checkStringDuplication(str) {
   let beforeWord = '';
-  for (i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (beforeWord === str[i]) return true;
     beforeWord = str[i];
   }
@@ -10,7 +10,7 @@ function checkStringDuplication(str) {
 function getDuplicateIndex(str, startIndex) {
   const COMPARISON = str[startIndex];
   let endIndex = startIndex;
-  for (i = startIndex; i < str.length; i++) {
+  for (let i = startIndex; i < str.length; i++) {
     if (str[i] !== COMPARISON) break;
     endIndex = i;
   }
@@ -21,7 +21,7 @@ function problem2(cryptogram) {
   var answer;
 
   while (checkStringDuplication(cryptogram)) {
-    for (j = 0; j < cryptogram.length; j++) {
+    for (let j = 0; j < cryptogram.length; j++) {
       const [startIndex, endIndex] = getDuplicateIndex(cryptogram, j);
       if (startIndex != endIndex) {
         cryptogram =
