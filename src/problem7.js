@@ -49,7 +49,17 @@ const getVisitorsScore = (visitors, userFriends, visitorsScoreList) => {
 };
 
 function problem7(user, friends, visitors) {
-  var answer;
+  var answer = [];
+  let friendList = {};
+  let userFriends = [];
+  let score = {};
+
+  friendList = makeFriendList(friends);
+  userFriends = friendList[user];
+
+  score = getFriendsScore(user, friendList, score);
+  score = getVisitorsScore(visitors, userFriends, score);
+
   return answer;
 }
 
