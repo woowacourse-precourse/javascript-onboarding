@@ -18,9 +18,40 @@ function getFriendsArr(user, friends) {
   return user의_친구목록;
 }
 
+// 배열 2차원에서 1차원으로 반환 함수
+function Arr2Dto1D(arr_2d) {
+  let arr_1d = [];
+  arr_2d.forEach((ele) => {
+    arr_1d = [...arr_1d, ...ele];
+  });
+
+  return arr_1d;
+}
+
+// 겹치는 친구 목록 반환
+function findOvrlapUsers(user, user의_친구목록, friends) {
+  const overlapUser3D = user의_친구목록.map((친구ID) =>
+    friends.filter((friend) => {
+      if (friend.includes(user)) {
+        return false;
+      } else if (friend.includes(친구ID)) {
+        return true;
+      }
+    })
+  );
+
+  const overlapUser = Arr2Dto1D(Arr2Dto1D(overlapUser3D));
+  const 해당유저의친구삭제overlapUser = overlapUser.filter(
+    (id) => !user의_친구목록.includes(id)
+  );
+
+  return 해당유저의친구삭제overlapUser;
+}
+
 function problem7(user, friends, visitors) {
   var answer;
   const user의_친구목록 = getFriendsArr(user, friends);
+  const overlapUsers = findOvrlapUsers(user, user의_친구목록, friends);
 
   return answer;
 }
