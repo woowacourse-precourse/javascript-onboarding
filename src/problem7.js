@@ -53,6 +53,16 @@ function problem7(user, friends, visitors) {
     if (value === 0) score.delete(key);
   })
 
+  // 7. 후보를 점수가 높은 순서대로 최대 5명까지만 정한다. 
+  let temp = [...score.keys()];
+  if (temp.length > 5) {
+    for (let i = 0; i < 5; i++) {
+      answer.push(temp[i]);
+    }
+  } else {
+    answer = temp;
+  }
+
   return answer;
 }
 
