@@ -10,7 +10,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  
+
+}
+
+function plusPoint(scoreMap, friendName, point) {
+  if (scoreMap.has(friendName)) {
+      scoreMap.set(friendName, scoreMap.get(friendName) + point);
+  }
+  else {
+      scoreMap.set(friendName, point);
+  }
+  return scoreMap;
 }
 
 module.exports = problem7;
