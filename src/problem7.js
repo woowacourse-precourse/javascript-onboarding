@@ -36,6 +36,10 @@ function problem7(user, friends, visitors) {
             scores[visitors[i]] = 0;
         }
     }
+
+    // 4단계) 점수를 카운트 하기 전 미리 이름 순으로 정렬
+    const orderedScoresArray = Object.entries(scores).sort();
+    const orderedScoresObject = Object.fromEntries(orderedScoresArray);
 }
 
 module.exports = problem7;
