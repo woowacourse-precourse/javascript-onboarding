@@ -1,27 +1,29 @@
 function problem4(word) {
   let answer;
 
-  const arr = word.split("");
-  const dict = {};
+  const wordArr = word.split("");
+  const dictionary = {};
 
   let i = 97;
   let j = 122;
 
   while (i < 123) {
-    dict[String.fromCharCode(i)] = String.fromCharCode(j);
+    dictionary[String.fromCharCode(i)] = String.fromCharCode(j);
     i++;
     j--;
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    const lowerCase = arr[i].toLowerCase();
-    if (lowerCase in dict) {
-      const isUpperCase = arr[i] === arr[i].toUpperCase();
-      arr[i] = isUpperCase ? dict[lowerCase].toUpperCase() : dict[arr[i]];
+  for (let i = 0; i < wordArr.length; i++) {
+    const lowerCaseWord = wordArr[i].toLowerCase();
+    if (lowerCaseWord in dictionary) {
+      const isUpperCase = wordArr[i] === wordArr[i].toUpperCase();
+      wordArr[i] = isUpperCase
+        ? dictionary[lowerCaseWord].toUpperCase()
+        : dictionary[wordArr[i]];
     }
   }
 
-  answer = arr.join("");
+  answer = wordArr.join("");
 
   return answer;
 }
