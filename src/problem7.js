@@ -13,13 +13,13 @@ function problem7(user, friends, visitors) {
 
   for (i = 0; i < visitors.length; i += 1) {
     if (!map.has(visitors[i])) map.set(visitors[i], 1);
-    else if (map.get(visitors[i]) !== 0) map.set(visitors[i], map.get(visitors[i]) + 1);
+    else if (map.get(visitors[i])) map.set(visitors[i], map.get(visitors[i]) + 1);
   }
 
   result = [...map].sort((r1, r2) => r2[1] - r1[1]);
 
   for (i = 0; i < result.length; i += 1) {
-    if (result[i][1] !== 0) answer.push(result[i][0]);
+    if (result[i][1]) answer.push(result[i][0]);
   }
 
   return answer;
