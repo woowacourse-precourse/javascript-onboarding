@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  var answer;
   let friendsDictionary = {};
   for (const friend of friends) {
     if (friend[0] in friendsDictionary) {
@@ -67,6 +66,13 @@ function problem7(user, friends, visitors) {
     }
   })
 
+  let answer = [];
+  for (let i = 0; i < Math.min(scores.length, 5); i++) {
+    if (scores[i][0] < 0) {
+      break;
+    }
+    answer.push(scores[i][1])
+  }
   return answer;
 }
 
