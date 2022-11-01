@@ -15,12 +15,13 @@ function problem6(forms) {
     return -1;
   }
 
-  const nicknames = getNickname(forms);
+  const validForms = getValidForms(forms);
+  const nicknames = getNickname(validForms);
   const seqLettersDuplicated = findDuplicatedLetters(
     getEverySeqLetters(nicknames)
   );
   const nicknameIndexes = findIndexOfNicknames(nicknames, seqLettersDuplicated);
-  const emails = findEmails(forms, nicknameIndexes).sort();
+  const emails = findEmails(validForms, nicknameIndexes).sort();
 
   return emails;
 }
