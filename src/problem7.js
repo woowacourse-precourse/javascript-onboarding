@@ -17,16 +17,16 @@ const getFriendsRelation = (friends) => {
     const friendA = relation[0];
     const friendB = relation[1];
 
-    if (!friendsRelation[friendA]) {
-      friendsRelation[friendA] = [friendB];
-    } else {
+    if (existKey(friendsRelation, friendA)) {
       friendsRelation[friendA].push(friendB);
+    } else {
+      friendsRelation[friendA] = [friendB];
     }
 
-    if (!friendsRelation[friendB]) {
-      friendsRelation[friendB] = [friendA];
-    } else {
+    if (existKey(friendsRelation, friendB)) {
       friendsRelation[friendB].push(friendA);
+    } else {
+      friendsRelation[friendB] = [friendA];
     }
   });
 
@@ -35,10 +35,10 @@ const getFriendsRelation = (friends) => {
 
 const visitScore = (score, visitors) => {
   visitors.forEach((visitor) => {
-    if (!score[visitor]) {
-      score[visitor] = 1;
-    } else {
+    if (existKey(score, visitor)) {
       score[visitor] += 1;
+    } else {
+      score[visitor] = 1;
     }
   });
 
@@ -52,10 +52,10 @@ const mutualFriendScore = (user, friendsRelation, score) => {
     const mutualFriends = friendsRelation[friend];
 
     mutualFriends.forEach((mutualFriend) => {
-      if (!score[mutualFriend]) {
-        score[mutualFriend] = 10;
-      } else {
+      if (existKey(score, mutualFriend)) {
         score[mutualFriend] += 10;
+      } else {
+        score[mutualFriend] = 10;
       }
     });
   });
@@ -92,6 +92,11 @@ const filterTopFive = (user, sortedScore, friendsRelation) => {
   }
 
   return recommendationFriends;
+};
+
+const existKey = (obj, key) => {
+  if (Object.keys(obj).includes(key)) return true;
+  return false;
 };
 
 module.exports = problem7;
