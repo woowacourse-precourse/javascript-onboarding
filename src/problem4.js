@@ -12,6 +12,7 @@ const getAscii = (char) => {
   return char.charCodeAt(0);
 };
 const reverseCharacter = (char) => {
+  if (!isAlphabet(char)) return char;
   if (isUpperCase(char)) {
     return String.fromCharCode(getAscii("A") + getAscii("Z") - getAscii(char));
   } else {
@@ -21,9 +22,7 @@ const reverseCharacter = (char) => {
 const reverseAlphabet = (word) => {
   const wordArr = word.split("");
   wordArr.forEach((char, i) => {
-    if (isAlphabet(char)) {
-      wordArr[i] = reverseCharacter(char);
-    }
+    wordArr[i] = reverseCharacter(char);
   });
   return wordArr.join("");
 };
