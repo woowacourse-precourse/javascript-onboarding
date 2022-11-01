@@ -15,19 +15,19 @@ function problem1(pobi, crong) {
     pobiMax.push(multiple(num));
   });
 
+  pobiMax = Math.max(...pobiMax);
+
   crong.map((num) => {
     crongMax.push(sum(num));
     crongMax.push(multiple(num));
   });
 
+  crongMax = Math.max(...crongMax);
+
   // 포비와 크롱의 가장 큰 수 비교 후 승자 선택
-  // if (pobiMax > crongMax) {
-  //   answer = 1;
-  // } else if (pobiMax < crongMax) {
-  //   answer = 2;
-  // } else if (pobiMax === crongMax) {
-  //   answer = 0;
-  // }
+  if (pobiMax > crongMax) answer = 1;
+  if (pobiMax < crongMax) answer = 2;
+  if (pobiMax === crongMax) answer = 0;
 
   return answer;
 }
