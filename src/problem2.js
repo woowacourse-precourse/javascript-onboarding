@@ -5,22 +5,25 @@
 //입력값은 알파벳 소문자로만 이루어져있음
 //1<= 입력값.length <=1000
 
-function except(cryptogram=""){
-  
+function except(cryptogram = '') {
   //string인지 아닌지 확인
-  if(typeof(cryptogram) != "string"){return -1;}
+  if (typeof cryptogram != 'string') {
+    return -1;
+  }
 
   //length가 1미만 1000이상이면 -1
-  if(cryptogram.length < 1 ||
-    cryptogram.length > 1000){return -1;}
+  if (cryptogram.length < 1 || cryptogram.length > 1000) {
+    return -1;
+  }
 
-    //정규표현식 사용
-    //a-z가 아닌 것이 있으면 -1
-    let reg = /[^a-z]/g
-    if(cryptogram.match(reg) != null){return -1}
+  //정규표현식 사용
+  //a-z가 아닌 것이 있으면 -1
+  let reg = /[^a-z]/g;
+  if (cryptogram.match(reg) != null) {
+    return -1;
+  }
 
-    return 0;
-  
+  return 0;
 }
 
 function action(cryptogram = '') {
@@ -44,13 +47,15 @@ function action(cryptogram = '') {
 function problem2(cryptogram = '') {
   var answer;
 
-  let e = except(cryptogram)
+  let e = except(cryptogram);
 
-  if( e == -1){return -1;}
+  if (e == -1) {
+    return -1;
+  }
 
   let count = 1;
 
-  for (; count != 0 || cryptogram.length != 0; ) {
+  for (; count != 0 && cryptogram.length != 0; ) {
     [cryptogram, count] = action(cryptogram);
   }
 
@@ -58,6 +63,5 @@ function problem2(cryptogram = '') {
   answer = cryptogram;
   return answer;
 }
-
 
 module.exports = problem2;
