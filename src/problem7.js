@@ -1,6 +1,6 @@
-let hash = {};
-
 function problem7(user, friends, visitors) {
+  let hash = {};
+
   arrangeFriends();
   const alreadyFriendArr = findUserFriend(friends, user);
   delAlreadyFriend(alreadyFriendArr);
@@ -19,7 +19,7 @@ function problem7(user, friends, visitors) {
   });
 
   let answer = [];
-  const arrLength = sortable.length;
+  let arrLength = sortable.length;
   if (arrLength > 5) arrLength = 5;
   for (let idx = 0; idx < arrLength; idx++) {
     // 추천 점수가 0인 경우 추천하지 않음
@@ -28,9 +28,7 @@ function problem7(user, friends, visitors) {
 
   return answer;
 
-  // 유저목록 정리
   function arrangeFriends() {
-    // friends 배열
     friends.forEach((friend) => {
       friend.forEach((person) => {
         if (person !== user && hash[person] === undefined) {
@@ -38,11 +36,33 @@ function problem7(user, friends, visitors) {
         }
       });
     });
-    // visitors 배열
+
     visitors.forEach((visitors) => {
       if (hash[visitors] === undefined) {
         hash[visitors] = 0;
       }
+    });
+  }
+
+  function delAlreadyFriend(alreadyFriendArr) {
+    alreadyFriendArr.forEach((friend) => delete hash[friend]);
+  }
+
+  function findKnowTogether(friends, alreadyFriendArr) {
+    for (let alreadyFriend of alreadyFriendArr) {
+      friends.forEach((relation) => {
+        if (relation[0] === alreadyFriend) {
+          if (hash.hasOwnProperty(relation[1])) hash[relation[1]] += 10;
+        } else if (relation[1] === alreadyFriend) {
+          if (hash.hasOwnProperty(relation[0])) hash[relation[0]] += 10;
+        }
+      });
+    }
+  }
+
+  function findVisitorNum(visitors) {
+    visitors.forEach((visitor) => {
+      if (hash.hasOwnProperty(visitor)) hash[visitor] += 1;
     });
   }
 }
@@ -54,28 +74,6 @@ function findUserFriend(friends, user) {
     else if (relation[1] === user) foundUserFriend.push(relation[0]);
   });
   return foundUserFriend;
-}
-
-function delAlreadyFriend(alreadyFriendArr) {
-  alreadyFriendArr.forEach((friend) => delete hash[friend]);
-}
-
-function findKnowTogether(friends, alreadyFriendArr) {
-  for (let alreadyFriend of alreadyFriendArr) {
-    friends.forEach((relation) => {
-      if (relation[0] === alreadyFriend) {
-        if (hash.hasOwnProperty(relation[1])) hash[relation[1]] += 10;
-      } else if (relation[1] === alreadyFriend) {
-        if (hash.hasOwnProperty(relation[0])) hash[relation[0]] += 10;
-      }
-    });
-  }
-}
-
-function findVisitorNum(visitors) {
-  visitors.forEach((visitor) => {
-    if (hash.hasOwnProperty(visitor)) hash[visitor] += 1;
-  });
 }
 
 module.exports = problem7;
