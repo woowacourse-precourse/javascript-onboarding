@@ -4,8 +4,7 @@ function problem1(pobi, crong) {
   const scoresToCompare = [pobiScore, crongScore];
   const pobiError = isError(pobi);
   const crongError = isError(crong);
-  const errors = [pobiError, crongError];
-  const result = getResult(scoresToCompare, errors);
+  const result = getResult(scoresToCompare, pobiError, crongError);
 
   return result;
 }
@@ -51,16 +50,23 @@ function isError(person) {
   const leftPage = isLeftPageNumber(person);
   const pageOrdered = orderPageNumber(person);
 
-  if (
-    pageError === 0 &&
-    numberOfPages === 0 &&
-    leftPage === 0 &&
-    pageOrdered === 0
-  ) {
-    return 0;
+  if (pageError !== "Not Error") {
+    return pageError;
   }
 
-  return "error";
+  if (numberOfPages !== "Not Error") {
+    return numberOfPages;
+  }
+
+  if (leftPage !== "Not Error") {
+    return leftPage;
+  }
+
+  if (pageOrdered !== "Not Error") {
+    return pageOrdered;
+  }
+
+  return "Not Error";
 }
 
 function isPageError(person) {
@@ -68,55 +74,55 @@ function isPageError(person) {
   const LAST_PAGE = 400;
 
   if (person[0] <= FIRST_PAGE || person[1] >= LAST_PAGE) {
-    return "error";
+    return "페이지는 1쪽 이상 400쪽 이하 입니다.";
   }
 
-  return 0;
+  return "Not Error";
 }
 
 function countNumberOfPages(person) {
   if (person.length !== 2) {
-    return "error";
+    return "페이지 두 쪽을 선택해야 합니다.";
   }
 
-  return 0;
+  return "Not Error";
 }
 
 function isLeftPageNumber(person) {
   if (person[0] % 2 == 0) {
-    return "error";
+    return "왼쪽 페이지는 홀수이어야 합니다.";
   }
 
-  return 0;
+  return "Not Error";
 }
 
 function orderPageNumber(person) {
   if (person[1] !== person[0] + 1) {
-    return "error";
+    return "오른쪽 페이지는 왼쪽 페이지의 다음 숫자이어야 합니다.";
   }
 
-  return 0;
+  return "Not Error";
 }
 
-function getResult(score, error) {
+function getResult(score, pobi, crong) {
   const POBI_WiN = 1;
   const CRONG_WIN = 2;
   const TWO_THE_SAME = 0;
   const EXCEPTION = -1;
 
-  if (error[0] === 0 && error[1] === 0) {
-    if (score[0] > score[1]) {
-      return POBI_WiN;
-    }
-    if (score[0] === score[1]) {
-      return TWO_THE_SAME;
-    }
-    if (score[0] < score[1]) {
-      return CRONG_WIN;
-    }
+  if (pobi !== "Not Error" || crong !== "Not Error") {
+    return EXCEPTION;
   }
 
-  return EXCEPTION;
+  if (score[0] > score[1]) {
+    return POBI_WiN;
+  }
+  if (score[0] === score[1]) {
+    return TWO_THE_SAME;
+  }
+  if (score[0] < score[1]) {
+    return CRONG_WIN;
+  }
 }
 
 module.exports = problem1;
