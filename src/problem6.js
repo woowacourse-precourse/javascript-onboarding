@@ -43,4 +43,15 @@ function findSameNickname(infoListObj) {
   }
 }
 
+function findNicknameDuplicate(nickname, nicknameList) {
+  // 같은 글자가 연속적으로 포함되는 닉네임 list를 찾는 함수
+  const duplicateNickname = [];
+  nicknameList.forEach((nickname) => {
+    if (nickname.includes(nicknameSlice)) {
+      duplicateNickname.push(nickname);
+    }
+  });
+  return duplicateNickname.length === 1 ? [] : duplicateNickname;
+}
+
 module.exports = problem6;
