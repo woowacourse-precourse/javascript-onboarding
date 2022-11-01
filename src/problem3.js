@@ -20,8 +20,9 @@ const getNumbersUsedInGame = (number) => {
 
 const problem3 = (number) => {
   const numbersUsedInGame = getNumbersUsedInGame(number);
+  const clapCount = countClap(numbersUsedInGame);
 
-  return countClap(numbersUsedInGame);
+  return clapCount;
 };
 
 module.exports = problem3;
