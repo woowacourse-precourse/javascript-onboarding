@@ -11,6 +11,7 @@ function problem3(number) {
 
   for (let i = 1; i <= number; i++) {
     let cnt = clapCalculator(i);
+    answer += cnt;
   }
 
   return answer;
