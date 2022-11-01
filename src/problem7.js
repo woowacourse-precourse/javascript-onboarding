@@ -5,7 +5,8 @@
  * @param {string[]} visitors
  */
 const problem7 = (user, friends, visitors) => {
-  var answer;
+  const answer = [];
+
   return answer;
 };
 
