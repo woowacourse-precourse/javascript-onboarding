@@ -21,6 +21,7 @@ function problem2(cryptogram) {
     if (chStack.length === cryptogram.length) isChange = 0;
     cryptogram = [...chStack];
   }
+  return cryptogram.join("");
 }
 
 module.exports = problem2;
