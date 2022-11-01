@@ -3,9 +3,11 @@ function problem7(user, friends, visitors) {
   
   // 1. 친구 관계 객체 생성
   let friendsList = {}
+  // user는 사전에 만들어둠
+  friendsList[user] = [];
   for (let i=0; i<friends.length; i++){
-    friendsList[friends[i][0]] ? friendsList[friends[i][0]].push(friends[i][1]) : friendsList[friends[i][0]] = [friends[i][1]];
-    friendsList[friends[i][1]] ? friendsList[friends[i][1]].push(friends[i][0]) : friendsList[friends[i][1]] = [friends[i][0]];
+    friendsList[friends[i][0]] !== undefined ? friendsList[friends[i][0]].push(friends[i][1]) : friendsList[friends[i][0]] = [friends[i][1]];
+    friendsList[friends[i][1]] !== undefined ? friendsList[friends[i][1]].push(friends[i][0]) : friendsList[friends[i][1]] = [friends[i][0]];
   }
 
   // 2. 유저별 점수를 담은 객체 생성 (이미 친구인 경우 -1)  e.g. [ ["id",0], ... ]
@@ -30,8 +32,9 @@ function problem7(user, friends, visitors) {
   }
 
   // 4. 함께 아는 친구 점수 계산
-  for(let i=0;i<friendsListKeys.length;i++){
-    let onefriendsList = friendsList[friendsListKeys[i]];
+  let alreadyFriendList = friendsList[user];
+  for(let i=0;i<alreadyFriendList.length;i++){
+    let onefriendsList = friendsList[alreadyFriendList[i]];
     for(let j=0;j<onefriendsList.length;j++){
       if(scores[onefriendsList[j]] !== -1 && onefriendsList[j] !== user){
         scores[onefriendsList[j]] += 10
