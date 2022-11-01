@@ -27,6 +27,18 @@ function problem7(user, friends, visitors) {
         });
         return flag;
     }
+
+	// 2. 사용자명 추출 기능
+	function addUserNames() {
+        friends.forEach(function (frd) {
+            score.set(frd[0], 0);
+            score.set(frd[1], 0);
+        });
+        visitors.forEach(function (vst) {
+            score.set(vst, 0);
+            score.set(vst, 0);
+        });
+    }
 	return answer;
 }
 
