@@ -73,7 +73,8 @@ function problem7(user, friends, visitors) {
   resultSorted.slice(0, 4).forEach((nameScore) => {
     result.push(nameScore[0]);
   });
-  answer = result;
+
+  answer = result.sort();
 
   return answer;
 }
