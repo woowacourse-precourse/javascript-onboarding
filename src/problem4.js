@@ -14,13 +14,16 @@ function problem4(word) {
   }
 
   const treeFrog = word.split('').map(el => {
-    if(el !== " ") el = findABC(el.toUpperCase());
+    if(el === " ") el = " "; 
+    else if(el === el.toUpperCase()) el = findABC(el);
+    else {
+      el = findABC(el.toUpperCase());
+      el = el.toLowerCase();
+    } 
     return el;
   }).join('');
-  console.log(treeFrog);
 
   return treeFrog;
 }
-problem4("I love you");
 
 module.exports = problem4;
