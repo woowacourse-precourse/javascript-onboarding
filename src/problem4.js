@@ -8,6 +8,7 @@ function problem4(word) {
   return answer;
 }
 
+// 개구리 문자 변환
 function changeFrogChar(c){
   if(! isAlpha(c)){
     return c
