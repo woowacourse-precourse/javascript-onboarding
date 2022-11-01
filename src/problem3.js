@@ -12,7 +12,6 @@ function problem3(number) {
 
 function solution(num) {
   var count = 0;
-  //var digit = 1;
   for (var i=1; i<=num; i++) {
     if (i%10==3 || i%10==6 || i%10==9) {
       count ++;
