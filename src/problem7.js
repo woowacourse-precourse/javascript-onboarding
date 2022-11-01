@@ -4,7 +4,6 @@ function problem7(user, friends, visitors) {
 
   const userFriendsList = friendsOb[user];
   delete friendsOb[user];
-
   userFriendsList.map((user) => {
     delete friendsOb[user];
   });
@@ -31,12 +30,8 @@ function problem7(user, friends, visitors) {
   });
 
   const answer = Object.keys(scoreOb);
-  answer.sort((a, b) => {
-    if (scoreOb[a] === scoreOb[b]) {
-      return a < b ? -1 : a > b ? 1 : 0;
-    }
-    return scoreOb[b] - scoreOb[a];
-  });
+  answer.sort();
+  answer.sort((a, b) => scoreOb[b] - scoreOb[a]);
 
   return answer.splice(0, 5);
 }
