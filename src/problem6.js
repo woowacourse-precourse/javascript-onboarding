@@ -2,7 +2,13 @@ function problem6(forms) {
   var answer = [];
   var nick = forms.map(([_, id]) => id);
   var doubleNick = checkDouble(nick);
+
   // 이메일 오름차순 및 중복 제거
+  forms.forEach(([email, name]) => {
+    if (checkDouble.some((v) => names.includes(v))) {
+      answer.push(email);
+    }
+  });
 
   return answer;
 }
