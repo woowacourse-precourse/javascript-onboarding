@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  const mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
   const friendsArray = mergeArray(friends).filter((element) => element !== user)
   const memberSet = new Set(friendsArray.concat(visitors));
   const memberList = [...memberSet];
@@ -38,9 +37,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  function filterScore (array, number) {return array.filter(innerArray => innerArray[1] !== number);}
   const filteredScore = filterScore(scoreBoard, 0);
-
   const rank = filteredScore.sort(function(a, b) {
     if (a[1] ===b[1]) {
       const x = a[0];
@@ -57,6 +54,9 @@ function problem7(user, friends, visitors) {
   }
 
 module.exports = problem7;
+
+const mergeArray = (array) => array.reduce(function (acc, cur) {return acc.concat(cur);});
+function filterScore (array, number) {return array.filter(innerArray => innerArray[1] !== number);}
 
 //problem7 기능목록
 //[x]모든 사용자의 닉네임을 저장한 배열을 만든다.
