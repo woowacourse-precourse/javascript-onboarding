@@ -10,7 +10,7 @@ function errorTestPass(leftPage, rightPage) {
 }
 
 function rangeTest(page) {
-  return page >= 1 && page <= 400;
+  return page > 1 && page < 400;
 }
 
 function pageTest(leftPage, rightPage) {
