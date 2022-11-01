@@ -9,7 +9,6 @@ function solution(pobi, crong) {
   }
   let pobiNum = biggerNum(pobi);
   let crongNum = biggerNum(crong);
-  console.log("FINAL RESULT: ", pobiNum, crongNum)
   if (pobiNum == crongNum) {
     return 0;
   } else if (pobiNum > crongNum) {
@@ -33,15 +32,8 @@ function biggerNum(array) {
   const num5 = tens(array[1]);
   const num6 = hundreds(array[1]);
   firstNum = compareNum(num1+num2+num3, multiplication(array[0],num1,num2,num3));
-  console.log("firstNum!", firstNum);
-  console.log("add all ", num1+num2+num3);
-  console.log("multi all",  multiplication(array[0],num1,num2,num3));
   secondNum = compareNum(num4+num5+num6, multiplication(array[1],num4,num5,num6));
-  console.log("2222Num!", secondNum);
-  console.log("add all ", num4+num5+num6);
-  console.log("multi all",  multiplication(array[1],num4,num5,num6));
   result = compareNum(firstNum, secondNum);
-  console.log("resstult!", result);
   return result;
 }
 
