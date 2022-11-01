@@ -7,12 +7,12 @@ function problem1(pobi, crong) {
     pobiPages[1] !== pobiPages[0] + 1 ||
     crongPages[1] !== crongPages[0] + 1
   ) {
-    console.log(-1);
+    answer = -1;
   } else {
-    let pobiLeftPageDigits = pobiPages[0].toSting().split("");
+    let pobiLeftPageDigits = pobiPages[0].toString().split("").map(Number);
     let pobiLeftSum = 0;
     let pobiLeftMultiplication = 1;
-    let pobiRightPageDigits = pobiPages[1].toSting().split("");
+    let pobiRightPageDigits = pobiPages[1].toString().split("").map(Number);
     let pobiRightSum = 0;
     let pobiRightMultiplication = 1;
 
@@ -39,10 +39,10 @@ function problem1(pobi, crong) {
       }
     }
 
-    let crongLeftPageDigits = crongPages[0].toSting().split("");
+    let crongLeftPageDigits = crongPages[0].toString().split("").map(Number);
     let crongLeftSum = 0;
     let crongLeftMultiplication = 1;
-    let crongRightPageDigits = crongPages[1].toSting().split("");
+    let crongRightPageDigits = crongPages[1].toString().split("").map(Number);
     let crongRightSum = 0;
     let crongRightMultiplication = 1;
 
