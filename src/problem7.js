@@ -1,11 +1,8 @@
 function isValidUser(user) {
-  if (typeof user !== 'string') {
-    return false;
-  }
-  if (user.length < 1 || user.length > 30) {
-    return false;
-  }
-  return true;
+  return (
+    typeof user !== 'string' ||
+    (user.length < 1 || user.length > 30)
+  ) ? false : true;
 }
 
 function isValidFriendsElement(friends) {
@@ -15,37 +12,30 @@ function isValidFriendsElement(friends) {
     }
     const idA = friends[i][0];
     const idB = friends[i][1];
-    if (idA.length < 1 || idA.length > 30) {
-      return false;
-    }
-    if (idB.length < 1 || idB.length > 30) {
+    if (
+      (idA.length < 1 || idA.length > 30) ||
+      (idB.length < 1 || idB.length > 30)
+    ) {
       return false;
     }
   }
+
   return true;
 }
 
 function isValidFriends(friends) {
-  if (typeof friends !== 'object') {
-    return false;
-  }
-  if (friends.length < 1 || friends.length > 10000) {
-    return false;
-  }
-  if (!isValidFriendsElement(friends)) {
-    return false;
-  }
-  return true;
+  return (
+    typeof friends !== 'object' ||
+    (friends.length < 1 || friends.length > 10000) ||
+    (!isValidFriendsElement(friends))
+  ) ? false : true;
 }
 
 function isValidVisitors(visitors) {
-  if (typeof visitors !== 'object') {
-    return false;
-  }
-  if (visitors.length < 0 || visitors > 10000) {
-    return false;
-  }
-  return true;
+  return (
+    typeof visitors !== 'object' ||
+    (visitors.length < 0 || visitors > 10000)
+  ) ? false : true;
 }
 
 function isObjectKeys(friendList, friend) {
@@ -69,6 +59,7 @@ function getFriendList(user, friends) {
   if (!Object.keys(friendList).includes(user)) {
     friendList[user] = [];
   }
+
   return friendList;
 }
 
@@ -87,6 +78,7 @@ function getFriendRecommandScore(friendList, user) {
     recommandScore[friendListKey[i]] = friendList[friendListKey[i]].filter(
       x => friendOfUser.includes(x)).length * 10;
   }
+
   return recommandScore;
 }
 
@@ -100,6 +92,7 @@ function getVisitorRecommandScore(recommandScore, userFriendList, visitors) {
     }
     recommandScore[visitors[i]]++;
   }
+
   return recommandScore;
 }
 
@@ -116,6 +109,7 @@ function getSameValueArr(value, recommandScore) {
       sameValueArr.push(recommandScoreKey[i]);
     }
   }
+
   return sameValueArr.sort();
 }
 
@@ -127,7 +121,8 @@ function sortResult(recommandScore) {
   for (let value of recommandScoreValue.values()) {
     resultArr.push(...getSameValueArr(value, recommandScore));
   }
-  return resultArr;
+
+  return (resultArr.length > 5) ? resultArr.splice(0, 5) : resultArr;
 }
 
 function problem7(user, friends, visitors) {
@@ -136,11 +131,8 @@ function problem7(user, friends, visitors) {
   }
   const friendList = getFriendList(user, friends);
   const recommandScore = getRecommandScore(user, friendList, visitors);
+
   return sortResult(recommandScore);
 }
 
 module.exports = problem7;
-
-// console.log(problem7("mrko", [["donut", "jun"], ["donut", "andole"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
-
-// console.log(problem7("mrko", [["donut", "jun"]], ["bedi", "bedi", "donut", "bedi", "shakevan"]));
