@@ -33,7 +33,7 @@ function getOppositeAlphabet(word) {
     if (codeNumber >= 65 && codeNumber <= 90) {
         return alphabet[word.toLowerCase()].toUpperCase();
     }
-    if (codeNumber >= 97 && codeNumber <= 121) {
+    if (codeNumber >= 97 && codeNumber <= 122) {
         return alphabet[word];
     }
 
