@@ -1,5 +1,4 @@
 function problem2(cryptogram) {
-  var answer;
   let isRepeat = false
   let char_arr = [...cryptogram]
   let next_arr = []
@@ -29,7 +28,7 @@ function problem2(cryptogram) {
       prevChar = element
     });
 
-    //마지막 문자 추가 후 체크
+    //마지막 문자 체크 후 추가
     if(! nowRepeat){
       next_arr.push(char_arr[char_arr.length -1])
     }
