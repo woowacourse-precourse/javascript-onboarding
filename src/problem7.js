@@ -10,13 +10,13 @@ function problem7(user, friends, visitors) {
     }
   } 
   peple = peple.concat(visitors)  
-  //console.log("사람수", peple)
+  console.log("사람수", peple)
 
 
   for (i = 0;  i < peple.length ; i ++) {
     people[peple[i]] = score
   }
-  //console.log ("사람 딕셔너리", people)
+  console.log ("사람 딕셔너리", people)
   //사람 딕셔너리 만들기(0으로 초기화)
 
   let friend = {}
@@ -24,7 +24,7 @@ function problem7(user, friends, visitors) {
   for (i = 0;  i < peple.length ; i ++) {
     friend[peple[i]] = []
   }
-  //console.log("친구 딕셔너리", friend)
+  console.log("친구 딕셔너리", friend)
   //친구 딕셔너리 만들기([]으로 초가화)
 
   for ( i = 0 ; i <friends.length ; i ++) {
@@ -32,47 +32,57 @@ function problem7(user, friends, visitors) {
     friend[curr[0]].push(curr[1])
     friend[curr[1]].push(curr[0])
   }
-  //console.log("친구목록",friend)
+  console.log("친구목록",friend)
   //친구 목록 채우기
 
   let overfriends = []
-  let userfriend = friend[user]
-  for ( i = 0 ; i < userfriend.length ; i++) {
-    let friend_2 = friend[userfriend[i]]
-    overfriends = overfriends.concat(friend_2) 
+  
+  if (friend[user] != undefined) {
+    let userfriend = friend[user]
+    for ( i = 0 ; i < userfriend.length ; i++) {
+      let friend_2 = friend[userfriend[i]]
+      overfriends = overfriends.concat(friend_2) 
+      }
+  
+    console.log("2차 친구 목록",overfriends)
+
+    let setfriends = new Set(overfriends);
+
+    overfriends = [...setfriends]
+
+    console.log("중복제거 확인", overfriends)
+    //유저 2차친구 목록 만들기 (중복제외)
+
+    for ( i = 0 ; i < overfriends.length ; i++) {
+      people[overfriends[i]] += 10
     }
-  //console.log("2차 친구 목록",overfriends)
+    //추천점수 넣기(+10)
+    for ( i = 0 ; i < visitors.length ; i++) {
+      people[visitors[i]] += 1
+    }
 
-  let setfriends = new Set(overfriends);
+    console.log("점수확인",people)
+    //방문점수 넣기(+1)
 
-  overfriends = [...setfriends]
-
-  //console.log("중복제거 확인", overfriends)
-  //유저 2차친구 목록 만들기 (중복제외)
-
-  for ( i = 0 ; i < overfriends.length ; i++) {
-    people[overfriends[i]] += 10
+    for ( i = 0 ; i < userfriend.length ; i++) {
+      people[userfriend[i]] = 0
+    }
+  } else { 
+    for ( i = 0 ; i < visitors.length ; i++) {
+      people[visitors[i]] += 1
+    }
   }
-  //추천점수 넣기(+10)
-  for ( i = 0 ; i < visitors.length ; i++) {
-    people[visitors[i]] += 1
-  }
-
-  //console.log("점수확인",people)
-  //방문점수 넣기(+1)
-
-  for ( i = 0 ; i < userfriend.length ; i++) {
-    people[userfriend[i]] = 0
-  }
+    console.log("점수확인",people)
+    //방문점수 넣기(+1)}
 
   people[user] = 0
 
-  //console.log("최종점수확인",people)
+  console.log("최종점수확인",people)
   //유저 1차지인 삭제
 
   let last_people = Object.entries(people)
 
-  //console.log("배열로 바꾸기",last_people)
+  console.log("배열로 바꾸기",last_people)
 
   last_people.sort(
     (a, b) => {
@@ -89,19 +99,24 @@ function problem7(user, friends, visitors) {
     }
   })
 
-  //console.log("점수별 정렬", last_people)
+  console.log("점수별 정렬", last_people)
 
   answer = []
 
-  for (i = 0 ; i < last_people.length ; i++) {
+  for (i = 0 ; i < 5 ; i++) {
     if (last_people[i][1] < 1) {
       break
     }
     answer.push(last_people[i][0])
   }
   //점수별 정렬 && 동일점수 이름별 정렬
+  
+  //상위 5위까지만 도출
+
   return answer
 }
+
+
 
 
 module.exports = problem7;
