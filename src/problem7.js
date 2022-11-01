@@ -24,6 +24,18 @@ function problem7(user, friends, visitors) {
       friends.splice(friends.indexOf(friend),1);
     }
   }
+  
+  var socreMap = new Map();
+  for(var visitor of visitors){
+    if(!userFriends.includes(visitor)){
+      if(!socreMap.has(visitor)){
+        socreMap.set(visitor,1);
+      }else{
+        socreMap.set(visitor, socreMap.get(visitor)+1);
+      }
+    }
+  }
+
 }
 
 module.exports = problem7;
