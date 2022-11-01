@@ -3,7 +3,7 @@ const problem6 = (forms) => {
   const usersInfo = listToDictionary(forms);
   const nicknameParts = parseNames(usersInfo);
   answer = overlapNameFind(usersInfo, nicknameParts).sort();
-  return answer;
+  return [...new Set(answer)];
 };
 
 const listToDictionary = (forms) => {
@@ -13,7 +13,7 @@ const listToDictionary = (forms) => {
   });
   return users;
 };
-
+// 제이엠.substring(0,2) 제이 : 2, 이엠 :1 이슨 : 1
 const parseNames = (usersInfo) => {
   let parseName = {};
   Object.values(usersInfo).map((nickname) => {
@@ -29,7 +29,6 @@ const parseNames = (usersInfo) => {
 
 const overlapNameFind = (usersInfo, nicknameParts) => {
   emailList = [];
-
   Object.values(usersInfo).map((nickname, idx) => {
     for (let index = 0; index < nickname.length - 1; index++) {
       nicknamePart = nickname.substring(index, index + 2);
