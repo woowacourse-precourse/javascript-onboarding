@@ -37,4 +37,13 @@ function exchangeTo5000(money) {
   return cnt;
 }
 
+function exchangeTo1000(money) {
+  const TENTHOUSAND = 1000;
+  while (money >= TENTHOUSAND) {
+    cnt += 1;
+    money -= TENTHOUSAND;
+  }
+  return cnt;
+}
+
 module.exports = problem5;
