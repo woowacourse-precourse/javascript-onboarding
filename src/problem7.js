@@ -1,5 +1,5 @@
 function problem7(user, friends, visitors) {
-  let answer;
+  let answer = [];
   const friendsDict = {};
   const score = {};
 
@@ -35,20 +35,17 @@ function problem7(user, friends, visitors) {
     }
   }
 
+  for (const friend of visitors) {
+    if (!friendsDict[user].includes(friend)) {
+      if (friend in score) {
+        score[friend] += 1;
+      } else {
+        score[friend] = 1;
+      }
+    }
+  }
+
   return answer;
 }
-
-problem7(
-  "mrko",
-  [
-    ["donut", "andole"],
-    ["donut", "jun"],
-    ["donut", "mrko"],
-    ["shakevan", "andole"],
-    ["shakevan", "jun"],
-    ["shakevan", "mrko"],
-  ],
-  ["bedi", "bedi", "donut", "bedi", "shakevan"]
-);
 
 module.exports = problem7;
