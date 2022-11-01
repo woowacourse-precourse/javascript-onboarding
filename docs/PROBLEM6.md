@@ -1,4 +1,4 @@
-## 🚀 기능 요구 사항
+<!-- ## 🚀 기능 요구 사항
 
 우아한테크코스에서는 교육생(이하 크루) 간 소통 시 닉네임을 사용한다. 간혹 비슷한 닉네임을 정하는 경우가 있는데, 이러할 경우 소통할 때 혼란을 불러일으킬 수 있다.
 
@@ -20,4 +20,13 @@
 
 | forms | result |
 | --- | --- |
-| [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+| [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] | -->
+
+# 프리코스 1주차 과제 미션
+
+- 6번 문제 미션입니다.
+
+## 기능 목록
+
+- [ ] 닉네임 중복을 확인하는 함수
+- [ ] 중복인 닉네임에 해당하는 이메일 오름차순으로 정렬하는 함수
