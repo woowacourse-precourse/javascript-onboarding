@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 🔨 기능 목록
+
+- 닉네임에서 두 글자씩 추출해서 배열에 저장
+- 배열에서 두 개 이상인 문자열을 저장
+- 중복된 문자열을 포함하는 user의 이메일만 추출
+- 중복 원소를 제거하는 기능
+- 오름차순 정렬
