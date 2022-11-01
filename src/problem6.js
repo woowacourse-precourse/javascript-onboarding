@@ -35,8 +35,22 @@ function splitName(name) {
   return [...new Set(wordList)];
 }
 
+function checkDuplicate(form, map, duplicated) {
+  splitName(form[1]).forEach((word) => {
+    if (map.has(word)) {
+      duplicated.push(form[0]);
+      duplicated.push(map.get(word));
+    } else map.set(word, form[0]);
+  });
+}
+
 function problem6(forms) {
   if (isException(forms)) return;
+  const map = new Map();
+  const duplicated = [];
+
+  forms.forEach((form) => checkDuplicate(form, map, duplicated));
+  return [...new Set(duplicated)].sort();
 }
 
 module.exports = problem6;
