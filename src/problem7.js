@@ -1,6 +1,5 @@
 function problem7(user, friends, visitors) {
   let friendScoreList = new Map();
-  
 
   for (let friend of friends) {
     if (!friend.includes(user)) {
@@ -11,6 +10,17 @@ function problem7(user, friends, visitors) {
       for (let name of friend) {
         friendScoreList.set(name, POINT.USER_FRIEND);
       }
+    }
+  }
+
+  for (let visitor of visitors) {
+    if (!friendScoreList.has(visitor)) {
+      friendScoreList.set(visitor, POINT.TIMELINE_VISITOR);
+    } else if (friendScoreList.get(visitor) !== POINT.USER_FRIEND) {
+      friendScoreList.set(
+        visitor,
+        friendScoreList.get(visitor) + POINT.TIMELINE_VISITOR
+      );
     }
   }
 }
