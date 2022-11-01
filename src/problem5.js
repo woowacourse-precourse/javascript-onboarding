@@ -31,21 +31,15 @@ function countByBillUnit(currentMoney) {
   const listLength = BILL_UNIT_LIST.length;
   let billCountList = new Array(listLength).fill(0);
 
-  for (
-    let currentUnitIndex = 0;
-    currentUnitIndex < listLength;
-    currentUnitIndex++
-  ) {
-    const theNumbeOfBill = Math.floor(
-      currentMoney / BILL_UNIT_LIST[currentUnitIndex]
-    );
+  BILL_UNIT_LIST.forEach((bill, index) => {
+    const theNumbeOfBill = Math.floor(currentMoney / bill);
 
     if (theNumbeOfBill >= MINIMUM_BILL_NUMBER) {
-      billCountList[currentUnitIndex] += theNumbeOfBill;
+      billCountList[index] += theNumbeOfBill;
 
-      currentMoney -= theNumbeOfBill * BILL_UNIT_LIST[currentUnitIndex];
+      currentMoney -= theNumbeOfBill * bill;
     }
-  }
+  });
 
   return billCountList;
 }
