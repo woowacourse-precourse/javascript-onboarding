@@ -1,3 +1,11 @@
+function pipe(...funcs) {
+  return (v) => {
+    return funcs.reduce((res, func) => {
+      return func(res);
+    }, v);
+  };
+}
+
 /**
  * @param {string[][]} forms
  * @returns {string[]}
