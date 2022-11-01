@@ -1,34 +1,58 @@
 function problem7(user, friends, visitors) {
-	function Friend(friendName) {
+	function Friend(friendName, isFriend) {
 		this.friendName = friendName;
 		this.score = 0;
 		this.visitCnt = 0;
 		this.knowingCnt = 0;
-		this.isFriend = false;
+		this.isFriend = isFriend;
 		this.calScore = calScore;
 	}
 	function calScore() {
 		this.score = visitCnt + knowingCnt * 10;
 	}
 	let answer;
-	let FriendList = [];
+	let friendList = [];
+
 	addFriends();
+	calKnowingFriends();
 
 	function addFriends() {
 		friends.map((ref) => {
-			addFriend(ref[0]);
-			addFriend(ref[1]);
+			let isFriend = false;
+			if (ref[0] == user || ref[1] == user) {
+				// user와 친구
+				isFriend = true;
+			}
+			addFriend(ref[0], isFriend);
+			addFriend(ref[1], isFriend);
 		});
-		visitors.map((ref) => addFriend(ref));
+		visitors.map((ref) => addFriend(ref, false));
 	}
 
-	function addFriend(arr) {
+	function addFriend(friendName, isFriend) {
 		let count = 0;
-		FriendList.forEach((friend) => {
-			if (friend.friendName == arr) count++;
+		let where = 0;
+		friendList.forEach((friend, index) => {
+			if (friend.friendName == friendName) {
+				count++;
+				where = index;
+			}
 		});
-		count == 0 ? FriendList.push(new Friend(arr)) : null;
+		if (count == 0) {
+			friendList.push(new Friend(friendName, isFriend));
+		} else if (isFriend == true) {
+			friendList[where].isFriend = true;
+		}
 	}
+
+	function calKnowingFriends() {
+		let friendTogether = [];
+		friendList.forEach((friend) => {
+			if (friend.friendName != user && friend.isFriend)
+				friendTogether.push(friend.friendName);
+		});
+	}
+
 	return answer;
 }
 
