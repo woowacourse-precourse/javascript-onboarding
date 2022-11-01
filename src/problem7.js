@@ -45,7 +45,7 @@ function problem7(user, friends, visitors) {
           }else{
             socreMap.set(friend[1], socreMap.get(friend[1])+10);
           }
-        }else{ //뒤에[1] uFriend
+        }else{
           if(!socreMap.has(friend[0])){
             socreMap.set(friend[0],10);
           }else{
@@ -54,6 +54,10 @@ function problem7(user, friends, visitors) {
         }
       }
     }
+  }
+  
+  for (var friend of userFriends){ 
+    socreMap.delete(friend);
   }
 }
 
