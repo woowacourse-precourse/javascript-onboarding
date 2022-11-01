@@ -45,7 +45,4 @@ function problem1(pobi, crong) {
   return answer;
 }
 
-module.exports =problem1;
-
-
-
+module.exports = problem1;
