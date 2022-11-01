@@ -13,6 +13,15 @@ function problem1(pobi, crong) {
     return num1 + 1 === num2 ? true : false;
   };
 
+  // 더하기
+  const Add = (number) => {
+    return number
+      .toString()
+      .split("")
+      .map((num) => parseInt(num))
+      .reduce((p, c) => p + c, 0);
+  };
+
   if (!Exception(pobi[0], pobi[1]) || !Exception(crong[0], crong[1])) return -1;
 
   return answer;
