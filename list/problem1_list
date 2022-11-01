@@ -1,0 +1,6 @@
+* findLargest(arr) 함수
+(어느 숫자의 각 자리 숫자를 모두 더한 값과 곱한 값 중에 제일 큰 숫자를 반환하는 함수)
+- arr의 각 숫자의 각 자리 수를 더한 값과 곱한 값을 구하는 while loop로 나오는 모든 값을 compare 배열에 push하고, sort로 가장 큰 수를 구해서 반환
+* problem1 함수
+제한사항: pobi, crong 길이, 페이지수 확인, pobi, crong의 두 숫자가 연속적인 수인지 확인
+- if 조건문으로 pobi, crong의 값을 비교해 결과에 따라 다른 값을 반환
