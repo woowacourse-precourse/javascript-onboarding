@@ -1,46 +1,48 @@
 function problem7(user, friends, visitors) {
   var answer;
-  const usersFriend = getUsersFriend(user, friends);
-  const friendsList = FriendsOfFriends(usersFriend, friends, user);
-  const friendsScore = getScores(friendsList, 10);
-  const visitorsScore = getScores(visitors, 1);
-  const friendsAndVistors = combineFriendsVistors(friendsScore, visitorsScore);
-  const recommendation = recommendationList(friendsAndVistors);
-  answer = checkUserFriendsInResults(usersFriend, recommendation);
+  const FRIEND_SCORE = 10;
+  const VISTOR_SCORE = 1;
+  const userFriends = getUserFriend(user, friends);
+  const friendOfFriends = friendOfFriend(userFriends, friends, user);
+  const friendScores = getScore(friendOfFriends, FRIEND_SCORE);
+  const vistorScores = getScore(visitors, VISTOR_SCORE);
+  const friendAndVistors = combineFriendVistor(friendScores, vistorScores);
+  const recommendations = recommendationList(friendAndVistors);
+  answer = checkUserFriendsInList(userFriends, recommendations);
   return answer;
 }
 
-function getUsersFriend(user, friends) {
-  const userFriend = [];
+function getUserFriend(user, friends) {
+  const results = [];
   for (let i = 0; i < friends.length; i++) {
-    if (friends[i][0] === user) userFriend.push(friends[i][1]);
-    if (friends[i][1] === user) userFriend.push(friends[i][0]);
+    if (friends[i][0] === user) results.push(friends[i][1]);
+    if (friends[i][1] === user) results.push(friends[i][0]);
   }
-  return userFriend;
+  return results;
 }
 
-function FriendsOfFriends(userFriends, friends, user) {
-  const scores = [];
+function friendOfFriend(userFriends, friends, user) {
+  const results = [];
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < userFriends.length; j++) {
       if (friends[i][0] === userFriends[j] && friends[i][1] !== user)
-        scores.push(friends[i][1]);
+        results.push(friends[i][1]);
       if (friends[i][1] === userFriends[j] && friends[i][0] !== user)
-        scores.push(friends[i][0]);
+        results.push(friends[i][0]);
     }
   }
-  return scores;
+  return results;
 }
 
-function getScores(array, score) {
-  const Lists = Array.from(new Set(array));
+function getScore(lists, score) {
+  const onlyLists = Array.from(new Set(lists));
   const results = [];
-  for (let i = 0; i < Lists.length; i++) {
-    results.push([Lists[i], 0]);
+  for (let i = 0; i < onlyLists.length; i++) {
+    results.push([onlyLists[i], 0]);
   }
-  for (let i = 0; i < Lists.length; i++) {
-    for (let j = 0; j < array.length; j++) {
-      if (Lists[i] === array[j]) {
+  for (let i = 0; i < onlyLists.length; i++) {
+    for (let j = 0; j < lists.length; j++) {
+      if (onlyLists[i] === lists[j]) {
         results[i][1] += score;
       }
     }
@@ -48,49 +50,49 @@ function getScores(array, score) {
   return results;
 }
 
-function combineFriendsVistors(friends, visitors) {
+function combineFriendVistor(friends, visitors) {
   const results = [];
   results.push(...friends, ...visitors);
   return sortingScores(results);
 }
 
-function sortingScores(arr) {
-  for (let i = 1; i < arr.length; i++) {
+function sortingScores(lists) {
+  for (let i = 1; i < lists.length; i++) {
     for (let j = i; j > 0; j--) {
-      if (arr[j][1] === arr[j - 1][1]) {
-        const sorted = sortingNames([arr[j - 1][0], arr[j][0]]);
-        arr[j - 1][0] = sorted[0];
-        arr[j][0] = sorted[1];
+      if (lists[j][1] === lists[j - 1][1]) {
+        const sorted = sortingNames([lists[j - 1][0], lists[j][0]]);
+        lists[j - 1][0] = sorted[0];
+        lists[j][0] = sorted[1];
       }
-      if (arr[j][1] > arr[j - 1][1]) {
-        let temp = arr[j];
-        arr[j] = arr[j - 1];
-        arr[j - 1] = temp;
+      if (lists[j][1] > lists[j - 1][1]) {
+        let temp = lists[j];
+        lists[j] = lists[j - 1];
+        lists[j - 1] = temp;
       } else {
         break;
       }
     }
   }
-  return arr;
+  return lists;
 }
 
-function sortingNames(arr) {
-  return arr.sort();
+function sortingNames(lists) {
+  return lists.sort();
 }
 
-function recommendationList(arr) {
+function recommendationList(lists) {
   const results = [];
-  for (let i = 0; i < arr.length; i++) {
-    results.push(arr[i][0]);
+  for (let i = 0; i < lists.length; i++) {
+    results.push(lists[i][0]);
   }
   return results;
 }
 
-function checkUserFriendsInResults(userFriend, recomLists) {
-  for (let i = 0; i < userFriend.length; i++) {
-    recomLists.splice(recomLists.indexOf(userFriend[i]), 1);
+function checkUserFriendsInList(userFriends, results) {
+  for (let i = 0; i < userFriends.length; i++) {
+    results.splice(results.indexOf(userFriends[i]), 1);
   }
-  return recomLists;
+  return results;
 }
 
 module.exports = problem7;
