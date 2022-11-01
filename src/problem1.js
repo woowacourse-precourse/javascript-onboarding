@@ -62,12 +62,14 @@ function problem1(pobi, crong) {
 
   /**pobi와 crong의 승부 펼치기 */
   if(fScorePobi>fScoreCrong) {
-    return answer = 1;
+      answer = 1;
   } else if(fScorePobi < fScoreCrong) { 
-      return answer = 2;
+      answer = 2;
   } else if (fScorePobi == fScoreCrong) {
-    return answer = 0;
+      answer = 0;
   } 
+
+  return answer;
 
 }
 
