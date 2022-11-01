@@ -3,9 +3,6 @@ function problem7(user, friends, visitors) {
   const userFriends = findFriends(user, friends);
   const recommendFriends = findrecommendFriends(user, friends, userFriends)
   const scoreFriendsList = recommendFriends.map(i => 10)
-
-  //두 배열의 길이는 항상 같아야 함.
-  //방문자 확인해서 점수 올려주기
   visitors.forEach(i => {
     if (recommendFriends.indexOf(i) !== -1) {
       scoreFriendsList[recommendFriends.indexOf(i)]++
@@ -14,28 +11,13 @@ function problem7(user, friends, visitors) {
       scoreFriendsList.push(1);
     }
   })
-  //이름과 점수 가지고 점수를 비교해서 등수로 정렬하기
-  //두 개의 배열로 관리하면 힘들다. 하나로 묶어서 점수 기준으로 정렬하기
-  const countArr = makeFriendsScore(recommendFriends, scoreFriendsList);
-
-  countArr.sort((a, b) => {
-    if (a[1] === b[1]) {
-      return (a[0] - b[0])
-    } else {
-      (b[1] - a[1])
-    }
-  })
   
-  //정렬된 기준으로 정답에 푸시
+  const countArr = makeFriendsScore(recommendFriends, scoreFriendsList);
   countArr.forEach(i => answer.push(i[0]))
   return answer;
 }
 
 module.exports = problem7;
-
-
-//친구 추출 로직을 분리 해보자
-
 
 /**
  * 기준값을 받아 배열을 순회하여 기준값과 함께 있는 친구를 찾고 기준값을 제거하여 친구 리스트를 반환
