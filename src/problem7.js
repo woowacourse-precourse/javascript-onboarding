@@ -5,8 +5,8 @@ function problem7(user, friends, visitors) {
   scoreList = score_10(isUser, friends, user);
   friendRank = give10Score(scoreList);
 
-  for(i = 0; i < visitors.length; i++) {
-    for(j = 0; j < isUser.length; j++) {
+  for(let i = 0; i < visitors.length; i++) {
+    for(let j = 0; j < isUser.length; j++) {
       if(visitors[i] == isUser[j]){
         visitors.splice(i, 1);
       }
@@ -22,8 +22,8 @@ function except(user, friends){
   let userfriend = [];
 
   //friends에 user인 mrko가 있는지 없는지 판단
-  for(i = 0; i < friends.length; i++){  //바깥쪽 배열의 길이(friends.length)
-    for(j = 0; j < 2; j++){ //안쪽 배열의 길이(2)
+  for(let i = 0; i < friends.length; i++){  //바깥쪽 배열의 길이(friends.length)
+    for(let j = 0; j < 2; j++){ //안쪽 배열의 길이(2)
       //있으면 다른 한명의 이름을 가져옴
       if(friends[i][j] == user){
         if(j==0){
@@ -42,9 +42,9 @@ function except(user, friends){
 function score_10(userfriend, friends, user){
   let rank = [];
 
-  for(i = 0; i < friends.length; i++){
-    for(j = 0; j < 2; j++){
-      for(k = 0; k < userfriend.length; k++){
+  for(let i = 0; i < friends.length; i++){
+    for(let j = 0; j < 2; j++){
+      for(let k = 0; k < userfriend.length; k++){
         if(friends[i][j] == userfriend[k]){
           if(j==0){
             if(friends[i][1] != user) 
@@ -62,7 +62,7 @@ function score_10(userfriend, friends, user){
 
 function give10Score(scoreList) {
   var rankMap = new Map();
-  for(i = 0; i < scoreList.length; i++){
+  for(let i = 0; i < scoreList.length; i++){
     if(rankMap.has(scoreList[i])){
       rankMap.set(scoreList[i], rankMap.get(scoreList[i]) + 10);
     } else {
@@ -74,7 +74,7 @@ function give10Score(scoreList) {
 
 //방문자 명단에서 mrko와 mrko 친구 제외하고 1점씩 부여
 function visitorScore(visitors, rankMap){
-  for(i = 0; i < visitors.length; i++){
+  for(let i = 0; i < visitors.length; i++){
     if(rankMap.has(visitors[i])){
       rankMap.set(visitors[i], rankMap.get(visitors[i]) + 1);
     } else {
@@ -87,7 +87,6 @@ function visitorScore(visitors, rankMap){
 //점수와 이름을 오름차순으로 정렬
 function sortMap(rankMap) {
   const mapSortByKey = new Map([...rankMap.entries()].sort()); //key값 기준 오름차순정렬
-  console.log(rankMap);
   const mapSortByValue = new Map([...mapSortByKey.entries()].sort((a, b) => b[1] - a[1])); //value값 기준 오름차순정렬
   return mapSortByValue;
 }
