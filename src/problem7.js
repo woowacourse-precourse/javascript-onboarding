@@ -1,6 +1,10 @@
 function problem7(user, friends, visitors) {
   // user는 길이가 1이상 30이하인 문자열이다. 아닌 경우 "Error: user의 길이가 1이상 30이하인 문자열이어야 합니다"라는 문자열을 반환한다.
   if (user.length < 1 || user.length > 30) return "Error: user의 길이가 1이상 30이하인 문자열이어야 합니다";
+
+  // friends는 길이가 1 이상 10,000 이하인 배열이다. 아닌 경우 "Error: friends는 길이가 1이상 10,000 이하인 배열이어야 합니다"라는 문자열을 반환한다.
+  if (friends.length < 1 || friends.length > 10000) return "Error: friends는 길이가 1이상 10,000 이하인 배열이어야 합니다";
+
   // friends를 순회하여 user의 친구를 배열에 담는다.
   const userFriends = [];
 
