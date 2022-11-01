@@ -1,5 +1,9 @@
 function problem4(word) {
 
+  if(word.length < 1 || word.length > 1000){
+    return false;
+  }
+  
   let arr = word.split("");
   
   for(let i=0; i < arr.length; i++) {
