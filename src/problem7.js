@@ -33,7 +33,7 @@ function friendsChecker(friends) {
   if (friends.length >= 1 && friends.length <= 10000) {
     for (var i = 0; i < friends.length; i++) {
       // friends의 각 원소의 길이가 2인지 확인
-      if (!friends[i].length === 2) {
+      if (!(friends[i].length === 2)) {
         result = false;
         break;
       }
@@ -46,10 +46,10 @@ function friendsChecker(friends) {
             if (!(friends[i][1] === friends[i][1].toLowerCase())) {
               result = false;
               break;
-            } else {
-              result = false;
-              break;
             }
+          } else {
+            result = false;
+            break;
           }
         } else {
           result = false;
@@ -67,6 +67,13 @@ function friendsChecker(friends) {
   return result;
 }
 
-function visitorsChecker(visitors) {}
+function visitorsChecker(visitors) {
+  // visitors의 길이가 0 ~ 10000 이하 인지 검사
+  if (visitors.length >= 0 && visitors.length <= 10000) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 module.exports = problem7;
