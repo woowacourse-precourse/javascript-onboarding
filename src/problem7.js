@@ -99,5 +99,14 @@ function problem7(user, friends, visitors) {
     return tempFriendsList;
   }
 
+  const userFriends = findFriends(user, friends);
+  const userFriendsList = writeFriendsList(user, userFriends);
+  const userVisitorsList = writeVisitorsList(visitors);
+  const userRecommendList = recommendFriends(userFriendsList,userVisitorsList);
+  const result = sortRecommend(userRecommendList);
+
+  return result;
+
 }
+
 module.exports = problem7;
