@@ -15,6 +15,9 @@ function problem4(word) {
     if (index !== -1 ){
         newWordArr.push(lowerAlphabetReverse[lowerAlphabet.indexOf(element)]);
     }
+    if (index == -1){
+      newWordArr.push(" "); 
+    }
     
   }
   
