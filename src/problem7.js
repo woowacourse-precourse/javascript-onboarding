@@ -16,10 +16,7 @@ function problem7(user, friends, visitors) {
       if (connected[user].has(person)) {
         continue;
       }
-      if (point.has(person)) {
-        continue;
-      }
-      setDefaultPoint(point, person, 10);
+      setDefaultPoint(point, person, 5);
     }
   }
 
@@ -56,7 +53,7 @@ function setDefault(target, key, value) {
 
 function setDefaultPoint(target, key, value) {
   if (target.has(key)) {
-    target.set(key, target.get(key) +1);
+    target.set(key, target.get(key) +value);
     return target
   }
   target.set(key, value);
