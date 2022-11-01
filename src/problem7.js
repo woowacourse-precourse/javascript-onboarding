@@ -54,3 +54,11 @@ function findFriends(user, friends) {
   return  friends.map(friendTable => friendTable.filter(friend => !user.includes(friend))).filter(arr => arr.length < 2).flat();
 }
 
+/**
+ * 기준값, 친구 목록, 기준값 친구의 친구목록을 통해 친구 목록을 순회하여 기준값의 친구의 친구 리스트를 반환
+ * @param {String, Array, Array} 기준값, 친구 목록, 기준값 친구의 친구목록
+ * @returns 나에게 추천할 친구 리스트를 반환
+ */
+function findrecommendFriends(user, friends, myFriends) {
+  return [...new Set(friends.map(friendTable => friendTable.filter(friend => !myFriends.includes(friend))).filter(friend => !user.includes(friend)).filter(friendList => friendList.length < 2).flat())]
+}
