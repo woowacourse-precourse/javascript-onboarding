@@ -85,7 +85,27 @@ function problem7(user, friends, visitors) {
     }
     }
 
-    
+    let answerList = [];
+    for (let entries in friendsScore) {
+      answerList.push([entries, friendsScore[entries]]);
+    }
+
+    answerList.sort(function(a, b){
+    return b[1] - a[1];
+    });
+
+    answerList.map(function(a, b){
+      if (a[1] === b[1]) {
+        return a[0] - b[0];
+      }
+      });
+
+    answerList = answerList.map(item => item[0]);
+
+    let answer = [];
+    for (let l = 0; l < 5; l++) {
+      answer.push(answerList[l]);
+    }
   
   return answer;
 }
