@@ -2,38 +2,40 @@ function problem7(user, friends, visitors) {
   return recommendFriendApp([user, friends, visitors]);
 }
 
-function recommendFriendApp([user, friendListArr, visitorListArr]) {
-  const relationshipMap = createRelationshipMap(friendListArr);
-  const scoreListMap = calcScoreMap(user, relationshipMap, calcVisitorScoreMap(visitorListArr));
-  return sortByScoreToNameArr(scoreListMap).slice(0,5);
+function recommendFriendApp(user, friends, visitors) {
+  const friendRelationship = createRelationship(friends);
+  const scoreBoard = calcFriendScore(user, friendRelationship, calcVisitorScore(visitors));
+  return sortByScore(scoreBoard).slice(0, 5);
 }
 
-function createRelationshipMap(friendListArr) {
-  return friendListArr.reduce((relationshipMap, [friendA, friendB]) => {
-    relationshipMap.set(friendA, (relationshipMap.get(friendA) || []).concat(friendB));
-    relationshipMap.set(friendB, (relationshipMap.get(friendB) || []).concat(friendA));
-    return relationshipMap;
+function createRelationship(friends) {
+  return friends.reduce((dict, [friendA, friendB]) => {
+    dict.set(friendA, (dict.get(friendA) || []).concat(friendB));
+    dict.set(friendB, (dict.get(friendB) || []).concat(friendA));
+    return dict;
   }, new Map());
 }
 
-function calcVisitorScoreMap(visitorListArr) {
-  return visitorListArr.reduce((scoreListMap, visitor) => {
-    scoreListMap.set(visitor, scoreListMap.get(visitor) + 1 || 1);
-    return scoreListMap;
+function calcVisitorScore(visitors) {
+  return visitors.reduce((dict, visitor) => {
+    dict.set(visitor, dict.get(visitor) + 1 || 1);
+    return dict;
   }, new Map());
 }
 
-function calcScoreMap(user, relationshipMap, scoreListMap) {
-  for (let userFriend of relationshipMap.get(user)) {
-    relationshipMap.get(userFriend).forEach((friend) => {
-      if (!relationshipMap.get(user).includes(friend) && friend !== user) scoreListMap.set(friend, scoreListMap.get(friend) + 10 || 10);
+function calcFriendScore(user, friendRelationship, scoreBoard) {
+  for (let userFriend of friendRelationship.get(user)) {
+    friendRelationship.get(userFriend).forEach((friend) => {
+      if (!friendRelationship.get(user).includes(friend) && friend !== user) scoreBoard.set(friend, scoreBoard.get(friend) + 10 || 10);
     });
   }
-  return scoreListMap;
+  return scoreBoard;
 }
 
-function sortByScoreToNameArr(scoreListMap) {
-  return Array.from(scoreListMap).sort((a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1])).map(friendInfo=>friendInfo[0]);
+function sortByScore(scoreBoard) {
+  return Array.from(scoreBoard)
+    .sort((a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1]))
+    .map(([userId, score]) => userId);
 }
 
 module.exports = problem7;
