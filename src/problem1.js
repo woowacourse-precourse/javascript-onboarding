@@ -1,11 +1,9 @@
-'use strict';
-const RESULT_STATUS = {
+const RESULT_STATUS = Object.freeze({
   EXCEPTION: -1,
   DRAW: 0,
   POBI_WIN: 1,
   CRONG_WIN: 2,
-};
-Object.freeze(RESULT_STATUS);
+});
 
 /** 각 자리수 분리 */
 const splitNumber = (number = 0) => {
