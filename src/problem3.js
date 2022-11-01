@@ -9,10 +9,10 @@ function problem3(number) {
   return answer;
 }
 
-//3,6,9 개수를 세는 함수
+// 3,6,9 개수를 세는 함수
 function count369(number, count) {
   for (let i = 1; i <= number; i++) {
-    const currentNum = innerHeight.toString().trim().split("").map(Number);
+    const currentNum = i.toString().trim().split("").map(Number);
 
     for (let j = 0; j < currentNum.length; j++) {
       if (currentNum[j] == 3) {
