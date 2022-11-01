@@ -35,11 +35,24 @@ function scoreFriendsMayKnow(user, friendsMap, excludedFriends) {
   return map;
 }
 
+// 사용자의 타임 라인에 방문한 횟수를 확인하여 점수를 주는 기능
+function scoreVisitors(scoreMap, visitors, excludedFriends) {
+  visitors.forEach((visitor) => {
+    if (!excludedFriends.has(visitor)) {
+      scoreMap.has(visitor)
+        ? scoreMap.set(visitor, scoreMap.get(visitor) + 1)
+        : scoreMap.set(visitor, 1);
+    }
+  });
+  return scoreMap;
+}
+
 // solution
 function solution(user, friends, visitors) {
   const friendsMap = getFriendsMap(friends);
   const excludedFriends = getExcludedFriends(user, friendsMap);
-  const scoreMap = scoreFriendsMayKnow(user, friendsMap, excludedFriends);
+  let scoreMap = scoreFriendsMayKnow(user, friendsMap, excludedFriends);
+  scoreMap = scoreVisitors(scoreMap, visitors, excludedFriends);
   console.log(scoreMap);
 }
 
