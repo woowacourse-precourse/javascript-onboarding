@@ -1,17 +1,27 @@
 function problem2(cryptogram) {
   var answer;
 
-  let decode = [];
-  for (let i = 0; i < cryptogram.length; i++) {
-    if (decode[decode.length - 1] !== cryptogram[i]) {
-      decode.push(cryptogram[i]);
-    } else {
-      if (cryptogram[i + 1] !== decode[decode.length - 1]) {
-        decode.pop();
+  function removeSameCharacter(inputString) {
+    let decode = "";
+    let baseIndex = 0;
+    let compareIndex = baseIndex + 1;
+
+    while (baseIndex < inputString.length) {
+      if (inputString[baseIndex] === inputString[compareIndex]) {
+        while (inputString[baseIndex] === inputString[compareIndex]) {
+          compareIndex++;
+        }
+        baseIndex = compareIndex;
+        compareIndex++;
+      }
+      if (inputString[baseIndex] !== inputString[compareIndex]) {
+        decode += inputString[baseIndex];
+        baseIndex++;
+        compareIndex++;
       }
     }
+    return decode;
   }
-  answer = decode.join("");
 
   return answer;
 }
