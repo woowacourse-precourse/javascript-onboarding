@@ -13,22 +13,15 @@ function remove_repeat(arr) {
   return arr;
 }
 
-
 function problem2(cryptogram) {
 
   var answer = "";
   let arr_crypto = cryptogram.split('');
 
-  //for (let i = 0; i < cryptogram.length; i++){
-  //  com_crypto[i] = cryptogram.indexOf[i];
-  //}
+
   do {
     remove_repeat(arr_crypto);
   } while(remove_repeat(arr_crypto) != -1);
-
-  //while(remove_repeat(arr_crypto) != -1) {
-  //  remove_repeat(arr_crypto);
-  //}
 
   answer = arr_crypto.join('');
   return answer;

@@ -1,6 +1,5 @@
 function problem4(word) {
   var answer ='';
-  
   const big_corVal = 64;
   const small_corVal = 96;
   const func_num = 27;
@@ -25,14 +24,10 @@ function problem4(word) {
     } else {
       arr_word[i] = String.fromCharCode(arr_word_ascii[i]);
     }
-
   }
 
   answer = arr_word.join('');
-
   return answer;
 }
-
-console.log(problem4('I love you'))
 
 module.exports = problem4;
