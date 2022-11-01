@@ -33,6 +33,21 @@ function problem7(user, friends, visitors) {
     scoresDictionary[otherUser] = score;
   }
 
+  for (const visitor of visitors) {
+    if (visitor === user) {
+      continue
+    }
+    if (friendsDictionary[user].includes(visitor)) {
+      continue
+    }
+
+    if (visitor in scoresDictionary) {
+      scoresDictionary[visitor] += 1
+    } else {
+      scoresDictionary[visitor] = 1
+    }
+  }
+
   return answer;
 }
 
