@@ -1,15 +1,16 @@
 function problem2(cryptogram) {
-  const arr = [...cryptogram];
-  let i = 0;
-  while (i !== arr.length) {
-    if (arr[i] === arr[i + 1]) {
-      arr.splice(i, 2);
-      i = 0;
+  const stack = [];
+
+  for (let i = 0; i < cryptogram.length; i++) {
+    let currentValue = cryptogram[i];
+    if (currentValue === stack[stack.length - 1]) {
+      stack.pop();
     } else {
-      i++;
+      stack.push(currentValue);
     }
   }
-  return arr.join("");
+
+  return stack.join("");
 }
 
 module.exports = problem2;
