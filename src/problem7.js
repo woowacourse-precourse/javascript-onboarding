@@ -7,6 +7,14 @@
  *   4-2. 점수가 같다면 sort()
  *
  */
-function problem7(user, friends, visitors) {}
+function problem7(user, friends, visitors) {
+  // 1. user의 친구 찾기 기능
+  let userFriends = [];
+  friends.forEach((element) => {
+    if (element.includes(user)) {
+      element[0] === user ? userFriends.push(element[1]) : userFriends.push(element[0]);
+    }
+  });
+}
 
 module.exports = problem7;
