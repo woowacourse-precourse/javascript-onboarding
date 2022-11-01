@@ -1,5 +1,6 @@
 function problem7(user, friends, visitors) {
   const relations = getRealtions(friends);
+  const allUsers = new Set([...Object.keys(relations), ...visitors]);
 }
 
 const getRealtions = (friends) => {
