@@ -36,11 +36,11 @@ function getScore(friendArr, crew, score) {
 // 기능 3
 function joinCrew(friendsRecommendArr, visitors) {
   const joinCrewArr = [];
-  for (let key in friendsRecommendArr) {
-    joinCrewArr.push([key, friendsRecommendArr[key]]);
+  for (let friend in friendsRecommendArr) {
+    joinCrewArr.push([friend, friendsRecommendArr[friend]]);
   }
-  for (let key in visitors) {
-    joinCrewArr.push([key, visitors[key]]);
+  for (let visitor in visitors) {
+    joinCrewArr.push([visitor, visitors[visitor]]);
   }
   return joinCrewArr;
 }
