@@ -1,13 +1,9 @@
-function withrawCash({ wallet, money }) {
+const withrawCash = ({ wallet, money }) => {
   let remainingMoney = money;
 
   const billsAndCoins = Array.from(wallet.keys());
 
   for (const billCoin of billsAndCoins) {
-    if (!remainingMoney) {
-      return;
-    }
-
     if (remainingMoney < billCoin) {
       continue;
     }
@@ -16,9 +12,9 @@ function withrawCash({ wallet, money }) {
     wallet.set(billCoin, billCoinCount);
     remainingMoney -= billCoinCount * billCoin;
   }
-}
+};
 
-function problem5(money) {
+const problem5 = (money) => {
   const wallet = new Map()
     .set(50000, 0)
     .set(10000, 0)
@@ -35,6 +31,6 @@ function problem5(money) {
   const moneyCountInWallet = Array.from(wallet.values());
 
   return moneyCountInWallet;
-}
+};
 
 module.exports = problem5;
