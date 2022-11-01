@@ -12,10 +12,8 @@ function problem2(cryptogram) {
 function solution(cryptogram) {
   for (var i=0; i<cryptogram.length+2; i++) {
     for (var j=0; j<cryptogram.length; j++) {
-      console.log(cryptogram.charAt(j), "!!!!!!!!!!!!!!!!!", cryptogram.charAt(j+1))
       if (cryptogram.charAt(j) === cryptogram.charAt(j+1)) {
         cryptogram = cryptogram.slice(0, j) + cryptogram.slice(j+2);
-        console.log("result: ", cryptogram);
       }
     }
   }
