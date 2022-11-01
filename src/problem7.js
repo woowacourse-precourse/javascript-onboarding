@@ -76,22 +76,8 @@ function solution(user, friends, visitors) {
 }
 
 function problem7(user, friends, visitors) {
-  var answer;
+  const answer = solution(user, friends, visitors);
   return answer;
 }
 
-console.log(
-  solution(
-    "mrko",
-    [
-      ["donut", "jun"],
-      ["donut", "andole"],
-      ["donut", "mrko"],
-      ["shakevan", "andole"],
-      ["shakevan", "jun"],
-      ["shakevan", "mrko"],
-    ],
-    ["bedi", "bedi", "donut", "bedi", "shakevan", "a", "a", "b", "c"]
-  )
-);
 module.exports = problem7;
