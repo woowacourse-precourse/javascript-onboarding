@@ -1,3 +1,12 @@
+const FIFTYTHOUSAND = 50000;
+const TENTHOUSAND = 10000;
+const FIVETHOUSAND = 5000;
+const THOUSAND = 1000;
+const FIVEHUNDRED = 500;
+const HUNDRED = 100;
+const FIFTY = 50;
+const TEN = 10;
+
 function problem5(money) {
   const bill50000 = exchangeTo50000(money);
   money %= 50000;
@@ -30,42 +39,34 @@ function problem5(money) {
 }
 
 function exchangeTo50000(money) {
-  const FIFTYTHOUSAND = 50000;
   return Math.floor(money/FIFTYTHOUSAND);
 }
 
 function exchangeTo10000(money) {
-  const TENTHOUSAND = 10000;
   return Math.floor(money/TENTHOUSAND);
 }
 
 function exchangeTo5000(money) {
-  const FIVETHOUSAND = 5000;
   return Math.floor(money/FIVETHOUSAND);
 }
 
 function exchangeTo1000(money) {
-  const THOUSAND = 1000;
   return Math.floor(money/THOUSAND);
 }
 
 function exchangeTo500(money) {
-  const FIVEHUNDRED = 500;
   return Math.floor(money/FIVEHUNDRED);
 }
 
 function exchangeTo100(money) {
-  const HUNDRED = 100;
   return Math.floor(money/HUNDRED);
 }
 
 function exchangeTo50(money) {
-  const FIFTY = 50;
   return Math.floor(money/FIFTY);
 }
 
 function exchangeTo10(money) {
-  const TEN = 10;
   return Math.floor(money/TEN);
 }
 
