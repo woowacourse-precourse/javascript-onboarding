@@ -22,6 +22,9 @@ function clap(number) {
 
 function problem3(number) {
   var answer;
+
+  answer = clap(number);
+
   return answer;
 }
 
