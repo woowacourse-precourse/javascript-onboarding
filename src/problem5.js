@@ -10,20 +10,19 @@ function problem5(money) {
   let idxOfBill = 0;
   // 1) 인자로 받은 money를 차감해가며 0이 될 때까지 반복한다
   while (money > 0) {
-    // 2) 지폐금액이 큰 순서대로 순회를 한다
-    // 이때, for문을 직접 쓰지 않고 우회해서 쓴다(가독성을 위해)
+    // 2) 지폐금액이 큰 순서대로 순회하는 과정
     const BILL = AMOUNT_OF_BILL[idxOfBill];
-    // 3) money가 지폐금액보다 큰 경우에만 로직을 실행한다
+    // 3) money가 지폐금액보다 큰 경우에만 지폐교환을 하는 분기처리
     if (money >= BILL) {
-      // 4) 바뀔 수 있는 지폐의 개수, 나머지 돈을 계산한다
+      // 4) 바뀔 수 있는 지폐의 개수, 나머지 돈을 계산
       let billCount = Math.floor(money / BILL);
       const rest = money % BILL;
       money = rest;
-      // 5) 해당 인덱스의 값을 개수로 재할당하고, 다음 연산을 위해 0으로 초기화한다
+      // 5) 지폐의 인덱스 값을 활용해 지폐를 교환해주고, 다음 연산을 위해 0으로 초기화
       answer[idxOfBill] = billCount;
       billCount = 0;
     }
-    // 6) 탐색 지폐를 바꾸기 위해 증가시킨다
+    // 6) 탐색 지폐를 바꾸기 위해 증가
     idxOfBill++;
   }
 

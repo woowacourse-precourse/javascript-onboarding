@@ -46,15 +46,12 @@ function calculateScore(pageArr) {
 }
 
 // 5) 예외사항을 처리하는 과정
-// 짝홀로 입력된다(이건 제한사항에서 걸러진다고 생각한다)
 function isException(pageArr) {
   const PAGE_LEFT = pageArr[0];
   const PAGE_RIGHT = pageArr[1];
   if (PAGE_RIGHT - PAGE_LEFT !== 1) {
-    // 페이지차이가 1이 아니다
     return true;
   } else if (PAGE_LEFT < 1 || PAGE_RIGHT > 400) {
-    // 1 ~ 400을 넘긴다
     return true;
   } else {
     return false;

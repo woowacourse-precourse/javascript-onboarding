@@ -1,23 +1,23 @@
 function problem7(user, friends, visitors) {
   var answer;
   const usersFriends = [];
-  // 1) 유저의 친구목록을 만듭니다
+  // 1) 유저의 친구목록 생성
   usersFriends.push(...findUsersFriend(friends, user));
 
-  // 2) 유저의 친구의 친구목록을 만듭니다
+  // 2) 유저의 친구의 친구목록 생성
   let relation = [];
   for (const usersFriend of usersFriends) {
     relation.push(...findUsersFriend(friends, usersFriend));
   }
   // 문제발생) 유저도 결국 그들의 친구여서 중복되는 현상 발생
-  // 문제해결 1) 다음단계로 가기 전에 _지금단계에서_ 유저를 배열에서 지우는거 [o]
+  // 문제해결) 다음단계로 가기 전, 현재 단계에서 유저를 배열에서 삭제
   relation = relation.filter((nickname) => nickname !== user);
 
-  // 3) 친구추천리스트를 객체롤 만듭니다. 점수를 저장하기 위해서
+  // 3) 점수를 저장하는 친구추천리스트 객체 생성
   // 닉네임 : 점수
   const recommendList = {};
 
-  // 4) 친구의 친구에겐 10점을 더해줍니다.
+  // 4) 친구의 친구에겐 10점을 더해주는 과정
   for (const may_know of relation) {
     if (recommendList[may_know] === undefined) {
       recommendList[may_know] = 10;
@@ -26,7 +26,7 @@ function problem7(user, friends, visitors) {
     }
   }
 
-  // 4) 방문자에겐 1점을 더해줍니다.
+  // 4) 방문자에겐 1점을 더해주는 과정
   for (const visitor of visitors) {
     if (usersFriends.includes(visitor)) {
       continue;
@@ -38,8 +38,7 @@ function problem7(user, friends, visitors) {
   }
 
   answer = Object.entries(recommendList);
-  // 점수를 기준으로 내림차순 정렬이 기본입니다
-  // 동점이라면 닉네임순으로 정렬합니다.
+  // 5)점수를 기준으로 내림차순 정렬이 기본, 동점이라면 닉네임순으로 정렬
   answer.sort((a, b) => {
     if (b[1] - a[1] === 0) {
       return a[0] > b[0] ? 1 : -1;
@@ -49,7 +48,7 @@ function problem7(user, friends, visitors) {
   answer = answer.map(el => el[0]);
   
 
-  // 최대 5명만을 리턴합니다
+  // 6) 최대 5명만을 리턴합니다
   if (answer.length >= 5) {
     return answer.splice(0, 5);
   }
