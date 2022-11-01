@@ -1,5 +1,9 @@
 function problem6(forms) {
+  if (errorHandler(forms))  return "Error";
+
   var answer;
+  answer = spliceName(forms);
+
   return answer;
 }
 
@@ -41,7 +45,8 @@ function spliceName(forms) {
     });
   }
 
-  return result;
+  // 오름차순 정렬 후 return
+  return result.sort();
 }
 
 // 중복문자 찾는 함수
