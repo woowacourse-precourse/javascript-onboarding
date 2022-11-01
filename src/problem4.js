@@ -5,8 +5,24 @@
  */
 
 function problem4(word) {
+  if (!isValidInput(word)) {
+    console.log("Error: Invalid Input");
+    return -1;
+  }
   const frogWord = changeWordGreenFrog(word);
+
   return frogWord;
+}
+
+function isValidInput(word) {
+  let isValid;
+  if (!(word.length >= 1 && word.length <= 1000)) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+
+  return isValid;
 }
 
 function changeAlphabetGreenFrog(inputLetter) {
