@@ -1,5 +1,11 @@
-const isArrayIncludesZero = (nums) => {
-  return nums.includes(0);
+const MIN_PAGE = 1;
+const MAX_PAGE = 400;
+
+const GAME_RESULT = {
+  pobi: 1,
+  crong: 2,
+  draw: 0,
+  exception: -1,
 };
 
 const sumDigit = (digits) => {
@@ -13,19 +19,16 @@ const multiplyDigit = (digits) => {
 const calcMaxNumber = (pages) => {
   const pageDigits = pages.map((page) => page.toString().split("").map(Number));
 
-  const [leftPageMaxNum, rightPageMaxNum] = pageDigits.map((pageDigit) =>
-    isArrayIncludesZero(pageDigit)
+  const eachPageMaxNums = pageDigits.map((pageDigit) =>
+    pageDigit.includes(0)
       ? sumDigit(pageDigit)
       : Math.max(sumDigit(pageDigit), multiplyDigit(pageDigit))
   );
 
-  return Math.max(leftPageMaxNum, rightPageMaxNum);
+  return Math.max(...eachPageMaxNums);
 };
 
 const isValidPage = (pages) => {
-  const MIN_PAGE = 1;
-  const MAX_PAGE = 400;
-
   const [leftPage, rightPage] = pages;
 
   if (rightPage - leftPage !== 1) {
@@ -41,13 +44,6 @@ const isValidPage = (pages) => {
 
 const isValidPages = (...pages) => {
   return pages.every((page) => isValidPage(page));
-};
-
-const GAME_RESULT = {
-  pobi: 1,
-  crong: 2,
-  draw: 0,
-  exception: -1,
 };
 
 const getGameResult = ({ pobiMaxNum, crongMaxNum }) => {
