@@ -23,6 +23,9 @@ function problem6(forms) {
         if (tmpforms[i][0].length < 11 || tmpforms[i][0].length > 20) {
             answer = '이메일 주소는 11자 이상 20자 이하여야 합니다.';
         }
+        if (tmpforms[i][1].length < 1 || tmpforms[i][1].length > 20) {
+            answer = '닉네임은 1자 이상 20자 이하여야 합니다.';
+        }
         let emailAddress = tmpforms[i][0];
         let tmpArray2 = emailAddress.split(/[@]/);
         if (tmpArray2[1] != 'email.com') {
