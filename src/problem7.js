@@ -18,19 +18,24 @@ function problem7(user, friends, visitors) {
 
   friends.forEach((friend) => {
     if (userFriends.includes(friend[0]))
-      friendsMap.set(friend[1], friendsMap.get(friend[1]) + 5);
+      friendsMap.set(friend[1], friendsMap.get(friend[1]) + 10);
 
     if (userFriends.includes(friend[1]))
-      friendsMap.set(friend[0], friendsMap.get(friend[0]) + 5);
+      friendsMap.set(friend[0], friendsMap.get(friend[0]) + 10);
   });
+
   friendsMap.delete(user);
+  userFriends.forEach((friend) => {
+    friendsMap.delete(friend);
+  });
+
   friendsMapToArray = Array.from(friendsMap);
   friendsMapToArray.sort(([a, scoreA], [b, scoreB]) => scoreB - scoreA);
   friendsMapToArray.sort(([nameA, scoreA], [nameB, scoreB]) =>
     scoreA === scoreB ? nameA - scoreB : scoreB - scoreA
   );
 
-  let result = friendsMapToArray.filter(([name, cnt]) => cnt > 1);
+  let result = friendsMapToArray.filter(([name, cnt]) => cnt > 0);
   return result.splice(0, 5).map(([name, cnt]) => name);
 }
 
