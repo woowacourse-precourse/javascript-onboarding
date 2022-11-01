@@ -8,6 +8,7 @@
 */
 function problem4(word) {
   var answer;
+  answer = convertWord(word);
   return answer;
 }
 
