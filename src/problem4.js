@@ -12,10 +12,15 @@ let dictionary = [
 ]
 function changeString(word){
   let word_arr='';
+  const special_word = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
   for(let i=0;i<word.length;i++){
     for(let j=0;j<dictionary.length;j++){
       if(word[i]==dictionary[j][0]){
         word_arr+=dictionary[j][1];
+      }
+      if(special_word.test(word[i])){
+        word_arr+=word[i];
+        break;
       }
       if(word[i]===' '){
         word_arr+=' ';
