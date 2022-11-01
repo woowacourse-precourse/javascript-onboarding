@@ -14,3 +14,6 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+### 추가: 구현할 기능 리스트 정리
+1. function that takes in a number and returns the number of 3,6,9
