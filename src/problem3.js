@@ -1,5 +1,9 @@
 function problem3(number) {
-  var answer;
+  let answer = 0;
+  for (n=1; n<=number; n++) {
+    const digits = numIntoDigits(n);
+    answer += countMultiple3(digits);
+  }
   return answer;
 }
 
