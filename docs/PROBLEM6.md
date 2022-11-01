@@ -31,26 +31,9 @@
 ## 📝 구현할 기능 목록
 </br> 
 
-### ✔️ 기능 1. 입력값에 대한 유효성 및 에러(예외처리) 검사
-<br>
-
-  - 입력값에 에러가 없는지, 입력 양식이 유효한지 검사한지 검사  
-
-    - 제시된 크루의 수인 1명 이상 10,000명 이하인지 확인 -> ```crewMemberInRange()```
-
-    - 닉네임이 한글인지 확인 -> ```isNicknameKorean()```
-
-    - 닉네임이 1자 이상 20자 이하인지 확인 -> ```nicknameLengthInRange()```
-    
-    - 이메일의 형식에 부합하는지 확인 -> ```correctEmail()``` 
-
-    - 이메일의 길이가 11자 이상 20자 미만인지 확인 -> ```emailLengthInRange()```
-
-    - 이메일의 도메인 형식이 '@email.com'에 부합하는지 확인 -> ```correctDomainType()```
-
 </br> 
 
-### ✔️ 기능 2. nicknameList를 순회하며 중복값을 검사하는 기능 추가
+### ✔️ 기능 1. nicknameList를 순회하며 중복값을 검사하는 기능 추가
 <br>
 
   - forms(입력값)로 부터 이메일와 닉네임을 분리하여 따로 저장 / ```const emailList``` 와 ```const nicknameList```
