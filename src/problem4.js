@@ -1,20 +1,27 @@
+function calculateAscii(a, z, charToAscii){
+    return Math.abs(z - (charToAscii - a));
+}
+
 function problem4(word) {
-  var answer = [];
-  var ascii = "";
-  for (var i=0; i<word.length; i++){
-      var tmp = word.charCodeAt(i);
-      if (tmp > 96 && tmp < 123){
-          ascii = Math.abs(122 - (tmp - 97));
-          answer.push(String.fromCharCode(ascii));
-      }else if (tmp > 64 && tmp < 91){
-          ascii = Math.abs(90 - (tmp - 65));
-          answer.push(String.fromCharCode(ascii));
+  let answer = [];
+  let charToAscii = "";
+  const upperCaseA = 65;
+  const upperCaseZ = 90;
+  const lowerCaseA = 97;
+  const lowerCaseZ = 122;
+
+  for (let i=0; i<word.length; i++){
+      charToAscii = word.charCodeAt(i);
+      if (charToAscii > lowerCaseA-1 && charToAscii < lowerCaseZ+1){
+        answer.push(String.fromCharCode(calculateAscii(lowerCaseA, lowerCaseZ, charToAscii)));     
+      }else if (charToAscii > upperCaseA-1 && charToAscii < upperCaseZ+1){
+        calAscii = calculateAscii(upperCaseA, upperCaseZ, charToAscii);
+          answer.push(String.fromCharCode(calculateAscii(upperCaseA, upperCaseZ, charToAscii)));
       }else{
           answer.push(" ");
       }
   }
-  answer = answer.join('');
-  return answer;
+  return answer.join('');
 }
 
 module.exports = problem4;

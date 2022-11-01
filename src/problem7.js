@@ -1,6 +1,35 @@
+// 유저의 친구 찾기
+function findFriendsOfUser(user, friends){
+  let friendsOfUser = [];
+  for (let i=0; i<friends.length;i++){
+    if(user === friends[i][0]){
+      friendsOfUser.push(friends[i][1]);
+    }else if (user === friends[i][1]){
+      friendsOfUser.push(friends[i][0]);
+    }
+  }
+  return friendsOfUser;
+}
+
+// 친구의 친구 찾기
+function findFriendsOfFriends(friendsOfUser, friends){
+  let friendsOfFriends = [];
+  for (let i=0; i<friendsOfUser.length; i++){
+    for(let j=0; j<friends.length; j++){
+      if(friendsOfUser[i] === friends[j][0]){
+        friendsOfFriends.push(friends[j][1]);
+      }else if (friendsOfUser[i] === friends[j][1]){
+        friendsOfFriends.push(friends[j][0]);
+      }
+    }
+  }
+  return friendsOfFriends;
+}
+
+// 방문자들 점수 부여
 function addVisitorsScore(visitors){
-  var score = {};
-  for (var i=0; i<visitors.length; i++){
+  let score = {};
+  for (let i=0; i<visitors.length; i++){
     if (score[visitors[i]]){
       score[visitors[i]] += 1;
     }else{
@@ -10,19 +39,9 @@ function addVisitorsScore(visitors){
   return score;
 }
 
-function addFriendsScore(friendsOfUser, friends, score){
-  var friendsOfFriends = [];
-  for (var i=0; i<friendsOfUser.length;i++){
-    for(var j=0; j<friends.length; j++){
-      if(friendsOfUser[i] === friends[j][0]){
-        friendsOfFriends.push(friends[j][1]);
-      }else if (friendsOfUser[i] === friends[j][1]){
-        friendsOfFriends.push(friends[j][0]);
-      }
-    }
-  }
-
-  for (var i=0; i<friendsOfFriends.length; i++){
+// 친구의 친구 점수 부여
+function addFriendsScore(friendsOfFriends, score){
+  for (let i=0; i<friendsOfFriends.length; i++){
     if (score[friendsOfFriends[i]]){
       score[friendsOfFriends[i]] += 10;
     }else{
@@ -32,43 +51,43 @@ function addFriendsScore(friendsOfUser, friends, score){
   return score;
 }
 
-function problem7(user, friends, visitors) {
-  var answer = [];
-  var friendsOfUser = [];
-  var fillterScore = [];
-
-  for (var i=0; i<friends.length;i++){
-    if(user === friends[i][0]){
-      friendsOfUser.push(friends[i][1]);
-    }else if (user === friends[i][1]){
-      friendsOfUser.push(friends[i][0]);
-    }
-  }
-
-  var visitorsScore = addVisitorsScore(visitors);
-  var totalScore = addFriendsScore(friendsOfUser, friends, visitorsScore);
-  
-  // 이미 친구인 사람, 점수가 0인 사람, User 제외
-  for (var i in totalScore){
+// 유저, 이미 유저와 친구인 사람, 점수가 0인 사람 제외
+function filtrateScore(user, friendsOfUser, totalScore){
+  let filterScore = [];
+  for (let i in totalScore){
     if (i === user || friendsOfUser.includes(i) || totalScore[i] === 0){
       continue;
     }
-    fillterScore.push([i,totalScore[i]]);
+    filterScore.push([i,totalScore[i]]);
   }
+  return filterScore;
+}
 
-  // 점수 내림차순, 이름 오름차순으로 정렬
+// 점수 내림차순, 이름 오름차순으로 정렬
+function sortScore(fillterScore){
   fillterScore.sort(function(a, b){
     if(a[1] === b[1]){
       return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
     }
     return b[1] - a[1];
   });
+  return fillterScore;
+}
 
-  for (var i=0; i<fillterScore.length; i++){
+function problem7(user, friends, visitors) {
+  let answer = [];
+  const friendsOfUser = findFriendsOfUser(user, friends);
+  const friendsOfFriends = findFriendsOfFriends(friendsOfUser, friends);
+  const visitorsScore = addVisitorsScore(visitors);
+  const totalScore = addFriendsScore(friendsOfFriends, visitorsScore);
+  const fillterScore = filtrateScore(user, friendsOfUser, totalScore);
+  const sortingScore = sortScore(fillterScore);
+
+  for (let i=0; i<sortingScore.length; i++){
     if (i==5){
       break;
     }
-    answer.push(fillterScore[i][0]);
+    answer.push(sortingScore[i][0]);
   }
   return answer;
 }

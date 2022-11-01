@@ -1,12 +1,16 @@
 function findMax(array){
-  var result = [];
-  for (var i=1; i<2; i++){
-    var mul = 1;
-    var sum = 0;
-    tmp = array[i].toString();
-    for (var j=0; j<tmp.length; j++){
-      mul *= parseInt(tmp[j]);
-      sum += parseInt(tmp[j]);
+  let result = [];
+  let mul;
+  let sum;
+  let strPage;
+  
+  for (let i=1; i<2; i++){
+    mul = 1;
+    sum = 0;
+    strPage = array[i].toString();
+    for (let j=0; j<strPage.length; j++){
+      mul *= parseInt(strPage[j]);
+      sum += parseInt(strPage[j]);
     }
     result.push(Math.max(mul, sum));
   }
@@ -14,11 +18,12 @@ function findMax(array){
 }
 
 function problem1(pobi, crong) {
+  let answer;
   if (pobi[1]-pobi[0] !== 1 || crong[1]-crong[0] !== 1){
     return -1;
   }
-  var maxPobi = findMax(pobi);
-  var maxCrong = findMax(crong);
+  const maxPobi = findMax(pobi);
+  const maxCrong = findMax(crong);
   if (maxPobi>maxCrong){
     answer = 1;
   }else if (maxPobi === maxCrong){
