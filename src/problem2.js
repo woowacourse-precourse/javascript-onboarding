@@ -13,16 +13,12 @@ class ErrorCase {
   }
 
   checkAllError() {
-    if (!(this.checkLength() && this.checkLowerCase())) {
-      throw new Error("input 양식에 에러가 발생했습니다!!");
-    }
+    return this.checkLength() && this.checkLowerCase();
   }
 }
 
 class Password {
   constructor(cryptogram) {
-    new ErrorCase(cryptogram);
-
     this._cryptogram = cryptogram;
   }
 
@@ -55,7 +51,15 @@ class Password {
 }
 
 function problem2(cryptogram) {
+  const error = new ErrorCase(cryptogram);
+
+  if (!error.checkAllError()) {
+    console.log("input 양식이 제한사항에 맞게 주어지지 않았습니다.");
+    return;
+  }
+
   const password = new Password(cryptogram);
+
   return password.getNoOverlapDecryption();
 }
 
