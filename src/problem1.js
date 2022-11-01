@@ -50,7 +50,7 @@ function checkContinuous(array) {
 function checkRange(array) {
   let check = false;
   array.forEach((num) => {
-    if (num >= MIN_BOOK_RANGE && num <= MAX_BOOK_RANGE) check = true;
+    if (num > MIN_BOOK_RANGE && num < MAX_BOOK_RANGE) check = true;
   });
   return check;
 }
