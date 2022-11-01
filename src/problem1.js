@@ -1,4 +1,23 @@
 function problem1(pobi, crong) {
+  const pobiMax = getMax(pobi);
+  const crongMax = getMax(crong);
+
+  if(isWeird(pobi)) {
+    return -1;
+  }
+  if(isWeird(crong)) {
+    return -1;
+  }
+  if(pobiMax > crongMax) {
+    return 1;
+  }
+  if(pobiMax < crongMax) {
+    return 2;
+  }
+  if(pobiMax === crongMax) {
+    return 0;
+  }
+  return -1;
 }
 
 // 각 자리 숫자를 모두 더해 그 결과를 반환하는 함수
