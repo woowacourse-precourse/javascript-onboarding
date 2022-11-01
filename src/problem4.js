@@ -41,11 +41,10 @@ function getOppositeAlphabet(word) {
 }
 
 function problem4(word) {
-    let answer = "";
-    for (let value of word) {
-        answer += getOppositeAlphabet(value);
-    }
-    return answer;
+    return word
+        .split("")
+        .map((str) => getOppositeAlphabet(str))
+        .join("");
 }
 
 module.exports = problem4;
