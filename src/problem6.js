@@ -45,8 +45,8 @@ function makeTwoLenNick(nick) {
   const nickLen = nick.length;
 
   for (let i = 0; i < nickLen - 1; i++) {
-    let tmp = nick.slice(i, i + 2);
-    twoLenNick.push(tmp);
+    let tmpNick = nick.slice(i, i + 2);
+    twoLenNick.push(tmpNick);
   }
 
   return twoLenNick;
