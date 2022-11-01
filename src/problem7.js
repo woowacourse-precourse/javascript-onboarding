@@ -60,16 +60,48 @@ function friendFriendScore(friends, userFriendSet, user){
   return friendCnt;
 }
 
+//사용자의 타임라인에 방문한 횟수를 기준으로 점수 매기기
+function visitorScore(visitors){
+  //console.log(visitors);
+  const visitCnt = []; //방문한 사람과 횟수에 대한 배열
+  
+  for(var i=0; i<visitors.length; i++){
+    const name = visitors[i];
+    var foundFlag= 0; //이미 있는 원소인지 알려주기 위한 지표
+    visitCnt.forEach(o => {
+      if (o.name === name) {
+          o.score += 1;
+          foundFlag = 1
+      }
+    });
+    if (foundFlag == 0) {
+      const visitor = {};
+      visitor.name = name;
+      visitor.score = 1;
+      visitCnt.push(visitor);
+    }
+  }
+
+  return visitCnt;
+}
+
+
 function problem7(user, friends, visitors) {
   var answer;
   var visitorCnt = [];
   var friendCnt = [];
   var currentFriend = searchCurrentFriend(friends,user);
   currentFriendArr = Array.from(currentFriend);
+  //console.log(currentFriendArr, visitors);
+  visitors = visitors.filter(x => !(currentFriendArr.includes(x))); //현재 친구가 아닌 방문자만 필터링
 
+  visitorCnt = visitorScore(visitors); //방문 횟수 점수 배열 저장
+  console.log(visitorCnt);
   //console.log(currentFriend);
   friendCnt = friendFriendScore(friends, currentFriend, user); //현재 친구의 친구 점수 배열 저장
-  
+  console.log(friendCnt);
+  //answer = recommendFriend(friendCnt, visitorCnt); //2가지 규칙에 따라 얻은 결과 병합
+
   return answer;
 }
 
