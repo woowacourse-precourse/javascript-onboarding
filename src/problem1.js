@@ -1,5 +1,5 @@
 function check(pageNums) {
-  const [left, right] = pageNums;
+  let [left, right] = pageNums;
 
   //필수 조건
   return 1 <= left && left < 400 && left % 2 == 1 && left + 1 == right;
@@ -42,6 +42,7 @@ function problem1(pobi, crong) {
   } else {
     return 0;
   }
+  
 }
 
 module.exports = problem1;
