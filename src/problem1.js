@@ -30,6 +30,14 @@ function getScore(num1, num2) {
   return -1;
 }
 
+function max() {
+  return Math.max(...arguments);
+}
+
+function getSumAndProduct(arr, fnArr) {
+  return fnArr.map((fn) => fn(arr));
+}
+
 function problem1(pobi, crong) {
   var answer;
   if (isWrongPage(...pobi) || isWrongPage(...crong)) return -1;
@@ -37,8 +45,8 @@ function problem1(pobi, crong) {
   const pobiNumsArr = pobi.map(numberToArr);
   const crongNumsArr = crong.map(numberToArr);
 
-  const pobiScore = Math.max(...pobiNumsArr.flatMap((numArr) => [sumArr(numArr), productArr(numArr)]));
-  const crongScore = Math.max(...crongNumsArr.flatMap((numArr) => [sumArr(numArr), productArr(numArr)]));
+  const pobiScore = max(...pobiNumsArr.flatMap((numArr) => getSumAndProduct(numArr, [sumArr, productArr])));
+  const crongScore = max(...crongNumsArr.flatMap((numArr) => getSumAndProduct(numArr, [sumArr, productArr])));
 
   answer = getScore(pobiScore, crongScore);
   return answer;
