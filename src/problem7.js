@@ -28,6 +28,13 @@ function problem7(user, friends, visitors) {
       }
     }
   }
+  for (var i = 0; i < visitors.length; i++) {
+    if (map.has(visitors[i])) {
+      map.set(visitors[i], map.get(visitors[i]) + 1);
+    } else {
+      map.set(visitors[i], 1);
+    }
+  }
   return answer;
 }
 
