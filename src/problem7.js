@@ -60,12 +60,14 @@ function problem7(user, friends, visitors) {
   for(let i = 0 ; i < showFriend.length ; i++){
     showFriend[i].pop()
   }
-
+  showFriend = showFriend.reduce(function (acc, cur) {
+    return acc.concat(cur);
+  });
+  
   answer = showFriend
   return answer;
 }
-let str = problem7("mrko" , [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] ,["bedi", "bedi", "donut", "bedi", "shakevan"] )
-console.log(str)
+
 
 
 module.exports = problem7;
