@@ -22,3 +22,7 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+### 기능목록
+
+1. 스택 자료구조를 이용
+2. lastPoppedChar라는 마지막 pop된 문자를 저장하는 변수를 선언하여 aaa와 같은 케이스 처리

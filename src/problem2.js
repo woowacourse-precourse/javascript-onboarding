@@ -8,7 +8,6 @@ function problem2(cryptogram) {
     else if (stack.length === 0 && lastPoppedChar !== char) stack.push(char)
     else if (lastPoppedChar !== char) stack.push(char)
   })
-  console.log(stack.join(""))
   return stack.join("")
 }
 
