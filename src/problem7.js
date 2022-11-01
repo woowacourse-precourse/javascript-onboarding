@@ -15,7 +15,7 @@ function problem7(user, friends, visitors) {
     return friendsList;
   }
 
-  function recommendFriends(user, friends, friend) {
+  function recommendFriends(user, friends, visitors, friend) {
     let score = [];
 
     // user의 친구의 친구를 찾아 10점를 더한다.
@@ -36,6 +36,18 @@ function problem7(user, friends, visitors) {
       }
     }
 
+    // 방문자를 찾아 1점을 더한다.
+    for (let k = 0; k < visitors.length; k++) {
+      let visitor = visitors[k];
+      // 방문자가 user, user친구가 아닌 경우만 처리
+      if (visitor != user && !friend.includes(visitor)) {
+        if (visitor in score) {
+          score[visitor] += SCORE_VISITOR;
+        } else {
+          score[visitor] = SCORE_VISITOR;
+        }
+      }
+    }
     return score;
   }
 
@@ -45,10 +57,8 @@ function problem7(user, friends, visitors) {
   const SCORE_UFF = 10;
   const SCORE_VISITOR = 1;
   let friend = findUserFriends(user, friends);
-  let score = recommendFriends(user, friends, friend);
-
+  let score = recommendFriends(user, friends, visitors, friend);
   console.log(score);
-
   return result;
 }
 
