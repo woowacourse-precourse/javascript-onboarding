@@ -81,6 +81,19 @@ function problem6(forms) {
       }
     })
   );
+  // 각각 2D->1D로, 중복인덱스 제거, undefined제거
+  const duplicatesIdx1D = Arr2Dto1D(duplicatesIdx2D);
+  const duplicatesIdx = deleteDuplicates(duplicatesIdx1D);
+  const duplicatesIdxData = duplicatesIdx.filter((ele) => ele !== undefined);
+
+  // 해당 인덱스의 email들 추출
+  const emailArr2D = forms.map((ele) =>
+    duplicatesIdxData.map((duplicatesIdx) => forms[duplicatesIdx][0])
+  );
+
+  // 1차원으로, 중복제거 및 오름차순 정렬하기
+  const emailArr1D = Arr2Dto1D(emailArr2D);
+  answer = deleteDuplicates(emailArr1D).sort();
 
   return answer;
 }
