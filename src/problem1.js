@@ -1,4 +1,26 @@
-function getMaxNum(pages) {
+function problem1(pobi, crong) {
+  if (errorCheck(pobi)) return -1;
+  if (errorCheck(crong)) return -1;
+
+  const pobiScore = getMaxNum(pobi);
+  const crongScore = getMaxNum(crong);
+  const result = compareTwoScores(pobiScore, crongScore);
+
+  return result;
+}
+
+function errorCheck(pages) {
+  if (pages[0] - pages[1] !== 1) return true;
+  if (pages[1] > 400) return true;
+  if (pages[0] < 1) return true;
+}
+function getMaxNum(person) {
+  if (!(person[1] - person[0] === 1)) return true;
+
+  const pages = [person[0], person[1], crong[0], crong[1]];
+  pages.forEach((page) => {
+    if (page < 1) return -1;
+  });
   let max = Number.MIN_SAFE_INTEGER;
 
   pages.forEach((page) => {
@@ -16,28 +38,8 @@ function getMaxNum(pages) {
 
   return max;
 }
-
-function compareTwoNums(pobiScore, crongScore) {
+function compareTwoScores(pobiScore, crongScore) {
   return pobiScore === crongScore ? 0 : pobiScore > crongScore ? 1 : 2;
 }
-
-function problem1(pobi, crong) {
-  if (!(pobi[1] - pobi[0] === 1) || !(crong[1] - crong[0] === 1)) return -1;
-
-  const pobiScore = getMaxNum(pobi);
-  const crongScore = getMaxNum(crong);
-  const result = compareTwoNums(pobiScore, crongScore);
-
-  return result;
-}
-
-// expected: 0
-console.log(problem1([97, 98], [197, 198]));
-// expected: 1
-console.log(problem1([131, 132], [211, 212]));
-// expected: -1
-console.log(problem1([99, 102], [211, 212]));
-// expected: -1
-console.log(problem1([102, 99], [211, 212]));
 
 module.exports = problem1;
