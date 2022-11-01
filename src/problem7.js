@@ -21,7 +21,10 @@ function problem7(user, friends, visitors) {
     const acquaintance = relationMap.get(friend);
     for (let i = 0; i < acquaintance.length; i++) {
       if (acquaintance[i] !== user) {
-        if (!scoreMap.has(acquaintance[i])) {
+        if (
+          !scoreMap.has(acquaintance[i]) &&
+          !userFriend.includes(acquaintance[i])
+        ) {
           scoreMap.set(acquaintance[i], 0);
         }
         scoreMap.set(acquaintance[i], scoreMap.get(acquaintance[i]) + 10);
@@ -31,10 +34,12 @@ function problem7(user, friends, visitors) {
 
   // user의 타임 라인에 방문한 횟수 점수 계산
   visitors.forEach((visitor) => {
-    if (!scoreMap.has(visitor)) {
-      scoreMap.set(visitor, 0);
+    if (!userFriend.includes(visitor)) {
+      if (!scoreMap.has(visitor)) {
+        scoreMap.set(visitor, 0);
+      }
+      scoreMap.set(visitor, scoreMap.get(visitor) + 1);
     }
-    scoreMap.set(visitor, scoreMap.get(visitor) + 1);
   });
 
   return answer;
