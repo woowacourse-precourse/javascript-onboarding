@@ -1,7 +1,7 @@
 function problem6(forms) {
   const answer = [];
   const nickNameHash = {};
-  for (const [email, nickname] of forms) {
+  for (const [, nickname] of forms) {
     for (let i = 0; i < nickname.length; i++) {
       for (let j = i + 2; j <= nickname.length; j++) {
         const nickName = nickname.slice(i, j);
