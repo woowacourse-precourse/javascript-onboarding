@@ -36,6 +36,14 @@ function isValidInput(forms) {
   return isValid;
 }
 
+function printInvalidForms(invalidForms) {
+  console.log("---- Check invalid forms ----");
+  invalidForms.forEach((form) => console.log(form));
+  console.log("-----------------------------");
+
+  return 0;
+}
+
 function getNickname(forms) {
   let nicknames = [];
   for (let form of forms) {
