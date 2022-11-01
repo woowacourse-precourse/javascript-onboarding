@@ -44,7 +44,7 @@ function alphaReverse(char) {
 
 function problem4(word) {
   if (!isValid(word)) {
-    return word;
+    return;
   }
   const wordArr = strToArr(word);
 
