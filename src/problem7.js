@@ -47,6 +47,17 @@ function scoreVisitors(scoreMap, visitors, excludedFriends) {
   return scoreMap;
 }
 
+// 점수가 가장 높은 순으로, 점수가 같을 경우 이름순으로 정렬하는 기능
+function sortScore(scoreMap) {
+  const sortedScore = [...scoreMap.entries()].sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] > b[0] ? 1 : -1;
+    }
+    return b[1] - a[1];
+  });
+  return sortedScore;
+}
+
 // solution
 function solution(user, friends, visitors) {
   const friendsMap = getFriendsMap(friends);
@@ -54,6 +65,8 @@ function solution(user, friends, visitors) {
   let scoreMap = scoreFriendsMayKnow(user, friendsMap, excludedFriends);
   scoreMap = scoreVisitors(scoreMap, visitors, excludedFriends);
   console.log(scoreMap);
+  const sortedScore = sortScore(scoreMap);
+  console.log(sortedScore);
 }
 
 function problem7(user, friends, visitors) {
@@ -64,8 +77,8 @@ function problem7(user, friends, visitors) {
 solution(
   "mrko",
   [
-    ["donut", "andole"],
     ["donut", "jun"],
+    ["donut", "andole"],
     ["donut", "mrko"],
     ["shakevan", "andole"],
     ["shakevan", "jun"],
