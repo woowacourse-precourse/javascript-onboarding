@@ -2,8 +2,8 @@ function makeMax(n){
   let [add,mul]=[0,1];
   str_num = String(n);
   str_num.split('').forEach((num)=>{
-      add+=parseInt(num);
-      mul*=parseInt(num);
+    add+=parseInt(num);
+    mul*=parseInt(num);
   });
   return Math.max(add,mul);
 }
@@ -14,7 +14,7 @@ function isVaildPage(pages){
 
 function problem1(pobi, crong){
   if (!(isVaildPage(pobi)&&isVaildPage(crong))){
-      return -1;
+    return -1;
   }
   const pobi_ans = Math.max.apply(null,
                    pobi.map((num)=>makeMax(num)));
