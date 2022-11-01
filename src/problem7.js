@@ -48,26 +48,37 @@ function problem7(user, friends, visitors) {
         if (friends.every(element => element.length === 2)) {
           if (checkIdLength(friends) === true) {
             if (findDuplicate(friends) === true) {
-              
+              userFriends = findFriends(friends, user);
+
+              let i = 0;
+              let userFriendsFriends = [];
+              while (i < userFriends.length) {
+                userFriendsFriends.push(findFriends(friends, userFriends[i]));
+                i++;
+              }
+              userFriendsFriends = userFriendsFriends.flat().filter(element => element !== user);
+
+              let j = 0;
+              while (j < userFriendsFriends.length) {
+                if (friendsScore.hasOwnProperty(userFriendsFriends[j])) {
+                  friendsScore[userFriendsFriends[j]] = friendsScore[userFriendsFriends[j]] + 10;
+                } else {
+                  friendsScore[userFriendsFriends[j]] = 10;
+                }
+                j++;
+              }
           }
           }
           }
         }
     } 
-    if (visitors.length >= 0 && visitors.length <= 10000) {
-      let k = 0;
-      while (k < visitors.length) {
-        if (friendsScore.hasOwnProperty(visitors[k]) && !userFriends.includes(visitors[k])) {
-          friendsScore[visitors[k]] = friendsScore[visitors[k]] + 1;
-        } else if (!userFriends.includes(visitors[k])) {
-          friendsScore[visitors[k]] = 1;
-        }
-        k++;
-      }
-    }
+    
     }
 
     
+  
+  return answer;
 }
+
 
 module.exports = problem7;
