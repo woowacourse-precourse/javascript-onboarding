@@ -1,10 +1,11 @@
 function problem7(user, friends, visitors) {
   let friendsList = getUserFriends(user, friends);
   let withFriendsList = getWithFriends(user, friends, friendsList);
-  let scoreArr = scoringFriends(withFriendsList);  // [ [ 'andole', 20 ], [ 'jun', 20 ] ] 출력
+  let scoreArr = scoringFriends(withFriendsList); // [ [ 'andole', 20 ], [ 'jun', 20 ] ] 출력
   return scoreArr;
 }
 
+// friends 배열을 돌며, user와 친구인 사람을 배열에 추가하는 함수
 function getUserFriends(user, friends) {
   let friendsList = [];
   for (let i = 0; i < friends.length; i++) {
@@ -17,6 +18,7 @@ function getUserFriends(user, friends) {
   return friendsList;
 }
 
+// user와 친구인 사람의 친구를 찾는 함수
 function getWithFriends(user, friends, userFriends) {
   let withFriends = [];
   for (let j = 0; j < friends.length; j++) {
@@ -37,6 +39,7 @@ function getWithFriends(user, friends, userFriends) {
   return withFriends;
 }
 
+// 함께 아는 친구에게 점수를 부여하는 함수
 function scoringFriends(withFriends) {
   let scoreList = Array.from(Array(withFriends.length), () =>
     Array(2).fill(null)
@@ -51,14 +54,3 @@ function scoringFriends(withFriends) {
 }
 
 module.exports = problem7;
-let user = "mrko";
-let friends = [
-  ["donut", "andole"],
-  ["donut", "jun"],
-  ["donut", "mrko"],
-  ["shakevan", "andole"],
-  ["shakevan", "jun"],
-  ["shakevan", "mrko"],
-];
-let visitors = ["bedi", "bedi", "donut", "bedi", "shakevan"];
-problem7(user, friends, visitors);
