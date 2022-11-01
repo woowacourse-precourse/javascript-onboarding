@@ -27,12 +27,12 @@ function checkRedundant(crew, redundantCountMap, resultArray) {
 
 function problem6(forms) {
   const resultArray = new Set();
-  const sliceNamesMap = new Map();
+  const redundantCountMap = new Map();
   for (const crew of forms) {
-    sliceString(crew[1], sliceNamesMap);
+    sliceString(crew[1], redundantCountMap);
   }
   for (const crew of forms) {
-    checkRedundant(crew, sliceNamesMap, resultArray);
+    checkRedundant(crew, redundantCountMap, resultArray);
   }
   return [...resultArray].sort();
 }
