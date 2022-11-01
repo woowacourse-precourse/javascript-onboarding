@@ -175,6 +175,45 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("Problem6_DuplicatedEmail_Return[jason@email.com]", () => {
+    expect(
+      problem6([
+        ["jason@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["jason@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com"]);
+  });
+  test("Problem6_DuplicatedWordLengthFour_Return[jason@email.com, jm@email.com, mj@email.com]", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠아"],
+        ["jason@email.com", "구제이엠아슨"],
+        ["woniee@email.com", "워니제구이"],
+        ["mj@email.com", "엠제이엠아슨"],
+        ["nowm@email.com", "이제엠"],
+      ])
+    ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
+  });
+  test("Problem6_TwoDuplicatedWords_Return[jason@email.com, jm@email.com, mj@email.com, nowm@email.com, woniee@email.com]", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠아"],
+        ["jason@email.com", "구제이엠아슨"],
+        ["woniee@email.com", "워니제구이"],
+        ["mj@email.com", "엠제이엠아슨"],
+        ["nowm@email.com", "이제구엠"],
+      ])
+    ).toEqual([
+      "jason@email.com",
+      "jm@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+      "woniee@email.com",
+    ]);
+  });
 });
 
 describe("problem7", () => {
