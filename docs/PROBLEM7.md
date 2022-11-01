@@ -33,5 +33,5 @@
 - [x] visitors 제한사항 검사 함수 (visitorsChecker)
 - [x] user 아이디를 입력받아 friends 배열에서 친구를 찾아 배열로 리턴하는 함수 (makeFriendsArr)
 - [x] 친구 아이디를 입력받아 friends 배열에서 추천 후보의 아이디를 key에, 점수 10점을 value에 저장하여 map으로 리턴하는 함수 (candidateMap)
-- [] 추천 후보 리스트를 입력받아 map에 key가 있으면 value에 +1을 하고 key가 없으면 아이디와 value 1을 add하고 리턴하는 함수 (timeLineChk)
+- [x] 추천 후보 리스트를 입력받아 map에 key가 있으면 value에 +1을 하고 key가 없으면 아이디와 value 1을 add하고 리턴하는 함수 (timeLineChk)
 - [] 추천 친구 리스트를 입력받아 value 값을 비교하여 큰 순서대로 5개를 배열에 저장하여 리턴하는 함수 (recommandArr)

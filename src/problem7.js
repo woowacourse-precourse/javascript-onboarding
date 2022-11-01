@@ -8,7 +8,7 @@ function problem7(user, friends, visitors) {
     // 친구리스트와 friends 배열을 비교해 추천 후보의 아이디와 점수를 가지는 리스트 객체를 만드는 함수
     var candidates = candidateMap(user, friendsArr, friends);
     // 추천 후보 리스트에 타임라인 방문 점수 합산
-    var score = timeLineChk(candidates, visitors);
+    var score = timeLineChk(candidates, visitors, friendsArr);
 
     // 합산 결과 상위 5명의 배열 리스트를 리턴
     answer = recommandArr(score);
@@ -142,6 +142,31 @@ function candidateMap(user, friendsArr, friends) {
   }
 
   return candidates;
+}
+
+// 추천 후보 결과에 타임라인 방문 점수를 합산하는 함수
+function timeLineChk(candidates, visitors, friendsArr) {
+  var result = candidates;
+  var removeFriends = visitors;
+
+  // 타임라인 방문자 중 이미 친구인 유저는 제외
+  for (var j = 0; j < friendsArr.length; j++) {
+    removeFriends = removeFriends.filter((id) => !(id === friendsArr[j]));
+  }
+
+  // 친구가 아닌 방문자만 확인
+  for (var i = 0; i < removeFriends.length; i++) {
+    // 추천 후보에 방문자가 이미 있는 경우
+    if (result.has(removeFriends[i])) {
+      result.set(removeFriends[i], result.get(removeFriends[i]) + 1);
+    }
+    // 추천 후보에 방문자가 없는 경우
+    else {
+      result.set(removeFriends[i], 1);
+    }
+  }
+
+  return result;
 }
 
 module.exports = problem7;
