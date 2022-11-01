@@ -22,3 +22,11 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## 🎯 <문제1>의 구현할 기능 목록
+
+문제 2
+
+1. 알파벳을 하나씩 체크하기 위해 cryptogram을 split한다.
+2. 이전값과 현재값이 다르고 현재값과 다음값이 다르면 누산기에 알파벳넣기
+3. 재귀 함수를 활용하여 다시 problem2에 방금 중복제거한 문자열 넣기
+4. 현재 cryptogram 하고 romveDuplication함수의 값이 같으면 현재 cryptogram 출력
