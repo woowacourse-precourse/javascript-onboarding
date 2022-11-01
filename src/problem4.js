@@ -8,15 +8,21 @@ const uppercase = ACharCodeAt + ZCharCodeAt;
 function problem4(word) {
   let answer = "";
   for (let char of word) {
-    if (char === " ") {
-      answer += " ";
-      continue;
-    }
-    const asci = char.charCodeAt(0);
-    const code = aCharCodeAt <= asci ? lowercase - asci : uppercase - asci;
-    answer += String.fromCharCode(code);
+    const charCode = greenFrogCharcode(char);
+    answer += String.fromCharCode(charCode);
   }
   return answer;
+}
+
+function greenFrogCharcode(char) {
+  const charCode = char.charCodeAt(0);
+  if (aCharCodeAt <= charCode && charCode <= zCharCodeAt) {
+    return lowercase - charCode;
+  }
+  if (ACharCodeAt <= charCode && charCode <= ZCharCodeAt) {
+    return uppercase - charCode;
+  }
+  return charCode;
 }
 
 module.exports = problem4;
