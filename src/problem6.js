@@ -38,7 +38,7 @@ function problem6(forms) {
     })
     .map((f) => f[0]);
 
-  return answer;
+  return answer.sort();
 }
 
 module.exports = problem6;
