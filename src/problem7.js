@@ -1,5 +1,4 @@
 function problem7(user, friends, visitors) {
-  var answer;
   const knowFriendsPoint = 10;
   const visitTimelinePoint = 1;
 
@@ -33,6 +32,11 @@ function problem7(user, friends, visitors) {
     }
     visitorsMap.set(visitors[i], visitTimelinePoint);
   }
+
+  const result = [...friendsMap, ...visitorsMap];
+  const answer = result
+    .sort((a, b) => (a[1] === b[1] ? (a[0] > b[0] ? 1 : -1) : b[1] - a[1]))
+    .map((recommend) => recommend[0]);
 
   return answer;
 }
