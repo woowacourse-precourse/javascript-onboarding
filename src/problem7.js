@@ -11,10 +11,19 @@
 * 10. 코드 정리
 */
 
-
 function problem7(user, friends, visitors) {
-  var answer;
-  return answer;
+  var userFriends = [];
+  
+  for(var friend of friends){
+    if(friend.includes(user)){ //user가 있으면 userFriends에 추가
+      if(friend[0] != user){ 
+        userFriends.push(friend[0]);
+      }else{
+        userFriends.push(friend[1]);
+      }
+      friends.splice(friends.indexOf(friend),1);
+    }
+  }
 }
 
 module.exports = problem7;
