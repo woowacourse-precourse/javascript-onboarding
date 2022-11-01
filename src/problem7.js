@@ -26,6 +26,14 @@ function getFriendKnowWithTogether(friendOfUser, friends, userName) {
   return friendknowWithTogether.filter((name) => name !== userName);
 }
 
+function CountFriendknowWithTogether(friendknowWithTogether) {
+  const result = friendknowWithTogether.reduce((acc, friend) => {
+    acc[friend] = (acc[friend] || 0) + 1;
+    return acc;
+  }, {});
+  return result;
+}
+
 function problem7(user, friends) {
   const friendOfUser = getFriendOfUser(user, friends);
   const visitorsCount = getVisitorsCount(visitors);
@@ -33,6 +41,9 @@ function problem7(user, friends) {
     friendOfUser,
     friends,
     user
+  );
+  const friendKnowTogeterWithCount = CountFriendknowWithTogether(
+    friendKnowWithTogether
   );
   return;
 }
