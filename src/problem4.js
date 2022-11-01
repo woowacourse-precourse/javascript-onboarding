@@ -23,6 +23,12 @@ const convertToTreefrog = (word) => {
 
 function problem4(word) {
   var answer;
+  // 공백 기준으로 문자열을 분할해 청개구리 사전을 통해 변환하는 기능
+  let wordArr = [];
+  wordArr = word.split(" ");
+  for (k = 0; k < wordArr.length; k++) {
+    wordArr[k] = convertToTreefrog(wordArr[k]);
+  }
   return answer;
 }
 
