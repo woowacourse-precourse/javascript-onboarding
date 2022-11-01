@@ -6,7 +6,7 @@ function problem7(user, friends, visitors) {
 function recommendFriends(user, friends, visitors) {
   const resultPointMap = createResultMap(user, friends, visitors);
   const friendsMap = makeFriendsMap(friends);
-  const userFriends = friendsMap[user];
+  const userFriends = friendsMap[user] ? friendsMap[user] : [];
   return removeUserFriends(sortList(resultPointMap), userFriends).slice(0, 5);
 }
 
@@ -42,14 +42,15 @@ function friendsPointCounter(user, friends) {
   const friendsMap = makeFriendsMap(friends);
   const userFriends = friendsMap[user];
   let pointMap = {};
-
-  const friendsRelation = userFriends.reduce((acc, cur) => {
-    acc.push(...searchFriends(user, friendsMap[cur]));
-    return acc;
-  }, []);
-  friendsRelation.forEach((friend) => {
-    !pointMap[friend] ? (pointMap[friend] = 10) : (pointMap[friend] += 10);
-  });
+  if (userFriends) {
+    const friendsRelation = userFriends.reduce((acc, cur) => {
+      acc.push(...searchFriends(user, friendsMap[cur]));
+      return acc;
+    }, []);
+    friendsRelation.forEach((friend) => {
+      !pointMap[friend] ? (pointMap[friend] = 10) : (pointMap[friend] += 10);
+    });
+  }
   return pointMap;
 }
 
