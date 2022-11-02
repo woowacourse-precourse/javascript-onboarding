@@ -10,9 +10,9 @@ function problem6(forms) {
 }
 
 function duplicateNickname(user, idx, origin) {
-  let nickname = getUsers(NICKNAME)(user);
+  const nickname = getUsers(NICKNAME)(user);
   return origin.some((comparisonTarget, compareIdx) => {
-    let comparisonCrewNickname = getUsers(NICKNAME)(comparisonTarget)
+    const comparisonCrewNickname = getUsers(NICKNAME)(comparisonTarget)
     if (comparisonCrewNickname === nickname && compareIdx === idx) return false;
     return (
       subNickname(nickname, 2)
