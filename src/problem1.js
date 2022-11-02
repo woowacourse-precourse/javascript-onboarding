@@ -8,8 +8,8 @@
 function problem1(pobi, crong) {
   const RESULT = {
     DRAW: 0,
-    POBI: 1,
-    CRONG: 2,
+    POBI_WIN: 1,
+    CRONG_WIN: 2,
     ERROR: -1,
   }
   Object.freeze(RESULT);
@@ -21,8 +21,8 @@ function problem1(pobi, crong) {
   let crongPoints = getPoints(crong, Math.max, [add, multiply]);
 
   if (pobiPoints === crongPoints) return RESULT.DRAW;
-  if (pobiPoints > crongPoints) return RESULT.POBI;
-  else return RESULT.CRONG;
+  if (pobiPoints > crongPoints) return RESULT.POBI_WIN;
+  else return RESULT.CRONG_WIN;
 
 
   // 계산을 위한 코드들 
