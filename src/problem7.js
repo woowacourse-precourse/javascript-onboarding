@@ -61,7 +61,7 @@ function problem7(user, friends, visitors) {
     sorted_score.slice(0, 6);
   }
 
-  return answer;
+  return sorted_score;
 }
 
 // console.log(
