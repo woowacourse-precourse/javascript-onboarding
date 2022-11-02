@@ -12,6 +12,7 @@ function problem1(pobi, crong) {
     CRONG: 2,
     ERROR: -1,
   }
+  Object.freeze(RESULT);
 
   if (!isValid([pobi, crong], [isOddEven, isDiff(1), isArea(1, 400)])) return RESULT.ERROR;
 
