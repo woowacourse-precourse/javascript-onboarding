@@ -8,9 +8,9 @@ function problem1(pobi, crong) {
   let crongMaxPoint = Math.max(...crongPoints)
 
   if (pobiMaxPoint > crongMaxPoint) return 1
-  else if (pobiMaxPoint < crongMaxPoint) return 2
-  else if (pobiMaxPoint === crongMaxPoint) return 0
-  else return -1
+  if (pobiMaxPoint < crongMaxPoint) return 2
+  if (pobiMaxPoint === crongMaxPoint) return 0
+  return -1
 }
 
 function isValidCase (case1, case2) {
