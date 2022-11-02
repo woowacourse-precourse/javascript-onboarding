@@ -26,7 +26,7 @@ function isInvalidInputs(cryptogram) {
 /**
  * 연속하는 중복 문자들을 삭제한 결과를 반환한다.
  * @param {string} ciphertext
- * @returns {string}
+ * @returns {[string | boolean]} - [중복을 제거한 새로운 암호문, 중복이 제거되었는지 여부]
  */
 function removeSequentDuplicates(ciphertext) {
   if (ciphertext.length === 0 || ciphertext.length === 1) {
