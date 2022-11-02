@@ -1,7 +1,7 @@
 function decoding(text) {
   if (text === "") return text;
   let testCase = true;
-  let result = text.match(/([a-z])\1{1,}|(.)/g);
+  let result = text.match(/([a-z])\1+|(.)/g);
   result = result.filter((v) => {
     if (v.length != 1) {
       testCase = false;
