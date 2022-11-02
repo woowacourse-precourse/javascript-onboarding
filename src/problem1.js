@@ -1,11 +1,12 @@
 function problem1(pobi, crong) {
-  if (isValidCase(pobi, crong) === false) return -1;
+  if (!isValidPages(pobi)) return -1
+  if (!isValidPages(crong)) return -1
 
-  let pobiPoints = pobi.map((page) => pageMaxFinder(page))
-  let crongPoints = crong.map((page) => pageMaxFinder(page))
+  const pobiPoints = pobi.map((page) => onePageMaxPoint(splitNumber(page)))
+  const crongPoints = crong.map((page) => onePageMaxPoint(splitNumber(page)))
 
-  let pobiMaxPoint = Math.max(...pobiPoints)
-  let crongMaxPoint = Math.max(...crongPoints)
+  const pobiMaxPoint = Math.max(...pobiPoints)
+  const crongMaxPoint = Math.max(...crongPoints)
 
   if (pobiMaxPoint > crongMaxPoint) return 1
   if (pobiMaxPoint < crongMaxPoint) return 2
@@ -13,23 +14,22 @@ function problem1(pobi, crong) {
   return -1
 }
 
-function isValidCase (case1, case2) {
-  if (case1[1] - case1[0] !== 1 || case2[1] - case2[0] !== 1) return false
-  if (case1[0] % 2 !== 1 || case2[0] % 2 !== 1) return false
-  if (case1[1] % 2 !== 0 || case1[1] % 2 !== 0) return false
+function isValidPages (pages) {
+  if (pages[1] - pages[0] !== 1) return false
+  if (pages[0] % 2 !== 1) return false
+  if (pages[1] % 2 !== 0) return false
+  return true
 }
 
-function pageMaxFinder(num) { 
-  const splitNumber = (num) => {
-    let strNumArr = num.toString().split("")
-    return strNumArr.map((strNum) => Number(strNum)) 
-  }
-  const pageMax = (arr) => {
-    let plus = arr.reduce((acc, cur) => acc + cur) 
-    let times = arr.reduce((acc, cur) => acc * cur) 
-    return Math.max(plus, times)
-  }
-  return pageMax(splitNumber(num))
+function splitNumber(num) {
+  const strNumArr = num.toString().split("")
+  return strNumArr.map((strNum) => Number(strNum))
+}
+
+function onePageMaxPoint(pageNumArr) {
+  const sum = pageNumArr.reduce((acc, cur) => acc + cur)
+  const times = pageNumArr.reduce((acc, cur) => acc * cur)
+  return Math.max(sum, times)
 }
 
 module.exports = problem1;
