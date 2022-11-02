@@ -22,7 +22,7 @@ function wordOfCrew(form) {
   for (let i = 0; i < nickname.length - 1; i++) {
     wordList.push(nickname.substring(i, i + 2))
   }
-  return wordList
+  return [...new Set(wordList)]
 }
 
 module.exports = problem6;
