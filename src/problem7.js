@@ -157,13 +157,13 @@ function calculateIndirectRelation(visitors, friendRelations) {
 
 /**
  * 추천할 친구를 정렬한다.
- * @param {(string | number)[]} user1
- * @param {(string | number)[]} user2
+ * @param {(string | number)[]} user1 - [친구 이름, 친구 점수]
+ * @param {(string | number)[]} user2 - [친구 이름, 친구 점수]
  * @returns {number}
  */
 function sortRecommendedUsers(user1, user2) {
   return user1[1] !== user2[1]
-    ? user2[1] - user1[1] // score에 따라 정렬
+    ? user2[1] - user1[1] // 점수에 따라 정렬
     : user1[0].localeCompare(user2[0]) // 이름에 따라 정렬
 }
 
