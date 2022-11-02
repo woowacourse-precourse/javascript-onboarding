@@ -1,12 +1,15 @@
 function problem2(cryptogram) {
-  let stack = new Array(cryptogram[0])
+  const charStack = new Array(cryptogram[0])
 
-  for (let i = 1; i < cryptogram.length; i++) {
-    if (stack[stack.length - 1] === cryptogram[i]) stack.pop()
-    else stack.push(cryptogram[i])
+  for (let charIndex = 1; charIndex < cryptogram.length; charIndex++) {
+    if (charStack[charStack.length - 1] === cryptogram[charIndex]) {
+      charStack.pop()
+    }
+    else {
+      charStack.push(cryptogram[charIndex])
+    }
   }
-  
-  return stack.join("")
+  return charStack.join("")
 }
 
 module.exports = problem2;
