@@ -8,14 +8,12 @@ function problem7(user, friends, visitors) {
       else recommendPoint[visitor] = visitPoint[visitor]
   }
 
-  const sorted = Object.keys(recommendPoint).sort((a, b) => {
-      if (recommendPoint[a] === recommendPoint[b]) {
-          return a < b ? -1 : a > b ? 1 : 0
-      } else {
-          return recommendPoint[b] - recommendPoint[a]
-      }
+  const sortedRecommend = Object.keys(recommendPoint).sort((a, b) => {
+      if (recommendPoint[a] === recommendPoint[b]) return a < b ? -1 : a > b ? 1 : 0
+      return recommendPoint[b] - recommendPoint[a]
   })
-  return sorted.length > 5 ? sorted.slice(0, 5) : sorted
+
+  return sortedRecommend.length > 5 ? sortedRecommend.slice(0, 5) : sortedRecommend
 }
 
 function getVisitPoint(user, friends, visitors) {
