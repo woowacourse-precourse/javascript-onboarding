@@ -68,7 +68,7 @@ function problem6(forms) {
   }
 
   const countInWords = getCountInWords(forms.map((form) => form[1])) // 2글자만 겹쳤는지 확인하면 됨
-  const contained = Array.from({ length: forms.length }, () => false) // 중복을 제거하기 위해
+  const contained = Array(forms.length).fill(false) // 중복을 제거하기 위해
   const changeNeededEmails = []
 
   for (const indexes of Object.values(countInWords)) {
