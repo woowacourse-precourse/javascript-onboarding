@@ -3,10 +3,7 @@
 // 3. pobi와 crong의 각각 최대값 계산
 // 4. 비교
 function calValue(page) {
-  const data = page
-    .toString()
-    .split("")
-    .map((x) => parseInt(x));
+  const data = Array.from(page.toString());
   const sum = data.reduce((acc, cur) => parseInt(acc) + parseInt(cur));
   const times = data.reduce((acc, cur) => acc * cur);
   return sum >= times ? sum : times;
