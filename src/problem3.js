@@ -12,7 +12,7 @@ const includesNumbersCount = (number) => {
   return includesArray.length;
 };
 /** 파라미터 조건 확인 */
-const isValidNumber = (number = 0) => {
+const isInvalidNumber = (number = 0) => {
   if (number < 1 || number > 10000) return true;
   if (!Number.isInteger(number)) return true;
 
@@ -21,7 +21,7 @@ const isValidNumber = (number = 0) => {
 
 function problem3(number = 0) {
   let count = 0;
-  if (isValidNumber(number)) return MESSAGES.ERROR_RANGE;
+  if (isInvalidNumber(number)) return MESSAGES.ERROR_RANGE;
 
   for (let index = 1; index <= number; index++) {
     count += includesNumbersCount(index);
