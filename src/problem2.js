@@ -3,9 +3,10 @@ const MESSAGES = Object.freeze({
 });
 
 /** 파라미터 조건 확인 */
-const isValidCryptogram = (separatedLetters = []) => {
+const isInvalidCryptogram = (separatedLetters = []) => {
   const lettersCount = separatedLetters.length;
-  return lettersCount < 1 || lettersCount > 1000;
+  if (lettersCount < 1 || lettersCount > 1000)
+    throw Error(MESSAGES.ERROR_LENGTH);
 };
 
 function problem2(cryptogram = '') {
@@ -14,8 +15,12 @@ function problem2(cryptogram = '') {
 
   // 한 글자씩 분리
   const separatedLetters = cryptogram.toLowerCase().split('');
-  if (isValidCryptogram(separatedLetters)) {
-    return MESSAGES.ERROR_LENGTH;
+
+  // 입력 형식 확인
+  try {
+    isInvalidCryptogram(separatedLetters);
+  } catch (e) {
+    return e.message;
   }
 
   // 분리된 글자 수 계산
