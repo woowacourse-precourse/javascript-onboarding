@@ -17,7 +17,8 @@ function problem7(user, friends, visitors) {
 }
 
 function getVisitPoint(user, friends, visitors) {
-  const visitorsExceptFriend = getVisitorsExceptFriend(user, friends, visitors)
+  const userFriend = checkFriendship(user, friends)
+  const visitorsExceptFriend = visitors.filter((visitor) => !userFriend.includes(visitor))
   const visitPoint = {}
   for (let visitor of visitorsExceptFriend) {
     visitPoint[visitor] ? visitPoint[visitor] += 1 : visitPoint[visitor] = 1
@@ -25,30 +26,19 @@ function getVisitPoint(user, friends, visitors) {
   return visitPoint
 }
 
-function getVisitorsExceptFriend(user, friends, visitors) {
-  const visitorsExceptFriend = []
-  const userFriend = checkFriendship(user, friends)
-  const friendList = {}
-  userFriend.forEach((friend) => {
-    friendList[friend] = "friend"
-  })
-  visitors.forEach((visitor) => {
-    if (!friendList[visitor]) visitorsExceptFriend.push(visitor)
-  })
-  return visitorsExceptFriend
-}
-
 function getFriendPoint(user, friends) {
   const userFriend = checkFriendship(user, friends)
-  const friendsExceptUser = exceptUser(user, friends)
+  const friendsExceptUser = friends.filter((friendship) => !friendship.includes(user))
+  const friendsExceptUserFriend = friendsExceptUser.filter((friendship) => {
+    return !friendship.every((person) => userFriend.includes(person))
+  })
+  
   let friendPoint = {}
   userFriend.forEach((friend) => {
-      checkFriendship(friend, friendsExceptUser).forEach((person) => {
-        friendPoint[person] ? friendPoint[person] += 10 : friendPoint[person] = 10
-      })
-  })
-  userFriend.forEach((userFriend) => {
-    if (friendPoint[userFriend]) delete friendPoint[userFriend]
+    const friendOfFriend = checkFriendship(friend, friendsExceptUserFriend)
+    friendOfFriend.forEach((person) => {
+      friendPoint[person] ? friendPoint[person] += 10 : friendPoint[person] = 10
+    })
   })
   return friendPoint
 }
@@ -60,14 +50,6 @@ function checkFriendship(person, friends) {
     if (friendship[1] === person) friendOfPerson.push(friendship[0])
   })
   return friendOfPerson
-}
-
-function exceptUser(user, friends) {
-  let friendsExceptUser = []
-  friends.forEach((friendship) => {
-      if (friendship[0] !== user && friendship[1] !== user) friendsExceptUser.push(friendship)
-  })
-  return friendsExceptUser
 }
 
 module.exports = problem7;
