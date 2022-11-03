@@ -23,7 +23,7 @@ const compareNumbers = (...number) => {
 };
 
 /** 파라미터 조건 확인 */
-const isValidPage = (page = []) => {
+const isInvalidPage = (page = []) => {
   const [left, right] = page;
 
   if (left % 2 !== 1) return true;
@@ -43,7 +43,7 @@ const isValidPage = (page = []) => {
 function problem1(pobi, crong) {
   const maxNumbers = [];
   const opponents = [pobi, crong];
-  if (isValidPage(pobi) || isValidPage(crong)) {
+  if (opponents.some(isInvalidPage)) {
     return RESULT_STATUS.EXCEPTION;
   }
 
