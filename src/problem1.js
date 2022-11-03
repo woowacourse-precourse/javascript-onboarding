@@ -27,16 +27,15 @@ const isInvalidPage = (page = []) => {
   const [left, right] = page;
 
   if (left % 2 !== 1) return true;
-  if (right % 2 !== 0) return true;
+
+  // 연속된 페이지
+  if (left + 1 !== right) return true;
 
   if (left <= 1 || left >= 400) return true;
   if (right <= 1 || right >= 400) return true;
 
   // 페이지 형식
   if (page.length > 2) return true;
-
-  // 연속된 페이지
-  if (left + 1 !== right) return true;
   return false;
 };
 
