@@ -1,5 +1,4 @@
 /**
- * 짝수인지 홀수인지 판단한다.
  * @param {number} number
  * @returns {boolean}
  */
@@ -86,24 +85,24 @@ function getScore(pages) {
 /**
  * 게임의 결과를 반환한다.
  * 0이면 비긴 것이다.
- * 1이면 첫 번째 사람이 이긴다.
- * 2이면 두 번째 사람이 이긴다.
+ * 1이면 포비가 이긴 것이다.
+ * 2이면 크롱이 이긴 것이다.
  * 올바른 입력이 아닐 경우 -1을 반환한다.
- * @param {number[]} pages1
- * @param {number[]} pages2
+ * @param {number[]} pobi
+ * @param {number[]} crong
  * @returns {number}
  */
-function problem1(pages1, pages2) {
-  if (isInvalidInputs(pages1, pages2)) {
+function problem1(pobi, crong) {
+  if (isInvalidInputs(pobi, crong)) {
     return -1
   }
 
-  const score1 = getScore(pages1)
-  const score2 = getScore(pages2)
+  const pobiScore = getScore(pobi)
+  const crongScore = getScore(crong)
 
-  if (score1 > score2) {
+  if (pobiScore > crongScore) {
     return 1
-  } else if (score1 < score2) {
+  } else if (pobiScore < crongScore) {
     return 2
   } else {
     return 0
