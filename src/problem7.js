@@ -28,8 +28,7 @@ function problem7(user = '', friends = [], visitors = []) {
 
   const sortedFriends = Object.entries(beFriends).sort(
     ([nameA, scoreA], [nameB, scoreB]) => {
-      if (scoreA === scoreB) return sortByAlphabetically(nameA, nameB);
-      return scoreB - scoreA;
+      return scoreB - scoreA || sortByAlphabetically(nameA, nameB);
     }
   );
 
