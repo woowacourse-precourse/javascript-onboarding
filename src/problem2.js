@@ -25,8 +25,7 @@ function problem2(cryptogram = '') {
 
   // 분리된 글자 수 계산
   separatedLetters.forEach((letter) => {
-    if (letterCounts[letter]) letterCounts[letter]++;
-    else letterCounts[letter] = 1;
+    letterCounts[letter] = (letterCounts[letter] ?? 0) + 1;
   });
 
   // 분리된 글자 수가 홀수라면 배열에 저장
