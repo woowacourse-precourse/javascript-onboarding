@@ -1,3 +1,4 @@
+//입력받은 문자들 중 연속되는 문자를 소거해주는 함수
 function decoding(text) {
   if (text === "") return text;
   let testCase = true;
