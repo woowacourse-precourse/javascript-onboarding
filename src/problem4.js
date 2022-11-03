@@ -1,6 +1,24 @@
+function reverseChar(char) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  const frogDic = new Object()
+  
+  for (let alphabetIndex = 0; alphabetIndex < alphabet.length; alphabetIndex++) {
+    const key = alphabet[alphabetIndex]
+    frogDic[key] = alphabet[alphabet.length - 1 - alphabetIndex]
+  }
+  return frogDic[char]
+}
+
+function changeChar(char) {
+  if (/^[a-z]*$/.test(char)) char = reverseChar(char)
+  if (/^[A-Z]*$/.test(char)) char = reverseChar(char.toLowerCase()).toUpperCase()
+  return char
+}
+
 function problem4(word) {
-  var answer;
-  return answer;
+  const wordChar = word.split('')
+  const changedWord = wordChar.map((char) => changeChar(char)).join("")
+  return changedWord
 }
 
 module.exports = problem4;
