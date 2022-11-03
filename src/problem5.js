@@ -3,9 +3,6 @@ function problem5(money) {
   const moneyCarryUnit = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
 
   for(let i=0; i<answer.length; i++) {
-    // const temporary = getCalculateMoney(money, moneyCarryUnit[i]);
-    // answer[i] = temporary[0];
-    // money = temporary[1];
     [answer[i], money] = getCalculateMoney(money, moneyCarryUnit[i]);
   }
 
