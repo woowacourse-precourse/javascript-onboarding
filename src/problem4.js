@@ -1,5 +1,5 @@
 function getAlphabetDict() {
-  let alphabets = {};
+  const alphabets = {};
 
   for (let alpha_a = 65, alpha_z = 90; alpha_a <= 90, alpha_z >= 65; alpha_a++, alpha_z--) {
     alphabets[String.fromCharCode(alpha_a)] = String.fromCharCode(alpha_z);
@@ -13,7 +13,7 @@ function convertWord(word, alphabets) {
       uppercase, 
       lowercase;
   
-  for (let char of word) {
+  for (const char of word) {
     uppercase = alphabets[char];
     lowercase = alphabets[char.toUpperCase()];
 
