@@ -18,12 +18,17 @@ function calValue(page) {
 function problem1(pobi, crong) {
   var answer;
 
+  const pobiLeft = pobi[0];
+  const pobiRight = pobi[1];
+  const crongLeft = crong[0];
+  const crongRight = crong[1];
+
   //except
-  if (pobi[1] - pobi[0] !== 1 || crong[1] - crong[0] !== 1) return -1;
+  if (pobiRight - pobiLeft !== 1 || crongRight - crongLeft !== 1) return -1;
 
   //Calculate Max Value
-  let pobiMax = Math.max(calValue(pobi[0]), calValue(pobi[1]));
-  let crongMax = Math.max(calValue(crong[0]), calValue(crong[1]));
+  let pobiMax = Math.max(calValue(pobiLeft), calValue(pobiRight));
+  let crongMax = Math.max(calValue(crongLeft), calValue(crongRight));
 
   //Compare
   if (pobiMax === crongMax) {
