@@ -1,22 +1,29 @@
+const UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
+const NOT_ALPHABET_REG = /[\W,]+/g;
+
+function getTransChar(char) {
+  var charCase = UPPER_CASE.includes(char) ? UPPER_CASE : LOWER_CASE;
+  var index = 25 - charCase.indexOf(char);
+  return charCase[index];
+}
+
 function problem4(word) {
-  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var lower = "abcdefghijklmnopqrstuvwxyz";
-  var answer = "";
-  var regExp = /[\W,]+/g;
+  var transWord = "";
 
   for (var i = 0; i < word.length; i++) {
-    var text = word[i];
-    if (text.match(regExp)) {
-      answer += text;
+    var char = word[i];
+
+    if (char.match(NOT_ALPHABET_REG)) {
+      transWord += char;
       continue;
     }
 
-    var textArr = upper.includes(text) ? upper : lower;
-    var index = 25 - textArr.indexOf(text);
-    answer += textArr[index];
+    var transChar = getTransChar(char);
+    transWord += transChar;
   }
 
-  return answer;
+  return transWord;
 }
 
 module.exports = problem4;
