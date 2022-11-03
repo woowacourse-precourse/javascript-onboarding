@@ -23,8 +23,8 @@ function problem3(number = 0) {
   let count = 0;
   if (isValidNumber(number)) return MESSAGES.ERROR_RANGE;
 
-  for (let i = 1; i <= number; i++) {
-    count += includesNumbersCount(i);
+  for (let index = 1; index <= number; index++) {
+    count += includesNumbersCount(index);
   }
   return count;
 }

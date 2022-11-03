@@ -11,8 +11,8 @@ function problem6(forms = []) {
   const namesCount = {};
   for (const [_, name] of filteredForms) {
     const splitNames = name.split('');
-    for (let i = 0; i < splitNames.length - 1; i++) {
-      const nameKey = `${splitNames[i]}${splitNames[i + 1]}`;
+    for (let index = 0; index < splitNames.length - 1; index++) {
+      const nameKey = `${splitNames[index]}${splitNames[index + 1]}`;
       if (namesCount[nameKey]) namesCount[nameKey]++;
       else namesCount[nameKey] = 1;
     }
