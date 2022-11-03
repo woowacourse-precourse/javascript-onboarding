@@ -10,12 +10,8 @@ function deleteRepeate(cryptogram) {
     const lastEl = temporaryStorage.slice(-1)[0];
     const currEl = cryptogram[i];
 
-    if(lastOverlap === currEl) continue
-    if (currEl === lastEl) {
-      lastOverlap = lastEl;
-      temporaryStorage.pop();
-    }
-    else if(currEl !== lastEl) temporaryStorage.push(currEl)
+    currEl === lastEl ? temporaryStorage.pop() : temporaryStorage.push(currEl);
+    
   }
   return temporaryStorage.join('');
 }
