@@ -13,7 +13,7 @@ function problem6(forms) {
   for (let [email, name] of forms) {
     for (let stored_name of names) {
       for (let i = 0; i < name.length - 1; i++) {
-        if (stored_name.includes(name.substr(i, 2))) {
+        if (stored_name.includes(name.substring(i, i + 2))) {
           if (!restricted_emails.includes(emails[stored_name])) restricted_emails.push(emails[stored_name]);
           if (!restricted_emails.includes(email)) restricted_emails.push(email);
           break;
