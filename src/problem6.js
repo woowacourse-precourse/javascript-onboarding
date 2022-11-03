@@ -1,28 +1,26 @@
 function problem6(forms) {
   let answer = [];
-  let duplicateNickname = {};
+  let duplicateWordDictionary = {};
 
   forms.forEach(form => {
     const [currentEmail, currentNickname] = form;
     const checkInfo = checkEmail(currentEmail) + checkNickname(currentNickname);
 
-    if(checkInfo === 4) duplicateNickname = checkDuplicate(currentNickname, duplicateNickname); 
+    if(checkInfo === 4) duplicateWordDictionary = findDuplicateWord(currentNickname, duplicateWordDictionary); 
     else if (checkInfo !== 4) return wrongForm(checkInfo);
   });
   
-  console.log(duplicateNickname);
-
-  answer = findAnswer(forms, duplicateNickname);
+  answer = findAnswer(forms, duplicateWordDictionary);
   return answer.sort();
 }
 
-function findAnswer(forms, duplicateNickname) {
+function findAnswer(forms, duplicateWordDictionary) {
   const duplicateUser = [];
   forms.forEach(form => {
     const [currentEmail, currentNickname] = form;
     for (let i = 0; i < currentNickname.length - 1; i++) {
       const duplicateWord = currentNickname.substring(i, i+2);
-      if (duplicateNickname[duplicateWord] === 1 && duplicateUser.indexOf(currentEmail) === -1) {
+      if (duplicateWordDictionary[duplicateWord] === 1 && duplicateUser.indexOf(currentEmail) === -1) {
         duplicateUser.push(currentEmail);
       }
     }
@@ -30,17 +28,12 @@ function findAnswer(forms, duplicateNickname) {
   return duplicateUser;
 }
 
-function checkDuplicate(nickName, duplicateNickname) {
-  // let isDuplicateNickname = false;
+function findDuplicateWord(nickName, duplicateWordDictionary) {
   for(let i=0; i<nickName.length - 1; i++) {
     const duplicateWord = nickName.substring(i, i+2);
-    if (duplicateWord in duplicateNickname) {
-      duplicateNickname[duplicateWord] = 1;
-      // isDuplicateNickname = true;
-    } 
-    else if (duplicateWord in duplicateNickname === false) duplicateNickname[duplicateWord] = 0;
+    duplicateWord in duplicateWordDictionary ? duplicateWordDictionary[duplicateWord] = 1 : duplicateWordDictionary[duplicateWord] = 0;
   } 
-  return duplicateNickname;
+  return duplicateWordDictionary;
 }
   
 
