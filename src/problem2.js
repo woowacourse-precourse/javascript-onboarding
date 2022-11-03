@@ -1,8 +1,8 @@
 function removeContinuos(word) {
-  let removed_word = [],
-      prev_char = '';
+  const removed_word = [];
+  let prev_char = '';
 
-  for (let char of word) {
+  for (const char of word) {
     if (char === prev_char && char === removed_word[removed_word.length - 1]) removed_word.pop();
     if (char !== prev_char) {
       removed_word.push(char); 
