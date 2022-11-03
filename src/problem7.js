@@ -62,17 +62,14 @@ function getRecommandScore(acquaintance, visitors, user) {
 }
 
 function sortFriends(friends) {
-  let sorted_friends = [];
   // 점수 내림차순, 이름 오름차순
-  sorted_friends = Object.keys(friends)
+  return Object.keys(friends)
     .sort((a, b) => {
       if (friends[a] > friends[b]) return -1;
       if (friends[a] < friends[b]) return 1;
       if (a > b) return 1;
       if (a < b) return -1;
     });
-
-  return sorted_friends;
 }
 
 function problem7(user, friends, visitors) {
