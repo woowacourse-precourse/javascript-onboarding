@@ -1,53 +1,60 @@
+const [MIN_PAGE, MAX_PAGE] = [1, 400];
+const RESULT = {
+  DRAW: 0,
+  POBI_WIN: 1,
+  CRONG_WIN: 2,
+  ERROR: -1,
+};
+Object.freeze(RESULT);
+
+function checkPagesIsValid(pages) {
+  if (pages.length !== 2) return false;
+
+  var [left, right] = pages;
+  if (right - left !== 1 || left <= MIN_PAGE || right >= MAX_PAGE) return false;
+
+  return true;
+}
+
+function getScore([left, right]) {
+  return Math.max(
+    sumPageNum(left),
+    sumPageNum(right),
+    mulPageNum(left),
+    mulPageNum(right)
+  );
+}
+
+function sliceNumMakeArr(page) {
+  var pageArr = [];
+  do {
+    var q = parseInt(page % 10);
+    pageArr.push(q);
+    page = page / 10;
+  } while (page > 1);
+  return pageArr;
+}
+
+function sumPageNum(page) {
+  var numArr = sliceNumMakeArr(page);
+  return numArr.reduce((a, b) => a + b);
+}
+
+function mulPageNum(page) {
+  var numArr = sliceNumMakeArr(page);
+  return numArr.reduce((a, b) => a * b);
+}
+
 function problem1(pobi, crong) {
-  var [pLeft, pRight] = pobi;
-  var [cLeft, cRight] = crong;
-  if (
-    pRight - pLeft !== 1 ||
-    cRight - cLeft !== 1 ||
-    pLeft === 1 ||
-    cRight === 400 ||
-    pobi.length !== 2 ||
-    crong.length !== 2
-  )
-    return -1;
+  if (!checkPagesIsValid(pobi) || !checkPagesIsValid(crong))
+    return RESULT.ERROR;
 
-  function SliceNumMakeArr(num) {
-    var numArr = [];
-    do {
-      var q = parseInt(num % 10);
-      numArr.push(q);
-      num = num / 10;
-    } while (num > 1);
-    return numArr;
-  }
-  pLeft = SliceNumMakeArr(pLeft);
-  pRight = SliceNumMakeArr(pRight);
-  cLeft = SliceNumMakeArr(cLeft);
-  cRight = SliceNumMakeArr(cRight);
+  var pobiScore = getScore(pobi);
+  var crongScore = getScore(crong);
 
-  function sumArr(arr) {
-    return arr.reduce((a, b) => a + b);
-  }
-  function mulArr(arr) {
-    return arr.reduce((a, b) => a * b);
-  }
-
-  var pobiMax = Math.max(
-    sumArr(pLeft),
-    sumArr(pRight),
-    mulArr(pLeft),
-    mulArr(pRight)
-  );
-  var crongMax = Math.max(
-    sumArr(cLeft),
-    sumArr(cRight),
-    mulArr(cLeft),
-    mulArr(cRight)
-  );
-
-  if (pobiMax === crongMax) return 0;
-  else if (pobiMax > crongMax) return 1;
-  else return 2;
+  if (pobiScore === crongScore) return RESULT.DRAW;
+  if (pobiScore > crongScore) return RESULT.POBI_WIN;
+  return RESULT.CRONG_WIN;
 }
 
 module.exports = problem1;
