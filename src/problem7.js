@@ -54,10 +54,7 @@ const getAlreadyFriends = (user = '', friends = []) => {
 const sortByAlphabetically = (a = '', b = '') => {
   const upperCaseA = a.toUpperCase();
   const upperCaseB = b.toUpperCase();
-
-  if (upperCaseA > upperCaseB) return 1;
-  if (upperCaseA < upperCaseB) return -1;
-  if (upperCaseA === upperCaseB) return 0;
+  return upperCaseA.localeCompare(upperCaseB);
 };
 
 module.exports = problem7;
