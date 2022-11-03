@@ -7,7 +7,7 @@ const ALPHABET_ASCII_CODE = Object.freeze({
   a: 97,
   z: 122,
 });
-const ALPHABET_COUNT = 25;
+const ALPHABET_COUNT = 26;
 
 // 각 알파벳의 중간 문자 확인
 const middleUpperASCII = parseInt(
@@ -29,15 +29,16 @@ function problem4(word = '') {
 }
 
 /** 알파벳 시작 문자 ~ 중간 문자까지의 계산 */
-const smaller = (currentASCII = 0, ASCII_CODE = 0) => {
+const getStartToMiddle = (currentASCII = 0, ASCII_CODE = 0) => {
+  //65부터 계산이 되므로 기존 알파벳 숫자에 -1 적용
   return String.fromCharCode(
-    currentASCII + ALPHABET_COUNT - 2 * (currentASCII - ASCII_CODE)
+    currentASCII + (ALPHABET_COUNT - 1) - 2 * (currentASCII - ASCII_CODE)
   );
 };
 /** 알파벳 중간 문자 ~ 끝 문자까지의 계산 */
-const bigger = (currentASCII = 0, ASCII_CODE) => {
+const getFinishFromMiddle = (currentASCII = 0, ASCII_CODE) => {
   return String.fromCharCode(
-    currentASCII - ALPHABET_COUNT + 2 * (ASCII_CODE - currentASCII)
+    currentASCII - (ALPHABET_COUNT - 1) + 2 * (ASCII_CODE - currentASCII)
   );
 };
 
@@ -52,13 +53,13 @@ const convertByASCII = (currentASCII = 0) => {
 
   if (isUpperCase) {
     return currentASCII <= middleUpperASCII
-      ? smaller(currentASCII, ALPHABET_ASCII_CODE.A)
-      : bigger(currentASCII, ALPHABET_ASCII_CODE.Z);
+      ? getStartToMiddle(currentASCII, ALPHABET_ASCII_CODE.A)
+      : getFinishFromMiddle(currentASCII, ALPHABET_ASCII_CODE.Z);
   }
   if (isLowerCase) {
     return currentASCII <= middleLowerASCII
-      ? smaller(currentASCII, ALPHABET_ASCII_CODE.a)
-      : bigger(currentASCII, ALPHABET_ASCII_CODE.z);
+      ? getStartToMiddle(currentASCII, ALPHABET_ASCII_CODE.a)
+      : getFinishFromMiddle(currentASCII, ALPHABET_ASCII_CODE.z);
   }
   return String.fromCharCode(currentASCII);
 };
