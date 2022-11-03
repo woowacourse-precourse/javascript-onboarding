@@ -31,30 +31,55 @@ function isInvalidInputs(forms) {
 }
 
 /**
- * 각각의 단어들을 wordLength로 자른 새로운 단어로 만든다.
- * 그렇게 생긴 새로운 단어를 포함한 단어들의 index를 반환한다.
+ * 각각의 단어들을 wordLength로 자른 단어들의 set으로 변환한다.
  * @param {string[]} words
  * @param {number=} wordLength
+ * @returns {Set<string>}
+ */
+function getUniquesInWords(word, wordLength = 2) {
+  const splittedWords = new Set()
+
+  for (
+    let startIndex = 0;
+    startIndex < word.length - wordLength + 1;
+    startIndex++
+  ) {
+    const newWord = word.slice(startIndex, startIndex + wordLength)
+
+    splittedWords.add(newWord)
+  }
+
+  return splittedWords
+}
+
+/**
+ * @param {*} key
+ * @param {object} object
+ * @returns {boolean}
+ */
+function hasKey(key, object) {
+  return key in object
+}
+
+/**
+ * 각 단어들이 총 몇 개씩 있는지 파악한다.
+ * @param {string[]} splittedWords
  * @returns {Object.<string, number[]>}
  */
-function getCountInWords(words, wordLength = 2) {
-  const countInWords = {}
+function getCountInWords(splittedWords) {
+  const indexesContainingWords = {}
 
-  words.forEach((word, index) => {
-    for (
-      let startIndex = 0;
-      startIndex < word.length - wordLength + 1;
-      startIndex++
-    ) {
-      const newWord = word.slice(startIndex, startIndex + wordLength)
+  splittedWords.forEach((words, index) => {
+    words.forEach((word) => {
+      if (!hasKey(word, indexesContainingWords)) {
+        indexesContainingWords[word] = []
+      }
 
-      newWord in countInWords
-        ? countInWords[newWord].push(index)
-        : (countInWords[newWord] = [index])
-    }
+      indexesContainingWords[word].push(index)
+    })
   })
 
-  return countInWords
+  return indexesContainingWords
 }
 
 /**
@@ -67,11 +92,14 @@ function problem6(forms) {
     return '입력값이 잘못되었습니다.'
   }
 
-  const countInWords = getCountInWords(forms.map((form) => form[1])) // 2글자만 겹쳤는지 확인하면 됨
+  const uniqueWords = forms
+    .map((form) => getUniquesInWords(form[1]))
+    .map((words) => [...words])
+  const indexesContainingWords = getCountInWords(uniqueWords)
   const contained = Array(forms.length).fill(false) // 중복을 제거하기 위해
   const changeNeededEmails = []
 
-  for (const indexes of Object.values(countInWords)) {
+  for (const indexes of Object.values(indexesContainingWords)) {
     if (indexes.length < 2) {
       continue
     }
