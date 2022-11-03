@@ -1,12 +1,18 @@
-function problem3(number) {
-  var regExp = /3|6|9/g;
-  var answer = 0;
+const CLAP_NUM_REG = /3|6|9/g;
 
-  for (var i = 1; i <= number; i++) {
-    if (regExp.test(i)) answer += String(i).match(regExp).length;
+function getMatchedNumCount(num) {
+  return String(num).match(CLAP_NUM_REG).length;
+}
+
+function problem3(number) {
+  var clapCount = 0;
+
+  for (var num = 1; num <= number; num++) {
+    if (CLAP_NUM_REG.test(num)) clapCount += getMatchedNumCount(num);
+    //clapCount += (String(num).match(CLAP_NUM_REG) || []).length;
   }
 
-  return answer;
+  return clapCount;
 }
 
 module.exports = problem3;
