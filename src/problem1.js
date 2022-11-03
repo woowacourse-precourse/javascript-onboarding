@@ -32,11 +32,9 @@ function problem1(pobi, crong) {
 
   //Compare
   if (pobiMax === crongMax) {
-    answer = 0;
-  } else {
-    pobiMax > crongMax ? (answer = 1) : (answer = 2);
+    return (answer = 0);
   }
-  return answer;
+  return pobiMax > crongMax ? (answer = 1) : (answer = 2);
 }
 
 module.exports = problem1;
