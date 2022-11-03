@@ -16,7 +16,7 @@ function convert(ASCII) {
     for(let x of ASCII) {
         if(x >= 65 && x <= 90) froggyASCII.push(155 - x) 
         else if(x >= 97 && x <= 122) froggyASCII.push(219 - x) 
-        else if(x === 32) froggyASCII.push(x)
+        else froggyASCII.push(x)
     }
     return froggyASCII;
 }
