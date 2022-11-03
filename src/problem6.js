@@ -1,12 +1,12 @@
 function problem6(forms) {
-  let targetEmail = []
-  let wordCase = {}
+  const targetEmail = []
+  const wordCase = {}
   forms.forEach((form) => {
-    let email = form[0]
+    const email = form[0]
     wordOfCrew(form).forEach((word) => {
       if (!wordCase[word]) wordCase[word] = email
       else {
-        let presavedEmail = wordCase[word]
+        const presavedEmail = wordCase[word]
         targetEmail.push(presavedEmail)
         targetEmail.push(email)
       }
@@ -16,8 +16,8 @@ function problem6(forms) {
 } 
 
 function wordOfCrew(form) {
-  let nickname = form[1]
-  let wordList = []
+  const nickname = form[1]
+  const wordList = []
   for (let char = 0; char < nickname.length - 1; char++) {
     wordList.push(nickname.substring(char, char + 2))
   }

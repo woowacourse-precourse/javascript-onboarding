@@ -1,9 +1,9 @@
 function reverseChar(char) {
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  let frogDic = new Object()
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  const frogDic = new Object()
   
   for (let alphabetIndex = 0; alphabetIndex < alphabet.length; alphabetIndex++) {
-    let key = alphabet[alphabetIndex]
+    const key = alphabet[alphabetIndex]
     frogDic[key] = alphabet[alphabet.length - 1 - alphabetIndex]
   }
   return frogDic[char]
