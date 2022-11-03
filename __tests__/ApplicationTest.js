@@ -56,10 +56,7 @@ describe("problem2", () => {
   test("case5", () => {
     expect(problem2("zyealleyz")).toEqual("zyeaeyz");
   });
-  // test("case6", () => {
-  //   expect(problem2("zyellleeyz")).toEqual("zyeyz");
-  // });
-  test("case7", () => {
+  test("case6", () => {
     expect(problem2("browoanboommbbbbnaon")).toEqual("browoanbnaon");
   });
 });
@@ -88,6 +85,16 @@ describe("problem3", () => {
 describe("problem4", () => {
   test("case1", () => {
     expect(problem4("I love you")).toEqual("R olev blf");
+  });
+  test("case2", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba"
+    );
+  });
+  test("case3", () => {
+    expect(problem4("abcdefghijklmnopqrstuvwxyz !@#!#  ")).toEqual(
+      "zyxwvutsrqponmlkjihgfedcba !@#!#  "
+    );
   });
 });
 
