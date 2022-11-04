@@ -21,22 +21,26 @@ function myMaxScore(userPage) {
     return leftMax > rightMax ? leftMax : rightMax;
 }
 
+function compareScore(userScore1, userScore2) {
+    if (userScore1 === -1 || userScore2 === -1) {
+        return -1;
+    }
+    if (userScore1 > userScore2) {
+        return 1;
+    }
+    if (userScore1 < userScore2) {
+        return 2;
+    }
+    if (userScore1 === userScore2) {
+        return 0;
+    }
+}
+
 function problem1(pobi, crong) {
     const pobiScore = myMaxScore(pobi);
     const crongScore = myMaxScore(crong);
 
-    if (pobiScore === -1 || crongScore === -1) {
-        return -1;
-    }
-    if (pobiScore > crongScore) {
-        return 1;
-    }
-    if (pobiScore < crongScore) {
-        return 2;
-    }
-    if (pobiScore === crongScore) {
-        return 0;
-    }
+    return compareScore(pobiScore, crongScore);
 }
 
 module.exports = problem1;
