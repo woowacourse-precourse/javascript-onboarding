@@ -39,9 +39,7 @@ class AccountManager {
    * 회원의 이메일과 닉네임을 등록한다.
    * @param {[string, string]} form 회원의 이메일, 닉네임 배열
    */
-  submit(form) {
-    const [email, nickname] = form;
-
+  submit([email, nickname]) {
     // 닉네임의 모든 두 글자에 대해 수행
     // 제이엠씨 -> 제이, 이엠, 엠씨
     nickname
