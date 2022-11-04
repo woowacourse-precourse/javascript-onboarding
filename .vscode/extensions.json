@@ -1,0 +1,6 @@
+{
+  // 본 프로젝트에서는 Code Formatiing을 위해 EditorConfig가 사용된다
+  "recommendations": [
+    "EditorConfig.EditorConfig"
+  ]
+}
