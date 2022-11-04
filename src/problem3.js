@@ -1,10 +1,10 @@
 /**
  * 숫자의 각 자릿수 중 하나가 주어지면 손뼉을 쳐야하는지 여부를 반환한다.
- * @param {number} i 숫자의 각 자릿수 중 하나
+ * @param {number} digit 숫자의 각 자릿수 중 하나
  * @returns {boolean} 손뼉을 쳐야하는지 여부
  */
-function shouldClap(i) {
-  return i === 3 || i === 6 || i === 9;
+function shouldClap(digit) {
+  return digit === 3 || digit === 6 || digit === 9;
 }
 
 /**
@@ -14,8 +14,8 @@ function shouldClap(i) {
  */
 function getClapCount(n) {
   let clapCount = 0;
-  for (let i of String(n).split('').map(Number)) {
-    clapCount += +shouldClap(i);
+  for (let digit of String(n).split('').map(Number)) {
+    clapCount += +shouldClap(digit);
   }
   return clapCount;
 }
