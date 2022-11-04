@@ -22,8 +22,8 @@ class User {
  */
 class SocialNetwork {
 
-  /** @type {Object.<string, string[]>} 친구 관계를 담는 변수 */
-  #friendRelations = {}
+  /** @type {Map.<string, string[]>} 친구 관계를 담는 변수 */
+  #friendRelations = new Map()
 
   /**
    * `username` 의 친구를 추가하는 함수.
@@ -32,10 +32,10 @@ class SocialNetwork {
    * @param {string} friend 추가할 친구
    */
   #addFriend(username, friend) {
-    if (!(username in this.#friendRelations)) {
-      this.#friendRelations[username] = [];
+    if (!this.#friendRelations.has(username)) {
+      this.#friendRelations.set(username, []);
     }
-    this.#friendRelations[username].push(friend);
+    this.#friendRelations.get(username).push(friend);
   }
 
   /**
@@ -54,7 +54,7 @@ class SocialNetwork {
    * @returns {string[]} 사용자의 친구 목록
    */
   getFriends(username) {
-    return this.#friendRelations[username] ?? [];
+    return this.#friendRelations.get(username) ?? [];
   }
 
   /**
@@ -67,10 +67,10 @@ class SocialNetwork {
    * @returns {string[]} 친구 추천 목록
    */
   getFriendRecommendations(user) {
-    const scores = {};
+    /** @type {Map.<string, number>} */
+    const scores = new Map();
     const addScore = (username, score) => {
-      scores[username] = scores[username] ?? 0;
-      scores[username] += score;
+      scores.set(username, (scores.get(username) ?? 0) + score);
     };
 
     // 사용자의 타임 라인에 방문은 +1점
@@ -83,11 +83,11 @@ class SocialNetwork {
     }
 
     // 본인과 친구들은 제외
-    delete scores[user.name];
-    friends.map(friend => delete scores[friend]);
+    scores.delete(user.name);
+    friends.map(friend => scores.delete(friend));
 
     // 점수 순으로 정렬 및 상위 5개 잘라내기
-    const friendRecommendations = Object.entries(scores)
+    const friendRecommendations = Array.from(scores.entries())
       .sort(([usernameA, scoreA], [usernameB, scoreB]) => scoreB - scoreA || usernameA.localeCompare(usernameB))
       .slice(0, 5)
       .map(([username, score]) => username);
