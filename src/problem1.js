@@ -51,7 +51,7 @@ function getScore(pages, strategies = [addStrategy, multiplyStrategy]) {
  * @returns 계산된 점수
  */
 function addStrategy(page) {
-  return String(page).split('').reduce((a, b) => +a + +b);
+  return String(page).split('').map(Number).reduce((a, b) => a + b);
 }
 
 /**
@@ -60,7 +60,7 @@ function addStrategy(page) {
  * @returns 계산된 점수
  */
 function multiplyStrategy(page) {
-  return String(page).split('').reduce((a, b) => +a * +b);
+  return String(page).split('').map(Number).reduce((a, b) => a * b);
 }
 
 /**
