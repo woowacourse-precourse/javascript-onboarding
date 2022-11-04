@@ -15,7 +15,7 @@ function shouldClap(digit) {
 function getClapCount(n) {
   let clapCount = 0;
   for (const digit of String(n).split('').map(Number)) {
-    clapCount += +shouldClap(digit);
+    if (shouldClap(digit)) clapCount++;
   }
   return clapCount;
 }
