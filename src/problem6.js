@@ -59,9 +59,7 @@ class AccountManager {
    * @returns {string[]} 정렬되어 있는 이메일 리스트
    */
   get duplicatedEmails() {
-    const emails = Array.from(this.#duplicatedEmails.values());
-    emails.sort();
-    return emails;
+    return Array.from(this.#duplicatedEmails.values()).sort();
   }
 }
 
