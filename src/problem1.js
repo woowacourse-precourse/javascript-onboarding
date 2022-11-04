@@ -7,19 +7,29 @@ const Result = Object.freeze({
 });
 
 /**
+ * 런타임 중 사용되는 메세지
+ */
+const Message = Object.freeze({
+  ERROR_PAGE_INVALID_FORMAT: 'pages 배열 길이는 2여야 합니다.',
+  ERROR_PAGE_MUST_EVEN_ODD: '왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야 합니다.',
+  ERROR_PAGE_MUST_CONSECUTIVE: '두 페이지는 연속적인 값이어야 합니다.',
+  ERROR_PAGE_INVALID_RANGE: '페이지는 1부터 400 사이의 수여야 합니다.',
+});
+
+/**
  * 주어진 책 페이지 배열 입력이 올바른지 검증합니다.
  * @param {number[]} pages 책 페이지 배열
  *
  * @throws {Error} 검증에 실패할 시 던질 예외
  */
 function verifyPages(pages) {
-  if (pages.length !== 2) throw Error('pages 배열 길이는 2여야 합니다.');
+  if (pages.length !== 2) throw Error(Message.ERROR_PAGE_INVALID_FORMAT);
 
-  if (pages[0] % 2 !== 1 || pages[1] % 2 !== 0) throw Error('왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야 합니다.');
+  if (pages[0] % 2 !== 1 || pages[1] % 2 !== 0) throw Error(Message.ERROR_PAGE_MUST_EVEN_ODD);
 
-  if (pages[0] + 1 !== pages[1]) throw Error('두 페이지는 연속적인 값이어야 합니다.');
+  if (pages[0] + 1 !== pages[1]) throw Error(Message.ERROR_PAGE_MUST_CONSECUTIVE);
 
-  if (pages[0] < 1 || 400 < pages[1]) throw Error('페이지는 1부터 400 사이의 수여야 합니다.');
+  if (pages[0] < 1 || 400 < pages[1]) throw Error(Message.ERROR_PAGE_INVALID_RANGE);
 }
 
 /**
