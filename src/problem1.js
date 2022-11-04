@@ -25,11 +25,13 @@ const Message = Object.freeze({
 function verifyPages(pages) {
   if (pages.length !== 2) throw Error(Message.ERROR_PAGE_INVALID_FORMAT);
 
-  if (pages[0] + 1 !== pages[1]) throw Error(Message.ERROR_PAGE_MUST_CONSECUTIVE);
+  const [left, right] = pages;
 
-  if (pages[0] % 2 !== 1) throw Error(Message.ERROR_PAGE_MUST_EVEN_ODD);
+  if (left + 1 !== right) throw Error(Message.ERROR_PAGE_MUST_CONSECUTIVE);
 
-  if (pages[0] < 1 || 400 < pages[1]) throw Error(Message.ERROR_PAGE_INVALID_RANGE);
+  if (left % 2 !== 1) throw Error(Message.ERROR_PAGE_MUST_EVEN_ODD);
+
+  if (left < 1 || 400 < right) throw Error(Message.ERROR_PAGE_INVALID_RANGE);
 }
 
 /**
