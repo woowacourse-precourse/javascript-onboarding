@@ -66,6 +66,76 @@ describe("problem6", () => {
       ])
     ).toEqual(["jason@email.com", "jm@email.com", "mj@email.com"]);
   });
+  test("case2", () => {
+    expect(
+      problem6([
+        ["jm@email.com", "제이엠"],
+        ["jason@email.com", "제이슨"],
+        ["woniee@email.com", "워니"],
+        ["mj@email.com", "엠제이"],
+        ["nowm@email.com", "이제엠"],
+        ["jasp@email.com", "박이김"],
+        ["jp@email.com", "김이박"],
+        ["qpw@email.com", "김이순"],
+        ["teemo@email.com", "티모"],
+        ["banana@email.com", "대위티모"],
+        ["secondJm@email.com", "제이엠"],
+        ["apple@email.com", "땷횱봵"],
+        ["stran@email.com", "횱봵으"],
+        ["zebra@email.com", "두글자이상의문자가연속적으로이제맞티모"],
+      ])
+    ).toEqual([
+      "apple@email.com",
+      "banana@email.com",
+      "jason@email.com",
+      "jm@email.com",
+      "jp@email.com",
+      "mj@email.com",
+      "nowm@email.com",
+      "qpw@email.com",
+      "secondJm@email.com",
+      "stran@email.com",
+      "teemo@email.com",
+      "zebra@email.com",
+    ]);
+  });
+  const makeEmail = (index) => {
+    const alphabet = "abcdefghij";
+
+    return (
+      "aaaaaa" +
+      alphabet[~~((index % 10000) / 1000)] +
+      alphabet[~~((index % 1000) / 100)] +
+      alphabet[~~((index % 100) / 10)] +
+      alphabet[~~((index % 10) / 1)] +
+      "@email.com"
+    );
+  };
+
+  // const makeNickname = (index) => {
+  //   const first = "가".charCodeAt(0);
+  //   const bound = "힣".charCodeAt(0) - "가".charCodeAt(0) + 1;
+
+  //   return String.fromCharCode(
+  //     ...Array(19)
+  //       .fill()
+  //       .map((_, chIndex) => {
+  //         return first + ((index + (1 << chIndex)) % bound);
+  //       })
+  //   );
+  // };
+
+  // test("case4", () => {
+  //   expect(
+  //     problem6(
+  //       Array(10000)
+  //         .fill()
+  //         .map((_, index) => {
+  //           return [makeEmail(index), makeNickname(index)];
+  //         })
+  //     )
+  //   ).toEqual([]);
+  // });
 });
 
 describe("problem7", () => {
@@ -84,5 +154,129 @@ describe("problem7", () => {
         ["bedi", "bedi", "donut", "bedi", "shakevan"]
       )
     ).toEqual(["andole", "jun", "bedi"]);
+  });
+  test("case2", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", "jun"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi"]);
+  });
+  test("case3", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", "jun"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["jun", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["bedi", "bedi", "donut", "bedi", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi"]);
+  });
+  test("case4", () => {
+    expect(
+      problem7(
+        "mrko",
+        [
+          ["mrko", "jun"],
+          ["bedi", "jun"],
+          ["bedi", "donut"],
+          ["donut", "jun"],
+          ["donut", "mrko"],
+          ["shakevan", "andole"],
+          ["jun", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "mrko"],
+        ],
+        ["donut", "shakevan"]
+      )
+    ).toEqual(["andole", "bedi"]);
+  });
+  test("case5", () => {
+    expect(
+      problem7(
+        "andole",
+        [
+          ["andole", "jun"],
+          ["donut", "jun"],
+          ["donut", "shakevan"],
+          ["shakevan", "andole"],
+          ["shakevan", "jun"],
+          ["shakevan", "bedi"],
+          ["anne", "jun"],
+        ],
+        ["donut", "mrko", "peter", "sam"]
+      )
+    ).toEqual(["donut", "anne", "bedi", "mrko", "peter"]);
+  });
+  test("case6", () => {
+    expect(
+      problem7(
+        "hello",
+        [
+          ["andole", "jun"],
+          ["andole", "bedi"],
+          ["jun", "shakevan"],
+          ["jun", "kane"],
+          ["jun", "sam"],
+          ["bedi", "shakevan"],
+          ["bedi", "anne"],
+          ["bedi", "sam"],
+          ["anne", "mrko"],
+        ],
+        ["donut", "anne", "mrko", "mrko", "sam"]
+      )
+    ).toEqual(["mrko", "anne", "donut", "sam"]);
+  });
+  test("case7", () => {
+    expect(
+      problem7("hello", [["andole", "jun"]], ["mrko", "mrko", "sam", "hello"])
+    ).toEqual(["mrko", "sam"]);
+  });
+  const makeName = (index) => {
+    return Array(30)
+      .fill()
+      .map((_, chIndex) => "az"[index & (1 << chIndex) ? 1 : 0])
+      .join("");
+  };
+  const user = "mrko";
+
+  test("case8", () => {
+    expect(
+      problem7(
+        user,
+        [
+          ...Array(5000)
+            .fill()
+            .map((_, index) => [user, makeName(index)]), // 0~4999까지 친구
+          ...Array(5000)
+            .fill()
+            .map((_, index) => [makeName(index), makeName(5000 + index)]), // 5000~9999까지 친구의 친구
+        ],
+        [
+          // 5066, 5067, 5068, 5069, 5070 순서대로 많이 방문
+          ...Array(4000).fill(5066),
+          ...Array(3000).fill(5067),
+          ...Array(2000).fill(5068),
+          ...Array(800).fill(5069),
+          ...Array(200).fill(5070),
+        ].map(makeName)
+      )
+    ).toEqual([5066, 5067, 5068, 5069, 5070].map(makeName));
   });
 });
