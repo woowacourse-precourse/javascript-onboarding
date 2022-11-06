@@ -1,49 +1,57 @@
 function problem7(user, friends, visitors) {
   const userFrineds = (user, relation) => {
     return relation
-      .filter((x) => x[0] === user || x[1] === user)
-      .map((x) => (x[0] === user ? x[1] : x[0]));
+      .filter((findUser) => findUser.includes(user))
+      .map(([isUSer, isFriend]) => (isUSer === user ? isFriend : isUSer));
   };
 
-  const foafCnt = (relation, friends, user) => {
-    const foafRel = relation.filter(
-      (x) =>
-        !x.includes(user) &&
-        (friends.includes(x[0]) || friends.includes(x[1])) &&
-        !(friends.includes(x[0]) && friends.includes(x[1]))
-    );
-
-    return foafRel.map((x) =>
-      friends.includes(x[0]) ? [x[1], 10] : [x[0], 10]
-    );
+  const unknownFriends = (user, alreadyFrineds, friends) => {
+    return [
+      ...new Set(
+        friends
+          .flat()
+          .filter((un) => !alreadyFrineds.includes(un) && user !== un)
+      ),
+    ];
   };
 
-  const visitedCnt = (visitors, alreadyFrineds) => {
+  const foafCnt = (friends, alreadyFrineds, unknown) => {
+    return friends
+      .filter(
+        ([one, other]) =>
+          (alreadyFrineds.includes(one) && unknown.includes(other)) ||
+          (alreadyFrineds.includes(other) && unknown.includes(one))
+      )
+      .map(([one, other]) => (unknown.includes(one) ? [one, 10] : [other, 10]));
+  };
+
+  const visitedCnt = (visitors, unknown) => {
     return visitors
-      .filter((x) => !alreadyFrineds.includes(x))
-      .map((x) => [x, 1]);
+      .filter((visitor) => unknown.includes(visitor))
+      .map((visitor) => [visitor, 1]);
   };
 
-  const highScore = (arr) => {
+  const highScore = (scoreList) => {
     const recommendList = [];
-    const recommendListKey = [...new Set(arr.map((x) => x[0]))];
-    recommendListKey.forEach((x) => recommendList.push([x, 0]));
-    arr.forEach(
-      (x) => (recommendList[recommendListKey.indexOf(x[0])][1] += x[1])
+    const recommendListKey = [...new Set(scoreList.map(([name, _]) => name))];
+    recommendListKey.forEach((name) => recommendList.push([name, 0]));
+    scoreList.forEach(
+      ([name, score]) =>
+        (recommendList[recommendListKey.indexOf(name)][1] += score)
     );
-
     return recommendList
       .sort()
-      .sort((a, b) => (b[1] > a[1] ? 1 : a[1] > b[1] ? -1 : 0))
-      .map((x) => x[0])
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, _]) => name)
       .slice(0, 5);
   };
 
   const alreadyFrineds = userFrineds(user, friends);
-  const foaf = foafCnt(friends, alreadyFrineds, user);
-  const visit = visitedCnt(visitors, alreadyFrineds);
+  const unknown = unknownFriends(user, alreadyFrineds, [...friends, visitors]);
+  const friendScore = foafCnt(friends, alreadyFrineds, unknown);
+  const visitorsScore = visitedCnt(visitors, unknown);
 
-  return highScore([...visit, ...foaf]);
+  return highScore([...friendScore, ...visitorsScore]);
 }
 
 module.exports = problem7;
