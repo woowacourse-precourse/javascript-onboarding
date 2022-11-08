@@ -15,6 +15,16 @@ class App {
 	getPlayerAnswer() {
 		this.Console.readLine('숫자를 입력해주세요 : ', (playerAnswer) => {
 			this.playerAnswer = playerAnswer;
+			this.validatePlayerAnswer();
+		});
+	}
+	validatePlayerAnswer() {
+		const arr = this.playerAnswer.split('');
+		if (arr.length !== 3) throw new Error('Invalid Player Answer');
+		if (new Set(arr).size !== 3) throw new Error('Invalid Player Answer');
+		arr.forEach((v) => {
+			if (isNaN(v)) throw new Error('Invalid Player Answer');
+			if (!Number(v)) throw new Error('Invalid Player Answer');
 		});
 	}
 	getComputerAnswer() {
