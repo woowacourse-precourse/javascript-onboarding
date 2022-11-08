@@ -7,7 +7,7 @@ function duplicateCheckApp(forms) {
   const emailOfUsedNickName = new Set();
   forms.forEach(([crewEmail, crewNickName]) => {
     for (let i = 0; i < crewNickName.length - 1; i++) {
-      let twoLetterName = crewNickName.substr(i, i + 2);
+      const twoLetterName = crewNickName.substr(i, i + 2);
       if (infoOfUsedTwoLetter.has(twoLetterName)) {
         emailOfUsedNickName.add(crewEmail);
         emailOfUsedNickName.add(infoOfUsedTwoLetter.get(twoLetterName));
