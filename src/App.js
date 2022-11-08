@@ -36,7 +36,13 @@ class App {
 
 		if (score.strike === 3) {
 			this.Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
+			this.getNextStep();
 		} else this.getPlayerAnswer();
+	}
+	getNextStep() {
+		this.Console.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n', (nextStep) => {
+			this.nextStep = nextStep;
+		});
 	}
 	validatePlayerAnswer() {
 		const arr = this.playerAnswer.split('');
