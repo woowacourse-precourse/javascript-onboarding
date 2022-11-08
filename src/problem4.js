@@ -1,45 +1,59 @@
+const UNICODE_UPPERCASE_A = 65;
+const UNICODE_UPPERCASE_Z = 90;
+const UNICODE_LOWERCASE_A = 97;
+const UNICODE_LOWERCASE_Z = 122;
+
 function problem4(word) {
   return treeFrogApp(word);
 }
 
-function treeFrogApp(word){
+function treeFrogApp(word) {
   const eachCharCollection = createStringSplit(word);
-  for(let i = 0; i < eachCharCollection.length; i++){
-    eachCharCollection[i] = convertTreeFrogChar(convertUTF16(eachCharCollection[i]));
+  for (let idx = 0; idx < eachCharCollection.length; idx++) {
+    eachCharCollection[idx] = convertTreeFrogChar(
+      convertUTF16(eachCharCollection[idx]),
+    );
   }
   return convertString(eachCharCollection);
 }
 
-function createStringSplit(word){
-  return word.split("");
+function createStringSplit(word) {
+  return word.split('');
 }
 
-function convertTreeFrogChar(utf16Code){
-  return checkAlphabet(utf16Code)?convertChar(convertReverseCode(utf16Code)):convertChar(utf16Code);
+function convertTreeFrogChar(uniCode) {
+  return checkAlphabet(uniCode)
+    ? convertChar(convertReverseCode(uniCode))
+    : convertChar(uniCode);
 }
 
-function convertUTF16(char){
+function convertUTF16(char) {
   return char.charCodeAt(0);
 }
 
-function convertReverseCode(utf16Code){
-  return checkLowerCase(utf16Code)?219-utf16Code:155-utf16Code;
+function convertReverseCode(uniCode) {
+  return checkLowerCase(uniCode)
+    ? UNICODE_LOWERCASE_A + UNICODE_LOWERCASE_Z - uniCode
+    : UNICODE_UPPERCASE_A + UNICODE_UPPERCASE_Z - uniCode;
 }
 
-function convertChar(utf16Code){
-  return String.fromCharCode(utf16Code);
+function convertChar(uniCode) {
+  return String.fromCharCode(uniCode);
 }
 
-function checkAlphabet(utf16Code){
-  return ( 65 <= utf16Code && utf16Code <= 90) || ( 97 <= utf16Code && utf16Code <= 122);
+function checkAlphabet(uniCode) {
+  return (
+    (UNICODE_UPPERCASE_A <= uniCode && uniCode <= UNICODE_UPPERCASE_Z) ||
+    (UNICODE_LOWERCASE_A <= uniCode && uniCode <= UNICODE_LOWERCASE_Z)
+  );
 }
 
-function convertString(eachCharCollection){
+function convertString(eachCharCollection) {
   return eachCharCollection.join('');
 }
 
-function checkLowerCase(utf16Code){
-  return utf16Code>=97;
+function checkLowerCase(uniCode) {
+  return UNICODE_LOWERCASE_A <= uniCode;
 }
 
 module.exports = problem4;
