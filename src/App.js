@@ -10,6 +10,12 @@ class App {
 	start() {
 		this.Console.print('숫자 야구 게임을 시작합니다.');
 		this.computerAnswer = this.getComputerAnswer();
+		this.getPlayerAnswer();
+	}
+	getPlayerAnswer() {
+		this.Console.readLine('숫자를 입력해주세요 : ', (playerAnswer) => {
+			this.playerAnswer = playerAnswer;
+		});
 	}
 	getComputerAnswer() {
 		const computer = [];
