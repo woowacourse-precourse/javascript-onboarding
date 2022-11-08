@@ -33,6 +33,10 @@ class App {
 		else if (score.strike) this.Console.print(`${score.strike}스트라이크`);
 		else if (score.ball) this.Console.print(`${score.ball}볼`);
 		else this.Console.print('낫싱');
+
+		if (score.strike === 3) {
+			this.Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
+		} else this.getPlayerAnswer();
 	}
 	validatePlayerAnswer() {
 		const arr = this.playerAnswer.split('');
