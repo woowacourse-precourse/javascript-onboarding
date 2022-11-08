@@ -6,7 +6,6 @@ function recommendFriendApp(user, friends, visitors) {
   const friendRelationship = createRelationship(friends);
   const visitorScoreBoard = calcVisitorScore(user, friendRelationship, visitors);
   const scoreBoard = calcFriendScore(user, friendRelationship, visitorScoreBoard);
-  console.log(scoreBoard);
   return sortByScore(scoreBoard).slice(0, 5);
 }
 
