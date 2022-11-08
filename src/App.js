@@ -16,7 +16,23 @@ class App {
 		this.Console.readLine('숫자를 입력해주세요 : ', (playerAnswer) => {
 			this.playerAnswer = playerAnswer;
 			this.validatePlayerAnswer();
+			this.evaluate();
 		});
+	}
+	evaluate() {
+		const score = { strike: 0, ball: 0 };
+		const player = this.playerAnswer.split('');
+		const computer = this.computerAnswer.split('');
+
+		player.forEach((v, i) => {
+			if (computer[i] === v) score.strike++;
+			else if (computer.includes(v)) score.ball++;
+		});
+
+		if (score.strike && score.ball) this.Console.print(`${score.ball}볼 ${score.strike}스트라이크`);
+		else if (score.strike) this.Console.print(`${score.strike}스트라이크`);
+		else if (score.ball) this.Console.print(`${score.ball}볼`);
+		else this.Console.print('낫싱');
 	}
 	validatePlayerAnswer() {
 		const arr = this.playerAnswer.split('');
