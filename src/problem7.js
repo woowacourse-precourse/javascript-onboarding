@@ -7,52 +7,51 @@
 function problem7(user, friends, visitors) {
   //var answer;
   let answer = [];
-  const friends_user = {};
+  const friendsObj = {};
   let scores = [];
-  const visitors_user = {};
+  const visitorsObj = {};
 
   friends.map((name) => {
     const [x, y] = name;
-    if(x === friends_user) friends_user[x] = {};
-    if(y === friends_user) friends_user[y] = {};
-  });
+    if(!(x in friendsObj)) friendsObj[x] = {};
+    friendsObj[x][y] = true;
+    if(!(y in friendsObj)) friendsObj[y] = {};
+    friendsObj[y][x] = true;
+  })
 
   visitors.map((visitor) => {
-    //if(visitor === visitors_user) visitors_user[visitor]++;
-    if(visitor in visitors_user) visitors_user[visitor]++;
-    else visitors_user[visitor] = 1;
-  });
+    if(visitor in visitorsObj) visitorsObj[visitor]++;
+    else visitorsObj[visitor] = 1;
+  })
 
-  for(let id in friends_user){
+  for(let id in friendsObj){
     if(user === id) continue;
     let score = 0;
-    for(let friend in friends_user[user]){
-      if(friend in friends_user[id]) score += 10;
+    for(let friend in friendsObj[user]){
+      if(friend in friendsObj[id]) score += 10;
     }
-    if(id in visitors_user){
-      score += visitors_user[id];
+    if(id in visitorsObj){
+      score += visitorsObj[id];
     }
-    scores.push({id, score});
+    scores.push({id,score});
   }
-  
-  for(let visitor in visitors_user){
-    if(!(visitors_user[visitor] === friends_user)){
-      scores.push({id:visitor, score: visitors_user[visitor]});
+  for(let visitor in visitorsObj){
+    if(!(visitorsObj[visitor] in friendsObj)){
+      scores.push({id:visitor, score: visitorsObj[visitor]});
     }
   }
-
   scores.sort((a,b) => b.score - a.score);
+  scores = scores.filter((item)=>item.score > 1);
 
   let count = 0;
   for(let i =0; i <scores.length; i++){
-    if(count === 5 || scores[i].score < 1) break;
-    else {
-      answer.push(scores[i].id);
-      count++;
-    }
+    count++;
+    answer.push(scores[i].id);
+    if(count === 5) break;
   }
   
   return answer;
 }
+
 
 module.exports = problem7;
