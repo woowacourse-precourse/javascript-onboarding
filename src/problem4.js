@@ -1,11 +1,11 @@
 const convertToFrogLetter = letter => {
   let convertedLetter = letter;
-  const ACode = 65, ZCode = 90, aCode = 97, zCode = 122;
+  const CAPITAL_A_CODE = 65, CAPITAL_Z_CODE = 90, SMALL_A_CODE = 97, SMALL_Z_CODE = 122;
 
   if (/[A-Z]/.test(letter))
-    convertedLetter = String.fromCharCode(ACode + ZCode - letter.charCodeAt());
+    convertedLetter = String.fromCharCode(CAPITAL_A_CODE + CAPITAL_Z_CODE - letter.charCodeAt());
   else if (/[a-z]/.test(letter))
-    convertedLetter = String.fromCharCode(aCode + zCode - letter.charCodeAt());
+    convertedLetter = String.fromCharCode(SMALL_A_CODE + SMALL_Z_CODE - letter.charCodeAt());
 
   return convertedLetter;
 }
