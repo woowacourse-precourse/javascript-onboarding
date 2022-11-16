@@ -44,7 +44,7 @@ const getTopFive = score => {
   score = Object.entries(score);
 
   score.sort((a, b) => {
-    (a, b) => (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1])
+    (a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1])
   });
 
   const answerLength = Math.min(5, score.length);
