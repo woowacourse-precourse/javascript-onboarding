@@ -1,49 +1,76 @@
+class Exception {
+  constructor(pobi, crong) {
+    this.pobi = pobi;
+    this.crong = crong;
+  }
+  check() {
+    return this.isException(this.pobi) || this.isException(this.crong);
+  }
+
+  isException(target) {
+    return this.isAllowLength(target) || this.isAllowPage(target);
+  }
+
+  isAllowLength(target) {
+    return target.length !== 2;
+  }
+
+  isAllowPage(target) {
+    const [leftPage, rightPage] = target;
+
+    return rightPage - leftPage !== 1;
+  }
+}
+
+class Calculator {
+  constructor(pobi, crong) {
+    this.pobi = pobi;
+    this.crong = crong;
+  }
+
+  compareScore() {
+    const pobiScore = this.getScore(this.pobi);
+    const crongScore = this.getScore(this.crong);
+    if (pobiScore > crongScore) return 1;
+    if (pobiScore < crongScore) return 2;
+
+    return 0;
+  }
+
+  getScore(target) {
+    let score = 0;
+    target.forEach((page) => {
+      score = Math.max(this.plus(page), this.multiply(page), score);
+    });
+
+    return score;
+  }
+
+  plus(target) {
+    let cnt = 0;
+    String(target)
+      .split("")
+      .forEach((num) => (cnt += +num));
+
+    return cnt;
+  }
+
+  multiply(target) {
+    let cnt = 1;
+    String(target)
+      .split("")
+      .forEach((num) => (cnt *= +num));
+
+    return cnt;
+  }
+}
+
 function problem1(pobi, crong) {
-  function pageNumEachPlus(numList) {
-    let plusResult = numList.reduce((pre, cur) => pre + cur);
-    return plusResult;
-  }
+  const exception = new Exception(pobi, crong);
+  if (exception.check()) return -1;
+  const calculator = new Calculator(pobi, crong);
 
-  function pageNumEachMultiply(numList) {
-    let multiplyResult = numList.reduce((pre, cur) => pre * cur);
-    return multiplyResult;
-  }
-
-  function except(pageNums) {
-    let pageDiff = pageNums[0] - pageNums[1];
-    return pageDiff === -1 ? false : true;
-  }
-
-  if (except(pobi) || except(crong)) return -1;
-
-  let [pobiScore, crongScore] = [0, 0];
-  let result = 0;
-
-  pobi.forEach((pageNum) => {
-    let pageNumList = String(pageNum).split("").map(Number);
-    pobiScore = Math.max(
-      pobiScore,
-      pageNumEachPlus(pageNumList),
-      pageNumEachMultiply(pageNumList)
-    );
-  });
-
-  crong.forEach((pageNum) => {
-    let pageNumList = String(pageNum).split("").map(Number);
-    crongScore = Math.max(
-      crongScore,
-      pageNumEachPlus(pageNumList),
-      pageNumEachMultiply(pageNumList)
-    );
-  });
-
-  if (pobiScore > crongScore) {
-    result = 1;
-  } else if (pobiScore < crongScore) {
-    result = 2;
-  }
-
-  return result;
+  return calculator.compareScore();
 }
 
 module.exports = problem1;
