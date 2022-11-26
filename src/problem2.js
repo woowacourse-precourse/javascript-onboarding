@@ -1,29 +1,53 @@
-function problem2(cryptogram) {
-  function deleteWords(words) {
-    let [newWords, check, nextRepeat] = [[], false, false];
-    words.split("").forEach((word) => {
-      if (newWords[newWords.length - 1] === word) {
-        [check, nextRepeat] = [true, true];
-      } else {
-        if (check) {
-          newWords.pop();
-          check = false;
-        }
-        newWords.push(word);
+class Deduplication {
+  constructor(word) {
+    this.word = word;
+    this.target = "";
+  }
+
+  deduplicate() {
+    if (this.isDuplicate()) {
+      this.target = "";
+      this.word = this.delete();
+      return this.deduplicate();
+    }
+    return this.word;
+  }
+
+  isDuplicate() {
+    let duplicate = false;
+    for (let i = 1; i < this.word.length; i++) {
+      if (this.word[i] === this.word[i - 1]) {
+        duplicate = true;
+        break;
       }
+    }
+    return duplicate;
+  }
+
+  delete(stack, check) {
+    let stack = [];
+    let check = false;
+    this.word.split("").forEach((letter, idx) => {
+      [stack, check] = this.change(stack, check, letter);
+      if (idx === this.word.length - 1 && check) stack.pop();
     });
-    if (check) newWords.pop();
-    return [newWords.join(""), nextRepeat];
+    return stack.join("");
   }
 
-  let [checkWord, result, repeat] = [cryptogram, "", false];
-
-  while (true) {
-    [result, repeat] = deleteWords(checkWord);
-    if (!repeat) break;
-    checkWord = result;
+  change(stack, check, letter) {
+    if (this.target !== letter) {
+      this.target = letter;
+      if (check) stack.pop();
+      stack.push(letter);
+      check = false;
+    } else check = true;
+    return [stack, check];
   }
-  return result;
+}
+
+function problem2(cryptogram) {
+  const deduplication = new Deduplication(cryptogram);
+  return deduplication.deduplicate();
 }
 
 module.exports = problem2;
