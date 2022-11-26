@@ -12,14 +12,13 @@ const PAGE_END = 400;
 
 //랜덤한 숫자가 홀수인지 짝수인지 판별하는 함수  //이미 isOdd 같은건 없나?
 function isEven(num) {
-  if (num % 2 === 0) return true;
-  else return false;
+  return num % 2 === 0;
 }
 
 //숫자 리터럴을 배열로 변환하는 함수
 function numToArr(num) {
-  origin = num.toString().split("");
-  arr = origin.map(Number);
+  const origin = num.toString().split("");
+  const arr = origin.map(Number);
   return arr;
 }
 
@@ -71,4 +70,5 @@ function vaildate(page) {
   if (page[0] < PAGE_START || page[0] > PAGE_END || isEven(page[0])) {
     return true;
   }
+  return false;
 }

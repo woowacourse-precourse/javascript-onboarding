@@ -13,8 +13,7 @@ const MONEY_HIGH = 1000000;
 //입력값이 숫자가 맞는지 범위가 맞는지 평가
 function isMoney(money) {
   if (money < MONEY_LOW || money > MONEY_HIGH) return fasle;
-  if (typeof money === "number") return true;
-  else return false;
+  return typeof money === "number";
 }
 
 //입력값에 대한 계산값을 problem5에 넘겨준다.

@@ -12,8 +12,7 @@ const NUMBER_RANGE_END = 10000;
 //주어진 값이 범위에 맞는 숫자인지 평가
 function isNumber(number) {
   if (number < NUMBER_RANGE_START || number > NUMBER_RANGE_END) return false;
-  if (typeof number === "number") return true;
-  else return false;
+  return typeof number === "number";
 }
 
 //주어진 배열에서 3 ,6 ,9 를 추출하여 배열로 리턴.

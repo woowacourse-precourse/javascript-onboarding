@@ -48,7 +48,7 @@ function changeWord(char) {
 }
 
 function reverse(word) {
-  if (!vaildate(word)) alert("워드길이");
+  if (vaildate(word)) alert("워드길이");
   const arr = stringToArray(word);
   const reverseArr = evalueAscii(arr);
   const reverseWord = reverseArr.join("");
@@ -56,7 +56,6 @@ function reverse(word) {
 }
 
 function vaildate(word) {
-  if (typeof word !== "string") return false;
-  else if (word.length < 1 || word.length > 1000) return false;
-  else return true;
+  if (typeof word !== "string") return true;
+  return word.length < 1 || word.length > 1000;
 }

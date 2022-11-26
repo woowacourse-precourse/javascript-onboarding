@@ -15,8 +15,6 @@ const VISITER_LENGTH_MAX = 10000;
 
 //유저아이디가 포함된 친구 목록을 반환.
 function myFriendsList(userId, AllFriends) {
-  // let temp = JSON.stringify();
-  // let tempList = JSON.parse(temp);
   return AllFriends.filter((list) => list.includes(userId));
 }
 

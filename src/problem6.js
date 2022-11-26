@@ -15,9 +15,9 @@ const NICKNAME_MIN = 1;
 //이메일 이 형식에 맞게 끝나는지 검사
 function validEmail(email) {
   const eLength = email.length;
-  return (
-    !email.endsWith("email.com") || eLength >= EMAIL_MAX || eLength < EMAIL_MIN
-  );
+  if (!email.endsWith("email.com")) return true;
+  if (eLength >= EMAIL_MAX) return true;
+  return eLength < EMAIL_MIN;
 }
 
 //닉네임의 길이를 검사

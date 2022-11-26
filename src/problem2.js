@@ -8,8 +8,8 @@ module.exports = problem2;
 
 //문자를 배열로 변환후 중복제거 이후 다시 문자로 변경한다.
 function decipher(word) {
-  word.toLowerCase();
-  const arr = word.split(""); // 문자를 배열로 취급
+  const lowerWord =  word.toLowerCase();
+  const arr = lowerWord.split(""); // 문자를 배열로 취급
 
   const charArray = decrypto(arr);
   const key = charArray.join("");
