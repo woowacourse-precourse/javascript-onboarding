@@ -1,14 +1,24 @@
+class Game {
+  constructor(number) {
+    this.number = number;
+  }
+
+  start() {
+    let cnt = 0;
+    for (let step = 1; step <= this.number; step++) {
+      cnt += this.count(step);
+    }
+    return cnt;
+  }
+
+  count(num) {
+    return [...num.toString().matchAll(/[3|6|9]/g)].length;
+  }
+}
+
 function problem3(number) {
-  function cntNum(num) {
-    return String(num)
-      .split("")
-      .filter((str) => str === "3" || str === "6" || str === "9").length;
-  }
-  let cnt = 0;
-  for (let i = 1; i <= number; i++) {
-    cnt += cntNum(i);
-  }
-  return cnt;
+  const game = new Game(number);
+  return game.start();
 }
 
 module.exports = problem3;
