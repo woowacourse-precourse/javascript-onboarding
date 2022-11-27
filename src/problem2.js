@@ -24,7 +24,7 @@ class Deduplication {
     return duplicate;
   }
 
-  delete(stack, check) {
+  delete() {
     let stack = [];
     let check = false;
     this.word.split("").forEach((letter, idx) => {
