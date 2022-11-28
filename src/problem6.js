@@ -1,61 +1,96 @@
-function problem6(forms) {
-  function makeKeys(words) {
-    let madeKeys = [];
-    for (let i = 0; i < words.length - 1; i++) {
-      let Key = words[i];
-      for (let j = i + 1; j < words.length; j++) {
-        Key += words[j];
-        madeKeys.push(Key);
-      }
+class Exception {
+  except(forms) {
+    const acceptData = forms.filter((form) => {
+      return this.isKorean(form[1]);
+    });
+    return acceptData;
+  }
+
+  isKorean(nickName) {
+    const sample = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    let check = true;
+    nickName.split("").forEach((letter) => {
+      if (!sample.test(letter)) check = false;
+    });
+    return check;
+  }
+}
+
+class System {
+  constructor() {
+    this.forms = [];
+    this.info = {};
+    this.usedNickName = {};
+  }
+
+  inspect(forms) {
+    this.forms = forms;
+    this.storeData();
+    let refuseData = this.forms.filter((form) => {
+      const nickName = form[1];
+      return this.checkNickName(nickName);
+    });
+    return this.getEmail(refuseData);
+  }
+
+  storeData() {
+    this.forms.forEach((data) => {
+      const [email, nickName] = data;
+      this.info[nickName] = email;
+      this.storeUsedLetter(nickName);
+    });
+  }
+
+  storeUsedLetter(nickName) {
+    for (let i = 0; i < nickName.length - 1; i++) {
+      this.checkLetter("store", nickName[i], nickName[i + 1]);
     }
-    return madeKeys;
   }
 
-  function enterDict(accountInfo) {
-    accountInfo.forEach((account) => {
-      let nickName = account[1].split("");
-      let makeResult = makeKeys(nickName);
-      makeResult.forEach((key) => {
-        if (nickNameCnt[key]) nickNameCnt[key] += 1;
-        else nickNameCnt[key] = 1;
-      });
+  checkNickName(nickName) {
+    for (let i = 0; i < nickName.length - 1; i++) {
+      if (this.checkLetter("duplicate", nickName[i], nickName[i + 1]))
+        return true;
+    }
+    return false;
+  }
+
+  checkLetter(order, frontLetter, backLetter) {
+    const letter = frontLetter + backLetter;
+    switch (order) {
+      case "store":
+        if (this.usedNickName[letter]) this.usedNickName[letter] += 1;
+        else this.usedNickName[letter] = 1;
+
+      case "duplicate":
+        if (this.usedNickName[letter] > 1) return true;
+        return false;
+    }
+  }
+
+  getEmail(refuseData) {
+    const emails = refuseData.map((data) => {
+      const nickName = data[1];
+      return this.info[nickName];
     });
-    return;
+    const sortedEmail = this.sortEmail(emails);
+    return this.deleteDupicate(sortedEmail);
   }
 
-  function checkValue(checkDict) {
-    let keys = Object.keys(checkDict).filter((key) => checkDict[key] > 1);
-    return keys;
+  sortEmail(email) {
+    return email.sort();
   }
 
-  function refuseEmail(accountInfo) {
-    let result = [];
-    accountInfo.forEach((account) => {
-      let email = account[0];
-      let nickName = account[1].split("");
-      let makeResult = makeKeys(nickName);
-      for (let i = 0; i < makeResult.length; i++) {
-        if (refuseList[makeResult[i]]) {
-          result.push(email);
-          break;
-        }
-      }
-    });
-    result = [...new Set(result)];
-    result.sort();
-
-    return result;
+  deleteDupicate(emails) {
+    return [...new Set(emails)];
   }
+}
 
-  let [nickNameCnt, refuseList] = [{}, {}];
-  enterDict(forms);
-  const refuseNames = checkValue(nickNameCnt);
-  refuseNames.forEach((refuseNickName) => {
-    refuseList[refuseNickName] = true;
-  });
-  const answer = refuseEmail(forms);
-
-  return answer;
+function problem6(forms) {
+  const exception = new Exception();
+  const vaildForms = exception.except(forms);
+  const system = new System();
+  return system.inspect(vaildForms);
 }
 
 module.exports = problem6;
