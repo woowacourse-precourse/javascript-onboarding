@@ -19,7 +19,7 @@ class FrogWord {
       return String.fromCharCode(ASCII_Z - (key - ASCII_A));
     else if (key >= ASCII_a && key <= ASCII_z)
       return String.fromCharCode(ASCII_z - (key - ASCII_a));
-    return String.fromCharCode(key);
+    return letter;
   }
 }
 
