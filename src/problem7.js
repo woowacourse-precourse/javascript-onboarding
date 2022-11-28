@@ -1,87 +1,94 @@
+class RecommendSystem {
+  constructor(user, friends, visitors) {
+    this.user = user;
+    this.friends = friends;
+    this.visitors = visitors;
+    this.info = {};
+    this.score = {};
+  }
+
+  recommend() {
+    this.info[this.user] = [];
+    this.checkFriends();
+    this.checkVisited();
+    this.countScore();
+    return this.getList();
+  }
+
+  checkFriends() {
+    this.friends.forEach((info) => {
+      const [userA, userB] = info;
+      this.storeInfo(userA, userB);
+    });
+  }
+
+  storeInfo(userA, userB) {
+    if (this.isHaveInfo(this.info, userA))
+      this.info[userA] = [...this.info[userA], userB];
+    else this.info[userA] = [userB];
+    if (this.isHaveInfo(this.info, userB))
+      this.info[userB] = [...this.info[userB], userA];
+    else this.info[userB] = [userA];
+  }
+
+  isHaveInfo(target, checkUser) {
+    if (target[checkUser]) return true;
+    if (!this.score[checkUser]) this.score[checkUser] = 0;
+    return false;
+  }
+
+  checkVisited() {
+    this.visitors.forEach((visitor) => {
+      this.isHaveInfo(this.info, visitor);
+      this.score[visitor] += 1;
+    });
+  }
+
+  countScore() {
+    const targetUser = this.getTargetUser(alreayFriends);
+    targetUser.forEach((user) => {
+      this.score[user] += 10;
+    });
+  }
+
+  getTargetUser(alreayFriends) {
+    const alreayFriends = this.info[this.user];
+    const targetUser = [];
+    alreayFriends.forEach((friend) => {
+      targetUser.push(...this.info[friend]);
+    });
+    return targetUser;
+  }
+
+  getList() {
+    const alreayFriends = this.info[this.user];
+    const memberList = Object.keys(this.score).filter((user) => {
+      if (user === this.user) return false;
+      if (alreayFriends.includes(user)) return false;
+      return true;
+    });
+    const sortedList = this.sortList(memberList);
+    return this.cutList(sortedList);
+  }
+
+  sortList(memberList) {
+    return memberList.sort((userA, userB) => {
+      if (this.score[userB] - this.score[userA] === 0) {
+        if (userA > userB) return 1;
+        return -1;
+      }
+      return this.score[userB] - this.score[userA];
+    });
+  }
+
+  cutList(list) {
+    return list.slice(0, 5);
+  }
+}
+
 function problem7(user, friends, visitors) {
-  function createInfo(eachFriend, idx) {
-    eachFriend.forEach((friend) => {
-      let [name1, name2] = friend;
-      friend.forEach((name) => {
-        if (!idIndexInfo[name]) {
-          idIndexInfo[name] = idx;
-          friendsInfo.push([]);
-          friendsScore.push(0);
-          idx += 1;
-        }
-      });
-      friendsInfo[idIndexInfo[name1]].push(name2);
-      friendsInfo[idIndexInfo[name2]].push(name1);
-    });
-    return idx;
-  }
-
-  function cntScore(visitorsInfo, idx) {
-    visitorsInfo.forEach((visitor) => {
-      if (!idIndexInfo[visitor]) {
-        idIndexInfo[visitor] = idx;
-        friendsInfo.push([]);
-        friendsScore.push(0);
-      }
-      let num = idIndexInfo[visitor];
-      friendsScore[num] += 1;
-    });
-  }
-
-  function cntKnowScore(USER) {
-    let nearFriends = friendsInfo[idIndexInfo[USER]];
-    nearFriends.forEach((nearName) => {
-      let farFriends = friendsInfo[idIndexInfo[nearName]];
-      farFriends.forEach((target) => {
-        friendsScore[idIndexInfo[target]] += 10;
-      });
-    });
-  }
-
-  function sortList(beforeSortList) {
-    const afterSortList = beforeSortList.sort((a, b) => {
-      let [curScore, preScore] = [b[0], a[0]];
-      let [curName, preName] = [b[1], a[1]];
-      if (curScore > preScore) return 1;
-      if (curScore < preScore) return -1;
-      if (curName > preName) return -1;
-      if (curName < preName) return 1;
-    });
-    return afterSortList;
-  }
-
-  function makeResult(Score, Friends) {
-    let [tmpList, alreadyFriendIdx, result] = [[], [], []];
-    Friends.forEach((friend) => {
-      alreadyFriendIdx.push(idIndexInfo[friend]);
-    });
-    for (let i = 2; i < Score.length; i++) {
-      if (alreadyFriendIdx.includes(i)) continue;
-      if (Score[i] !== 0) {
-        tmpList.push([Score[i], i]);
-      }
-    }
-    const sortedList = sortList(tmpList);
-    const memberList = Object.keys(idIndexInfo);
-    sortedList.forEach((userIdx) => {
-      result.push(memberList[userIdx[1] - 1]);
-    });
-
-    return result;
-  }
-
-  let idIndexInfo = {};
-  let friendsInfo = [[], []];
-  let friendsScore = [0, 0];
-  let i = 1;
-  idIndexInfo[user] = i;
-  i = createInfo(friends, i + 1);
-  cntScore(visitors, i);
-  cntKnowScore(user);
-  let nowFriends = friendsInfo[1];
-  let answer = makeResult(friendsScore, nowFriends);
-  answer = answer.slice(0, 5);
-  return answer;
+  const recommendSystem = new RecommendSystem(user, friends, visitors);
+  return recommendSystem.recommend();
 }
 
 module.exports = problem7;
