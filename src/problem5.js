@@ -1,22 +1,27 @@
-function problem5(money) {
-  function divideMoney(m) {
-    const moneyType = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
-    const lenMoneyType = moneyType.length;
-    let cntMoneyType = Array.from({ length: lenMoneyType }).fill(0);
-    let restMoney = m;
-    let [nextRest, idx] = [0, 0];
-    while (idx < lenMoneyType) {
-      const cnt = parseInt(restMoney / moneyType[idx]);
-      cntMoneyType[idx] = cnt;
-      nextRest = restMoney % moneyType[idx];
-      if (nextRest === 0) break;
-      restMoney = nextRest;
-      idx += 1;
-    }
-    return cntMoneyType;
+class Bank {
+  constructor() {
+    this.money = 0;
   }
 
-  let answer = divideMoney(money);
-  return answer;
+  withdraw(money) {
+    this.money = money;
+    return this.exchange();
+  }
+
+  exchange() {
+    const moneyType = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+    const result = [];
+    moneyType.forEach((type) => {
+      result.push(~~(this.money / type));
+      this.money = this.money % type;
+    });
+    return result;
+  }
 }
+
+function problem5(money) {
+  const bank = new Bank();
+  return bank.withdraw(money);
+}
+
 module.exports = problem5;
