@@ -1,3 +1,5 @@
+const { MAX_PAGE, MIN_PAGE, POBI_WIN, CRONG_WIN, GAME_DRAW, EXCEPTION } = require('../constants/problem1');
+
 function problem1(pobi, crong) {
   if (checkValue(pobi) && checkValue(crong)) {
     let maximumPobi = Math.max(
@@ -18,18 +20,18 @@ function problem1(pobi, crong) {
     );
 
     if (maximumPobi > maximumCrong) {
-      return 1;
+      return POBI_WIN;
     } else if (maximumPobi < maximumCrong) {
-      return 2;
+      return CRONG_WIN;
     } else {
-      return 0;
+      return GAME_DRAW;
     }
   }
-  return -1;
+  return EXCEPTION;
 }
 
 function checkValue(arr) {
-  return arr[0] > 400 || arr[1] > 400 || arr[0] < 1 || arr[1] < 1
+  return arr[0] > MAX_PAGE || arr[1] > MAX_PAGE || arr[0] < MIN_PAGE || arr[1] < MIN_PAGE
     ? false
     : arr[0] % 2 === 1 && arr[1] % 2 === 0 && arr[1] - arr[0] === 1
     ? true
