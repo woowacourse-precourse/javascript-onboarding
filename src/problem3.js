@@ -4,7 +4,7 @@ function problem3(number) {
   let arr = numberArr(number);
 
   answer = arr.filter(
-    (element) => "3" === element || "6" === element || "9" === element
+    (element) => ['3', '6', '9'].includes(element)
   ).length;
 
   return answer;
